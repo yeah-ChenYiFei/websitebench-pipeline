@@ -2,7 +2,7 @@
 
 > This file is a phase reference for `prompts/offline-clone/autonomous-source-to-clone.md`.
 > **The operating rules in the entry prompt—authorization, autonomous decision boundaries, stopping rules, parallelism, and context—take precedence over this file.**
-> Previous: `06-ledger-harbor.md` (final phase reference)
+> Previous: `06-ledger-harbor.md` | Next: `08-deploy.md`
 
 ## Phase 10: machine verification and blind review
 

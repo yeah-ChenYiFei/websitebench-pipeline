@@ -88,6 +88,17 @@ Before completion, run the applicable backend and isolation tests and report
 the runtime path, unique `site_id`, database/volume identity, enabled mail
 purposes, payment profile, deployment profile and any failed machine checks.
 
+## New public-demo sites
+
+Before making a new offline clone deployable, read
+`docs/public-demo-new-site-deployment.md`. Each public site must use its own
+fixed `deploy-<site>-public.yml` dispatcher, Worker/custom-domain route,
+public URL and `public-demo-<site>` concurrency group. A wrapper exposes only
+the `deploy` boolean and calls `public-demo-site.yml`; do not add a site list,
+matrix, batch trigger or shared public endpoint. The generic package supports
+the documented Python/ASGI contract; build and test a site-specific adapter
+before deploying another runtime.
+
 ## Shared offline-clone tools
 
 All agents must discover cross-site clone diagnostics through:

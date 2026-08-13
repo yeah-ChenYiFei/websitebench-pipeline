@@ -41,8 +41,8 @@ import httpx
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 
-from clawbench.offline_clone.assets import inspect_asset  # noqa: E402
-from clawbench.offline_clone.asset_cache import (  # noqa: E402
+from websitebench.offline_clone.assets import inspect_asset  # noqa: E402
+from websitebench.offline_clone.asset_cache import (  # noqa: E402
     AssetPayloadCache,
     write_bytes_if_changed,
 )

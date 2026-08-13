@@ -1,8 +1,11 @@
 # CLAUDE.md — execution entry for agents
 
 This repository is the offline-clone production pipeline: prompt → source
-evidence → clone → diagnostics → backend → Harbor contract → Harbor instance.
-Humans accept the work (see `ACCEPTANCE.md`); you execute it.
+evidence → clone → diagnostics → backend → Harbor contract → Harbor instance
+→ public deployment. The finished output of one production run is a
+Harbor-standard instance under `harbor/instances/<site-id>/` **plus** a
+successfully deployed public demo site. Humans accept the work (see
+`ACCEPTANCE.md`); you execute it.
 
 ## Operating contract
 
@@ -28,6 +31,9 @@ python tools/offline_clone/run.py tools list                 # shared diagnostic
 websitebench-harbor derive-from-clone ...                    # contract from clone artifacts
 websitebench-harbor run-opencli ...                          # advisory replay only
 websitebench-harbor init-instance ...                        # instance skeleton
+cd deploy/generic-offline-clone && npm ci && npm test        # deployment package gate
+node scripts/prepare.mjs --config deployment.<id>.v2.json --check-only
+node scripts/deploy.mjs  --config deployment.<id>.v2.json --dry-run
 ```
 
 Repo gates before handing work back:
@@ -51,5 +57,21 @@ python -m pytest materials/<id>/clone/tests -q
 - Everything under `prompts/` must stay English and consistent with the
   codebase — `tests/test_prompt_freshness.py` enforces the binding; run it
   after touching prompts, CLIs or entry points.
-- Deployment is out of scope for this repository; do not add deploy workflows
-  or publish clones from here.
+- Deployment is in scope but authority-gated: local `--check-only`/`--dry-run`
+  are always allowed; a real publication (workflow dispatch with
+  `deploy=true`, `wrangler deploy`, DNS/domain changes) requires the human to
+  explicitly grant it for the current task. Follow
+  `prompts/offline-clone/references/08-deploy.md` and
+  `deploy/public-demo-release-authority.md`.
+
+## MCP and skills
+
+- `.mcp.json` registers the browser-automation MCP servers used by the
+  capture phases: `chrome-devtools` (local, via `scripts/chrome-devtools-mcp`),
+  `browserbase` (cloud, via `scripts/browserbase-chrome-devtools-mcp` — needs
+  `BROWSERBASE_API_KEY` and `BROWSERBASE_PROJECT_ID` exported in the
+  environment; the launcher never persists them), and `playwright`
+  (`npx @playwright/mcp@latest`).
+- The capture skill is `skills/trace-guided-offline-clone/` (linked into
+  `.claude/skills/`); `skills-lock.json` pins its identity. Read its
+  `SKILL.md` before any source-evidence session.

@@ -28,6 +28,7 @@ and prohibitions.
 | 7–8: candidate implementation + backend | `references/05-implement.md` | Item-by-item replication checklist, `site_backend` contract, and payment boundary |
 | 9: interaction ledger + Harbor | `references/06-ledger-harbor.md` | Ledger fields, source/candidate trajectory comparison, and contract derivation |
 | 10: machine verification and blind review | `references/07-verify.md` | Gate commands, coverage requirements, and independent blind review |
+| 11–12: deployment preparation and revalidation | `references/08-deploy.md` | Descriptor, workflow, and online revalidation |
 
 Three non-negotiable rules apply throughout every phase:
 

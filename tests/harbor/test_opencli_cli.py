@@ -11,7 +11,7 @@ from websitebench.harbor.cli import build_parser, main
 
 
 ROOT = Path(__file__).resolve().parents[2]
-PETFINDER = ROOT / "harbor" / "sites" / "petfinder" / "site.yaml"
+GOLDEN_SITE = ROOT / "harbor" / "sites" / "tripit" / "site.yaml"
 
 
 def _parse_run_opencli() -> argparse.Namespace:
@@ -19,9 +19,9 @@ def _parse_run_opencli() -> argparse.Namespace:
         [
             "run-opencli",
             "--site",
-            str(PETFINDER),
+            str(GOLDEN_SITE),
             "--profile",
-            "dog-favorite-add",
+            "marketing-and-auth-entry",
             "--out",
             "result.json",
             "--legacy-v1",
@@ -59,9 +59,9 @@ def test_run_opencli_explicit_admin_token_overrides_the_environment(
         [
             "run-opencli",
             "--site",
-            str(PETFINDER),
+            str(GOLDEN_SITE),
             "--profile",
-            "dog-favorite-add",
+            "marketing-and-auth-entry",
             "--out",
             "result.json",
             "--admin-token",
@@ -80,9 +80,9 @@ def test_missing_base_url_points_to_the_candidate_clone(
         [
             "run-opencli",
             "--site",
-            str(PETFINDER),
+            str(GOLDEN_SITE),
             "--profile",
-            "dog-favorite-add",
+            "marketing-and-auth-entry",
             "--out",
             "result.json",
             "--legacy-v1",
@@ -92,7 +92,7 @@ def test_missing_base_url_points_to_the_candidate_clone(
     captured = capsys.readouterr()
     assert result == 2
     assert "start the candidate clone first" in captured.err
-    assert "http://127.0.0.1:18903" in captured.err
+    assert "http://127.0.0.1:18913" in captured.err
     assert "reference/run.sh" not in captured.err
 
 

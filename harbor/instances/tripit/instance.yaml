@@ -1,0 +1,59 @@
+schema_version: websitebench.harbor.instance.v1
+instance_id: tripit
+site_manifest: sites/tripit/site.yaml
+task:
+  category: web-development
+  type: fullstack-reconstruction
+  language: web
+metadata:
+  author_name: WebsiteBench
+  author_email: bench@websitebench.invalid
+  difficulty: hard
+  tags:
+  - browser-checks
+  - frontend-backend
+  - travel
+  - tripit
+budgets:
+  agent_timeout_sec: 3600
+  verifier_timeout_sec: 1200
+  build_timeout_sec: 1200
+  cpus: 4
+  memory_mb: 8192
+  storage_mb: 20480
+paths:
+  instruction: instruction.md
+  public: public
+  verifier: verifier
+  hidden_fixtures: fixtures/hidden
+  oracle_solution: solution/solve.sh
+tests:
+  contract:
+  - contract::runtime/starts-and-resets
+  - contract::auth-checkout/offline-harbor-profile
+  api:
+  - api::core/read-path
+  - api::core/write-path
+  - api::auth/registration-verification-login
+  - api::auth/error-expiry-replay-guards
+  - api::checkout/sandbox-success-decline-retry
+  - api::checkout/idempotent-order-persistence
+  ui:
+  - ui::primary/initial-state
+  - ui::primary/interaction
+  - ui::auth/registration-and-login
+  - ui::checkout/sandbox-payment
+  visual:
+  - visual::primary/reference-checkpoint
+  journey:
+  - journey::primary/end-to-end
+  - journey::auth-checkout/register-to-durable-order
+  robustness:
+  - robustness::refresh-and-retry
+  - robustness::auth/restart-and-owner-isolation
+  - robustness::checkout/retry-idempotency-persistence
+  efficiency: []
+opencli_profile: marketing-and-auth-entry
+calibration:
+  nop_max_score: 10
+  oracle_min_score: 95

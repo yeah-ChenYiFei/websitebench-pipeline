@@ -1099,6 +1099,8 @@ def test_eight_site_legacy_vendors_match_their_frozen_manifests(site: str) -> No
         / "clawbench"
         / "local_clone_auth"
     )
+    if not target_root.exists():
+        pytest.skip(f"materials/{site} is not in this checkout")
     manifest = json.loads(
         (target_root / "VENDOR_MANIFEST.json").read_text(encoding="utf-8")
     )

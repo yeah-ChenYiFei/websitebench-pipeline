@@ -1,0 +1,83 @@
+{
+  "schema_version": "websitebench.site-backend-runtime.v1",
+  "site": {
+    "id": "taskrabbit",
+    "label": "Taskrabbit Clone",
+    "public_origin": "https://taskrabbit.example.com"
+  },
+  "database": {
+    "engine": "sqlite",
+    "data_dir": "data",
+    "filename": "taskrabbit.sqlite3",
+    "migration_hook": null,
+    "seed_hook": null,
+    "legacy_unbound_migration": false
+  },
+  "session": {
+    "host_only": true,
+    "secure": true,
+    "http_only": true,
+    "same_site": "Lax"
+  },
+  "mail": {
+    "sender": {
+      "display_name": "Taskrabbit Clone",
+      "address_env": "RESEND_FROM_EMAIL"
+    },
+    "purposes": {
+      "registration": {
+        "template_id": "taskrabbit.registration.v1",
+        "subject": "Verify your Taskrabbit Clone account",
+        "lead": "Finish creating your Taskrabbit Clone account.",
+        "body": "Your verification code is ${code}.",
+        "expiry": "This code expires in ${minutes} minutes.",
+        "footer": "This code is only for Taskrabbit Clone.",
+        "required_variables": ["code", "minutes"],
+        "secret_variables": ["code"]
+      }
+    }
+  },
+  "payments": {
+    "default_adapter": "local-sandbox",
+    "currency": "USD",
+    "local_sandbox": {
+      "scenarios": [
+        {
+          "id": "sandbox-approved",
+          "outcome": "approved",
+          "display_label": "Simulated approval"
+        },
+        {
+          "id": "sandbox-declined",
+          "outcome": "declined",
+          "display_label": "Simulated decline"
+        },
+        {
+          "id": "sandbox-retry",
+          "outcome": "retryable",
+          "display_label": "Simulated retry"
+        }
+      ]
+    },
+    "stripe_test": null
+  },
+  "deployment": {
+    "profiles": {
+      "offline-harbor": {
+        "persistence": "persistent",
+        "mail_adapter": "local-outbox",
+        "payment_adapter": "local-sandbox"
+      },
+      "cloudflare-review": {
+        "persistence": "ephemeral-reset",
+        "mail_adapter": "redis-resend",
+        "payment_adapter": "local-sandbox"
+      },
+      "docker-volume": {
+        "persistence": "persistent-volume",
+        "mail_adapter": "effects-gateway",
+        "payment_adapter": "local-sandbox"
+      }
+    }
+  }
+}

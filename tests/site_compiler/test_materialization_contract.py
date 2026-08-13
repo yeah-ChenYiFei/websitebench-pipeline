@@ -240,7 +240,7 @@ def test_materialization_never_removes_a_concurrent_writers_destination(
 ) -> None:
     result, _ = _unblocked_target(tmp_path)
     site_dir = tmp_path / "alpha-market"
-    module = importlib.import_module("clawbench.site_compiler.materialize")
+    module = importlib.import_module("websitebench.site_compiler.materialize")
     original_replace = module.os.replace
 
     def race(source: Path, destination: Path) -> None:

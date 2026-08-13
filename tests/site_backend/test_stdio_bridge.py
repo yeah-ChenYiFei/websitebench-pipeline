@@ -147,6 +147,8 @@ def test_node_clone_descriptor_and_client_are_fixed_shape(
     site_id: str, payments_enabled: bool
 ) -> None:
     site = REPOSITORY / "materials" / site_id
+    if not site.exists():
+        pytest.skip(f"materials/{site_id} is not in this checkout")
     runtime = json.loads((site / "backend/runtime.json").read_text(encoding="utf-8"))
     descriptor = json.loads(
         (site / "backend/node-bridge.json").read_text(encoding="utf-8")

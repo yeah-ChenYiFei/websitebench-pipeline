@@ -1,0 +1,477 @@
+name: Public WebsiteBench demo site
+
+on:
+  workflow_call:
+    inputs:
+      site:
+        required: true
+        type: string
+      package:
+        required: true
+        type: string
+      wrangler_config:
+        required: true
+        type: string
+      prepare_command:
+        required: true
+        type: string
+      deploy_command:
+        required: true
+        type: string
+      url:
+        required: true
+        type: string
+      deploy:
+        required: true
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    # Keep secret resolution at repository scope. Attaching a GitHub
+    # Environment here would allow an environment secret with the same name to
+    # override the repository value and make deployments differ by site.
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    # The config generator derives the Worker's DEPLOYMENT_BUILD_ID and the
+    # container's build args from this one value, so both halves of the runtime
+    # identity have to come from here. Setting only one half makes the Worker
+    # reject its own container as stale forever.
+    env:
+      SOURCE_REF: ${{ github.sha }}
+      SOURCE_REPOSITORY: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: ${{ inputs.package }}/package-lock.json
+      - name: Install repository test dependencies
+        run: python -m pip install --disable-pip-version-check -e ".[dev]"
+      - name: Install required clone browser runtime
+        if: inputs.site == 'capterra' || inputs.site == 'eventbrite'
+        run: python -m playwright install --with-deps chromium
+      - name: Prepare complete Eventbrite remote-history audit refs
+        if: inputs.site == 'eventbrite'
+        shell: bash
+        run: |
+          set -euo pipefail
+          remote_ref_inventory="${RUNNER_TEMP}/eventbrite-origin-refs.txt"
+          git ls-remote --refs origin | LC_ALL=C sort > "${remote_ref_inventory}"
+          git fetch --force --prune origin \
+            '+refs/*:refs/websitebench-audit/origin/*'
+          test "$(git rev-parse --is-shallow-repository)" = "false"
+          echo "WEBSITEBENCH_REMOTE_REF_INVENTORY_PATH=${remote_ref_inventory}" \
+            >> "${GITHUB_ENV}"
+      # Generic clone diagnostics inform the deployment decision but do not
+      # authorize or veto publication. Secret, payment, package and deployment
+      # isolation checks below remain fail closed.
+      - name: Diagnose ${{ inputs.site }} clone
+        env:
+          PYTHONPATH: ${{ github.workspace }}/src
+        shell: bash
+        run: |
+          set -uo pipefail
+          site_dir="materials/${{ inputs.site }}"
+          if [[ ! -f "${site_dir}/clone.yaml" ]]; then
+            echo "::warning title=clone-diagnostics=${{ inputs.site }}::No clone manifest under ${site_dir}; maintainer judgment is required."
+            exit 0
+          fi
+          report="${RUNNER_TEMP}/diagnostic-${{ inputs.site }}.json"
+          set +e
+          python -m websitebench.offline_clone.cli verify \
+            --site "${site_dir}" --out "${report}"
+          diagnostic_exit=$?
+          set -e
+          status="$(jq -r '.diagnostic_status // "incomplete"' "${report}" 2>/dev/null || printf incomplete)"
+          echo "::notice title=clone-diagnostics=${{ inputs.site }}::${status} (exit ${diagnostic_exit}); maintainer judgment required"
+          exit 0
+      - name: Upload clone diagnostic report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: public-demo-clone-diagnostic-${{ inputs.site }}
+          path: ${{ runner.temp }}/diagnostic-${{ inputs.site }}.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Enforce Eventbrite verification and publication authority
+        if: inputs.deploy && inputs.site == 'eventbrite'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python materials/eventbrite/tools/public_profile_smoke.py
+          jq --exit-status '
+            .disposition.source_session_revocation == "confirmed" and
+            .disposition.remote_history_rewrite == "complete" and
+            .disposition.remote_blobs_must_not_be_deployed == false
+          ' materials/eventbrite/source-capture/security-redaction-migration-2026-08-09.json \
+            >/dev/null
+          grep --fixed-strings --quiet \
+            '**status:** approved-public-redistribution' \
+            materials/eventbrite/source-assets/LICENSE-REVIEW.md
+          grep --fixed-strings --quiet \
+            '**public redistribution:** approved' \
+            materials/eventbrite/source-assets/LICENSE-REVIEW.md
+      # A site's own suite is recorded as deployment context; DEPLOYMENT.md keeps
+      # failing site WIP tests as a declared limitation.
+      - name: Record the selected clone's complete suite
+        continue-on-error: true
+        shell: bash
+        env:
+          SITE_ID: ${{ inputs.site }}
+        run: |
+          set -euo pipefail
+          if [[ "${SITE_ID}" == "capterra" ]]; then
+            exit 0
+          fi
+          if [[ -f "materials/${SITE_ID}/clone/package.json" ]]; then
+            npm ci --prefix "materials/${SITE_ID}/clone"
+            npm test --prefix "materials/${SITE_ID}/clone"
+          else
+            python -m pytest -q "materials/${SITE_ID}/clone/tests"
+          fi
+      - name: Run the Capterra suite outside the long browser matrix
+        if: inputs.site == 'capterra'
+        continue-on-error: true
+        run: >-
+          python -m pytest -q
+          materials/capterra/clone/tests
+          --ignore=materials/capterra/clone/tests/test_r2_round5_repairs.py
+      - name: Run the Capterra long browser matrix in a fresh process
+        if: inputs.site == 'capterra'
+        continue-on-error: true
+        run: >-
+          python -m pytest -q
+          materials/capterra/clone/tests/test_r2_round5_repairs.py
+      - name: Install and verify this deployment package
+        working-directory: ${{ inputs.package }}
+        run: |
+          npm ci
+          npm test
+      - name: Prepare the exact site candidate
+        shell: bash
+        run: ${{ inputs.prepare_command }}
+      # Must precede the candidate step: render-configs rewrites the whole
+      # wrangler config, which would discard the vars injected there.
+      - name: Provision and migrate Change platform resources
+        if: inputs.deploy && inputs.site == 'change'
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        working-directory: ${{ inputs.package }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          database_name="clawbench-change-preview"
+          database_list="$(npx wrangler d1 list --json)"
+          database_count="$(
+            jq --arg name "${database_name}" \
+              '[.[] | select(.name == $name)] | length' \
+              <<<"${database_list}"
+          )"
+          if [[ "${database_count}" == "0" ]]; then
+            npx wrangler d1 create "${database_name}" --location apac
+            database_list="$(npx wrangler d1 list --json)"
+            database_count="$(
+              jq --arg name "${database_name}" \
+                '[.[] | select(.name == $name)] | length' \
+                <<<"${database_list}"
+            )"
+          fi
+          if [[ "${database_count}" != "1" ]]; then
+            printf 'Expected exactly one D1 database named %s; found %s.\n' \
+              "${database_name}" "${database_count}" >&2
+            exit 1
+          fi
+          database_id="$(
+            jq --exit-status --raw-output --arg name "${database_name}" \
+              '.[] | select(.name == $name) | (.uuid // .id)' \
+              <<<"${database_list}"
+          )"
+          if [[ ! "${database_id}" =~ ^[0-9a-f-]{36}$ ]]; then
+            printf 'D1 database %s returned an invalid resource ID.\n' \
+              "${database_name}" >&2
+            exit 1
+          fi
+          export CHANGE_D1_DATABASE_ID="${database_id}"
+          printf 'CHANGE_D1_DATABASE_ID=%s\n' "${database_id}" >> "${GITHUB_ENV}"
+          node scripts/render-configs.mjs
+
+          for queue_name in \
+            clawbench-change-notifications \
+            clawbench-change-notifications-dlq
+          do
+            if ! npx wrangler queues info "${queue_name}" >/dev/null 2>&1; then
+              npx wrangler queues create "${queue_name}"
+            fi
+          done
+
+          npx wrangler d1 migrations apply CHANGE_DB \
+            --remote \
+            --config wrangler.change.jsonc
+      - name: Validate the Worker package without external effects
+        id: candidate
+        shell: bash
+        env:
+          TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
+        run: |
+          set -euo pipefail
+          config="${{ inputs.wrangler_config }}"
+          # The prepared config already lists exactly what wrangler will demand,
+          # so read the requirement from the candidate rather than restating it
+          # here. A site then needs only the secrets its own Worker declares.
+          required="$(
+            node -e 'const fs=require("node:fs"); const x=JSON.parse(fs.readFileSync(process.argv[1])); process.stdout.write((((x.secrets||{}).required)||[]).join(" "))' "$config"
+          )"
+          printf 'required_secrets=%s\n' "${required}" >> "${GITHUB_OUTPUT}"
+          # Turnstile is real only for candidates that declare it. The eight-site
+          # package sets AUTH_REQUIRE_TURNSTILE=false and never reads the key, so
+          # demanding one there would block sites that do not use it.
+          case " ${required} " in
+            *" TURNSTILE_SECRET_KEY "*) test -n "${TURNSTILE_SITE_KEY}" ;;
+            *) TURNSTILE_SITE_KEY="" ;;
+          esac
+          export TURNSTILE_SITE_KEY
+          # Never overwrite a DEPLOYMENT_BUILD_ID the generator already set: it
+          # is paired with the container's baked-in build arg, and replacing
+          # only the Worker side is what strands a site on
+          # "Container revision is not ready".
+          node -e '
+            const fs = require("node:fs");
+            const path = process.argv[1];
+            const siteKey = process.env.TURNSTILE_SITE_KEY;
+            const config = JSON.parse(fs.readFileSync(path));
+            config.vars = { ...(config.vars || {}) };
+            if (!config.vars.DEPLOYMENT_BUILD_ID) {
+              config.vars.DEPLOYMENT_BUILD_ID = process.env.GITHUB_SHA;
+            }
+            for (const container of config.containers || []) {
+              container.image_vars = { ...(container.image_vars || {}) };
+              if (!container.image_vars.DEPLOYMENT_BUILD_ID) {
+                container.image_vars.DEPLOYMENT_BUILD_ID =
+                  config.vars.DEPLOYMENT_BUILD_ID;
+              }
+            }
+            if (siteKey) config.vars.TURNSTILE_SITE_KEY = siteKey;
+            fs.writeFileSync(path, JSON.stringify(config, null, 2) + "\n");
+          ' "$config"
+          npx --prefix "${{ inputs.package }}" wrangler deploy --config "$config" --dry-run --containers-rollout=none --outdir "${{ inputs.package }}/.wrangler/dry-run/${{ inputs.site }}"
+      - name: Deploy Worker, custom domain, and Container
+        if: inputs.deploy
+        shell: bash
+        env:
+          SITE_ID: ${{ inputs.site }}
+          BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # Resolved by name against the candidate's own secrets.required, so a
+          # new binding needs no edit here and no site carries another's keys.
+          ALL_SECRETS: ${{ toJSON(secrets) }}
+          REQUIRED_SECRETS: ${{ steps.candidate.outputs.required_secrets }}
+        run: |
+          set -euo pipefail
+          secrets_file="${RUNNER_TEMP}/${{ inputs.site }}-worker-secrets.env"
+          trap 'rm -f "$secrets_file"' EXIT
+          if [[ "${SITE_ID}" == "workable" || "${SITE_ID}" == "ubereats" ]]; then
+            PUBLIC_CLONE_SMOKE_TOKEN="$(node -e '
+              const { createHmac } = require("node:crypto");
+              const message = JSON.stringify({
+                version: 1,
+                repository: process.env.GITHUB_REPOSITORY,
+                site: process.env.SITE_ID,
+                sha: process.env.GITHUB_SHA,
+              });
+              process.stdout.write(
+                createHmac("sha256", process.env.BASIC_AUTH_PASSWORD)
+                  .update(message)
+                  .digest("hex"),
+              );
+            ')"
+            [[ "${PUBLIC_CLONE_SMOKE_TOKEN}" =~ ^[a-f0-9]{64}$ ]]
+            export PUBLIC_CLONE_SMOKE_TOKEN
+            echo "::add-mask::${PUBLIC_CLONE_SMOKE_TOKEN}"
+            printf 'PUBLIC_CLONE_SMOKE_TOKEN=%s\n' \
+              "${PUBLIC_CLONE_SMOKE_TOKEN}" >> "${GITHUB_ENV}"
+          fi
+          node -e '
+            const fs = require("node:fs");
+            const all = JSON.parse(process.env.ALL_SECRETS || "{}");
+            const names = (process.env.REQUIRED_SECRETS || "").split(/\s+/).filter(Boolean);
+            const missing = names.filter((name) => !all[name]);
+            if (missing.length) {
+              console.error("missing required secrets: " + missing.join(", "));
+              process.exit(1);
+            }
+            fs.writeFileSync(
+              process.argv[1],
+              [
+                ...names.map((name) => [name, all[name]]),
+                ...(["workable", "ubereats"].includes(process.env.SITE_ID)
+                  ? [["PUBLIC_CLONE_SMOKE_TOKEN", process.env.PUBLIC_CLONE_SMOKE_TOKEN]]
+                  : []),
+              ].map(([name, value]) => name + "=" + value).join("\n") + "\n",
+              { mode: 0o600 },
+            );
+          ' "$secrets_file"
+          if ! ${{ inputs.deploy_command }} --secrets-file "$secrets_file"; then
+            npx --prefix "${{ inputs.package }}" wrangler rollback --config "${{ inputs.wrangler_config }}" --message "automatic rollback for ${{ inputs.site }}" || true
+            exit 1
+          fi
+      # A plain curl cannot tell this build apart from the instance that was
+      # already serving, so the wait binds health to this run's build identity.
+      - name: Wait for the public health check
+        if: inputs.deploy
+        shell: bash
+        env:
+          SITE_ID: ${{ inputs.site }}
+        run: |
+          set -euo pipefail
+          health_timeout_seconds=2400
+          health_max_attempts=240
+          health_deadline=$(( $(date +%s) + health_timeout_seconds ))
+          health_attempt=0
+          healthy=false
+          while (( $(date +%s) < health_deadline && health_attempt < health_max_attempts )); do
+            health_attempt=$(( health_attempt + 1 ))
+            remaining_seconds=$(( health_deadline - $(date +%s) ))
+            (( remaining_seconds > 0 )) || break
+            if node --input-type=module - \
+              "${{ inputs.url }}/healthz" \
+              "${GITHUB_SHA}" \
+              "${SITE_ID}" \
+              "${remaining_seconds}" <<'NODE'
+          const [url, expectedBuildId, siteId, remainingSeconds] =
+            process.argv.slice(2);
+          const requestTimeoutMs = Math.max(
+            1,
+            Math.min(10_000, Number(remainingSeconds) * 1_000),
+          );
+          try {
+            const response = await fetch(url, {
+              headers: { "Cache-Control": "no-cache" },
+              signal: AbortSignal.timeout(requestTimeoutMs),
+            });
+            if (!response.ok) {
+              throw new Error(`HTTP ${response.status}`);
+            }
+            const body = await response.json();
+            if (body?.ok !== true || body?.site_id !== siteId) {
+              throw new Error("health body or site identity mismatch");
+            }
+            if (
+              response.headers.get("x-websitebench-build-id") !==
+              expectedBuildId
+            ) {
+              throw new Error("deployment build ID mismatch");
+            }
+            if (
+              response.headers.get("x-websitebench-container-build-id") !==
+              expectedBuildId
+            ) {
+              throw new Error("Container build ID mismatch");
+            }
+            const workerVersion =
+              response.headers.get("x-websitebench-worker-version") || "";
+            if (!/^[A-Za-z0-9._:@+-]{1,160}$/u.test(workerVersion)) {
+              throw new Error("Worker version metadata is missing or malformed");
+            }
+          } catch (error) {
+            console.error(`[health] ${error.message}`);
+            process.exitCode = 1;
+          }
+          NODE
+            then
+              healthy=true
+              break
+            fi
+            remaining_seconds=$(( health_deadline - $(date +%s) ))
+            (( remaining_seconds > 0 )) || break
+            sleep_seconds=10
+            if (( remaining_seconds < sleep_seconds )); then
+              sleep_seconds=${remaining_seconds}
+            fi
+            sleep "${sleep_seconds}"
+          done
+          test "${healthy}" = true
+      # These Workers have no anonymous mode: no password is a 503 and an
+      # unauthenticated request is a 401, so the surface is checked as bench.
+      - name: Verify edge authentication
+        if: inputs.deploy
+        shell: bash
+        env:
+          BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+        run: |
+          set -euo pipefail
+          target="${{ inputs.url }}/"
+          test "$(
+            curl --silent --output /dev/null --write-out '%{http_code}' "${target}"
+          )" = "401"
+          curl --fail --silent --show-error --retry 3 \
+            --user "bench:${BASIC_AUTH_PASSWORD}" \
+            -D - -o /dev/null "${target}" \
+            | node deploy/eight-site-clones/scripts/sanitize-response-headers.mjs \
+              > smoke.headers
+          grep --ignore-case -q '^x-robots-tag: noindex, nofollow, noarchive' smoke.headers
+          # /__bench/ is refused only after authentication, so an anonymous 401
+          # here would prove nothing about the bench surface being absent.
+          test "$(
+            curl --silent --output /dev/null --write-out '%{http_code}' \
+              --user "bench:${BASIC_AUTH_PASSWORD}" \
+              "${{ inputs.url }}/__bench/"
+          )" = "404"
+          curl --fail --silent --show-error "${{ inputs.url }}/healthz" > health.json
+      - name: Verify real OTP delivery and declared registration scope
+        if: inputs.deploy && (inputs.site == 'workable' || inputs.site == 'ubereats')
+        env:
+          SITE_ID: ${{ inputs.site }}
+          BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+          PUBLIC_CLONE_AUTH_SMOKE_EMAIL: ${{ secrets.PUBLIC_CLONE_AUTH_SMOKE_EMAIL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        working-directory: ${{ inputs.package }}
+        run: node scripts/verify-public-registration.mjs
+      - name: Verify TripIt hosted Stripe test checkout
+        if: inputs.deploy && inputs.site == 'tripit'
+        env:
+          BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+          DEPLOYMENT_BUILD_ID: ${{ github.sha }}
+          PUBLIC_CLONE_SITE_URL: ${{ inputs.url }}
+          STRIPE_TEST_SECRET_KEY: ${{ secrets.STRIPE_TEST_SECRET_KEY }}
+          STRIPE_TEST_WEBHOOK_SECRET: ${{ secrets.STRIPE_TEST_WEBHOOK_SECRET }}
+        working-directory: ${{ inputs.package }}
+        run: node scripts/verify-tripit-live-stripe.mjs
+      - name: Verify TripIt real OTP submission and complete registration
+        if: inputs.deploy && inputs.site == 'tripit'
+        env:
+          BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+          DEPLOYMENT_BUILD_ID: ${{ github.sha }}
+          PUBLIC_CLONE_AUTH_SMOKE_EMAIL: ${{ secrets.PUBLIC_CLONE_AUTH_SMOKE_EMAIL }}
+          PUBLIC_CLONE_AUTH_SMOKE_SECRET: ${{ secrets.PUBLIC_CLONE_AUTH_SMOKE_SECRET }}
+          PUBLIC_CLONE_SITE_URL: ${{ inputs.url }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        working-directory: ${{ inputs.package }}
+        run: node scripts/verify-tripit-live-registration.mjs
+      - name: Record deployment evidence
+        if: inputs.deploy
+        shell: bash
+        run: |
+          set -euo pipefail
+          node -e 'const fs=require("node:fs"); const h=fs.readFileSync("smoke.headers","utf8"); const take=n=>(h.match(new RegExp("^"+n+":\\s*(.+)$","im"))||[])[1]||null; const config=${{ toJSON(inputs.wrangler_config) }}; fs.writeFileSync("deployment-evidence.json",JSON.stringify({site:${{ toJSON(inputs.site) }},url:${{ toJSON(inputs.url) }},commit:process.env.GITHUB_SHA,config_path:config,config_bytes:fs.statSync(config).size,worker_version:take("x-websitebench-worker-version"),build_id:take("x-websitebench-build-id"),health:JSON.parse(fs.readFileSync("health.json","utf8"))},null,2)+"\n")'
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: ${{ inputs.site }}-deployment-evidence
+          path: |
+            deployment-evidence.json
+            health.json
+            smoke.headers
+            ${{ inputs.package }}/tripit-stripe-smoke.json
+            ${{ inputs.package }}/tripit-registration-smoke.json
+          if-no-files-found: ignore

@@ -227,6 +227,8 @@ def test_amazon_descriptor_and_preflight_select_the_same_database(
         ROOT / "deploy/generic-offline-clone/deployment.amazon.v2.json"
     )
     runtime_path = ROOT / "materials/amazon/backend/runtime.json"
+    if not deployment_path.is_file() or not runtime_path.is_file():
+        pytest.skip("amazon descriptor/runtime not carried in this checkout")
     data_root = tmp_path / "container-data"
     monkeypatch.delenv("WEBSITEBENCH_SITE_BACKEND_DATABASE", raising=False)
 

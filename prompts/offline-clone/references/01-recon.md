@@ -16,6 +16,7 @@ Before creating a site or modifying a candidate, read all of the following:
 - `docs/opencli-contract-replay.md`;
 - `docs/websitebench-site-backend-mandate.md`;
 - `docs/browserbase-chrome-devtools.md`; and
+- `deploy/generic-offline-clone/README.md`.
 
 Run:
 
@@ -31,6 +32,7 @@ Inspect these locations to prevent a new site from colliding with an existing
 site ID, directory, Worker, or deployment descriptor:
 
 - `materials/`
+- `deploy/generic-offline-clone/`
 - `.github/workflows/`
 - `websitebench/site-profiles/`
 

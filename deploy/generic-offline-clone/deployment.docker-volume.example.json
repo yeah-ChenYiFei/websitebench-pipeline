@@ -1,0 +1,25 @@
+{
+  "schema_version": "websitebench.generic-public-clone-deployment.v2",
+  "source_dir": "materials/taskrabbit/clone",
+  "backend_runtime": "materials/taskrabbit/backend/runtime.json",
+  "deployment_profile": "docker-volume",
+  "runtime": {
+    "command": ["python", "-m", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "10000", "--log-level", "warning"],
+    "port": 10000,
+    "health_path": "/healthz",
+    "python_requirements": [
+      "argon2-cffi==25.1.0",
+      "fastapi==0.139.2",
+      "jinja2==3.1.6",
+      "python-multipart==0.0.32",
+      "uvicorn==0.51.0"
+    ],
+    "support_paths": []
+  },
+  "cloudflare": {
+    "worker_name": "websitebench-taskrabbit-demo",
+    "compatibility_date": "2026-07-30",
+    "instance_type": "basic",
+    "max_instances": 1
+  }
+}

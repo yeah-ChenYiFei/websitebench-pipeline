@@ -70,12 +70,54 @@ websitebench-harbor run-opencli --help          # 本地回放（advisory）
 
 ## 6. Harbor instance 验收
 
+参照物：`harbor/instances/tripit/`（instance 布局与站点契约的 schema 版本必须
+一致：tripit 是 v1 站点契约 → v1 instance；v2 站点契约走 hipcamp 式 v2 布局，
+带 fixtures/hidden 三套 suite 与 `reference_observations`）。
+
 - [ ] 每个站点恰好一个同 id instance；`instance.yaml` 通过
       `websitebench-harbor validate`。
 - [ ] agent 可见材料（public/）不包含 reference 源码、verifier、隐藏 fixture、
       oracle 内容——抽查打包产物而不是只看目录。
 - [ ] 校准证据（NOP 低分、oracle 高分、可重复性）是针对当前 bundle 的，
-      不是历史结果。
+      不是历史结果。尚未跑校准时必须如实标注（v2 的
+      `reference_observations.status: pending`；v1 在验收记录里写明
+      "oracle/校准未执行"）——**未校准的 instance 不得进入评测发布**。
+
+## 7. 部署验收（公网演示站）
+
+产出定义：每个站点一个 `deploy/generic-offline-clone/deployment.<site>.v2.json`
+描述符 + 一个 `deploy-<site>-public.yml` dispatcher（只暴露 `deploy` 布尔），
+统一走 `.github/workflows/public-demo-site.yml`。
+
+**发布前（无需任何授权，本地即可验）：**
+
+```bash
+cd deploy/generic-offline-clone
+npm ci && npm test
+node scripts/prepare.mjs --config deployment.<site>.v2.json --check-only
+node scripts/deploy.mjs  --config deployment.<site>.v2.json --dry-run
+```
+
+- [ ] 描述符六字段齐全（schema_version/source_dir/backend_runtime/
+      deployment_profile/runtime/cloudflare），域名**不写在描述符里**（由
+      `backend/runtime.json` 的 `site.public_origin` 派生）。
+- [ ] dispatcher 的 push 触发只注册不部署；`deploy=false` 只做验证与 dry-run。
+
+**发布（人显式授权 `deploy=true` 后才允许，前置条件是仓库配好
+`CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID`/`BASIC_AUTH_PASSWORD` 等
+secrets）：**
+
+- [ ] workflow 全绿，`<site>-deployment-evidence` 工件里的 build id 与本次
+      commit 一致（健康检查绑定构建身份，不是裸 curl）。
+- [ ] 线上行为符合门禁设计：匿名访问 `/` 返回 **401**（Basic-auth）；
+      认证后响应带 `x-robots-tag: noindex`；`/__bench/` 认证后为 404；
+      `/healthz` 返回 `ok: true` 且 `site_id` 正确。
+      金样本在线参照：`https://tripit.website-bench.com`。
+- [ ] 按 `prompts/offline-clone/references/08-deploy.md` Phase 12 在线复检
+      P0/P1 journey 与区域视觉比对；失败时**显式回滚并复检**，不假设存在
+      自动回滚。
+- [ ] 发布决定本身遵循 `deploy/public-demo-release-authority.md`；机器
+      `clean` 不构成发布授权。
 
 ## 仓库级回归（合并前）
 
