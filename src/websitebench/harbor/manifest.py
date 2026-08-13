@@ -999,7 +999,6 @@ def load_instance(
             policy_required = auth_checkout_policy_required(
                 resolved_corpus,
                 instance_id=instance_id,
-                manifest_sha256=manifest_sha256,
             )
         except ValueError as exc:
             problems.append(f"instance.platform_policy: {exc}")

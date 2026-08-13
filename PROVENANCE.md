@@ -86,10 +86,11 @@ successfully deployed public demo site.
   `source_artifact_sha256` from visual contracts; `tests/offline_clone`
   fixtures and `src` followed, but this one release test still asserted the
   digest field and was failing in the source checkout too). This repository
-  follows the working-tree contract: the test now binds artifacts by path
-  (and still verifies a digest whenever the frozen document records one).
-  All 51 carried source rasters were byte-verified against the last committed
-  digests before that change (`ok=51 bad=0`).
+  follows the working-tree contract: the test binds artifacts by path, and
+  stored-digest verification has since been removed repository-wide (git
+  history is the integrity ledger). All 51 carried source rasters were
+  byte-verified against the last committed digests during extraction
+  (`ok=51 bad=0`).
 - New files: `README.md`, `ACCEPTANCE.md`, `CLAUDE.md`, `.mcp.json`,
   `.claude/skills/trace-guided-offline-clone` (symlink), this file.
 - New instance: `harbor/instances/tripit/` scaffolded with
@@ -101,11 +102,11 @@ successfully deployed public demo site.
 ## Known gaps at extraction time
 
 - The tripit visual re-freeze was in flight in the source working tree at
-  copy time: `scope/checkpoints.json`'s `freeze_decision.rationale` still
-  says top-level rasters are retained "path + sha256" while the data rows
-  carry only paths. The digests recorded at source HEAD `bbeb051` all match
-  the carried artifacts (verified during extraction), so re-adding them later
-  is a mechanical, evidence-preserving step once the upstream freeze settles.
+  copy time. It has since settled in the opposite direction: stored-digest
+  verification was removed on purpose across both repositories (checkpoints
+  bind rasters by path, with git history as the integrity ledger), so no
+  digest re-adding is planned. The digests recorded at source HEAD `bbeb051`
+  all matched the carried artifacts when checked during extraction.
 
 - `harbor/sites/tripit/interactions/derivation.json` was deleted in the source
   working tree at copy time (contract + adapters remain); re-running

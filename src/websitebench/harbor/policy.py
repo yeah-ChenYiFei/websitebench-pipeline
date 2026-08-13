@@ -42,13 +42,11 @@ def auth_checkout_policy_required(
     corpus_root: Path,
     *,
     instance_id: str,
-    manifest_sha256: str,
 ) -> bool:
     """Return whether the current auth/checkout policy applies to an instance.
 
-    A pre-policy instance retains its earlier behavior only through an exact
-    SHA-bound registry entry. Editing a pinned manifest fails closed instead of
-    silently inheriting the compatibility exception.
+    A pre-policy instance retains its earlier behavior through a registry
+    entry; git history is the integrity ledger for the manifests themselves.
     """
 
     path = corpus_root / POLICY_BASELINES_FILE
@@ -71,11 +69,6 @@ def auth_checkout_policy_required(
         return True
     if not isinstance(entry, dict):
         raise ValueError(f"policy baseline for {instance_id!r} must be an object")
-    if entry.get("manifest_sha256") != manifest_sha256:
-        raise ValueError(
-            f"policy baseline SHA mismatch for {instance_id!r}; migrate the "
-            "instance to the current auth/checkout policy or review a new pin"
-        )
     if entry.get("policy") != LEGACY_PRE_AUTH_CHECKOUT_POLICY:
         raise ValueError(f"unsupported policy baseline for {instance_id!r}")
     return False

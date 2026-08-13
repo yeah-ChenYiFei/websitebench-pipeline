@@ -100,7 +100,7 @@ revalidate with the same Browserbase configuration:
 - every P0/P1 success, failure, cancellation, and recovery journey;
 - state-by-state regional visual comparison between source and online
   candidate;
-- a sealed, unlabeled blind review; and
+- an unlabeled blind review; and
 - zero forbidden remote runtime dependencies.
 
 The current shared workflow automatically attempts rollback only when the

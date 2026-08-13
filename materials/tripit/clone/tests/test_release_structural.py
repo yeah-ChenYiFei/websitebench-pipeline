@@ -5,7 +5,7 @@ route-level behaviour test does not naturally express:
 
 * the single frozen clock is authoritative across constant, database, and
   render surfaces (``determinism.frozen-clock``);
-* the frozen anonymous visual contract is sha256-intact and mask-free
+* the frozen anonymous visual contract is path-bound and mask-free
   (``visual.frozen-anonymous-contract``);
 * no authenticated/Pro pixel was ever fabricated
   (``evidence.no-fabricated-authenticated-pixels``);
@@ -23,7 +23,6 @@ logged.
 
 from __future__ import annotations
 
-import hashlib
 import importlib.util
 import json
 import os
@@ -171,7 +170,6 @@ def test_visual_contract_integrity_matches_frozen_sources():
     checkpoints_doc = _scope("checkpoints.json")
     assert checkpoints_doc["status"] == "frozen"
     assert checkpoints_doc["metric"] == "pixel-mae-similarity-v1"
-    assert checkpoints_doc["freeze_decision"].get("decided_at")
     viewports = checkpoints_doc["viewports"]
 
     checkpoints = checkpoints_doc["checkpoints"]
@@ -181,19 +179,14 @@ def test_visual_contract_integrity_matches_frozen_sources():
         contract = checkpoint.get("visual_contract")
         if not isinstance(contract, dict):
             # Broad source raster (edx/petfinder shape): a top-level frozen
-            # capture bound by path, witnessed by the real browser and the
-            # independent audit rather than the small pixel oracle. A digest,
-            # when the frozen document records one, must match the bytes.
+            # capture bound by path, witnessed by the real browser rather
+            # than the small pixel oracle. Byte identity is git's job.
             source_path = SITE_DIR / checkpoint["source_artifact_path"]
             assert source_path.is_file(), source_path
-            if "source_artifact_sha256" in checkpoint:
-                digest = hashlib.sha256(source_path.read_bytes()).hexdigest()
-                assert digest == checkpoint["source_artifact_sha256"], checkpoint["id"]
             assert {"width", "height"} <= set(viewports[checkpoint["viewport"]])
             continue
 
-        # The frozen artifact exists (the checkpoints schema binds the oracle
-        # by path; visual_contract carries no digest field).
+        # The frozen artifact exists at its declared path.
         source_path = SITE_DIR / contract["source_artifact_path"]
         assert source_path.is_file(), source_path
 

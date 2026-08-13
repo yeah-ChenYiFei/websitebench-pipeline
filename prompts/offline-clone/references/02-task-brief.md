@@ -339,7 +339,6 @@ suggestion, page copy, or a placeholder:
 {
   "human_trace_text_id": "ht-001",
   "text": "<verbatim text provided or explicitly selected by the human>",
-  "text_sha256": "<SHA-256 of the UTF-8 source text>",
   "provided_at": "<UTC ISO-8601>",
   "source": "initial-user-input|live-user-message|human-selected-inventory",
   "source_ref": null,
@@ -350,9 +349,9 @@ suggestion, page copy, or a placeholder:
 `source_ref` stores only a nonsensitive source identifier such as a workbook or
 task ID. If text may contain private or sensitive values, have the human provide
 a sanitized version before persistence; never write it first and sanitize it
-later. When the human later changes text, create a new version, recalculate the
-hash, and invalidate capture plans bound to the old hash. Never overwrite the
-historical source text and continue using the old trajectory identity.
+later. When the human later changes text, create a new version and invalidate
+capture plans bound to the old version. Never overwrite the historical source
+text and continue using the old trajectory identity.
 
 Also output a concise `DERIVATION_SUMMARY` listing each field, derived value,
 evidence grade, confidence, and whether Browserbase must refreeze it.

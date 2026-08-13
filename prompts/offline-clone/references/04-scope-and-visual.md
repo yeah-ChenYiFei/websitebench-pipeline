@@ -94,7 +94,7 @@ websitebench-workflow calibrate-visual \
 
 Freeze:
 
-- the source screenshot hash;
+- the source screenshots;
 - Browserbase/Playwright runtime identity;
 - viewport and comparison region;
 - source-to-source variance;
@@ -106,16 +106,17 @@ Capture pre-action, hover/focus, expanded, mid-fill, loading, disabled,
 validation-failure, permission-failure, service-failure, success, refresh, and
 Back/Forward states. Preserve full-page evidence plus header, main, action,
 overlay, and footer regions. Record sanitized DOM, geometry, network, console,
-and trace evidence plus asset hashes.
+and trace evidence.
 
 When Browserbase cannot access local loopback, mark local comparisons only as
 provisional. Do not claim source and candidate used the same cloud environment.
 Rerun formal online comparisons with the same Browserbase configuration.
 
 Localize every in-scope image, font, icon, stylesheet, script, and runtime
-resource, recording provenance and hashes:
+resource, recording provenance. Vendored copies stay byte-exact with their
+source downloads, checked by path existence and byte counts:
 
 ```text
-in_scope_required = downloaded = hash_verified = candidate_referenced
-missing = hash_mismatch = forbidden_remote_runtime = 0
+in_scope_required = downloaded = byte_verified = candidate_referenced
+missing = byte_count_mismatch = forbidden_remote_runtime = 0
 ```

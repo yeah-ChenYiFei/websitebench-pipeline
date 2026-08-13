@@ -12,7 +12,6 @@ from .contracts import (
     canonical_json_bytes,
     load_json,
     load_jsonl,
-    seal_document,
     sha256_bytes,
 )
 
@@ -236,7 +235,7 @@ def normalize_trace(
             }
         )
     )
-    return seal_document(
+    return (
         {
             "schema_version": "webcloning.normalized-trace.v1",
             "trace_id": trace_id,

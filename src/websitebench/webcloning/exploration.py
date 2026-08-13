@@ -16,7 +16,6 @@ from .contracts import (
     load_jsonl,
     repository_path,
     require_valid,
-    seal_document,
     sha256_bytes,
     sha256_file,
     write_json_atomic,
@@ -478,7 +477,7 @@ def build_exploration_bundle(
         ),
         "source_context": source_context,
     }
-    return seal_document(
+    return (
         {
             "schema_version": "webcloning.exploration-bundle.v1",
             "bundle_id": sha256_bytes(canonical_json_bytes(subjects)),
@@ -642,7 +641,7 @@ def build_exploration_coverage(
             for path in clone_paths
         ),
     }
-    return seal_document(
+    return (
         {
             "schema_version": "webcloning.exploration-coverage.v1",
             "coverage_id": sha256_bytes(canonical_json_bytes(subjects)),

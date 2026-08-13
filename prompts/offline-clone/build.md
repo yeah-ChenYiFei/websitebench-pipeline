@@ -14,7 +14,7 @@ interaction, visual/layout inspection, asset acquisition and formal validation.
 Build and verify in this order:
 
 1. Localize images, fonts, icons, styles and runtime assets; preserve
-   provenance and hashes and require zero runtime requests to the source site.
+   provenance and require zero runtime requests to the source site.
 2. Match the route/state/viewport matrix, including loading, empty, error,
    overlay, responsive, keyboard and touch behavior where applicable. This walk
    produces two outputs, not one. Alongside the matrix, record the interaction

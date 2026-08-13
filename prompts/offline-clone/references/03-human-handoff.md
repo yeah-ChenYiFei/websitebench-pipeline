@@ -108,12 +108,12 @@ The Agent may combine several evidence gaps into one candidate or show the human
 corresponding inventory task IDs, but must leave `human_trace_text_id` empty
 until the human supplies source text or explicitly selects existing text. “Use
 <TASK_ID>” is an explicit selection; copy that cell verbatim and record its
-`source_ref` and hash. Silence, continued operation, provision of login, or “you
+`source_ref`. Silence, continued operation, provision of login, or “you
 decide” does not confirm text.
 
 After receiving human text, the Agent performs only mechanical processing:
 assign a stable ID, verify that it contains no secrets, preserve the UTF-8 source
-verbatim, calculate SHA-256, and bind the candidate to that ID. Roles,
+verbatim, and bind the candidate to that ID. Roles,
 preconditions, checkpoints, and safe stopping points derived for recording
 belong in `derived_capture_plan`; never write them back into or replace the
 human source text.
@@ -296,7 +296,7 @@ trace requirements.
 For every adopted trajectory, preserve at least:
 
 - trace ID, role, and prerequisite state;
-- `human_trace_text_id`, verbatim source text, and its SHA-256;
+- `human_trace_text_id` and verbatim source text;
 - a separate `derived_capture_plan`;
 - starting and final URLs;
 - viewport, locale, and timezone;
@@ -304,13 +304,13 @@ For every adopted trajectory, preserve at least:
 - task-relevant pre-action, mid-interaction, failure/success, and post-refresh
   states;
 - sanitized DOM, geometry, network, and console evidence;
-- screenshot, trace, and asset hashes; and
+- screenshot, trace, and asset artifacts; and
 - the scope uncertainties it actually resolved.
 
 Let the trajectory goal determine the required detail; do not mechanically
 demand every UI state for every trace. Perform only explicitly authorized
 mutations and use nonsensitive synthetic values. A recording with no human
-source text, a mismatched source-text hash, or only Agent-suggested text cannot
+source text, or with only Agent-suggested text, cannot
 count as formal human trace coverage. At most, it is Agent reconnaissance.
 
 ### Request iteratively instead of fixing everything in advance
@@ -344,7 +344,7 @@ Before freezing P0/P1 source scope, satisfy one of these conditions:
 
 1. Obtain the smallest human trace set sufficient to resolve material
    uncertainty, with every formal trace bound to human-written or explicitly
-   selected source text and its hash; or
+   selected source text; or
 2. Explicitly record the surfaces the user cannot provide, the affected scope,
    and their unavailable status.
 

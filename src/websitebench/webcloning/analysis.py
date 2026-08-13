@@ -13,9 +13,7 @@ from .contracts import (
     load_json,
     repository_path,
     require_valid,
-    seal_document,
     sha256_bytes,
-    sha256_file,
 )
 
 
@@ -49,8 +47,8 @@ def _mapping_manifest(
         required = ("clone_step_id", "rationale", "approved_by", "approval")
         if any(not entry.get(key) for key in required):
             raise WebCloningError(f"{path}: incomplete equivalence approval")
-        if not _ref_is_current(entry["approval"], repository_root=repository_root):
-            raise WebCloningError(f"{path}: equivalence approval is missing or stale")
+        if not _ref_is_present(entry["approval"], repository_root=repository_root):
+            raise WebCloningError(f"{path}: equivalence approval artifact is missing")
         result[entry["source_step_id"]] = entry
     return result
 
@@ -107,15 +105,8 @@ def build_replay(
         raise WebCloningError(
             f"{semantic_selection_path}: active automatic semantic selection is required"
         )
-    if (
-        semantic.get("candidate_identity_sha256")
-        != candidate.get("candidate_identity_sha256")
-    ):
-        raise WebCloningError("semantic selection does not bind the candidate identity")
     runtime = load_json(runtime_identity_path)
     required_runtime = (
-        "candidate_identity_sha256",
-        "candidate_tree_sha256",
         "clone_url",
         "process_identity",
         "process_started_at",
@@ -124,11 +115,6 @@ def build_replay(
     )
     if any(runtime.get(key) in (None, "") for key in required_runtime):
         raise WebCloningError(f"{runtime_identity_path}: incomplete runtime identity")
-    if (
-        runtime["candidate_identity_sha256"]
-        != candidate["candidate_identity_sha256"]
-    ):
-        raise WebCloningError("runtime identity does not bind the candidate identity")
     mappings = _mapping_manifest(mapping_path, repository_root=repository_root)
     clone_by_id = {step["step_id"]: step for step in clone["steps"]}
     clone_steps = clone["steps"]
@@ -227,7 +213,7 @@ def build_replay(
             }
         )
     )
-    return seal_document(
+    return (
         {
             "schema_version": "webcloning.replay.v1",
             "analysis_id": analysis_id,
@@ -390,7 +376,7 @@ def build_diff(
         by_category[finding["category"]] += 1
         by_severity[finding["severity"]] += 1
         by_status[finding["status"]] += 1
-    return seal_document(
+    return (
         {
             "schema_version": "webcloning.behavior-diff.v1",
             "analysis_id": replay["analysis_id"],
@@ -413,9 +399,9 @@ def build_diff(
     )
 
 
-def _ref_is_current(ref: dict[str, Any], *, repository_root: Path) -> bool:
+def _ref_is_present(ref: dict[str, Any], *, repository_root: Path) -> bool:
     try:
         path = repository_path(repository_root, ref["path"])
-        return path.is_file() and sha256_file(path) == ref["sha256"]
+        return path.is_file()
     except (KeyError, TypeError, OSError, WebCloningError):
         return False

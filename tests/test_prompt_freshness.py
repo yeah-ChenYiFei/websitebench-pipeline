@@ -4,9 +4,8 @@ On 2026-08-11 the repository removed `websitebench.project` along with the
 repository-wide plan gates.  The prompt kept instructing agents to run
 `websitebench-project validate` and `websitebench-project status` for hours
 afterwards; a peer session happened to sweep three files and fix it, which is
-luck rather than a mechanism.  The same audit also found a reference to
-`tools/release_gate.py`, a path that had been renamed to
-`tools/verification_gate.py` long before.
+luck rather than a mechanism.  The same audit also found a reference to a
+tool path that had been renamed long before.
 
 A prompt is documentation that gets executed.  When it drifts from the codebase
 the failure is silent and lands on whoever runs it next, so the binding is

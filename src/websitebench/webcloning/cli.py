@@ -35,7 +35,6 @@ def _build(args: argparse.Namespace, builder: Callable[..., dict[str, Any]], **k
             "status": value.get("status", "written"),
             "schema_version": value["schema_version"],
             "output": str(args.output),
-            "content_sha256": value["content_sha256"],
         }
     )
     return 0
@@ -81,7 +80,6 @@ def _import_clawbench_run(args: argparse.Namespace) -> int:
             "status": trace["status"],
             "schema_version": trace["schema_version"],
             "output": str(args.output),
-            "content_sha256": trace["content_sha256"],
             "selection_class": imported["selection_class"],
             "interaction_transcript": str(imported["transcript_path"]),
             "import_provenance": str(imported["provenance_path"]),
@@ -146,7 +144,6 @@ def _validate(args: argparse.Namespace) -> int:
             "status": "valid",
             "schema_version": value["schema_version"],
             "path": str(args.path),
-            "content_sha256": value["content_sha256"],
         }
     )
     return 0

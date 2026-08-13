@@ -124,7 +124,7 @@ content.
 The current checkout, in-scope `AGENTS.md`, CLI `--help`, schemas, and machine
 verification results are the sources of repository truth. New code,
 documentation, configuration, and site candidates may use only WebsiteBench
-naming. Historical compatibility names, trajectories, hashes, command strings,
+naming. Historical compatibility names, trajectories, command strings,
 and already-vendored runtimes are immutable data identity; do not rewrite or
 bulk-normalize them.
 
@@ -147,7 +147,7 @@ The source site is the sole experience standard. The following are prohibited:
   the candidate implementation, or industry convention;
 - relaxing thresholds, expanding masks, deleting tests, or changing unrelated
   diagnostics to hide a candidate difference;
-- recording `inferred`, `unavailable`, or unsealed audits as `passed`; and
+- recording `inferred` or `unavailable` evidence as `passed`; and
 - treating code completion, passing pytest, machine reachability, or successful
   deployment as experience completion.
 
@@ -369,7 +369,7 @@ describing the gap is often more valuable than spending ten more hours for a
 
 - relaxing a threshold, expanding a mask, deleting a test, or changing an
   unrelated check to make a metric pass;
-- recording `inferred`, `unavailable`, or an unsealed audit as direct evidence;
+- recording `inferred` or `unavailable` as direct evidence;
 - substituting static pages, empty links, or false success for functionality;
   and
 - claiming an unachieved result was achieved.
@@ -395,8 +395,8 @@ checkpoints; do not add extra pauses outside plan mode.
 6. When a selected candidate lacks formal text, proactively ask the human to
    provide the natural-language source text or explicitly select an Inventory
    Task ID. The Agent must never draft or self-confirm it for any reason.
-7. Verify that human text contains no secrets, preserve it verbatim, calculate
-   its hash, and generate a separate capture plan.
+7. Verify that human text contains no secrets, preserve it verbatim, and
+   generate a separate capture plan.
 8. When authenticated state is needed, create a session and request login from
    the user **once**. Combine any populated-state construction, multi-role work,
    or other human action into the same request instead of interrupting the user
@@ -428,7 +428,7 @@ separately:
 - the recorded-trajectory inventory: `trace_id`, side, environment, what each
   established, what it explicitly **did not** establish, findings from source/
   candidate comparison, and their disposition;
-- role coverage, adaptive trace requests, human-source text IDs/hashes,
+- role coverage, adaptive trace requests, human-source text IDs,
   completed trajectories, and remaining material uncertainty;
 - asset closure and runtime network results;
 - backend runtime path, site ID, database/volume, cookie, mail, and payment

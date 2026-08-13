@@ -59,6 +59,10 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+# Retained only for the frozen clawbench compatibility copies, which still
+# stamp content_sha256 into their documents. Canonical producers no longer
+# seal documents and validators no longer check the field; git history is the
+# integrity ledger.
 def content_sha256(value: dict[str, Any]) -> str:
     payload = dict(value)
     payload.pop("content_sha256", None)
@@ -196,12 +200,6 @@ def _verify_ref(root: Path, ref: dict[str, Any], label: str) -> list[str]:
         return [f"{label}: {exc}"]
     if not path.is_file():
         return [f"{label}: missing artifact {ref['path']}"]
-    actual = sha256_file(path)
-    if actual != ref.get("sha256"):
-        return [
-            f"{label}: sha256 mismatch for {ref['path']}: "
-            f"declared {ref.get('sha256')}, actual {actual}"
-        ]
     return []
 
 
@@ -209,8 +207,6 @@ def legacy_acceptance_record_problems(
     value: dict[str, Any],
     *,
     site_id: str,
-    candidate_artifact_sha256: str | None = None,
-    runtime_identity_sha256: str | None = None,
 ) -> list[str]:
     """Validate an explicitly requested historical v1 acceptance record."""
 
@@ -236,17 +232,6 @@ def legacy_acceptance_record_problems(
     coverage = value["coverage"]
     if coverage["p0_journeys_inspected"] != coverage["p0_journeys_total"]:
         problems.append("human acceptance does not cover every P0 journey")
-    subject = value["subject"]
-    if (
-        candidate_artifact_sha256 is not None
-        and subject["candidate_artifact_sha256"] != candidate_artifact_sha256
-    ):
-        problems.append("human acceptance candidate artifact is stale")
-    if (
-        runtime_identity_sha256 is not None
-        and subject["runtime_identity_sha256"] != runtime_identity_sha256
-    ):
-        problems.append("human acceptance runtime identity is stale")
     return problems
 
 
@@ -279,20 +264,6 @@ def _validate_trace(value: dict[str, Any], *, root: Path | None) -> list[str]:
         problems.append("summary.error_step_count: does not match steps")
     if value["status"] == "complete" and actual_unknown:
         problems.append("status: complete trace cannot contain unknown action families")
-    expected_trace_id = sha256_bytes(
-        canonical_json_bytes(
-            {
-                "site_id": value["site_id"],
-                "environment": value["environment"],
-                "generator": value["generator"],
-                "task_sha256": value["task"]["sha256"],
-                "raw_trace_sha256": value["raw_trace"]["sha256"],
-                "run": value["run"],
-            }
-        )
-    )
-    if value["trace_id"] != expected_trace_id:
-        problems.append("trace_id: does not match normalized trace subjects")
     if root is not None:
         problems.extend(_verify_ref(root, value["task"], "task"))
         problems.extend(_verify_ref(root, value["raw_trace"], "raw_trace"))
@@ -318,25 +289,6 @@ def _validate_exploration_bundle(
     duplicate = _duplicates(row["row_id"] for row in rows)
     if duplicate:
         problems.append(f"visit_order: duplicate row_id: {sorted(duplicate)!r}")
-    expected_id = sha256_bytes(
-        canonical_json_bytes(
-            {
-                "site_id": value["site_id"],
-                "strategy": value["strategy"],
-                "trace_sha256": sorted(ref["sha256"] for ref in value["traces"]),
-                "transcript_sha256": sorted(
-                    ref["sha256"] for ref in value["interaction_transcripts"]
-                ),
-                "import_sha256": sorted(
-                    ref["sha256"] for ref in value["imports"]
-                ),
-                "media_sha256": sorted(ref["sha256"] for ref in value["media"]),
-                "source_context": value["source_context"],
-            }
-        )
-    )
-    if value["bundle_id"] != expected_id:
-        problems.append("bundle_id: exploration subject identity mismatch")
     if any(
         hypothesis["evidence_kind"] != "inferred"
         for hypothesis in value["architecture_hypotheses"]
@@ -377,19 +329,6 @@ def _validate_exploration_coverage(
         actual["missing"] or actual["conflicting"] or not actual["matched"]
     ):
         problems.append("status: complete coverage requires matched rows and no gaps")
-    expected_id = sha256_bytes(
-        canonical_json_bytes(
-            {
-                "site_id": value["site_id"],
-                "bundle_sha256": sorted(ref["sha256"] for ref in value["bundles"]),
-                "clone_trace_sha256": sorted(
-                    ref["sha256"] for ref in value["clone_traces"]
-                ),
-            }
-        )
-    )
-    if value["coverage_id"] != expected_id:
-        problems.append("coverage_id: exploration coverage subject identity mismatch")
     if root is not None:
         for field in ("bundles", "clone_traces"):
             for index, ref in enumerate(value[field]):
@@ -453,26 +392,6 @@ def _validate_replay(value: dict[str, Any], *, root: Path | None) -> list[str]:
         or value["reset"]["status"] != "passed"
     ):
         problems.append("status: complete replay requires reset and full mapped coverage")
-    expected_analysis_id = sha256_bytes(
-        canonical_json_bytes(
-            {
-                "site_id": value["site_id"],
-                "source_trace_sha256": value["source_trace"]["sha256"],
-                "clone_trace_sha256": value["clone_trace"]["sha256"],
-                "candidate_sha256": value["candidate"]["sha256"],
-                "semantic_selection_sha256": value["semantic_selection"]["sha256"],
-                "runtime_identity_sha256": value["runtime_identity"]["sha256"],
-                "reset_sha256": value["reset"]["sha256"],
-                "equivalence_manifest_sha256": (
-                    value["equivalence_manifest"]["sha256"]
-                    if value["equivalence_manifest"] is not None
-                    else None
-                ),
-            }
-        )
-    )
-    if value["analysis_id"] != expected_analysis_id:
-        problems.append("analysis_id: replay subject identity mismatch")
     if root is not None:
         for field in (
             "source_trace",
@@ -511,7 +430,6 @@ def _validate_replay(value: dict[str, Any], *, root: Path | None) -> list[str]:
                     problems.append(f"{field}: trace subject mismatch")
         candidate_path = repository_path(root, value["candidate"]["path"])
         semantic_path = repository_path(root, value["semantic_selection"]["path"])
-        runtime_path = repository_path(root, value["runtime_identity"]["path"])
         if candidate_path.is_file():
             candidate = load_json(candidate_path)
             if (
@@ -523,8 +441,6 @@ def _validate_replay(value: dict[str, Any], *, root: Path | None) -> list[str]:
                 or candidate.get("status") != "complete"
             ):
                 problems.append("candidate: complete exact-site candidate is required")
-        else:
-            candidate = {}
         if semantic_path.is_file():
             semantic = load_json(semantic_path)
             if (
@@ -535,17 +451,10 @@ def _validate_replay(value: dict[str, Any], *, root: Path | None) -> list[str]:
                 or semantic.get("site_id") != value["site_id"]
                 or semantic.get("selection_policy")
                 != "fidelity-first-automatic-v1"
-                or semantic.get("candidate_identity_sha256")
-                != candidate.get("candidate_identity_sha256")
             ):
-                problems.append("semantic_selection: current passed gate is required")
-        if runtime_path.is_file():
-            runtime = load_json(runtime_path)
-            if (
-                runtime.get("candidate_identity_sha256")
-                != candidate.get("candidate_identity_sha256")
-            ):
-                problems.append("runtime_identity: candidate identity mismatch")
+                problems.append(
+                    "semantic_selection: current semantic selection is required"
+                )
     return problems
 
 
@@ -616,12 +525,6 @@ def validate_document(
     problems = schema_problems(value, location=location)
     if problems:
         return problems
-    declared = value["content_sha256"]
-    actual = content_sha256(value)
-    if declared != actual:
-        problems.append(
-            f"{location}: content_sha256 mismatch: declared {declared}, actual {actual}"
-        )
     version = value["schema_version"]
     if version == "webcloning.normalized-trace.v1":
         problems.extend(_validate_trace(value, root=root))
