@@ -1,0 +1,104 @@
+{
+  "generated_from": "materials/amc-theatres/clone.yaml",
+  "opencli_version": "1.8.6",
+  "profiles": {
+    "movies": {
+      "failure_paths": [],
+      "label": "amc-theatres movies (derived draft)",
+      "local_semantics": [
+        "The public home route remains reachable without remote requests."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [],
+      "steps": [
+        {
+          "command": "state",
+          "id": "movies-list",
+          "intent": "Exercise clone check movies.list (GET /movies).",
+          "observation_id": "amc-theatres_movies_list",
+          "required_state": {
+            "list_contains": "Movies at AMC"
+          },
+          "route": "movies"
+        },
+        {
+          "command": "state",
+          "id": "movies-detail",
+          "intent": "Exercise clone check movies.detail (GET /movies/superman).",
+          "observation_id": "amc-theatres_movies_detail",
+          "required_state": {
+            "visible": "Choose a showtime"
+          },
+          "route": "movies/superman"
+        },
+        {
+          "command": "state",
+          "id": "movies-showtimes",
+          "intent": "Exercise clone check movies.showtimes (GET /showtimes?movie=superman).",
+          "observation_id": "amc-theatres_movies_showtimes",
+          "required_state": {
+            "visible": "Movie Showtimes"
+          },
+          "route": "showtimes?movie=superman"
+        }
+      ],
+      "tier": "p0"
+    },
+    "theatres": {
+      "failure_paths": [],
+      "label": "amc-theatres theatres (derived draft)",
+      "local_semantics": [
+        "The public home route remains reachable without remote requests."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [],
+      "steps": [
+        {
+          "command": "state",
+          "id": "theatres-directory",
+          "intent": "Exercise clone check theatres.directory (GET /movie-theatres).",
+          "observation_id": "amc-theatres_theatres_directory",
+          "required_state": {
+            "visible": "Movie Theatres Near You"
+          },
+          "route": "movie-theatres"
+        },
+        {
+          "command": "state",
+          "id": "theatres-empire",
+          "intent": "Exercise clone check theatres.empire (GET /movie-theatres/ny/amc-empire-25).",
+          "observation_id": "amc-theatres_theatres_empire",
+          "required_state": {
+            "visible": "AMC Empire 25"
+          },
+          "route": "movie-theatres/ny/amc-empire-25"
+        },
+        {
+          "command": "state",
+          "id": "theatres-search",
+          "intent": "Exercise clone check theatres.search (GET /movie-theatres?q=empire).",
+          "observation_id": "amc-theatres_theatres_search",
+          "required_state": {
+            "list_contains": "1 theatres found"
+          },
+          "route": "movie-theatres?q=empire"
+        }
+      ],
+      "tier": "p1"
+    }
+  },
+  "schema_version": "websitebench.harbor.opencli-interaction-contract.v1",
+  "site_id": "amc-theatres"
+}

@@ -1,0 +1,89 @@
+{
+  "routes": [
+    {
+      "id": "home",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/",
+      "evidence_kind": "direct",
+      "evidence_ref": "claude-runs/amc-theatres/anonymous/ego/route-observations-20260813T1523Z.json#/routes/0",
+      "states": [
+        "loaded"
+      ]
+    },
+    {
+      "id": "movies",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/movies",
+      "evidence_kind": "direct",
+      "evidence_ref": "claude-runs/amc-theatres/anonymous/ego/route-observations-20260813T1523Z.json#/routes/1",
+      "states": [
+        "loaded"
+      ]
+    },
+    {
+      "id": "theatre-directory",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/movie-theatres",
+      "evidence_kind": "direct",
+      "evidence_ref": "claude-runs/amc-theatres/anonymous/ego/route-observations-20260813T1523Z.json#/routes/2",
+      "states": [
+        "loaded"
+      ]
+    },
+    {
+      "id": "showtimes",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/showtimes",
+      "evidence_kind": "direct",
+      "evidence_ref": "claude-runs/amc-theatres/anonymous/ego/route-observations-20260813T1523Z.json#/routes/3",
+      "states": [
+        "loaded"
+      ]
+    },
+    {
+      "id": "sign-up",
+      "local_destination": true,
+      "priority": "p1",
+      "purpose_edge": "primary",
+      "route_pattern": "/sign-up",
+      "evidence_kind": "direct",
+      "evidence_ref": "claude-runs/amc-theatres/anonymous/ego/route-observations-20260813T1523Z.json#/routes/4",
+      "states": [
+        "loaded"
+      ]
+    },
+    {
+      "id": "help",
+      "local_destination": true,
+      "priority": "p1",
+      "purpose_edge": "primary",
+      "route_pattern": "/help",
+      "evidence_kind": "direct",
+      "evidence_ref": "claude-runs/amc-theatres/anonymous/ego/route-observations-20260813T1523Z.json#/routes/5",
+      "states": [
+        "loaded"
+      ]
+    },
+    {
+      "id": "theatre-empire-25",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/movie-theatres/new-york-city/amc-empire-25",
+      "evidence_kind": "direct",
+      "evidence_ref": "claude-runs/amc-theatres/anonymous/ego/route-observations-20260813T1523Z.json#/routes/6",
+      "states": [
+        "loaded"
+      ]
+    }
+  ],
+  "schema_version": "offline-clone.routes.v1"
+}

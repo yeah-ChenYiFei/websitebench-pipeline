@@ -1,0 +1,43 @@
+{
+  "boot": {
+    "argv": [
+      "{python}",
+      "-m",
+      "uvicorn",
+      "app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "{port}",
+      "--log-level",
+      "warning"
+    ],
+    "cwd": "clone",
+    "env": {
+      "WEBSITEBENCH_SITE_BACKEND_DATABASE": "{data_dir}/amc-theatres.sqlite3"
+    }
+  },
+  "deferred": {},
+  "note": "Implemented candidate driver. Source visual equivalence remains evidence-limited; this driver verifies candidate reachability, network closure, overflow and declared local states.",
+  "prepare": [],
+  "routes": {
+    "home": "/",
+    "movies": "/movies",
+    "theatre-directory": "/movie-theatres",
+    "showtimes": "/showtimes",
+    "sign-up": "/sign-up",
+    "help": "/help",
+    "theatre-empire-25": "/movie-theatres/ny/amc-empire-25"
+  },
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "amc-theatres",
+  "states": {
+    "home.loaded": [],
+    "movies.loaded": [],
+    "theatre-directory.loaded": [],
+    "showtimes.loaded": [],
+    "sign-up.loaded": [],
+    "help.loaded": [],
+    "theatre-empire-25.loaded": []
+  }
+}

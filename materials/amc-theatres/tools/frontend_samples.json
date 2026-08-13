@@ -1,0 +1,50 @@
+{
+  "schema_version": "offline-clone.frontend-samples.v1",
+  "site_id": "amc-theatres",
+  "captured_at": "2026-08-13T18:29:00Z",
+  "authority": "candidate-browser-observation",
+  "checks": [
+    {
+      "id": "movies.list",
+      "url": "/movies",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": ["Movies at AMC", "8 movies"]
+    },
+    {
+      "id": "movies.detail",
+      "url": "/movies/superman",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": ["Choose a showtime", "AMC audience score"]
+    },
+    {
+      "id": "movies.showtimes",
+      "url": "/showtimes?movie=superman",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": ["Movie Showtimes", "AMC Empire 25"]
+    },
+    {
+      "id": "theatres.directory",
+      "url": "/movie-theatres",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": ["Movie Theatres Near You", "6 theatres found"]
+    },
+    {
+      "id": "theatres.empire",
+      "url": "/movie-theatres/ny/amc-empire-25",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": ["AMC Empire 25", "234 West 42nd Street"]
+    },
+    {
+      "id": "theatres.search",
+      "url": "/movie-theatres?q=empire",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": ["1 theatres found", "AMC Empire 25"]
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "schema_version": "prompt.websitebench-clone-task-brief.v1",
+  "observed_at": "2026-08-13T15:23:00Z",
+  "source": {
+    "input_url": "https://amctheatres.com",
+    "canonical_url": "https://www.amctheatres.com/",
+    "canonical_origin": "https://www.amctheatres.com",
+    "canonical_redirect_evidence": "direct: claude-runs/amc-theatres/anonymous/ego/route-observations-20260813T1523Z.json#/canonical_redirect",
+    "approved_discovery_origins": [
+      "https://amctheatres.com",
+      "https://www.amctheatres.com"
+    ],
+    "proposed_additional_origins": []
+  },
+  "site": {
+    "site_id": "amc-theatres",
+    "display_name": "AMC Theatres",
+    "existing_site": true,
+    "existing_site_note": "Conservative contribution scaffold already exists at materials/amc-theatres for this same source origin; this brief refines its scope files, it does not reinitialize.",
+    "site_dir": "materials/amc-theatres",
+    "target_origin": "https://amc-theatres.website-bench.com",
+    "worker_name": "websitebench-amc-theatres-demo",
+    "purpose": "Help moviegoers find movies, theatres and showtimes and buy tickets with seat selection."
+  },
+  "baseline": {
+    "locale": "en-US",
+    "locale_evidence": "inferred from English page titles/headings in the direct observation record; refreeze from <html lang> during formal capture",
+    "timezone": "Etc/UTC",
+    "timezone_policy": "temporary deterministic default; re-freeze from capture evidence (America/New_York is a plausible business timezone for AMC Empire 25 but must not be frozen from inference)",
+    "viewports": [
+      {"id": "desktop", "width": 1280, "height": 800, "note": "matches the existing scaffold checkpoint viewport; adjust to real source breakpoints during formal capture"},
+      {"id": "tablet", "width": 768, "height": 1024, "note": "proposal"},
+      {"id": "mobile", "width": 390, "height": 844, "note": "proposal"}
+    ]
+  },
+  "scope": {
+    "roles": [
+      {
+        "id": "visitor",
+        "display_name": "Anonymous visitor",
+        "authentication_required": false,
+        "evidence": "directly-observed",
+        "evidence_refs": ["claude-runs/amc-theatres/anonymous/ego/route-observations-20260813T1523Z.json"],
+        "live_view_required": false,
+        "entitlement_required": false
+      },
+      {
+        "id": "moviegoer",
+        "display_name": "Moviegoer (signed-in AMC account, optional AMC Stubs state)",
+        "authentication_required": true,
+        "evidence": "structural-only",
+        "evidence_refs": ["https://www.amctheatres.com/sign-up (Create an Account, AMC Stubs tier comparison observed anonymously)", "task-packet.json account_requirements (roles: Moviegoer, minimumAccounts: 1)"],
+        "changes": "profile/preferences, saved favourites, Stubs status, ticket history, post-booking management",
+        "live_view_required": true,
+        "entitlement_required": false,
+        "note": "Single role; no admin/seller/premium role is added. One combined login handoff covers login plus optional Stubs and preferred-theatre preseed."
+      }
+    ],
+    "core_journeys": [
+      "See scope/journeys.json: home-mainline (draft), anonymous-discover-showtimes (draft, direct evidence), buy-imax-tickets-e2e (draft, evidence unavailable beyond entry), account-lifecycle (draft, evidence unavailable). These are agent scope-planning objects, not human trace text."
+    ],
+    "page_families": [
+      {"family": "public/marketing", "examples": ["/"], "evidence": "directly-observed"},
+      {"family": "discovery/list/search", "examples": ["/movies", "/movie-theatres", "/showtimes"], "evidence": "directly-observed"},
+      {"family": "entity detail", "examples": ["/movie-theatres/new-york-city/amc-empire-25"], "evidence": "directly-observed"},
+      {"family": "account/auth", "examples": ["/sign-up", "sign in entry on home"], "evidence": "directly-observed (entry surfaces only)"},
+      {"family": "help/support", "examples": ["/help"], "evidence": "directly-observed"},
+      {"family": "ticketing flow (showtime/format/seat/payment/confirmation)", "examples": ["Get Tickets from theatre detail"], "evidence": "unavailable"},
+      {"family": "settings/preferences/loyalty", "examples": ["Stubs membership surfaces"], "evidence": "structural-only (tier comparison on /sign-up)"},
+      {"family": "error/recovery", "examples": ["empty search, validation, payment failure"], "evidence": "unavailable"}
+    ],
+    "deterministic_seed_plan": {
+      "status": "proposal",
+      "entities": ["movies (with ratings, formats incl. IMAX)", "theatres (incl. an AMC Empire 25 analogue)", "showtimes across dates incl. Friday evenings", "seat maps with rows A-N and center-seat semantics", "ticket tiers/prices", "concession items", "one moviegoer test account", "orders/tickets in empty and populated states", "payment scenarios: success, decline, retryable (local-sandbox)"],
+      "note": "Synthetic, nonsensitive data only; no real users or source-account content."
+    },
+    "external_services": [
+      {"service": "cookie consent platform", "evidence": "directly-observed (banner on home)", "local_adapter_needed": true, "external_side_effect": false},
+      {"service": "geolocation (Use Current Location control)", "evidence": "directly-observed (control only)", "local_adapter_needed": true, "external_side_effect": false},
+      {"service": "auth/payment/analytics providers", "evidence": "unavailable (network shape not yet inventoried)", "local_adapter_needed": true, "external_side_effect": false, "note": "Formal runtime must have zero remote dependencies; inventory during EA1/EA2 capture."}
+    ]
+  },
+  "authority": {
+    "authentication_access": "request-human-live-view",
+    "credentials_persisted": false,
+    "authorized_source_mutations": [
+      "reversible synthetic mutations inside the dedicated user-authorized Moviegoer test account only (per human-owned task packet authority: reversible_synthetic_test_account_mutations=true)"
+    ],
+    "requested_source_mutations": [],
+    "real_email_authorized": false,
+    "real_email_note": "Packet allows verification/recovery mail strictly to the user-controlled test inbox (user_controlled_test_email_only=true); no other real email.",
+    "stripe_test_authorized": false,
+    "live_payment_authorized": false,
+    "push_authorized": false,
+    "pr_authorized": false,
+    "public_deployment_authorized": false,
+    "rights_or_redistribution_status": "unknown-clean-room-default"
+  },
+  "trace_acquisition": {
+    "mode": "adaptive",
+    "agent_must_initiate": true,
+    "text_ownership": "human-only",
+    "human_trace_texts_note": "The 48 formal task texts are human-owned inventory cells the user explicitly selected as the complete scope (task-packet.json human_selection; agent-prompt.md). They are recorded below verbatim, in packet order, per the references/02-task-brief.md shape; scope/task-coverage.json carries the same verbatim text with per-task planning fields.",
+    "human_trace_texts": [
+      {"human_trace_text_id": "ht-WB007-T01", "text": "Open AMC Theatres and reach the primary workflow from the home/landing experience.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T01", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T02", "text": "Search AMC Theatres for a representative venue, service, or booking, refine the query if needed, and open a relevant result.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T02", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T03", "text": "Search AMC Theatres for a representative venue, service, or booking, refine the query if needed, and open a relevant result.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T03", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T04", "text": "Exercise the Party / Attendee Count workflow on AMC Theatres with representative data and verify the resulting UI state and persistence.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T04", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T05", "text": "Browse AMC Theatres for a representative venue, service, or booking without relying on a direct deep link.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T05", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T06", "text": "Apply multiple filters on AMC Theatres and verify the visible results/state update correctly.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T06", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T07", "text": "Change sorting or comparison controls on AMC Theatres and verify ordering/comparison state is correct.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T07", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T08", "text": "Open a representative Venue / Service Detail on AMC Theatres and inspect the key metadata, options, and available actions.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T08", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T09", "text": "Use the Availability / Showtimes workflow on AMC Theatres to select/change a valid time-related option and verify availability updates.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T09", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T10", "text": "Use AMC Theatres's Ticket / Service Tier controls to select a non-default option and verify dependent price/availability/state updates.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T10", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T11", "text": "Use AMC Theatres's Seat / Resource Selection controls to select a non-default option and verify dependent price/availability/state updates.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T11", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T12", "text": "Exercise the Add-ons / Packages workflow on AMC Theatres with representative data and verify the resulting UI state and persistence.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T12", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T13", "text": "Save/follow a representative venue, service, or booking through AMC Theatres's Save / Favorite flow and verify it appears in the corresponding saved state.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T13", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T14", "text": "Create a new AMC Theatres account through the registration flow and reach the post-sign-up state.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T14", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T15", "text": "Complete the Email / Account Verification step on AMC Theatres, including required fields, consent, and validation feedback.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T15", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T16", "text": "Sign in to AMC Theatres with an existing account and verify the authenticated session and landing state.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T16", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T17", "text": "Sign out of AMC Theatres and verify protected state is no longer accessible without re-authentication.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T17", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T18", "text": "Exercise AMC Theatres's Password Reset flow through request, validation, and completion/recovery state.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T18", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T19", "text": "Open a representative Profile / Preferences on AMC Theatres and inspect the key metadata, options, and available actions.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T19", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T20", "text": "Review and change the Privacy / Consent options on AMC Theatres, then verify the stored privacy/consent state.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T20", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T21", "text": "Exercise the Security / Session Management controls on AMC Theatres and verify device/session/security state changes persist.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T21", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T22", "text": "Configure or trigger Notifications on AMC Theatres and verify the preference/status is reflected in the UI.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T22", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T23", "text": "Open a representative Customer / Attendee Details on AMC Theatres and inspect the key metadata, options, and available actions.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T23", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T24", "text": "Exercise the Special Requests / Notes workflow on AMC Theatres with representative data and verify the resulting UI state and persistence.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T24", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T25", "text": "Complete the preceding AMC Theatres workflow and verify the Promo / Voucher state contains the expected identifiers and summary.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T25", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T26", "text": "Exercise the Payment Method step on AMC Theatres using test data and verify totals, validation, and transition to the next state.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T26", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T27", "text": "Reach AMC Theatres's Booking Review step, verify the complete summary, edit one prior field, and return with the updated summary.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T27", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T28", "text": "Complete the preceding AMC Theatres workflow and verify the Booking Confirmation state contains the expected identifiers and summary.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T28", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T29", "text": "Open a representative Ticket / QR / Appointment Details on AMC Theatres and inspect the key metadata, options, and available actions.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T29", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T30", "text": "Configure or trigger Reminders / Notifications on AMC Theatres and verify the preference/status is reflected in the UI.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T30", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T31", "text": "Complete the Manage Booking workflow on AMC Theatres and verify the submitted object's resulting state and confirmation.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T31", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T32", "text": "Use the Reschedule workflow on AMC Theatres to select/change a valid time-related option and verify availability updates.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T32", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T33", "text": "Exercise AMC Theatres's post-action Cancel / Refund workflow and verify the resulting status, eligibility, and confirmation.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T33", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T34", "text": "Exercise Transfer / Share Booking on AMC Theatres, change access for another user/recipient, and verify the resulting permissions or shared state.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T34", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T35", "text": "Open AMC Theatres's Contact Venue / Provider path from a relevant workflow and verify contextual help/contact options are reachable.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T35", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T36", "text": "Create or update a representative rating/review through AMC Theatres's Review / Rating workflow and verify public/private display state.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T36", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T37", "text": "Use the No Availability / Waitlist workflow on AMC Theatres to select/change a valid time-related option and verify availability updates.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T37", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T38", "text": "Trigger or simulate the Payment Failure / Retry condition on AMC Theatres and verify validation, retry/recovery behavior, and state preservation.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T38", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T39", "text": "Trigger the No Results / Empty State condition on AMC Theatres and verify the user sees the correct recovery options without corrupting prior state.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T39", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T40", "text": "Trigger or simulate the Invalid Input / Validation condition on AMC Theatres and verify validation, retry/recovery behavior, and state preservation.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T40", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T41", "text": "Trigger or simulate the Loading / Retry condition on AMC Theatres and verify validation, retry/recovery behavior, and state preservation.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T41", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T42", "text": "Open AMC Theatres's Help / Support path from a relevant workflow and verify contextual help/contact options are reachable.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T42", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T43", "text": "Exercise the Movie / Theater Switch workflow on AMC Theatres with representative data and verify the resulting UI state and persistence.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T43", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T44", "text": "Complete the Format Selection (IMAX / Dolby / 3D) step on AMC Theatres with representative data, including required-field and conditional validation.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T44", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T45", "text": "Use the map/location view on AMC Theatres, change the visible area or selection, and verify list/map synchronization.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T45", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T46", "text": "Modify an existing venue, service, or booking on AMC Theatres using Concessions Preorder and verify the updated state persists after navigation/reload.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T46", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T47", "text": "Open the Loyalty / Membership workflow on AMC Theatres, select or modify an option, and verify pricing/status changes before finalization.", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T47", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB007-T48", "text": "[862] On AMC Theatres, buy 2 IMAX tickets for the highest-rated movie currently showing at AMC Empire 25 in New York, select an upcoming Friday evening showtime, and choose two adjacent center seats in rows E–H", "provided_at": "2026-08-13T12:58:49.299Z", "source": "human-selected-inventory", "source_ref": "WB007-T48", "status": "confirmed"}
+    ],
+    "trace_candidates": [
+      {"id": "tc-login-handoff", "purpose": "Single combined Moviegoer handoff: user logs in personally, optionally sets Stubs state and preferred theatre; agent then explores the authenticated session autonomously.", "criticality": "high", "unblocks": ["WB007-T13", "WB007-T15..T22", "WB007-T29..T34"]}
+    ],
+    "requested_traces": [],
+    "completed_traces": [],
+    "remaining_material_uncertainties": [
+      "showtime/format/seat/payment/confirmation surfaces (unavailable in anonymous evidence)",
+      "authenticated account surfaces (await single login handoff)",
+      "whether waitlist, special-requests and review workflows exist on this site at all"
+    ]
+  },
+  "trajectory_recording": {
+    "channel": "not-used",
+    "recordings": [],
+    "clone_side_recordings": [],
+    "two_sided_findings": []
+  },
+  "run_evidence_plan": {
+    "status": "proposal",
+    "EA1": {"strategy": "depth-first through the ticket-purchase journey and its failure/recovery branches", "artifact_root": "materials/amc-theatres/evidence/ea1/"},
+    "EA2": {"strategy": "breadth-first across navigation, directories, account, loyalty, help surfaces", "artifact_root": "materials/amc-theatres/evidence/ea2/"},
+    "isolation": "independent browser contexts/sessions; each explorer writes only its own root and never inspects the candidate; one Clone Agent writes materials/amc-theatres/clone after both finish; raw authenticated captures only under Git-ignored materials/amc-theatres/source-auth-scratch/"
+  },
+  "backend_plan": {
+    "status": "applicable — see scope/backend-capabilities.json (full profile, packet Tier 2 - High)",
+    "isolation": {"site_id": "amc-theatres", "database": "site-unique SQLite + backup", "volume": "site-unique named volume", "cookie": "__Host-, host-only, Secure, HttpOnly, SameSite, derived from site_id, no parent Domain", "redis_namespace": "site/amc-theatres", "mail_branding": "distinct sender display name/subjects/templates", "payment_profile": "local-sandbox only; live keys always forbidden"}
+  },
+  "field_evidence": [
+    {"field": "canonical_url", "value": "https://www.amctheatres.com/", "grade": "directly-observed", "confidence": "high", "refreeze_required": false},
+    {"field": "public routes home/movies/theatre-directory/showtimes/sign-up/help/empire-25", "grade": "directly-observed", "confidence": "high", "refreeze_required": true, "note": "route existence direct; pixels/copy/interaction must be refrozen by formal capture"},
+    {"field": "display_name", "value": "AMC Theatres", "grade": "directly-observed (page titles) + human packet", "confidence": "high", "refreeze_required": false},
+    {"field": "locale", "value": "en-US", "grade": "inferred", "confidence": "medium", "refreeze_required": true},
+    {"field": "timezone", "value": "Etc/UTC", "grade": "inferred (temporary default)", "confidence": "low", "refreeze_required": true},
+    {"field": "ticketing flow shape", "grade": "unavailable", "confidence": "low", "refreeze_required": true},
+    {"field": "authenticated surfaces", "grade": "unavailable", "confidence": "low", "refreeze_required": true}
+  ],
+  "unresolved": [
+    "12Go Pilot acceptance not announced: implementation, candidate work and capture harness build remain blocked; this brief and scope files are pre-implementation planning only.",
+    "Viewport anchor conflict: entry-prompt default desktop is 1440x900 but the scaffold checkpoint viewport is 1280x800; kept 1280x800 for consistency, refreeze from real source breakpoints during calibration.",
+    "External-service and asset-origin inventory not yet captured (needs network-shape observation in the formal capture phase).",
+    "Browser-provider preflight table not yet run for the capture harness; the ego pass satisfied session/real-page/screenshot/interaction checks for its own channel only (interaction_preflight in the run record)."
+  ],
+  "no_acceptance_claim": "This brief is a prompt handoff, not verification evidence; no task is matched or complete."
+}

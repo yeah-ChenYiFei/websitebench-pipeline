@@ -1,0 +1,74 @@
+{
+  "schema_version": "offline-clone.interaction-ledger.v1",
+  "site_id": "amc-theatres",
+  "recorded_at": "2026-08-13T18:29:00Z",
+  "environment": "candidate-local-ego-browser",
+  "entries": [
+    {
+      "evidence_id": "amc-candidate-favorite-001",
+      "journey": "save a movie",
+      "role": "anonymous",
+      "state": "movie-list-loaded",
+      "clone_url": "http://127.0.0.1:24106/",
+      "selector": "button[aria-label=\"Save Superman\"]",
+      "visible_text_proof": "Saved to My AMC",
+      "raw_markup_proof": "data-favorite=\"superman\"",
+      "mutation_action": "fetch:POST /api/favorites"
+    },
+    {
+      "evidence_id": "amc-candidate-showtime-001",
+      "journey": "choose a showtime",
+      "role": "anonymous",
+      "state": "showtimes-loaded",
+      "clone_url": "http://127.0.0.1:24106/showtimes?movie=f1-the-movie",
+      "selector": "a.showtime",
+      "visible_text_proof": "10:30 AM",
+      "raw_markup_proof": "class=\"showtime\"",
+      "mutation_action": null
+    },
+    {
+      "evidence_id": "amc-candidate-seat-001",
+      "journey": "select reserved seats",
+      "role": "anonymous",
+      "state": "checkout-loaded",
+      "clone_url": "http://127.0.0.1:24106/checkout/superman?theatre=amc-empire-25&time=7%3A00%20PM",
+      "selector": "button[data-seat=\"C4\"]",
+      "visible_text_proof": "C4",
+      "raw_markup_proof": "data-seat=\"C4\"",
+      "mutation_action": null
+    },
+    {
+      "evidence_id": "amc-candidate-order-declined-001",
+      "journey": "declined sandbox payment",
+      "role": "anonymous",
+      "state": "seat-selected",
+      "clone_url": "http://127.0.0.1:24106/checkout/superman",
+      "selector": "#place-order",
+      "visible_text_proof": "Sandbox payment declined. Choose another simulation.",
+      "raw_markup_proof": "id=\"scenario\"",
+      "mutation_action": "fetch:POST /api/orders"
+    },
+    {
+      "evidence_id": "amc-candidate-order-approved-001",
+      "journey": "approved sandbox order",
+      "role": "anonymous",
+      "state": "seat-selected",
+      "clone_url": "http://127.0.0.1:24106/checkout/superman",
+      "selector": "#place-order",
+      "visible_text_proof": "Order confirmed",
+      "raw_markup_proof": "data-movie=\"superman\"",
+      "mutation_action": "fetch:POST /api/orders"
+    },
+    {
+      "evidence_id": "amc-candidate-login-001",
+      "journey": "sign in and preserve anonymous order",
+      "role": "demo-member",
+      "state": "anonymous-order-created",
+      "clone_url": "http://127.0.0.1:24106/login",
+      "selector": "#login-form button",
+      "visible_text_proof": "Hello, AMC Guest",
+      "raw_markup_proof": "id=\"login-form\"",
+      "mutation_action": "fetch:POST /api/login"
+    }
+  ]
+}

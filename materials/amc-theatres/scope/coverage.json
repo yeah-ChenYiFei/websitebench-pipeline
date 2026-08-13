@@ -1,0 +1,42 @@
+{
+  "dimensions": [
+    {
+      "category": "reachability",
+      "id": "public-home",
+      "label": "Public home route-state",
+      "required_evidence_kinds": [
+        "browser"
+      ],
+      "required_items": [
+        "home.loaded.desktop"
+      ],
+      "satisfied_items": [],
+      "unit": "route-state"
+    },
+    {
+      "category": "task-coverage",
+      "id": "packet-task-coverage",
+      "label": "Human-selected packet tasks WB007-T01..T48 (pre-implementation denominator)",
+      "rationale": "Denominator only: the 48 human-selected inventory tasks from the 20260813-first10 packet. Verbatim task text and per-task pre-implementation status live in scope/task-coverage.json. Nothing is satisfied yet; implementation is gated on 12Go Pilot acceptance.",
+      "required_evidence_kinds": [
+        "browser"
+      ],
+      "required_items": [
+        "WB007-T01", "WB007-T02", "WB007-T03", "WB007-T04", "WB007-T05",
+        "WB007-T06", "WB007-T07", "WB007-T08", "WB007-T09", "WB007-T10",
+        "WB007-T11", "WB007-T12", "WB007-T13", "WB007-T14", "WB007-T15",
+        "WB007-T16", "WB007-T17", "WB007-T18", "WB007-T19", "WB007-T20",
+        "WB007-T21", "WB007-T22", "WB007-T23", "WB007-T24", "WB007-T25",
+        "WB007-T26", "WB007-T27", "WB007-T28", "WB007-T29", "WB007-T30",
+        "WB007-T31", "WB007-T32", "WB007-T33", "WB007-T34", "WB007-T35",
+        "WB007-T36", "WB007-T37", "WB007-T38", "WB007-T39", "WB007-T40",
+        "WB007-T41", "WB007-T42", "WB007-T43", "WB007-T44", "WB007-T45",
+        "WB007-T46", "WB007-T47", "WB007-T48"
+      ],
+      "satisfied_items": [],
+      "unit": "task"
+    }
+  ],
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "draft"
+}

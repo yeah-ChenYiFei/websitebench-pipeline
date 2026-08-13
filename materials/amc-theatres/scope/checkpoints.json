@@ -1,0 +1,96 @@
+{
+  "checkpoints": [
+    {
+      "acceptance_eligible": false,
+      "evidence_kind": "unavailable",
+      "id": "home.loaded.desktop",
+      "priority": "p0",
+      "route_id": "home",
+      "state": "loaded",
+      "verification_kind": "candidate-live-diagnostic",
+      "viewport": "desktop"
+    },
+    {
+      "acceptance_eligible": false,
+      "evidence_kind": "unavailable",
+      "id": "movies.loaded.desktop",
+      "priority": "p0",
+      "route_id": "movies",
+      "state": "loaded",
+      "verification_kind": "candidate-live-diagnostic",
+      "viewport": "desktop",
+      "note": "Candidate route is implemented and browser-tested; formal calibrated source frames remain unavailable, so visual-equivalence acceptance stays ineligible."
+    },
+    {
+      "acceptance_eligible": false,
+      "evidence_kind": "unavailable",
+      "id": "theatre-directory.loaded.desktop",
+      "priority": "p0",
+      "route_id": "theatre-directory",
+      "state": "loaded",
+      "verification_kind": "candidate-live-diagnostic",
+      "viewport": "desktop",
+      "note": "Candidate route is implemented and browser-tested; formal calibrated source frames remain unavailable."
+    },
+    {
+      "acceptance_eligible": false,
+      "evidence_kind": "unavailable",
+      "id": "showtimes.loaded.desktop",
+      "priority": "p0",
+      "route_id": "showtimes",
+      "state": "loaded",
+      "verification_kind": "candidate-live-diagnostic",
+      "viewport": "desktop",
+      "note": "Candidate route is implemented and browser-tested; formal calibrated source frames remain unavailable."
+    },
+    {
+      "acceptance_eligible": false,
+      "evidence_kind": "unavailable",
+      "id": "sign-up.loaded.desktop",
+      "priority": "p1",
+      "route_id": "sign-up",
+      "state": "loaded",
+      "verification_kind": "candidate-live-diagnostic",
+      "viewport": "desktop",
+      "note": "Candidate route is implemented and browser-tested; authenticated source-state fidelity remains unavailable."
+    },
+    {
+      "acceptance_eligible": false,
+      "evidence_kind": "unavailable",
+      "id": "help.loaded.desktop",
+      "priority": "p1",
+      "route_id": "help",
+      "state": "loaded",
+      "verification_kind": "candidate-live-diagnostic",
+      "viewport": "desktop",
+      "note": "Candidate route is implemented and browser-tested; formal calibrated source frames remain unavailable."
+    },
+    {
+      "acceptance_eligible": false,
+      "evidence_kind": "unavailable",
+      "id": "theatre-empire-25.loaded.desktop",
+      "priority": "p0",
+      "route_id": "theatre-empire-25",
+      "state": "loaded",
+      "verification_kind": "candidate-live-diagnostic",
+      "viewport": "desktop",
+      "note": "Candidate route is implemented and browser-tested. One sanitized source screenshot exists in the run record, but calibrated multi-frame evidence is unavailable."
+    }
+  ],
+  "schema_version": "offline-clone.checkpoints.v1",
+  "status": "draft",
+  "viewports": {
+    "desktop": {
+      "height": 800,
+      "width": 1280
+    },
+    "tablet": {
+      "height": 1024,
+      "width": 768
+    },
+    "mobile": {
+      "height": 844,
+      "width": 390
+    }
+  }
+}
