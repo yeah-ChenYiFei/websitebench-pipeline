@@ -1,0 +1,2 @@
+/* @license GPL-2.0-or-later https://www.drupal.org/licensing/faq */
+document.addEventListener('DOMContentLoaded',()=>{var titleClasses=['field--name-field-component-title','field--name-field-component-hero-title'];titleClasses.forEach((i)=>{if(document.querySelector('.'+i))Array.from(document.getElementsByClassName(i)).forEach((j)=>{var headerText=j.querySelector('h1, h2');var regex=/<br\s?\\?>\s?/i;if(headerText)headerText=headerText.innerHTML.replace(regex,' ');else headerText=j.innerHTML.replace(regex,' ');j.ariaLabel=headerText;});});});;

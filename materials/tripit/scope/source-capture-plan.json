@@ -1,0 +1,29 @@
+{
+  "schema_version": "tripit.source-capture-plan.v1",
+  "capture_id": "2026-08-03.tripit-r1",
+  "source_origin": "https://www.tripit.com",
+  "note": "Anonymous first-party surfaces reachable without authentication. Authenticated + Pro surfaces are omitted here and tracked as unavailable (see browserbase-402 blocker). Consent + font capture recipe per tripit-local-capture-recipe.",
+  "viewports": [
+    {"name": "desktop", "width": 1440, "height": 900, "frames": 3},
+    {"name": "tablet", "width": 1024, "height": 768, "frames": 3},
+    {"name": "mobile", "width": 390, "height": 844, "frames": 3}
+  ],
+  "checkpoints": [
+    {"id": "home", "url": "https://www.tripit.com/", "family": "marketing", "priority": "P0"},
+    {"id": "free", "url": "https://www.tripit.com/web/free", "family": "marketing", "priority": "P1"},
+    {"id": "pro", "url": "https://www.tripit.com/web/pro", "family": "marketing", "priority": "P1"},
+    {"id": "how-it-works", "url": "https://www.tripit.com/web/free/how-it-works", "family": "marketing", "priority": "P1"},
+    {"id": "pricing", "url": "https://www.tripit.com/web/pro/pricing", "family": "marketing", "priority": "P1"},
+    {"id": "sap-concur", "url": "https://www.tripit.com/web/pro/sap-concur", "family": "marketing", "priority": "P2"},
+    {"id": "download", "url": "https://www.tripit.com/web/free/download", "family": "marketing", "priority": "P2"},
+    {"id": "security", "url": "https://www.tripit.com/web/security", "family": "marketing", "priority": "P2"},
+    {"id": "login", "url": "https://www.tripit.com/account/login", "family": "auth", "priority": "P0"},
+    {"id": "create", "url": "https://www.tripit.com/account/create", "family": "auth", "priority": "P0"},
+    {"id": "forgot-password", "url": "https://www.tripit.com/account/forgotPassword", "family": "auth", "priority": "P0"},
+    {"id": "blog-index", "url": "https://www.tripit.com/web/blog", "family": "marketing", "priority": "P2"},
+    {"id": "traveler-resource-center", "url": "https://www.tripit.com/web/traveler-resource-center", "family": "marketing", "priority": "P2"},
+    {"id": "legal-user-agreement", "url": "https://www.tripit.com/uhp/userAgreement", "family": "legal", "priority": "P2"},
+    {"id": "legal-privacy", "url": "https://www.tripit.com/uhp/privacyPolicy", "family": "legal", "priority": "P2"},
+    {"id": "legal-do-not-share", "url": "https://www.tripit.com/uhp/doNotShare", "family": "legal", "priority": "P2"}
+  ]
+}

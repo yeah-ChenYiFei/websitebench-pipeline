@@ -1,0 +1,3609 @@
+{
+  "schema_version": "clawbench.platform-contract-inventory.v1",
+  "platform_count": 160,
+  "platforms": [
+    {
+      "inventory_id": 1,
+      "platform": "Amazon Home Services",
+      "platform_key": "amazon-home-services",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://amazon.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "home-services-maintenance / equipment-install"
+      ],
+      "replaces": {
+        "inventory_id": 1,
+        "platform": "Amazon",
+        "official_url": "https://www.amazon.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 4,
+      "platform": "Target",
+      "platform_key": "target",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://target.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 4,
+      "task_taxonomy": [
+        "shopping / retail"
+      ],
+      "replaces": {
+        "inventory_id": 4,
+        "platform": "Target",
+        "official_url": "https://www.target.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 5,
+      "platform": "Etsy",
+      "platform_key": "etsy",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://etsy.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 4,
+      "task_taxonomy": [
+        "daily-life / shopping",
+        "shopping / marketplace"
+      ],
+      "replaces": {
+        "inventory_id": 5,
+        "platform": "Etsy",
+        "official_url": "https://www.etsy.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 8,
+      "platform": "Home Depot",
+      "platform_key": "home-depot",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://homedepot.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / home"
+      ],
+      "replaces": {
+        "inventory_id": 8,
+        "platform": "Home Depot",
+        "official_url": "https://www.homedepot.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 9,
+      "platform": "Lowe's",
+      "platform_key": "lowes",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://lowes.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "home-services-maintenance / kitchen-remodel"
+      ],
+      "replaces": {
+        "inventory_id": 9,
+        "platform": "Lowe's",
+        "official_url": "https://www.lowe's.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 26,
+      "platform": "Bean Box",
+      "platform_key": "bean-box",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://beanbox.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "automation-workflows / recurring-order"
+      ],
+      "replaces": {
+        "inventory_id": 26,
+        "platform": "Depop",
+        "official_url": "https://www.depop.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 27,
+      "platform": "Dooney Bourke",
+      "platform_key": "dooney-bourke",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://dooney.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "shopping-commerce / apparel"
+      ],
+      "replaces": {
+        "inventory_id": 27,
+        "platform": "StockX",
+        "official_url": "https://www.stockx.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 30,
+      "platform": "AutoTrader",
+      "platform_key": "autotrader",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://autotrader.co.uk/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "automotive-vehicle-services / used-car-listing"
+      ],
+      "replaces": {
+        "inventory_id": 30,
+        "platform": "AutoTrader",
+        "official_url": "https://www.autotrader.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 31,
+      "platform": "King Arthur Baking",
+      "platform_key": "king-arthur-baking",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://kingarthurbaking.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / shopping-delivery"
+      ],
+      "replaces": {
+        "inventory_id": 31,
+        "platform": "Shopify",
+        "official_url": "https://www.shopify.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 32,
+      "platform": "Mansur Gavriel",
+      "platform_key": "mansur-gavriel",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://mansurgavriel.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "shopping-commerce / luxury"
+      ],
+      "replaces": {
+        "inventory_id": 32,
+        "platform": "WooCommerce",
+        "official_url": "https://www.woocommerce.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 33,
+      "platform": "Mistobox",
+      "platform_key": "mistobox",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://mistobox.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "automation-workflows / recurring-order"
+      ],
+      "replaces": {
+        "inventory_id": 33,
+        "platform": "Etsy Seller Dashboard",
+        "official_url": "https://www.etsysellerdashboard.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 34,
+      "platform": "Olaplex",
+      "platform_key": "olaplex",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://olaplex.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "shopping-commerce / beauty-care"
+      ],
+      "replaces": {
+        "inventory_id": 34,
+        "platform": "Square Online",
+        "official_url": "https://www.squareonline.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 35,
+      "platform": "Rockauto",
+      "platform_key": "rockauto",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://rockauto.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "shopping-commerce / auto-parts"
+      ],
+      "replaces": {
+        "inventory_id": 35,
+        "platform": "BigCommerce",
+        "official_url": "https://www.bigcommerce.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 37,
+      "platform": "Airtable",
+      "platform_key": "airtable",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://airtable.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / general"
+      ],
+      "replaces": {
+        "inventory_id": 37,
+        "platform": "Airtable",
+        "official_url": "https://www.airtable.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 38,
+      "platform": "Trello",
+      "platform_key": "trello",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://trello.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "office-secretary-tasks / collab"
+      ],
+      "replaces": {
+        "inventory_id": 38,
+        "platform": "Trello",
+        "official_url": "https://www.trello.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 39,
+      "platform": "Asana",
+      "platform_key": "asana",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://app.asana.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / general"
+      ],
+      "replaces": {
+        "inventory_id": 39,
+        "platform": "Asana",
+        "official_url": "https://www.asana.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 41,
+      "platform": "Stumptown Coffee",
+      "platform_key": "stumptown-coffee",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://stumptowncoffee.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "automation-workflows / recurring-order"
+      ],
+      "replaces": {
+        "inventory_id": 41,
+        "platform": "Slack",
+        "official_url": "https://www.slack.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 43,
+      "platform": "Uncommon Goods",
+      "platform_key": "uncommon-goods",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://uncommongoods.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "shopping-commerce / gifts"
+      ],
+      "replaces": {
+        "inventory_id": 43,
+        "platform": "Monday.com",
+        "official_url": "https://www.monday.com.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 44,
+      "platform": "ClickUp",
+      "platform_key": "clickup",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://clickup.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / general"
+      ],
+      "replaces": {
+        "inventory_id": 44,
+        "platform": "ClickUp",
+        "official_url": "https://www.clickup.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 45,
+      "platform": "Todoist",
+      "platform_key": "todoist",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://todoist.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "personal-management / personal-tools"
+      ],
+      "replaces": {
+        "inventory_id": 45,
+        "platform": "Todoist",
+        "official_url": "https://www.todoist.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 46,
+      "platform": "Vistaprint",
+      "platform_key": "vistaprint",
+      "topdown_category": "commerce-retail",
+      "origins": [
+        "https://vistaprint.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "shopping-commerce / print-custom"
+      ],
+      "replaces": {
+        "inventory_id": 46,
+        "platform": "Evernote",
+        "official_url": "https://www.evernote.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 51,
+      "platform": "Careerbuilder",
+      "platform_key": "careerbuilder",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://careerbuilder.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "job-search-hr / job-apply"
+      ],
+      "replaces": {
+        "inventory_id": 51,
+        "platform": "Salesforce",
+        "official_url": "https://www.salesforce.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 52,
+      "platform": "Coolors",
+      "platform_key": "coolors",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://coolors.co/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / color-design"
+      ],
+      "replaces": {
+        "inventory_id": 52,
+        "platform": "HubSpot",
+        "official_url": "https://www.hubspot.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 53,
+      "platform": "Everydollar",
+      "platform_key": "everydollar",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://everydollar.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "personal-management / budget-mgmt"
+      ],
+      "replaces": {
+        "inventory_id": 53,
+        "platform": "Zendesk",
+        "official_url": "https://www.zendesk.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 54,
+      "platform": "Freshdesk",
+      "platform_key": "freshdesk",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://freshdesk.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "office-secretary-tasks / customer-support"
+      ],
+      "replaces": {
+        "inventory_id": 54,
+        "platform": "Freshdesk",
+        "official_url": "https://www.freshdesk.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 55,
+      "platform": "Habitica",
+      "platform_key": "habitica",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://habitica.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 4,
+      "task_taxonomy": [
+        "daily-life / productivity"
+      ],
+      "replaces": {
+        "inventory_id": 55,
+        "platform": "Intercom",
+        "official_url": "https://www.intercom.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 56,
+      "platform": "Mailchimp",
+      "platform_key": "mailchimp",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://mailchimp.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / general"
+      ],
+      "replaces": {
+        "inventory_id": 56,
+        "platform": "Mailchimp",
+        "official_url": "https://www.mailchimp.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 57,
+      "platform": "Typeform",
+      "platform_key": "typeform",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://typeform.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / general"
+      ],
+      "replaces": {
+        "inventory_id": 57,
+        "platform": "Typeform",
+        "official_url": "https://www.typeform.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 58,
+      "platform": "Hired",
+      "platform_key": "hired",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://hired.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "job-search-hr / job-apply"
+      ],
+      "replaces": {
+        "inventory_id": 58,
+        "platform": "SurveyMonkey",
+        "official_url": "https://www.surveymonkey.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 59,
+      "platform": "Calendly",
+      "platform_key": "calendly",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://calendly.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 2,
+      "task_taxonomy": [
+        "office-secretary-tasks / calendar"
+      ],
+      "replaces": {
+        "inventory_id": 59,
+        "platform": "Calendly",
+        "official_url": "https://www.calendly.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 60,
+      "platform": "Doodle",
+      "platform_key": "doodle",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://doodle.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 5,
+      "task_taxonomy": [
+        "office-secretary-tasks / calendar",
+        "office-secretary-tasks / signup"
+      ],
+      "replaces": {
+        "inventory_id": 60,
+        "platform": "Doodle",
+        "official_url": "https://www.doodle.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 62,
+      "platform": "Jopwell",
+      "platform_key": "jopwell",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://jopwell.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "job-search-hr / job-apply"
+      ],
+      "replaces": {
+        "inventory_id": 62,
+        "platform": "Miro",
+        "official_url": "https://www.miro.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 63,
+      "platform": "Myheritage",
+      "platform_key": "myheritage",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://myheritage.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "personal-management / records-mgmt"
+      ],
+      "replaces": {
+        "inventory_id": 63,
+        "platform": "Figma",
+        "official_url": "https://www.figma.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 64,
+      "platform": "Purelymail",
+      "platform_key": "purelymail",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://mail.google.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 3,
+      "task_taxonomy": [
+        "office-secretary-tasks / email-mgmt"
+      ],
+      "replaces": {
+        "inventory_id": 64,
+        "platform": "Canva",
+        "official_url": "https://www.canva.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 65,
+      "platform": "Webflow",
+      "platform_key": "webflow",
+      "topdown_category": "developer-cloud-infrastructure",
+      "origins": [
+        "https://webflow.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / general"
+      ],
+      "replaces": {
+        "inventory_id": 65,
+        "platform": "Webflow",
+        "official_url": "https://www.webflow.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 66,
+      "platform": "Wix",
+      "platform_key": "wix",
+      "topdown_category": "developer-cloud-infrastructure",
+      "origins": [
+        "https://wix.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / website-build"
+      ],
+      "replaces": {
+        "inventory_id": 66,
+        "platform": "Wix",
+        "official_url": "https://www.wix.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 67,
+      "platform": "Squarespace",
+      "platform_key": "squarespace",
+      "topdown_category": "developer-cloud-infrastructure",
+      "origins": [
+        "https://squarespace.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / website-create"
+      ],
+      "replaces": {
+        "inventory_id": 67,
+        "platform": "Squarespace",
+        "official_url": "https://www.squarespace.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 68,
+      "platform": "Roomsketcher",
+      "platform_key": "roomsketcher",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://roomsketcher.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / interior-design"
+      ],
+      "replaces": {
+        "inventory_id": 68,
+        "platform": "WordPress",
+        "official_url": "https://www.wordpress.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 69,
+      "platform": "Confluence",
+      "platform_key": "confluence",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://atlassian.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / general"
+      ],
+      "replaces": {
+        "inventory_id": 69,
+        "platform": "Confluence",
+        "official_url": "https://www.confluence.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 70,
+      "platform": "Simplify Jobs",
+      "platform_key": "simplify-jobs",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://simplify.jobs/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "job-search-hr / cv-autofill"
+      ],
+      "replaces": {
+        "inventory_id": 70,
+        "platform": "Linear",
+        "official_url": "https://www.linear.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 71,
+      "platform": "Weworkremotely",
+      "platform_key": "weworkremotely",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://weworkremotely.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 4,
+      "task_taxonomy": [
+        "jobs / posting"
+      ],
+      "replaces": {
+        "inventory_id": 71,
+        "platform": "Basecamp",
+        "official_url": "https://www.basecamp.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 72,
+      "platform": "When2meet",
+      "platform_key": "when2meet",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://when2meet.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 2,
+      "task_taxonomy": [
+        "office-secretary-tasks / calendar"
+      ],
+      "replaces": {
+        "inventory_id": 72,
+        "platform": "Smartsheet",
+        "official_url": "https://www.smartsheet.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 73,
+      "platform": "Blinkist",
+      "platform_key": "blinkist",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://blinkist.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "education-learning / reading-self-study"
+      ],
+      "replaces": {
+        "inventory_id": 73,
+        "platform": "Zoho",
+        "official_url": "https://www.zoho.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 74,
+      "platform": "Coursera",
+      "platform_key": "coursera",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://coursera.org/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "education-learning / general"
+      ],
+      "replaces": {
+        "inventory_id": 74,
+        "platform": "Coursera",
+        "official_url": "https://www.coursera.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 75,
+      "platform": "edX",
+      "platform_key": "edx",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://edx.org/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 5,
+      "task_taxonomy": [
+        "education / enrollment",
+        "education-learning / enrollment",
+        "education-learning / general"
+      ],
+      "replaces": {
+        "inventory_id": 75,
+        "platform": "edX",
+        "official_url": "https://www.edx.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 76,
+      "platform": "Khan Academy",
+      "platform_key": "khanacademy",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://khanacademy.org/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 5,
+      "task_taxonomy": [
+        "education / course",
+        "education-learning / registration"
+      ],
+      "replaces": {
+        "inventory_id": 76,
+        "platform": "Khan Academy",
+        "official_url": "https://www.khanacademy.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 77,
+      "platform": "Udemy",
+      "platform_key": "udemy",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://udemy.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "education-learning / general"
+      ],
+      "replaces": {
+        "inventory_id": 77,
+        "platform": "Udemy",
+        "official_url": "https://www.udemy.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 82,
+      "platform": "LeetCode",
+      "platform_key": "leetcode",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://leetcode.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "education-learning / general"
+      ],
+      "replaces": {
+        "inventory_id": 82,
+        "platform": "LeetCode",
+        "official_url": "https://www.leetcode.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 85,
+      "platform": "MasterClass",
+      "platform_key": "masterclass",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://masterclass.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / masterclass"
+      ],
+      "replaces": {
+        "inventory_id": 85,
+        "platform": "MasterClass",
+        "official_url": "https://www.masterclass.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 97,
+      "platform": "Creativebug",
+      "platform_key": "creativebug",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://creativebug.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "education-learning / art-courses"
+      ],
+      "replaces": {
+        "inventory_id": 97,
+        "platform": "Educative",
+        "official_url": "https://www.educative.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 98,
+      "platform": "Outschool",
+      "platform_key": "outschool",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://outschool.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 2,
+      "task_taxonomy": [
+        "education-learning / kids-courses"
+      ],
+      "replaces": {
+        "inventory_id": 98,
+        "platform": "Frontend Masters",
+        "official_url": "https://www.frontendmasters.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 99,
+      "platform": "Overleaf",
+      "platform_key": "overleaf",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://overleaf.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 2,
+      "task_taxonomy": [
+        "academia-research / paper-tables",
+        "academia-research / research-tools"
+      ],
+      "replaces": {
+        "inventory_id": 99,
+        "platform": "Exercism",
+        "official_url": "https://www.exercism.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 100,
+      "platform": "Spirit Rock",
+      "platform_key": "spirit-rock",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://spiritrock.org/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "education-learning / meditation"
+      ],
+      "replaces": {
+        "inventory_id": 100,
+        "platform": "Codewars",
+        "official_url": "https://www.codewars.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 110,
+      "platform": "Substack",
+      "platform_key": "substack",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://substack.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / general"
+      ],
+      "replaces": {
+        "inventory_id": 110,
+        "platform": "Substack",
+        "official_url": "https://www.substack.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 114,
+      "platform": "Goodreads",
+      "platform_key": "goodreads",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://goodreads.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / general"
+      ],
+      "replaces": {
+        "inventory_id": 114,
+        "platform": "Goodreads",
+        "official_url": "https://www.goodreads.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 116,
+      "platform": "IMDb",
+      "platform_key": "imdb",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://imdb.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 5,
+      "task_taxonomy": [
+        "entertainment / list-create",
+        "entertainment / list-item-add",
+        "entertainment / title-rate",
+        "entertainment / title-unrate",
+        "entertainment / watchlist-add"
+      ],
+      "replaces": {
+        "inventory_id": 116,
+        "platform": "IMDb",
+        "official_url": "https://www.imdb.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 117,
+      "platform": "Tripadvisor",
+      "platform_key": "tripadvisor",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://tripadvisor.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "rating-voting / general"
+      ],
+      "replaces": {
+        "inventory_id": 117,
+        "platform": "Tripadvisor",
+        "official_url": "https://www.tripadvisor.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 127,
+      "platform": "GitHub",
+      "platform_key": "github",
+      "topdown_category": "developer-cloud-infrastructure",
+      "origins": [
+        "https://github.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 2,
+      "task_taxonomy": [
+        "dev-tech / github-ops"
+      ],
+      "replaces": {
+        "inventory_id": 127,
+        "platform": "GitHub",
+        "official_url": "https://www.github.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 134,
+      "platform": "Sur La Table",
+      "platform_key": "sur-la-table",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://surlatable.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "education-learning / hobby-class"
+      ],
+      "replaces": {
+        "inventory_id": 134,
+        "platform": "Papers With Code",
+        "official_url": "https://www.paperswithcode.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 135,
+      "platform": "Semantic Scholar",
+      "platform_key": "semantic-scholar",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://semanticscholar.org/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "academia-research / research-tools"
+      ],
+      "replaces": {
+        "inventory_id": 135,
+        "platform": "Semantic Scholar",
+        "official_url": "https://www.semanticscholar.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 136,
+      "platform": "Zotero",
+      "platform_key": "zotero",
+      "topdown_category": "learning-knowledge",
+      "origins": [
+        "https://zotero.org/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "academia-research / research-tools"
+      ],
+      "replaces": {
+        "inventory_id": 136,
+        "platform": "arXiv",
+        "official_url": "https://www.arxiv.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 137,
+      "platform": "AMC Theatres",
+      "platform_key": "amc-theatres",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://amctheatres.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / movies"
+      ],
+      "replaces": {
+        "inventory_id": 137,
+        "platform": "OpenReview",
+        "official_url": "https://www.openreview.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 149,
+      "platform": "Boardgamegeek",
+      "platform_key": "boardgamegeek",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://boardgamegeek.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 3,
+      "task_taxonomy": [
+        "entertainment-hobbies / gaming-reviews",
+        "hobbies-gaming / forum",
+        "hobbies-gaming / reviews"
+      ],
+      "replaces": {
+        "inventory_id": 149,
+        "platform": "Grafana",
+        "official_url": "https://www.grafana.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 150,
+      "platform": "Bowlero",
+      "platform_key": "bowlero",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://bowlero.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / experience"
+      ],
+      "replaces": {
+        "inventory_id": 150,
+        "platform": "Terraform Cloud",
+        "official_url": "https://www.terraformcloud.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 151,
+      "platform": "Breakout Games",
+      "platform_key": "breakout-games",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://breakoutgames.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / experience"
+      ],
+      "replaces": {
+        "inventory_id": 151,
+        "platform": "CircleCI",
+        "official_url": "https://www.circleci.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 152,
+      "platform": "Cineplex",
+      "platform_key": "cineplex",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://cineplex.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / movies"
+      ],
+      "replaces": {
+        "inventory_id": 152,
+        "platform": "Jenkins",
+        "official_url": "https://www.jenkins.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 153,
+      "platform": "Fandango",
+      "platform_key": "fandango",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://fandango.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / movies"
+      ],
+      "replaces": {
+        "inventory_id": 153,
+        "platform": "Heroku",
+        "official_url": "https://www.heroku.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 154,
+      "platform": "Humble Bundle",
+      "platform_key": "humble-bundle",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://humblebundle.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / gaming"
+      ],
+      "replaces": {
+        "inventory_id": 154,
+        "platform": "Railway",
+        "official_url": "https://www.railway.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 155,
+      "platform": "Stubhub",
+      "platform_key": "stubhub",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://stubhub.ca/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / show-tickets"
+      ],
+      "replaces": {
+        "inventory_id": 155,
+        "platform": "Render",
+        "official_url": "https://www.render.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 156,
+      "platform": "Booking.com",
+      "platform_key": "booking-com",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://booking.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "travel / general"
+      ],
+      "replaces": {
+        "inventory_id": 156,
+        "platform": "Booking.com",
+        "official_url": "https://www.booking.com.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 158,
+      "platform": "Airbnb",
+      "platform_key": "airbnb",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://airbnb.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "travel / general"
+      ],
+      "replaces": {
+        "inventory_id": 158,
+        "platform": "Airbnb",
+        "official_url": "https://www.airbnb.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 172,
+      "platform": "Topgolf",
+      "platform_key": "topgolf",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://topgolf.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / experience"
+      ],
+      "replaces": {
+        "inventory_id": 172,
+        "platform": "Hostelworld",
+        "official_url": "https://www.hostelworld.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 173,
+      "platform": "Trakt",
+      "platform_key": "trakt",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://trakt.tv/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 4,
+      "task_taxonomy": [
+        "entertainment / history",
+        "entertainment / rating",
+        "entertainment / tracking"
+      ],
+      "replaces": {
+        "inventory_id": 173,
+        "platform": "Skyscanner",
+        "official_url": "https://www.skyscanner.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 174,
+      "platform": "Vivid Seats",
+      "platform_key": "vivid-seats",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://vividseats.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / show-tickets"
+      ],
+      "replaces": {
+        "inventory_id": 174,
+        "platform": "Hopper",
+        "official_url": "https://www.hopper.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 175,
+      "platform": "12Go Asia",
+      "platform_key": "12go-asia",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://12go.asia/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "travel / train-bus"
+      ],
+      "replaces": {
+        "inventory_id": 175,
+        "platform": "Travelocity",
+        "official_url": "https://www.travelocity.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 176,
+      "platform": "Autoslash",
+      "platform_key": "autoslash",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://autoslash.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "automotive-vehicle-services / car-lease"
+      ],
+      "replaces": {
+        "inventory_id": 176,
+        "platform": "Orbitz",
+        "official_url": "https://www.orbitz.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 177,
+      "platform": "Flixbus",
+      "platform_key": "flixbus",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://flixbus.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "travel / bus"
+      ],
+      "replaces": {
+        "inventory_id": 177,
+        "platform": "Vrbo",
+        "official_url": "https://www.vrbo.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 178,
+      "platform": "Hipcamp",
+      "platform_key": "hipcamp",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://hipcamp.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "travel / outdoor"
+      ],
+      "replaces": {
+        "inventory_id": 178,
+        "platform": "Rome2Rio",
+        "official_url": "https://www.rome2rio.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 179,
+      "platform": "Momondo",
+      "platform_key": "momondo",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://momondo.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "travel / flights"
+      ],
+      "replaces": {
+        "inventory_id": 179,
+        "platform": "Omio",
+        "official_url": "https://www.omio.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 180,
+      "platform": "Ontario Parks",
+      "platform_key": "ontario-parks",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://reservations.ontarioparks.ca/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "travel / outdoor"
+      ],
+      "replaces": {
+        "inventory_id": 180,
+        "platform": "Klook",
+        "official_url": "https://www.klook.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 194,
+      "platform": "Parks Canada Reservations",
+      "platform_key": "parks-canada-reservations",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://reservation.pc.gc.ca/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "travel / camping-outdoor"
+      ],
+      "replaces": {
+        "inventory_id": 194,
+        "platform": "Allstate",
+        "official_url": "https://www.allstate.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 195,
+      "platform": "Race Roster",
+      "platform_key": "race-roster",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://raceroster.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / event-registration"
+      ],
+      "replaces": {
+        "inventory_id": 195,
+        "platform": "TurboTax",
+        "official_url": "https://www.turbotax.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 196,
+      "platform": "SIXT",
+      "platform_key": "sixt",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://sixt.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "automotive-vehicle-services / car-lease"
+      ],
+      "replaces": {
+        "inventory_id": 196,
+        "platform": "H&R Block",
+        "official_url": "https://www.h&rblock.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 197,
+      "platform": "Spirit Airlines",
+      "platform_key": "spirit-airlines",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://spirit.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "travel / flights"
+      ],
+      "replaces": {
+        "inventory_id": 197,
+        "platform": "Square Dashboard",
+        "official_url": "https://www.squaredashboard.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 198,
+      "platform": "Tripit",
+      "platform_key": "tripit",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://tripit.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 4,
+      "task_taxonomy": [
+        "personal-management / travel",
+        "travel / itinerary",
+        "travel / reservation"
+      ],
+      "replaces": {
+        "inventory_id": 198,
+        "platform": "Wise",
+        "official_url": "https://www.wise.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 199,
+      "platform": "Angi",
+      "platform_key": "angi",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://angi.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "rating-voting / service-review"
+      ],
+      "replaces": {
+        "inventory_id": 199,
+        "platform": "Revolut",
+        "official_url": "https://www.revolut.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 200,
+      "platform": "Beeradvocate",
+      "platform_key": "beeradvocate",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://beeradvocate.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "rating-voting / beer-review"
+      ],
+      "replaces": {
+        "inventory_id": 200,
+        "platform": "Plaid Dashboard",
+        "official_url": "https://www.plaiddashboard.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 201,
+      "platform": "Capterra",
+      "platform_key": "capterra",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://capterra.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "rating-voting / general"
+      ],
+      "replaces": {
+        "inventory_id": 201,
+        "platform": "Wealthfront",
+        "official_url": "https://www.wealthfront.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 202,
+      "platform": "Myrecipes",
+      "platform_key": "myrecipes",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://myrecipes.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 3,
+      "task_taxonomy": [
+        "food-cooking / collection",
+        "rating-voting / rating"
+      ],
+      "replaces": {
+        "inventory_id": 202,
+        "platform": "Betterment",
+        "official_url": "https://www.betterment.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 203,
+      "platform": "Ratemyprofessors",
+      "platform_key": "ratemyprofessors",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://ratemyprofessors.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "rating-voting / professor-review"
+      ],
+      "replaces": {
+        "inventory_id": 203,
+        "platform": "SoFi",
+        "official_url": "https://www.sofi.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 204,
+      "platform": "Ravelry",
+      "platform_key": "ravelry",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://ravelry.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 5,
+      "task_taxonomy": [
+        "hobbies-crafts / community",
+        "hobbies-gaming / discussion",
+        "hobbies-gaming / reviews"
+      ],
+      "replaces": {
+        "inventory_id": 204,
+        "platform": "Acorns",
+        "official_url": "https://www.acorns.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 205,
+      "platform": "Untappd",
+      "platform_key": "untappd",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://untappd.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "rating-voting / social-wine"
+      ],
+      "replaces": {
+        "inventory_id": 205,
+        "platform": "Charles Schwab",
+        "official_url": "https://www.charlesschwab.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 206,
+      "platform": "Vivino",
+      "platform_key": "vivino",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://vivino.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "rating-voting / wine-review"
+      ],
+      "replaces": {
+        "inventory_id": 206,
+        "platform": "Interactive Brokers",
+        "official_url": "https://www.interactivebrokers.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 216,
+      "platform": "Ace Hardware",
+      "platform_key": "ace-hardware",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://acehardware.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "home-services-maintenance / plumbing"
+      ],
+      "replaces": {
+        "inventory_id": 216,
+        "platform": "NIH",
+        "official_url": "https://www.nih.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 217,
+      "platform": "Bark",
+      "platform_key": "bark",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://bark.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "home-services-maintenance / house-cleaning"
+      ],
+      "replaces": {
+        "inventory_id": 217,
+        "platform": "Cleveland Clinic",
+        "official_url": "https://www.clevelandclinic.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 218,
+      "platform": "Booksy",
+      "platform_key": "booksy",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://booksy.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / personal-care"
+      ],
+      "replaces": {
+        "inventory_id": 218,
+        "platform": "Kaiser Permanente",
+        "official_url": "https://www.kaiserpermanente.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 219,
+      "platform": "Crumbl",
+      "platform_key": "crumbl",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://crumbl.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / food"
+      ],
+      "replaces": {
+        "inventory_id": 219,
+        "platform": "Doctolib",
+        "official_url": "https://www.doctolib.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 220,
+      "platform": "Doordash",
+      "platform_key": "doordash",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://doordash.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / food"
+      ],
+      "replaces": {
+        "inventory_id": 220,
+        "platform": "One Medical",
+        "official_url": "https://www.onemedical.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 221,
+      "platform": "Handy",
+      "platform_key": "handy",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://handy.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 3,
+      "task_taxonomy": [
+        "daily-life / home-services",
+        "home-services / booking"
+      ],
+      "replaces": {
+        "inventory_id": 221,
+        "platform": "Oscar Health",
+        "official_url": "https://www.oscarhealth.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 222,
+      "platform": "Inmyarea",
+      "platform_key": "inmyarea",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://inmyarea.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / utilities"
+      ],
+      "replaces": {
+        "inventory_id": 222,
+        "platform": "Noom",
+        "official_url": "https://www.noom.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 223,
+      "platform": "Instacart",
+      "platform_key": "instacart",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://instacart.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 2,
+      "task_taxonomy": [
+        "daily-life / food"
+      ],
+      "replaces": {
+        "inventory_id": 223,
+        "platform": "Headspace",
+        "official_url": "https://www.headspace.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 224,
+      "platform": "Opentable",
+      "platform_key": "opentable",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://opentable.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / food"
+      ],
+      "replaces": {
+        "inventory_id": 224,
+        "platform": "Calm",
+        "official_url": "https://www.calm.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 225,
+      "platform": "Resy",
+      "platform_key": "resy",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://resy.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / food"
+      ],
+      "replaces": {
+        "inventory_id": 225,
+        "platform": "Ada Health",
+        "official_url": "https://www.adahealth.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 226,
+      "platform": "Styleseat",
+      "platform_key": "styleseat",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://styleseat.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "beauty-personal-care / salon-booking"
+      ],
+      "replaces": {
+        "inventory_id": 226,
+        "platform": "Medscape",
+        "official_url": "https://www.medscape.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 235,
+      "platform": "Crunchyroll",
+      "platform_key": "crunchyroll",
+      "topdown_category": "media-entertainment",
+      "origins": [
+        "https://crunchyroll.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "entertainment-hobbies / anime-streaming"
+      ],
+      "replaces": {
+        "inventory_id": 235,
+        "platform": "Crunchyroll",
+        "official_url": "https://www.crunchyroll.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 239,
+      "platform": "Uber Eats",
+      "platform_key": "uber-eats",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://ubereats.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 2,
+      "task_taxonomy": [
+        "daily-life / food"
+      ],
+      "replaces": {
+        "inventory_id": 239,
+        "platform": "Audible",
+        "official_url": "https://www.audible.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 240,
+      "platform": "ASPCA",
+      "platform_key": "aspca",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://aspca.org/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "pet-animal-care / pet-adoption"
+      ],
+      "replaces": {
+        "inventory_id": 240,
+        "platform": "Kindle Store",
+        "official_url": "https://www.kindlestore.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 241,
+      "platform": "Ghost",
+      "platform_key": "ghost",
+      "topdown_category": "developer-cloud-infrastructure",
+      "origins": [
+        "https://ghost.org/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "creation-init / general"
+      ],
+      "replaces": {
+        "inventory_id": 241,
+        "platform": "Ghost",
+        "official_url": "https://www.ghost.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 242,
+      "platform": "Betterhelp",
+      "platform_key": "betterhelp",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://betterhelp.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / health-medical"
+      ],
+      "replaces": {
+        "inventory_id": 242,
+        "platform": "Wattpad",
+        "official_url": "https://www.wattpad.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 244,
+      "platform": "Bluemercury",
+      "platform_key": "bluemercury",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://bluemercury.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "beauty-personal-care / beauty-booking"
+      ],
+      "replaces": {
+        "inventory_id": 244,
+        "platform": "DMV",
+        "official_url": "https://www.dmv.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 245,
+      "platform": "Bringfido",
+      "platform_key": "bringfido",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://bringfido.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "pet-animal-care / pet-friendly-travel"
+      ],
+      "replaces": {
+        "inventory_id": 245,
+        "platform": "IRS",
+        "official_url": "https://www.irs.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 246,
+      "platform": "Curology",
+      "platform_key": "curology",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://curology.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "beauty-personal-care / skincare"
+      ],
+      "replaces": {
+        "inventory_id": 246,
+        "platform": "USCIS",
+        "official_url": "https://www.uscis.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 247,
+      "platform": "Eatthismuch",
+      "platform_key": "eatthismuch",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://eatthismuch.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 2,
+      "task_taxonomy": [
+        "health-fitness / mealplan"
+      ],
+      "replaces": {
+        "inventory_id": 247,
+        "platform": "USPS",
+        "official_url": "https://www.usps.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 248,
+      "platform": "Embark",
+      "platform_key": "embark",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://embarkvet.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "pet-animal-care / pet-dna"
+      ],
+      "replaces": {
+        "inventory_id": 248,
+        "platform": "Healthcare.gov",
+        "official_url": "https://www.healthcare.gov.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 249,
+      "platform": "Zillow",
+      "platform_key": "zillow",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://zillow.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / housing"
+      ],
+      "replaces": {
+        "inventory_id": 249,
+        "platform": "Zillow",
+        "official_url": "https://www.zillow.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 254,
+      "platform": "Craigslist",
+      "platform_key": "craigslist",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://craigslist.org/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / housing"
+      ],
+      "replaces": {
+        "inventory_id": 254,
+        "platform": "Craigslist",
+        "official_url": "https://www.craigslist.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 255,
+      "platform": "Rover",
+      "platform_key": "rover",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://rover.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 2,
+      "task_taxonomy": [
+        "daily-life / pets"
+      ],
+      "replaces": {
+        "inventory_id": 255,
+        "platform": "Rover",
+        "official_url": "https://www.rover.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 256,
+      "platform": "TaskRabbit",
+      "platform_key": "taskrabbit",
+      "topdown_category": "local-food-home-property",
+      "origins": [
+        "https://taskrabbit.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / personal-care"
+      ],
+      "replaces": {
+        "inventory_id": 256,
+        "platform": "TaskRabbit",
+        "official_url": "https://www.taskrabbit.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 258,
+      "platform": "Change.org",
+      "platform_key": "change",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://change.org/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 4,
+      "task_taxonomy": [
+        "civic-engagement / petition",
+        "nonprofit-charity / petition",
+        "nonprofit-charity / petition-management"
+      ],
+      "replaces": {
+        "inventory_id": 258,
+        "platform": "Change.org",
+        "official_url": "https://www.change.org.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 259,
+      "platform": "Fenty Beauty",
+      "platform_key": "fenty-beauty",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://fentybeauty.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "beauty-personal-care / makeup"
+      ],
+      "replaces": {
+        "inventory_id": 259,
+        "platform": "Charity Navigator",
+        "official_url": "https://www.charitynavigator.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 260,
+      "platform": "Eventbrite",
+      "platform_key": "eventbrite",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://eventbrite.com/",
+        "https://www.eventbrite.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 5,
+      "task_taxonomy": [
+        "entertainment-hobbies / general",
+        "web_task / registration"
+      ],
+      "replaces": {
+        "inventory_id": 260,
+        "platform": "Eventbrite",
+        "official_url": "https://www.eventbrite.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 261,
+      "platform": "Ticketmaster",
+      "platform_key": "ticketmaster",
+      "topdown_category": "travel-mobility-events",
+      "origins": [
+        "https://checkout.ticketmaster.com/",
+        "https://ticketmaster.ca/",
+        "https://ticketmaster.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 5,
+      "task_taxonomy": [
+        "daily-life / events",
+        "entertainment-hobbies / general",
+        "entertainment-hobbies / show-tickets",
+        "events / tickets"
+      ],
+      "replaces": {
+        "inventory_id": 261,
+        "platform": "Ticketmaster",
+        "official_url": "https://www.ticketmaster.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 262,
+      "platform": "G2",
+      "platform_key": "g2",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://g2.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "rating-voting / general"
+      ],
+      "replaces": {
+        "inventory_id": 262,
+        "platform": "G2",
+        "official_url": "https://www.g2.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 263,
+      "platform": "Trustpilot",
+      "platform_key": "trustpilot",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://trustpilot.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "rating-voting / general"
+      ],
+      "replaces": {
+        "inventory_id": 263,
+        "platform": "Trustpilot",
+        "official_url": "https://www.trustpilot.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 264,
+      "platform": "Glassdoor",
+      "platform_key": "glassdoor",
+      "topdown_category": "social-community-reviews",
+      "origins": [
+        "https://glassdoor.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "rating-voting / general"
+      ],
+      "replaces": {
+        "inventory_id": 264,
+        "platform": "Glassdoor",
+        "official_url": "https://www.glassdoor.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 265,
+      "platform": "Indeed",
+      "platform_key": "indeed",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://indeed.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "job-search-hr / job-apply"
+      ],
+      "replaces": {
+        "inventory_id": 265,
+        "platform": "Indeed",
+        "official_url": "https://www.indeed.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 266,
+      "platform": "ZipRecruiter",
+      "platform_key": "ziprecruiter",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://ziprecruiter.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "job-search-hr / job-apply"
+      ],
+      "replaces": {
+        "inventory_id": 266,
+        "platform": "ZipRecruiter",
+        "official_url": "https://www.ziprecruiter.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 267,
+      "platform": "Workable",
+      "platform_key": "workable",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://workable.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "job-search-hr / recruitment-mgmt"
+      ],
+      "replaces": {
+        "inventory_id": 267,
+        "platform": "Workable",
+        "official_url": "https://www.workable.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 268,
+      "platform": "Greenhouse",
+      "platform_key": "greenhouse-codepath",
+      "topdown_category": "work-business",
+      "origins": [
+        "https://greenhouse.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "job-search-hr / cv-autofill"
+      ],
+      "replaces": {
+        "inventory_id": 268,
+        "platform": "Greenhouse",
+        "official_url": "https://www.greenhouse.com"
+      },
+      "reuses_matching_contract_id": true
+    },
+    {
+      "inventory_id": 269,
+      "platform": "JEFIT",
+      "platform_key": "jefit",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://jefit.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / health"
+      ],
+      "replaces": {
+        "inventory_id": 269,
+        "platform": "BambooHR",
+        "official_url": "https://www.bamboohr.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 270,
+      "platform": "MAC Cosmetics",
+      "platform_key": "mac-cosmetics",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://maccosmetics.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "beauty-personal-care / beauty-retail"
+      ],
+      "replaces": {
+        "inventory_id": 270,
+        "platform": "AOL",
+        "official_url": "https://www.aol.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 271,
+      "platform": "Ollie",
+      "platform_key": "ollie",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://myollie.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "pet-animal-care / pet-subscription"
+      ],
+      "replaces": {
+        "inventory_id": 271,
+        "platform": "Yahoo",
+        "official_url": "https://www.yahoo.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 272,
+      "platform": "Paulas Choice",
+      "platform_key": "paulas-choice",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://paulaschoice.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "beauty-personal-care / skincare-purchase"
+      ],
+      "replaces": {
+        "inventory_id": 272,
+        "platform": "Wikipedia",
+        "official_url": "https://www.wikipedia.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 273,
+      "platform": "Pawp",
+      "platform_key": "pawp",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://pawp.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "pet-animal-care / pet-medical"
+      ],
+      "replaces": {
+        "inventory_id": 273,
+        "platform": "Alibaba",
+        "official_url": "https://www.alibaba.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 274,
+      "platform": "Petfinder",
+      "platform_key": "petfinder",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://petfinder.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 4,
+      "task_taxonomy": [
+        "pet-animal-care / adopter-profile",
+        "pet-animal-care / pet-adopt",
+        "pet-animal-care / pet-favorite",
+        "pet-animal-care / pet-unfavorite"
+      ],
+      "replaces": {
+        "inventory_id": 274,
+        "platform": "JD.com",
+        "official_url": "https://www.jd.com.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 275,
+      "platform": "Petsmart",
+      "platform_key": "petsmart",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://petsmart.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "pet-animal-care / pet-supplies-grooming"
+      ],
+      "replaces": {
+        "inventory_id": 275,
+        "platform": "Flipkart",
+        "official_url": "https://www.flipkart.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 276,
+      "platform": "Soko Glam",
+      "platform_key": "soko-glam",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://sokoglam.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "beauty-personal-care / skincare-purchase"
+      ],
+      "replaces": {
+        "inventory_id": 276,
+        "platform": "Rakuten",
+        "official_url": "https://www.rakuten.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 277,
+      "platform": "Strava",
+      "platform_key": "strava",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://strava.com/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 5,
+      "task_taxonomy": [
+        "daily-life / fitness",
+        "fitness / activity-edit",
+        "fitness / club",
+        "fitness / social"
+      ],
+      "replaces": {
+        "inventory_id": 277,
+        "platform": "FreshBooks",
+        "official_url": "https://www.freshbooks.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 278,
+      "platform": "The Ordinary",
+      "platform_key": "theordinary",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://theordinary.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 4,
+      "task_taxonomy": [
+        "beauty-personal-care / cart",
+        "beauty-personal-care / makeup",
+        "beauty-personal-care / shopping"
+      ],
+      "replaces": {
+        "inventory_id": 278,
+        "platform": "QuickBooks Online",
+        "official_url": "https://www.quickbooksonline.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 279,
+      "platform": "Ulta Beauty",
+      "platform_key": "ulta-beauty",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://ulta.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "beauty-personal-care / beauty-booking"
+      ],
+      "replaces": {
+        "inventory_id": 279,
+        "platform": "Xero",
+        "official_url": "https://www.xero.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 280,
+      "platform": "Wag",
+      "platform_key": "wag",
+      "topdown_category": "health-wellness-personal",
+      "origins": [
+        "https://wagwalking.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "daily-life / pets"
+      ],
+      "replaces": {
+        "inventory_id": 280,
+        "platform": "GitBook",
+        "official_url": "https://www.gitbook.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 281,
+      "platform": "Charity Village",
+      "platform_key": "charity-village",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://charityvillage.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "nonprofit-charity / nonprofit-job-apply"
+      ],
+      "replaces": {
+        "inventory_id": 281,
+        "platform": "Algolia",
+        "official_url": "https://www.algolia.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 282,
+      "platform": "Doctors Without Borders Msf",
+      "platform_key": "doctors-without-borders-msf",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://doctorswithoutborders.org/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "nonprofit-charity / donation"
+      ],
+      "replaces": {
+        "inventory_id": 282,
+        "platform": "Supabase",
+        "official_url": "https://www.supabase.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 283,
+      "platform": "Formswift",
+      "platform_key": "formswift",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://formswift.com/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "academia-research / legal-docs"
+      ],
+      "replaces": {
+        "inventory_id": 283,
+        "platform": "Firebase Console",
+        "official_url": "https://www.firebaseconsole.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 284,
+      "platform": "Frontfundr",
+      "platform_key": "frontfundr",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://frontfundr.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "finance-investment / crowdfunding"
+      ],
+      "replaces": {
+        "inventory_id": 284,
+        "platform": "DigitalOcean",
+        "official_url": "https://www.digitalocean.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 285,
+      "platform": "FTC ReportFraud",
+      "platform_key": "ftc-reportfraud",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://reportfraud.ftc.gov/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "office-secretary-tasks / report-filing"
+      ],
+      "replaces": {
+        "inventory_id": 285,
+        "platform": "Linode",
+        "official_url": "https://www.linode.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 286,
+      "platform": "Globalgiving",
+      "platform_key": "globalgiving",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://globalgiving.org/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "nonprofit-charity / donation"
+      ],
+      "replaces": {
+        "inventory_id": 286,
+        "platform": "Udacity",
+        "official_url": "https://www.udacity.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 287,
+      "platform": "Idealist",
+      "platform_key": "idealist",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://idealist.org/"
+      ],
+      "versions": [
+        "v1",
+        "v2"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "nonprofit-charity / volunteer-signup"
+      ],
+      "replaces": {
+        "inventory_id": 287,
+        "platform": "Simplilearn",
+        "official_url": "https://www.simplilearn.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 288,
+      "platform": "Insureon",
+      "platform_key": "insureon",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://insureon.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "finance-investment / insurance"
+      ],
+      "replaces": {
+        "inventory_id": 288,
+        "platform": "Patreon",
+        "official_url": "https://www.patreon.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 289,
+      "platform": "Insurify",
+      "platform_key": "insurify",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://insurify.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "personal-management / insurance-compare"
+      ],
+      "replaces": {
+        "inventory_id": 289,
+        "platform": "Kickstarter",
+        "official_url": "https://www.kickstarter.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 290,
+      "platform": "Ioby",
+      "platform_key": "ioby",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://ioby.org/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "nonprofit-charity / community-crowdfund"
+      ],
+      "replaces": {
+        "inventory_id": 290,
+        "platform": "GoFundMe",
+        "official_url": "https://www.gofundme.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 292,
+      "platform": "Kanetix",
+      "platform_key": "kanetix",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://kanetix.ca/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "automotive-vehicle-services / car-insurance-compare"
+      ],
+      "replaces": {
+        "inventory_id": 292,
+        "platform": "AngelList Talent",
+        "official_url": "https://www.angellisttalent.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 293,
+      "platform": "Legalnature",
+      "platform_key": "legalnature",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://legalnature.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "government-civic / legal-docs"
+      ],
+      "replaces": {
+        "inventory_id": 293,
+        "platform": "Kick",
+        "official_url": "https://www.kick.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 294,
+      "platform": "Make A Wish",
+      "platform_key": "make-a-wish",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://wish.org/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "nonprofit-charity / volunteer-apply"
+      ],
+      "replaces": {
+        "inventory_id": 294,
+        "platform": "Canva Enterprise",
+        "official_url": "https://www.canvaenterprise.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 295,
+      "platform": "Plooto",
+      "platform_key": "plooto",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://plooto.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "finance-investment / business-payment"
+      ],
+      "replaces": {
+        "inventory_id": 295,
+        "platform": "Miro Enterprise",
+        "official_url": "https://www.miroenterprise.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 296,
+      "platform": "Redcross",
+      "platform_key": "redcross",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://redcross.org/"
+      ],
+      "versions": [
+        "v2"
+      ],
+      "task_count": 5,
+      "task_taxonomy": [
+        "charity / newsletter",
+        "charity / search",
+        "charity / training"
+      ],
+      "replaces": {
+        "inventory_id": 296,
+        "platform": "Brevo",
+        "official_url": "https://www.brevo.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 297,
+      "platform": "Trezor",
+      "platform_key": "trezor",
+      "topdown_category": "finance-civic-regulated",
+      "origins": [
+        "https://trezor.io/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "finance-investment / crypto-hardware"
+      ],
+      "replaces": {
+        "inventory_id": 297,
+        "platform": "Intercom Fin",
+        "official_url": "https://www.intercomfin.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 298,
+      "platform": "1Password Web",
+      "platform_key": "1password-web",
+      "topdown_category": "developer-cloud-infrastructure",
+      "origins": [
+        "https://1password.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "personal-management / account-security"
+      ],
+      "replaces": {
+        "inventory_id": 298,
+        "platform": "Akamai Cloud",
+        "official_url": "https://www.akamaicloud.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 299,
+      "platform": "Deleteme",
+      "platform_key": "deleteme",
+      "topdown_category": "developer-cloud-infrastructure",
+      "origins": [
+        "https://joindeleteme.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "deletion-revocation / data-deletion"
+      ],
+      "replaces": {
+        "inventory_id": 299,
+        "platform": "Oracle Cloud",
+        "official_url": "https://www.oraclecloud.com"
+      },
+      "reuses_matching_contract_id": false
+    },
+    {
+      "inventory_id": 300,
+      "platform": "IPVanish",
+      "platform_key": "ipvanish",
+      "topdown_category": "developer-cloud-infrastructure",
+      "origins": [
+        "https://ipvanish.com/"
+      ],
+      "versions": [
+        "v1"
+      ],
+      "task_count": 1,
+      "task_taxonomy": [
+        "personal-management / vpn-subscription"
+      ],
+      "replaces": {
+        "inventory_id": 300,
+        "platform": "SAP SuccessFactors",
+        "official_url": "https://www.sapsuccessfactors.com"
+      },
+      "reuses_matching_contract_id": false
+    }
+  ]
+}

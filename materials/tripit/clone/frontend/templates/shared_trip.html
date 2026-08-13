@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ trip.name }} · Shared trip · TripIt{% endblock %}
+{% block content %}
+<section class="page trip-detail trip-detail--shared">
+  <a class="backlink" href="/trips">All trips</a>
+
+  <header class="trip-detail__head">
+    <h1>{{ trip.name }}</h1>
+    <p class="trip-detail__dates">{{ trip.date_range }}</p>
+    {% if trip.destination %}<p class="trip-detail__dest">{{ trip.destination }}</p>{% endif %}
+    <p class="trip-detail__shared-note">Shared by {{ owner_name }} · you have {{ role_label }} access</p>
+  </header>
+
+  {% if timeline %}
+    <ol class="timeline">
+    {% for event in timeline %}
+      <li class="timeline__row timeline__row--{{ event.plan.plan_type }}">
+        <div class="timeline__when">{{ event.when or 'Unscheduled' }}</div>
+        <div class="timeline__body">
+          <span class="timeline__kind">{{ event.row_label }}</span>
+          <span class="timeline__title">{{ event.plan.title }}</span>
+          {% if show_sensitive and event.plan.details.confirmation_number %}
+            <span class="timeline__conf">Confirmation #{{ event.plan.details.confirmation_number }}</span>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+    </ol>
+  {% else %}
+    <div class="empty">
+      <h2>No plans yet</h2>
+      <p>This trip doesn't have any plans to show.</p>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

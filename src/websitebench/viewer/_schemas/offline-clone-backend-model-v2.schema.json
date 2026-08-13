@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/offline-clone.backend-model.v2.json",
+  "title": "ClawBench offline clone backend model v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "site_id", "status", "profile", "database",
+    "auth_semantics", "common_capabilities", "capabilities",
+    "parity_assessments"
+  ],
+  "properties": {
+    "schema_version": {"const": "offline-clone.backend-model.v2"},
+    "site_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "status": {"enum": ["draft", "verified"]},
+    "profile": {"const": "offline-benchmark"},
+    "database": {"$ref": "offline-clone-backend-model.schema.json#/$defs/database"},
+    "auth_semantics": {"$ref": "offline-clone-backend-model.schema.json#/$defs/auth_semantics"},
+    "r1_subject_binding": {"$ref": "offline-clone-backend-model.schema.json#/$defs/r1_subject_binding"},
+    "runtime_disposition": {"$ref": "offline-clone-backend-model.schema.json#/$defs/runtime_disposition"},
+    "common_capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["account_registration", "account_sign_in", "session_lifecycle", "password_recovery", "email_delivery"],
+      "properties": {
+        "account_registration": {"$ref": "offline-clone-backend-model.schema.json#/$defs/id"},
+        "account_sign_in": {"$ref": "offline-clone-backend-model.schema.json#/$defs/id"},
+        "session_lifecycle": {"$ref": "offline-clone-backend-model.schema.json#/$defs/id"},
+        "password_recovery": {"$ref": "offline-clone-backend-model.schema.json#/$defs/id"},
+        "email_delivery": {"$ref": "offline-clone-backend-model.schema.json#/$defs/id"}
+      }
+    },
+    "capabilities": {
+      "type": "array", "minItems": 5,
+      "items": {"$ref": "offline-clone-backend-model.schema.json#/$defs/capability"}
+    },
+    "parity_assessments": {
+      "type": "array", "minItems": 5,
+      "items": {"$ref": "#/$defs/parity_assessment"}
+    }
+  },
+  "$defs": {
+    "parity_status": {"enum": ["complete", "partial", "unavailable", "not-applicable"]},
+    "parity_dimension": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "source_tier", "evidence_refs", "known_differences"],
+      "properties": {
+        "status": {"$ref": "#/$defs/parity_status"},
+        "source_tier": {"enum": ["direct-source", "source-inferred", "local-fixture", "configured-unavailable", "human-directed-unavailable"]},
+        "evidence_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "known_differences": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 2000}}
+      }
+    },
+    "parity_assessment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["capability_id", "functional", "behavioral", "data_model", "journey_frozen", "invariant_frozen", "evidence_hashes"],
+      "properties": {
+        "capability_id": {"$ref": "offline-clone-backend-model.schema.json#/$defs/id"},
+        "functional": {"$ref": "#/$defs/parity_dimension"},
+        "behavioral": {"$ref": "#/$defs/parity_dimension"},
+        "data_model": {"$ref": "#/$defs/parity_dimension"},
+        "journey_frozen": {"type": "boolean"},
+        "invariant_frozen": {"type": "boolean"},
+        "evidence_hashes": {
+          "type": "object",
+          "propertyNames": {"type": "string", "minLength": 1, "maxLength": 500},
+          "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    }
+  }
+}

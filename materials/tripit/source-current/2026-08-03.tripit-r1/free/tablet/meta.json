@@ -1,0 +1,45 @@
+{
+  "checkpoint": "free",
+  "family": "marketing",
+  "priority": "P1",
+  "viewport": "tablet",
+  "requested_url": "https://www.tripit.com/web/free",
+  "final_url": "https://www.tripit.com/web/free",
+  "title": "TripIt - A single (free) itinerary created for you in seconds",
+  "body_text_len": 2772,
+  "frames": 3,
+  "frame_sha256": [
+    "18480945277c5605e75e2dc1988c0ad8154a085de73cc5ea20794bd08104525a",
+    "18480945277c5605e75e2dc1988c0ad8154a085de73cc5ea20794bd08104525a",
+    "18480945277c5605e75e2dc1988c0ad8154a085de73cc5ea20794bd08104525a"
+  ],
+  "frames_identical": true,
+  "link_count": 36,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 1024,
+      "height": 62
+    },
+    "main": {
+      "selector": "[role=main]",
+      "x": 0,
+      "y": 127,
+      "width": 1024,
+      "height": 3493
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 32,
+      "y": 3620,
+      "width": 960,
+      "height": 501
+    },
+    "form": null,
+    "document_height": 4121
+  }
+}

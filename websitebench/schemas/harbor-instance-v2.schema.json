@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/harbor-instance-v2.schema.json",
+  "title": "WebsiteBench Harbor deterministic one-per-site instance manifest v2",
+  "description": "The sole benchmark instance for one site. instance_id and its directory name must equal the referenced site_id; cross-file equality is enforced by the loader.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "instance_id",
+    "site_manifest",
+    "task",
+    "metadata",
+    "budgets",
+    "paths",
+    "suites",
+    "reference_observations",
+    "calibration"
+  ],
+  "properties": {
+    "schema_version": {"const": "websitebench.harbor.instance.v2"},
+    "instance_id": {"$ref": "#/$defs/slug", "description": "Must equal the referenced site_id."},
+    "site_manifest": {"$ref": "#/$defs/relative_path", "description": "The unique site manifest paired with this instance."},
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["category", "type", "language"],
+      "properties": {
+        "category": {"const": "web-development"},
+        "type": {"const": "fullstack-reconstruction"},
+        "language": {"const": "web"}
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["author_name", "author_email", "difficulty"],
+      "properties": {
+        "author_name": {"type": "string", "minLength": 1, "maxLength": 120},
+        "author_email": {"type": "string", "format": "email", "maxLength": 254},
+        "difficulty": {"enum": ["medium", "hard", "expert"]},
+        "tags": {"type": "array", "uniqueItems": true, "maxItems": 20, "items": {"$ref": "#/$defs/slug"}}
+      }
+    },
+    "budgets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agent_timeout_sec", "verifier_timeout_sec", "build_timeout_sec", "cpus", "memory_mb", "storage_mb"],
+      "properties": {
+        "agent_timeout_sec": {"type": "integer", "minimum": 60, "maximum": 86400},
+        "verifier_timeout_sec": {"type": "integer", "minimum": 60, "maximum": 86400},
+        "build_timeout_sec": {"type": "integer", "minimum": 60, "maximum": 86400},
+        "cpus": {"type": "integer", "minimum": 1, "maximum": 32},
+        "memory_mb": {"type": "integer", "minimum": 256, "maximum": 262144},
+        "storage_mb": {"type": "integer", "minimum": 1024, "maximum": 1048576}
+      }
+    },
+    "paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instruction", "public", "verifier", "hidden_fixtures", "oracle_solution"],
+      "properties": {
+        "instruction": {"$ref": "#/$defs/relative_path"},
+        "public": {"$ref": "#/$defs/relative_path"},
+        "verifier": {"$ref": "#/$defs/relative_path"},
+        "hidden_fixtures": {"$ref": "#/$defs/relative_path"},
+        "oracle_solution": {"$ref": "#/$defs/relative_path"}
+      }
+    },
+    "suites": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task", "visual", "cicd"],
+      "properties": {
+        "task": {"$ref": "#/$defs/relative_path"},
+        "visual": {"$ref": "#/$defs/relative_path"},
+        "cicd": {"$ref": "#/$defs/relative_path"}
+      }
+    },
+    "reference_observations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "artifact"],
+      "properties": {
+        "status": {"enum": ["pending", "captured"]},
+        "artifact": {"$ref": "#/$defs/relative_path"}
+      }
+    },
+    "opencli_profile": {"type": "string", "minLength": 1, "maxLength": 120, "pattern": "^[a-zA-Z0-9._-]+$"},
+    "calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nop_max_task_score", "oracle_task_score", "oracle_min_visual_score", "oracle_cicd_score", "repeat_deterministic"],
+      "properties": {
+        "nop_max_task_score": {"type": "number", "minimum": 0, "maximum": 5},
+        "oracle_task_score": {"const": 100},
+        "oracle_min_visual_score": {"type": "number", "minimum": 95, "maximum": 100},
+        "oracle_cicd_score": {"const": 100},
+        "repeat_deterministic": {"const": true}
+      }
+    }
+  },
+  "$defs": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 100},
+    "relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?![A-Za-z]:)(?![\\\\/])(?!.*(?:^|[\\\\/])\\.\\.(?:[\\\\/]|$)).+"
+    }
+  }
+}

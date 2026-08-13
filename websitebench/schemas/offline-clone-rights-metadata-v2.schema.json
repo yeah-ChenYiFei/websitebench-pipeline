@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/offline-clone.rights-metadata.v2.json",
+  "title": "Optional redistribution-rights metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "site_id", "categories"],
+  "properties": {
+    "schema_version": {"const": "offline-clone.rights-metadata.v2"},
+    "site_id": {"$ref": "#/$defs/id"},
+    "categories": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trademark", "images", "fonts", "content", "code"],
+      "properties": {
+        "trademark": {"$ref": "#/$defs/category"},
+        "images": {"$ref": "#/$defs/category"},
+        "fonts": {"$ref": "#/$defs/category"},
+        "content": {"$ref": "#/$defs/category"},
+        "code": {"$ref": "#/$defs/category"}
+      }
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "path": {"type": "string", "minLength": 1, "maxLength": 800, "pattern": "^(?![A-Za-z]:|/|\\\\|.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._<>/-]+$"},
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes"],
+      "properties": {"path": {"$ref": "#/$defs/path"}, "bytes": {"type": "integer", "minimum": 1}}
+    },
+    "category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "notes", "evidence"],
+      "properties": {
+        "status": {"enum": ["documented", "not-documented", "not-applicable"]},
+        "notes": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "evidence": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/artifact"}}
+      }
+    }
+  }
+}

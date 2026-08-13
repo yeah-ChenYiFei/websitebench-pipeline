@@ -1,0 +1,1 @@
+!function(){"use strict";window.TRIPIT.util.Utils=function(){this.isUnicodeSupported=function(){return"unicode"in new RegExp},this.isIE=function(){var n=navigator.userAgent;return!!document.documentMode||-1<n.indexOf("MSIE ")||-1<n.indexOf("Trident/")}}}(jQuery);

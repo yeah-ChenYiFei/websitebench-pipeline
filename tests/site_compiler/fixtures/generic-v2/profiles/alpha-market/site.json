@@ -1,0 +1,43 @@
+{
+  "schema_version": "offline-clone.site-profile.v1",
+  "inventory_id": 1001,
+  "site_id": "alpha-market",
+  "display_name": "Alpha Market",
+  "official_url": "https://alpha.example.test/",
+  "source_origin_status": "valid",
+  "source_origins": [
+    "https://alpha.example.test/"
+  ],
+  "inventory_metadata": {
+    "category": "Retail",
+    "frontend_complexity": "High",
+    "backend_statefulness": "High",
+    "authentication": "Required",
+    "agent_task_family": "Hard"
+  },
+  "classification": {
+    "batch_family_id": "commerce-marketplace",
+    "archetype_pack_id": "retail-commerce-ordering",
+    "overlay_pack_ids": [
+      "admin",
+      "auth",
+      "content",
+      "notifications",
+      "payment",
+      "reviews-reputation",
+      "search-discovery"
+    ],
+    "confidence": "high",
+    "evidence_tier": "inferred",
+    "confirmation_status": "requires-r1-confirmation",
+    "rationale": "Fixture retail capabilities exercise the generic compiler."
+  },
+  "locale_defaults": {
+    "locale": "en-US",
+    "timezone": null,
+    "currency": "USD"
+  },
+  "additional_pack_ids": [],
+  "overrides": [],
+  "blockers": []
+}

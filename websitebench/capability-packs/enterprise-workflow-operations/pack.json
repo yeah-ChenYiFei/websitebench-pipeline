@@ -1,0 +1,333 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque work-item identity; exact source key and ownership require R1 confirmation",
+            "name": "work-item",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque organization identity; exact source key and ownership require R1 confirmation",
+            "name": "organization",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque record identity; exact source key and ownership require R1 confirmation",
+            "name": "record",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque pipeline-queue identity; exact source key and ownership require R1 confirmation",
+            "name": "pipeline-queue",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque stage identity; exact source key and ownership require R1 confirmation",
+            "name": "stage",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque assignee identity; exact source key and ownership require R1 confirmation",
+            "name": "assignee",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque form-submission identity; exact source key and ownership require R1 confirmation",
+            "name": "form-submission",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque rule-automation identity; exact source key and ownership require R1 confirmation",
+            "name": "rule-automation",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque approval identity; exact source key and ownership require R1 confirmation",
+            "name": "approval",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque activity identity; exact source key and ownership require R1 confirmation",
+            "name": "activity",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque report identity; exact source key and ownership require R1 confirmation",
+            "name": "report",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "enterprise-workflow-operations-work-item",
+        "label": "enterprise-workflow-operations work_item lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "角色、指派、合法阶段转移、SLA 时间和关闭/重开由服务端强制。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "new",
+            "triaged",
+            "assigned",
+            "in-progress",
+            "waiting",
+            "resolved",
+            "closed",
+            "reopened"
+          ],
+          "transitions": [
+            {
+              "from": "new",
+              "to": "triaged",
+              "trigger": "server-authorized enterprise-workflow-operations work_item lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "triaged",
+              "to": "assigned",
+              "trigger": "server-authorized enterprise-workflow-operations work_item lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "assigned",
+              "to": "in-progress",
+              "trigger": "server-authorized enterprise-workflow-operations work_item lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "in-progress",
+              "to": "waiting",
+              "trigger": "server-authorized enterprise-workflow-operations work_item lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "waiting",
+              "to": "resolved",
+              "trigger": "server-authorized enterprise-workflow-operations work_item lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "resolved",
+              "to": "closed",
+              "trigger": "server-authorized enterprise-workflow-operations work_item lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "closed",
+              "to": "reopened",
+              "trigger": "server-authorized enterprise-workflow-operations work_item lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque automation-run identity; exact source key and ownership require R1 confirmation",
+            "name": "automation-run",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque organization identity; exact source key and ownership require R1 confirmation",
+            "name": "organization",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque record identity; exact source key and ownership require R1 confirmation",
+            "name": "record",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque pipeline-queue identity; exact source key and ownership require R1 confirmation",
+            "name": "pipeline-queue",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque stage identity; exact source key and ownership require R1 confirmation",
+            "name": "stage",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque assignee identity; exact source key and ownership require R1 confirmation",
+            "name": "assignee",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque form-submission identity; exact source key and ownership require R1 confirmation",
+            "name": "form-submission",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque rule-automation identity; exact source key and ownership require R1 confirmation",
+            "name": "rule-automation",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque approval identity; exact source key and ownership require R1 confirmation",
+            "name": "approval",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque activity identity; exact source key and ownership require R1 confirmation",
+            "name": "activity",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque report identity; exact source key and ownership require R1 confirmation",
+            "name": "report",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "enterprise-workflow-operations-automation-run",
+        "label": "enterprise-workflow-operations automation_run lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "触发去重、重试上限、审计和外部效果 truthfulness 不得由前端伪造。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "queued",
+            "running",
+            "succeeded",
+            "failed",
+            "retrying",
+            "cancelled"
+          ],
+          "transitions": [
+            {
+              "from": "queued",
+              "to": "running",
+              "trigger": "server-authorized enterprise-workflow-operations automation_run lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "running",
+              "to": "succeeded",
+              "trigger": "server-authorized enterprise-workflow-operations automation_run lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "succeeded",
+              "to": "failed",
+              "trigger": "server-authorized enterprise-workflow-operations automation_run lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "failed",
+              "to": "retrying",
+              "trigger": "server-authorized enterprise-workflow-operations automation_run lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "retrying",
+              "to": "cancelled",
+              "trigger": "server-authorized enterprise-workflow-operations automation_run lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": "collaboration-enterprise",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "enterprise-workflow-entry",
+        "label": "Entry route family for 以可配置记录和队列驱动 CRM、客服、营销、表单、自动化、HR、财务运营或内部审批。",
+        "priority": "p0"
+      },
+      {
+        "id": "enterprise-workflow-discover",
+        "label": "Discover route family for 以可配置记录和队列驱动 CRM、客服、营销、表单、自动化、HR、财务运营或内部审批。",
+        "priority": "p0"
+      },
+      {
+        "id": "enterprise-workflow-detail",
+        "label": "Detail route family for 以可配置记录和队列驱动 CRM、客服、营销、表单、自动化、HR、财务运营或内部审批。",
+        "priority": "p0"
+      },
+      {
+        "id": "enterprise-workflow-commit",
+        "label": "Commit route family for 以可配置记录和队列驱动 CRM、客服、营销、表单、自动化、HR、财务运营或内部审批。",
+        "priority": "p0"
+      },
+      {
+        "id": "enterprise-workflow-confirm",
+        "label": "Confirm route family for 以可配置记录和队列驱动 CRM、客服、营销、表单、自动化、HR、财务运营或内部审批。",
+        "priority": "p0"
+      },
+      {
+        "id": "enterprise-workflow-recover",
+        "label": "Recover route family for 以可配置记录和队列驱动 CRM、客服、营销、表单、自动化、HR、财务运营或内部审批。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "enterprise-workflow global navigation",
+      "enterprise-workflow primary content",
+      "enterprise-workflow decision and action region",
+      "enterprise-workflow confirmation and aftercare"
+    ],
+    "state_families": [
+      "work_item",
+      "automation_run",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "enterprise-workflow-operations",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "以可配置记录和队列驱动 CRM、客服、营销、表单、自动化、HR、财务运营或内部审批。",
+  "title": "Enterprise Workflow Operations",
+  "verification": {
+    "coverage_dimensions": [
+      "enterprise-workflow-operations actor x action x state x outcome",
+      "enterprise-workflow-operations entity ownership and durable visibility",
+      "enterprise-workflow-operations valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "租户/RBAC、记录版本、唯一约束、队列和阶段转移。",
+      "表单验证、规则执行、审批、审计日志和可重复报表。",
+      "通知/导出/集成通过本地适配器与 outbox 表达真实成功或失败。"
+    ]
+  },
+  "version": "1.0.0"
+}

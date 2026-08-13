@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/review-machine-evidence.v1.json",
+  "title": "Current machine evidence summary for R4",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "site_id",
+    "track",
+    "release_profile",
+    "generated_at",
+    "subject_identity_sha256",
+    "status",
+    "current",
+    "checks",
+    "harbor_calibration"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "clawbench.review-machine-evidence.v1"
+    },
+    "site_id": {
+      "$ref": "#/$defs/id"
+    },
+    "track": {
+      "enum": [
+        "clone",
+        "harbor"
+      ]
+    },
+    "release_profile": {
+      "$ref": "#/$defs/id"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "subject_identity_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "status": {
+      "enum": [
+        "green",
+        "red"
+      ]
+    },
+    "current": {
+      "type": "boolean"
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000,
+      "items": {
+        "$ref": "#/$defs/check"
+      }
+    },
+    "harbor_calibration": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/calibration"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "track": {
+            "const": "harbor"
+          }
+        },
+        "required": [
+          "track"
+        ]
+      },
+      "then": {
+        "properties": {
+          "harbor_calibration": {
+            "$ref": "#/$defs/calibration"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "harbor_calibration": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 200
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "current",
+        "artifact"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "status": {
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        },
+        "current": {
+          "type": "boolean"
+        },
+        "artifact": {
+          "$ref": "#/$defs/artifact"
+        }
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nop_score",
+        "nop_max_score",
+        "oracle_scores",
+        "oracle_min_score",
+        "oracle_repeat_exact",
+        "visibility_audit_passed",
+        "network_isolation_passed",
+        "artifacts"
+      ],
+      "properties": {
+        "nop_score": {
+          "type": "number"
+        },
+        "nop_max_score": {
+          "type": "number"
+        },
+        "oracle_scores": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "oracle_min_score": {
+          "type": "number"
+        },
+        "oracle_repeat_exact": {
+          "type": "boolean"
+        },
+        "visibility_audit_passed": {
+          "type": "boolean"
+        },
+        "network_isolation_passed": {
+          "type": "boolean"
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        }
+      }
+    }
+  }
+}

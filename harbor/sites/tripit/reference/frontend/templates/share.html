@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Sharing · {{ trip.name }} · TripIt{% endblock %}
+{% block content %}
+<section class="page share">
+  <a class="backlink" href="/trips/{{ trip.trip_id }}">{{ trip.name }}</a>
+
+  <div class="page__head">
+    <h1>Share this trip</h1>
+  </div>
+
+  {% if errors %}
+    <ul class="form-errors" role="alert">
+      {% for err in errors %}<li>{{ err }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  <form class="form share-invite" method="post" action="/trips/{{ trip.trip_id }}/share">
+    <label class="field">
+      <span class="field__label">Invite by email</span>
+      <input class="field__input" type="email" name="invitee_email"
+             value="{{ values.invitee_email or '' }}" placeholder="traveler@example.com"
+             autocomplete="off" required>
+    </label>
+    <label class="field">
+      <span class="field__label">Role</span>
+      <select class="field__input" name="role">
+        {% for role in roles %}
+          <option value="{{ role }}" {% if values.role == role %}selected{% endif %}>
+            {{ role_labels.get(role, role) }}
+          </option>
+        {% endfor %}
+      </select>
+    </label>
+    <label class="field field--check">
+      <input type="checkbox" name="show_sensitive" value="on"
+             {% if values.show_sensitive %}checked{% endif %}>
+      <span>Show confirmation and ticket numbers to this person</span>
+    </label>
+    <div class="form__actions">
+      <button type="submit" class="btn btn--primary">Send invitation</button>
+    </div>
+  </form>
+
+  {% if shares %}
+    <ul class="share-list">
+      {% for share in shares %}
+        <li class="share-card share-card--{{ share.status }}">
+          <div class="share-card__who">
+            <span class="share-card__email">{{ share.invitee_email }}</span>
+            <span class="share-card__status">{{ share.status }}</span>
+          </div>
+          {% if share.status == 'revoked' %}
+            <form class="share-card__reinvite" method="post"
+                  action="/trips/{{ trip.trip_id }}/share">
+              <input type="hidden" name="invitee_email" value="{{ share.invitee_email }}">
+              <input type="hidden" name="role" value="{{ share.role }}">
+              {% if share.show_sensitive %}<input type="hidden" name="show_sensitive" value="on">{% endif %}
+              <button type="submit" class="linkish">Re-invite</button>
+            </form>
+          {% else %}
+            <div class="share-card__controls">
+              <form method="post" action="/shares/{{ share.share_id }}/role">
+                <label class="share-card__role">
+                  <span class="field__label">Role</span>
+                  <select class="field__input" name="role" onchange="this.form.submit()">
+                    {% for role in roles %}
+                      <option value="{{ role }}" {% if share.role == role %}selected{% endif %}>
+                        {{ role_labels.get(role, role) }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                </label>
+                <noscript><button type="submit" class="linkish">Update role</button></noscript>
+              </form>
+              <form method="post" action="/shares/{{ share.share_id }}/sensitive">
+                {% if not share.show_sensitive %}<input type="hidden" name="show_sensitive" value="on">{% endif %}
+                <button type="submit" class="linkish">
+                  {% if share.show_sensitive %}Hide sensitive details{% else %}Show sensitive details{% endif %}
+                </button>
+              </form>
+              <form method="post" action="/shares/{{ share.share_id }}/revoke">
+                <button type="submit" class="linkish linkish--danger">Revoke</button>
+              </form>
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty">
+      <h2>Not shared yet</h2>
+      <p>Invite a travel companion by email to give them access to this trip.</p>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

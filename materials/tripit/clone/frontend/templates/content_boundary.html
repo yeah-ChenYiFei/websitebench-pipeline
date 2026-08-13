@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ heading }} · TripIt{% endblock %}
+{% block content %}
+<section class="page content-boundary">
+  <h1>{{ heading }}</h1>
+  <p>{{ explanation }}</p>
+  <p>Nothing was requested from another origin to tell you this — the answer is
+     simply that the page you asked for was not built here.</p>
+  <h2>Pages you can read</h2>
+  <ul class="content-boundary__index">
+    <li><a href="/">TripIt home</a></li>
+    <li><a href="/web/free">TripIt (free)</a></li>
+    <li><a href="/web/pro">TripIt Pro</a></li>
+    <li><a href="/web/free/how-it-works">How it works</a></li>
+    <li><a href="/web/pro/pricing">Pricing</a></li>
+    <li><a href="/web/pro/sap-concur">SAP Concur</a></li>
+    <li><a href="/web/free/download">Download</a></li>
+    <li><a href="/web/security">Security</a></li>
+    <li><a href="/web/blog">Blog</a></li>
+    <li><a href="/web/traveler-resource-center">Traveler Resource Center</a></li>
+    <li><a href="/uhp/userAgreement">User Agreement</a></li>
+    <li><a href="/uhp/privacyPolicy">Privacy Statement</a></li>
+    <li><a href="/uhp/doNotShare">Do Not Share/Sell My Personal Information</a></li>
+  </ul>
+</section>
+{% endblock %}

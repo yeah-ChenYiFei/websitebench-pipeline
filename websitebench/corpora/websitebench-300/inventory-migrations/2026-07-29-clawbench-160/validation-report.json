@@ -1,0 +1,69 @@
+{
+  "schema_version": "websitebench.inventory-migration-validation.v1",
+  "migration_id": "clawbench-160-topdown-10-20260729",
+  "validated_at": "2026-07-29",
+  "checks": {
+    "inventory_count": 300,
+    "retained_workbook_count": 140,
+    "clawbench_contract_count": 160,
+    "fine_category_count": 53,
+    "topdown_category_counts": {
+      "commerce-retail": 30,
+      "developer-cloud-infrastructure": 30,
+      "finance-civic-regulated": 30,
+      "health-wellness-personal": 30,
+      "learning-knowledge": 30,
+      "local-food-home-property": 30,
+      "media-entertainment": 30,
+      "social-community-reviews": 30,
+      "travel-mobility-events": 30,
+      "work-business": 30
+    },
+    "profile_count": 300,
+    "profiles_with_migration_blocker": 300,
+    "compiled_plan_count": 300,
+    "compiled_lock_count": 300,
+    "compiled_explain_count": 300,
+    "dispatch_denominators": {
+      "blocked": 300,
+      "ready": 0,
+      "total": 300
+    }
+  },
+  "commands": [
+    {
+      "command": "clawbench-site check --target r1 --out websitebench/corpora/websitebench-300/compiled/r1",
+      "result": "current"
+    },
+    {
+      "command": "clawbench-site dispatch --target r1 --check",
+      "result": "current"
+    },
+    {
+      "command": "clawbench-workflow status",
+      "result": "valid; 300 profile-blocked"
+    },
+    {
+      "command": "python -m pytest tests/site_compiler tests/workflow -q",
+      "result": "102 passed"
+    },
+    {
+      "command": "ruff check <migration-related Python files>",
+      "result": "passed"
+    },
+    {
+      "command": "clawbench-project validate",
+      "result": "valid"
+    },
+    {
+      "command": "clawbench-workflow check-release",
+      "result": "expected exit 3; 0/300 release-ready"
+    },
+    {
+      "command": "clawbench-project check-release --scope corpus:websitebench-300",
+      "result": "expected exit 3; not_ready"
+    }
+  ],
+  "release_readiness": "not-ready-fail-closed",
+  "remaining_required_work": "Per-site fresh R1, source/traces comparison, clone rebuild or revalidation, R2-R4, six machine evidence classes, Harbor NOP/oracle x2, visibility/network audit, rights disposition, and scoped release checks."
+}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Documents · {{ trip.name }} · TripIt{% endblock %}
+{% block content %}
+<section class="page documents">
+  <a class="backlink" href="/trips/{{ trip.trip_id }}">{{ trip.name }}</a>
+
+  <div class="page__head">
+    <h1>Documents</h1>
+  </div>
+
+  {% if errors %}
+    <ul class="form-errors" role="alert">
+      {% for err in errors %}<li>{{ err }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  <form class="form doc-upload" method="post"
+        action="/trips/{{ trip.trip_id }}/documents"
+        enctype="multipart/form-data">
+    <label class="field">
+      <span class="field__label">Attach a document</span>
+      <input class="field__input" type="file" name="document" accept="{{ accept }}" required>
+    </label>
+    <p class="doc-upload__hint">PDF or image, up to 2&nbsp;MB. Boarding passes, hotel
+      confirmations, and travel documents stay with this trip.</p>
+    <div class="form__actions">
+      <button type="submit" class="btn btn--primary">Upload document</button>
+    </div>
+  </form>
+
+  {% if documents %}
+    <ul class="doc-list">
+      {% for document in documents %}
+        <li class="doc-card">
+          <a class="doc-card__name" href="/documents/{{ document.document_id }}"
+             target="_blank" rel="noopener">{{ document.filename }}</a>
+          <span class="doc-card__meta">{{ document.size_label }}</span>
+          <div class="doc-card__actions">
+            <a class="linkish" href="/documents/{{ document.document_id }}/download">Download</a>
+            <form method="post" action="/documents/{{ document.document_id }}/delete">
+              <button type="submit" class="linkish linkish--danger">Delete</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty">
+      <h2>No documents yet</h2>
+      <p>Upload a PDF or photo of a booking to keep it with this trip.</p>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

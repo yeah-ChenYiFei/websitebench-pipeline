@@ -1,0 +1,109 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque external-effect identity; exact source key and ownership require R1 confirmation",
+            "name": "external-effect",
+            "owner_scope": "system",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "external-effects-lifecycle",
+        "label": "external-effects lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "explicit local-only truth",
+          "outbox",
+          "failure/retry",
+          "no production calls"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "recorded",
+            "pending",
+            "succeeded",
+            "failed",
+            "reversed"
+          ],
+          "transitions": [
+            {
+              "from": "recorded",
+              "to": "pending",
+              "trigger": "server-authorized external-effects lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "pending",
+              "to": "succeeded",
+              "trigger": "server-authorized external-effects lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "succeeded",
+              "to": "failed",
+              "trigger": "server-authorized external-effects lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "failed",
+              "to": "reversed",
+              "trigger": "server-authorized external-effects lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "truthful-local-effect-outbox"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "external-effects keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "external-effects-surface",
+        "label": "external-effects route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "external-effects surface"
+    ],
+    "state_families": [
+      "external-effects loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "external-effects",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "邮件、短信、支付、部署、视频、物流等生产外部服务的本地适配器。",
+  "title": "External Effects overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "external-effects actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "explicit local-only truth",
+      "outbox",
+      "failure/retry",
+      "no production calls"
+    ]
+  },
+  "version": "1.0.0"
+}

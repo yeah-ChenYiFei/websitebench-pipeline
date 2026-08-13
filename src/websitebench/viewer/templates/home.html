@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Benchmark overview{% endblock %}
+{% block content %}
+{% set featured = categories[0].sites[0] if categories and categories[0].sites else none %}
+<div class="page benchmark-home">
+  <section class="reconstruction-hero">
+    <div class="reconstruction-copy">
+      <p class="eyebrow">Agent website reconstruction benchmark</p>
+      <h1>Can an agent rebuild a website it can only <em>explore?</em></h1>
+      <p class="hero-lede">WebsiteBench gives an agent an isolated offline website—not its source code. The agent must interact with it, infer its behavior, and produce a new runnable clone. This viewer makes the input website, the generated clone, and every score inspectable.</p>
+      <div class="phase-pills">
+        <span class="phase-live"><i></i> Dataset construction · active</span>
+        <span class="phase-empty"><i></i> Agent experiments · not started</span>
+      </div>
+      <div class="hero-actions"><a class="primary button" href="/tasks">Explore the offline website</a><a class="secondary button" href="/methodology">How evaluation works</a></div>
+    </div>
+    {% if featured and featured.showcase %}
+    <a class="hero-browser" href="/tasks/{{ featured.key }}" aria-label="Open the Amazon Shopping offline website showcase">
+      <div class="browser-bar"><span></span><span></span><span></span><code>offline.amazon.local</code></div>
+      <img src="{{ featured.showcase.hero_image }}" alt="Amazon Shopping offline reference website">
+      <div class="browser-caption"><span><strong>Amazon Shopping</strong> · worked example</span><span>Open evidence →</span></div>
+    </a>
+    {% else %}
+    <div class="hero-browser hero-browser-empty"><div><strong>Offline website preview</strong><span>Waiting for the first accepted dataset item.</span></div></div>
+    {% endif %}
+  </section>
+
+  <section class="benchmark-pipeline" aria-label="WebsiteBench experiment pipeline">
+    <article class="is-ready"><div class="pipeline-index">01</div><div><span class="pipeline-state">Available now</span><h2>Offline reference website</h2><p>A stateful, isolated server the agent can inspect only through interaction.</p></div></article>
+    <div class="pipeline-arrow" aria-hidden="true">→</div>
+    <article class="is-future"><div class="pipeline-index">02</div><div><span class="pipeline-state">Reserved</span><h2>Agent exploration</h2><p>Browser actions, visited states, tool traces, and resource use will appear here.</p></div></article>
+    <div class="pipeline-arrow" aria-hidden="true">→</div>
+    <article class="is-future"><div class="pipeline-index">03</div><div><span class="pipeline-state">Reserved</span><h2>Generated clone</h2><p>The new runnable server produced by each evaluated agent.</p></div></article>
+    <div class="pipeline-arrow" aria-hidden="true">→</div>
+    <article class="is-future"><div class="pipeline-index">04</div><div><span class="pipeline-state">Reserved</span><h2>Multimodal scoring</h2><p>Screenshots, interaction replay, terminal states, robustness, and efficiency.</p></div></article>
+  </section>
+
+  {% if featured and featured.showcase %}
+  <section class="featured-site">
+    <div class="section-heading featured-heading">
+      <div><p class="eyebrow">Dataset item 01 · accepted</p><h2>One complete offline website, fully inspectable</h2><p>Amazon is the current worked example. The dataset is intentionally sparse while additional website categories are still being built.</p></div>
+      <a href="/tasks/{{ featured.key }}">Open full observatory →</a>
+    </div>
+    <div class="featured-grid">
+      <a class="featured-visual" href="/tasks/{{ featured.key }}#visual-evidence"><img loading="lazy" src="{{ featured.showcase.hero_image }}" alt="Amazon Shopping home page in the offline reference server"><span>Standard offline reference · accepted</span></a>
+      <div class="featured-facts">
+        <div class="fact-lead"><span>Purpose</span><p>A bounded shopping environment spanning discovery, product configuration, identity, checkout, orders, returns, reviews, and recovery.</p></div>
+        <div class="coverage-mosaic">
+          <article><strong>{{ featured.counts.routes }}</strong><span>Route families</span></article>
+          <article><strong>{{ featured.counts.states }}</strong><span>Interaction states</span></article>
+          <article><strong>{{ featured.counts.checkpoints }}</strong><span>Checkpoints</span></article>
+          <article><strong>{{ featured.counts.assets }}</strong><span>Local assets</span></article>
+        </div>
+        <div class="journey-chips"><span>Success journey</span><span>Failure journey</span><span>Recovery journey</span></div>
+        <div class="dataset-separation"><strong>Calibration ≠ agent score</strong><p>The source-to-offline comparisons below certify the benchmark input. They are not a model result.</p></div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="section-heading roadmap-heading"><div><p class="eyebrow">Corpus roadmap</p><h2>More website categories will be added here</h2></div><span>{{ summary.benchmark_site_count }} available · 3 reserved</span></section>
+  <div class="dataset-slots">
+    {% if featured %}<a class="dataset-slot slot-live" href="/tasks/{{ featured.key }}"><span>01</span><div><strong>{{ featured.display_name }}</strong><p>{{ featured.product_type|replace('-', ' ')|title }}</p></div><i>Accepted</i></a>{% endif %}
+    {% for number in ['02','03','04'] %}<article class="dataset-slot slot-empty"><span>{{ number }}</span><div><strong>Future website</strong><p>Category and scope not assigned</p></div><i>Reserved</i></article>{% endfor %}
+  </div>
+
+  <section class="score-preview panel">
+    <div class="section-heading"><div><p class="eyebrow">Future experiment output</p><h2>Every agent run will stay explainable</h2></div><a href="/results">Open scoring workspace →</a></div>
+    <div class="score-blueprint">
+      {% for dimension in ['Visual fidelity','Interaction fidelity','Journey completion','Robustness','Efficiency'] %}
+      <article><span>{{ dimension }}</span><strong>—</strong><div></div><small>Awaiting first agent run</small></article>
+      {% endfor %}
+    </div>
+    <div class="empty-run-line"><span class="empty-run-icon">◎</span><div><strong>No agent reconstruction has been evaluated yet.</strong><p>Model names, generated clones, replays, and scores remain blank until real experiment reports are added.</p></div></div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/offline-clone.visual-stability-calibration-spec.v1.json",
+  "title": "Source self-stability visual threshold calibration spec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "site_id", "rows"],
+  "properties": {
+    "schema_version": {"const": "offline-clone.visual-stability-calibration-spec.v1"},
+    "site_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/row"}
+    }
+  },
+  "$defs": {
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000,
+      "pattern": "^(?![A-Za-z]:|/|\\\\|.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height"],
+      "properties": {
+        "x": {"type": "integer", "minimum": 0},
+        "y": {"type": "integer", "minimum": 0},
+        "width": {"type": "integer", "minimum": 1},
+        "height": {"type": "integer", "minimum": 1}
+      }
+    },
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "region", "source_samples", "ignore_regions"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9]+(?:[._:-][a-z0-9]+)*$"},
+        "region": {"enum": ["header", "main", "action", "overlay", "footer"]},
+        "source_samples": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path"],
+            "properties": {"path": {"$ref": "#/$defs/path"}}
+          }
+        },
+        "ignore_regions": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/region"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}{% if mode == 'edit' %}Edit trip{% else %}Plan a trip{% endif %} · TripIt{% endblock %}
+{% block content %}
+<section class="page trip-form">
+  {% if mode == 'edit' %}
+    <a class="backlink" href="/trips/{{ trip.trip_id }}">{{ trip.name }}</a>
+    <h1>Edit trip</h1>
+  {% else %}
+    <a class="backlink" href="/trips">All trips</a>
+    <h1>Plan a trip</h1>
+  {% endif %}
+
+  {% if errors %}
+    <ul class="form-errors" role="alert">
+      {% for err in errors %}<li>{{ err }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  <form class="form" method="post"
+        action="{% if mode == 'edit' %}/trips/{{ trip.trip_id }}/edit{% else %}/trips{% endif %}"
+        autocomplete="off">
+    {% if mode != 'edit' %}
+      <input type="hidden" name="idempotency_key" value="{{ form_token }}">
+    {% endif %}
+
+    <label class="field">
+      <span class="field__label">Trip name</span>
+      <input class="field__input" type="text" name="name"
+             value="{{ values.get('name', '') }}"
+             placeholder="e.g. New York" required>
+    </label>
+
+    <label class="field">
+      <span class="field__label">Primary location</span>
+      <input class="field__input" type="text" name="destination"
+             value="{{ values.get('destination', '') }}"
+             placeholder="City, State/Country">
+    </label>
+
+    <div class="field-row">
+      <label class="field">
+        <span class="field__label">Start date</span>
+        <input class="field__input" type="date" name="start_date"
+               value="{{ values.get('start_date', '') }}" required>
+      </label>
+      <label class="field">
+        <span class="field__label">End date</span>
+        <input class="field__input" type="date" name="end_date"
+               value="{{ values.get('end_date', '') }}" required>
+      </label>
+    </div>
+
+    <label class="field">
+      <span class="field__label">Time zone</span>
+      {% set current_tz = values.get('timezone', '') %}
+      {% set ns = namespace(found=false) %}
+      {% for tz, label in timezones %}
+        {% if tz == current_tz %}{% set ns.found = true %}{% endif %}
+      {% endfor %}
+      <select class="field__input" name="timezone">
+        {% if current_tz and not ns.found %}
+          <option value="{{ current_tz }}" selected>{{ current_tz }}</option>
+        {% endif %}
+        {% for tz, label in timezones %}
+          <option value="{{ tz }}" {% if tz == current_tz %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <div class="form__actions">
+      <button type="submit" class="btn btn--primary">
+        {% if mode == 'edit' %}Save changes{% else %}Create trip{% endif %}
+      </button>
+      {% if mode == 'edit' %}
+        <a class="btn" href="/trips/{{ trip.trip_id }}">Cancel</a>
+      {% else %}
+        <a class="btn" href="/trips">Cancel</a>
+      {% endif %}
+    </div>
+  </form>
+
+  {% if mode == 'edit' %}
+    <form class="form form--danger" method="post"
+          action="/trips/{{ trip.trip_id }}/delete"
+          onsubmit="return confirm('Delete this trip and everything in it? This cannot be undone.');">
+      <button type="submit" class="linkish linkish--danger">Delete this trip</button>
+    </form>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ heading }} · TripIt{% endblock %}
+{% block content %}
+<section class="page message">
+  <h1>{{ heading }}</h1>
+  <p>{{ body }}</p>
+  <p class="form__actions"><a class="btn" href="/account/login">Return to sign in</a></p>
+</section>
+{% endblock %}

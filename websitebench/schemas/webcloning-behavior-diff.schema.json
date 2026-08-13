@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/webcloning.behavior-diff.v1.json",
+  "title": "Nine-category source versus clone behavior diff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "analysis_id",
+    "site_id",
+    "generator",
+    "replay",
+    "supplemental_findings",
+    "findings",
+    "counts",
+    "status",
+    "authority",
+    "content_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "webcloning.behavior-diff.v1"},
+    "analysis_id": {"$ref": "#/$defs/sha256"},
+    "site_id": {"$ref": "#/$defs/id"},
+    "generator": {"const": "clawbench.webcloning.behavior-diff.v1"},
+    "replay": {"$ref": "#/$defs/artifact"},
+    "supplemental_findings": {
+      "oneOf": [{"$ref": "#/$defs/artifact"}, {"type": "null"}]
+    },
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "by_category", "by_severity", "by_status"],
+      "properties": {
+        "total": {"type": "integer", "minimum": 0},
+        "by_category": {"$ref": "#/$defs/category_counts"},
+        "by_severity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["P0", "P1", "P2"],
+          "properties": {
+            "P0": {"type": "integer", "minimum": 0},
+            "P1": {"type": "integer", "minimum": 0},
+            "P2": {"type": "integer", "minimum": 0}
+          }
+        },
+        "by_status": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["open", "closed"],
+          "properties": {
+            "open": {"type": "integer", "minimum": 0},
+            "closed": {"type": "integer", "minimum": 0}
+          }
+        }
+      }
+    },
+    "status": {"enum": ["complete", "incomplete", "historical-stale"]},
+    "authority": {
+      "const": "behavior-difference-evidence-only-cannot-accept-fidelity-or-release"
+    },
+    "content_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1200,
+      "pattern": "^(?![A-Za-z]:|/|\\\\|.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "nullable_step": {
+      "oneOf": [
+        {"type": "string", "pattern": "^s[0-9]{4,}$"},
+        {"type": "null"}
+      ]
+    },
+    "regression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_id",
+        "category",
+        "severity",
+        "summary",
+        "source_step_id",
+        "clone_step_id",
+        "impact",
+        "status",
+        "regression"
+      ],
+      "properties": {
+        "finding_id": {"type": "string", "pattern": "^d[0-9]{4,}$"},
+        "category": {
+          "enum": [
+            "visual-fidelity",
+            "missing-element",
+            "operation-semantics",
+            "state-transition",
+            "data-content",
+            "error-behavior",
+            "clone-only-shortcut",
+            "trace-only-difference",
+            "critical-impact"
+          ]
+        },
+        "severity": {"enum": ["P0", "P1", "P2"]},
+        "summary": {"type": "string", "minLength": 1, "maxLength": 4000},
+        "source_step_id": {"$ref": "#/$defs/nullable_step"},
+        "clone_step_id": {"$ref": "#/$defs/nullable_step"},
+        "impact": {
+          "enum": ["may-change-solvability-or-ranking", "trace-fidelity-only"]
+        },
+        "status": {"enum": ["open", "closed"]},
+        "regression": {
+          "oneOf": [{"$ref": "#/$defs/regression"}, {"type": "null"}]
+        }
+      }
+    },
+    "category_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "visual-fidelity",
+        "missing-element",
+        "operation-semantics",
+        "state-transition",
+        "data-content",
+        "error-behavior",
+        "clone-only-shortcut",
+        "trace-only-difference",
+        "critical-impact"
+      ],
+      "properties": {
+        "visual-fidelity": {"type": "integer", "minimum": 0},
+        "missing-element": {"type": "integer", "minimum": 0},
+        "operation-semantics": {"type": "integer", "minimum": 0},
+        "state-transition": {"type": "integer", "minimum": 0},
+        "data-content": {"type": "integer", "minimum": 0},
+        "error-behavior": {"type": "integer", "minimum": 0},
+        "clone-only-shortcut": {"type": "integer", "minimum": 0},
+        "trace-only-difference": {"type": "integer", "minimum": 0},
+        "critical-impact": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

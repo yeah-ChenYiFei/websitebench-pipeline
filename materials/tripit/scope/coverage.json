@@ -1,0 +1,298 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "frozen",
+  "dimensions": [
+    {
+      "id": "source-direct-states",
+      "label": "Anonymous states captured directly from tripit.com",
+      "unit": "state",
+      "category": "source",
+      "required_evidence_kinds": [
+        "browser",
+        "independent-audit"
+      ],
+      "required_items": [
+        "blog-index.desktop",
+        "blog-index.mobile",
+        "blog-index.tablet",
+        "create.desktop",
+        "create.mobile",
+        "create.tablet",
+        "download.desktop",
+        "download.mobile",
+        "download.tablet",
+        "forgot-password.desktop",
+        "forgot-password.mobile",
+        "forgot-password.tablet",
+        "free.desktop",
+        "free.mobile",
+        "free.tablet",
+        "home-lang-menu-open.desktop",
+        "home-mobile-menu-open.mobile",
+        "home.desktop",
+        "home.mobile",
+        "home.tablet",
+        "how-it-works.desktop",
+        "how-it-works.mobile",
+        "how-it-works.tablet",
+        "legal-do-not-share.desktop",
+        "legal-do-not-share.mobile",
+        "legal-do-not-share.tablet",
+        "legal-privacy.desktop",
+        "legal-privacy.mobile",
+        "legal-privacy.tablet",
+        "legal-user-agreement.desktop",
+        "legal-user-agreement.mobile",
+        "legal-user-agreement.tablet",
+        "login-client-validation.desktop",
+        "login.desktop",
+        "login.mobile",
+        "login.tablet",
+        "pricing.desktop",
+        "pricing.mobile",
+        "pricing.tablet",
+        "pro.desktop",
+        "pro.mobile",
+        "pro.tablet",
+        "sap-concur.desktop",
+        "sap-concur.mobile",
+        "sap-concur.tablet",
+        "security.desktop",
+        "security.mobile",
+        "security.tablet",
+        "traveler-resource-center.desktop",
+        "traveler-resource-center.mobile",
+        "traveler-resource-center.tablet"
+      ],
+      "satisfied_items": [],
+      "rationale": "Every captured checkpoint x viewport carries a frozen three-frame visual contract."
+    },
+    {
+      "id": "source-unavailable-states",
+      "label": "Authenticated families declared unavailable this round",
+      "unit": "family",
+      "category": "source",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "app-trips-list",
+        "app-trip-itinerary",
+        "app-plan-forms",
+        "app-import-surface",
+        "app-share-dialogs",
+        "app-documents",
+        "app-account-settings",
+        "app-pro-surfaces"
+      ],
+      "satisfied_items": [],
+      "rationale": "Authenticated/Pro source pixels await a user-driven Steel Live View session; families ship as declared local contracts with no visual acceptance claimed."
+    },
+    {
+      "id": "p0-auth-journeys",
+      "label": "P0 auth journeys",
+      "unit": "journey",
+      "category": "functional",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "anon.auth-shell.render",
+        "auth.password-reset.failure-invalid-challenge",
+        "auth.password-reset.request",
+        "auth.password-reset.success",
+        "auth.registration.failure-invalid",
+        "auth.registration.retry-challenge",
+        "auth.registration.success",
+        "auth.session.sign-out",
+        "auth.sign-in.failure-generic",
+        "auth.sign-in.retry-corrected",
+        "auth.sign-in.success"
+      ],
+      "satisfied_items": [],
+      "rationale": "Registration, sign-in, reset, and session lifecycle with success/failure/retry outcomes."
+    },
+    {
+      "id": "p0-travel-journeys",
+      "label": "P0 travel-domain journeys",
+      "unit": "journey",
+      "category": "functional",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "anchor.add-hilton-midtown-to-new-york-trip",
+        "anchor.duplicate-submit-idempotent",
+        "documents.oversize-failure",
+        "documents.upload-preview-download-delete",
+        "import.duplicate-idempotent",
+        "import.fixture-parse.success",
+        "import.unparseable-failure",
+        "import.update-and-cancel",
+        "plans.add-each-type.success",
+        "plans.edit-move-delete.success",
+        "plans.validation-failure",
+        "share.foreign-owner-isolation",
+        "share.invite-accept.success",
+        "share.role-and-revoke",
+        "trips.create.success",
+        "trips.create.validation-failure",
+        "trips.delete.confirm-success",
+        "trips.edit.success",
+        "trips.list.tabs.success"
+      ],
+      "satisfied_items": [],
+      "rationale": "Trips, anchor hotel add, twelve plan types, import, sharing, and documents with success/failure/retry outcomes."
+    },
+    {
+      "id": "plan-type-rows",
+      "label": "The twelve plan types",
+      "unit": "plan-type",
+      "category": "functional",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "air",
+        "lodging",
+        "car",
+        "rail",
+        "transport",
+        "cruise",
+        "restaurant",
+        "meeting",
+        "activity",
+        "map",
+        "directions",
+        "note"
+      ],
+      "satisfied_items": [],
+      "rationale": "Each type must add/view/edit/delete/reorder/move with its registered field set."
+    },
+    {
+      "id": "import-fixture-rows",
+      "label": "Deterministic import fixture library",
+      "unit": "fixture",
+      "category": "functional",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "fixture::hilton-midtown-confirmation",
+        "fixture::united-flight-itinerary",
+        "fixture::united-flight-change",
+        "fixture::marriott-cancellation",
+        "fixture::avis-car-confirmation",
+        "fixture::opentable-dinner",
+        "fixture::newsletter-unparseable"
+      ],
+      "satisfied_items": [],
+      "rationale": "Parsed/updated/canceled/duplicate/unparseable outcomes plus trip-overlap and Unfiled routing."
+    },
+    {
+      "id": "payment-scenarios",
+      "label": "Payment adapter scenarios",
+      "unit": "scenario",
+      "category": "functional",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "sandbox-pro-approved",
+        "sandbox-pro-declined",
+        "sandbox-pro-retryable",
+        "stripe-test-checkout-verified-webhook"
+      ],
+      "satisfied_items": [],
+      "rationale": "Local sandbox tiers plus verified Stripe-test checkout; duplicate webhooks never double-activate."
+    },
+    {
+      "id": "share-role-rows",
+      "label": "Share role matrix",
+      "unit": "role",
+      "category": "functional",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "viewer",
+        "editor",
+        "traveler",
+        "show-sensitive-flag",
+        "revoked"
+      ],
+      "satisfied_items": [],
+      "rationale": "Role-scoped visibility incl. sensitive-field masking and immediate revocation."
+    },
+    {
+      "id": "p0-network-invariants",
+      "label": "Runtime network closure",
+      "unit": "assertion",
+      "category": "network",
+      "required_evidence_kinds": [
+        "network"
+      ],
+      "required_items": [
+        "zero-requests-to-tripit.com",
+        "zero-requests-to-trustarc",
+        "zero-requests-to-google-or-cdns",
+        "same-origin-only-asset-graph"
+      ],
+      "satisfied_items": [],
+      "rationale": "The deployed clone must have zero TripIt runtime dependencies."
+    },
+    {
+      "id": "deterministic-seed-rows",
+      "label": "Deterministic seed entities",
+      "unit": "entity",
+      "category": "backend",
+      "required_evidence_kinds": [
+        "migration",
+        "full-suite"
+      ],
+      "required_items": [
+        "auth-schema-migration-journal::local_auth_schema_migrations::count=4",
+        "pending-registration::local_auth_registration_flows::count=0",
+        "local-account::local_auth_accounts::count=2",
+        "server-session::local_auth_sessions::count=0",
+        "business-subject::business_subjects::count=2",
+        "password-reset-flow::local_auth_password_reset_flows::count=0",
+        "mail-outbox::local_auth_mail_outbox::count=0",
+        "mail-rate-limit::local_auth_mail_rate_limits::count=0",
+        "business-schema-migration-journal::tripit_schema_migrations::count=5",
+        "traveler-profile::tripit_traveler_profiles::count=2",
+        "trip::tripit_trips::count=5",
+        "trip-traveler::tripit_trip_travelers::count=5",
+        "plan::tripit_plans::count=16",
+        "plan-segment::tripit_plan_segments::count=5",
+        "document::tripit_documents::count=1",
+        "import-message::tripit_import_messages::count=0",
+        "notification::tripit_notifications::count=2",
+        "trip-share::tripit_trip_shares::count=0",
+        "pro-subscription::tripit_pro_subscriptions::count=0",
+        "loyalty-program::tripit_loyalty_programs::count=1",
+        "fare-watch::tripit_fare_watches::count=0",
+        "ics-feed-token::tripit_ics_feed_tokens::count=0"
+      ],
+      "satisfied_items": [],
+      "rationale": "Physical SQLite rows after reset must match the frozen manifest exactly."
+    },
+    {
+      "id": "deterministic-reset-probes",
+      "label": "Reset/restart probes",
+      "unit": "probe",
+      "category": "backend",
+      "required_evidence_kinds": [
+        "migration",
+        "full-suite"
+      ],
+      "required_items": [
+        "seed-reset.exact-reseed",
+        "seed-reset.idempotent-repeat",
+        "seed-reset.restart-round-trip"
+      ],
+      "satisfied_items": [],
+      "rationale": "Exact reseed, idempotent repeat, and restart round-trip."
+    }
+  ]
+}

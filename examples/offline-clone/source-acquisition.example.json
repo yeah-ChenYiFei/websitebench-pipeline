@@ -1,0 +1,44 @@
+{
+  "schema_version": "offline-clone.source-acquisition-spec.v1",
+  "site_id": "example",
+  "capture_id": "2026-07-30.initial",
+  "allowed_origins": [
+    "https://www.example.com"
+  ],
+  "pages": [
+    {
+      "row_id": "home.desktop",
+      "priority": "p0",
+      "url": "https://www.example.com/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "wait_until": "networkidle",
+      "full_page": true
+    },
+    {
+      "row_id": "home.mobile",
+      "priority": "p0",
+      "url": "https://www.example.com/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "networkidle",
+      "full_page": true
+    }
+  ],
+  "limits": {
+    "navigation_timeout_ms": 30000,
+    "settle_ms": 1000,
+    "max_resource_bytes": 10485760,
+    "max_total_resource_bytes": 104857600
+  },
+  "human_supervisor": {
+    "name": "Replace with the approving human",
+    "scope_approved_at": "2026-07-30T12:00:00Z"
+  }
+}

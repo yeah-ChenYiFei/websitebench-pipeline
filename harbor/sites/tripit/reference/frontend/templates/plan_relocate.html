@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{% if mode == 'copy' %}Copy{% else %}Move{% endif %} {{ plan.title }} · TripIt{% endblock %}
+{% block content %}
+<section class="page plan-relocate">
+  <a class="backlink" href="/app/trips/{{ trip.public_id }}/{{ plan_path }}/{{ plan_public_id }}">Back to plan</a>
+
+  <h1>{% if mode == 'copy' %}Copy{% else %}Move{% endif %} “{{ plan.title }}”</h1>
+  <p class="plan-relocate__lede">
+    {% if mode == 'copy' %}
+      Choose the trip that should get a duplicate of this {{ plan_type_label|lower }}.
+      The original stays where it is.
+    {% else %}
+      Choose the trip this {{ plan_type_label|lower }} should belong to.
+    {% endif %}
+  </p>
+
+  <form method="post" action="/app/trips/{{ trip.public_id }}/{{ plan_path }}/{{ plan_public_id }}/{{ mode }}">
+    <input type="hidden" name="form_token" value="{{ form_token }}">
+    <fieldset class="plan-relocate__choices">
+      <legend>Destination</legend>
+      {% for choice in choices %}
+        <label class="plan-relocate__choice">
+          <input type="radio" name="trip_id" value="{{ choice.trip_id }}"{% if mode == 'move' and choice.trip_id == trip.trip_id %} checked{% endif %}>
+          <span>{{ choice.name }}</span>
+        </label>
+      {% endfor %}
+      <label class="plan-relocate__choice">
+        <input type="radio" name="trip_id" value="">
+        <span>Unfiled (no trip)</span>
+      </label>
+    </fieldset>
+    <button type="submit" class="btn btn--primary">{% if mode == 'copy' %}Copy plan{% else %}Move plan{% endif %}</button>
+  </form>
+</section>
+{% endblock %}

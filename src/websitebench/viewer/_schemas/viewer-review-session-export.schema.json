@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/websitebench.viewer-review-session-export.v1.json",
+  "title": "WebsiteBench diagnostic review session export",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "exported_at", "sessions", "authority"],
+  "properties": {
+    "schema_version": {"const": "websitebench.viewer-review-session-export.v1"},
+    "exported_at": {"type": "string", "format": "date-time"},
+    "sessions": {
+      "type": "array",
+      "items": {
+        "$ref": "https://websitebench.local/schemas/websitebench.viewer-review-session.v1.json"
+      }
+    },
+    "authority": {
+      "const": "diagnostic-review-feedback-only"
+    }
+  }
+}

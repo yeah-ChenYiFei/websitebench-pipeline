@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}TripIt{% endblock %}</title>
+  <link rel="icon" href="/static/site/favicon/favicon.ico" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" href="/static/site/css/app.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="{% if nav.authenticated %}/trips{% else %}/{% endif %}" aria-label="TripIt home">
+        <span class="brand__mark">Trip</span><span class="brand__mark brand__mark--alt">It</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        {% if nav.authenticated %}
+          <a class="site-nav__link" href="/trips">Trips</a>
+          <a class="site-nav__link" href="/account">{{ nav.display_name }}</a>
+          <form class="site-nav__signout" method="post" action="/account/logout">
+            <button type="submit" class="linkish">Log out</button>
+          </form>
+        {% else %}
+          <a class="site-nav__link" href="/account/login">Sign in</a>
+          <a class="btn btn--primary" href="/account/create">Sign up</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+  <main class="site-main">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Keep every trip in one place. Forward travel confirmations to plans@tripit.com.</p>
+    </div>
+  </footer>
+</body>
+</html>

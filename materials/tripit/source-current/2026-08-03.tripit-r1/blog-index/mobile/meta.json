@@ -1,0 +1,51 @@
+{
+  "checkpoint": "blog-index",
+  "family": "marketing",
+  "priority": "P2",
+  "viewport": "mobile",
+  "requested_url": "https://www.tripit.com/web/blog",
+  "final_url": "https://www.tripit.com/web/blog",
+  "title": "TripIt Blog \u2014 Travel Itinerary \u2014 Trip Planner",
+  "body_text_len": 6226,
+  "frames": 3,
+  "frame_sha256": [
+    "fe3b465146921d653036998a4a516d7527acbd108206afd1455e4c10c72ed581",
+    "8d3e51299bfdb943e4fa2e932ddf2dd9fdf89425a6246df418ef8b7830fae4fd",
+    "8d3e51299bfdb943e4fa2e932ddf2dd9fdf89425a6246df418ef8b7830fae4fd"
+  ],
+  "frames_identical": false,
+  "link_count": 94,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 59
+    },
+    "main": {
+      "selector": "[role=main]",
+      "x": 35,
+      "y": 160,
+      "width": 320,
+      "height": 8217
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 35,
+      "y": 8377,
+      "width": 320,
+      "height": 532
+    },
+    "form": {
+      "selector": "form",
+      "x": 51,
+      "y": 5953,
+      "width": 288,
+      "height": 42
+    },
+    "document_height": 8909
+  }
+}

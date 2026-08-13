@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/offline-clone.semantic-selection.v3.json",
+  "title": "Automatically resolved semantic selection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "site_id", "selection_id", "frontend_subject", "source_scope_subject", "generated_at", "selection_policy", "capabilities"],
+  "properties": {
+    "schema_version": {"const": "offline-clone.semantic-selection.v3"},
+    "site_id": {"$ref": "#/$defs/slug"},
+    "selection_id": {"$ref": "#/$defs/id"},
+    "frontend_subject": {"$ref": "#/$defs/subject"},
+    "source_scope_subject": {"$ref": "#/$defs/subject"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "selection_policy": {"const": "fidelity-first-automatic-v1"},
+    "capabilities": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/capability"}}
+  },
+  "$defs": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 200},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:[._:-][a-z0-9]+)*$", "maxLength": 300},
+    "subject_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "path"],
+      "properties": {
+        "kind": {"enum": ["file", "tree"]},
+        "path": {"type": "string", "minLength": 1, "maxLength": 1000, "pattern": "^(?![A-Za-z]:|/|\\\\|.*(?:^|/)\\.\\.(?:/|$)).+$"},
+        "bytes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifacts"],
+      "properties": {
+        "artifacts": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/subject_artifact"}}
+      }
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "priority", "applicable", "certainty", "mandatory_when_applicable", "trigger", "evidence_refs", "disposition", "decision_source", "rationale"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "priority": {"enum": ["p0", "p1", "p2"]},
+        "applicable": {"type": "boolean"},
+        "certainty": {"enum": ["determinate", "ambiguous"]},
+        "mandatory_when_applicable": {"type": "boolean"},
+        "trigger": {"enum": ["source-visible", "core-purpose", "archetype-required", "common-stateful-core", "inferred-ambiguous"]},
+        "evidence_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 1000}},
+        "disposition": {"enum": ["full-local-model", "truthful-simulation", "excluded-with-rationale", "external-blocked"]},
+        "decision_source": {"const": "mechanical"},
+        "rationale": {"type": "string", "minLength": 1, "maxLength": 4000}
+      }
+    }
+  }
+}

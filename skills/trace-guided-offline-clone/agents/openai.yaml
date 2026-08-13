@@ -1,0 +1,7 @@
+interface:
+  display_name: "Trace-Guided Offline Clone"
+  short_description: "Run a WebsiteBench DFS/BFS trace-guided clone pass"
+  default_prompt: "Use $trace-guided-offline-clone for one approved trace-guided repair pass, using isolated WebsiteBench/Playwright source explorations and current WebsiteBench traces for canonical coverage."
+
+policy:
+  allow_implicit_invocation: false

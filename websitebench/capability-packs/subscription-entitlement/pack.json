@@ -1,0 +1,109 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque entitlement identity; exact source key and ownership require R1 confirmation",
+            "name": "entitlement",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "subscription-entitlement-lifecycle",
+        "label": "subscription-entitlement lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "server entitlement",
+          "time control",
+          "no client unlock",
+          "truthful billing simulation"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "trial",
+            "active",
+            "past-due",
+            "cancelled",
+            "expired"
+          ],
+          "transitions": [
+            {
+              "from": "trial",
+              "to": "active",
+              "trigger": "server-authorized subscription-entitlement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "past-due",
+              "trigger": "server-authorized subscription-entitlement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "past-due",
+              "to": "cancelled",
+              "trigger": "server-authorized subscription-entitlement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "cancelled",
+              "to": "expired",
+              "trigger": "server-authorized subscription-entitlement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-subscription-ledger"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "subscription-entitlement keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "subscription-entitlement-surface",
+        "label": "subscription-entitlement route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "subscription-entitlement surface"
+    ],
+    "state_families": [
+      "subscription-entitlement loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "subscription-entitlement",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "套餐、试用、续期、暂停、到期、权益和本地账单。",
+  "title": "Subscription Entitlement overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "subscription-entitlement actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "server entitlement",
+      "time control",
+      "no client unlock",
+      "truthful billing simulation"
+    ]
+  },
+  "version": "1.0.0"
+}

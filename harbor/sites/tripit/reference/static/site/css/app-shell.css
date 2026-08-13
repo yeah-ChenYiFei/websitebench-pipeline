@@ -1,0 +1,34 @@
+/* Styles for the controls this build adds to the logged-in shell. The shell's
+   own visual identity comes from the app design-system bundle; this file only
+   dresses the dialog that the footer's Cookie Preferences control opens, so it
+   sits over the app chrome instead of under it. */
+
+._dialogBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+._dialogBackdrop[hidden] { display: none; }
+
+._dialogPanel {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  max-width: 32rem;
+  width: 100%;
+}
+
+/* A destructive menu item still reads as a menu item. */
+.dropdown-menu form { margin: 0; }
+.dropdown-menu form .dropdown-item {
+  background: none;
+  border: 0;
+  text-align: left;
+  width: 100%;
+}

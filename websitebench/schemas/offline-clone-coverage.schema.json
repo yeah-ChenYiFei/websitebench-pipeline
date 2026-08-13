@@ -1,0 +1,513 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/offline-clone.coverage.v1.json",
+  "title": "ClawBench offline clone coverage ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "dimensions"],
+  "properties": {
+    "schema_version": {"const": "offline-clone.coverage.v1"},
+    "status": {"enum": ["draft", "frozen"]},
+    "dimensions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/dimension"}
+    },
+    "entity_capability_rows": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/entityCapability"}
+    },
+    "identity_boundary_rows": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/identityBoundary"}
+    },
+    "identity_schema_version": {"type": "string", "minLength": 1},
+    "entity_signature_schema_version": {"type": "string", "minLength": 1},
+    "entity_signature_provenance": {"type": ["object", "array", "string"]},
+    "effect_probe_schema_version": {"type": "string", "minLength": 1},
+    "independent_external_effect_probes": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "business_mutation_probes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/businessMutationProbe"}
+    },
+    "business_capability_proof_probes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/businessCapabilityProofProbe"}
+    },
+    "business_control_effect_probes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/controlEffectProbe"}
+    },
+    "discovery_control_effect_probes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/controlEffectProbe"}
+    },
+    "material_effect_probe_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/item_id"}
+    },
+    "apartment_size_schema_version": {"type": "string", "minLength": 1},
+    "apartment_size_entities": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "apartment_size_stale_witnesses": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "changed_apartment_size_binding_schema_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "changed_apartment_size_route_binding": {
+      "type": ["object", "array", "string"]
+    },
+    "evidence_axes_schema_version": {"type": "string", "minLength": 1},
+    "matrix_source_evidence_rows": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/matrixSourceEvidenceRow"}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"status": {"const": "frozen"}},
+        "required": ["status"]
+      },
+      "then": {"properties": {"dimensions": {"minItems": 1}}}
+    }
+  ],
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[a-z0-9]+(?:[._:-][a-z0-9]+)*$"
+    },
+    "item_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S+$"
+    },
+    "entityCapability": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "entity",
+        "capability",
+        "applicability",
+        "evidence_tier",
+        "disposition"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/item_id"},
+        "entity": {"type": "string", "minLength": 1},
+        "capability": {"type": "string", "minLength": 1},
+        "applicability": {"enum": ["required", "inapplicable"]},
+        "evidence_tier": {
+          "enum": ["direct", "structural-only", "inferred", "unavailable"]
+        },
+        "disposition": {"type": "string", "minLength": 1}
+      }
+    },
+    "identityBoundary": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "identity_item",
+        "boundary_class",
+        "applicability",
+        "evidence_tier",
+        "disposition"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/item_id"},
+        "identity_item": {"type": "string", "minLength": 1},
+        "boundary_class": {"type": "string", "minLength": 1},
+        "applicability": {"enum": ["required", "inapplicable"]},
+        "evidence_tier": {
+          "enum": ["direct", "structural-only", "inferred", "unavailable"]
+        },
+        "disposition": {"type": "string", "minLength": 1}
+      }
+    },
+    "businessMutationProbe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "access_truth_row_id",
+        "action",
+        "role_id",
+        "ownership",
+        "entity_status",
+        "result",
+        "http_status",
+        "effect_kind",
+        "expected_local_mutations",
+        "expected_local_mutation_count",
+        "expected_remote_effect_count",
+        "expected_remote_request_count",
+        "evidence_tier",
+        "local_contract_evidence_tier",
+        "probe_basis"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/item_id"},
+        "access_truth_row_id": {"$ref": "#/$defs/item_id"},
+        "action": {"type": "string", "minLength": 1},
+        "role_id": {"type": "string", "minLength": 1},
+        "ownership": {"type": "string", "minLength": 1},
+        "entity_status": {"type": "string", "minLength": 1},
+        "result": {"type": "string", "minLength": 1},
+        "http_status": {
+          "type": ["integer", "null"],
+          "minimum": 100,
+          "maximum": 599
+        },
+        "effect_kind": {
+          "const": "business-local-mutation-and-production-zero"
+        },
+        "expected_local_mutations": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "expected_local_mutation_count": {"type": "integer", "minimum": 0},
+        "expected_remote_effect_count": {"const": 0},
+        "expected_remote_request_count": {"const": 0},
+        "evidence_tier": {
+          "enum": ["direct", "structural-only", "inferred", "unavailable"]
+        },
+        "local_contract_evidence_tier": {
+          "enum": ["direct", "structural-only", "inferred", "unavailable"]
+        },
+        "probe_basis": {"type": "string", "minLength": 1, "maxLength": 4000},
+        "probe_family": {"type": "string", "minLength": 1, "maxLength": 500},
+        "runtime_disposition": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      }
+    },
+    "businessCapabilityProofProbe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "capability_id",
+        "obligation",
+        "journey_ids",
+        "invariant_ids",
+        "entity_names",
+        "owner_scope",
+        "identity_tuple",
+        "mutation_contract_ref",
+        "expected_server_result",
+        "expected_local_mutations",
+        "expected_local_mutation_count",
+        "expected_remote_request_count",
+        "expected_remote_effect_count",
+        "runtime_disposition"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/item_id"},
+        "capability_id": {"$ref": "#/$defs/slug"},
+        "obligation": {
+          "enum": [
+            "valid",
+            "invalid",
+            "duplicate",
+            "stale",
+            "foreign-owner",
+            "unauthorized-role",
+            "restart",
+            "migration",
+            "concurrency"
+          ]
+        },
+        "journey_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/item_id"}
+        },
+        "invariant_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/item_id"}
+        },
+        "entity_names": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "owner_scope": {
+          "enum": ["session", "account", "tenant", "role", "global", "system"]
+        },
+        "identity_tuple": {"type": "string", "minLength": 1},
+        "mutation_contract_ref": {"type": "string", "minLength": 1},
+        "expected_server_result": {"type": "string", "minLength": 1},
+        "expected_local_mutations": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "expected_local_mutation_count": {"type": "integer", "minimum": 0},
+        "expected_remote_request_count": {"const": 0},
+        "expected_remote_effect_count": {"const": 0},
+        "runtime_disposition": {"type": "string", "minLength": 1},
+        "proof_id": {"$ref": "#/$defs/item_id"},
+        "probe_id": {"$ref": "#/$defs/item_id"},
+        "access_truth_ref": {"type": "string", "minLength": 1},
+        "request_tuple": {"type": "object"},
+        "response": {"type": "object"},
+        "retained_state": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "expected_production_remote_request_count": {"const": 0},
+        "expected_production_remote_effect_count": {"const": 0}
+      }
+    },
+    "controlEffectProbe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "effect_id",
+        "control_id",
+        "matrix_row_id",
+        "tuple_binding",
+        "effect_class",
+        "source_evidence_kind",
+        "local_contract_evidence_kind",
+        "action",
+        "assertion_kind",
+        "atomic_mutation_activation",
+        "access_truth_row_id",
+        "expected_local_mutations",
+        "expected_local_mutation_count",
+        "expected_remote_request_count",
+        "expected_remote_effect_count",
+        "probe_basis",
+        "runtime_disposition"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/item_id"},
+        "effect_id": {"$ref": "#/$defs/item_id"},
+        "control_id": {"$ref": "#/$defs/item_id"},
+        "matrix_row_id": {"$ref": "#/$defs/item_id"},
+        "tuple_binding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "route_id",
+            "state_id",
+            "variant_id",
+            "role_id",
+            "viewport_id"
+          ],
+          "properties": {
+            "route_id": {"type": "string", "minLength": 1},
+            "state_id": {"type": "string", "minLength": 1},
+            "variant_id": {"type": "string", "minLength": 1},
+            "role_id": {"type": "string", "minLength": 1},
+            "viewport_id": {"type": "string", "minLength": 1}
+          }
+        },
+        "effect_class": {"type": "string", "minLength": 1},
+        "source_evidence_kind": {
+          "enum": ["direct", "structural-only", "inferred", "unavailable"]
+        },
+        "local_contract_evidence_kind": {
+          "enum": ["direct", "structural-only", "inferred", "unavailable"]
+        },
+        "action": {"type": "string", "minLength": 1},
+        "assertion_kind": {"type": "string", "minLength": 1},
+        "atomic_control_transition": {"type": "boolean"},
+        "atomic_mutation_activation": {"type": "boolean"},
+        "access_truth_row_id": {
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "expected_local_mutations": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "expected_local_mutation_count": {"type": "integer", "minimum": 0},
+        "expected_remote_request_count": {"const": 0},
+        "expected_remote_effect_count": {"const": 0},
+        "probe_basis": {"type": "string", "minLength": 1, "maxLength": 4000},
+        "runtime_disposition": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      }
+    },
+    "matrixSourceEvidenceRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row_id",
+        "route_id",
+        "state_id",
+        "viewport_id",
+        "role_id",
+        "variant_id",
+        "source_evidence_kind"
+      ],
+      "properties": {
+        "row_id": {"$ref": "#/$defs/item_id"},
+        "route_id": {"$ref": "#/$defs/slug"},
+        "state_id": {"$ref": "#/$defs/slug"},
+        "viewport_id": {"$ref": "#/$defs/slug"},
+        "role_id": {"$ref": "#/$defs/slug"},
+        "variant_id": {"$ref": "#/$defs/slug"},
+        "source_evidence_kind": {
+          "enum": ["direct", "structural-only", "inferred", "unavailable"]
+        }
+      }
+    },
+    "signatureRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row_id",
+        "route_id",
+        "state_id",
+        "viewport_id",
+        "role_id",
+        "variant_id",
+        "layout_signature",
+        "entity_signature",
+        "interaction_signature"
+      ],
+      "properties": {
+        "row_id": {"$ref": "#/$defs/item_id"},
+        "route_id": {"$ref": "#/$defs/slug"},
+        "state_id": {"$ref": "#/$defs/slug"},
+        "viewport_id": {"$ref": "#/$defs/slug"},
+        "role_id": {"$ref": "#/$defs/slug"},
+        "variant_id": {"$ref": "#/$defs/slug"},
+        "layout_signature": {"type": "string", "minLength": 1},
+        "entity_signature": {"type": "string", "minLength": 1},
+        "interaction_signature": {"type": "string", "minLength": 1}
+      }
+    },
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "unit",
+        "category",
+        "required_evidence_kinds",
+        "required_items",
+        "satisfied_items"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/slug"},
+        "label": {"type": "string", "minLength": 1, "maxLength": 160},
+        "unit": {"$ref": "#/$defs/slug"},
+        "category": {"$ref": "#/$defs/slug"},
+        "rationale": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "source_evidence_kind": {
+          "enum": ["direct", "structural-only", "inferred", "unavailable"]
+        },
+        "local_contract_evidence_kind": {
+          "enum": ["direct", "structural-only", "inferred", "unavailable"]
+        },
+        "population_size": {"type": "integer", "minimum": 0},
+        "sample_size": {"type": "integer", "minimum": 0},
+        "sampling_method": {"type": "string", "minLength": 1, "maxLength": 500},
+        "sampling_seed": {"type": "string", "minLength": 1, "maxLength": 500},
+        "signature_fields": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1, "maxLength": 200}
+        },
+        "signature_rows": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/signatureRow"}
+        },
+        "authoritative_denominator_id": {"$ref": "#/$defs/slug"},
+        "denominator_rows": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/structuredDenominatorRow"}
+        },
+        "required_evidence_kinds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "visual",
+              "browser",
+              "network",
+              "migration",
+              "independent-audit",
+              "full-suite"
+            ]
+          }
+        },
+        "required_items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "oneOf": [
+              {"$ref": "#/$defs/item_id"},
+              {"$ref": "#/$defs/structuredDenominatorRow"}
+            ]
+          }
+        },
+        "satisfied_items": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/item_id"}
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"required_items": {"maxItems": 0}},
+            "required": ["required_items"]
+          },
+          "then": {"required": ["rationale"]}
+        },
+        {
+          "if": {
+            "properties": {"required_items": {"minItems": 1}},
+            "required": ["required_items"]
+          },
+          "then": {
+            "properties": {"required_evidence_kinds": {"minItems": 1}}
+          },
+          "else": {
+            "properties": {"required_evidence_kinds": {"maxItems": 0}}
+          }
+        }
+      ]
+    },
+    "structuredDenominatorRow": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {"$ref": "#/$defs/item_id"}
+      },
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "backend": {
+    "capability_templates": [],
+    "local_external_adapters": [
+      "redis-resend-verification"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "auth keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "auth-surface",
+        "label": "auth route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "auth surface"
+    ],
+    "state_families": [
+      "auth loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "auth",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "本地账户、邮箱验证、密码登录/恢复、可撤销服务端 session 与枚举抵抗。",
+  "title": "Auth overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "auth actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "opaque session token",
+      "salted password/challenge hash",
+      "site-isolated accounts",
+      "revocation and expiry",
+      "site-namespaced challenge and verified ticket"
+    ]
+  },
+  "version": "1.1.0"
+}

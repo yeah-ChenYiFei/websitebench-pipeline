@@ -1,0 +1,103 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "content",
+        "entities": [
+          {
+            "identity": "site-local opaque file-object identity; exact source key and ownership require R1 confirmation",
+            "name": "file-object",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "files-lifecycle",
+        "label": "files lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "path isolation",
+          "content hash",
+          "owner scope",
+          "size/type validation"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "pending",
+            "available",
+            "quarantined",
+            "deleted"
+          ],
+          "transitions": [
+            {
+              "from": "pending",
+              "to": "available",
+              "trigger": "server-authorized files lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "available",
+              "to": "quarantined",
+              "trigger": "server-authorized files lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "quarantined",
+              "to": "deleted",
+              "trigger": "server-authorized files lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-object-store"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "files keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "files-surface",
+        "label": "files route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "files surface"
+    ],
+    "state_families": [
+      "files loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "files",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "本地上传、下载、预览、版本、配额、病毒扫描模拟和共享。",
+  "title": "Files overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "files actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "path isolation",
+      "content hash",
+      "owner scope",
+      "size/type validation"
+    ]
+  },
+  "version": "1.0.0"
+}

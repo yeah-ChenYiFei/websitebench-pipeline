@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/webcloning.replay.v1.json",
+  "title": "Source action replay against an exact offline-clone runtime",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "analysis_id",
+    "site_id",
+    "generator",
+    "source_trace",
+    "clone_trace",
+    "candidate",
+    "semantic_selection",
+    "runtime_identity",
+    "reset",
+    "equivalence_manifest",
+    "steps",
+    "unmapped_clone_step_ids",
+    "coverage",
+    "status",
+    "authority",
+    "content_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "webcloning.replay.v1"},
+    "analysis_id": {"$ref": "#/$defs/sha256"},
+    "site_id": {"$ref": "#/$defs/id"},
+    "generator": {"const": "clawbench.webcloning.replay-materializer.v1"},
+    "source_trace": {"$ref": "#/$defs/artifact"},
+    "clone_trace": {"$ref": "#/$defs/artifact"},
+    "candidate": {"$ref": "#/$defs/artifact"},
+    "semantic_selection": {"$ref": "#/$defs/artifact"},
+    "runtime_identity": {"$ref": "#/$defs/artifact"},
+    "reset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "status"],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "status": {"enum": ["passed", "failed"]}
+      }
+    },
+    "equivalence_manifest": {
+      "oneOf": [{"$ref": "#/$defs/artifact"}, {"type": "null"}]
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/step"}
+    },
+    "unmapped_clone_step_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^s[0-9]{4,}$"}
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_step_count",
+        "exact_step_count",
+        "equivalent_step_count",
+        "missing_step_count",
+        "exact_coverage",
+        "equivalent_coverage",
+        "total_coverage"
+      ],
+      "properties": {
+        "source_step_count": {"type": "integer", "minimum": 1},
+        "exact_step_count": {"type": "integer", "minimum": 0},
+        "equivalent_step_count": {"type": "integer", "minimum": 0},
+        "missing_step_count": {"type": "integer", "minimum": 0},
+        "exact_coverage": {"type": "number", "minimum": 0, "maximum": 1},
+        "equivalent_coverage": {"type": "number", "minimum": 0, "maximum": 1},
+        "total_coverage": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "status": {"enum": ["complete", "incomplete", "historical-stale"]},
+    "authority": {
+      "const": "replay-evidence-only-cannot-prove-corpus-validity-or-release"
+    },
+    "content_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1200,
+      "pattern": "^(?![A-Za-z]:|/|\\\\|.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "nullable_string": {
+      "type": ["string", "null"],
+      "maxLength": 2000
+    },
+    "equivalence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rationale", "approved_by", "approval"],
+      "properties": {
+        "rationale": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "approved_by": {"type": "string", "minLength": 1, "maxLength": 200},
+        "approval": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_step_id",
+        "clone_step_id",
+        "mapping",
+        "equivalence",
+        "action_family_match",
+        "observable_state_match",
+        "outcome_match",
+        "source_error",
+        "clone_error"
+      ],
+      "properties": {
+        "source_step_id": {"type": "string", "pattern": "^s[0-9]{4,}$"},
+        "clone_step_id": {
+          "oneOf": [
+            {"type": "string", "pattern": "^s[0-9]{4,}$"},
+            {"type": "null"}
+          ]
+        },
+        "mapping": {"enum": ["exact", "equivalent", "missing"]},
+        "equivalence": {
+          "oneOf": [{"$ref": "#/$defs/equivalence"}, {"type": "null"}]
+        },
+        "action_family_match": {"type": "boolean"},
+        "observable_state_match": {"type": "boolean"},
+        "outcome_match": {"type": "boolean"},
+        "source_error": {"$ref": "#/$defs/nullable_string"},
+        "clone_error": {"$ref": "#/$defs/nullable_string"}
+      }
+    }
+  }
+}

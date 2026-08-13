@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/payment-scope-approval.v1.schema.json",
+  "title": "Hash-bound named-human payment scope decision for a WebsiteBench site",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "proposal_id",
+    "status",
+    "site_id",
+    "display_name",
+    "current_inputs",
+    "profile_change",
+    "frozen_journeys",
+    "frozen_entities",
+    "payment_contract",
+    "mail_brand",
+    "site_isolation",
+    "proof_obligations",
+    "scope_subject_sha256",
+    "human_decision",
+    "authority"
+  ],
+  "properties": {
+    "schema_version": {"const": "websitebench.payment-scope-approval.v1"},
+    "proposal_id": {"$ref": "#/$defs/id"},
+    "status": {"enum": ["pending", "approved", "rejected"]},
+    "site_id": {"$ref": "#/$defs/slug"},
+    "display_name": {"type": "string", "minLength": 1, "maxLength": 120},
+    "current_inputs": {
+      "type": "array",
+      "minItems": 2,
+      "items": {"$ref": "#/$defs/input"}
+    },
+    "profile_change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overlay_pack_id", "candidate_blocker_id", "retained_blocker_ids"],
+      "properties": {
+        "overlay_pack_id": {"const": "payment"},
+        "candidate_blocker_id": {"$ref": "#/$defs/blockerId"},
+        "retained_blocker_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/blockerId"}
+        }
+      }
+    },
+    "frozen_journeys": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/journey"}
+    },
+    "frozen_entities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/id"}
+    },
+    "payment_contract": {"$ref": "#/$defs/paymentContract"},
+    "mail_brand": {"$ref": "#/$defs/mailBrand"},
+    "site_isolation": {"$ref": "#/$defs/siteIsolation"},
+    "proof_obligations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 2000}
+    },
+    "scope_subject_sha256": {"$ref": "#/$defs/sha256"},
+    "human_decision": {"$ref": "#/$defs/humanDecision"},
+    "authority": {
+      "const": "named-human-payment-scope-decision-only-cannot-enable-payment-or-authorize-release"
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._:-][a-z0-9]+)*$",
+      "maxLength": 300
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 200
+    },
+    "blockerId": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]*$",
+      "maxLength": 300
+    },
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "pattern": "^(?![A-Za-z]:|/|\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._+-]+(?:/[A-Za-z0-9._+-]+)*$"
+        },
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "journey": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "description"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "description": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    },
+    "paymentContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "default_adapter",
+        "optional_adapter",
+        "live_payments_allowed",
+        "accepted_client_payment_input",
+        "credential_fields_allowed",
+        "currency",
+        "amount_source",
+        "owner",
+        "fingerprint",
+        "final_commit"
+      ],
+      "properties": {
+        "default_adapter": {"const": "local-sandbox"},
+        "optional_adapter": {"oneOf": [{"const": "stripe-test"}, {"type": "null"}]},
+        "live_payments_allowed": {"const": false},
+        "accepted_client_payment_input": {"const": "opaque-scenario-id-only"},
+        "credential_fields_allowed": {"const": false},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "amount_source": {"type": "string", "minLength": 1, "maxLength": 1000},
+        "owner": {"type": "string", "minLength": 1, "maxLength": 1000},
+        "fingerprint": {"type": "string", "minLength": 1, "maxLength": 1000},
+        "final_commit": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    },
+    "mailBrand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["shared_bare_sender_domain_allowed", "sender_display_name", "purposes", "must_differ_from"],
+      "properties": {
+        "shared_bare_sender_domain_allowed": {"type": "boolean"},
+        "sender_display_name": {"type": "string", "minLength": 1, "maxLength": 120},
+        "purposes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/id"}
+        },
+        "must_differ_from": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/mailDifference"}
+        }
+      }
+    },
+    "mailDifference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["site_id", "fields"],
+      "properties": {
+        "site_id": {"$ref": "#/$defs/slug"},
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["sender_display_name", "subject", "lead", "expiry", "footer", "body"]
+          }
+        }
+      }
+    },
+    "siteIsolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "database_scope",
+        "site_binding_required",
+        "session_cookie_name",
+        "redis_namespace",
+        "webhook_secret_scope",
+        "cross_site_account_sharing"
+      ],
+      "properties": {
+        "database_scope": {"const": "site-exclusive"},
+        "site_binding_required": {"const": true},
+        "session_cookie_name": {
+          "type": "string",
+          "pattern": "^__Host-websitebench-[a-z0-9]+(?:-[a-z0-9]+)*-session$",
+          "maxLength": 260
+        },
+        "redis_namespace": {
+          "type": "string",
+          "pattern": "^site/[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 260
+        },
+        "webhook_secret_scope": {"const": "site-exclusive"},
+        "cross_site_account_sharing": {"const": false}
+      }
+    },
+    "humanDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["named_supervisor", "decision", "approved_scope_subject_sha256", "decided_at", "rationale"],
+      "properties": {
+        "named_supervisor": {"oneOf": [{"type": "null"}, {"type": "string", "minLength": 1, "maxLength": 200}]},
+        "decision": {"oneOf": [{"type": "null"}, {"enum": ["approved", "rejected"]}]},
+        "approved_scope_subject_sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+        "decided_at": {"oneOf": [{"type": "null"}, {"type": "string", "format": "date-time"}]},
+        "rationale": {"oneOf": [{"type": "null"}, {"type": "string", "minLength": 1, "maxLength": 4000}]}
+      }
+    }
+  }
+}

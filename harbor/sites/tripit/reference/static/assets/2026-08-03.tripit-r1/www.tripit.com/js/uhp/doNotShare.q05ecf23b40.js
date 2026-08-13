@@ -1,0 +1,1 @@
+!function(n){n(document).ready(function(){var e=n("#country_code");n("#show-cookie-preferences").on("click",function(e){e.preventDefault(),window.truste&&window.truste.eu&&window.truste.eu.clickListener()}),e.on("change",function(){e.css("color",this.value?"#000000":"#777777")})})}(jQuery);

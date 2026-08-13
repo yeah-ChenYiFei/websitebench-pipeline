@@ -1,0 +1,106 @@
+/* Public registration is an enhancement of the frozen TripIt sign-up surface. */
+.email-verification {
+  clear: both;
+  border: 0;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.verification-title {
+  color: #042d48;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0 0 4px;
+}
+
+.verification-copy,
+.verification-code-help,
+.verification-status {
+  color: #595959;
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 0 0 12px;
+}
+
+.verification-send,
+.verification-confirm {
+  width: 100%;
+  min-height: 40px;
+  background: #107ac5;
+  border: 2px solid #107ac5;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.verification-send:hover,
+.verification-send:focus,
+.verification-confirm:hover,
+.verification-confirm:focus {
+  background: #106cc5;
+  border-color: #106cc5;
+  color: #fff;
+}
+
+.verification-send:disabled,
+.verification-confirm:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.verification-code-panel {
+  background: #f3f9fd;
+  border: 1px solid #b7d8ec;
+  border-radius: 4px;
+  margin-top: 12px;
+  padding: 16px;
+}
+
+.verification-code-panel .input-wrapper {
+  border-color: #107ac5;
+  margin-bottom: 4px;
+}
+
+.verification-code-panel .floating-label {
+  color: #107ac5;
+}
+
+.verification-code-panel input#verification-code {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.22em;
+}
+
+.verification-code-panel .fieldBlock input#verification-code::placeholder {
+  color: #777;
+  font-size: 14px;
+  letter-spacing: normal;
+}
+
+.verification-code-help {
+  font-size: 12px;
+  margin: 7px 0 12px;
+  padding: 0;
+}
+
+.verification-status {
+  min-height: 20px;
+  padding-left: 0 !important;
+}
+
+.verification-status[data-state="success"] {
+  color: #0a6b39;
+}
+
+.verification-status[data-state="error"] {
+  color: #d60505;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .verification-code-panel {
+    padding: 14px;
+  }
+}

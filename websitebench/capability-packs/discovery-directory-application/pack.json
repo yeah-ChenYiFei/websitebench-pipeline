@@ -1,0 +1,303 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "search",
+        "entities": [
+          {
+            "identity": "site-local opaque listing-editorial-record identity; exact source key and ownership require R1 confirmation",
+            "name": "listing-editorial-record",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque listing-entry identity; exact source key and ownership require R1 confirmation",
+            "name": "listing-entry",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque organization-owner identity; exact source key and ownership require R1 confirmation",
+            "name": "organization-owner",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque category-taxonomy identity; exact source key and ownership require R1 confirmation",
+            "name": "category-taxonomy",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque facet identity; exact source key and ownership require R1 confirmation",
+            "name": "facet",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque review-rating identity; exact source key and ownership require R1 confirmation",
+            "name": "review-rating",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque saveditem-search identity; exact source key and ownership require R1 confirmation",
+            "name": "saveditem-search",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque lead-inquiry-application identity; exact source key and ownership require R1 confirmation",
+            "name": "lead-inquiry-application",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque editorialrecord identity; exact source key and ownership require R1 confirmation",
+            "name": "editorialrecord",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "discovery-directory-application-listing-editorial-record",
+        "label": "discovery-directory-application listing/editorial_record lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "来源、所有权、发布/审核和变更版本必须可追溯。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "published",
+            "updated",
+            "flagged",
+            "hidden",
+            "archived"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "published",
+              "trigger": "server-authorized discovery-directory-application listing/editorial_record lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "published",
+              "to": "updated",
+              "trigger": "server-authorized discovery-directory-application listing/editorial_record lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "updated",
+              "to": "flagged",
+              "trigger": "server-authorized discovery-directory-application listing/editorial_record lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "flagged",
+              "to": "hidden",
+              "trigger": "server-authorized discovery-directory-application listing/editorial_record lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "hidden",
+              "to": "archived",
+              "trigger": "server-authorized discovery-directory-application listing/editorial_record lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "search",
+        "entities": [
+          {
+            "identity": "site-local opaque inquiry-application identity; exact source key and ownership require R1 confirmation",
+            "name": "inquiry-application",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque listing-entry identity; exact source key and ownership require R1 confirmation",
+            "name": "listing-entry",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque organization-owner identity; exact source key and ownership require R1 confirmation",
+            "name": "organization-owner",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque category-taxonomy identity; exact source key and ownership require R1 confirmation",
+            "name": "category-taxonomy",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque facet identity; exact source key and ownership require R1 confirmation",
+            "name": "facet",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque review-rating identity; exact source key and ownership require R1 confirmation",
+            "name": "review-rating",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque saveditem-search identity; exact source key and ownership require R1 confirmation",
+            "name": "saveditem-search",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque lead-inquiry-application identity; exact source key and ownership require R1 confirmation",
+            "name": "lead-inquiry-application",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque editorialrecord identity; exact source key and ownership require R1 confirmation",
+            "name": "editorialrecord",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "discovery-directory-application-inquiry-application",
+        "label": "discovery-directory-application inquiry/application lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "提交校验、重复申请、所有者可见性和撤回状态由服务端强制。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "submitted",
+            "received",
+            "in-review",
+            "shortlisted-responded",
+            "rejected-closed",
+            "withdrawn"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "submitted",
+              "trigger": "server-authorized discovery-directory-application inquiry/application lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "submitted",
+              "to": "received",
+              "trigger": "server-authorized discovery-directory-application inquiry/application lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "received",
+              "to": "in-review",
+              "trigger": "server-authorized discovery-directory-application inquiry/application lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "in-review",
+              "to": "shortlisted-responded",
+              "trigger": "server-authorized discovery-directory-application inquiry/application lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "shortlisted-responded",
+              "to": "rejected-closed",
+              "trigger": "server-authorized discovery-directory-application inquiry/application lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "rejected-closed",
+              "to": "withdrawn",
+              "trigger": "server-authorized discovery-directory-application inquiry/application lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": "media-discovery",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "discovery-directory-entry",
+        "label": "Entry route family for 在内容、地点、房产、职位、研究、软件、机构或专业资料目录中搜索、比较、评价、收藏、询盘或申请。",
+        "priority": "p0"
+      },
+      {
+        "id": "discovery-directory-discover",
+        "label": "Discover route family for 在内容、地点、房产、职位、研究、软件、机构或专业资料目录中搜索、比较、评价、收藏、询盘或申请。",
+        "priority": "p0"
+      },
+      {
+        "id": "discovery-directory-detail",
+        "label": "Detail route family for 在内容、地点、房产、职位、研究、软件、机构或专业资料目录中搜索、比较、评价、收藏、询盘或申请。",
+        "priority": "p0"
+      },
+      {
+        "id": "discovery-directory-commit",
+        "label": "Commit route family for 在内容、地点、房产、职位、研究、软件、机构或专业资料目录中搜索、比较、评价、收藏、询盘或申请。",
+        "priority": "p0"
+      },
+      {
+        "id": "discovery-directory-confirm",
+        "label": "Confirm route family for 在内容、地点、房产、职位、研究、软件、机构或专业资料目录中搜索、比较、评价、收藏、询盘或申请。",
+        "priority": "p0"
+      },
+      {
+        "id": "discovery-directory-recover",
+        "label": "Recover route family for 在内容、地点、房产、职位、研究、软件、机构或专业资料目录中搜索、比较、评价、收藏、询盘或申请。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "discovery-directory global navigation",
+      "discovery-directory primary content",
+      "discovery-directory decision and action region",
+      "discovery-directory confirmation and aftercare"
+    ],
+    "state_families": [
+      "listing/editorial_record",
+      "inquiry/application",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "discovery-directory-application",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "在内容、地点、房产、职位、研究、软件、机构或专业资料目录中搜索、比较、评价、收藏、询盘或申请。",
+  "title": "Discovery Directory Application",
+  "verification": {
+    "coverage_dimensions": [
+      "discovery-directory-application actor x action x state x outcome",
+      "discovery-directory-application entity ownership and durable visibility",
+      "discovery-directory-application valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "规范化索引、筛选/排序、实体身份和可重复的搜索结果。",
+      "收藏、评价资格、询盘/申请、发布审核和所有权。",
+      "稀疏/未知实体、零结果、重复提交和跨用户读取必须有真实负向状态。"
+    ]
+  },
+  "version": "1.0.0"
+}

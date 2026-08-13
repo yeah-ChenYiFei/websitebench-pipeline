@@ -1,0 +1,1 @@
+!function(){"use strict";window.TRIPIT.util.tracking=function(){return this.trackEvent=function(t,n,i,u,c){},this}}(jQuery);

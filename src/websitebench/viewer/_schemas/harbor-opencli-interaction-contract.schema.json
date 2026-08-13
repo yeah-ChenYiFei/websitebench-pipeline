@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/harbor-opencli-interaction-contract.schema.json",
+  "title": "WebsiteBench Harbor OpenCLI interaction contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "opencli_version",
+    "site_id",
+    "profiles"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "websitebench.harbor.opencli-interaction-contract.v1"
+    },
+    "opencli_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "site_id": {
+      "$ref": "#/$defs/slug"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/relative_path"
+    },
+    "profiles": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-zA-Z0-9][a-zA-Z0-9._-]*$": {
+          "$ref": "#/$defs/profile"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 100
+    },
+    "relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?![A-Za-z]:)(?![\\/])(?!.*(?:^|[\\/])\\.\\.(?:[\\/]|$)).+"
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "observation_id",
+        "command",
+        "route"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "observation_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._/-]*$",
+          "maxLength": 120
+        },
+        "command": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "route": {
+          "$ref": "#/$defs/relative_path"
+        },
+        "selector": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "tier": {
+          "description": "Optional per-step override. When absent the step inherits the profile tier.",
+          "enum": ["p0", "p1"]
+        },
+        "intent": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "required_state": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "fields": {
+          "description": "Form field overrides for a submit step. Values must be public local fixtures, never real credentials; only field names are recorded in results.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 400
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "tier",
+        "steps",
+        "local_semantics",
+        "failure_paths",
+        "recovery_paths",
+        "network"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "maxLength": 180
+        },
+        "tier": {
+          "enum": ["p0", "p1"]
+        },
+        "session": {
+          "description": "Optional owner-scoped precondition established before step 1. Setup, not a measured interaction; field values must be public local fixtures, never real credentials.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["route", "method", "fields"],
+          "properties": {
+            "route": {
+              "$ref": "#/$defs/relative_path"
+            },
+            "method": {
+              "enum": ["POST"]
+            },
+            "fields": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "notes": {
+              "type": "string",
+              "maxLength": 400
+            }
+          }
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 60,
+          "items": {
+            "$ref": "#/$defs/step"
+          }
+        },
+        "local_semantics": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "maxLength": 160
+          }
+        },
+        "failure_paths": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "maxLength": 160
+          }
+        },
+        "recovery_paths": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "maxLength": 160
+          }
+        },
+        "network": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["allowlist"],
+          "properties": {
+            "allowlist": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 20,
+              "items": {
+                "type": "string",
+                "maxLength": 128
+              }
+            },
+            "notes": {
+              "type": "string",
+              "maxLength": 500
+            }
+          }
+        }
+      }
+    }
+  }
+}

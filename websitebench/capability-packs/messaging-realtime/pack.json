@@ -1,0 +1,103 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "communication",
+        "entities": [
+          {
+            "identity": "site-local opaque conversation identity; exact source key and ownership require R1 confirmation",
+            "name": "conversation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "messaging-realtime-lifecycle",
+        "label": "messaging-realtime lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "participant authorization",
+          "ordered messages",
+          "dedupe",
+          "disconnect recovery"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "open",
+            "active",
+            "archived",
+            "blocked"
+          ],
+          "transitions": [
+            {
+              "from": "open",
+              "to": "active",
+              "trigger": "server-authorized messaging-realtime lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "archived",
+              "trigger": "server-authorized messaging-realtime lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "archived",
+              "to": "blocked",
+              "trigger": "server-authorized messaging-realtime lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-message-log"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "messaging-realtime keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "messaging-realtime-surface",
+        "label": "messaging-realtime route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "messaging-realtime surface"
+    ],
+    "state_families": [
+      "messaging-realtime loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "messaging-realtime",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "授权会话、消息、已读状态、presence/实时更新的确定性本地实现。",
+  "title": "Messaging Realtime overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "messaging-realtime actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "participant authorization",
+      "ordered messages",
+      "dedupe",
+      "disconnect recovery"
+    ]
+  },
+  "version": "1.0.0"
+}

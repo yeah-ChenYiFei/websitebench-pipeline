@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/offline-clone.site-profile.v1.json",
+  "title": "Declarative offline-clone site profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "inventory_id",
+    "site_id",
+    "display_name",
+    "official_url",
+    "source_origin_status",
+    "source_origins",
+    "inventory_metadata",
+    "classification",
+    "locale_defaults",
+    "additional_pack_ids",
+    "overrides",
+    "blockers"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "offline-clone.site-profile.v1"
+    },
+    "inventory_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "site_id": {
+      "$ref": "#/$defs/id"
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "official_url": {
+      "type": "string",
+      "pattern": "^https://",
+      "maxLength": 500
+    },
+    "source_origin_status": {
+      "enum": [
+        "valid",
+        "invalid-in-inventory"
+      ]
+    },
+    "source_origins": {
+      "type": "array",
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://"
+      }
+    },
+    "inventory_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "frontend_complexity",
+        "backend_statefulness",
+        "authentication",
+        "agent_task_family"
+      ],
+      "properties": {
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "topdown_category": {
+          "$ref": "#/$defs/id"
+        },
+        "source_provenance": {
+          "$ref": "#/$defs/id"
+        },
+        "frontend_complexity": {
+          "enum": [
+            "Low",
+            "Medium",
+            "High"
+          ]
+        },
+        "backend_statefulness": {
+          "enum": [
+            "Low",
+            "Medium",
+            "High"
+          ]
+        },
+        "authentication": {
+          "enum": [
+            "None",
+            "Optional",
+            "Required"
+          ]
+        },
+        "agent_task_family": {
+          "enum": [
+            "Easy",
+            "Medium",
+            "Hard"
+          ]
+        }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "batch_family_id",
+        "archetype_pack_id",
+        "overlay_pack_ids",
+        "confidence",
+        "evidence_tier",
+        "confirmation_status",
+        "rationale"
+      ],
+      "properties": {
+        "batch_family_id": {
+          "$ref": "#/$defs/id"
+        },
+        "archetype_pack_id": {
+          "$ref": "#/$defs/id"
+        },
+        "overlay_pack_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "provisional"
+          ]
+        },
+        "evidence_tier": {
+          "const": "inferred"
+        },
+        "confirmation_status": {
+          "const": "requires-r1-confirmation"
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        }
+      }
+    },
+    "locale_defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "locale",
+        "timezone",
+        "currency"
+      ],
+      "properties": {
+        "locale": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 35
+        },
+        "timezone": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 100
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Z]{3}$"
+        }
+      }
+    },
+    "additional_pack_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/id"
+      }
+    },
+    "overrides": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/override"
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/blocker"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "override": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "target",
+        "selector",
+        "rationale"
+      ],
+      "properties": {
+        "op": {
+          "enum": [
+            "set-field",
+            "add-item",
+            "remove-item-with-rationale",
+            "bind-evidence"
+          ]
+        },
+        "target": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9.-]+$"
+        },
+        "selector": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/id"
+            }
+          }
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "value": {}
+      }
+    },
+    "blocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "message",
+        "unblock_evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Z0-9][A-Z0-9._-]+$"
+        },
+        "kind": {
+          "enum": [
+            "source-data-quality",
+            "scope-ambiguity",
+            "rights",
+            "external-access"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 3000
+        },
+        "unblock_evidence": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 3000
+        }
+      }
+    }
+  }
+}

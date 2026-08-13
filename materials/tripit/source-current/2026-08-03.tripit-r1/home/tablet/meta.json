@@ -1,0 +1,45 @@
+{
+  "checkpoint": "home",
+  "family": "marketing",
+  "priority": "P0",
+  "viewport": "tablet",
+  "requested_url": "https://www.tripit.com/",
+  "final_url": "https://www.tripit.com/web",
+  "title": "TripIt: Highest-Rated Travel Itinerary App + Trip Planner",
+  "body_text_len": 3273,
+  "frames": 3,
+  "frame_sha256": [
+    "0e06ee58ed7403486409ec4447d466a572b2b35c343b61d610149ddc84e01f4a",
+    "0e06ee58ed7403486409ec4447d466a572b2b35c343b61d610149ddc84e01f4a",
+    "0e06ee58ed7403486409ec4447d466a572b2b35c343b61d610149ddc84e01f4a"
+  ],
+  "frames_identical": true,
+  "link_count": 42,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 1024,
+      "height": 62
+    },
+    "main": {
+      "selector": "[role=main]",
+      "x": 0,
+      "y": 127,
+      "width": 1024,
+      "height": 4394
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 32,
+      "y": 4521,
+      "width": 960,
+      "height": 501
+    },
+    "form": null,
+    "document_height": 5023
+  }
+}

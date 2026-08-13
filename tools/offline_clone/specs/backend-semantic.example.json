@@ -1,0 +1,81 @@
+{
+  "schema_version": "websitebench.offline-clone.backend-semantic-suite.v1",
+  "suite_id": "saved-item-ownership",
+  "allowed_origin": "http://127.0.0.1:8000",
+  "timeout_seconds": 10,
+  "follow_redirects": false,
+  "invariants": [
+    {
+      "id": "AUTHY-002",
+      "applicability": "applicable",
+      "required_polarities": [
+        "positive",
+        "negative"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "owner-creates-item",
+      "invariant_id": "AUTHY-002",
+      "polarity": "positive",
+      "actor": "owner",
+      "steps": [
+        {
+          "id": "create",
+          "request": {
+            "method": "POST",
+            "path": "/api/items",
+            "json": {
+              "entity_id": "fixture-1"
+            }
+          },
+          "expect": {
+            "status": 201,
+            "json_present": [
+              "/line_id"
+            ]
+          },
+          "capture": {
+            "line_id": "/line_id"
+          }
+        },
+        {
+          "id": "read-own",
+          "request": {
+            "method": "GET",
+            "path": "/api/items/${VAR:line_id}"
+          },
+          "expect": {
+            "status": 200,
+            "json_equal": {
+              "/line_id": "${VAR:line_id}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "foreign-owner-rejected",
+      "invariant_id": "AUTHY-002",
+      "polarity": "negative",
+      "actor": "foreign-owner",
+      "steps": [
+        {
+          "id": "read-foreign",
+          "request": {
+            "method": "GET",
+            "path": "/api/items/${VAR:line_id}"
+          },
+          "expect": {
+            "status": 404,
+            "json_absent": [
+              "/line_id",
+              "/owner_id"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

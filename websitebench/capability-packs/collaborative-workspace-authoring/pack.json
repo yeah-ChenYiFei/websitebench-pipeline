@@ -1,0 +1,297 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque artifact identity; exact source key and ownership require R1 confirmation",
+            "name": "artifact",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque workspace identity; exact source key and ownership require R1 confirmation",
+            "name": "workspace",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque member identity; exact source key and ownership require R1 confirmation",
+            "name": "member",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque document-file-artifact identity; exact source key and ownership require R1 confirmation",
+            "name": "document-file-artifact",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque folder-collection identity; exact source key and ownership require R1 confirmation",
+            "name": "folder-collection",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque revision identity; exact source key and ownership require R1 confirmation",
+            "name": "revision",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque comment identity; exact source key and ownership require R1 confirmation",
+            "name": "comment",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque sharegrant identity; exact source key and ownership require R1 confirmation",
+            "name": "sharegrant",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque template identity; exact source key and ownership require R1 confirmation",
+            "name": "template",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque publishtarget identity; exact source key and ownership require R1 confirmation",
+            "name": "publishtarget",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "collaborative-workspace-authoring-artifact",
+        "label": "collaborative-workspace-authoring artifact lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "版本、所有权、共享权限、发布和回收站由服务端持久化。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "shared",
+            "published",
+            "archived",
+            "deleted",
+            "restored"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "shared",
+              "trigger": "server-authorized collaborative-workspace-authoring artifact lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "shared",
+              "to": "published",
+              "trigger": "server-authorized collaborative-workspace-authoring artifact lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "published",
+              "to": "archived",
+              "trigger": "server-authorized collaborative-workspace-authoring artifact lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "archived",
+              "to": "deleted",
+              "trigger": "server-authorized collaborative-workspace-authoring artifact lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "deleted",
+              "to": "restored",
+              "trigger": "server-authorized collaborative-workspace-authoring artifact lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque share-grant identity; exact source key and ownership require R1 confirmation",
+            "name": "share-grant",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque workspace identity; exact source key and ownership require R1 confirmation",
+            "name": "workspace",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque member identity; exact source key and ownership require R1 confirmation",
+            "name": "member",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque document-file-artifact identity; exact source key and ownership require R1 confirmation",
+            "name": "document-file-artifact",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque folder-collection identity; exact source key and ownership require R1 confirmation",
+            "name": "folder-collection",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque revision identity; exact source key and ownership require R1 confirmation",
+            "name": "revision",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque comment identity; exact source key and ownership require R1 confirmation",
+            "name": "comment",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque sharegrant identity; exact source key and ownership require R1 confirmation",
+            "name": "sharegrant",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque template identity; exact source key and ownership require R1 confirmation",
+            "name": "template",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque publishtarget identity; exact source key and ownership require R1 confirmation",
+            "name": "publishtarget",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "collaborative-workspace-authoring-share-grant",
+        "label": "collaborative-workspace-authoring share_grant lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "角色提升、跨租户访问和撤销后的读取必须由服务端拒绝。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "invited",
+            "active",
+            "revoked",
+            "expired"
+          ],
+          "transitions": [
+            {
+              "from": "invited",
+              "to": "active",
+              "trigger": "server-authorized collaborative-workspace-authoring share_grant lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "revoked",
+              "trigger": "server-authorized collaborative-workspace-authoring share_grant lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "revoked",
+              "to": "expired",
+              "trigger": "server-authorized collaborative-workspace-authoring share_grant lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": "collaboration-enterprise",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "collaborative-workspace-entry",
+        "label": "Entry route family for 在个人或组织工作区中创建、编辑、组织、共享和发布文档、文件、设计、站点、表格或项目对象。",
+        "priority": "p0"
+      },
+      {
+        "id": "collaborative-workspace-discover",
+        "label": "Discover route family for 在个人或组织工作区中创建、编辑、组织、共享和发布文档、文件、设计、站点、表格或项目对象。",
+        "priority": "p0"
+      },
+      {
+        "id": "collaborative-workspace-detail",
+        "label": "Detail route family for 在个人或组织工作区中创建、编辑、组织、共享和发布文档、文件、设计、站点、表格或项目对象。",
+        "priority": "p0"
+      },
+      {
+        "id": "collaborative-workspace-commit",
+        "label": "Commit route family for 在个人或组织工作区中创建、编辑、组织、共享和发布文档、文件、设计、站点、表格或项目对象。",
+        "priority": "p0"
+      },
+      {
+        "id": "collaborative-workspace-confirm",
+        "label": "Confirm route family for 在个人或组织工作区中创建、编辑、组织、共享和发布文档、文件、设计、站点、表格或项目对象。",
+        "priority": "p0"
+      },
+      {
+        "id": "collaborative-workspace-recover",
+        "label": "Recover route family for 在个人或组织工作区中创建、编辑、组织、共享和发布文档、文件、设计、站点、表格或项目对象。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "collaborative-workspace global navigation",
+      "collaborative-workspace primary content",
+      "collaborative-workspace decision and action region",
+      "collaborative-workspace confirmation and aftercare"
+    ],
+    "state_families": [
+      "artifact",
+      "share_grant",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "collaborative-workspace-authoring",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "在个人或组织工作区中创建、编辑、组织、共享和发布文档、文件、设计、站点、表格或项目对象。",
+  "title": "Collaborative Workspace Authoring",
+  "verification": {
+    "coverage_dimensions": [
+      "collaborative-workspace-authoring actor x action x state x outcome",
+      "collaborative-workspace-authoring entity ownership and durable visibility",
+      "collaborative-workspace-authoring valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "工作区隔离、角色权限、版本历史和并发更新冲突。",
+      "文件元数据/内容、分享链接、评论和发布状态持久化。",
+      "撤销授权、软删除/恢复、重启和 reset 后状态可验证。"
+    ]
+  },
+  "version": "1.0.0"
+}

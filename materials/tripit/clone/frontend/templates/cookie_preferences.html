@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Cookie Preferences · TripIt{% endblock %}
+{% block content %}
+<section class="page cookie-preferences">
+  <h1>Cookie Preferences</h1>
+  {% if error %}<p class="form-error" role="alert">{{ error }}</p>{% endif %}
+  <p>
+    Two categories are used here. Strictly necessary cookies keep you signed in
+    and remember this choice; there is nothing else to turn on or off, because
+    nothing on this site reports to another origin.
+  </p>
+  <form method="post" action="/app/cookie-preferences">
+    <input type="hidden" name="return_to" value="{{ request.query_params.get('return_to', '/app/trips') }}">
+    <fieldset class="cookie-preferences__choices">
+      <legend>Allow</legend>
+      <label class="cookie-preferences__choice">
+        <input type="radio" name="cookie_choice" value="all"{% if choice != 'necessary' %} checked{% endif %}>
+        <span>All cookies</span>
+      </label>
+      <label class="cookie-preferences__choice">
+        <input type="radio" name="cookie_choice" value="necessary" data-cookie-choice="necessary"{% if choice == 'necessary' %} checked{% endif %}>
+        <span>Strictly necessary only</span>
+      </label>
+    </fieldset>
+    <button type="submit" class="btn btn--primary">Save preferences</button>
+  </form>
+  <p><a class="backlink" href="/app/trips">Back to trips</a></p>
+</section>
+{% endblock %}

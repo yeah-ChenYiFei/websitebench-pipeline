@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Add {{ plan_type_label }} · {{ trip.name }} · TripIt{% endblock %}
+{% block content %}
+<section class="page add-plan">
+  <a class="backlink" href="/trips/{{ trip.trip_id }}">{{ trip.name }}</a>
+  <h1>Add {{ plan_type_label }}</h1>
+
+  {% if errors %}
+    <ul class="form-errors" role="alert">
+      {% for err in errors %}<li>{{ err }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  <form class="form" method="post" action="/trips/{{ trip.trip_id }}/plans" autocomplete="off">
+    <input type="hidden" name="plan_type" value="{{ plan_type }}">
+    <input type="hidden" name="idempotency_key" value="{{ form_token }}">
+
+    {% if plan_type == 'lodging' %}
+      <label class="field">
+        <span class="field__label">Hotel</span>
+        <input class="field__input" type="text" name="title" list="hotel-options"
+               value="{{ values.get('title', '') }}"
+               placeholder="Start typing a hotel name" required
+               autocomplete="off" data-typeahead
+               data-typeahead-list="hotel-options"
+               data-typeahead-endpoint="/api/lodging/typeahead">
+      </label>
+      <datalist id="hotel-options">
+        {% for suggestion in lodging_suggestions %}
+          <option value="{{ suggestion.name }}">{{ suggestion.address }}</option>
+        {% endfor %}
+      </datalist>
+      <p class="visually-hidden" role="status" aria-live="polite" data-typeahead-status></p>
+
+      <div class="field-row">
+        <label class="field">
+          <span class="field__label">Check-in</span>
+          <input class="field__input" type="date" name="check_in_date"
+                 min="{{ trip.start_date }}" max="{{ trip.end_date }}"
+                 value="{{ values.get('check_in_date', '') }}" required>
+        </label>
+        <label class="field">
+          <span class="field__label">Check-out</span>
+          <input class="field__input" type="date" name="check_out_date"
+                 min="{{ trip.start_date }}" max="{{ trip.end_date }}"
+                 value="{{ values.get('check_out_date', '') }}" required>
+        </label>
+      </div>
+
+      <label class="field">
+        <span class="field__label">Confirmation number</span>
+        <input class="field__input" type="text" name="confirmation"
+               value="{{ values.get('confirmation', '') }}">
+      </label>
+    {% else %}
+      <label class="field">
+        <span class="field__label">Title</span>
+        <input class="field__input" type="text" name="title"
+               value="{{ values.get('title', '') }}" required>
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span class="field__label">Start date</span>
+          <input class="field__input" type="date" name="start_date"
+                 min="{{ trip.start_date }}" max="{{ trip.end_date }}"
+                 value="{{ values.get('start_date', '') }}">
+        </label>
+        <label class="field">
+          <span class="field__label">Start time</span>
+          <input class="field__input" type="time" name="start_time"
+                 value="{{ values.get('start_time', '') }}">
+        </label>
+      </div>
+
+      <div class="field-row">
+        <label class="field">
+          <span class="field__label">End date</span>
+          <input class="field__input" type="date" name="end_date"
+                 min="{{ trip.start_date }}" max="{{ trip.end_date }}"
+                 value="{{ values.get('end_date', '') }}">
+        </label>
+        <label class="field">
+          <span class="field__label">End time</span>
+          <input class="field__input" type="time" name="end_time"
+                 value="{{ values.get('end_time', '') }}">
+        </label>
+      </div>
+
+      <label class="field">
+        <span class="field__label">Notes</span>
+        <textarea class="field__input" name="notes" rows="3">{{ values.get('notes', '') }}</textarea>
+      </label>
+    {% endif %}
+
+    <div class="form__actions">
+      <button type="submit" class="btn btn--primary">Save to {{ trip.name }}</button>
+      <a class="btn" href="/trips/{{ trip.trip_id }}">Cancel</a>
+    </div>
+  </form>
+</section>
+
+{% if plan_type == 'lodging' %}
+<script src="/static/site/js/typeahead.js"></script>
+{% endif %}
+{% endblock %}

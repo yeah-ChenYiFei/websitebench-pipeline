@@ -1,0 +1,45 @@
+{
+  "checkpoint": "download",
+  "family": "marketing",
+  "priority": "P2",
+  "viewport": "desktop",
+  "requested_url": "https://www.tripit.com/web/free/download",
+  "final_url": "https://www.tripit.com/web/free/download",
+  "title": "Download the TripIt app to access travel plans on any device",
+  "body_text_len": 819,
+  "frames": 3,
+  "frame_sha256": [
+    "7a334b1e9a5cc30029500ebf1f6280bbd8107aab37bfd0f2551936c4de58ce95",
+    "7a334b1e9a5cc30029500ebf1f6280bbd8107aab37bfd0f2551936c4de58ce95",
+    "7a334b1e9a5cc30029500ebf1f6280bbd8107aab37bfd0f2551936c4de58ce95"
+  ],
+  "frames_identical": true,
+  "link_count": 37,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 62
+    },
+    "main": {
+      "selector": "[role=main]",
+      "x": 0,
+      "y": 127,
+      "width": 1440,
+      "height": 764
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 150,
+      "y": 891,
+      "width": 1140,
+      "height": 501
+    },
+    "form": null,
+    "document_height": 1392
+  }
+}

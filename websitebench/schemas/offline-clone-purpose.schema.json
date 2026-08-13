@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/offline-clone.purpose.v1.json",
+  "title": "ClawBench offline clone purpose contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "purpose_id",
+    "statement",
+    "primary_actor_ids",
+    "mainline_journey_ids",
+    "out_of_scope"
+  ],
+  "properties": {
+    "schema_version": {"const": "offline-clone.purpose.v1"},
+    "status": {"enum": ["draft", "frozen"]},
+    "purpose_id": {"$ref": "#/$defs/id"},
+    "statement": {"type": "string", "minLength": 1, "maxLength": 4000},
+    "primary_actor_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/id"}
+    },
+    "secondary_actor_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/id"}
+    },
+    "mainline_journey_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/id"}
+    },
+    "boundary_journey_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/id"}
+    },
+    "secondary_journey_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/id"}
+    },
+    "actors": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "actor_scope": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "actor_boundaries": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "simulations": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 4000}
+    },
+    "release_authority": {"type": "object"},
+    "verification_authority": {"type": "object"},
+    "external_authority_requirements": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "time_semantics": {
+      "type": ["object", "string"]
+    },
+    "evidence_axes_schema_version": {"type": "string", "minLength": 1},
+    "actor_identity_mapping_schema_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor_identity_mappings": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "out_of_scope": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 1000}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "frozen"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "primary_actor_ids": {"minItems": 1},
+          "mainline_journey_ids": {"minItems": 1}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[a-z0-9]+(?:[._:-][a-z0-9]+)*$"
+    }
+  }
+}

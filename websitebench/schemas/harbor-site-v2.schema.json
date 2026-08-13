@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/harbor-site-v2.schema.json",
+  "title": "WebsiteBench Harbor deterministic one-instance site manifest v2",
+  "description": "A current site is paired with exactly one same-id instance; the corpus loader enforces that cross-file invariant.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "site_id",
+    "display_name",
+    "benchmark_kind",
+    "runtime",
+    "mailbox",
+    "paths",
+    "scoring"
+  ],
+  "properties": {
+    "schema_version": {"const": "websitebench.harbor.site.v2"},
+    "site_id": {"$ref": "#/$defs/slug"},
+    "display_name": {"type": "string", "minLength": 1, "maxLength": 120},
+    "benchmark_kind": {"const": "fullstack-offline-reconstruction"},
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_access",
+        "agent_browser",
+        "formal_browser",
+        "reference_url_env",
+        "reference_allowed_origins_env",
+        "reference_storage_state_env",
+        "reference_reset_url_env",
+        "reference_reset_credential_env",
+        "candidate_url_env",
+        "reference_port",
+        "candidate_port",
+        "ready_path",
+        "judge_network",
+        "candidate_entrypoint",
+        "candidate_data_dir_env",
+        "formal_workers",
+        "browser"
+      ],
+      "properties": {
+        "reference_access": {"const": "browser-only"},
+        "agent_browser": {"const": "browser-use-cli"},
+        "formal_browser": {"const": "playwright"},
+        "reference_url_env": {"$ref": "#/$defs/env_name"},
+        "reference_allowed_origins_env": {"const": "WEBSITEBENCH_REFERENCE_ALLOWED_ORIGINS"},
+        "reference_storage_state_env": {"const": "WEBSITEBENCH_REFERENCE_STORAGE_STATE"},
+        "reference_reset_url_env": {"const": "WEBSITEBENCH_REFERENCE_RESET_URL"},
+        "reference_reset_credential_env": {"const": "WEBSITEBENCH_REFERENCE_RESET_CREDENTIAL"},
+        "candidate_url_env": {"$ref": "#/$defs/env_name"},
+        "reference_port": {"$ref": "#/$defs/port"},
+        "candidate_port": {"$ref": "#/$defs/port"},
+        "ready_path": {"$ref": "#/$defs/http_path"},
+        "judge_network": {"const": "loopback-only"},
+        "candidate_entrypoint": {"const": "deploy.sh"},
+        "candidate_data_dir_env": {"const": "WEBSITEBENCH_DATA_DIR"},
+        "formal_workers": {"const": 4},
+        "browser": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["engine", "playwright_version", "font_profile", "locale", "timezone", "color_scheme", "frozen_time", "disable_animations"],
+          "properties": {
+            "engine": {"const": "chromium"},
+            "playwright_version": {"const": "1.61.0"},
+            "font_profile": {"const": "websitebench-linux-fonts-v1"},
+            "locale": {"type": "string", "minLength": 2, "maxLength": 32},
+            "timezone": {"type": "string", "minLength": 1, "maxLength": 80},
+            "color_scheme": {"enum": ["light", "dark", "no-preference"]},
+            "frozen_time": {"type": "string", "format": "date-time"},
+            "disable_animations": {"const": true}
+          }
+        }
+      }
+    },
+    "mailbox": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "namespace_env", "credential_env", "external_allowlist"],
+      "properties": {
+        "mode": {"enum": ["local-sidecar", "external-proxy"]},
+        "namespace_env": {"const": "WEBSITEBENCH_MAILBOX_NAMESPACE"},
+        "credential_env": {"const": "WEBSITEBENCH_MAILBOX_CREDENTIAL"},
+        "external_allowlist": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 8,
+          "items": {"$ref": "#/$defs/host"}
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"mode": {"const": "local-sidecar"}}},
+          "then": {"properties": {"external_allowlist": {"maxItems": 0}}}
+        },
+        {
+          "if": {"properties": {"mode": {"const": "external-proxy"}}},
+          "then": {"properties": {"external_allowlist": {"minItems": 1}}}
+        }
+      ]
+    },
+    "paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public", "reference", "verifier", "hidden_fixtures"],
+      "properties": {
+        "public": {"$ref": "#/$defs/relative_path"},
+        "reference": {"$ref": "#/$defs/relative_path"},
+        "verifier": {"$ref": "#/$defs/relative_path"},
+        "hidden_fixtures": {"$ref": "#/$defs/relative_path"},
+        "oracle": {"$ref": "#/$defs/relative_path"}
+      }
+    },
+    "opencli": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "contract", "network_requirements"],
+      "properties": {
+        "version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+        "contract": {"$ref": "#/$defs/relative_path"},
+        "network_requirements": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["allowlist"],
+          "properties": {
+            "allowlist": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"type": "string", "maxLength": 128}
+            },
+            "notes": {"type": "string", "maxLength": 500}
+          }
+        }
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reward_source", "task_score", "visual_score", "cicd_score"],
+      "properties": {
+        "reward_source": {"const": "task_completion"},
+        "task_score": {"const": "equal_weight_exact_terminal_state"},
+        "visual_score": {"const": "checkpoint_area_weighted_rgb_ssim_report_only"},
+        "cicd_score": {"const": "equal_weight_trusted_checks_report_only"}
+      }
+    }
+  },
+  "$defs": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 100},
+    "env_name": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$", "maxLength": 100},
+    "http_path": {"type": "string", "pattern": "^/(?!/).*$", "maxLength": 256},
+    "relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?![A-Za-z]:)(?![\\\\/])(?!.*(?:^|[\\\\/])\\.\\.(?:[\\\\/]|$)).+"
+    },
+    "host": {
+      "type": "string",
+      "pattern": "^(?=.{1,253}$)(?!-)(?:[A-Za-z0-9-]+\\.)+[A-Za-z]{2,63}$"
+    },
+    "port": {"type": "integer", "minimum": 1024, "maximum": 65535}
+  }
+}

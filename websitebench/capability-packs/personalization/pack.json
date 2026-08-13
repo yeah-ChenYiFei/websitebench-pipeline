@@ -1,0 +1,95 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "personalization",
+        "entities": [
+          {
+            "identity": "site-local opaque preference identity; exact source key and ownership require R1 confirmation",
+            "name": "preference",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "personalization-lifecycle",
+        "label": "personalization lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "deterministic seed",
+          "explainable inputs",
+          "account isolation",
+          "empty-history fallback"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "unset",
+            "active",
+            "reset"
+          ],
+          "transitions": [
+            {
+              "from": "unset",
+              "to": "active",
+              "trigger": "server-authorized personalization lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "reset",
+              "trigger": "server-authorized personalization lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "personalization keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "personalization-surface",
+        "label": "personalization route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "personalization surface"
+    ],
+    "state_families": [
+      "personalization loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "personalization",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "基于 fixture 行为的推荐、feed 排序和偏好。",
+  "title": "Personalization overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "personalization actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "deterministic seed",
+      "explainable inputs",
+      "account isolation",
+      "empty-history fallback"
+    ]
+  },
+  "version": "1.0.0"
+}

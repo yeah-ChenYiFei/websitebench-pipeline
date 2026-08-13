@@ -1,0 +1,59 @@
+{
+  "schema_version": "offline-clone.platform-inventory.v2",
+  "provenance": {
+    "sources": [
+      {
+        "source_id": "fixture-catalog"
+      },
+      {
+        "source_id": "fixture-overrides"
+      }
+    ]
+  },
+  "summary": {
+    "platform_count": 2,
+    "category_count": 2,
+    "category_counts": {
+      "Education": 1,
+      "Retail": 1
+    },
+    "invalid_source_url_count": 1
+  },
+  "platforms": [
+    {
+      "inventory_id": 1001,
+      "platform_key": "alpha-market",
+      "platform": "Alpha Market",
+      "category": "Retail",
+      "official_url": "https://alpha.example.test/",
+      "official_url_status": "valid",
+      "first_party_origins": [
+        "https://alpha.example.test/"
+      ],
+      "source_ids": [
+        "fixture-catalog"
+      ],
+      "frontend_complexity": "High",
+      "backend_statefulness": "High",
+      "authentication": "Required",
+      "agent_task_family": "Hard"
+    },
+    {
+      "inventory_id": 9007,
+      "platform_key": "beta-learning",
+      "platform": "Beta Learning",
+      "category": "Education",
+      "official_url": "https://beta.example.test/",
+      "official_url_status": "invalid-in-source",
+      "first_party_origins": [],
+      "source_ids": [
+        "fixture-catalog",
+        "fixture-overrides"
+      ],
+      "frontend_complexity": "Medium",
+      "backend_statefulness": "Medium",
+      "authentication": "Optional",
+      "agent_task_family": "Medium"
+    }
+  ]
+}

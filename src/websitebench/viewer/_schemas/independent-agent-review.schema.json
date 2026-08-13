@@ -1,0 +1,738 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/independent-agent-review.v2.json",
+  "title": "Independent offline-clone Reviewer Agent record v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_id",
+    "batch_id",
+    "site_id",
+    "checkpoint",
+    "round",
+    "track",
+    "release_profile",
+    "minimum_isolation",
+    "packet",
+    "independence",
+    "isolation",
+    "subject",
+    "passes",
+    "coverage",
+    "findings",
+    "machine_evidence",
+    "decision",
+    "open_p0",
+    "open_p1",
+    "stale"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "clawbench.independent-agent-review.v2"
+    },
+    "review_id": {
+      "$ref": "#/$defs/id"
+    },
+    "batch_id": {
+      "$ref": "#/$defs/id"
+    },
+    "site_id": {
+      "$ref": "#/$defs/id"
+    },
+    "checkpoint": {
+      "$ref": "#/$defs/checkpoint"
+    },
+    "round": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "track": {
+      "enum": [
+        "clone",
+        "harbor"
+      ]
+    },
+    "release_profile": {
+      "$ref": "#/$defs/id"
+    },
+    "minimum_isolation": {
+      "enum": [
+        "hard",
+        "procedural"
+      ]
+    },
+    "packet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "metadata",
+        "precheck",
+        "inputs",
+        "forbidden_inputs_absent"
+      ],
+      "properties": {
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "metadata": {
+          "$ref": "#/$defs/hashed_artifact"
+        },
+        "precheck": {
+          "$ref": "#/$defs/hashed_artifact"
+        },
+        "inputs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/hashed_input"
+          }
+        },
+        "forbidden_inputs_absent": {
+          "type": "boolean"
+        }
+      }
+    },
+    "independence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "model",
+        "fork_turns",
+        "prompt_sha256",
+        "conversation_visible",
+        "concern_corpus_visible",
+        "producer_summary_visible",
+        "prior_findings_visible_before_blind_freeze",
+        "paths_read"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "fork_turns": {
+          "const": "none"
+        },
+        "prompt_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "conversation_visible": {
+          "type": "boolean"
+        },
+        "concern_corpus_visible": {
+          "type": "boolean"
+        },
+        "producer_summary_visible": {
+          "type": "boolean"
+        },
+        "prior_findings_visible_before_blind_freeze": {
+          "type": "boolean"
+        },
+        "paths_read": {
+          "type": "array",
+          "maxItems": 10000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/path"
+          }
+        }
+      }
+    },
+    "isolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level",
+        "allowed_roots",
+        "forbidden_inputs",
+        "output_root",
+        "pre_pass_a_visibility",
+        "post_pass_a_visibility",
+        "reviewer_attestation",
+        "contamination_risk"
+      ],
+      "properties": {
+        "level": {
+          "enum": [
+            "hard",
+            "procedural",
+            "none"
+          ]
+        },
+        "allowed_roots": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 100,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/path"
+          }
+        },
+        "forbidden_inputs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/path"
+          }
+        },
+        "output_root": {
+          "$ref": "#/$defs/path"
+        },
+        "pre_pass_a_visibility": {
+          "$ref": "#/$defs/visibility_snapshot"
+        },
+        "post_pass_a_visibility": {
+          "$ref": "#/$defs/visibility_snapshot"
+        },
+        "reviewer_attestation": {
+          "type": "boolean"
+        },
+        "contamination_risk": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 4000
+        }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "identity",
+        "matches_packet"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "contract",
+            "runtime"
+          ]
+        },
+        "identity": {
+          "$ref": "#/$defs/hashed_artifact"
+        },
+        "matches_packet": {
+          "type": "boolean"
+        }
+      }
+    },
+    "passes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blind_discovery",
+        "coordinator_ack",
+        "directed_verification"
+      ],
+      "properties": {
+        "blind_discovery": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "freeze_artifact",
+            "surface_inventory",
+            "denominator_audit"
+          ],
+          "properties": {
+            "freeze_artifact": {
+              "$ref": "#/$defs/hashed_artifact"
+            },
+            "surface_inventory": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 10000,
+              "items": {
+                "$ref": "#/$defs/non_empty_string"
+              }
+            },
+            "denominator_audit": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1000,
+              "items": {
+                "$ref": "#/$defs/non_empty_string"
+              }
+            }
+          }
+        },
+        "coordinator_ack": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "artifact"
+          ],
+          "properties": {
+            "artifact": {
+              "$ref": "#/$defs/hashed_artifact"
+            }
+          }
+        },
+        "directed_verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "performed",
+            "disclosure_freeze_artifact",
+            "obligations"
+          ],
+          "properties": {
+            "performed": {
+              "type": "boolean"
+            },
+            "disclosure_freeze_artifact": {
+              "$ref": "#/$defs/hashed_artifact"
+            },
+            "obligations": {
+              "type": "array",
+              "maxItems": 1000,
+              "items": {
+                "$ref": "#/$defs/obligation_outcome"
+              }
+            }
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "p0_required",
+        "p0_executed",
+        "p0_coverage_complete",
+        "denominators"
+      ],
+      "properties": {
+        "p0_required": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "p0_executed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "p0_coverage_complete": {
+          "type": "boolean"
+        },
+        "denominators": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "items": {
+            "$ref": "#/$defs/denominator"
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "machine_evidence": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/hashed_artifact"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "decision": {
+      "enum": [
+        "accepted",
+        "rejected",
+        "blocked",
+        "uncertain"
+      ]
+    },
+    "open_p0": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "open_p1": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stale": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "checkpoint": {
+            "const": "R1-scope-evidence"
+          }
+        },
+        "required": [
+          "checkpoint"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subject": {
+            "properties": {
+              "kind": {
+                "const": "contract"
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "subject": {
+            "properties": {
+              "kind": {
+                "const": "runtime"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "checkpoint": {
+            "const": "R4-runtime-release"
+          }
+        },
+        "required": [
+          "checkpoint"
+        ]
+      },
+      "then": {
+        "properties": {
+          "machine_evidence": {
+            "$ref": "#/$defs/hashed_artifact"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "accepted"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "packet": {
+            "properties": {
+              "forbidden_inputs_absent": {
+                "const": true
+              }
+            }
+          },
+          "independence": {
+            "properties": {
+              "conversation_visible": {
+                "const": false
+              },
+              "concern_corpus_visible": {
+                "const": false
+              },
+              "producer_summary_visible": {
+                "const": false
+              },
+              "prior_findings_visible_before_blind_freeze": {
+                "const": false
+              }
+            }
+          },
+          "isolation": {
+            "properties": {
+              "level": {
+                "enum": [
+                  "hard",
+                  "procedural"
+                ]
+              },
+              "reviewer_attestation": {
+                "const": true
+              }
+            }
+          },
+          "subject": {
+            "properties": {
+              "matches_packet": {
+                "const": true
+              }
+            }
+          },
+          "passes": {
+            "properties": {
+              "directed_verification": {
+                "properties": {
+                  "performed": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          "coverage": {
+            "properties": {
+              "p0_coverage_complete": {
+                "const": true
+              }
+            }
+          },
+          "open_p0": {
+            "const": 0
+          },
+          "open_p1": {
+            "const": 0
+          },
+          "stale": {
+            "const": false
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 200
+    },
+    "checkpoint": {
+      "enum": [
+        "R1-scope-evidence",
+        "R2-frontend",
+        "R3-semantics",
+        "R4-runtime-release"
+      ]
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "non_empty_string": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "hashed_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "hashed_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "role": {
+          "$ref": "#/$defs/id"
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "visibility_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "captured_at",
+        "visible_roots",
+        "forbidden_hits"
+      ],
+      "properties": {
+        "captured_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "visible_roots": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/path"
+          }
+        },
+        "forbidden_hits": {
+          "type": "array",
+          "maxItems": 1000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/path"
+          }
+        }
+      }
+    },
+    "obligation_outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "outcome",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "outcome": {
+          "enum": [
+            "independently-discovered",
+            "newly-confirmed",
+            "contradicted",
+            "not-reproducible",
+            "blocked"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/non_empty_string"
+          }
+        }
+      }
+    },
+    "denominator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "required",
+        "executed"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "required": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "executed": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "fingerprint",
+        "class",
+        "severity",
+        "route_state_viewport_role",
+        "expected",
+        "observed",
+        "evidence",
+        "machine_checkable",
+        "regression_target",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "fingerprint": {
+          "$ref": "#/$defs/sha256"
+        },
+        "class": {
+          "$ref": "#/$defs/id"
+        },
+        "severity": {
+          "enum": [
+            "P0",
+            "P1",
+            "P2"
+          ]
+        },
+        "route_state_viewport_role": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "expected": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "observed": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/non_empty_string"
+          }
+        },
+        "machine_checkable": {
+          "type": "boolean"
+        },
+        "regression_target": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1000
+        },
+        "status": {
+          "enum": [
+            "open",
+            "blocked",
+            "p2-deferred"
+          ]
+        }
+      }
+    }
+  }
+}

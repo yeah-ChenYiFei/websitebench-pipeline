@@ -1,0 +1,64 @@
+{
+  "generated_from": "materials/tripit/clone.yaml",
+  "opencli_version": "1.8.6",
+  "profiles": {
+    "marketing-and-auth-entry": {
+      "failure_paths": [
+        "the trips app renders itinerary content to an anonymous visitor",
+        "sign-in route returns 404"
+      ],
+      "label": "TripIt landing, account entry points, and authenticated app gating",
+      "local_semantics": [
+        "The authenticated app lives under /app/* and is gated for anonymous visitors.",
+        "Marketing routes render without a session and contact no upstream service."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [
+        "re-open the sign-in route after a transient 5xx"
+      ],
+      "steps": [
+        {
+          "command": "state",
+          "id": "landing-state",
+          "intent": "Open the account creation route and confirm the sign-in entry point renders.",
+          "observation_id": "tripit_landing_state",
+          "required_state": {
+            "title": "TripIt"
+          },
+          "route": "account/create",
+          "selector": "a[href=\"/account/login\"]"
+        },
+        {
+          "command": "state",
+          "id": "open-login",
+          "intent": "Open the sign-in route and confirm the local credential form renders.",
+          "observation_id": "tripit_login_form",
+          "required_state": {
+            "title": "Sign in to TripIt"
+          },
+          "route": "account/login",
+          "selector": "form#authenticate"
+        },
+        {
+          "command": "state",
+          "id": "app-requires-session",
+          "intent": "Confirm the authenticated app route redirects an anonymous visitor instead of serving trips.",
+          "observation_id": "tripit_app_gated",
+          "required_state": {
+            "expects": "anonymous visitor is redirected away from the trips app"
+          },
+          "route": "app/trips"
+        }
+      ],
+      "tier": "p0"
+    }
+  },
+  "schema_version": "websitebench.harbor.opencli-interaction-contract.v1",
+  "site_id": "tripit"
+}

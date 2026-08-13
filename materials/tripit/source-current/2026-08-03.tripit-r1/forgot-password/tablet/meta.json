@@ -1,0 +1,33 @@
+{
+  "checkpoint": "forgot-password",
+  "family": "auth",
+  "priority": "P0",
+  "viewport": "tablet",
+  "requested_url": "https://www.tripit.com/account/forgotPassword",
+  "final_url": "https://www.tripit.com/account/forgotPassword",
+  "title": "TripIt | Online travel itinerary and trip planner",
+  "body_text_len": 286,
+  "frames": 3,
+  "frame_sha256": [
+    "950970a54626696c92781250c5fb83c9cac79c363b3b46a3266a60c896be87b1",
+    "950970a54626696c92781250c5fb83c9cac79c363b3b46a3266a60c896be87b1",
+    "950970a54626696c92781250c5fb83c9cac79c363b3b46a3266a60c896be87b1"
+  ],
+  "frames_identical": true,
+  "link_count": 7,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": null,
+    "main": null,
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 728,
+      "width": 1024,
+      "height": 40
+    },
+    "form": null,
+    "document_height": 768
+  }
+}

@@ -1,0 +1,1001 @@
+{
+  "schema_version": "websitebench.inventory-migration.v1",
+  "migration_id": "clawbench-160-topdown-10-20260729",
+  "applied_at": "2026-07-29",
+  "base_inventory_sha256": "3e68700ec7c2cd11f219e0116b9813d165bea88371e07820c9c538816a03aad8",
+  "clawbench_source": {
+    "checkout": "/home/yuxuan/work/ClawBench",
+    "commit": "82d69bff3cc86448c5ef0c558345c2447b0e8549",
+    "v1_task_root": "test-cases/v1",
+    "v2_frozen_inventory": "websitebench/corpora/claw-bench-v2/live-site-inventory.json"
+  },
+  "counts": {
+    "before": 300,
+    "retained": 140,
+    "removed": 160,
+    "inserted_clawbench_contracts": 160,
+    "after": 300,
+    "topdown_categories": 10,
+    "per_topdown_category": 30
+  },
+  "invalidation": {
+    "earliest_checkpoint": "R1-scope-evidence",
+    "scope": "all-300-profiles-because-canonical-inventory-hash-is-a-global-compiler-input",
+    "old_evidence_disposition": "historical-stale-not-release-authoritative"
+  },
+  "retained_inventory_ids": [
+    2,
+    3,
+    6,
+    7,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    28,
+    29,
+    36,
+    40,
+    42,
+    47,
+    48,
+    49,
+    50,
+    61,
+    78,
+    79,
+    80,
+    81,
+    83,
+    84,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    111,
+    112,
+    113,
+    115,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    157,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    236,
+    237,
+    238,
+    243,
+    250,
+    251,
+    252,
+    253,
+    257,
+    291
+  ],
+  "removed_existing": [
+    {
+      "inventory_id": 1,
+      "platform": "Amazon",
+      "official_url": "https://www.amazon.com"
+    },
+    {
+      "inventory_id": 4,
+      "platform": "Target",
+      "official_url": "https://www.target.com"
+    },
+    {
+      "inventory_id": 5,
+      "platform": "Etsy",
+      "official_url": "https://www.etsy.com"
+    },
+    {
+      "inventory_id": 8,
+      "platform": "Home Depot",
+      "official_url": "https://www.homedepot.com"
+    },
+    {
+      "inventory_id": 9,
+      "platform": "Lowe's",
+      "official_url": "https://www.lowe's.com"
+    },
+    {
+      "inventory_id": 26,
+      "platform": "Depop",
+      "official_url": "https://www.depop.com"
+    },
+    {
+      "inventory_id": 27,
+      "platform": "StockX",
+      "official_url": "https://www.stockx.com"
+    },
+    {
+      "inventory_id": 30,
+      "platform": "AutoTrader",
+      "official_url": "https://www.autotrader.com"
+    },
+    {
+      "inventory_id": 31,
+      "platform": "Shopify",
+      "official_url": "https://www.shopify.com"
+    },
+    {
+      "inventory_id": 32,
+      "platform": "WooCommerce",
+      "official_url": "https://www.woocommerce.com"
+    },
+    {
+      "inventory_id": 33,
+      "platform": "Etsy Seller Dashboard",
+      "official_url": "https://www.etsysellerdashboard.com"
+    },
+    {
+      "inventory_id": 34,
+      "platform": "Square Online",
+      "official_url": "https://www.squareonline.com"
+    },
+    {
+      "inventory_id": 35,
+      "platform": "BigCommerce",
+      "official_url": "https://www.bigcommerce.com"
+    },
+    {
+      "inventory_id": 37,
+      "platform": "Airtable",
+      "official_url": "https://www.airtable.com"
+    },
+    {
+      "inventory_id": 38,
+      "platform": "Trello",
+      "official_url": "https://www.trello.com"
+    },
+    {
+      "inventory_id": 39,
+      "platform": "Asana",
+      "official_url": "https://www.asana.com"
+    },
+    {
+      "inventory_id": 41,
+      "platform": "Slack",
+      "official_url": "https://www.slack.com"
+    },
+    {
+      "inventory_id": 43,
+      "platform": "Monday.com",
+      "official_url": "https://www.monday.com.com"
+    },
+    {
+      "inventory_id": 44,
+      "platform": "ClickUp",
+      "official_url": "https://www.clickup.com"
+    },
+    {
+      "inventory_id": 45,
+      "platform": "Todoist",
+      "official_url": "https://www.todoist.com"
+    },
+    {
+      "inventory_id": 46,
+      "platform": "Evernote",
+      "official_url": "https://www.evernote.com"
+    },
+    {
+      "inventory_id": 51,
+      "platform": "Salesforce",
+      "official_url": "https://www.salesforce.com"
+    },
+    {
+      "inventory_id": 52,
+      "platform": "HubSpot",
+      "official_url": "https://www.hubspot.com"
+    },
+    {
+      "inventory_id": 53,
+      "platform": "Zendesk",
+      "official_url": "https://www.zendesk.com"
+    },
+    {
+      "inventory_id": 54,
+      "platform": "Freshdesk",
+      "official_url": "https://www.freshdesk.com"
+    },
+    {
+      "inventory_id": 55,
+      "platform": "Intercom",
+      "official_url": "https://www.intercom.com"
+    },
+    {
+      "inventory_id": 56,
+      "platform": "Mailchimp",
+      "official_url": "https://www.mailchimp.com"
+    },
+    {
+      "inventory_id": 57,
+      "platform": "Typeform",
+      "official_url": "https://www.typeform.com"
+    },
+    {
+      "inventory_id": 58,
+      "platform": "SurveyMonkey",
+      "official_url": "https://www.surveymonkey.com"
+    },
+    {
+      "inventory_id": 59,
+      "platform": "Calendly",
+      "official_url": "https://www.calendly.com"
+    },
+    {
+      "inventory_id": 60,
+      "platform": "Doodle",
+      "official_url": "https://www.doodle.com"
+    },
+    {
+      "inventory_id": 62,
+      "platform": "Miro",
+      "official_url": "https://www.miro.com"
+    },
+    {
+      "inventory_id": 63,
+      "platform": "Figma",
+      "official_url": "https://www.figma.com"
+    },
+    {
+      "inventory_id": 64,
+      "platform": "Canva",
+      "official_url": "https://www.canva.com"
+    },
+    {
+      "inventory_id": 65,
+      "platform": "Webflow",
+      "official_url": "https://www.webflow.com"
+    },
+    {
+      "inventory_id": 66,
+      "platform": "Wix",
+      "official_url": "https://www.wix.com"
+    },
+    {
+      "inventory_id": 67,
+      "platform": "Squarespace",
+      "official_url": "https://www.squarespace.com"
+    },
+    {
+      "inventory_id": 68,
+      "platform": "WordPress",
+      "official_url": "https://www.wordpress.com"
+    },
+    {
+      "inventory_id": 69,
+      "platform": "Confluence",
+      "official_url": "https://www.confluence.com"
+    },
+    {
+      "inventory_id": 70,
+      "platform": "Linear",
+      "official_url": "https://www.linear.com"
+    },
+    {
+      "inventory_id": 71,
+      "platform": "Basecamp",
+      "official_url": "https://www.basecamp.com"
+    },
+    {
+      "inventory_id": 72,
+      "platform": "Smartsheet",
+      "official_url": "https://www.smartsheet.com"
+    },
+    {
+      "inventory_id": 73,
+      "platform": "Zoho",
+      "official_url": "https://www.zoho.com"
+    },
+    {
+      "inventory_id": 74,
+      "platform": "Coursera",
+      "official_url": "https://www.coursera.com"
+    },
+    {
+      "inventory_id": 75,
+      "platform": "edX",
+      "official_url": "https://www.edx.com"
+    },
+    {
+      "inventory_id": 76,
+      "platform": "Khan Academy",
+      "official_url": "https://www.khanacademy.com"
+    },
+    {
+      "inventory_id": 77,
+      "platform": "Udemy",
+      "official_url": "https://www.udemy.com"
+    },
+    {
+      "inventory_id": 82,
+      "platform": "LeetCode",
+      "official_url": "https://www.leetcode.com"
+    },
+    {
+      "inventory_id": 85,
+      "platform": "MasterClass",
+      "official_url": "https://www.masterclass.com"
+    },
+    {
+      "inventory_id": 97,
+      "platform": "Educative",
+      "official_url": "https://www.educative.com"
+    },
+    {
+      "inventory_id": 98,
+      "platform": "Frontend Masters",
+      "official_url": "https://www.frontendmasters.com"
+    },
+    {
+      "inventory_id": 99,
+      "platform": "Exercism",
+      "official_url": "https://www.exercism.com"
+    },
+    {
+      "inventory_id": 100,
+      "platform": "Codewars",
+      "official_url": "https://www.codewars.com"
+    },
+    {
+      "inventory_id": 110,
+      "platform": "Substack",
+      "official_url": "https://www.substack.com"
+    },
+    {
+      "inventory_id": 114,
+      "platform": "Goodreads",
+      "official_url": "https://www.goodreads.com"
+    },
+    {
+      "inventory_id": 116,
+      "platform": "IMDb",
+      "official_url": "https://www.imdb.com"
+    },
+    {
+      "inventory_id": 117,
+      "platform": "Tripadvisor",
+      "official_url": "https://www.tripadvisor.com"
+    },
+    {
+      "inventory_id": 127,
+      "platform": "GitHub",
+      "official_url": "https://www.github.com"
+    },
+    {
+      "inventory_id": 134,
+      "platform": "Papers With Code",
+      "official_url": "https://www.paperswithcode.com"
+    },
+    {
+      "inventory_id": 135,
+      "platform": "Semantic Scholar",
+      "official_url": "https://www.semanticscholar.com"
+    },
+    {
+      "inventory_id": 136,
+      "platform": "arXiv",
+      "official_url": "https://www.arxiv.com"
+    },
+    {
+      "inventory_id": 137,
+      "platform": "OpenReview",
+      "official_url": "https://www.openreview.com"
+    },
+    {
+      "inventory_id": 149,
+      "platform": "Grafana",
+      "official_url": "https://www.grafana.com"
+    },
+    {
+      "inventory_id": 150,
+      "platform": "Terraform Cloud",
+      "official_url": "https://www.terraformcloud.com"
+    },
+    {
+      "inventory_id": 151,
+      "platform": "CircleCI",
+      "official_url": "https://www.circleci.com"
+    },
+    {
+      "inventory_id": 152,
+      "platform": "Jenkins",
+      "official_url": "https://www.jenkins.com"
+    },
+    {
+      "inventory_id": 153,
+      "platform": "Heroku",
+      "official_url": "https://www.heroku.com"
+    },
+    {
+      "inventory_id": 154,
+      "platform": "Railway",
+      "official_url": "https://www.railway.com"
+    },
+    {
+      "inventory_id": 155,
+      "platform": "Render",
+      "official_url": "https://www.render.com"
+    },
+    {
+      "inventory_id": 156,
+      "platform": "Booking.com",
+      "official_url": "https://www.booking.com.com"
+    },
+    {
+      "inventory_id": 158,
+      "platform": "Airbnb",
+      "official_url": "https://www.airbnb.com"
+    },
+    {
+      "inventory_id": 172,
+      "platform": "Hostelworld",
+      "official_url": "https://www.hostelworld.com"
+    },
+    {
+      "inventory_id": 173,
+      "platform": "Skyscanner",
+      "official_url": "https://www.skyscanner.com"
+    },
+    {
+      "inventory_id": 174,
+      "platform": "Hopper",
+      "official_url": "https://www.hopper.com"
+    },
+    {
+      "inventory_id": 175,
+      "platform": "Travelocity",
+      "official_url": "https://www.travelocity.com"
+    },
+    {
+      "inventory_id": 176,
+      "platform": "Orbitz",
+      "official_url": "https://www.orbitz.com"
+    },
+    {
+      "inventory_id": 177,
+      "platform": "Vrbo",
+      "official_url": "https://www.vrbo.com"
+    },
+    {
+      "inventory_id": 178,
+      "platform": "Rome2Rio",
+      "official_url": "https://www.rome2rio.com"
+    },
+    {
+      "inventory_id": 179,
+      "platform": "Omio",
+      "official_url": "https://www.omio.com"
+    },
+    {
+      "inventory_id": 180,
+      "platform": "Klook",
+      "official_url": "https://www.klook.com"
+    },
+    {
+      "inventory_id": 194,
+      "platform": "Allstate",
+      "official_url": "https://www.allstate.com"
+    },
+    {
+      "inventory_id": 195,
+      "platform": "TurboTax",
+      "official_url": "https://www.turbotax.com"
+    },
+    {
+      "inventory_id": 196,
+      "platform": "H&R Block",
+      "official_url": "https://www.h&rblock.com"
+    },
+    {
+      "inventory_id": 197,
+      "platform": "Square Dashboard",
+      "official_url": "https://www.squaredashboard.com"
+    },
+    {
+      "inventory_id": 198,
+      "platform": "Wise",
+      "official_url": "https://www.wise.com"
+    },
+    {
+      "inventory_id": 199,
+      "platform": "Revolut",
+      "official_url": "https://www.revolut.com"
+    },
+    {
+      "inventory_id": 200,
+      "platform": "Plaid Dashboard",
+      "official_url": "https://www.plaiddashboard.com"
+    },
+    {
+      "inventory_id": 201,
+      "platform": "Wealthfront",
+      "official_url": "https://www.wealthfront.com"
+    },
+    {
+      "inventory_id": 202,
+      "platform": "Betterment",
+      "official_url": "https://www.betterment.com"
+    },
+    {
+      "inventory_id": 203,
+      "platform": "SoFi",
+      "official_url": "https://www.sofi.com"
+    },
+    {
+      "inventory_id": 204,
+      "platform": "Acorns",
+      "official_url": "https://www.acorns.com"
+    },
+    {
+      "inventory_id": 205,
+      "platform": "Charles Schwab",
+      "official_url": "https://www.charlesschwab.com"
+    },
+    {
+      "inventory_id": 206,
+      "platform": "Interactive Brokers",
+      "official_url": "https://www.interactivebrokers.com"
+    },
+    {
+      "inventory_id": 216,
+      "platform": "NIH",
+      "official_url": "https://www.nih.com"
+    },
+    {
+      "inventory_id": 217,
+      "platform": "Cleveland Clinic",
+      "official_url": "https://www.clevelandclinic.com"
+    },
+    {
+      "inventory_id": 218,
+      "platform": "Kaiser Permanente",
+      "official_url": "https://www.kaiserpermanente.com"
+    },
+    {
+      "inventory_id": 219,
+      "platform": "Doctolib",
+      "official_url": "https://www.doctolib.com"
+    },
+    {
+      "inventory_id": 220,
+      "platform": "One Medical",
+      "official_url": "https://www.onemedical.com"
+    },
+    {
+      "inventory_id": 221,
+      "platform": "Oscar Health",
+      "official_url": "https://www.oscarhealth.com"
+    },
+    {
+      "inventory_id": 222,
+      "platform": "Noom",
+      "official_url": "https://www.noom.com"
+    },
+    {
+      "inventory_id": 223,
+      "platform": "Headspace",
+      "official_url": "https://www.headspace.com"
+    },
+    {
+      "inventory_id": 224,
+      "platform": "Calm",
+      "official_url": "https://www.calm.com"
+    },
+    {
+      "inventory_id": 225,
+      "platform": "Ada Health",
+      "official_url": "https://www.adahealth.com"
+    },
+    {
+      "inventory_id": 226,
+      "platform": "Medscape",
+      "official_url": "https://www.medscape.com"
+    },
+    {
+      "inventory_id": 235,
+      "platform": "Crunchyroll",
+      "official_url": "https://www.crunchyroll.com"
+    },
+    {
+      "inventory_id": 239,
+      "platform": "Audible",
+      "official_url": "https://www.audible.com"
+    },
+    {
+      "inventory_id": 240,
+      "platform": "Kindle Store",
+      "official_url": "https://www.kindlestore.com"
+    },
+    {
+      "inventory_id": 241,
+      "platform": "Ghost",
+      "official_url": "https://www.ghost.com"
+    },
+    {
+      "inventory_id": 242,
+      "platform": "Wattpad",
+      "official_url": "https://www.wattpad.com"
+    },
+    {
+      "inventory_id": 244,
+      "platform": "DMV",
+      "official_url": "https://www.dmv.com"
+    },
+    {
+      "inventory_id": 245,
+      "platform": "IRS",
+      "official_url": "https://www.irs.com"
+    },
+    {
+      "inventory_id": 246,
+      "platform": "USCIS",
+      "official_url": "https://www.uscis.com"
+    },
+    {
+      "inventory_id": 247,
+      "platform": "USPS",
+      "official_url": "https://www.usps.com"
+    },
+    {
+      "inventory_id": 248,
+      "platform": "Healthcare.gov",
+      "official_url": "https://www.healthcare.gov.com"
+    },
+    {
+      "inventory_id": 249,
+      "platform": "Zillow",
+      "official_url": "https://www.zillow.com"
+    },
+    {
+      "inventory_id": 254,
+      "platform": "Craigslist",
+      "official_url": "https://www.craigslist.com"
+    },
+    {
+      "inventory_id": 255,
+      "platform": "Rover",
+      "official_url": "https://www.rover.com"
+    },
+    {
+      "inventory_id": 256,
+      "platform": "TaskRabbit",
+      "official_url": "https://www.taskrabbit.com"
+    },
+    {
+      "inventory_id": 258,
+      "platform": "Change.org",
+      "official_url": "https://www.change.org.com"
+    },
+    {
+      "inventory_id": 259,
+      "platform": "Charity Navigator",
+      "official_url": "https://www.charitynavigator.com"
+    },
+    {
+      "inventory_id": 260,
+      "platform": "Eventbrite",
+      "official_url": "https://www.eventbrite.com"
+    },
+    {
+      "inventory_id": 261,
+      "platform": "Ticketmaster",
+      "official_url": "https://www.ticketmaster.com"
+    },
+    {
+      "inventory_id": 262,
+      "platform": "G2",
+      "official_url": "https://www.g2.com"
+    },
+    {
+      "inventory_id": 263,
+      "platform": "Trustpilot",
+      "official_url": "https://www.trustpilot.com"
+    },
+    {
+      "inventory_id": 264,
+      "platform": "Glassdoor",
+      "official_url": "https://www.glassdoor.com"
+    },
+    {
+      "inventory_id": 265,
+      "platform": "Indeed",
+      "official_url": "https://www.indeed.com"
+    },
+    {
+      "inventory_id": 266,
+      "platform": "ZipRecruiter",
+      "official_url": "https://www.ziprecruiter.com"
+    },
+    {
+      "inventory_id": 267,
+      "platform": "Workable",
+      "official_url": "https://www.workable.com"
+    },
+    {
+      "inventory_id": 268,
+      "platform": "Greenhouse",
+      "official_url": "https://www.greenhouse.com"
+    },
+    {
+      "inventory_id": 269,
+      "platform": "BambooHR",
+      "official_url": "https://www.bamboohr.com"
+    },
+    {
+      "inventory_id": 270,
+      "platform": "AOL",
+      "official_url": "https://www.aol.com"
+    },
+    {
+      "inventory_id": 271,
+      "platform": "Yahoo",
+      "official_url": "https://www.yahoo.com"
+    },
+    {
+      "inventory_id": 272,
+      "platform": "Wikipedia",
+      "official_url": "https://www.wikipedia.com"
+    },
+    {
+      "inventory_id": 273,
+      "platform": "Alibaba",
+      "official_url": "https://www.alibaba.com"
+    },
+    {
+      "inventory_id": 274,
+      "platform": "JD.com",
+      "official_url": "https://www.jd.com.com"
+    },
+    {
+      "inventory_id": 275,
+      "platform": "Flipkart",
+      "official_url": "https://www.flipkart.com"
+    },
+    {
+      "inventory_id": 276,
+      "platform": "Rakuten",
+      "official_url": "https://www.rakuten.com"
+    },
+    {
+      "inventory_id": 277,
+      "platform": "FreshBooks",
+      "official_url": "https://www.freshbooks.com"
+    },
+    {
+      "inventory_id": 278,
+      "platform": "QuickBooks Online",
+      "official_url": "https://www.quickbooksonline.com"
+    },
+    {
+      "inventory_id": 279,
+      "platform": "Xero",
+      "official_url": "https://www.xero.com"
+    },
+    {
+      "inventory_id": 280,
+      "platform": "GitBook",
+      "official_url": "https://www.gitbook.com"
+    },
+    {
+      "inventory_id": 281,
+      "platform": "Algolia",
+      "official_url": "https://www.algolia.com"
+    },
+    {
+      "inventory_id": 282,
+      "platform": "Supabase",
+      "official_url": "https://www.supabase.com"
+    },
+    {
+      "inventory_id": 283,
+      "platform": "Firebase Console",
+      "official_url": "https://www.firebaseconsole.com"
+    },
+    {
+      "inventory_id": 284,
+      "platform": "DigitalOcean",
+      "official_url": "https://www.digitalocean.com"
+    },
+    {
+      "inventory_id": 285,
+      "platform": "Linode",
+      "official_url": "https://www.linode.com"
+    },
+    {
+      "inventory_id": 286,
+      "platform": "Udacity",
+      "official_url": "https://www.udacity.com"
+    },
+    {
+      "inventory_id": 287,
+      "platform": "Simplilearn",
+      "official_url": "https://www.simplilearn.com"
+    },
+    {
+      "inventory_id": 288,
+      "platform": "Patreon",
+      "official_url": "https://www.patreon.com"
+    },
+    {
+      "inventory_id": 289,
+      "platform": "Kickstarter",
+      "official_url": "https://www.kickstarter.com"
+    },
+    {
+      "inventory_id": 290,
+      "platform": "GoFundMe",
+      "official_url": "https://www.gofundme.com"
+    },
+    {
+      "inventory_id": 292,
+      "platform": "AngelList Talent",
+      "official_url": "https://www.angellisttalent.com"
+    },
+    {
+      "inventory_id": 293,
+      "platform": "Kick",
+      "official_url": "https://www.kick.com"
+    },
+    {
+      "inventory_id": 294,
+      "platform": "Canva Enterprise",
+      "official_url": "https://www.canvaenterprise.com"
+    },
+    {
+      "inventory_id": 295,
+      "platform": "Miro Enterprise",
+      "official_url": "https://www.miroenterprise.com"
+    },
+    {
+      "inventory_id": 296,
+      "platform": "Brevo",
+      "official_url": "https://www.brevo.com"
+    },
+    {
+      "inventory_id": 297,
+      "platform": "Intercom Fin",
+      "official_url": "https://www.intercomfin.com"
+    },
+    {
+      "inventory_id": 298,
+      "platform": "Akamai Cloud",
+      "official_url": "https://www.akamaicloud.com"
+    },
+    {
+      "inventory_id": 299,
+      "platform": "Oracle Cloud",
+      "official_url": "https://www.oraclecloud.com"
+    },
+    {
+      "inventory_id": 300,
+      "platform": "SAP SuccessFactors",
+      "official_url": "https://www.sapsuccessfactors.com"
+    }
+  ],
+  "inserted_platforms_path": "clawbench-platforms.json",
+  "outputs": {
+    "inventory": {
+      "path": "websitebench/corpora/websitebench-300/platform-inventory.json",
+      "sha256": "985393e05aec9dc8fdd0af083c1686b45be3bb0de2c0a986d2b1d359f5f996a5"
+    },
+    "taxonomy": {
+      "path": "websitebench/corpora/websitebench-300/taxonomy.json",
+      "sha256": "d5ee881713ba6482ac19311086a62006c26fadaa3b897e773c40950dc794f1c8"
+    },
+    "profiles": {
+      "path": "websitebench/site-profiles",
+      "count": 300,
+      "tree_sha256": "21639fc4b851c31740d53c77720aacd3f2aac1891a369e5b9afca622d71de0c0"
+    },
+    "compiled_r1": {
+      "path": "websitebench/corpora/websitebench-300/compiled/r1",
+      "plan_count": 300,
+      "lock_count": 300,
+      "explain_count": 300,
+      "tree_sha256": "a856b15f8fb3ebfb4f167f441fd23918790c764e5f50bf248b1a184d9f65a3b4"
+    },
+    "dispatch": {
+      "path": "websitebench/corpora/websitebench-300/workflow/current-dispatch.json",
+      "sha256": "40972bfacbe24a9fad43b6c43e9612320f5fb9ea500ec36276639e6b82de7e15"
+    },
+    "workflow": {
+      "path": "websitebench/corpora/websitebench-300/workflow/workflow.json",
+      "sha256": "b94f4476b54351b08194af25e0b9aa1a4fa4a7bbc0286aa1a0a3dbe46e17dcdf"
+    }
+  }
+}

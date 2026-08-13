@@ -1,0 +1,317 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque appointment-encounter identity; exact source key and ownership require R1 confirmation",
+            "name": "appointment-encounter",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque patient identity; exact source key and ownership require R1 confirmation",
+            "name": "patient",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque provider identity; exact source key and ownership require R1 confirmation",
+            "name": "provider",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque appointment identity; exact source key and ownership require R1 confirmation",
+            "name": "appointment",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque encounter identity; exact source key and ownership require R1 confirmation",
+            "name": "encounter",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque healthrecord identity; exact source key and ownership require R1 confirmation",
+            "name": "healthrecord",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque prescription identity; exact source key and ownership require R1 confirmation",
+            "name": "prescription",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque careplan identity; exact source key and ownership require R1 confirmation",
+            "name": "careplan",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque coverage-claim identity; exact source key and ownership require R1 confirmation",
+            "name": "coverage-claim",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque message identity; exact source key and ownership require R1 confirmation",
+            "name": "message",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque consent identity; exact source key and ownership require R1 confirmation",
+            "name": "consent",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "healthcare-care-management-appointment-encounter",
+        "label": "healthcare-care-management appointment/encounter lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "容量、身份、同意、临床角色和就诊状态由服务端执行。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "requested",
+            "scheduled",
+            "checked-in",
+            "in-progress",
+            "completed",
+            "cancelled",
+            "no-show"
+          ],
+          "transitions": [
+            {
+              "from": "requested",
+              "to": "scheduled",
+              "trigger": "server-authorized healthcare-care-management appointment/encounter lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "scheduled",
+              "to": "checked-in",
+              "trigger": "server-authorized healthcare-care-management appointment/encounter lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "checked-in",
+              "to": "in-progress",
+              "trigger": "server-authorized healthcare-care-management appointment/encounter lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "in-progress",
+              "to": "completed",
+              "trigger": "server-authorized healthcare-care-management appointment/encounter lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "completed",
+              "to": "cancelled",
+              "trigger": "server-authorized healthcare-care-management appointment/encounter lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "cancelled",
+              "to": "no-show",
+              "trigger": "server-authorized healthcare-care-management appointment/encounter lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque clinical-item identity; exact source key and ownership require R1 confirmation",
+            "name": "clinical-item",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque patient identity; exact source key and ownership require R1 confirmation",
+            "name": "patient",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque provider identity; exact source key and ownership require R1 confirmation",
+            "name": "provider",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque appointment identity; exact source key and ownership require R1 confirmation",
+            "name": "appointment",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque encounter identity; exact source key and ownership require R1 confirmation",
+            "name": "encounter",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque healthrecord identity; exact source key and ownership require R1 confirmation",
+            "name": "healthrecord",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque prescription identity; exact source key and ownership require R1 confirmation",
+            "name": "prescription",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque careplan identity; exact source key and ownership require R1 confirmation",
+            "name": "careplan",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque coverage-claim identity; exact source key and ownership require R1 confirmation",
+            "name": "coverage-claim",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque message identity; exact source key and ownership require R1 confirmation",
+            "name": "message",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque consent identity; exact source key and ownership require R1 confirmation",
+            "name": "consent",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "healthcare-care-management-clinical-item",
+        "label": "healthcare-care-management clinical_item lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "签署后不可静默覆写；修订保留作者、时间和审计链。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "signed",
+            "amended",
+            "revoked-expired"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "signed",
+              "trigger": "server-authorized healthcare-care-management clinical_item lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "signed",
+              "to": "amended",
+              "trigger": "server-authorized healthcare-care-management clinical_item lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "amended",
+              "to": "revoked-expired",
+              "trigger": "server-authorized healthcare-care-management clinical_item lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-healthcare-care-effect-ledger"
+    ]
+  },
+  "batch_family_id": "health-services",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "healthcare-care-entry",
+        "label": "Entry route family for 围绕患者、提供者、预约、就诊、病历、处方、照护计划、理赔/覆盖和患者沟通管理健康服务。",
+        "priority": "p0"
+      },
+      {
+        "id": "healthcare-care-discover",
+        "label": "Discover route family for 围绕患者、提供者、预约、就诊、病历、处方、照护计划、理赔/覆盖和患者沟通管理健康服务。",
+        "priority": "p0"
+      },
+      {
+        "id": "healthcare-care-detail",
+        "label": "Detail route family for 围绕患者、提供者、预约、就诊、病历、处方、照护计划、理赔/覆盖和患者沟通管理健康服务。",
+        "priority": "p0"
+      },
+      {
+        "id": "healthcare-care-commit",
+        "label": "Commit route family for 围绕患者、提供者、预约、就诊、病历、处方、照护计划、理赔/覆盖和患者沟通管理健康服务。",
+        "priority": "p0"
+      },
+      {
+        "id": "healthcare-care-confirm",
+        "label": "Confirm route family for 围绕患者、提供者、预约、就诊、病历、处方、照护计划、理赔/覆盖和患者沟通管理健康服务。",
+        "priority": "p0"
+      },
+      {
+        "id": "healthcare-care-recover",
+        "label": "Recover route family for 围绕患者、提供者、预约、就诊、病历、处方、照护计划、理赔/覆盖和患者沟通管理健康服务。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "healthcare-care global navigation",
+      "healthcare-care primary content",
+      "healthcare-care decision and action region",
+      "healthcare-care confirmation and aftercare"
+    ],
+    "state_families": [
+      "appointment/encounter",
+      "clinical_item",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "healthcare-care-management",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "围绕患者、提供者、预约、就诊、病历、处方、照护计划、理赔/覆盖和患者沟通管理健康服务。",
+  "title": "Healthcare Care Management",
+  "verification": {
+    "coverage_dimensions": [
+      "healthcare-care-management actor x action x state x outcome",
+      "healthcare-care-management entity ownership and durable visibility",
+      "healthcare-care-management valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "患者边界、临床 RBAC、同意、敏感字段和完整审计。",
+      "预约、就诊、病历/处方/照护计划的版本化状态。",
+      "提醒、药房、视频、理赔仅以本地适配器模拟，并明确未发生生产医疗行为。"
+    ]
+  },
+  "version": "1.0.0"
+}

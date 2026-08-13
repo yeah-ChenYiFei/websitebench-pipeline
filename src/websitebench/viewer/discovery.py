@@ -1,0 +1,1348 @@
+"""Discover canonical WebsiteBench items and candidate results."""
+
+from __future__ import annotations
+
+import copy
+import hashlib
+import json
+from collections import Counter
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Iterator
+
+import yaml
+
+from .schema import validation_errors
+
+
+READINESS_LABELS = {
+    "manifest_schema": "Manifest schema",
+    "required_artifacts": "Required public artifacts",
+    "clone_artifact": "Runnable clone artifact",
+    "scoring_contract": "Scoring contract",
+    "seed_reset": "Seed and reset",
+    "controlled_time": "Controlled time",
+    "journeys": "User journeys",
+    "visual_checkpoints": "Visual checkpoints",
+    "license": "License and assets",
+    "candidate_report": "Official candidate report",
+    "verification_report": "Historical machine verification report",
+    "diagnostic_report": "Clone diagnostic report",
+    "visual_evidence": "Visual evidence companion",
+}
+READINESS_STATES = {"present", "missing", "invalid", "not_applicable"}
+BENCHMARK_SOURCE_TYPES = {"websitebench", "offline_clone"}
+OFFLINE_VIEWER_SUMMARY_SCHEMA = "websitebench.viewer-offline-clone-summary.v1"
+VIEWER_STATIC_ROOT = Path(__file__).resolve().parent / "static"
+
+
+def _is_benchmark_item(item: dict[str, Any]) -> bool:
+    return item.get("source_type") in BENCHMARK_SOURCE_TYPES
+
+
+def utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def _repo_root(candidate: Path | None = None) -> Path:
+    root = (candidate or Path.cwd()).resolve()
+    if not (root / "pyproject.toml").is_file():
+        raise ValueError(f"not a WebsiteBench repository root: {root}")
+    return root
+
+
+def _safe_resolve(root: Path, path: Path) -> Path:
+    resolved_root = root.resolve()
+    resolved = path.resolve()
+    if resolved != resolved_root and resolved_root not in resolved.parents:
+        raise ValueError(f"path escapes repository root: {path}")
+    return resolved
+
+
+def _read_json(path: Path) -> tuple[Any | None, str | None]:
+    try:
+        return json.loads(path.read_text(encoding="utf-8")), None
+    except OSError as exc:
+        return None, str(exc)
+    except json.JSONDecodeError as exc:
+        return None, f"line {exc.lineno}, column {exc.colno}: {exc.msg}"
+
+
+def _read_text(path: Path, limit: int = 120_000) -> str | None:
+    try:
+        text = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        return None
+    if len(text) > limit:
+        return text[:limit] + "\n\n[Viewer truncated this document.]"
+    return text
+
+
+def _status(identifier: str, state: str, detail: str = "") -> dict[str, str]:
+    if state not in READINESS_STATES:
+        raise ValueError(f"invalid readiness state: {state}")
+    return {
+        "id": identifier,
+        "label": READINESS_LABELS[identifier],
+        "status": state,
+        "detail": detail,
+    }
+
+
+def _counts(readiness: list[dict[str, str]]) -> dict[str, int]:
+    values = Counter(check["status"] for check in readiness)
+    return {state: values.get(state, 0) for state in sorted(READINESS_STATES)}
+
+
+def _recursive_strings(value: Any) -> Iterator[str]:
+    if isinstance(value, dict):
+        for item in value.values():
+            yield from _recursive_strings(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from _recursive_strings(item)
+    elif isinstance(value, str):
+        yield value
+
+
+def _result_summary(report: dict[str, Any]) -> dict[str, Any]:
+    versions = report.get("versions", {})
+    declared = report.get("candidate") or {}
+    model_id = (
+        declared.get("model_id")
+        or versions.get("model")
+        or versions.get("agent_model")
+        or versions.get("model_id")
+        or "unspecified"
+    )
+    candidate = {
+        "model_id": model_id,
+        "model_key": hashlib.sha256(model_id.encode("utf-8")).hexdigest()[:12],
+        "display_name": declared.get("display_name")
+        or model_id.replace("-", " ").title(),
+        "provider": declared.get("provider"),
+        "harness": declared.get("harness") or versions.get("harness"),
+        "reasoning_effort": declared.get("reasoning_effort"),
+    }
+    return {
+        "run_id": report["run_id"],
+        "site_id": report["site_id"],
+        "site_version": report.get("site_version"),
+        "status": report["status"],
+        "track": report["track"],
+        "score": report["score"],
+        "dimensions": report["dimensions"],
+        "hard_failures": report["hard_failures"],
+        "journeys": report["journeys"],
+        "seeds": report["seeds"],
+        "resources": report["resources"],
+        "network": report["network"],
+        "failures": report["failures"],
+        "evidence": report["evidence"],
+        "versions": versions,
+        "candidate": candidate,
+        "usage": report["usage"],
+        "started_at": report["started_at"],
+        "finished_at": report["finished_at"],
+    }
+
+
+def _discover_results(
+    repo_root: Path,
+) -> tuple[dict[str, list[dict[str, Any]]], list[dict[str, Any]]]:
+    by_site: dict[str, list[dict[str, Any]]] = {}
+    invalid: list[dict[str, Any]] = []
+    runs_root = repo_root / "artifacts" / "websitebench" / "runs"
+    for path in sorted(runs_root.glob("*/report.json")) if runs_root.is_dir() else []:
+        report, read_error = _read_json(path)
+        if read_error or not isinstance(report, dict):
+            invalid.append(
+                {
+                    "path": str(path.relative_to(repo_root)),
+                    "errors": [read_error or "not an object"],
+                }
+            )
+            continue
+        errors = validation_errors(report, "result", repo_root)
+        if errors:
+            invalid.append({"path": str(path.relative_to(repo_root)), "errors": errors})
+            continue
+        summary = _result_summary(report)
+        summary["report_path"] = str(path.relative_to(repo_root))
+        by_site.setdefault(report["site_id"], []).append(summary)
+    for runs in by_site.values():
+        runs.sort(key=lambda run: (run["finished_at"], run["run_id"]), reverse=True)
+    return by_site, invalid
+
+
+def _load_visual_manifest(
+    repo_root: Path, item_key: str
+) -> tuple[dict[str, Any] | None, list[str]]:
+    path = (
+        repo_root
+        / "artifacts"
+        / "websitebench-viewer"
+        / "visual"
+        / item_key
+        / "manifest.json"
+    )
+    if not path.is_file():
+        return None, []
+    value, error = _read_json(path)
+    if error or not isinstance(value, dict):
+        return None, [error or "manifest is not an object"]
+    errors = validation_errors(value, "visual_evidence", repo_root)
+    if errors:
+        return None, errors
+    value["manifest_path"] = str(path.relative_to(repo_root))
+    return value, []
+
+
+def _canonical_item(
+    repo_root: Path,
+    manifest_path: Path,
+    results: dict[str, list[dict[str, Any]]],
+) -> dict[str, Any]:
+    site_root = manifest_path.parent.parent
+    try:
+        manifest = yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, yaml.YAMLError) as exc:
+        manifest = {}
+        manifest_error = str(exc)
+    else:
+        manifest_error = ""
+    site_id = manifest.get("site_id") or site_root.name
+    key = f"websitebench--{site_id}"
+    manifest_errors = (
+        [manifest_error]
+        if manifest_error
+        else validation_errors(manifest, "site", repo_root)
+    )
+    public = manifest.get("public", {}) if isinstance(manifest, dict) else {}
+    referenced: dict[str, Path] = {}
+    reference_errors: list[str] = []
+    for name, relative in public.items():
+        if not isinstance(relative, str):
+            reference_errors.append(f"{name}: path is not a string")
+            continue
+        try:
+            referenced[name] = _safe_resolve(repo_root, site_root / relative)
+        except ValueError as exc:
+            reference_errors.append(f"{name}: {exc}")
+    missing = [name for name, path in referenced.items() if not path.is_file()]
+    scoring, scoring_error = (
+        _read_json(referenced["scoring"])
+        if "scoring" in referenced
+        else (None, "not declared")
+    )
+    checkpoints, checkpoint_error = (
+        _read_json(referenced["visual_checkpoints"])
+        if "visual_checkpoints" in referenced
+        else (None, "not declared")
+    )
+    smoke, smoke_error = (
+        _read_json(referenced["smoke_cases"])
+        if "smoke_cases" in referenced
+        else (None, "not declared")
+    )
+    checkpoint_rows = (
+        checkpoints.get("checkpoints", []) if isinstance(checkpoints, dict) else []
+    )
+    journey_rows = smoke.get("cases", []) if isinstance(smoke, dict) else []
+    dimensions = scoring.get("dimensions", {}) if isinstance(scoring, dict) else {}
+    scoring_valid = (
+        not scoring_error
+        and set(dimensions)
+        == {"visual", "interactions", "journeys", "robustness", "efficiency"}
+        and sum(value.get("max_score", 0) for value in dimensions.values()) == 100
+    )
+    item_runs = results.get(site_id, [])
+    visual, visual_errors = _load_visual_manifest(repo_root, key)
+    all_seed_rows = [
+        seed for group in manifest.get("seeds", {}).values() for seed in group
+    ]
+    scripts = site_root / "reference" / "scripts"
+    license_data = manifest.get("license")
+    readiness = [
+        _status(
+            "manifest_schema",
+            "invalid" if manifest_errors else "present",
+            "; ".join(manifest_errors[:3]),
+        ),
+        _status(
+            "required_artifacts",
+            "invalid" if reference_errors else ("missing" if missing else "present"),
+            "; ".join(reference_errors + [f"missing {name}" for name in missing]),
+        ),
+        _status(
+            "scoring_contract",
+            "present" if scoring_valid else "invalid",
+            scoring_error or "five dimensions total 100 points",
+        ),
+        _status(
+            "seed_reset",
+            "present"
+            if all_seed_rows
+            and (scripts / "seed").is_file()
+            and (scripts / "reset").is_file()
+            else "missing",
+            f"{len(all_seed_rows)} declared seeds; seed/reset scripts {'found' if scripts.is_dir() else 'missing'}",
+        ),
+        _status(
+            "controlled_time",
+            "present"
+            if isinstance(checkpoints, dict) and checkpoints.get("clock")
+            else "missing",
+        ),
+        _status(
+            "journeys",
+            "present"
+            if journey_rows and not smoke_error
+            else (
+                "invalid"
+                if smoke_error and referenced.get("smoke_cases", Path()).is_file()
+                else "missing"
+            ),
+            f"{len(journey_rows)} public smoke journeys",
+        ),
+        _status(
+            "visual_checkpoints",
+            "present"
+            if checkpoint_rows and not checkpoint_error
+            else (
+                "invalid"
+                if checkpoint_error
+                and referenced.get("visual_checkpoints", Path()).is_file()
+                else "missing"
+            ),
+            f"{len(checkpoint_rows)} checkpoints",
+        ),
+        _status(
+            "license",
+            "present"
+            if isinstance(license_data, dict) and all(license_data.values())
+            else "missing",
+        ),
+        _status(
+            "candidate_report",
+            "present" if item_runs else "not_applicable",
+            f"{len(item_runs)} valid official runs",
+        ),
+        _status(
+            "visual_evidence",
+            "invalid"
+            if visual_errors
+            else (
+                "present" if visual else ("missing" if item_runs else "not_applicable")
+            ),
+            "; ".join(visual_errors[:3]),
+        ),
+    ]
+    readiness_counts = _counts(readiness)
+    taxonomy = manifest.get("taxonomy") or {}
+    documents = {
+        "prd": _read_text(referenced["prd"]) if "prd" in referenced else None,
+        "candidate_contract": _read_text(referenced["candidate_contract"])
+        if "candidate_contract" in referenced
+        else None,
+    }
+    return {
+        "key": key,
+        "source_type": "websitebench",
+        "site_id": site_id,
+        "display_name": manifest.get("display_name", site_id),
+        "description": manifest.get("description", ""),
+        "family": manifest.get("family_id"),
+        "product_type": taxonomy.get("product_type"),
+        "difficulty": manifest.get("difficulty"),
+        "split": manifest.get("split"),
+        "site_version": manifest.get("site_version"),
+        "capability_tags": taxonomy.get("capability_tags", []),
+        "interaction_tags": taxonomy.get("interaction_tags", []),
+        "roles": taxonomy.get("roles", []),
+        "stateful_entities": taxonomy.get("stateful_entities", []),
+        "counts": {
+            "routes": len(manifest.get("routes", [])),
+            "journeys": len(journey_rows),
+            "checkpoints": len(checkpoint_rows),
+            "seeds": len(all_seed_rows),
+            "public_seeds": len(manifest.get("seeds", {}).get("public", [])),
+            "hidden_test_families": sum(
+                bool(manifest.get("seeds", {}).get(name))
+                for name in ("hidden", "concurrency")
+            ),
+        },
+        "protocol": {
+            "public_artifacts": sorted(public),
+            "browser_policy": manifest.get("browser_policy"),
+            "tracks": manifest.get("tracks"),
+            "services": manifest.get("services"),
+            "license": license_data,
+            "visual_viewports": sorted(
+                (checkpoints.get("viewports") or {}).keys()
+                if isinstance(checkpoints, dict)
+                and isinstance(checkpoints.get("viewports"), dict)
+                else set()
+            ),
+            "hard_failures": scoring.get("hard_failures", [])
+            if isinstance(scoring, dict)
+            else [],
+            "scoring_dimensions": dimensions,
+            "seeds": manifest.get("seeds", {}),
+        },
+        "readiness": readiness,
+        "readiness_counts": readiness_counts,
+        "lifecycle_stage": (
+            "evaluated"
+            if item_runs
+            else "ready"
+            if not readiness_counts["missing"] and not readiness_counts["invalid"]
+            else "building"
+        ),
+        "official_runs": item_runs,
+        "latest_official_result": item_runs[0] if item_runs else None,
+        "visual_evidence": visual,
+        "visual_evidence_errors": visual_errors,
+        "documents": documents,
+        "internal": {
+            "manifest_path": str(manifest_path.relative_to(repo_root)),
+            "site_root": str(site_root.relative_to(repo_root)),
+            "manifest_errors": manifest_errors,
+            "reference_errors": reference_errors,
+        },
+    }
+
+
+def _load_offline_viewer_summary(
+    site_root: Path,
+    site_id: str,
+) -> tuple[dict[str, Any], str | None]:
+    """Load the checked-in, sanitized fallback for legacy verification artifacts."""
+
+    path = site_root / "viewer-public.json"
+    value, error = _read_json(path)
+    if error:
+        return {}, error
+    if not isinstance(value, dict):
+        return {}, "viewer-public.json must contain an object"
+    if value.get("schema_version") != OFFLINE_VIEWER_SUMMARY_SCHEMA:
+        return {}, "viewer-public.json has an unsupported schema_version"
+    if value.get("site_id") != site_id:
+        return {}, "viewer-public.json site_id does not match clone.yaml"
+
+    report = value.get("report")
+    if not isinstance(report, dict):
+        return {}, "viewer-public.json report must be an object"
+    acceptance = value.get("acceptance")
+    required_acceptance = {"visual", "browser", "network", "full-suite"}
+    if not isinstance(acceptance, dict) or not required_acceptance.issubset(acceptance):
+        return {}, "viewer-public.json is missing required acceptance summaries"
+    if any(
+        not isinstance(acceptance[kind], dict)
+        or not isinstance(acceptance[kind].get("metrics"), dict)
+        for kind in required_acceptance
+    ):
+        return {}, "viewer-public.json acceptance summaries are invalid"
+
+    media = value.get("visual_media")
+    if not isinstance(media, list) or not media:
+        return {}, "viewer-public.json visual_media must be a non-empty array"
+    for entry in media:
+        if not isinstance(entry, dict):
+            return {}, "viewer-public.json visual_media entries must be objects"
+        relative = entry.get("path")
+        if (
+            not isinstance(relative, str)
+            or not relative
+        ):
+            return {}, "viewer-public.json visual_media entry is invalid"
+        try:
+            media_path = _safe_resolve(
+                VIEWER_STATIC_ROOT, VIEWER_STATIC_ROOT / relative
+            )
+        except ValueError:
+            return {}, "viewer-public.json visual_media path escapes Viewer static root"
+        if not media_path.is_file():
+            return (
+                {},
+                f"viewer-public.json visual media is missing: {relative}",
+            )
+    return value, None
+
+
+def _machine_verification_is_current(
+    report: dict[str, Any],
+    *,
+    site_id: str,
+) -> bool:
+    """Accept only a generic, current v2 technical-verification report."""
+
+    report_gates = report.get("gates", {})
+    verification_gate = (
+        report_gates.get("verification", {}) if isinstance(report_gates, dict) else {}
+    )
+    return (
+        report.get("schema_version") == "offline-clone.report.v2"
+        and report.get("site_id") == site_id
+        and report.get("manifest_current") is True
+        and report.get("verification_complete") is True
+        and isinstance(verification_gate, dict)
+        and verification_gate.get("status") == "passed"
+    )
+
+
+def _diagnostic_report_status(
+    report: dict[str, Any],
+    *,
+    site_id: str,
+) -> str | None:
+    """Read current diagnostic reports and explicitly bounded historical data."""
+
+    if (
+        report.get("schema_version") == "offline-clone.diagnostic-report.v1"
+        and report.get("authority") == "diagnostic-only"
+        and report.get("qualification") == "maintainer-judgment-required"
+        and report.get("site_id") == site_id
+        and report.get("diagnostic_status") in {"clean", "findings", "incomplete"}
+    ):
+        return str(report["diagnostic_status"])
+    # Historical viewer summaries remain readable but never acquire current
+    # authority. Their old completion bit is displayed as legacy evidence.
+    if _machine_verification_is_current(report, site_id=site_id):
+        return "historical-complete"
+    return None
+
+
+def _offline_clone_item(
+    repo_root: Path,
+    manifest_path: Path,
+    results: dict[str, list[dict[str, Any]]],
+    *,
+    profile: str,
+) -> dict[str, Any] | None:
+    """Adapt an offline-clone site into the benchmark viewer contract."""
+
+    site_root = manifest_path.parent
+    try:
+        manifest = yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, yaml.YAMLError):
+        return None
+    if not isinstance(manifest, dict) or manifest.get("schema_version") not in {
+        "offline-clone.manifest.v1",
+        "offline-clone.manifest.v2",
+    }:
+        return None
+
+    site_id = str(manifest.get("site_id") or site_root.name)
+    public_summary, public_summary_error = _load_offline_viewer_summary(
+        site_root,
+        site_id,
+    )
+    manifest_errors: list[str] = []
+    scope: dict[str, Any] = {}
+    referenced: list[Path] = [manifest_path]
+    for name in ("purpose", "routes", "journeys", "checkpoints", "coverage"):
+        relative = manifest.get("scope", {}).get(name)
+        if not isinstance(relative, str):
+            manifest_errors.append(f"scope.{name} is not declared")
+            scope[name] = {}
+            continue
+        try:
+            path = _safe_resolve(repo_root, site_root / relative)
+        except ValueError as exc:
+            manifest_errors.append(str(exc))
+            scope[name] = {}
+            continue
+        value, error = _read_json(path)
+        if error or not isinstance(value, dict):
+            manifest_errors.append(f"scope.{name}: {error or 'not an object'}")
+            scope[name] = {}
+            continue
+        referenced.append(path)
+        scope[name] = value
+
+    paths = manifest.get("paths", {})
+    artifact_relative = paths.get("artifact_root")
+    candidate_relative = paths.get("candidate_root")
+    asset_relative = paths.get("asset_manifest")
+    artifact_root = (
+        _safe_resolve(repo_root, site_root / artifact_relative)
+        if isinstance(artifact_relative, str)
+        else site_root / "artifacts" / "offline-clone"
+    )
+    candidate_root = (
+        _safe_resolve(repo_root, site_root / candidate_relative)
+        if isinstance(candidate_relative, str)
+        else site_root / "clone"
+    )
+    asset_manifest_path = (
+        _safe_resolve(repo_root, site_root / asset_relative)
+        if isinstance(asset_relative, str)
+        else site_root / "source-assets" / "offline-clone-manifest.json"
+    )
+    report_path = artifact_root / "report.json"
+    if profile == "public":
+        report = (
+            copy.deepcopy(public_summary["report"])
+            if isinstance(public_summary.get("report"), dict)
+            else {}
+        )
+        report_from_artifacts = False
+        report_error = None if report else public_summary_error
+    else:
+        report, report_error = _read_json(report_path)
+        report_from_artifacts = isinstance(report, dict) and bool(report)
+        report = report if isinstance(report, dict) else {}
+        if not report and isinstance(public_summary.get("report"), dict):
+            report = copy.deepcopy(public_summary["report"])
+            report_error = None
+    assets, asset_error = _read_json(asset_manifest_path)
+    assets = assets if isinstance(assets, dict) else {}
+    diagnostic_status = _diagnostic_report_status(report, site_id=site_id)
+    machine_verification_current = diagnostic_status == "historical-complete"
+    acceptance: dict[str, dict[str, Any]] = {}
+    public_acceptance = public_summary.get("acceptance", {})
+    for kind in (
+        "visual",
+        "browser",
+        "network",
+        "migration",
+        "independent-audit",
+        "full-suite",
+    ):
+        path = artifact_root / "acceptance" / f"{kind}.json"
+        if profile == "public":
+            if isinstance(public_acceptance, dict) and isinstance(
+                public_acceptance.get(kind), dict
+            ):
+                acceptance[kind] = copy.deepcopy(public_acceptance[kind])
+            continue
+        value, error = _read_json(path)
+        if not error and isinstance(value, dict):
+            acceptance[kind] = value
+        elif isinstance(public_acceptance, dict) and isinstance(
+            public_acceptance.get(kind), dict
+        ):
+            acceptance[kind] = copy.deepcopy(public_acceptance[kind])
+
+    purpose = scope.get("purpose", {})
+    route_rows = scope.get("routes", {}).get("routes", [])
+    journey_rows = scope.get("journeys", {}).get("journeys", [])
+    checkpoint_rows = scope.get("checkpoints", {}).get("checkpoints", [])
+    viewports = scope.get("checkpoints", {}).get("viewports", {})
+    coverage_rows = scope.get("coverage", {}).get("dimensions", [])
+    coverage_counts = {
+        row.get("id"): len(row.get("required_items", []))
+        for row in coverage_rows
+        if isinstance(row, dict)
+    }
+    asset_rows = assets.get("assets", [])
+    asset_count = len(asset_rows) if isinstance(asset_rows, list) else 0
+    item_runs = results.get(site_id, [])
+    key = f"offlineclone--{site_id}"
+    is_amazon_showcase = site_id == "amazon-shopping-mainline"
+
+    raw_visual_root = artifact_root / "acceptance" / "raw" / "visual"
+    public_media = (
+        {
+            "home": {
+                "source": "/static/showcase/amazon/source-home.png",
+                "candidate": "/static/showcase/amazon/clone-home.png",
+                "heatmap": "/static/showcase/amazon/diff-home.png",
+            },
+            "search": {
+                "source": "/static/showcase/amazon/source-search.png",
+                "candidate": "/static/showcase/amazon/clone-search.png",
+                "heatmap": "/static/showcase/amazon/diff-search.png",
+            },
+        }
+        if is_amazon_showcase
+        else {}
+    )
+    visual_metrics = acceptance.get("visual", {}).get("metrics", {})
+    visual_scores = visual_metrics.get("pixel_similarity_scores", [])
+    visual_thresholds = visual_metrics.get("pixel_similarity_thresholds", [])
+    capture_specs = (
+        (
+            ("home.desktop.loaded", "home", 0),
+            ("search.desktop.filtered", "search", 1),
+        )
+        if is_amazon_showcase
+        else ()
+    )
+    visual_captures = []
+    for checkpoint, media_key, index in capture_specs:
+        media = public_media[media_key]
+        visual_captures.append(
+            {
+                "checkpoint": checkpoint,
+                "viewport": "desktop",
+                "capture_status": "accepted",
+                "evidence_reliability": "current-direct",
+                "comparison_kind": "source-to-offline-reference",
+                "source_url": media["source"],
+                "candidate_url": media["candidate"],
+                "heatmap_url": media["heatmap"],
+                "diagnostic_metrics": {
+                    "pixel_similarity": visual_scores[index]
+                    if index < len(visual_scores)
+                    else None,
+                    "acceptance_threshold": visual_thresholds[index]
+                    if index < len(visual_thresholds)
+                    else None,
+                },
+            }
+        )
+    raw_visual_media_present = bool(public_media) and all(
+        (raw_visual_root / name).is_file()
+        for name in (
+            "source-home-desktop-loaded.png",
+            "clone-home-desktop-loaded.png",
+            "source-search-desktop-filtered.png",
+            "clone-search-desktop-filtered.png",
+        )
+    )
+    summarized_media = {
+        entry.get("path")
+        for entry in public_summary.get("visual_media", [])
+        if isinstance(entry, dict)
+    }
+    required_public_media = {
+        value.removeprefix("/static/")
+        for media in public_media.values()
+        for value in media.values()
+    }
+    summarized_media_present = bool(public_media) and required_public_media.issubset(
+        summarized_media
+    )
+    visual_media_present = machine_verification_current and (
+        summarized_media_present
+        if profile == "public"
+        else raw_visual_media_present or summarized_media_present
+    )
+    visual = (
+        {
+            "schema_version": "websitebench.viewer-public-visual.v1",
+            "comparison_kind": "source-to-offline-reference",
+            "captures": visual_captures,
+        }
+        if visual_media_present
+        else None
+    )
+
+    coverage_cards = []
+    coverage_selection = (
+        ("known-products", "Known products"),
+        ("rich-pdp-products", "Rich PDPs"),
+        ("purchasable-products", "Purchasable"),
+        ("review-backed-products", "Review-backed"),
+        ("comparable-products", "Comparable"),
+        ("required-runtime-asset-paths", "Runtime assets"),
+    )
+    for coverage_id, label in coverage_selection:
+        coverage_cards.append(
+            {
+                "id": coverage_id,
+                "label": label,
+                "value": coverage_counts.get(coverage_id, 0),
+            }
+        )
+
+    calibration_metrics = {}
+    for kind in ("visual", "browser", "network", "full-suite"):
+        if kind in acceptance:
+            calibration_metrics[kind] = copy.deepcopy(
+                acceptance[kind].get("metrics", {})
+            )
+    report_sections = report.get("sections", {})
+    sections = []
+    if isinstance(report_sections, dict):
+        for section_id, value in report_sections.items():
+            if not isinstance(value, dict):
+                continue
+            complete = bool(value.get("execution", {}).get("complete"))
+            findings = value.get("findings")
+            sections.append(
+                {
+                    "id": section_id,
+                    "status": (
+                        "incomplete"
+                        if not complete
+                        else "findings"
+                        if isinstance(findings, list) and findings
+                        else "clean"
+                    ),
+                }
+            )
+    showcase = {
+        "brand": manifest.get("display_name", site_id),
+        "construction_status": (
+            diagnostic_status
+            if diagnostic_status in {"clean", "findings", "incomplete"}
+            else "building"
+        ),
+        "experiment_status": "not_started" if not item_runs else "running",
+        "hero_image": (
+            "/static/showcase/amazon/clone-home.png"
+            if is_amazon_showcase and visual_media_present
+            else None
+        ),
+        "visual_pairs": visual_captures if visual else [],
+        "route_families": [
+            {
+                "id": row.get("id"),
+                "route_pattern": row.get("route_pattern"),
+                "priority": row.get("priority"),
+                "purpose_edge": row.get("purpose_edge"),
+                "evidence_kind": row.get("evidence_kind"),
+                "verification_kind": row.get("verification_kind"),
+                "local_destination": row.get("local_destination"),
+                "states": copy.deepcopy(row.get("states", [])),
+            }
+            for row in route_rows
+            if isinstance(row, dict)
+        ],
+        "journeys": [
+            {
+                "id": row.get("id"),
+                "kind": row.get("kind"),
+                "actor": row.get("actor"),
+                "steps": copy.deepcopy(row.get("steps", [])),
+            }
+            for row in journey_rows
+            if isinstance(row, dict)
+        ],
+        "checkpoints": [
+            {
+                "id": row.get("id"),
+                "route_id": row.get("route_id"),
+                "state": row.get("state"),
+                "viewport": row.get("viewport"),
+                "priority": row.get("priority"),
+                "evidence_kind": row.get("evidence_kind"),
+                "verification_kind": row.get("verification_kind"),
+            }
+            for row in checkpoint_rows
+            if isinstance(row, dict)
+        ],
+        "coverage": coverage_cards,
+        "calibration": {
+            "stage": diagnostic_status.upper() if diagnostic_status else None,
+            "manifest_current": diagnostic_status is not None,
+            "diagnostic_status": diagnostic_status,
+            "authority": report.get("authority") if diagnostic_status else None,
+            "qualification": report.get("qualification") if diagnostic_status else None,
+            "sections": sections,
+            "metrics": calibration_metrics if machine_verification_current else {},
+        },
+        "future_score_dimensions": [
+            "Visual fidelity",
+            "Interaction fidelity",
+            "Journey completion",
+            "Robustness",
+            "Efficiency",
+        ],
+    }
+
+    required_scope_present = (
+        not manifest_errors
+        and all(
+            scope.get(name)
+            for name in ("purpose", "routes", "journeys", "checkpoints", "coverage")
+        )
+        and asset_manifest_path.is_file()
+    )
+    diagnostic_current = diagnostic_status in {"clean", "findings", "incomplete"}
+    readiness = [
+        _status(
+            "manifest_schema",
+            "invalid" if manifest_errors else "present",
+            "; ".join(manifest_errors[:3]),
+        ),
+        _status(
+            "required_artifacts",
+            "present" if required_scope_present else "missing",
+            "Captured purpose, routes, journeys, checkpoints, coverage, and asset closure",
+        ),
+        _status(
+            "clone_artifact",
+            "present" if candidate_root.is_dir() else "missing",
+            "Runnable isolated offline reference server",
+        ),
+        _status(
+            "journeys",
+            "present" if journey_rows else "missing",
+            f"{len(journey_rows)} success, failure, and recovery journeys",
+        ),
+        _status(
+            "visual_checkpoints",
+            "present" if checkpoint_rows else "missing",
+            f"{len(checkpoint_rows)} route-state-viewport checkpoints",
+        ),
+        _status(
+            "diagnostic_report",
+            "present" if diagnostic_current else ("invalid" if report else "missing"),
+            (
+                f"Diagnostic status: {diagnostic_status}; maintainer judgment required"
+                if diagnostic_current
+                else report_error or "Current clone diagnostics are unavailable"
+            ),
+        ),
+        _status(
+            "visual_evidence",
+            "present" if visual else "missing",
+            f"{len(visual_captures) if visual else 0} sanitized source/reference pairs",
+        ),
+        _status(
+            "seed_reset",
+            "not_applicable",
+            "Managed by the offline-clone harness rather than the candidate scoring contract",
+        ),
+        _status(
+            "controlled_time",
+            "not_applicable",
+            "Deterministic local simulations are certified by machine evidence",
+        ),
+        _status(
+            "license",
+            "not_applicable",
+            "Rights metadata is outside technical verification status",
+        ),
+        _status(
+            "candidate_report",
+            "present" if item_runs else "not_applicable",
+            f"{len(item_runs)} valid agent experiment runs",
+        ),
+        _status(
+            "scoring_contract",
+            "not_applicable",
+            "Agent scoring remains intentionally empty until experiments start",
+        ),
+    ]
+    readiness_counts = _counts(readiness)
+    if profile == "public" and public_summary:
+        acceptance_source = "viewer-public-summary"
+    elif report_from_artifacts:
+        acceptance_source = "generated-artifacts"
+    elif public_summary:
+        acceptance_source = "viewer-public-summary"
+    else:
+        acceptance_source = "unavailable"
+    return {
+        "key": key,
+        "source_type": "offline_clone",
+        "site_id": site_id,
+        "display_name": manifest.get("display_name", site_id),
+        "description": purpose.get("statement") or manifest.get("display_name", ""),
+        "family": manifest.get("family_id") or "offline-clone",
+        "product_type": manifest.get("product_type") or "offline-clone",
+        "difficulty": manifest.get("difficulty") or "unrated",
+        "split": manifest.get("split") or "draft",
+        "site_version": manifest.get("site_version"),
+        "capability_tags": manifest.get("capability_tags", []),
+        "interaction_tags": manifest.get("interaction_tags", []),
+        "roles": copy.deepcopy(purpose.get("primary_actor_ids", [])),
+        "stateful_entities": manifest.get("stateful_entities", []),
+        "counts": {
+            "routes": len(route_rows),
+            "journeys": len(journey_rows),
+            "checkpoints": len(checkpoint_rows),
+            "seeds": None,
+            "public_seeds": None,
+            "hidden_test_families": None,
+            "states": sum(
+                len(row.get("states", []))
+                for row in route_rows
+                if isinstance(row, dict)
+            ),
+            "assets": asset_count,
+        },
+        "protocol": {
+            "public_artifacts": [
+                "purpose",
+                "routes",
+                "journeys",
+                "checkpoints",
+                "coverage",
+                "sanitized visual evidence",
+            ],
+            "browser_policy": {
+                "runtime_remote_requests": manifest.get("source", {})
+                .get("capture_policy", {})
+                .get("runtime_remote_requests")
+            },
+            "services": ["isolated offline reference server"],
+            "visual_viewports": sorted(viewports)
+            if isinstance(viewports, dict)
+            else [],
+        },
+        "readiness": readiness,
+        "readiness_counts": readiness_counts,
+        "lifecycle_stage": "evaluated" if item_runs else "building",
+        "construction_status": showcase["construction_status"],
+        "experiment_status": showcase["experiment_status"],
+        "official_runs": item_runs,
+        "latest_official_result": item_runs[0] if item_runs else None,
+        "visual_evidence": visual,
+        "visual_evidence_errors": [],
+        "showcase": showcase,
+        "documents": {},
+        "internal": {
+            "manifest_path": str(manifest_path.relative_to(repo_root)),
+            "site_root": str(site_root.relative_to(repo_root)),
+            "report_path": str(report_path.relative_to(repo_root)),
+            "manifest_errors": manifest_errors,
+            "asset_error": asset_error,
+            "viewer_public_summary_error": public_summary_error,
+            "acceptance_source": acceptance_source,
+        },
+    }
+
+
+def _load_allowlist(repo_root: Path, path: Path | None) -> set[str]:
+    allowlist_path = path or (
+        repo_root / "websitebench" / "viewer-public-allowlist.json"
+    )
+    value, error = _read_json(allowlist_path)
+    if error:
+        raise ValueError(f"public profile requires a valid allowlist: {error}")
+    values = value.get("items") if isinstance(value, dict) else value
+    if not isinstance(values, list) or not all(
+        isinstance(item, str) for item in values
+    ):
+        raise ValueError(
+            "public allowlist must be a JSON array or an object with an items array"
+        )
+    return set(values)
+
+
+def _public_run(run: dict[str, Any]) -> dict[str, Any]:
+    """Publish aggregates without hidden-test or artifact-level details."""
+
+    return {
+        key: copy.deepcopy(run[key])
+        for key in (
+            "run_id",
+            "site_id",
+            "site_version",
+            "status",
+            "track",
+            "score",
+            "dimensions",
+            "resources",
+            "network",
+            "usage",
+            "candidate",
+            "started_at",
+            "finished_at",
+        )
+    } | {
+        # The shared run template expects these keys. Detail stays internal
+        # because it can contain hidden fixtures, reproduction steps, or paths.
+        "hard_failures": [],
+        "journeys": [],
+        "seeds": [],
+        "failures": [],
+        "evidence": [],
+        "versions": {},
+        "details_withheld": True,
+    }
+
+
+def public_item(item: dict[str, Any]) -> dict[str, Any]:
+    """Return only explicitly public, path-free fields for a corpus item."""
+
+    result = {
+        key: copy.deepcopy(item[key])
+        for key in (
+            "key",
+            "source_type",
+            "site_id",
+            "display_name",
+            "description",
+            "family",
+            "product_type",
+            "difficulty",
+            "split",
+            "site_version",
+            "capability_tags",
+            "interaction_tags",
+            "roles",
+            "stateful_entities",
+            "counts",
+            "readiness",
+            "readiness_counts",
+            "official_runs",
+            "latest_official_result",
+            "lifecycle_stage",
+            "construction_status",
+            "experiment_status",
+        )
+        if key in item
+    }
+    result["counts"]["hidden_test_families"] = None
+    result["official_runs"] = [_public_run(run) for run in item["official_runs"]]
+    result["latest_official_result"] = (
+        _public_run(item["latest_official_result"])
+        if item["latest_official_result"]
+        else None
+    )
+    protocol = item.get("protocol", {})
+    result["protocol"] = {
+        key: copy.deepcopy(protocol.get(key))
+        for key in (
+            "public_artifacts",
+            "browser_policy",
+            "tracks",
+            "services",
+            "license",
+            "scoring_dimensions",
+            "visual_viewports",
+            "metaclass",
+            "class",
+            "time_limit",
+        )
+        if protocol.get(key) is not None
+    }
+    result["documents"] = {
+        key: value
+        for key, value in item.get("documents", {}).items()
+        if key
+        in {"prd", "candidate_contract", "readme", "limitations", "asset_attribution"}
+    }
+    result["visual_evidence"] = copy.deepcopy(item.get("visual_evidence"))
+    result["visual_evidence_errors"] = []
+    result["showcase"] = copy.deepcopy(item.get("showcase"))
+    return result
+
+
+def public_leak_findings(value: Any) -> list[str]:
+    """Recursively find path/command/private-fixture markers in a public index."""
+
+    findings: list[str] = []
+    blocked_keys = {
+        "server_command",
+        "verify_command",
+        "internal",
+        "report_path",
+        "manifest_path",
+        "task_path",
+        "clone_root",
+    }
+
+    def visit(item: Any, location: str) -> None:
+        if isinstance(item, dict):
+            for key, child in item.items():
+                here = f"{location}.{key}"
+                if key in blocked_keys:
+                    findings.append(f"{here}: blocked internal key")
+                visit(child, here)
+        elif isinstance(item, list):
+            for index, child in enumerate(item):
+                visit(child, f"{location}[{index}]")
+        elif isinstance(item, str):
+            lowered = item.lower().replace("\\", "/")
+            if "judge/" in lowered:
+                findings.append(f"{location}: private fixture marker")
+            if lowered.startswith(("/mnt/", "/home/", "/root/", "c:/")):
+                findings.append(f"{location}: absolute filesystem path")
+
+    visit(value, "$")
+    return findings
+
+
+@dataclass
+class CorpusIndex:
+    repo_root: Path
+    profile: str
+    items: list[dict[str, Any]]
+    invalid_runs: list[dict[str, Any]]
+
+    def by_key(self, key: str) -> dict[str, Any] | None:
+        return next((item for item in self.items if item["key"] == key), None)
+
+    @property
+    def runs(self) -> list[dict[str, Any]]:
+        return [run for item in self.items for run in item["official_runs"]]
+
+    def run_by_id(self, run_id: str) -> dict[str, Any] | None:
+        return next((run for run in self.runs if run["run_id"] == run_id), None)
+
+    @property
+    def models(self) -> list[dict[str, Any]]:
+        grouped: dict[str, list[dict[str, Any]]] = {}
+        for run in self.runs:
+            grouped.setdefault(run["candidate"]["model_key"], []).append(run)
+        output = []
+        for key, runs in grouped.items():
+            candidate = runs[0]["candidate"]
+            dimensions = {
+                name: round(
+                    sum(run["dimensions"][name]["score"] for run in runs) / len(runs), 2
+                )
+                for name in (
+                    "visual",
+                    "interactions",
+                    "journeys",
+                    "robustness",
+                    "efficiency",
+                )
+            }
+            output.append(
+                {
+                    **copy.deepcopy(candidate),
+                    "model_key": key,
+                    "run_count": len(runs),
+                    "site_count": len({run["site_id"] for run in runs}),
+                    "average_score": round(
+                        sum(run["score"] for run in runs) / len(runs), 2
+                    ),
+                    "passed_count": sum(run["status"] == "passed" for run in runs),
+                    "latest_finished_at": max(run["finished_at"] for run in runs),
+                    "dimensions": dimensions,
+                    "runs": sorted(
+                        runs, key=lambda run: (run["site_id"], run["finished_at"])
+                    ),
+                }
+            )
+        return sorted(
+            output,
+            key=lambda model: (-model["average_score"], model["display_name"].lower()),
+        )
+
+    def model_by_key(self, model_key: str) -> dict[str, Any] | None:
+        return next(
+            (model for model in self.models if model["model_key"] == model_key), None
+        )
+
+    @property
+    def categories(self) -> list[dict[str, Any]]:
+        grouped: dict[str, list[dict[str, Any]]] = {}
+        for item in self.items:
+            if not _is_benchmark_item(item):
+                continue
+            grouped.setdefault(item.get("product_type") or "uncategorized", []).append(
+                item
+            )
+        output = []
+        for category, items in grouped.items():
+            output.append(
+                {
+                    "id": category,
+                    "label": category.replace("-", " ").title(),
+                    "site_count": len(items),
+                    "ready_count": sum(
+                        item["lifecycle_stage"] in {"ready", "evaluated"}
+                        for item in items
+                    ),
+                    "evaluated_count": sum(
+                        item["lifecycle_stage"] == "evaluated" for item in items
+                    ),
+                    "run_count": sum(len(item["official_runs"]) for item in items),
+                    "model_count": len(
+                        {
+                            run["candidate"]["model_key"]
+                            for item in items
+                            for run in item["official_runs"]
+                        }
+                    ),
+                    "sites": items,
+                }
+            )
+        return sorted(output, key=lambda category: category["label"].lower())
+
+    @property
+    def evaluation_matrix(self) -> list[dict[str, Any]]:
+        models = self.models
+        rows = []
+        for item in (item for item in self.items if _is_benchmark_item(item)):
+            cells = []
+            for model in models:
+                runs = [
+                    run
+                    for run in item["official_runs"]
+                    if run["candidate"]["model_key"] == model["model_key"]
+                ]
+                latest = max(runs, key=lambda run: run["finished_at"]) if runs else None
+                cells.append({"model_key": model["model_key"], "run": latest})
+            rows.append({"item": item, "cells": cells})
+        return rows
+
+    def as_dict(self) -> dict[str, Any]:
+        distributions = {}
+        for field in ("source_type", "family", "product_type", "difficulty", "split"):
+            counter = Counter(item.get(field) or "pending" for item in self.items)
+            distributions[field] = dict(sorted(counter.items()))
+        readiness = Counter(
+            check["status"] for item in self.items for check in item["readiness"]
+        )
+        models = self.models
+        categories = self.categories
+        benchmark_sites = [item for item in self.items if _is_benchmark_item(item)]
+        evaluated_pairs = {
+            (run["site_id"], run["candidate"]["model_key"]) for run in self.runs
+        }
+        return {
+            "schema_version": "websitebench.viewer-index.v1",
+            "generated_at": utc_now(),
+            "profile": self.profile,
+            "summary": {
+                "item_count": len(self.items),
+                "websitebench_count": sum(
+                    item["source_type"] == "websitebench" for item in self.items
+                ),
+                "offline_clone_count": sum(
+                    item["source_type"] == "offline_clone" for item in self.items
+                ),
+                "benchmark_site_count": len(benchmark_sites),
+                "official_run_count": len(self.runs),
+                "invalid_run_count": len(self.invalid_runs),
+                "category_count": len(categories),
+                "model_count": len(models),
+                "evaluated_pair_count": len(evaluated_pairs),
+                "possible_pair_count": len(benchmark_sites) * len(models),
+                "readiness": {
+                    state: readiness.get(state, 0) for state in sorted(READINESS_STATES)
+                },
+                "distributions": distributions,
+            },
+            "items": self.items,
+            "models": models,
+            "categories": categories,
+            "evaluation_matrix": self.evaluation_matrix,
+            "invalid_runs": self.invalid_runs if self.profile == "internal" else [],
+        }
+
+
+def discover_corpus(
+    repo_root: Path | None = None,
+    *,
+    profile: str = "internal",
+    public_allowlist: Path | None = None,
+) -> CorpusIndex:
+    root = _repo_root(repo_root)
+    if profile not in {"internal", "public"}:
+        raise ValueError("profile must be internal or public")
+    results, invalid_runs = _discover_results(root)
+    items = [
+        _canonical_item(root, path, results)
+        for path in sorted((root / "websitebench").glob("*/public/manifest.yaml"))
+    ]
+    for path in sorted((root / "materials").glob("*/clone.yaml")):
+        item = _offline_clone_item(root, path, results, profile=profile)
+        if item is not None:
+            items.append(item)
+    items.sort(key=lambda item: item["display_name"].lower())
+    if profile == "public":
+        allowlist = _load_allowlist(root, public_allowlist)
+        items = [public_item(item) for item in items if item["key"] in allowlist]
+        invalid_runs = []
+    index = CorpusIndex(root, profile, items, invalid_runs)
+    if profile == "public":
+        findings = public_leak_findings(index.as_dict())
+        if findings:
+            raise ValueError(
+                "public index leak check failed: " + "; ".join(findings[:10])
+            )
+    return index

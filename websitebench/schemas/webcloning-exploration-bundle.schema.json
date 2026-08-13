@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/webcloning.exploration-bundle.v1.json",
+  "title": "Trace-guided source exploration bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "site_id",
+    "strategy",
+    "source_context",
+    "traces",
+    "interaction_transcripts",
+    "imports",
+    "media",
+    "visit_order",
+    "frontier",
+    "architecture_hypotheses",
+    "status",
+    "authority",
+    "content_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "webcloning.exploration-bundle.v1"},
+    "bundle_id": {"$ref": "#/$defs/sha256"},
+    "site_id": {"$ref": "#/$defs/id"},
+    "strategy": {"enum": ["clawbench-historical", "dfs", "bfs"]},
+    "source_context": {"type": "object"},
+    "traces": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/artifact"}
+    },
+    "interaction_transcripts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/artifact"}
+    },
+    "imports": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/artifact"}
+    },
+    "media": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/artifact"}
+    },
+    "visit_order": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/visit"}
+    },
+    "frontier": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "architecture_hypotheses": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/hypothesis"}
+    },
+    "status": {"enum": ["complete", "incomplete", "historical-stale"]},
+    "authority": {
+      "const": "exploration-evidence-only-cannot-prove-fidelity-or-release"
+    },
+    "content_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1200,
+      "pattern": "^(?![A-Za-z]:|/|\\\\|.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "visit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row_id",
+        "trace_sha256",
+        "step_id",
+        "route",
+        "observable_sha256",
+        "action_family",
+        "target",
+        "observation_kinds",
+        "structure_sha256",
+        "request_semantics_sha256",
+        "evidence_kind"
+      ],
+      "properties": {
+        "row_id": {"$ref": "#/$defs/sha256"},
+        "trace_sha256": {"$ref": "#/$defs/sha256"},
+        "step_id": {"type": "string", "pattern": "^s[0-9]{4,}$"},
+        "route": {"type": ["string", "null"], "maxLength": 2000},
+        "observable_sha256": {"$ref": "#/$defs/sha256"},
+        "action_family": {
+          "enum": [
+            "navigation",
+            "query",
+            "click",
+            "type",
+            "select",
+            "submit",
+            "upload",
+            "wait",
+            "refresh",
+            "back-forward",
+            "api-visible-mutation",
+            "other"
+          ]
+        },
+        "target": {"type": ["string", "null"], "maxLength": 2000},
+        "observation_kinds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1, "maxLength": 80}
+        },
+        "structure_sha256": {
+          "oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]
+        },
+        "request_semantics_sha256": {
+          "oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]
+        },
+        "evidence_kind": {"enum": ["current-direct", "historical"]}
+      }
+    },
+    "hypothesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "layer", "summary", "evidence_kind", "status"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1, "maxLength": 300},
+        "layer": {"type": "string", "minLength": 1, "maxLength": 200},
+        "summary": {"type": "string", "maxLength": 2000},
+        "evidence_kind": {"const": "inferred"},
+        "status": {"enum": ["supported", "conflicting", "unavailable"]}
+      }
+    }
+  }
+}

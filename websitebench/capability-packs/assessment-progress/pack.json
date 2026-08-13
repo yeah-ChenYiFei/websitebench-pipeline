@@ -1,0 +1,101 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque assessment-attempt identity; exact source key and ownership require R1 confirmation",
+            "name": "assessment-attempt",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "assessment-progress-lifecycle",
+        "label": "assessment-progress lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "attempt limit",
+          "server scoring",
+          "deadline authority",
+          "versioned submission"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "created",
+            "submitted",
+            "graded",
+            "invalidated"
+          ],
+          "transitions": [
+            {
+              "from": "created",
+              "to": "submitted",
+              "trigger": "server-authorized assessment-progress lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "submitted",
+              "to": "graded",
+              "trigger": "server-authorized assessment-progress lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "graded",
+              "to": "invalidated",
+              "trigger": "server-authorized assessment-progress lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "assessment-progress keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "assessment-progress-surface",
+        "label": "assessment-progress route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "assessment-progress surface"
+    ],
+    "state_families": [
+      "assessment-progress loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "assessment-progress",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "尝试、提交、评分、进度、截止期和完成资格。",
+  "title": "Assessment Progress overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "assessment-progress actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "attempt limit",
+      "server scoring",
+      "deadline authority",
+      "versioned submission"
+    ]
+  },
+  "version": "1.0.0"
+}

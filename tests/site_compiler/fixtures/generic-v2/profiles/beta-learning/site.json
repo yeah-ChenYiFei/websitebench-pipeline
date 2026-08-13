@@ -1,0 +1,49 @@
+{
+  "schema_version": "offline-clone.site-profile.v1",
+  "inventory_id": 9007,
+  "site_id": "beta-learning",
+  "display_name": "Beta Learning",
+  "official_url": "https://beta.example.test/",
+  "source_origin_status": "invalid-in-inventory",
+  "source_origins": [],
+  "inventory_metadata": {
+    "category": "Education",
+    "frontend_complexity": "Medium",
+    "backend_statefulness": "Medium",
+    "authentication": "Optional",
+    "agent_task_family": "Medium"
+  },
+  "classification": {
+    "batch_family_id": "learning-community-content",
+    "archetype_pack_id": "learning-assessment-progress",
+    "overlay_pack_ids": [
+      "admin",
+      "assessment-progress",
+      "auth",
+      "content",
+      "notifications",
+      "payment",
+      "search-discovery",
+      "subscription-entitlement"
+    ],
+    "confidence": "medium",
+    "evidence_tier": "inferred",
+    "confirmation_status": "requires-r1-confirmation",
+    "rationale": "Fixture learning capabilities exercise a second generic family."
+  },
+  "locale_defaults": {
+    "locale": "en-US",
+    "timezone": null,
+    "currency": null
+  },
+  "additional_pack_ids": [],
+  "overrides": [],
+  "blockers": [
+    {
+      "id": "SRC-ORIGIN-9007",
+      "kind": "source-data-quality",
+      "message": "The fixture source marks this origin as unresolved.",
+      "unblock_evidence": "Replace the source record with a valid configured origin."
+    }
+  ]
+}

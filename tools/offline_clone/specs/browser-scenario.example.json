@@ -1,0 +1,80 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "search-mainline",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "timeout_ms": 10000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.example.com"
+    ],
+    "clone": [
+      "http://127.0.0.1:8000"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-home",
+      "action": "goto",
+      "path": "/",
+      "observations": [
+        {
+          "id": "home-route",
+          "kind": "url_path",
+          "expect": {
+            "equals": "/"
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "enter-query",
+      "action": "fill",
+      "selector": {
+        "source": "input[name='q']",
+        "clone": "[data-testid='search-input']"
+      },
+      "value": "offline fixture"
+    },
+    {
+      "id": "submit-query",
+      "action": "press",
+      "selector": {
+        "source": "input[name='q']",
+        "clone": "[data-testid='search-input']"
+      },
+      "key": "Enter"
+    },
+    {
+      "id": "results",
+      "action": "snapshot",
+      "observations": [
+        {
+          "id": "results-visible",
+          "kind": "visible",
+          "selector": {
+            "source": "main",
+            "clone": "main"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "result-count",
+          "kind": "count",
+          "selector": {
+            "source": "[data-result]",
+            "clone": "[data-result]"
+          }
+        }
+      ],
+      "screenshot": true,
+      "full_page": true
+    }
+  ]
+}

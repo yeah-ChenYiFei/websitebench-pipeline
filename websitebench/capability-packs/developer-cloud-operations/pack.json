@@ -1,0 +1,315 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque deployment-job identity; exact source key and ownership require R1 confirmation",
+            "name": "deployment-job",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque organization-project identity; exact source key and ownership require R1 confirmation",
+            "name": "organization-project",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque repository-package-model identity; exact source key and ownership require R1 confirmation",
+            "name": "repository-package-model",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque environment identity; exact source key and ownership require R1 confirmation",
+            "name": "environment",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque resource identity; exact source key and ownership require R1 confirmation",
+            "name": "resource",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque secret-apikey identity; exact source key and ownership require R1 confirmation",
+            "name": "secret-apikey",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque event-log identity; exact source key and ownership require R1 confirmation",
+            "name": "event-log",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque alert-incident identity; exact source key and ownership require R1 confirmation",
+            "name": "alert-incident",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque quota identity; exact source key and ownership require R1 confirmation",
+            "name": "quota",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "developer-cloud-operations-deployment-job",
+        "label": "developer-cloud-operations deployment/job lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "状态来自本地执行器，取消/重试/回滚和日志不得 success-only。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "queued",
+            "provisioning",
+            "running",
+            "succeeded",
+            "failed",
+            "cancelled",
+            "rolled-back"
+          ],
+          "transitions": [
+            {
+              "from": "queued",
+              "to": "provisioning",
+              "trigger": "server-authorized developer-cloud-operations deployment/job lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "provisioning",
+              "to": "running",
+              "trigger": "server-authorized developer-cloud-operations deployment/job lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "running",
+              "to": "succeeded",
+              "trigger": "server-authorized developer-cloud-operations deployment/job lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "succeeded",
+              "to": "failed",
+              "trigger": "server-authorized developer-cloud-operations deployment/job lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "failed",
+              "to": "cancelled",
+              "trigger": "server-authorized developer-cloud-operations deployment/job lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "cancelled",
+              "to": "rolled-back",
+              "trigger": "server-authorized developer-cloud-operations deployment/job lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque resource identity; exact source key and ownership require R1 confirmation",
+            "name": "resource",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque organization-project identity; exact source key and ownership require R1 confirmation",
+            "name": "organization-project",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque repository-package-model identity; exact source key and ownership require R1 confirmation",
+            "name": "repository-package-model",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque environment identity; exact source key and ownership require R1 confirmation",
+            "name": "environment",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque deployment-job identity; exact source key and ownership require R1 confirmation",
+            "name": "deployment-job",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque secret-apikey identity; exact source key and ownership require R1 confirmation",
+            "name": "secret-apikey",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque event-log identity; exact source key and ownership require R1 confirmation",
+            "name": "event-log",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque alert-incident identity; exact source key and ownership require R1 confirmation",
+            "name": "alert-incident",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque quota identity; exact source key and ownership require R1 confirmation",
+            "name": "quota",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "developer-cloud-operations-resource",
+        "label": "developer-cloud-operations resource lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "权限、配额、依赖、并发更新和生命周期由服务端控制。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "requested",
+            "creating",
+            "active",
+            "updating",
+            "degraded",
+            "deleting",
+            "deleted",
+            "failed"
+          ],
+          "transitions": [
+            {
+              "from": "requested",
+              "to": "creating",
+              "trigger": "server-authorized developer-cloud-operations resource lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "creating",
+              "to": "active",
+              "trigger": "server-authorized developer-cloud-operations resource lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "updating",
+              "trigger": "server-authorized developer-cloud-operations resource lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "updating",
+              "to": "degraded",
+              "trigger": "server-authorized developer-cloud-operations resource lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "degraded",
+              "to": "deleting",
+              "trigger": "server-authorized developer-cloud-operations resource lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "deleting",
+              "to": "deleted",
+              "trigger": "server-authorized developer-cloud-operations resource lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "deleted",
+              "to": "failed",
+              "trigger": "server-authorized developer-cloud-operations resource lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": "developer-cloud",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "developer-cloud-entry",
+        "label": "Entry route family for 管理代码/包/模型、项目、基础设施资源、部署、作业、密钥、可观测性和故障响应。",
+        "priority": "p0"
+      },
+      {
+        "id": "developer-cloud-discover",
+        "label": "Discover route family for 管理代码/包/模型、项目、基础设施资源、部署、作业、密钥、可观测性和故障响应。",
+        "priority": "p0"
+      },
+      {
+        "id": "developer-cloud-detail",
+        "label": "Detail route family for 管理代码/包/模型、项目、基础设施资源、部署、作业、密钥、可观测性和故障响应。",
+        "priority": "p0"
+      },
+      {
+        "id": "developer-cloud-commit",
+        "label": "Commit route family for 管理代码/包/模型、项目、基础设施资源、部署、作业、密钥、可观测性和故障响应。",
+        "priority": "p0"
+      },
+      {
+        "id": "developer-cloud-confirm",
+        "label": "Confirm route family for 管理代码/包/模型、项目、基础设施资源、部署、作业、密钥、可观测性和故障响应。",
+        "priority": "p0"
+      },
+      {
+        "id": "developer-cloud-recover",
+        "label": "Recover route family for 管理代码/包/模型、项目、基础设施资源、部署、作业、密钥、可观测性和故障响应。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "developer-cloud global navigation",
+      "developer-cloud primary content",
+      "developer-cloud decision and action region",
+      "developer-cloud confirmation and aftercare"
+    ],
+    "state_families": [
+      "deployment/job",
+      "resource",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "developer-cloud-operations",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "管理代码/包/模型、项目、基础设施资源、部署、作业、密钥、可观测性和故障响应。",
+  "title": "Developer Cloud Operations",
+  "verification": {
+    "coverage_dimensions": [
+      "developer-cloud-operations actor x action x state x outcome",
+      "developer-cloud-operations entity ownership and durable visibility",
+      "developer-cloud-operations valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "组织/项目隔离、token/secret 安全存储、角色和审计。",
+      "资源/部署/作业的异步状态、失败、重试、取消和回滚。",
+      "本地 provider 模拟真实外部效果；配额、日志和事件在重启后可验证。"
+    ]
+  },
+  "version": "1.0.0"
+}

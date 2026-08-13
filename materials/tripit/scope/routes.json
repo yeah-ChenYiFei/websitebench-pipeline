@@ -1,0 +1,299 @@
+{
+  "schema_version": "offline-clone.routes.v1",
+  "status": "frozen",
+  "site_id": "tripit",
+  "routes": [
+    {
+      "id": "root-redirect",
+      "route_pattern": "/",
+      "priority": "p0",
+      "purpose_edge": "entry-redirect",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ],
+      "note": "GET / responds by landing the browser on /web (observed final_url)."
+    },
+    {
+      "id": "web-home",
+      "route_pattern": "/web",
+      "priority": "p0",
+      "purpose_edge": "marketing-home",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "web-free",
+      "route_pattern": "/web/free",
+      "priority": "p1",
+      "purpose_edge": "product-free",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "web-pro",
+      "route_pattern": "/web/pro",
+      "priority": "p1",
+      "purpose_edge": "product-pro",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "how-it-works",
+      "route_pattern": "/web/free/how-it-works",
+      "priority": "p1",
+      "purpose_edge": "product-explainer",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "pricing",
+      "route_pattern": "/web/pro/pricing",
+      "priority": "p1",
+      "purpose_edge": "pro-pricing",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "sap-concur",
+      "route_pattern": "/web/pro/sap-concur",
+      "priority": "p2",
+      "purpose_edge": "partner-page",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "download",
+      "route_pattern": "/web/free/download",
+      "priority": "p2",
+      "purpose_edge": "app-download",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "security",
+      "route_pattern": "/web/security",
+      "priority": "p2",
+      "purpose_edge": "security-statement",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "blog-index",
+      "route_pattern": "/web/blog",
+      "priority": "p2",
+      "purpose_edge": "editorial-index",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "traveler-resource-center",
+      "route_pattern": "/web/traveler-resource-center",
+      "priority": "p2",
+      "purpose_edge": "editorial-index",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "account-login",
+      "route_pattern": "/account/login",
+      "priority": "p0",
+      "purpose_edge": "auth-sign-in",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "account-create",
+      "route_pattern": "/account/create",
+      "priority": "p0",
+      "purpose_edge": "auth-registration",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "account-forgot-password",
+      "route_pattern": "/account/forgotPassword",
+      "priority": "p0",
+      "purpose_edge": "auth-password-reset",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "uhp-user-agreement",
+      "route_pattern": "/uhp/userAgreement",
+      "priority": "p2",
+      "purpose_edge": "legal",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "uhp-privacy",
+      "route_pattern": "/uhp/privacyPolicy",
+      "priority": "p2",
+      "purpose_edge": "legal",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "uhp-do-not-share",
+      "route_pattern": "/uhp/doNotShare",
+      "priority": "p2",
+      "purpose_edge": "legal",
+      "evidence_kind": "direct",
+      "local_destination": true,
+      "roles": [
+        "visitor.anonymous"
+      ]
+    },
+    {
+      "id": "app-trips-list",
+      "route_pattern": "unavailable-pending-authenticated-capture:app-trips-list",
+      "priority": "p0",
+      "purpose_edge": "authenticated-app",
+      "evidence_kind": "unavailable",
+      "local_destination": true,
+      "roles": [
+        "traveler.free-local",
+        "traveler.pro-local"
+      ],
+      "note": "Upcoming/Past/Unfiled trips list"
+    },
+    {
+      "id": "app-trip-itinerary",
+      "route_pattern": "unavailable-pending-authenticated-capture:app-trip-itinerary",
+      "priority": "p0",
+      "purpose_edge": "authenticated-app",
+      "evidence_kind": "unavailable",
+      "local_destination": true,
+      "roles": [
+        "traveler.free-local",
+        "traveler.pro-local"
+      ],
+      "note": "Trip detail timeline with expanded plan rows"
+    },
+    {
+      "id": "app-plan-forms",
+      "route_pattern": "unavailable-pending-authenticated-capture:app-plan-forms",
+      "priority": "p0",
+      "purpose_edge": "authenticated-app",
+      "evidence_kind": "unavailable",
+      "local_destination": true,
+      "roles": [
+        "traveler.free-local",
+        "traveler.pro-local"
+      ],
+      "note": "Add/edit forms and detail views for the 12 plan types"
+    },
+    {
+      "id": "app-import-surface",
+      "route_pattern": "unavailable-pending-authenticated-capture:app-import-surface",
+      "priority": "p0",
+      "purpose_edge": "authenticated-app",
+      "evidence_kind": "unavailable",
+      "local_destination": true,
+      "roles": [
+        "traveler.free-local",
+        "traveler.pro-local"
+      ],
+      "note": "Email-import surfaces: forward copy, Unfiled, history"
+    },
+    {
+      "id": "app-share-dialogs",
+      "route_pattern": "unavailable-pending-authenticated-capture:app-share-dialogs",
+      "priority": "p0",
+      "purpose_edge": "authenticated-app",
+      "evidence_kind": "unavailable",
+      "local_destination": true,
+      "roles": [
+        "traveler.free-local",
+        "traveler.pro-local"
+      ],
+      "note": "Share invite/role/revoke dialogs"
+    },
+    {
+      "id": "app-documents",
+      "route_pattern": "unavailable-pending-authenticated-capture:app-documents",
+      "priority": "p0",
+      "purpose_edge": "authenticated-app",
+      "evidence_kind": "unavailable",
+      "local_destination": true,
+      "roles": [
+        "traveler.free-local",
+        "traveler.pro-local"
+      ],
+      "note": "Document upload/preview/download surfaces"
+    },
+    {
+      "id": "app-account-settings",
+      "route_pattern": "unavailable-pending-authenticated-capture:app-account-settings",
+      "priority": "p0",
+      "purpose_edge": "authenticated-app",
+      "evidence_kind": "unavailable",
+      "local_destination": true,
+      "roles": [
+        "traveler.free-local",
+        "traveler.pro-local"
+      ],
+      "note": "Profile, traveler profile, notifications, settings"
+    },
+    {
+      "id": "app-pro-surfaces",
+      "route_pattern": "unavailable-pending-authenticated-capture:app-pro-surfaces",
+      "priority": "p0",
+      "purpose_edge": "authenticated-app",
+      "evidence_kind": "unavailable",
+      "local_destination": true,
+      "roles": [
+        "traveler.free-local",
+        "traveler.pro-local"
+      ],
+      "note": "Pro upgrade, status, cancel, and Pro feature surfaces"
+    }
+  ]
+}

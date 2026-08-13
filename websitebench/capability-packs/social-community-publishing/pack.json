@@ -1,0 +1,309 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "content",
+        "entities": [
+          {
+            "identity": "site-local opaque content identity; exact source key and ownership require R1 confirmation",
+            "name": "content",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque profile identity; exact source key and ownership require R1 confirmation",
+            "name": "profile",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque community identity; exact source key and ownership require R1 confirmation",
+            "name": "community",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque post-story identity; exact source key and ownership require R1 confirmation",
+            "name": "post-story",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque comment identity; exact source key and ownership require R1 confirmation",
+            "name": "comment",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque reaction-vote identity; exact source key and ownership require R1 confirmation",
+            "name": "reaction-vote",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque follow-membership identity; exact source key and ownership require R1 confirmation",
+            "name": "follow-membership",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque conversation identity; exact source key and ownership require R1 confirmation",
+            "name": "conversation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque report identity; exact source key and ownership require R1 confirmation",
+            "name": "report",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque moderationaction identity; exact source key and ownership require R1 confirmation",
+            "name": "moderationaction",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "social-community-publishing-content",
+        "label": "social-community-publishing content lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "作者身份、可见性、编辑权限和审核动作由服务端执行。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "published",
+            "edited",
+            "hidden",
+            "removed",
+            "restored"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "published",
+              "trigger": "server-authorized social-community-publishing content lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "published",
+              "to": "edited",
+              "trigger": "server-authorized social-community-publishing content lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "edited",
+              "to": "hidden",
+              "trigger": "server-authorized social-community-publishing content lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "hidden",
+              "to": "removed",
+              "trigger": "server-authorized social-community-publishing content lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "removed",
+              "to": "restored",
+              "trigger": "server-authorized social-community-publishing content lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "content",
+        "entities": [
+          {
+            "identity": "site-local opaque membership-moderation identity; exact source key and ownership require R1 confirmation",
+            "name": "membership-moderation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque profile identity; exact source key and ownership require R1 confirmation",
+            "name": "profile",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque community identity; exact source key and ownership require R1 confirmation",
+            "name": "community",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque post-story identity; exact source key and ownership require R1 confirmation",
+            "name": "post-story",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque comment identity; exact source key and ownership require R1 confirmation",
+            "name": "comment",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque reaction-vote identity; exact source key and ownership require R1 confirmation",
+            "name": "reaction-vote",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque follow-membership identity; exact source key and ownership require R1 confirmation",
+            "name": "follow-membership",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque conversation identity; exact source key and ownership require R1 confirmation",
+            "name": "conversation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque report identity; exact source key and ownership require R1 confirmation",
+            "name": "report",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque moderationaction identity; exact source key and ownership require R1 confirmation",
+            "name": "moderationaction",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "social-community-publishing-membership-moderation",
+        "label": "social-community-publishing membership/moderation lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "成员关系、举报去重、封禁范围和恢复必须持久且可审计。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "requested",
+            "active",
+            "muted",
+            "suspended",
+            "banned",
+            "left"
+          ],
+          "transitions": [
+            {
+              "from": "requested",
+              "to": "active",
+              "trigger": "server-authorized social-community-publishing membership/moderation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "muted",
+              "trigger": "server-authorized social-community-publishing membership/moderation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "muted",
+              "to": "suspended",
+              "trigger": "server-authorized social-community-publishing membership/moderation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "suspended",
+              "to": "banned",
+              "trigger": "server-authorized social-community-publishing membership/moderation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "banned",
+              "to": "left",
+              "trigger": "server-authorized social-community-publishing membership/moderation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": "learning-community-content",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "social-community-entry",
+        "label": "Entry route family for 围绕用户资料、内容发布、关注/加入、动态流、评论/投票、私信和社区治理建立互动网络。",
+        "priority": "p0"
+      },
+      {
+        "id": "social-community-discover",
+        "label": "Discover route family for 围绕用户资料、内容发布、关注/加入、动态流、评论/投票、私信和社区治理建立互动网络。",
+        "priority": "p0"
+      },
+      {
+        "id": "social-community-detail",
+        "label": "Detail route family for 围绕用户资料、内容发布、关注/加入、动态流、评论/投票、私信和社区治理建立互动网络。",
+        "priority": "p0"
+      },
+      {
+        "id": "social-community-commit",
+        "label": "Commit route family for 围绕用户资料、内容发布、关注/加入、动态流、评论/投票、私信和社区治理建立互动网络。",
+        "priority": "p0"
+      },
+      {
+        "id": "social-community-confirm",
+        "label": "Confirm route family for 围绕用户资料、内容发布、关注/加入、动态流、评论/投票、私信和社区治理建立互动网络。",
+        "priority": "p0"
+      },
+      {
+        "id": "social-community-recover",
+        "label": "Recover route family for 围绕用户资料、内容发布、关注/加入、动态流、评论/投票、私信和社区治理建立互动网络。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "social-community global navigation",
+      "social-community primary content",
+      "social-community decision and action region",
+      "social-community confirmation and aftercare"
+    ],
+    "state_families": [
+      "content",
+      "membership/moderation",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "social-community-publishing",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "围绕用户资料、内容发布、关注/加入、动态流、评论/投票、私信和社区治理建立互动网络。",
+  "title": "Social Community Publishing",
+  "verification": {
+    "coverage_dimensions": [
+      "social-community-publishing actor x action x state x outcome",
+      "social-community-publishing entity ownership and durable visibility",
+      "social-community-publishing valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "身份图谱、内容所有权、可见范围、关注/成员关系和 feed 查询。",
+      "评论/投票唯一性、私信授权、举报与审核。",
+      "删除/恢复、封禁后访问、刷新/重启一致性和确定性 reset。"
+    ]
+  },
+  "version": "1.0.0"
+}

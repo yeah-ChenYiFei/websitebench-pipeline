@@ -1,0 +1,49 @@
+<section
+  class="panel review-mode"
+  data-review-mode-root
+  data-item-key="{{ item.key }}"
+  data-session-url="/api/review-mode/{{ item.key }}"
+  data-findings-url="/api/review-mode/{{ item.key }}/findings"
+>
+  <div class="section-heading review-mode-heading">
+    <div>
+      <p class="eyebrow">Diagnostic feedback</p>
+      <h2>Review Mode</h2>
+      <p>Record human observations for this item, checkpoint, viewport, and evidence.</p>
+    </div>
+    <div class="review-mode-actions">
+      <a href="/api/review-mode/export?item_key={{ item.key }}">Export session</a>
+      <button class="secondary" type="button" data-review-mode-toggle aria-expanded="false">Open Review Mode</button>
+    </div>
+  </div>
+  <div class="review-mode-summary" data-review-mode-summary>
+    <span>Loading current session…</span>
+  </div>
+  <div class="review-mode-body" data-review-mode-body hidden>
+    <p class="method-note">Review findings are diagnostic inputs only. They never decide clone quality or replace maintainer judgment.</p>
+    <form class="review-finding-form" data-review-finding-form>
+      <div class="review-target-grid">
+        <label><span>Checkpoint</span><select name="checkpoint" data-review-checkpoint>
+          <option value="">Not specified</option>
+          {% if visual and visual.captures %}{% for capture in visual.captures %}<option value="{{ capture.checkpoint }}" data-viewport="{{ capture.viewport }}">{{ capture.checkpoint }} · {{ capture.viewport }}</option>{% endfor %}{% endif %}
+        </select></label>
+        <label><span>Viewport</span><select name="viewport" data-review-viewport>
+          <option value="">Not specified</option><option value="desktop">Desktop</option><option value="tablet">Tablet</option><option value="mobile">Mobile</option>
+        </select></label>
+        <label><span>Severity</span><select name="severity"><option value="p0">P0 · blocker</option><option value="p1" selected>P1 · important</option><option value="p2">P2 · polish</option></select></label>
+        <label><span>Category</span><select name="category">
+          <option value="visual">Visual</option><option value="copy">Copy</option><option value="interaction">Interaction</option><option value="semantics">Semantics</option><option value="responsive">Responsive</option><option value="state">State</option><option value="data">Data</option><option value="accessibility">Accessibility</option><option value="performance">Performance</option><option value="other">Other</option>
+        </select></label>
+        <label><span>Route</span><input name="route" placeholder="/search"></label>
+        <label><span>Role</span><input name="role" placeholder="anonymous"></label>
+        <label><span>State</span><input name="state" placeholder="validation-error"></label>
+      </div>
+      <label><span>What is wrong?</span><textarea name="observation" rows="3" required maxlength="10000" placeholder="Describe what you observed in your own words."></textarea></label>
+      <label><span>Expected behavior or appearance</span><textarea name="expected" rows="2" maxlength="10000" placeholder="Optional: what should happen instead?"></textarea></label>
+      <label><span>Evidence references</span><textarea name="evidence_refs" rows="2" placeholder="One repository-relative screenshot, trajectory, scenario, or report path per line."></textarea></label>
+      <div class="review-form-footer"><p data-review-mode-status aria-live="polite"></p><button class="primary" type="submit">Add finding</button></div>
+    </form>
+    <div class="review-findings-heading"><h3>Findings</h3><label><span>Status filter</span><select data-review-status-filter><option value="">All</option><option value="active">Active</option><option value="open">Open</option><option value="triaged">Triaged</option><option value="repairing">Repairing</option><option value="needs_evidence">Needs evidence</option><option value="resolved">Resolved</option><option value="known_difference">Known difference</option><option value="dismissed">Dismissed</option><option value="stale">Stale</option></select></label></div>
+    <div class="review-findings" data-review-findings><div class="empty-state">Loading findings…</div></div>
+  </div>
+</section>

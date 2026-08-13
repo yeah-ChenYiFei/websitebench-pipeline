@@ -1,0 +1,124 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque payment-operation identity; exact source key and ownership require R1 confirmation",
+            "name": "payment-operation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "payment-lifecycle",
+        "label": "payment lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "integer minor units",
+          "idempotency",
+          "server totals",
+          "owner and canonical fingerprint",
+          "immutable event snapshots",
+          "approval consumption precedes site business mutations",
+          "durable invalidation after final-state mismatch",
+          "no claimable rollback-to-invalidation transaction gap",
+          "provider-verified Stripe test Session interface",
+          "test-only adapters and no credential collection",
+          "no fake production success"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "initialized",
+            "authorized",
+            "captured",
+            "reversed",
+            "failed"
+          ],
+          "transitions": [
+            {
+              "from": "initialized",
+              "to": "authorized",
+              "trigger": "server-authorized payment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "authorized",
+              "to": "captured",
+              "trigger": "server-authorized payment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "captured",
+              "to": "reversed",
+              "trigger": "server-authorized payment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "reversed",
+              "to": "failed",
+              "trigger": "server-authorized payment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-payment-ledger",
+      "local-sandbox",
+      "stripe-test"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "payment keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "payment-surface",
+        "label": "payment route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "payment surface"
+    ],
+    "state_families": [
+      "payment loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "payment",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "支付方式、授权、结算、退款/冲正、争议和本地支付适配器。",
+  "title": "Payment overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "payment actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "integer minor units",
+      "idempotency",
+      "server totals",
+      "owner and stale fingerprint rejection",
+      "old approval cannot replay after final-state rejection",
+      "approval and subsequent order write roll back together",
+      "concurrent consume cannot win a final-state invalidation gap",
+      "opaque Stripe Session id alone cannot approve",
+      "stripe live key rejection",
+      "no fake production success"
+    ]
+  },
+  "version": "1.2.1"
+}

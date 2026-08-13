@@ -1,0 +1,51 @@
+:root { color: #111; font-family: Arial, Helvetica, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; }
+a { color: #23618b; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.help-skip { left: -9999px; position: absolute; }
+.help-skip:focus { left: 1rem; top: 1rem; z-index: 10; }
+.help-header { align-items: center; display: flex; justify-content: space-between; margin: 0 auto; max-width: 84rem; padding: 1rem 1.5rem; }
+.help-logo img { display: block; height: auto; width: 106px; }
+.help-header nav { align-items: center; display: flex; gap: 0.5rem; }
+.help-header nav > a, .help-language { background: #fff; border: 0; color: #111; font-size: 1rem; padding: 1.35rem 1rem; }
+.help-header nav > a.is-active { background: #050505; color: #fff; text-decoration: none; }
+.help-header nav > .help-ticket-link { border: 1px solid #386481; border-radius: 3px; color: #315f7d; margin: 0 0.4rem; padding: 0.8rem 1rem; }
+.help-language { cursor: pointer; }
+.help-hero { margin: 3.5rem auto 5.5rem; max-width: 40rem; padding: 0 1rem; }
+.help-hero h1 { font-size: 2.5rem; margin: 0 0 0.5rem; text-align: center; }
+.help-hero label { display: block; margin-bottom: 0.2rem; }
+.help-search-control { border: 1px solid #999; border-radius: 8px; display: grid; grid-template-columns: 1fr 3.5rem; overflow: hidden; }
+.help-search-control input { border: 0; font-size: 1.05rem; padding: 1rem; }
+.help-search-control button { background: #f6f8fb; border: 0; cursor: pointer; font-size: 1.8rem; }
+.help-card, .help-document { border: 1px solid #ececec; border-radius: 14px; box-shadow: 0 1px 14px rgba(0,0,0,.08); margin: 0 auto 4rem; max-width: 84rem; padding: 1.6rem; }
+.help-card h2 { font-size: 1.55rem; margin: 0 0 2.5rem; }
+.help-grid { display: grid; gap: 3rem 5rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.help-section h3 { font-size: 1.2rem; margin: 0 0 1.1rem; }
+.help-section ul, .help-article-list { list-style: none; margin: 0; padding: 0; }
+.help-section li { margin-bottom: 1rem; }
+.help-section li span { color: #1e2d37; margin-right: 0.45rem; }
+.help-view-all { display: inline-block; margin-top: 0.15rem; }
+.help-document { max-width: 64rem; min-height: 24rem; padding: 2.5rem 3rem; }
+.help-document h1 { font-size: 2rem; margin-top: 0.5rem; }
+.help-document h2 { font-size: 1.35rem; margin-top: 2rem; }
+.help-document p { font-size: 1rem; line-height: 1.7; }
+.help-breadcrumbs { color: #68727a; }
+.help-muted { color: #68727a; }
+.help-article-list li { border-bottom: 1px solid #e5e5e5; padding: 1.1rem 0; }
+.help-article-list li > a { font-size: 1.08rem; font-weight: 700; }
+.help-article-list li p { color: #68727a; margin: 0.3rem 0 0; }
+.help-ticket form { max-width: 40rem; }
+.help-ticket label { display: block; font-weight: 700; margin: 1.25rem 0; }
+.help-ticket input, .help-ticket textarea { border: 1px solid #8b8b8b; border-radius: 3px; display: block; font: inherit; margin-top: 0.45rem; padding: 0.8rem; width: 100%; }
+.help-ticket button { background: #286387; border: 0; border-radius: 3px; color: #fff; font-size: 1rem; padding: 0.8rem 1.4rem; }
+.help-footer { border-top: 1px solid #ececec; color: #666; margin-top: 3rem; padding: 2rem; text-align: center; }
+@media (max-width: 760px) {
+  .help-header { align-items: flex-start; flex-direction: column; }
+  .help-header nav { align-items: stretch; flex-wrap: wrap; margin-top: 0.75rem; }
+  .help-header nav > a, .help-language { padding: 0.7rem; }
+  .help-hero { margin: 2rem auto 3rem; }
+  .help-hero h1 { font-size: 2rem; }
+  .help-grid { grid-template-columns: 1fr; }
+  .help-document { border-radius: 0; padding: 1.5rem; }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "tripit",
+  "note": "What the generic verifier needs to drive this clone. The frozen scope contracts describe the source site; this file says where the clone serves those routes and how to reach a recorded interaction state. Recipes were lifted verbatim from the selectors in the retired tools/verification_gate.py.",
+  "routes": {
+    "web-home": "/"
+  },
+  "prepare": [
+    {
+      "click": "[data-cookie-choice=\"necessary\"]",
+      "optional": true,
+      "wait_ms": 100
+    }
+  ],
+  "states": {
+    "lang-menu-open": [
+      {
+        "click": "#block-tripit-theme-dropdownlanguageinterfacetext .dropdown-toggle[data-toggle=\"dropdown\"]",
+        "wait_ms": 400
+      }
+    ],
+    "mobile-menu-open": [
+      {
+        "click": ".navbar-toggle",
+        "wait_ms": 400
+      }
+    ],
+    "client-validation-error": [
+      {
+        "fill": "#email_address, input[name=\"login_email_address\"]",
+        "value": "not-an-email",
+        "wait_ms": 100
+      },
+      {
+        "fill": "#password, input[name=\"login_password\"]",
+        "value": "short",
+        "wait_ms": 200
+      },
+      {
+        "click": "button[type=\"submit\"], input[type=\"submit\"], #sign_in, .btn-primary",
+        "optional": true,
+        "timeout_ms": 1500,
+        "wait_ms": 400
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+/* Small local corrections for the frozen TripIt timeline markup. The app's
+   captured stylesheet supplies the visual system; these rules make its
+   Popper-created menu work in a fresh viewport. */
+
+#create-plan-dropdown-menu.custom-plans-dropdown {
+  min-width: 17.25rem;
+  max-width: calc(100vw - 1.5rem);
+  overflow-y: auto;
+  z-index: 1050;
+}
+
+#create-plan-dropdown-menu.custom-plans-dropdown li {
+  min-width: 0;
+}
+
+#create-plan-dropdown-menu.custom-plans-dropdown .dropdown-item {
+  align-items: center;
+  min-height: 3rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+  #create-plan-dropdown-menu.custom-plans-dropdown {
+    grid-template-columns: 1fr;
+    min-width: min(17.25rem, calc(100vw - 1.5rem));
+  }
+}

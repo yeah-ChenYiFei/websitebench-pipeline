@@ -1,0 +1,335 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque case identity; exact source key and ownership require R1 confirmation",
+            "name": "case",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque applicant identity; exact source key and ownership require R1 confirmation",
+            "name": "applicant",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque case-application identity; exact source key and ownership require R1 confirmation",
+            "name": "case-application",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque form identity; exact source key and ownership require R1 confirmation",
+            "name": "form",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque evidencedocument identity; exact source key and ownership require R1 confirmation",
+            "name": "evidencedocument",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque eligibilityrule identity; exact source key and ownership require R1 confirmation",
+            "name": "eligibilityrule",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque appointment identity; exact source key and ownership require R1 confirmation",
+            "name": "appointment",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque fee identity; exact source key and ownership require R1 confirmation",
+            "name": "fee",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque decision identity; exact source key and ownership require R1 confirmation",
+            "name": "decision",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque notice identity; exact source key and ownership require R1 confirmation",
+            "name": "notice",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque appeal identity; exact source key and ownership require R1 confirmation",
+            "name": "appeal",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "regulated-case-services-case",
+        "label": "regulated-case-services case lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "材料版本、截止期、角色分离、决定和申诉窗口由服务端审计。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "submitted",
+            "validating",
+            "needs-information",
+            "under-review",
+            "approved",
+            "denied",
+            "withdrawn",
+            "appealed",
+            "closed"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "submitted",
+              "trigger": "server-authorized regulated-case-services case lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "submitted",
+              "to": "validating",
+              "trigger": "server-authorized regulated-case-services case lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "validating",
+              "to": "needs-information",
+              "trigger": "server-authorized regulated-case-services case lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "needs-information",
+              "to": "under-review",
+              "trigger": "server-authorized regulated-case-services case lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "under-review",
+              "to": "approved",
+              "trigger": "server-authorized regulated-case-services case lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "approved",
+              "to": "denied",
+              "trigger": "server-authorized regulated-case-services case lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "denied",
+              "to": "withdrawn",
+              "trigger": "server-authorized regulated-case-services case lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "withdrawn",
+              "to": "appealed",
+              "trigger": "server-authorized regulated-case-services case lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "appealed",
+              "to": "closed",
+              "trigger": "server-authorized regulated-case-services case lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque notice-outbox identity; exact source key and ownership require R1 confirmation",
+            "name": "notice-outbox",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque applicant identity; exact source key and ownership require R1 confirmation",
+            "name": "applicant",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque case-application identity; exact source key and ownership require R1 confirmation",
+            "name": "case-application",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque form identity; exact source key and ownership require R1 confirmation",
+            "name": "form",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque evidencedocument identity; exact source key and ownership require R1 confirmation",
+            "name": "evidencedocument",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque eligibilityrule identity; exact source key and ownership require R1 confirmation",
+            "name": "eligibilityrule",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque appointment identity; exact source key and ownership require R1 confirmation",
+            "name": "appointment",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque fee identity; exact source key and ownership require R1 confirmation",
+            "name": "fee",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque decision identity; exact source key and ownership require R1 confirmation",
+            "name": "decision",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque notice identity; exact source key and ownership require R1 confirmation",
+            "name": "notice",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque appeal identity; exact source key and ownership require R1 confirmation",
+            "name": "appeal",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "regulated-case-services-notice-outbox",
+        "label": "regulated-case-services notice/outbox lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "通知送达状态必须真实，失败有界重试且不等同业务决定。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "local-only",
+            "smtp-pending",
+            "smtp-sent",
+            "smtp-failed"
+          ],
+          "transitions": [
+            {
+              "from": "local-only",
+              "to": "smtp-pending",
+              "trigger": "server-authorized regulated-case-services notice/outbox lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "smtp-pending",
+              "to": "smtp-sent",
+              "trigger": "server-authorized regulated-case-services notice/outbox lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "smtp-sent",
+              "to": "smtp-failed",
+              "trigger": "server-authorized regulated-case-services notice/outbox lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-regulated-case-effect-ledger"
+    ]
+  },
+  "batch_family_id": "finance-regulated",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "regulated-case-entry",
+        "label": "Entry route family for 处理保险、税务、政府许可/身份/福利/邮政等受监管申请、材料、审核、决定、缴费和申诉。",
+        "priority": "p0"
+      },
+      {
+        "id": "regulated-case-discover",
+        "label": "Discover route family for 处理保险、税务、政府许可/身份/福利/邮政等受监管申请、材料、审核、决定、缴费和申诉。",
+        "priority": "p0"
+      },
+      {
+        "id": "regulated-case-detail",
+        "label": "Detail route family for 处理保险、税务、政府许可/身份/福利/邮政等受监管申请、材料、审核、决定、缴费和申诉。",
+        "priority": "p0"
+      },
+      {
+        "id": "regulated-case-commit",
+        "label": "Commit route family for 处理保险、税务、政府许可/身份/福利/邮政等受监管申请、材料、审核、决定、缴费和申诉。",
+        "priority": "p0"
+      },
+      {
+        "id": "regulated-case-confirm",
+        "label": "Confirm route family for 处理保险、税务、政府许可/身份/福利/邮政等受监管申请、材料、审核、决定、缴费和申诉。",
+        "priority": "p0"
+      },
+      {
+        "id": "regulated-case-recover",
+        "label": "Recover route family for 处理保险、税务、政府许可/身份/福利/邮政等受监管申请、材料、审核、决定、缴费和申诉。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "regulated-case global navigation",
+      "regulated-case primary content",
+      "regulated-case decision and action region",
+      "regulated-case confirmation and aftercare"
+    ],
+    "state_families": [
+      "case",
+      "notice/outbox",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "regulated-case-services",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "处理保险、税务、政府许可/身份/福利/邮政等受监管申请、材料、审核、决定、缴费和申诉。",
+  "title": "Regulated Case Services",
+  "verification": {
+    "coverage_dimensions": [
+      "regulated-case-services actor x action x state x outcome",
+      "regulated-case-services entity ownership and durable visibility",
+      "regulated-case-services valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "高敏感身份、case 所有权、字段/附件校验、RBAC 和审计。",
+      "提交、补件、决定、撤回、申诉、费用和通知的合法状态转移。",
+      "不模拟真实政府/保险决定；用显式 LOCAL_ONLY 适配器和确定性 fixture。"
+    ]
+  },
+  "version": "1.0.0"
+}

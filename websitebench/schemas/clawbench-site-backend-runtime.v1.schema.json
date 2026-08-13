@@ -1,0 +1,319 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/clawbench-site-backend-runtime.v1.schema.json",
+  "title": "Legacy ClawBench site-backend runtime compatibility contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "site",
+    "database",
+    "session",
+    "mail",
+    "payments",
+    "deployment"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "clawbench.site-backend-runtime.v1"
+    },
+    "site": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "public_origin"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 63
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "public_origin": {
+          "type": "string",
+          "pattern": "^https://[a-z0-9.-]+$",
+          "maxLength": 300
+        }
+      }
+    },
+    "database": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "engine",
+        "data_dir",
+        "filename",
+        "migration_hook",
+        "seed_hook",
+        "legacy_unbound_migration"
+      ],
+      "properties": {
+        "engine": {"const": "sqlite"},
+        "data_dir": {"$ref": "#/$defs/relativePath"},
+        "filename": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._+-]+\\.(?:sqlite|sqlite3|db)$",
+          "maxLength": 240
+        },
+        "migration_hook": {"$ref": "#/$defs/hook"},
+        "seed_hook": {"$ref": "#/$defs/hook"},
+        "legacy_unbound_migration": {"type": "boolean"}
+      }
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["host_only", "secure", "http_only", "same_site"],
+      "properties": {
+        "host_only": {"const": true},
+        "secure": {"const": true},
+        "http_only": {"const": true},
+        "same_site": {"enum": ["Lax", "Strict"]}
+      }
+    },
+    "mail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sender", "purposes"],
+      "properties": {
+        "sender": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["display_name", "address_env"],
+          "properties": {
+            "display_name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "address_env": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Z0-9_]{1,99}$"
+            }
+          }
+        },
+        "purposes": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+          },
+          "additionalProperties": {"$ref": "#/$defs/mailTemplate"}
+        }
+      }
+    },
+    "payments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "default_adapter",
+        "currency",
+        "local_sandbox",
+        "stripe_test"
+      ],
+      "properties": {
+        "default_adapter": {"enum": ["local-sandbox", "stripe-test"]},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "local_sandbox": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["scenarios"],
+          "properties": {
+            "scenarios": {
+              "type": "array",
+              "minItems": 3,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "outcome", "display_label"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+                  },
+                  "outcome": {
+                    "enum": ["approved", "declined", "retryable"]
+                  },
+                  "display_label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  }
+                }
+              }
+            }
+          }
+        },
+        "stripe_test": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/stripeTest"}
+          ]
+        }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profiles"],
+      "properties": {
+        "profiles": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "offline-harbor",
+            "cloudflare-review",
+            "docker-volume"
+          ],
+          "properties": {
+            "offline-harbor": {
+              "$ref": "#/$defs/offlineHarborProfile"
+            },
+            "cloudflare-review": {
+              "$ref": "#/$defs/cloudflareReviewProfile"
+            },
+            "docker-volume": {
+              "$ref": "#/$defs/dockerVolumeProfile"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^(?![A-Za-z]:|/|\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._+-]+(?:/[A-Za-z0-9._+-]+)*$"
+    },
+    "hook": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.]*:[A-Za-z_][A-Za-z0-9_]*$",
+          "maxLength": 200
+        }
+      ]
+    },
+    "mailTemplate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "template_id",
+        "subject",
+        "lead",
+        "body",
+        "expiry",
+        "footer",
+        "required_variables",
+        "secret_variables"
+      ],
+      "properties": {
+        "template_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$",
+          "maxLength": 120
+        },
+        "subject": {"type": "string", "minLength": 1, "maxLength": 200},
+        "lead": {"type": "string", "minLength": 1, "maxLength": 1000},
+        "body": {"type": "string", "minLength": 1, "maxLength": 4000},
+        "expiry": {"type": "string", "minLength": 1, "maxLength": 1000},
+        "footer": {"type": "string", "minLength": 1, "maxLength": 1000},
+        "required_variables": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+          }
+        },
+        "secret_variables": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+          }
+        }
+      }
+    },
+    "stripeTest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "public_origin",
+        "return_path",
+        "webhook_path",
+        "max_line_items",
+        "secret_key_env",
+        "webhook_secret_env"
+      ],
+      "properties": {
+        "public_origin": {
+          "type": "string",
+          "pattern": "^https://[a-z0-9.-]+$",
+          "maxLength": 300
+        },
+        "return_path": {
+          "type": "string",
+          "pattern": "^/(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^?#\\\\]*$",
+          "maxLength": 300
+        },
+        "webhook_path": {
+          "type": "string",
+          "pattern": "^/(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^?#\\\\]*$",
+          "maxLength": 300
+        },
+        "max_line_items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "secret_key_env": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]{1,99}$"
+        },
+        "webhook_secret_env": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]{1,99}$"
+        }
+      }
+    },
+    "offlineHarborProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["persistence", "mail_adapter", "payment_adapter"],
+      "properties": {
+        "persistence": {"const": "persistent"},
+        "mail_adapter": {"const": "local-outbox"},
+        "payment_adapter": {"enum": ["local-sandbox", "stripe-test"]}
+      }
+    },
+    "cloudflareReviewProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["persistence", "mail_adapter", "payment_adapter"],
+      "properties": {
+        "persistence": {"const": "ephemeral-reset"},
+        "mail_adapter": {"const": "redis-resend"},
+        "payment_adapter": {"enum": ["local-sandbox", "stripe-test"]}
+      }
+    },
+    "dockerVolumeProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["persistence", "mail_adapter", "payment_adapter"],
+      "properties": {
+        "persistence": {"const": "persistent-volume"},
+        "mail_adapter": {"const": "effects-gateway"},
+        "payment_adapter": {"enum": ["local-sandbox", "stripe-test"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "schema_version": "tripit.frontend-gate-samples.v1",
+  "app_file": "clone/app.py",
+  "app_attr": "app",
+  "module_name": "tripit_clone_app",
+  "checks": [
+    {
+      "id": "home",
+      "url": "/",
+      "expect_status": 200,
+      "expect_contains": ["TripIt: Highest-Rated Travel Itinerary App + Trip Planner"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "free",
+      "url": "/web/free",
+      "expect_status": 200,
+      "expect_contains": ["TripIt - A single (free) itinerary created for you in seconds"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "pro",
+      "url": "/web/pro",
+      "expect_status": 200,
+      "expect_contains": ["TripIt Pro - Flight Status and Reminders Throughout Your Trip"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "how-it-works",
+      "url": "/web/free/how-it-works",
+      "expect_status": 200,
+      "expect_contains": ["Learn how TripIt organizes all your travel plans in a flash"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "pricing",
+      "url": "/web/pro/pricing",
+      "expect_status": 200,
+      "expect_contains": ["Pricing - TripIt Pro vs. free features included with TripIt"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "sap-concur",
+      "url": "/web/pro/sap-concur",
+      "expect_status": 200,
+      "expect_contains": ["Benefits for SAP Concur users when you connect TripIt"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "download",
+      "url": "/web/free/download",
+      "expect_status": 200,
+      "expect_contains": ["Download the TripIt app to access travel plans on any device"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "security",
+      "url": "/web/security",
+      "expect_status": 200,
+      "expect_contains": ["Data Privacy and Security - TripIt"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "blog-index",
+      "url": "/web/blog",
+      "expect_status": 200,
+      "expect_contains": ["TripIt Blog — Travel Itinerary — Trip Planner"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "traveler-resource-center",
+      "url": "/web/traveler-resource-center",
+      "expect_status": 200,
+      "expect_contains": ["Traveler Resource Center | TripIt"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "login",
+      "url": "/account/login",
+      "expect_status": 200,
+      "expect_contains": ["Sign in to TripIt", "Password"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "create",
+      "url": "/account/create",
+      "expect_status": 200,
+      "expect_contains": ["Sign up for TripIt", "Create an Account"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "forgot-password",
+      "url": "/account/forgotPassword",
+      "expect_status": 200,
+      "expect_contains": ["Sign in help"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "legal-user-agreement",
+      "url": "/uhp/userAgreement",
+      "expect_status": 200,
+      "expect_contains": ["TripIt User Agreement"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "legal-privacy",
+      "url": "/uhp/privacyPolicy",
+      "expect_status": 200,
+      "expect_contains": ["TripIt Privacy Statement"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "legal-do-not-share",
+      "url": "/uhp/doNotShare",
+      "expect_status": 200,
+      "expect_contains": ["Your privacy is important to us!", "Do Not Share/Sell My Personal Information"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    },
+    {
+      "id": "healthz",
+      "url": "/healthz",
+      "expect_status": 200,
+      "session": false
+    },
+    {
+      "id": "external-boundary",
+      "url": "/external/apps.apple.com",
+      "expect_status": 200,
+      "expect_contains": ["External link"],
+      "expect_not_contains": ["websitebench", "NotImplementedError"],
+      "session": false
+    }
+  ]
+}

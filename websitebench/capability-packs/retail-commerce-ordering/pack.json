@@ -1,0 +1,323 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque order identity; exact source key and ownership require R1 confirmation",
+            "name": "order",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque product identity; exact source key and ownership require R1 confirmation",
+            "name": "product",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque sku-variant identity; exact source key and ownership require R1 confirmation",
+            "name": "sku-variant",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque inventoryreservation identity; exact source key and ownership require R1 confirmation",
+            "name": "inventoryreservation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque cart identity; exact source key and ownership require R1 confirmation",
+            "name": "cart",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque orderline identity; exact source key and ownership require R1 confirmation",
+            "name": "orderline",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque shipment identity; exact source key and ownership require R1 confirmation",
+            "name": "shipment",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque return identity; exact source key and ownership require R1 confirmation",
+            "name": "return",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque refund identity; exact source key and ownership require R1 confirmation",
+            "name": "refund",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "retail-commerce-ordering-order",
+        "label": "retail-commerce-ordering order lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "服务端原子校验价格、选项、库存和幂等键；取消/退货只允许合法前态。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "cart",
+            "checkout-pending",
+            "placed",
+            "paid",
+            "fulfilling",
+            "shipped",
+            "delivered",
+            "cancelled",
+            "returned",
+            "refunded"
+          ],
+          "transitions": [
+            {
+              "from": "cart",
+              "to": "checkout-pending",
+              "trigger": "server-authorized retail-commerce-ordering order lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "checkout-pending",
+              "to": "placed",
+              "trigger": "server-authorized retail-commerce-ordering order lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "placed",
+              "to": "paid",
+              "trigger": "server-authorized retail-commerce-ordering order lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "paid",
+              "to": "fulfilling",
+              "trigger": "server-authorized retail-commerce-ordering order lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "fulfilling",
+              "to": "shipped",
+              "trigger": "server-authorized retail-commerce-ordering order lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "shipped",
+              "to": "delivered",
+              "trigger": "server-authorized retail-commerce-ordering order lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "delivered",
+              "to": "cancelled",
+              "trigger": "server-authorized retail-commerce-ordering order lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "cancelled",
+              "to": "returned",
+              "trigger": "server-authorized retail-commerce-ordering order lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "returned",
+              "to": "refunded",
+              "trigger": "server-authorized retail-commerce-ordering order lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque inventory-reservation identity; exact source key and ownership require R1 confirmation",
+            "name": "inventory-reservation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque product identity; exact source key and ownership require R1 confirmation",
+            "name": "product",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque sku-variant identity; exact source key and ownership require R1 confirmation",
+            "name": "sku-variant",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque inventoryreservation identity; exact source key and ownership require R1 confirmation",
+            "name": "inventoryreservation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque cart identity; exact source key and ownership require R1 confirmation",
+            "name": "cart",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque order identity; exact source key and ownership require R1 confirmation",
+            "name": "order",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque orderline identity; exact source key and ownership require R1 confirmation",
+            "name": "orderline",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque shipment identity; exact source key and ownership require R1 confirmation",
+            "name": "shipment",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque return identity; exact source key and ownership require R1 confirmation",
+            "name": "return",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque refund identity; exact source key and ownership require R1 confirmation",
+            "name": "refund",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "retail-commerce-ordering-inventory-reservation",
+        "label": "retail-commerce-ordering inventory_reservation lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "库存不得由客户端余额或页面文案决定，超时和并发提交必须可重放验证。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "available",
+            "held",
+            "committed",
+            "released",
+            "expired"
+          ],
+          "transitions": [
+            {
+              "from": "available",
+              "to": "held",
+              "trigger": "server-authorized retail-commerce-ordering inventory_reservation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "held",
+              "to": "committed",
+              "trigger": "server-authorized retail-commerce-ordering inventory_reservation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "committed",
+              "to": "released",
+              "trigger": "server-authorized retail-commerce-ordering inventory_reservation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "released",
+              "to": "expired",
+              "trigger": "server-authorized retail-commerce-ordering inventory_reservation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-retail-commerce-effect-ledger"
+    ]
+  },
+  "batch_family_id": "commerce-marketplace",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "retail-commerce-entry",
+        "label": "Entry route family for 面向买家的标准商品发现、SKU/选项选择、购物车、下单、履约、取消、退货与退款。",
+        "priority": "p0"
+      },
+      {
+        "id": "retail-commerce-discover",
+        "label": "Discover route family for 面向买家的标准商品发现、SKU/选项选择、购物车、下单、履约、取消、退货与退款。",
+        "priority": "p0"
+      },
+      {
+        "id": "retail-commerce-detail",
+        "label": "Detail route family for 面向买家的标准商品发现、SKU/选项选择、购物车、下单、履约、取消、退货与退款。",
+        "priority": "p0"
+      },
+      {
+        "id": "retail-commerce-commit",
+        "label": "Commit route family for 面向买家的标准商品发现、SKU/选项选择、购物车、下单、履约、取消、退货与退款。",
+        "priority": "p0"
+      },
+      {
+        "id": "retail-commerce-confirm",
+        "label": "Confirm route family for 面向买家的标准商品发现、SKU/选项选择、购物车、下单、履约、取消、退货与退款。",
+        "priority": "p0"
+      },
+      {
+        "id": "retail-commerce-recover",
+        "label": "Recover route family for 面向买家的标准商品发现、SKU/选项选择、购物车、下单、履约、取消、退货与退款。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "retail-commerce global navigation",
+      "retail-commerce primary content",
+      "retail-commerce decision and action region",
+      "retail-commerce confirmation and aftercare"
+    ],
+    "state_families": [
+      "order",
+      "inventory_reservation",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "retail-commerce-ordering",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "面向买家的标准商品发现、SKU/选项选择、购物车、下单、履约、取消、退货与退款。",
+  "title": "Retail Commerce Ordering",
+  "verification": {
+    "coverage_dimensions": [
+      "retail-commerce-ordering actor x action x state x outcome",
+      "retail-commerce-ordering entity ownership and durable visibility",
+      "retail-commerce-ordering valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "服务端定价、促销、税费、库存和订单所有权。",
+      "幂等下单、并发库存竞争、取消/退货/退款持久化。",
+      "重启后订单、购物车和履约状态保持，并支持确定性 reset。"
+    ]
+  },
+  "version": "1.0.0"
+}

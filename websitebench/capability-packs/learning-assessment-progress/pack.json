@@ -1,0 +1,303 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque enrollment identity; exact source key and ownership require R1 confirmation",
+            "name": "enrollment",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque course identity; exact source key and ownership require R1 confirmation",
+            "name": "course",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque run-cohort identity; exact source key and ownership require R1 confirmation",
+            "name": "run-cohort",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque unit identity; exact source key and ownership require R1 confirmation",
+            "name": "unit",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque attempt identity; exact source key and ownership require R1 confirmation",
+            "name": "attempt",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque submission identity; exact source key and ownership require R1 confirmation",
+            "name": "submission",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque grade identity; exact source key and ownership require R1 confirmation",
+            "name": "grade",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque progress identity; exact source key and ownership require R1 confirmation",
+            "name": "progress",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque certificate identity; exact source key and ownership require R1 confirmation",
+            "name": "certificate",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "learning-assessment-progress-enrollment",
+        "label": "learning-assessment-progress enrollment lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "报名窗口、先修条件、权益和完成规则由服务端判定。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "available",
+            "enrolled",
+            "active",
+            "completed",
+            "dropped",
+            "expired"
+          ],
+          "transitions": [
+            {
+              "from": "available",
+              "to": "enrolled",
+              "trigger": "server-authorized learning-assessment-progress enrollment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "enrolled",
+              "to": "active",
+              "trigger": "server-authorized learning-assessment-progress enrollment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "completed",
+              "trigger": "server-authorized learning-assessment-progress enrollment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "completed",
+              "to": "dropped",
+              "trigger": "server-authorized learning-assessment-progress enrollment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "dropped",
+              "to": "expired",
+              "trigger": "server-authorized learning-assessment-progress enrollment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque assessment-attempt identity; exact source key and ownership require R1 confirmation",
+            "name": "assessment-attempt",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque course identity; exact source key and ownership require R1 confirmation",
+            "name": "course",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque run-cohort identity; exact source key and ownership require R1 confirmation",
+            "name": "run-cohort",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque unit identity; exact source key and ownership require R1 confirmation",
+            "name": "unit",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque enrollment identity; exact source key and ownership require R1 confirmation",
+            "name": "enrollment",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque attempt identity; exact source key and ownership require R1 confirmation",
+            "name": "attempt",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque submission identity; exact source key and ownership require R1 confirmation",
+            "name": "submission",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque grade identity; exact source key and ownership require R1 confirmation",
+            "name": "grade",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque progress identity; exact source key and ownership require R1 confirmation",
+            "name": "progress",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque certificate identity; exact source key and ownership require R1 confirmation",
+            "name": "certificate",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "learning-assessment-progress-assessment-attempt",
+        "label": "learning-assessment-progress assessment_attempt lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "尝试次数、截止期、评分、重交和证书资格不可由客户端修改。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "not-started",
+            "in-progress",
+            "submitted",
+            "graded",
+            "retry-allowed",
+            "final"
+          ],
+          "transitions": [
+            {
+              "from": "not-started",
+              "to": "in-progress",
+              "trigger": "server-authorized learning-assessment-progress assessment_attempt lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "in-progress",
+              "to": "submitted",
+              "trigger": "server-authorized learning-assessment-progress assessment_attempt lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "submitted",
+              "to": "graded",
+              "trigger": "server-authorized learning-assessment-progress assessment_attempt lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "graded",
+              "to": "retry-allowed",
+              "trigger": "server-authorized learning-assessment-progress assessment_attempt lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "retry-allowed",
+              "to": "final",
+              "trigger": "server-authorized learning-assessment-progress assessment_attempt lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": "learning-community-content",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "learning-assessment-entry",
+        "label": "Entry route family for 提供课程发现、报名、内容学习、练习/测验/作业、评分、进度和证书。",
+        "priority": "p0"
+      },
+      {
+        "id": "learning-assessment-discover",
+        "label": "Discover route family for 提供课程发现、报名、内容学习、练习/测验/作业、评分、进度和证书。",
+        "priority": "p0"
+      },
+      {
+        "id": "learning-assessment-detail",
+        "label": "Detail route family for 提供课程发现、报名、内容学习、练习/测验/作业、评分、进度和证书。",
+        "priority": "p0"
+      },
+      {
+        "id": "learning-assessment-commit",
+        "label": "Commit route family for 提供课程发现、报名、内容学习、练习/测验/作业、评分、进度和证书。",
+        "priority": "p0"
+      },
+      {
+        "id": "learning-assessment-confirm",
+        "label": "Confirm route family for 提供课程发现、报名、内容学习、练习/测验/作业、评分、进度和证书。",
+        "priority": "p0"
+      },
+      {
+        "id": "learning-assessment-recover",
+        "label": "Recover route family for 提供课程发现、报名、内容学习、练习/测验/作业、评分、进度和证书。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "learning-assessment global navigation",
+      "learning-assessment primary content",
+      "learning-assessment decision and action region",
+      "learning-assessment confirmation and aftercare"
+    ],
+    "state_families": [
+      "enrollment",
+      "assessment_attempt",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "learning-assessment-progress",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "提供课程发现、报名、内容学习、练习/测验/作业、评分、进度和证书。",
+  "title": "Learning Assessment Progress",
+  "verification": {
+    "coverage_dimensions": [
+      "learning-assessment-progress actor x action x state x outcome",
+      "learning-assessment-progress entity ownership and durable visibility",
+      "learning-assessment-progress valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "报名/权益、学习进度、尝试次数、截止期和评分持久化。",
+      "答案校验、提交幂等、重试与证书资格的服务端权威。",
+      "教师/学生跨角色、过期课程和重启恢复必须有负向证明。"
+    ]
+  },
+  "version": "1.0.0"
+}

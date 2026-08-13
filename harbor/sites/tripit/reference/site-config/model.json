@@ -1,0 +1,783 @@
+{
+  "schema_version": "offline-clone.backend-model.v1",
+  "site_id": "tripit",
+  "status": "verified",
+  "profile": "offline-benchmark",
+  "database": {
+    "engine": "sqlite",
+    "location_policy": "runtime-data-outside-candidate",
+    "concurrency_model": "wal-transactional-single-writer",
+    "migration_strategy": "versioned-forward-migrations",
+    "deterministic_reset": true,
+    "restart_persistence": true,
+    "site_isolation": "one-database-per-site",
+    "proofs": [
+      {
+        "obligation": "data-location",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend.py::test_database_is_wal_single_file_in_data_dir",
+          "tools/backend_gate.py#db.in-data-dir",
+          "tools/backend_gate.py#db.wal"
+        ]
+      },
+      {
+        "obligation": "schema-migration",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend.py::test_migration_ledger_is_linear_and_complete",
+          "clone/tests/test_backend.py::test_migration_is_idempotent_from_empty",
+          "tools/backend_gate.py#db.migrations"
+        ]
+      },
+      {
+        "obligation": "deterministic-reset",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend.py::test_two_resets_produce_identical_state",
+          "clone/tests/test_backend.py::test_admin_reset_requires_token",
+          "tools/backend_gate.py#reset.accepted",
+          "tools/backend_gate.py#reset.token-required",
+          "tools/backend_gate.py#reset.bad-token-denied"
+        ]
+      },
+      {
+        "obligation": "restart-persistence",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend.py::test_reservation_survives_process_restart",
+          "tools/backend_gate.py#restart.reservation-persisted",
+          "tools/backend_gate.py#restart.signin",
+          "tools/backend_gate.py#restart.single-row"
+        ]
+      },
+      {
+        "obligation": "backup-restore",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend.py::test_database_file_is_a_portable_backup_unit",
+          "clone/tests/test_backend.py::test_database_is_wal_single_file_in_data_dir"
+        ]
+      },
+      {
+        "obligation": "concurrency",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend.py::test_concurrent_duplicate_add_converges_to_one_row",
+          "clone/tests/test_backend.py::test_add_hotel_is_idempotent_on_natural_key",
+          "tools/backend_gate.py#idempotent.same-natural-key"
+        ]
+      }
+    ]
+  },
+  "auth_semantics": {
+    "account_database_scope": "site-isolated",
+    "credential_storage": "salted-scrypt-hash",
+    "session_storage": "opaque-cookie-digest-at-rest",
+    "registration_account_creation": "after-email-verification",
+    "verification_challenge_storage": "salted-hash",
+    "password_reset_enumeration": "indistinguishable-public-response",
+    "mail_default": "LOCAL_ONLY",
+    "mail_statuses": [
+      "LOCAL_ONLY",
+      "SMTP_PENDING",
+      "SMTP_SENT",
+      "SMTP_FAILED"
+    ],
+    "smtp_activation": "explicit-complete-config-only",
+    "smtp_delivery_ceiling": 3,
+    "rejected_secret_journaling": "forbidden",
+    "legacy_write_policy": "read-compatible-write-rejected"
+  },
+  "common_capabilities": {
+    "account_registration": "account-registration",
+    "account_sign_in": "account-sign-in",
+    "session_lifecycle": "session-lifecycle",
+    "password_recovery": "password-recovery",
+    "email_delivery": "email-delivery"
+  },
+  "capabilities": [
+    {
+      "id": "account-registration",
+      "label": "Verified local account registration",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "pending-registration",
+          "identity": "opaque pending id bound to one browser session",
+          "owner_scope": "session",
+          "persistence": "durable"
+        },
+        {
+          "name": "local-account",
+          "identity": "site-local account id and unique normalized email",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "challenge-lifecycle",
+        "states": [
+          "collecting",
+          "pending-verification",
+          "verified",
+          "account-created",
+          "expired",
+          "locked"
+        ],
+        "transitions": [
+          {
+            "from": "collecting",
+            "to": "pending-verification",
+            "trigger": "validated registration request"
+          },
+          {
+            "from": "pending-verification",
+            "to": "verified",
+            "trigger": "correct unexpired code within attempt budget"
+          },
+          {
+            "from": "verified",
+            "to": "account-created",
+            "trigger": "transactional account creation and session rotation"
+          },
+          {
+            "from": "pending-verification",
+            "to": "expired",
+            "trigger": "challenge expiry"
+          },
+          {
+            "from": "pending-verification",
+            "to": "locked",
+            "trigger": "verification attempt budget exhausted"
+          }
+        ]
+      },
+      "server_authorities": [
+        "The server normalizes identity and hashes password and code.",
+        "An account is created only after successful verification.",
+        "Duplicate normalized email creation is rejected transactionally."
+      ],
+      "external_effect": "none",
+      "journey_ids": [
+        "auth.registration.success",
+        "auth.registration.failure-invalid",
+        "auth.registration.retry-challenge"
+      ],
+      "invariant_ids": [
+        "auth.server-session-authority",
+        "auth.secret-mail-purposes",
+        "persistence.restart-and-reset"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_backend.py::test_registration_round_trip_signs_in_and_persists_profile"
+          ],
+          "invalid": [
+            "clone/tests/test_backend.py::test_registration_rejects_weak_password",
+            "clone/tests/test_backend.py::test_registration_rejects_email_shaped_password",
+            "clone/tests/test_backend.py::test_registration_requires_agreement",
+            "clone/tests/test_backend.py::test_registration_rejects_wrong_verification_code"
+          ],
+          "duplicate": [
+            "clone/tests/test_backend.py::test_registration_conflict_on_existing_email"
+          ],
+          "restart": [
+            "clone/tests/test_backend.py::test_reservation_survives_process_restart",
+            "tools/backend_gate.py#restart.signin"
+          ]
+        },
+        "planned": [],
+        "not_applicable": [
+          {
+            "obligation": "stale",
+            "rationale": "The pending verification challenge is single-use with a server-side wall-clock expiry in the vendored auth store; the gate runs under a frozen clock that is never advanced, so the expired-challenge branch is not exercised here."
+          },
+          {
+            "obligation": "foreign-owner",
+            "rationale": "Registration mints a new session-bound account and owns no pre-existing owner-scoped resource, so there is no cross-account authorization boundary to cross."
+          },
+          {
+            "obligation": "unauthorized-role",
+            "rationale": "Registration is a public pre-authentication action with no role precondition to enforce."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "This capability's account, session, verification-challenge, and mail-outbox tables are provisioned and versioned by the vendored websitebench.site_backend runtime (create_account_subject is invoked by that store inside its own registration transaction), not by the site business migration ledger; site business-table migration linearity is proven separately by test_migration_ledger_is_linear_and_complete."
+          },
+          {
+            "obligation": "concurrency",
+            "rationale": "Every write for this capability executes through the shared single-writer connection path (connect() opens WAL with BEGIN IMMEDIATE and busy_timeout=5000, serializing writers); that serialization is exercised under real concurrent threads by test_concurrent_duplicate_add_converges_to_one_row, but this capability's own write path is not separately contended here."
+          }
+        ]
+      }
+    },
+    {
+      "id": "account-sign-in",
+      "label": "Password-based local account sign-in",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "local-account",
+          "identity": "site-local account id and normalized email",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "entity-lifecycle",
+        "states": [
+          "signed-out",
+          "identified",
+          "authenticated",
+          "rejected"
+        ],
+        "transitions": [
+          {
+            "from": "signed-out",
+            "to": "identified",
+            "trigger": "normalized email submitted"
+          },
+          {
+            "from": "identified",
+            "to": "authenticated",
+            "trigger": "constant-time password verification succeeds"
+          },
+          {
+            "from": "identified",
+            "to": "rejected",
+            "trigger": "credentials are invalid"
+          }
+        ]
+      },
+      "server_authorities": [
+        "The server verifies salted password hashes.",
+        "The server rotates the authenticated session.",
+        "Client-selected fixture identity is not authentication."
+      ],
+      "external_effect": "none",
+      "journey_ids": [
+        "auth.sign-in.success",
+        "auth.sign-in.failure-generic",
+        "auth.sign-in.retry-corrected"
+      ],
+      "invariant_ids": [
+        "auth.server-session-authority",
+        "persistence.restart-and-reset"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_backend.py::test_login_sets_host_session_cookie",
+            "tools/backend_gate.py#journey.signin"
+          ],
+          "invalid": [
+            "clone/tests/test_backend.py::test_login_with_wrong_password_is_rejected_without_session"
+          ],
+          "restart": [
+            "clone/tests/test_backend.py::test_reservation_survives_process_restart",
+            "tools/backend_gate.py#restart.signin"
+          ]
+        },
+        "planned": [],
+        "not_applicable": [
+          {
+            "obligation": "duplicate",
+            "rationale": "Sign-in is a read-mostly credential check that creates no owner-scoped entity, so there is no duplicate-of-an-existing-record case."
+          },
+          {
+            "obligation": "stale",
+            "rationale": "Passwords do not expire; authenticated-session time-to-live is owned by the session-lifecycle capability, not the credential check."
+          },
+          {
+            "obligation": "foreign-owner",
+            "rationale": "Sign-in authenticates the caller's own identity and never targets another account's resource."
+          },
+          {
+            "obligation": "unauthorized-role",
+            "rationale": "Sign-in is the public authentication entrypoint and has no role precondition."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "This capability's account, session, verification-challenge, and mail-outbox tables are provisioned and versioned by the vendored websitebench.site_backend runtime (create_account_subject is invoked by that store inside its own registration transaction), not by the site business migration ledger; site business-table migration linearity is proven separately by test_migration_ledger_is_linear_and_complete."
+          },
+          {
+            "obligation": "concurrency",
+            "rationale": "Every write for this capability executes through the shared single-writer connection path (connect() opens WAL with BEGIN IMMEDIATE and busy_timeout=5000, serializing writers); that serialization is exercised under real concurrent threads by test_concurrent_duplicate_add_converges_to_one_row, but this capability's own write path is not separately contended here."
+          }
+        ]
+      }
+    },
+    {
+      "id": "session-lifecycle",
+      "label": "Anonymous and authenticated browser sessions",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "browser-session",
+          "identity": "opaque cookie token with digest persisted at rest",
+          "owner_scope": "session",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "session-lifecycle",
+        "states": [
+          "anonymous",
+          "authenticated",
+          "revoked",
+          "expired"
+        ],
+        "transitions": [
+          {
+            "from": "anonymous",
+            "to": "authenticated",
+            "trigger": "successful sign-in or registration rotates session"
+          },
+          {
+            "from": "authenticated",
+            "to": "revoked",
+            "trigger": "sign-out or security reset"
+          },
+          {
+            "from": "anonymous",
+            "to": "expired",
+            "trigger": "session expiry"
+          },
+          {
+            "from": "authenticated",
+            "to": "expired",
+            "trigger": "session expiry"
+          }
+        ]
+      },
+      "server_authorities": [
+        "Raw session tokens are never stored in the database.",
+        "Ownership is resolved from the server-side session record.",
+        "Sign-out revokes server-side authority before deleting the cookie."
+      ],
+      "external_effect": "none",
+      "journey_ids": [
+        "auth.sign-in.success",
+        "auth.session.sign-out",
+        "trips.list.tabs.success",
+        "share.foreign-owner-isolation"
+      ],
+      "invariant_ids": [
+        "auth.server-session-authority",
+        "isolation.cross-user",
+        "persistence.restart-and-reset"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_backend.py::test_login_sets_host_session_cookie",
+            "tools/backend_gate.py#journey.session-cookie"
+          ],
+          "invalid": [
+            "clone/tests/test_backend.py::test_typeahead_requires_authentication",
+            "clone/tests/test_backend.py::test_anonymous_owner_scoped_pages_redirect_to_login"
+          ],
+          "stale": [
+            "clone/tests/test_backend.py::test_logout_clears_session"
+          ],
+          "foreign-owner": [
+            "clone/tests/test_backend.py::test_foreign_trip_reads_as_404",
+            "clone/tests/test_backend.py::test_foreign_cannot_add_plan",
+            "clone/tests/test_backend.py::test_foreign_cannot_delete_plan",
+            "tools/backend_gate.py#isolation.foreign-404"
+          ],
+          "unauthorized-role": [
+            "clone/tests/test_backend.py::test_anonymous_owner_scoped_pages_redirect_to_login",
+            "tools/backend_gate.py#journey.anonymous-redirect"
+          ],
+          "restart": [
+            "clone/tests/test_backend.py::test_reservation_survives_process_restart",
+            "tools/backend_gate.py#restart.signin"
+          ]
+        },
+        "planned": [],
+        "not_applicable": [
+          {
+            "obligation": "duplicate",
+            "rationale": "A browser session is a single opaque token; rotation replaces the prior token in place rather than creating a duplicate record."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "This capability's account, session, verification-challenge, and mail-outbox tables are provisioned and versioned by the vendored websitebench.site_backend runtime (create_account_subject is invoked by that store inside its own registration transaction), not by the site business migration ledger; site business-table migration linearity is proven separately by test_migration_ledger_is_linear_and_complete."
+          },
+          {
+            "obligation": "concurrency",
+            "rationale": "Every write for this capability executes through the shared single-writer connection path (connect() opens WAL with BEGIN IMMEDIATE and busy_timeout=5000, serializing writers); that serialization is exercised under real concurrent threads by test_concurrent_duplicate_add_converges_to_one_row, but this capability's own write path is not separately contended here."
+          }
+        ]
+      }
+    },
+    {
+      "id": "password-recovery",
+      "label": "Enumeration-resistant local password recovery",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "password-reset-challenge",
+          "identity": "opaque reset id bound to one browser session",
+          "owner_scope": "session",
+          "persistence": "durable"
+        },
+        {
+          "name": "local-account",
+          "identity": "nullable concealed account binding",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "challenge-lifecycle",
+        "states": [
+          "requested",
+          "verified",
+          "consumed",
+          "expired",
+          "locked"
+        ],
+        "transitions": [
+          {
+            "from": "requested",
+            "to": "verified",
+            "trigger": "correct unexpired code within attempt budget"
+          },
+          {
+            "from": "verified",
+            "to": "consumed",
+            "trigger": "password is replaced and sessions are revoked"
+          },
+          {
+            "from": "requested",
+            "to": "expired",
+            "trigger": "challenge expiry"
+          },
+          {
+            "from": "requested",
+            "to": "locked",
+            "trigger": "verification attempt budget exhausted"
+          }
+        ]
+      },
+      "server_authorities": [
+        "Known and unknown emails receive indistinguishable public responses.",
+        "Only the server binds a reset flow to an account.",
+        "Password replacement revokes prior authenticated sessions."
+      ],
+      "external_effect": "local-only",
+      "journey_ids": [
+        "auth.password-reset.request",
+        "auth.password-reset.success",
+        "auth.password-reset.failure-invalid-challenge"
+      ],
+      "invariant_ids": [
+        "auth.server-session-authority",
+        "auth.secret-mail-purposes"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_backend.py::test_forgot_password_is_enumeration_safe"
+          ],
+          "invalid": [
+            "clone/tests/test_backend.py::test_forgot_password_is_enumeration_safe"
+          ]
+        },
+        "planned": [],
+        "not_applicable": [
+          {
+            "obligation": "duplicate",
+            "rationale": "Each reset request supersedes any prior session-bound challenge rather than accumulating duplicates."
+          },
+          {
+            "obligation": "stale",
+            "rationale": "The reset-code challenge carries a wall-clock TTL in the vendored auth store; the frozen gate clock is never advanced, so the expired-challenge branch is not exercised here."
+          },
+          {
+            "obligation": "foreign-owner",
+            "rationale": "The flow is session-bound and, by its enumeration-safe design, never reveals or targets another owner's account."
+          },
+          {
+            "obligation": "unauthorized-role",
+            "rationale": "Password recovery is a public pre-authentication action with no role precondition."
+          },
+          {
+            "obligation": "restart",
+            "rationale": "A reset challenge is ephemeral session-bound state; no in-flight challenge is replayed across a cold restart in these tests, and the durable account it targets is covered by the shared restart-persistence database proof."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "This capability's account, session, verification-challenge, and mail-outbox tables are provisioned and versioned by the vendored websitebench.site_backend runtime (create_account_subject is invoked by that store inside its own registration transaction), not by the site business migration ledger; site business-table migration linearity is proven separately by test_migration_ledger_is_linear_and_complete."
+          },
+          {
+            "obligation": "concurrency",
+            "rationale": "Every write for this capability executes through the shared single-writer connection path (connect() opens WAL with BEGIN IMMEDIATE and busy_timeout=5000, serializing writers); that serialization is exercised under real concurrent threads by test_concurrent_duplicate_add_converges_to_one_row, but this capability's own write path is not separately contended here."
+          }
+        ]
+      }
+    },
+    {
+      "id": "email-delivery",
+      "label": "Truthful local verification and recovery mail outbox",
+      "priority": "p0",
+      "category": "communication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "mail-outbox-entry",
+          "identity": "site-local outbox id and purpose-bound flow id",
+          "owner_scope": "system",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "delivery-lifecycle",
+        "states": [
+          "local-only",
+          "smtp-pending",
+          "smtp-sent",
+          "smtp-failed"
+        ],
+        "transitions": [
+          {
+            "from": "local-only",
+            "to": "smtp-pending",
+            "trigger": "operator enables complete explicit SMTP configuration"
+          },
+          {
+            "from": "smtp-pending",
+            "to": "smtp-sent",
+            "trigger": "SMTP transport confirms delivery handoff"
+          },
+          {
+            "from": "smtp-pending",
+            "to": "smtp-failed",
+            "trigger": "delivery attempt fails or ceiling is reached"
+          },
+          {
+            "from": "smtp-failed",
+            "to": "smtp-pending",
+            "trigger": "bounded idempotent retry below the delivery ceiling"
+          }
+        ]
+      },
+      "server_authorities": [
+        "Offline mode records LOCAL_ONLY and never claims external delivery.",
+        "SMTP is disabled unless every required setting is present.",
+        "Claim, retry, and startup replay share one delivery ceiling."
+      ],
+      "external_effect": "local-only",
+      "journey_ids": [
+        "auth.registration.success",
+        "auth.password-reset.request"
+      ],
+      "invariant_ids": [
+        "auth.secret-mail-purposes",
+        "runtime.local-only"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_backend.py::test_registration_round_trip_signs_in_and_persists_profile",
+            "clone/tests/test_backend.py::test_forgot_password_is_enumeration_safe"
+          ]
+        },
+        "planned": [],
+        "not_applicable": [
+          {
+            "obligation": "invalid",
+            "rationale": "The outbox records exactly what the server enqueues; malformed user input is rejected by the triggering capability before any mail is enqueued, so there is no invalid-mail path at this layer."
+          },
+          {
+            "obligation": "duplicate",
+            "rationale": "Each enqueue is a distinct purpose-bound outbox entry; idempotency lives on the triggering account or challenge, not on the mail record."
+          },
+          {
+            "obligation": "stale",
+            "rationale": "Offline mail is recorded LOCAL_ONLY with no SMTP transition; the delivery-ceiling and retry states are unreachable under the frozen offline configuration."
+          },
+          {
+            "obligation": "foreign-owner",
+            "rationale": "Outbox entries are system-scoped operational records, not owner-scoped resources, so there is no cross-owner boundary."
+          },
+          {
+            "obligation": "unauthorized-role",
+            "rationale": "Enqueueing mail is an internal server effect with no client-facing role gate."
+          },
+          {
+            "obligation": "restart",
+            "rationale": "Outbox rows live in the vendored mail store; no outbox entry is read back across a cold restart in these tests."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "This capability's account, session, verification-challenge, and mail-outbox tables are provisioned and versioned by the vendored websitebench.site_backend runtime (create_account_subject is invoked by that store inside its own registration transaction), not by the site business migration ledger; site business-table migration linearity is proven separately by test_migration_ledger_is_linear_and_complete."
+          },
+          {
+            "obligation": "concurrency",
+            "rationale": "Every write for this capability executes through the shared single-writer connection path (connect() opens WAL with BEGIN IMMEDIATE and busy_timeout=5000, serializing writers); that serialization is exercised under real concurrent threads by test_concurrent_duplicate_add_converges_to_one_row, but this capability's own write path is not separately contended here."
+          }
+        ]
+      }
+    },
+    {
+      "id": "trip-itinerary-management",
+      "label": "Owner-scoped trip itinerary plan management",
+      "priority": "p0",
+      "category": "workflow",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "trip",
+          "identity": "site-local trip id owned by exactly one account",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "itinerary-plan",
+          "identity": "site-local plan id within an owned trip or the Unfiled bucket",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "write-command",
+          "identity": "per-owner idempotency-key ledger entry and plan natural key",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "entity-lifecycle",
+        "states": [
+          "absent",
+          "active",
+          "moved",
+          "canceled"
+        ],
+        "transitions": [
+          {
+            "from": "absent",
+            "to": "active",
+            "trigger": "owner submits a valid plan to an owned trip or Unfiled"
+          },
+          {
+            "from": "active",
+            "to": "active",
+            "trigger": "idempotent re-submit by command key or natural key is absorbed without a new row"
+          },
+          {
+            "from": "active",
+            "to": "moved",
+            "trigger": "owner reassigns the plan to another owned trip or to Unfiled"
+          },
+          {
+            "from": "active",
+            "to": "canceled",
+            "trigger": "owner deletes the plan"
+          }
+        ]
+      },
+      "server_authorities": [
+        "Ownership is resolved from the server session; foreign or missing trips read and mutate as 404 without disclosing existence.",
+        "The server validates plan fields (for example check-out on or after check-in) and rejects illegal input before any write.",
+        "Writes are idempotent by command key and by natural key, so re-submits and concurrent duplicates converge to a single row.",
+        "Timeline order is computed by the server from start timestamp then sort key, independent of insertion order."
+      ],
+      "external_effect": "none",
+      "journey_ids": [
+        "anchor.add-hilton-midtown-to-new-york-trip",
+        "anchor.duplicate-submit-idempotent",
+        "trips.list.tabs.success",
+        "plans.add-each-type.success",
+        "plans.edit-move-delete.success",
+        "plans.validation-failure",
+        "share.foreign-owner-isolation",
+        "lifecycle.restart-persistence",
+        "lifecycle.deterministic-reset"
+      ],
+      "invariant_ids": [
+        "plans.timeline-ordering",
+        "anchor.join-existing-trip",
+        "isolation.cross-user",
+        "persistence.restart-and-reset",
+        "auth.server-session-authority"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_backend.py::test_add_hotel_appears_on_trip_in_order",
+            "clone/tests/test_backend.py::test_new_york_itinerary_seed",
+            "clone/tests/test_backend.py::test_upcoming_tab_shows_seeded_trips",
+            "clone/tests/test_backend.py::test_past_and_unfiled_tabs",
+            "clone/tests/test_backend.py::test_delete_hotel_removes_it",
+            "clone/tests/test_backend.py::test_move_hotel_to_unfiled",
+            "tools/backend_gate.py#journey.add-hotel",
+            "tools/backend_gate.py#journey.lodging-row",
+            "tools/backend_gate.py#journey.hotel-visible"
+          ],
+          "invalid": [
+            "clone/tests/test_backend.py::test_add_hotel_rejects_checkout_before_checkin",
+            "clone/tests/test_backend.py::test_add_hotel_requires_a_hotel_name",
+            "clone/tests/test_backend.py::test_unknown_plan_type_is_404",
+            "tools/backend_gate.py#illegal.rejected-400",
+            "tools/backend_gate.py#illegal.no-row"
+          ],
+          "duplicate": [
+            "clone/tests/test_backend.py::test_add_hotel_is_idempotent_on_same_key",
+            "clone/tests/test_backend.py::test_add_hotel_is_idempotent_on_natural_key",
+            "tools/backend_gate.py#idempotent.same-key",
+            "tools/backend_gate.py#idempotent.same-natural-key"
+          ],
+          "foreign-owner": [
+            "clone/tests/test_backend.py::test_foreign_trip_reads_as_404",
+            "clone/tests/test_backend.py::test_missing_trip_reads_as_404",
+            "clone/tests/test_backend.py::test_foreign_cannot_add_plan",
+            "clone/tests/test_backend.py::test_foreign_cannot_delete_plan",
+            "tools/backend_gate.py#isolation.foreign-404",
+            "tools/backend_gate.py#isolation.mutate-404",
+            "tools/backend_gate.py#isolation.count-untouched"
+          ],
+          "unauthorized-role": [
+            "clone/tests/test_backend.py::test_anonymous_owner_scoped_pages_redirect_to_login",
+            "tools/backend_gate.py#journey.anonymous-redirect"
+          ],
+          "restart": [
+            "clone/tests/test_backend.py::test_reservation_survives_process_restart",
+            "tools/backend_gate.py#restart.reservation-persisted",
+            "tools/backend_gate.py#restart.single-row",
+            "tools/backend_gate.py#restart.signin"
+          ],
+          "migration": [
+            "clone/tests/test_backend.py::test_migration_ledger_is_linear_and_complete",
+            "clone/tests/test_backend.py::test_migration_is_idempotent_from_empty",
+            "tools/backend_gate.py#db.migrations"
+          ],
+          "concurrency": [
+            "clone/tests/test_backend.py::test_concurrent_duplicate_add_converges_to_one_row",
+            "clone/tests/test_backend.py::test_add_hotel_is_idempotent_on_natural_key",
+            "tools/backend_gate.py#idempotent.same-natural-key"
+          ]
+        },
+        "planned": [],
+        "not_applicable": [
+          {
+            "obligation": "stale",
+            "rationale": "Itinerary mutations are last-writer-wins over durable rows with no expiring challenge or optimistic-version token; safe form re-submission is instead covered by the command-ledger idempotency under the duplicate obligation."
+          }
+        ]
+      }
+    }
+  ]
+}

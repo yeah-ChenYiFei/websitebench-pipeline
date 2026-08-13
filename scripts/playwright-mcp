@@ -1,0 +1,67 @@
+#!/bin/sh
+
+# Run the locally installed Playwright MCP over stdio.  Codex owns this
+# process, so no separate HTTP daemon on port 8931 is required.
+set -eu
+
+playwright_bin=${PLAYWRIGHT_MCP_BIN:-/home/yuxuan/.local/share/codex-browser-automation/node_modules/.bin/playwright-mcp}
+browser_path=${PLAYWRIGHT_MCP_EXECUTABLE_PATH:-/home/yuxuan/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome}
+output_dir=${PLAYWRIGHT_MCP_OUTPUT_DIR:-/tmp/playwright-mcp}
+display_name=${DISPLAY:-:99}
+headless=${PLAYWRIGHT_MCP_HEADLESS:-false}
+xvfb_pid=
+
+cleanup() {
+  if [ -n "${xvfb_pid:-}" ]; then
+    kill "$xvfb_pid" 2>/dev/null || true
+    wait "$xvfb_pid" 2>/dev/null || true
+  fi
+}
+trap cleanup EXIT
+
+if [ ! -x "$playwright_bin" ]; then
+  echo "Playwright MCP binary not found or not executable: $playwright_bin" >&2
+  exit 2
+fi
+
+if [ "$headless" != "true" ]; then
+  if ! DISPLAY="$display_name" xdpyinfo >/dev/null 2>&1; then
+    if ! command -v Xvfb >/dev/null 2>&1; then
+      echo "A working DISPLAY is required for headed Playwright MCP, and Xvfb is unavailable" >&2
+      exit 2
+    fi
+
+    Xvfb "$display_name" -screen 0 1440x900x24 -ac -nolisten tcp >/tmp/playwright-mcp-xvfb.log 2>&1 &
+    xvfb_pid=$!
+    ready=false
+    i=0
+    while [ "$i" -lt 50 ]; do
+      if DISPLAY="$display_name" xdpyinfo >/dev/null 2>&1; then
+        ready=true
+        break
+      fi
+      i=$((i + 1))
+      sleep 0.1
+    done
+    if [ "$ready" != "true" ]; then
+      echo "Xvfb failed to start on DISPLAY=$display_name" >&2
+      sed -n '1,80p' /tmp/playwright-mcp-xvfb.log >&2 || true
+      kill "$xvfb_pid" 2>/dev/null || true
+      wait "$xvfb_pid" 2>/dev/null || true
+      exit 2
+    fi
+    export DISPLAY="$display_name"
+  fi
+fi
+
+mkdir -p "$output_dir"
+
+set -- --isolated --caps vision,devtools --output-mode file --output-dir "$output_dir" "$@"
+if [ "$headless" = "true" ]; then
+  set -- --headless "$@"
+fi
+if [ -x "$browser_path" ]; then
+  set -- --executable-path "$browser_path" "$@"
+fi
+
+"$playwright_bin" "$@"

@@ -1,0 +1,99 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "administration",
+        "entities": [
+          {
+            "identity": "site-local opaque role-membership identity; exact source key and ownership require R1 confirmation",
+            "name": "role-membership",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "organization-rbac-lifecycle",
+        "label": "organization-rbac lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "tenant isolation",
+          "server-side role checks",
+          "revocation takes effect immediately"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "invited",
+            "active",
+            "suspended",
+            "revoked"
+          ],
+          "transitions": [
+            {
+              "from": "invited",
+              "to": "active",
+              "trigger": "server-authorized organization-rbac lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "suspended",
+              "trigger": "server-authorized organization-rbac lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "suspended",
+              "to": "revoked",
+              "trigger": "server-authorized organization-rbac lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "organization-rbac keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "organization-rbac-surface",
+        "label": "organization-rbac route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "organization-rbac surface"
+    ],
+    "state_families": [
+      "organization-rbac loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "organization-rbac",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "组织/工作区/tenant、成员、角色、邀请和资源作用域。",
+  "title": "Organization Rbac overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "organization-rbac actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "tenant isolation",
+      "server-side role checks",
+      "revocation takes effect immediately"
+    ]
+  },
+  "version": "1.0.0"
+}

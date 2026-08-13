@@ -1,0 +1,39 @@
+{
+  "checkpoint": "legal-do-not-share",
+  "family": "legal",
+  "priority": "P2",
+  "viewport": "tablet",
+  "requested_url": "https://www.tripit.com/uhp/doNotShare",
+  "final_url": "https://www.tripit.com/uhp/doNotShare",
+  "title": "TripIt | Online travel itinerary and trip planner",
+  "body_text_len": 779,
+  "frames": 3,
+  "frame_sha256": [
+    "1ba30bf43649f6c4329fa58b3a5e7decfa936655bc8c030372c5884c58f6726b",
+    "1ba30bf43649f6c4329fa58b3a5e7decfa936655bc8c030372c5884c58f6726b",
+    "1ba30bf43649f6c4329fa58b3a5e7decfa936655bc8c030372c5884c58f6726b"
+  ],
+  "frames_identical": true,
+  "link_count": 8,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": null,
+    "main": null,
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 728,
+      "width": 1024,
+      "height": 40
+    },
+    "form": {
+      "selector": "form",
+      "x": 177,
+      "y": 314,
+      "width": 670,
+      "height": 180
+    },
+    "document_height": 768
+  }
+}

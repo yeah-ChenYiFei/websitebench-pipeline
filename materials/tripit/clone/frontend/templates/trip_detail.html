@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{ trip.name }} · TripIt{% endblock %}
+{% block content %}
+<section class="page trip-detail">
+  <a class="backlink" href="/trips">All trips</a>
+
+  <header class="trip-detail__head">
+    <h1>{{ trip.name }}</h1>
+    <p class="trip-detail__dates">{{ trip.date_range }}</p>
+    {% if trip.destination %}<p class="trip-detail__dest">{{ trip.destination }}</p>{% endif %}
+    <div class="trip-detail__actions">
+      <a class="btn" href="/trips/{{ trip.trip_id }}/edit">Edit trip</a>
+      <a class="btn" href="/trips/{{ trip.trip_id }}/documents">Documents</a>
+      <a class="btn" href="/trips/{{ trip.trip_id }}/share">Sharing</a>
+    </div>
+  </header>
+
+  <div class="add-menu">
+    <span class="add-menu__label">Add to this trip:</span>
+    <a class="btn btn--primary" href="/trips/{{ trip.trip_id }}/add/lodging">Add a hotel</a>
+    <a class="btn" href="/trips/{{ trip.trip_id }}/add/air">Flight</a>
+    <a class="btn" href="/trips/{{ trip.trip_id }}/add/car">Car</a>
+    <a class="btn" href="/trips/{{ trip.trip_id }}/add/restaurant">Restaurant</a>
+    <a class="btn" href="/trips/{{ trip.trip_id }}/add/activity">Activity</a>
+    <a class="btn" href="/trips/{{ trip.trip_id }}/add/note">Note</a>
+  </div>
+
+  {% if timeline %}
+    <ol class="timeline">
+    {% for event in timeline %}
+      <li class="timeline__row timeline__row--{{ event.plan.plan_type }}">
+        <div class="timeline__when">{{ event.when or 'Unscheduled' }}</div>
+        <div class="timeline__body">
+          <span class="timeline__kind">{{ event.row_label }}</span>
+          <span class="timeline__title">{{ event.plan.title }}</span>
+          {% if event.plan.details.confirmation_number %}
+            <span class="timeline__conf">Confirmation #{{ event.plan.details.confirmation_number }}</span>
+          {% endif %}
+        </div>
+        {% if event.primary %}
+          <div class="timeline__actions">
+            <a class="linkish" href="/plans/{{ event.plan.plan_id }}/edit">Edit</a>
+            <form method="post" action="/plans/{{ event.plan.plan_id }}/delete">
+              <input type="hidden" name="return_to" value="/trips/{{ trip.trip_id }}">
+              <button type="submit" class="linkish linkish--danger">Delete</button>
+            </form>
+          </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ol>
+  {% else %}
+    <div class="empty">
+      <h2>No plans yet</h2>
+      <p>Add a hotel, flight, or activity to start building your itinerary.</p>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

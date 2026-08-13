@@ -1,0 +1,45 @@
+{
+  "checkpoint": "sap-concur",
+  "family": "marketing",
+  "priority": "P2",
+  "viewport": "tablet",
+  "requested_url": "https://www.tripit.com/web/pro/sap-concur",
+  "final_url": "https://www.tripit.com/web/pro/sap-concur",
+  "title": "Benefits for SAP Concur users when you connect TripIt",
+  "body_text_len": 2092,
+  "frames": 3,
+  "frame_sha256": [
+    "49dd87d1946ff6b57ed8225e60bd0a57bf0faf0298ae6c3c97732246ca35f54c",
+    "49dd87d1946ff6b57ed8225e60bd0a57bf0faf0298ae6c3c97732246ca35f54c",
+    "49dd87d1946ff6b57ed8225e60bd0a57bf0faf0298ae6c3c97732246ca35f54c"
+  ],
+  "frames_identical": true,
+  "link_count": 38,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 1024,
+      "height": 62
+    },
+    "main": {
+      "selector": "[role=main]",
+      "x": 0,
+      "y": 127,
+      "width": 1024,
+      "height": 2830
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 32,
+      "y": 2957,
+      "width": 960,
+      "height": 501
+    },
+    "form": null,
+    "document_height": 3459
+  }
+}

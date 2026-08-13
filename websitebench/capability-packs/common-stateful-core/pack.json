@@ -1,0 +1,77 @@
+{
+  "backend": {
+    "capability_templates": [],
+    "local_external_adapters": [
+      "local-mail-outbox",
+      "site-bound-sqlite"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "keyboard and focus",
+      "back forward refresh",
+      "session revocation"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "account-register",
+        "label": "Register and verify",
+        "priority": "p0"
+      },
+      {
+        "id": "account-sign-in",
+        "label": "Sign in and sign out",
+        "priority": "p0"
+      },
+      {
+        "id": "account-recovery",
+        "label": "Recover password",
+        "priority": "p0"
+      }
+    ],
+    "shell_regions": [
+      "global navigation",
+      "account status",
+      "local-mode disclosure"
+    ],
+    "state_families": [
+      "loading",
+      "empty",
+      "validation error",
+      "authorization error",
+      "success receipt",
+      "retry after restart"
+    ]
+  },
+  "kind": "core",
+  "pack_id": "common-stateful-core",
+  "requires": [],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "Site-bound registration, sign-in, session, recovery, mail and lifecycle semantics with one permanent account/business database per site.",
+  "title": "Common stateful offline-clone core",
+  "verification": {
+    "coverage_dimensions": [
+      "auth actor x outcome",
+      "session revocation x restart",
+      "mail state x retry ceiling",
+      "database migration x reset x backup restore x concurrency"
+    ],
+    "verification_focus": [
+      "fixture identity is never accepted as authentication",
+      "account and session databases are site-isolated",
+      "wrong-site mounts and backups fail closed",
+      "local mail never claims real delivery",
+      "cleartext OTPs are never persisted"
+    ]
+  },
+  "version": "1.1.0"
+}

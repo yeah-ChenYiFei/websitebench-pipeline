@@ -1,0 +1,1818 @@
+{
+  "schema_version": "websitebench.inventory-invalidation-ledger.v1",
+  "migration_id": "clawbench-160-topdown-10-20260729",
+  "inventory_scope": 300,
+  "earliest_checkpoint": "R1-scope-evidence",
+  "artifacts": {
+    "profiles": "regenerated-with-migration-blocker",
+    "compiled_locks": "must-regenerate",
+    "dispatch": "must-regenerate",
+    "workflow_control": "must-reinitialize",
+    "r1_r4": "historical-stale",
+    "clone_implementations": "preserved-but-not-current-evidence",
+    "harbor_calibration": "historical-stale",
+    "rights": "must-rebind-to-current-platform-contract"
+  },
+  "site_status": [
+    {
+      "inventory_id": 1,
+      "site_id": "amazon-home-services",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 2,
+      "site_id": "ebay",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 3,
+      "site_id": "walmart",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 4,
+      "site_id": "target",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 5,
+      "site_id": "etsy",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 6,
+      "site_id": "best-buy",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 7,
+      "site_id": "ikea",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 8,
+      "site_id": "home-depot",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 9,
+      "site_id": "lowes",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 10,
+      "site_id": "costco",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 11,
+      "site_id": "wayfair",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 12,
+      "site_id": "aliexpress",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 13,
+      "site_id": "newegg",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 14,
+      "site_id": "chewy",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 15,
+      "site_id": "rei",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 16,
+      "site_id": "nike",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 17,
+      "site_id": "adidas",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 18,
+      "site_id": "sephora",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 19,
+      "site_id": "asos",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 20,
+      "site_id": "zara",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 21,
+      "site_id": "h-and-m",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 22,
+      "site_id": "nordstrom",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 23,
+      "site_id": "macys",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 24,
+      "site_id": "mercari",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 25,
+      "site_id": "poshmark",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 26,
+      "site_id": "bean-box",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 27,
+      "site_id": "dooney-bourke",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 28,
+      "site_id": "carvana",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 29,
+      "site_id": "cars-com",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 30,
+      "site_id": "autotrader",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 31,
+      "site_id": "king-arthur-baking",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 32,
+      "site_id": "mansur-gavriel",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 33,
+      "site_id": "mistobox",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 34,
+      "site_id": "olaplex",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 35,
+      "site_id": "rockauto",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 36,
+      "site_id": "notion",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 37,
+      "site_id": "airtable",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 38,
+      "site_id": "trello",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 39,
+      "site_id": "asana",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 40,
+      "site_id": "jira",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 41,
+      "site_id": "stumptown-coffee",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 42,
+      "site_id": "discord",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 43,
+      "site_id": "uncommon-goods",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 44,
+      "site_id": "clickup",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 45,
+      "site_id": "todoist",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 46,
+      "site_id": "vistaprint",
+      "topdown_category": "commerce-retail",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 47,
+      "site_id": "dropbox",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 48,
+      "site_id": "google-drive",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 49,
+      "site_id": "onedrive",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 50,
+      "site_id": "box",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 51,
+      "site_id": "careerbuilder",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 52,
+      "site_id": "coolors",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 53,
+      "site_id": "everydollar",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 54,
+      "site_id": "freshdesk",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 55,
+      "site_id": "habitica",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 56,
+      "site_id": "mailchimp",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 57,
+      "site_id": "typeform",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 58,
+      "site_id": "hired",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 59,
+      "site_id": "calendly",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 60,
+      "site_id": "doodle",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 61,
+      "site_id": "zapier",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 62,
+      "site_id": "jopwell",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 63,
+      "site_id": "myheritage",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 64,
+      "site_id": "purelymail",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 65,
+      "site_id": "webflow",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 66,
+      "site_id": "wix",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 67,
+      "site_id": "squarespace",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 68,
+      "site_id": "roomsketcher",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 69,
+      "site_id": "confluence",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 70,
+      "site_id": "simplify-jobs",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 71,
+      "site_id": "weworkremotely",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 72,
+      "site_id": "when2meet",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 73,
+      "site_id": "blinkist",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 74,
+      "site_id": "coursera",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 75,
+      "site_id": "edx",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 76,
+      "site_id": "khan-academy",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 77,
+      "site_id": "udemy",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 78,
+      "site_id": "skillshare",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 79,
+      "site_id": "duolingo",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 80,
+      "site_id": "brilliant",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 81,
+      "site_id": "codecademy",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 82,
+      "site_id": "leetcode",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 83,
+      "site_id": "hackerrank",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 84,
+      "site_id": "datacamp",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 85,
+      "site_id": "masterclass",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 86,
+      "site_id": "quizlet",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 87,
+      "site_id": "chegg",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 88,
+      "site_id": "quizizz",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 89,
+      "site_id": "canvas-lms",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 90,
+      "site_id": "moodle",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 91,
+      "site_id": "blackboard",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 92,
+      "site_id": "futurelearn",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 93,
+      "site_id": "pluralsight",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 94,
+      "site_id": "linkedin-learning",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 95,
+      "site_id": "oreilly-learning",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 96,
+      "site_id": "treehouse",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 97,
+      "site_id": "creativebug",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 98,
+      "site_id": "outschool",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 99,
+      "site_id": "overleaf",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 100,
+      "site_id": "spirit-rock",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 101,
+      "site_id": "reddit",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 102,
+      "site_id": "x",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 103,
+      "site_id": "facebook",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 104,
+      "site_id": "instagram",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 105,
+      "site_id": "tiktok",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 106,
+      "site_id": "linkedin",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 107,
+      "site_id": "pinterest",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 108,
+      "site_id": "tumblr",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 109,
+      "site_id": "medium",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 110,
+      "site_id": "substack",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 111,
+      "site_id": "product-hunt",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 112,
+      "site_id": "hacker-news",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 113,
+      "site_id": "stack-overflow",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 114,
+      "site_id": "goodreads",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 115,
+      "site_id": "letterboxd",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 116,
+      "site_id": "imdb",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 117,
+      "site_id": "tripadvisor",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 118,
+      "site_id": "yelp",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 119,
+      "site_id": "quora",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 120,
+      "site_id": "twitch",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 121,
+      "site_id": "behance",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 122,
+      "site_id": "dribbble",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 123,
+      "site_id": "deviantart",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 124,
+      "site_id": "mastodon",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 125,
+      "site_id": "meetup",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 126,
+      "site_id": "nextdoor",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 127,
+      "site_id": "github",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 128,
+      "site_id": "gitlab",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 129,
+      "site_id": "bitbucket",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 130,
+      "site_id": "docker-hub",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 131,
+      "site_id": "npm",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 132,
+      "site_id": "pypi",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 133,
+      "site_id": "hugging-face",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 134,
+      "site_id": "sur-la-table",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 135,
+      "site_id": "semantic-scholar",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 136,
+      "site_id": "zotero",
+      "topdown_category": "learning-knowledge",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 137,
+      "site_id": "amc-theatres",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 138,
+      "site_id": "kaggle",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 139,
+      "site_id": "google-colab",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 140,
+      "site_id": "aws-console",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 141,
+      "site_id": "azure-portal",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 142,
+      "site_id": "vercel",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 143,
+      "site_id": "netlify",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 144,
+      "site_id": "cloudflare-dashboard",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 145,
+      "site_id": "postman",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 146,
+      "site_id": "jupyterhub",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 147,
+      "site_id": "datadog",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 148,
+      "site_id": "sentry",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 149,
+      "site_id": "boardgamegeek",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 150,
+      "site_id": "bowlero",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 151,
+      "site_id": "breakout-games",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 152,
+      "site_id": "cineplex",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 153,
+      "site_id": "fandango",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 154,
+      "site_id": "humble-bundle",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 155,
+      "site_id": "stubhub",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 156,
+      "site_id": "booking-com",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 157,
+      "site_id": "expedia",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 158,
+      "site_id": "airbnb",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 159,
+      "site_id": "kayak",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 160,
+      "site_id": "priceline",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 161,
+      "site_id": "hotels-com",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 162,
+      "site_id": "agoda",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 163,
+      "site_id": "delta",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 164,
+      "site_id": "united-airlines",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 165,
+      "site_id": "southwest",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 166,
+      "site_id": "amtrak",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 167,
+      "site_id": "uber",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 168,
+      "site_id": "lyft",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 169,
+      "site_id": "turo",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 170,
+      "site_id": "getyourguide",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 171,
+      "site_id": "viator",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 172,
+      "site_id": "topgolf",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 173,
+      "site_id": "trakt",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 174,
+      "site_id": "vivid-seats",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 175,
+      "site_id": "12go-asia",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 176,
+      "site_id": "autoslash",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 177,
+      "site_id": "flixbus",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 178,
+      "site_id": "hipcamp",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 179,
+      "site_id": "momondo",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 180,
+      "site_id": "ontario-parks",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 181,
+      "site_id": "paypal",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 182,
+      "site_id": "venmo",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 183,
+      "site_id": "stripe-dashboard",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 184,
+      "site_id": "coinbase",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 185,
+      "site_id": "robinhood",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 186,
+      "site_id": "fidelity",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 187,
+      "site_id": "vanguard",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 188,
+      "site_id": "nerdwallet",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 189,
+      "site_id": "credit-karma",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 190,
+      "site_id": "lemonade",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 191,
+      "site_id": "geico",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 192,
+      "site_id": "progressive",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 193,
+      "site_id": "state-farm",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 194,
+      "site_id": "parks-canada-reservations",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 195,
+      "site_id": "race-roster",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 196,
+      "site_id": "sixt",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 197,
+      "site_id": "spirit-airlines",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 198,
+      "site_id": "tripit",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 199,
+      "site_id": "angi",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 200,
+      "site_id": "beeradvocate",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 201,
+      "site_id": "capterra",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 202,
+      "site_id": "myrecipes",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 203,
+      "site_id": "ratemyprofessors",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 204,
+      "site_id": "ravelry",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 205,
+      "site_id": "untappd",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 206,
+      "site_id": "vivino",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 207,
+      "site_id": "mychart",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 208,
+      "site_id": "teladoc",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 209,
+      "site_id": "zocdoc",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 210,
+      "site_id": "cvs",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 211,
+      "site_id": "walgreens",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 212,
+      "site_id": "goodrx",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 213,
+      "site_id": "healthline",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 214,
+      "site_id": "webmd",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 215,
+      "site_id": "mayo-clinic",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 216,
+      "site_id": "ace-hardware",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 217,
+      "site_id": "bark",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 218,
+      "site_id": "booksy",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 219,
+      "site_id": "crumbl",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 220,
+      "site_id": "doordash",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 221,
+      "site_id": "handy",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 222,
+      "site_id": "inmyarea",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 223,
+      "site_id": "instacart",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 224,
+      "site_id": "opentable",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 225,
+      "site_id": "resy",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 226,
+      "site_id": "styleseat",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 227,
+      "site_id": "youtube",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 228,
+      "site_id": "netflix",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 229,
+      "site_id": "spotify",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 230,
+      "site_id": "hulu",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 231,
+      "site_id": "disney-plus",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 232,
+      "site_id": "soundcloud",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 233,
+      "site_id": "vimeo",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 234,
+      "site_id": "dailymotion",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 235,
+      "site_id": "crunchyroll",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 236,
+      "site_id": "tidal",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 237,
+      "site_id": "apple-music",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 238,
+      "site_id": "pandora",
+      "topdown_category": "media-entertainment",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 239,
+      "site_id": "uber-eats",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 240,
+      "site_id": "aspca",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 241,
+      "site_id": "ghost",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 242,
+      "site_id": "betterhelp",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 243,
+      "site_id": "fandom",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 244,
+      "site_id": "bluemercury",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 245,
+      "site_id": "bringfido",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 246,
+      "site_id": "curology",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 247,
+      "site_id": "eatthismuch",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 248,
+      "site_id": "embark",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 249,
+      "site_id": "zillow",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 250,
+      "site_id": "redfin",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 251,
+      "site_id": "realtor-com",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 252,
+      "site_id": "apartments-com",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 253,
+      "site_id": "compass",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 254,
+      "site_id": "craigslist",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 255,
+      "site_id": "rover",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 256,
+      "site_id": "taskrabbit",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 257,
+      "site_id": "thumbtack",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 258,
+      "site_id": "change",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 259,
+      "site_id": "fenty-beauty",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 260,
+      "site_id": "eventbrite",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 261,
+      "site_id": "ticketmaster",
+      "topdown_category": "travel-mobility-events",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 262,
+      "site_id": "g2",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 263,
+      "site_id": "trustpilot",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 264,
+      "site_id": "glassdoor",
+      "topdown_category": "social-community-reviews",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 265,
+      "site_id": "indeed",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 266,
+      "site_id": "ziprecruiter",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 267,
+      "site_id": "workable",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 268,
+      "site_id": "greenhouse-codepath",
+      "topdown_category": "work-business",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 269,
+      "site_id": "jefit",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 270,
+      "site_id": "mac-cosmetics",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 271,
+      "site_id": "ollie",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 272,
+      "site_id": "paulas-choice",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 273,
+      "site_id": "pawp",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 274,
+      "site_id": "petfinder",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 275,
+      "site_id": "petsmart",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 276,
+      "site_id": "soko-glam",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 277,
+      "site_id": "strava",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 278,
+      "site_id": "theordinary",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 279,
+      "site_id": "ulta-beauty",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 280,
+      "site_id": "wag",
+      "topdown_category": "health-wellness-personal",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 281,
+      "site_id": "charity-village",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 282,
+      "site_id": "doctors-without-borders-msf",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 283,
+      "site_id": "formswift",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 284,
+      "site_id": "frontfundr",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 285,
+      "site_id": "ftc-reportfraud",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 286,
+      "site_id": "globalgiving",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 287,
+      "site_id": "idealist",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 288,
+      "site_id": "insureon",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 289,
+      "site_id": "insurify",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 290,
+      "site_id": "ioby",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 291,
+      "site_id": "opendoor",
+      "topdown_category": "local-food-home-property",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 292,
+      "site_id": "kanetix",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 293,
+      "site_id": "legalnature",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 294,
+      "site_id": "make-a-wish",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 295,
+      "site_id": "plooto",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 296,
+      "site_id": "redcross",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 297,
+      "site_id": "trezor",
+      "topdown_category": "finance-civic-regulated",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 298,
+      "site_id": "1password-web",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 299,
+      "site_id": "deleteme",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    },
+    {
+      "inventory_id": 300,
+      "site_id": "ipvanish",
+      "topdown_category": "developer-cloud-infrastructure",
+      "status": "pending-fresh-r1"
+    }
+  ]
+}

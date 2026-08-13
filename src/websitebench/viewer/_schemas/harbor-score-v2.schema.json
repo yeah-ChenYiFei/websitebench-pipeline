@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/harbor-score-v2.schema.json",
+  "title": "WebsiteBench Harbor deterministic scorecard v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "task_score", "visual_score", "cicd_score", "reward", "reward_source", "counts"],
+  "properties": {
+    "schema_version": {"const": "websitebench.harbor.score.v2"},
+    "status": {"const": "VALID_RUN"},
+    "task_score": {"$ref": "#/$defs/score"},
+    "visual_score": {"$ref": "#/$defs/score"},
+    "cicd_score": {"$ref": "#/$defs/score"},
+    "reward": {"type": "number", "minimum": 0, "maximum": 1},
+    "reward_source": {"const": "task_completion"},
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tasks", "visual_checkpoints", "cicd_checks"],
+      "properties": {
+        "tasks": {"$ref": "#/$defs/count"},
+        "visual_checkpoints": {"$ref": "#/$defs/count"},
+        "cicd_checks": {"$ref": "#/$defs/count"}
+      }
+    }
+  },
+  "$defs": {
+    "score": {"type": "number", "minimum": 0, "maximum": 100},
+    "count": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passed", "total"],
+      "properties": {
+        "passed": {"type": "integer", "minimum": 0},
+        "total": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

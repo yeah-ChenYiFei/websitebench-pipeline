@@ -1,0 +1,654 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/offline-clone.backend-model.v1.json",
+  "title": "ClawBench offline clone backend model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "site_id",
+    "status",
+    "profile",
+    "database",
+    "auth_semantics",
+    "common_capabilities",
+    "capabilities"
+  ],
+  "properties": {
+    "schema_version": {"const": "offline-clone.backend-model.v1"},
+    "site_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "status": {"enum": ["draft", "verified"]},
+    "profile": {"const": "offline-benchmark"},
+    "database": {"$ref": "#/$defs/database"},
+    "auth_semantics": {"$ref": "#/$defs/auth_semantics"},
+    "r1_subject_binding": {"$ref": "#/$defs/r1_subject_binding"},
+    "runtime_disposition": {"$ref": "#/$defs/runtime_disposition"},
+    "common_capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "account_registration",
+        "account_sign_in",
+        "session_lifecycle",
+        "password_recovery",
+        "email_delivery"
+      ],
+      "properties": {
+        "account_registration": {"$ref": "#/$defs/id"},
+        "account_sign_in": {"$ref": "#/$defs/id"},
+        "session_lifecycle": {"$ref": "#/$defs/id"},
+        "password_recovery": {"$ref": "#/$defs/id"},
+        "email_delivery": {"$ref": "#/$defs/id"}
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 5,
+      "items": {"$ref": "#/$defs/capability"}
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "nonempty_text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "reference_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._:-][a-z0-9]+)*$"
+    },
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "database": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "engine",
+        "location_policy",
+        "concurrency_model",
+        "migration_strategy",
+        "deterministic_reset",
+        "restart_persistence",
+        "site_isolation",
+        "proofs"
+      ],
+      "properties": {
+        "engine": {"enum": ["sqlite", "postgresql"]},
+        "location_policy": {"const": "runtime-data-outside-candidate"},
+        "concurrency_model": {
+          "enum": ["wal-transactional-single-writer", "transactional-server"]
+        },
+        "migration_strategy": {"const": "versioned-forward-migrations"},
+        "deterministic_reset": {"const": true},
+        "deterministic_seed_manifest": {
+          "$ref": "#/$defs/deterministic_seed_manifest"
+        },
+        "restart_persistence": {"const": true},
+        "site_isolation": {"const": "one-database-per-site"},
+        "database_identity": {"$ref": "#/$defs/nonempty_text"},
+        "data_path_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "root_policy",
+            "database_file",
+            "override_environment_variable"
+          ],
+          "properties": {
+            "root_policy": {"const": "runtime-data-outside-candidate"},
+            "database_file": {"$ref": "#/$defs/nonempty_text"},
+            "override_environment_variable": {"$ref": "#/$defs/nonempty_text"}
+          }
+        },
+        "entity_inventory": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/database_entity"}
+        },
+        "lifecycle_contracts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "data-location",
+            "schema-migration",
+            "deterministic-reset",
+            "restart-persistence",
+            "backup-restore",
+            "concurrency"
+          ],
+          "properties": {
+            "data-location": {"$ref": "#/$defs/nonempty_text"},
+            "schema-migration": {"$ref": "#/$defs/nonempty_text"},
+            "deterministic-reset": {"$ref": "#/$defs/nonempty_text"},
+            "restart-persistence": {"$ref": "#/$defs/nonempty_text"},
+            "backup-restore": {"$ref": "#/$defs/nonempty_text"},
+            "concurrency": {"$ref": "#/$defs/nonempty_text"}
+          }
+        },
+        "lifecycle_scope": {
+          "enum": ["whole-site-auth-and-business"]
+        },
+        "lifecycle_invariant_id": {"$ref": "#/$defs/reference_id"},
+        "lifecycle_subject_entities": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/id"}
+        },
+        "lifecycle_subject_capabilities": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/id"}
+        },
+        "proofs": {
+          "type": "array",
+          "minItems": 6,
+          "items": {"$ref": "#/$defs/database_proof"}
+        }
+      }
+    },
+    "deterministic_seed_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "seed_id",
+        "authoritative_entity_count",
+        "reset_probe_ids",
+        "migration_log_representation"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^scope/[a-z0-9][a-z0-9._/-]*\\.json$"
+        },
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "seed_id": {"$ref": "#/$defs/reference_id"},
+        "authoritative_entity_count": {"type": "integer", "minimum": 1},
+        "reset_probe_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/reference_id"}
+        },
+        "migration_log_representation": {
+          "enum": ["physical-sqlite-rows", "explicit-logical-projection"]
+        }
+      }
+    },
+    "database_entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "storage_name",
+        "owner_scope",
+        "reset_disposition",
+        "backup_restore",
+        "lifecycle_obligations"
+      ],
+      "properties": {
+        "name": {"$ref": "#/$defs/id"},
+        "storage_name": {"$ref": "#/$defs/nonempty_text"},
+        "owner_scope": {
+          "enum": ["session", "account", "tenant", "role", "global", "system"]
+        },
+        "reset_disposition": {
+          "enum": ["delete", "delete-and-reseed", "preserve-schema"]
+        },
+        "backup_restore": {"const": true},
+        "lifecycle_obligations": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "data-location",
+              "schema-migration",
+              "deterministic-reset",
+              "restart-persistence",
+              "backup-restore",
+              "concurrency"
+            ]
+          }
+        }
+      }
+    },
+    "database_proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["obligation", "status", "evidence"],
+      "properties": {
+        "obligation": {
+          "enum": [
+            "data-location",
+            "schema-migration",
+            "deterministic-reset",
+            "restart-persistence",
+            "backup-restore",
+            "concurrency"
+          ]
+        },
+        "status": {"enum": ["planned", "verified"]},
+        "evidence": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/evidence_id"}
+        },
+        "journey_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/reference_id"}
+        },
+        "invariant_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/reference_id"}
+        },
+        "entity_names": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/id"}
+        },
+        "capability_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/id"}
+        },
+        "expected_server_result": {"$ref": "#/$defs/nonempty_text"}
+      }
+    },
+    "auth_semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "account_database_scope",
+        "credential_storage",
+        "session_storage",
+        "registration_account_creation",
+        "verification_challenge_storage",
+        "password_reset_enumeration",
+        "mail_default",
+        "mail_statuses",
+        "smtp_activation",
+        "smtp_delivery_ceiling",
+        "rejected_secret_journaling",
+        "legacy_write_policy"
+      ],
+      "properties": {
+        "account_database_scope": {"const": "site-isolated"},
+        "credential_storage": {"const": "salted-scrypt-hash"},
+        "session_storage": {"const": "opaque-cookie-digest-at-rest"},
+        "registration_account_creation": {
+          "enum": ["after-email-verification", "direct-password"]
+        },
+        "verification_challenge_storage": {
+          "enum": ["salted-hash", "not-applicable"]
+        },
+        "password_reset_enumeration": {
+          "enum": ["indistinguishable-public-response", "not-applicable"]
+        },
+        "mail_default": {"const": "LOCAL_ONLY"},
+        "mail_statuses": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "LOCAL_ONLY",
+              "SMTP_PENDING",
+              "SMTP_SENT",
+              "SMTP_FAILED"
+            ]
+          }
+        },
+        "smtp_activation": {
+          "enum": [
+            "explicit-complete-config-only",
+            "explicit-complete-site-local-loopback-config-only"
+          ]
+        },
+        "smtp_delivery_ceiling": {"const": 3},
+        "rejected_secret_journaling": {"const": "forbidden"},
+        "legacy_write_policy": {"const": "read-compatible-write-rejected"}
+      }
+    },
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "identity", "owner_scope", "persistence"],
+      "properties": {
+        "name": {"$ref": "#/$defs/id"},
+        "identity": {"$ref": "#/$defs/nonempty_text"},
+        "owner_scope": {
+          "enum": ["session", "account", "tenant", "role", "global", "system"]
+        },
+        "persistence": {"enum": ["durable", "ephemeral", "derived"]}
+      }
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to", "trigger"],
+      "properties": {
+        "from": {"$ref": "#/$defs/id"},
+        "to": {"$ref": "#/$defs/id"},
+        "trigger": {"$ref": "#/$defs/nonempty_text"}
+      }
+    },
+    "state_machine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "states", "transitions"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "entity-lifecycle",
+            "idempotent-set",
+            "immutable-receipt",
+            "session-lifecycle",
+            "challenge-lifecycle",
+            "delivery-lifecycle"
+          ]
+        },
+        "states": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/id"}
+        },
+        "transitions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/transition"}
+        }
+      }
+    },
+    "proof_exception": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["obligation", "rationale"],
+      "properties": {
+        "obligation": {"$ref": "#/$defs/proof_obligation"},
+        "rationale": {"$ref": "#/$defs/nonempty_text"}
+      }
+    },
+    "proof_obligation": {
+      "enum": [
+        "valid",
+        "invalid",
+        "duplicate",
+        "stale",
+        "foreign-owner",
+        "unauthorized-role",
+        "restart",
+        "migration",
+        "concurrency"
+      ]
+    },
+    "proofs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence", "not_applicable"],
+      "properties": {
+        "evidence": {
+          "type": "object",
+          "propertyNames": {"$ref": "#/$defs/proof_obligation"},
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"$ref": "#/$defs/evidence_id"}
+          }
+        },
+        "planned": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/proof_obligation"}
+        },
+        "not_applicable": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/proof_exception"}
+        }
+      }
+    },
+    "proof_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "obligation",
+        "applicability",
+        "journey_ids",
+        "invariant_ids",
+        "entity_names",
+        "owner_scope",
+        "identity_tuple",
+        "expected_server_result"
+      ],
+      "properties": {
+        "obligation": {"$ref": "#/$defs/proof_obligation"},
+        "applicability": {"enum": ["required", "inapplicable"]},
+        "journey_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/reference_id"}
+        },
+        "invariant_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/reference_id"}
+        },
+        "entity_names": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/id"}
+        },
+        "owner_scope": {
+          "enum": ["session", "account", "tenant", "role", "global", "system"]
+        },
+        "identity_tuple": {"$ref": "#/$defs/nonempty_text"},
+        "expected_server_result": {"$ref": "#/$defs/nonempty_text"},
+        "inapplicability_reason": {"$ref": "#/$defs/nonempty_text"},
+        "proof_id": {"$ref": "#/$defs/evidence_id"},
+        "probe_id": {"$ref": "#/$defs/evidence_id"},
+        "mutation_contract_ref": {"$ref": "#/$defs/nonempty_text"},
+        "expected_local_mutations": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonempty_text"}
+        },
+        "expected_local_mutation_count": {"type": "integer", "minimum": 0},
+        "expected_remote_request_count": {"const": 0},
+        "expected_remote_effect_count": {"const": 0},
+        "expected_production_remote_request_count": {"const": 0},
+        "expected_production_remote_effect_count": {"const": 0},
+        "smtp_loopback_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "target_class",
+            "absent_or_incomplete_configuration_requests",
+            "sent_requires_successful_claimed_request",
+            "requests_per_claimed_attempt_max",
+            "persistent_attempt_ceiling",
+            "production_delivery_claim"
+          ],
+          "properties": {
+            "target_class": {"const": "benchmark-controlled-loopback-only"},
+            "absent_or_incomplete_configuration_requests": {"const": 0},
+            "sent_requires_successful_claimed_request": {"const": true},
+            "requests_per_claimed_attempt_max": {"const": 1},
+            "persistent_attempt_ceiling": {"const": 3},
+            "production_delivery_claim": {"const": false}
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "applicability": {"const": "inapplicable"}
+            },
+            "required": ["applicability"]
+          },
+          "then": {"required": ["inapplicability_reason"]}
+        }
+      ]
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "priority",
+        "category",
+        "implementation_status",
+        "external_effect",
+        "journey_ids",
+        "invariant_ids",
+        "proofs"
+      ],
+      "oneOf": [
+        {
+          "required": ["semantic_profile"],
+          "not": {
+            "anyOf": [
+              {"required": ["entities"]},
+              {"required": ["state_machine"]},
+              {"required": ["server_authorities"]}
+            ]
+          }
+        },
+        {
+          "required": ["entities", "state_machine", "server_authorities"],
+          "not": {"required": ["semantic_profile"]}
+        }
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "label": {"$ref": "#/$defs/nonempty_text"},
+        "priority": {"enum": ["p0", "p1", "p2"]},
+        "category": {
+          "enum": [
+            "authentication",
+            "commerce",
+            "content",
+            "communication",
+            "workflow",
+            "personalization",
+            "administration",
+            "search"
+          ]
+        },
+        "implementation_status": {
+          "enum": ["planned", "implemented", "verified", "not-applicable"]
+        },
+        "runtime_disposition": {"$ref": "#/$defs/nonempty_text"},
+        "capability_contract_invariant_id": {
+          "$ref": "#/$defs/reference_id"
+        },
+        "semantic_profile": {
+          "enum": [
+            "local-account-registration-v1",
+            "local-account-sign-in-v1",
+            "local-session-lifecycle-v1",
+            "local-password-recovery-v1",
+            "local-mail-delivery-v1",
+            "not-applicable-v1"
+          ]
+        },
+        "entities": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/entity"}
+        },
+        "state_machine": {"$ref": "#/$defs/state_machine"},
+        "server_authorities": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonempty_text"}
+        },
+        "external_effect": {"enum": ["none", "local-only", "smtp-opt-in"]},
+        "external_effect_boundary": {"$ref": "#/$defs/nonempty_text"},
+        "journey_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/reference_id"}
+        },
+        "invariant_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/reference_id"}
+        },
+        "proof_bindings": {
+          "type": "array",
+          "minItems": 9,
+          "maxItems": 9,
+          "items": {"$ref": "#/$defs/proof_binding"}
+        },
+        "proofs": {"$ref": "#/$defs/proofs"}
+      }
+    },
+    "r1_subject_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity_kind",
+        "identity_path",
+        "model_path",
+        "contract_component",
+        "source_evidence_component",
+        "self_digest_disposition"
+      ],
+      "properties": {
+        "identity_kind": {"$ref": "#/$defs/nonempty_text"},
+        "identity_path": {"$ref": "#/$defs/nonempty_text"},
+        "model_path": {"$ref": "#/$defs/nonempty_text"},
+        "contract_component": {"$ref": "#/$defs/nonempty_text"},
+        "source_evidence_component": {"$ref": "#/$defs/nonempty_text"},
+        "self_digest_disposition": {"$ref": "#/$defs/nonempty_text"}
+      }
+    },
+    "runtime_disposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checkpoint",
+        "implementation",
+        "served_runtime_credit",
+        "machine_evidence_credit",
+        "disposition"
+      ],
+      "properties": {
+        "checkpoint": {"$ref": "#/$defs/nonempty_text"},
+        "implementation": {"$ref": "#/$defs/nonempty_text"},
+        "served_runtime_credit": {"type": "boolean"},
+        "machine_evidence_credit": {"type": "boolean"},
+        "disposition": {"$ref": "#/$defs/nonempty_text"}
+      }
+    }
+  }
+}

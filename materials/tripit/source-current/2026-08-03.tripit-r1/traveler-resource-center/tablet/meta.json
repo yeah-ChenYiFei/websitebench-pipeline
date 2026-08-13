@@ -1,0 +1,45 @@
+{
+  "checkpoint": "traveler-resource-center",
+  "family": "marketing",
+  "priority": "P2",
+  "viewport": "tablet",
+  "requested_url": "https://www.tripit.com/web/traveler-resource-center",
+  "final_url": "https://www.tripit.com/web/traveler-resource-center",
+  "title": "Traveler Resource Center | TripIt",
+  "body_text_len": 4931,
+  "frames": 3,
+  "frame_sha256": [
+    "365e8616140bd487744aa29d81128a0306f44cfbad06a4c8801802196ca2fd6b",
+    "365e8616140bd487744aa29d81128a0306f44cfbad06a4c8801802196ca2fd6b",
+    "365e8616140bd487744aa29d81128a0306f44cfbad06a4c8801802196ca2fd6b"
+  ],
+  "frames_identical": true,
+  "link_count": 49,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 1024,
+      "height": 62
+    },
+    "main": {
+      "selector": "[role=main]",
+      "x": 32,
+      "y": 136,
+      "width": 960,
+      "height": 3200
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 32,
+      "y": 3336,
+      "width": 960,
+      "height": 501
+    },
+    "form": null,
+    "document_height": 3838
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/offline-clone.capability-pack.v1.json",
+  "title": "Composable offline-clone capability pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "pack_id",
+    "version",
+    "kind",
+    "batch_family_id",
+    "title",
+    "summary",
+    "requires",
+    "conflicts",
+    "extension_points",
+    "frontend",
+    "backend",
+    "verification"
+  ],
+  "properties": {
+    "schema_version": {"const": "offline-clone.capability-pack.v1"},
+    "pack_id": {"$ref": "#/$defs/id"},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "kind": {"enum": ["core", "archetype", "overlay"]},
+    "batch_family_id": {
+      "oneOf": [
+        {"$ref": "#/$defs/id"},
+        {"type": "null"}
+      ]
+    },
+    "title": {"$ref": "#/$defs/text"},
+    "summary": {"$ref": "#/$defs/text"},
+    "requires": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/id"}
+    },
+    "conflicts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/id"}
+    },
+    "extension_points": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z][a-z0-9.-]+$"}
+    },
+    "frontend": {"$ref": "#/$defs/frontend"},
+    "backend": {"$ref": "#/$defs/backend"},
+    "verification": {"$ref": "#/$defs/verification"}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "text": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "frontend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["shell_regions", "route_families", "state_families", "interaction_families", "required_viewports"],
+      "properties": {
+        "shell_regions": {"$ref": "#/$defs/unique_texts"},
+        "route_families": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label", "priority"],
+            "properties": {
+              "id": {"$ref": "#/$defs/id"},
+              "label": {"$ref": "#/$defs/text"},
+              "priority": {"enum": ["p0", "p1", "p2"]}
+            }
+          }
+        },
+        "state_families": {"$ref": "#/$defs/unique_texts"},
+        "interaction_families": {"$ref": "#/$defs/unique_texts"},
+        "required_viewports": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["desktop", "mobile", "tablet"]}
+        }
+      }
+    },
+    "unique_texts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 500}
+    },
+    "backend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["capability_templates", "local_external_adapters"],
+      "properties": {
+        "capability_templates": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/capability"}
+        },
+        "local_external_adapters": {"$ref": "#/$defs/unique_texts"}
+      }
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "priority",
+        "category",
+        "entities",
+        "state_machine",
+        "server_authorities",
+        "external_effect"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "label": {"$ref": "#/$defs/text"},
+        "priority": {"enum": ["p0", "p1", "p2"]},
+        "category": {"enum": ["authentication", "commerce", "content", "communication", "workflow", "personalization", "administration", "search"]},
+        "entities": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "identity", "owner_scope", "persistence"],
+            "properties": {
+              "name": {"$ref": "#/$defs/id"},
+              "identity": {"$ref": "#/$defs/text"},
+              "owner_scope": {"enum": ["session", "account", "tenant", "role", "global", "system"]},
+              "persistence": {"enum": ["durable", "ephemeral", "derived"]}
+            }
+          }
+        },
+        "state_machine": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "states", "transitions"],
+          "properties": {
+            "kind": {"enum": ["entity-lifecycle", "idempotent-set", "immutable-receipt", "session-lifecycle", "challenge-lifecycle", "delivery-lifecycle"]},
+            "states": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/id"}
+            },
+            "transitions": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["from", "to", "trigger"],
+                "properties": {
+                  "from": {"$ref": "#/$defs/id"},
+                  "to": {"$ref": "#/$defs/id"},
+                  "trigger": {"$ref": "#/$defs/text"}
+                }
+              }
+            }
+          }
+        },
+        "server_authorities": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/text"}
+        },
+        "external_effect": {"enum": ["none", "local-only", "smtp-opt-in"]}
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coverage_dimensions", "verification_focus"],
+      "properties": {
+        "coverage_dimensions": {"$ref": "#/$defs/unique_texts"},
+        "verification_focus": {"$ref": "#/$defs/unique_texts"}
+      }
+    }
+  }
+}

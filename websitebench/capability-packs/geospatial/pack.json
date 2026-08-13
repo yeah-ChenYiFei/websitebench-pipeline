@@ -1,0 +1,101 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "personalization",
+        "entities": [
+          {
+            "identity": "site-local opaque location-selection identity; exact source key and ownership require R1 confirmation",
+            "name": "location-selection",
+            "owner_scope": "session",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "geospatial-lifecycle",
+        "label": "geospatial lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "deterministic coordinates",
+          "server service-area checks",
+          "no remote map dependency"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "unresolved",
+            "resolved",
+            "stale",
+            "revoked"
+          ],
+          "transitions": [
+            {
+              "from": "unresolved",
+              "to": "resolved",
+              "trigger": "server-authorized geospatial lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "resolved",
+              "to": "stale",
+              "trigger": "server-authorized geospatial lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "stale",
+              "to": "revoked",
+              "trigger": "server-authorized geospatial lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-geocoding-fixture"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "geospatial keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "geospatial-surface",
+        "label": "geospatial route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "geospatial surface"
+    ],
+    "state_families": [
+      "geospatial loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "geospatial",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "地点、半径/地图结果、路线、服务范围和地址 fixture。",
+  "title": "Geospatial overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "geospatial actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "deterministic coordinates",
+      "server service-area checks",
+      "no remote map dependency"
+    ]
+  },
+  "version": "1.0.0"
+}

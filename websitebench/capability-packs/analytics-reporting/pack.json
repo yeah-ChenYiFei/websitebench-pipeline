@@ -1,0 +1,101 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque report-request identity; exact source key and ownership require R1 confirmation",
+            "name": "report-request",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "analytics-reporting-lifecycle",
+        "label": "analytics-reporting lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "server aggregation",
+          "stable clock",
+          "scope filtering",
+          "truthful export state"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "queued",
+            "running",
+            "completed",
+            "failed"
+          ],
+          "transitions": [
+            {
+              "from": "queued",
+              "to": "running",
+              "trigger": "server-authorized analytics-reporting lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "running",
+              "to": "completed",
+              "trigger": "server-authorized analytics-reporting lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "completed",
+              "to": "failed",
+              "trigger": "server-authorized analytics-reporting lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "analytics-reporting keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "analytics-reporting-surface",
+        "label": "analytics-reporting route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "analytics-reporting surface"
+    ],
+    "state_families": [
+      "analytics-reporting loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "analytics-reporting",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "事件、指标、聚合、时间窗、导出和运营报表。",
+  "title": "Analytics Reporting overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "analytics-reporting actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "server aggregation",
+      "stable clock",
+      "scope filtering",
+      "truthful export state"
+    ]
+  },
+  "version": "1.0.0"
+}

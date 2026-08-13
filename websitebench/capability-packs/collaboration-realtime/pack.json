@@ -1,0 +1,103 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque collaborative-revision identity; exact source key and ownership require R1 confirmation",
+            "name": "collaborative-revision",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "collaboration-realtime-lifecycle",
+        "label": "collaboration-realtime lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "revision precondition",
+          "conflict state",
+          "ordered operations",
+          "reconnect recovery"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "open",
+            "committed",
+            "conflicted",
+            "superseded"
+          ],
+          "transitions": [
+            {
+              "from": "open",
+              "to": "committed",
+              "trigger": "server-authorized collaboration-realtime lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "committed",
+              "to": "conflicted",
+              "trigger": "server-authorized collaboration-realtime lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "conflicted",
+              "to": "superseded",
+              "trigger": "server-authorized collaboration-realtime lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-revision-event-log"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "collaboration-realtime keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "collaboration-realtime-surface",
+        "label": "collaboration-realtime route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "collaboration-realtime surface"
+    ],
+    "state_families": [
+      "collaboration-realtime loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "collaboration-realtime",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "多人编辑 presence、评论、冲突检测和修订合并。",
+  "title": "Collaboration Realtime overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "collaboration-realtime actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "revision precondition",
+      "conflict state",
+      "ordered operations",
+      "reconnect recovery"
+    ]
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/offline-clone.compiled-site-plan.v1.json",
+  "title": "Deterministic compiled offline-clone site plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "compiler_version",
+    "target",
+    "site_ir",
+    "evidence_boundary",
+    "workflow",
+    "artifact_graph",
+    "artifact_graph_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "offline-clone.compiled-site-plan.v1"},
+    "compiler_version": {"const": "clawbench.site-compiler.v1"},
+    "target": {"enum": ["r1", "frontend", "backend", "release"]},
+    "site_ir": {"type": "object"},
+    "evidence_boundary": {"type": "object"},
+    "workflow": {"type": "object"},
+    "artifact_graph": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["node_id", "kind", "invalidates_from", "input_ids", "payload_sha256", "node_sha256"],
+        "properties": {
+          "node_id": {"type": "string", "minLength": 1},
+          "kind": {"type": "string", "minLength": 1},
+          "invalidates_from": {"enum": ["R1-scope-evidence", "R2-frontend", "R3-semantics", "R4-runtime-release"]},
+          "input_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "payload_sha256": {"$ref": "#/$defs/sha256"},
+          "node_sha256": {"$ref": "#/$defs/sha256"}
+        }
+      }
+    },
+    "artifact_graph_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

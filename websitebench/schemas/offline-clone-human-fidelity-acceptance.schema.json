@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/offline-clone.human-fidelity-acceptance.v1.json",
+  "title": "Named-human fidelity acceptance for an exact offline-clone runtime",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "site_id",
+    "release_profile",
+    "supervisor",
+    "inspected_at",
+    "disposition",
+    "subject",
+    "coverage",
+    "open_p0",
+    "open_p1",
+    "known_differences",
+    "authority"
+  ],
+  "properties": {
+    "schema_version": {"const": "offline-clone.human-fidelity-acceptance.v1"},
+    "site_id": {"$ref": "#/$defs/id"},
+    "release_profile": {"$ref": "#/$defs/id"},
+    "supervisor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1, "maxLength": 200},
+        "organization": {"type": "string", "minLength": 1, "maxLength": 300}
+      }
+    },
+    "inspected_at": {"type": "string", "format": "date-time"},
+    "disposition": {"enum": ["accepted", "rework", "rejected"]},
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_artifact_sha256",
+        "candidate_identity_sha256",
+        "runtime_identity_sha256",
+        "candidate_tree_sha256",
+        "clone_url",
+        "process_identity",
+        "reset_seed"
+      ],
+      "properties": {
+        "candidate_artifact_sha256": {"$ref": "#/$defs/sha256"},
+        "candidate_identity_sha256": {"$ref": "#/$defs/sha256"},
+        "runtime_identity_sha256": {"$ref": "#/$defs/sha256"},
+        "candidate_tree_sha256": {"$ref": "#/$defs/sha256"},
+        "clone_url": {"type": "string", "format": "uri", "maxLength": 2000},
+        "process_identity": {"type": "string", "minLength": 1, "maxLength": 500},
+        "reset_seed": {
+          "oneOf": [
+            {"type": "integer"},
+            {"type": "string", "minLength": 1, "maxLength": 200}
+          ]
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["p0_journeys_total", "p0_journeys_inspected", "viewports", "roles"],
+      "properties": {
+        "p0_journeys_total": {"type": "integer", "minimum": 1},
+        "p0_journeys_inspected": {"type": "integer", "minimum": 0},
+        "viewports": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1, "maxLength": 100}
+        },
+        "roles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1, "maxLength": 200}
+        }
+      }
+    },
+    "open_p0": {"type": "integer", "minimum": 0},
+    "open_p1": {"type": "integer", "minimum": 0},
+    "known_differences": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 2000}
+    },
+    "authority": {
+      "const": "named-human-fidelity-decision-only-does-not-grant-rights-or-publication"
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

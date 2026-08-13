@@ -1,0 +1,48 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyright/
+build/
+dist/
+# Captured assets keep their upstream CDN path, which for packages like
+# entreprise7pro-bootstrap and lottie-player contains a `dist/` segment. Those
+# are captured runtime assets, not build output, and the clone manifest declares
+# them, so the offline-assets gate fails when `dist/` swallows them. The gate
+# checks source/clone pairs, so both roots have to stay visible.
+!materials/**/source-assets/**/dist/
+!materials/**/clone/static/assets/**/dist/
+harbor-dist/
+*.egg-info/
+.DS_Store
+
+
+# Raw authenticated-session captures never enter Git; committed artifacts and
+# clone fixtures use synthetic data only (see prompts/offline-clone).
+materials/*/source-auth-scratch/
+
+# Benchmark and viewer runtime state
+web2code-output/
+artifacts/
+test-output/
+reviews/
+browser-profile/
+.playwright-mcp/
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+
+# Candidate workspaces and per-run secrets
+candidate/
+secrets.env
+human-interventions.jsonl
+
+# Per-site offline-clone harness runtime state
+.clone-harness/
+.wrangler/
+

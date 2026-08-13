@@ -1,0 +1,45 @@
+{
+  "checkpoint": "security",
+  "family": "marketing",
+  "priority": "P2",
+  "viewport": "mobile",
+  "requested_url": "https://www.tripit.com/web/security",
+  "final_url": "https://www.tripit.com/web/security",
+  "title": "Data Privacy and Security - TripIt",
+  "body_text_len": 2392,
+  "frames": 3,
+  "frame_sha256": [
+    "1c5c9b562379deffb438aef5dc633fb7de46c4e7a728c98a88ed34c9e317f39c",
+    "1c5c9b562379deffb438aef5dc633fb7de46c4e7a728c98a88ed34c9e317f39c",
+    "1c5c9b562379deffb438aef5dc633fb7de46c4e7a728c98a88ed34c9e317f39c"
+  ],
+  "frames_identical": true,
+  "link_count": 36,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 59
+    },
+    "main": {
+      "selector": "[role=main]",
+      "x": 0,
+      "y": 146,
+      "width": 390,
+      "height": 2535
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 2681,
+      "width": 390,
+      "height": 504
+    },
+    "form": null,
+    "document_height": 3186
+  }
+}

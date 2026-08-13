@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/offline-clone.compiled-site-plan.v2.json",
+  "title": "Human-supervised deterministic compiled offline-clone site plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "compiler_version", "target", "site_ir", "evidence_boundary", "workflow", "artifact_graph", "artifact_graph_sha256"],
+  "properties": {
+    "schema_version": {"const": "offline-clone.compiled-site-plan.v2"},
+    "compiler_version": {"const": "clawbench.site-compiler.v2"},
+    "target": {"enum": ["scope", "frontend", "backend", "release"]},
+    "site_ir": {"type": "object"},
+    "evidence_boundary": {"type": "object"},
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ordered_stages", "target", "human_supervision_policy", "backend_policy"],
+      "properties": {
+        "ordered_stages": {
+          "type": "array",
+          "minItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "inventory-normalization",
+              "profile-and-pack-resolution",
+              "human-scope-approval",
+              "source-freeze-and-asset-closure",
+              "frontend-convergence",
+              "human-fidelity-inspection",
+              "persistent-backend",
+              "human-semantic-approval",
+              "harbor-machine-evidence",
+              "human-release-approval"
+            ]
+          }
+        },
+        "target": {"enum": ["scope", "frontend", "backend", "release"]},
+        "human_supervision_policy": {"type": "string", "minLength": 1},
+        "backend_policy": {"type": "string", "minLength": 1}
+      }
+    },
+    "artifact_graph": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["node_id", "kind", "invalidates_from", "input_ids", "payload_sha256", "node_sha256"],
+        "properties": {
+          "node_id": {"type": "string", "minLength": 1},
+          "kind": {"type": "string", "minLength": 1},
+          "invalidates_from": {"enum": ["human-scope-approval", "human-fidelity-inspection", "human-semantic-approval", "human-release-approval"]},
+          "input_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "payload_sha256": {"$ref": "#/$defs/sha256"},
+          "node_sha256": {"$ref": "#/$defs/sha256"}
+        }
+      }
+    },
+    "artifact_graph_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+}

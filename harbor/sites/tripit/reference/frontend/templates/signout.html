@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Sign out · TripIt{% endblock %}
+{% block content %}
+<section class="page signout">
+  <h1>Sign out of TripIt?</h1>
+  <p>Your trips stay exactly as they are. You can sign back in at any time.</p>
+  <form method="post" action="/app/logout">
+    <button type="submit" class="btn btn--primary">Sign out</button>
+  </form>
+  <p><a class="backlink" href="/app/trips">Stay signed in</a></p>
+</section>
+{% endblock %}

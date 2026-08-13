@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/websitebench.viewer-review-session.v1.json",
+  "title": "WebsiteBench diagnostic review session",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "session_id", "item_key",
+    "revision", "findings", "created_at", "updated_at", "authority"
+  ],
+  "properties": {
+    "schema_version": {"const": "websitebench.viewer-review-session.v1"},
+    "session_id": {"type": "string", "pattern": "^review-(?:offlineclone|websitebench)--[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "item_key": {
+      "type": "string",
+      "pattern": "^(?:offlineclone|websitebench)--[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "revision": {"type": "integer", "minimum": 0},
+    "findings": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {"$ref": "#/$defs/finding"}
+    },
+    "created_at": {
+      "oneOf": [
+        {"type": "string", "format": "date-time"},
+        {"type": "null"}
+      ]
+    },
+    "updated_at": {
+      "oneOf": [
+        {"type": "string", "format": "date-time"},
+        {"type": "null"}
+      ]
+    },
+    "authority": {
+      "const": "diagnostic-review-feedback-only"
+    }
+  },
+  "$defs": {
+    "nullable_text": {
+      "oneOf": [
+        {"type": "string", "maxLength": 1000},
+        {"type": "null"}
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "maxItems": 1000,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 1000}
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["checkpoint", "viewport", "route", "role", "state"],
+      "properties": {
+        "checkpoint": {"$ref": "#/$defs/nullable_text"},
+        "viewport": {
+          "oneOf": [
+            {"enum": ["desktop", "tablet", "mobile"]},
+            {"type": "null"}
+          ]
+        },
+        "route": {"$ref": "#/$defs/nullable_text"},
+        "role": {"$ref": "#/$defs/nullable_text"},
+        "state": {"$ref": "#/$defs/nullable_text"}
+      }
+    },
+    "resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "evidence_refs"],
+      "properties": {
+        "summary": {"type": "string", "maxLength": 10000},
+        "evidence_refs": {"$ref": "#/$defs/evidence_refs"}
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_id", "reviewer", "status", "severity", "category",
+        "target", "observation", "expected", "evidence_refs", "resolution",
+        "created_at", "updated_at"
+      ],
+      "properties": {
+        "finding_id": {"type": "string", "pattern": "^finding-[a-f0-9]{16}$"},
+        "reviewer": {"type": "string", "minLength": 1, "maxLength": 120},
+        "status": {
+          "enum": [
+            "open", "triaged", "repairing", "needs_evidence", "resolved",
+            "known_difference", "dismissed", "stale"
+          ]
+        },
+        "severity": {"enum": ["p0", "p1", "p2"]},
+        "category": {
+          "enum": [
+            "visual", "copy", "interaction", "semantics", "responsive",
+            "state", "data", "accessibility", "performance", "other"
+          ]
+        },
+        "target": {"$ref": "#/$defs/target"},
+        "observation": {"type": "string", "minLength": 1, "maxLength": 10000},
+        "expected": {"type": "string", "maxLength": 10000},
+        "evidence_refs": {"$ref": "#/$defs/evidence_refs"},
+        "resolution": {"$ref": "#/$defs/resolution"},
+        "created_at": {"type": "string", "format": "date-time"},
+        "updated_at": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}

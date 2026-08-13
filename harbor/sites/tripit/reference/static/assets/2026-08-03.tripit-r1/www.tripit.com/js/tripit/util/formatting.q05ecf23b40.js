@@ -1,0 +1,1 @@
+!function(){"use strict";window.TRIPIT.util.Formatting=function(){return this.toOxfordComma=function(n){return 1===n.length?n[0]:2===n.length?n[0]+" and "+n[1]:n.slice(0,-1).join(", ")+", and "+n.slice(-1)},this}}(jQuery);

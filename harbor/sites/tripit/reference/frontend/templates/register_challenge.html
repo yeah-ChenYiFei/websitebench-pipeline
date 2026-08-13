@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Create your account · TripIt{% endblock %}
+{% block content %}
+<section class="page auth-flow">
+  {% if stage == 'verify' %}
+    <h1>Verify your email</h1>
+    <p>We sent a 6-digit code to <strong>{{ email }}</strong>. Enter it below to finish creating your TripIt account.</p>
+    {% if errors %}
+      <ul class="form-errors" role="alert">{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
+    {% endif %}
+    <form class="form" method="post" action="/account/verify" autocomplete="off">
+      <input type="hidden" name="email" value="{{ email }}">
+      <input type="hidden" name="place" value="{{ place }}">
+      <label class="field">
+        <span class="field__label">Verification code</span>
+        <input class="field__input" type="text" name="code" inputmode="numeric"
+               autocomplete="one-time-code" pattern="[0-9]*" maxlength="6" required>
+      </label>
+      <div class="form__actions">
+        <button type="submit" class="btn btn--primary">Verify and continue</button>
+        <a class="btn" href="/account/create">Start over</a>
+      </div>
+    </form>
+  {% else %}
+    <h1>We couldn't create your account</h1>
+    {% if errors %}
+      <ul class="form-errors" role="alert">{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
+    {% endif %}
+    <p class="form__actions"><a class="btn btn--primary" href="/account/create">Back to sign up</a></p>
+  {% endif %}
+</section>
+{% endblock %}

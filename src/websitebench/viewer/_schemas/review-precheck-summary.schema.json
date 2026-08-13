@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/review-precheck-summary.v1.json",
+  "title": "Reviewer spawn precheck summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "batch_id",
+    "site_id",
+    "checkpoint",
+    "round",
+    "track",
+    "release_profile",
+    "packet",
+    "packet_sha256",
+    "checks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "clawbench.review-precheck-summary.v1"
+    },
+    "status": {
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "batch_id": {
+      "$ref": "#/$defs/id"
+    },
+    "site_id": {
+      "$ref": "#/$defs/id"
+    },
+    "checkpoint": {
+      "type": "string",
+      "minLength": 1
+    },
+    "round": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "track": {
+      "enum": [
+        "clone",
+        "harbor"
+      ]
+    },
+    "release_profile": {
+      "$ref": "#/$defs/id"
+    },
+    "packet": {
+      "type": "string",
+      "minLength": 1
+    },
+    "packet_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "status",
+          "detail"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "pass",
+              "fail"
+            ]
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 200
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

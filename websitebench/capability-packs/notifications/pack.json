@@ -1,0 +1,104 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "communication",
+        "entities": [
+          {
+            "identity": "site-local opaque notification identity; exact source key and ownership require R1 confirmation",
+            "name": "notification",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "notifications-lifecycle",
+        "label": "notifications lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "LOCAL_ONLY/SMTP_PENDING/SMTP_SENT/SMTP_FAILED",
+          "dedupe",
+          "bounded retry"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "queued",
+            "delivered",
+            "read",
+            "failed"
+          ],
+          "transitions": [
+            {
+              "from": "queued",
+              "to": "delivered",
+              "trigger": "server-authorized notifications lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "delivered",
+              "to": "read",
+              "trigger": "server-authorized notifications lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "read",
+              "to": "failed",
+              "trigger": "server-authorized notifications lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-notification-outbox",
+      "effects-gateway-mail"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "notifications keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "notifications-surface",
+        "label": "notifications route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "notifications surface"
+    ],
+    "state_families": [
+      "notifications loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "notifications",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "站内通知和 truthful mail outbox，支持失败与有界重试。",
+  "title": "Notifications overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "notifications actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "LOCAL_ONLY/SMTP_PENDING/SMTP_SENT/SMTP_FAILED",
+      "dedupe",
+      "bounded retry",
+      "structured site-specific sender and copy",
+      "sanitized provider failure categories"
+    ]
+  },
+  "version": "1.1.0"
+}

@@ -1,0 +1,68 @@
+{
+  "description": "Deterministic email-import fixture library. Each entry is a raw forwarded confirmation message plus the outcome backend.db.import_email must produce for the seeded 'traveler' account. Routing is by date overlap against seeded trips; the New York trip runs 2027-05-22..2027-05-27.",
+  "fixtures": [
+    {
+      "file": "hotel-hilton-newyork.eml",
+      "provider": "Hilton",
+      "plan_type": "lodging",
+      "expected_parse": "parsed",
+      "expected_routing": "trip-traveler-new-york",
+      "confirmation": "HIL84213905",
+      "note": "Check-in 2027-05-24 overlaps the seeded New York trip and files into it."
+    },
+    {
+      "file": "flight-united-itinerary.eml",
+      "provider": "United",
+      "plan_type": "air",
+      "expected_parse": "parsed",
+      "expected_routing": "unfiled",
+      "confirmation": "UA88F7QK",
+      "note": "Departs 2027-07-15 with no overlapping trip, so it lands in Unfiled Items."
+    },
+    {
+      "file": "flight-united-schedule-change.eml",
+      "provider": "United",
+      "plan_type": "air",
+      "expected_parse": "updated",
+      "expected_routing": "unfiled",
+      "confirmation": "UA88F7QK",
+      "note": "Same confirmation as the itinerary; updates the existing flight in place with new times."
+    },
+    {
+      "file": "flight-united-cancellation.eml",
+      "provider": "United",
+      "plan_type": "air",
+      "expected_parse": "canceled",
+      "expected_routing": "unfiled",
+      "confirmation": "UA88F7QK",
+      "note": "Marks the existing flight canceled; does not create a new plan."
+    },
+    {
+      "file": "car-hertz-confirmation.eml",
+      "provider": "Hertz",
+      "plan_type": "car",
+      "expected_parse": "parsed",
+      "expected_routing": "unfiled",
+      "confirmation": "HZ5567711",
+      "note": "Pick-up 2027-07-15 has no overlapping trip, so it lands in Unfiled Items."
+    },
+    {
+      "file": "restaurant-opentable.eml",
+      "provider": "OpenTable",
+      "plan_type": "restaurant",
+      "expected_parse": "parsed",
+      "expected_routing": "trip-traveler-new-york",
+      "confirmation": "OT5567",
+      "note": "Reservation 2027-05-25 overlaps the seeded New York trip and files into it."
+    },
+    {
+      "file": "newsletter-unparseable.eml",
+      "provider": null,
+      "plan_type": null,
+      "expected_parse": "unparseable",
+      "expected_routing": null,
+      "confirmation": null,
+      "note": "Marketing newsletter from an unknown sender; recorded as unparseable with no plan, mirroring the source failure UX."
+    }
+  ]
+}

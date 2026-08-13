@@ -1,0 +1,502 @@
+{
+  "schema_version": "offline-clone.journeys.v1",
+  "status": "frozen",
+  "site_id": "tripit",
+  "journeys": [
+    {
+      "id": "anon.marketing-browse.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "visitor.anonymous",
+      "outcome": "success",
+      "evidence_kind": "direct",
+      "steps": [
+        "Open / and land on /web marketing home with hero, nav, blog cards, publication band, footer",
+        "Navigate TripIt / TripIt Pro / How It Works / Pricing / SAP Concur from the primary nav",
+        "Open the language menu from the EN control and see the locale entries",
+        "On mobile, open the hamburger menu and reach the same destinations",
+        "Follow footer links to Security, Blog, Traveler Resource Center, and legal pages"
+      ]
+    },
+    {
+      "id": "anon.auth-shell.render",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "visitor.anonymous",
+      "outcome": "success",
+      "evidence_kind": "direct",
+      "steps": [
+        "Open /account/login and see logo, Email Address and Password floating-label fields, Keep me signed in, Forgot password?, Sign In, Google SSO, Create one link, legal footer",
+        "Open /account/create and see Email Address, Password with 'At least 15 characters. Cannot be an email.' helper, Home City, user-agreement checkbox, Create an Account, Google SSO",
+        "Open /account/forgotPassword and see the reset-request form",
+        "Type an invalid email on login and blur: field label turns red and 'Please use a valid email address.' appears without any request being sent"
+      ]
+    },
+    {
+      "id": "auth.registration.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "auth.anonymous",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Submit the create-account form with a fresh email, 15+ char non-email password, home city, and accepted agreement",
+        "Receive the registration mail (purpose=registration) in the active outbox with a secret verification code",
+        "Complete verification and land signed in with a server-issued __Host session cookie",
+        "The account and traveler profile rows exist; a welcome notification is recorded"
+      ]
+    },
+    {
+      "id": "auth.registration.failure-invalid",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "auth.anonymous",
+      "outcome": "failure",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Submit with an already-registered email, a short password, an email-shaped password, or an unchecked agreement",
+        "The form re-renders with source-matching field-level errors; no account row is created"
+      ]
+    },
+    {
+      "id": "auth.registration.retry-challenge",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "auth.anonymous",
+      "outcome": "retry",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Enter a wrong verification code and see the failure state",
+        "Request a fresh code; the old challenge is invalidated and the new one verifies successfully"
+      ]
+    },
+    {
+      "id": "auth.sign-in.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "auth.anonymous",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Submit valid credentials for traveler@example.com on /account/login",
+        "A server session row is created and the __Host-websitebench-tripit-session cookie is set",
+        "The browser lands on the trips list with the seeded Upcoming trips visible"
+      ]
+    },
+    {
+      "id": "auth.sign-in.failure-generic",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "auth.anonymous",
+      "outcome": "failure",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Submit a wrong password",
+        "See the source-matching generic error without account-existence disclosure; no session is created"
+      ]
+    },
+    {
+      "id": "auth.sign-in.retry-corrected",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "auth.anonymous",
+      "outcome": "retry",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "After a failed attempt, resubmit with correct credentials and sign in successfully"
+      ]
+    },
+    {
+      "id": "auth.password-reset.request",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "auth.anonymous",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Submit the forgot-password form for traveler@example.com",
+        "A password-reset mail (purpose=password-reset) with a secret code is issued to the active outbox",
+        "The response does not disclose whether the address exists"
+      ]
+    },
+    {
+      "id": "auth.password-reset.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "auth.anonymous",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Open the reset flow with the emailed code, set a new 15+ char password",
+        "Old sessions are revoked; signing in with the new password succeeds and with the old one fails"
+      ]
+    },
+    {
+      "id": "auth.password-reset.failure-invalid-challenge",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "auth.anonymous",
+      "outcome": "failure",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Attempt the reset with a wrong or expired code and see the failure state; the password is unchanged"
+      ]
+    },
+    {
+      "id": "auth.session.sign-out",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "auth.local-account",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Sign out from the account menu; the session row is invalidated and protected routes redirect to sign-in"
+      ]
+    },
+    {
+      "id": "trips.list.tabs.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Open the trips list as traveler@example.com",
+        "Upcoming shows New York, Kyoto Autumn, Lisbon Getaway ordered by start date under the frozen clock 2026-08-04",
+        "Past shows Chicago Sprint; Unfiled shows the seeded unfiled restaurant item",
+        "Empty-state copy renders when a tab has no rows (verified via the second account's tabs)"
+      ]
+    },
+    {
+      "id": "trips.create.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Create a trip with name, destination, start and end dates",
+        "The trip appears in the correct tab position; refresh and server restart preserve it"
+      ]
+    },
+    {
+      "id": "trips.create.validation-failure",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "failure",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Submit with end date before start date or a blank destination and see field-level errors; no row is created"
+      ]
+    },
+    {
+      "id": "trips.edit.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Edit the Kyoto trip's dates and name; the list resorts accordingly and the change persists"
+      ]
+    },
+    {
+      "id": "trips.delete.confirm-success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Delete a trip through its confirmation dialog; contained plans are removed with it; cancel leaves everything intact"
+      ]
+    },
+    {
+      "id": "trips.merge.success",
+      "status": "frozen",
+      "priority": "p1",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Merge two overlapping trips; plans re-home to the surviving trip, the duplicate is removed, and the action is idempotent"
+      ]
+    },
+    {
+      "id": "anchor.add-hilton-midtown-to-new-york-trip",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Open the seeded New York trip (2027-05-22..27) and choose Add a hotel",
+        "Type 'Hilton' and pick 'New York Hilton Midtown' from the typeahead",
+        "Enter check-in May 23 and check-out May 26; the datepicker defaults resolve to 2027 from the trip window",
+        "Enter confirmation number 4482210417 and save through the source-matching loading and success states",
+        "The reservation joins the existing trip (never a new trip) in correct chronological position",
+        "It survives refresh and server restart; it can be edited, moved, and deleted",
+        "Resubmitting the same form and importing fixture::hilton-midtown-confirmation do not create duplicates",
+        "other@example.com cannot see or modify it (403/404 without existence disclosure)"
+      ]
+    },
+    {
+      "id": "anchor.duplicate-submit-idempotent",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "retry",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Double-submit the hotel form (double click / resubmit after back); exactly one lodging row exists afterwards"
+      ]
+    },
+    {
+      "id": "plans.add-each-type.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "From a trip, add one plan of each of the 12 types: air, lodging, car, rail, transport, cruise, restaurant, meeting, activity, map, directions, note",
+        "Each type's form shows its registered field set, validation timing, defaults, and success feedback",
+        "Each saved plan renders its type-specific detail view and sits in correct timeline order (lodging expands to check-in/check-out rows, car to pick-up/drop-off rows)"
+      ]
+    },
+    {
+      "id": "plans.edit-move-delete.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Edit a plan's times and fields; the timeline reorders deterministically",
+        "Move a plan to another trip and back; delete it via its confirmation flow"
+      ]
+    },
+    {
+      "id": "plans.validation-failure",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "failure",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Submit a plan form with end before start or missing required fields and see field-level errors; nothing is saved"
+      ]
+    },
+    {
+      "id": "import.fixture-parse.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Inject fixture::hilton-midtown-confirmation through the simulator inbox",
+        "The message parses to a lodging plan that joins the New York trip by date overlap",
+        "An import receipt business mail is enqueued and the import history row shows parse_status=parsed"
+      ]
+    },
+    {
+      "id": "import.update-and-cancel",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Import the United itinerary (routes to Unfiled), then the United change fixture: the existing plan updates in place (parse_status=updated)",
+        "Import the Marriott confirmation then its cancellation: the plan is marked canceled with the source-matching canceled presentation"
+      ]
+    },
+    {
+      "id": "import.duplicate-idempotent",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "retry",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Re-inject an already-imported fixture; the fingerprint matches, parse_status=duplicate, and no second plan is created"
+      ]
+    },
+    {
+      "id": "import.unparseable-failure",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "failure",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Inject fixture::newsletter-unparseable; no plan is created and the visible unparseable failure state matches the frozen contract"
+      ]
+    },
+    {
+      "id": "share.invite-accept.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Invite other@example.com to the New York trip as viewer; a share-invite business mail is enqueued",
+        "The invitee accepts through the tokenized link and sees the trip read-only, with sensitive fields (confirmation numbers) hidden unless show_sensitive is granted"
+      ]
+    },
+    {
+      "id": "share.role-and-revoke",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Change the share role to editor and verify the invitee can now edit plans",
+        "Revoke the share; the invitee immediately loses access (403/404 without existence disclosure)"
+      ]
+    },
+    {
+      "id": "share.foreign-owner-isolation",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local-foreign",
+      "outcome": "failure",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "other@example.com requests traveler's trip and plan URLs without a share and receives 403/404 with no existence disclosure; mutation attempts change nothing"
+      ]
+    },
+    {
+      "id": "documents.upload-preview-download-delete",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Upload a PDF and an image to a plan; preview and download them; delete one",
+        "Documents persist across restart as BLOB rows and reset restores the single seeded document"
+      ]
+    },
+    {
+      "id": "documents.oversize-failure",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "failure",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Upload a file beyond the size limit and see the source-matching error; no row is created"
+      ]
+    },
+    {
+      "id": "export.print-itinerary",
+      "status": "frozen",
+      "priority": "p1",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Open the print view of the New York trip; the chronological itinerary renders in the print layout"
+      ]
+    },
+    {
+      "id": "export.ics-feed",
+      "status": "frozen",
+      "priority": "p1",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Enable the calendar feed; a tokenized ICS URL is issued (token stored only as digest)",
+        "Fetching the feed returns deterministic VEVENT rows for the seeded plans; revoking the token invalidates the URL"
+      ]
+    },
+    {
+      "id": "account.profile-and-settings",
+      "status": "frozen",
+      "priority": "p1",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Edit profile name and home city; toggle notification settings; changes persist and render back"
+      ]
+    },
+    {
+      "id": "pro.upgrade.stripe-test.success",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Start the TripIt Pro upgrade from the upsell surface",
+        "Complete checkout through the payment adapter (local-sandbox approved locally; stripe-test checkout on review profiles)",
+        "The verified webhook activates exactly one pro_subscription row; a pro-receipt business mail is enqueued",
+        "Pro-gated features unlock; status shows in account settings"
+      ]
+    },
+    {
+      "id": "pro.upgrade.declined-then-retry",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.free-local",
+      "outcome": "retry",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "A declined scenario shows the source-matching failure state and leaves no subscription",
+        "A retryable scenario succeeds on the second attempt with exactly one active subscription"
+      ]
+    },
+    {
+      "id": "pro.cancel-retains-period",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "traveler.pro-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Cancel the subscription; entitlements remain until period end per the frozen copy, then lapse; duplicate webhooks never re-activate"
+      ]
+    },
+    {
+      "id": "pro.features.deterministic-adapters",
+      "status": "frozen",
+      "priority": "p1",
+      "actor": "traveler.pro-local",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Flight alerts, gate/terminal, alternate flights, fare tracking, baggage, Go Now, airport guidance, guides, loyalty balances, and passport reminders render from deterministic local fixtures keyed by the frozen clock",
+        "Free-tier users see the source-matching upsell interstitials instead"
+      ]
+    },
+    {
+      "id": "lifecycle.deterministic-reset",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "verifier.admin-isolated",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "POST /__admin/reset with the admin token restores the exact seed manifest state (probe seed-reset.exact-reseed); repeat is idempotent (seed-reset.idempotent-repeat)"
+      ]
+    },
+    {
+      "id": "lifecycle.restart-persistence",
+      "status": "frozen",
+      "priority": "p0",
+      "actor": "verifier.admin-isolated",
+      "outcome": "success",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Committed mutations survive a full process restart (probe seed-reset.restart-round-trip); the migration journals hold exactly the manifest's physical rows"
+      ]
+    }
+  ]
+}

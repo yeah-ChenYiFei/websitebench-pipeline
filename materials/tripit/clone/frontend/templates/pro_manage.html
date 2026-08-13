@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}TripIt Pro · TripIt{% endblock %}
+{% block content %}
+<section class="page pro-manage" data-pro-state="active">
+  <h1>TripIt Pro</h1>
+  <p class="pro-manage__status">
+    You're a Pro member.
+    {% if cancel_at_period_end %}
+      Your membership will end on {{ renews_on }}. You keep every Pro benefit until then.
+    {% else %}
+      Your membership renews on {{ renews_on }}.
+    {% endif %}
+  </p>
+
+  <dl class="pro-manage__grid">
+    <dt>Plan</dt><dd>{{ plan_label }}</dd>
+    <dt>Price</dt><dd>{{ price_label }} / year</dd>
+    <dt>{% if cancel_at_period_end %}Access until{% else %}Renews{% endif %}</dt><dd>{{ renews_on }}</dd>
+    {% if receipt_id %}<dt>Receipt</dt><dd>{{ receipt_id }}</dd>{% endif %}
+  </dl>
+
+  <h2>Your Pro benefits</h2>
+  <ul class="pro-benefits">
+    {% for benefit in benefits %}
+    <li>{{ benefit }}</li>
+    {% endfor %}
+  </ul>
+
+  {% if cancel_at_period_end %}
+  <form action="/pro/resume" method="post" class="pro-manage__action">
+    <p>You've scheduled your membership to end. Change your mind?</p>
+    <button class="btn btn--primary" type="submit">Resume membership</button>
+  </form>
+  {% else %}
+  <form action="/pro/cancel" method="post" class="pro-manage__action">
+    <button class="btn" type="submit">Cancel membership</button>
+  </form>
+  {% endif %}
+</section>
+{% endblock %}

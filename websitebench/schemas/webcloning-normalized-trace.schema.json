@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/webcloning.normalized-trace.v1.json",
+  "title": "Redacted normalized source or clone Agent trace",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "trace_id",
+    "site_id",
+    "environment",
+    "generator",
+    "task",
+    "run",
+    "raw_trace",
+    "redaction",
+    "steps",
+    "summary",
+    "status",
+    "authority",
+    "content_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "webcloning.normalized-trace.v1"},
+    "trace_id": {"$ref": "#/$defs/sha256"},
+    "site_id": {"$ref": "#/$defs/id"},
+    "environment": {"enum": ["source", "clone"]},
+    "generator": {"const": "clawbench.webcloning.trace-normalizer.v1"},
+    "task": {"$ref": "#/$defs/task"},
+    "run": {"$ref": "#/$defs/run"},
+    "raw_trace": {"$ref": "#/$defs/raw_trace"},
+    "redaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "ruleset"],
+      "properties": {
+        "status": {"const": "applied"},
+        "ruleset": {"const": "webcloning-secrets-and-personal-data.v1"}
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/step"}
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "step_count",
+        "token_count",
+        "unknown_action_count",
+        "error_step_count",
+        "task_result"
+      ],
+      "properties": {
+        "step_count": {"type": "integer", "minimum": 1},
+        "token_count": {"type": "integer", "minimum": 0},
+        "unknown_action_count": {"type": "integer", "minimum": 0},
+        "error_step_count": {"type": "integer", "minimum": 0},
+        "task_result": {"enum": ["success", "failure", "timeout", "unknown"]}
+      }
+    },
+    "status": {"enum": ["complete", "incomplete", "historical-stale"]},
+    "authority": {
+      "const": "normalized-behavior-evidence-only-cannot-prove-clone-validity-or-release"
+    },
+    "content_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1200,
+      "pattern": "^(?![A-Za-z]:|/|\\\\|.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "suite",
+        "task_id",
+        "instruction_sha256"
+      ],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "suite": {"type": "string", "minLength": 1, "maxLength": 80},
+        "task_id": {"type": "integer", "minimum": 1},
+        "instruction_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agent", "model", "provider", "config_sha256", "seed", "run_id"],
+      "properties": {
+        "agent": {"type": "string", "minLength": 1, "maxLength": 200},
+        "model": {"type": "string", "minLength": 1, "maxLength": 200},
+        "provider": {"type": "string", "minLength": 1, "maxLength": 200},
+        "config_sha256": {"$ref": "#/$defs/sha256"},
+        "seed": {
+          "oneOf": [
+            {"type": "integer"},
+            {"type": "string", "minLength": 1, "maxLength": 200}
+          ]
+        },
+        "run_id": {"type": "string", "minLength": 1, "maxLength": 300}
+      }
+    },
+    "raw_trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "bytes", "access_level"],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "access_level": {"enum": ["controlled", "repository-redacted"]}
+      }
+    },
+    "nullable_string": {
+      "type": ["string", "null"],
+      "maxLength": 2000
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["route", "title", "markers", "observable_sha256"],
+      "properties": {
+        "route": {"$ref": "#/$defs/nullable_string"},
+        "title": {"$ref": "#/$defs/nullable_string"},
+        "markers": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {"type": "string", "maxLength": 2000}
+        },
+        "observable_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "summary"],
+      "properties": {
+        "kind": {"type": "string", "minLength": 1, "maxLength": 80},
+        "summary": {"type": "string", "maxLength": 2000},
+        "status_code": {"type": "integer", "minimum": 100, "maximum": 599}
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "step_id",
+        "index",
+        "actor",
+        "action",
+        "before",
+        "after",
+        "observations",
+        "external_effects",
+        "error",
+        "outcome",
+        "tokens",
+        "raw_record_sha256"
+      ],
+      "properties": {
+        "step_id": {"type": "string", "pattern": "^s[0-9]{4,}$"},
+        "index": {"type": "integer", "minimum": 1},
+        "actor": {"type": "string", "minLength": 1, "maxLength": 200},
+        "action": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["family", "name", "target"],
+          "properties": {
+            "family": {
+              "enum": [
+                "navigation",
+                "query",
+                "click",
+                "type",
+                "select",
+                "submit",
+                "upload",
+                "scroll",
+                "keyboard",
+                "wait",
+                "refresh",
+                "back-forward",
+                "api-visible-mutation",
+                "other"
+              ]
+            },
+            "name": {"type": "string", "minLength": 1, "maxLength": 200},
+            "target": {"$ref": "#/$defs/nullable_string"}
+          }
+        },
+        "before": {"$ref": "#/$defs/state"},
+        "after": {"$ref": "#/$defs/state"},
+        "observations": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {"$ref": "#/$defs/observation"}
+        },
+        "external_effects": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {"type": "string", "maxLength": 2000}
+        },
+        "error": {"$ref": "#/$defs/nullable_string"},
+        "outcome": {"type": "string", "minLength": 1, "maxLength": 80},
+        "tokens": {"type": "integer", "minimum": 0},
+        "raw_record_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

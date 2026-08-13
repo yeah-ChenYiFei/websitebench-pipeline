@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ trip.name }} — printable itinerary · TripIt{% endblock %}
+{% block content %}
+<section class="page trip-print">
+  <a class="backlink no-print" href="/app/trips/{{ trip.public_id }}">Back to trip</a>
+
+  <header class="trip-print__head">
+    <h1>{{ trip.name }}</h1>
+    <p class="trip-detail__dates">{{ trip.date_range }}</p>
+    {% if trip.destination %}<p class="trip-detail__dest">{{ trip.destination }}</p>{% endif %}
+    {% if profile.display_name %}<p class="trip-print__traveler">Traveler: {{ profile.display_name }}</p>{% endif %}
+  </header>
+
+  {% if timeline %}
+    <table class="trip-print__table">
+      <thead>
+        <tr><th scope="col">When</th><th scope="col">Plan</th><th scope="col">Details</th></tr>
+      </thead>
+      <tbody>
+        {% for event in timeline %}
+          <tr>
+            <td>{{ event.when or 'Unscheduled' }}</td>
+            <td>{{ event.row_label }}: {{ event.plan.title }}</td>
+            <td>
+              {% if event.plan.details.confirmation_number %}Confirmation #{{ event.plan.details.confirmation_number }}{% endif %}
+              {% if event.plan.details.address %}{{ event.plan.details.address }}{% endif %}
+              {% if event.plan.details.notes %}{{ event.plan.details.notes }}{% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>This trip has no plans yet.</p>
+  {% endif %}
+
+  <p class="no-print"><button type="button" class="btn btn--primary" data-print-trigger hidden>Print this itinerary</button></p>
+  <script src="/static/site/js/print-ui.js"></script>
+</section>
+{% endblock %}

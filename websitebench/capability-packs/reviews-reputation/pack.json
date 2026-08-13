@@ -1,0 +1,99 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "content",
+        "entities": [
+          {
+            "identity": "site-local opaque review identity; exact source key and ownership require R1 confirmation",
+            "name": "review",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "reviews-reputation-lifecycle",
+        "label": "reviews-reputation lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "one eligible review per subject",
+          "server aggregates",
+          "owner cannot self-review"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "published",
+            "disputed",
+            "removed"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "published",
+              "trigger": "server-authorized reviews-reputation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "published",
+              "to": "disputed",
+              "trigger": "server-authorized reviews-reputation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "disputed",
+              "to": "removed",
+              "trigger": "server-authorized reviews-reputation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "reviews-reputation keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "reviews-reputation-surface",
+        "label": "reviews-reputation route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "reviews-reputation surface"
+    ],
+    "state_families": [
+      "reviews-reputation loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "reviews-reputation",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "评价资格、评分聚合、信誉、回复和滥用控制。",
+  "title": "Reviews Reputation overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "reviews-reputation actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "one eligible review per subject",
+      "server aggregates",
+      "owner cannot self-review"
+    ]
+  },
+  "version": "1.0.0"
+}

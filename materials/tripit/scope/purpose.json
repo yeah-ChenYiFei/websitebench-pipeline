@@ -1,0 +1,154 @@
+{
+  "schema_version": "offline-clone.purpose.v1",
+  "status": "frozen",
+  "purpose_id": "tripit.trip-organizer-with-pro-tier",
+  "statement": "A traveler can browse the public TripIt marketing surfaces, register or sign in with a site-local account, organize trips across Upcoming/Past/Unfiled tabs, add and manage all twelve plan types inside a trip (anchored by adding the Hilton Midtown Manhattan hotel reservation May 23-26 to the existing seeded New York trip), import confirmation emails deterministically from a fixture library, share trips with role-scoped invitees, attach documents, export print and ICS views, and upgrade to TripIt Pro through test-mode payments with Pro features served by deterministic local adapters. Anonymous marketing and auth-shell surfaces replicate frozen source pixels; authenticated surfaces are honest local contracts pending authenticated source capture. Production TripIt services, credentials, and live payments are never touched.",
+  "primary_actor_ids": [
+    "visitor.anonymous",
+    "auth.anonymous",
+    "auth.local-account",
+    "traveler.free-local",
+    "traveler.free-local-foreign",
+    "traveler.pro-local"
+  ],
+  "secondary_actor_ids": [
+    "verifier.admin-isolated",
+    "mail.loopback-worker"
+  ],
+  "mainline_journey_ids": [
+    "anon.marketing-browse.success",
+    "anon.auth-shell.render",
+    "auth.registration.success",
+    "auth.registration.failure-invalid",
+    "auth.registration.retry-challenge",
+    "auth.sign-in.success",
+    "auth.sign-in.failure-generic",
+    "auth.sign-in.retry-corrected",
+    "auth.password-reset.request",
+    "auth.password-reset.success",
+    "auth.password-reset.failure-invalid-challenge",
+    "auth.session.sign-out",
+    "trips.list.tabs.success",
+    "trips.create.success",
+    "trips.create.validation-failure",
+    "trips.edit.success",
+    "trips.delete.confirm-success",
+    "anchor.add-hilton-midtown-to-new-york-trip",
+    "anchor.duplicate-submit-idempotent",
+    "plans.add-each-type.success",
+    "plans.edit-move-delete.success",
+    "plans.validation-failure",
+    "import.fixture-parse.success",
+    "import.update-and-cancel",
+    "import.duplicate-idempotent",
+    "import.unparseable-failure",
+    "share.invite-accept.success",
+    "share.role-and-revoke",
+    "share.foreign-owner-isolation",
+    "documents.upload-preview-download-delete",
+    "documents.oversize-failure",
+    "pro.upgrade.stripe-test.success",
+    "pro.upgrade.declined-then-retry",
+    "pro.cancel-retains-period",
+    "lifecycle.deterministic-reset",
+    "lifecycle.restart-persistence"
+  ],
+  "secondary_journey_ids": [
+    "trips.merge.success",
+    "export.print-itinerary",
+    "export.ics-feed",
+    "account.profile-and-settings",
+    "pro.features.deterministic-adapters"
+  ],
+  "actor_scope": [
+    {
+      "id": "visitor.anonymous",
+      "priority": "p0",
+      "disposition": "source-observed-public-browsing",
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "structural-only",
+      "notes": "Browses the captured marketing, auth-shell, and legal surfaces; owns no state."
+    },
+    {
+      "id": "auth.anonymous",
+      "priority": "p0",
+      "disposition": "explicit-local-contract",
+      "source_evidence_kind": "form-shell-direct-flow-unavailable",
+      "local_contract_evidence_kind": "structural-only",
+      "notes": "The login/create/forgot form shells and client-side validation are directly captured; server-side auth flows are benchmark-owned local contracts. No production credential is ever requested, stored, or replayed."
+    },
+    {
+      "id": "auth.local-account",
+      "priority": "p0",
+      "disposition": "explicit-local-contract",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "structural-only",
+      "notes": "Verified site-local account resolved only from a server-side session digest; the resolved subject is the exact traveler business subject.",
+      "product_actor_ids": ["traveler.free-local", "traveler.free-local-foreign", "traveler.pro-local"]
+    },
+    {
+      "id": "traveler.free-local",
+      "priority": "p0",
+      "disposition": "full-local-travel-flow",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "structural-only",
+      "notes": "Owner of the seeded dataset (traveler@example.com). Authenticated source pixels are unavailable this round (Browserbase retired, Steel Live View handoff pending a user-driven session); functional semantics follow the frozen feature-floor contract and are upgradeable to direct evidence in a later capture round without re-freezing anonymous contracts.",
+      "auth_actor_id": "auth.local-account",
+      "server_subject_id": "subject::traveler"
+    },
+    {
+      "id": "traveler.free-local-foreign",
+      "priority": "p0",
+      "disposition": "negative-owner-boundary-local-simulation",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "structural-only",
+      "notes": "Second local account (other@example.com) used only to prove cross-user isolation and share-role boundaries.",
+      "auth_actor_id": "auth.local-account",
+      "server_subject_id": "subject::other"
+    },
+    {
+      "id": "traveler.pro-local",
+      "priority": "p0",
+      "disposition": "pro-entitlement-local-simulation",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "structural-only",
+      "notes": "traveler.free-local after a test-mode Pro activation; Pro features are deterministic fixture adapters. Pro source pixels pend the user-driven Steel Live View session.",
+      "auth_actor_id": "auth.local-account",
+      "server_subject_id": "subject::traveler"
+    },
+    {
+      "id": "verifier.admin-isolated",
+      "priority": "p0",
+      "disposition": "benchmark-verifier-control-plane-only",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "structural-only",
+      "notes": "Token-gated admin reset/lifecycle probes on isolated paths; not a product user or public route."
+    },
+    {
+      "id": "mail.loopback-worker",
+      "priority": "p0",
+      "disposition": "benchmark-loopback-mail-worker-only",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "structural-only",
+      "notes": "Delivers outbox rows on local profiles; never a production mail sender."
+    }
+  ],
+  "simulations": [
+    "Site-local registration, verification, sign-in, opaque server sessions, password recovery, and mail outbox semantics are benchmark-owned synthetic behavior; they never request or imply production TripIt credentials, cookies, or email delivery.",
+    "Inbound email import is modeled as a deterministic site capability: a seeded fixture library plus an unlinked simulator inbox surface. Visible product surfaces (forward-to-plans copy, Unfiled routing, import history) follow the frozen contract; no production mailbox or SMTP ingestion exists.",
+    "External travel data (flight status, gates, weather, maps, airports, transit, safety, carbon, stats, guides, loyalty, fares, baggage) comes from deterministic local fixture adapters keyed by the frozen clock 2026-08-04T09:00:00-04:00.",
+    "TripIt Pro payments run only through the local sandbox or per-site Stripe test mode behind the shared edge verifier; live payment credentials are structurally forbidden."
+  ],
+  "out_of_scope": [
+    "Production TripIt accounts, credentials, cookies, tokens, verification codes, and payment data (never requested, stored, or output)",
+    "Live Stripe keys, live charges, or any unauthorized source-site side effects",
+    "Real inbound SMTP ingestion at plans@tripit.com; only the deterministic fixture import capability is modeled",
+    "Google SSO federation (the button renders; the federated flow terminates in a local explanatory boundary, never contacting Google)",
+    "Native iOS/Android apps, app-store distribution, and deep links into native apps",
+    "Locale variants (en-uk, fr, de, es-co, es) beyond the frozen en-US baseline; the language menu renders with source-observed entries",
+    "External help center (help.tripit.com / freshdesk), concur.com, social platforms, jobs.sap.com, and blog article deep content beyond the captured blog index",
+    "TripIt 20th-anniversary campaign microsite and YouTube-embedded video playback (poster frame only)",
+    "Public redistribution approval for TripIt/Concur/SAP trademarks, imagery, and fonts (technically-verified never asserts redistribution rights)",
+    "Catalog-scale content beyond the frozen seed dataset (entity counts intentionally reduced; page families, fields, interactions, and states are not reduced)"
+  ]
+}

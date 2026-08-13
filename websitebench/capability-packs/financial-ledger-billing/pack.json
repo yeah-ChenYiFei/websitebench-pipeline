@@ -1,0 +1,329 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque money-movement identity; exact source key and ownership require R1 confirmation",
+            "name": "money-movement",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque financialaccount identity; exact source key and ownership require R1 confirmation",
+            "name": "financialaccount",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque ledgerentry identity; exact source key and ownership require R1 confirmation",
+            "name": "ledgerentry",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque transaction identity; exact source key and ownership require R1 confirmation",
+            "name": "transaction",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque paymentmethod identity; exact source key and ownership require R1 confirmation",
+            "name": "paymentmethod",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque invoice-bill identity; exact source key and ownership require R1 confirmation",
+            "name": "invoice-bill",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque transfer-trade-pledge identity; exact source key and ownership require R1 confirmation",
+            "name": "transfer-trade-pledge",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque settlement identity; exact source key and ownership require R1 confirmation",
+            "name": "settlement",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque dispute identity; exact source key and ownership require R1 confirmation",
+            "name": "dispute",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque statement identity; exact source key and ownership require R1 confirmation",
+            "name": "statement",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "financial-ledger-billing-money-movement",
+        "label": "financial-ledger-billing money_movement lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "金额、余额、双分录、幂等和可逆转移由服务端事务保证。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "pending",
+            "authorized",
+            "posted",
+            "settled",
+            "failed",
+            "reversed",
+            "disputed"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "pending",
+              "trigger": "server-authorized financial-ledger-billing money_movement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "pending",
+              "to": "authorized",
+              "trigger": "server-authorized financial-ledger-billing money_movement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "authorized",
+              "to": "posted",
+              "trigger": "server-authorized financial-ledger-billing money_movement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "posted",
+              "to": "settled",
+              "trigger": "server-authorized financial-ledger-billing money_movement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "settled",
+              "to": "failed",
+              "trigger": "server-authorized financial-ledger-billing money_movement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "failed",
+              "to": "reversed",
+              "trigger": "server-authorized financial-ledger-billing money_movement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "reversed",
+              "to": "disputed",
+              "trigger": "server-authorized financial-ledger-billing money_movement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque billing identity; exact source key and ownership require R1 confirmation",
+            "name": "billing",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque financialaccount identity; exact source key and ownership require R1 confirmation",
+            "name": "financialaccount",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque ledgerentry identity; exact source key and ownership require R1 confirmation",
+            "name": "ledgerentry",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque transaction identity; exact source key and ownership require R1 confirmation",
+            "name": "transaction",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque paymentmethod identity; exact source key and ownership require R1 confirmation",
+            "name": "paymentmethod",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque invoice-bill identity; exact source key and ownership require R1 confirmation",
+            "name": "invoice-bill",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque transfer-trade-pledge identity; exact source key and ownership require R1 confirmation",
+            "name": "transfer-trade-pledge",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque settlement identity; exact source key and ownership require R1 confirmation",
+            "name": "settlement",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque dispute identity; exact source key and ownership require R1 confirmation",
+            "name": "dispute",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque statement identity; exact source key and ownership require R1 confirmation",
+            "name": "statement",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "financial-ledger-billing-billing",
+        "label": "financial-ledger-billing billing lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "应收余额、支付应用、作废和退款不得由 UI 自报。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "issued",
+            "partially-paid",
+            "paid",
+            "overdue",
+            "void",
+            "refunded"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "issued",
+              "trigger": "server-authorized financial-ledger-billing billing lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "issued",
+              "to": "partially-paid",
+              "trigger": "server-authorized financial-ledger-billing billing lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "partially-paid",
+              "to": "paid",
+              "trigger": "server-authorized financial-ledger-billing billing lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "paid",
+              "to": "overdue",
+              "trigger": "server-authorized financial-ledger-billing billing lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "overdue",
+              "to": "void",
+              "trigger": "server-authorized financial-ledger-billing billing lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "void",
+              "to": "refunded",
+              "trigger": "server-authorized financial-ledger-billing billing lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-financial-ledger-effect-ledger"
+    ]
+  },
+  "batch_family_id": "finance-regulated",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "financial-ledger-entry",
+        "label": "Entry route family for 管理账户、余额、支付/转账/投资/账单/会计或筹资活动，保留可审计的货币账本。",
+        "priority": "p0"
+      },
+      {
+        "id": "financial-ledger-discover",
+        "label": "Discover route family for 管理账户、余额、支付/转账/投资/账单/会计或筹资活动，保留可审计的货币账本。",
+        "priority": "p0"
+      },
+      {
+        "id": "financial-ledger-detail",
+        "label": "Detail route family for 管理账户、余额、支付/转账/投资/账单/会计或筹资活动，保留可审计的货币账本。",
+        "priority": "p0"
+      },
+      {
+        "id": "financial-ledger-commit",
+        "label": "Commit route family for 管理账户、余额、支付/转账/投资/账单/会计或筹资活动，保留可审计的货币账本。",
+        "priority": "p0"
+      },
+      {
+        "id": "financial-ledger-confirm",
+        "label": "Confirm route family for 管理账户、余额、支付/转账/投资/账单/会计或筹资活动，保留可审计的货币账本。",
+        "priority": "p0"
+      },
+      {
+        "id": "financial-ledger-recover",
+        "label": "Recover route family for 管理账户、余额、支付/转账/投资/账单/会计或筹资活动，保留可审计的货币账本。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "financial-ledger global navigation",
+      "financial-ledger primary content",
+      "financial-ledger decision and action region",
+      "financial-ledger confirmation and aftercare"
+    ],
+    "state_families": [
+      "money_movement",
+      "billing",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "financial-ledger-billing",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "管理账户、余额、支付/转账/投资/账单/会计或筹资活动，保留可审计的货币账本。",
+  "title": "Financial Ledger Billing",
+  "verification": {
+    "coverage_dimensions": [
+      "financial-ledger-billing actor x action x state x outcome",
+      "financial-ledger-billing entity ownership and durable visibility",
+      "financial-ledger-billing valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "不可直接覆写的账本、精确小数/币种、余额和幂等键。",
+      "授权、结算、失败、冲正、争议和对账持久化。",
+      "本地 payment/bank adapter 与 outbox 如实表达 pending/failed，不制造生产付款。"
+    ]
+  },
+  "version": "1.0.0"
+}

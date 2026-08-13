@@ -1,0 +1,60 @@
+{
+  "schema_version": "websitebench.harbor.policy-baselines.v1",
+  "instances": {
+    "capterra-public-authenticated-reconstruction": {
+      "manifest_sha256": "9047e46d865058e95193cd584f85f751dd718be5b6763516ac38c2f12491f227",
+      "historical_manifest_sha256": "c01cf957a507585cb27c2c48c1c382a37a81672f9a13bdbfd2986c1ac4dbcdfd",
+      "policy": "legacy-pre-auth-checkout-v1",
+      "reason": "Pre-policy verifier retained with an exact pin after the OpenCLI profile was added."
+    },
+    "petfinder-v2-815-dog-favorite": {
+      "manifest_sha256": "12303ce36d5d33c29ea77a3dc7452787fe5deaa9870e9b76e51740143b14304f",
+      "historical_calibration_manifest_sha256": "65f72eed93360db549ccb00670df59cdbbd75dac8da57226adeddbbd9eba6bee",
+      "site_manifest_sha256": "b97962ff1137023f714676a40191c25c8435490621a17aff6649656ba650f40f",
+      "historical_calibration_site_manifest_sha256": "0f8c00af219cfe185b1168807e6b3fccbe97c04b16eff5191128edbeca00eb89",
+      "policy": "legacy-pre-auth-checkout-v1",
+      "reason": "Pre-policy local-calibration verifier retained with an exact pin after the OpenCLI profile was added."
+    },
+    "petfinder-v2-816-cat-favorite-remove": {
+      "manifest_sha256": "7a5810188b7ea05a4214c15231058b2a1017b86a72709675f33a9fa682602bea",
+      "historical_calibration_manifest_sha256": "692274c7f11b0b55b4034b0bf95c47c409bf84f1d56de2477119fb3d83396a3b",
+      "site_manifest_sha256": "b97962ff1137023f714676a40191c25c8435490621a17aff6649656ba650f40f",
+      "historical_calibration_site_manifest_sha256": "0f8c00af219cfe185b1168807e6b3fccbe97c04b16eff5191128edbeca00eb89",
+      "policy": "legacy-pre-auth-checkout-v1",
+      "reason": "Pre-policy local-calibration verifier retained with an exact pin after the OpenCLI profile was added."
+    },
+    "petfinder-v2-817-adopter-profile": {
+      "manifest_sha256": "2244d2a6605f8c513b368d1eea75e21be4bb209abd01d15a9c4908b52654b962",
+      "historical_calibration_manifest_sha256": "b818e7431a7ccfbbbb45f2e76466c77a918c6d9a34b55b1a29b5480dab477721",
+      "site_manifest_sha256": "b97962ff1137023f714676a40191c25c8435490621a17aff6649656ba650f40f",
+      "historical_calibration_site_manifest_sha256": "0f8c00af219cfe185b1168807e6b3fccbe97c04b16eff5191128edbeca00eb89",
+      "policy": "legacy-pre-auth-checkout-v1",
+      "reason": "Pre-policy local-calibration verifier retained with an exact pin after the OpenCLI profile was added."
+    },
+    "imdb-v2-901-watchlist-dark-knight": {
+      "manifest_sha256": "d60345b808e675eef2466518aab8c6cd9b520b57b0ab49a3a94935321b81d78d",
+      "policy": "legacy-pre-auth-checkout-v1",
+      "reason": "Historical IMDb task 901 predates the checkout policy; its plan explicitly disables payment while retaining local auth."
+    },
+    "imdb-v2-902-rate-interstellar-nine": {
+      "manifest_sha256": "45e61a0087b9e7a566fd315bf1386c45b18f0699fbe4cb1a76b5f1c23f813b00",
+      "policy": "legacy-pre-auth-checkout-v1",
+      "reason": "Historical IMDb task 902 predates the checkout policy; its plan explicitly disables payment while retaining local auth."
+    },
+    "imdb-v2-903-remove-interstellar-rating": {
+      "manifest_sha256": "639307a39686cf89b8679fcdde7aaeb2f411e75f24293b348fec578bc2c3a4cd",
+      "policy": "legacy-pre-auth-checkout-v1",
+      "reason": "Historical IMDb task 903 predates the checkout policy; its plan explicitly disables payment while retaining local auth."
+    },
+    "imdb-v2-904-create-private-title-list": {
+      "manifest_sha256": "32ae63d2c5ed27882b7ecc8b38769bd63ca5125ffac6197cd642a30975643790",
+      "policy": "legacy-pre-auth-checkout-v1",
+      "reason": "Historical IMDb task 904 predates the checkout policy; its plan explicitly disables payment while retaining local auth."
+    },
+    "imdb-v2-905-add-pulp-fiction-to-list": {
+      "manifest_sha256": "2cd1bfb1a45a3d5328a0ce4c3d91ceb3c930a113839e9cc23538248981825a4a",
+      "policy": "legacy-pre-auth-checkout-v1",
+      "reason": "Historical IMDb task 905 predates the checkout policy; its plan explicitly disables payment while retaining local auth."
+    }
+  }
+}

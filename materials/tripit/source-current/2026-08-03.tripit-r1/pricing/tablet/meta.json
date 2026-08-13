@@ -1,0 +1,45 @@
+{
+  "checkpoint": "pricing",
+  "family": "marketing",
+  "priority": "P1",
+  "viewport": "tablet",
+  "requested_url": "https://www.tripit.com/web/pro/pricing",
+  "final_url": "https://www.tripit.com/web/pro/pricing",
+  "title": "Pricing - TripIt Pro vs. free features included with TripIt",
+  "body_text_len": 2340,
+  "frames": 3,
+  "frame_sha256": [
+    "774dc0b909fcaf45a00b5d46b80d444fd1568d10f0c1914a146740a78415bafc",
+    "774dc0b909fcaf45a00b5d46b80d444fd1568d10f0c1914a146740a78415bafc",
+    "774dc0b909fcaf45a00b5d46b80d444fd1568d10f0c1914a146740a78415bafc"
+  ],
+  "frames_identical": true,
+  "link_count": 40,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 1024,
+      "height": 62
+    },
+    "main": {
+      "selector": "[role=main]",
+      "x": 0,
+      "y": 127,
+      "width": 1024,
+      "height": 2410
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 32,
+      "y": 2537,
+      "width": 960,
+      "height": 501
+    },
+    "form": null,
+    "document_height": 3039
+  }
+}

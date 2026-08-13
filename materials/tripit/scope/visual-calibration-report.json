@@ -1,0 +1,2603 @@
+{
+  "schema_version": "tripit.visual-calibration-report.v1",
+  "status": "frozen",
+  "site_id": "tripit",
+  "capture_id": "2026-08-03.tripit-r1",
+  "frames_per_checkpoint": 3,
+  "metric": "pixel-mae-similarity-v1",
+  "threshold_rule": "threshold = min(0.995, flicker_floor - 0.002) per region, where flicker_floor is the minimum pairwise pixel-mae-similarity-v1 across the three pre-candidate source frames normalized to the frozen viewport box. Derived before any candidate render existed.",
+  "rows": [
+    {
+      "id": "home.desktop.full",
+      "checkpoint_id": "home.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home.desktop.header",
+      "checkpoint_id": "home.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home.desktop.main",
+      "checkpoint_id": "home.desktop",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1440,
+        "height": 773
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "free.desktop.full",
+      "checkpoint_id": "free.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "free.desktop.header",
+      "checkpoint_id": "free.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "free.desktop.main",
+      "checkpoint_id": "free.desktop",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1440,
+        "height": 773
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pro.desktop.full",
+      "checkpoint_id": "pro.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pro.desktop.header",
+      "checkpoint_id": "pro.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pro.desktop.main",
+      "checkpoint_id": "pro.desktop",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1440,
+        "height": 773
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "how-it-works.desktop.full",
+      "checkpoint_id": "how-it-works.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        0.992434,
+        0.992424,
+        0.999988
+      ],
+      "flicker_floor": 0.992424,
+      "derived_threshold": 0.9904
+    },
+    {
+      "id": "how-it-works.desktop.header",
+      "checkpoint_id": "how-it-works.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "how-it-works.desktop.main",
+      "checkpoint_id": "how-it-works.desktop",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1440,
+        "height": 773
+      },
+      "pairwise_similarity": [
+        0.991191,
+        0.99118,
+        0.999986
+      ],
+      "flicker_floor": 0.99118,
+      "derived_threshold": 0.9892
+    },
+    {
+      "id": "pricing.desktop.full",
+      "checkpoint_id": "pricing.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pricing.desktop.header",
+      "checkpoint_id": "pricing.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pricing.desktop.main",
+      "checkpoint_id": "pricing.desktop",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1440,
+        "height": 773
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "sap-concur.desktop.full",
+      "checkpoint_id": "sap-concur.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "sap-concur.desktop.header",
+      "checkpoint_id": "sap-concur.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "sap-concur.desktop.main",
+      "checkpoint_id": "sap-concur.desktop",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1440,
+        "height": 773
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "download.desktop.full",
+      "checkpoint_id": "download.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "download.desktop.header",
+      "checkpoint_id": "download.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "download.desktop.main",
+      "checkpoint_id": "download.desktop",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1440,
+        "height": 764
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "download.desktop.footer",
+      "checkpoint_id": "download.desktop",
+      "region": "footer",
+      "region_box": {
+        "x": 150,
+        "y": 891,
+        "width": 1140,
+        "height": 9
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "security.desktop.full",
+      "checkpoint_id": "security.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "security.desktop.header",
+      "checkpoint_id": "security.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "security.desktop.main",
+      "checkpoint_id": "security.desktop",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1440,
+        "height": 773
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login.desktop.full",
+      "checkpoint_id": "login.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login.desktop.footer",
+      "checkpoint_id": "login.desktop",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 860,
+        "width": 1440,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login.desktop.action",
+      "checkpoint_id": "login.desktop",
+      "region": "action",
+      "region_box": {
+        "x": 560,
+        "y": 204,
+        "width": 320,
+        "height": 399
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "create.desktop.full",
+      "checkpoint_id": "create.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "create.desktop.footer",
+      "checkpoint_id": "create.desktop",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 860,
+        "width": 1440,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "create.desktop.action",
+      "checkpoint_id": "create.desktop",
+      "region": "action",
+      "region_box": {
+        "x": 560,
+        "y": 204,
+        "width": 320,
+        "height": 493
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "forgot-password.desktop.full",
+      "checkpoint_id": "forgot-password.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "forgot-password.desktop.footer",
+      "checkpoint_id": "forgot-password.desktop",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 860,
+        "width": 1440,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "blog-index.desktop.full",
+      "checkpoint_id": "blog-index.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        0.89391,
+        0.89391,
+        1.0
+      ],
+      "flicker_floor": 0.89391,
+      "derived_threshold": 0.8919
+    },
+    {
+      "id": "blog-index.desktop.header",
+      "checkpoint_id": "blog-index.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "blog-index.desktop.main",
+      "checkpoint_id": "blog-index.desktop",
+      "region": "main",
+      "region_box": {
+        "x": 240,
+        "y": 136,
+        "width": 960,
+        "height": 764
+      },
+      "pairwise_similarity": [
+        0.812537,
+        0.812537,
+        1.0
+      ],
+      "flicker_floor": 0.812537,
+      "derived_threshold": 0.8105
+    },
+    {
+      "id": "traveler-resource-center.desktop.full",
+      "checkpoint_id": "traveler-resource-center.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "traveler-resource-center.desktop.header",
+      "checkpoint_id": "traveler-resource-center.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "traveler-resource-center.desktop.main",
+      "checkpoint_id": "traveler-resource-center.desktop",
+      "region": "main",
+      "region_box": {
+        "x": 240,
+        "y": 136,
+        "width": 960,
+        "height": 764
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-user-agreement.desktop.full",
+      "checkpoint_id": "legal-user-agreement.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-user-agreement.desktop.header",
+      "checkpoint_id": "legal-user-agreement.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 100
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-privacy.desktop.full",
+      "checkpoint_id": "legal-privacy.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-privacy.desktop.header",
+      "checkpoint_id": "legal-privacy.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 100
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-do-not-share.desktop.full",
+      "checkpoint_id": "legal-do-not-share.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-do-not-share.desktop.footer",
+      "checkpoint_id": "legal-do-not-share.desktop",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 860,
+        "width": 1440,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-do-not-share.desktop.action",
+      "checkpoint_id": "legal-do-not-share.desktop",
+      "region": "action",
+      "region_box": {
+        "x": 385,
+        "y": 314,
+        "width": 670,
+        "height": 180
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home.tablet.full",
+      "checkpoint_id": "home.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home.tablet.header",
+      "checkpoint_id": "home.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home.tablet.main",
+      "checkpoint_id": "home.tablet",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1024,
+        "height": 641
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "free.tablet.full",
+      "checkpoint_id": "free.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "free.tablet.header",
+      "checkpoint_id": "free.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "free.tablet.main",
+      "checkpoint_id": "free.tablet",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1024,
+        "height": 641
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pro.tablet.full",
+      "checkpoint_id": "pro.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pro.tablet.header",
+      "checkpoint_id": "pro.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pro.tablet.main",
+      "checkpoint_id": "pro.tablet",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1024,
+        "height": 641
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "how-it-works.tablet.full",
+      "checkpoint_id": "how-it-works.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "how-it-works.tablet.header",
+      "checkpoint_id": "how-it-works.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "how-it-works.tablet.main",
+      "checkpoint_id": "how-it-works.tablet",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1024,
+        "height": 641
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pricing.tablet.full",
+      "checkpoint_id": "pricing.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pricing.tablet.header",
+      "checkpoint_id": "pricing.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pricing.tablet.main",
+      "checkpoint_id": "pricing.tablet",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1024,
+        "height": 641
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "sap-concur.tablet.full",
+      "checkpoint_id": "sap-concur.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "sap-concur.tablet.header",
+      "checkpoint_id": "sap-concur.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "sap-concur.tablet.main",
+      "checkpoint_id": "sap-concur.tablet",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1024,
+        "height": 641
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "download.tablet.full",
+      "checkpoint_id": "download.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "download.tablet.header",
+      "checkpoint_id": "download.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "download.tablet.main",
+      "checkpoint_id": "download.tablet",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1024,
+        "height": 641
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "security.tablet.full",
+      "checkpoint_id": "security.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "security.tablet.header",
+      "checkpoint_id": "security.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "security.tablet.main",
+      "checkpoint_id": "security.tablet",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1024,
+        "height": 641
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login.tablet.full",
+      "checkpoint_id": "login.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login.tablet.footer",
+      "checkpoint_id": "login.tablet",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 728,
+        "width": 1024,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login.tablet.action",
+      "checkpoint_id": "login.tablet",
+      "region": "action",
+      "region_box": {
+        "x": 352,
+        "y": 204,
+        "width": 320,
+        "height": 399
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "create.tablet.full",
+      "checkpoint_id": "create.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "create.tablet.footer",
+      "checkpoint_id": "create.tablet",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 728,
+        "width": 1024,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "create.tablet.action",
+      "checkpoint_id": "create.tablet",
+      "region": "action",
+      "region_box": {
+        "x": 352,
+        "y": 204,
+        "width": 320,
+        "height": 493
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "forgot-password.tablet.full",
+      "checkpoint_id": "forgot-password.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "forgot-password.tablet.footer",
+      "checkpoint_id": "forgot-password.tablet",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 728,
+        "width": 1024,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "blog-index.tablet.full",
+      "checkpoint_id": "blog-index.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        0.825052,
+        0.825052,
+        1.0
+      ],
+      "flicker_floor": 0.825052,
+      "derived_threshold": 0.8231
+    },
+    {
+      "id": "blog-index.tablet.header",
+      "checkpoint_id": "blog-index.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "blog-index.tablet.main",
+      "checkpoint_id": "blog-index.tablet",
+      "region": "main",
+      "region_box": {
+        "x": 32,
+        "y": 136,
+        "width": 960,
+        "height": 632
+      },
+      "pairwise_similarity": [
+        0.773232,
+        0.773232,
+        1.0
+      ],
+      "flicker_floor": 0.773232,
+      "derived_threshold": 0.7712
+    },
+    {
+      "id": "traveler-resource-center.tablet.full",
+      "checkpoint_id": "traveler-resource-center.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "traveler-resource-center.tablet.header",
+      "checkpoint_id": "traveler-resource-center.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "traveler-resource-center.tablet.main",
+      "checkpoint_id": "traveler-resource-center.tablet",
+      "region": "main",
+      "region_box": {
+        "x": 32,
+        "y": 136,
+        "width": 960,
+        "height": 632
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-user-agreement.tablet.full",
+      "checkpoint_id": "legal-user-agreement.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-user-agreement.tablet.header",
+      "checkpoint_id": "legal-user-agreement.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 100
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-privacy.tablet.full",
+      "checkpoint_id": "legal-privacy.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-privacy.tablet.header",
+      "checkpoint_id": "legal-privacy.tablet",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 100
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-do-not-share.tablet.full",
+      "checkpoint_id": "legal-do-not-share.tablet",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-do-not-share.tablet.footer",
+      "checkpoint_id": "legal-do-not-share.tablet",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 728,
+        "width": 1024,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-do-not-share.tablet.action",
+      "checkpoint_id": "legal-do-not-share.tablet",
+      "region": "action",
+      "region_box": {
+        "x": 177,
+        "y": 314,
+        "width": 670,
+        "height": 180
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home.mobile.full",
+      "checkpoint_id": "home.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home.mobile.header",
+      "checkpoint_id": "home.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 59
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home.mobile.main",
+      "checkpoint_id": "home.mobile",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 146,
+        "width": 390,
+        "height": 698
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "free.mobile.full",
+      "checkpoint_id": "free.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "free.mobile.header",
+      "checkpoint_id": "free.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 59
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "free.mobile.main",
+      "checkpoint_id": "free.mobile",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 146,
+        "width": 390,
+        "height": 698
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pro.mobile.full",
+      "checkpoint_id": "pro.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pro.mobile.header",
+      "checkpoint_id": "pro.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 59
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pro.mobile.main",
+      "checkpoint_id": "pro.mobile",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 146,
+        "width": 390,
+        "height": 698
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "how-it-works.mobile.full",
+      "checkpoint_id": "how-it-works.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "how-it-works.mobile.header",
+      "checkpoint_id": "how-it-works.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 59
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "how-it-works.mobile.main",
+      "checkpoint_id": "how-it-works.mobile",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 146,
+        "width": 390,
+        "height": 698
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pricing.mobile.full",
+      "checkpoint_id": "pricing.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pricing.mobile.header",
+      "checkpoint_id": "pricing.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 59
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "pricing.mobile.main",
+      "checkpoint_id": "pricing.mobile",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 146,
+        "width": 390,
+        "height": 698
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "sap-concur.mobile.full",
+      "checkpoint_id": "sap-concur.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "sap-concur.mobile.header",
+      "checkpoint_id": "sap-concur.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 59
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "sap-concur.mobile.main",
+      "checkpoint_id": "sap-concur.mobile",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 146,
+        "width": 390,
+        "height": 698
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "download.mobile.full",
+      "checkpoint_id": "download.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "download.mobile.header",
+      "checkpoint_id": "download.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 59
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "download.mobile.main",
+      "checkpoint_id": "download.mobile",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 146,
+        "width": 390,
+        "height": 698
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "security.mobile.full",
+      "checkpoint_id": "security.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "security.mobile.header",
+      "checkpoint_id": "security.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 59
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "security.mobile.main",
+      "checkpoint_id": "security.mobile",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 146,
+        "width": 390,
+        "height": 698
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login.mobile.full",
+      "checkpoint_id": "login.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login.mobile.footer",
+      "checkpoint_id": "login.mobile",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 792,
+        "width": 390,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login.mobile.action",
+      "checkpoint_id": "login.mobile",
+      "region": "action",
+      "region_box": {
+        "x": 35,
+        "y": 152,
+        "width": 320,
+        "height": 399
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "create.mobile.full",
+      "checkpoint_id": "create.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "create.mobile.footer",
+      "checkpoint_id": "create.mobile",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 792,
+        "width": 390,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "create.mobile.action",
+      "checkpoint_id": "create.mobile",
+      "region": "action",
+      "region_box": {
+        "x": 35,
+        "y": 152,
+        "width": 320,
+        "height": 493
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "forgot-password.mobile.full",
+      "checkpoint_id": "forgot-password.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "forgot-password.mobile.footer",
+      "checkpoint_id": "forgot-password.mobile",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 792,
+        "width": 390,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "blog-index.mobile.full",
+      "checkpoint_id": "blog-index.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        0.994567,
+        0.994567,
+        1.0
+      ],
+      "flicker_floor": 0.994567,
+      "derived_threshold": 0.9926
+    },
+    {
+      "id": "blog-index.mobile.header",
+      "checkpoint_id": "blog-index.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 59
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "blog-index.mobile.main",
+      "checkpoint_id": "blog-index.mobile",
+      "region": "main",
+      "region_box": {
+        "x": 35,
+        "y": 160,
+        "width": 320,
+        "height": 684
+      },
+      "pairwise_similarity": [
+        0.99183,
+        0.99183,
+        1.0
+      ],
+      "flicker_floor": 0.99183,
+      "derived_threshold": 0.9898
+    },
+    {
+      "id": "traveler-resource-center.mobile.full",
+      "checkpoint_id": "traveler-resource-center.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "traveler-resource-center.mobile.header",
+      "checkpoint_id": "traveler-resource-center.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 59
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "traveler-resource-center.mobile.main",
+      "checkpoint_id": "traveler-resource-center.mobile",
+      "region": "main",
+      "region_box": {
+        "x": 35,
+        "y": 160,
+        "width": 320,
+        "height": 684
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-user-agreement.mobile.full",
+      "checkpoint_id": "legal-user-agreement.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-user-agreement.mobile.header",
+      "checkpoint_id": "legal-user-agreement.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 81
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-privacy.mobile.full",
+      "checkpoint_id": "legal-privacy.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-privacy.mobile.header",
+      "checkpoint_id": "legal-privacy.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 81
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-do-not-share.mobile.full",
+      "checkpoint_id": "legal-do-not-share.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "legal-do-not-share.mobile.action",
+      "checkpoint_id": "legal-do-not-share.mobile",
+      "region": "action",
+      "region_box": {
+        "x": 15,
+        "y": 425,
+        "width": 360,
+        "height": 360
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home-lang-menu-open.desktop.full",
+      "checkpoint_id": "home-lang-menu-open.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home-lang-menu-open.desktop.header",
+      "checkpoint_id": "home-lang-menu-open.desktop",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 62
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home-lang-menu-open.desktop.main",
+      "checkpoint_id": "home-lang-menu-open.desktop",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 127,
+        "width": 1440,
+        "height": 773
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home-mobile-menu-open.mobile.full",
+      "checkpoint_id": "home-mobile-menu-open.mobile",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home-mobile-menu-open.mobile.header",
+      "checkpoint_id": "home-mobile-menu-open.mobile",
+      "region": "header",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 59
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "home-mobile-menu-open.mobile.main",
+      "checkpoint_id": "home-mobile-menu-open.mobile",
+      "region": "main",
+      "region_box": {
+        "x": 0,
+        "y": 146,
+        "width": 390,
+        "height": 698
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login-client-validation.desktop.full",
+      "checkpoint_id": "login-client-validation.desktop",
+      "region": "full",
+      "region_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login-client-validation.desktop.footer",
+      "checkpoint_id": "login-client-validation.desktop",
+      "region": "footer",
+      "region_box": {
+        "x": 0,
+        "y": 860,
+        "width": 1440,
+        "height": 40
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    },
+    {
+      "id": "login-client-validation.desktop.action",
+      "checkpoint_id": "login-client-validation.desktop",
+      "region": "action",
+      "region_box": {
+        "x": 560,
+        "y": 204,
+        "width": 320,
+        "height": 399
+      },
+      "pairwise_similarity": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flicker_floor": 1.0,
+      "derived_threshold": 0.995
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "content",
+        "entities": [
+          {
+            "identity": "site-local opaque content-revision identity; exact source key and ownership require R1 confirmation",
+            "name": "content-revision",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "content-lifecycle",
+        "label": "content lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "owner and publication authority",
+          "revision history",
+          "offline assets only"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "published",
+            "archived"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "published",
+              "trigger": "server-authorized content lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "published",
+              "to": "archived",
+              "trigger": "server-authorized content lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "content keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "content-surface",
+        "label": "content route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "content surface"
+    ],
+    "state_families": [
+      "content loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "content",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "结构化内容、媒体/附件、草稿/发布、版本、可见性与本地资源闭包。",
+  "title": "Content overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "content actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "owner and publication authority",
+      "revision history",
+      "offline assets only"
+    ]
+  },
+  "version": "1.0.0"
+}

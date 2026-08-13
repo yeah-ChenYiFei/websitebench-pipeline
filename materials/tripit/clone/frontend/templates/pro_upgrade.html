@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Go Pro · TripIt{% endblock %}
+{% block content %}
+<section class="page pro-upgrade">
+  <h1>Upgrade to TripIt Pro</h1>
+  <p class="pro-upgrade__lede">One membership, every trip. Pro works the moment your plans change.</p>
+
+  {% if error %}
+  <div class="flash {% if retry %}flash--notice{% else %}flash--error{% endif %}" role="alert" data-payment-result="{% if retry %}retryable{% else %}declined{% endif %}">
+    {{ error }}
+  </div>
+  {% endif %}
+
+  <div class="pro-upgrade__layout">
+    <div class="pro-upgrade__main">
+      <h2>What you get</h2>
+      <ul class="pro-benefits">
+        {% for benefit in benefits %}
+        <li>{{ benefit }}</li>
+        {% endfor %}
+      </ul>
+
+      <div class="payment-note" role="note">
+        {% if stripe_enabled %}
+        You will continue to Stripe's secure test checkout. This site never stores card numbers, CVV, or bank details, and no real charge will be made.
+        {% else %}
+        This site never asks for or stores card numbers, CVV, or bank details.
+        {% endif %}
+      </div>
+
+      <form action="/pro/subscribe" method="post" class="pro-upgrade__form">
+        {% if not stripe_enabled %}
+        <fieldset class="pro-scenarios">
+          <legend>Test outcome</legend>
+          {% for scenario in scenarios %}
+          <label><input type="radio" name="scenario" value="{{ scenario.value }}"{% if scenario.checked %} checked{% endif %}> {{ scenario.label }}</label>
+          {% endfor %}
+        </fieldset>
+        {% endif %}
+        <button class="btn btn--primary" type="submit">{% if stripe_enabled %}Continue to Stripe test checkout{% else %}Go Pro{% endif %} — {{ price_label }}/year</button>
+      </form>
+    </div>
+
+    <aside class="pro-upgrade__summary">
+      <h2>Membership</h2>
+      <dl>
+        <dt>Plan</dt><dd>TripIt Pro (annual)</dd>
+        <dt>Price</dt><dd>{{ price_label }} / year</dd>
+        <dt>Total due today</dt><dd><strong>{{ total_label }}</strong></dd>
+      </dl>
+    </aside>
+  </div>
+</section>
+{% endblock %}

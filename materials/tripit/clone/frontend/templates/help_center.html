@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if view == 'article' %}{{ article_title }}{% else %}TripIt Help Center{% endif %}</title>
+    <link rel="icon" href="/app/favicon_v2.ico">
+    <link rel="stylesheet" href="/static/site/css/help-center.css">
+  </head>
+  <body>
+    <a class="help-skip" href="#fw-main-content">Skip to main content</a>
+    <header class="help-header">
+      <a class="help-logo" href="/" aria-label="TripIt Logo">
+        <img src="/images/logos/tripit_logo_blue.svg" alt="TripIt Logo">
+      </a>
+      <nav aria-label="Help Center">
+        <a class="{% if active_nav == 'home' %}is-active{% endif %}" href="/en/support/home">Home</a>
+        <a class="{% if active_nav == 'solutions' %}is-active{% endif %}" href="/en/support/solutions">Knowledge base</a>
+        <a class="help-ticket-link{% if active_nav == 'ticket' %} is-active{% endif %}" href="/en/support/tickets/new">Submit a ticket</a>
+        <button type="button" class="help-language">English⌄</button>
+      </nav>
+    </header>
+
+    <main id="fw-main-content">
+      {% if view in ('home', 'search') %}
+        <section class="help-hero">
+          <h1>Hi, how can we help you?</h1>
+          <form action="/en/support/search" method="get" role="search">
+            <label for="help-search">Search:</label>
+            <div class="help-search-control">
+              <input id="help-search" name="q" value="{{ search_query or '' }}" placeholder="Enter the search term here....">
+              <button type="submit" aria-label="Search">⌕</button>
+            </div>
+          </form>
+        </section>
+      {% endif %}
+
+      {% if view == 'home' %}
+        <section class="help-card" aria-labelledby="help-card-title">
+          <h2 id="help-card-title"><span aria-hidden="true">▱</span> TripIt Help Center (8)</h2>
+          <div class="help-grid">
+            {% for item in sections %}
+              <article class="help-section">
+                <h3><span aria-hidden="true">▱</span> {{ item.title }} ({{ item.count }})</h3>
+                <ul>
+                  {% for slug, title in item.articles %}
+                    <li><a href="/en/support/solutions/articles/{{ slug }}"><span aria-hidden="true">▤</span> {{ title }}</a></li>
+                  {% endfor %}
+                </ul>
+                <a class="help-view-all" href="/en/support/solutions/folders/{{ item.folder }}">View all {{ item.count }}</a>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+      {% elif view == 'folder' %}
+        <section class="help-document">
+          <p class="help-breadcrumbs"><a href="/en/support/home">Home</a> › <a href="/en/support/solutions">Knowledge base</a></p>
+          <h1>{{ section.title }}</h1>
+          <p class="help-muted">Articles in this category</p>
+          <ul class="help-article-list">
+            {% for slug, title in section.articles %}
+              <li><a href="/en/support/solutions/articles/{{ slug }}">{{ title }}</a><p>TripIt Help Center guidance and step-by-step instructions.</p></li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% elif view == 'article' %}
+        <section class="help-document help-article">
+          <p class="help-breadcrumbs"><a href="/en/support/home">Home</a> › <a href="/en/support/solutions">Knowledge base</a></p>
+          <h1>{{ article_title }}</h1>
+          <p class="help-muted">Modified on: Mon, Aug 10, 2026</p>
+          <p>This article explains how to use this TripIt feature on the website and in the TripIt app.</p>
+          <h2>How it works</h2>
+          <p>Open the relevant TripIt page, review the available settings, and follow the on-screen steps. Your trips and account information stay connected to your signed-in profile.</p>
+          <p><a href="/en/support/home">Return to the TripIt Help Center</a></p>
+        </section>
+      {% elif view == 'search' %}
+        <section class="help-document">
+          <h1>Search results for “{{ search_query }}”</h1>
+          {% if search_results %}
+            <ul class="help-article-list">
+              {% for slug, title in search_results %}<li><a href="/en/support/solutions/articles/{{ slug }}">{{ title }}</a></li>{% endfor %}
+            </ul>
+          {% else %}<p>No results found. Try a different search term.</p>{% endif %}
+        </section>
+      {% else %}
+        <section class="help-document help-ticket">
+          <h1>Submit a ticket</h1>
+          <p>Tell us what you need help with and the TripIt support team will point you in the right direction.</p>
+          <form>
+            <label>Your email address<input type="email" placeholder="you@example.com"></label>
+            <label>Subject<input type="text" placeholder="How can we help?"></label>
+            <label>Description<textarea rows="7" placeholder="Enter the details of your question"></textarea></label>
+            <button type="button">Submit</button>
+          </form>
+        </section>
+      {% endif %}
+    </main>
+
+    <footer class="help-footer">TripIt Help Center · <a href="/">Return to TripIt</a></footer>
+  </body>
+</html>

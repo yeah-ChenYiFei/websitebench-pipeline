@@ -1,0 +1,107 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque work-item identity; exact source key and ownership require R1 confirmation",
+            "name": "work-item",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "workflow-lifecycle",
+        "label": "workflow lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "legal transitions",
+          "optimistic concurrency",
+          "idempotent submit",
+          "audit trail"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "open",
+            "in-progress",
+            "completed",
+            "cancelled"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "open",
+              "trigger": "server-authorized workflow lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "open",
+              "to": "in-progress",
+              "trigger": "server-authorized workflow lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "in-progress",
+              "to": "completed",
+              "trigger": "server-authorized workflow lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "completed",
+              "to": "cancelled",
+              "trigger": "server-authorized workflow lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "workflow keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "workflow-surface",
+        "label": "workflow route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "workflow surface"
+    ],
+    "state_families": [
+      "workflow loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "workflow",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "队列、指派、阶段、审批、截止期、重试和 aftercare。",
+  "title": "Workflow overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "workflow actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "legal transitions",
+      "optimistic concurrency",
+      "idempotent submit",
+      "audit trail"
+    ]
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/harbor-cicd-suite.schema.json",
+  "title": "WebsiteBench Harbor trusted CI/CD suite",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "suite_id", "site_id", "checks"],
+  "properties": {
+    "schema_version": {"const": "websitebench.harbor.cicd-suite.v1"},
+    "suite_id": {"$ref": "#/$defs/id"},
+    "site_id": {"$ref": "#/$defs/id"},
+    "checks": {"type": "array", "minItems": 1, "maxItems": 500, "items": {"$ref": "#/$defs/check"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9](?:[a-z0-9._:/-]*[a-z0-9])?$", "maxLength": 200},
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "timeout_sec"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "kind": {"enum": ["platform", "static", "api", "integration", "security", "otp", "migration", "recovery", "performance"]},
+        "runner": {"type": "string", "pattern": "^(?![A-Za-z]:)(?![\\\\/])(?!.*(?:^|[\\\\/])\\.\\.(?:[\\\\/]|$)).+", "maxLength": 512},
+        "timeout_sec": {"type": "integer", "minimum": 1, "maximum": 1800}
+      },
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "platform"}}}, "then": {"properties": {"runner": false}}, "else": {"required": ["runner"]}}
+      ]
+    }
+  }
+}

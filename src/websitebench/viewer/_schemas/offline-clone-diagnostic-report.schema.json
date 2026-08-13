@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/offline-clone-diagnostic-report.schema.json",
+  "title": "WebsiteBench offline clone diagnostic report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "authority",
+    "qualification",
+    "site_id",
+    "generated_at",
+    "diagnostic_status",
+    "requested_sections",
+    "sections"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "offline-clone.diagnostic-report.v1"
+    },
+    "authority": {
+      "const": "diagnostic-only"
+    },
+    "qualification": {
+      "const": "maintainer-judgment-required"
+    },
+    "site_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "diagnostic_status": {
+      "enum": [
+        "clean",
+        "findings",
+        "incomplete"
+      ]
+    },
+    "requested_sections": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "static",
+          "live"
+        ]
+      }
+    },
+    "sections": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "properties": {
+        "static": {
+          "$ref": "#/$defs/section"
+        },
+        "live": {
+          "$ref": "#/$defs/section"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "requested_sections": {
+            "contains": {
+              "const": "static"
+            }
+          }
+        },
+        "required": [
+          "requested_sections"
+        ]
+      },
+      "then": {
+        "properties": {
+          "sections": {
+            "required": [
+              "static"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "requested_sections": {
+            "contains": {
+              "const": "live"
+            }
+          }
+        },
+        "required": [
+          "requested_sections"
+        ]
+      },
+      "then": {
+        "properties": {
+          "sections": {
+            "required": [
+              "live"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "check",
+        "subject",
+        "message"
+      ],
+      "properties": {
+        "check": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "subject": {
+          "oneOf": [
+            {
+              "type": "string",
+              "maxLength": 4096
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 16384
+        }
+      }
+    },
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution",
+        "coverage",
+        "findings",
+        "observations"
+      ],
+      "properties": {
+        "execution": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "complete",
+            "incomplete_reasons"
+          ],
+          "properties": {
+            "complete": {
+              "type": "boolean"
+            },
+            "incomplete_reasons": {
+              "type": "array",
+              "maxItems": 64,
+              "items": {
+                "type": "string",
+                "maxLength": 16384
+              }
+            }
+          }
+        },
+        "coverage": {
+          "type": "object",
+          "maxProperties": 256,
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "findings": {
+          "type": "array",
+          "maxItems": 100000,
+          "items": {
+            "$ref": "#/$defs/finding"
+          }
+        },
+        "observations": {
+          "type": "array",
+          "maxItems": 100000,
+          "items": {
+            "$ref": "#/$defs/finding"
+          }
+        }
+      }
+    }
+  }
+}

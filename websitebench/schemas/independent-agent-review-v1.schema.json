@@ -1,0 +1,571 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/independent-agent-review.v1.json",
+  "title": "Independent offline-clone Reviewer Agent record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_id",
+    "site_id",
+    "checkpoint",
+    "round",
+    "packet",
+    "independence",
+    "runtime_identity",
+    "passes",
+    "coverage",
+    "findings",
+    "decision",
+    "open_p0",
+    "open_p1",
+    "stale"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "clawbench.independent-agent-review.v1"
+    },
+    "review_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 200
+    },
+    "site_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 200
+    },
+    "checkpoint": {
+      "enum": [
+        "R1-scope-evidence",
+        "R2-frontend",
+        "R3-semantics",
+        "R4-runtime-release"
+      ]
+    },
+    "round": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "packet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "inputs",
+        "forbidden_inputs_absent"
+      ],
+      "properties": {
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "inputs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/hashed_input"
+          }
+        },
+        "forbidden_inputs_absent": {
+          "type": "boolean"
+        }
+      }
+    },
+    "independence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "model",
+        "fork_turns",
+        "prompt_sha256",
+        "conversation_visible",
+        "concern_corpus_visible",
+        "producer_summary_visible",
+        "prior_findings_visible_before_blind_freeze",
+        "filesystem_boundary",
+        "paths_read"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "fork_turns": {
+          "const": "none"
+        },
+        "prompt_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "conversation_visible": {
+          "type": "boolean"
+        },
+        "concern_corpus_visible": {
+          "type": "boolean"
+        },
+        "producer_summary_visible": {
+          "type": "boolean"
+        },
+        "prior_findings_visible_before_blind_freeze": {
+          "type": "boolean"
+        },
+        "filesystem_boundary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "paths_read": {
+          "type": "array",
+          "maxItems": 1000,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        }
+      }
+    },
+    "runtime_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_sha256",
+        "candidate_tree_sha256",
+        "commit_and_dirty_patch_sha256",
+        "url",
+        "process_identity",
+        "process_started_at",
+        "reset_seed",
+        "bundle_sha256",
+        "matches_packet"
+      ],
+      "properties": {
+        "manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "candidate_tree_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "commit_and_dirty_patch_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 2000
+        },
+        "process_identity": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "process_started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reset_seed": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "bundle_sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "matches_packet": {
+          "type": "boolean"
+        }
+      }
+    },
+    "passes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blind_discovery",
+        "directed_verification"
+      ],
+      "properties": {
+        "blind_discovery": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "frozen_report_sha256",
+            "frozen_at",
+            "surface_inventory",
+            "denominator_audit"
+          ],
+          "properties": {
+            "frozen_report_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "frozen_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "surface_inventory": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 10000,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
+            },
+            "denominator_audit": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1000,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
+            }
+          }
+        },
+        "directed_verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "performed",
+            "disclosed_after_blind_freeze",
+            "obligations"
+          ],
+          "properties": {
+            "performed": {
+              "type": "boolean"
+            },
+            "disclosed_after_blind_freeze": {
+              "type": "boolean"
+            },
+            "obligations": {
+              "type": "array",
+              "maxItems": 1000,
+              "items": {
+                "$ref": "#/$defs/obligation"
+              }
+            }
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "p0_required",
+        "p0_executed",
+        "p0_coverage_complete",
+        "denominators"
+      ],
+      "properties": {
+        "p0_required": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "p0_executed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "p0_coverage_complete": {
+          "type": "boolean"
+        },
+        "denominators": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "items": {
+            "$ref": "#/$defs/denominator"
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "decision": {
+      "enum": [
+        "accepted",
+        "rejected",
+        "blocked",
+        "uncertain"
+      ]
+    },
+    "open_p0": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "open_p1": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stale": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "accepted"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "packet": {
+            "properties": {
+              "forbidden_inputs_absent": {
+                "const": true
+              }
+            }
+          },
+          "independence": {
+            "properties": {
+              "conversation_visible": {
+                "const": false
+              },
+              "concern_corpus_visible": {
+                "const": false
+              },
+              "producer_summary_visible": {
+                "const": false
+              },
+              "prior_findings_visible_before_blind_freeze": {
+                "const": false
+              }
+            }
+          },
+          "runtime_identity": {
+            "properties": {
+              "matches_packet": {
+                "const": true
+              }
+            }
+          },
+          "passes": {
+            "properties": {
+              "directed_verification": {
+                "properties": {
+                  "performed": {
+                    "const": true
+                  },
+                  "disclosed_after_blind_freeze": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          "coverage": {
+            "properties": {
+              "p0_coverage_complete": {
+                "const": true
+              }
+            }
+          },
+          "open_p0": {
+            "const": 0
+          },
+          "open_p1": {
+            "const": 0
+          },
+          "stale": {
+            "const": false
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "hashed_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 100
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "obligation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "outcome",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "outcome": {
+          "enum": [
+            "independently-discovered",
+            "newly-confirmed",
+            "contradicted",
+            "not-reproducible",
+            "blocked"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        }
+      }
+    },
+    "denominator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "required",
+        "executed"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 200
+        },
+        "required": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "executed": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "fingerprint",
+        "class",
+        "severity",
+        "route_state_viewport_role",
+        "expected",
+        "observed",
+        "evidence",
+        "machine_checkable",
+        "regression_target",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 200
+        },
+        "fingerprint": {
+          "$ref": "#/$defs/sha256"
+        },
+        "class": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 200
+        },
+        "severity": {
+          "enum": [
+            "P0",
+            "P1",
+            "P2"
+          ]
+        },
+        "route_state_viewport_role": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "expected": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "observed": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 100,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "machine_checkable": {
+          "type": "boolean"
+        },
+        "regression_target": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1000
+        },
+        "status": {
+          "enum": [
+            "open",
+            "blocked",
+            "p2-deferred"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "websitebench"
+version = "1.0.0"
+description = "Offline website-clone pipeline: prompt-driven clone production through Harbor instance authoring"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "argon2-cffi>=23.1",
+    "fastapi>=0.115",
+    "httpx>=0.27",
+    "jinja2>=3.1",
+    "jsonschema>=4.26.0",
+    "numpy>=1.26",
+    "pillow>=11.0",
+    "playwright==1.61.0",
+    "python-multipart>=0.0.9",
+    "pyyaml>=6.0",
+    "scikit-image>=0.25",
+    "uvicorn>=0.30",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.3",
+    "ruff>=0.15.12,<0.16",
+]
+
+[project.scripts]
+websitebench-viewer = "websitebench.viewer.cli:main"
+websitebench-offline-clone = "websitebench.offline_clone.cli:main"
+websitebench-site = "websitebench.site_compiler.cli:main"
+websitebench-workflow = "websitebench.workflow.cli:main"
+websitebench-harbor = "websitebench.harbor.cli:main"
+websitebench-webcloning = "websitebench.webcloning.cli:main"
+websitebench-task-replay = "websitebench.task_replay.cli:main"
+websitebench-browser-trajectory = "websitebench.browser_trajectory.cli:main"
+websitebench-public-clone-auth-vendor = "websitebench.public_clone_auth.vendor:main"
+websitebench-local-clone-auth-vendor = "websitebench.local_clone_auth.vendor:main"
+websitebench-site-backend-vendor = "websitebench.site_backend.vendor:main"
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/websitebench"]
+
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src/websitebench",
+    "/websitebench",
+    "/harbor",
+    "/prompts",
+    "/tools/offline_clone",
+    "/tests",
+    "/docs",
+    "/README.md",
+    "/CONTRIBUTING.md",
+    "/LICENSE",
+    "/NOTICE",
+]
+
+[tool.ruff]
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[dependency-groups]
+dev = [
+    "httpx2>=2.0.0",
+    # Required by the tripit full-suite verification command, which runs
+    # clone/tests with -n 8 --dist loadfile (114.7s -> 22.4s, same 349 passed).
+    "pytest-xdist>=3.8.0",
+]

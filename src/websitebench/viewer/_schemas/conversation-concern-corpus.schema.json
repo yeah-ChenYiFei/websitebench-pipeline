@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/conversation-concern-corpus.v1.json",
+  "title": "Private conversation-derived clone concern corpus",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at",
+    "scope",
+    "visibility",
+    "sources",
+    "concerns"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "clawbench.conversation-concern-corpus.v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "visibility": {
+      "const": "maintainer-only"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "concerns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/concern"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "archive_id",
+        "thread_id",
+        "parent_thread_ids",
+        "snapshot_kind",
+        "authoritative_path",
+        "sha256"
+      ],
+      "properties": {
+        "archive_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "thread_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9-]{36}$"
+        },
+        "parent_thread_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-f0-9-]{36}$"
+          }
+        },
+        "snapshot_kind": {
+          "enum": [
+            "complete",
+            "point-in-time"
+          ]
+        },
+        "authoritative_path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "concern": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source",
+        "exact_user_quote",
+        "quote_sha256",
+        "derivation",
+        "visibility"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^concern-[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 160
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "archive_id",
+            "thread_id",
+            "message_ordinal",
+            "raw_jsonl_line",
+            "timestamp"
+          ],
+          "properties": {
+            "archive_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "thread_id": {
+              "type": "string",
+              "pattern": "^[a-f0-9-]{36}$"
+            },
+            "message_ordinal": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "raw_jsonl_line": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "timestamp": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date-time"
+            }
+          }
+        },
+        "exact_user_quote": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        },
+        "quote_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "derivation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "risk_class",
+            "generalized_observation",
+            "neutral_probe",
+            "earliest_checkpoint",
+            "required_evidence",
+            "machine_checkable"
+          ],
+          "properties": {
+            "risk_class": {
+              "enum": [
+                "coverage-denominator-gap",
+                "navigation-dead-end",
+                "semantic-destination-mismatch",
+                "missing-action-control",
+                "server-state-or-quote-gap",
+                "variant-identity-gap",
+                "visual-geometry-density-gap",
+                "behavioral-affordance-gap",
+                "failure-retry-recovery-gap",
+                "external-effect-truth-gap",
+                "runtime-evidence-gap",
+                "purpose-scope-gap",
+                "workflow-order-gap"
+              ]
+            },
+            "generalized_observation": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "neutral_probe": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "earliest_checkpoint": {
+              "enum": [
+                "R1-scope-evidence",
+                "R2-frontend",
+                "R3-semantics",
+                "R4-runtime-release"
+              ]
+            },
+            "required_evidence": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 20,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
+            },
+            "machine_checkable": {
+              "type": "boolean"
+            }
+          }
+        },
+        "visibility": {
+          "const": "maintainer-only"
+        }
+      }
+    }
+  }
+}

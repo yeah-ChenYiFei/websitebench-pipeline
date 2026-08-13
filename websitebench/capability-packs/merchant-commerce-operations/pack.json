@@ -1,0 +1,293 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque catalog-publication identity; exact source key and ownership require R1 confirmation",
+            "name": "catalog-publication",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque store-tenant identity; exact source key and ownership require R1 confirmation",
+            "name": "store-tenant",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque channel identity; exact source key and ownership require R1 confirmation",
+            "name": "channel",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque product identity; exact source key and ownership require R1 confirmation",
+            "name": "product",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque variant identity; exact source key and ownership require R1 confirmation",
+            "name": "variant",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque inventorylocation identity; exact source key and ownership require R1 confirmation",
+            "name": "inventorylocation",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque pricerule identity; exact source key and ownership require R1 confirmation",
+            "name": "pricerule",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque customer identity; exact source key and ownership require R1 confirmation",
+            "name": "customer",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque order identity; exact source key and ownership require R1 confirmation",
+            "name": "order",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque fulfillment identity; exact source key and ownership require R1 confirmation",
+            "name": "fulfillment",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque promotion identity; exact source key and ownership require R1 confirmation",
+            "name": "promotion",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "merchant-commerce-operations-catalog-publication",
+        "label": "merchant-commerce-operations catalog_publication lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "租户边界、发布权限、唯一标识和渠道可见性由服务端执行。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "active",
+            "archived"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "active",
+              "trigger": "server-authorized merchant-commerce-operations catalog_publication lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "archived",
+              "trigger": "server-authorized merchant-commerce-operations catalog_publication lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque fulfillment identity; exact source key and ownership require R1 confirmation",
+            "name": "fulfillment",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque store-tenant identity; exact source key and ownership require R1 confirmation",
+            "name": "store-tenant",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque channel identity; exact source key and ownership require R1 confirmation",
+            "name": "channel",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque product identity; exact source key and ownership require R1 confirmation",
+            "name": "product",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque variant identity; exact source key and ownership require R1 confirmation",
+            "name": "variant",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque inventorylocation identity; exact source key and ownership require R1 confirmation",
+            "name": "inventorylocation",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque pricerule identity; exact source key and ownership require R1 confirmation",
+            "name": "pricerule",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque customer identity; exact source key and ownership require R1 confirmation",
+            "name": "customer",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque order identity; exact source key and ownership require R1 confirmation",
+            "name": "order",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque promotion identity; exact source key and ownership require R1 confirmation",
+            "name": "promotion",
+            "owner_scope": "tenant",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "merchant-commerce-operations-fulfillment",
+        "label": "merchant-commerce-operations fulfillment lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "履约数量不得超过订单数量，退款与库存回补保持一致。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "unfulfilled",
+            "partial",
+            "fulfilled",
+            "cancelled",
+            "returned"
+          ],
+          "transitions": [
+            {
+              "from": "unfulfilled",
+              "to": "partial",
+              "trigger": "server-authorized merchant-commerce-operations fulfillment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "partial",
+              "to": "fulfilled",
+              "trigger": "server-authorized merchant-commerce-operations fulfillment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "fulfilled",
+              "to": "cancelled",
+              "trigger": "server-authorized merchant-commerce-operations fulfillment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "cancelled",
+              "to": "returned",
+              "trigger": "server-authorized merchant-commerce-operations fulfillment lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-merchant-commerce-effect-ledger"
+    ]
+  },
+  "batch_family_id": "commerce-marketplace",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "merchant-commerce-entry",
+        "label": "Entry route family for 为商家管理店铺、目录、库存、定价、订单、客户、促销、渠道和运营报表。",
+        "priority": "p0"
+      },
+      {
+        "id": "merchant-commerce-discover",
+        "label": "Discover route family for 为商家管理店铺、目录、库存、定价、订单、客户、促销、渠道和运营报表。",
+        "priority": "p0"
+      },
+      {
+        "id": "merchant-commerce-detail",
+        "label": "Detail route family for 为商家管理店铺、目录、库存、定价、订单、客户、促销、渠道和运营报表。",
+        "priority": "p0"
+      },
+      {
+        "id": "merchant-commerce-commit",
+        "label": "Commit route family for 为商家管理店铺、目录、库存、定价、订单、客户、促销、渠道和运营报表。",
+        "priority": "p0"
+      },
+      {
+        "id": "merchant-commerce-confirm",
+        "label": "Confirm route family for 为商家管理店铺、目录、库存、定价、订单、客户、促销、渠道和运营报表。",
+        "priority": "p0"
+      },
+      {
+        "id": "merchant-commerce-recover",
+        "label": "Recover route family for 为商家管理店铺、目录、库存、定价、订单、客户、促销、渠道和运营报表。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "merchant-commerce global navigation",
+      "merchant-commerce primary content",
+      "merchant-commerce decision and action region",
+      "merchant-commerce confirmation and aftercare"
+    ],
+    "state_families": [
+      "catalog_publication",
+      "fulfillment",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "merchant-commerce-operations",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "为商家管理店铺、目录、库存、定价、订单、客户、促销、渠道和运营报表。",
+  "title": "Merchant Commerce Operations",
+  "verification": {
+    "coverage_dimensions": [
+      "merchant-commerce-operations actor x action x state x outcome",
+      "merchant-commerce-operations entity ownership and durable visibility",
+      "merchant-commerce-operations valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "严格 tenant/RBAC、目录版本和批量导入校验。",
+      "库存、订单、退款、促销和报表的服务端一致性。",
+      "webhook/邮件/支付等外部效果由本地 outbox 如实模拟。"
+    ]
+  },
+  "version": "1.0.0"
+}

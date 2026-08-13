@@ -1,0 +1,39 @@
+{
+  "checkpoint": "legal-user-agreement",
+  "family": "legal",
+  "priority": "P2",
+  "viewport": "desktop",
+  "requested_url": "https://www.tripit.com/uhp/userAgreement",
+  "final_url": "https://www.tripit.com/uhp/userAgreement",
+  "title": "TripIt User Agreement",
+  "body_text_len": 35925,
+  "frames": 3,
+  "frame_sha256": [
+    "32cdff2aba403ab7020aa983c909615205d89e11603aaec92b444f310038a8d4",
+    "32cdff2aba403ab7020aa983c909615205d89e11603aaec92b444f310038a8d4",
+    "32cdff2aba403ab7020aa983c909615205d89e11603aaec92b444f310038a8d4"
+  ],
+  "frames_identical": true,
+  "link_count": 15,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 100
+    },
+    "main": null,
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 6576,
+      "width": 1440,
+      "height": 40
+    },
+    "form": null,
+    "document_height": 6616
+  }
+}

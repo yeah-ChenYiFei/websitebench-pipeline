@@ -1,0 +1,42 @@
+schema_version: websitebench.harbor.site.v1
+site_id: tripit
+display_name: TripIt Offline Clone
+benchmark_kind: fullstack-offline-reconstruction
+runtime:
+  reference_access: browser-only
+  agent_browser: browser-use-cli
+  formal_browser: playwright
+  reference_url_env: WEBSITEBENCH_REFERENCE_URL
+  candidate_url_env: WEBSITEBENCH_CANDIDATE_URL
+  reference_admin_url_env: WEBSITEBENCH_REFERENCE_ADMIN_URL
+  candidate_admin_url_env: WEBSITEBENCH_CANDIDATE_ADMIN_URL
+  reference_port: 8080
+  candidate_port: 3000
+  verifier_reference_port: 18092
+  verifier_candidate_port: 18913
+  ready_path: /healthz
+  reset_path: /__admin/reset
+  judge_network: offline
+paths:
+  public: public
+  reference: reference
+  verifier: verifier
+  hidden_fixtures: fixtures/hidden
+  oracle: oracle
+scoring:
+  max_points: 100
+  dimensions:
+    contract: 10
+    api: 20
+    ui: 20
+    visual: 15
+    journey: 20
+    robustness: 15
+    efficiency: 0
+opencli:
+  version: 1.8.6
+  contract: interactions/opencli-interaction-contract.json
+  network_requirements:
+    allowlist:
+      - 127.0.0.1
+      - localhost

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Notification settings · TripIt{% endblock %}
+{% block content %}
+<section class="page notifications">
+  <a class="backlink" href="/app/trips">Back to trips</a>
+  <h1>Notifications</h1>
+
+  {% if notifications %}
+    <ul class="notifications__list">
+      {% for note in notifications %}
+        <li class="notifications__item{% if not note.read_at %} notifications__item--unread{% endif %}">
+          <p class="notifications__title">{{ note.title }}</p>
+          {% if note.body %}<p class="notifications__body">{{ note.body }}</p>{% endif %}
+          <p class="notifications__meta">{{ note.kind }} · {{ note.created_at }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty">
+      <h2>Nothing to show yet</h2>
+      <p>Trip alerts appear here once there is something worth telling you about.</p>
+    </div>
+  {% endif %}
+
+  <p class="notifications__boundary" role="note">
+    Alerts are shown on this page. Delivery to an email address or a phone is not
+    part of this build, so no per-channel switches are offered here — a switch
+    that changed nothing would be worse than its absence.
+  </p>
+</section>
+{% endblock %}

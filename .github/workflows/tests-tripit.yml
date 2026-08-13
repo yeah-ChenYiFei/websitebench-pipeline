@@ -1,0 +1,26 @@
+name: tests (tripit)
+
+# This site's only diagnostic dispatcher. Adding a site means adding its own file;
+# retiring one means deleting this file with its material. There is no shared
+# site list, matrix or batch entry point to keep in sync.
+on:
+  push:
+    paths:
+      - materials/tripit/**
+      - src/**
+      - pyproject.toml
+      - .github/workflows/clone-diagnostics.yml
+      - .github/workflows/tests-tripit.yml
+  pull_request:
+    paths:
+      - materials/tripit/**
+      - src/**
+      - pyproject.toml
+      - .github/workflows/clone-diagnostics.yml
+      - .github/workflows/tests-tripit.yml
+
+jobs:
+  diagnostics:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: tripit

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/offline-clone.materialization.v3.json",
+  "title": "Machine-resolved compiled site materialization",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "compiler_version",
+    "site_id",
+    "stage",
+    "status",
+    "evidence_boundary",
+    "emitted_files",
+    "forbidden_at_this_stage"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "offline-clone.materialization.v3"
+    },
+    "compiler_version": {
+      "const": "websitebench.site-compiler.v3"
+    },
+    "site_id": {
+      "$ref": "#/$defs/id"
+    },
+    "stage": {
+      "const": "machine-scope"
+    },
+    "status": {
+      "const": "ready-for-implementation"
+    },
+    "evidence_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "generated_source_claims",
+        "candidate_as_source_truth"
+      ],
+      "properties": {
+        "classification": {
+          "const": "machine-inferred"
+        },
+        "generated_source_claims": {
+          "const": "forbidden"
+        },
+        "candidate_as_source_truth": {
+          "const": "forbidden"
+        }
+      }
+    },
+    "emitted_files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "$ref": "#/$defs/path"
+          },
+          "role": {
+            "enum": [
+              "harness",
+              "planned-obligation",
+              "compiler-identity"
+            ]
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "forbidden_at_this_stage": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "captured-source-contract",
+          "source-direct-claims",
+          "persistent-business-runtime",
+          "vendored-auth-runtime",
+          "machine-fidelity-validation",
+          "harbor-release-evidence"
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^(?![A-Za-z]:|/|\\\\|.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._<>/-]+$"
+    }
+  }
+}

@@ -1,0 +1,291 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "content",
+        "entities": [
+          {
+            "identity": "site-local opaque entitlement identity; exact source key and ownership require R1 confirmation",
+            "name": "entitlement",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque title-track-book identity; exact source key and ownership require R1 confirmation",
+            "name": "title-track-book",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque series-album-channel identity; exact source key and ownership require R1 confirmation",
+            "name": "series-album-channel",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque mediaasset identity; exact source key and ownership require R1 confirmation",
+            "name": "mediaasset",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque subscription identity; exact source key and ownership require R1 confirmation",
+            "name": "subscription",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque playlist-library identity; exact source key and ownership require R1 confirmation",
+            "name": "playlist-library",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque playbacksession identity; exact source key and ownership require R1 confirmation",
+            "name": "playbacksession",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque progress identity; exact source key and ownership require R1 confirmation",
+            "name": "progress",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque history identity; exact source key and ownership require R1 confirmation",
+            "name": "history",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "media-library-streaming-entitlement",
+        "label": "media-library-streaming entitlement lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "地区/套餐/购买 fixture 和到期规则决定访问，不由播放器绕过。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "preview",
+            "active",
+            "paused",
+            "expired",
+            "revoked"
+          ],
+          "transitions": [
+            {
+              "from": "preview",
+              "to": "active",
+              "trigger": "server-authorized media-library-streaming entitlement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "paused",
+              "trigger": "server-authorized media-library-streaming entitlement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "paused",
+              "to": "expired",
+              "trigger": "server-authorized media-library-streaming entitlement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "expired",
+              "to": "revoked",
+              "trigger": "server-authorized media-library-streaming entitlement lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "content",
+        "entities": [
+          {
+            "identity": "site-local opaque playback-progress identity; exact source key and ownership require R1 confirmation",
+            "name": "playback-progress",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque title-track-book identity; exact source key and ownership require R1 confirmation",
+            "name": "title-track-book",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque series-album-channel identity; exact source key and ownership require R1 confirmation",
+            "name": "series-album-channel",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque mediaasset identity; exact source key and ownership require R1 confirmation",
+            "name": "mediaasset",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque entitlement identity; exact source key and ownership require R1 confirmation",
+            "name": "entitlement",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque subscription identity; exact source key and ownership require R1 confirmation",
+            "name": "subscription",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque playlist-library identity; exact source key and ownership require R1 confirmation",
+            "name": "playlist-library",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque playbacksession identity; exact source key and ownership require R1 confirmation",
+            "name": "playbacksession",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque progress identity; exact source key and ownership require R1 confirmation",
+            "name": "progress",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque history identity; exact source key and ownership require R1 confirmation",
+            "name": "history",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "media-library-streaming-playback-progress",
+        "label": "media-library-streaming playback/progress lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "合法权益、进度单调性、设备/会话边界和错误状态持久化。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "ready",
+            "playing",
+            "paused",
+            "completed",
+            "failed"
+          ],
+          "transitions": [
+            {
+              "from": "ready",
+              "to": "playing",
+              "trigger": "server-authorized media-library-streaming playback/progress lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "playing",
+              "to": "paused",
+              "trigger": "server-authorized media-library-streaming playback/progress lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "paused",
+              "to": "completed",
+              "trigger": "server-authorized media-library-streaming playback/progress lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "completed",
+              "to": "failed",
+              "trigger": "server-authorized media-library-streaming playback/progress lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": "media-discovery",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "media-library-entry",
+        "label": "Entry route family for 发现音视频/图书内容，管理播放权益、订阅、收藏、队列、进度、历史和创作者/节目关系。",
+        "priority": "p0"
+      },
+      {
+        "id": "media-library-discover",
+        "label": "Discover route family for 发现音视频/图书内容，管理播放权益、订阅、收藏、队列、进度、历史和创作者/节目关系。",
+        "priority": "p0"
+      },
+      {
+        "id": "media-library-detail",
+        "label": "Detail route family for 发现音视频/图书内容，管理播放权益、订阅、收藏、队列、进度、历史和创作者/节目关系。",
+        "priority": "p0"
+      },
+      {
+        "id": "media-library-commit",
+        "label": "Commit route family for 发现音视频/图书内容，管理播放权益、订阅、收藏、队列、进度、历史和创作者/节目关系。",
+        "priority": "p0"
+      },
+      {
+        "id": "media-library-confirm",
+        "label": "Confirm route family for 发现音视频/图书内容，管理播放权益、订阅、收藏、队列、进度、历史和创作者/节目关系。",
+        "priority": "p0"
+      },
+      {
+        "id": "media-library-recover",
+        "label": "Recover route family for 发现音视频/图书内容，管理播放权益、订阅、收藏、队列、进度、历史和创作者/节目关系。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "media-library global navigation",
+      "media-library primary content",
+      "media-library decision and action region",
+      "media-library confirmation and aftercare"
+    ],
+    "state_families": [
+      "entitlement",
+      "playback/progress",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "media-library-streaming",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "发现音视频/图书内容，管理播放权益、订阅、收藏、队列、进度、历史和创作者/节目关系。",
+  "title": "Media Library Streaming",
+  "verification": {
+    "coverage_dimensions": [
+      "media-library-streaming actor x action x state x outcome",
+      "media-library-streaming entity ownership and durable visibility",
+      "media-library-streaming valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "目录、权益、订阅、收藏、队列、进度和历史的服务端状态。",
+      "播放 session、失败/恢复、跨账号隔离和推荐输入。",
+      "媒体字节完全本地化；不伪称真实 DRM、版税或生产订阅。"
+    ]
+  },
+  "version": "1.0.0"
+}

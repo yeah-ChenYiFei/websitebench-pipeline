@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}Email import · TripIt{% endblock %}
+{% block content %}
+<section class="page sim-inbox">
+  <div class="page__head">
+    <h1>Email import</h1>
+  </div>
+  <p class="sim-inbox__lead">
+    Forward a travel confirmation to <strong>plans@tripit.com</strong> and TripIt
+    files it into the matching trip. This page injects a message for
+    <strong>{{ viewer_email }}</strong> and runs it through the same pipeline.
+  </p>
+
+  {% if error %}
+    <ul class="form-errors" role="alert"><li>{{ error }}</li></ul>
+  {% endif %}
+
+  {% if last_result %}
+    <div class="sim-result sim-result--{{ last_result.parse_status }}">
+      <p class="sim-result__headline">
+        {% if last_result.parse_status == 'unparseable' %}
+          Couldn't read that message — nothing was filed.
+        {% elif last_result.parse_status == 'duplicate' %}
+          Already imported — no changes made.
+        {% elif last_result.parse_status == 'canceled' %}
+          Marked as canceled and removed from your itinerary.
+        {% elif last_result.parse_status == 'updated' %}
+          Updated your existing plan.
+        {% else %}
+          Added to {{ last_result.trip_name or 'Unfiled Items' }}.
+        {% endif %}
+      </p>
+      <dl class="sim-result__meta">
+        {% if last_result.title %}<dt>Plan</dt><dd>{{ last_result.title }}</dd>{% endif %}
+        {% if last_result.provider %}<dt>From</dt><dd>{{ last_result.provider }}</dd>{% endif %}
+        <dt>Result</dt><dd>{{ last_result.parse_status }}</dd>
+        {% if last_result.plan_id %}
+          <dt>Filed</dt>
+          <dd>
+            {% if last_result.trip_id %}
+              <a href="/trips/{{ last_result.trip_id }}">{{ last_result.trip_name }}</a>
+            {% else %}
+              <a href="/trips?tab=unfiled">Unfiled Items</a>
+            {% endif %}
+          </dd>
+        {% endif %}
+      </dl>
+    </div>
+  {% endif %}
+
+  <div class="sim-inbox__grid">
+    <form class="form sim-form" method="post" action="/__sim/inbox">
+      <input type="hidden" name="mode" value="fixture">
+      <h2>Use a sample confirmation</h2>
+      <label class="field">
+        <span class="field__label">Sample message</span>
+        <select class="field__input" name="fixture">
+          {% for fx in fixtures %}
+            <option value="{{ fx.file }}">
+              {{ fx.provider or 'Newsletter' }}{% if fx.plan_type %} · {{ fx.plan_type }}{% endif %} — {{ fx.expected_parse }}
+            </option>
+          {% endfor %}
+        </select>
+      </label>
+      <div class="form__actions">
+        <button type="submit" class="btn btn--primary">Import sample</button>
+      </div>
+    </form>
+
+    <form class="form sim-form" method="post" action="/__sim/inbox">
+      <input type="hidden" name="mode" value="paste">
+      <h2>Paste a raw message</h2>
+      <label class="field">
+        <span class="field__label">Email source (headers + body)</span>
+        <textarea class="field__input" name="raw_text" rows="8"
+                  placeholder="From: reservations@example.com&#10;Subject: Your confirmation&#10;&#10;..."></textarea>
+      </label>
+      <div class="form__actions">
+        <button type="submit" class="btn btn--primary">Import message</button>
+      </div>
+    </form>
+
+    <form class="form sim-form" method="post" action="/__sim/inbox"
+          enctype="multipart/form-data">
+      <input type="hidden" name="mode" value="upload">
+      <h2>Upload an .eml file</h2>
+      <label class="field">
+        <span class="field__label">Message file</span>
+        <input class="field__input" type="file" name="eml_file" accept=".eml,message/rfc822,text/plain">
+      </label>
+      <div class="form__actions">
+        <button type="submit" class="btn btn--primary">Upload &amp; import</button>
+      </div>
+    </form>
+  </div>
+
+  <section class="sim-history">
+    <h2>Import history</h2>
+    {% if history %}
+      <ul class="doc-list">
+        {% for item in history %}
+          <li class="doc-card">
+            <div>
+              <span class="doc-card__name">{{ item.details.title or item.subject or '(no subject)' }}</span>
+              <span class="doc-card__meta">
+                {{ item.provider or 'Unknown sender' }} · {{ item.parse_status }}
+                {% if item.trip_name %}· {{ item.trip_name }}
+                {% elif item.plan_id %}· Unfiled Items{% endif %}
+              </span>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="empty">
+        <h2>No imports yet</h2>
+        <p>Import a message above to see it here.</p>
+      </div>
+    {% endif %}
+  </section>
+</section>
+{% endblock %}

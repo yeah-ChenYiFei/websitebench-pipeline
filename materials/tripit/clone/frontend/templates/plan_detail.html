@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ plan.title }} · TripIt{% endblock %}
+{% block content %}
+<section class="page plan-detail">
+  <a class="backlink" href="/app/trips/{{ trip.public_id }}">Back to {{ trip.name }}</a>
+
+  <header class="trip-detail__head">
+    <p class="plan-detail__kind">{{ plan_type_label }}</p>
+    <h1>{{ plan.title }}</h1>
+    {% if trip.date_range %}<p class="trip-detail__dates">{{ trip.date_range }}</p>{% endif %}
+  </header>
+
+  {% if detail_rows %}
+    <dl class="plan-detail__facts">
+      {% for label, value in detail_rows %}
+        <dt>{{ label }}</dt>
+        <dd>{{ value }}</dd>
+      {% endfor %}
+    </dl>
+  {% else %}
+    <p class="plan-detail__empty">No further details are recorded for this plan.</p>
+  {% endif %}
+
+  <div class="trip-detail__actions">
+    <a class="btn" href="/app/trips/{{ trip.public_id }}/{{ plan_path }}/{{ plan_public_id }}/edit">Edit plan</a>
+    <a class="btn" href="/app/trips/{{ trip.public_id }}/{{ plan_path }}/{{ plan_public_id }}/move">Move plan</a>
+    <a class="btn" href="/app/trips/{{ trip.public_id }}/{{ plan_path }}/{{ plan_public_id }}/copy">Copy plan</a>
+    <form method="post" action="/app/trips/{{ trip.public_id }}/{{ plan_path }}/{{ plan_public_id }}/delete">
+      <button type="submit" class="btn btn--danger">Delete plan</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

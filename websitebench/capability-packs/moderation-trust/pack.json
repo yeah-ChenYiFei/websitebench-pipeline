@@ -1,0 +1,101 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "administration",
+        "entities": [
+          {
+            "identity": "site-local opaque moderation-case identity; exact source key and ownership require R1 confirmation",
+            "name": "moderation-case",
+            "owner_scope": "role",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "moderation-trust-lifecycle",
+        "label": "moderation-trust lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "role-separated actions",
+          "reason and audit",
+          "reversible where declared"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "reported",
+            "under-review",
+            "resolved",
+            "appealed"
+          ],
+          "transitions": [
+            {
+              "from": "reported",
+              "to": "under-review",
+              "trigger": "server-authorized moderation-trust lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "under-review",
+              "to": "resolved",
+              "trigger": "server-authorized moderation-trust lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "resolved",
+              "to": "appealed",
+              "trigger": "server-authorized moderation-trust lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "append-only-moderation-audit"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "moderation-trust keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "moderation-trust-surface",
+        "label": "moderation-trust route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "moderation-trust surface"
+    ],
+    "state_families": [
+      "moderation-trust loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "moderation-trust",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "举报、审核队列、隐藏/删除/封禁、申诉与风控。",
+  "title": "Moderation Trust overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "moderation-trust actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "role-separated actions",
+      "reason and audit",
+      "reversible where declared"
+    ]
+  },
+  "version": "1.0.0"
+}

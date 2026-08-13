@@ -1,0 +1,101 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "search",
+        "entities": [
+          {
+            "identity": "site-local opaque saved-query identity; exact source key and ownership require R1 confirmation",
+            "name": "saved-query",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "search-discovery-lifecycle",
+        "label": "search-discovery lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "deterministic index",
+          "server filters",
+          "stable pagination",
+          "unknown entity handling"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "created",
+            "active",
+            "stale",
+            "deleted"
+          ],
+          "transitions": [
+            {
+              "from": "created",
+              "to": "active",
+              "trigger": "server-authorized search-discovery lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "stale",
+              "trigger": "server-authorized search-discovery lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "stale",
+              "to": "deleted",
+              "trigger": "server-authorized search-discovery lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "search-discovery keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "search-discovery-surface",
+        "label": "search-discovery route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "search-discovery surface"
+    ],
+    "state_families": [
+      "search-discovery loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "search-discovery",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "索引、查询、筛选、排序、分页、零结果和稳定实体 identity。",
+  "title": "Search Discovery overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "search-discovery actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "deterministic index",
+      "server filters",
+      "stable pagination",
+      "unknown entity handling"
+    ]
+  },
+  "version": "1.0.0"
+}

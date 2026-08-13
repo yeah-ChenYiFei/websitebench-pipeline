@@ -1,0 +1,103 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "administration",
+        "entities": [
+          {
+            "identity": "site-local opaque admin-command identity; exact source key and ownership require R1 confirmation",
+            "name": "admin-command",
+            "owner_scope": "role",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "admin-lifecycle",
+        "label": "admin lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "separate public/admin planes",
+          "RBAC",
+          "audit",
+          "no verifier leakage"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "proposed",
+            "applied",
+            "rejected",
+            "reversed"
+          ],
+          "transitions": [
+            {
+              "from": "proposed",
+              "to": "applied",
+              "trigger": "server-authorized admin lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "applied",
+              "to": "rejected",
+              "trigger": "server-authorized admin lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "rejected",
+              "to": "reversed",
+              "trigger": "server-authorized admin lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "append-only-admin-audit"
+    ]
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "admin keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "admin-surface",
+        "label": "admin route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "admin surface"
+    ],
+    "state_families": [
+      "admin loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "admin",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "后台队列、配置、审核、批量操作和受限 reset/control plane。",
+  "title": "Admin overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "admin actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "separate public/admin planes",
+      "RBAC",
+      "audit",
+      "no verifier leakage"
+    ]
+  },
+  "version": "1.0.0"
+}

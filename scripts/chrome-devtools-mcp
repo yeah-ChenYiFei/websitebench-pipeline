@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# Resolve Chrome DevTools MCP without requiring npm registry metadata on every
+# start.  A local install or an existing npm exec cache is preferred; npx is a
+# last resort for machines that have network access.
+set -eu
+
+# The Browserbase launcher is qualified against this exact MCP release.  A
+# binary discovered on PATH or in npm's execution cache is only reused when it
+# reports the same version; otherwise the exact package below is resolved.
+expected_version=1.6.0
+
+script_path=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)/$(basename -- "$0")
+if [ -n "${CHROME_DEVTOOLS_MCP_BIN:-}" ]; then
+  candidates=$CHROME_DEVTOOLS_MCP_BIN
+elif [ -x "$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)/../node_modules/.bin/chrome-devtools-mcp" ]; then
+  candidates=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)/../node_modules/.bin/chrome-devtools-mcp
+elif command -v chrome-devtools-mcp >/dev/null 2>&1 && [ "$(command -v chrome-devtools-mcp)" != "$script_path" ]; then
+  candidates=$(command -v chrome-devtools-mcp)
+else
+  candidates=
+  npm_cache_dir=${NPM_CONFIG_CACHE:-}
+  if [ -z "$npm_cache_dir" ] && command -v npm >/dev/null 2>&1; then
+    npm_cache_dir=$(npm config get cache 2>/dev/null || true)
+  fi
+  if [ -n "$npm_cache_dir" ]; then
+    for candidate in "$npm_cache_dir"/_npx/*/node_modules/.bin/chrome-devtools-mcp; do
+      if [ -x "$candidate" ]; then
+        candidates=$candidate
+        break
+      fi
+    done
+  fi
+fi
+
+if [ -n "$candidates" ]; then
+  candidate_version=$("$candidates" --version 2>/dev/null || true)
+  if [ "$candidate_version" = "$expected_version" ]; then
+    exec "$candidates" "$@"
+  fi
+fi
+
+exec npx -y "chrome-devtools-mcp@$expected_version" "$@"

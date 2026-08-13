@@ -1,0 +1,329 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque listing identity; exact source key and ownership require R1 confirmation",
+            "name": "listing",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque listing-service identity; exact source key and ownership require R1 confirmation",
+            "name": "listing-service",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque seller-providerprofile identity; exact source key and ownership require R1 confirmation",
+            "name": "seller-providerprofile",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque request identity; exact source key and ownership require R1 confirmation",
+            "name": "request",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque offer-quote identity; exact source key and ownership require R1 confirmation",
+            "name": "offer-quote",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque conversation identity; exact source key and ownership require R1 confirmation",
+            "name": "conversation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque booking-trade identity; exact source key and ownership require R1 confirmation",
+            "name": "booking-trade",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque payout identity; exact source key and ownership require R1 confirmation",
+            "name": "payout",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque dispute identity; exact source key and ownership require R1 confirmation",
+            "name": "dispute",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque review identity; exact source key and ownership require R1 confirmation",
+            "name": "review",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "two-sided-marketplace-exchange-listing",
+        "label": "two-sided-marketplace-exchange listing lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "发布者所有权、审核、库存/可用性和关闭状态由服务端控制。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "draft",
+            "pending-review",
+            "active",
+            "reserved",
+            "sold-closed",
+            "suspended"
+          ],
+          "transitions": [
+            {
+              "from": "draft",
+              "to": "pending-review",
+              "trigger": "server-authorized two-sided-marketplace-exchange listing lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "pending-review",
+              "to": "active",
+              "trigger": "server-authorized two-sided-marketplace-exchange listing lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "active",
+              "to": "reserved",
+              "trigger": "server-authorized two-sided-marketplace-exchange listing lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "reserved",
+              "to": "sold-closed",
+              "trigger": "server-authorized two-sided-marketplace-exchange listing lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "sold-closed",
+              "to": "suspended",
+              "trigger": "server-authorized two-sided-marketplace-exchange listing lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque exchange identity; exact source key and ownership require R1 confirmation",
+            "name": "exchange",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque listing-service identity; exact source key and ownership require R1 confirmation",
+            "name": "listing-service",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque seller-providerprofile identity; exact source key and ownership require R1 confirmation",
+            "name": "seller-providerprofile",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque request identity; exact source key and ownership require R1 confirmation",
+            "name": "request",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque offer-quote identity; exact source key and ownership require R1 confirmation",
+            "name": "offer-quote",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque conversation identity; exact source key and ownership require R1 confirmation",
+            "name": "conversation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque booking-trade identity; exact source key and ownership require R1 confirmation",
+            "name": "booking-trade",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque payout identity; exact source key and ownership require R1 confirmation",
+            "name": "payout",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque dispute identity; exact source key and ownership require R1 confirmation",
+            "name": "dispute",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque review identity; exact source key and ownership require R1 confirmation",
+            "name": "review",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "two-sided-marketplace-exchange-exchange",
+        "label": "two-sided-marketplace-exchange exchange lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "报价接受、资金状态、双方权限和争议转移必须原子且可审计。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "requested",
+            "offered",
+            "accepted",
+            "funded",
+            "in-progress",
+            "completed",
+            "cancelled",
+            "disputed",
+            "refunded"
+          ],
+          "transitions": [
+            {
+              "from": "requested",
+              "to": "offered",
+              "trigger": "server-authorized two-sided-marketplace-exchange exchange lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "offered",
+              "to": "accepted",
+              "trigger": "server-authorized two-sided-marketplace-exchange exchange lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "accepted",
+              "to": "funded",
+              "trigger": "server-authorized two-sided-marketplace-exchange exchange lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "funded",
+              "to": "in-progress",
+              "trigger": "server-authorized two-sided-marketplace-exchange exchange lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "in-progress",
+              "to": "completed",
+              "trigger": "server-authorized two-sided-marketplace-exchange exchange lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "completed",
+              "to": "cancelled",
+              "trigger": "server-authorized two-sided-marketplace-exchange exchange lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "cancelled",
+              "to": "disputed",
+              "trigger": "server-authorized two-sided-marketplace-exchange exchange lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "disputed",
+              "to": "refunded",
+              "trigger": "server-authorized two-sided-marketplace-exchange exchange lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-two-sided-effect-ledger"
+    ]
+  },
+  "batch_family_id": "commerce-marketplace",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "two-sided-entry",
+        "label": "Entry route family for 连接买卖双方或需求方/服务方，完成发布、匹配、询价/报价、成交、交付、争议和信誉闭环。",
+        "priority": "p0"
+      },
+      {
+        "id": "two-sided-discover",
+        "label": "Discover route family for 连接买卖双方或需求方/服务方，完成发布、匹配、询价/报价、成交、交付、争议和信誉闭环。",
+        "priority": "p0"
+      },
+      {
+        "id": "two-sided-detail",
+        "label": "Detail route family for 连接买卖双方或需求方/服务方，完成发布、匹配、询价/报价、成交、交付、争议和信誉闭环。",
+        "priority": "p0"
+      },
+      {
+        "id": "two-sided-commit",
+        "label": "Commit route family for 连接买卖双方或需求方/服务方，完成发布、匹配、询价/报价、成交、交付、争议和信誉闭环。",
+        "priority": "p0"
+      },
+      {
+        "id": "two-sided-confirm",
+        "label": "Confirm route family for 连接买卖双方或需求方/服务方，完成发布、匹配、询价/报价、成交、交付、争议和信誉闭环。",
+        "priority": "p0"
+      },
+      {
+        "id": "two-sided-recover",
+        "label": "Recover route family for 连接买卖双方或需求方/服务方，完成发布、匹配、询价/报价、成交、交付、争议和信誉闭环。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "two-sided global navigation",
+      "two-sided primary content",
+      "two-sided decision and action region",
+      "two-sided confirmation and aftercare"
+    ],
+    "state_families": [
+      "listing",
+      "exchange",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "two-sided-marketplace-exchange",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "连接买卖双方或需求方/服务方，完成发布、匹配、询价/报价、成交、交付、争议和信誉闭环。",
+  "title": "Two Sided Marketplace Exchange",
+  "verification": {
+    "coverage_dimensions": [
+      "two-sided-marketplace-exchange actor x action x state x outcome",
+      "two-sided-marketplace-exchange entity ownership and durable visibility",
+      "two-sided-marketplace-exchange valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "双方身份/所有权、发布审核、匹配和会话权限。",
+      "报价/预订/成交、托管式付款或本地模拟、评价资格和争议状态。",
+      "重复接受、过期报价、跨用户访问和并发成交必须失败得真实。"
+    ]
+  },
+  "version": "1.0.0"
+}

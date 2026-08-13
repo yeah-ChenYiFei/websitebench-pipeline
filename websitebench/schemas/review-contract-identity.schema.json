@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/review-contract-identity.v1.json",
+  "title": "R1 frozen contract identity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "site_id",
+    "contract_sha256",
+    "matrix_sha256",
+    "denominators_sha256",
+    "source_evidence_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "clawbench.review-contract-identity.v1"
+    },
+    "site_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "contract_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "matrix_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "denominators_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "source_evidence_sha256": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        }
+      ],
+      "description": "SHA-256 of UTF-8 lines sorted by POSIX relative path: <file-sha256><two spaces><relative-path>\\n."
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

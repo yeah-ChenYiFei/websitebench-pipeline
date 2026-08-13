@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Account · TripIt{% endblock %}
+{% block content %}
+<section class="page account">
+  <h1>Account</h1>
+  <dl class="account__grid">
+    <dt>Name</dt><dd>{{ profile.display_name }}</dd>
+    <dt>Email</dt><dd>{{ email }}</dd>
+    <dt>Home city</dt><dd>{{ profile.home_city or '—' }}</dd>
+    <dt>Home airport</dt><dd>{{ profile.home_airport or '—' }}</dd>
+  </dl>
+
+  <section class="pro-panel" aria-labelledby="pro-panel-heading">
+    <h2 id="pro-panel-heading">TripIt Pro</h2>
+    {% if pro and pro.is_pro %}
+    <p class="pro-panel__status" data-pro-state="active">
+      You're a Pro member.
+      {% if pro.cancel_at_period_end %}
+        Your benefits continue until {{ pro_renews_on }}.
+      {% else %}
+        Your membership renews on {{ pro_renews_on }}.
+      {% endif %}
+    </p>
+    <a class="btn" href="/pro/manage">Manage membership</a>
+    {% else %}
+    <p class="pro-panel__status" data-pro-state="free">
+      Go Pro for {{ pro.price_label if pro else '$49' }}/year and get real-time
+      flight alerts, alternate flights, seat tracking, and more.
+    </p>
+    <a class="btn btn--primary" href="/pro/upgrade">Go Pro</a>
+    {% endif %}
+  </section>
+
+  <form method="post" action="/account/logout">
+    <button type="submit" class="btn">Log out</button>
+  </form>
+</section>
+{% endblock %}

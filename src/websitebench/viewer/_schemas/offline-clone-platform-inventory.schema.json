@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/offline-clone.platform-inventory.v2.json",
+  "title": "WebsiteBench platform inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "provenance",
+    "summary",
+    "platforms"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "offline-clone.platform-inventory.v2"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sources"
+      ],
+      "properties": {
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "platform_count",
+        "category_count",
+        "category_counts",
+        "invalid_source_url_count"
+      ],
+      "properties": {
+        "platform_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "category_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "category_counts": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "invalid_source_url_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "platforms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/platform"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id"
+      ],
+      "properties": {
+        "source_id": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "platform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inventory_id",
+        "platform_key",
+        "platform",
+        "category",
+        "official_url",
+        "official_url_status",
+        "first_party_origins",
+        "source_ids",
+        "frontend_complexity",
+        "backend_statefulness",
+        "authentication",
+        "agent_task_family"
+      ],
+      "properties": {
+        "inventory_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "platform_key": {
+          "$ref": "#/$defs/id"
+        },
+        "platform": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "official_url": {
+          "type": "string",
+          "pattern": "^https://",
+          "maxLength": 500
+        },
+        "official_url_status": {
+          "enum": [
+            "valid",
+            "invalid-in-source"
+          ]
+        },
+        "first_party_origins": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          }
+        },
+        "source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "frontend_complexity": {
+          "enum": [
+            "Low",
+            "Medium",
+            "High"
+          ]
+        },
+        "backend_statefulness": {
+          "enum": [
+            "Low",
+            "Medium",
+            "High"
+          ]
+        },
+        "authentication": {
+          "enum": [
+            "None",
+            "Optional",
+            "Required"
+          ]
+        },
+        "agent_task_family": {
+          "enum": [
+            "Easy",
+            "Medium",
+            "Hard"
+          ]
+        }
+      }
+    }
+  }
+}

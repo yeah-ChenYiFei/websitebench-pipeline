@@ -1,0 +1,39 @@
+{
+  "checkpoint": "login",
+  "family": "auth",
+  "priority": "P0",
+  "viewport": "mobile",
+  "requested_url": "https://www.tripit.com/account/login",
+  "final_url": "https://www.tripit.com/account/login",
+  "title": "Sign in to TripIt",
+  "body_text_len": 269,
+  "frames": 3,
+  "frame_sha256": [
+    "3fd6339643f9c0b3d9cb25b4ea1bfcf0ac78e1bc2b979c1dae4a83e6fdfdd97b",
+    "3fd6339643f9c0b3d9cb25b4ea1bfcf0ac78e1bc2b979c1dae4a83e6fdfdd97b",
+    "3fd6339643f9c0b3d9cb25b4ea1bfcf0ac78e1bc2b979c1dae4a83e6fdfdd97b"
+  ],
+  "frames_identical": true,
+  "link_count": 9,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": null,
+    "main": null,
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 792,
+      "width": 390,
+      "height": 40
+    },
+    "form": {
+      "selector": "form",
+      "x": 35,
+      "y": 152,
+      "width": 320,
+      "height": 399
+    },
+    "document_height": 916
+  }
+}

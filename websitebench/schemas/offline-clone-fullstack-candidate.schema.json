@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/offline-clone.fullstack-candidate.v1.json",
+  "title": "Identity-bound complete full-stack candidate before formal review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "site_id",
+    "candidate_identity_sha256",
+    "candidate_tree",
+    "source_acquisition",
+    "semantic_selection",
+    "frontend",
+    "backend",
+    "status",
+    "authority"
+  ],
+  "properties": {
+    "schema_version": {"const": "offline-clone.fullstack-candidate.v1"},
+    "site_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "candidate_identity_sha256": {"$ref": "#/$defs/sha256"},
+    "candidate_tree": {"$ref": "#/$defs/artifact"},
+    "source_acquisition": {"$ref": "#/$defs/artifact"},
+    "semantic_selection": {"$ref": "#/$defs/artifact"},
+    "frontend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_stability_runs", "p0_region_failures", "console_error_count", "runtime_remote_request_count", "evidence"],
+      "properties": {
+        "candidate_stability_runs": {"type": "integer", "minimum": 0},
+        "p0_region_failures": {"type": "integer", "minimum": 0},
+        "console_error_count": {"type": "integer", "minimum": 0},
+        "runtime_remote_request_count": {"type": "integer", "minimum": 0},
+        "evidence": {
+          "type": "array",
+          "minItems": 3,
+          "items": {"$ref": "#/$defs/evidence_artifact"}
+        }
+      }
+    },
+    "backend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["applicable_capability_count", "verified_capability_count", "proof_obligation_failures", "evidence"],
+      "properties": {
+        "applicable_capability_count": {"type": "integer", "minimum": 0},
+        "verified_capability_count": {"type": "integer", "minimum": 0},
+        "proof_obligation_failures": {"type": "integer", "minimum": 0},
+        "evidence": {
+          "type": "array",
+          "minItems": 4,
+          "items": {"$ref": "#/$defs/evidence_artifact"}
+        }
+      }
+    },
+    "status": {"enum": ["in-progress", "complete"]},
+    "authority": {"const": "producer-fullstack-candidate-only-cannot-sign-review-or-release"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000,
+      "pattern": "^(?![A-Za-z]:|/|\\\\|.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "evidence_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "path", "sha256"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "visual-calibration",
+            "browser-audit",
+            "focused-regression",
+            "backend-model",
+            "proof-matrix",
+            "reset-audit"
+          ]
+        },
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "schema_version": "tripit.deterministic-seed-manifest.v1",
+  "site_id": "tripit",
+  "seed_id": "tripit-r1-seed-v1",
+  "manifest_version": 1,
+  "status": "frozen",
+  "frozen_clock_iso": "2026-08-04T09:00:00-04:00",
+  "frozen_clock_timezone": "America/New_York",
+  "schema_baseline": {
+    "application_schema_version": "0005_pro_payment_overlay",
+    "auth_schema_version": "0004",
+    "migration_log_representation": "physical-sqlite-rows",
+    "migration_log_note": "Counts and identities are stored SQLite rows after reset, never a source-code logical projection.",
+    "migration_logs": {
+      "local_auth_schema_migrations": {
+        "identity_column": "migration_id",
+        "expected_ids": ["0001", "0002", "0003", "0004"]
+      },
+      "tripit_schema_migrations": {
+        "identity_column": "migration_id",
+        "expected_ids": ["0001_core_travel", "0002_sharing_documents", "0003_import_messages", "0004_notifications_loyalty", "0005_pro_payment_overlay"]
+      }
+    }
+  },
+  "authoritative_entity_count": 22,
+  "entities": [
+    {
+      "entity_name": "auth-schema-migration-journal",
+      "storage_name": "local_auth_schema_migrations",
+      "expected_row_count": 4,
+      "stable_row_identities": ["0001", "0002", "0003", "0004"]
+    },
+    {
+      "entity_name": "pending-registration",
+      "storage_name": "local_auth_registration_flows",
+      "expected_row_count": 0,
+      "stable_row_identities": []
+    },
+    {
+      "entity_name": "local-account",
+      "storage_name": "local_auth_accounts",
+      "expected_row_count": 2,
+      "stable_row_identities": [
+        "account::traveler@example.com",
+        "account::other@example.com"
+      ]
+    },
+    {
+      "entity_name": "server-session",
+      "storage_name": "local_auth_sessions",
+      "expected_row_count": 0,
+      "stable_row_identities": []
+    },
+    {
+      "entity_name": "business-subject",
+      "storage_name": "business_subjects",
+      "expected_row_count": 2,
+      "stable_row_identities": [
+        "subject::traveler",
+        "subject::other"
+      ]
+    },
+    {
+      "entity_name": "password-reset-flow",
+      "storage_name": "local_auth_password_reset_flows",
+      "expected_row_count": 0,
+      "stable_row_identities": []
+    },
+    {
+      "entity_name": "mail-outbox",
+      "storage_name": "local_auth_mail_outbox",
+      "expected_row_count": 0,
+      "stable_row_identities": []
+    },
+    {
+      "entity_name": "mail-rate-limit",
+      "storage_name": "local_auth_mail_rate_limits",
+      "expected_row_count": 0,
+      "stable_row_identities": []
+    },
+    {
+      "entity_name": "business-schema-migration-journal",
+      "storage_name": "tripit_schema_migrations",
+      "expected_row_count": 5,
+      "stable_row_identities": ["0001_core_travel", "0002_sharing_documents", "0003_import_messages", "0004_notifications_loyalty", "0005_pro_payment_overlay"]
+    },
+    {
+      "entity_name": "traveler-profile",
+      "storage_name": "tripit_traveler_profiles",
+      "expected_row_count": 2,
+      "stable_row_identities": [
+        "profile::traveler@example.com::Avery Chen::San Francisco, CA",
+        "profile::other@example.com::Jordan Lee::Austin, TX"
+      ]
+    },
+    {
+      "entity_name": "trip",
+      "storage_name": "tripit_trips",
+      "expected_row_count": 5,
+      "stable_row_identities": [
+        "trip::traveler::new-york::2027-05-22::2027-05-27::America/New_York",
+        "trip::traveler::lisbon-getaway::2027-09-03::2027-09-10::Europe/Lisbon",
+        "trip::traveler::kyoto-autumn::2026-11-02::2026-11-09::Asia/Tokyo",
+        "trip::traveler::chicago-sprint::2026-03-10::2026-03-12::America/Chicago",
+        "trip::other::denver-offsite::2027-06-14::2027-06-16::America/Denver"
+      ]
+    },
+    {
+      "entity_name": "trip-traveler",
+      "storage_name": "tripit_trip_travelers",
+      "expected_row_count": 5,
+      "stable_row_identities": [
+        "member::new-york::traveler::owner",
+        "member::lisbon-getaway::traveler::owner",
+        "member::kyoto-autumn::traveler::owner",
+        "member::chicago-sprint::traveler::owner",
+        "member::denver-offsite::other::owner"
+      ]
+    },
+    {
+      "entity_name": "plan",
+      "storage_name": "tripit_plans",
+      "expected_row_count": 16,
+      "stable_row_identities": [
+        "plan::new-york::air::ny-round-trip-flight",
+        "plan::new-york::restaurant::ny-dinner-gramercy",
+        "plan::new-york::activity::ny-high-line-walk",
+        "plan::new-york::note::ny-packing-note",
+        "plan::lisbon-getaway::air::lisbon-round-trip-flight",
+        "plan::lisbon-getaway::rail::lisbon-sintra-rail",
+        "plan::lisbon-getaway::cruise::lisbon-tagus-cruise",
+        "plan::lisbon-getaway::map::lisbon-alfama-map",
+        "plan::lisbon-getaway::directions::lisbon-airport-directions",
+        "plan::chicago-sprint::lodging::chicago-palmer-house",
+        "plan::chicago-sprint::car::chicago-avis-rental",
+        "plan::chicago-sprint::meeting::chicago-client-review",
+        "plan::chicago-sprint::transport::chicago-airport-shuttle",
+        "plan::kyoto-autumn::lodging::kyoto-ryokan-stay",
+        "plan::denver-offsite::air::denver-oneway-flight",
+        "plan::unfiled::restaurant::unfiled-bluebottle-tasting"
+      ]
+    },
+    {
+      "entity_name": "plan-segment",
+      "storage_name": "tripit_plan_segments",
+      "expected_row_count": 5,
+      "stable_row_identities": [
+        "segment::ny-round-trip-flight::1::SFO-JFK::2027-05-22",
+        "segment::ny-round-trip-flight::2::JFK-SFO::2027-05-27",
+        "segment::lisbon-round-trip-flight::1::SFO-LIS::2027-09-03",
+        "segment::lisbon-round-trip-flight::2::LIS-SFO::2027-09-10",
+        "segment::denver-oneway-flight::1::AUS-DEN::2027-06-14"
+      ]
+    },
+    {
+      "entity_name": "document",
+      "storage_name": "tripit_documents",
+      "expected_row_count": 1,
+      "stable_row_identities": [
+        "document::new-york::ny-hotel-quote.pdf"
+      ]
+    },
+    {
+      "entity_name": "import-message",
+      "storage_name": "tripit_import_messages",
+      "expected_row_count": 0,
+      "stable_row_identities": []
+    },
+    {
+      "entity_name": "notification",
+      "storage_name": "tripit_notifications",
+      "expected_row_count": 2,
+      "stable_row_identities": [
+        "notification::traveler::trip-reminder::new-york",
+        "notification::traveler::welcome::account"
+      ]
+    },
+    {
+      "entity_name": "trip-share",
+      "storage_name": "tripit_trip_shares",
+      "expected_row_count": 0,
+      "stable_row_identities": []
+    },
+    {
+      "entity_name": "pro-subscription",
+      "storage_name": "tripit_pro_subscriptions",
+      "expected_row_count": 0,
+      "stable_row_identities": []
+    },
+    {
+      "entity_name": "loyalty-program",
+      "storage_name": "tripit_loyalty_programs",
+      "expected_row_count": 1,
+      "stable_row_identities": [
+        "loyalty::traveler::united-mileageplus"
+      ]
+    },
+    {
+      "entity_name": "fare-watch",
+      "storage_name": "tripit_fare_watches",
+      "expected_row_count": 0,
+      "stable_row_identities": []
+    },
+    {
+      "entity_name": "ics-feed-token",
+      "storage_name": "tripit_ics_feed_tokens",
+      "expected_row_count": 0,
+      "stable_row_identities": []
+    }
+  ],
+  "reset_probes": [
+    {
+      "id": "seed-reset.exact-reseed",
+      "executor_actor_id": "verifier.admin-isolated",
+      "expected_seed_id": "tripit-r1-seed-v1",
+      "expected_schema_version": "0005_pro_payment_overlay",
+      "expected_entity_counts": {
+        "local_auth_schema_migrations": 4,
+        "local_auth_registration_flows": 0,
+        "local_auth_accounts": 2,
+        "local_auth_sessions": 0,
+        "business_subjects": 2,
+        "local_auth_password_reset_flows": 0,
+        "local_auth_mail_outbox": 0,
+        "local_auth_mail_rate_limits": 0,
+        "tripit_schema_migrations": 5,
+        "tripit_traveler_profiles": 2,
+        "tripit_trips": 5,
+        "tripit_trip_travelers": 5,
+        "tripit_plans": 16,
+        "tripit_plan_segments": 5,
+        "tripit_documents": 1,
+        "tripit_import_messages": 0,
+        "tripit_notifications": 2,
+        "tripit_trip_shares": 0,
+        "tripit_pro_subscriptions": 0,
+        "tripit_loyalty_programs": 1,
+        "tripit_fare_watches": 0,
+        "tripit_ics_feed_tokens": 0
+      }
+    },
+    {
+      "id": "seed-reset.idempotent-repeat",
+      "executor_actor_id": "verifier.admin-isolated",
+      "expectation": "Two consecutive admin resets produce identical logical state: identical entity counts, identical stable row identities, no duplicate seed rows."
+    },
+    {
+      "id": "seed-reset.restart-round-trip",
+      "executor_actor_id": "verifier.admin-isolated",
+      "expectation": "Post-reset committed mutations (e.g. the anchor hotel plan) survive a full server restart; a subsequent reset returns the database to the exact seed manifest state."
+    }
+  ],
+  "import_fixtures": [
+    {
+      "id": "fixture::hilton-midtown-confirmation",
+      "provider": "Hilton",
+      "plan_type": "lodging",
+      "expected_parse": "parsed",
+      "expected_routing": "joins-existing-trip-by-date-overlap::new-york",
+      "check_in": "2027-05-23",
+      "check_out": "2027-05-26",
+      "property": "New York Hilton Midtown",
+      "confirmation_number": "4482210417",
+      "role": "anchor-journey-import-variant"
+    },
+    {
+      "id": "fixture::united-flight-itinerary",
+      "provider": "United",
+      "plan_type": "air",
+      "expected_parse": "parsed",
+      "expected_routing": "unfiled-no-date-overlap",
+      "depart": "2027-03-15"
+    },
+    {
+      "id": "fixture::united-flight-change",
+      "provider": "United",
+      "plan_type": "air",
+      "expected_parse": "updated",
+      "expected_routing": "updates-plan-created-by::fixture::united-flight-itinerary"
+    },
+    {
+      "id": "fixture::marriott-cancellation",
+      "provider": "Marriott",
+      "plan_type": "lodging",
+      "expected_parse": "canceled",
+      "expected_routing": "cancels-plan-created-by-prior-marriott-confirmation-import"
+    },
+    {
+      "id": "fixture::avis-car-confirmation",
+      "provider": "Avis",
+      "plan_type": "car",
+      "expected_parse": "parsed",
+      "expected_routing": "joins-existing-trip-by-date-overlap::new-york",
+      "pickup": "2027-05-23"
+    },
+    {
+      "id": "fixture::opentable-dinner",
+      "provider": "OpenTable",
+      "plan_type": "restaurant",
+      "expected_parse": "parsed",
+      "expected_routing": "joins-existing-trip-by-date-overlap::lisbon-getaway",
+      "reservation": "2027-09-05"
+    },
+    {
+      "id": "fixture::newsletter-unparseable",
+      "provider": "unknown",
+      "plan_type": null,
+      "expected_parse": "unparseable",
+      "expected_routing": "no-plan-created-visible-failure-state"
+    }
+  ],
+  "anchor_journey": {
+    "id": "anchor.add-hilton-midtown-to-new-york-trip",
+    "statement": "Add a hotel reservation at the Hilton Midtown Manhattan from May 23-26 to the existing New York trip.",
+    "target_trip_identity": "trip::traveler::new-york::2027-05-22::2027-05-27::America/New_York",
+    "year_resolution_rule": "May 23-26 resolves to 2027 exclusively via date-overlap with the seeded upcoming New York trip; the flow must join that trip and never create a new one.",
+    "seed_precondition": "The seeded New York trip contains no lodging plan, so the added Hilton reservation is the trip's first lodging row and its chronological placement is deterministic.",
+    "idempotency_rule": "Repeated form submission and repeated fixture::hilton-midtown-confirmation import must not create duplicate lodging rows."
+  },
+  "notes": "Frozen blind-test dataset for site:tripit. Counts are physical SQLite rows after the admin reset hook. Entity-count reduction relative to a production account is intentional and allowed; page families, fields, interactions, and states are not reduced. The New York trip 2027-05-22..2027-05-27 is the anchor-journey target; Upcoming (3 trips), Past (1 trip), and Unfiled (1 plan) list states are all non-empty for the traveler account, and the second account proves cross-user isolation."
+}

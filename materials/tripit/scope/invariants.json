@@ -1,0 +1,166 @@
+{
+  "schema_version": "offline-clone.invariants.v1",
+  "status": "frozen",
+  "invariants": [
+    {
+      "id": "runtime.local-only",
+      "priority": "p0",
+      "statement": "The candidate serves only same-origin HTML, CSS, JavaScript, fonts, images, and authored data; runtime requests to www.tripit.com, TrustArc, Google, CDNs, telemetry, or any remote origin are forbidden.",
+      "journey_ids": ["anon.marketing-browse.success", "anon.auth-shell.render", "trips.list.tabs.success", "anchor.add-hilton-midtown-to-new-york-trip"],
+      "coverage_dimension_ids": ["p0-network-invariants"],
+      "acceptance_obligations": [
+        "Release network evidence records zero non-same-origin requests across every acceptance journey and every checkpoint render.",
+        "The asset manifest marks remote_runtime_policy=forbidden and every referenced asset resolves from the local mirror."
+      ],
+      "zero_effect_contract": {
+        "expected_remote_request_count": 0,
+        "expected_remote_effect_count": 0,
+        "expected_failed_booking_delta": 0,
+        "applies_to_every_bound_journey": true
+      }
+    },
+    {
+      "id": "determinism.frozen-clock",
+      "priority": "p0",
+      "statement": "All server and client time derives from the frozen clock 2026-08-04T09:00:00-04:00 (America/New_York); no wall clock or randomness reaches rendering, sorting, datepicker defaults, or adapter outputs.",
+      "journey_ids": ["trips.list.tabs.success", "anchor.add-hilton-midtown-to-new-york-trip", "pro.features.deterministic-adapters"],
+      "coverage_dimension_ids": ["deterministic-seed-rows"],
+      "acceptance_obligations": [
+        "Two renders of any state separated by wall-clock time are byte-identical outside user-driven mutations.",
+        "Datepicker defaults, relative-date copy, and adapter outputs are pure functions of the frozen clock and seed."
+      ]
+    },
+    {
+      "id": "visual.frozen-anonymous-contract",
+      "priority": "p0",
+      "statement": "Every acceptance-eligible checkpoint binds a sha256-frozen source frame, a viewport, a comparison region, the pixel-mae-similarity-v1 metric, and a threshold derived from pre-candidate 3-frame calibration; thresholds and ignore regions were frozen before any candidate render existed.",
+      "journey_ids": ["anon.marketing-browse.success", "anon.auth-shell.render"],
+      "coverage_dimension_ids": ["source-direct-states"],
+      "acceptance_obligations": [
+        "Visual acceptance recomputes similarity against the frozen artifact whose sha256 matches the contract and passes the calibrated threshold for the full region and every region contract.",
+        "No ignore region exists in any frozen contract; any future mask requires a new freeze decision recorded before comparison."
+      ]
+    },
+    {
+      "id": "evidence.no-fabricated-authenticated-pixels",
+      "priority": "p0",
+      "statement": "Authenticated and Pro surfaces carry evidence_kind=unavailable; the clone implements them as declared local contracts and no visual acceptance is claimed against pixels that were never captured. A later authenticated capture round may upgrade evidence without weakening anonymous contracts.",
+      "journey_ids": ["trips.list.tabs.success", "pro.features.deterministic-adapters"],
+      "coverage_dimension_ids": ["source-unavailable-states"],
+      "acceptance_obligations": [
+        "No checkpoint with evidence_kind=unavailable is acceptance_eligible and no visual similarity score is reported for such surfaces.",
+        "The final report lists every unavailable family and the Steel Live View path that upgrades it."
+      ]
+    },
+    {
+      "id": "auth.server-session-authority",
+      "priority": "p0",
+      "statement": "Identity resolves only from the server-side session referenced by the __Host-websitebench-tripit-session cookie; client-supplied account, owner, role, or subject fields are never trusted.",
+      "journey_ids": ["auth.sign-in.success", "auth.session.sign-out", "share.foreign-owner-isolation"],
+      "coverage_dimension_ids": ["p0-auth-journeys"],
+      "acceptance_obligations": [
+        "Requests carrying forged account/owner/role fields resolve to the session subject or fail; no test can switch subjects without a new server session.",
+        "Sign-out invalidates the session row and protected routes redirect to sign-in afterwards."
+      ]
+    },
+    {
+      "id": "auth.secret-mail-purposes",
+      "priority": "p0",
+      "statement": "Exactly two auth mail purposes exist (registration, password-reset); their secret codes are issued transiently, never persisted in cleartext, and business mails (share-invite, import-receipt, trip-update, pro-receipt) never carry secrets.",
+      "journey_ids": ["auth.registration.success", "auth.password-reset.request"],
+      "coverage_dimension_ids": ["p0-auth-journeys"],
+      "acceptance_obligations": [
+        "runtime.json mail purposes equal exactly {registration, password-reset} for auth and the four business purposes; the validator passes.",
+        "No cleartext secret code exists in any database row, log, or business mail body during the full suite."
+      ]
+    },
+    {
+      "id": "isolation.cross-user",
+      "priority": "p0",
+      "statement": "Trips, plans, documents, imports, notifications, and subscriptions are owner-scoped; foreign access returns 403/404 without existence disclosure and foreign mutations change nothing.",
+      "journey_ids": ["share.foreign-owner-isolation", "anchor.add-hilton-midtown-to-new-york-trip"],
+      "coverage_dimension_ids": ["p0-travel-journeys"],
+      "acceptance_obligations": [
+        "other@example.com receives 403/404 for every traveler-owned resource URL and its mutation attempts leave row counts and contents unchanged.",
+        "Anonymous requests to owner-scoped routes redirect to sign-in without disclosing resource existence."
+      ]
+    },
+    {
+      "id": "plans.timeline-ordering",
+      "priority": "p0",
+      "statement": "Itinerary rows order by (start_ts_utc, sort_key, id); lodging expands to check-in/check-out rows and car to pick-up/drop-off rows; ordering is stable across refresh, restart, and reset.",
+      "journey_ids": ["plans.add-each-type.success", "anchor.add-hilton-midtown-to-new-york-trip"],
+      "coverage_dimension_ids": ["plan-type-rows"],
+      "acceptance_obligations": [
+        "The seeded New York itinerary renders the anchor hotel between the outbound flight and later plans immediately after save, after refresh, and after restart.",
+        "A golden ordering test over the seeded dataset pins the exact row sequence per trip including expanded lodging/car rows."
+      ]
+    },
+    {
+      "id": "anchor.join-existing-trip",
+      "priority": "p0",
+      "statement": "The anchor hotel add resolves May 23-26 to 2027 solely by date-overlap with the seeded New York trip and always joins that trip; it never creates a new trip.",
+      "journey_ids": ["anchor.add-hilton-midtown-to-new-york-trip", "anchor.duplicate-submit-idempotent"],
+      "coverage_dimension_ids": ["p0-travel-journeys"],
+      "acceptance_obligations": [
+        "After the anchor journey the trip count for traveler@example.com is unchanged and the lodging row belongs to the seeded New York trip id.",
+        "Duplicate submission and the fixture import variant leave exactly one Hilton lodging row."
+      ]
+    },
+    {
+      "id": "import.fingerprint-idempotent",
+      "priority": "p0",
+      "statement": "Import messages are fingerprinted with sha256(from+subject+normalized body) under UNIQUE(owner, fingerprint); duplicates return the existing record (parse_status=duplicate) and never create a second plan; updates and cancellations mutate the originally imported plan.",
+      "journey_ids": ["import.duplicate-idempotent", "import.update-and-cancel"],
+      "coverage_dimension_ids": ["import-fixture-rows"],
+      "acceptance_obligations": [
+        "Re-injecting any fixture yields parse_status=duplicate with identical plan counts before and after.",
+        "The update fixture mutates the original plan row in place and the cancel fixture flips its status to canceled without deleting history."
+      ]
+    },
+    {
+      "id": "payments.test-mode-only",
+      "priority": "p0",
+      "statement": "Pro checkout uses the local sandbox (exactly approved/declined/retryable scenarios) or per-site Stripe test mode behind the shared edge verifier; webhook handling trusts only the verified header, re-fetches the session server-side, and the ledger's one-active-approval index makes duplicate webhooks unable to double-activate. Live keys are structurally rejected; the hotel-entry path never touches payment code.",
+      "journey_ids": ["pro.upgrade.stripe-test.success", "pro.upgrade.declined-then-retry", "pro.cancel-retains-period"],
+      "coverage_dimension_ids": ["payment-scenarios"],
+      "acceptance_obligations": [
+        "An unverified webhook POST returns 400 and creates no subscription; duplicate verified webhooks leave exactly one active subscription row.",
+        "runtime.json validation rejects any non sk_test_/whsec_ credential shape and the anchor hotel flow's code path imports no payment module."
+      ]
+    },
+    {
+      "id": "persistence.restart-and-reset",
+      "priority": "p0",
+      "statement": "Committed state survives process restart; the token-gated admin reset restores the exact seed manifest (physical SQLite rows) and is idempotent.",
+      "journey_ids": ["lifecycle.deterministic-reset", "lifecycle.restart-persistence"],
+      "coverage_dimension_ids": ["deterministic-reset-probes"],
+      "acceptance_obligations": [
+        "seed-reset.exact-reseed, seed-reset.idempotent-repeat, and seed-reset.restart-round-trip pass with entity counts equal to the frozen manifest.",
+        "Reset without the admin token is rejected and mutates nothing."
+      ]
+    },
+    {
+      "id": "documents.blob-bounded",
+      "priority": "p0",
+      "statement": "Documents are stored as size-bounded BLOB rows in the site SQLite file; oversize uploads fail with the frozen error state and the single database file carries the complete site state.",
+      "journey_ids": ["documents.upload-preview-download-delete", "documents.oversize-failure"],
+      "coverage_dimension_ids": ["p0-travel-journeys"],
+      "acceptance_obligations": [
+        "Uploaded documents round-trip byte-identically through preview/download and survive restart; migration-copy evidence shows the single sqlite file carries them.",
+        "An oversize upload returns the frozen error state and adds no row."
+      ]
+    },
+    {
+      "id": "share.role-matrix",
+      "priority": "p0",
+      "statement": "Share roles are exactly viewer/editor/traveler with a show_sensitive flag; sensitive fields are masked for shares without it; revocation is immediate; invite tokens are stored only as digests.",
+      "journey_ids": ["share.invite-accept.success", "share.role-and-revoke"],
+      "coverage_dimension_ids": ["share-role-rows"],
+      "acceptance_obligations": [
+        "A parameterized role-matrix test proves viewer read-only, editor mutation rights, sensitive-field masking without show_sensitive, and immediate loss of access on revoke.",
+        "No cleartext invite token exists in any database row; acceptance uses the tokenized link exactly once."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+/* Trip creation lives inside the authenticated TripIt app shell. */
+.plan-trip-page {
+  max-width: 46rem;
+  margin: 0 auto 5rem;
+}
+
+.plan-trip-back {
+  color: #107ac5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.plan-trip-heading {
+  border-bottom: 1px solid #dedede;
+  margin-bottom: 1.5rem;
+}
+
+.plan-trip-heading h1 {
+  color: #042d48;
+}
+
+.plan-trip-card {
+  border: 1px solid #dedede;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.plan-trip-card .form-label,
+.plan-trip-card legend {
+  color: #042d48;
+}
+
+.plan-trip-card .form-control,
+.plan-trip-card .form-select {
+  min-height: 2.75rem;
+}
+
+.plan-trip-card .form-control:focus,
+.plan-trip-card .form-select:focus {
+  border-color: #107ac5;
+  box-shadow: 0 0 0 0.1rem #107ac5;
+}
+
+.plan-trip-dates {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.plan-trip-date {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.025em;
+}
+
+.plan-trip-date::placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+.plan-trip-submit {
+  min-width: 8.5rem;
+  min-height: 2.75rem;
+  background: #107ac5;
+  border-color: #107ac5;
+  font-weight: 600;
+}
+
+.plan-trip-submit:hover,
+.plan-trip-submit:focus {
+  background: #0b659f;
+  border-color: #0b659f;
+}
+
+.plan-trip-cancel {
+  color: #107ac5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.plan-trip-delete {
+  border-top: 1px solid #dedede;
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
+@media (max-width: 575.98px) {
+  .plan-trip-page {
+    margin-bottom: 3rem;
+  }
+
+  .plan-trip-card .card-body {
+    padding: 1.25rem !important;
+  }
+
+  .plan-trip-submit {
+    width: 100%;
+  }
+
+  .plan-trip-cancel {
+    text-align: center;
+
+.trip-editor {
+  margin: 1.75rem auto 5rem;
+  max-width: 74rem;
+  padding: 0 1rem;
+}
+
+.trip-editor__header {
+  margin-bottom: 1.75rem;
+  max-width: 44rem;
+}
+
+.trip-editor__header h1 {
+  color: #101010;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.trip-editor__header p {
+  color: #262626;
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+.trip-editor__layout {
+  align-items: start;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1.25fr) minmax(19rem, 0.75fr);
+}
+
+.trip-editor__form {
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+  padding: 2.1rem;
+}
+
+.trip-editor__form h2 {
+  color: #111;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.trip-editor__field {
+  margin-bottom: 1.65rem;
+}
+
+.trip-editor__field label {
+  color: #272727;
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.trip-editor__field label span {
+  color: #d71920;
+  font-weight: 700;
+}
+
+.trip-editor__field input,
+.trip-editor__field select,
+.trip-editor__field textarea {
+  background: #fff;
+  border: 1px solid #676767;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: #242424;
+  font: inherit;
+  min-height: 3.1rem;
+  padding: 0.75rem 0.9rem;
+  width: 100%;
+}
+
+.trip-editor__field input:focus,
+.trip-editor__field select:focus,
+.trip-editor__field textarea:focus {
+  border-color: #107ac5;
+  box-shadow: 0 0 0 2px #107ac5;
+  outline: none;
+}
+
+.trip-editor__field textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.trip-editor__dates {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.trip-editor__date-control {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+}
+
+.trip-editor__date-control input {
+  border-left: 0;
+}
+
+.trip-editor__calendar {
+  align-items: center;
+  border: 1px solid #107ac5;
+  color: #107ac5;
+  display: flex;
+  font-size: 1.35rem;
+  justify-content: center;
+}
+
+.trip-editor__photo img {
+  aspect-ratio: 1;
+  display: block;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.trip-editor__change-photo {
+  background: transparent;
+  border: 0;
+  color: #107ac5;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-top: 1.2rem;
+  padding: 0.35rem 0;
+}
+
+.trip-editor__change-photo span {
+  display: inline-block;
+  font-size: 1.25rem;
+  margin-right: 0.45rem;
+}
+
+.trip-editor__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.trip-editor__delete {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 767.98px) {
+  .trip-editor__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .trip-editor__photo {
+    grid-row: 1;
+  }
+
+  .trip-editor__dates {
+    grid-template-columns: 1fr;
+  }
+
+  .trip-editor__form {
+    padding: 1.25rem;
+  }
+}

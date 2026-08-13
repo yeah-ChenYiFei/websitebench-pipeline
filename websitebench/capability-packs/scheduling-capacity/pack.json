@@ -1,0 +1,107 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "workflow",
+        "entities": [
+          {
+            "identity": "site-local opaque capacity-reservation identity; exact source key and ownership require R1 confirmation",
+            "name": "capacity-reservation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "none",
+        "id": "scheduling-capacity-lifecycle",
+        "label": "scheduling-capacity lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "no overbooking",
+          "hold expiry",
+          "timezone-safe comparisons",
+          "atomic booking"
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "available",
+            "held",
+            "booked",
+            "cancelled",
+            "expired"
+          ],
+          "transitions": [
+            {
+              "from": "available",
+              "to": "held",
+              "trigger": "server-authorized scheduling-capacity lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "held",
+              "to": "booked",
+              "trigger": "server-authorized scheduling-capacity lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "booked",
+              "to": "cancelled",
+              "trigger": "server-authorized scheduling-capacity lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "cancelled",
+              "to": "expired",
+              "trigger": "server-authorized scheduling-capacity lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": []
+  },
+  "batch_family_id": null,
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "scheduling-capacity keyboard retry refresh"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "scheduling-capacity-surface",
+        "label": "scheduling-capacity route or embedded surface",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "scheduling-capacity surface"
+    ],
+    "state_families": [
+      "scheduling-capacity loading empty error success"
+    ]
+  },
+  "kind": "overlay",
+  "pack_id": "scheduling-capacity",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "时区、日历、时段、容量、hold、改期和取消窗口。",
+  "title": "Scheduling Capacity overlay",
+  "verification": {
+    "coverage_dimensions": [
+      "scheduling-capacity actor x outcome x persistence"
+    ],
+    "verification_focus": [
+      "no overbooking",
+      "hold expiry",
+      "timezone-safe comparisons",
+      "atomic booking"
+    ]
+  },
+  "version": "1.0.0"
+}

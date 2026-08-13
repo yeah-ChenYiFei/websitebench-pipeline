@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/offline-clone.fullstack-candidate.v3.json",
+  "title": "Machine-verifiable full-stack candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "site_id", "candidate_tree", "source_acquisition", "semantic_selection", "frontend", "backend", "status"],
+  "properties": {
+    "schema_version": {"const": "offline-clone.fullstack-candidate.v3"},
+    "site_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "candidate_tree": {"$ref": "#/$defs/tree"},
+    "source_acquisition": {"$ref": "#/$defs/file"},
+    "semantic_selection": {"$ref": "#/$defs/file"},
+    "frontend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_stability_runs", "p0_region_failures", "console_error_count", "runtime_remote_request_count", "evidence"],
+      "properties": {
+        "candidate_stability_runs": {"type": "integer", "minimum": 0},
+        "p0_region_failures": {"type": "integer", "minimum": 0},
+        "console_error_count": {"type": "integer", "minimum": 0},
+        "runtime_remote_request_count": {"type": "integer", "minimum": 0},
+        "evidence": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/evidence_artifact"}}
+      }
+    },
+    "backend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["applicable_capability_count", "verified_capability_count", "proof_obligation_failures", "evidence"],
+      "properties": {
+        "applicable_capability_count": {"type": "integer", "minimum": 0},
+        "verified_capability_count": {"type": "integer", "minimum": 0},
+        "proof_obligation_failures": {"type": "integer", "minimum": 0},
+        "evidence": {"type": "array", "minItems": 4, "items": {"$ref": "#/$defs/evidence_artifact"}}
+      }
+    },
+    "status": {"enum": ["in-progress", "complete"]}
+  },
+  "$defs": {
+    "path": {"type": "string", "minLength": 1, "maxLength": 1000, "pattern": "^(?![A-Za-z]:|/|\\\\|.*(?:^|/)\\.\\.(?:/|$)).+$"},
+    "tree": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path"],
+      "properties": {"path": {"$ref": "#/$defs/path"}}
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes"],
+      "properties": {"path": {"$ref": "#/$defs/path"}, "bytes": {"type": "integer", "minimum": 1}}
+    },
+    "evidence_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "path", "bytes"],
+      "properties": {
+        "kind": {"enum": ["visual-calibration", "browser-audit", "focused-regression", "backend-model", "proof-matrix", "reset-audit"]},
+        "path": {"$ref": "#/$defs/path"},
+        "bytes": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{% extends "app/base.html" %}
+{% block app_title %}{% if mode == 'edit' %}Edit Trip{% else %}Add Trip{% endif %} - TripIt{% endblock %}
+{% block app_styles %}
+    <link rel="stylesheet" href="/static/site/css/app-trip-form.css">
+{% endblock %}
+{% block app_main %}
+<section class="trip-editor" aria-labelledby="trip-editor-title">
+  <header class="trip-editor__header">
+    <h1 id="trip-editor-title">{% if mode == 'edit' %}Edit Trip{% else %}Add Trip{% endif %}</h1>
+    <p>
+      Add a trip manually below or forward your confirmation emails to
+      <strong>plans@tripit.com</strong>, and we'll create the trip for you.
+    </p>
+  </header>
+
+  {% if errors %}
+    <div class="alert alert-danger trip-editor__errors" role="alert">
+      <ul class="mb-0">{% for err in errors %}<li>{{ err }}</li>{% endfor %}</ul>
+    </div>
+  {% endif %}
+
+  <div class="trip-editor__layout">
+    <form class="trip-editor__form" method="post"
+          action="{% if mode == 'edit' %}/trips/{{ trip.trip_id }}/edit{% else %}/trips{% endif %}"
+          autocomplete="off">
+      {% if mode != 'edit' %}
+        <input type="hidden" name="idempotency_key" value="{{ form_token }}">
+        {% if return_to_app or values.get('return_to_app') == '1' %}
+          <input type="hidden" name="return_to_app" value="1">
+        {% endif %}
+      {% endif %}
+
+      <h2>Trip Details</h2>
+
+      <div class="trip-editor__field">
+        <label for="trip-name">Trip Name</label>
+        <input id="trip-name" type="text" name="name"
+               value="{{ values.get('name', '') }}" placeholder="Enter trip name" required autofocus>
+      </div>
+
+      <div class="trip-editor__field">
+        <label for="trip-destination">Destination City <span aria-hidden="true">*</span></label>
+        <input id="trip-destination" type="search" name="destination"
+               value="{{ values.get('destination', '') }}" placeholder="Enter destination">
+      </div>
+
+      <div class="trip-editor__dates">
+        <div class="trip-editor__field">
+          <label for="trip-start-date">Start Date <span aria-hidden="true">*</span></label>
+          <div class="trip-editor__date-control">
+            <span class="trip-editor__calendar" aria-hidden="true">▣</span>
+            <input id="trip-start-date" type="text" name="start_date"
+                   lang="en-US" inputmode="numeric" autocomplete="off"
+                   value="{{ values.get('start_date', '') }}" placeholder="YYYY-MM-DD"
+                   pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" title="Use YYYY-MM-DD." required>
+          </div>
+        </div>
+        <div class="trip-editor__field">
+          <label for="trip-end-date">End Date <span aria-hidden="true">*</span></label>
+          <div class="trip-editor__date-control">
+            <span class="trip-editor__calendar" aria-hidden="true">▣</span>
+            <input id="trip-end-date" type="text" name="end_date"
+                   lang="en-US" inputmode="numeric" autocomplete="off"
+                   value="{{ values.get('end_date', '') }}" placeholder="YYYY-MM-DD"
+                   pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" title="Use YYYY-MM-DD." required>
+          </div>
+        </div>
+      </div>
+
+      <div class="trip-editor__field">
+        <label for="trip-timezone">Time Zone</label>
+        {% set current_tz = values.get('timezone', '') %}
+        {% set ns = namespace(found=false) %}
+        {% for tz, label in timezones %}
+          {% if tz == current_tz %}{% set ns.found = true %}{% endif %}
+        {% endfor %}
+        <select id="trip-timezone" name="timezone">
+          {% if current_tz and not ns.found %}
+            <option value="{{ current_tz }}" selected>{{ current_tz }}</option>
+          {% endif %}
+          {% for tz, label in timezones %}
+            <option value="{{ tz }}" {% if tz == current_tz %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="trip-editor__field">
+        <label for="trip-description">Trip Description</label>
+        <textarea id="trip-description" name="description"
+                  placeholder="Enter Trip Description">{{ values.get('description', '') }}</textarea>
+      </div>
+
+      <div class="trip-editor__actions">
+        <a class="btn btn-white" href="/app/trips">Cancel</a>
+        <button type="submit" class="btn btn-primary" data-cy="save-trip-button">
+          {% if mode == 'edit' %}Save Changes{% else %}Save{% endif %}
+        </button>
+      </div>
+    </form>
+
+    <aside class="trip-editor__photo" aria-label="Trip photo">
+      <img src="/images/places/themes/generic.jpg?res=2x" alt="Trip Image" width="420" height="420">
+      <button type="button" class="trip-editor__change-photo" aria-label="Change Photo">
+        <span aria-hidden="true">▣</span> Change Photo
+      </button>
+    </aside>
+  </div>
+
+  {% if mode == 'edit' %}
+    <form class="trip-editor__delete" method="post" action="/trips/{{ trip.trip_id }}/delete"
+          data-confirm="Delete this trip and everything in it? This cannot be undone.">
+      <button type="submit" class="btn btn-link text-danger px-0">Delete this trip</button>
+    </form>
+  {% endif %}
+</section>
+{% endblock %}

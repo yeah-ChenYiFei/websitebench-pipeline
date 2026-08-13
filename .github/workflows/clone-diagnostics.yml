@@ -1,0 +1,103 @@
+name: Offline clone diagnostics
+
+# One site per caller. Clone findings inform review; they never decide whether
+# a contribution may merge. Kernel isolation self-tests remain fail closed.
+on:
+  workflow_call:
+    inputs:
+      site:
+        description: "The materials/<site> directory this run diagnoses"
+        required: true
+        type: string
+      remote_history_audit:
+        description: "Retained compatibility input; diagnostics do not fetch source history."
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: offline-clone-diagnostics-${{ inputs.site }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  diagnostics:
+    name: ${{ inputs.site }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out the current revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "24"
+      - name: Install the current checkout
+        run: python -m pip install --disable-pip-version-check -e '.[dev]'
+      - name: Install the trusted browser runtime
+        run: python -m playwright install --with-deps chromium
+      - name: Verify sandbox infrastructure
+        run: >-
+          python -m pytest -q tests/harbor/test_deterministic_v2.py
+          -k 'sandbox_preflight or kernel_sandbox'
+      - name: Build a declared Node candidate before diagnostics
+        shell: bash
+        env:
+          SITE_ID: ${{ inputs.site }}
+        run: |
+          set -euo pipefail
+          if [[ ! "${SITE_ID}" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+            echo "invalid fixed site id" >&2
+            exit 1
+          fi
+          clone_dir="${GITHUB_WORKSPACE}/materials/${SITE_ID}/clone"
+          if [[ -f "${clone_dir}/package-lock.json" ]]; then
+            npm ci --prefix "${clone_dir}"
+            npm run --prefix "${clone_dir}" build
+            if jq -e '.scripts["prepare:standalone"]' "${clone_dir}/package.json" >/dev/null; then
+              npm run --prefix "${clone_dir}" prepare:standalone
+            fi
+          fi
+      - name: Run candidate diagnostics without a quality gate
+        id: diagnostics
+        shell: bash
+        env:
+          SITE_ID: ${{ inputs.site }}
+        run: |
+          set -u
+          if [[ ! "${SITE_ID}" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+            echo "invalid fixed site id" >&2
+            exit 1
+          fi
+          report="${RUNNER_TEMP}/diagnostic-${SITE_ID}.json"
+          site_dir="${GITHUB_WORKSPACE}/materials/${SITE_ID}"
+          set +e
+          python -m websitebench.offline_clone.cli verify \
+            --site "${site_dir}" --out "${report}"
+          diagnostic_exit=$?
+          set -e
+          echo "diagnostic_exit=${diagnostic_exit}" >> "${GITHUB_OUTPUT}"
+          if [[ -f "${report}" ]]; then
+            status="$(jq -r '.diagnostic_status // "incomplete"' "${report}")"
+            echo "::notice title=clone-diagnostics=${SITE_ID}::${status}; maintainer judgment required"
+          else
+            printf '%s\n' '{"schema_version":"offline-clone.diagnostic-report.v1","authority":"diagnostic-only","qualification":"maintainer-judgment-required","diagnostic_status":"incomplete","requested_sections":["static","live"],"sections":{"static":{"execution":{"complete":false,"incomplete_reasons":["verifier emitted no report"]},"coverage":{},"findings":[],"observations":[]},"live":{"execution":{"complete":false,"incomplete_reasons":["verifier emitted no report"]},"coverage":{},"findings":[],"observations":[]}},"site_id":"'"${SITE_ID}"'","generated_at":"1970-01-01T00:00:00Z"}' > "${report}"
+            echo "::warning title=clone-diagnostics=${SITE_ID}::verifier emitted no report; maintainer judgment required"
+          fi
+          # Findings and incomplete execution are review data, never a merge veto.
+          exit 0
+      - name: Upload diagnostic report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: offline-clone-diagnostic-${{ inputs.site }}
+          path: ${{ runner.temp }}/diagnostic-${{ inputs.site }}.json
+          if-no-files-found: error
+          retention-days: 14

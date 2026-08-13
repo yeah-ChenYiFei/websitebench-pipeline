@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/offline-clone.profile-lock.v3.json",
+  "title": "Content-addressed offline-clone profile lock",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "compiler_version", "site_id", "inputs", "resolved_ir_sha256", "artifact_graph_sha256", "compiled_plan_sha256"],
+  "properties": {
+    "schema_version": {"const": "offline-clone.profile-lock.v3"},
+    "compiler_version": {"const": "websitebench.site-compiler.v3"},
+    "site_id": {"$ref": "#/$defs/id"},
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inventory", "profile", "packs"],
+      "properties": {
+        "inventory": {"$ref": "#/$defs/file_input"},
+        "profile": {"$ref": "#/$defs/file_input"},
+        "packs": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/pack_input"}}
+      }
+    },
+    "resolved_ir_sha256": {"$ref": "#/$defs/sha256"},
+    "artifact_graph_sha256": {"$ref": "#/$defs/sha256"},
+    "compiled_plan_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "file_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["logical_path", "sha256"],
+      "properties": {"logical_path": {"type": "string", "minLength": 1, "maxLength": 500}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "pack_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pack_id", "version", "sha256"],
+      "properties": {"pack_id": {"$ref": "#/$defs/id"}, "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}, "sha256": {"$ref": "#/$defs/sha256"}}
+    }
+  }
+}

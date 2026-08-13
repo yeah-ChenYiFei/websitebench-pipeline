@@ -1,0 +1,317 @@
+{
+  "backend": {
+    "capability_templates": [
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque reservation identity; exact source key and ownership require R1 confirmation",
+            "name": "reservation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque venue-route-property-vehicle identity; exact source key and ownership require R1 confirmation",
+            "name": "venue-route-property-vehicle",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque schedule identity; exact source key and ownership require R1 confirmation",
+            "name": "schedule",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque availability identity; exact source key and ownership require R1 confirmation",
+            "name": "availability",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque fare-rate identity; exact source key and ownership require R1 confirmation",
+            "name": "fare-rate",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque hold identity; exact source key and ownership require R1 confirmation",
+            "name": "hold",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque reservation-trip-ticket identity; exact source key and ownership require R1 confirmation",
+            "name": "reservation-trip-ticket",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque passenger-guest identity; exact source key and ownership require R1 confirmation",
+            "name": "passenger-guest",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque cancellation identity; exact source key and ownership require R1 confirmation",
+            "name": "cancellation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque refund identity; exact source key and ownership require R1 confirmation",
+            "name": "refund",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "reservation-mobility-ticketing-reservation",
+        "label": "reservation-mobility-ticketing reservation lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "容量、价格、hold 到期、确认和取消规则由服务端原子执行。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "quoted",
+            "held",
+            "confirmed",
+            "checked-in-started",
+            "completed",
+            "cancelled",
+            "no-show",
+            "refunded"
+          ],
+          "transitions": [
+            {
+              "from": "quoted",
+              "to": "held",
+              "trigger": "server-authorized reservation-mobility-ticketing reservation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "held",
+              "to": "confirmed",
+              "trigger": "server-authorized reservation-mobility-ticketing reservation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "confirmed",
+              "to": "checked-in-started",
+              "trigger": "server-authorized reservation-mobility-ticketing reservation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "checked-in-started",
+              "to": "completed",
+              "trigger": "server-authorized reservation-mobility-ticketing reservation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "completed",
+              "to": "cancelled",
+              "trigger": "server-authorized reservation-mobility-ticketing reservation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "cancelled",
+              "to": "no-show",
+              "trigger": "server-authorized reservation-mobility-ticketing reservation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "no-show",
+              "to": "refunded",
+              "trigger": "server-authorized reservation-mobility-ticketing reservation lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      },
+      {
+        "category": "commerce",
+        "entities": [
+          {
+            "identity": "site-local opaque inventory-slot identity; exact source key and ownership require R1 confirmation",
+            "name": "inventory-slot",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque venue-route-property-vehicle identity; exact source key and ownership require R1 confirmation",
+            "name": "venue-route-property-vehicle",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque schedule identity; exact source key and ownership require R1 confirmation",
+            "name": "schedule",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque availability identity; exact source key and ownership require R1 confirmation",
+            "name": "availability",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque fare-rate identity; exact source key and ownership require R1 confirmation",
+            "name": "fare-rate",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque hold identity; exact source key and ownership require R1 confirmation",
+            "name": "hold",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque reservation-trip-ticket identity; exact source key and ownership require R1 confirmation",
+            "name": "reservation-trip-ticket",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque passenger-guest identity; exact source key and ownership require R1 confirmation",
+            "name": "passenger-guest",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque cancellation identity; exact source key and ownership require R1 confirmation",
+            "name": "cancellation",
+            "owner_scope": "account",
+            "persistence": "durable"
+          },
+          {
+            "identity": "site-local opaque refund identity; exact source key and ownership require R1 confirmation",
+            "name": "refund",
+            "owner_scope": "account",
+            "persistence": "durable"
+          }
+        ],
+        "external_effect": "local-only",
+        "id": "reservation-mobility-ticketing-inventory-slot",
+        "label": "reservation-mobility-ticketing inventory_slot lifecycle",
+        "priority": "p0",
+        "server_authorities": [
+          "同一座位/时段不得并发超卖，过期 hold 必须释放。",
+          "Server resolves owner, tenant and role; valid, invalid, duplicate, stale, foreign-owner, unauthorized, restart, migration and concurrency paths remain mandatory."
+        ],
+        "state_machine": {
+          "kind": "entity-lifecycle",
+          "states": [
+            "available",
+            "held",
+            "booked",
+            "released",
+            "blocked"
+          ],
+          "transitions": [
+            {
+              "from": "available",
+              "to": "held",
+              "trigger": "server-authorized reservation-mobility-ticketing inventory_slot lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "held",
+              "to": "booked",
+              "trigger": "server-authorized reservation-mobility-ticketing inventory_slot lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "booked",
+              "to": "released",
+              "trigger": "server-authorized reservation-mobility-ticketing inventory_slot lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            },
+            {
+              "from": "released",
+              "to": "blocked",
+              "trigger": "server-authorized reservation-mobility-ticketing inventory_slot lifecycle transition; exact source preconditions must be confirmed and frozen at R1"
+            }
+          ]
+        }
+      }
+    ],
+    "local_external_adapters": [
+      "local-reservation-mobility-effect-ledger"
+    ]
+  },
+  "batch_family_id": "booking-mobility",
+  "conflicts": [],
+  "extension_points": [
+    "backend.capabilities"
+  ],
+  "frontend": {
+    "interaction_families": [
+      "primary selection and mutation",
+      "failure retry and recovery",
+      "owner role and foreign-scope boundary"
+    ],
+    "required_viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "route_families": [
+      {
+        "id": "reservation-mobility-entry",
+        "label": "Entry route family for 搜索有时空/座位/容量约束的供给，报价、预留、确认、改签、取消、退款并完成出行或入场。",
+        "priority": "p0"
+      },
+      {
+        "id": "reservation-mobility-discover",
+        "label": "Discover route family for 搜索有时空/座位/容量约束的供给，报价、预留、确认、改签、取消、退款并完成出行或入场。",
+        "priority": "p0"
+      },
+      {
+        "id": "reservation-mobility-detail",
+        "label": "Detail route family for 搜索有时空/座位/容量约束的供给，报价、预留、确认、改签、取消、退款并完成出行或入场。",
+        "priority": "p0"
+      },
+      {
+        "id": "reservation-mobility-commit",
+        "label": "Commit route family for 搜索有时空/座位/容量约束的供给，报价、预留、确认、改签、取消、退款并完成出行或入场。",
+        "priority": "p0"
+      },
+      {
+        "id": "reservation-mobility-confirm",
+        "label": "Confirm route family for 搜索有时空/座位/容量约束的供给，报价、预留、确认、改签、取消、退款并完成出行或入场。",
+        "priority": "p0"
+      },
+      {
+        "id": "reservation-mobility-recover",
+        "label": "Recover route family for 搜索有时空/座位/容量约束的供给，报价、预留、确认、改签、取消、退款并完成出行或入场。",
+        "priority": "p1"
+      }
+    ],
+    "shell_regions": [
+      "reservation-mobility global navigation",
+      "reservation-mobility primary content",
+      "reservation-mobility decision and action region",
+      "reservation-mobility confirmation and aftercare"
+    ],
+    "state_families": [
+      "reservation",
+      "inventory_slot",
+      "loading empty error disabled success variants"
+    ]
+  },
+  "kind": "archetype",
+  "pack_id": "reservation-mobility-ticketing",
+  "requires": [
+    "common-stateful-core"
+  ],
+  "schema_version": "offline-clone.capability-pack.v1",
+  "summary": "搜索有时空/座位/容量约束的供给，报价、预留、确认、改签、取消、退款并完成出行或入场。",
+  "title": "Reservation Mobility Ticketing",
+  "verification": {
+    "coverage_dimensions": [
+      "reservation-mobility-ticketing actor x action x state x outcome",
+      "reservation-mobility-ticketing entity ownership and durable visibility",
+      "reservation-mobility-ticketing valid invalid duplicate stale retry recovery"
+    ],
+    "verification_focus": [
+      "日期/时区、容量、票价和可用性查询的服务端权威。",
+      "hold、预订、改签、取消、退款和票券资格持久化。",
+      "重复确认、过期报价、并发争抢及供应商通知失败可验证。"
+    ]
+  },
+  "version": "1.0.0"
+}

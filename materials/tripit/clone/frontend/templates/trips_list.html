@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}My Trips · TripIt{% endblock %}
+{% block content %}
+<section class="page trips">
+  <div class="page__head">
+    <h1>My Trips</h1>
+    <a class="btn btn--primary" href="/trips/new">Plan a trip</a>
+  </div>
+
+  <nav class="tabs" aria-label="Trip lists">
+    <a class="tab {% if active_tab == 'upcoming' %}tab--active{% endif %}" href="/trips?tab=upcoming">
+      Upcoming <span class="tab__count">{{ tab_counts.upcoming }}</span>
+    </a>
+    <a class="tab {% if active_tab == 'past' %}tab--active{% endif %}" href="/trips?tab=past">
+      Past <span class="tab__count">{{ tab_counts.past }}</span>
+    </a>
+    <a class="tab {% if active_tab == 'unfiled' %}tab--active{% endif %}" href="/trips?tab=unfiled">
+      Unfiled Items <span class="tab__count">{{ tab_counts.unfiled }}</span>
+    </a>
+  </nav>
+
+  {% if active_tab == 'unfiled' %}
+    {% if unfiled %}
+      <ul class="plan-list">
+      {% for plan in unfiled %}
+        <li class="plan-card plan-card--{{ plan.plan_type }}">
+          <span class="plan-card__type">{{ plan_type_labels.get(plan.plan_type, 'Plan') }}</span>
+          <span class="plan-card__title">{{ plan.title }}</span>
+          <a class="plan-card__edit linkish" href="/plans/{{ plan.plan_id }}/edit">Edit</a>
+        </li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <div class="empty">
+        <h2>No unfiled items</h2>
+        <p>Forward travel confirmations to plans@tripit.com and they'll show up here, ready to file into a trip.</p>
+      </div>
+    {% endif %}
+  {% else %}
+    {% if trips %}
+      <ul class="trip-list">
+      {% for trip in trips %}
+        <li class="trip-card">
+          <a class="trip-card__link" href="/trips/{{ trip.trip_id }}">
+            <span class="trip-card__name">{{ trip.name }}</span>
+            <span class="trip-card__dates">{{ trip.date_range }}</span>
+            <span class="trip-card__meta">{{ trip.destination }} · {{ trip.plan_count }} plan{{ '' if trip.plan_count == 1 else 's' }}</span>
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <div class="empty">
+        <h2>No {{ active_tab }} trips</h2>
+        <p>When you add a trip, it will appear here.</p>
+      </div>
+    {% endif %}
+  {% endif %}
+
+  {% if incoming_shares %}
+    <section class="shared-with-you">
+      <h2>Shared with you</h2>
+      <ul class="trip-list">
+        {% for share in incoming_shares %}
+          <li class="trip-card trip-card--shared">
+            <div class="trip-card__link">
+              <span class="trip-card__name">{{ share.trip_name }}</span>
+              <span class="trip-card__dates">{{ share.date_range }}</span>
+              <span class="trip-card__meta">
+                Shared by {{ share.owner_name }} · {{ share.role }}
+              </span>
+              <div class="shared-with-you__actions">
+                {% if share.status == 'active' %}
+                  <a class="btn" href="/shared/{{ share.trip_id }}">View trip</a>
+                {% else %}
+                  <form method="post" action="/shares/{{ share.share_id }}/accept">
+                    <button type="submit" class="btn btn--primary">Accept invitation</button>
+                  </form>
+                {% endif %}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+</section>
+{% endblock %}

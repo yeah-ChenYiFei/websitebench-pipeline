@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clawbench.local/schemas/review-chain.v1.json",
+  "title": "Aggregate R1-R4 independent review chain",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "batch_id",
+    "site_id",
+    "track",
+    "release_profile",
+    "minimum_isolation",
+    "generated_at",
+    "machine_evidence",
+    "checkpoints"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "clawbench.review-chain.v1"
+    },
+    "batch_id": {
+      "$ref": "#/$defs/id"
+    },
+    "site_id": {
+      "$ref": "#/$defs/id"
+    },
+    "track": {
+      "enum": [
+        "clone",
+        "harbor"
+      ]
+    },
+    "release_profile": {
+      "$ref": "#/$defs/id"
+    },
+    "minimum_isolation": {
+      "enum": [
+        "hard",
+        "procedural"
+      ]
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "machine_evidence": {
+      "$ref": "#/$defs/hashed_artifact"
+    },
+    "checkpoints": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "checkpoint",
+          "record"
+        ],
+        "properties": {
+          "checkpoint": {
+            "enum": [
+              "R1-scope-evidence",
+              "R2-frontend",
+              "R3-semantics",
+              "R4-runtime-release"
+            ]
+          },
+          "record": {
+            "$ref": "#/$defs/hashed_artifact"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 200
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "hashed_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}

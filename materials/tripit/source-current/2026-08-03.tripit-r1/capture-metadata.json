@@ -1,0 +1,812 @@
+{
+  "schema_version": "tripit.capture-metadata.v1",
+  "status": "captured",
+  "capture_id": "2026-08-03.tripit-r1",
+  "captured_at_utc": "2026-08-04",
+  "source_origins": [
+    "https://www.tripit.com/"
+  ],
+  "engine": {
+    "primary": "steel-cloud-cdp",
+    "region": "lax",
+    "browser": "Chromium 151 headless via Playwright connect_over_cdp",
+    "notes": "tripit.com blocks Steel's default egress region (nginx 500) and intermittently 500s lax; navigation used retry. TrustArc expressed-consent cookies preset. Local venv Playwright renders identically and served as cross-check."
+  },
+  "baseline": {
+    "locale": "en-US",
+    "timezone": "America/New_York",
+    "consent": "trustarc-expressed-eu-preset"
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "tablet",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "roles_captured": [
+    "anonymous"
+  ],
+  "roles_unavailable": {
+    "free-user": "pending user-driven Steel Live View sign-in",
+    "pro-user": "pending user-driven Steel Live View sign-in"
+  },
+  "frames_per_checkpoint": 3,
+  "captures": [
+    {
+      "checkpoint": "home",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/",
+      "final_url": "https://www.tripit.com/web",
+      "title": "TripIt: Highest-Rated Travel Itinerary App + Trip Planner",
+      "frames": 3,
+      "frame_sha256": [
+        "e0b09aa5acafe7e136b55548e785aee7ee8715689c9b1e7af207bdd16d8366b0",
+        "e0b09aa5acafe7e136b55548e785aee7ee8715689c9b1e7af207bdd16d8366b0",
+        "e0b09aa5acafe7e136b55548e785aee7ee8715689c9b1e7af207bdd16d8366b0"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "free",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/web/free",
+      "final_url": "https://www.tripit.com/web/free",
+      "title": "TripIt - A single (free) itinerary created for you in seconds",
+      "frames": 3,
+      "frame_sha256": [
+        "36d32f60a9f0818fdedf9242f1be8542af2682828cc200104e35222ffa5a1a5f",
+        "36d32f60a9f0818fdedf9242f1be8542af2682828cc200104e35222ffa5a1a5f",
+        "36d32f60a9f0818fdedf9242f1be8542af2682828cc200104e35222ffa5a1a5f"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "pro",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/web/pro",
+      "final_url": "https://www.tripit.com/web/pro",
+      "title": "TripIt Pro - Flight Status and Reminders Throughout Your Trip",
+      "frames": 3,
+      "frame_sha256": [
+        "9f742822c7ae8503e011d73184fdccb6dc12e969b92b29c381d8d82c7ceb973b",
+        "9f742822c7ae8503e011d73184fdccb6dc12e969b92b29c381d8d82c7ceb973b",
+        "9f742822c7ae8503e011d73184fdccb6dc12e969b92b29c381d8d82c7ceb973b"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "how-it-works",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/web/free/how-it-works",
+      "final_url": "https://www.tripit.com/web/free/how-it-works",
+      "title": "Learn how TripIt organizes all your travel plans in a flash",
+      "frames": 3,
+      "frame_sha256": [
+        "23d97ce31a0416b330c46e8ec793b99b53b4faa04979af0f73bd50d801668fc2",
+        "3dd5b5036fc0aebeada3fb93b95f10f21514b6ba6936e2b46805db0785bea14b",
+        "3da21f9c630003c64cdd33ed09d076d87e36c04b3416373ab17889b1a55848ae"
+      ],
+      "frames_identical": false,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "pricing",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/web/pro/pricing",
+      "final_url": "https://www.tripit.com/web/pro/pricing",
+      "title": "Pricing - TripIt Pro vs. free features included with TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "51726622bec51ad8e63dfc613c94c34c332aa20a309817a34d1fee4ba8674975",
+        "51726622bec51ad8e63dfc613c94c34c332aa20a309817a34d1fee4ba8674975",
+        "51726622bec51ad8e63dfc613c94c34c332aa20a309817a34d1fee4ba8674975"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "sap-concur",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/web/pro/sap-concur",
+      "final_url": "https://www.tripit.com/web/pro/sap-concur",
+      "title": "Benefits for SAP Concur users when you connect TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "15c0a2e5f4611c198b3b3530f64bc49781d1b688c49d41e37b49d5d04cf08386",
+        "15c0a2e5f4611c198b3b3530f64bc49781d1b688c49d41e37b49d5d04cf08386",
+        "15c0a2e5f4611c198b3b3530f64bc49781d1b688c49d41e37b49d5d04cf08386"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "download",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/web/free/download",
+      "final_url": "https://www.tripit.com/web/free/download",
+      "title": "Download the TripIt app to access travel plans on any device",
+      "frames": 3,
+      "frame_sha256": [
+        "7a334b1e9a5cc30029500ebf1f6280bbd8107aab37bfd0f2551936c4de58ce95",
+        "7a334b1e9a5cc30029500ebf1f6280bbd8107aab37bfd0f2551936c4de58ce95",
+        "7a334b1e9a5cc30029500ebf1f6280bbd8107aab37bfd0f2551936c4de58ce95"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "security",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/web/security",
+      "final_url": "https://www.tripit.com/web/security",
+      "title": "Data Privacy and Security - TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "00b7e9eee3e9c396b3566fd75bd44957c5b6a8df337f1fec337a8d864f63bb3d",
+        "00b7e9eee3e9c396b3566fd75bd44957c5b6a8df337f1fec337a8d864f63bb3d",
+        "00b7e9eee3e9c396b3566fd75bd44957c5b6a8df337f1fec337a8d864f63bb3d"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "login",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/account/login",
+      "final_url": "https://www.tripit.com/account/login",
+      "title": "Sign in to TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "102064fc403ad5bce5efec50eb1a8488ddb2640787d504199db648b11e45130a",
+        "102064fc403ad5bce5efec50eb1a8488ddb2640787d504199db648b11e45130a",
+        "102064fc403ad5bce5efec50eb1a8488ddb2640787d504199db648b11e45130a"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "create",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/account/create",
+      "final_url": "https://www.tripit.com/account/create",
+      "title": "Sign up for TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "7b69073501510e5684938adb023c4e66c4a445f92670ea3ed375a9783afcd484",
+        "7b69073501510e5684938adb023c4e66c4a445f92670ea3ed375a9783afcd484",
+        "7b69073501510e5684938adb023c4e66c4a445f92670ea3ed375a9783afcd484"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "forgot-password",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/account/forgotPassword",
+      "final_url": "https://www.tripit.com/account/forgotPassword",
+      "title": "TripIt | Online travel itinerary and trip planner",
+      "frames": 3,
+      "frame_sha256": [
+        "2b419152ad54931a6637638bbfc4dd084ced151c766bf76378d0af023354eff7",
+        "2b419152ad54931a6637638bbfc4dd084ced151c766bf76378d0af023354eff7",
+        "2b419152ad54931a6637638bbfc4dd084ced151c766bf76378d0af023354eff7"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "blog-index",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/web/blog",
+      "final_url": "https://www.tripit.com/web/blog",
+      "title": "TripIt Blog \u2014 Travel Itinerary \u2014 Trip Planner",
+      "frames": 3,
+      "frame_sha256": [
+        "067d0e2dabdcf1341df67bc09bda23c622df4d4e7f68dc8864e20dbb8647f9d3",
+        "bf960342f82b318d4bda5e788bc827405a8c7be35e4fcb3f2bc49d75e79e3cc1",
+        "bf960342f82b318d4bda5e788bc827405a8c7be35e4fcb3f2bc49d75e79e3cc1"
+      ],
+      "frames_identical": false,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "traveler-resource-center",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/web/traveler-resource-center",
+      "final_url": "https://www.tripit.com/web/traveler-resource-center",
+      "title": "Traveler Resource Center | TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "8336db57e34a27158bf467b7e1066a680421381e32ce1c87b3cd0789b17764fe",
+        "8336db57e34a27158bf467b7e1066a680421381e32ce1c87b3cd0789b17764fe",
+        "8336db57e34a27158bf467b7e1066a680421381e32ce1c87b3cd0789b17764fe"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "legal-user-agreement",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/uhp/userAgreement",
+      "final_url": "https://www.tripit.com/uhp/userAgreement",
+      "title": "TripIt User Agreement",
+      "frames": 3,
+      "frame_sha256": [
+        "32cdff2aba403ab7020aa983c909615205d89e11603aaec92b444f310038a8d4",
+        "32cdff2aba403ab7020aa983c909615205d89e11603aaec92b444f310038a8d4",
+        "32cdff2aba403ab7020aa983c909615205d89e11603aaec92b444f310038a8d4"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "legal-privacy",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/uhp/privacyPolicy",
+      "final_url": "https://www.tripit.com/uhp/privacyPolicy",
+      "title": "TripIt Privacy Statement",
+      "frames": 3,
+      "frame_sha256": [
+        "440f6d20cc1056f1193ee5f0843cfbcdea7817dc05c536f8bd31f3f5d8e00688",
+        "440f6d20cc1056f1193ee5f0843cfbcdea7817dc05c536f8bd31f3f5d8e00688",
+        "440f6d20cc1056f1193ee5f0843cfbcdea7817dc05c536f8bd31f3f5d8e00688"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "legal-do-not-share",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/uhp/doNotShare",
+      "final_url": "https://www.tripit.com/uhp/doNotShare",
+      "title": "TripIt | Online travel itinerary and trip planner",
+      "frames": 3,
+      "frame_sha256": [
+        "c8990c3fce867b2ffa46f27692a2847ebf4ac31184bc966fff602b143eca4505",
+        "c8990c3fce867b2ffa46f27692a2847ebf4ac31184bc966fff602b143eca4505",
+        "c8990c3fce867b2ffa46f27692a2847ebf4ac31184bc966fff602b143eca4505"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "home",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/",
+      "final_url": "https://www.tripit.com/web",
+      "title": "TripIt: Highest-Rated Travel Itinerary App + Trip Planner",
+      "frames": 3,
+      "frame_sha256": [
+        "0e06ee58ed7403486409ec4447d466a572b2b35c343b61d610149ddc84e01f4a",
+        "0e06ee58ed7403486409ec4447d466a572b2b35c343b61d610149ddc84e01f4a",
+        "0e06ee58ed7403486409ec4447d466a572b2b35c343b61d610149ddc84e01f4a"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "free",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/web/free",
+      "final_url": "https://www.tripit.com/web/free",
+      "title": "TripIt - A single (free) itinerary created for you in seconds",
+      "frames": 3,
+      "frame_sha256": [
+        "18480945277c5605e75e2dc1988c0ad8154a085de73cc5ea20794bd08104525a",
+        "18480945277c5605e75e2dc1988c0ad8154a085de73cc5ea20794bd08104525a",
+        "18480945277c5605e75e2dc1988c0ad8154a085de73cc5ea20794bd08104525a"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "pro",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/web/pro",
+      "final_url": "https://www.tripit.com/web/pro",
+      "title": "TripIt Pro - Flight Status and Reminders Throughout Your Trip",
+      "frames": 3,
+      "frame_sha256": [
+        "b2ad3ffffce803db7c8cdac1cd85b39818ad6c3746c17fe792f52e6d29e4c5ac",
+        "b2ad3ffffce803db7c8cdac1cd85b39818ad6c3746c17fe792f52e6d29e4c5ac",
+        "b2ad3ffffce803db7c8cdac1cd85b39818ad6c3746c17fe792f52e6d29e4c5ac"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "how-it-works",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/web/free/how-it-works",
+      "final_url": "https://www.tripit.com/web/free/how-it-works",
+      "title": "Learn how TripIt organizes all your travel plans in a flash",
+      "frames": 3,
+      "frame_sha256": [
+        "022086395777a364fe390dea2fc34581b94c9abab50674d0f5e6943083e87c19",
+        "c4a0642c5f47a00145bb9341ba3ea62c92d92690904698aaa9ea0a4161bf3f91",
+        "adf14650bd63bbd2267add12f2aff19510c684d697241dd02253e32b88c52ac6"
+      ],
+      "frames_identical": false,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "pricing",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/web/pro/pricing",
+      "final_url": "https://www.tripit.com/web/pro/pricing",
+      "title": "Pricing - TripIt Pro vs. free features included with TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "774dc0b909fcaf45a00b5d46b80d444fd1568d10f0c1914a146740a78415bafc",
+        "774dc0b909fcaf45a00b5d46b80d444fd1568d10f0c1914a146740a78415bafc",
+        "774dc0b909fcaf45a00b5d46b80d444fd1568d10f0c1914a146740a78415bafc"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "sap-concur",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/web/pro/sap-concur",
+      "final_url": "https://www.tripit.com/web/pro/sap-concur",
+      "title": "Benefits for SAP Concur users when you connect TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "49dd87d1946ff6b57ed8225e60bd0a57bf0faf0298ae6c3c97732246ca35f54c",
+        "49dd87d1946ff6b57ed8225e60bd0a57bf0faf0298ae6c3c97732246ca35f54c",
+        "49dd87d1946ff6b57ed8225e60bd0a57bf0faf0298ae6c3c97732246ca35f54c"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "download",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/web/free/download",
+      "final_url": "https://www.tripit.com/web/free/download",
+      "title": "Download the TripIt app to access travel plans on any device",
+      "frames": 3,
+      "frame_sha256": [
+        "34a3cc6bbaf9bdab754b93a7c65a4acde7633b5d46a43d82cb0f053ca564cd30",
+        "34a3cc6bbaf9bdab754b93a7c65a4acde7633b5d46a43d82cb0f053ca564cd30",
+        "34a3cc6bbaf9bdab754b93a7c65a4acde7633b5d46a43d82cb0f053ca564cd30"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "security",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/web/security",
+      "final_url": "https://www.tripit.com/web/security",
+      "title": "Data Privacy and Security - TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "aa4a794c42661e415b39a20e5a65fd67203da9ff3e5ee5afca54864d19596cfa",
+        "aa4a794c42661e415b39a20e5a65fd67203da9ff3e5ee5afca54864d19596cfa",
+        "aa4a794c42661e415b39a20e5a65fd67203da9ff3e5ee5afca54864d19596cfa"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "login",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/account/login",
+      "final_url": "https://www.tripit.com/account/login",
+      "title": "Sign in to TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "562e3f713932ca0075e7be33ef97e774ce3decbe81a20b82a070d56df1aed953",
+        "562e3f713932ca0075e7be33ef97e774ce3decbe81a20b82a070d56df1aed953",
+        "562e3f713932ca0075e7be33ef97e774ce3decbe81a20b82a070d56df1aed953"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "create",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/account/create",
+      "final_url": "https://www.tripit.com/account/create",
+      "title": "Sign up for TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "e5339d1f4a0192bc594adc8c52fd2334861fc4c68b0150d12271c7596f55dafd",
+        "e5339d1f4a0192bc594adc8c52fd2334861fc4c68b0150d12271c7596f55dafd",
+        "e5339d1f4a0192bc594adc8c52fd2334861fc4c68b0150d12271c7596f55dafd"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "forgot-password",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/account/forgotPassword",
+      "final_url": "https://www.tripit.com/account/forgotPassword",
+      "title": "TripIt | Online travel itinerary and trip planner",
+      "frames": 3,
+      "frame_sha256": [
+        "950970a54626696c92781250c5fb83c9cac79c363b3b46a3266a60c896be87b1",
+        "950970a54626696c92781250c5fb83c9cac79c363b3b46a3266a60c896be87b1",
+        "950970a54626696c92781250c5fb83c9cac79c363b3b46a3266a60c896be87b1"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "blog-index",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/web/blog",
+      "final_url": "https://www.tripit.com/web/blog",
+      "title": "TripIt Blog \u2014 Travel Itinerary \u2014 Trip Planner",
+      "frames": 3,
+      "frame_sha256": [
+        "506f5ed34453b8dded95bf67b27f3ae860fcd766721dd92055bb6aaeb307ff35",
+        "bc0f2ef49db279243698cda7e0c5eb69aa3027bcabb9c67043958be698f55057",
+        "bc0f2ef49db279243698cda7e0c5eb69aa3027bcabb9c67043958be698f55057"
+      ],
+      "frames_identical": false,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "traveler-resource-center",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/web/traveler-resource-center",
+      "final_url": "https://www.tripit.com/web/traveler-resource-center",
+      "title": "Traveler Resource Center | TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "365e8616140bd487744aa29d81128a0306f44cfbad06a4c8801802196ca2fd6b",
+        "365e8616140bd487744aa29d81128a0306f44cfbad06a4c8801802196ca2fd6b",
+        "365e8616140bd487744aa29d81128a0306f44cfbad06a4c8801802196ca2fd6b"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "legal-user-agreement",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/uhp/userAgreement",
+      "final_url": "https://www.tripit.com/uhp/userAgreement",
+      "title": "TripIt User Agreement",
+      "frames": 3,
+      "frame_sha256": [
+        "01f124a394e4b1b9e90e4f1af4ef3668f041a92b5f8346a148c6c1591ead39ba",
+        "01f124a394e4b1b9e90e4f1af4ef3668f041a92b5f8346a148c6c1591ead39ba",
+        "01f124a394e4b1b9e90e4f1af4ef3668f041a92b5f8346a148c6c1591ead39ba"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "legal-privacy",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/uhp/privacyPolicy",
+      "final_url": "https://www.tripit.com/uhp/privacyPolicy",
+      "title": "TripIt Privacy Statement",
+      "frames": 3,
+      "frame_sha256": [
+        "704b0ef19645cb565a9765e7904eaef4675452ef946d94434b6a86e7efd2f750",
+        "704b0ef19645cb565a9765e7904eaef4675452ef946d94434b6a86e7efd2f750",
+        "704b0ef19645cb565a9765e7904eaef4675452ef946d94434b6a86e7efd2f750"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "legal-do-not-share",
+      "viewport": "tablet",
+      "requested_url": "https://www.tripit.com/uhp/doNotShare",
+      "final_url": "https://www.tripit.com/uhp/doNotShare",
+      "title": "TripIt | Online travel itinerary and trip planner",
+      "frames": 3,
+      "frame_sha256": [
+        "1ba30bf43649f6c4329fa58b3a5e7decfa936655bc8c030372c5884c58f6726b",
+        "1ba30bf43649f6c4329fa58b3a5e7decfa936655bc8c030372c5884c58f6726b",
+        "1ba30bf43649f6c4329fa58b3a5e7decfa936655bc8c030372c5884c58f6726b"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "home",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/",
+      "final_url": "https://www.tripit.com/web",
+      "title": "TripIt: Highest-Rated Travel Itinerary App + Trip Planner",
+      "frames": 3,
+      "frame_sha256": [
+        "e20e56d840ca6fd21ef38fdb413bbf0b4613cbd14f9f37af4a48a29124dd0ef3",
+        "e20e56d840ca6fd21ef38fdb413bbf0b4613cbd14f9f37af4a48a29124dd0ef3",
+        "e20e56d840ca6fd21ef38fdb413bbf0b4613cbd14f9f37af4a48a29124dd0ef3"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "free",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/web/free",
+      "final_url": "https://www.tripit.com/web/free",
+      "title": "TripIt - A single (free) itinerary created for you in seconds",
+      "frames": 3,
+      "frame_sha256": [
+        "706f962e44e1281dc7bc1ca40ca243ea43384c775a93b5ebbf95f4da20a7a72c",
+        "706f962e44e1281dc7bc1ca40ca243ea43384c775a93b5ebbf95f4da20a7a72c",
+        "706f962e44e1281dc7bc1ca40ca243ea43384c775a93b5ebbf95f4da20a7a72c"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "pro",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/web/pro",
+      "final_url": "https://www.tripit.com/web/pro",
+      "title": "TripIt Pro - Flight Status and Reminders Throughout Your Trip",
+      "frames": 3,
+      "frame_sha256": [
+        "51d8845098cbb825b61f23ddbc99686b89a3efc1ca02a39890fd00ba97f28457",
+        "51d8845098cbb825b61f23ddbc99686b89a3efc1ca02a39890fd00ba97f28457",
+        "51d8845098cbb825b61f23ddbc99686b89a3efc1ca02a39890fd00ba97f28457"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "how-it-works",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/web/free/how-it-works",
+      "final_url": "https://www.tripit.com/web/free/how-it-works",
+      "title": "Learn how TripIt organizes all your travel plans in a flash",
+      "frames": 3,
+      "frame_sha256": [
+        "d09eb7b716dda933baa432a22ae26bc3811e7582dd7f1cab68ad2f6369b493a1",
+        "72b574f049b5021a040b4235cbf39091c842732d5b2af3d2d5ea9b746bbdacd1",
+        "221f9a944f9b271a8f8a439469b4544033970a42708bd4597619b2ea8173c6c1"
+      ],
+      "frames_identical": false,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "pricing",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/web/pro/pricing",
+      "final_url": "https://www.tripit.com/web/pro/pricing",
+      "title": "Pricing - TripIt Pro vs. free features included with TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "2d2c3e276baa74a1fef8cec34b66a223f8660b1c0c8eaf9614743a9199973588",
+        "2d2c3e276baa74a1fef8cec34b66a223f8660b1c0c8eaf9614743a9199973588",
+        "2d2c3e276baa74a1fef8cec34b66a223f8660b1c0c8eaf9614743a9199973588"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "sap-concur",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/web/pro/sap-concur",
+      "final_url": "https://www.tripit.com/web/pro/sap-concur",
+      "title": "Benefits for SAP Concur users when you connect TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "3dcec98c16c8b3f87e68dab732a94d29a58584ef9b754e57773c11d239e0e35f",
+        "3dcec98c16c8b3f87e68dab732a94d29a58584ef9b754e57773c11d239e0e35f",
+        "3dcec98c16c8b3f87e68dab732a94d29a58584ef9b754e57773c11d239e0e35f"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "download",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/web/free/download",
+      "final_url": "https://www.tripit.com/web/free/download",
+      "title": "Download the TripIt app to access travel plans on any device",
+      "frames": 3,
+      "frame_sha256": [
+        "2a8a1811f263e43b80eab0c3bfe8d5ceaf3e39e8b44af3fc94cf76ae2a2e4184",
+        "2a8a1811f263e43b80eab0c3bfe8d5ceaf3e39e8b44af3fc94cf76ae2a2e4184",
+        "2a8a1811f263e43b80eab0c3bfe8d5ceaf3e39e8b44af3fc94cf76ae2a2e4184"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "security",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/web/security",
+      "final_url": "https://www.tripit.com/web/security",
+      "title": "Data Privacy and Security - TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "1c5c9b562379deffb438aef5dc633fb7de46c4e7a728c98a88ed34c9e317f39c",
+        "1c5c9b562379deffb438aef5dc633fb7de46c4e7a728c98a88ed34c9e317f39c",
+        "1c5c9b562379deffb438aef5dc633fb7de46c4e7a728c98a88ed34c9e317f39c"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "login",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/account/login",
+      "final_url": "https://www.tripit.com/account/login",
+      "title": "Sign in to TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "3fd6339643f9c0b3d9cb25b4ea1bfcf0ac78e1bc2b979c1dae4a83e6fdfdd97b",
+        "3fd6339643f9c0b3d9cb25b4ea1bfcf0ac78e1bc2b979c1dae4a83e6fdfdd97b",
+        "3fd6339643f9c0b3d9cb25b4ea1bfcf0ac78e1bc2b979c1dae4a83e6fdfdd97b"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "create",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/account/create",
+      "final_url": "https://www.tripit.com/account/create",
+      "title": "Sign up for TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "134035bc6ec2d99350af1717a7ad888f73f81dc8f462fd77cbc178d14b3d5117",
+        "134035bc6ec2d99350af1717a7ad888f73f81dc8f462fd77cbc178d14b3d5117",
+        "134035bc6ec2d99350af1717a7ad888f73f81dc8f462fd77cbc178d14b3d5117"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "forgot-password",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/account/forgotPassword",
+      "final_url": "https://www.tripit.com/account/forgotPassword",
+      "title": "TripIt | Online travel itinerary and trip planner",
+      "frames": 3,
+      "frame_sha256": [
+        "cce9375daf52ec44f54398fd911bac195cbbc2e8c4b565c058c5c1e7c685b591",
+        "cce9375daf52ec44f54398fd911bac195cbbc2e8c4b565c058c5c1e7c685b591",
+        "cce9375daf52ec44f54398fd911bac195cbbc2e8c4b565c058c5c1e7c685b591"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "blog-index",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/web/blog",
+      "final_url": "https://www.tripit.com/web/blog",
+      "title": "TripIt Blog \u2014 Travel Itinerary \u2014 Trip Planner",
+      "frames": 3,
+      "frame_sha256": [
+        "fe3b465146921d653036998a4a516d7527acbd108206afd1455e4c10c72ed581",
+        "8d3e51299bfdb943e4fa2e932ddf2dd9fdf89425a6246df418ef8b7830fae4fd",
+        "8d3e51299bfdb943e4fa2e932ddf2dd9fdf89425a6246df418ef8b7830fae4fd"
+      ],
+      "frames_identical": false,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "traveler-resource-center",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/web/traveler-resource-center",
+      "final_url": "https://www.tripit.com/web/traveler-resource-center",
+      "title": "Traveler Resource Center | TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "9a747115c90f4ac312381661783d6d087bfcfabd65ea60425270ca71e06a7492",
+        "9a747115c90f4ac312381661783d6d087bfcfabd65ea60425270ca71e06a7492",
+        "9a747115c90f4ac312381661783d6d087bfcfabd65ea60425270ca71e06a7492"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "legal-user-agreement",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/uhp/userAgreement",
+      "final_url": "https://www.tripit.com/uhp/userAgreement",
+      "title": "TripIt User Agreement",
+      "frames": 3,
+      "frame_sha256": [
+        "73b12250524ccffd777c13d47c80fbfaaa391f0abf5283c5d83682d66053dfc4",
+        "73b12250524ccffd777c13d47c80fbfaaa391f0abf5283c5d83682d66053dfc4",
+        "73b12250524ccffd777c13d47c80fbfaaa391f0abf5283c5d83682d66053dfc4"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "legal-privacy",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/uhp/privacyPolicy",
+      "final_url": "https://www.tripit.com/uhp/privacyPolicy",
+      "title": "TripIt Privacy Statement",
+      "frames": 3,
+      "frame_sha256": [
+        "e4613ee3be6404bc241f1b0801fc1189a1f3204f5c69deb77205fb8d311422f1",
+        "e4613ee3be6404bc241f1b0801fc1189a1f3204f5c69deb77205fb8d311422f1",
+        "e4613ee3be6404bc241f1b0801fc1189a1f3204f5c69deb77205fb8d311422f1"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "legal-do-not-share",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/uhp/doNotShare",
+      "final_url": "https://www.tripit.com/uhp/doNotShare",
+      "title": "TripIt | Online travel itinerary and trip planner",
+      "frames": 3,
+      "frame_sha256": [
+        "4244cb1302be8b271cbff6de3ecdfc5bd2259214a736181cde83ffa9006db909",
+        "4244cb1302be8b271cbff6de3ecdfc5bd2259214a736181cde83ffa9006db909",
+        "4244cb1302be8b271cbff6de3ecdfc5bd2259214a736181cde83ffa9006db909"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "home-lang-menu-open",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/",
+      "final_url": "https://www.tripit.com/web",
+      "title": "TripIt: Highest-Rated Travel Itinerary App + Trip Planner",
+      "frames": 3,
+      "frame_sha256": [
+        "abe409453b63968a26e5b27e04f6f8065f1710e8d6f923ab3d34e80b6d49d54e",
+        "abe409453b63968a26e5b27e04f6f8065f1710e8d6f923ab3d34e80b6d49d54e",
+        "abe409453b63968a26e5b27e04f6f8065f1710e8d6f923ab3d34e80b6d49d54e"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "home-mobile-menu-open",
+      "viewport": "mobile",
+      "requested_url": "https://www.tripit.com/",
+      "final_url": "https://www.tripit.com/web",
+      "title": "TripIt: Highest-Rated Travel Itinerary App + Trip Planner",
+      "frames": 3,
+      "frame_sha256": [
+        "0b2f9af557438fb828a233faa05046ea471321b5822641a3a4b957a864420f01",
+        "0b2f9af557438fb828a233faa05046ea471321b5822641a3a4b957a864420f01",
+        "0b2f9af557438fb828a233faa05046ea471321b5822641a3a4b957a864420f01"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    },
+    {
+      "checkpoint": "login-client-validation",
+      "viewport": "desktop",
+      "requested_url": "https://www.tripit.com/account/login",
+      "final_url": "https://www.tripit.com/account/login",
+      "title": "Sign in to TripIt",
+      "frames": 3,
+      "frame_sha256": [
+        "8f40a0251c05437b054029c49e13274711b4c24efd46df758a83b6f48ff0d86c",
+        "8f40a0251c05437b054029c49e13274711b4c24efd46df758a83b6f48ff0d86c",
+        "8f40a0251c05437b054029c49e13274711b4c24efd46df758a83b6f48ff0d86c"
+      ],
+      "frames_identical": true,
+      "engine": "steel"
+    }
+  ]
+}

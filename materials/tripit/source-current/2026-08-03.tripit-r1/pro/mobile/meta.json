@@ -1,0 +1,45 @@
+{
+  "checkpoint": "pro",
+  "family": "marketing",
+  "priority": "P1",
+  "viewport": "mobile",
+  "requested_url": "https://www.tripit.com/web/pro",
+  "final_url": "https://www.tripit.com/web/pro",
+  "title": "TripIt Pro - Flight Status and Reminders Throughout Your Trip",
+  "body_text_len": 2453,
+  "frames": 3,
+  "frame_sha256": [
+    "51d8845098cbb825b61f23ddbc99686b89a3efc1ca02a39890fd00ba97f28457",
+    "51d8845098cbb825b61f23ddbc99686b89a3efc1ca02a39890fd00ba97f28457",
+    "51d8845098cbb825b61f23ddbc99686b89a3efc1ca02a39890fd00ba97f28457"
+  ],
+  "frames_identical": true,
+  "link_count": 37,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 59
+    },
+    "main": {
+      "selector": "[role=main]",
+      "x": 0,
+      "y": 146,
+      "width": 390,
+      "height": 4311
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 4457,
+      "width": 390,
+      "height": 504
+    },
+    "form": null,
+    "document_height": 4962
+  }
+}

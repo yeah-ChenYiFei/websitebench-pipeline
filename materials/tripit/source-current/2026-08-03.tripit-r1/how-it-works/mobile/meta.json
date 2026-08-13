@@ -1,0 +1,45 @@
+{
+  "checkpoint": "how-it-works",
+  "family": "marketing",
+  "priority": "P1",
+  "viewport": "mobile",
+  "requested_url": "https://www.tripit.com/web/free/how-it-works",
+  "final_url": "https://www.tripit.com/web/free/how-it-works",
+  "title": "Learn how TripIt organizes all your travel plans in a flash",
+  "body_text_len": 1322,
+  "frames": 3,
+  "frame_sha256": [
+    "d09eb7b716dda933baa432a22ae26bc3811e7582dd7f1cab68ad2f6369b493a1",
+    "72b574f049b5021a040b4235cbf39091c842732d5b2af3d2d5ea9b746bbdacd1",
+    "221f9a944f9b271a8f8a439469b4544033970a42708bd4597619b2ea8173c6c1"
+  ],
+  "frames_identical": false,
+  "link_count": 39,
+  "engine": "steel",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 59
+    },
+    "main": {
+      "selector": "[role=main]",
+      "x": 0,
+      "y": 146,
+      "width": 390,
+      "height": 3134
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 3280,
+      "width": 390,
+      "height": 504
+    },
+    "form": null,
+    "document_height": 3785
+  }
+}

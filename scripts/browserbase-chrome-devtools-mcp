@@ -1,0 +1,238 @@
+#!/bin/sh
+
+# Start Chrome DevTools MCP against a Browserbase session without persisting
+# the Browserbase API key or any signed session URL.
+set -eu
+
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+api_url=${BROWSERBASE_API_URL:-https://api.browserbase.com}
+api_url=${api_url%/}
+created_session_id=
+session_id=
+runtime_dir=
+keep_alive=${BROWSERBASE_KEEP_ALIVE:-false}
+mcp_launcher=${WEBSITEBENCH_CHROME_DEVTOOLS_MCP_LAUNCHER:-$script_dir/chrome-devtools-mcp}
+
+stage() {
+  printf '%s\n' "Browserbase MCP: $1" >&2
+}
+
+http_status_or_unknown() {
+  case "${1:-}" in
+    [0-9][0-9][0-9]) printf '%s' "$1" ;;
+    *) printf '%s' unknown ;;
+  esac
+}
+
+remove_runtime_files() {
+  if [ -n "$runtime_dir" ] && [ -d "$runtime_dir" ]; then
+    rm -f -- "$runtime_dir/session.json" "$runtime_dir/debug.json" \
+      "$runtime_dir/release.json" "$runtime_dir/curl.stderr" \
+      "$runtime_dir/mcp.stderr"
+    rmdir -- "$runtime_dir" 2>/dev/null || true
+  fi
+}
+
+release_created_session() {
+  if [ -z "$created_session_id" ]; then
+    return
+  fi
+
+  stage "requesting session release"
+  release_status=$(curl -sS --max-time 10 \
+    --request POST \
+    --url "$api_url/v1/sessions/$created_session_id" \
+    --header 'Content-Type: application/json' \
+    --header "X-BB-API-Key: ${BROWSERBASE_API_KEY}" \
+    --data '{"status":"REQUEST_RELEASE"}' \
+    --output "$runtime_dir/release.json" \
+    --write-out '%{http_code}' \
+    2>"$runtime_dir/curl.stderr" || true)
+  release_status=$(http_status_or_unknown "$release_status")
+  case "$release_status" in
+    2??) stage "session release accepted (HTTP $release_status)" ;;
+    *) stage "session release failed (HTTP $release_status; details redacted)" ;;
+  esac
+  created_session_id=
+}
+
+abort_created_session() {
+  message=$1
+  release_created_session
+  remove_runtime_files
+  stage "$message"
+  exit 1
+}
+
+handle_signal() {
+  trap - HUP INT TERM
+  release_created_session
+  remove_runtime_files
+  stage "interrupted; cleanup completed"
+  exit 130
+}
+
+case "$keep_alive" in
+  true|false) ;;
+  *) stage "BROWSERBASE_KEEP_ALIVE must be true or false"; exit 2 ;;
+esac
+if [ ! -x "$mcp_launcher" ]; then
+  stage "Chrome DevTools MCP launcher is not executable"
+  exit 2
+fi
+
+if [ -n "${BROWSERBASE_CDP_URL:-}" ] && [ -n "${BROWSERBASE_SESSION_ID:-}" ]; then
+  stage "set only one of BROWSERBASE_CDP_URL or BROWSERBASE_SESSION_ID"
+  exit 2
+fi
+
+if [ -n "${BROWSERBASE_CDP_URL:-}" ]; then
+  ws_url=$BROWSERBASE_CDP_URL
+else
+  if [ -z "${BROWSERBASE_API_KEY:-}" ]; then
+    stage "BROWSERBASE_API_KEY is required when BROWSERBASE_CDP_URL is unset"
+    exit 2
+  fi
+  if ! command -v curl >/dev/null 2>&1 || ! command -v jq >/dev/null 2>&1; then
+    stage "curl and jq are required to create a Browserbase session"
+    exit 2
+  fi
+
+  session_timeout=${BROWSERBASE_SESSION_TIMEOUT:-3600}
+  case "$session_timeout" in
+    ''|*[!0-9]*) stage "BROWSERBASE_SESSION_TIMEOUT must be an integer"; exit 2 ;;
+  esac
+  region=${BROWSERBASE_REGION:-us-east-1}
+  runtime_dir=$(mktemp -d "${TMPDIR:-/tmp}/browserbase-mcp.XXXXXX")
+  chmod 700 "$runtime_dir"
+
+  if [ -n "${BROWSERBASE_SESSION_ID:-}" ]; then
+    case "$BROWSERBASE_SESSION_ID" in
+      *[!A-Za-z0-9_-]*|'')
+        remove_runtime_files
+        stage "BROWSERBASE_SESSION_ID is invalid"
+        exit 2
+        ;;
+    esac
+    session_id=$BROWSERBASE_SESSION_ID
+    stage "attaching existing session"
+  else
+    payload=$(jq -cn \
+      --argjson timeout "$session_timeout" \
+      --argjson keepAlive "$keep_alive" \
+      --arg region "$region" \
+      '{
+        timeout: $timeout,
+        keepAlive: $keepAlive,
+        region: $region,
+        browserSettings: {blockAds: true, solveCaptchas: true},
+        userMetadata: {purpose: "codex-chrome-devtools"}
+      }')
+
+    # Browserbase can infer the sole project associated with an API key. An
+    # explicit project remains supported for keys that can access more than one.
+    if [ -n "${BROWSERBASE_PROJECT_ID:-}" ]; then
+      payload=$(printf '%s' "$payload" | jq --arg projectId "$BROWSERBASE_PROJECT_ID" '. + {projectId: $projectId}')
+    fi
+
+    stage "creating session"
+    session_status=$(curl -sS --max-time 30 \
+      --request POST \
+      --url "$api_url/v1/sessions" \
+      --header 'Content-Type: application/json' \
+      --header "X-BB-API-Key: ${BROWSERBASE_API_KEY}" \
+      --data "$payload" \
+      --output "$runtime_dir/session.json" \
+      --write-out '%{http_code}' \
+      2>"$runtime_dir/curl.stderr" || true)
+    session_status=$(http_status_or_unknown "$session_status")
+    case "$session_status" in
+      2??) stage "session created (HTTP $session_status)" ;;
+      *)
+        remove_runtime_files
+        stage "session creation failed (HTTP $session_status; details redacted)"
+        exit 1
+        ;;
+    esac
+
+    created_session_id=$(jq -er '.id | strings | select(test("^[A-Za-z0-9_-]+$"))' \
+      "$runtime_dir/session.json" 2>/dev/null || true)
+    if [ -z "$created_session_id" ]; then
+      remove_runtime_files
+      stage "session creation response was invalid (details redacted)"
+      exit 1
+    fi
+    session_id=$created_session_id
+    trap handle_signal HUP INT TERM
+  fi
+
+  stage "waiting for debug WebSocket (maximum 15 seconds)"
+  ws_url=
+  debug_deadline=$(( $(date +%s) + 15 ))
+  last_debug_status=unknown
+  while [ "$(date +%s)" -lt "$debug_deadline" ]; do
+    debug_remaining=$(( debug_deadline - $(date +%s) ))
+    if [ "$debug_remaining" -lt 1 ]; then
+      break
+    fi
+    debug_status=$(curl -sS --max-time "$debug_remaining" \
+      --request GET \
+      --url "$api_url/v1/sessions/$session_id/debug" \
+      --header "X-BB-API-Key: ${BROWSERBASE_API_KEY}" \
+      --output "$runtime_dir/debug.json" \
+      --write-out '%{http_code}' \
+      2>"$runtime_dir/curl.stderr" || true)
+    last_debug_status=$(http_status_or_unknown "$debug_status")
+    case "$last_debug_status" in
+      2??)
+        ws_url=$(jq -er '.wsUrl | strings | select(startswith("wss://"))' \
+          "$runtime_dir/debug.json" 2>/dev/null || true)
+        if [ -n "$ws_url" ]; then
+          break
+        fi
+        ;;
+    esac
+    sleep 1
+  done
+
+  if [ -z "$ws_url" ]; then
+    abort_created_session "debug WebSocket did not become ready (last HTTP $last_debug_status; details redacted)"
+  fi
+fi
+
+case "$ws_url" in
+  wss://*) ;;
+  *)
+    if [ -n "$created_session_id" ]; then
+      abort_created_session "Browserbase returned an invalid debug WebSocket URL"
+    fi
+    stage "BROWSERBASE_CDP_URL must be a wss:// URL"
+    exit 1
+    ;;
+esac
+
+stage "starting Chrome DevTools MCP"
+mcp_stderr=/dev/null
+if [ -n "$runtime_dir" ]; then
+  mcp_stderr=$runtime_dir/mcp.stderr
+fi
+if "$mcp_launcher" \
+  --ws-endpoint "$ws_url" \
+  --no-usage-statistics \
+  --no-performance-crux \
+  2>"$mcp_stderr"; then
+  mcp_status=0
+else
+  mcp_status=$?
+  stage "Chrome DevTools MCP exited with status $mcp_status (details redacted)"
+fi
+
+# keepAlive=false is the one-shot default. Requesting release explicitly makes
+# disconnect and startup-failure cleanup deterministic. For an opted-in
+# keepAlive session, still release on MCP failure but preserve it after a clean
+# disconnect as requested by the caller.
+if [ -n "$created_session_id" ] && { [ "$keep_alive" = false ] || [ "$mcp_status" -ne 0 ]; }; then
+  release_created_session
+fi
+remove_runtime_files
+exit "$mcp_status"
