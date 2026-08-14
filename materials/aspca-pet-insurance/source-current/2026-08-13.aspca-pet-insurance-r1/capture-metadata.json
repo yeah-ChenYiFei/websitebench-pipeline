@@ -1,0 +1,541 @@
+{
+  "schema_version": "aspca-pet-insurance.capture-metadata.v1",
+  "status": "captured",
+  "capture_id": "2026-08-13.aspca-pet-insurance-r1",
+  "captured_at_utc": "2026-08-13",
+  "source_origins": [
+    "https://www.aspcapetinsurance.com/"
+  ],
+  "engine": {
+    "primary": "browserbase",
+    "region": "us-east-1",
+    "browser": "Chromium headless via Playwright connect_over_cdp",
+    "notes": "The browserbase MCP endpoint is retired (410); sessions were created over the Browserbase REST API (blockAds + solveCaptchas) and driven with local Playwright over CDP. One session per capture round, switching viewport sizes in-session so the Kameleoon A/B assignment stayed constant. Funnel interaction states were captured under the quote-funnel-synthetic-submission grant (Willow scenario); the email field used a non-deliverable IANA-reserved example.com fallback because the funnel's ng-pattern rejects the .invalid TLD. The walk stopped at the #/checkout contact page; no payment field exists there and none was focused or filled."
+  },
+  "baseline": {
+    "locale": "en-US",
+    "timezone": "America/New_York",
+    "consent": "osano-accept-all-once-per-session"
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "tablet",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "roles_captured": [
+    "anonymous"
+  ],
+  "roles_unavailable": {
+    "member": "pending the user's read-only credential handoff; portal capture will be GET-navigation only when granted"
+  },
+  "frames_per_checkpoint": 3,
+  "captures": [
+    {
+      "checkpoint": "home",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/",
+      "final_url": "https://www.aspcapetinsurance.com/",
+      "title": "Pet Insurance Coverage - Rated One of the Best | ASPCA\u00ae Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "7f7c4bddabc7637f862f33c728a773a6da195d3f0729ce1e6ff595dc7eef53dd",
+        "7f7c4bddabc7637f862f33c728a773a6da195d3f0729ce1e6ff595dc7eef53dd",
+        "7f7c4bddabc7637f862f33c728a773a6da195d3f0729ce1e6ff595dc7eef53dd"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "home",
+      "viewport": "tablet",
+      "requested_url": "https://www.aspcapetinsurance.com/",
+      "final_url": "https://www.aspcapetinsurance.com/",
+      "title": "Pet Insurance Coverage - Rated One of the Best | ASPCA\u00ae Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "d815640db8a38cd32c92a0f734d62f32c9f4a26d3d3b45f8df924b61d3cd6f26",
+        "d815640db8a38cd32c92a0f734d62f32c9f4a26d3d3b45f8df924b61d3cd6f26",
+        "d815640db8a38cd32c92a0f734d62f32c9f4a26d3d3b45f8df924b61d3cd6f26"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "home",
+      "viewport": "mobile",
+      "requested_url": "https://www.aspcapetinsurance.com/",
+      "final_url": "https://www.aspcapetinsurance.com/",
+      "title": "Pet Insurance Coverage - Rated One of the Best | ASPCA\u00ae Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "58c13c3288554a49e7481a66e3b0aa72117aa001b8a584f8815153c8db64b3da",
+        "58c13c3288554a49e7481a66e3b0aa72117aa001b8a584f8815153c8db64b3da",
+        "58c13c3288554a49e7481a66e3b0aa72117aa001b8a584f8815153c8db64b3da"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "pet-insurance-plan",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/pet-insurance-plan/",
+      "final_url": "https://www.aspcapetinsurance.com/pet-insurance-plan/",
+      "title": "Rated One of the Best Pet Insurance Plans | ASPCA\u00ae Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "25f603e341e9f69295f439ed67e098413dd886b6a1bf8c55d4bbd9632d2166fb",
+        "25f603e341e9f69295f439ed67e098413dd886b6a1bf8c55d4bbd9632d2166fb",
+        "25f603e341e9f69295f439ed67e098413dd886b6a1bf8c55d4bbd9632d2166fb"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "pet-insurance-plan",
+      "viewport": "mobile",
+      "requested_url": "https://www.aspcapetinsurance.com/pet-insurance-plan/",
+      "final_url": "https://www.aspcapetinsurance.com/pet-insurance-plan/",
+      "title": "Rated One of the Best Pet Insurance Plans | ASPCA\u00ae Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "d0787ca23db0620d01aa72fa1a93e7bda8ce10c461edfdb9b3decbf222bc136a",
+        "d0787ca23db0620d01aa72fa1a93e7bda8ce10c461edfdb9b3decbf222bc136a",
+        "d0787ca23db0620d01aa72fa1a93e7bda8ce10c461edfdb9b3decbf222bc136a"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "cat-insurance",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/cat-insurance/",
+      "final_url": "https://www.aspcapetinsurance.com/cat-insurance/",
+      "title": "Top-Rated Cat Insurance | ASPCA\u00ae Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "d535585eaf0dfd7e57f99f5dbde2fcc3636f3de0bc4f2a517ff726d6bb907e51",
+        "d535585eaf0dfd7e57f99f5dbde2fcc3636f3de0bc4f2a517ff726d6bb907e51",
+        "d535585eaf0dfd7e57f99f5dbde2fcc3636f3de0bc4f2a517ff726d6bb907e51"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "cat-insurance",
+      "viewport": "mobile",
+      "requested_url": "https://www.aspcapetinsurance.com/cat-insurance/",
+      "final_url": "https://www.aspcapetinsurance.com/cat-insurance/",
+      "title": "Top-Rated Cat Insurance | ASPCA\u00ae Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "c4413476da81dd392d93ba12cf6646ad810c0a2ac72c68ddce45afc8aeec7457",
+        "c4413476da81dd392d93ba12cf6646ad810c0a2ac72c68ddce45afc8aeec7457",
+        "c4413476da81dd392d93ba12cf6646ad810c0a2ac72c68ddce45afc8aeec7457"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "dog-insurance",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/dog-insurance/",
+      "final_url": "https://www.aspcapetinsurance.com/dog-insurance/",
+      "title": "Dog Insurance Plans - Rated One of the Best | ASPCA\u00ae Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "f315db4c6c37f2c4dd9999af81146f7faebbc35f6b694b0b56123de67441e8b1",
+        "f315db4c6c37f2c4dd9999af81146f7faebbc35f6b694b0b56123de67441e8b1",
+        "f315db4c6c37f2c4dd9999af81146f7faebbc35f6b694b0b56123de67441e8b1"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "why-us",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/why-us/",
+      "final_url": "https://www.aspcapetinsurance.com/why-us/",
+      "title": "Why Choose Us to Help Protect Your Pet? | ASPCA Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "ff1f36d48c87da8ac762831e45c39d7aea62f6080842ce2f15f871d859ca8968",
+        "ff1f36d48c87da8ac762831e45c39d7aea62f6080842ce2f15f871d859ca8968",
+        "ff1f36d48c87da8ac762831e45c39d7aea62f6080842ce2f15f871d859ca8968"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "research-and-compare",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/research-and-compare/",
+      "final_url": "https://www.aspcapetinsurance.com/research-and-compare/",
+      "title": "Compare Pet Insurance Plans | ASPCA\u00ae Pet Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "b719a09bb4f7628d0c2de55034f40118174b32be4241392b44b2be9e2cf7bd82",
+        "b719a09bb4f7628d0c2de55034f40118174b32be4241392b44b2be9e2cf7bd82",
+        "b719a09bb4f7628d0c2de55034f40118174b32be4241392b44b2be9e2cf7bd82"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "about-us",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/about-us/",
+      "final_url": "https://www.aspcapetinsurance.com/about-us/",
+      "title": "The Best Pet Health Insurance | ASPCA\u00ae Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "af74c0b37649bc94c91e4ca71e8f349eaa09547e3841b3cbefd77dedbd5c0610",
+        "af74c0b37649bc94c91e4ca71e8f349eaa09547e3841b3cbefd77dedbd5c0610",
+        "af74c0b37649bc94c91e4ca71e8f349eaa09547e3841b3cbefd77dedbd5c0610"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-start",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/start",
+      "title": "Let's get started!",
+      "frames": 3,
+      "frame_sha256": [
+        "50ce489cb8123901088866e6a314575f9a1d8cdee1a94c2d53744bb30dcb2a0e",
+        "50ce489cb8123901088866e6a314575f9a1d8cdee1a94c2d53744bb30dcb2a0e",
+        "50ce489cb8123901088866e6a314575f9a1d8cdee1a94c2d53744bb30dcb2a0e"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-start",
+      "viewport": "tablet",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/start",
+      "title": "Let's get started!",
+      "frames": 3,
+      "frame_sha256": [
+        "c00242d65af49999d3955fb4073697bb9c1faa647c3b4f5fbf6cc5694a16853b",
+        "c00242d65af49999d3955fb4073697bb9c1faa647c3b4f5fbf6cc5694a16853b",
+        "c00242d65af49999d3955fb4073697bb9c1faa647c3b4f5fbf6cc5694a16853b"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-start",
+      "viewport": "mobile",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/start",
+      "title": "Let's get started!",
+      "frames": 3,
+      "frame_sha256": [
+        "acec98c3e305a6e5e37204972c893cd23fd7cd3ecbd6a4b7c9316b6cac0e175c",
+        "acec98c3e305a6e5e37204972c893cd23fd7cd3ecbd6a4b7c9316b6cac0e175c",
+        "acec98c3e305a6e5e37204972c893cd23fd7cd3ecbd6a4b7c9316b6cac0e175c"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "portal-login",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "final_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "title": "Pet Insurance Member Login | ASPCA Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "9b09903225007667aab8cdd10c49ba81acb3ae0945f66557695d04caf1dfb284",
+        "9b09903225007667aab8cdd10c49ba81acb3ae0945f66557695d04caf1dfb284",
+        "9b09903225007667aab8cdd10c49ba81acb3ae0945f66557695d04caf1dfb284"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "portal-login",
+      "viewport": "mobile",
+      "requested_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "final_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "title": "Pet Insurance Member Login | ASPCA Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "061847f3ffd6f4003c9d6a12f0e0d2126bec17fef6ba376e8d2f09817ea4021e",
+        "061847f3ffd6f4003c9d6a12f0e0d2126bec17fef6ba376e8d2f09817ea4021e",
+        "061847f3ffd6f4003c9d6a12f0e0d2126bec17fef6ba376e8d2f09817ea4021e"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "not-found",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/websitebench-404-probe-2026-08-13/",
+      "final_url": "https://www.aspcapetinsurance.com/websitebench-404-probe-2026-08-13/",
+      "title": "Oops - Something went wrong!",
+      "frames": 3,
+      "frame_sha256": [
+        "5435b4bc68750d2deb4fe372f24153af011706dfc1821a84801fb817d47adad9",
+        "9bce4fd8e7aba4e408f1948880ca43f783e72f0498269531a946dd76eea2fe5b",
+        "0ce3f79ecfb1a61d6b627d12b43798b166315bf2da53188331e847262410072f"
+      ],
+      "frames_identical": false,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "support",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/about-us/contact-us/",
+      "final_url": "https://www.aspcapetinsurance.com/about-us/contact-us/",
+      "title": "We\u2019re Here For You. Contact Us | ASPCA\u00ae Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "8e83763adfc09e228e563b116ab79721fb7e31b63a1f220f0a8b765c88ff0394",
+        "8e83763adfc09e228e563b116ab79721fb7e31b63a1f220f0a8b765c88ff0394",
+        "8e83763adfc09e228e563b116ab79721fb7e31b63a1f220f0a8b765c88ff0394"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-start-validation",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/start",
+      "title": "Let's get started!",
+      "frames": 3,
+      "frame_sha256": [
+        "7e47b7208a81b189ce69a7c7c7d3699e3382e2ae7dcbe0e707fc0906671dbd24",
+        "5e3619c929f55c9b501ef345a4fae00021eeb820e3630d3d55360404ef7ebea2",
+        "5e3619c929f55c9b501ef345a4fae00021eeb820e3630d3d55360404ef7ebea2"
+      ],
+      "frames_identical": false,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-ineligible",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/start",
+      "title": "Let's get started!",
+      "frames": 3,
+      "frame_sha256": [
+        "47d5132b015efc1a0593ac68784f95e11a9b3c44607ac834ce2388b1ffc190f0",
+        "47d5132b015efc1a0593ac68784f95e11a9b3c44607ac834ce2388b1ffc190f0",
+        "47d5132b015efc1a0593ac68784f95e11a9b3c44607ac834ce2388b1ffc190f0"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "portal-login-validation",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "final_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "title": "Pet Insurance Member Login | ASPCA Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "bc51d09334339c7952c2525a149d2fff28e5d3af830a8b299f1b43656deb7b29",
+        "bc51d09334339c7952c2525a149d2fff28e5d3af830a8b299f1b43656deb7b29",
+        "bc51d09334339c7952c2525a149d2fff28e5d3af830a8b299f1b43656deb7b29"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "portal-forgot-password",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "final_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "title": "Pet Insurance Member Login | ASPCA Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "238a14930ee72b476bb97ff23b36d6febeba18e60851a309c55e4d863cc8f68e",
+        "238a14930ee72b476bb97ff23b36d6febeba18e60851a309c55e4d863cc8f68e",
+        "238a14930ee72b476bb97ff23b36d6febeba18e60851a309c55e4d863cc8f68e"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-rates",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "frames": 3,
+      "frame_sha256": [
+        "f82d31b22bc878c0855d7e57986c1c53d9359268387b22c45c8bc07ccb5e0f2c",
+        "78bb8ffdf2040c2a8ec87fe8733f92000f8d701ba609fbe4eb978feaa94a710f",
+        "78bb8ffdf2040c2a8ec87fe8733f92000f8d701ba609fbe4eb978feaa94a710f"
+      ],
+      "frames_identical": false,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-rates",
+      "viewport": "tablet",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "frames": 3,
+      "frame_sha256": [
+        "1e78916f27dc02d1e993005ab45eaa59ae418b91a29a7dc9af3ddbe91f989f0a",
+        "f0ed22ee9f53e6b4f05ab1cbb4a378f091e7aecabac9c1bd1a73b16619121f7e",
+        "f0ed22ee9f53e6b4f05ab1cbb4a378f091e7aecabac9c1bd1a73b16619121f7e"
+      ],
+      "frames_identical": false,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-rates",
+      "viewport": "mobile",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "frames": 3,
+      "frame_sha256": [
+        "003e9c232a6e5e86c19447692154313e2edc0d891f595b47111317d5b4a4fc18",
+        "003e9c232a6e5e86c19447692154313e2edc0d891f595b47111317d5b4a4fc18",
+        "003e9c232a6e5e86c19447692154313e2edc0d891f595b47111317d5b4a4fc18"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-add-a-pet",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/add-a-pet",
+      "title": "Add a Pet",
+      "frames": 3,
+      "frame_sha256": [
+        "6be62250c8a05b03854d1e1a5f7fd7e05bd650593cf8cf7ce0fca94cede95ec4",
+        "6be62250c8a05b03854d1e1a5f7fd7e05bd650593cf8cf7ce0fca94cede95ec4",
+        "6be62250c8a05b03854d1e1a5f7fd7e05bd650593cf8cf7ce0fca94cede95ec4"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "portal-register",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "final_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "title": "Pet Insurance Member Login | ASPCA Pet Health Insurance",
+      "frames": 3,
+      "frame_sha256": [
+        "0c818cb19f08649917b32f7b8de5538499c97522bb4ea82496712b5530eaeaf3",
+        "0c818cb19f08649917b32f7b8de5538499c97522bb4ea82496712b5530eaeaf3",
+        "0c818cb19f08649917b32f7b8de5538499c97522bb4ea82496712b5530eaeaf3"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-plan-detail",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "frames": 3,
+      "frame_sha256": [
+        "1a296f80aad1272406fab481e6ffe89fd307a427a9cd842fc141fea346614e9a",
+        "f78912730fbbc027a87844671d14ea1bcb458da2dc7b65e8816e0c5936848c4b",
+        "f78912730fbbc027a87844671d14ea1bcb458da2dc7b65e8816e0c5936848c4b"
+      ],
+      "frames_identical": false,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-plan-customize",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "frames": 3,
+      "frame_sha256": [
+        "e404381ec3f7772ab2e88b4a278d787f6d6ef6c6aae76f38b389554eaec3ebd7",
+        "f9c0f835cd315dcff066a03718338750857e22722a004f906740c1ba4169d266",
+        "f9c0f835cd315dcff066a03718338750857e22722a004f906740c1ba4169d266"
+      ],
+      "frames_identical": false,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-plan-customize",
+      "viewport": "mobile",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "frames": 3,
+      "frame_sha256": [
+        "b202471277b2b0e8bb0fe27c35a734c7369ceefba7a09a344fa22eeb306fc98c",
+        "60ac7e213e0bc23cd75e49b5c5b140cabd1d6a0af7164240bc3bea455c271025",
+        "60ac7e213e0bc23cd75e49b5c5b140cabd1d6a0af7164240bc3bea455c271025"
+      ],
+      "frames_identical": false,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-checkout",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/checkout",
+      "title": "Complete Your Enrollment",
+      "frames": 3,
+      "frame_sha256": [
+        "9169638a2a98e7f2847098cabec386c7ed68ebc5b04931b46c2e908bb6c41aef",
+        "9169638a2a98e7f2847098cabec386c7ed68ebc5b04931b46c2e908bb6c41aef",
+        "9169638a2a98e7f2847098cabec386c7ed68ebc5b04931b46c2e908bb6c41aef"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-checkout",
+      "viewport": "mobile",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/checkout",
+      "title": "Complete Your Enrollment",
+      "frames": 3,
+      "frame_sha256": [
+        "ecc572885fed9478f75856163011f0a4cf986b966f54cad6d1571252f6226264",
+        "ecc572885fed9478f75856163011f0a4cf986b966f54cad6d1571252f6226264",
+        "ecc572885fed9478f75856163011f0a4cf986b966f54cad6d1571252f6226264"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    },
+    {
+      "checkpoint": "quote-resume",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/quote-search",
+      "title": "Find a Previous Quote.",
+      "frames": 3,
+      "frame_sha256": [
+        "0b93d7d603cb63fed30be5afd3e7c8bb953eb05ae8165af3336b7a64bf361839",
+        "0b93d7d603cb63fed30be5afd3e7c8bb953eb05ae8165af3336b7a64bf361839",
+        "0b93d7d603cb63fed30be5afd3e7c8bb953eb05ae8165af3336b7a64bf361839"
+      ],
+      "frames_identical": true,
+      "engine": "browserbase"
+    }
+  ]
+}

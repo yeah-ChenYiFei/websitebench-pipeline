@@ -1,0 +1,436 @@
+<!DOCTYPE html><html lang="en"><head>
+    <title>Oops - Something went wrong!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://use.typekit.net/ezj2kxi.css">
+    <script type="text/javascript">
+        try {
+            Typekit.load();
+        } catch (e) { }
+    </script>
+
+    <script type="text/javascript">
+        var priorityCode = "";
+        if (priorityCode && priorityCode !== "") {
+            localStorage.setItem("sidney.priorityCode", priorityCode);
+        }
+    </script>
+    <style>
+        body {
+            font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.42857143;
+            color: #333;
+            background-color: #fff;
+            margin: 0;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .container {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .top40 {
+            margin-top: 40px;
+        }
+
+        .bottom40 {
+            padding-bottom: 40px;
+        }
+
+        a {
+            text-decoration: underline;
+            font-size: 16px;
+            color: #000;
+        }
+
+            a:hover {
+                color: #007d8c;
+            }
+
+        .lightBlueBg {
+            background: #b6f4f3;
+            padding: 10px;
+        }
+
+        .lightGrayBg {
+            background: #e0e2e2;
+            padding: 10px;
+        }
+
+        .grayText {
+            color: #6b6b6b;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        .headerText {
+            font-weight: bold;
+            font-size: 30px;
+            margin: 0;
+        }
+
+        .subHeader {
+            font-weight: lighter;
+            font-size: 20px;
+        }
+
+        /* aphi */
+        .aphiHeader {
+            background: #f27935;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+            .aphiHeader img {
+                width: 261px;
+                padding-top: 4px;
+                height: inherit;
+            }
+
+        .aphiFooter {
+            color: #fff;
+            opacity: 1;
+            background: #213238;
+            border-top: solid 1px #000;
+            padding: 20px 0;
+        }
+
+        .aphiFooter {
+            color: #d9d9d9;
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: normal;
+        }
+
+            .aphiFooter a {
+                font-size: 12px;
+                color: #d9d9d9;
+                text-decoration: underline;
+            }
+
+                .aphiFooter a:hover {
+                    text-decoration: none;
+                }
+
+        /* hpi */
+        .utils {
+            background: #007d8c;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .hpiHeader {
+            background: #fff;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .aphiHeader img {
+            width: 261px;
+            padding-top: 4px;
+            height: inherit;
+        }
+
+        .hpiFooter {
+            opacity: 1;
+            background: #004351;
+            border-top: solid 1px #000;
+            padding: 20px 0;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            line-height: 18px;
+            font-weight: normal;
+        }
+
+            .hpiFooter a {
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.4) !important;
+            }
+
+        /* cfins */
+        .cfinsHeader {
+            background: #fff;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+        }
+
+            .cfinsHeader img {
+                width: 261px;
+                padding-top: 4px;
+                height: inherit;
+            }
+
+        .cfinsFooter {
+            color: #fff;
+            opacity: 1;
+            background: #003a62;
+            border-top: solid 1px #000;
+            padding: 20px 0;
+        }
+
+        .cfinsFooter {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: normal;
+        }
+
+            .cfinsFooter a {
+                font-size: 12px;
+            }
+
+        /* phcp */
+
+        .phcpHeader {
+            background: #1c3461;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+            .phcpHeader img {
+                padding-top: 4px;
+                height: inherit;
+            }
+
+        .phcpFooter {
+            color: #fff;
+            opacity: 1;
+            background: #1a262d;
+            border-top: solid 1px #000;
+            padding: 20px 0;
+        }
+
+        .phcpFooter {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: normal;
+        }
+
+            .phcpFooter a {
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.4) !important;
+            }
+
+        .page404__logo--24petprotect {
+            padding: 24px 18px;
+        }
+
+        .page404__header--24petprotect {
+            background: #fff !important;
+            box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0);
+            padding: 0 !important;
+        }
+
+        .page404__footer--24petprotect {
+            background-color: white;
+        }
+
+        .page404__footer--24petprotect .container {
+            height: fit-content;
+            width: auto;
+            background: #e7e9ea 0 0 no-repeat padding-box;
+            opacity: 1;
+            padding: 32px;
+        }
+
+        .page404__footer--24petprotect .container p {
+            text-align: left;
+            font-size: 14px;
+            line-height: 24px;
+            letter-spacing: 0;
+            color: #333f48;
+            opacity: 1;
+        }
+
+        .page404__footer--24petprotect .container a {
+            color: #0000EE;
+            font-size: 14px;
+        }
+    </style>
+<style>
+  /* Container styles */
+  .bb-custom-select-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  /* Opener button styles */
+  .bb-custom-select-opener {
+    display: none;
+  }
+
+  /* Disabled state styles */
+  .bb-custom-select-container.bb-is-disabled .bb-custom-select-opener {
+    background-color: #e9ecef;
+    border-color: #505050;
+    color: #6c757d;
+    cursor: not-allowed;
+  }
+
+  /* Add not-allowed cursor to the entire container when disabled */
+  .bb-custom-select-container.bb-is-disabled {
+    cursor: not-allowed;
+  }
+
+  /* Also ensure the select element shows not-allowed cursor when disabled */
+  .bb-custom-select-container.bb-is-disabled select {
+    cursor: not-allowed;
+  }
+
+  .bb-custom-select-container.bb-is-disabled .bb-custom-select-opener::after {
+    border-top-color: #6c757d;
+  }
+
+  /* Add dropdown arrow */
+  .bb-custom-select-opener::after {
+    content: '';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #666;
+  }
+
+  /* Rotate arrow when open */
+  .bb-custom-select-opener.bb-is-open::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  /* Keep native select visible */
+  .bb-customSelect select {
+    position: relative;
+    width: 100%;
+  }
+
+  /* Dropdown panel */
+  .bb-custom-select-panel {
+    display: none;  /* Hide by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999999; /* Should always be on top of other elements */
+    margin-top: 4px;
+    width: max-content; /* Allow panel to grow based on content */
+    min-width: 100%;   /* But ensure it's at least as wide as the opener */
+    background-color: #fff;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  /* Show panel when container has bb-is-open class */
+  .bb-custom-select-container.bb-is-open .bb-custom-select-panel {
+    display: block;
+  }
+
+  /* Option styles */
+  .bb-custom-select-option {
+    padding: 6px 12px;
+    line-height: 1.5;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .bb-custom-select-option:hover,
+  .bb-custom-select-option.bb-has-focus {
+    background-color: #f0f9fa;
+  }
+
+  .bb-custom-select-option.bb-is-selected {
+    background-color: #e9ecef;
+  }
+</style></head>
+<body>
+        <nav class="aphiHeader">
+            <a href="https://www.aspcapetinsurance.com/">
+                <img alt="ASPCA Pet Health Insurance" src="/media/embjx5rm/aspca-pet-insurance-logo.png">
+            </a>
+        </nav>
+        <main role="main">
+            <div class="center lightBlueBg">
+                <img class="top40" src="https://d3544la1u8djza.cloudfront.net/404/dogbutt-slow.gif" alt="">
+                <p class="grayText top40">Error 404</p>
+                <p class="headerText">Sorry about that...</p>
+                <p class="subHeader">We did some digging, but couldn't find the page you're looking for.</p>
+                <p class="top40"><a href="https://www.aspcapetinsurance.com/">Home</a></p>
+                <p>
+                    <a href="https://www.aspcapetinsurance.com/research-and-compare/pet-insurance-basics/pet-insurance-basics/">
+                        Pet
+                        Insurance Basics
+                    </a>
+                </p>
+                <p><a href="https://www.aspcapetinsurance.com/pet-insurance-plan/">Pet Insurance Plans</a></p>
+                <p class="bottom40"><a href="https://www.aspcapetinsurance.com/free-quote">Start a New Quote</a></p>
+            </div>
+        </main>
+        <footer class="aphiFooter" role="contentinfo">
+            <div class="container">
+                <p>
+                    <a href="/more-info/notice-to-california-residents/" class="underline">Notice to California Residents</a>
+                </p>
+                <p>
+                    <a href="/more-info/state-documents-and-sample-policies/" class="underline">Insurer Disclosure of Important Policy
+                        Provisions</a>
+                </p>
+                <p>
+                    <a href="/more-info/state-documents-and-sample-policies/" class="underline">Waiting Period Health Assessment</a>
+                </p>
+                <p>
+                    <a href="/more-info/state-documents-and-sample-policies/" class="underline">Waiting Period Health Assessment
+                        (Horses)</a>
+                </p>
+                <p id="standard-disclaimer">
+                    **Pre-existing conditions are not covered. Waiting periods, annual
+                    deductible, co-insurance, benefit limits and exclusions may apply. For all
+                    terms and conditions visit&nbsp;<a href="https://www.aspcapetinsurance.com/more-info/state-documents-and-sample-policies/" title="https://www.aspcapetinsurance.com/more-info/state-documents-and-sample-policies/" target="_blank" rel="noopener">https://www.aspcapetinsurance.com/more-info/state-documents-and-sample-policies/</a>. Preventive
+                    Care coverage reimbursements are based on a schedule. Complete
+                    Coverage℠ reimbursements are based on the invoice. Products, schedules,
+                    discounts and rates may vary and are subject to change. Premiums are based
+                    on and may increase or decrease due to the age of your pet, the species or
+                    breed of your pet, and your home address.
+                </p>
+                <p>
+                    Insurance products are underwritten by either Independence American
+                    Insurance Company (NAIC #26581), or United States Fire Insurance Company
+                    (NAIC #21113); please refer to your policy forms to determine the
+                    underwriter for your policy. All policies are produced by PTZ Insurance
+                    Agency, Ltd, domiciled in Illinois with corporate offices at Scottsdale, AZ
+                    (NPN: 5328528) and PTZ Insurance Agency, Ltd, d.b.a. PIA Insurance Agency in
+                    California (CA #0E36937).
+                </p>
+                <p>
+                    The ASPCA® is not an insurer and is not engaged in the business of
+                    insurance. Through a licensing agreement, the ASPCA receives a royalty fee
+                    that is in exchange for use of the ASPCA’s marks and is not a charitable
+                    contribution.
+                </p>
+                <div class="umb-macro-holder mceNonEditable">
+                    <!-- <?UMBRACO_MACRO macroAlias="DateYear" /> -->
+                    <ins>
+                        <p>
+                            © Copyright 2025, PTZ Insurance Agency, Ltd. ASPCA Logo, © Copyright
+                            2025, ASPCA. All Rights Reserved
+                        </p>
+                    </ins>
+                </div>
+            </div>
+        </footer>
+
+</body></html>

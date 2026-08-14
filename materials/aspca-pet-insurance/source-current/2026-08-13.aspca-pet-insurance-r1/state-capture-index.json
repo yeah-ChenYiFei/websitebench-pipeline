@@ -1,0 +1,756 @@
+{
+  "schema_version": "aspca-pet-insurance.state-capture-index.v1",
+  "capture_id": "2026-08-13.aspca-pet-insurance-r1",
+  "captures": [
+    {
+      "checkpoint": "quote-start-validation",
+      "family": "quote-funnel",
+      "priority": "P0",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/start",
+      "title": "Let's get started!",
+      "body_text_len": 2928,
+      "frames": 3,
+      "frame_sha256": [
+        "7e47b7208a81b189ce69a7c7c7d3699e3382e2ae7dcbe0e707fc0906671dbd24",
+        "5e3619c929f55c9b501ef345a4fae00021eeb820e3630d3d55360404ef7ebea2",
+        "5e3619c929f55c9b501ef345a4fae00021eeb820e3630d3d55360404ef7ebea2"
+      ],
+      "frames_identical": false,
+      "link_count": 27,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": null,
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 180,
+          "width": 1440,
+          "height": 1912
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 2112,
+          "width": 1440,
+          "height": 624
+        },
+        "form": {
+          "selector": "form",
+          "x": 150,
+          "y": 481,
+          "width": 1140,
+          "height": 1592
+        },
+        "document_height": 2796
+      },
+      "interaction": {
+        "action": "empty-submit",
+        "performed": [
+          "clicked See My Rates with all required fields empty",
+          "captured inline validation state"
+        ]
+      }
+    },
+    {
+      "checkpoint": "quote-ineligible",
+      "family": "quote-funnel",
+      "priority": "P1",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/start",
+      "title": "Let's get started!",
+      "body_text_len": 2552,
+      "frames": 3,
+      "frame_sha256": [
+        "47d5132b015efc1a0593ac68784f95e11a9b3c44607ac834ce2388b1ffc190f0",
+        "47d5132b015efc1a0593ac68784f95e11a9b3c44607ac834ce2388b1ffc190f0",
+        "47d5132b015efc1a0593ac68784f95e11a9b3c44607ac834ce2388b1ffc190f0"
+      ],
+      "frames_identical": true,
+      "link_count": 21,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": null,
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 180,
+          "width": 1440,
+          "height": 1458
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 1658,
+          "width": 1440,
+          "height": 624
+        },
+        "form": {
+          "selector": "form",
+          "x": 150,
+          "y": 457,
+          "width": 1140,
+          "height": 1161
+        },
+        "document_height": 2341
+      },
+      "interaction": {
+        "action": "zip-ineligible-probe",
+        "performed": [
+          "filled ZIP 00000 and blurred",
+          "visible error text: ['e.g. 44301\\n\\n00000 is not a valid zip code.']"
+        ]
+      }
+    },
+    {
+      "checkpoint": "portal-login-validation",
+      "family": "portal-auth",
+      "priority": "P1",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "final_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "title": "Pet Insurance Member Login | ASPCA Pet Health Insurance",
+      "body_text_len": 2147,
+      "frames": 3,
+      "frame_sha256": [
+        "bc51d09334339c7952c2525a149d2fff28e5d3af830a8b299f1b43656deb7b29",
+        "bc51d09334339c7952c2525a149d2fff28e5d3af830a8b299f1b43656deb7b29",
+        "bc51d09334339c7952c2525a149d2fff28e5d3af830a8b299f1b43656deb7b29"
+      ],
+      "frames_identical": true,
+      "link_count": 23,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": null,
+        "main": null,
+        "footer": {
+          "selector": "[role=contentinfo]",
+          "x": 400,
+          "y": 1044,
+          "width": 1040,
+          "height": 704
+        },
+        "form": {
+          "selector": "form",
+          "x": 0,
+          "y": 231,
+          "width": 400,
+          "height": 366
+        },
+        "document_height": 900
+      },
+      "interaction": {
+        "action": "client-validation-probe",
+        "performed": [
+          "entered syntactically invalid email and one-character placeholder password; blurred",
+          "nothing submitted; no real credentials involved"
+        ]
+      }
+    },
+    {
+      "checkpoint": "portal-forgot-password",
+      "family": "portal-auth",
+      "priority": "P1",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "final_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "title": "Pet Insurance Member Login | ASPCA Pet Health Insurance",
+      "body_text_len": 2095,
+      "frames": 3,
+      "frame_sha256": [
+        "238a14930ee72b476bb97ff23b36d6febeba18e60851a309c55e4d863cc8f68e",
+        "238a14930ee72b476bb97ff23b36d6febeba18e60851a309c55e4d863cc8f68e",
+        "238a14930ee72b476bb97ff23b36d6febeba18e60851a309c55e4d863cc8f68e"
+      ],
+      "frames_identical": true,
+      "link_count": 23,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": null,
+        "main": null,
+        "footer": {
+          "selector": "[role=contentinfo]",
+          "x": 400,
+          "y": 1044,
+          "width": 1040,
+          "height": 704
+        },
+        "form": null,
+        "document_height": 900
+      },
+      "interaction": {
+        "action": "open-forgot-password",
+        "performed": [
+          "clicked link matching /forgot/i; form view only, not submitted"
+        ]
+      }
+    },
+    {
+      "checkpoint": "quote-rates",
+      "family": "quote-funnel",
+      "priority": "P0",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "body_text_len": 3721,
+      "frames": 3,
+      "frame_sha256": [
+        "f82d31b22bc878c0855d7e57986c1c53d9359268387b22c45c8bc07ccb5e0f2c",
+        "78bb8ffdf2040c2a8ec87fe8733f92000f8d701ba609fbe4eb978feaa94a710f",
+        "78bb8ffdf2040c2a8ec87fe8733f92000f8d701ba609fbe4eb978feaa94a710f"
+      ],
+      "frames_identical": false,
+      "link_count": 23,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": null,
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 180,
+          "width": 1440,
+          "height": 2238
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 2438,
+          "width": 1440,
+          "height": 624
+        },
+        "form": null,
+        "document_height": 3145
+      },
+      "interaction": {
+        "action": "willow-submit",
+        "performed": [
+          "filled Willow scenario (Cat, Willow, ZIP 44301, 2 Years, Female, Domestic Shorthair)",
+          "email: synthetic non-deliverable fallback",
+          "clicked See My Rates; waited for priced plan cards"
+        ]
+      }
+    },
+    {
+      "checkpoint": "quote-rates",
+      "family": "quote-funnel",
+      "priority": "P0",
+      "viewport": "tablet",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "body_text_len": 3540,
+      "frames": 3,
+      "frame_sha256": [
+        "1e78916f27dc02d1e993005ab45eaa59ae418b91a29a7dc9af3ddbe91f989f0a",
+        "f0ed22ee9f53e6b4f05ab1cbb4a378f091e7aecabac9c1bd1a73b16619121f7e",
+        "f0ed22ee9f53e6b4f05ab1cbb4a378f091e7aecabac9c1bd1a73b16619121f7e"
+      ],
+      "frames_identical": false,
+      "link_count": 23,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": {
+          "selector": "header",
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 56
+        },
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 68,
+          "width": 1024,
+          "height": 2238
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 2326,
+          "width": 1024,
+          "height": 652
+        },
+        "form": null,
+        "document_height": 3061
+      },
+      "interaction": {
+        "action": "willow-submit",
+        "performed": [
+          "filled Willow scenario (Cat, Willow, ZIP 44301, 2 Years, Female, Domestic Shorthair)",
+          "email: synthetic non-deliverable fallback",
+          "clicked See My Rates; waited for priced plan cards"
+        ]
+      }
+    },
+    {
+      "checkpoint": "quote-rates",
+      "family": "quote-funnel",
+      "priority": "P0",
+      "viewport": "mobile",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "body_text_len": 3428,
+      "frames": 3,
+      "frame_sha256": [
+        "003e9c232a6e5e86c19447692154313e2edc0d891f595b47111317d5b4a4fc18",
+        "003e9c232a6e5e86c19447692154313e2edc0d891f595b47111317d5b4a4fc18",
+        "003e9c232a6e5e86c19447692154313e2edc0d891f595b47111317d5b4a4fc18"
+      ],
+      "frames_identical": true,
+      "link_count": 23,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": {
+          "selector": "header",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56
+        },
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 68,
+          "width": 390,
+          "height": 2617
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 2705,
+          "width": 390,
+          "height": 776
+        },
+        "form": null,
+        "document_height": 3564
+      },
+      "interaction": {
+        "action": "willow-submit",
+        "performed": [
+          "filled Willow scenario (Cat, Willow, ZIP 44301, 2 Years, Female, Domestic Shorthair)",
+          "email: synthetic non-deliverable fallback",
+          "clicked See My Rates; waited for priced plan cards"
+        ]
+      }
+    },
+    {
+      "checkpoint": "quote-add-a-pet",
+      "family": "quote-funnel",
+      "priority": "P1",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/add-a-pet",
+      "title": "Add a Pet",
+      "body_text_len": 2372,
+      "frames": 3,
+      "frame_sha256": [
+        "6be62250c8a05b03854d1e1a5f7fd7e05bd650593cf8cf7ce0fca94cede95ec4",
+        "6be62250c8a05b03854d1e1a5f7fd7e05bd650593cf8cf7ce0fca94cede95ec4",
+        "6be62250c8a05b03854d1e1a5f7fd7e05bd650593cf8cf7ce0fca94cede95ec4"
+      ],
+      "frames_identical": true,
+      "link_count": 21,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": null,
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 180,
+          "width": 1440,
+          "height": 809
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 1009,
+          "width": 1440,
+          "height": 624
+        },
+        "form": null,
+        "document_height": 1716
+      },
+      "interaction": {
+        "action": "add-a-pet-upsell",
+        "performed": [
+          "clicked the 'Add a Pet Save 10% on each additional pet!' upsell button on the plans view (a /\\bsave\\b/i text-match originally aimed at a save-quote affordance)",
+          "the SPA navigated to #/add-a-pet (multi-pet upsell view); captured as genuine evidence of that funnel state",
+          "no second pet was added or submitted"
+        ],
+        "relabeled_from": "quote-save",
+        "relabel_reason": "no save-quote affordance exists on the plans view; this capture is the add-a-pet upsell state"
+      }
+    },
+    {
+      "checkpoint": "portal-register",
+      "family": "portal-auth",
+      "priority": "P1",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "final_url": "https://www.aspcapetinsurance.com/portal/#/login",
+      "title": "Pet Insurance Member Login | ASPCA Pet Health Insurance",
+      "body_text_len": 2403,
+      "frames": 3,
+      "frame_sha256": [
+        "0c818cb19f08649917b32f7b8de5538499c97522bb4ea82496712b5530eaeaf3",
+        "0c818cb19f08649917b32f7b8de5538499c97522bb4ea82496712b5530eaeaf3",
+        "0c818cb19f08649917b32f7b8de5538499c97522bb4ea82496712b5530eaeaf3"
+      ],
+      "frames_identical": true,
+      "link_count": 23,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": null,
+        "main": null,
+        "footer": {
+          "selector": "[role=contentinfo]",
+          "x": 400,
+          "y": 1044,
+          "width": 1040,
+          "height": 704
+        },
+        "form": null,
+        "document_height": 900
+      },
+      "interaction": {
+        "action": "open-register",
+        "performed": [
+          "clicked link matching /register/i; form view only, not submitted"
+        ]
+      }
+    },
+    {
+      "checkpoint": "quote-plan-detail",
+      "family": "quote-funnel",
+      "priority": "P1",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "body_text_len": 5555,
+      "frames": 3,
+      "frame_sha256": [
+        "1a296f80aad1272406fab481e6ffe89fd307a427a9cd842fc141fea346614e9a",
+        "f78912730fbbc027a87844671d14ea1bcb458da2dc7b65e8816e0c5936848c4b",
+        "f78912730fbbc027a87844671d14ea1bcb458da2dc7b65e8816e0c5936848c4b"
+      ],
+      "frames_identical": false,
+      "link_count": 23,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": null,
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 180,
+          "width": 1440,
+          "height": 3324
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 3524,
+          "width": 1440,
+          "height": 624
+        },
+        "form": null,
+        "document_height": 4231
+      },
+      "interaction": {
+        "action": "open-plan-detail",
+        "performed": [
+          "'See what's covered' affordance not found",
+          "expanded accordion 'What's Covered'",
+          "expanded accordion 'What's Not Covered'"
+        ]
+      }
+    },
+    {
+      "checkpoint": "quote-plan-customize",
+      "family": "quote-funnel",
+      "priority": "P0",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "body_text_len": 5912,
+      "frames": 3,
+      "frame_sha256": [
+        "e404381ec3f7772ab2e88b4a278d787f6d6ef6c6aae76f38b389554eaec3ebd7",
+        "f9c0f835cd315dcff066a03718338750857e22722a004f906740c1ba4169d266",
+        "f9c0f835cd315dcff066a03718338750857e22722a004f906740c1ba4169d266"
+      ],
+      "frames_identical": false,
+      "link_count": 23,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": null,
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 180,
+          "width": 1440,
+          "height": 3825
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 4025,
+          "width": 1440,
+          "height": 624
+        },
+        "form": null,
+        "document_height": 4733
+      },
+      "interaction": {
+        "action": "customize-plan",
+        "performed": [
+          "opened 'Build Your Own Plan' accordion",
+          "deductible: selected radio id=250l2 (annual deductible -> $250)",
+          "reimbursement: selected radio id=90l2 (reimbursement -> 90%)",
+          "annual-limit: selected radio id=5000l2 (annual limit -> $5,000)",
+          "added Basic preventive care ('Add Basic')"
+        ]
+      }
+    },
+    {
+      "checkpoint": "quote-plan-customize",
+      "family": "quote-funnel",
+      "priority": "P0",
+      "viewport": "mobile",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+      "title": "Select A Plan",
+      "body_text_len": 5580,
+      "frames": 3,
+      "frame_sha256": [
+        "b202471277b2b0e8bb0fe27c35a734c7369ceefba7a09a344fa22eeb306fc98c",
+        "60ac7e213e0bc23cd75e49b5c5b140cabd1d6a0af7164240bc3bea455c271025",
+        "60ac7e213e0bc23cd75e49b5c5b140cabd1d6a0af7164240bc3bea455c271025"
+      ],
+      "frames_identical": false,
+      "link_count": 23,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": {
+          "selector": "header",
+          "x": 0,
+          "y": 1582,
+          "width": 390,
+          "height": 56
+        },
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 68,
+          "width": 390,
+          "height": 4692
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 4780,
+          "width": 390,
+          "height": 776
+        },
+        "form": null,
+        "document_height": 5640
+      },
+      "interaction": {
+        "action": "customize-plan",
+        "performed": [
+          "opened 'Build Your Own Plan' accordion",
+          "deductible: selected radio id=250l2 (annual deductible -> $250)",
+          "reimbursement: selected radio id=90l2 (reimbursement -> 90%)",
+          "annual-limit: selected radio id=5000l2 (annual limit -> $5,000)",
+          "added Basic preventive care ('Add Basic')"
+        ]
+      }
+    },
+    {
+      "checkpoint": "quote-checkout",
+      "family": "quote-funnel",
+      "priority": "P0",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/checkout",
+      "title": "Complete Your Enrollment",
+      "body_text_len": 4143,
+      "frames": 3,
+      "frame_sha256": [
+        "9169638a2a98e7f2847098cabec386c7ed68ebc5b04931b46c2e908bb6c41aef",
+        "9169638a2a98e7f2847098cabec386c7ed68ebc5b04931b46c2e908bb6c41aef",
+        "9169638a2a98e7f2847098cabec386c7ed68ebc5b04931b46c2e908bb6c41aef"
+      ],
+      "frames_identical": true,
+      "link_count": 23,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": null,
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 180,
+          "width": 1440,
+          "height": 2671
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 2871,
+          "width": 1440,
+          "height": 624
+        },
+        "form": {
+          "selector": "form",
+          "x": 386,
+          "y": 336,
+          "width": 668,
+          "height": 2454
+        },
+        "document_height": 3579
+      },
+      "interaction": {
+        "action": "enter-checkout",
+        "performed": [
+          "clicked CTA matching /^\\s*continue\\s*$/i",
+          "route advanced to #/checkout",
+          "captured checkout view page-load only",
+          "HARD STOP honored: no payment field focused or filled",
+          "form structure recorded from attributes without focus"
+        ]
+      }
+    },
+    {
+      "checkpoint": "quote-checkout",
+      "family": "quote-funnel",
+      "priority": "P0",
+      "viewport": "mobile",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/checkout",
+      "title": "Complete Your Enrollment",
+      "body_text_len": 3849,
+      "frames": 3,
+      "frame_sha256": [
+        "ecc572885fed9478f75856163011f0a4cf986b966f54cad6d1571252f6226264",
+        "ecc572885fed9478f75856163011f0a4cf986b966f54cad6d1571252f6226264",
+        "ecc572885fed9478f75856163011f0a4cf986b966f54cad6d1571252f6226264"
+      ],
+      "frames_identical": true,
+      "link_count": 23,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": {
+          "selector": "header",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56
+        },
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 68,
+          "width": 390,
+          "height": 3308
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 3396,
+          "width": 390,
+          "height": 776
+        },
+        "form": {
+          "selector": "form",
+          "x": 15,
+          "y": 148,
+          "width": 360,
+          "height": 3208
+        },
+        "document_height": 4256
+      },
+      "interaction": {
+        "action": "enter-checkout",
+        "performed": [
+          "clicked CTA matching /^\\s*continue\\s*$/i",
+          "route advanced to #/checkout",
+          "captured checkout view page-load only",
+          "HARD STOP honored: no payment field focused or filled",
+          "form structure recorded from attributes without focus"
+        ]
+      }
+    },
+    {
+      "checkpoint": "quote-resume",
+      "family": "quote-funnel",
+      "priority": "P1",
+      "viewport": "desktop",
+      "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+      "final_url": "https://www.aspcapetinsurance.com/quote/#/quote-search",
+      "title": "Find a Previous Quote.",
+      "body_text_len": 2024,
+      "frames": 3,
+      "frame_sha256": [
+        "0b93d7d603cb63fed30be5afd3e7c8bb953eb05ae8165af3336b7a64bf361839",
+        "0b93d7d603cb63fed30be5afd3e7c8bb953eb05ae8165af3336b7a64bf361839",
+        "0b93d7d603cb63fed30be5afd3e7c8bb953eb05ae8165af3336b7a64bf361839"
+      ],
+      "frames_identical": true,
+      "link_count": 21,
+      "engine": "browserbase",
+      "nav_fallback": null,
+      "regions": {
+        "header": null,
+        "main": {
+          "selector": "main",
+          "x": 0,
+          "y": 180,
+          "width": 1440,
+          "height": 659
+        },
+        "footer": {
+          "selector": "footer",
+          "x": 0,
+          "y": 859,
+          "width": 1440,
+          "height": 624
+        },
+        "form": {
+          "selector": "form",
+          "x": 180,
+          "y": 372,
+          "width": 1140,
+          "height": 427
+        },
+        "document_height": 1566
+      },
+      "interaction": {
+        "action": "open-resume-quote",
+        "performed": [
+          "navigated directly to #/quote-search ('Fetch a Previous Quote')",
+          "form view only; nothing submitted",
+          "no save-quote affordance exists on the plans view; resume is the funnel's persistence surface"
+        ]
+      }
+    }
+  ]
+}

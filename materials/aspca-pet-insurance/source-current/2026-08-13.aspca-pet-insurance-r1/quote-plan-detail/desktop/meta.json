@@ -1,0 +1,47 @@
+{
+  "checkpoint": "quote-plan-detail",
+  "family": "quote-funnel",
+  "priority": "P1",
+  "viewport": "desktop",
+  "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+  "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+  "title": "Select A Plan",
+  "body_text_len": 5555,
+  "frames": 3,
+  "frame_sha256": [
+    "1a296f80aad1272406fab481e6ffe89fd307a427a9cd842fc141fea346614e9a",
+    "f78912730fbbc027a87844671d14ea1bcb458da2dc7b65e8816e0c5936848c4b",
+    "f78912730fbbc027a87844671d14ea1bcb458da2dc7b65e8816e0c5936848c4b"
+  ],
+  "frames_identical": false,
+  "link_count": 23,
+  "engine": "browserbase",
+  "nav_fallback": null,
+  "regions": {
+    "header": null,
+    "main": {
+      "selector": "main",
+      "x": 0,
+      "y": 180,
+      "width": 1440,
+      "height": 3324
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 3524,
+      "width": 1440,
+      "height": 624
+    },
+    "form": null,
+    "document_height": 4231
+  },
+  "interaction": {
+    "action": "open-plan-detail",
+    "performed": [
+      "'See what's covered' affordance not found",
+      "expanded accordion 'What's Covered'",
+      "expanded accordion 'What's Not Covered'"
+    ]
+  }
+}

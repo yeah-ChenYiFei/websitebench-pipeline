@@ -1,0 +1,111 @@
+{
+  "schema_version": "websitebench.payment-scope.v2",
+  "proposal_id": "aspca-pet-insurance-payment-scope-1",
+  "site_id": "aspca-pet-insurance",
+  "display_name": "ASPCA Pet Health Insurance offline clone",
+  "current_inputs": [
+    {
+      "path": "materials/aspca-pet-insurance/clone.yaml",
+      "sha256": "a122cc40779da0193e22c207aa59bc2919a27f2e81be3cfcfe50494e407d11dd"
+    },
+    {
+      "path": "materials/aspca-pet-insurance/scope/purpose.json",
+      "sha256": "48af0efb131e24d79f0caf99596b23a34db131cc34d59bd209babe31e93809c2"
+    },
+    {
+      "path": "materials/aspca-pet-insurance/scope/invariants.json",
+      "sha256": "63552bf76ef92873ad47d6d5788fc520ee8ddec48364f799b5ca3ae72c885322"
+    },
+    {
+      "path": "materials/aspca-pet-insurance/scope/backend-semantic.json",
+      "sha256": "adefce5eabed5dc7255e9fc7a3151d764da89a12c6d209bb7d4a82cc7e153855"
+    },
+    {
+      "path": "materials/aspca-pet-insurance/backend/runtime.json",
+      "sha256": "894927621b29be865bbbe5130d1c4a45821095dec4e5135f4a5ef35e5cbedf52"
+    },
+    {
+      "path": "materials/aspca-pet-insurance/backend/model.json",
+      "sha256": "1ac4f582fc4da10cbebf3b38eb2540570eecb4f7f1585e4f08e0106303d6fa67"
+    },
+    {
+      "path": "websitebench/capability-packs/payment/pack.json",
+      "sha256": "2ef2f60b52cf4088709efb4053c5d545b79cf2ffd165c0f5db4e4fdfcf72b986"
+    }
+  ],
+  "profile_change": {
+    "audit_mode": "manifest-native-audit",
+    "overlay_pack_id": "payment",
+    "candidate_blocker_id": null,
+    "retained_blocker_ids": []
+  },
+  "frozen_journeys": [
+    {
+      "id": "quote.payment.local-sandbox.success",
+      "description": "An anonymous synthetic quote selects billing frequency and one opaque approved sandbox scenario. The server prices the persisted pet selections, consumes the approval, inserts one policy, and enqueues one branded local-simulation confirmation mail in a single transaction. No credential field is collected."
+    },
+    {
+      "id": "quote.payment.local-sandbox.retry",
+      "description": "A declined or retryable sandbox attempt creates a durable attempt but no enrollment or mail; a later approved scenario against the current quote fingerprint converges to exactly one policy and one local-simulation mail."
+    }
+  ],
+  "frozen_entities": [
+    "quote-lead",
+    "quote",
+    "payment-flow",
+    "payment-attempt",
+    "enrollment",
+    "policy-confirmation-mail"
+  ],
+  "payment_contract": {
+    "default_adapter": "local-sandbox",
+    "optional_adapter": null,
+    "live_payments_allowed": false,
+    "accepted_client_payment_input": "opaque-scenario-id-only",
+    "credential_fields_allowed": false,
+    "currency": "USD",
+    "amount_source": "Server-side integer minor units derived from the persisted ASPCA quote pet selections and billing frequency; monthly charges one quoted month and annually charges twelve quoted months. The client cannot supply or influence the amount.",
+    "owner": "A site-bound quote owner key derived by the server from the quote id; every flow, attempt, enrollment and mail job remains bound to that quote snapshot.",
+    "fingerprint": "SHA-256 over canonical JSON containing site id, quote id, billing frequency, normalized contact email, current ordered pet selections, server-derived amount and USD currency.",
+    "final_commit": "consume_approval(), INSERT aspca_enrollments, and enqueue policy-confirmation LOCAL_SIMULATION mail execute on one SiteBackend SQLite connection and transaction; rollback leaves approval unconsumed and creates no policy or mail."
+  },
+  "mail_brand": {
+    "shared_bare_sender_domain_allowed": true,
+    "sender_display_name": "ASPCA Pet Health Insurance",
+    "purposes": [
+      "policy-confirmation"
+    ],
+    "must_differ_from": [
+      {
+        "site_id": "tripit",
+        "fields": [
+          "sender_display_name",
+          "subject",
+          "lead",
+          "body",
+          "footer"
+        ]
+      }
+    ]
+  },
+  "site_isolation": {
+    "database_scope": "site-exclusive",
+    "site_binding_required": true,
+    "session_cookie_name": "__Host-websitebench-aspca-pet-insurance-session",
+    "redis_namespace": "site/aspca-pet-insurance",
+    "webhook_secret_scope": "site-exclusive",
+    "cross_site_account_sharing": false
+  },
+  "proof_obligations": [
+    "Only opaque configured sandbox scenario ids are accepted; all payment credentials, client amounts, currency, owner, fingerprint, flow ids and provider tokens are rejected.",
+    "Amounts use integer USD minor units derived from persisted quote selections and billing frequency on the server.",
+    "Duplicate and concurrent approved submissions converge to one consumed attempt, one policy, and one policy-confirmation local mail job.",
+    "Declined and retryable attempts create no enrollment and no mail, while a later approved attempt can converge to the single valid enrollment.",
+    "A stale quote fingerprint or foreign owner cannot consume an approval or create a policy.",
+    "Approval consumption, enrollment insertion, and mail enqueue roll back together after any final-state failure.",
+    "Reset clears site-local payment, enrollment and mail rows; backup and restart preserve them with their site binding.",
+    "The only adapter is local-sandbox; Stripe test, live payment, SMTP and production mail requests remain unavailable.",
+    "Cross-site databases, accounts, payment flows, attempts, policies and mail jobs cannot be shared or replayed."
+  ],
+  "scope_subject_sha256": "7e0a9930ecede08c448ddc1cc0a00fbfa648b9b9097097b15d8dc3aea2bd8d50"
+}

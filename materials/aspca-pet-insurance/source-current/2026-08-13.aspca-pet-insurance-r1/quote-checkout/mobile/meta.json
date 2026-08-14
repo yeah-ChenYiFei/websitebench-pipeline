@@ -1,0 +1,61 @@
+{
+  "checkpoint": "quote-checkout",
+  "family": "quote-funnel",
+  "priority": "P0",
+  "viewport": "mobile",
+  "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+  "final_url": "https://www.aspcapetinsurance.com/quote/#/checkout",
+  "title": "Complete Your Enrollment",
+  "body_text_len": 3849,
+  "frames": 3,
+  "frame_sha256": [
+    "ecc572885fed9478f75856163011f0a4cf986b966f54cad6d1571252f6226264",
+    "ecc572885fed9478f75856163011f0a4cf986b966f54cad6d1571252f6226264",
+    "ecc572885fed9478f75856163011f0a4cf986b966f54cad6d1571252f6226264"
+  ],
+  "frames_identical": true,
+  "link_count": 23,
+  "engine": "browserbase",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 56
+    },
+    "main": {
+      "selector": "main",
+      "x": 0,
+      "y": 68,
+      "width": 390,
+      "height": 3308
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 3396,
+      "width": 390,
+      "height": 776
+    },
+    "form": {
+      "selector": "form",
+      "x": 15,
+      "y": 148,
+      "width": 360,
+      "height": 3208
+    },
+    "document_height": 4256
+  },
+  "interaction": {
+    "action": "enter-checkout",
+    "performed": [
+      "clicked CTA matching /^\\s*continue\\s*$/i",
+      "route advanced to #/checkout",
+      "captured checkout view page-load only",
+      "HARD STOP honored: no payment field focused or filled",
+      "form structure recorded from attributes without focus"
+    ]
+  }
+}

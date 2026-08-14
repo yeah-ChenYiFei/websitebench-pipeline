@@ -1,0 +1,171 @@
+{
+  "schema_version": "offline-clone.journeys.v1",
+  "journeys": [
+    {
+      "id": "marketing.browse.success",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "direct",
+      "steps": [
+        "Open the home page and observe the hero, plan pitch, and quote CTA.",
+        "Navigate to /pet-insurance-plan/ and read the coverage and exclusion detail.",
+        "Navigate to /cat-insurance/ from the primary navigation.",
+        "Follow the Start Quote CTA into the quote funnel entry."
+      ]
+    },
+    {
+      "id": "quote.get-rates.success",
+      "actor": "quote-lead",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "direct",
+      "human_trace_text_id": "ht-001",
+      "steps": [
+        "On the funnel start screen select species Cat.",
+        "Enter pet name Willow, ZIP 44301, age 2 Years, gender Female, breed Domestic Shorthair.",
+        "Enter the recorded non-deliverable synthetic email address.",
+        "Submit See My Rates and land on the plan rates screen with priced plan cards."
+      ]
+    },
+    {
+      "id": "quote.select-plan.customize",
+      "actor": "quote-lead",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "direct",
+      "steps": [
+        "From the rates screen adjust deductible, annual limit, and reimbursement rate.",
+        "Observe the premium recalculate deterministically from the local rating table.",
+        "Toggle the preventive-care add-on and observe the price delta.",
+        "Open plan detail to review coverage specifics."
+      ]
+    },
+    {
+      "id": "quote.enroll.checkout.success",
+      "actor": "quote-lead",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "mixed-direct-then-local-contract",
+      "steps": [
+        "Select the customized plan and continue to the source-evidenced contact checkout screen.",
+        "Complete synthetic contact and address details, choose Monthly or Annually, and accept the terms.",
+        "Continue to the clearly labeled clone-local payment simulation.",
+        "Choose the opaque simulated approval scenario; no card, bank, wallet, token, or provider credential is entered.",
+        "Observe the deterministic local policy number and the local policy-confirmation outbox result.",
+        "Repeat the same enrollment request and observe the same policy number without a duplicate row."
+      ]
+    },
+    {
+      "id": "quote.payment.local-sandbox.success",
+      "actor": "quote-lead",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Reach checkout with the selected pet plan and synthetic contact data.",
+        "Observe the server-derived USD amount and the explicit Local simulation label.",
+        "Submit only the opaque sandbox-approved scenario ID.",
+        "The server creates and consumes the matching approval in the same SQLite transaction that inserts the enrollment and policy-confirmation outbox job.",
+        "Repeat the same request and observe the original policy, payment snapshot, and mail job without a duplicate charge or receipt."
+      ]
+    },
+    {
+      "id": "quote.payment.local-sandbox.retry",
+      "actor": "quote-lead",
+      "kind": "failure-recovery",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Submit the sandbox-declined scenario and observe that no policy or mail job is created.",
+        "Submit the sandbox-retry scenario and observe a retryable result with no policy or mail job.",
+        "Change the scenario to sandbox-approved without changing the quote snapshot.",
+        "Observe exactly one consumed approval, one policy, and one local confirmation job."
+      ]
+    },
+    {
+      "id": "quote.validation.required-fields",
+      "actor": "visitor",
+      "kind": "failure",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "direct",
+      "steps": [
+        "On the funnel start screen submit See My Rates with required fields empty.",
+        "Observe inline validation errors on pet name, ZIP, breed, and email.",
+        "Correct the fields and observe the errors clear."
+      ]
+    },
+    {
+      "id": "quote.ineligible.no-quote",
+      "actor": "visitor",
+      "kind": "failure",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "direct",
+      "steps": [
+        "Enter the captured out-of-market ZIP scenario.",
+        "Submit the quote form.",
+        "Observe the frozen no-quote or ineligible response without creating a quote."
+      ]
+    },
+    {
+      "id": "quote.save-resume.success",
+      "actor": "quote-lead",
+      "kind": "success",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Create a local quote with the frozen synthetic scenario.",
+        "Look it up using the same email and ZIP pair.",
+        "Resume the quote with the same pet and pricing state; no mail is sent."
+      ]
+    },
+    {
+      "id": "auth.login.invalid",
+      "actor": "visitor",
+      "kind": "failure",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "mixed-direct-then-local-contract",
+      "steps": [
+        "Open /portal/#/login and submit an empty form to observe the captured validation state.",
+        "Submit synthetic credentials.",
+        "Observe the truthful member-access-unavailable response; no session cookie is created."
+      ]
+    },
+    {
+      "id": "auth.register.unavailable",
+      "actor": "visitor",
+      "kind": "failure",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "mixed-direct-then-local-contract",
+      "steps": [
+        "Follow the captured register affordance from the portal login shell.",
+        "Submit an empty form to observe local validation.",
+        "Submit a synthetic identity and observe the truthful member-access-unavailable response; no account or mail job is created."
+      ]
+    },
+    {
+      "id": "auth.forgot-password.unavailable",
+      "actor": "visitor",
+      "kind": "failure",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "mixed-direct-then-local-contract",
+      "steps": [
+        "Follow Forgot your password? from the captured login shell.",
+        "Submit an empty form to observe local validation.",
+        "Submit a synthetic email and observe the truthful member-access-unavailable response; no reset challenge or mail job is created."
+      ]
+    }
+  ]
+}

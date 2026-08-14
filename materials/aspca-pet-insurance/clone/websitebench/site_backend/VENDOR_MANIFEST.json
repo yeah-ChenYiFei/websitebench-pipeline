@@ -1,0 +1,66 @@
+{
+  "files": [
+    {
+      "bytes": 1171,
+      "path": "__init__.py",
+      "sha256": "3b779daabaa210b690ffd88bb9b46ba68413893a7d318802f3bcc8b28e4f478d"
+    },
+    {
+      "bytes": 9352,
+      "path": "auth_mail.py",
+      "sha256": "f64a12c7ae240c9fd69ded6a7e40617eba639d29c390d1b32f903760bb43f3ae"
+    },
+    {
+      "bytes": 1600,
+      "path": "backend.py",
+      "sha256": "2827d11f5e3027fc2d97511ccd53dfa1021a94b562fbd27e07fd0e8b384a925d"
+    },
+    {
+      "bytes": 28699,
+      "path": "database.py",
+      "sha256": "4f9ce3c89acdae6dad470fe4439da63ebba11db2a481a1459fe1f687f2392e4f"
+    },
+    {
+      "bytes": 8499,
+      "path": "effects_mail.py",
+      "sha256": "64fe22010ae20bc9a463749bfe28dff3454d01f6e5e7a5631649d173dc52c429"
+    },
+    {
+      "bytes": 957,
+      "path": "errors.py",
+      "sha256": "af16a877f63532c8ec11d15904b5f135ba162a33df9915942d795d5822bf145a"
+    },
+    {
+      "bytes": 19662,
+      "path": "mail.py",
+      "sha256": "3952170f9682580ee26c6b69551a38744d3776ed73b4ef68a893997083b68475"
+    },
+    {
+      "bytes": 28119,
+      "path": "payments.py",
+      "sha256": "08247c3b3d86355cfff16e1529a1a6163f00c785c7fbfcb0eb3dc197112a097a"
+    },
+    {
+      "bytes": 22902,
+      "path": "runtime.py",
+      "sha256": "61fb15c9ff24731c8f3683f8fcebb45383e046e17fbd7ea06fe4dfd3db2441b1"
+    },
+    {
+      "bytes": 9289,
+      "path": "stdio_bridge.py",
+      "sha256": "e02fb0b4f19c0cf25d029ae1af62066f0c6ab3bdf4a731804e6146b8f06cb9d1"
+    },
+    {
+      "bytes": 13752,
+      "path": "stripe_test.py",
+      "sha256": "59f781298ee10b635521563acd88b665dee3ae78adf2bcc2ad87a160d226a440"
+    },
+    {
+      "bytes": 698,
+      "path": "validation_cli.py",
+      "sha256": "b50f7a19dc76cb5e2778e5009c7c3446d1772ba8b449e459b7823dbcef350770"
+    }
+  ],
+  "schema_version": "websitebench.site-backend.vendor.v1",
+  "source": "src/websitebench/site_backend"
+}

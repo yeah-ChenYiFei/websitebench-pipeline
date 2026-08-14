@@ -1,0 +1,22 @@
+name: diagnostics (aspca-pet-insurance)
+on:
+  pull_request:
+    paths:
+      - materials/aspca-pet-insurance/**
+      - .github/workflows/tests-aspca-pet-insurance.yml
+      - .github/workflows/clone-diagnostics.yml
+  push:
+    paths:
+      - materials/aspca-pet-insurance/**
+      - .github/workflows/tests-aspca-pet-insurance.yml
+      - .github/workflows/clone-diagnostics.yml
+permissions:
+  contents: read
+concurrency:
+  group: diagnostics-aspca-pet-insurance-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  diagnostics:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: aspca-pet-insurance

@@ -1,0 +1,33 @@
+{
+  "boot": {
+    "argv": [
+      "{python}",
+      "-m",
+      "uvicorn",
+      "app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "{port}",
+      "--log-level",
+      "warning"
+    ],
+    "cwd": "clone",
+    "env": {}
+  },
+  "deferred": {
+    "portal-member": "Authenticated member routes are outside the anonymous clone contract and remain unavailable pending an optional read-only credential handoff."
+  },
+  "prepare": [],
+  "routes": {
+    "home": "/"
+  },
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "aspca-pet-insurance",
+  "status": {
+    "not-found": 404
+  },
+  "states": {
+    "home.loaded": []
+  }
+}

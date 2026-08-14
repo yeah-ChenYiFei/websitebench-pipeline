@@ -1,0 +1,29 @@
+name: Deploy ASPCA Pet Health Insurance public demo
+# The push trigger exists so GitHub registers this workflow for
+# workflow_dispatch from this branch. The job below is skipped on push, so
+# registering it costs no runner time and never deploys.
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/deploy-aspca-pet-insurance-public.yml"]
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Publish the anonymous public demo"
+        required: true
+        type: boolean
+        default: false
+concurrency: { group: public-demo-aspca-pet-insurance, cancel-in-progress: false }
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch'
+    uses: ./.github/workflows/public-demo-site.yml
+    with:
+      site: aspca-pet-insurance
+      package: deploy/generic-offline-clone
+      wrangler_config: deploy/generic-offline-clone/wrangler.generated.jsonc
+      prepare_command: node deploy/generic-offline-clone/scripts/prepare.mjs --config deploy/generic-offline-clone/deployment.aspca-pet-insurance.v2.json
+      deploy_command: npx --prefix deploy/generic-offline-clone wrangler deploy --config deploy/generic-offline-clone/wrangler.generated.jsonc --containers-rollout=immediate
+      url: https://aspca-pet-insurance.website-bench.com
+      deploy: ${{ inputs.deploy }}
+    secrets: inherit

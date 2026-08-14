@@ -1,0 +1,437 @@
+{
+  "schema_version": "aspca-pet-insurance.walk-log.v1",
+  "capture_id": "2026-08-13.aspca-pet-insurance-r1",
+  "email_mode": "synthetic-fallback",
+  "email_address": "willow-capture-2026-08-13@websitebench.invalid",
+  "real_email_authorized": false,
+  "mutation_grant": "quote-funnel-synthetic-submission",
+  "entries": [
+    {
+      "ts": "2026-08-13T16:20:42+00:00",
+      "action": "fresh-funnel",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:20:43+00:00",
+      "action": "click",
+      "target": "See My Rates (empty form)",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:20:56+00:00",
+      "action": "fresh-funnel",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:20:57+00:00",
+      "action": "choose",
+      "field": "species=Cat",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:20:57+00:00",
+      "action": "fill",
+      "field": "pet-name",
+      "value": "Willow",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:20:58+00:00",
+      "action": "fill",
+      "field": "zip",
+      "value": "44301",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:20:58+00:00",
+      "action": "select",
+      "field": "age",
+      "value": "2 Years",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:20:58+00:00",
+      "action": "choose",
+      "field": "gender=Female",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:21:00+00:00",
+      "action": "type",
+      "field": "breed-search",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:21:00+00:00",
+      "action": "choose",
+      "field": "breed",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:21:01+00:00",
+      "action": "fill",
+      "field": "email",
+      "value": "<email>",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:21:01+00:00",
+      "action": "click",
+      "target": "See My Rates",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:22:31+00:00",
+      "action": "step-error",
+      "state": "quote-rates",
+      "error": "Page.wait_for_function: Timeout 90000ms exceeded.",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:22:36+00:00",
+      "action": "fresh-funnel",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:22:36+00:00",
+      "action": "choose",
+      "field": "species=Cat",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:22:37+00:00",
+      "action": "fill",
+      "field": "pet-name",
+      "value": "Willow",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:22:38+00:00",
+      "action": "fill",
+      "field": "zip",
+      "value": "44301",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:22:38+00:00",
+      "action": "select",
+      "field": "age",
+      "value": "2 Years",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:22:38+00:00",
+      "action": "choose",
+      "field": "gender=Female",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:22:40+00:00",
+      "action": "type",
+      "field": "breed-search",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:22:40+00:00",
+      "action": "choose",
+      "field": "breed",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:22:41+00:00",
+      "action": "fill",
+      "field": "email",
+      "value": "<email>",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:22:41+00:00",
+      "action": "click",
+      "target": "See My Rates",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:24:11+00:00",
+      "action": "step-error",
+      "state": "quote-plan-detail",
+      "error": "Page.wait_for_function: Timeout 90000ms exceeded.",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:24:16+00:00",
+      "action": "fresh-funnel",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:24:16+00:00",
+      "action": "choose",
+      "field": "species=Cat",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:24:17+00:00",
+      "action": "fill",
+      "field": "pet-name",
+      "value": "Willow",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:24:17+00:00",
+      "action": "fill",
+      "field": "zip",
+      "value": "44301",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:24:17+00:00",
+      "action": "select",
+      "field": "age",
+      "value": "2 Years",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:24:18+00:00",
+      "action": "choose",
+      "field": "gender=Female",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:24:20+00:00",
+      "action": "type",
+      "field": "breed-search",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:24:20+00:00",
+      "action": "choose",
+      "field": "breed",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:24:20+00:00",
+      "action": "fill",
+      "field": "email",
+      "value": "<email>",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:24:21+00:00",
+      "action": "click",
+      "target": "See My Rates",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:25:51+00:00",
+      "action": "step-error",
+      "state": "quote-save",
+      "error": "Page.wait_for_function: Timeout 90000ms exceeded.",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:25:55+00:00",
+      "action": "fresh-funnel",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:25:56+00:00",
+      "action": "choose",
+      "field": "species=Cat",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:25:56+00:00",
+      "action": "fill",
+      "field": "pet-name",
+      "value": "Willow",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:25:57+00:00",
+      "action": "fill",
+      "field": "zip",
+      "value": "44301",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:25:57+00:00",
+      "action": "select",
+      "field": "age",
+      "value": "2 Years",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:25:57+00:00",
+      "action": "choose",
+      "field": "gender=Female",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:26:00+00:00",
+      "action": "type",
+      "field": "breed-search",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:26:00+00:00",
+      "action": "choose",
+      "field": "breed",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:26:00+00:00",
+      "action": "fill",
+      "field": "email",
+      "value": "<email>",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:26:01+00:00",
+      "action": "click",
+      "target": "See My Rates",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:27:31+00:00",
+      "action": "step-error",
+      "state": "quote-plan-customize",
+      "error": "Page.wait_for_function: Timeout 90000ms exceeded.",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:27:35+00:00",
+      "action": "fresh-funnel",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:27:36+00:00",
+      "action": "choose",
+      "field": "species=Cat",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:27:36+00:00",
+      "action": "fill",
+      "field": "pet-name",
+      "value": "Willow",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:27:37+00:00",
+      "action": "fill",
+      "field": "zip",
+      "value": "44301",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:27:37+00:00",
+      "action": "select",
+      "field": "age",
+      "value": "2 Years",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:27:37+00:00",
+      "action": "choose",
+      "field": "gender=Female",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:27:39+00:00",
+      "action": "type",
+      "field": "breed-search",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:27:40+00:00",
+      "action": "choose",
+      "field": "breed",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:27:40+00:00",
+      "action": "fill",
+      "field": "email",
+      "value": "<email>",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:27:41+00:00",
+      "action": "click",
+      "target": "See My Rates",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:29:11+00:00",
+      "action": "step-error",
+      "state": "quote-checkout",
+      "error": "Page.wait_for_function: Timeout 90000ms exceeded.",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:29:15+00:00",
+      "action": "fresh-funnel",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:29:16+00:00",
+      "action": "fill",
+      "field": "zip-probe",
+      "value": "00000",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:29:19+00:00",
+      "action": "zip-probe",
+      "zip": "00000",
+      "visible_errors": [
+        "e.g. 44301\n\n00000 is not a valid zip code."
+      ],
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:29:29+00:00",
+      "action": "portal-login-loaded",
+      "hash_route": "#/login"
+    },
+    {
+      "ts": "2026-08-13T16:29:30+00:00",
+      "action": "fill",
+      "field": "portal-probe-email",
+      "value": "not-an-email",
+      "hash_route": "#/login"
+    },
+    {
+      "ts": "2026-08-13T16:29:30+00:00",
+      "action": "fill",
+      "field": "portal-probe-password",
+      "value": "<one-character placeholder, not a secret>",
+      "hash_route": "#/login"
+    },
+    {
+      "ts": "2026-08-13T16:29:41+00:00",
+      "action": "portal-login-loaded",
+      "hash_route": "#/login"
+    },
+    {
+      "ts": "2026-08-13T16:30:21+00:00",
+      "action": "warn",
+      "message": "portal password field not detected",
+      "hash_route": "#/login"
+    },
+    {
+      "ts": "2026-08-13T16:30:23+00:00",
+      "action": "portal-login-loaded",
+      "hash_route": "#/login"
+    }
+  ]
+}

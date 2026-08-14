@@ -1,0 +1,43 @@
+{
+  "schema_version": "offline-clone.unresolved-references.v1",
+  "snapshot_id": "2026-08-13.aspca-pet-insurance-r1",
+  "created_at": "2026-08-13",
+  "note": "26 URLs referenced by source markup/stylesheets could not be downloaded during the asset-closure pass (in-page fetch and scratch-tab navigation both failed). Cross-checked against the recorded per-page network evidence (resources.json): only 3 of the 26 were ever requested by the rendering browser, and none received a successful response, so none of these URLs contributed pixels to any captured frame. The remaining 23 are dormant references the renderer never requested (legacy font-format fallbacks behind a successful woff2/woff load, CSS rules for elements not present on captured states, and one internal development hostname). They are therefore outside the in_scope_required closure: the clone mirrors the captured DOM and rasters, in which these references fail identically. No pixel or byte evidence depends on them.",
+  "verification": {
+    "method": "grep of all source-current/2026-08-13.aspca-pet-insurance-r1/**/resources.json for each URL",
+    "requested_by_renderer_without_response": [
+      "https://d3544la1u8djza.cloudfront.net/APHI/whyUs/catandgirl-nobg.png",
+      "https://www.aspcapetinsurance.com/Images/favicon.ico",
+      "https://www.aspcapetinsurance.com/favicon.ico"
+    ],
+    "never_requested_by_renderer": 23
+  },
+  "unresolved": [
+    {"url": "http://aphi.hartvillesites.dev.corp.hartvillegroup.com/Images/icons/check.png", "classification": "internal-development-hostname-unreachable"},
+    {"url": "https://d3544la1u8djza.cloudfront.net/APHI/whyUs/catandgirl-nobg.png", "classification": "requested-no-response-in-capture-browser"},
+    {"url": "https://d3544la1u8djza.cloudfront.net/Global/fonts/glyphicons-halflings-regular.eot", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://d3544la1u8djza.cloudfront.net/Global/fonts/glyphicons-halflings-regular.eot?#iefix", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://d3544la1u8djza.cloudfront.net/Global/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://d3544la1u8djza.cloudfront.net/Global/fonts/glyphicons-halflings-regular.ttf", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://d3544la1u8djza.cloudfront.net/Global/fonts/glyphicons-halflings-regular.woff", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/Images/favicon.ico", "classification": "requested-no-response-in-capture-browser"},
+    {"url": "https://www.aspcapetinsurance.com/css/coral/base/modules/images/dogCat--left.png", "classification": "css-reference-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/css/less/APHI/fonts/claims-icons.eot?", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/css/less/APHI/fonts/claims-icons.eot?#iefix", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/css/less/APHI/fonts/claims-icons.svg#claims-icons", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/css/less/APHI/fonts/claims-icons.ttf", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/css/less/APHI/fonts/claims-icons.woff", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/favicon.ico", "classification": "requested-no-response-in-capture-browser"},
+    {"url": "https://www.aspcapetinsurance.com/fonts/glyphicons-halflings-regular.eot", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/fonts/glyphicons-halflings-regular.eot?#iefix", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/fonts/glyphicons-halflings-regular.ttf", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/fonts/glyphicons-halflings-regular.woff", "classification": "legacy-font-fallback-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/images/header--dog.png", "classification": "css-reference-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/img/misc/70.gif", "classification": "css-reference-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/img/misc/80.gif", "classification": "css-reference-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/img/misc/90.gif", "classification": "css-reference-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/img/misc/crossword.png", "classification": "css-reference-never-requested"},
+    {"url": "https://www.aspcapetinsurance.com/lib/assets/img/loading-24.gif", "classification": "css-reference-never-requested"}
+  ]
+}

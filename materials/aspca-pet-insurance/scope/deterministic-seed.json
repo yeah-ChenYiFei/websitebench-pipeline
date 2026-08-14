@@ -1,0 +1,65 @@
+{
+  "schema_version": "aspca-pet-insurance.deterministic-seed-manifest.v1",
+  "status": "frozen",
+  "seed_id": "aspca-pet-insurance-empty-business-seed-r1",
+  "frozen_clock_iso": "2026-08-13T12:00:00+00:00",
+  "frozen_clock_timezone": "Etc/UTC",
+  "schema_baseline": {
+    "application_schema_version": "0003_enrollments",
+    "auth_schema_version": "vendored-site-backend-current",
+    "migration_log_representation": "physical-sqlite-rows",
+    "note": "The business seed is intentionally empty. The shared runtime initializes site binding/library tables and the clone applies exactly three idempotent business migrations."
+  },
+  "quote_scenario": {
+    "note": "Synthetic scenario used for the authorized source funnel walk and the clone's canonical rating tests. ZIP 44301 comes from the source form example.",
+    "pet_name": "Willow",
+    "species": "cat",
+    "age": "2 Years",
+    "gender": "Female",
+    "breed": "Domestic Shorthair",
+    "zip": "44301",
+    "email_policy": "Use only the recorded non-deliverable synthetic address; REAL_EMAIL_AUTHORIZED=false."
+  },
+  "authoritative_entity_count": 5,
+  "entities": [
+    {
+      "entity_name": "aspca-quotes",
+      "storage_name": "aspca_quotes",
+      "expected_row_count": 0,
+      "stable_row_identities": [],
+      "note": "The first post-reset quote is deterministically WB100001 and uses the frozen timestamp."
+    },
+    {
+      "entity_name": "aspca-pets",
+      "storage_name": "aspca_pets",
+      "expected_row_count": 0,
+      "stable_row_identities": [],
+      "note": "Pets are created only by local quote operations; no member pet is seeded."
+    },
+    {
+      "entity_name": "aspca-selections",
+      "storage_name": "aspca_selections",
+      "expected_row_count": 0,
+      "stable_row_identities": [],
+      "note": "Each created pet receives one deterministic default selection whose price provenance is explicit."
+    },
+    {
+      "entity_name": "aspca-enrollments",
+      "storage_name": "aspca_enrollments",
+      "expected_row_count": 0,
+      "stable_row_identities": [],
+      "note": "The first post-reset enrollment is APH-000001. Rows contain no payment fields and are unique by quote."
+    },
+    {
+      "entity_name": "aspca-schema-migrations",
+      "storage_name": "aspca_schema_migrations",
+      "expected_row_count": 3,
+      "stable_row_identities": [
+        "migration::0001_quotes_core",
+        "migration::0002_selections",
+        "migration::0003_enrollments"
+      ],
+      "note": "All three rows use the frozen clock and remain after deterministic reset."
+    }
+  ]
+}

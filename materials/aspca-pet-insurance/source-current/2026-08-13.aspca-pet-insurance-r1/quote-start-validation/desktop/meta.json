@@ -1,0 +1,52 @@
+{
+  "checkpoint": "quote-start-validation",
+  "family": "quote-funnel",
+  "priority": "P0",
+  "viewport": "desktop",
+  "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+  "final_url": "https://www.aspcapetinsurance.com/quote/#/start",
+  "title": "Let's get started!",
+  "body_text_len": 2928,
+  "frames": 3,
+  "frame_sha256": [
+    "7e47b7208a81b189ce69a7c7c7d3699e3382e2ae7dcbe0e707fc0906671dbd24",
+    "5e3619c929f55c9b501ef345a4fae00021eeb820e3630d3d55360404ef7ebea2",
+    "5e3619c929f55c9b501ef345a4fae00021eeb820e3630d3d55360404ef7ebea2"
+  ],
+  "frames_identical": false,
+  "link_count": 27,
+  "engine": "browserbase",
+  "nav_fallback": null,
+  "regions": {
+    "header": null,
+    "main": {
+      "selector": "main",
+      "x": 0,
+      "y": 180,
+      "width": 1440,
+      "height": 1912
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 2112,
+      "width": 1440,
+      "height": 624
+    },
+    "form": {
+      "selector": "form",
+      "x": 150,
+      "y": 481,
+      "width": 1140,
+      "height": 1592
+    },
+    "document_height": 2796
+  },
+  "interaction": {
+    "action": "empty-submit",
+    "performed": [
+      "clicked See My Rates with all required fields empty",
+      "captured inline validation state"
+    ]
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "schema_version": "websitebench.offline-clone.backend-semantic-suite.v1",
+  "suite_id": "aspca-local-payment-mail",
+  "allowed_origin": "http://127.0.0.1:8765",
+  "timeout_seconds": 10,
+  "follow_redirects": false,
+  "invariants": [
+    {
+      "id": "payment-mail-atomic",
+      "applicability": "applicable",
+      "required_polarities": [
+        "positive",
+        "negative"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "approved-creates-policy-and-local-mail",
+      "invariant_id": "payment-mail-atomic",
+      "polarity": "positive",
+      "actor": "approved-quote-owner",
+      "steps": [
+        {
+          "id": "reset",
+          "request": {
+            "method": "POST",
+            "path": "/__admin/reset",
+            "headers_env": {
+              "X-WebsiteBench-Admin-Token": "WEBSITEBENCH_ASPCA_ADMIN_TOKEN"
+            }
+          },
+          "expect": {
+            "status": 200,
+            "json_equal": {
+              "/reset": true,
+              "/site_id": "aspca-pet-insurance"
+            }
+          }
+        },
+        {
+          "id": "create-quote",
+          "request": {
+            "method": "POST",
+            "path": "/api/quotes",
+            "json": {
+              "species": "Cat",
+              "name": "Willow",
+              "age": "2 Years",
+              "gender": "Female",
+              "breed": "Domestic Shorthair",
+              "email": "semantic-approved@example.com",
+              "zip": "44301"
+            }
+          },
+          "expect": {
+            "status": 201,
+            "json_present": [
+              "/quote_id"
+            ]
+          },
+          "capture": {
+            "approved_quote_id": "/quote_id"
+          }
+        },
+        {
+          "id": "approve",
+          "request": {
+            "method": "POST",
+            "path": "/api/quotes/${VAR:approved_quote_id}/enroll",
+            "json": {
+              "contact": {
+                "firstName": "Willow",
+                "lastName": "Example",
+                "email": "semantic-approved@example.com"
+              },
+              "frequency": "Monthly",
+              "agree_terms": true,
+              "paperless": true,
+              "scenario_id": "sandbox-approved"
+            }
+          },
+          "expect": {
+            "status": 201,
+            "json_equal": {
+              "/payment/status": "CONSUMED",
+              "/payment/amount_minor": 1674,
+              "/payment/currency": "USD",
+              "/payment/is_simulation": true,
+              "/mail/purpose": "policy-confirmation",
+              "/mail/status": "LOCAL_SIMULATION",
+              "/mail/is_simulation": true
+            },
+            "json_present": [
+              "/policy_number",
+              "/payment/flow_id",
+              "/payment/attempt_id",
+              "/mail/mail_id"
+            ]
+          }
+        },
+        {
+          "id": "read-enrolled-quote",
+          "request": {
+            "method": "GET",
+            "path": "/api/quotes/${VAR:approved_quote_id}"
+          },
+          "expect": {
+            "status": 200,
+            "json_equal": {
+              "/status": "enrolled",
+              "/enrollment/payment/amount_minor": 1674,
+              "/enrollment/payment/currency": "USD",
+              "/enrollment/payment/is_simulation": true
+            },
+            "json_present": [
+              "/enrollment/policy_number",
+              "/enrollment/mail_id"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "retry-creates-no-policy-or-mail",
+      "invariant_id": "payment-mail-atomic",
+      "polarity": "negative",
+      "actor": "retrying-quote-owner",
+      "steps": [
+        {
+          "id": "reset",
+          "request": {
+            "method": "POST",
+            "path": "/__admin/reset",
+            "headers_env": {
+              "X-WebsiteBench-Admin-Token": "WEBSITEBENCH_ASPCA_ADMIN_TOKEN"
+            }
+          },
+          "expect": {
+            "status": 200,
+            "json_equal": {
+              "/reset": true
+            }
+          }
+        },
+        {
+          "id": "create-quote",
+          "request": {
+            "method": "POST",
+            "path": "/api/quotes",
+            "json": {
+              "species": "Cat",
+              "name": "Willow",
+              "age": "2 Years",
+              "gender": "Female",
+              "breed": "Domestic Shorthair",
+              "email": "semantic-retry@example.com",
+              "zip": "44301"
+            }
+          },
+          "expect": {
+            "status": 201,
+            "json_present": [
+              "/quote_id"
+            ]
+          },
+          "capture": {
+            "retry_quote_id": "/quote_id"
+          }
+        },
+        {
+          "id": "retry",
+          "request": {
+            "method": "POST",
+            "path": "/api/quotes/${VAR:retry_quote_id}/enroll",
+            "json": {
+              "contact": {
+                "email": "semantic-retry@example.com"
+              },
+              "frequency": "Monthly",
+              "agree_terms": true,
+              "paperless": false,
+              "scenario_id": "sandbox-retry"
+            }
+          },
+          "expect": {
+            "status": 409,
+            "json_equal": {
+              "/enrolled": false,
+              "/payment/status": "RETRYABLE",
+              "/payment/is_simulation": true
+            },
+            "json_absent": [
+              "/policy_number",
+              "/mail"
+            ]
+          }
+        },
+        {
+          "id": "read-open-quote",
+          "request": {
+            "method": "GET",
+            "path": "/api/quotes/${VAR:retry_quote_id}"
+          },
+          "expect": {
+            "status": 200,
+            "json_equal": {
+              "/status": "open",
+              "/enrollment": null
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

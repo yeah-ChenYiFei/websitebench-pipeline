@@ -1,0 +1,314 @@
+{
+  "schema_version": "aspca-pet-insurance.frontend-gate-samples.v1",
+  "app_file": "clone/app.py",
+  "app_attr": "app",
+  "module_name": "aspca_pet_insurance_clone_app",
+  "checks": [
+    {
+      "id": "home",
+      "url": "/",
+      "expect_status": 200,
+      "expect_contains": [
+        "Pet Insurance Coverage - Rated One of the Best"
+      ],
+      "expect_not_contains": [
+        "websitebench",
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "pet-insurance-plan",
+      "url": "/pet-insurance-plan/",
+      "expect_status": 200,
+      "expect_contains": [
+        "Rated One of the Best Pet Insurance Plans"
+      ],
+      "expect_not_contains": [
+        "websitebench",
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "cat-insurance",
+      "url": "/cat-insurance/",
+      "expect_status": 200,
+      "expect_contains": [
+        "Top-Rated Cat Insurance"
+      ],
+      "expect_not_contains": [
+        "websitebench",
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "dog-insurance",
+      "url": "/dog-insurance/",
+      "expect_status": 200,
+      "expect_contains": [
+        "Dog Insurance Plans - Rated One of the Best"
+      ],
+      "expect_not_contains": [
+        "websitebench",
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "why-us",
+      "url": "/why-us/",
+      "expect_status": 200,
+      "expect_contains": [
+        "Why Choose Us to Help Protect Your Pet?"
+      ],
+      "expect_not_contains": [
+        "websitebench",
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "research-and-compare",
+      "url": "/research-and-compare/",
+      "expect_status": 200,
+      "expect_contains": [
+        "Compare Pet Insurance Plans"
+      ],
+      "expect_not_contains": [
+        "websitebench",
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "about-us",
+      "url": "/about-us/",
+      "expect_status": 200,
+      "expect_contains": [
+        "The Best Pet Health Insurance"
+      ],
+      "expect_not_contains": [
+        "websitebench",
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "support",
+      "url": "/about-us/contact-us/",
+      "expect_status": 200,
+      "expect_contains": [
+        "Contact Us"
+      ],
+      "expect_not_contains": [
+        "websitebench",
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "quote.funnel-shell",
+      "url": "/quote/",
+      "expect_status": 200,
+      "expect_contains": [
+        "get started!"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "quote.start-view",
+      "url": "/quote/views/start",
+      "expect_status": 200,
+      "expect_contains": [
+        "a walk in the park!"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "quote.rates-view",
+      "url": "/quote/views/rates",
+      "expect_status": 200,
+      "expect_contains": [
+        "great plan options for Willow!"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "quote.checkout-view",
+      "url": "/quote/views/checkout",
+      "expect_status": 200,
+      "expect_contains": [
+        "Pet Insurance Checkout"
+      ],
+      "expect_not_contains": [
+        "Card Number"
+      ],
+      "session": false
+    },
+    {
+      "id": "quote.resume-view",
+      "url": "/quote/views/resume",
+      "expect_status": 200,
+      "expect_contains": [
+        "Welcome back!"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "quote.add-a-pet-view",
+      "url": "/quote/views/add-a-pet",
+      "expect_status": 200,
+      "expect_contains": [
+        "Pet Details"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "auth.portal-shell",
+      "url": "/portal/",
+      "expect_status": 200,
+      "expect_contains": [
+        "Pet Insurance Member Login"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "auth.login-view",
+      "url": "/portal/views/login",
+      "expect_status": 200,
+      "expect_contains": [
+        "Sign In To Your Account"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "auth.forgot-password-view",
+      "url": "/portal/views/forgot-password",
+      "expect_status": 200,
+      "expect_contains": [
+        "Verification Code"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "auth.register-view",
+      "url": "/portal/views/register",
+      "expect_status": 200,
+      "expect_contains": [
+        "Account Information"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "start-validation-view",
+      "url": "/quote/views/start-validation",
+      "expect_status": 200,
+      "expect_contains": [
+        "Please correct the following issue(s)."
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "plan-detail-view",
+      "url": "/quote/views/plan-detail",
+      "expect_status": 200,
+      "expect_contains": [
+        "great plan options for Willow!"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "plan-customize-view",
+      "url": "/quote/views/plan-customize",
+      "expect_status": 200,
+      "expect_contains": [
+        "great plan options for Willow!"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "ineligible-view",
+      "url": "/quote/views/ineligible",
+      "expect_status": 200,
+      "expect_contains": [
+        "a walk in the park!"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "login-validation-view",
+      "url": "/portal/views/login-validation",
+      "expect_status": 200,
+      "expect_contains": [
+        "Sign In To Your Account"
+      ],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "healthz",
+      "url": "/healthz",
+      "expect_status": 200,
+      "expect_contains": [],
+      "expect_not_contains": [
+        "NotImplementedError"
+      ],
+      "session": false
+    },
+    {
+      "id": "external-boundary",
+      "url": "/external/apps.apple.com",
+      "expect_status": 200,
+      "expect_contains": [
+        "External link"
+      ],
+      "expect_not_contains": [
+        "websitebench"
+      ],
+      "session": false
+    }
+  ]
+}

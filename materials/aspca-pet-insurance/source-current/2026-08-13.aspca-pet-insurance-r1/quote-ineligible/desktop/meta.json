@@ -1,0 +1,52 @@
+{
+  "checkpoint": "quote-ineligible",
+  "family": "quote-funnel",
+  "priority": "P1",
+  "viewport": "desktop",
+  "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+  "final_url": "https://www.aspcapetinsurance.com/quote/#/start",
+  "title": "Let's get started!",
+  "body_text_len": 2552,
+  "frames": 3,
+  "frame_sha256": [
+    "47d5132b015efc1a0593ac68784f95e11a9b3c44607ac834ce2388b1ffc190f0",
+    "47d5132b015efc1a0593ac68784f95e11a9b3c44607ac834ce2388b1ffc190f0",
+    "47d5132b015efc1a0593ac68784f95e11a9b3c44607ac834ce2388b1ffc190f0"
+  ],
+  "frames_identical": true,
+  "link_count": 21,
+  "engine": "browserbase",
+  "nav_fallback": null,
+  "regions": {
+    "header": null,
+    "main": {
+      "selector": "main",
+      "x": 0,
+      "y": 180,
+      "width": 1440,
+      "height": 1458
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 1658,
+      "width": 1440,
+      "height": 624
+    },
+    "form": {
+      "selector": "form",
+      "x": 150,
+      "y": 457,
+      "width": 1140,
+      "height": 1161
+    },
+    "document_height": 2341
+  },
+  "interaction": {
+    "action": "zip-ineligible-probe",
+    "performed": [
+      "filled ZIP 00000 and blurred",
+      "visible error text: ['e.g. 44301\\n\\n00000 is not a valid zip code.']"
+    ]
+  }
+}

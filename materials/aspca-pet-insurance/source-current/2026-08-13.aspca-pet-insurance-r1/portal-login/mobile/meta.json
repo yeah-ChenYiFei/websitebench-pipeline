@@ -1,0 +1,42 @@
+{
+  "checkpoint": "portal-login",
+  "family": "portal-auth",
+  "priority": "P1",
+  "viewport": "mobile",
+  "requested_url": "https://www.aspcapetinsurance.com/portal/#/login",
+  "final_url": "https://www.aspcapetinsurance.com/portal/#/login",
+  "http_status": null,
+  "title": "Pet Insurance Member Login | ASPCA Pet Health Insurance",
+  "body_text_len": 2031,
+  "frames": 3,
+  "frame_sha256": [
+    "061847f3ffd6f4003c9d6a12f0e0d2126bec17fef6ba376e8d2f09817ea4021e",
+    "061847f3ffd6f4003c9d6a12f0e0d2126bec17fef6ba376e8d2f09817ea4021e",
+    "061847f3ffd6f4003c9d6a12f0e0d2126bec17fef6ba376e8d2f09817ea4021e"
+  ],
+  "frames_identical": true,
+  "link_count": 23,
+  "resource_count": 118,
+  "engine": "browserbase",
+  "nav_fallback": null,
+  "consent_action": null,
+  "regions": {
+    "header": null,
+    "main": null,
+    "footer": {
+      "selector": "[role=contentinfo]",
+      "x": 0,
+      "y": 1667,
+      "width": 390,
+      "height": 1104
+    },
+    "form": {
+      "selector": "form",
+      "x": 0,
+      "y": 226,
+      "width": 390,
+      "height": 338
+    },
+    "document_height": 844
+  }
+}

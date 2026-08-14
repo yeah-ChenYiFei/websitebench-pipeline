@@ -1,0 +1,330 @@
+{
+  "schema_version": "aspca-pet-insurance.walk-log.v1",
+  "capture_id": "2026-08-13.aspca-pet-insurance-r1",
+  "email_mode": "synthetic-fallback",
+  "email_address": "willow-capture-2026-08-13@example.com",
+  "real_email_authorized": false,
+  "email_substitution_note": "First-choice synthetic address used the reserved .invalid TLD; the funnel's ng-pattern email validator (/[a-z0-9A-Z._%+-]+@[a-z0-9A-Z.-]+\\.[a-zA-Z]{2,4}$/) caps the TLD at 4 characters and rejected it, so the recorded fallback on the IANA-reserved example.com domain was used instead. Non-deliverable by policy; real_email_authorized stays false.",
+  "mutation_grant": "quote-funnel-synthetic-submission",
+  "entries": [
+    {
+      "ts": "2026-08-13T16:46:09+00:00",
+      "action": "fresh-funnel",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:46:10+00:00",
+      "action": "choose",
+      "field": "species=Cat",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:46:11+00:00",
+      "action": "fill",
+      "field": "pet-name",
+      "value": "Willow",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:46:11+00:00",
+      "action": "fill",
+      "field": "zip",
+      "value": "44301",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:46:11+00:00",
+      "action": "select",
+      "field": "age",
+      "value": "2 Years",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:46:12+00:00",
+      "action": "choose",
+      "field": "gender=Female",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:46:14+00:00",
+      "action": "type",
+      "field": "breed-search",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:46:14+00:00",
+      "action": "choose",
+      "field": "breed",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:46:15+00:00",
+      "action": "fill",
+      "field": "email",
+      "value": "<email>",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:46:15+00:00",
+      "action": "click",
+      "target": "See My Rates",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:46:23+00:00",
+      "action": "rates-loaded",
+      "prices": [
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$8.48/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$23.19/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$100",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        }
+      ],
+      "hash_route": "#/plans"
+    },
+    {
+      "ts": "2026-08-13T16:46:23+00:00",
+      "action": "click",
+      "target": "accordion What's Covered",
+      "hash_route": "#/plans"
+    },
+    {
+      "ts": "2026-08-13T16:46:25+00:00",
+      "action": "click",
+      "target": "accordion What's Not Covered",
+      "hash_route": "#/plans"
+    },
+    {
+      "ts": "2026-08-13T16:46:34+00:00",
+      "action": "click",
+      "target": "Build Your Own Plan accordion",
+      "hash_route": "#/plans"
+    },
+    {
+      "ts": "2026-08-13T16:46:40+00:00",
+      "action": "customize",
+      "control": "deductible",
+      "radio": "250l2",
+      "hash_route": "#/plans"
+    },
+    {
+      "ts": "2026-08-13T16:46:44+00:00",
+      "action": "customize",
+      "control": "reimbursement",
+      "radio": "90l2",
+      "hash_route": "#/plans"
+    },
+    {
+      "ts": "2026-08-13T16:46:49+00:00",
+      "action": "customize",
+      "control": "annual-limit",
+      "radio": "5000l2",
+      "hash_route": "#/plans"
+    },
+    {
+      "ts": "2026-08-13T16:46:49+00:00",
+      "action": "click",
+      "target": "Add Basic (preventive care)",
+      "hash_route": "#/plans"
+    },
+    {
+      "ts": "2026-08-13T16:47:07+00:00",
+      "action": "click",
+      "target": "checkout CTA /^\\s*continue\\s*$/i",
+      "hash_route": "#/plans"
+    },
+    {
+      "ts": "2026-08-13T16:47:12+00:00",
+      "action": "checkout-structure",
+      "fields": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "firstName",
+          "id": "firstName",
+          "placeholder": null,
+          "label": "First Name *",
+          "autocomplete": "given-name"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "lastName",
+          "id": "lastName",
+          "placeholder": null,
+          "label": "Last Name *",
+          "autocomplete": "family-name"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "address1",
+          "id": "address1",
+          "placeholder": null,
+          "label": "Address *",
+          "autocomplete": "street-address"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "address2",
+          "id": "address2",
+          "placeholder": null,
+          "label": "Apt. #, suite\n(optional)",
+          "autocomplete": null
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "city",
+          "id": "city",
+          "placeholder": null,
+          "label": "City *",
+          "autocomplete": "address-level2"
+        },
+        {
+          "tag": "select",
+          "type": "select-one",
+          "name": "stateSelect",
+          "id": "stateSelect",
+          "placeholder": null,
+          "label": "State *",
+          "autocomplete": null
+        },
+        {
+          "tag": "input",
+          "type": "tel",
+          "name": "zipcode",
+          "id": "zipcode",
+          "placeholder": null,
+          "label": "Zip Code *",
+          "autocomplete": null
+        },
+        {
+          "tag": "input",
+          "type": "tel",
+          "name": "phone",
+          "id": "phone",
+          "placeholder": null,
+          "label": "Phone Number *",
+          "autocomplete": "tel"
+        },
+        {
+          "tag": "input",
+          "type": "email",
+          "name": "email",
+          "id": "emailAddress",
+          "placeholder": null,
+          "label": "Email Address *",
+          "autocomplete": "email"
+        },
+        {
+          "tag": "select",
+          "type": "select-one",
+          "name": "marketingCodeSelect",
+          "id": "marketingCodeSelect",
+          "placeholder": null,
+          "label": "How did you hear about us? *",
+          "autocomplete": null
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "paymentType",
+          "id": "monthly",
+          "placeholder": null,
+          "label": "Monthly",
+          "autocomplete": null
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "paymentType",
+          "id": "annually",
+          "placeholder": null,
+          "label": "Annually",
+          "autocomplete": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "agreeTerms",
+          "id": "agreeTerms",
+          "placeholder": null,
+          "label": "I have read and accept the policy terms and fraud notice.*",
+          "autocomplete": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "paperless",
+          "id": "paperlessCheckbox",
+          "placeholder": null,
+          "label": "I agree to go paperless and receive policy documents and communications electronically.",
+          "autocomplete": null
+        },
+        {
+          "tag": "button",
+          "type": "submit",
+          "name": null,
+          "id": null,
+          "placeholder": null,
+          "label": null,
+          "autocomplete": null
+        }
+      ],
+      "hash_route": "#/checkout"
+    },
+    {
+      "ts": "2026-08-13T16:47:30+00:00",
+      "action": "goto",
+      "target": "#/quote-search (Fetch a Previous Quote)",
+      "hash_route": "#/quote-search"
+    }
+  ]
+}

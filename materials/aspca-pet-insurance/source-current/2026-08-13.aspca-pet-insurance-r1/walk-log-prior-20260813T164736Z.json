@@ -1,0 +1,142 @@
+{
+  "schema_version": "aspca-pet-insurance.walk-log.v1",
+  "capture_id": "2026-08-13.aspca-pet-insurance-r1",
+  "email_mode": "synthetic-fallback",
+  "email_address": "willow-capture-2026-08-13@example.com",
+  "real_email_authorized": false,
+  "email_substitution_note": "First-choice synthetic address used the reserved .invalid TLD; the funnel's ng-pattern email validator (/[a-z0-9A-Z._%+-]+@[a-z0-9A-Z.-]+\\.[a-zA-Z]{2,4}$/) caps the TLD at 4 characters and rejected it, so the recorded fallback on the IANA-reserved example.com domain was used instead. Non-deliverable by policy; real_email_authorized stays false.",
+  "mutation_grant": "quote-funnel-synthetic-submission",
+  "entries": [
+    {
+      "ts": "2026-08-13T16:32:39+00:00",
+      "action": "fresh-funnel",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:32:40+00:00",
+      "action": "choose",
+      "field": "species=Cat",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:32:40+00:00",
+      "action": "fill",
+      "field": "pet-name",
+      "value": "Willow",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:32:41+00:00",
+      "action": "fill",
+      "field": "zip",
+      "value": "44301",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:32:41+00:00",
+      "action": "select",
+      "field": "age",
+      "value": "2 Years",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:32:42+00:00",
+      "action": "choose",
+      "field": "gender=Female",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:32:44+00:00",
+      "action": "type",
+      "field": "breed-search",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:32:44+00:00",
+      "action": "choose",
+      "field": "breed",
+      "value": "Domestic Shorthair",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:32:44+00:00",
+      "action": "fill",
+      "field": "email",
+      "value": "<email>",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:32:45+00:00",
+      "action": "click",
+      "target": "See My Rates",
+      "hash_route": "#/start"
+    },
+    {
+      "ts": "2026-08-13T16:32:52+00:00",
+      "action": "rates-loaded",
+      "prices": [
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$8.48/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$23.19/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$100",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        }
+      ],
+      "hash_route": "#/plans"
+    },
+    {
+      "ts": "2026-08-13T16:33:44+00:00",
+      "action": "warn",
+      "message": "no checkout CTA found on rates view",
+      "hash_route": "#/add-a-pet"
+    },
+    {
+      "ts": "2026-08-13T16:33:49+00:00",
+      "action": "portal-login-loaded",
+      "hash_route": "#/login"
+    }
+  ]
+}

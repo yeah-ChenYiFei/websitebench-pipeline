@@ -1,0 +1,1625 @@
+{
+  "schema_version": "aspca-pet-insurance.rating-claims.v1",
+  "capture_id": "2026-08-13.aspca-pet-insurance-r1",
+  "scenario": "willow",
+  "observations": [
+    {
+      "inputs": {
+        "species": "Cat",
+        "name": "Willow",
+        "zip": "44301",
+        "age_label": "2 Years",
+        "gender": "Female",
+        "breed": "Domestic Shorthair"
+      },
+      "state": "quote-rates-initial",
+      "hash_route": "#/plans",
+      "observed_prices": [
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$8.48/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$23.19/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$100",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$250",
+          "context": "total"
+        },
+        {
+          "text": "$9.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$150",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$450",
+          "context": "total"
+        },
+        {
+          "text": "$24.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$16",
+          "context": "priceSummary_priceMonthly--dollar ng-binding ng-scope"
+        },
+        {
+          "text": "$16",
+          "context": "priceTotal_text--dollar ng-binding"
+        }
+      ],
+      "select_controls": [],
+      "provenance": "directly-observed"
+    },
+    {
+      "inputs": {
+        "species": "Cat",
+        "name": "Willow",
+        "zip": "44301",
+        "age_label": "2 Years",
+        "gender": "Female",
+        "breed": "Domestic Shorthair",
+        "customization": "annual deductible -> $250"
+      },
+      "state": "customize-deductible",
+      "hash_route": "#/plans",
+      "prices_before": [
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$8.48/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$23.19/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$750",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$250",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$100",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$7,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$100",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$250",
+          "context": "total"
+        },
+        {
+          "text": "$9.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$150",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$450",
+          "context": "total"
+        },
+        {
+          "text": "$24.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$16",
+          "context": "priceSummary_priceMonthly--dollar ng-binding ng-scope"
+        },
+        {
+          "text": "$16",
+          "context": "priceTotal_text--dollar ng-binding"
+        }
+      ],
+      "observed_prices": [
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$8.48/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$23.19/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$750",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$250",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$100",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$7,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$23.65/mo",
+          "context": "ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$100",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$250",
+          "context": "total"
+        },
+        {
+          "text": "$9.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$150",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$450",
+          "context": "total"
+        },
+        {
+          "text": "$24.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$16",
+          "context": "priceSummary_priceMonthly--dollar ng-binding ng-scope"
+        },
+        {
+          "text": "$16",
+          "context": "priceTotal_text--dollar ng-binding"
+        }
+      ],
+      "control": {
+        "id": "250l2",
+        "name": "annualDeductiblel2",
+        "value": "Deductible250",
+        "checked": true
+      },
+      "provenance": "directly-observed"
+    },
+    {
+      "inputs": {
+        "species": "Cat",
+        "name": "Willow",
+        "zip": "44301",
+        "age_label": "2 Years",
+        "gender": "Female",
+        "breed": "Domestic Shorthair",
+        "customization": "reimbursement -> 90%"
+      },
+      "state": "customize-reimbursement",
+      "hash_route": "#/plans",
+      "prices_before": [
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$8.48/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$23.19/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$750",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$250",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$100",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$7,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$23.65/mo",
+          "context": "ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$100",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$250",
+          "context": "total"
+        },
+        {
+          "text": "$9.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$150",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$450",
+          "context": "total"
+        },
+        {
+          "text": "$24.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$16",
+          "context": "priceSummary_priceMonthly--dollar ng-binding ng-scope"
+        },
+        {
+          "text": "$16",
+          "context": "priceTotal_text--dollar ng-binding"
+        }
+      ],
+      "observed_prices": [
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$8.48/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$23.19/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$750",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$250",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$100",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$7,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$30.83/mo",
+          "context": "ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$100",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$250",
+          "context": "total"
+        },
+        {
+          "text": "$9.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$150",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$450",
+          "context": "total"
+        },
+        {
+          "text": "$24.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$16",
+          "context": "priceSummary_priceMonthly--dollar ng-binding ng-scope"
+        },
+        {
+          "text": "$16",
+          "context": "priceTotal_text--dollar ng-binding"
+        }
+      ],
+      "control": {
+        "id": "90l2",
+        "name": "reimbursementPercentl2",
+        "value": "Copay10",
+        "checked": true
+      },
+      "provenance": "directly-observed"
+    },
+    {
+      "inputs": {
+        "species": "Cat",
+        "name": "Willow",
+        "zip": "44301",
+        "age_label": "2 Years",
+        "gender": "Female",
+        "breed": "Domestic Shorthair",
+        "customization": "annual limit -> $5,000"
+      },
+      "state": "customize-annual-limit",
+      "hash_route": "#/plans",
+      "prices_before": [
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$8.48/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$23.19/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$750",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$250",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$100",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$7,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$30.83/mo",
+          "context": "ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$100",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$250",
+          "context": "total"
+        },
+        {
+          "text": "$9.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$150",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$450",
+          "context": "total"
+        },
+        {
+          "text": "$24.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$16",
+          "context": "priceSummary_priceMonthly--dollar ng-binding ng-scope"
+        },
+        {
+          "text": "$16",
+          "context": "priceTotal_text--dollar ng-binding"
+        }
+      ],
+      "observed_prices": [
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$8.48/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$23.19/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$750",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$250",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$100",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$7,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$30.83/mo",
+          "context": "ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$100",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$250",
+          "context": "total"
+        },
+        {
+          "text": "$9.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$150",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$450",
+          "context": "total"
+        },
+        {
+          "text": "$24.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$16",
+          "context": "priceSummary_priceMonthly--dollar ng-binding ng-scope"
+        },
+        {
+          "text": "$16",
+          "context": "priceTotal_text--dollar ng-binding"
+        }
+      ],
+      "control": {
+        "id": "5000l2",
+        "name": "annualLimitl2",
+        "value": "Limit5000",
+        "checked": true
+      },
+      "provenance": "directly-observed"
+    },
+    {
+      "inputs": {
+        "species": "Cat",
+        "name": "Willow",
+        "zip": "44301",
+        "age_label": "2 Years",
+        "gender": "Female",
+        "breed": "Domestic Shorthair",
+        "preventive_care": "basic added"
+      },
+      "state": "customize-preventive",
+      "hash_route": "#/plans",
+      "prices_before": [
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$8.48/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$23.19/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$750",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$250",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$100",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$7,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$30.83/mo",
+          "context": "ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$100",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$250",
+          "context": "total"
+        },
+        {
+          "text": "$9.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$150",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$450",
+          "context": "total"
+        },
+        {
+          "text": "$24.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$16",
+          "context": "priceSummary_priceMonthly--dollar ng-binding ng-scope"
+        },
+        {
+          "text": "$16",
+          "context": "priceTotal_text--dollar ng-binding"
+        }
+      ],
+      "observed_prices": [
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$8.48/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$16.74/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-selector__detail-value ng-binding"
+        },
+        {
+          "text": "$23.19/mo",
+          "context": "eb-tier-selector__option-price ng-binding"
+        },
+        {
+          "text": "$750",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$250",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$100",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$2,500",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$5,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$7,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$10,000",
+          "context": "eb-tier-plan-options__label"
+        },
+        {
+          "text": "$30.83/mo",
+          "context": "ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body opcPanel_body_active"
+        },
+        {
+          "text": "$100",
+          "context": "opcpanel_body opcPanel_body_active"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body opcPanel_body_active"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$20",
+          "context": "opcpanel_body opcPanel_body_active"
+        },
+        {
+          "text": "$250",
+          "context": "total"
+        },
+        {
+          "text": "$9.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$50",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$150",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "ng-scope"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$25",
+          "context": "opcpanel_body"
+        },
+        {
+          "text": "$450",
+          "context": "total"
+        },
+        {
+          "text": "$24.95/mo",
+          "context": "priceSummary_priceMonthly opcpriceSummary_priceMonthly ng-binding"
+        },
+        {
+          "text": "$16",
+          "context": "priceSummary_priceMonthly--dollar ng-binding ng-scope"
+        },
+        {
+          "text": "$26",
+          "context": "priceTotal_text--dollar ng-binding"
+        }
+      ],
+      "provenance": "directly-observed"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "checkpoint": "quote-rates",
+  "family": "quote-funnel",
+  "priority": "P0",
+  "viewport": "tablet",
+  "requested_url": "https://www.aspcapetinsurance.com/quote/#/",
+  "final_url": "https://www.aspcapetinsurance.com/quote/#/plans",
+  "title": "Select A Plan",
+  "body_text_len": 3540,
+  "frames": 3,
+  "frame_sha256": [
+    "1e78916f27dc02d1e993005ab45eaa59ae418b91a29a7dc9af3ddbe91f989f0a",
+    "f0ed22ee9f53e6b4f05ab1cbb4a378f091e7aecabac9c1bd1a73b16619121f7e",
+    "f0ed22ee9f53e6b4f05ab1cbb4a378f091e7aecabac9c1bd1a73b16619121f7e"
+  ],
+  "frames_identical": false,
+  "link_count": 23,
+  "engine": "browserbase",
+  "nav_fallback": null,
+  "regions": {
+    "header": {
+      "selector": "header",
+      "x": 0,
+      "y": 0,
+      "width": 1024,
+      "height": 56
+    },
+    "main": {
+      "selector": "main",
+      "x": 0,
+      "y": 68,
+      "width": 1024,
+      "height": 2238
+    },
+    "footer": {
+      "selector": "footer",
+      "x": 0,
+      "y": 2326,
+      "width": 1024,
+      "height": 652
+    },
+    "form": null,
+    "document_height": 3061
+  },
+  "interaction": {
+    "action": "willow-submit",
+    "performed": [
+      "filled Willow scenario (Cat, Willow, ZIP 44301, 2 Years, Female, Domestic Shorthair)",
+      "email: synthetic non-deliverable fallback",
+      "clicked See My Rates; waited for priced plan cards"
+    ]
+  }
+}

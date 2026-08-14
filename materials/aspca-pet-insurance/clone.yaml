@@ -1,0 +1,46 @@
+schema_version: offline-clone.manifest.v2
+site_id: aspca-pet-insurance
+display_name: ASPCA Pet Health Insurance
+state_model: stateful
+source:
+  origins:
+  - https://www.aspcapetinsurance.com/
+  baseline:
+    locale: en-US
+    currency: USD
+    delivery_region: US
+    timezone: Etc/UTC
+    auth_state: anonymous
+    tenant: null
+    workspace: null
+    role: public-visitor
+    capabilities:
+    - public-read-only
+    feature_flags:
+    - anonymous-source-capture
+    - quote-funnel-synthetic-submission
+    user_agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like
+      Gecko) Chrome/151.0.0.0 Safari/537.36
+    viewport:
+      width: 1440
+      height: 900
+    capture_id: 2026-08-13.aspca-pet-insurance-r1
+  capture_policy:
+    safe_methods:
+    - GET
+    - HEAD
+    runtime_remote_requests: forbidden
+scope:
+  purpose: scope/purpose.json
+  invariants: scope/invariants.json
+  routes: scope/routes.json
+  journeys: scope/journeys.json
+  checkpoints: scope/checkpoints.json
+  claims: scope/claims.jsonl
+  coverage: scope/coverage.json
+paths:
+  candidate_root: clone
+  candidate_excludes: []
+  asset_manifest: source-assets/manifest.json
+  backend_model: backend/model.json
+  artifact_root: artifacts/offline-clone

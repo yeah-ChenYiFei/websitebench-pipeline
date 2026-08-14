@@ -1,0 +1,43 @@
+{
+  "backend_profile": "full",
+  "capabilities": [
+    {
+      "applicability": "not-applicable",
+      "id": "accounts",
+      "rationale": "The source exposes public member-entry shells, but authenticated evidence and credentials are unavailable. Login and registration fail closed and create no account or session."
+    },
+    {
+      "applicability": "not-applicable",
+      "id": "password-recovery",
+      "rationale": "The captured forgot-password shell is reproduced, but submissions truthfully return member access unavailable and create no reset challenge."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "transactional-mail",
+      "rationale": "An approved local-sandbox enrollment atomically enqueues one branded policy-confirmation business-mail job. Offline runs retain it as LOCAL_SIMULATION; REAL_EMAIL_AUTHORIZED=false and no provider delivery is invoked."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "orders",
+      "rationale": "A non-payment enrollment is the local order analogue: it binds one deterministic policy number to a quote and is idempotent by quote id."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "checkout",
+      "rationale": "The frozen quote funnel includes contact checkout. The local contract records synthetic contact, billing frequency, paperless choice, and terms acceptance only."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "payments",
+      "rationale": "The candidate adds an explicitly clone-local payment continuation using only opaque local-sandbox scenario IDs. Amount, owner, currency and fingerprint are server-derived; card, bank, token, Stripe-test and live payment inputs remain forbidden."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "database",
+      "rationale": "Quotes, pets, rating selections, and non-payment enrollments require a site-bound SQLite database with migrations, reset, restart, backup, and concurrency proofs."
+    }
+  ],
+  "runtime_required": true,
+  "schema_version": "offline-clone.contribution-backend-scope.v1",
+  "site_id": "aspca-pet-insurance"
+}
