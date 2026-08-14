@@ -64,7 +64,7 @@
         "quote-payment-retry.desktop"
       ],
       "satisfied_items": [],
-      "rationale": "These items remain explicit gaps, are not acceptance eligible, and are not synthesized. Member pages require an optional read-only credential handoff; source payment entry is forbidden."
+      "rationale": "These remain explicit source-fidelity gaps and are not acceptance eligible. Local member equivalents are modeled as clone-local contracts, not source-direct states. A read-only credential handoff is still absent; source payment entry and source mutations are forbidden."
     },
     {
       "id": "clone-local-contracts",
@@ -77,9 +77,14 @@
         "quote.payment.local-sandbox.success",
         "quote.payment.local-sandbox.retry",
         "quote.save-resume.success",
+        "quote.application-review.success",
+        "quote.compare-save-recalculate.recovery",
         "auth.login.invalid",
-        "auth.register.unavailable",
-        "auth.forgot-password.unavailable",
+        "auth.register-and-login.success",
+        "auth.forgot-password.local-recovery",
+        "member.policy.manage.success",
+        "member.claim.submit-track.success",
+        "member.billing-autopay.success",
         "payment-credentials.rejected",
         "payment.server-derived-facts",
         "payment.outcomes.approved-declined-retryable",
@@ -109,18 +114,21 @@
       "rationale": "The asset manifest forbids remote runtime requests; live diagnostics and Harbor browser tasks provide current evidence."
     },
     {
-      "id": "anonymous-member-boundary",
-      "label": "Anonymous portal validation and fail-closed member-operation boundary",
+      "id": "site-isolated-member-boundary",
+      "label": "Anonymous validation plus site-isolated local member-session boundary",
       "unit": "journey",
       "category": "candidate",
       "required_evidence_kinds": ["browser", "full-suite"],
       "required_items": [
         "auth.login.invalid",
-        "auth.register.unavailable",
-        "auth.forgot-password.unavailable"
+        "auth.register-and-login.success",
+        "auth.forgot-password.local-recovery",
+        "member.policy.manage.success",
+        "member.claim.submit-track.success",
+        "member.billing-autopay.success"
       ],
       "satisfied_items": [],
-      "rationale": "The clone must validate anonymous forms, return the fixed unavailable response for valid synthetic submissions, and create no account, session, challenge, or mail state."
+      "rationale": "The clone validates anonymous forms, resists account enumeration, and confines local accounts, challenges, Secure Host-only sessions, policies, claims, documents, uploads, and billing state to this site runtime."
     },
     {
       "id": "deterministic-database-state",
@@ -133,6 +141,14 @@
         "aspca-pets",
         "aspca-selections",
         "aspca-enrollments",
+        "aspca-quote-applications",
+        "aspca-member-profiles",
+        "aspca-policy-state",
+        "aspca-policy-documents",
+        "aspca-uploads",
+        "aspca-claims",
+        "aspca-claim-uploads",
+        "aspca-policy-events",
         "websitebench-payment-flows",
         "websitebench-payment-attempts",
         "websitebench-payment-events",

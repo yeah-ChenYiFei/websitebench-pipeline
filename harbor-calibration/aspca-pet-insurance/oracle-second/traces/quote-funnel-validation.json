@@ -1,0 +1,28 @@
+{
+  "actions": [
+    "goto",
+    "wait_for",
+    "wait_for",
+    "click",
+    "wait_for",
+    "wait_for"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "summary-visible"
+    },
+    {
+      "comparator": "exact",
+      "id": "error-items"
+    },
+    {
+      "comparator": "ordered_list",
+      "id": "error-texts"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "quote-funnel-validation"
+}

@@ -1,0 +1,211 @@
+{
+  "authority": "diagnostic-only",
+  "backend": "adapter",
+  "contract": {
+    "path": "harbor/sites/aspca-pet-insurance/interactions/opencli-interaction-contract.json"
+  },
+  "degradation": [],
+  "duration_seconds": 11.632356,
+  "instance_id": null,
+  "opencli": {
+    "binary_present": true,
+    "connectivity_ok": false,
+    "contract_version": "1.8.6",
+    "doctor_green": false,
+    "extension_connected": false,
+    "notes": [
+      "opencli-unavailable: Browser Bridge extension not connected",
+      "opencli-unavailable: browser connectivity check failed"
+    ],
+    "version": "1.8.6",
+    "version_matches": true
+  },
+  "profile_id": "quote",
+  "profile_label": "aspca-pet-insurance quote (derived draft)",
+  "profile_tier": "p0",
+  "schema_version": "websitebench.harbor.opencli.replay-result.v1",
+  "site_id": "aspca-pet-insurance",
+  "status": "passed",
+  "steps": [
+    {
+      "command": "state",
+      "declared_route": "quote/",
+      "duration_seconds": 0.488619,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "aspca-pet-insurance_quote_funnel-shell",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "NotImplementedError",
+          "key": "text_absent",
+          "observed": "",
+          "passed": true
+        },
+        {
+          "asserted": true,
+          "expected": "get started!",
+          "key": "visible",
+          "observed": "get started!",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "quote-funnel-shell",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "quote/views/start",
+      "duration_seconds": 0.496885,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "aspca-pet-insurance_quote_start-view",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "NotImplementedError",
+          "key": "text_absent",
+          "observed": "",
+          "passed": true
+        },
+        {
+          "asserted": true,
+          "expected": "a walk in the park!",
+          "key": "visible",
+          "observed": "a walk in the park!",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "quote-start-view",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "quote/views/rates",
+      "duration_seconds": 0.528433,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "aspca-pet-insurance_quote_rates-view",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "NotImplementedError",
+          "key": "text_absent",
+          "observed": "",
+          "passed": true
+        },
+        {
+          "asserted": true,
+          "expected": "great plan options for Willow!",
+          "key": "visible",
+          "observed": "great plan options for Willow!",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "quote-rates-view",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "quote/views/checkout",
+      "duration_seconds": 0.475863,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "aspca-pet-insurance_quote_checkout-view",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "Card Number",
+          "key": "text_absent",
+          "observed": "",
+          "passed": true
+        },
+        {
+          "asserted": true,
+          "expected": "Pet Insurance Checkout",
+          "key": "visible",
+          "observed": "Pet Insurance Checkout",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "quote-checkout-view",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "quote/views/resume",
+      "duration_seconds": 0.469414,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "aspca-pet-insurance_quote_resume-view",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "NotImplementedError",
+          "key": "text_absent",
+          "observed": "",
+          "passed": true
+        },
+        {
+          "asserted": true,
+          "expected": "Welcome back!",
+          "key": "visible",
+          "observed": "Welcome back!",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "quote-resume-view",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "quote/views/add-a-pet",
+      "duration_seconds": 0.496893,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "aspca-pet-insurance_quote_add-a-pet-view",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "NotImplementedError",
+          "key": "text_absent",
+          "observed": "",
+          "passed": true
+        },
+        {
+          "asserted": true,
+          "expected": "Pet Details",
+          "key": "visible",
+          "observed": "Pet Details",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "quote-add-a-pet-view",
+      "tier": "p0"
+    }
+  ],
+  "summary": {
+    "assertion_failures": 0,
+    "steps_passed": 6,
+    "steps_total": 6,
+    "unasserted_observations": 0,
+    "unsupported_commands": 0
+  },
+  "target": "candidate",
+  "target_binding": {
+    "allowlist": [
+      "127.0.0.1",
+      "localhost"
+    ],
+    "base_origin": "http://127.0.0.1:8093",
+    "reset_status": null,
+    "session_fields": [],
+    "session_status": null
+  }
+}

@@ -138,6 +138,13 @@ def valid_zip(zip_code: str) -> bool:
     return len(zip_code) == 5 and zip_code.isdigit() and zip_code != "00000"
 
 
+def checkout_state(zip_code: str) -> str | None:
+    """Return the state observed at checkout for the frozen quote scenario."""
+
+    location = load_model()["zip_validation"]["checkout_location"]
+    return str(location["state"]) if zip_code == location["zip"] else None
+
+
 def zip_error_message(zip_code: str) -> str:
     """Observed message format ('00000 is not a valid zip code.')."""
 

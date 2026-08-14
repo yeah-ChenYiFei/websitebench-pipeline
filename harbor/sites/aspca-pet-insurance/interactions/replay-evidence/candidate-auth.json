@@ -1,0 +1,157 @@
+{
+  "authority": "diagnostic-only",
+  "backend": "adapter",
+  "contract": {
+    "path": "harbor/sites/aspca-pet-insurance/interactions/opencli-interaction-contract.json"
+  },
+  "degradation": [],
+  "duration_seconds": 10.541392,
+  "instance_id": null,
+  "opencli": {
+    "binary_present": true,
+    "connectivity_ok": false,
+    "contract_version": "1.8.6",
+    "doctor_green": false,
+    "extension_connected": false,
+    "notes": [
+      "opencli-unavailable: Browser Bridge extension not connected",
+      "opencli-unavailable: browser connectivity check failed"
+    ],
+    "version": "1.8.6",
+    "version_matches": true
+  },
+  "profile_id": "auth",
+  "profile_label": "aspca-pet-insurance auth (derived draft)",
+  "profile_tier": "p1",
+  "schema_version": "websitebench.harbor.opencli.replay-result.v1",
+  "site_id": "aspca-pet-insurance",
+  "status": "passed",
+  "steps": [
+    {
+      "command": "state",
+      "declared_route": "portal/",
+      "duration_seconds": 0.479217,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "aspca-pet-insurance_auth_portal-shell",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "NotImplementedError",
+          "key": "text_absent",
+          "observed": "",
+          "passed": true
+        },
+        {
+          "asserted": true,
+          "expected": "Pet Insurance Member Login",
+          "key": "visible",
+          "observed": "Pet Insurance Member Login",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "auth-portal-shell",
+      "tier": "p1"
+    },
+    {
+      "command": "state",
+      "declared_route": "portal/views/login",
+      "duration_seconds": 0.494484,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "aspca-pet-insurance_auth_login-view",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "NotImplementedError",
+          "key": "text_absent",
+          "observed": "",
+          "passed": true
+        },
+        {
+          "asserted": true,
+          "expected": "Sign In To Your Account",
+          "key": "visible",
+          "observed": "Sign In To Your Account",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "auth-login-view",
+      "tier": "p1"
+    },
+    {
+      "command": "state",
+      "declared_route": "portal/views/forgot-password",
+      "duration_seconds": 0.47081,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "aspca-pet-insurance_auth_forgot-password-view",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "NotImplementedError",
+          "key": "text_absent",
+          "observed": "",
+          "passed": true
+        },
+        {
+          "asserted": true,
+          "expected": "Verification Code",
+          "key": "visible",
+          "observed": "Verification Code",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "auth-forgot-password-view",
+      "tier": "p1"
+    },
+    {
+      "command": "state",
+      "declared_route": "portal/views/register",
+      "duration_seconds": 0.457833,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "aspca-pet-insurance_auth_register-view",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "NotImplementedError",
+          "key": "text_absent",
+          "observed": "",
+          "passed": true
+        },
+        {
+          "asserted": true,
+          "expected": "Account Information",
+          "key": "visible",
+          "observed": "Account Information",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "auth-register-view",
+      "tier": "p1"
+    }
+  ],
+  "summary": {
+    "assertion_failures": 0,
+    "steps_passed": 4,
+    "steps_total": 4,
+    "unasserted_observations": 0,
+    "unsupported_commands": 0
+  },
+  "target": "candidate",
+  "target_binding": {
+    "allowlist": [
+      "127.0.0.1",
+      "localhost"
+    ],
+    "base_origin": "http://127.0.0.1:8093",
+    "reset_status": null,
+    "session_fields": [],
+    "session_status": null
+  }
+}

@@ -10,12 +10,16 @@ import stat
 import tempfile
 from collections.abc import Callable, Iterator
 from contextlib import closing, contextmanager
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 from .errors import LifecycleError, SiteBindingError
 from .runtime import RuntimeConfig
+
+# ``datetime.UTC`` needs Python 3.11+; the vendored runtime must also start
+# under a distribution Python 3.10 judge host, so use the long-form alias.
+UTC = timezone.utc
 
 
 MigrationHook = Callable[[sqlite3.Connection], None]

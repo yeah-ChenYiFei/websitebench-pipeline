@@ -81,6 +81,7 @@
   ],
   "zip_validation": {
     "observed": {"zip": "00000", "message": "00000 is not a valid zip code."},
+    "checkout_location": {"zip": "44301", "state": "OH", "provenance": "directly-observed"},
     "rule": "five digits, not all zeros; message pattern '{zip} is not a valid zip code.'",
     "rule_provenance": "derived (message format observed for 00000 only)"
   }

@@ -1,0 +1,43 @@
+{
+  "actions": [
+    "goto",
+    "wait_for",
+    "wait_for",
+    "click",
+    "fill",
+    "select",
+    "click",
+    "fill",
+    "fill",
+    "fill",
+    "click",
+    "wait_for",
+    "wait_for"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "url"
+    },
+    {
+      "comparator": "normalized_exact",
+      "id": "rates-heading"
+    },
+    {
+      "comparator": "ordered_list",
+      "id": "tier-prices"
+    },
+    {
+      "comparator": "exact",
+      "id": "plus-preselected"
+    },
+    {
+      "comparator": "exact",
+      "id": "essential-unselected"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "quote-funnel-rates"
+}

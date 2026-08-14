@@ -1,0 +1,15 @@
+{"check_id":"platform::artifact/complete","reason":"ARTIFACT_FILES:7","source":"trusted_platform_assertion","status":"passed"}
+{"check_id":"platform::artifact/deploy-path-safe","reason":"ARTIFACT_OK","source":"trusted_platform_assertion","status":"passed"}
+{"check_id":"platform::deploy/offline-clean","reason":"OFFLINE_DEPLOY_STATIC_OK","source":"trusted_platform_assertion","status":"passed"}
+{"check_id":"platform::deploy/healthz","reason":"HEALTHZ_FAILED","source":"trusted_platform_assertion","status":"failed"}
+{"check_id":"platform::deploy/foreground-lifecycle","reason":"DEPLOY_EXITED_EARLY","source":"trusted_platform_assertion","status":"failed"}
+{"check_id":"platform::deploy/graceful-sigterm","reason":"SIGTERM_EXITED","source":"trusted_platform_assertion","status":"passed"}
+{"check_id":"platform::deploy/restart-persistence","reason":"RESTART_OR_DATA_PRESERVATION_FAILED","source":"trusted_platform_assertion","status":"failed"}
+{"check_id":"platform::deploy/concurrent-isolation","reason":"CONCURRENT_START_FAILED","source":"trusted_platform_assertion","status":"failed"}
+{"check_id":"platform::artifact/code-tree-unchanged","reason":"TREE_HASH_STABLE_AND_WRITES_DATA_ONLY","source":"trusted_platform_assertion","status":"passed"}
+{"check_id":"platform::network/external-closed","reason":"RUNTIME_NETWORK_AUDIT_CLEAN","source":"trusted_platform_assertion","status":"passed"}
+{"check_id":"platform::security/secret-reference-verifier-scan","reason":"SCAN_CLEAN","source":"trusted_platform_assertion","status":"passed"}
+{"check_id":"platform::browser/chromium-smoke","reason":"CHROMIUM_SMOKE_FAILED","source":"trusted_platform_assertion","status":"failed"}
+{"check_id":"platform::accessibility/basic","reason":"BASIC_ACCESSIBILITY_VIOLATIONS:-1","source":"trusted_platform_assertion","status":"failed"}
+{"check_id":"platform::performance/startup-budget","reason":"STARTUP_SECONDS:1.290485","source":"trusted_platform_assertion","status":"failed"}
+{"check_id":"platform::performance/resource-budget","reason":"RSS_KB:None:DATA_BYTES:0:AFFINITY_CPUS:None:CGROUP_CPUS:64.0","source":"trusted_platform_assertion","status":"failed"}

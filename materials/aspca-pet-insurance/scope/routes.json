@@ -105,20 +105,20 @@
       "purpose_edge": "supporting",
       "evidence_kind": "directly-observed",
       "local_destination": true,
-      "roles": ["visitor"],
-      "states": ["login", "login-validation", "forgot-password", "register"],
-      "note": "Modern Angular SPA (/portal/#/login). Anonymous auth-entry surfaces are capturable without credentials."
+      "roles": ["visitor", "member"],
+      "states": ["login", "login-validation", "forgot-password", "password-reset-verification", "register", "registration-verification"],
+      "note": "Modern Angular SPA (/portal/#/login). Anonymous auth-entry surfaces are directly observed; successful local auth is an explicitly clone-local, site-isolated contract."
     },
     {
       "id": "portal-member",
-      "route_pattern": "unavailable-pending-authenticated-capture:portal-member",
+      "route_pattern": "/portal/",
       "priority": "p1",
       "purpose_edge": "supporting",
-      "evidence_kind": "unavailable",
-      "local_destination": false,
+      "evidence_kind": "mixed-captured-navigation-then-local-contract",
+      "local_destination": true,
       "roles": ["member"],
-      "states": ["dashboard", "policy-documents", "claim-start", "claim-status", "billing"],
-      "note": "Member Center behind /portal/#/ after login. Pending an optional read-only credential handoff (rt-001), these remain unavailable and are not implemented; anonymous portal operations fail closed. Real-account mutation is never authorized."
+      "states": ["dashboard", "account-details", "pet-details", "policy-details", "coverage-update", "policy-documents", "claim-start", "claim-details", "claim-status", "billing", "renewal", "cancellation", "help"],
+      "note": "The source home page and captured public portal fragments establish the Member Center entry and navigation labels. Success-state data and mutations are explicitly local contracts backed by site-isolated storage and local-sandbox effects; authenticated source detail remains unavailable."
     },
     {
       "id": "support",

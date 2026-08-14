@@ -15,7 +15,10 @@ successfully deployed public demo site. Humans accept the work (see
    `prompts/offline-clone/autonomous-source-to-clone.md` plus its
    `references/*.md` (indexed in the entry prompt). The entry prompt's rules
    take precedence over every reference file.
-3. The golden sample is **tripit**: shape every new site's artifacts like
+3. At every phase-reference boundary, follow
+   `prompts/offline-clone/context-handoff.md`: persist the bounded handoff and
+   continue in a fresh standard subagent context.
+4. The golden sample is **tripit**: shape every new site's artifacts like
    `materials/tripit/` and `harbor/sites/tripit/`.
 
 ## Command cheatsheet
@@ -75,3 +78,12 @@ python -m pytest materials/<id>/clone/tests -q
 - The capture skill is `skills/trace-guided-offline-clone/` (linked into
   `.claude/skills/`); `skills-lock.json` pins its identity. Read its
   `SKILL.md` before any source-evidence session.
+
+## Compact instructions
+
+Preserve the site ID, current phase, authorization boundaries, handoff path and
+artifact paths, changed files, runtime identity, unresolved findings,
+unavailable evidence and next actions. Discard raw DOM, page text, network
+bodies, screenshots, repeated file contents, raw tool output and completed
+exploration detail. The durable handoff, not the conversation summary, is the
+source of orchestration state after compaction.

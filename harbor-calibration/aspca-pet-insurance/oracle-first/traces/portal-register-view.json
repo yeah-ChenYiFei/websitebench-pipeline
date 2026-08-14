@@ -1,0 +1,24 @@
+{
+  "actions": [
+    "goto",
+    "wait_for",
+    "wait_for",
+    "click",
+    "wait_for",
+    "wait_for"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "url"
+    },
+    {
+      "comparator": "normalized_exact",
+      "id": "register-heading"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "portal-register-view"
+}

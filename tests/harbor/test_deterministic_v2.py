@@ -1798,6 +1798,26 @@ def test_candidate_write_audit_covers_metadata_fd_and_shared_mmap(
     ]
 
 
+def test_candidate_write_audit_normalizes_seccomp_broker_proc_paths(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "candidate"
+    data = tmp_path / "data"
+    audit = tmp_path / "audit" / "candidate"
+    root.mkdir()
+    data.mkdir()
+    audit.parent.mkdir()
+    inside = data / "site.sqlite3"
+    (audit.parent / "candidate.123").write_text(
+        f'openat(AT_FDCWD, "/proc/4242/fd/9", O_RDWR|O_CLOEXEC) = 4<{inside}>\n'
+        'openat(AT_FDCWD, "/proc/4242/mem", O_WRONLY|O_CLOEXEC) = 5</proc/4242/mem>\n'
+        'openat(AT_FDCWD, "/proc/4242/fd/10", O_RDWR|O_CLOEXEC) = 6</tmp/escape>\n',
+        encoding="utf-8",
+    )
+    process = CandidateProcess(root, 3000, data, "audit", audit_prefix=audit)
+    assert process.write_violations() == ["/tmp/escape"]
+
+
 def test_candidate_network_audit_rejects_non_loopback_destinations(
     tmp_path: Path,
 ) -> None:

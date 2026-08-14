@@ -1,0 +1,23 @@
+{
+  "actions": [
+    "goto"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "url"
+    },
+    {
+      "comparator": "normalized_exact",
+      "id": "hero-heading"
+    },
+    {
+      "comparator": "exact",
+      "id": "hero-visible"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "home-hero"
+}

@@ -1,0 +1,38 @@
+{
+  "actions": [
+    "api",
+    "api",
+    "api",
+    "api"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "card-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "card-error"
+    },
+    {
+      "comparator": "exact",
+      "id": "cvv-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "cvv-error"
+    },
+    {
+      "comparator": "exact",
+      "id": "bank-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "bank-error"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "payment-boundary"
+}

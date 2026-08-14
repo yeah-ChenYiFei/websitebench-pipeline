@@ -23,6 +23,9 @@ def test_create_quote_success(client) -> None:
     body = response.json()
     assert body["eligible"] is True
     assert body["quote_id"].startswith("WB")
+    assert body["email"] == EMAIL
+    assert body["zip"] == ZIP
+    assert body["state"] == "OH"
     assert body["pet"]["name"] == "Willow"
     assert body["pet"]["selection"]["monthly"] == "16.74"
     tier_prices = [t["monthly"] for t in body["rates"]["tiers"]]
@@ -157,6 +160,15 @@ def test_enroll_happy_path(client) -> None:
     assert body["mail"]["purpose"] == "policy-confirmation"
     assert body["mail"]["status"] == "LOCAL_SIMULATION"
     assert body["mail"]["is_simulation"] is True
+    assert body["summary"] == {
+        "pet_name": "Willow",
+        "annual_limit": 5000,
+        "deductible": 500,
+        "reimbursement": 80,
+        "frequency": "Annually",
+        "amount": "200.88",
+        "currency": "USD",
+    }
     quote = client.get(f"/api/quotes/{quote_id}").json()
     assert quote["status"] == "enrolled"
     assert quote["enrollment"]["frequency"] == "Annually"

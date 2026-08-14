@@ -1,0 +1,53 @@
+{
+  "actions": [
+    "goto",
+    "wait_for",
+    "wait_for",
+    "click",
+    "fill",
+    "select",
+    "click",
+    "fill",
+    "fill",
+    "fill",
+    "click",
+    "wait_for",
+    "wait_for",
+    "click",
+    "click",
+    "click",
+    "click",
+    "wait_for",
+    "click"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "faq-body-visible"
+    },
+    {
+      "comparator": "exact",
+      "id": "deductible-selected"
+    },
+    {
+      "comparator": "exact",
+      "id": "reimbursement-selected"
+    },
+    {
+      "comparator": "exact",
+      "id": "limit-selected"
+    },
+    {
+      "comparator": "normalized_exact",
+      "id": "monthly-dollars"
+    },
+    {
+      "comparator": "normalized_exact",
+      "id": "monthly-cents"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "quote-rates-interactions"
+}

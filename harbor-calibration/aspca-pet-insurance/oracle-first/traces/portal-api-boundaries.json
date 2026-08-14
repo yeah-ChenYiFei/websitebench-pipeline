@@ -1,0 +1,59 @@
+{
+  "actions": [
+    "api",
+    "api",
+    "api",
+    "api",
+    "api"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "empty-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "empty-email-error"
+    },
+    {
+      "comparator": "exact",
+      "id": "login-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "login-authenticated"
+    },
+    {
+      "comparator": "exact",
+      "id": "login-message"
+    },
+    {
+      "comparator": "exact",
+      "id": "forgot-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "forgot-sent"
+    },
+    {
+      "comparator": "exact",
+      "id": "register-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "register-registered"
+    },
+    {
+      "comparator": "exact",
+      "id": "unknown-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "unknown-error"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "portal-api-boundaries"
+}

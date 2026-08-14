@@ -1,0 +1,50 @@
+{
+  "actions": [
+    "api",
+    "api",
+    "api",
+    "api"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "missing-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "missing-name-error"
+    },
+    {
+      "comparator": "exact",
+      "id": "missing-email-error"
+    },
+    {
+      "comparator": "exact",
+      "id": "tld-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "tld-error"
+    },
+    {
+      "comparator": "exact",
+      "id": "tld-ok-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "badzip-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "badzip-eligible"
+    },
+    {
+      "comparator": "exact",
+      "id": "badzip-error"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "quote-api-validation"
+}

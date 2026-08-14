@@ -30,6 +30,7 @@ import os
 import re
 import sys
 import urllib.parse
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 from fastapi import FastAPI, Request
@@ -45,6 +46,12 @@ from backend import rating  # noqa: E402
 from backend.quotes_db import PaymentFieldRejected  # noqa: E402
 from backend.rating import RatingError  # noqa: E402
 from websitebench.site_backend import MailError, PaymentError  # noqa: E402
+from websitebench.local_clone_auth import (  # noqa: E402
+    AuthConflict,
+    AuthError,
+    AuthRejected,
+    AuthValidationError,
+)
 
 SITE_ID = "aspca-pet-insurance"
 PAGES_DIR = ROOT / "frontend" / "pages"
@@ -334,6 +341,9 @@ async def create_quote(request: Request) -> JSONResponse:
         {
             "quote_id": quote["quote_id"],
             "eligible": True,
+            "email": quote["email"],
+            "zip": quote["zip"],
+            "state": quote["state"],
             "pet": quote["pets"][0],
             "rates": _rates_block(quote),
         },
@@ -352,7 +362,7 @@ async def search_quotes(request: Request) -> JSONResponse:
     quote = db.find_quote(email, zip_code)
     if quote is None:
         return JSONResponse({"error": "not-found"}, status_code=404)
-    return JSONResponse(quote)
+    return JSONResponse({**quote, "rates": _rates_block(quote)})
 
 
 @app.get("/api/quotes/{quote_id}", include_in_schema=False)
@@ -360,7 +370,7 @@ async def get_quote(quote_id: str) -> JSONResponse:
     quote = db.get_quote(quote_id)
     if quote is None:
         return JSONResponse({"error": "not-found"}, status_code=404)
-    return JSONResponse(quote)
+    return JSONResponse({**quote, "rates": _rates_block(quote)})
 
 
 @app.post("/api/quotes/{quote_id}/rate", include_in_schema=False)
@@ -462,62 +472,634 @@ async def enroll(quote_id: str, request: Request) -> JSONResponse:
     if not result["enrolled"]:
         status_code = 402 if result["payment"]["status"] == "DECLINED" else 409
         return JSONResponse(result, status_code=status_code)
+    enrolled_quote = db.get_quote(quote_id)
+    assert enrolled_quote is not None
+    pet = enrolled_quote["pets"][0]
+    selection = pet["selection"]
     return JSONResponse(
         {
             "policy_number": result["policy_number"],
             "payment": result["payment"],
             "mail": result["mail"],
+            "summary": {
+                "pet_name": pet["name"],
+                "annual_limit": selection["annual_limit"],
+                "deductible": selection["deductible"],
+                "reimbursement": selection["reimbursement"],
+                "frequency": frequency,
+                "amount": (
+                    f"{Decimal(result['payment']['amount_minor']) / Decimal(100):.2f}"
+                ),
+                "currency": result["payment"]["currency"],
+            },
         },
         status_code=200 if result.get("already") else 201,
     )
 
 
-# ---------------------------------------------------------------------------
-# portal API — anonymous-only clone; member area is not reproduced
-# ---------------------------------------------------------------------------
+@app.get("/api/quotes/{quote_id}/eligibility", include_in_schema=False)
+async def quote_eligibility(quote_id: str) -> JSONResponse:
+    quote = db.get_quote(quote_id)
+    if quote is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse(
+        {
+            "eligible": True,
+            "zip": quote["zip"],
+            "state": quote["state"],
+            "enrollment_fee": "0.00",
+            "currency": "USD",
+        }
+    )
 
-_PORTAL_UNAVAILABLE = (
-    "Member account access is not available in this offline clone."
-)
+
+@app.get("/api/quotes/{quote_id}/application", include_in_schema=False)
+async def get_quote_application(quote_id: str) -> JSONResponse:
+    application = db.get_application(quote_id)
+    if application is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse(application)
 
 
-@app.post("/portal/api/login", include_in_schema=False)
-async def portal_login(request: Request) -> JSONResponse:
+@app.put("/api/quotes/{quote_id}/application", include_in_schema=False)
+async def save_quote_application(
+    quote_id: str, request: Request
+) -> JSONResponse:
     body = await _json_body(request)
+    contact = body.get("contact")
+    questions = body.get("questions")
+    consent = body.get("consent")
     errors: dict[str, str] = {}
-    if not _string(body.get("email")) and not _string(body.get("username")):
-        errors["email"] = "This field is required."
-    if not _string(body.get("password")):
-        errors["password"] = "This field is required."
+    if not isinstance(contact, dict):
+        errors["contact"] = "Contact details are required."
+        contact = {}
+    if not isinstance(questions, dict):
+        errors["questions"] = "Application questions are required."
+        questions = {}
+    if not isinstance(consent, dict):
+        errors["consent"] = "Consent choices are required."
+        consent = {}
+    for field in ("first_name", "last_name"):
+        if not _string(contact.get(field)):
+            errors[field] = "This field is required."
+    for field in ("currently_ill", "seen_vet_last_12_months"):
+        if not isinstance(questions.get(field), bool):
+            errors[field] = "Choose Yes or No."
+    if questions.get("currently_ill") and not _string(
+        questions.get("condition_details")
+    ):
+        errors["condition_details"] = (
+            "Describe the condition when Currently ill is Yes."
+        )
+    if questions.get("seen_vet_last_12_months") and not _string(
+        questions.get("vet_name")
+    ):
+        errors["vet_name"] = "Enter the veterinary provider name."
+    for field in ("privacy", "electronic_signature"):
+        if not isinstance(consent.get(field), bool):
+            errors[field] = "Choose a consent option."
+    try:
+        db.reject_payment_keys(contact)
+    except PaymentFieldRejected as exc:
+        errors["payment"] = str(exc)
     if errors:
         return JSONResponse({"errors": errors}, status_code=422)
-    return JSONResponse(
-        {"authenticated": False, "message": _PORTAL_UNAVAILABLE}, status_code=403
+    saved = db.save_application(
+        quote_id,
+        contact={str(k)[:64]: v for k, v in contact.items()},
+        questions={str(k)[:64]: v for k, v in questions.items()},
+        consent={str(k)[:64]: v for k, v in consent.items()},
+    )
+    if saved is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse(saved)
+
+
+# ---------------------------------------------------------------------------
+# portal API — site-isolated local accounts and member workflows
+# ---------------------------------------------------------------------------
+
+
+def _session_token(request: Request) -> str | None:
+    backend, _auth = db.services()
+    return request.cookies.get(backend.config.cookie_name)
+
+
+def _set_session_cookie(response: Response, token: str) -> None:
+    backend, _auth = db.services()
+    options = dict(backend.session_cookie)
+    name = options.pop("name")
+    options["samesite"] = str(options["samesite"]).lower()
+    response.set_cookie(name, token, **options)
+
+
+def _clear_session_cookie(response: Response) -> None:
+    backend, _auth = db.services()
+    response.delete_cookie(
+        backend.config.cookie_name,
+        path="/",
+        secure=True,
+        httponly=True,
+        samesite=str(backend.config.session["same_site"]).lower(),
     )
 
 
-@app.post("/portal/api/forgot-password", include_in_schema=False)
-async def portal_forgot_password(request: Request) -> JSONResponse:
-    body = await _json_body(request)
-    email = _string(body.get("email"))
-    if not email:
-        return JSONResponse(
-            {"errors": {"email": "This field is required."}}, status_code=422
+def _member_account(request: Request) -> dict | None:
+    _backend, auth = db.services()
+    session = auth.resolve_session(_session_token(request))
+    if session is None or not session["authenticated"]:
+        return None
+    return session["account"]
+
+
+def _member_required(request: Request) -> tuple[dict | None, JSONResponse | None]:
+    account = _member_account(request)
+    if account is None:
+        return None, JSONResponse(
+            {"error": "authentication-required"}, status_code=401
         )
-    return JSONResponse(
-        {"sent": False, "message": _PORTAL_UNAVAILABLE}, status_code=403
-    )
+    return account, None
+
+
+@app.get("/portal/api/session", include_in_schema=False)
+async def portal_session(request: Request) -> JSONResponse:
+    _backend, auth = db.services()
+    token, session = auth.ensure_session(_session_token(request))
+    response = JSONResponse(session)
+    _set_session_cookie(response, token)
+    return response
 
 
 @app.post("/portal/api/register", include_in_schema=False)
 async def portal_register(request: Request) -> JSONResponse:
     body = await _json_body(request)
     errors: dict[str, str] = {}
-    for field in ("email", "password"):
-        if not _string(body.get(field)):
-            errors[field] = "This field is required."
+    email = _string(body.get("email"))
+    password = _string(body.get("password"))
+    display_name = _string(body.get("display_name"))
+    if not email:
+        errors["email"] = "This field is required."
+    if not password:
+        errors["password"] = "This field is required."
+    if not display_name:
+        errors["display_name"] = "This field is required."
+    if body.get("accept_terms") is not True:
+        errors["accept_terms"] = "Accept the terms to create an account."
     if errors:
         return JSONResponse({"errors": errors}, status_code=422)
-    return JSONResponse(
-        {"registered": False, "message": _PORTAL_UNAVAILABLE}, status_code=403
+    _backend, auth = db.services()
+    token, _session = auth.ensure_session(_session_token(request))
+    try:
+        started = auth.start_registration(
+            token,
+            email=email,
+            display_name=display_name,
+            password=password,
+        )
+    except AuthConflict as exc:
+        return JSONResponse({"errors": {"email": str(exc)}}, status_code=409)
+    except (AuthValidationError, AuthError) as exc:
+        return JSONResponse(
+            {"errors": {"registration": str(exc)}}, status_code=422
+        )
+    response = JSONResponse(
+        {
+            "registered": False,
+            "verification_required": True,
+            "mail_status": started["mail_status"],
+            "expires_at": started["expires_at"],
+            "message": (
+                "A verification code is available in the local simulation inbox."
+            ),
+        },
+        status_code=202,
     )
+    _set_session_cookie(response, token)
+    return response
+
+
+@app.get(
+    "/portal/api/local-inbox/{purpose}", include_in_schema=False
+)
+async def portal_local_inbox(purpose: str, request: Request) -> JSONResponse:
+    if purpose not in {"registration", "password-reset"}:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    token = _session_token(request)
+    if token is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    _backend, auth = db.services()
+    mail = auth.local_mail_for_session(token, purpose=purpose)
+    if mail is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse(
+        {
+            "purpose": mail["purpose"],
+            "status": mail["status"],
+            "verification_code": mail["verification_code"],
+            "is_simulation": True,
+        }
+    )
+
+
+@app.post("/portal/api/register/verify", include_in_schema=False)
+async def portal_register_verify(request: Request) -> JSONResponse:
+    code = _string((await _json_body(request)).get("code"))
+    if not code:
+        return JSONResponse(
+            {"errors": {"code": "This field is required."}}, status_code=422
+        )
+    token = _session_token(request)
+    if token is None:
+        return JSONResponse({"error": "verification-unavailable"}, status_code=409)
+    _backend, auth = db.services()
+    try:
+        auth.verify_registration_code(token, code)
+        completed = auth.complete_registration(
+            token, subject_factory=db.create_member_subject
+        )
+    except (AuthRejected, AuthError) as exc:
+        return JSONResponse({"errors": {"code": str(exc)}}, status_code=422)
+    account = completed["account"]
+    db.ensure_member_profile(account)
+    response = JSONResponse(
+        {"registered": True, "authenticated": True, "account": account},
+        status_code=201,
+    )
+    _set_session_cookie(response, completed["session_token"])
+    return response
+
+
+@app.post("/portal/api/login", include_in_schema=False)
+async def portal_login(request: Request) -> JSONResponse:
+    body = await _json_body(request)
+    email = _string(body.get("email")) or _string(body.get("username"))
+    password = _string(body.get("password"))
+    errors: dict[str, str] = {}
+    if not email:
+        errors["email"] = "This field is required."
+    if not password:
+        errors["password"] = "This field is required."
+    if errors:
+        return JSONResponse({"errors": errors}, status_code=422)
+    _backend, auth = db.services()
+    token, _session = auth.ensure_session(_session_token(request))
+    try:
+        signed_in = auth.sign_in(token, email=email, password=password)
+    except AuthError:
+        response = JSONResponse(
+            {
+                "authenticated": False,
+                "message": "The email or password is incorrect.",
+            },
+            status_code=403,
+        )
+        _set_session_cookie(response, token)
+        return response
+    db.ensure_member_profile(signed_in["account"])
+    response = JSONResponse(
+        {"authenticated": True, "account": signed_in["account"]}
+    )
+    _set_session_cookie(response, signed_in["session_token"])
+    return response
+
+
+@app.post("/portal/api/logout", include_in_schema=False)
+async def portal_logout(request: Request) -> JSONResponse:
+    _backend, auth = db.services()
+    auth.sign_out(_session_token(request))
+    response = JSONResponse({"authenticated": False, "signed_out": True})
+    _clear_session_cookie(response)
+    return response
+
+
+@app.post("/portal/api/forgot-password", include_in_schema=False)
+async def portal_forgot_password(request: Request) -> JSONResponse:
+    email = _string((await _json_body(request)).get("email"))
+    if not email:
+        return JSONResponse(
+            {"errors": {"email": "This field is required."}}, status_code=422
+        )
+    _backend, auth = db.services()
+    token, _session = auth.ensure_session(_session_token(request))
+    try:
+        result = auth.start_password_reset(token, email=email)
+    except AuthError as exc:
+        return JSONResponse({"errors": {"reset": str(exc)}}, status_code=422)
+    response = JSONResponse(
+        {
+            "accepted": True,
+            "message": result["message"],
+            "mail_status": auth.session_mail_status(
+                token, purpose="password-reset"
+            ),
+        },
+        status_code=202,
+    )
+    _set_session_cookie(response, token)
+    return response
+
+
+@app.post("/portal/api/password-reset/verify", include_in_schema=False)
+async def portal_password_reset_verify(request: Request) -> JSONResponse:
+    body = await _json_body(request)
+    code = _string(body.get("code"))
+    password = _string(body.get("new_password"))
+    if not code or not password:
+        return JSONResponse(
+            {"errors": {"reset": "Code and new password are required."}},
+            status_code=422,
+        )
+    token = _session_token(request)
+    if token is None:
+        return JSONResponse({"error": "verification-unavailable"}, status_code=409)
+    _backend, auth = db.services()
+    try:
+        auth.verify_password_reset_code(token, code)
+        completed = auth.complete_password_reset(token, new_password=password)
+    except AuthError as exc:
+        return JSONResponse({"errors": {"reset": str(exc)}}, status_code=422)
+    response = JSONResponse({"authenticated": True, "reset": True})
+    _set_session_cookie(response, completed["session_token"])
+    return response
+
+
+@app.get("/portal/api/dashboard", include_in_schema=False)
+async def portal_dashboard(request: Request) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    return JSONResponse(db.member_dashboard(account))
+
+
+@app.get("/portal/api/profile", include_in_schema=False)
+async def portal_profile(request: Request) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    return JSONResponse(db.ensure_member_profile(account))
+
+
+@app.get("/portal/api/policies/{policy_number}", include_in_schema=False)
+async def portal_policy(policy_number: str, request: Request) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    policy = db.policy_detail(account["email_normalized"], policy_number)
+    if policy is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse(policy)
+
+
+@app.patch(
+    "/portal/api/policies/{policy_number}/coverage", include_in_schema=False
+)
+async def portal_policy_coverage(
+    policy_number: str, request: Request
+) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    body = await _json_body(request)
+    try:
+        policy = db.update_policy_coverage(
+            account["email_normalized"],
+            policy_number,
+            annual_limit=int(body.get("annual_limit", -1)),
+            deductible=int(body.get("deductible", -1)),
+            reimbursement=int(body.get("reimbursement", -1)),
+            preventive=(
+                None if body.get("preventive") in (None, "", "none")
+                else str(body["preventive"])
+            ),
+        )
+    except (ValueError, RatingError) as exc:
+        return JSONResponse({"errors": {"coverage": str(exc)}}, status_code=422)
+    if policy is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse(policy)
+
+
+@app.patch(
+    "/portal/api/policies/{policy_number}/billing", include_in_schema=False
+)
+async def portal_policy_billing(
+    policy_number: str, request: Request
+) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    body = await _json_body(request)
+    if not isinstance(body.get("autopay"), bool):
+        return JSONResponse(
+            {"errors": {"autopay": "Choose an autopay option."}}, status_code=422
+        )
+    try:
+        billing = db.update_policy_billing(
+            account["email_normalized"],
+            policy_number,
+            autopay=body["autopay"],
+            frequency=_string(body.get("frequency")),
+        )
+    except ValueError as exc:
+        return JSONResponse({"errors": {"billing": str(exc)}}, status_code=422)
+    if billing is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse(billing)
+
+
+@app.get(
+    "/portal/api/policies/{policy_number}/documents", include_in_schema=False
+)
+async def portal_policy_documents(
+    policy_number: str, request: Request
+) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    documents = db.policy_documents(account["email_normalized"], policy_number)
+    if documents is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse({"documents": documents})
+
+
+@app.get(
+    "/portal/api/documents/{document_id}/download", include_in_schema=False
+)
+async def portal_document_download(
+    document_id: str, request: Request
+) -> Response:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    document = db.owned_document(account, document_id)
+    if document is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    title = str(document["title"]).replace("(", "[").replace(")", "]")
+    pdf = (
+        "%PDF-1.4\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj\n"
+        "2 0 obj<</Type/Pages/Count 0/Kids[]>>endobj\n"
+        f"% {title} — {document['policy_number']}\n%%EOF\n"
+    ).encode("utf-8")
+    return Response(
+        pdf,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f'attachment; filename="{document_id}.pdf"'
+        },
+    )
+
+
+@app.post("/portal/api/uploads", include_in_schema=False)
+async def portal_upload(request: Request) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    body = await _json_body(request)
+    filename = Path(_string(body.get("filename"))).name
+    content_type = _string(body.get("content_type"))
+    try:
+        size = int(body.get("size", 0))
+    except (TypeError, ValueError):
+        size = 0
+    allowed = {
+        ".pdf": "application/pdf",
+        ".png": "image/png",
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+    }
+    expected_type = allowed.get(Path(filename).suffix.lower())
+    errors: dict[str, str] = {}
+    if not filename or expected_type is None or content_type != expected_type:
+        errors["file"] = "Upload a PDF, PNG, or JPEG file."
+    if size <= 0 or size > 10 * 1024 * 1024:
+        errors["size"] = "File size must be between 1 byte and 10 MB."
+    if errors:
+        return JSONResponse({"errors": errors, "progress": 0}, status_code=422)
+    upload = db.create_upload(
+        account["account_id"],
+        filename=filename,
+        content_type=content_type,
+        size_bytes=size,
+    )
+    return JSONResponse(upload, status_code=201)
+
+
+@app.get("/portal/api/claims", include_in_schema=False)
+async def portal_claims(request: Request) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    return JSONResponse(db.member_claims(account["account_id"]))
+
+
+@app.post("/portal/api/claims", include_in_schema=False)
+async def portal_create_claim(request: Request) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    body = await _json_body(request)
+    errors: dict[str, str] = {}
+    for field in ("policy_number", "incident_date", "reason", "provider", "amount"):
+        if not _string(body.get(field)):
+            errors[field] = "This field is required."
+    upload_id = _string(body.get("upload_id")) or None
+    if body.get("has_invoice") is True and upload_id is None:
+        errors["upload_id"] = "Upload the invoice when Has invoice is Yes."
+    try:
+        amount = Decimal(_string(body.get("amount")))
+        amount_minor = int(amount * 100)
+        if amount <= 0 or amount * 100 != amount_minor:
+            raise InvalidOperation
+    except (InvalidOperation, ValueError):
+        errors["amount"] = "Enter a positive amount with at most two decimals."
+        amount_minor = 0
+    if errors:
+        return JSONResponse({"errors": errors}, status_code=422)
+    try:
+        claim = db.create_claim(
+            account,
+            policy_number=_string(body.get("policy_number")),
+            incident_date=_string(body.get("incident_date")),
+            reason=_string(body.get("reason")),
+            provider=_string(body.get("provider")),
+            amount_minor=amount_minor,
+            upload_id=upload_id,
+        )
+    except ValueError as exc:
+        return JSONResponse({"errors": {"claim": str(exc)}}, status_code=422)
+    if claim is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse(claim, status_code=201)
+
+
+@app.get("/portal/api/claims/{claim_number}", include_in_schema=False)
+async def portal_claim_detail(
+    claim_number: str, request: Request
+) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    claim = db.claim_detail(account["account_id"], claim_number)
+    if claim is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse(claim)
+
+
+@app.post(
+    "/portal/api/policies/{policy_number}/renew", include_in_schema=False
+)
+async def portal_policy_renew(
+    policy_number: str, request: Request
+) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    try:
+        result = db.renew_policy(account["email_normalized"], policy_number)
+    except ValueError as exc:
+        return JSONResponse({"errors": {"renewal": str(exc)}}, status_code=422)
+    if result is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse(result)
+
+
+@app.post(
+    "/portal/api/policies/{policy_number}/cancel", include_in_schema=False
+)
+async def portal_policy_cancel(
+    policy_number: str, request: Request
+) -> JSONResponse:
+    account, error = _member_required(request)
+    if error is not None:
+        return error
+    assert account is not None
+    body = await _json_body(request)
+    if body.get("confirm") is not True:
+        return JSONResponse(
+            {"errors": {"confirm": "Confirm cancellation to continue."}},
+            status_code=422,
+        )
+    reason = _string(body.get("reason"))
+    if not reason:
+        return JSONResponse(
+            {"errors": {"reason": "Choose a cancellation reason."}},
+            status_code=422,
+        )
+    result = db.cancel_policy(
+        account["email_normalized"], policy_number, reason=reason
+    )
+    if result is None:
+        return JSONResponse({"error": "not-found"}, status_code=404)
+    return JSONResponse(result)

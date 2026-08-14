@@ -28,6 +28,7 @@ this file to catch it.
 from __future__ import annotations
 
 import importlib.util
+import json
 import re
 import tomllib
 from pathlib import Path
@@ -38,6 +39,8 @@ REPO = Path(__file__).resolve().parents[1]
 PROMPT_DIR = REPO / "prompts" / "offline-clone"
 ENTRY = PROMPT_DIR / "autonomous-source-to-clone.md"
 REFERENCES = PROMPT_DIR / "references"
+CONTEXT_HANDOFF = PROMPT_DIR / "context-handoff.md"
+CLAUDE_SETTINGS = REPO / ".claude" / "settings.json"
 
 # Paths inside fenced examples are templates, not repository paths.
 PLACEHOLDER = re.compile(r"[<>*]")
@@ -54,15 +57,19 @@ HAN_TEXT = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff]")
 
 
 def prompt_files() -> list[Path]:
-    """The entry prompt, its phase references, and the human-facing runbook.
+    """The executable prompts, phase references, and human-facing runbook.
 
     The runbook is included because it hands a person commands to type. A stale
     command there wastes someone's time just as surely as a stale one in the
-    prompt wastes an agent's.
+    prompt wastes an agent's. The context handoff executes at every phase
+    boundary, so it receives the same freshness checks.
     """
     assert ENTRY.is_file(), f"entry prompt is missing: {ENTRY}"
+    assert CONTEXT_HANDOFF.is_file(), (
+        f"context handoff prompt is missing: {CONTEXT_HANDOFF}"
+    )
     assert RUNBOOK.is_file(), f"runbook is missing: {RUNBOOK}"
-    return [ENTRY, RUNBOOK, *sorted(REFERENCES.glob("*.md"))]
+    return [ENTRY, CONTEXT_HANDOFF, RUNBOOK, *sorted(REFERENCES.glob("*.md"))]
 
 
 def prompt_text() -> str:
@@ -178,3 +185,15 @@ def test_entry_prompt_stays_small_enough_to_stay_resident() -> None:
         f"entry prompt is {size} bytes; move phase detail into references/ "
         "rather than growing the always-resident file"
     )
+
+
+def test_long_runs_have_a_fresh_context_rollover_contract() -> None:
+    entry = ENTRY.read_text(encoding="utf-8")
+    handoff = CONTEXT_HANDOFF.read_text(encoding="utf-8")
+    settings = json.loads(CLAUDE_SETTINGS.read_text(encoding="utf-8"))
+
+    assert "materials/<site-id>/scope/agent-handoff.md" in entry
+    assert "new standard subagent with fresh context" in entry
+    assert "Use a standard subagent, not a fork" in handoff
+    assert "must never claim" in handoff and "`/clear`" in handoff
+    assert settings["env"]["CLAUDE_AUTOCOMPACT_PCT_OVERRIDE"] == "70"

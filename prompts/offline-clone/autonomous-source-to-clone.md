@@ -13,6 +13,15 @@ live in `references/`; read each phase only when it is needed.** This keeps each
 phase's material in context only while that phase is active instead of carrying
 all twelve phases throughout the run.
 
+Long runs also follow `prompts/offline-clone/context-handoff.md`. At every
+phase-reference boundary, before waiting for a human, and before any phase
+worker returns, replace
+`materials/<site-id>/scope/agent-handoff.md` with the current bounded handoff.
+Continue the next reference in a new standard subagent with fresh context,
+passing only the handoff and prompt paths. Standard subagent rollover is the
+automatic context-clear mechanism; the interactive `/clear` command is client-
+owned and an Agent must not claim to have executed it.
+
 ## Phase index: read on demand
 
 Before entering a phase, read its corresponding reference and then follow its
@@ -314,6 +323,12 @@ files. The supporting practices are your responsibility:
   without loss.
 - Keep only orchestration state in the main-line context. Delegate concrete
   implementation details to subagents.
+- Never return raw DOM, page bodies, screenshots, network bodies, raw tool
+  output, or repeated file contents to the coordinator. Store allowed output in
+  declared artifact paths and return bounded conclusions and paths.
+- Treat each transition between files in the phase index as a mandatory context
+  rollover. One phase closer writes the handoff; the coordinator then launches
+  the next reference in a fresh standard subagent rather than a fork.
 
 ### Run independent diagnostics from their real inputs
 

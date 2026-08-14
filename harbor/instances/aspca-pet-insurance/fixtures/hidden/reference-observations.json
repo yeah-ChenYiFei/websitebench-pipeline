@@ -1,0 +1,315 @@
+{
+  "authenticated_reference": false,
+  "instance_id": "aspca-pet-insurance",
+  "render_environment": {
+    "chromium_version": "149.0.7827.55",
+    "engine": "chromium",
+    "font_profile": "websitebench-linux-fonts-v1",
+    "playwright_version": "1.61.0",
+    "schema_version": "websitebench.harbor.render-environment.v1"
+  },
+  "reset_strategy": "fresh-local-data-directory",
+  "schema_version": "websitebench.harbor.reference-observations.v1",
+  "site_id": "aspca-pet-insurance",
+  "tasks": {
+    "frozen-pages-serve": {
+      "observations": {
+        "about": 200,
+        "cat": 200,
+        "compare": 200,
+        "contact": 200,
+        "dog": 200,
+        "home": 200,
+        "plan": 200,
+        "portal-shell": 200,
+        "quote-shell": 200,
+        "unknown-quote": 404,
+        "unmatched-path": 404,
+        "why-us": 200
+      }
+    },
+    "healthz": {
+      "observations": {
+        "ok": true,
+        "site-id": "aspca-pet-insurance",
+        "status": 200
+      }
+    },
+    "home-hero": {
+      "observations": {
+        "hero-heading": "pet insurance for all walks of life",
+        "hero-visible": true,
+        "url": "/"
+      }
+    },
+    "payment-boundary": {
+      "observations": {
+        "bank-error": "payment-like field 'bankAccount' is outside this clone's scope",
+        "bank-status": 422,
+        "card-error": "payment-like field 'cardNumber' is outside this clone's scope",
+        "card-status": 422,
+        "cvv-error": "payment-like field 'cvv' is outside this clone's scope",
+        "cvv-status": 422
+      }
+    },
+    "portal-api-boundaries": {
+      "observations": {
+        "empty-email-error": "This field is required.",
+        "empty-status": 422,
+        "forgot-sent": false,
+        "forgot-status": 403,
+        "login-authenticated": false,
+        "login-message": "Member account access is not available in this offline clone.",
+        "login-status": 403,
+        "register-registered": false,
+        "register-status": 403,
+        "unknown-error": "not-found",
+        "unknown-status": 404
+      }
+    },
+    "portal-login-view": {
+      "observations": {
+        "login-button-enabled": true,
+        "login-form-visible": true,
+        "login-heading": "Sign In To Your Account",
+        "register-button-visible": true
+      }
+    },
+    "portal-register-view": {
+      "observations": {
+        "register-heading": "Register Your Account",
+        "url": "/portal/#/register"
+      }
+    },
+    "quote-api-add-pet-resume": {
+      "observations": {
+        "add-status": 201,
+        "first-pet": "Willow",
+        "resume-missing-status": 404,
+        "resume-quote-id": "WB100001",
+        "resume-status": 200,
+        "second-pet": "Biscuit",
+        "second-pet-monthly": "16.74"
+      }
+    },
+    "quote-api-create": {
+      "observations": {
+        "eligible": true,
+        "pet-name": "Willow",
+        "quote-id": "WB100001",
+        "selected-monthly": "16.74",
+        "status": 201,
+        "tier-elite": "23.19",
+        "tier-essential": "8.48",
+        "tier-plus": "16.74"
+      }
+    },
+    "quote-api-enroll": {
+      "observations": {
+        "enroll-status": 201,
+        "frequency": "Annually",
+        "idempotent-policy": "APH-000001",
+        "idempotent-status": 200,
+        "paperless": true,
+        "policy-number": "APH-000001",
+        "quote-status": "enrolled"
+      }
+    },
+    "quote-api-enroll-validation": {
+      "observations": {
+        "agree-error": "You must agree to the terms to continue.",
+        "bad-status": 422,
+        "frequency-error": "Choose Monthly or Annually."
+      }
+    },
+    "quote-api-rate-walk": {
+      "observations": {
+        "create-status": 201,
+        "custom-monthly": "30.83",
+        "custom-provenance": "directly-observed",
+        "custom-status": 200,
+        "off-table-status": 422,
+        "persisted-deductible": 500,
+        "persisted-monthly": "16.74",
+        "preventive-monthly": "9.95",
+        "preventive-status": 200,
+        "preventive-total": "26.69"
+      }
+    },
+    "quote-api-validation": {
+      "observations": {
+        "badzip-eligible": false,
+        "badzip-error": "00000 is not a valid zip code.",
+        "badzip-status": 422,
+        "missing-email-error": "This field is required.",
+        "missing-name-error": "This field is required.",
+        "missing-status": 422,
+        "tld-error": "Please enter a valid email address.",
+        "tld-ok-status": 201,
+        "tld-status": 422
+      }
+    },
+    "quote-funnel-rates": {
+      "observations": {
+        "essential-unselected": false,
+        "plus-preselected": true,
+        "rates-heading": "We have some great plan options for Willow!",
+        "tier-prices": [
+          "Price:\n$8.48/mo",
+          "Price:\n$16.74/mo",
+          "Price:\n$23.19/mo",
+          "\n                                    Estimated price:\n                                    \n                                    $16.74/mo\n                                    $17.40/mo\n                                "
+        ],
+        "url": "/quote/#/plans"
+      }
+    },
+    "quote-funnel-validation": {
+      "observations": {
+        "error-items": 6,
+        "error-texts": [
+          "Pet's Name: Enter your pet's name.",
+          "Zip Code: Enter a valid zip code.",
+          "Age: Enter your pet's age.",
+          "Pet Gender: Select your pet's gender.",
+          "Breed: Enter your pet's breed.",
+          "Email Address: Enter your email address."
+        ],
+        "summary-visible": true
+      }
+    },
+    "quote-rates-interactions": {
+      "observations": {
+        "deductible-selected": true,
+        "faq-body-visible": true,
+        "limit-selected": true,
+        "monthly-cents": ".83",
+        "monthly-dollars": "$30",
+        "reimbursement-selected": true
+      }
+    },
+    "restart-persistence": {
+      "observations": {
+        "create-status": 201,
+        "pet-name-persisted": "Willow",
+        "status-persisted": "open",
+        "survives-restart": 200
+      }
+    }
+  },
+  "visual_checkpoints": [
+    {
+      "checkpoint_id": "home-desktop",
+      "height": 900,
+      "reference_image": "visual/home-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "home-tablet",
+      "height": 768,
+      "reference_image": "visual/home-tablet.png",
+      "width": 1024
+    },
+    {
+      "checkpoint_id": "home-mobile",
+      "height": 844,
+      "reference_image": "visual/home-mobile.png",
+      "width": 390
+    },
+    {
+      "checkpoint_id": "plan-desktop",
+      "height": 900,
+      "reference_image": "visual/plan-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "cat-insurance-desktop",
+      "height": 900,
+      "reference_image": "visual/cat-insurance-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "dog-insurance-desktop",
+      "height": 900,
+      "reference_image": "visual/dog-insurance-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "why-us-desktop",
+      "height": 900,
+      "reference_image": "visual/why-us-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "compare-desktop",
+      "height": 900,
+      "reference_image": "visual/compare-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "about-us-desktop",
+      "height": 900,
+      "reference_image": "visual/about-us-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "contact-us-desktop",
+      "height": 900,
+      "reference_image": "visual/contact-us-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "quote-start-desktop",
+      "height": 900,
+      "reference_image": "visual/quote-start-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "quote-start-mobile",
+      "height": 844,
+      "reference_image": "visual/quote-start-mobile.png",
+      "width": 390
+    },
+    {
+      "checkpoint_id": "quote-start-validation-desktop",
+      "height": 900,
+      "reference_image": "visual/quote-start-validation-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "quote-rates-desktop",
+      "height": 900,
+      "reference_image": "visual/quote-rates-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "portal-login-desktop",
+      "height": 900,
+      "reference_image": "visual/portal-login-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "portal-login-mobile",
+      "height": 844,
+      "reference_image": "visual/portal-login-mobile.png",
+      "width": 390
+    },
+    {
+      "checkpoint_id": "portal-register-desktop",
+      "height": 900,
+      "reference_image": "visual/portal-register-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "portal-forgot-desktop",
+      "height": 900,
+      "reference_image": "visual/portal-forgot-desktop.png",
+      "width": 1440
+    },
+    {
+      "checkpoint_id": "not-found-desktop",
+      "height": 900,
+      "reference_image": "visual/not-found-desktop.png",
+      "width": 1440
+    }
+  ]
+}

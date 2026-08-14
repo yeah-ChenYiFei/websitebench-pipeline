@@ -1,0 +1,29 @@
+{
+  "actions": [
+    "goto",
+    "wait_for",
+    "wait_for"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "normalized_exact",
+      "id": "login-heading"
+    },
+    {
+      "comparator": "exact",
+      "id": "login-form-visible"
+    },
+    {
+      "comparator": "exact",
+      "id": "login-button-enabled"
+    },
+    {
+      "comparator": "exact",
+      "id": "register-button-visible"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "portal-login-view"
+}

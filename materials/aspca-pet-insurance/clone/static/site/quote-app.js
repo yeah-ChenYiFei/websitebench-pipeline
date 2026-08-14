@@ -105,14 +105,27 @@
     return fetch("/quote/views/" + name).then(function (res) {
       if (!res.ok) { throw new Error("view " + name + ": " + res.status); }
       return res.text();
-    }).then(function (text) { viewCache[name] = text; return text; });
+    }).then(function (text) {
+      /* The frozen fragments contain a source tag that labels a Typekit JS
+       * loader as CSS. The loader is unnecessary offline and strict browsers
+       * reject it, so omit that inert tag at render time. */
+      text = text.replace(
+        /<link\b[^>]*href=["'][^"']*\/ezj2kxi\.js["'][^>]*>/gi, "");
+      viewCache[name] = text;
+      return text;
+    });
   }
 
-  function render(name) {
+  function render(name, onRendered) {
     return fetchView(name).then(function (html) {
       root.removeAttribute("data-view-ready");
       root.innerHTML = html;
+      root.setAttribute("data-view", name);
+      root.removeAttribute("data-view-loading");
       window.scrollTo(0, 0);
+      /* Bind behavior as soon as controls are visible. Images and fonts may
+       * continue settling before the view is marked visually ready. */
+      if (onRendered) { onRendered(); }
       return waitForViewResources();
     });
   }
@@ -295,7 +308,10 @@
       return;
     }
     api("POST", "/api/quotes", values).then(function (res) {
-      if (res.status === 422 && res.data && res.data.errors) {
+      if (res.status === 422 && res.data && res.data.eligible === false) {
+        showIneligible(values,
+          res.data.errors && res.data.errors.zip ? res.data.errors.zip : null);
+      } else if (res.status === 422 && res.data && res.data.errors) {
         showStartValidation(values, {}, res.data.errors);
       } else if (res.status === 201 || res.status === 200) {
         if (res.data.eligible === false) {
@@ -327,19 +343,35 @@
   /* ------------------------------------------------------------------ */
   /* #/plans — captured rates view; prices always injected from the API. */
 
-  function normalizeRates(rates) {
+  var TIER_KEYS = ["essential", "plus", "elite"];
+
+  function normalizeTierData(rates) {
     var out = {};
     if (!rates) { return out; }
-    if (Array.isArray(rates)) {
-      rates.forEach(function (r) {
-        var key = r.tier || r.id || r.name;
-        if (key) { out[String(key).toLowerCase()] = r.monthly; }
+    var list = Array.isArray(rates) ? rates : rates.tiers;
+    if (Array.isArray(list)) {
+      /* The API returns tiers in the same low/middle/high order as the
+       * captured Value/Popular/High Coverage cards. */
+      list.forEach(function (tier, index) {
+        var key = tier.tier || tier.name || TIER_KEYS[index];
+        if (key) { out[String(key).toLowerCase()] = tier; }
       });
       return out;
     }
     Object.keys(rates).forEach(function (key) {
       var v = rates[key];
-      out[key.toLowerCase()] = (v && typeof v === "object") ? v.monthly : v;
+      if (v && typeof v === "object" && v.monthly !== undefined) {
+        out[key.toLowerCase()] = v;
+      }
+    });
+    return out;
+  }
+
+  function normalizeRates(rates) {
+    var out = {};
+    var tiers = normalizeTierData(rates);
+    Object.keys(tiers).forEach(function (key) {
+      out[key] = tiers[key].monthly;
     });
     return out;
   }
@@ -461,8 +493,23 @@
       preventive: sel.preventive || null
     }).then(function (res) {
       if (requestId !== rateRequestSequence) { return; }
-      if (res.status >= 200 && res.status < 300) { done(res.data); }
-      else { apiFailure(new Error("rate " + res.status)); }
+      if (res.status >= 200 && res.status < 300) {
+        var oldError = document.getElementById("rate-recalculation-error");
+        if (oldError && oldError.parentNode) { oldError.parentNode.removeChild(oldError); }
+        done(res.data);
+      } else {
+        var note = document.getElementById("rate-recalculation-error");
+        if (!note) {
+          note = document.createElement("p");
+          note.id = "rate-recalculation-error";
+          note.className = "formErrors";
+          note.setAttribute("role", "alert");
+          var controls = document.getElementById("plan-comparison-controls");
+          (controls || root).insertBefore(note, (controls || root).firstChild);
+        }
+        note.textContent = "Rate recalculation could not use that option. " +
+          "Your previous selection is preserved; choose another option to retry.";
+      }
     }).catch(function (error) {
       if (requestId === rateRequestSequence) { apiFailure(error); }
     }).then(function () {
@@ -480,6 +527,8 @@
       preventive: preventive };
     postRate(sel, function (data) {
       sel.monthly = data.monthly;
+      sel.preventive_monthly = data.preventive_monthly;
+      sel.total_monthly = data.total_monthly;
       setSelection(sel);
       setPriceText(document.getElementById("dtc-price-complete"),
         data.monthly);
@@ -547,22 +596,105 @@
     if (sel.type === "custom") { refreshCustomRate(key); }
   }
 
-  function wireTiers(rates) {
-    var options = root.querySelectorAll('li[data-tier][role="radio"]');
+  function setContinueDisabled(disabled) {
+    var button = root.querySelector('[aria-label="Continue to next step"]');
+    if (button) { button.disabled = disabled; }
+  }
+
+  function wireContinue() {
+    var button = root.querySelector('[aria-label="Continue to next step"]');
+    if (!button) { return; }
+    button.type = "button";
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+      if (root.getAttribute("data-rate-pending") === "true") { return; }
+      window.location.hash = "#/checkout";
+    });
+  }
+
+  function updateTierSelectionUi(options, selectedTier) {
+    var group = root.querySelector('.eb-tier-selector__list[role="radiogroup"]');
     Array.prototype.forEach.call(options, function (option) {
-      option.addEventListener("click", function () {
-        Array.prototype.forEach.call(options, function (other) {
-          other.setAttribute("aria-checked", "false");
-          other.classList.remove("eb-tier-selector__option--selected");
-        });
-        option.setAttribute("aria-checked", "true");
-        option.classList.add("eb-tier-selector__option--selected");
-        var tier = option.getAttribute("data-tier");
-        var monthly = rates[tier];
-        var sel = getSelection() || {};
-        setSelection({ type: "tier", tier: tier, monthly: monthly,
-          preventive: sel.preventive || null });
-        if (monthly !== undefined) { updatePricebar(monthly); }
+      var mine = option.getAttribute("data-tier") === selectedTier;
+      option.setAttribute("aria-checked", mine ? "true" : "false");
+      option.setAttribute("tabindex", mine ? "0" : "-1");
+      option.classList.toggle("eb-tier-selector__option--selected", mine);
+      if (mine && group) {
+        group.setAttribute("aria-activedescendant", option.id);
+      }
+      var button = option.querySelector(".eb-tier-selector__option-button");
+      if (!button) { return; }
+      var heading = option.querySelector(".eb-tier-selector__option-name");
+      var name = heading ? heading.textContent.trim() : selectedTier;
+      button.setAttribute("aria-label",
+        mine ? name + " tier selected" : "Select " + name + " tier");
+      var status = button.querySelector("span[aria-hidden='true']");
+      if (status) { status.textContent = mine ? "Plan Selected" : "Select Plan"; }
+      var check = button.querySelector(".eb-tier-selector__option-button-check");
+      if (check) { check.classList.toggle("ng-hide", !mine); }
+    });
+  }
+
+  function wireTiers(tiers) {
+    var options = root.querySelectorAll('li[data-tier][role="radio"]');
+    function select(option, event) {
+      if (event) { event.preventDefault(); }
+      var tier = option.getAttribute("data-tier");
+      var plan = tiers[tier];
+      if (!plan) { return; }
+      updateTierSelectionUi(options, tier);
+      var previous = getSelection() || {};
+      var request = {
+        type: "tier",
+        tier: tier,
+        limit: plan.annual_limit,
+        deductible: plan.deductible,
+        reimbursement: plan.reimbursement,
+        preventive: previous.preventive || null
+      };
+      var committed = false;
+      setContinueDisabled(true);
+      postRate(request, function (data) {
+        committed = true;
+        request.monthly = data.monthly;
+        request.preventive_monthly = data.preventive_monthly;
+        request.total_monthly = data.total_monthly;
+        setSelection(request);
+        updatePricebar(data.total_monthly || data.monthly);
+      }).then(function () {
+        if (!committed) {
+          var preserved = getSelection() || previous;
+          if (preserved.type === "tier" && preserved.tier) {
+            updateTierSelectionUi(options, preserved.tier);
+          }
+        }
+        setContinueDisabled(false);
+      });
+    }
+    Array.prototype.forEach.call(options, function (option) {
+      var button = option.querySelector(".eb-tier-selector__option-button");
+      if (button) { button.type = "button"; }
+      option.addEventListener("click", function (event) {
+        select(option, event);
+      });
+      option.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          select(option, event);
+          return;
+        }
+        var previous = event.key === "ArrowLeft" || event.key === "ArrowUp";
+        var next = event.key === "ArrowRight" || event.key === "ArrowDown";
+        if (!previous && !next && event.key !== "Home" && event.key !== "End") {
+          return;
+        }
+        event.preventDefault();
+        var currentIndex = Array.prototype.indexOf.call(options, option);
+        var targetIndex = event.key === "Home" ? 0
+          : event.key === "End" ? options.length - 1
+          : (currentIndex + (previous ? -1 : 1) + options.length) % options.length;
+        var target = options[targetIndex];
+        target.focus();
+        select(target, event);
       });
     });
   }
@@ -580,22 +712,105 @@
       });
   }
 
+  function buildPlanComparison(tiers) {
+    var list = root.querySelector('.eb-tier-selector__list[role="radiogroup"]');
+    if (!list || document.getElementById("plan-comparison-controls")) { return; }
+    var controls = document.createElement("section");
+    controls.id = "plan-comparison-controls";
+    controls.setAttribute("aria-label", "Sort and compare plans");
+    controls.style.cssText = "margin:16px auto;padding:16px;max-width:980px;border:1px solid #ccc;background:#fff";
+    controls.innerHTML = '<label for="plan-sort"><strong>Sort plans</strong></label> ' +
+      '<select id="plan-sort"><option value="source">Recommended order</option>' +
+      '<option value="price-low">Monthly price: low to high</option>' +
+      '<option value="price-high">Monthly price: high to low</option></select> ' +
+      '<button id="save-quote" type="button">Save Quote</button> ' +
+      '<span id="save-quote-status" role="status"></span>' +
+      '<fieldset id="plan-compare"><legend>Compare plans</legend></fieldset>' +
+      '<div id="plan-compare-summary" role="status">Select two or more plans to compare.</div>';
+    list.parentNode.insertBefore(controls, list);
+    var fieldset = controls.querySelector("#plan-compare");
+    var savedCompare;
+    try { savedCompare = JSON.parse(sessionStorage.getItem("aspca.plan_compare")) || []; }
+    catch (error) { savedCompare = []; }
+    Array.prototype.forEach.call(list.querySelectorAll("li[data-tier]"), function (item) {
+      var tier = item.getAttribute("data-tier");
+      var heading = item.querySelector(".eb-tier-selector__option-name");
+      var name = heading ? heading.textContent.trim() : tier;
+      var label = document.createElement("label");
+      label.style.marginRight = "18px";
+      label.innerHTML = '<input type="checkbox" name="compareTier" value="' + tier + '"' +
+        (savedCompare.indexOf(tier) !== -1 ? " checked" : "") + '> ' + name;
+      fieldset.appendChild(label);
+    });
+    function updateCompare() {
+      var selected = Array.prototype.map.call(
+        controls.querySelectorAll('input[name="compareTier"]:checked'),
+        function (input) { return input.value; });
+      sessionStorage.setItem("aspca.plan_compare", JSON.stringify(selected));
+      var summary = controls.querySelector("#plan-compare-summary");
+      if (selected.length < 2) {
+        summary.textContent = "Select two or more plans to compare.";
+      } else {
+        summary.innerHTML = selected.map(function (tier) {
+          var plan = tiers[tier];
+          return '<strong>' + tier + '</strong>: $' + Number(plan.monthly).toFixed(2) +
+            '/month, $' + Number(plan.annual_limit).toLocaleString("en-US") +
+            ' limit, $' + plan.deductible + ' deductible, ' +
+            plan.reimbursement + '% reimbursement';
+        }).join("<br>");
+      }
+    }
+    fieldset.addEventListener("change", updateCompare);
+    updateCompare();
+    var sort = controls.querySelector("#plan-sort");
+    sort.value = sessionStorage.getItem("aspca.plan_sort") || "source";
+    function applySort() {
+      var items = Array.prototype.slice.call(list.querySelectorAll("li[data-tier]"));
+      if (sort.value !== "source") {
+        items.sort(function (left, right) {
+          var delta = Number(tiers[left.getAttribute("data-tier")].monthly) -
+            Number(tiers[right.getAttribute("data-tier")].monthly);
+          return sort.value === "price-low" ? delta : -delta;
+        });
+      } else {
+        items.sort(function (left, right) {
+          return TIER_KEYS.indexOf(left.getAttribute("data-tier")) -
+            TIER_KEYS.indexOf(right.getAttribute("data-tier"));
+        });
+      }
+      items.forEach(function (item) { list.appendChild(item); });
+      sessionStorage.setItem("aspca.plan_sort", sort.value);
+      list.setAttribute("data-sort", sort.value);
+    }
+    sort.addEventListener("change", applySort);
+    applySort();
+    controls.querySelector("#save-quote").addEventListener("click", function () {
+      var quote = getQuote() || {};
+      sessionStorage.setItem("aspca.quote_saved", "true");
+      controls.querySelector("#save-quote-status").textContent =
+        "Quote " + (quote.quote_id || "") +
+        " saved. Resume it with your email and ZIP.";
+    });
+    if (sessionStorage.getItem("aspca.quote_saved") === "true") {
+      var quote = getQuote() || {};
+      controls.querySelector("#save-quote-status").textContent =
+        "Saved quote " + (quote.quote_id || "") + ".";
+    }
+  }
+
   function initPlans() {
     var quote = getQuote() || {};
     if (quote.pet && quote.pet.name) { swapPetName(quote.pet.name); }
+    var tiers = normalizeTierData(quote.rates);
     var rates = normalizeRates(quote.rates);
     setTierPrices(rates);
+    buildPlanComparison(tiers);
     var sel = getSelection();
     if (sel && sel.monthly !== undefined) {
       updatePricebar(sel.monthly);
       if (sel.type === "tier" && sel.tier) {
         var options = root.querySelectorAll("li[data-tier]");
-        Array.prototype.forEach.call(options, function (option) {
-          var mine = option.getAttribute("data-tier") === sel.tier;
-          option.setAttribute("aria-checked", mine ? "true" : "false");
-          option.classList.toggle(
-            "eb-tier-selector__option--selected", mine);
-        });
+        updateTierSelectionUi(options, sel.tier);
       }
       if (sel.preventive) {
         ["basic", "prime"].forEach(function (k) {
@@ -616,13 +831,19 @@
       if (selected) {
         var tier = selected.getAttribute("data-tier");
         if (rates[tier] !== undefined) {
+          var plan = tiers[tier];
           setSelection({ type: "tier", tier: tier, monthly: rates[tier],
-            preventive: null });
+            limit: plan.annual_limit, deductible: plan.deductible,
+            reimbursement: plan.reimbursement, preventive: null,
+            preventive_monthly: "0.00", total_monthly: rates[tier] });
+          updateTierSelectionUi(root.querySelectorAll("li[data-tier]"), tier);
           updatePricebar(rates[tier]);
         }
       }
     }
-    wireTiers(rates);
+    root.setAttribute("data-rate-pending", "false");
+    wireTiers(tiers);
+    wireContinue();
     wireCollapse();
     wireCustomRadios();
     wirePreventive();
@@ -633,6 +854,101 @@
 
   var CHECKOUT_REQUIRED = ["firstName", "lastName", "address1", "city",
     "stateSelect", "zipcode", "phone", "email"];
+
+  function setCheckoutCell(labelId, value) {
+    var cell = root.querySelector('td[aria-labelledby="' + labelId + '"]');
+    var target = cell && (cell.querySelector(".ng-binding") || cell);
+    if (target) { target.textContent = value; }
+  }
+
+  function setPriceWithSuffix(id, value) {
+    var target = document.getElementById(id);
+    if (!target) { return; }
+    var first = target.firstChild;
+    if (first && first.nodeType === 3) { first.nodeValue = money(value); }
+  }
+
+  function updateCheckoutSummary(selection) {
+    var limit = selection.limit || selection.annual_limit;
+    var baseMonthly = Number(selection.monthly || 0);
+    var preventiveMonthly = Number(selection.preventive_monthly || 0);
+    var totalMonthly = Number(selection.total_monthly ||
+      (baseMonthly + preventiveMonthly));
+    if (limit) {
+      setCheckoutCell("annualLimit-label-0",
+        "$" + Number(limit).toLocaleString("en-US"));
+    }
+    if (selection.deductible) {
+      setCheckoutCell("deductible-label-0", money(selection.deductible)
+        .replace(".00", ""));
+    }
+    if (selection.reimbursement) {
+      setCheckoutCell("reimbursement-label-0",
+        String(selection.reimbursement) + "%");
+    }
+    setCheckoutCell("premiumCost-label-0", money(baseMonthly));
+    setCheckoutCell("totalCost-label-0", money(totalMonthly));
+    setPriceWithSuffix("monthly-price", totalMonthly);
+    setPriceWithSuffix("annually-price", totalMonthly * 12);
+    var today = root.querySelector("#payment-summary-table tfoot td .ng-binding");
+    if (today) { today.textContent = money(totalMonthly); }
+    var fee = root.querySelector("#payment-summary-table .payment__fee-label");
+    if (fee && fee.closest("tr")) { fee.closest("tr").hidden = true; }
+    var pricebar = root.querySelector(".pricebar_btn");
+    if (pricebar) { pricebar.textContent = money(totalMonthly); }
+    var schedule = document.getElementById("payment-schedule-text");
+    if (schedule) {
+      schedule.textContent = "Today you will be charged " +
+        money(totalMonthly) + ". Your account will be charged " +
+        money(totalMonthly) +
+        " on the 14th of each month or the following business day.";
+    }
+
+    var hasPreventive = !!selection.preventive;
+    var preventiveLabel = document.getElementById("preventivePlan-label-0");
+    if (preventiveLabel) {
+      preventiveLabel.textContent = hasPreventive
+        ? (selection.preventive === "prime"
+          ? "Prime Preventive Care" : "Basic Preventive Care")
+        : "No Preventive Care";
+    }
+    setCheckoutCell("preventivePlan-label-0",
+      hasPreventive ? "Added" : "Not added");
+    var effective = document.getElementById("preventiveEffective-label-0");
+    if (effective && effective.closest("tr")) {
+      effective.closest("tr").style.display = hasPreventive ? "" : "none";
+    }
+    var preventiveCost = document.getElementById("preventiveCost-label-0");
+    if (preventiveCost && preventiveCost.closest("tr")) {
+      preventiveCost.closest("tr").style.display = hasPreventive ? "" : "none";
+      setCheckoutCell("preventiveCost-label-0", money(preventiveMonthly));
+    }
+    var preventiveEdit = root.querySelector(
+      'button[aria-label^="Edit preventive care for"]');
+    if (preventiveEdit) {
+      preventiveEdit.style.display = hasPreventive ? "" : "none";
+    }
+    updatePricebar(totalMonthly);
+  }
+
+  function hydrateCheckout(form) {
+    var quote = getQuote() || {};
+    var pet = quote.pet || (quote.pets && quote.pets[0]);
+    if (pet && pet.name) { swapPetName(pet.name); }
+    if (form.elements.stateSelect && quote.state) {
+      form.elements.stateSelect.value = quote.state;
+    }
+    if (form.elements.zipcode && quote.zip) {
+      form.elements.zipcode.value = quote.zip;
+    }
+    if (form.elements.email && quote.email) {
+      form.elements.email.value = quote.email;
+    }
+    var selection = getSelection() || (pet && pet.selection);
+    if (selection && selection.monthly !== undefined) {
+      updateCheckoutSummary(selection);
+    }
+  }
 
   /* Captured banner markup (quote-start-validation capture). */
   function buildBanner() {
@@ -708,6 +1024,179 @@
     } else {
       form.appendChild(fieldset);
     }
+  }
+
+  function buildApplicationWorkflow(form) {
+    if (form.querySelector("#applicationWorkflow")) { return; }
+    var section = document.createElement("section");
+    section.id = "applicationWorkflow";
+    section.style.cssText = "border:1px solid #ccc;padding:18px;margin:20px 0;background:#fff";
+    section.innerHTML =
+      '<h2>Application review</h2>' +
+      '<div id="eligibility-summary" role="status">Checking location eligibility…</div>' +
+      '<fieldset id="risk-questions"><legend>Pet health / risk questions</legend>' +
+      '<p>This offline-modeled step exercises required and conditional application validation.</p>' +
+      '<p><strong>Is your pet currently ill? *</strong> ' +
+      '<label><input type="radio" name="currentlyIll" value="false"> No</label> ' +
+      '<label><input type="radio" name="currentlyIll" value="true"> Yes</label></p>' +
+      '<label id="condition-details-wrap" hidden>Condition details *' +
+      '<textarea name="conditionDetails" rows="2"></textarea></label>' +
+      '<p><strong>Has your pet seen a vet in the last 12 months? *</strong> ' +
+      '<label><input type="radio" name="seenVet" value="false"> No</label> ' +
+      '<label><input type="radio" name="seenVet" value="true"> Yes</label></p>' +
+      '<label id="vet-name-wrap" hidden>Veterinary provider *' +
+      '<input name="vetName" type="text"></label></fieldset>' +
+      '<fieldset><legend>Consent / E-sign</legend>' +
+      '<label><input type="checkbox" name="privacyConsent"> I acknowledge the privacy notice.</label><br>' +
+      '<label><input type="checkbox" name="electronicSignature"> I agree to use an electronic signature.</label>' +
+      '</fieldset><p id="application-errors" class="formErrors" role="alert"></p>' +
+      '<button id="review-application" type="button" class="button button_secondary">Review application</button>' +
+      '<div id="application-review-summary" hidden tabindex="-1"><h3>Review your application</h3>' +
+      '<pre id="application-review-copy" style="white-space:pre-wrap"></pre>' +
+      '<button id="edit-application" type="button" class="button button_secondary">Edit prior details</button>' +
+      '<p id="application-saved" role="status"></p></div>';
+    var submit = form.querySelector('[type="submit"]');
+    if (submit && submit.parentNode) {
+      submit.parentNode.insertBefore(section, submit);
+    } else { form.appendChild(section); }
+
+    function conditionalState() {
+      var ill = radioValue(form, "currentlyIll");
+      var seen = radioValue(form, "seenVet");
+      document.getElementById("condition-details-wrap").hidden = ill !== "true";
+      document.getElementById("vet-name-wrap").hidden = seen !== "true";
+    }
+    Array.prototype.forEach.call(
+      section.querySelectorAll('input[type="radio"]'),
+      function (radio) { radio.addEventListener("change", conditionalState); });
+
+    api("GET", "/api/quotes/" + getQuoteId() + "/eligibility")
+      .then(function (res) {
+        var summary = document.getElementById("eligibility-summary");
+        if (res.status === 200) {
+          summary.textContent = "Eligible in " + res.data.state + " (ZIP " +
+            res.data.zip + "). Enrollment fee: $" + res.data.enrollment_fee +
+            " " + res.data.currency + ". Location selection is saved.";
+        } else { summary.textContent = "Eligibility could not be loaded."; }
+      });
+
+    api("GET", "/api/quotes/" + getQuoteId() + "/application")
+      .then(function (res) {
+        if (res.status !== 200 || !res.data.review_ready) { return; }
+        var contact = res.data.contact || {};
+        [
+          ["firstName", "first_name"],
+          ["lastName", "last_name"],
+          ["address1", "address"],
+          ["city", "city"],
+          ["stateSelect", "state"],
+          ["zipcode", "zip"],
+          ["phone", "phone"]
+        ].forEach(function (mapping) {
+          if (form.elements[mapping[0]] && contact[mapping[1]] !== undefined) {
+            form.elements[mapping[0]].value = contact[mapping[1]] || "";
+          }
+        });
+        var questions = res.data.questions || {};
+        var consent = res.data.consent || {};
+        var ill = form.querySelector('input[name="currentlyIll"][value="' +
+          String(questions.currently_ill) + '"]');
+        var seen = form.querySelector('input[name="seenVet"][value="' +
+          String(questions.seen_vet_last_12_months) + '"]');
+        if (ill) { ill.checked = true; }
+        if (seen) { seen.checked = true; }
+        if (form.elements.conditionDetails) {
+          form.elements.conditionDetails.value = questions.condition_details || "";
+        }
+        if (form.elements.vetName) {
+          form.elements.vetName.value = questions.vet_name || "";
+        }
+        form.elements.privacyConsent.checked = consent.privacy === true;
+        form.elements.electronicSignature.checked =
+          consent.electronic_signature === true;
+        conditionalState();
+        showApplicationReview(res.data);
+      });
+
+    function showApplicationReview(application) {
+      var selection = getSelection() || {};
+      var copy = [
+        "Applicant: " + application.contact.first_name + " " + application.contact.last_name,
+        "Address: " + (application.contact.address || "") + ", " +
+          (application.contact.city || "") + ", " + (application.contact.state || "") +
+          " " + (application.contact.zip || ""),
+        "Currently ill: " + (application.questions.currently_ill ? "Yes" : "No"),
+        "Vet in last 12 months: " +
+          (application.questions.seen_vet_last_12_months ? "Yes" : "No"),
+        "Coverage: $" + Number(selection.limit || 0).toLocaleString("en-US") +
+          " limit / $" + (selection.deductible || "") + " deductible / " +
+          (selection.reimbursement || "") + "% reimbursement",
+        "Privacy consent: " + (application.consent.privacy ? "Accepted" : "Not accepted"),
+        "Electronic signature: " +
+          (application.consent.electronic_signature ? "Accepted" : "Not accepted")
+      ];
+      document.getElementById("application-review-copy").textContent = copy.join("\n");
+      var review = document.getElementById("application-review-summary");
+      review.hidden = false;
+      document.getElementById("risk-questions").hidden = true;
+      document.getElementById("application-saved").textContent =
+        "Application review saved. Changes persist after navigation or reload.";
+      review.focus();
+    }
+
+    document.getElementById("edit-application").addEventListener("click", function () {
+      document.getElementById("risk-questions").hidden = false;
+      document.getElementById("application-review-summary").hidden = true;
+      if (form.elements.city) { form.elements.city.focus(); }
+    });
+
+    document.getElementById("review-application").addEventListener("click", function () {
+      var errors = [];
+      var ill = radioValue(form, "currentlyIll");
+      var seen = radioValue(form, "seenVet");
+      if (!form.elements.firstName.value.trim()) { errors.push("First name is required."); }
+      if (!form.elements.lastName.value.trim()) { errors.push("Last name is required."); }
+      if (!ill) { errors.push("Choose whether your pet is currently ill."); }
+      if (ill === "true" && !form.elements.conditionDetails.value.trim()) {
+        errors.push("Condition details are required when Currently ill is Yes.");
+      }
+      if (!seen) { errors.push("Choose whether your pet saw a vet in the last 12 months."); }
+      if (seen === "true" && !form.elements.vetName.value.trim()) {
+        errors.push("Veterinary provider is required when the vet answer is Yes.");
+      }
+      if (!form.elements.privacyConsent.checked) { errors.push("Privacy consent is required."); }
+      if (!form.elements.electronicSignature.checked) {
+        errors.push("Electronic signature consent is required.");
+      }
+      document.getElementById("application-errors").textContent = errors.join(" ");
+      if (errors.length) { return; }
+      api("PUT", "/api/quotes/" + getQuoteId() + "/application", {
+        contact: {
+          first_name: form.elements.firstName.value.trim(),
+          last_name: form.elements.lastName.value.trim(),
+          address: form.elements.address1.value.trim(),
+          city: form.elements.city.value.trim(),
+          state: form.elements.stateSelect.value,
+          zip: form.elements.zipcode.value.trim(),
+          phone: form.elements.phone.value.trim()
+        },
+        questions: {
+          currently_ill: ill === "true",
+          condition_details: form.elements.conditionDetails.value.trim(),
+          seen_vet_last_12_months: seen === "true",
+          vet_name: form.elements.vetName.value.trim()
+        },
+        consent: {
+          privacy: form.elements.privacyConsent.checked,
+          electronic_signature: form.elements.electronicSignature.checked
+        }
+      }).then(function (res) {
+        if (res.status === 200) { showApplicationReview(res.data); }
+        else { document.getElementById("application-errors").textContent =
+          (res.data.errors && Object.values(res.data.errors).join(" ")) ||
+          "Application review could not be saved."; }
+      });
+    });
   }
 
   function submitCheckout(event) {
@@ -789,6 +1278,18 @@
             policy.textContent = "Policy number: " + res.data.policy_number;
             form.appendChild(policy);
           }
+          if (res.data && res.data.summary) {
+            var summary = res.data.summary;
+            var confirmation = document.createElement("p");
+            confirmation.id = "confirmation-summary";
+            confirmation.className = "ng-binding";
+            confirmation.textContent = "Insured pet: " + summary.pet_name +
+              ". Coverage: $" + Number(summary.annual_limit).toLocaleString("en-US") +
+              " annual limit, $" + summary.deductible + " deductible, " +
+              summary.reimbursement + "% reimbursement. " + summary.frequency +
+              " simulated total: $" + summary.amount + " " + summary.currency + ".";
+            form.appendChild(confirmation);
+          }
           var payment = document.createElement("p");
           payment.className = "ng-binding";
           payment.textContent =
@@ -823,6 +1324,8 @@
   function initCheckout() {
     var form = funnelForm();
     if (form) {
+      hydrateCheckout(form);
+      buildApplicationWorkflow(form);
       buildLocalPaymentSimulation(form);
       form.addEventListener("submit", submitCheckout);
     }
@@ -951,10 +1454,9 @@
       return;
     }
     document.title = entry.title;
-    render(entry.view).then(function () {
-      var init = INITS[entry.view];
-      if (init) { init(); }
-    }).catch(function (err) {
+    root.removeAttribute("data-view-ready");
+    root.setAttribute("data-view-loading", entry.view);
+    render(entry.view, INITS[entry.view]).catch(function (err) {
       if (window.console) { console.error(err); }
     });
   }

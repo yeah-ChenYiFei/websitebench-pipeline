@@ -129,6 +129,34 @@
       ]
     },
     {
+      "id": "quote.application-review.success",
+      "actor": "quote-lead",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "At checkout inspect the persisted ZIP, state eligibility, and zero enrollment fee.",
+        "Complete the required pet-health questions and observe conditional validation for condition and veterinary-provider details.",
+        "Accept privacy and electronic-signature consent, review applicant, address, risk, and coverage summaries, then edit a prior contact field.",
+        "Return to review and reload the page to observe the updated application and consent state."
+      ]
+    },
+    {
+      "id": "quote.compare-save-recalculate.recovery",
+      "actor": "quote-lead",
+      "kind": "failure-recovery",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "local-contract",
+      "steps": [
+        "Sort plan cards by monthly premium and select two plans for a side-by-side comparison.",
+        "Save the active quote and observe its quote identifier and resume instructions.",
+        "Simulate a rejected rate option and observe that the previous selection remains active.",
+        "Retry with a supported deductible, limit, and reimbursement combination and observe persisted pricing after navigation."
+      ]
+    },
+    {
       "id": "auth.login.invalid",
       "actor": "visitor",
       "kind": "failure",
@@ -137,34 +165,76 @@
       "evidence_kind": "mixed-direct-then-local-contract",
       "steps": [
         "Open /portal/#/login and submit an empty form to observe the captured validation state.",
-        "Submit synthetic credentials.",
-        "Observe the truthful member-access-unavailable response; no session cookie is created."
+        "Submit unknown synthetic credentials.",
+        "Observe a generic invalid-credentials response with no account-existence disclosure and no session cookie."
       ]
     },
     {
-      "id": "auth.register.unavailable",
-      "actor": "visitor",
-      "kind": "failure",
-      "priority": "p1",
+      "id": "auth.register-and-login.success",
+      "actor": "member",
+      "kind": "success",
+      "priority": "p0",
       "status": "frozen",
       "evidence_kind": "mixed-direct-then-local-contract",
       "steps": [
         "Follow the captured register affordance from the portal login shell.",
-        "Submit an empty form to observe local validation.",
-        "Submit a synthetic identity and observe the truthful member-access-unavailable response; no account or mail job is created."
+        "Register a synthetic local identity against the representative local policy number and ZIP.",
+        "Use the local-simulation verification code and reach the member dashboard with a Secure Host-only session.",
+        "Log out, sign in again, and observe the same policy and status."
       ]
     },
     {
-      "id": "auth.forgot-password.unavailable",
+      "id": "auth.forgot-password.local-recovery",
       "actor": "visitor",
-      "kind": "failure",
+      "kind": "failure-recovery",
       "priority": "p1",
       "status": "frozen",
       "evidence_kind": "mixed-direct-then-local-contract",
       "steps": [
         "Follow Forgot your password? from the captured login shell.",
-        "Submit an empty form to observe local validation.",
-        "Submit a synthetic email and observe the truthful member-access-unavailable response; no reset challenge or mail job is created."
+        "Submit a synthetic email and observe the same generic response for known and unknown accounts.",
+        "For the local account only, use the local-simulation reset code and sign in with the updated password."
+      ]
+    },
+    {
+      "id": "member.policy.manage.success",
+      "actor": "member",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "mixed-captured-navigation-then-local-contract",
+      "steps": [
+        "From Home inspect the representative policy, pet, holder/insured, applicant-contact, status, and premium metadata.",
+        "Open My Pets, policy details, coverage/exclusion details, and generated policy documents.",
+        "Change deductible, annual limit, reimbursement, and preventive coverage; verify the new premium after reload.",
+        "Renew the active policy, then confirm a cancellation reason and observe canceled status, lost renewal eligibility, and persistence after reload."
+      ]
+    },
+    {
+      "id": "member.claim.submit-track.success",
+      "actor": "member",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "mixed-captured-navigation-then-local-contract",
+      "steps": [
+        "Open Submit a Claim and complete policy, incident date, reason, provider, and amount with synthetic local data.",
+        "Trigger invoice-required validation, reject an unsupported upload, then upload a representative PDF and observe parsing progress and success.",
+        "Submit the claim, inspect claim details and evidence metadata, and open Track a Claim.",
+        "Observe the same claim number, submitted status, amount, and evidence after navigation."
+      ]
+    },
+    {
+      "id": "member.billing-autopay.success",
+      "actor": "member",
+      "kind": "success",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "mixed-captured-navigation-then-local-contract",
+      "steps": [
+        "Open Billing for the representative policy and inspect the current frequency, total, local-sandbox payment profile, and autopay state.",
+        "Change frequency and autopay, save, and observe the recalculated total.",
+        "Reload Billing and observe the saved selection and status."
       ]
     }
   ]

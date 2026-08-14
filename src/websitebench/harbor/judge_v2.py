@@ -1196,6 +1196,9 @@ class CandidateProcess:
         )
         write_flags = re.compile(r"O_(?:WRONLY|RDWR|CREAT|TRUNC|APPEND)")
         quoted = re.compile(r'"(?:\\.|[^"\\])*"')
+        proc_fd_path = re.compile(r"^/proc/\d+/fd/\d+$")
+        proc_mem_path = re.compile(r"^/proc/\d+/mem$")
+        decoded_return_path = re.compile(r"\)\s+=\s+\d+<([^>]+)>")
         logs = sorted(self.audit_prefix.parent.glob(self.audit_prefix.name + "*"))
         if not logs:
             return ["WRITE_AUDIT_EMPTY"]
@@ -1235,6 +1238,28 @@ class CandidateProcess:
                     else cwd
                 )
                 raw_paths = quoted.findall(line)
+                if line.startswith(("open(", "openat(", "openat2(")) and raw_paths:
+                    try:
+                        opened_path = ast.literal_eval(raw_paths[0])
+                    except (SyntaxError, ValueError):
+                        opened_path = None
+                    if isinstance(opened_path, str) and proc_mem_path.fullmatch(
+                        opened_path
+                    ):
+                        # The trusted seccomp broker writes syscall results through
+                        # tracee memory. This is process state, not candidate file
+                        # persistence, and strace follows the broker as a child.
+                        continue
+                    if isinstance(opened_path, str) and proc_fd_path.fullmatch(
+                        opened_path
+                    ):
+                        decoded_return = decoded_return_path.search(line)
+                        if decoded_return is not None:
+                            # The broker reopens a tracee descriptor through procfs.
+                            # Audit the descriptor's decoded target instead of the
+                            # procfs transport path so data-dir writes remain valid
+                            # and descriptors to outside files remain violations.
+                            raw_paths = [json.dumps(decoded_return.group(1))]
                 if line.startswith(("symlink(", "symlinkat(")):
                     raw_paths = raw_paths[-1:]
                 if not raw_paths and decoded_base is not None:

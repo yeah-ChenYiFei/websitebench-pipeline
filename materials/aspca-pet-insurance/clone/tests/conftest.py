@@ -26,6 +26,9 @@ from backend import quotes_db  # noqa: E402
 @pytest.fixture()
 def client():
     quotes_db.reset()
-    with TestClient(app_module.app, base_url="http://testserver") as test_client:
+    # The generated backend contract requires a Secure, Host-only session
+    # cookie.  Exercise it over HTTPS in the in-process client just as the
+    # public clone origin does.
+    with TestClient(app_module.app, base_url="https://testserver") as test_client:
         yield test_client
     quotes_db.reset()

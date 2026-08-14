@@ -1,0 +1,55 @@
+{
+  "actions": [
+    "api",
+    "api",
+    "api",
+    "api",
+    "api"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "create-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "custom-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "custom-monthly"
+    },
+    {
+      "comparator": "exact",
+      "id": "custom-provenance"
+    },
+    {
+      "comparator": "exact",
+      "id": "off-table-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "preventive-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "preventive-monthly"
+    },
+    {
+      "comparator": "exact",
+      "id": "preventive-total"
+    },
+    {
+      "comparator": "exact",
+      "id": "persisted-deductible"
+    },
+    {
+      "comparator": "exact",
+      "id": "persisted-monthly"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "quote-api-rate-walk"
+}

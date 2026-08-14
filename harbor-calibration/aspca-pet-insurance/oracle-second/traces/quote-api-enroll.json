@@ -1,0 +1,42 @@
+{
+  "actions": [
+    "api",
+    "api",
+    "api",
+    "api"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "enroll-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "policy-number"
+    },
+    {
+      "comparator": "exact",
+      "id": "idempotent-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "idempotent-policy"
+    },
+    {
+      "comparator": "exact",
+      "id": "quote-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "frequency"
+    },
+    {
+      "comparator": "exact",
+      "id": "paperless"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "quote-api-enroll"
+}

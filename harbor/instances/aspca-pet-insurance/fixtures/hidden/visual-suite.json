@@ -1,0 +1,224 @@
+{
+  "schema_version": "websitebench.harbor.visual-suite.v1",
+  "suite_id": "aspca-pet-insurance-visual",
+  "site_id": "aspca-pet-insurance",
+  "checkpoints": [
+    {
+      "id": "home-desktop",
+      "route": "/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 90,
+      "actions": [],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/home-desktop.png"
+    },
+    {
+      "id": "home-tablet",
+      "route": "/",
+      "viewport": {"width": 1024, "height": 768},
+      "timeout_sec": 90,
+      "actions": [],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1024, "height": 768}, "masks": []}],
+      "reference_image": "visual/home-tablet.png"
+    },
+    {
+      "id": "home-mobile",
+      "route": "/",
+      "viewport": {"width": 390, "height": 844},
+      "timeout_sec": 90,
+      "actions": [],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 390, "height": 844}, "masks": []}],
+      "reference_image": "visual/home-mobile.png"
+    },
+    {
+      "id": "plan-desktop",
+      "route": "/pet-insurance-plan/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 90,
+      "actions": [],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/plan-desktop.png"
+    },
+    {
+      "id": "cat-insurance-desktop",
+      "route": "/cat-insurance/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 90,
+      "actions": [],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/cat-insurance-desktop.png"
+    },
+    {
+      "id": "dog-insurance-desktop",
+      "route": "/dog-insurance/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 90,
+      "actions": [],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/dog-insurance-desktop.png"
+    },
+    {
+      "id": "why-us-desktop",
+      "route": "/why-us/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 90,
+      "actions": [],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/why-us-desktop.png"
+    },
+    {
+      "id": "compare-desktop",
+      "route": "/research-and-compare/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 90,
+      "actions": [],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/compare-desktop.png"
+    },
+    {
+      "id": "about-us-desktop",
+      "route": "/about-us/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 90,
+      "actions": [],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/about-us-desktop.png"
+    },
+    {
+      "id": "contact-us-desktop",
+      "route": "/about-us/contact-us/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 90,
+      "actions": [],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/contact-us-desktop.png"
+    },
+    {
+      "id": "quote-start-desktop",
+      "route": "/quote/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 120,
+      "actions": [
+        {"op": "wait_for", "selector": {"css": "#petsName"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #petsName"}, "state": "visible", "timeout_ms": 20000}
+      ],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/quote-start-desktop.png"
+    },
+    {
+      "id": "quote-start-mobile",
+      "route": "/quote/",
+      "viewport": {"width": 390, "height": 844},
+      "timeout_sec": 120,
+      "actions": [
+        {"op": "wait_for", "selector": {"css": "#petsName"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #petsName"}, "state": "visible", "timeout_ms": 20000}
+      ],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 390, "height": 844}, "masks": []}],
+      "reference_image": "visual/quote-start-mobile.png"
+    },
+    {
+      "id": "quote-start-validation-desktop",
+      "route": "/quote/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 120,
+      "actions": [
+        {"op": "wait_for", "selector": {"css": "#petsName"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #petsName"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "click", "selector": {"role": "button", "name": "See My Rates"}},
+        {"op": "wait_for", "selector": {"css": "#errorSummary"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #errorSummary"}, "state": "visible", "timeout_ms": 20000}
+      ],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/quote-start-validation-desktop.png"
+    },
+    {
+      "id": "quote-rates-desktop",
+      "route": "/quote/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 180,
+      "reference_mutation_authorized": true,
+      "actions": [
+        {"op": "wait_for", "selector": {"css": "#petsName"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #petsName"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "click", "selector": {"css": "label[for='cat']"}},
+        {"op": "fill", "selector": {"css": "#petsName"}, "value": "Willow"},
+        {"op": "select", "selector": {"css": "#choAge"}, "value": "2"},
+        {"op": "click", "selector": {"css": "label[for='female']"}},
+        {"op": "fill", "selector": {"css": "#inputBreedList"}, "value": "Domestic Shorthair"},
+        {"op": "fill", "selector": {"css": "#emailAddress"}, "value": "willow-capture-2026-08-13@example.com"},
+        {"op": "fill", "selector": {"css": "#zipcode"}, "value": "44301"},
+        {"op": "click", "selector": {"role": "button", "name": "See My Rates"}},
+        {"op": "wait_for", "selector": {"css": "#tier-plus"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #tier-plus"}, "state": "visible", "timeout_ms": 20000}
+      ],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/quote-rates-desktop.png"
+    },
+    {
+      "id": "portal-login-desktop",
+      "route": "/portal/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 120,
+      "actions": [
+        {"op": "wait_for", "selector": {"css": "#focusLoginHeader"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #focusLoginHeader"}, "state": "visible", "timeout_ms": 20000}
+      ],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/portal-login-desktop.png"
+    },
+    {
+      "id": "portal-login-mobile",
+      "route": "/portal/",
+      "viewport": {"width": 390, "height": 844},
+      "timeout_sec": 120,
+      "actions": [
+        {"op": "wait_for", "selector": {"css": "#focusLoginHeader"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #focusLoginHeader"}, "state": "visible", "timeout_ms": 20000}
+      ],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 390, "height": 844}, "masks": []}],
+      "reference_image": "visual/portal-login-mobile.png"
+    },
+    {
+      "id": "portal-register-desktop",
+      "route": "/portal/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 120,
+      "actions": [
+        {"op": "wait_for", "selector": {"css": "#registerBtn"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #registerBtn"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "click", "selector": {"css": "#registerBtn"}},
+        {"op": "wait_for", "selector": {"css": "#focusRegisterHeader"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #focusRegisterHeader"}, "state": "visible", "timeout_ms": 20000}
+      ],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/portal-register-desktop.png"
+    },
+    {
+      "id": "portal-forgot-desktop",
+      "route": "/portal/",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 120,
+      "actions": [
+        {"op": "wait_for", "selector": {"css": "#forgotPswLink"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #forgotPswLink"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "click", "selector": {"css": "#forgotPswLink"}},
+        {"op": "wait_for", "selector": {"css": "#focusForgotPswHeader"}, "state": "visible", "timeout_ms": 20000},
+        {"op": "wait_for", "selector": {"css": "#app-root[data-view-ready='true'] #focusForgotPswHeader"}, "state": "visible", "timeout_ms": 20000}
+      ],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/portal-forgot-desktop.png"
+    },
+    {
+      "id": "not-found-desktop",
+      "route": "/no-such-page",
+      "viewport": {"width": 1440, "height": 900},
+      "timeout_sec": 90,
+      "actions": [
+        {"op": "wait_for", "selector": {"css": "#notFoundIllustration[data-render-ready='true']"}, "state": "visible", "timeout_ms": 20000}
+      ],
+      "regions": [{"id": "page", "rect": {"x": 0, "y": 0, "width": 1440, "height": 900}, "masks": []}],
+      "reference_image": "visual/not-found-desktop.png"
+    }
+  ]
+}

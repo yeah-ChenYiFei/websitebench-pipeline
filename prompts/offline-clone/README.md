@@ -18,6 +18,8 @@ Credentials and session secrets never enter Git or evidence artifacts.
   handoff, then build and verify against the current WebsiteBench workflow.
   This is the always-resident operating contract; the twelve phases live in
   `references/` and are read one at a time.
+- `context-handoff.md`: mandatory bounded Markdown state and fresh-context
+  rollover at every phase-reference boundary.
 - `references/`: per-phase detail for the brief above. The entry prompt's
   operating rules take precedence over anything here.
 - `conversation-curation.md`: privacy-conscious extraction of reusable lessons.

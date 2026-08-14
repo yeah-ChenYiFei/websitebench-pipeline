@@ -117,6 +117,95 @@ _MIGRATIONS: dict[str, str] = {
             ON aspca_enrollments (mail_id)
             WHERE mail_id IS NOT NULL;
     """,
+    "0005_quote_application": """
+        CREATE TABLE IF NOT EXISTS aspca_quote_applications (
+            quote_id INTEGER PRIMARY KEY
+                REFERENCES aspca_quotes (id) ON DELETE CASCADE,
+            contact_json TEXT NOT NULL,
+            questions_json TEXT NOT NULL,
+            consent_json TEXT NOT NULL,
+            updated_at TEXT NOT NULL
+        );
+    """,
+    "0006_member_center": """
+        CREATE TABLE IF NOT EXISTS aspca_member_profiles (
+            account_id TEXT PRIMARY KEY,
+            subject_id TEXT NOT NULL UNIQUE,
+            email TEXT NOT NULL,
+            display_name TEXT NOT NULL,
+            phone TEXT,
+            address_json TEXT NOT NULL DEFAULT '{}',
+            updated_at TEXT NOT NULL
+        );
+        CREATE TABLE IF NOT EXISTS aspca_policy_state (
+            policy_number TEXT PRIMARY KEY
+                REFERENCES aspca_enrollments (policy_number) ON DELETE CASCADE,
+            status TEXT NOT NULL DEFAULT 'active'
+                CHECK (status IN ('active', 'canceled')),
+            autopay INTEGER NOT NULL DEFAULT 0 CHECK (autopay IN (0, 1)),
+            renewal_date TEXT NOT NULL,
+            renewal_count INTEGER NOT NULL DEFAULT 0,
+            canceled_at TEXT,
+            cancel_reason TEXT,
+            updated_at TEXT NOT NULL
+        );
+        CREATE TABLE IF NOT EXISTS aspca_policy_documents (
+            document_id TEXT PRIMARY KEY,
+            policy_number TEXT NOT NULL
+                REFERENCES aspca_enrollments (policy_number) ON DELETE CASCADE,
+            kind TEXT NOT NULL,
+            title TEXT NOT NULL,
+            created_at TEXT NOT NULL,
+            UNIQUE (policy_number, kind)
+        );
+        CREATE TABLE IF NOT EXISTS aspca_uploads (
+            id INTEGER PRIMARY KEY,
+            upload_id TEXT NOT NULL UNIQUE,
+            account_id TEXT NOT NULL,
+            filename TEXT NOT NULL,
+            content_type TEXT NOT NULL,
+            size_bytes INTEGER NOT NULL,
+            parse_status TEXT NOT NULL
+                CHECK (parse_status IN ('parsed', 'rejected')),
+            created_at TEXT NOT NULL
+        );
+        CREATE INDEX IF NOT EXISTS idx_aspca_uploads_account
+            ON aspca_uploads (account_id);
+        CREATE TABLE IF NOT EXISTS aspca_claims (
+            id INTEGER PRIMARY KEY,
+            claim_number TEXT NOT NULL UNIQUE,
+            policy_number TEXT NOT NULL
+                REFERENCES aspca_enrollments (policy_number) ON DELETE CASCADE,
+            account_id TEXT NOT NULL,
+            incident_date TEXT NOT NULL,
+            reason TEXT NOT NULL,
+            provider TEXT NOT NULL,
+            amount_minor INTEGER NOT NULL,
+            status TEXT NOT NULL DEFAULT 'submitted'
+                CHECK (status IN ('submitted', 'in-review', 'complete')),
+            created_at TEXT NOT NULL,
+            updated_at TEXT NOT NULL
+        );
+        CREATE INDEX IF NOT EXISTS idx_aspca_claims_account
+            ON aspca_claims (account_id);
+        CREATE TABLE IF NOT EXISTS aspca_claim_uploads (
+            claim_id INTEGER NOT NULL
+                REFERENCES aspca_claims (id) ON DELETE CASCADE,
+            upload_id TEXT NOT NULL
+                REFERENCES aspca_uploads (upload_id) ON DELETE CASCADE,
+            PRIMARY KEY (claim_id, upload_id)
+        );
+        CREATE TABLE IF NOT EXISTS aspca_policy_events (
+            id INTEGER PRIMARY KEY,
+            policy_number TEXT NOT NULL
+                REFERENCES aspca_enrollments (policy_number) ON DELETE CASCADE,
+            action TEXT NOT NULL,
+            details_json TEXT NOT NULL,
+            created_at TEXT NOT NULL
+        );
+        CREATE INDEX IF NOT EXISTS idx_aspca_policy_events_policy
+            ON aspca_policy_events (policy_number);
+    """,
 }
 
 # Defensive payment-boundary guard: no key that looks like a payment field may
@@ -218,6 +307,28 @@ def _ensure_business_schema(path: Path) -> None:
                 " VALUES (?, ?)",
                 (migration_id, FROZEN_CLOCK_UTC),
             )
+        # Backfill member-center baselines for policies enrolled before this
+        # migration. Historical enrollment, payment and mail identifiers stay
+        # untouched.
+        connection.execute(
+            "INSERT OR IGNORE INTO aspca_policy_state"
+            " (policy_number, status, autopay, renewal_date, renewal_count,"
+            "  updated_at)"
+            " SELECT policy_number, 'active', 0, '2027-08-13', 0, ?"
+            " FROM aspca_enrollments",
+            (FROZEN_CLOCK_UTC,),
+        )
+        for kind, title in (
+            ("policy", "Policy document"),
+            ("coverage-summary", "Coverage summary"),
+        ):
+            connection.execute(
+                "INSERT OR IGNORE INTO aspca_policy_documents"
+                " (document_id, policy_number, kind, title, created_at)"
+                " SELECT 'DOC-' || policy_number || '-' || ?, policy_number,"
+                " ?, ?, ? FROM aspca_enrollments",
+                (kind, kind, title, FROZEN_CLOCK_UTC),
+            )
 
 
 def reset() -> None:
@@ -226,6 +337,14 @@ def reset() -> None:
     backend, auth = services()
 
     def _site_reset(connection: sqlite3.Connection) -> None:
+        connection.execute("DELETE FROM aspca_claim_uploads")
+        connection.execute("DELETE FROM aspca_claims")
+        connection.execute("DELETE FROM aspca_uploads")
+        connection.execute("DELETE FROM aspca_policy_events")
+        connection.execute("DELETE FROM aspca_policy_documents")
+        connection.execute("DELETE FROM aspca_policy_state")
+        connection.execute("DELETE FROM aspca_member_profiles")
+        connection.execute("DELETE FROM aspca_quote_applications")
         connection.execute("DELETE FROM aspca_enrollments")
         connection.execute("DELETE FROM aspca_selections")
         connection.execute("DELETE FROM aspca_pets")
@@ -361,6 +480,7 @@ def get_quote(quote_number: str) -> dict[str, Any] | None:
             "quote_id": quote["quote_number"],
             "email": quote["email"],
             "zip": quote["zip"],
+            "state": rating.checkout_state(quote["zip"]),
             "status": quote["status"],
             "created_at": quote["created_at"],
             "pets": pets,
@@ -586,6 +706,28 @@ def enroll(
             "UPDATE aspca_quotes SET status = 'enrolled' WHERE id = ?",
             (quote["id"],),
         )
+        connection.execute(
+            "INSERT INTO aspca_policy_state"
+            " (policy_number, status, autopay, renewal_date, renewal_count,"
+            "  updated_at) VALUES (?, 'active', 0, '2027-08-13', 0, ?)",
+            (policy_number, FROZEN_CLOCK_UTC),
+        )
+        for kind, title in (
+            ("policy", "Policy document"),
+            ("coverage-summary", "Coverage summary"),
+        ):
+            connection.execute(
+                "INSERT INTO aspca_policy_documents"
+                " (document_id, policy_number, kind, title, created_at)"
+                " VALUES (?, ?, ?, ?, ?)",
+                (
+                    f"DOC-{policy_number}-{kind}",
+                    policy_number,
+                    kind,
+                    title,
+                    FROZEN_CLOCK_UTC,
+                ),
+            )
         mail = backend.mail.enqueue(
             "policy-confirmation",
             facts["recipient"],
@@ -726,3 +868,539 @@ def _enrollment_result(
             "is_simulation": bool(mail["is_simulation"]),
         },
     }
+
+
+# ---------------------------------------------------------------------------
+# application review + member center
+# ---------------------------------------------------------------------------
+
+
+def get_application(quote_number: str) -> dict[str, Any] | None:
+    with closing(connect()) as connection:
+        quote = _quote_row(connection, quote_number)
+        if quote is None:
+            return None
+        row = connection.execute(
+            "SELECT * FROM aspca_quote_applications WHERE quote_id = ?",
+            (quote["id"],),
+        ).fetchone()
+    if row is None:
+        return {
+            "quote_id": quote_number,
+            "contact": {},
+            "questions": {},
+            "consent": {},
+            "review_ready": False,
+            "updated_at": None,
+        }
+    return {
+        "quote_id": quote_number,
+        "contact": json.loads(row["contact_json"]),
+        "questions": json.loads(row["questions_json"]),
+        "consent": json.loads(row["consent_json"]),
+        "review_ready": True,
+        "updated_at": row["updated_at"],
+    }
+
+
+def save_application(
+    quote_number: str,
+    *,
+    contact: dict[str, Any],
+    questions: dict[str, Any],
+    consent: dict[str, Any],
+) -> dict[str, Any] | None:
+    reject_payment_keys(contact)
+    with closing(connect()) as connection, connection:
+        quote = _quote_row(connection, quote_number)
+        if quote is None:
+            return None
+        connection.execute(
+            "INSERT INTO aspca_quote_applications"
+            " (quote_id, contact_json, questions_json, consent_json, updated_at)"
+            " VALUES (?, ?, ?, ?, ?)"
+            " ON CONFLICT(quote_id) DO UPDATE SET contact_json=excluded.contact_json,"
+            " questions_json=excluded.questions_json,"
+            " consent_json=excluded.consent_json, updated_at=excluded.updated_at",
+            (
+                quote["id"],
+                json.dumps(contact, sort_keys=True),
+                json.dumps(questions, sort_keys=True),
+                json.dumps(consent, sort_keys=True),
+                FROZEN_CLOCK_UTC,
+            ),
+        )
+    return get_application(quote_number)
+
+
+def create_member_subject(
+    connection: sqlite3.Connection, registration: dict[str, Any]
+) -> str:
+    """Create the ASPCA profile inside LocalAuthStore's registration txn."""
+
+    email = str(registration["email"])
+    subject_id = f"aspca-member-{hashlib.sha256(email.encode()).hexdigest()[:20]}"
+    connection.execute(
+        "INSERT INTO aspca_member_profiles"
+        " (account_id, subject_id, email, display_name, address_json, updated_at)"
+        " VALUES (?, ?, ?, ?, '{}', ?)",
+        (
+            registration["account_id"],
+            subject_id,
+            email,
+            registration["display_name"],
+            FROZEN_CLOCK_UTC,
+        ),
+    )
+    return subject_id
+
+
+def ensure_member_profile(account: dict[str, Any]) -> dict[str, Any]:
+    with closing(connect()) as connection, connection:
+        connection.execute(
+            "INSERT OR IGNORE INTO aspca_member_profiles"
+            " (account_id, subject_id, email, display_name, address_json, updated_at)"
+            " VALUES (?, ?, ?, ?, '{}', ?)",
+            (
+                account["account_id"],
+                account["subject_id"],
+                account["email_normalized"],
+                account["display_name"],
+                FROZEN_CLOCK_UTC,
+            ),
+        )
+        row = connection.execute(
+            "SELECT * FROM aspca_member_profiles WHERE account_id = ?",
+            (account["account_id"],),
+        ).fetchone()
+    assert row is not None
+    return {
+        "account_id": row["account_id"],
+        "subject_id": row["subject_id"],
+        "email": row["email"],
+        "display_name": row["display_name"],
+        "phone": row["phone"],
+        "address": json.loads(row["address_json"]),
+        "updated_at": row["updated_at"],
+    }
+
+
+def _owned_policy_row(
+    connection: sqlite3.Connection, email: str, policy_number: str
+) -> sqlite3.Row | None:
+    return connection.execute(
+        "SELECT e.*, q.email, q.zip, ps.status AS policy_status,"
+        " ps.autopay, ps.renewal_date, ps.renewal_count, ps.canceled_at,"
+        " ps.cancel_reason, p.id AS pet_id, p.species, p.name, p.age_label,"
+        " p.gender, p.breed, s.annual_limit, s.deductible, s.reimbursement,"
+        " s.preventive, s.monthly, s.preventive_monthly, s.provenance"
+        " FROM aspca_enrollments AS e"
+        " JOIN aspca_quotes AS q ON q.id = e.quote_id"
+        " JOIN aspca_policy_state AS ps ON ps.policy_number = e.policy_number"
+        " JOIN aspca_pets AS p ON p.quote_id = q.id"
+        " JOIN aspca_selections AS s ON s.pet_id = p.id"
+        " WHERE e.policy_number = ? AND lower(q.email) = lower(?)"
+        " ORDER BY p.id LIMIT 1",
+        (policy_number, email),
+    ).fetchone()
+
+
+def _policy_public(row: sqlite3.Row) -> dict[str, Any]:
+    holder = json.loads(row["contact_json"])
+    coverage = {
+        "annual_limit": row["annual_limit"],
+        "deductible": row["deductible"],
+        "reimbursement": row["reimbursement"],
+        "preventive": row["preventive"],
+        "monthly": row["monthly"],
+        "preventive_monthly": row["preventive_monthly"],
+        "provenance": row["provenance"],
+    }
+    return {
+        "policy_number": row["policy_number"],
+        "status": row["policy_status"],
+        "effective_date": row["created_at"][:10],
+        "renewal_date": row["renewal_date"],
+        "renewal_eligible": row["policy_status"] == "active",
+        "renewal_count": row["renewal_count"],
+        "autopay": bool(row["autopay"]),
+        "frequency": row["frequency"],
+        "paperless": bool(row["paperless"]),
+        "holder": holder,
+        "insured": {
+            "pet_id": row["pet_id"],
+            "species": row["species"],
+            "name": row["name"],
+            "age_label": row["age_label"],
+            "gender": row["gender"],
+            "breed": row["breed"],
+        },
+        "pet": {
+            "pet_id": row["pet_id"],
+            "species": row["species"],
+            "name": row["name"],
+            "age_label": row["age_label"],
+            "gender": row["gender"],
+            "breed": row["breed"],
+        },
+        "coverage": coverage,
+        "cancel": {
+            "canceled_at": row["canceled_at"],
+            "reason": row["cancel_reason"],
+        },
+        "available_actions": (
+            ["update-coverage", "billing", "renew", "cancel", "start-claim"]
+            if row["policy_status"] == "active"
+            else ["documents", "claim-status", "support"]
+        ),
+    }
+
+
+def policy_detail(email: str, policy_number: str) -> dict[str, Any] | None:
+    with closing(connect()) as connection:
+        row = _owned_policy_row(connection, email, policy_number)
+        return _policy_public(row) if row is not None else None
+
+
+def member_dashboard(account: dict[str, Any]) -> dict[str, Any]:
+    email = str(account["email_normalized"])
+    ensure_member_profile(account)
+    with closing(connect()) as connection:
+        numbers = connection.execute(
+            "SELECT e.policy_number FROM aspca_enrollments AS e"
+            " JOIN aspca_quotes AS q ON q.id = e.quote_id"
+            " WHERE lower(q.email) = lower(?) ORDER BY e.id DESC",
+            (email,),
+        ).fetchall()
+        policies = []
+        for number in numbers:
+            row = _owned_policy_row(connection, email, number["policy_number"])
+            if row is not None:
+                policies.append(_policy_public(row))
+        claim_rows = connection.execute(
+            "SELECT status, count(*) AS count FROM aspca_claims"
+            " WHERE account_id = ? GROUP BY status",
+            (account["account_id"],),
+        ).fetchall()
+    claim_counts = {row["status"]: row["count"] for row in claim_rows}
+    return {
+        "account": account,
+        "policies": policies,
+        "metrics": {
+            "active_policies": sum(p["status"] == "active" for p in policies),
+            "total_policies": len(policies),
+            "open_claims": sum(
+                claim_counts.get(status, 0) for status in ("submitted", "in-review")
+            ),
+        },
+    }
+
+
+def _policy_event(
+    connection: sqlite3.Connection,
+    policy_number: str,
+    action: str,
+    details: dict[str, Any],
+) -> None:
+    connection.execute(
+        "INSERT INTO aspca_policy_events"
+        " (policy_number, action, details_json, created_at) VALUES (?, ?, ?, ?)",
+        (policy_number, action, json.dumps(details, sort_keys=True), FROZEN_CLOCK_UTC),
+    )
+
+
+def update_policy_coverage(
+    email: str,
+    policy_number: str,
+    *,
+    annual_limit: int,
+    deductible: int,
+    reimbursement: int,
+    preventive: str | None,
+) -> dict[str, Any] | None:
+    priced = rating.rate(
+        annual_limit, deductible, reimbursement, preventive
+    )
+    with closing(connect()) as connection, connection:
+        row = _owned_policy_row(connection, email, policy_number)
+        if row is None:
+            return None
+        if row["policy_status"] != "active":
+            raise ValueError("canceled policies cannot be updated")
+        connection.execute(
+            "UPDATE aspca_selections SET annual_limit=?, deductible=?,"
+            " reimbursement=?, preventive=?, monthly=?, preventive_monthly=?,"
+            " provenance=?, updated_at=? WHERE pet_id=?",
+            (
+                priced["annual_limit"],
+                priced["deductible"],
+                priced["reimbursement"],
+                priced["preventive"],
+                priced["monthly"],
+                priced["preventive_monthly"],
+                priced["provenance"],
+                FROZEN_CLOCK_UTC,
+                row["pet_id"],
+            ),
+        )
+        _policy_event(connection, policy_number, "coverage-updated", priced)
+    return policy_detail(email, policy_number)
+
+
+def update_policy_billing(
+    email: str,
+    policy_number: str,
+    *,
+    autopay: bool,
+    frequency: str,
+) -> dict[str, Any] | None:
+    if frequency not in {"Monthly", "Annually"}:
+        raise ValueError("frequency must be Monthly or Annually")
+    with closing(connect()) as connection, connection:
+        row = _owned_policy_row(connection, email, policy_number)
+        if row is None:
+            return None
+        if row["policy_status"] != "active":
+            raise ValueError("billing cannot be changed for a canceled policy")
+        monthly = Decimal(row["monthly"]) + Decimal(row["preventive_monthly"])
+        total = monthly if frequency == "Monthly" else monthly * 12
+        connection.execute(
+            "UPDATE aspca_enrollments SET frequency=? WHERE policy_number=?",
+            (frequency, policy_number),
+        )
+        connection.execute(
+            "UPDATE aspca_policy_state SET autopay=?, updated_at=?"
+            " WHERE policy_number=?",
+            (1 if autopay else 0, FROZEN_CLOCK_UTC, policy_number),
+        )
+        _policy_event(
+            connection,
+            policy_number,
+            "billing-updated",
+            {"autopay": autopay, "frequency": frequency, "total": f"{total:.2f}"},
+        )
+    return {
+        "policy_number": policy_number,
+        "autopay": autopay,
+        "frequency": frequency,
+        "total": f"{total:.2f}",
+        "currency": "USD",
+        "payment_profile": "local-sandbox",
+    }
+
+
+def policy_documents(email: str, policy_number: str) -> list[dict[str, Any]] | None:
+    with closing(connect()) as connection:
+        if _owned_policy_row(connection, email, policy_number) is None:
+            return None
+        rows = connection.execute(
+            "SELECT * FROM aspca_policy_documents WHERE policy_number=?"
+            " ORDER BY kind",
+            (policy_number,),
+        ).fetchall()
+    return [
+        {
+            "document_id": row["document_id"],
+            "policy_number": row["policy_number"],
+            "kind": row["kind"],
+            "title": row["title"],
+            "created_at": row["created_at"],
+            "download_url": f"/portal/api/documents/{row['document_id']}/download",
+        }
+        for row in rows
+    ]
+
+
+def owned_document(account: dict[str, Any], document_id: str) -> dict[str, Any] | None:
+    with closing(connect()) as connection:
+        row = connection.execute(
+            "SELECT d.* FROM aspca_policy_documents AS d"
+            " JOIN aspca_enrollments AS e ON e.policy_number=d.policy_number"
+            " JOIN aspca_quotes AS q ON q.id=e.quote_id"
+            " WHERE d.document_id=? AND lower(q.email)=lower(?)",
+            (document_id, account["email_normalized"]),
+        ).fetchone()
+    return dict(row) if row is not None else None
+
+
+def create_upload(
+    account_id: str, *, filename: str, content_type: str, size_bytes: int
+) -> dict[str, Any]:
+    with closing(connect()) as connection, connection:
+        cursor = connection.execute(
+            "INSERT INTO aspca_uploads"
+            " (upload_id, account_id, filename, content_type, size_bytes,"
+            "  parse_status, created_at) VALUES ('', ?, ?, ?, ?, 'parsed', ?)",
+            (account_id, filename, content_type, size_bytes, FROZEN_CLOCK_UTC),
+        )
+        upload_id = f"UPL-{cursor.lastrowid:06d}"
+        connection.execute(
+            "UPDATE aspca_uploads SET upload_id=? WHERE id=?",
+            (upload_id, cursor.lastrowid),
+        )
+    return {
+        "upload_id": upload_id,
+        "filename": filename,
+        "content_type": content_type,
+        "size": size_bytes,
+        "parse_status": "parsed",
+        "progress": 100,
+    }
+
+
+def create_claim(
+    account: dict[str, Any],
+    *,
+    policy_number: str,
+    incident_date: str,
+    reason: str,
+    provider: str,
+    amount_minor: int,
+    upload_id: str | None,
+) -> dict[str, Any] | None:
+    with closing(connect()) as connection, connection:
+        policy = _owned_policy_row(
+            connection, account["email_normalized"], policy_number
+        )
+        if policy is None:
+            return None
+        if policy["policy_status"] != "active":
+            raise ValueError("claims cannot be started for a canceled policy")
+        upload = None
+        if upload_id:
+            upload = connection.execute(
+                "SELECT * FROM aspca_uploads WHERE upload_id=? AND account_id=?",
+                (upload_id, account["account_id"]),
+            ).fetchone()
+            if upload is None:
+                raise ValueError("upload is missing or belongs to another account")
+        cursor = connection.execute(
+            "INSERT INTO aspca_claims"
+            " (claim_number, policy_number, account_id, incident_date, reason,"
+            "  provider, amount_minor, status, created_at, updated_at)"
+            " VALUES ('', ?, ?, ?, ?, ?, ?, 'submitted', ?, ?)",
+            (
+                policy_number,
+                account["account_id"],
+                incident_date,
+                reason,
+                provider,
+                amount_minor,
+                FROZEN_CLOCK_UTC,
+                FROZEN_CLOCK_UTC,
+            ),
+        )
+        claim_number = f"CLM-{cursor.lastrowid:06d}"
+        connection.execute(
+            "UPDATE aspca_claims SET claim_number=? WHERE id=?",
+            (claim_number, cursor.lastrowid),
+        )
+        if upload is not None:
+            connection.execute(
+                "INSERT INTO aspca_claim_uploads (claim_id, upload_id) VALUES (?, ?)",
+                (cursor.lastrowid, upload_id),
+            )
+    return claim_detail(account["account_id"], claim_number)
+
+
+def _claim_public(connection: sqlite3.Connection, row: sqlite3.Row) -> dict[str, Any]:
+    evidence = [
+        {
+            "upload_id": upload["upload_id"],
+            "filename": upload["filename"],
+            "content_type": upload["content_type"],
+            "size": upload["size_bytes"],
+            "parse_status": upload["parse_status"],
+        }
+        for upload in connection.execute(
+            "SELECT u.* FROM aspca_uploads AS u"
+            " JOIN aspca_claim_uploads AS cu ON cu.upload_id=u.upload_id"
+            " WHERE cu.claim_id=? ORDER BY u.id",
+            (row["id"],),
+        )
+    ]
+    return {
+        "claim_number": row["claim_number"],
+        "policy_number": row["policy_number"],
+        "incident_date": row["incident_date"],
+        "reason": row["reason"],
+        "provider": row["provider"],
+        "amount": f"{Decimal(row['amount_minor']) / Decimal(100):.2f}",
+        "currency": "USD",
+        "status": row["status"],
+        "evidence": evidence,
+        "available_actions": ["view-policy", "upload-evidence", "contact-support"],
+    }
+
+
+def claim_detail(account_id: str, claim_number: str) -> dict[str, Any] | None:
+    with closing(connect()) as connection:
+        row = connection.execute(
+            "SELECT * FROM aspca_claims WHERE claim_number=? AND account_id=?",
+            (claim_number, account_id),
+        ).fetchone()
+        return _claim_public(connection, row) if row is not None else None
+
+
+def member_claims(account_id: str) -> dict[str, Any]:
+    with closing(connect()) as connection:
+        rows = connection.execute(
+            "SELECT * FROM aspca_claims WHERE account_id=? ORDER BY id DESC",
+            (account_id,),
+        ).fetchall()
+        claims = [_claim_public(connection, row) for row in rows]
+    return {
+        "claims": claims,
+        "metrics": {
+            "submitted": sum(c["status"] == "submitted" for c in claims),
+            "in_review": sum(c["status"] == "in-review" for c in claims),
+            "complete": sum(c["status"] == "complete" for c in claims),
+        },
+    }
+
+
+def renew_policy(email: str, policy_number: str) -> dict[str, Any] | None:
+    with closing(connect()) as connection, connection:
+        row = _owned_policy_row(connection, email, policy_number)
+        if row is None:
+            return None
+        if row["policy_status"] != "active":
+            raise ValueError("canceled policies are not renewal eligible")
+        renewal_count = int(row["renewal_count"]) + 1
+        renewal_date = f"{2027 + renewal_count:04d}-08-13"
+        connection.execute(
+            "UPDATE aspca_policy_state SET renewal_count=?, renewal_date=?,"
+            " updated_at=? WHERE policy_number=?",
+            (renewal_count, renewal_date, FROZEN_CLOCK_UTC, policy_number),
+        )
+        _policy_event(
+            connection,
+            policy_number,
+            "renewed",
+            {"renewal_count": renewal_count, "renewal_date": renewal_date},
+        )
+    detail = policy_detail(email, policy_number)
+    assert detail is not None
+    return {**detail, "renewed": True}
+
+
+def cancel_policy(
+    email: str, policy_number: str, *, reason: str
+) -> dict[str, Any] | None:
+    with closing(connect()) as connection, connection:
+        row = _owned_policy_row(connection, email, policy_number)
+        if row is None:
+            return None
+        if row["policy_status"] != "canceled":
+            connection.execute(
+                "UPDATE aspca_policy_state SET status='canceled',"
+                " canceled_at=?, cancel_reason=?, updated_at=?"
+                " WHERE policy_number=?",
+                (FROZEN_CLOCK_UTC, reason, FROZEN_CLOCK_UTC, policy_number),
+            )
+            _policy_event(
+                connection, policy_number, "canceled", {"reason": reason}
+            )
+    detail = policy_detail(email, policy_number)
+    assert detail is not None
+    return detail

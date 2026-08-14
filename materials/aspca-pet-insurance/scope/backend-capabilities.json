@@ -2,19 +2,19 @@
   "backend_profile": "full",
   "capabilities": [
     {
-      "applicability": "not-applicable",
+      "applicability": "in-scope",
       "id": "accounts",
-      "rationale": "The source exposes public member-entry shells, but authenticated evidence and credentials are unavailable. Login and registration fail closed and create no account or session."
+      "rationale": "The clone provides site-isolated local registration, verification, sign-in, sign-out, and Secure Host-only sessions so the modeled member workflows can be exercised without source credentials. Authenticated source pages remain an explicit evidence gap."
     },
     {
-      "applicability": "not-applicable",
+      "applicability": "in-scope",
       "id": "password-recovery",
-      "rationale": "The captured forgot-password shell is reproduced, but submissions truthfully return member access unavailable and create no reset challenge."
+      "rationale": "The captured forgot-password entry is backed by a site-isolated local verification challenge and generic non-enumerating responses. Codes remain local simulation secrets and no provider delivery is invoked."
     },
     {
       "applicability": "in-scope",
       "id": "transactional-mail",
-      "rationale": "An approved local-sandbox enrollment atomically enqueues one branded policy-confirmation business-mail job. Offline runs retain it as LOCAL_SIMULATION; REAL_EMAIL_AUTHORIZED=false and no provider delivery is invoked."
+      "rationale": "Registration and password-reset challenges remain in the local auth outbox, and an approved local-sandbox enrollment atomically enqueues one branded policy-confirmation business-mail job. Offline runs retain all mail as local simulation; REAL_EMAIL_AUTHORIZED=false and no provider delivery is invoked."
     },
     {
       "applicability": "in-scope",
@@ -34,7 +34,7 @@
     {
       "applicability": "in-scope",
       "id": "database",
-      "rationale": "Quotes, pets, rating selections, and non-payment enrollments require a site-bound SQLite database with migrations, reset, restart, backup, and concurrency proofs."
+      "rationale": "Quotes, applications, local member profiles, policy state, documents, uploads, claims, rating selections, and enrollments require a site-bound SQLite database with migrations, reset, restart, backup, and concurrency proofs."
     }
   ],
   "runtime_required": true,

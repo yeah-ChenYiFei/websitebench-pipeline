@@ -16,7 +16,10 @@ prompts/offline-clone/autonomous-source-to-clone.md
 Treat that file as the always-resident operating contract. It indexes detailed
 phase files under `prompts/offline-clone/references/`; read each reference only
 when entering its phase. The entry prompt takes precedence if a phase reference
-appears to conflict with it.
+appears to conflict with it. At every reference boundary, persist
+`materials/<site-id>/scope/agent-handoff.md` and continue through a fresh
+standard subagent as defined by
+`prompts/offline-clone/context-handoff.md`.
 
 Use a narrower brief only when the requested scope is already configured:
 

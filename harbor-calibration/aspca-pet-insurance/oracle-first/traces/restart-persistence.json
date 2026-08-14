@@ -1,0 +1,29 @@
+{
+  "actions": [
+    "api",
+    "restart",
+    "api"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "create-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "survives-restart"
+    },
+    {
+      "comparator": "exact",
+      "id": "pet-name-persisted"
+    },
+    {
+      "comparator": "exact",
+      "id": "status-persisted"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "restart-persistence"
+}

@@ -16,7 +16,7 @@
     "env": {}
   },
   "deferred": {
-    "portal-member": "Authenticated member routes are outside the anonymous clone contract and remain unavailable pending an optional read-only credential handoff."
+    "portal-member-source-fidelity": "The local member workflows are implemented and tested, but authenticated source-page fidelity remains unavailable until a read-only source login is present. Anonymous live diagnostics cannot create the required local member fixture."
   },
   "prepare": [],
   "routes": {

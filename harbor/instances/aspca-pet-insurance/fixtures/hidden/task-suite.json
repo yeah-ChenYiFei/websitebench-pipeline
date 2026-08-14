@@ -1,0 +1,1761 @@
+{
+  "schema_version": "websitebench.harbor.task-suite.v1",
+  "suite_id": "aspca-pet-insurance-tasks",
+  "site_id": "aspca-pet-insurance",
+  "dsl_version": "websitebench.harbor.playwright-dsl.v1",
+  "tasks": [
+    {
+      "id": "healthz",
+      "timeout_sec": 60,
+      "actions": [
+        {
+          "op": "api",
+          "method": "GET",
+          "path": "/healthz",
+          "capture_as": "health"
+        }
+      ],
+      "observations": [
+        {
+          "id": "status",
+          "kind": "api_status",
+          "capture_as": "health",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "ok",
+          "kind": "api_json",
+          "capture_as": "health",
+          "json_pointer": "/ok",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "site-id",
+          "kind": "api_json",
+          "capture_as": "health",
+          "json_pointer": "/site_id",
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ]
+    },
+    {
+      "id": "frozen-pages-serve",
+      "timeout_sec": 90,
+      "actions": [],
+      "observations": [
+        {
+          "id": "home",
+          "kind": "api_status",
+          "path": "/",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "plan",
+          "kind": "api_status",
+          "path": "/pet-insurance-plan/",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "cat",
+          "kind": "api_status",
+          "path": "/cat-insurance/",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "dog",
+          "kind": "api_status",
+          "path": "/dog-insurance/",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "why-us",
+          "kind": "api_status",
+          "path": "/why-us/",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "compare",
+          "kind": "api_status",
+          "path": "/research-and-compare/",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "about",
+          "kind": "api_status",
+          "path": "/about-us/",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "contact",
+          "kind": "api_status",
+          "path": "/about-us/contact-us/",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "quote-shell",
+          "kind": "api_status",
+          "path": "/quote/",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "portal-shell",
+          "kind": "api_status",
+          "path": "/portal/",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "unmatched-path",
+          "kind": "api_status",
+          "path": "/no-such-page",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "unknown-quote",
+          "kind": "api_status",
+          "path": "/api/quotes/WB999999",
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ]
+    },
+    {
+      "id": "home-hero",
+      "timeout_sec": 120,
+      "actions": [
+        {
+          "op": "goto",
+          "path": "/"
+        }
+      ],
+      "observations": [
+        {
+          "id": "url",
+          "kind": "url",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "hero-heading",
+          "kind": "text",
+          "selector": {
+            "css": "h1.home__hero-header"
+          },
+          "comparator": {
+            "type": "normalized_exact"
+          }
+        },
+        {
+          "id": "hero-visible",
+          "kind": "visible",
+          "selector": {
+            "css": "h1.home__hero-header"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ]
+    },
+    {
+      "id": "quote-funnel-rates",
+      "timeout_sec": 180,
+      "actions": [
+        {
+          "op": "goto",
+          "path": "/quote/"
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#petsName"
+          },
+          "state": "visible"
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#app-root[data-view-ready='true']"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "click",
+          "selector": {
+            "css": "label[for='cat']"
+          }
+        },
+        {
+          "op": "fill",
+          "selector": {
+            "css": "#petsName"
+          },
+          "value": "Willow"
+        },
+        {
+          "op": "select",
+          "selector": {
+            "css": "#choAge"
+          },
+          "value": "2"
+        },
+        {
+          "op": "click",
+          "selector": {
+            "css": "label[for='female']"
+          }
+        },
+        {
+          "op": "fill",
+          "selector": {
+            "css": "#inputBreedList"
+          },
+          "value": "Domestic Shorthair"
+        },
+        {
+          "op": "fill",
+          "selector": {
+            "css": "#emailAddress"
+          },
+          "value": "willow-capture-2026-08-13@example.com"
+        },
+        {
+          "op": "fill",
+          "selector": {
+            "css": "#zipcode"
+          },
+          "value": "44301"
+        },
+        {
+          "op": "click",
+          "selector": {
+            "role": "button",
+            "name": "See My Rates"
+          }
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#tier-plus"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#app-root[data-view-ready='true']"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        }
+      ],
+      "observations": [
+        {
+          "id": "url",
+          "kind": "url",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "rates-heading",
+          "kind": "text",
+          "selector": {
+            "css": "h1.ng-binding",
+            "nth": 0
+          },
+          "comparator": {
+            "type": "normalized_exact"
+          }
+        },
+        {
+          "id": "tier-prices",
+          "kind": "ordered_list",
+          "selector": {
+            "css": ".eb-tier-selector__option-price"
+          },
+          "comparator": {
+            "type": "ordered_list"
+          }
+        },
+        {
+          "id": "plus-preselected",
+          "kind": "checked",
+          "selector": {
+            "css": "#tier-plus"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "essential-unselected",
+          "kind": "checked",
+          "selector": {
+            "css": "#tier-essential"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ],
+      "reference_mutation_authorized": true
+    },
+    {
+      "id": "quote-funnel-validation",
+      "timeout_sec": 150,
+      "actions": [
+        {
+          "op": "goto",
+          "path": "/quote/"
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#petsName"
+          },
+          "state": "visible"
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#app-root[data-view-ready='true']"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "click",
+          "selector": {
+            "role": "button",
+            "name": "See My Rates"
+          }
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#errorSummary"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#app-root[data-view-ready='true']"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        }
+      ],
+      "observations": [
+        {
+          "id": "summary-visible",
+          "kind": "visible",
+          "selector": {
+            "css": "#errorSummary"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "error-items",
+          "kind": "count",
+          "selector": {
+            "css": ".errorSummary_listItem"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "error-texts",
+          "kind": "ordered_list",
+          "selector": {
+            "css": ".errorSummary_listItem"
+          },
+          "comparator": {
+            "type": "ordered_list"
+          }
+        }
+      ]
+    },
+    {
+      "id": "quote-rates-interactions",
+      "timeout_sec": 240,
+      "actions": [
+        {
+          "op": "goto",
+          "path": "/quote/"
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#petsName"
+          },
+          "state": "visible"
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#app-root[data-view-ready='true']"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "click",
+          "selector": {
+            "css": "label[for='cat']"
+          }
+        },
+        {
+          "op": "fill",
+          "selector": {
+            "css": "#petsName"
+          },
+          "value": "Willow"
+        },
+        {
+          "op": "select",
+          "selector": {
+            "css": "#choAge"
+          },
+          "value": "2"
+        },
+        {
+          "op": "click",
+          "selector": {
+            "css": "label[for='female']"
+          }
+        },
+        {
+          "op": "fill",
+          "selector": {
+            "css": "#inputBreedList"
+          },
+          "value": "Domestic Shorthair"
+        },
+        {
+          "op": "fill",
+          "selector": {
+            "css": "#emailAddress"
+          },
+          "value": "willow-capture-2026-08-13@example.com"
+        },
+        {
+          "op": "fill",
+          "selector": {
+            "css": "#zipcode"
+          },
+          "value": "44301"
+        },
+        {
+          "op": "click",
+          "selector": {
+            "role": "button",
+            "name": "See My Rates"
+          }
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#tier-plus"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#app-root[data-view-ready='true']"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "click",
+          "selector": {
+            "css": "#accordBtn-build-your-own"
+          }
+        },
+        {
+          "op": "click",
+          "selector": {
+            "css": "label[for='250l2']"
+          }
+        },
+        {
+          "op": "click",
+          "selector": {
+            "css": "label[for='90l2']"
+          }
+        },
+        {
+          "op": "click",
+          "selector": {
+            "css": "label[for='5000l2']"
+          }
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#app-root[data-rate-pending='false']"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "click",
+          "selector": {
+            "css": "#accordBtn-coverage-details-faq-0"
+          }
+        }
+      ],
+      "observations": [
+        {
+          "id": "faq-body-visible",
+          "kind": "visible",
+          "selector": {
+            "css": "#accordBody-coverage-details-faq-0"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "deductible-selected",
+          "kind": "checked",
+          "selector": {
+            "css": "[id='250l2']"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "reimbursement-selected",
+          "kind": "checked",
+          "selector": {
+            "css": "[id='90l2']"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "limit-selected",
+          "kind": "checked",
+          "selector": {
+            "css": "[id='5000l2']"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "monthly-dollars",
+          "kind": "text",
+          "selector": {
+            "css": ".priceSummary_priceMonthly--dollar",
+            "nth": 0
+          },
+          "comparator": {
+            "type": "normalized_exact"
+          }
+        },
+        {
+          "id": "monthly-cents",
+          "kind": "text",
+          "selector": {
+            "css": ".priceSummary_priceMonthly--cents",
+            "nth": 0
+          },
+          "comparator": {
+            "type": "normalized_exact"
+          }
+        }
+      ],
+      "reference_mutation_authorized": true
+    },
+    {
+      "id": "quote-api-create",
+      "timeout_sec": 60,
+      "actions": [
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "create",
+          "body": {
+            "species": "Cat",
+            "name": "Willow",
+            "age": "2 Years",
+            "gender": "Female",
+            "breed": "Domestic Shorthair",
+            "email": "willow-capture-2026-08-13@example.com",
+            "zip": "44301"
+          }
+        }
+      ],
+      "observations": [
+        {
+          "id": "status",
+          "kind": "api_status",
+          "capture_as": "create",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "eligible",
+          "kind": "api_json",
+          "capture_as": "create",
+          "json_pointer": "/eligible",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "quote-id",
+          "kind": "api_json",
+          "capture_as": "create",
+          "json_pointer": "/quote_id",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "pet-name",
+          "kind": "api_json",
+          "capture_as": "create",
+          "json_pointer": "/pet/name",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "selected-monthly",
+          "kind": "api_json",
+          "capture_as": "create",
+          "json_pointer": "/pet/selection/monthly",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "tier-essential",
+          "kind": "api_json",
+          "capture_as": "create",
+          "json_pointer": "/rates/tiers/0/monthly",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "tier-plus",
+          "kind": "api_json",
+          "capture_as": "create",
+          "json_pointer": "/rates/tiers/1/monthly",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "tier-elite",
+          "kind": "api_json",
+          "capture_as": "create",
+          "json_pointer": "/rates/tiers/2/monthly",
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ],
+      "reference_mutation_authorized": true
+    },
+    {
+      "id": "quote-api-validation",
+      "timeout_sec": 60,
+      "actions": [
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "missing",
+          "body": {
+            "species": "Dog"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "tld",
+          "body": {
+            "species": "Cat",
+            "name": "Willow",
+            "age": "2 Years",
+            "gender": "Female",
+            "breed": "Domestic Shorthair",
+            "email": "pet@example.museum",
+            "zip": "44301"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "tld-ok",
+          "body": {
+            "species": "Cat",
+            "name": "Willow",
+            "age": "2 Years",
+            "gender": "Female",
+            "breed": "Domestic Shorthair",
+            "email": "pet@example.info",
+            "zip": "44301"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "badzip",
+          "body": {
+            "species": "Cat",
+            "name": "Willow",
+            "age": "2 Years",
+            "gender": "Female",
+            "breed": "Domestic Shorthair",
+            "email": "willow-capture-2026-08-13@example.com",
+            "zip": "00000"
+          }
+        }
+      ],
+      "observations": [
+        {
+          "id": "missing-status",
+          "kind": "api_status",
+          "capture_as": "missing",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "missing-name-error",
+          "kind": "api_json",
+          "capture_as": "missing",
+          "json_pointer": "/errors/name",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "missing-email-error",
+          "kind": "api_json",
+          "capture_as": "missing",
+          "json_pointer": "/errors/email",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "tld-status",
+          "kind": "api_status",
+          "capture_as": "tld",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "tld-error",
+          "kind": "api_json",
+          "capture_as": "tld",
+          "json_pointer": "/errors/email",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "tld-ok-status",
+          "kind": "api_status",
+          "capture_as": "tld-ok",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "badzip-status",
+          "kind": "api_status",
+          "capture_as": "badzip",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "badzip-eligible",
+          "kind": "api_json",
+          "capture_as": "badzip",
+          "json_pointer": "/eligible",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "badzip-error",
+          "kind": "api_json",
+          "capture_as": "badzip",
+          "json_pointer": "/errors/zip",
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ],
+      "reference_mutation_authorized": true
+    },
+    {
+      "id": "quote-api-rate-walk",
+      "timeout_sec": 90,
+      "actions": [
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "create",
+          "body": {
+            "species": "Cat",
+            "name": "Willow",
+            "age": "2 Years",
+            "gender": "Female",
+            "breed": "Domestic Shorthair",
+            "email": "willow-capture-2026-08-13@example.com",
+            "zip": "44301"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes/WB100001/rate",
+          "capture_as": "custom",
+          "body": {
+            "limit": 5000,
+            "deductible": 250,
+            "reimbursement": 90
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes/WB100001/rate",
+          "capture_as": "off-table",
+          "body": {
+            "limit": 5000,
+            "deductible": 123,
+            "reimbursement": 80
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes/WB100001/rate",
+          "capture_as": "preventive",
+          "body": {
+            "limit": 5000,
+            "deductible": 500,
+            "reimbursement": 80,
+            "preventive": "basic"
+          }
+        },
+        {
+          "op": "api",
+          "method": "GET",
+          "path": "/api/quotes/WB100001",
+          "capture_as": "fetched"
+        }
+      ],
+      "observations": [
+        {
+          "id": "create-status",
+          "kind": "api_status",
+          "capture_as": "create",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "custom-status",
+          "kind": "api_status",
+          "capture_as": "custom",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "custom-monthly",
+          "kind": "api_json",
+          "capture_as": "custom",
+          "json_pointer": "/monthly",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "custom-provenance",
+          "kind": "api_json",
+          "capture_as": "custom",
+          "json_pointer": "/provenance",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "off-table-status",
+          "kind": "api_status",
+          "capture_as": "off-table",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "preventive-status",
+          "kind": "api_status",
+          "capture_as": "preventive",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "preventive-monthly",
+          "kind": "api_json",
+          "capture_as": "preventive",
+          "json_pointer": "/preventive_monthly",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "preventive-total",
+          "kind": "api_json",
+          "capture_as": "preventive",
+          "json_pointer": "/total_monthly",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "persisted-deductible",
+          "kind": "api_json",
+          "capture_as": "fetched",
+          "json_pointer": "/pets/0/selection/deductible",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "persisted-monthly",
+          "kind": "api_json",
+          "capture_as": "fetched",
+          "json_pointer": "/pets/0/selection/monthly",
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ],
+      "reference_mutation_authorized": true
+    },
+    {
+      "id": "quote-api-add-pet-resume",
+      "timeout_sec": 90,
+      "actions": [
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "create",
+          "body": {
+            "species": "Cat",
+            "name": "Willow",
+            "age": "2 Years",
+            "gender": "Female",
+            "breed": "Domestic Shorthair",
+            "email": "willow-capture-2026-08-13@example.com",
+            "zip": "44301"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes/WB100001/pets",
+          "capture_as": "add",
+          "body": {
+            "species": "Dog",
+            "name": "Biscuit",
+            "age": "4 Years",
+            "gender": "Male",
+            "breed": "Beagle"
+          }
+        },
+        {
+          "op": "api",
+          "method": "GET",
+          "path": "/api/quotes/search?email=willow-capture-2026-08-13%40example.com&zip=44301",
+          "capture_as": "found"
+        },
+        {
+          "op": "api",
+          "method": "GET",
+          "path": "/api/quotes/search?email=nobody%40example.com&zip=44301",
+          "capture_as": "missing"
+        }
+      ],
+      "observations": [
+        {
+          "id": "add-status",
+          "kind": "api_status",
+          "capture_as": "add",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "first-pet",
+          "kind": "api_json",
+          "capture_as": "add",
+          "json_pointer": "/pets/0/name",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "second-pet",
+          "kind": "api_json",
+          "capture_as": "add",
+          "json_pointer": "/pets/1/name",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "second-pet-monthly",
+          "kind": "api_json",
+          "capture_as": "add",
+          "json_pointer": "/pets/1/selection/monthly",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "resume-status",
+          "kind": "api_status",
+          "capture_as": "found",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "resume-quote-id",
+          "kind": "api_json",
+          "capture_as": "found",
+          "json_pointer": "/quote_id",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "resume-missing-status",
+          "kind": "api_status",
+          "capture_as": "missing",
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ],
+      "reference_mutation_authorized": true
+    },
+    {
+      "id": "quote-api-enroll",
+      "timeout_sec": 90,
+      "actions": [
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "create",
+          "body": {
+            "species": "Cat",
+            "name": "Willow",
+            "age": "2 Years",
+            "gender": "Female",
+            "breed": "Domestic Shorthair",
+            "email": "willow-capture-2026-08-13@example.com",
+            "zip": "44301"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes/WB100001/enroll",
+          "capture_as": "enroll",
+          "body": {
+            "firstName": "Willow",
+            "lastName": "Example",
+            "address1": "1 Main St",
+            "city": "Akron",
+            "state": "OH",
+            "zip": "44301",
+            "phone": "555-0100",
+            "email": "willow-capture-2026-08-13@example.com",
+            "frequency": "Annually",
+            "agree_terms": true,
+            "paperless": true
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes/WB100001/enroll",
+          "capture_as": "again",
+          "body": {
+            "firstName": "Willow",
+            "lastName": "Example",
+            "address1": "1 Main St",
+            "city": "Akron",
+            "state": "OH",
+            "zip": "44301",
+            "phone": "555-0100",
+            "email": "willow-capture-2026-08-13@example.com",
+            "frequency": "Annually",
+            "agree_terms": true,
+            "paperless": true
+          }
+        },
+        {
+          "op": "api",
+          "method": "GET",
+          "path": "/api/quotes/WB100001",
+          "capture_as": "fetched"
+        }
+      ],
+      "observations": [
+        {
+          "id": "enroll-status",
+          "kind": "api_status",
+          "capture_as": "enroll",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "policy-number",
+          "kind": "api_json",
+          "capture_as": "enroll",
+          "json_pointer": "/policy_number",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "idempotent-status",
+          "kind": "api_status",
+          "capture_as": "again",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "idempotent-policy",
+          "kind": "api_json",
+          "capture_as": "again",
+          "json_pointer": "/policy_number",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "quote-status",
+          "kind": "api_json",
+          "capture_as": "fetched",
+          "json_pointer": "/status",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "frequency",
+          "kind": "api_json",
+          "capture_as": "fetched",
+          "json_pointer": "/enrollment/frequency",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "paperless",
+          "kind": "api_json",
+          "capture_as": "fetched",
+          "json_pointer": "/enrollment/paperless",
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ],
+      "reference_mutation_authorized": true
+    },
+    {
+      "id": "quote-api-enroll-validation",
+      "timeout_sec": 60,
+      "actions": [
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "create",
+          "body": {
+            "species": "Cat",
+            "name": "Willow",
+            "age": "2 Years",
+            "gender": "Female",
+            "breed": "Domestic Shorthair",
+            "email": "willow-capture-2026-08-13@example.com",
+            "zip": "44301"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes/WB100001/enroll",
+          "capture_as": "bad",
+          "body": {
+            "frequency": "Weekly",
+            "agree_terms": false
+          }
+        }
+      ],
+      "observations": [
+        {
+          "id": "bad-status",
+          "kind": "api_status",
+          "capture_as": "bad",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "agree-error",
+          "kind": "api_json",
+          "capture_as": "bad",
+          "json_pointer": "/errors/agreeTerms",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "frequency-error",
+          "kind": "api_json",
+          "capture_as": "bad",
+          "json_pointer": "/errors/frequency",
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ],
+      "reference_mutation_authorized": true
+    },
+    {
+      "id": "payment-boundary",
+      "timeout_sec": 90,
+      "actions": [
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "card-create",
+          "body": {
+            "species": "Cat",
+            "name": "Willow",
+            "age": "2 Years",
+            "gender": "Female",
+            "breed": "Domestic Shorthair",
+            "email": "willow-capture-2026-08-13@example.com",
+            "zip": "44301",
+            "cardNumber": "not-collected"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "create",
+          "body": {
+            "species": "Cat",
+            "name": "Willow",
+            "age": "2 Years",
+            "gender": "Female",
+            "breed": "Domestic Shorthair",
+            "email": "willow-capture-2026-08-13@example.com",
+            "zip": "44301"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes/WB100001/enroll",
+          "capture_as": "cvv",
+          "body": {
+            "frequency": "Monthly",
+            "agree_terms": true,
+            "cvv": "not-collected"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes/WB100001/enroll",
+          "capture_as": "bank",
+          "body": {
+            "frequency": "Monthly",
+            "agree_terms": true,
+            "bankAccount": "not-collected"
+          }
+        }
+      ],
+      "observations": [
+        {
+          "id": "card-status",
+          "kind": "api_status",
+          "capture_as": "card-create",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "card-error",
+          "kind": "api_json",
+          "capture_as": "card-create",
+          "json_pointer": "/errors/payment",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "cvv-status",
+          "kind": "api_status",
+          "capture_as": "cvv",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "cvv-error",
+          "kind": "api_json",
+          "capture_as": "cvv",
+          "json_pointer": "/errors/payment",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "bank-status",
+          "kind": "api_status",
+          "capture_as": "bank",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "bank-error",
+          "kind": "api_json",
+          "capture_as": "bank",
+          "json_pointer": "/errors/payment",
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ],
+      "reference_mutation_authorized": true
+    },
+    {
+      "id": "portal-login-view",
+      "timeout_sec": 120,
+      "actions": [
+        {
+          "op": "goto",
+          "path": "/portal/"
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#focusLoginHeader"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#app-root[data-view-ready='true'] #focusLoginHeader"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        }
+      ],
+      "observations": [
+        {
+          "id": "login-heading",
+          "kind": "text",
+          "selector": {
+            "css": "#focusLoginHeader"
+          },
+          "comparator": {
+            "type": "normalized_exact"
+          }
+        },
+        {
+          "id": "login-form-visible",
+          "kind": "visible",
+          "selector": {
+            "css": "#loginForm"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "login-button-enabled",
+          "kind": "enabled",
+          "selector": {
+            "css": "#loginBtn"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "register-button-visible",
+          "kind": "visible",
+          "selector": {
+            "css": "#registerBtn"
+          },
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ]
+    },
+    {
+      "id": "portal-register-view",
+      "timeout_sec": 120,
+      "actions": [
+        {
+          "op": "goto",
+          "path": "/portal/"
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#registerBtn"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#app-root[data-view-ready='true'] #registerBtn"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "click",
+          "selector": {
+            "css": "#registerBtn"
+          }
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#focusRegisterHeader"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        },
+        {
+          "op": "wait_for",
+          "selector": {
+            "css": "#app-root[data-view-ready='true'] #focusRegisterHeader"
+          },
+          "state": "visible",
+          "timeout_ms": 20000
+        }
+      ],
+      "observations": [
+        {
+          "id": "url",
+          "kind": "url",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "register-heading",
+          "kind": "text",
+          "selector": {
+            "css": "#focusRegisterHeader"
+          },
+          "comparator": {
+            "type": "normalized_exact"
+          }
+        }
+      ]
+    },
+    {
+      "id": "portal-api-boundaries",
+      "timeout_sec": 90,
+      "actions": [
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/portal/api/login",
+          "capture_as": "empty",
+          "body": {
+            "email": "",
+            "password": ""
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/portal/api/login",
+          "capture_as": "login",
+          "body": {
+            "email": "member@example.com",
+            "password": "not-a-real-password"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/portal/api/forgot-password",
+          "capture_as": "forgot",
+          "body": {
+            "email": "member@example.com"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/portal/api/register",
+          "capture_as": "register",
+          "body": {
+            "email": "member@example.com",
+            "password": "not-a-real-password"
+          }
+        },
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/portal/api/does-not-exist",
+          "capture_as": "unknown",
+          "body": {}
+        }
+      ],
+      "observations": [
+        {
+          "id": "empty-status",
+          "kind": "api_status",
+          "capture_as": "empty",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "empty-email-error",
+          "kind": "api_json",
+          "capture_as": "empty",
+          "json_pointer": "/errors/email",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "login-status",
+          "kind": "api_status",
+          "capture_as": "login",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "login-authenticated",
+          "kind": "api_json",
+          "capture_as": "login",
+          "json_pointer": "/authenticated",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "login-message",
+          "kind": "api_json",
+          "capture_as": "login",
+          "json_pointer": "/message",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "forgot-status",
+          "kind": "api_status",
+          "capture_as": "forgot",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "forgot-sent",
+          "kind": "api_json",
+          "capture_as": "forgot",
+          "json_pointer": "/sent",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "register-status",
+          "kind": "api_status",
+          "capture_as": "register",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "register-registered",
+          "kind": "api_json",
+          "capture_as": "register",
+          "json_pointer": "/registered",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "unknown-status",
+          "kind": "api_status",
+          "capture_as": "unknown",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "unknown-error",
+          "kind": "api_json",
+          "capture_as": "unknown",
+          "json_pointer": "/error",
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ],
+      "reference_mutation_authorized": true
+    },
+    {
+      "id": "restart-persistence",
+      "timeout_sec": 180,
+      "actions": [
+        {
+          "op": "api",
+          "method": "POST",
+          "path": "/api/quotes",
+          "capture_as": "create",
+          "body": {
+            "species": "Cat",
+            "name": "Willow",
+            "age": "2 Years",
+            "gender": "Female",
+            "breed": "Domestic Shorthair",
+            "email": "willow-capture-2026-08-13@example.com",
+            "zip": "44301"
+          }
+        },
+        {
+          "op": "restart"
+        },
+        {
+          "op": "api",
+          "method": "GET",
+          "path": "/api/quotes/WB100001",
+          "capture_as": "after"
+        }
+      ],
+      "observations": [
+        {
+          "id": "create-status",
+          "kind": "api_status",
+          "capture_as": "create",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "survives-restart",
+          "kind": "api_status",
+          "capture_as": "after",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "pet-name-persisted",
+          "kind": "api_json",
+          "capture_as": "after",
+          "json_pointer": "/pets/0/name",
+          "comparator": {
+            "type": "exact"
+          }
+        },
+        {
+          "id": "status-persisted",
+          "kind": "api_json",
+          "capture_as": "after",
+          "json_pointer": "/status",
+          "comparator": {
+            "type": "exact"
+          }
+        }
+      ],
+      "reference_mutation_authorized": true
+    }
+  ]
+}

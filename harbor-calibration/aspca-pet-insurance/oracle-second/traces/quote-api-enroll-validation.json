@@ -1,0 +1,24 @@
+{
+  "actions": [
+    "api",
+    "api"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "bad-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "agree-error"
+    },
+    {
+      "comparator": "exact",
+      "id": "frequency-error"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "quote-api-enroll-validation"
+}

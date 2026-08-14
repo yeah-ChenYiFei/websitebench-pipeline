@@ -1,0 +1,128 @@
+{
+  "schema_version": "websitebench.harbor.task-results.v1",
+  "summary": {
+    "passed": 0,
+    "total": 17
+  },
+  "tasks": [
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "healthz"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "frozen-pages-serve"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "home-hero"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "quote-funnel-rates"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "quote-funnel-validation"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "quote-rates-interactions"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "quote-api-create"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "quote-api-validation"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "quote-api-rate-walk"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "quote-api-add-pet-resume"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "quote-api-enroll"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "quote-api-enroll-validation"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "payment-boundary"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "portal-login-view"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "portal-register-view"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "portal-api-boundaries"
+    },
+    {
+      "attempts": 1,
+      "observations": [],
+      "reason": "CANDIDATE_DEPLOY_FAILED",
+      "status": "failed",
+      "task_id": "restart-persistence"
+    }
+  ]
+}

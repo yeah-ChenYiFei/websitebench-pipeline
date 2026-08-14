@@ -1,0 +1,43 @@
+{
+  "actions": [
+    "api"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "status"
+    },
+    {
+      "comparator": "exact",
+      "id": "eligible"
+    },
+    {
+      "comparator": "exact",
+      "id": "quote-id"
+    },
+    {
+      "comparator": "exact",
+      "id": "pet-name"
+    },
+    {
+      "comparator": "exact",
+      "id": "selected-monthly"
+    },
+    {
+      "comparator": "exact",
+      "id": "tier-essential"
+    },
+    {
+      "comparator": "exact",
+      "id": "tier-plus"
+    },
+    {
+      "comparator": "exact",
+      "id": "tier-elite"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "quote-api-create"
+}

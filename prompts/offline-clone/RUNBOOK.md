@@ -207,6 +207,7 @@ Use the actual port and environment-variable name from that site's
 | Live View or a browser channel does not work | Do not retry a broken channel indefinitely. Switch after three attempts at the same failure make no progress. |
 | The Agent wants to loosen a threshold to turn a metric green | Refuse. Stopping is allowed; lowering the standard is not. The distinction is honesty, not effort. |
 | The Agent says a command does not exist | Run the two commands in section 0. |
+| The context grows rapidly or auto-compacts repeatedly | Check `materials/<site-id>/scope/agent-handoff.md`. The current phase must close it and the coordinator must start the next reference in a fresh standard subagent. |
 
 ---
 
@@ -220,7 +221,10 @@ for a human. The revised expectation is:
 - several hours to one day of autonomous Agent time, depending on site
   complexity.
 
-**This is not an unattended daemon that runs forever.** No switch makes the
-entire workflow finish without attention. A turn runs until the Agent stops
-issuing tool calls; it may end a turn between phases. Reply `continue` when that
-happens. It does not mean the Agent failed.
+**This is not an unattended daemon that runs forever.** Human-owned login,
+trace text, expanded authority and acceptance still require attention. Technical
+phase boundaries roll over automatically: the Agent writes
+`materials/<site-id>/scope/agent-handoff.md` and starts the next reference in
+a fresh standard subagent context. If the installed client cannot create a
+standard subagent, it returns `CONTEXT_ROLLOVER_REQUIRED`; start a clean session
+and point it at that handoff file.

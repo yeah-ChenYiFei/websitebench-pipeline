@@ -62,6 +62,8 @@ def test_database_path_and_migrations_are_site_bound_and_idempotent() -> None:
         "0002_selections",
         "0003_enrollments",
         "0004_payment_enrollment",
+        "0005_quote_application",
+        "0006_member_center",
     ]
     assert {row[1] for row in migrations} == {quotes_db.FROZEN_CLOCK_UTC}
 
@@ -70,7 +72,7 @@ def test_database_path_and_migrations_are_site_bound_and_idempotent() -> None:
     with closing(quotes_db.connect()) as connection:
         assert connection.execute(
             "SELECT COUNT(*) FROM aspca_schema_migrations"
-        ).fetchone()[0] == 4
+        ).fetchone()[0] == 6
 
 
 def test_reset_is_deterministic_and_preserves_the_schema() -> None:

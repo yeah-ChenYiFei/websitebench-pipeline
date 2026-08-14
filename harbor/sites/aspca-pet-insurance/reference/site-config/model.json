@@ -1,0 +1,316 @@
+{
+  "schema_version": "offline-clone.backend-model.v1",
+  "site_id": "aspca-pet-insurance",
+  "status": "verified",
+  "profile": "offline-benchmark",
+  "database": {
+    "engine": "sqlite",
+    "location_policy": "runtime-data-outside-candidate",
+    "concurrency_model": "wal-transactional-single-writer",
+    "migration_strategy": "versioned-forward-migrations",
+    "deterministic_reset": true,
+    "restart_persistence": true,
+    "site_isolation": "one-database-per-site",
+    "proofs": [
+      {
+        "obligation": "data-location",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py::test_database_path_and_migrations_are_site_bound_and_idempotent"
+        ]
+      },
+      {
+        "obligation": "schema-migration",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py::test_database_path_and_migrations_are_site_bound_and_idempotent"
+        ]
+      },
+      {
+        "obligation": "deterministic-reset",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py::test_reset_is_deterministic_and_preserves_the_schema",
+          "clone/tests/test_app_surface.py::test_admin_reset_requires_token"
+        ]
+      },
+      {
+        "obligation": "restart-persistence",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py::test_quote_state_survives_service_restart",
+          "harbor/instances/aspca-pet-insurance/fixtures/hidden/cicd-suite.json#platform::deploy/restart-persistence"
+        ]
+      },
+      {
+        "obligation": "backup-restore",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py::test_site_backend_backup_is_complete_and_readable"
+        ]
+      },
+      {
+        "obligation": "concurrency",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py::test_concurrent_quote_creation_is_isolated_and_lossless",
+          "harbor/instances/aspca-pet-insurance/fixtures/hidden/cicd-suite.json#platform::deploy/concurrent-isolation"
+        ]
+      }
+    ]
+  },
+  "auth_semantics": {
+    "account_database_scope": "site-isolated",
+    "credential_storage": "salted-scrypt-hash",
+    "session_storage": "opaque-cookie-digest-at-rest",
+    "registration_account_creation": "direct-password",
+    "verification_challenge_storage": "not-applicable",
+    "password_reset_enumeration": "not-applicable",
+    "mail_default": "LOCAL_ONLY",
+    "mail_statuses": [
+      "LOCAL_ONLY",
+      "SMTP_PENDING",
+      "SMTP_SENT",
+      "SMTP_FAILED"
+    ],
+    "smtp_activation": "explicit-complete-config-only",
+    "smtp_delivery_ceiling": 3,
+    "rejected_secret_journaling": "forbidden",
+    "legacy_write_policy": "read-compatible-write-rejected"
+  },
+  "common_capabilities": {
+    "account_registration": "account-registration",
+    "account_sign_in": "account-sign-in",
+    "session_lifecycle": "session-lifecycle",
+    "password_recovery": "password-recovery",
+    "email_delivery": "email-delivery"
+  },
+  "capabilities": [
+    {
+      "id": "account-registration",
+      "label": "Fail-closed member registration boundary",
+      "priority": "p1",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "registration-attempt",
+          "identity": "one anonymous request with synthetic fields",
+          "owner_scope": "session",
+          "persistence": "ephemeral"
+        }
+      ],
+      "state_machine": {
+        "kind": "entity-lifecycle",
+        "states": ["collecting", "validated", "refused"],
+        "transitions": [
+          {"from": "collecting", "to": "validated", "trigger": "required fields pass validation"},
+          {"from": "validated", "to": "refused", "trigger": "member evidence boundary is enforced"}
+        ]
+      },
+      "server_authorities": [
+        "The server validates request shape and always refuses account creation.",
+        "No account, challenge, session, or mail row is created."
+      ],
+      "external_effect": "none",
+      "journey_ids": ["auth.register.unavailable"],
+      "invariant_ids": ["auth.member-operations-unavailable"],
+      "proofs": {
+        "evidence": {
+          "valid": ["clone/tests/test_portal_api.py::test_register_never_registers"],
+          "invalid": ["clone/tests/test_portal_api.py::test_register_never_registers"]
+        },
+        "not_applicable": [
+          {"obligation": "duplicate", "rationale": "No registration state can be created."},
+          {"obligation": "stale", "rationale": "No registration challenge can be created."},
+          {"obligation": "foreign-owner", "rationale": "No account or owner authority exists."},
+          {"obligation": "unauthorized-role", "rationale": "All anonymous callers receive the same refusal."},
+          {"obligation": "restart", "rationale": "The boundary creates no persistent state."},
+          {"obligation": "migration", "rationale": "The boundary creates no capability-specific schema."},
+          {"obligation": "concurrency", "rationale": "Concurrent refusals have no shared mutation."}
+        ]
+      }
+    },
+    {
+      "id": "account-sign-in",
+      "label": "Fail-closed member sign-in boundary",
+      "priority": "p1",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "sign-in-attempt",
+          "identity": "one anonymous request with synthetic credentials",
+          "owner_scope": "session",
+          "persistence": "ephemeral"
+        }
+      ],
+      "state_machine": {
+        "kind": "entity-lifecycle",
+        "states": ["collecting", "validated", "refused"],
+        "transitions": [
+          {"from": "collecting", "to": "validated", "trigger": "required fields pass validation"},
+          {"from": "validated", "to": "refused", "trigger": "member evidence boundary is enforced"}
+        ]
+      },
+      "server_authorities": [
+        "The server validates request shape and always refuses authentication.",
+        "No authenticated session or member authority is created."
+      ],
+      "external_effect": "none",
+      "journey_ids": ["auth.login.invalid"],
+      "invariant_ids": ["auth.member-operations-unavailable"],
+      "proofs": {
+        "evidence": {
+          "valid": ["clone/tests/test_portal_api.py::test_login_never_authenticates"],
+          "invalid": ["clone/tests/test_portal_api.py::test_login_empty_fields_are_validation_errors"]
+        },
+        "not_applicable": [
+          {"obligation": "duplicate", "rationale": "No sign-in state can be created."},
+          {"obligation": "stale", "rationale": "No authenticated session can become stale."},
+          {"obligation": "foreign-owner", "rationale": "No account or owner authority exists."},
+          {"obligation": "unauthorized-role", "rationale": "All anonymous callers receive the same refusal."},
+          {"obligation": "restart", "rationale": "The boundary creates no persistent state."},
+          {"obligation": "migration", "rationale": "The boundary creates no capability-specific schema."},
+          {"obligation": "concurrency", "rationale": "Concurrent refusals have no shared mutation."}
+        ]
+      }
+    },
+    {
+      "id": "session-lifecycle",
+      "label": "Anonymous-only session boundary",
+      "priority": "p1",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "anonymous-session-boundary",
+          "identity": "request-local anonymous state",
+          "owner_scope": "session",
+          "persistence": "ephemeral"
+        }
+      ],
+      "state_machine": {
+        "kind": "session-lifecycle",
+        "states": ["anonymous", "refused"],
+        "transitions": [
+          {"from": "anonymous", "to": "refused", "trigger": "a member operation is submitted"}
+        ]
+      },
+      "server_authorities": [
+        "Member submissions never elevate an anonymous request.",
+        "The clone never emits an authenticated session cookie."
+      ],
+      "external_effect": "none",
+      "journey_ids": ["auth.login.invalid"],
+      "invariant_ids": ["auth.member-operations-unavailable"],
+      "proofs": {
+        "evidence": {
+          "valid": ["clone/tests/test_portal_api.py::test_login_never_authenticates"],
+          "invalid": ["clone/tests/test_portal_api.py::test_login_empty_fields_are_validation_errors"]
+        },
+        "not_applicable": [
+          {"obligation": "duplicate", "rationale": "No server session is created."},
+          {"obligation": "stale", "rationale": "No authenticated session can expire or become stale."},
+          {"obligation": "foreign-owner", "rationale": "No owner-bound session exists."},
+          {"obligation": "unauthorized-role", "rationale": "No role elevation exists."},
+          {"obligation": "restart", "rationale": "The boundary creates no persistent state."},
+          {"obligation": "migration", "rationale": "The boundary creates no capability-specific schema."},
+          {"obligation": "concurrency", "rationale": "Concurrent refusals have no shared mutation."}
+        ]
+      }
+    },
+    {
+      "id": "password-recovery",
+      "label": "Fail-closed password-recovery boundary",
+      "priority": "p1",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "recovery-attempt",
+          "identity": "one anonymous request with a synthetic email",
+          "owner_scope": "session",
+          "persistence": "ephemeral"
+        }
+      ],
+      "state_machine": {
+        "kind": "challenge-lifecycle",
+        "states": ["collecting", "validated", "refused"],
+        "transitions": [
+          {"from": "collecting", "to": "validated", "trigger": "email passes validation"},
+          {"from": "validated", "to": "refused", "trigger": "member evidence boundary is enforced"}
+        ]
+      },
+      "server_authorities": [
+        "The server validates request shape and always refuses recovery.",
+        "No challenge, password mutation, session mutation, or mail row is created."
+      ],
+      "external_effect": "none",
+      "journey_ids": ["auth.forgot-password.unavailable"],
+      "invariant_ids": ["auth.member-operations-unavailable"],
+      "proofs": {
+        "evidence": {
+          "valid": ["clone/tests/test_portal_api.py::test_forgot_password_never_sends"],
+          "invalid": ["clone/tests/test_portal_api.py::test_forgot_password_requires_email"]
+        },
+        "not_applicable": [
+          {"obligation": "duplicate", "rationale": "No reset challenge is created."},
+          {"obligation": "stale", "rationale": "No reset challenge can become stale."},
+          {"obligation": "foreign-owner", "rationale": "No account binding exists."},
+          {"obligation": "unauthorized-role", "rationale": "All anonymous callers receive the same refusal."},
+          {"obligation": "restart", "rationale": "The boundary creates no persistent state."},
+          {"obligation": "migration", "rationale": "The boundary creates no capability-specific schema."},
+          {"obligation": "concurrency", "rationale": "Concurrent refusals have no shared mutation."}
+        ]
+      }
+    },
+    {
+      "id": "email-delivery",
+      "label": "No-mail member boundary",
+      "priority": "p1",
+      "category": "communication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "mail-boundary",
+          "identity": "a refused member operation with no delivery job",
+          "owner_scope": "system",
+          "persistence": "ephemeral"
+        }
+      ],
+      "state_machine": {
+        "kind": "delivery-lifecycle",
+        "states": ["not-requested", "refused"],
+        "transitions": [
+          {"from": "not-requested", "to": "refused", "trigger": "registration or recovery reaches the member boundary"}
+        ]
+      },
+      "server_authorities": [
+        "No in-scope path creates or claims a mail job.",
+        "Real and simulated delivery are both absent from the candidate contract."
+      ],
+      "external_effect": "none",
+      "journey_ids": ["auth.register.unavailable", "auth.forgot-password.unavailable"],
+      "invariant_ids": ["auth.member-operations-unavailable"],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_portal_api.py::test_register_never_registers",
+            "clone/tests/test_portal_api.py::test_forgot_password_never_sends"
+          ],
+          "invalid": ["clone/tests/test_portal_api.py::test_forgot_password_requires_email"]
+        },
+        "not_applicable": [
+          {"obligation": "duplicate", "rationale": "No mail job is created."},
+          {"obligation": "stale", "rationale": "No mail job can become stale."},
+          {"obligation": "foreign-owner", "rationale": "No recipient-owned mail state exists."},
+          {"obligation": "unauthorized-role", "rationale": "No role may activate delivery."},
+          {"obligation": "restart", "rationale": "The boundary creates no persistent state."},
+          {"obligation": "migration", "rationale": "The candidate creates no mail capability schema."},
+          {"obligation": "concurrency", "rationale": "Concurrent refusals create no mail jobs."}
+        ]
+      }
+    }
+  ]
+}

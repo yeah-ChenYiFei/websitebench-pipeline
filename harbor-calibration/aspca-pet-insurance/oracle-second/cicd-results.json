@@ -1,0 +1,99 @@
+{
+  "checks": [
+    {
+      "check_id": "platform::artifact/complete",
+      "reason": "ARTIFACT_FILES:1006",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::artifact/deploy-path-safe",
+      "reason": "ARTIFACT_OK",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::deploy/offline-clean",
+      "reason": "OFFLINE_DEPLOY_STATIC_OK",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::deploy/healthz",
+      "reason": "HEALTHZ_200",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::deploy/foreground-lifecycle",
+      "reason": "FOREGROUND_PROCESS",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::deploy/graceful-sigterm",
+      "reason": "SIGTERM_EXITED",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::deploy/restart-persistence",
+      "reason": "SAME_DATA_DIR_RESTARTED_AND_PRESERVED",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::deploy/concurrent-isolation",
+      "reason": "DISTINCT_PORT_DATA_NAMESPACE_RUNNING",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::artifact/code-tree-unchanged",
+      "reason": "TREE_HASH_STABLE_AND_WRITES_DATA_ONLY",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::network/external-closed",
+      "reason": "RUNTIME_NETWORK_AUDIT_CLEAN",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::security/secret-reference-verifier-scan",
+      "reason": "SCAN_CLEAN",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::browser/chromium-smoke",
+      "reason": "CHROMIUM_PAGE_LOADED",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::accessibility/basic",
+      "reason": "BASIC_ACCESSIBILITY_VIOLATIONS:0",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::performance/startup-budget",
+      "reason": "STARTUP_SECONDS:2.099326",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    },
+    {
+      "check_id": "platform::performance/resource-budget",
+      "reason": "RSS_KB:64372:DATA_BYTES:40:AFFINITY_CPUS:4:CGROUP_CPUS:64.0",
+      "source": "trusted_platform_assertion",
+      "status": "passed"
+    }
+  ],
+  "schema_version": "websitebench.harbor.cicd-results.v1",
+  "summary": {
+    "passed": 15,
+    "total": 15
+  }
+}

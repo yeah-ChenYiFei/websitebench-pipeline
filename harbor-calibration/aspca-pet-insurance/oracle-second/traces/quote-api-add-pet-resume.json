@@ -1,0 +1,42 @@
+{
+  "actions": [
+    "api",
+    "api",
+    "api",
+    "api"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "add-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "first-pet"
+    },
+    {
+      "comparator": "exact",
+      "id": "second-pet"
+    },
+    {
+      "comparator": "exact",
+      "id": "second-pet-monthly"
+    },
+    {
+      "comparator": "exact",
+      "id": "resume-status"
+    },
+    {
+      "comparator": "exact",
+      "id": "resume-quote-id"
+    },
+    {
+      "comparator": "exact",
+      "id": "resume-missing-status"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "quote-api-add-pet-resume"
+}

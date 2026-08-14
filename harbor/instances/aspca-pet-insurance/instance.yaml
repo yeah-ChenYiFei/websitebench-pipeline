@@ -1,0 +1,43 @@
+schema_version: websitebench.harbor.instance.v2
+instance_id: aspca-pet-insurance
+site_manifest: sites/aspca-pet-insurance/site.yaml
+task:
+  category: web-development
+  type: fullstack-reconstruction
+  language: web
+metadata:
+  author_name: WebsiteBench
+  author_email: bench@websitebench.invalid
+  difficulty: hard
+  tags:
+  - browser-checks
+  - frontend-backend
+  - insurance
+  - aspca-pet-insurance
+budgets:
+  agent_timeout_sec: 28800
+  verifier_timeout_sec: 3600
+  build_timeout_sec: 1200
+  cpus: 4
+  memory_mb: 8192
+  storage_mb: 20480
+paths:
+  instruction: instruction.md
+  public: public
+  verifier: verifier
+  hidden_fixtures: fixtures/hidden
+  oracle_solution: solution/solve.sh
+suites:
+  task: fixtures/hidden/task-suite.json
+  visual: fixtures/hidden/visual-suite.json
+  cicd: fixtures/hidden/cicd-suite.json
+reference_observations:
+  status: captured
+  artifact: fixtures/hidden/reference-observations.json
+calibration:
+  nop_max_task_score: 5
+  oracle_task_score: 100
+  oracle_min_visual_score: 95
+  oracle_cicd_score: 100
+  repeat_deterministic: true
+opencli_profile: quote

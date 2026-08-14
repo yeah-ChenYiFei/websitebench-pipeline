@@ -1,0 +1,23 @@
+{
+  "actions": [
+    "api"
+  ],
+  "attempts": 1,
+  "observations": [
+    {
+      "comparator": "exact",
+      "id": "status"
+    },
+    {
+      "comparator": "exact",
+      "id": "ok"
+    },
+    {
+      "comparator": "exact",
+      "id": "site-id"
+    }
+  ],
+  "schema_version": "websitebench.harbor.sanitized-task-trace.v1",
+  "status": "passed",
+  "task_id": "healthz"
+}

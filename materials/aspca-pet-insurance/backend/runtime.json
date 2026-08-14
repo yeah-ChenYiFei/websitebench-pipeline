@@ -29,6 +29,36 @@
   "mail": {
     "enabled": true,
     "purposes": {
+      "registration": {
+        "body": "Your ASPCA Pet Health Insurance verification code is ${code}.",
+        "expiry": "This code expires in ${minutes} minutes.",
+        "footer": "This local simulation does not send an external email.",
+        "lead": "Finish creating your local ASPCA Pet Health Insurance account.",
+        "required_variables": [
+          "code",
+          "minutes"
+        ],
+        "secret_variables": [
+          "code"
+        ],
+        "subject": "Verify your ASPCA Pet Health Insurance account",
+        "template_id": "aspca-pet-insurance.registration.v1"
+      },
+      "password-reset": {
+        "body": "Your ASPCA Pet Health Insurance password reset code is ${code}.",
+        "expiry": "This code expires in ${minutes} minutes.",
+        "footer": "Ignore this local simulation if you did not request a password reset.",
+        "lead": "A password reset was requested for your local account.",
+        "required_variables": [
+          "code",
+          "minutes"
+        ],
+        "secret_variables": [
+          "code"
+        ],
+        "subject": "Reset your ASPCA Pet Health Insurance password",
+        "template_id": "aspca-pet-insurance.password-reset.v1"
+      },
       "policy-confirmation": {
         "body": "Policy ${policy_number} for ${pet_name} was activated with a simulated ${frequency} payment of ${amount} ${currency}.",
         "expiry": "This local simulation has no external billing effect.",
