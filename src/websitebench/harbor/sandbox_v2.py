@@ -647,6 +647,8 @@ def sandbox_exec(
     gid: int | None,
     file_size_limit_bytes: int | None,
     read_paths: Sequence[Path] = (),
+    broker_tid_fd: int | None = None,
+    control_fd: int | None = None,
 ) -> None:
     root = root.resolve(strict=True)
     data = data.resolve(strict=True)
@@ -654,6 +656,10 @@ def sandbox_exec(
     child_pid = os.fork()
     if child_pid == 0:
         parent_channel.close()
+        if control_fd is not None:
+            os.close(control_fd)
+        if broker_tid_fd is not None:
+            os.close(broker_tid_fd)
         stage = "landlock"
         try:
             _landlock(root, data, bind_port, connect_ports, read_paths)
@@ -702,6 +708,8 @@ def sandbox_exec(
         os.setgid(gid)
         os.setuid(uid)
     broker_errors: list[BaseException] = []
+    if control_fd is not None:
+        os.set_blocking(control_fd, False)
 
     def broker() -> None:
         try:
@@ -711,8 +719,31 @@ def sandbox_exec(
 
     broker_thread = threading.Thread(target=broker, daemon=True)
     broker_thread.start()
+    if broker_tid_fd is not None:
+        try:
+            native_id = broker_thread.native_id
+            if native_id is None:
+                raise OSError(errno.EIO, "lock broker thread has no native id")
+            os.write(broker_tid_fd, f"{native_id}\n".encode("ascii"))
+        finally:
+            os.close(broker_tid_fd)
     status = 0
     while True:
+        if control_fd is not None:
+            try:
+                requested = os.read(control_fd, 4096)
+            except (BlockingIOError, OSError):
+                requested = b""
+            for marker in requested:
+                requested_signal = {
+                    ord("T"): signal.SIGTERM,
+                    ord("K"): signal.SIGKILL,
+                }.get(marker)
+                if requested_signal is not None:
+                    try:
+                        os.kill(child_pid, requested_signal)
+                    except ProcessLookupError:
+                        pass
         waited, status = os.waitpid(child_pid, os.WNOHANG)
         if waited == child_pid:
             break
@@ -721,12 +752,16 @@ def sandbox_exec(
             _waited, status = os.waitpid(child_pid, 0)
             break
         time.sleep(0.01)
+    if control_fd is not None:
+        os.close(control_fd)
     os.close(listener)
     broker_thread.join(timeout=1)
     if broker_errors:
         raise OSError(errno.EIO, "candidate lock broker failed") from broker_errors[0]
-    exit_code = os.waitstatus_to_exitcode(status)
-    os._exit(exit_code if exit_code >= 0 else 128 - exit_code)
+    # The trusted launcher/broker completed normally. Candidate business exit
+    # status is observed through readiness/lifecycle, while a nonzero launcher
+    # status remains reserved for audit infrastructure failure.
+    os._exit(0)
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -739,6 +774,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--gid", type=int)
     parser.add_argument("--file-size-limit-bytes", type=int)
     parser.add_argument("--read-path", type=Path, action="append", default=[])
+    parser.add_argument("--broker-tid-fd", type=int)
+    parser.add_argument("--control-fd", type=int)
     parser.add_argument("command", nargs=argparse.REMAINDER)
     arguments = parser.parse_args(argv)
     command = arguments.command
@@ -758,6 +795,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         gid=arguments.gid,
         file_size_limit_bytes=arguments.file_size_limit_bytes,
         read_paths=arguments.read_path,
+        broker_tid_fd=arguments.broker_tid_fd,
+        control_fd=arguments.control_fd,
     )
     return 127
 

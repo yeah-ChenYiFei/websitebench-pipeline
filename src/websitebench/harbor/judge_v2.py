@@ -45,6 +45,8 @@ VISUAL_RESULTS_SCHEMA = "websitebench.harbor.visual-results.v1"
 CICD_RESULTS_SCHEMA = "websitebench.harbor.cicd-results.v1"
 SCORE_SCHEMA = "websitebench.harbor.score.v2"
 VERDICT_SCHEMA = "websitebench.harbor.verdict.v2"
+MAX_CANDIDATE_AUDIT_BYTES = 256 * 1024 * 1024
+DETERMINISTIC_CHROMIUM_ARGS = ("--disable-partial-raster",)
 
 RESULT_STATUSES = {"passed", "failed", "skipped", "flaky"}
 COMPARATORS = {
@@ -77,6 +79,15 @@ PLATFORM_CICD_CHECKS = (
 
 class InvalidRun(ValueError):
     """The verifier inputs or execution are invalid, so no reward may exist."""
+
+
+def launch_deterministic_chromium(playwright: Any) -> Any:
+    """Launch the fixed full-raster Chromium profile used by capture and score."""
+
+    return playwright.chromium.launch(
+        headless=True,
+        args=list(DETERMINISTIC_CHROMIUM_ARGS),
+    )
 
 
 _ISOLATION_UID_LOCK = threading.Lock()
@@ -988,11 +999,33 @@ class CandidateProcess:
     storage_limit_mb: int | None = None
     isolation_uid: int | None = None
     allowed_connect_ports: tuple[int, ...] = ()
+    stdout_path: Path | None = None
     process: subprocess.Popen[bytes] | None = None
     _sentinel_initialized: bool = False
     _audit_failed: bool = False
+    _broker_tid_fd: int | None = None
+    _control_write_fd: int | None = None
+    _broker_tid_buffer: bytes = b""
+    _broker_tid: int | None = None
+    _audit_generation: int = 0
+    _active_audit_prefix: Path | None = None
+    _trusted_audit_logs: tuple[Path, ...] = ()
+    _stdout_handle: Any | None = None
+    _audit_watchdog: threading.Thread | None = None
+    _audit_watchdog_stop: threading.Event | None = None
+    _lifecycle_clean: bool = True
 
     def start(self) -> None:
+        if not self._lifecycle_clean:
+            raise RuntimeError("candidate lifecycle cleanup is incomplete")
+        if self.process is not None and self.process.poll() is None:
+            raise RuntimeError("candidate process is already running")
+        self._stop_audit_watchdog()
+        self._close_stdout_handle()
+        if self._broker_tid_fd is not None:
+            self._audit_failed = True
+            self._close_broker_tid_fd()
+        self._close_control_fd()
         deploy = self.root / "deploy.sh"
         # Start from an explicit public contract. In particular, verifier,
         # source-reference, CI and provider credentials can never reach an
@@ -1060,16 +1093,6 @@ class CandidateProcess:
             if resource is not None and self.memory_limit_mb is not None:
                 memory_bytes = self.memory_limit_mb * 1024 * 1024
                 resource.setrlimit(resource.RLIMIT_AS, (memory_bytes, memory_bytes))
-            if resource is not None and self.storage_limit_mb is not None:
-                file_bytes = self.storage_limit_mb * 1024 * 1024
-                soft_bytes = (
-                    min(file_bytes, 8 * 1024 * 1024)
-                    if self.audit_prefix is not None
-                    else file_bytes
-                )
-                resource.setrlimit(
-                    resource.RLIMIT_FSIZE, (soft_bytes, file_bytes)
-                )
             if resource is not None and run_uid is not None:
                 resource.setrlimit(resource.RLIMIT_NPROC, (128, 128))
 
@@ -1078,7 +1101,6 @@ class CandidateProcess:
             for limit in (
                 self.cpu_limit,
                 self.memory_limit_mb,
-                self.storage_limit_mb,
             )
             or run_uid is not None
         ):
@@ -1111,32 +1133,75 @@ class CandidateProcess:
                     str(self.storage_limit_mb * 1024 * 1024),
                 ]
             )
-        command.extend(["--", str(deploy)])
+        control_read_fd, control_write_fd = os.pipe()
+        self._control_write_fd = control_write_fd
+        command.extend(["--control-fd", str(control_read_fd), "--", str(deploy)])
         if self.audit_prefix is not None:
             tracer = shutil.which("strace")
             if tracer is None:
+                os.close(control_read_fd)
+                self._close_control_fd()
                 raise OSError("strace is required for candidate write auditing")
             self.audit_prefix.parent.mkdir(parents=True, exist_ok=True)
+            self._audit_generation += 1
+            self._active_audit_prefix = self.audit_prefix.with_name(
+                f"{self.audit_prefix.name}.generation-{self._audit_generation}"
+            )
+            self._broker_tid_buffer = b""
+            self._broker_tid = None
+            broker_read_fd, broker_write_fd = os.pipe()
+            os.set_blocking(broker_read_fd, False)
+            self._broker_tid_fd = broker_read_fd
+            command[-2:-2] = ["--broker-tid-fd", str(broker_write_fd)]
             command = [
                 tracer,
                 "--follow-forks",
                 "--decode-fds=path",
                 "--output-separately",
                 "--output",
-                str(self.audit_prefix),
+                str(self._active_audit_prefix),
                 "--trace=%file,%memory,%network,%ipc,ftruncate",
                 *command,
             ]
-        self.process = subprocess.Popen(
-            command,
-            cwd=self.root,
-            env=environment,
-            stdin=subprocess.DEVNULL,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-            start_new_session=True,
-            preexec_fn=preexec,
-        )
+        else:
+            broker_write_fd = None
+        try:
+            if self.stdout_path is not None:
+                stdout_path = self.stdout_path.resolve()
+                data_root = self.data_dir.resolve()
+                if data_root not in stdout_path.parents:
+                    raise ValueError("candidate stdout path must be inside data dir")
+                stdout_path.parent.mkdir(parents=True, exist_ok=True)
+                self._stdout_handle = stdout_path.open("ab")
+            self.process = subprocess.Popen(
+                command,
+                cwd=self.root,
+                env=environment,
+                stdin=subprocess.DEVNULL,
+                stdout=self._stdout_handle or subprocess.DEVNULL,
+                stderr=self._stdout_handle or subprocess.DEVNULL,
+                start_new_session=True,
+                preexec_fn=preexec,
+                pass_fds=(
+                    (control_read_fd,)
+                    if broker_write_fd is None
+                    else (broker_write_fd, control_read_fd)
+                ),
+            )
+            self._lifecycle_clean = False
+        except BaseException:
+            self._close_stdout_handle()
+            if broker_write_fd is not None:
+                os.close(broker_write_fd)
+            self._close_broker_tid_fd()
+            self._close_control_fd()
+            raise
+        finally:
+            os.close(control_read_fd)
+        if broker_write_fd is not None:
+            os.close(broker_write_fd)
+        if self.audit_prefix is not None:
+            self._start_audit_watchdog()
 
     def ready(self, path: str = "/healthz", timeout: float = 30.0) -> bool:
         deadline = time.monotonic() + timeout
@@ -1154,35 +1219,108 @@ class CandidateProcess:
         return False
 
     def stop(self, timeout: float = 10.0) -> bool:
+        deadline = time.monotonic() + timeout
+
+        def group_exited(group: int) -> bool:
+            while _process_group_alive(group):
+                if time.monotonic() >= deadline:
+                    return False
+                time.sleep(0.02)
+            return True
+
         if self.process is None:
+            self._finish_broker_attestation()
+            self._stop_audit_watchdog()
+            self._close_stdout_handle()
+            self._close_control_fd()
+            self._lifecycle_clean = True
             return True
         process = self.process
         group = process.pid
         if process.poll() is not None:
-            if _process_group_alive(group):
+            if not group_exited(group):
                 self._audit_failed = self.audit_prefix is not None
                 _kill_process_group(group, signal.SIGKILL)
+                self._finish_broker_attestation()
+                self._stop_audit_watchdog()
+                self._close_stdout_handle()
+                self._close_control_fd()
+                self._lifecycle_clean = False
                 return False
-            if process.returncode is not None and process.returncode < 0:
+            if (
+                self.audit_prefix is not None
+                and process.returncode is not None
+                and process.returncode != 0
+            ):
                 self._audit_failed = self.audit_prefix is not None
-            return True
-        _kill_process_group(group, signal.SIGTERM, process=process)
+            self._finish_broker_attestation()
+            self._stop_audit_watchdog()
+            self._close_stdout_handle()
+            self._close_control_fd()
+            self._lifecycle_clean = True
+            return not self._audit_failed
+        if not self._request_candidate_signal(signal.SIGTERM):
+            _kill_process_group(group, signal.SIGTERM, process=process)
         try:
-            process.wait(timeout=timeout)
+            process.wait(timeout=max(0.01, deadline - time.monotonic()))
         except subprocess.TimeoutExpired:
             _kill_process_group(group, signal.SIGKILL, process=process)
             process.wait(timeout=5)
+            self._audit_failed = self.audit_prefix is not None
+            self._finish_broker_attestation()
+            self._stop_audit_watchdog()
+            self._close_stdout_handle()
+            self._close_control_fd()
+            self._lifecycle_clean = False
             return False
-        if _process_group_alive(group):
+        if not group_exited(group):
             _kill_process_group(group, signal.SIGKILL, process=process)
+            self._audit_failed = self.audit_prefix is not None
+            self._finish_broker_attestation()
+            self._stop_audit_watchdog()
+            self._close_stdout_handle()
+            self._close_control_fd()
+            self._lifecycle_clean = False
+            return False
+        self._finish_broker_attestation()
+        self._stop_audit_watchdog()
+        self._close_stdout_handle()
+        self._close_control_fd()
+        self._lifecycle_clean = True
+        return not self._audit_failed
+
+    def _request_candidate_signal(self, requested_signal: signal.Signals) -> bool:
+        if self._control_write_fd is None:
+            return False
+        payload = {
+            signal.SIGTERM: b"T",
+            signal.SIGKILL: b"K",
+        }.get(requested_signal)
+        if payload is None:
+            return False
+        try:
+            os.write(self._control_write_fd, payload)
+        except OSError:
             return False
         return True
+
+    def _close_control_fd(self) -> None:
+        if self._control_write_fd is None:
+            return
+        try:
+            os.close(self._control_write_fd)
+        except OSError:
+            pass
+        self._control_write_fd = None
 
     def write_violations(self) -> list[str]:
         """Return audited write paths outside WEBSITEBENCH_DATA_DIR."""
 
         if self.audit_prefix is None:
             return ["WRITE_AUDIT_NOT_CONFIGURED"]
+        self._finish_broker_attestation()
+        if self._broker_tid_fd is not None:
+            return ["WRITE_AUDIT_INCOMPLETE"]
         if self._audit_failed:
             return ["WRITE_AUDIT_TERMINATED_EARLY"]
         allowed_root = self.data_dir.resolve()
@@ -1203,6 +1341,8 @@ class CandidateProcess:
         if not logs:
             return ["WRITE_AUDIT_EMPTY"]
         for log in logs:
+            if log in self._trusted_audit_logs:
+                continue
             try:
                 lines = log.read_text(encoding="utf-8", errors="replace").splitlines()
             except OSError:
@@ -1256,9 +1396,7 @@ class CandidateProcess:
                         decoded_return = decoded_return_path.search(line)
                         if decoded_return is not None:
                             # The broker reopens a tracee descriptor through procfs.
-                            # Audit the descriptor's decoded target instead of the
-                            # procfs transport path so data-dir writes remain valid
-                            # and descriptors to outside files remain violations.
+                            # Audit its decoded target rather than the transport path.
                             raw_paths = [json.dumps(decoded_return.group(1))]
                 if line.startswith(("symlink(", "symlinkat(")):
                     raw_paths = raw_paths[-1:]
@@ -1297,11 +1435,119 @@ class CandidateProcess:
                         violations.add(str(resolved))
         return sorted(violations)
 
+    def _consume_broker_tid(self) -> None:
+        descriptor = self._broker_tid_fd
+        if descriptor is None:
+            return
+        while True:
+            try:
+                chunk = os.read(descriptor, 64)
+            except BlockingIOError:
+                break
+            except OSError:
+                chunk = b""
+            if not chunk:
+                self._close_broker_tid_fd()
+                break
+            self._broker_tid_buffer += chunk
+        lines = self._broker_tid_buffer.split(b"\n")
+        pending = lines.pop()
+        for line in lines:
+            if re.fullmatch(rb"[1-9][0-9]*", line) is None:
+                self._audit_failed = True
+                continue
+            value = int(line)
+            if value <= 0 or self._broker_tid is not None:
+                self._audit_failed = True
+                continue
+            self._broker_tid = value
+        self._broker_tid_buffer = pending
+
+    def _close_broker_tid_fd(self) -> None:
+        if self._broker_tid_fd is not None:
+            try:
+                os.close(self._broker_tid_fd)
+            except OSError:
+                pass
+            self._broker_tid_fd = None
+
+    def _close_stdout_handle(self) -> None:
+        if self._stdout_handle is not None:
+            self._stdout_handle.close()
+            self._stdout_handle = None
+
+    def _start_audit_watchdog(self) -> None:
+        if self.audit_prefix is None or self.process is None:
+            return
+        stop = threading.Event()
+        self._audit_watchdog_stop = stop
+        base = self.audit_prefix
+        process = self.process
+
+        def watch() -> None:
+            while not stop.wait(0.05):
+                total = 0
+                try:
+                    for log in base.parent.glob(base.name + "*"):
+                        if log.is_file():
+                            total += log.stat().st_size
+                            if total > MAX_CANDIDATE_AUDIT_BYTES:
+                                self._audit_failed = True
+                                _kill_process_group(
+                                    process.pid, signal.SIGKILL, process=process
+                                )
+                                return
+                except OSError:
+                    self._audit_failed = True
+                    _kill_process_group(process.pid, signal.SIGKILL, process=process)
+                    return
+
+        watchdog = threading.Thread(
+            target=watch,
+            name=f"candidate-audit-watchdog-{self._audit_generation}",
+            daemon=True,
+        )
+        self._audit_watchdog = watchdog
+        watchdog.start()
+
+    def _stop_audit_watchdog(self) -> None:
+        stop = self._audit_watchdog_stop
+        watchdog = self._audit_watchdog
+        if stop is not None:
+            stop.set()
+        if watchdog is not None and watchdog is not threading.current_thread():
+            watchdog.join(timeout=1)
+        self._audit_watchdog = None
+        self._audit_watchdog_stop = None
+
+    def _finish_broker_attestation(self) -> None:
+        if self.audit_prefix is None or self._active_audit_prefix is None:
+            return
+        self._consume_broker_tid()
+        if self._broker_tid_fd is not None:
+            return
+        if self._broker_tid_buffer or self._broker_tid is None:
+            self._audit_failed = True
+            return
+        expected = self._active_audit_prefix.with_name(
+            f"{self._active_audit_prefix.name}.{self._broker_tid}"
+        )
+        if not expected.is_file():
+            self._audit_failed = True
+            return
+        if expected not in self._trusted_audit_logs:
+            self._trusted_audit_logs = (*self._trusted_audit_logs, expected)
+
     def network_violations(self) -> list[str]:
         """Return destinations outside this worker's declared TCP surface."""
 
         if self.audit_prefix is None:
             return ["NETWORK_AUDIT_NOT_CONFIGURED"]
+        self._finish_broker_attestation()
+        if self._broker_tid_fd is not None:
+            return ["NETWORK_AUDIT_INCOMPLETE"]
+        if self._audit_failed:
+            return ["NETWORK_AUDIT_TERMINATED_EARLY"]
         logs = sorted(self.audit_prefix.parent.glob(self.audit_prefix.name + "*"))
         if not logs:
             return ["NETWORK_AUDIT_EMPTY"]
@@ -1362,6 +1608,11 @@ class CandidateProcess:
 
         if self.audit_prefix is None:
             return ["IPC_AUDIT_NOT_CONFIGURED"]
+        self._finish_broker_attestation()
+        if self._broker_tid_fd is not None:
+            return ["IPC_AUDIT_INCOMPLETE"]
+        if self._audit_failed:
+            return ["IPC_AUDIT_TERMINATED_EARLY"]
         logs = sorted(self.audit_prefix.parent.glob(self.audit_prefix.name + "*"))
         if not logs:
             return ["IPC_AUDIT_EMPTY"]
@@ -1400,6 +1651,22 @@ def _kill_process_group(
 def _process_group_alive(group: int) -> bool:
     if os.name != "posix":
         return False
+    proc = Path("/proc")
+    if proc.is_dir():
+        found_non_zombie = False
+        for status_path in proc.glob("[0-9]*/stat"):
+            try:
+                raw = status_path.read_text(encoding="ascii")
+                fields = raw[raw.rfind(")") + 2 :].split()
+                state = fields[0]
+                process_group = int(fields[2])
+            except (OSError, UnicodeError, ValueError, IndexError):
+                continue
+            if process_group == group and state != "Z":
+                found_non_zombie = True
+                break
+        if not found_non_zombie:
+            return False
     try:
         os.killpg(group, 0)
     except ProcessLookupError:
@@ -1794,7 +2061,7 @@ def run_platform_cicd(
                         from playwright.sync_api import sync_playwright
 
                         with sync_playwright() as playwright:
-                            browser = playwright.chromium.launch(headless=True)
+                            browser = launch_deterministic_chromium(playwright)
                             context = browser.new_context()
                             external_attempts: list[str] = []
 
@@ -1886,8 +2153,9 @@ def run_platform_cicd(
                     graceful,
                     "SIGTERM_EXITED" if graceful else "SIGTERM_REQUIRED_KILL",
                 )
-                first.start()
-                restarted = first.ready(ready_path, startup_timeout)
+                if graceful:
+                    first.start()
+                restarted = graceful and first.ready(ready_path, startup_timeout)
                 persisted = restarted and _sentinel_matches(
                     first_sentinel, first.mailbox_namespace
                 )

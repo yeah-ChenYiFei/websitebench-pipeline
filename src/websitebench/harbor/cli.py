@@ -13,6 +13,7 @@ import yaml
 
 from . import derive as contract_derive
 from .capture import capture_reference
+from .case_protocol import load_case_manifest, score_case_result_files
 from .judge_v2 import score_results
 from .bundle_v2 import validate_bundle
 from .calibration_v2 import calibrate_bundle
@@ -52,6 +53,7 @@ def _init_instance(args: argparse.Namespace) -> int:
     load_site(
         resolve_inside(corpus_root, args.site_manifest, must_exist=True),
         allow_legacy_v1=args.legacy_v1,
+        allow_legacy_deploy_v2=False,
     )
     manifest = initialize_instance(
         args.instance_dir,
@@ -70,6 +72,7 @@ def _validate(args: argparse.Namespace) -> int:
         args.instance,
         corpus_root=args.corpus_root,
         allow_legacy_v1=args.legacy_v1,
+        allow_legacy_deploy_v2=args.legacy_deploy_v2,
     )
     payload: dict[str, Any] = {
         "status": "valid",
@@ -84,6 +87,17 @@ def _validate(args: argparse.Namespace) -> int:
         payload["reference_observations"] = instance.data["reference_observations"][
             "status"
         ]
+        if "case_manifest" in instance.data:
+            _case_manifest, summary = load_case_manifest(
+                instance.root / instance.data["case_manifest"],
+                allow_draft=True,
+                allow_sealed=False,
+                expected_site_id=str(instance.site.data["site_id"]),
+            )
+            payload.update(summary.as_dict())
+        else:
+            payload["legacy_deploy_v2"] = True
+            payload["scorable"] = False
     else:
         payload["test_nodes"] = sum(
             len(nodes) for nodes in instance.data["tests"].values()
@@ -132,12 +146,20 @@ def _validate_corpus(args: argparse.Namespace) -> int:
         raise HarborManifestError(
             [f"{corpus_root}: no instances/*/instance.yaml manifests found"]
         )
-    sites = [load_site(path, allow_legacy_v1=args.legacy_v1) for path in site_manifests]
+    sites = [
+        load_site(
+            path,
+            allow_legacy_v1=args.legacy_v1,
+            allow_legacy_deploy_v2=args.legacy_deploy_v2,
+        )
+        for path in site_manifests
+    ]
     instances = [
         load_instance(
             path,
             corpus_root=corpus_root,
             allow_legacy_v1=args.legacy_v1,
+            allow_legacy_deploy_v2=args.legacy_deploy_v2,
         )
         for path in manifests
     ]
@@ -215,6 +237,7 @@ def _materialize(args: argparse.Namespace) -> int:
         args.out,
         corpus_root=args.corpus_root,
         allow_legacy_v1=args.legacy_v1,
+        allow_legacy_deploy_v2=args.legacy_deploy_v2,
     )
     _emit(
         {
@@ -226,14 +249,35 @@ def _materialize(args: argparse.Namespace) -> int:
 
 
 def _capture_reference(args: argparse.Namespace) -> int:
+    candidate = load_instance(
+        args.instance,
+        corpus_root=args.corpus_root,
+        allow_legacy_deploy_v2=args.legacy_deploy_v2,
+    )
+    if "case_manifest" in candidate.data:
+        _manifest, summary = load_case_manifest(
+            candidate.root / candidate.data["case_manifest"],
+            allow_draft=True,
+            allow_sealed=False,
+            expected_site_id=str(candidate.site.data["site_id"]),
+        )
+        if not summary.scorable:
+            raise HarborManifestError(
+                ["capture-reference requires a complete 200-case manifest; status is draft"]
+            )
     artifact = capture_reference(
         args.instance,
         corpus_root=args.corpus_root,
         reference_url=args.reference_url,
         force=args.force,
         allow_source_mutations=args.allow_source_mutations,
+        allow_legacy_deploy_v2=args.legacy_deploy_v2,
     )
-    instance = load_instance(args.instance, corpus_root=args.corpus_root)
+    instance = load_instance(
+        args.instance,
+        corpus_root=args.corpus_root,
+        allow_legacy_deploy_v2=args.legacy_deploy_v2,
+    )
     _emit(
         {
             "status": "captured",
@@ -245,28 +289,62 @@ def _capture_reference(args: argparse.Namespace) -> int:
 
 
 def _score_v2(args: argparse.Namespace) -> int:
-    return score_results(
-        task_suite=args.task_suite,
-        task_results=args.task_results,
-        visual_suite=args.visual_suite,
-        visual_results=args.visual_results,
-        cicd_suite=args.cicd_suite,
-        cicd_results=args.cicd_results,
+    legacy_values = (
+        args.task_suite,
+        args.task_results,
+        args.visual_suite,
+        args.visual_results,
+        args.cicd_suite,
+        args.cicd_results,
+    )
+    if args.legacy_deploy_v2:
+        if args.case_manifest is not None or args.case_results is not None:
+            raise ValueError("--legacy-deploy-v2 cannot be mixed with active case inputs")
+        if any(value is None for value in legacy_values):
+            raise ValueError(
+                "--legacy-deploy-v2 requires all six --task/--visual/--cicd suite/result inputs"
+            )
+        return score_results(
+            task_suite=args.task_suite,
+            task_results=args.task_results,
+            visual_suite=args.visual_suite,
+            visual_results=args.visual_results,
+            cicd_suite=args.cicd_suite,
+            cicd_results=args.cicd_results,
+            output=args.out,
+        )
+    if any(value is not None for value in legacy_values):
+        raise ValueError("the six-suite score interface requires --legacy-deploy-v2")
+    if args.case_manifest is None or args.case_results is None:
+        raise ValueError("score-v2 requires --case-manifest and --case-results")
+    return score_case_result_files(
+        case_manifest=args.case_manifest,
+        case_results=args.case_results,
         output=args.out,
     )
 
 
 def _validate_bundle(args: argparse.Namespace) -> int:
-    _emit(validate_bundle(args.bundle))
+    _emit(
+        validate_bundle(
+            args.bundle, allow_legacy_deploy_v2=args.legacy_deploy_v2
+        )
+    )
     return 0
 
 
 def _calibrate_v2(args: argparse.Namespace) -> int:
-    return calibrate_bundle(args.bundle, args.out)
+    return calibrate_bundle(
+        args.bundle, args.out, allow_legacy_deploy_v2=args.legacy_deploy_v2
+    )
 
 
 def _run_opencli(args: argparse.Namespace) -> int:
-    site = load_site(args.site, allow_legacy_v1=args.legacy_v1)
+    site = load_site(
+        args.site,
+        allow_legacy_v1=args.legacy_v1,
+        allow_legacy_deploy_v2=True,
+    )
     contract = load_contract_from_site(args.site, allow_legacy_v1=args.legacy_v1)
     profile_id = args.profile
     if profile_id is None:
@@ -319,7 +397,11 @@ def _run_opencli(args: argparse.Namespace) -> int:
 
 
 def _opencli_adapters(args: argparse.Namespace) -> int:
-    site = load_site(args.site, allow_legacy_v1=args.legacy_v1)
+    site = load_site(
+        args.site,
+        allow_legacy_v1=args.legacy_v1,
+        allow_legacy_deploy_v2=True,
+    )
     contract = load_contract_from_site(args.site, allow_legacy_v1=args.legacy_v1)
     display_name = str(site.data.get("display_name") or contract.site_id)
     rendered = opencli_adapters.render_for_contract(contract, display_name)
@@ -416,6 +498,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="explicitly allow reading the historical v1 manifest format",
     )
+    validate.add_argument(
+        "--legacy-deploy-v2",
+        action="store_true",
+        help="explicitly allow the pre-compile deploy.sh Harbor v2 contract",
+    )
     validate.set_defaults(function=_validate)
 
     validate_corpus = subparsers.add_parser(
@@ -427,6 +514,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--legacy-v1",
         action="store_true",
         help="explicitly allow reading historical v1 manifests",
+    )
+    validate_corpus.add_argument(
+        "--legacy-deploy-v2",
+        action="store_true",
+        help="explicitly allow pre-compile deploy.sh Harbor v2 manifests",
     )
     validate_corpus.set_defaults(function=_validate_corpus)
 
@@ -440,6 +532,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--legacy-v1",
         action="store_true",
         help="explicitly materialize an immutable historical v1 input",
+    )
+    materialize.add_argument(
+        "--legacy-deploy-v2",
+        action="store_true",
+        help="explicitly materialize the pre-compile deploy.sh Harbor v2 contract",
     )
     materialize.set_defaults(function=_materialize)
 
@@ -455,6 +552,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     capture.add_argument("--force", action="store_true")
     capture.add_argument(
+        "--legacy-deploy-v2",
+        action="store_true",
+        help="explicitly capture for the pre-compile deploy.sh Harbor v2 contract",
+    )
+    capture.add_argument(
         "--allow-source-mutations",
         action="store_true",
         help="allow only scenarios that explicitly declare reference_mutation_authorized",
@@ -464,6 +566,8 @@ def build_parser() -> argparse.ArgumentParser:
     score_v2 = subparsers.add_parser(
         "score-v2", help="compute the deterministic v2 scorecard from exact result sets"
     )
+    score_v2.add_argument("--case-manifest", type=Path)
+    score_v2.add_argument("--case-results", type=Path)
     for option in (
         "task-suite",
         "task-results",
@@ -472,7 +576,12 @@ def build_parser() -> argparse.ArgumentParser:
         "cicd-suite",
         "cicd-results",
     ):
-        score_v2.add_argument(f"--{option}", type=Path, required=True)
+        score_v2.add_argument(f"--{option}", type=Path)
+    score_v2.add_argument(
+        "--legacy-deploy-v2",
+        action="store_true",
+        help="use the historical six-suite deploy.sh score interface",
+    )
     score_v2.add_argument("--out", type=Path, required=True)
     score_v2.set_defaults(function=_score_v2)
 
@@ -481,6 +590,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="verify a materialized v2 bundle's structure and hidden-content closure",
     )
     bundle.add_argument("--bundle", type=Path, required=True)
+    bundle.add_argument(
+        "--legacy-deploy-v2",
+        action="store_true",
+        help="explicitly validate a pre-compile deploy.sh Harbor v2 bundle",
+    )
     bundle.set_defaults(function=_validate_bundle)
 
     calibration = subparsers.add_parser(
@@ -489,6 +603,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     calibration.add_argument("--bundle", type=Path, required=True)
     calibration.add_argument("--out", type=Path, required=True)
+    calibration.add_argument(
+        "--legacy-deploy-v2",
+        action="store_true",
+        help="calibrate a pre-compile deploy.sh Harbor v2 bundle",
+    )
     calibration.set_defaults(function=_calibrate_v2)
 
     run_opencli = subparsers.add_parser(

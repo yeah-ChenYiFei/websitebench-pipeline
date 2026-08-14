@@ -60,9 +60,15 @@ python -m pytest <site>/clone/tests -q     # 站点自带测试全绿
 ```bash
 websitebench-harbor derive-from-clone --help   # 派生入口
 websitebench-harbor run-opencli --help          # 本地回放（advisory）
+websitebench-harbor validate \
+  --instance harbor/instances/<site-id> \
+  --corpus-root harbor
 ```
 
 - [ ] `harbor/sites/<site-id>/site.yaml` 通过 schema 校验；id 与 materials 一致。
+- [ ] 新 site/instance 是严格同 ID 的当前 v2 pair；`runtime.deployment_abi` 为
+      `websitebench.harbor.compile-executable.v1`，formal browsers 恰为 Playwright
+      与 Browser Use，健康端点为 `/__websitebench/health`。
 - [ ] `interactions/opencli-interaction-contract.json` 的 `pending` 列表已清空
       或每项有解释。
 - [ ] replay 结果只作参考——确认它**没有**被接进任何评分或合并条件。
@@ -70,18 +76,27 @@ websitebench-harbor run-opencli --help          # 本地回放（advisory）
 
 ## 6. Harbor instance 验收
 
-参照物：`harbor/instances/tripit/`（instance 布局与站点契约的 schema 版本必须
-一致：tripit 是 v1 站点契约 → v1 instance；v2 站点契约走 hipcamp 式 v2 布局，
-带 fixtures/hidden 三套 suite 与 `reference_observations`）。
+`harbor/instances/tripit/` 只保留历史 v1 身份，不是新站模板。新 instance 必须由
+当前 `init-instance` 生成 compile-executable v2 空白 draft。
 
 - [ ] 每个站点恰好一个同 id instance；`instance.yaml` 通过
       `websitebench-harbor validate`。
+- [ ] 新骨架的 case/task/visual/CI/CD 内容均为空；draft 校验退出 0，并明确输出
+      `status: draft`、`scorable: false` 与缺失数量。draft 不得 capture、
+      materialize、calibrate 或 score。
+- [ ] 进入正式评测前，case manifest 恰好 200 项：T1=20、T2=165、T3=15；
+      T2 中 L1=35、L2=50、L3=80。可信平台检查属于 verifier 基础设施，不占
+      200 个 site case。
+- [ ] candidate 交付入口是无参数可执行 `compile.sh`，私有离线编译后产生根目录
+      `executable`；运行时只使用 `HOST`、`PORT`、`DATA_DIR`、`SEED`、`TZ`，
+      保持前台、响应 SIGTERM，并返回精确健康 JSON `{"status":"ok"}`。
+- [ ] 每个 T2 journey 有显式终态 observation，Playwright 与 Browser Use 独立运行
+      均通过；视觉只由固定 Playwright 渲染并按区域面积加权 RGB SSIM。
 - [ ] agent 可见材料（public/）不包含 reference 源码、verifier、隐藏 fixture、
       oracle 内容——抽查打包产物而不是只看目录。
 - [ ] 校准证据（NOP 低分、oracle 高分、可重复性）是针对当前 bundle 的，
-      不是历史结果。尚未跑校准时必须如实标注（v2 的
-      `reference_observations.status: pending`；v1 在验收记录里写明
-      "oracle/校准未执行"）——**未校准的 instance 不得进入评测发布**。
+      不是历史结果；有效结果必须最后写入可验证 `receipt.json` 后才发布 reward。
+      尚未跑校准时必须如实标注——**未校准的 instance 不得进入评测发布**。
 
 ## 7. 部署验收（公网演示站）
 

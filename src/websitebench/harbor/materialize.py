@@ -14,6 +14,7 @@ from typing import Any
 
 import yaml
 
+from .case_protocol import load_case_manifest, sealed_case_manifest
 from .manifest import (
     HarborManifestError,
     LoadedInstance,
@@ -43,6 +44,12 @@ V2_TEMPLATE_MAP = {
     "tests/run_v2.py": "tests/run_v2.py",
 }
 V2_JUDGE_MODULES = (
+    "browser_use_adapter.py",
+    "case_protocol.py",
+    "compiler_v2.py",
+    "executors_v2.py",
+    "formal_v2.py",
+    "finalizer_v2.py",
     "judge_v2.py",
     "dsl_v2.py",
     "mailbox.py",
@@ -398,11 +405,13 @@ def _bundle_manifest(root: Path, instance: LoadedInstance) -> dict[str, Any]:
 def _bundle_manifest_v2(root: Path, instance: LoadedInstance) -> dict[str, Any]:
     manifest = _bundle_manifest(root, instance)
     manifest["schema_version"] = "websitebench.harbor.bundle.v2"
+    active = "case_manifest" in instance.data
     manifest["judge"] = {
         "kind": "deterministic",
-        "reward_source": "task_completion",
+        "reward_source": "weighted_t2_journey" if active else "task_completion",
         "model_runtime": False,
         "formal_workers": 4,
+        **({"logical_shards": 8, "formal_browsers": ["playwright", "browser-use"]} if active else {}),
         "candidate_tree": "read-only",
     }
     return manifest
@@ -469,6 +478,47 @@ def _agent_contract(instance: LoadedInstance) -> dict[str, Any]:
 def _agent_contract_v2(instance: LoadedInstance) -> dict[str, Any]:
     runtime = instance.site.data["runtime"]
     mailbox = instance.site.data["mailbox"]
+    active = "case_manifest" in instance.data
+    if active:
+        return {
+            "schema_version": "websitebench.harbor.agent-browser-contract.v2",
+            "site_id": instance.site.data["site_id"],
+            "instance_id": instance.data["instance_id"],
+            "reference_access": "browser-only",
+            "exploration_driver": "browser-use-cli",
+            "reference_url_env": runtime["reference_url_env"],
+            "candidate_url_env": runtime["candidate_url_env"],
+            "candidate_port": runtime["candidate_port"],
+            "candidate_ready_path": runtime["ready_path"],
+            "candidate_start": "/app/repo/compile.sh -> /private/build/executable",
+            "candidate_data_dir_env": "DATA_DIR",
+            "mailbox": {
+                "mode": mailbox["mode"],
+                "namespace_env": mailbox["namespace_env"],
+                "gateway_url_env": "WEBSITEBENCH_MAILBOX_URL",
+                "capability_env": "WEBSITEBENCH_MAILBOX_CAPABILITY",
+                "smtp_namespace_header": "X-WebsiteBench-Namespace",
+                "smtp_capability_header": "X-WebsiteBench-Capability",
+            },
+            "delivery": {
+                "artifact": "/app/repo",
+                "deployment_abi": "websitebench.harbor.compile-executable.v1",
+                "compile_entrypoint": "compile.sh",
+                "runtime_entrypoint": "executable",
+                "environment": ["HOST", "PORT", "DATA_DIR", "SEED", "TZ"],
+                "health_path": "/__websitebench/health",
+                "health_response": {"status": "ok"},
+                "runtime_writes": "DATA_DIR_ONLY",
+            },
+            "rules": [
+                "Do not attempt to locate or read hidden suites, frozen reference facts, or verifier outputs.",
+                "Create executable root compile.sh; it takes no arguments and produces root executable during the private offline build.",
+                "The compiled executable stays in the foreground, binds to $HOST:$PORT, handles SIGTERM within ten seconds, and writes only below $DATA_DIR.",
+                "Use no compile-time or runtime dependency downloads or public network access.",
+                "Return exact JSON {\"status\":\"ok\"} from /__websitebench/health.",
+                "Self-check the reference and candidate using Browser Use CLI or the environment's Chrome MCP.",
+            ],
+        }
     return {
         "schema_version": "websitebench.harbor.agent-browser-contract.v2",
         "site_id": instance.site.data["site_id"],
@@ -497,14 +547,53 @@ def _agent_contract_v2(instance: LoadedInstance) -> dict[str, Any]:
         },
         "rules": [
             "Do not attempt to locate or read hidden suites, frozen reference facts, or verifier outputs.",
-            "Use Browser Use CLI to inspect the configured browser-only reference.",
-            "Keep every runtime dependency or built artifact under /app/repo.",
-            "deploy.sh must not download dependencies or contact unauthorized networks.",
+            "Create a candidate-authored executable root deploy.sh that takes no arguments, stays in the foreground, binds to 127.0.0.1:$PORT, and handles SIGTERM.",
+            "Implement the scoped site as entirely local HTML, CSS, JavaScript, assets, fonts, APIs, and backend under /app/repo.",
+            "Use no runtime dependency downloads or public network access.",
+            "Write runtime data only beneath WEBSITEBENCH_DATA_DIR; /healthz must return HTTP 200.",
+            "Self-check the reference and candidate using Browser Use CLI or the environment's Chrome MCP.",
         ],
     }
 
 
 def _runtime_contract_v2(instance: LoadedInstance) -> dict[str, Any]:
+    if "case_manifest" in instance.data:
+        return {
+            "schema_version": "websitebench.harbor.runtime-contract.v2",
+            "site_id": instance.site.data["site_id"],
+            "instance_id": instance.data["instance_id"],
+            "deployment_abi": "websitebench.harbor.compile-executable.v1",
+            "compile_entrypoint": "/app/repo/compile.sh",
+            "entrypoint": "/private/build/executable",
+            "ready_path": "/__websitebench/health",
+            "health_response": {"status": "ok"},
+            "environment": ["HOST", "PORT", "DATA_DIR", "SEED", "TZ"],
+            "candidate_tree": "quarantined-frozen-read-only",
+            "logical_shards": 8,
+            "workers": 4,
+            "worker_isolation": [
+                "fresh_compiled_runtime",
+                "port",
+                "data_dir",
+                "mailbox_namespace",
+                "browser_context",
+                "os_uid",
+            ],
+            "network": {
+                "compile": "none",
+                "runtime": "declared-loopback-port-only",
+                "mailbox_mode": instance.site.data["mailbox"]["mode"],
+                "mailbox_external_allowlist": instance.site.data["mailbox"][
+                    "external_allowlist"
+                ],
+            },
+            "scoring": {
+                "reward_source": "weighted_t2_journey",
+                "formula": "Score20=4*R_L1+6*R_L2+10*R_L3",
+                "reward": "Score20/20",
+                "tie_break": ["Score20", "T1_pass_rate", "T3_pass_rate"],
+            },
+        }
     return {
         "schema_version": "websitebench.harbor.runtime-contract.v2",
         "site_id": instance.site.data["site_id"],
@@ -541,7 +630,7 @@ def _evaluation_contract_v2(instance: LoadedInstance) -> dict[str, Any]:
         instance.root, instance.data["reference_observations"]["artifact"]
     )
     observations = json.loads(observations_path.read_text(encoding="utf-8"))
-    return {
+    contract = {
         "schema_version": "websitebench.harbor.evaluation-contract.v2",
         "workers": 4,
         "ready_path": instance.site.data["runtime"]["ready_path"],
@@ -553,6 +642,7 @@ def _evaluation_contract_v2(instance: LoadedInstance) -> dict[str, Any]:
             "storage_mb": instance.data["budgets"]["storage_mb"],
             "cpus": instance.data["budgets"]["cpus"],
             "startup_timeout_sec": 30,
+            "build_timeout_sec": instance.data["budgets"]["build_timeout_sec"],
         },
         "paths": {
             "task_suite": "/tests/fixtures/task-suite.json",
@@ -565,6 +655,18 @@ def _evaluation_contract_v2(instance: LoadedInstance) -> dict[str, Any]:
         "output": "/run/verifier-final",
         "candidate": "/app/repo",
     }
+    if "case_manifest" in instance.data:
+        contract.update(
+            {
+                "deployment_abi": "websitebench.harbor.compile-executable.v1",
+                "logical_shards": 8,
+                "formal_browsers": ["playwright", "browser-use"],
+                "browser_use": instance.site.data["runtime"]["browser_use"],
+                "ready_response": {"status": "ok"},
+            }
+        )
+        contract["paths"]["case_manifest"] = "/tests/fixtures/case-manifest.json"
+    return contract
 
 
 def _docker_compose(instance: LoadedInstance) -> dict[str, Any]:
@@ -601,6 +703,12 @@ def _docker_compose(instance: LoadedInstance) -> dict[str, Any]:
 def _docker_compose_v2(instance: LoadedInstance) -> dict[str, Any]:
     value = _docker_compose(instance)
     mailbox = instance.site.data["mailbox"]
+    value["services"]["main"]["environment"].update(
+        {
+            "PORT": str(instance.site.data["runtime"]["candidate_port"]),
+            "WEBSITEBENCH_DATA_DIR": "/tmp/websitebench-data",
+        }
+    )
     if mailbox["mode"] == "local-sidecar":
         agent_capability = hashlib.sha256(
             f"agent-mailbox:{instance.data['instance_id']}".encode("utf-8")
@@ -750,6 +858,21 @@ def _copy_v2_judge_package(root: Path) -> None:
     source_root = Path(__file__).resolve().parent
     for filename in V2_JUDGE_MODULES:
         _copy_regular(source_root / filename, package / filename)
+    schema_root = root / "tests/websitebench/viewer/_schemas"
+    schema_root.mkdir(parents=True, exist_ok=True)
+    (root / "tests/websitebench/viewer/__init__.py").write_text(
+        '"""Verifier schema package."""\n', encoding="utf-8", newline="\n"
+    )
+    for filename in (
+        "harbor-case-manifest.schema.json",
+        "harbor-case-result.schema.json",
+        "harbor-eval-v2.schema.json",
+        "harbor-receipt.schema.json",
+    ):
+        _copy_regular(
+            Path(__file__).resolve().parents[1] / "viewer/_schemas" / filename,
+            schema_root / filename,
+        )
 
 
 def _populate_v2(root: Path, instance: LoadedInstance) -> None:
@@ -760,7 +883,11 @@ def _populate_v2(root: Path, instance: LoadedInstance) -> None:
                 "published until capture-reference completes every reference task"
             ]
         )
-    for source, destination in V2_TEMPLATE_MAP.items():
+    template_map = dict(V2_TEMPLATE_MAP)
+    if "case_manifest" in instance.data:
+        template_map.pop("tests/test_v2.sh", None)
+        template_map["tests/test_case_v2.sh"] = "tests/test.sh"
+    for source, destination in template_map.items():
         _copy_template(source, root / destination)
     _copy_v2_judge_package(root)
 
@@ -817,6 +944,17 @@ def _populate_v2(root: Path, instance: LoadedInstance) -> None:
         instance_paths["hidden_fixtures"],
         root / "tests/fixtures",
     )
+    if "case_manifest" in instance.data:
+        case_value, _summary = load_case_manifest(
+            instance.root / instance.data["case_manifest"],
+            allow_draft=False,
+            allow_sealed=False,
+            expected_site_id=str(instance.site.data["site_id"]),
+        )
+        _write_json(
+            root / "tests/fixtures/case-manifest.json",
+            sealed_case_manifest(case_value),
+        )
     oracle = site_paths.get("oracle")
     if oracle:
         _copy_tree(instance.site.root, oracle, root / "solution/site")
@@ -842,9 +980,12 @@ def _populate_v2(root: Path, instance: LoadedInstance) -> None:
             "schema_version": "websitebench.harbor.judge-dependencies.v1",
             "runtime": [
                 "python==3.12.11",
+                "attrs==26.1.0",
                 "greenlet==3.5.4",
                 "imageio==2.37.4",
                 "iniconfig==2.3.0",
+                "jsonschema==4.26.0",
+                "jsonschema-specifications==2025.9.1",
                 "lazy-loader==0.5",
                 "networkx==3.6.1",
                 "numpy==2.5.1",
@@ -855,6 +996,8 @@ def _populate_v2(root: Path, instance: LoadedInstance) -> None:
                 "pyee==13.0.1",
                 "pygments==2.20.0",
                 "pytest==9.1.1",
+                "referencing==0.37.0",
+                "rpds-py==2026.6.3",
                 "scikit-image==0.26.0",
                 "scipy==1.18.0",
                 "tifffile==2026.7.14",
@@ -863,6 +1006,16 @@ def _populate_v2(root: Path, instance: LoadedInstance) -> None:
             "font_profile": "websitebench-linux-fonts-v1",
             "model_sdks": [],
             "model_credentials": [],
+            "isolated_browser_use": (
+                {
+                    "version": "0.12.6",
+                    "venv": "/opt/websitebench/browser-use-0.12.6",
+                    "main_interpreter": False,
+                    "mode": "deterministic-cdp-only",
+                }
+                if "case_manifest" in instance.data
+                else None
+            ),
             "verdict_sources": ["comparator", "rgb_ssim", "trusted_check_exit_status"],
         },
     )
@@ -897,7 +1050,9 @@ def _populate_v2(root: Path, instance: LoadedInstance) -> None:
     _write_json(root / "authoring/site.normalized.json", instance.site.data)
     _write_json(root / "authoring/instance.normalized.json", instance.data)
     _write_json(root / "bundle-manifest.json", _bundle_manifest_v2(root, instance))
-    validate_bundle(root)
+    validate_bundle(
+        root, allow_legacy_deploy_v2="case_manifest" not in instance.data
+    )
 
 
 def materialize_instance(
@@ -906,6 +1061,7 @@ def materialize_instance(
     *,
     corpus_root: Path | None = None,
     allow_legacy_v1: bool = False,
+    allow_legacy_deploy_v2: bool = False,
 ) -> Path:
     """Create one bundle and never overwrite an existing destination.
 
@@ -919,7 +1075,22 @@ def materialize_instance(
         instance_path,
         corpus_root=corpus_root,
         allow_legacy_v1=allow_legacy_v1,
+        allow_legacy_deploy_v2=allow_legacy_deploy_v2,
     )
+    if (
+        instance.data.get("schema_version") == "websitebench.harbor.instance.v2"
+        and "case_manifest" in instance.data
+    ):
+        _case_value, summary = load_case_manifest(
+            instance.root / instance.data["case_manifest"],
+            allow_draft=True,
+            allow_sealed=False,
+            expected_site_id=str(instance.site.data["site_id"]),
+        )
+        if not summary.scorable:
+            raise HarborManifestError(
+                ["materialize requires a complete 200-case manifest; status is draft"]
+            )
     output = Path(destination).resolve()
     if output.exists():
         raise FileExistsError(f"destination already exists: {output}")

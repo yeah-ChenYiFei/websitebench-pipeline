@@ -205,7 +205,9 @@ behavior are covered by the Harbor tests.
 1. Capture the route/state walk, interaction ledger and frontend samples during
    the clone build.
 2. Initialize `harbor/sites/<site-id>` and its unique
-   `harbor/instances/<site-id>` pair, then give the site unique verifier ports.
+   `harbor/instances/<site-id>` pair. For new sites this is the current
+   compile-executable v2 scaffold with an empty, non-scorable draft case
+   manifest and empty suites; do not copy another site's checks.
 3. Run `derive-from-clone`, assigning the unique instance profile when needed.
 4. Resolve the returned pending items from the interaction ledger and rerun with
    `--force` when the generated contract must change.

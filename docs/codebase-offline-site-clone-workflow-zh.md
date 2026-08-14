@@ -50,8 +50,11 @@ findings 可驱动 Agent 持续修复并重跑受影响检查。
 selector、一条可见文本与一条原始标记证据、每次写操作背后的表单 action。
 selector 只存在于这次走查，任何冻结的 scope 产物都不包含它。
 
-完成上述构建输入后立即用 `websitebench-harbor derive-from-clone
---clone-manifest materials/<site>/clone.yaml` 从 `clone.yaml`、
+完成上述构建输入后，先用当前 `websitebench-harbor init-site` 与
+`init-instance` 建立严格同 ID 的 compile-executable v2 pair。保留它生成的空白
+case/task/visual/CI/CD draft，不复制任何既有站点测试。再立即用
+`websitebench-harbor derive-from-clone --clone-manifest
+materials/<site>/clone.yaml` 从 `clone.yaml`、
 `tools/frontend_samples.json` 与 `scope/*.json` 派生 Harbor interaction
 contract 和 adapters。命令直接返回 `pending`；用 ledger 补齐 selector、逐条
 清空 pending，必要时以 `--force` 重新生成，再对本地 clone 回放各 profile。
@@ -77,11 +80,12 @@ corpus membership、发布门禁，也不授予版权或公网发布许可。
 oracle、重复 oracle、visibility、network audit 与自动化浏览器矩阵。各机器检查
 互不替代。最终检查 clone 的 v2 manifest 和当前 verification evidence。
 
-interaction contract 不在这里编写——它在第 3 节随 clone 一同派生。这里只为
-`<site-id>` 建立 `harbor/sites/<site-id>` 与 `harbor/instances/<site-id>` 这一组严格
-一对一的 `init-site`/`init-instance` authoring 输入，再生成 bundle。站点的各个
-journey 进入唯一 instance 的 hidden suite，而不是再创建 instance。选中的契约
-profile 会逐字复制进 bundle，派生过程不生成 sidecar。
+interaction contract 不在这里编写——它在第 3 节随 clone 一同派生。空白 draft
+校验退出 0 但不可评分；只有完成恰好 200 项 case（T1/T2/T3=20/165/15，T2 的
+L1/L2/L3=35/50/80）并 capture 后才能生成 bundle。candidate contract 是
+`compile.sh -> executable`，不是 `deploy.sh`。站点的各个 journey 进入唯一
+instance 的 case manifest，而不是再创建 instance。选中的契约 profile 会逐字
+复制进 bundle，派生过程不生成 sidecar。
 
 ## 6. 公网部署
 

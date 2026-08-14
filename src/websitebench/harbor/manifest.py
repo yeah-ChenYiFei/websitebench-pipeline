@@ -8,12 +8,19 @@ import os
 import re
 import stat
 import tomllib
+from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath, PureWindowsPath
-from typing import Any, Iterator
+from typing import Any, Iterator, Mapping
 
 import yaml
 
+from .case_protocol import (
+    CaseProtocolError,
+    load_case_manifest,
+    validate_case_references,
+)
+from .compiler_v2 import DEPLOYMENT_ABI
 from .policy import auth_checkout_policy_required, missing_auth_checkout_nodes
 from jsonschema import Draft202012Validator, FormatChecker
 from yaml.constructor import ConstructorError
@@ -27,6 +34,7 @@ INSTANCE_V2_SCHEMA = "harbor-instance-v2.schema.json"
 TASK_SUITE_SCHEMA = "harbor-task-suite.schema.json"
 VISUAL_SUITE_SCHEMA = "harbor-visual-suite.schema.json"
 CICD_SUITE_SCHEMA = "harbor-cicd-suite.schema.json"
+CASE_MANIFEST_SCHEMA_FILE = "harbor-case-manifest.schema.json"
 OPENCLI_INTERACTION_CONTRACT_SCHEMA = "harbor-opencli-interaction-contract.schema.json"
 SITE_SCHEMA_VERSION = "websitebench.harbor.site.v2"
 INSTANCE_SCHEMA_VERSION = "websitebench.harbor.instance.v2"
@@ -380,6 +388,8 @@ def _load_v2_suite(
     suite_kind: str,
     *,
     site_id: str | None,
+    allow_empty_draft: bool = False,
+    active_case_protocol: bool = False,
 ) -> tuple[dict[str, Any] | None, list[str]]:
     schema_name, schema_version, items_key = V2_SUITE_SCHEMAS[suite_kind]
     problems: list[str] = []
@@ -524,7 +534,23 @@ def _load_v2_suite(
                             )
                 except (KeyError, TypeError, ValueError):
                     continue
-    if suite_kind == "cicd" and isinstance(items, list):
+    if suite_kind == "cicd" and isinstance(items, list) and active_case_protocol:
+        for check in items:
+            if not isinstance(check, dict):
+                continue
+            if check.get("kind") == "platform":
+                problems.append(
+                    f"instance.suites.cicd.checks.{check.get('id')}: trusted platform "
+                    "checks are verifier infrastructure and cannot occupy a site case"
+                )
+            elif not isinstance(check.get("runner"), str):
+                problems.append(
+                    f"instance.suites.cicd.checks.{check.get('id')}: "
+                    "site-specific check requires verifier-only runner"
+                )
+    elif suite_kind == "cicd" and isinstance(items, list) and not (
+        allow_empty_draft and not items
+    ):
         platform = {
             item.get("id")
             for item in items
@@ -564,6 +590,86 @@ def _schema_problems(value: Any, schema_name: str, label: str) -> list[str]:
         suffix = ".".join(str(part) for part in error.absolute_path)
         problems.append(f"{label}{'.' + suffix if suffix else ''}: {error.message}")
     return problems
+
+
+def _legacy_deploy_v2_site_problems(value: dict[str, Any]) -> list[str]:
+    """Validate the exact pre-compile ABI without weakening the active schema."""
+
+    runtime = value.get("runtime")
+    scoring = value.get("scoring")
+    problems: list[str] = []
+    expected_runtime = {
+        "formal_browser": "playwright",
+        "ready_path": "/healthz",
+        "candidate_entrypoint": "deploy.sh",
+        "candidate_data_dir_env": "WEBSITEBENCH_DATA_DIR",
+        "formal_workers": 4,
+    }
+    if not isinstance(runtime, dict):
+        return ["site.runtime: legacy deploy-v2 runtime must be an object"]
+    for key, expected in expected_runtime.items():
+        if runtime.get(key) != expected:
+            problems.append(
+                f"site.runtime.{key}: legacy deploy-v2 expected {expected!r}"
+            )
+    expected_scoring = {
+        "reward_source": "task_completion",
+        "task_score": "equal_weight_exact_terminal_state",
+        "visual_score": "checkpoint_area_weighted_rgb_ssim_report_only",
+        "cicd_score": "equal_weight_trusted_checks_report_only",
+    }
+    if scoring != expected_scoring:
+        problems.append("site.scoring: legacy deploy-v2 scoring contract is malformed")
+    if problems:
+        return problems
+    normalized = deepcopy(value)
+    normalized_runtime = normalized["runtime"]
+    normalized_runtime.pop("candidate_entrypoint", None)
+    normalized_runtime.update(
+        {
+            "formal_browsers": ["playwright", "browser-use"],
+            "deployment_abi": DEPLOYMENT_ABI,
+            "compile_entrypoint": "compile.sh",
+            "executable_entrypoint": "executable",
+            "ready_path": "/__websitebench/health",
+            "health_response": {"status": "ok"},
+            "candidate_host_env": "HOST",
+            "candidate_port_env": "PORT",
+            "candidate_data_dir_env": "DATA_DIR",
+            "candidate_seed_env": "SEED",
+            "candidate_timezone_env": "TZ",
+            "logical_shards": 8,
+            "browser_use": {
+                "version": "0.12.6",
+                "venv": "/opt/websitebench/browser-use-0.12.6",
+                "mode": "deterministic-cdp-only",
+                "public_network": False,
+                "credentials": False,
+            },
+        }
+    )
+    normalized["scoring"] = {
+        "reward_source": "weighted_t2_journey",
+        "t2_journey_score": "4*R_L1+6*R_L2+10*R_L3",
+        "visual_score": "area_weighted_rgb_ssim",
+        "tie_break": ["Score20", "T1_pass_rate", "T3_pass_rate"],
+    }
+    return _schema_problems(normalized, SITE_V2_SCHEMA, "site")
+
+
+def _legacy_deploy_v2_instance_problems(value: dict[str, Any]) -> list[str]:
+    normalized = deepcopy(value)
+    normalized["case_manifest"] = "fixtures/hidden/case-manifest.json"
+    return _schema_problems(normalized, INSTANCE_V2_SCHEMA, "instance")
+
+
+def is_legacy_deploy_v2_site(value: Mapping[str, Any]) -> bool:
+    runtime = value.get("runtime")
+    return (
+        value.get("schema_version") == SITE_SCHEMA_VERSION
+        and isinstance(runtime, dict)
+        and "deployment_abi" not in runtime
+    )
 
 
 def _check_opencli_contract(path: Path, site_id: str) -> list[str]:
@@ -735,7 +841,12 @@ def find_corpus_root(instance_path: Path) -> Path:
     )
 
 
-def load_site(path: Path | str, *, allow_legacy_v1: bool = False) -> LoadedSite:
+def load_site(
+    path: Path | str,
+    *,
+    allow_legacy_v1: bool = False,
+    allow_legacy_deploy_v2: bool = False,
+) -> LoadedSite:
     """Load a current site manifest.
 
     Historical v1 manifests are immutable compatibility data and therefore
@@ -755,8 +866,19 @@ def load_site(path: Path | str, *, allow_legacy_v1: bool = False) -> LoadedSite:
                 "allow_legacy_v1=True (CLI: --legacy-v1)"
             ]
         )
-    schema_name = SITE_V2_SCHEMA if version == SITE_SCHEMA_VERSION else SITE_SCHEMA
-    problems = _schema_problems(value, schema_name, "site")
+    legacy_deploy_v2 = is_legacy_deploy_v2_site(value)
+    if legacy_deploy_v2 and not allow_legacy_deploy_v2:
+        raise HarborManifestError(
+            [
+                f"{manifest_path}: pre-compile Harbor v2 deployment reads require "
+                "allow_legacy_deploy_v2=True (CLI: --legacy-deploy-v2)"
+            ]
+        )
+    if legacy_deploy_v2:
+        problems = _legacy_deploy_v2_site_problems(value)
+    else:
+        schema_name = SITE_V2_SCHEMA if version == SITE_SCHEMA_VERSION else SITE_SCHEMA
+        problems = _schema_problems(value, schema_name, "site")
     root = manifest_path.parent
     site_id = value.get("site_id")
     if isinstance(site_id, str) and root.name != site_id:
@@ -863,6 +985,8 @@ def load_site(path: Path | str, *, allow_legacy_v1: bool = False) -> LoadedSite:
                     "site.runtime: all Agent/verifier ports must be distinct"
                 )
     if version == SITE_SCHEMA_VERSION:
+        if isinstance(runtime, dict) and runtime.get("candidate_port") != 3000:
+            problems.append("site.runtime.candidate_port: must be 3000")
         mailbox = value.get("mailbox")
         allowlist = (
             mailbox.get("external_allowlist", []) if isinstance(mailbox, dict) else []
@@ -888,6 +1012,7 @@ def load_instance(
     *,
     corpus_root: Path | None = None,
     allow_legacy_v1: bool = False,
+    allow_legacy_deploy_v2: bool = False,
 ) -> LoadedInstance:
     manifest_path = Path(path).resolve()
     if manifest_path.is_dir():
@@ -902,10 +1027,25 @@ def load_instance(
                 "allow_legacy_v1=True (CLI: --legacy-v1)"
             ]
         )
-    schema_name = (
-        INSTANCE_V2_SCHEMA if version == INSTANCE_SCHEMA_VERSION else INSTANCE_SCHEMA
+    legacy_deploy_v2_instance = (
+        version == INSTANCE_SCHEMA_VERSION and "case_manifest" not in value
     )
-    problems = _schema_problems(value, schema_name, "instance")
+    if legacy_deploy_v2_instance and not allow_legacy_deploy_v2:
+        raise HarborManifestError(
+            [
+                f"{manifest_path}: pre-compile Harbor v2 deployment reads require "
+                "allow_legacy_deploy_v2=True (CLI: --legacy-deploy-v2)"
+            ]
+        )
+    if legacy_deploy_v2_instance:
+        problems = _legacy_deploy_v2_instance_problems(value)
+    else:
+        schema_name = (
+            INSTANCE_V2_SCHEMA
+            if version == INSTANCE_SCHEMA_VERSION
+            else INSTANCE_SCHEMA
+        )
+        problems = _schema_problems(value, schema_name, "instance")
     root = manifest_path.parent
     resolved_corpus = (
         Path(corpus_root).resolve()
@@ -928,7 +1068,11 @@ def load_instance(
             )
         try:
             site_path = safe_regular_file(resolved_corpus, site_relative)
-            site = load_site(site_path, allow_legacy_v1=allow_legacy_v1)
+            site = load_site(
+                site_path,
+                allow_legacy_v1=allow_legacy_v1,
+                allow_legacy_deploy_v2=allow_legacy_deploy_v2,
+            )
         except (HarborManifestError, OSError, ValueError) as exc:
             problems.append(f"instance.site_manifest: {exc}")
 
@@ -978,19 +1122,10 @@ def load_instance(
                 except (OSError, ValueError) as exc:
                     problems.append(f"instance.paths.{name}: {exc}")
         public = paths.get("public")
-        if isinstance(public, str):
+        if isinstance(public, str) and version in LEGACY_INSTANCE_SCHEMA_VERSIONS:
             try:
-                entrypoint = (
-                    "deploy.sh" if version == INSTANCE_SCHEMA_VERSION else "run.sh"
-                )
-                deploy_path = safe_regular_file(
-                    root, (Path(public) / entrypoint).as_posix()
-                )
-                if version == INSTANCE_SCHEMA_VERSION:
-                    if not deploy_path.stat().st_mode & stat.S_IXUSR:
-                        problems.append(
-                            "instance.paths.public.deploy.sh: must be executable"
-                        )
+                entrypoint = "run.sh"
+                safe_regular_file(root, (Path(public) / entrypoint).as_posix())
             except (OSError, ValueError) as exc:
                 problems.append(f"instance.paths.public.{entrypoint}: {exc}")
     policy_required = version in LEGACY_INSTANCE_SCHEMA_VERSIONS
@@ -1090,6 +1225,34 @@ def load_instance(
             paths.get("hidden_fixtures") if isinstance(paths, dict) else None
         )
         loaded_suites: dict[str, dict[str, Any]] = {}
+        case_payload: dict[str, Any] | None = None
+        case_is_draft = False
+        if not legacy_deploy_v2_instance:
+            case_relative = value.get("case_manifest")
+            if isinstance(case_relative, str):
+                try:
+                    case_path = resolve_inside(root, case_relative)
+                    if isinstance(hidden_relative, str):
+                        hidden_root = resolve_inside(root, hidden_relative)
+                        if case_path != hidden_root and hidden_root not in case_path.parents:
+                            problems.append(
+                                "instance.case_manifest: case manifest must live under "
+                                "instance.paths.hidden_fixtures"
+                            )
+                    case_payload, case_summary = load_case_manifest(
+                        case_path,
+                        allow_draft=True,
+                        allow_sealed=False,
+                        expected_site_id=(
+                            str(site.data["site_id"])
+                            if site is not None
+                            and isinstance(site.data.get("site_id"), str)
+                            else None
+                        ),
+                    )
+                    case_is_draft = case_summary.status == "draft"
+                except (CaseProtocolError, OSError, ValueError) as exc:
+                    problems.append(f"instance.case_manifest: {exc}")
         if isinstance(suites, dict):
             for suite_kind in V2_SUITE_SCHEMAS:
                 relative = suites.get(suite_kind)
@@ -1109,7 +1272,7 @@ def load_instance(
                             )
                     except ValueError as exc:
                         problems.append(f"instance.suites.{suite_kind}: {exc}")
-                payload, suite_problems = _load_v2_suite(
+                    payload, suite_problems = _load_v2_suite(
                     root,
                     relative,
                     suite_kind,
@@ -1118,11 +1281,26 @@ def load_instance(
                         if site is not None
                         and isinstance(site.data.get("site_id"), str)
                         else None
-                    ),
-                )
+                        ),
+                        allow_empty_draft=case_is_draft,
+                        active_case_protocol=not legacy_deploy_v2_instance,
+                    )
                 problems.extend(suite_problems)
                 if payload is not None:
                     loaded_suites[suite_kind] = payload
+
+        if case_payload is not None and not case_is_draft and set(loaded_suites) == set(
+            V2_SUITE_SCHEMAS
+        ):
+            try:
+                validate_case_references(
+                    case_payload,
+                    task_suite=loaded_suites["task"],
+                    visual_suite=loaded_suites["visual"],
+                    cicd_suite=loaded_suites["cicd"],
+                )
+            except CaseProtocolError as exc:
+                problems.extend(f"instance.case_manifest: {item}" for item in exc.problems)
 
         observations = value.get("reference_observations")
         if isinstance(observations, dict) and observations.get("status") == "captured":

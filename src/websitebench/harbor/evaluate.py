@@ -26,6 +26,7 @@ from .judge_v2 import (
     InvalidRun,
     compute_visual_checkpoint,
     evaluate_observations,
+    launch_deterministic_chromium,
     opaque_isolation_uid,
     run_platform_cicd,
     redact_visual_masks,
@@ -250,7 +251,7 @@ def verify_render_environment(
     from playwright.sync_api import sync_playwright
 
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=True)
+        browser = launch_deterministic_chromium(playwright)
         try:
             actual = render_environment_fingerprint(browser_settings, browser.version)
         finally:
@@ -402,7 +403,7 @@ def _task_worker(
             )
         base_url = f"http://127.0.0.1:{port}"
         with sync_playwright() as playwright:
-            browser = playwright.chromium.launch(headless=True)
+            browser = launch_deterministic_chromium(playwright)
             context = _browser_context(
                 browser, browser_settings, allowed_origin=base_url
             )
@@ -693,7 +694,7 @@ def _visual_worker(
             return base_url
 
         with sync_playwright() as playwright:
-            browser = playwright.chromium.launch(headless=True)
+            browser = launch_deterministic_chromium(playwright)
             context = _browser_context(
                 browser,
                 browser_settings,

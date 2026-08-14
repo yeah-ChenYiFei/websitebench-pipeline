@@ -8,6 +8,7 @@ import shutil
 import socket
 import smtplib
 import ssl
+import stat
 import struct
 import subprocess
 import sys
@@ -27,9 +28,14 @@ from jsonschema import Draft202012Validator
 from PIL import Image
 
 from websitebench.harbor.bundle_v2 import BundleValidationError, validate_bundle
-from websitebench.harbor.calibration_v2 import calibrate_bundle, calibration_assertions
+from websitebench.harbor.calibration_v2 import (
+    _candidate_copy,
+    calibrate_bundle,
+    calibration_assertions,
+)
 from websitebench.harbor.dsl_v2 import (
     DslExecutionError,
+    _SCHEDULE_PARALLEL_FETCH,
     _mailbox_capture,
     _target_url,
     observe,
@@ -41,6 +47,7 @@ from websitebench.harbor.evaluate import (
     evaluate_candidate,
     evaluate_task_suite,
 )
+from websitebench.harbor.formal_v2 import evaluate_case_candidate
 from websitebench.harbor.capture import ReferenceObservationError, capture_reference
 from websitebench.harbor.capture import _run_actions as run_reference_actions
 from websitebench.harbor.judge_v2 import (
@@ -94,7 +101,109 @@ def _capture_fake_observations(instance: Path) -> None:
     (hidden / "visual").mkdir(parents=True)
     raster = hidden / "visual" / "home.png"
     Image.new("RGB", (1280, 720), "white").save(raster)
-    observations = {"status": 200}
+    task_ids = ["healthz", *(f"T{index:03d}" for index in range(1, 200))]
+    tasks = [
+        {
+            "id": task_id,
+            "timeout_sec": 30,
+            "actions": [
+                {"op": "api", "path": "/", "capture_as": "response"}
+            ],
+            "observations": [
+                {
+                    "id": "terminal",
+                    "kind": "api_status",
+                    "capture_as": "response",
+                    "comparator": {"type": "exact"},
+                }
+            ],
+        }
+        for task_id in task_ids
+    ]
+    task_suite_path = hidden / "task-suite.json"
+    task_suite = json.loads(task_suite_path.read_text(encoding="utf-8"))
+    task_suite["tasks"] = tasks
+    task_suite_path.write_text(
+        json.dumps(task_suite, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    visual_suite_path = hidden / "visual-suite.json"
+    visual_suite = json.loads(visual_suite_path.read_text(encoding="utf-8"))
+    visual_suite["checkpoints"] = [
+        {
+            "id": "home",
+            "route": "/",
+            "viewport": {"width": 1280, "height": 720},
+            "timeout_sec": 30,
+            "actions": [],
+            "regions": [
+                {
+                    "id": "page",
+                    "rect": {"x": 0, "y": 0, "width": 1280, "height": 720},
+                }
+            ],
+            "reference_image": "visual/home.png",
+        }
+    ]
+    visual_suite_path.write_text(
+        json.dumps(visual_suite, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    cicd_suite_path = hidden / "cicd-suite.json"
+    cicd_suite = json.loads(cicd_suite_path.read_text(encoding="utf-8"))
+    cicd_suite["checks"] = []
+    cicd_suite_path.write_text(
+        json.dumps(cicd_suite, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    cases: list[dict[str, object]] = []
+    for index, task_id in enumerate(task_ids[:20], start=1):
+        cases.append(
+            {
+                "id": f"T1-{index:03d}",
+                "tier": "T1",
+                "kind": "http",
+                "timeout_sec": 30,
+                "task_id": task_id,
+            }
+        )
+    cursor = 20
+    for level, count in (("L1", 35), ("L2", 50), ("L3", 80)):
+        for index in range(count):
+            case = {
+                "id": f"T2-{level}-{index + 1:03d}",
+                "tier": "T2",
+                "level": level,
+                "kind": "journey",
+                "timeout_sec": 30,
+                "task_id": task_ids[cursor],
+            }
+            if level == "L1" and index == 0:
+                case["visual_checkpoint_ids"] = ["home"]
+            cases.append(case)
+            cursor += 1
+    for index, task_id in enumerate(task_ids[cursor:], start=1):
+        cases.append(
+            {
+                "id": f"T3-{index:03d}",
+                "tier": "T3",
+                "kind": "http",
+                "timeout_sec": 30,
+                "task_id": task_id,
+            }
+        )
+    (hidden / "case-manifest.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "websitebench.harbor.case-manifest.v1",
+                "manifest_id": "demo-cases",
+                "site_id": "demo",
+                "status": "complete",
+                "dsl_version": "websitebench.harbor.neutral-dsl.v1",
+                "cases": cases,
+            },
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     reference_observations = {
         "schema_version": "websitebench.harbor.reference-observations.v1",
         "site_id": "demo",
@@ -109,9 +218,8 @@ def _capture_fake_observations(instance: Path) -> None:
         "reset_strategy": "fresh-local-data-directory",
         "authenticated_reference": False,
         "tasks": {
-            "healthz": {
-                "observations": observations,
-            }
+            task_id: {"observations": {"terminal": 200}}
+            for task_id in task_ids
         },
         "visual_checkpoints": [
             {
@@ -142,10 +250,26 @@ def test_v2_is_default_and_draft_cannot_materialize(tmp_path: Path) -> None:
     assert site.data["runtime"]["reference_reset_url_env"] == (
         "WEBSITEBENCH_REFERENCE_RESET_URL"
     )
-    assert (instance.root / "public/deploy.sh").stat().st_mode & 0o100
+    assert not (instance.root / "public/deploy.sh").exists()
     assert not (instance.root / "public/run.sh").exists()
-    with pytest.raises(HarborManifestError, match="capture-reference"):
+    assert len(PLATFORM_CICD_CHECKS) == 15
+    with pytest.raises(HarborManifestError, match="complete 200-case"):
         materialize_instance(instance_path, tmp_path / "draft-bundle")
+
+
+def test_v2_public_starter_may_be_completely_empty(tmp_path: Path) -> None:
+    _, _, instance_path = _corpus(tmp_path)
+    public = instance_path.parent / "public"
+    shutil.rmtree(public)
+    public.mkdir()
+
+    assert load_instance(instance_path).data["instance_id"] == "demo"
+
+    outside = tmp_path / "outside.txt"
+    outside.write_text("outside\n", encoding="utf-8")
+    (public / "escape.txt").symlink_to(outside)
+    with pytest.raises(HarborManifestError, match="non-regular file|symbolic link"):
+        load_instance(instance_path)
 
 
 def test_v2_bundle_is_structured_hidden_and_model_free(tmp_path: Path) -> None:
@@ -156,7 +280,7 @@ def test_v2_bundle_is_structured_hidden_and_model_free(tmp_path: Path) -> None:
 
     assert report["status"] == "valid"
     assert report["model_runtime"] is False
-    assert (output / "environment/seed/deploy.sh").is_file()
+    assert not (output / "environment/seed/deploy.sh").exists()
     assert not (output / "environment/seed/fixtures/hidden/task-suite.json").exists()
     assert (output / "tests/fixtures/task-suite.json").is_file()
     assert (output / "tests/fixtures/visual/home.png").is_file()
@@ -164,6 +288,11 @@ def test_v2_bundle_is_structured_hidden_and_model_free(tmp_path: Path) -> None:
     compose = yaml.safe_load(
         (output / "environment/docker-compose.yaml").read_text(encoding="utf-8")
     )
+    main_environment = compose["services"]["main"]["environment"]
+    assert main_environment["PORT"] == "3000"
+    assert main_environment["WEBSITEBENCH_DATA_DIR"] == "/tmp/websitebench-data"
+    assert main_environment["WEBSITEBENCH_REFERENCE_URL"] == "http://reference:8080"
+    assert main_environment["WEBSITEBENCH_CANDIDATE_URL"] == "http://127.0.0.1:3000"
     assert compose["services"]["main"]["depends_on"]["mailbox"] == {
         "condition": "service_healthy"
     }
@@ -191,8 +320,103 @@ def test_v2_bundle_is_structured_hidden_and_model_free(tmp_path: Path) -> None:
         is False
     )
     wrapper = (output / "tests/test.sh").read_text(encoding="utf-8")
-    assert "WEBSITEBENCH_NETWORK_POLICY_ENFORCED" in wrapper
-    assert "bool(external_allowlist)" not in wrapper
+    assert "run_v2.py" in wrapper
+    assert "finalizer_v2" in wrapper
+    assert "receipt.json" not in wrapper
+    agent_dockerfile = (output / "environment/Dockerfile").read_text(encoding="utf-8")
+    assert "chmod 755 /app/repo/deploy.sh" not in agent_dockerfile
+
+    browser_contract = json.loads(
+        (output / "environment/seed/.websitebench/browser-contract.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert browser_contract["delivery"] == {
+        "artifact": "/app/repo",
+        "compile_entrypoint": "compile.sh",
+        "deployment_abi": "websitebench.harbor.compile-executable.v1",
+        "environment": ["HOST", "PORT", "DATA_DIR", "SEED", "TZ"],
+        "health_path": "/__websitebench/health",
+        "health_response": {"status": "ok"},
+        "runtime_entrypoint": "executable",
+        "runtime_writes": "DATA_DIR_ONLY",
+    }
+    assert browser_contract["candidate_port"] == 3000
+    rules = "\n".join(browser_contract["rules"])
+    for requirement in (
+        "executable root compile.sh",
+        "produces root executable",
+        "takes no arguments",
+        "stays in the foreground",
+        "$HOST:$PORT",
+        "handles SIGTERM",
+        "$DATA_DIR",
+        "no compile-time or runtime dependency downloads or public network access",
+        "/__websitebench/health",
+        "Browser Use CLI or the environment's Chrome MCP",
+    ):
+        assert requirement in rules
+
+    instruction = (output / "instruction.md").read_text(encoding="utf-8")
+    for requirement in (
+        "executable root `compile.sh`",
+        "root `executable`",
+        "takes no arguments",
+        "stay in the foreground",
+        "`$HOST:$PORT`",
+        "handle SIGTERM",
+        "`$DATA_DIR`",
+        "entirely local HTML, CSS, JavaScript, assets, fonts, APIs, and backend",
+        "no compile-time or runtime dependency downloads or public network access",
+        "`/__websitebench/health`",
+        "Browser Use CLI or the environment's Chrome MCP",
+        "sealed 200-case manifest",
+    ):
+        assert requirement in instruction
+
+
+def test_v2_candidate_port_is_exactly_3000(tmp_path: Path) -> None:
+    _, site_path, _ = _corpus(tmp_path)
+    site = yaml.safe_load(site_path.read_text(encoding="utf-8"))
+    site["runtime"]["candidate_port"] = 3100
+    site_path.write_text(yaml.safe_dump(site, sort_keys=False), encoding="utf-8")
+
+    with pytest.raises(HarborManifestError, match="candidate_port: must be 3000"):
+        load_site(site_path)
+
+
+def test_v2_solution_scaffold_creates_and_chmods_oracle_entrypoint(
+    tmp_path: Path,
+) -> None:
+    _, _, instance_path = _corpus(tmp_path)
+    candidate = tmp_path / "oracle-candidate"
+    candidate.mkdir()
+
+    completed = subprocess.run(
+        [str(instance_path.parent / "solution/solve.sh")],
+        cwd=candidate,
+        env={
+            **os.environ,
+            "WEBSITEBENCH_CANDIDATE_ROOT": str(candidate),
+            "WEBSITEBENCH_SOLUTION_SITE_ROOT": str(tmp_path / "oracle-site"),
+        },
+        check=False,
+    )
+
+    assert completed.returncode == 2
+    compile_script = candidate / "compile.sh"
+    assert compile_script.is_file()
+    assert compile_script.stat().st_mode & stat.S_IXUSR
+
+
+def test_calibration_candidate_copy_accepts_an_empty_seed(tmp_path: Path) -> None:
+    seed = tmp_path / "seed"
+    seed.mkdir()
+
+    candidate = _candidate_copy(seed, tmp_path / "candidate")
+
+    assert candidate.is_dir()
+    assert not any(candidate.iterdir())
 
 
 def test_manifest_rejects_model_runtime_dependencies(tmp_path: Path) -> None:
@@ -639,12 +863,13 @@ def test_external_mailbox_is_allowlisted_and_hidden_from_candidate(
         try:
             process.start()
             deadline = time.monotonic() + 5
-            while not (data / "credential-seen").is_file():
+            marker = data / "credential-seen"
+            while not marker.is_file() or marker.read_text() != "unset|unset|unset":
                 assert time.monotonic() < deadline
                 time.sleep(0.02)
         finally:
             process.stop()
-    assert (data / "credential-seen").read_text() == "unset|unset|unset"
+    assert marker.read_text() == "unset|unset|unset"
     assert evidence["credential_injected"] is True
 
 
@@ -1013,10 +1238,251 @@ def test_api_dsl_reuses_browser_context_session(tmp_path: Path) -> None:
     ]
 
 
+def test_parallel_api_schema_and_runtime_share_one_launch_barrier(
+    tmp_path: Path,
+) -> None:
+    repository = Path(__file__).resolve().parents[2]
+    schema = json.loads(
+        (repository / "websitebench/schemas/harbor-task-suite.schema.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    viewer = json.loads(
+        (
+            repository
+            / "src/websitebench/viewer/_schemas/harbor-task-suite.schema.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert schema == viewer
+    assert "performance.timeOrigin + performance.now()" in _SCHEDULE_PARALLEL_FETCH
+    assert "Date.now()" not in _SCHEDULE_PARALLEL_FETCH
+    suite = {
+        "schema_version": "websitebench.harbor.task-suite.v1",
+        "suite_id": "parallel-contract",
+        "site_id": "fixture",
+        "dsl_version": "websitebench.harbor.playwright-dsl.v1",
+        "tasks": [
+            {
+                "id": "parallel-api",
+                "timeout_sec": 30,
+                "reference_mutation_authorized": True,
+                "actions": [
+                    {
+                        "op": "parallel_api",
+                        "requests": [
+                            {
+                                "actor": "primary",
+                                "path": "/one",
+                                "capture_as": "one",
+                            },
+                            {
+                                "actor": "secondary",
+                                "path": "/two",
+                                "capture_as": "two",
+                            },
+                        ],
+                    }
+                ],
+                "observations": [
+                    {
+                        "id": "status",
+                        "kind": "api_status",
+                        "capture_as": "one",
+                        "comparator": {"type": "exact"},
+                    }
+                ],
+            }
+        ],
+    }
+    Draft202012Validator(schema).validate(suite)
+
+    events: list[tuple[str, str, int | None]] = []
+
+    class Page:
+        def __init__(self, name: str) -> None:
+            self.name = name
+
+        def evaluate(self, script: str, argument: object) -> object:
+            if isinstance(argument, dict):
+                events.append(("schedule", self.name, int(argument["launchAt"])))
+                return True
+            assert len([event for event in events if event[0] == "schedule"]) == 2
+            events.append(("await", self.name, None))
+            return {"status": 200, "json": {"actor": self.name}, "error": None}
+
+    primary = Page("primary")
+    secondary = Page("secondary")
+    captures: dict[str, object] = {}
+    run_actions(
+        primary,
+        suite["tasks"][0]["actions"],
+        base_url="http://127.0.0.1:3000",
+        fixture_root=tmp_path,
+        actors={"primary": (object(), primary), "secondary": (object(), secondary)},
+        captures=captures,
+    )
+    launches = [event[2] for event in events if event[0] == "schedule"]
+    assert len(set(launches)) == 1
+    assert events[:2] == [
+        ("schedule", "primary", launches[0]),
+        ("schedule", "secondary", launches[0]),
+    ]
+    assert captures == {
+        "one": {"status": 200, "json": {"actor": "primary"}},
+        "two": {"status": 200, "json": {"actor": "secondary"}},
+    }
+
+
+def test_parallel_reference_mutation_requires_explicit_authorization(
+    tmp_path: Path,
+) -> None:
+    with pytest.raises(
+        ReferenceObservationError, match="requires scenario authorization"
+    ):
+        run_reference_actions(
+            object(),
+            [
+                {
+                    "op": "parallel_api",
+                    "requests": [
+                        {
+                            "actor": "primary",
+                            "path": "/one",
+                            "method": "POST",
+                            "capture_as": "one",
+                        },
+                        {
+                            "actor": "primary",
+                            "path": "/two",
+                            "capture_as": "two",
+                        },
+                    ],
+                }
+            ],
+            base_url="http://127.0.0.1:3000",
+            fixture_root=tmp_path,
+            actors={"primary": (object(), object())},
+            captures={},
+            reference_mutation_allowed=False,
+        )
+
+
+def test_parallel_reference_capture_schedules_every_actor_before_awaiting(
+    tmp_path: Path,
+) -> None:
+    events: list[tuple[str, str]] = []
+
+    class Page:
+        def __init__(self, name: str) -> None:
+            self.name = name
+
+        def evaluate(self, _script: str, argument: object) -> object:
+            if isinstance(argument, dict):
+                events.append(("schedule", self.name))
+                return True
+            assert events[:2] == [
+                ("schedule", "primary"),
+                ("schedule", "secondary"),
+            ]
+            assert sum(event[0] == "schedule" for event in events) == 2
+            events.append(("await", self.name))
+            return {"status": 204, "json": None, "error": None}
+
+    primary, secondary = Page("primary"), Page("secondary")
+    captures: dict[str, object] = {}
+    run_reference_actions(
+        primary,
+        [
+            {
+                "op": "parallel_api",
+                "requests": [
+                    {
+                        "actor": "primary",
+                        "path": "/first",
+                        "method": "POST",
+                        "capture_as": "first",
+                    },
+                    {
+                        "actor": "secondary",
+                        "path": "/second",
+                        "method": "POST",
+                        "capture_as": "second",
+                    },
+                ],
+            }
+        ],
+        base_url="http://127.0.0.1:3000",
+        fixture_root=tmp_path,
+        actors={
+            "primary": (object(), primary),
+            "secondary": (object(), secondary),
+        },
+        captures=captures,
+        reference_mutation_allowed=True,
+    )
+    assert captures == {
+        "first": {"status": 204, "json": None},
+        "second": {"status": 204, "json": None},
+    }
+
+
+def test_api_capture_accepts_non_json_rejection_and_forwards_headers(
+    tmp_path: Path,
+) -> None:
+    class Response:
+        status = 403
+
+        @staticmethod
+        def body() -> bytes:
+            return b"cross-origin request rejected"
+
+    class Request:
+        @staticmethod
+        def fetch(url: str, **kwargs: object) -> Response:
+            assert url == "http://127.0.0.1:3000/reject"
+            assert kwargs["headers"] == {
+                "Origin": "https://outside.invalid",
+                "Content-Type": "application/x-www-form-urlencoded",
+            }
+            assert kwargs["data"] == "probe=value+with+space"
+            return Response()
+
+    class Context:
+        request = Request()
+
+    class Page:
+        context = Context()
+
+    captures: dict[str, object] = {}
+    page = Page()
+    run_actions(
+        page,
+        [
+            {
+                "op": "api",
+                "path": "/reject",
+                "method": "POST",
+                "headers": {
+                    "Origin": "https://outside.invalid",
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                "body": {"probe": "value with space"},
+                "capture_as": "rejection",
+            }
+        ],
+        base_url="http://127.0.0.1:3000",
+        fixture_root=tmp_path,
+        actors={"primary": (Context(), page)},
+        captures=captures,
+    )
+    assert captures == {"rejection": {"status": 403, "json": None}}
+
+
 def test_remote_reference_mutation_requires_reset_gateway(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     _, _, instance = _corpus(tmp_path)
+    _capture_fake_observations(instance)
     manifest = yaml.safe_load(instance.read_text(encoding="utf-8"))
     suite_path = instance.parent / manifest["suites"]["task"]
     suite = json.loads(suite_path.read_text(encoding="utf-8"))
@@ -1027,6 +1493,10 @@ def test_remote_reference_mutation_requires_reset_gateway(
         }
     )
     suite_path.write_text(json.dumps(suite), encoding="utf-8")
+    observations = instance.parent / manifest["reference_observations"]["artifact"]
+    observations.unlink()
+    manifest["reference_observations"]["status"] = "pending"
+    instance.write_text(yaml.safe_dump(manifest, sort_keys=False), encoding="utf-8")
     monkeypatch.delenv("WEBSITEBENCH_REFERENCE_RESET_URL", raising=False)
     monkeypatch.delenv("WEBSITEBENCH_REFERENCE_RESET_CREDENTIAL", raising=False)
 
@@ -1038,40 +1508,28 @@ def test_remote_reference_mutation_requires_reset_gateway(
         )
 
 
-def test_candidate_deploy_failure_is_valid_zero_task_reward(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+@pytest.mark.parametrize("entrypoint", ["missing", "non-executable"])
+def test_candidate_deploy_failure_is_valid_zero_case_reward(
+    tmp_path: Path, entrypoint: str
 ) -> None:
     _, _, instance = _corpus(tmp_path)
     _capture_fake_observations(instance)
     bundle = materialize_instance(instance, tmp_path / "bundle")
     contract = json.loads((bundle / "tests/evaluation-contract.json").read_text())
 
-    def no_render_check(*args: object, **kwargs: object) -> None:
-        return None
-
-    def failed_cicd(
-        candidate_root: Path, suite: dict[str, object], **kwargs: object
-    ) -> dict[str, object]:
-        return {
-            "schema_version": CICD_RESULTS_SCHEMA,
-            "checks": [
-                {
-                    "check_id": item["id"],
-                    "status": "failed",
-                    "reason": "CANDIDATE_DEPLOY_FAILED",
-                    "source": "trusted_platform_assertion",
-                }
-                for item in suite["checks"]  # type: ignore[index]
-            ],
-        }
-
-    monkeypatch.setattr(
-        "websitebench.harbor.evaluate.verify_render_environment", no_render_check
-    )
-    monkeypatch.setattr("websitebench.harbor.evaluate.run_platform_cicd", failed_cicd)
+    candidate = tmp_path / "candidate"
+    candidate.mkdir()
+    if entrypoint == "non-executable":
+        compile_script = candidate / "compile.sh"
+        compile_script.write_text(
+            "#!/bin/sh\nset -eu\nprintf '#!/bin/sh\\nexit 0\\n' > executable\n",
+            encoding="utf-8",
+        )
+        compile_script.chmod(0o755)
     output = tmp_path / "results"
-    code = evaluate_candidate(
-        candidate_root=bundle / "environment/seed",
+    code = evaluate_case_candidate(
+        candidate_root=candidate,
+        case_manifest_path=bundle / "tests/fixtures/case-manifest.json",
         task_suite_path=bundle / "tests/fixtures/task-suite.json",
         visual_suite_path=bundle / "tests/fixtures/visual-suite.json",
         cicd_suite_path=bundle / "tests/fixtures/cicd-suite.json",
@@ -1080,19 +1538,17 @@ def test_candidate_deploy_failure_is_valid_zero_task_reward(
         fixture_root=bundle / "tests/fixtures",
         output=output,
         browser_settings=contract["browser"],
-        workers=4,
-        mailbox=contract["mailbox"],
-        network_policy_path=bundle / "tests/network-policy.json",
-        budgets=contract["budgets"],
-        reference_render_environment=contract["reference_render_environment"],
+        browser_use_settings=contract["browser_use"],
+        build_timeout_sec=10,
     )
     assert code == 0
     assert (output / "reward.txt").read_text() == "0.00000000\n"
-    scorecard = json.loads((output / "scorecard.json").read_text())
-    assert scorecard["task_score"] == 0
-    assert scorecard["visual_score"] == 0
-    visual = json.loads((output / "visual-results.json").read_text())
-    assert visual["summary"]["minimum_ssim"] == 0
+    evaluation = json.loads((output / "eval.json").read_text())
+    assert evaluation["score20"] == 0
+    assert evaluation["reward"] == 0
+    results = json.loads((output / "case-results.json").read_text())
+    assert len(results["results"]) == 200
+    assert {item["failure_kind"] for item in results["results"]} == {"candidate"}
 
 
 def test_four_worker_and_serial_task_order_are_identical(
@@ -1551,14 +2007,16 @@ ThreadingHTTPServer(("127.0.0.1", int(os.environ["PORT"])), Handler).serve_forev
     (reference / "run.sh").chmod(0o755)
     oracle = site_path.parent / "oracle"
     (oracle / "server.py").write_text(server_source, encoding="utf-8")
-    (oracle / "deploy.sh").write_text(deploy_source, encoding="utf-8")
-    (oracle / "deploy.sh").chmod(0o755)
     solve = instance_path.parent / "solution/solve.sh"
     solve.write_text(
         "#!/usr/bin/env bash\n"
         "set -Eeuo pipefail\n"
         'cp -a "$WEBSITEBENCH_SOLUTION_SITE_ROOT/." '
-        '"$WEBSITEBENCH_CANDIDATE_ROOT/"\n',
+        '"$WEBSITEBENCH_CANDIDATE_ROOT/"\n'
+        "cat > \"$WEBSITEBENCH_CANDIDATE_ROOT/deploy.sh\" <<'SH'\n"
+        + deploy_source
+        + "SH\n"
+        'chmod 755 "$WEBSITEBENCH_CANDIDATE_ROOT/deploy.sh"\n',
         encoding="utf-8",
     )
     solve.chmod(0o755)
@@ -1684,69 +2142,35 @@ def test_calibration_runner_executes_nop_and_two_fresh_oracles(
     def fake_oracle(bundle_root: Path, candidate: Path, timeout: float) -> None:
         applied.append(candidate)
 
-    def fake_evaluate(
-        bundle_root: Path,
-        candidate: Path,
-        output: Path,
-        contract: dict[str, object],
-    ) -> int:
+    def fake_evaluate(**kwargs: object) -> int:
+        output = kwargs["output"]
+        assert isinstance(output, Path)
         name = output.name
         evaluated.append(name)
         output.mkdir(parents=True)
-        oracle = name.startswith("oracle-")
-        scorecard = {
-            "task_score": 100 if oracle else 0,
-            "visual_score": 100 if oracle else 0,
-            "cicd_score": 100 if oracle else 0,
-            "reward": 1 if oracle else 0,
-        }
-        (output / "scorecard.json").write_text(json.dumps(scorecard))
-        (output / "task-results.json").write_text(
-            json.dumps(
-                {
-                    "tasks": [
-                        {
-                            "task_id": "healthz",
-                            "status": "passed" if oracle else "failed",
-                            "attempts": 1,
-                            "observations": [],
-                        }
-                    ]
-                }
-            )
-        )
-        (output / "visual-results.json").write_text(
-            json.dumps(
-                {
-                    "checkpoints": [
-                        {
-                            "checkpoint_id": "home",
-                            "status": "passed" if oracle else "failed",
-                            "ssim": 1 if oracle else 0,
-                            "regions": [],
-                        }
-                    ]
-                }
-            )
-        )
-        (output / "cicd-results.json").write_text(
-            json.dumps(
-                {
-                    "checks": [
-                        {
-                            "check_id": identifier,
-                            "status": "passed" if oracle else "failed",
-                        }
-                        for identifier in PLATFORM_CICD_CHECKS
-                    ]
-                }
-            )
-        )
         return 0
+
+    def fake_projection(run: Path) -> dict[str, object]:
+        oracle = run.name.startswith("oracle-")
+        return {
+            "eval": {
+                "score20": 20 if oracle else 0,
+                "reward": 1 if oracle else 0,
+                "rates": {
+                    "T1": 1 if oracle else 0,
+                    "T3": 1 if oracle else 0,
+                },
+            },
+            "results": {"oracle": oracle},
+            "receipt_sha256": "oracle" if oracle else "nop",
+        }
 
     monkeypatch.setattr("websitebench.harbor.calibration_v2._apply_oracle", fake_oracle)
     monkeypatch.setattr(
-        "websitebench.harbor.calibration_v2._run_candidate", fake_evaluate
+        "websitebench.harbor.calibration_v2.evaluate_case_candidate", fake_evaluate
+    )
+    monkeypatch.setattr(
+        "websitebench.harbor.calibration_v2._case_projection", fake_projection
     )
     output = tmp_path / "calibration"
     assert calibrate_bundle(bundle, output) == 0
@@ -1888,35 +2312,28 @@ def test_audited_candidate_keeps_tracer_privileged_and_drops_only_tracee(
     )
     process.start()
 
-    assert captured["command"] == [
+    command = captured["command"]
+    assert isinstance(command, list)
+    assert command[:5] == [
         "/usr/bin/strace",
         "--follow-forks",
         "--decode-fds=path",
         "--output-separately",
         "--output",
-        str(tmp_path / "root-audit" / "first"),
-        "--trace=%file,%memory,%network,%ipc,ftruncate",
-        sys.executable,
-        str(
-            Path(sys.modules["websitebench.harbor.judge_v2"].__file__).with_name(
-                "sandbox_v2.py"
-            )
-        ),
-        "--root",
-        str(root),
-        "--data",
-        str(tmp_path / "worker" / "data"),
-        "--bind-port",
-        "3000",
-        "--connect-port",
-        "3000",
-        "--uid",
-        "54321",
-        "--gid",
-        "54321",
-        "--",
-        str(deploy),
     ]
+    assert command[5] == str(
+        tmp_path / "root-audit" / "first.generation-1"
+    )
+    assert "--broker-tid-fd" in command
+    assert "--control-fd" in command
+    assert command[-2:] == ["--", str(deploy)]
+    assert sys.executable in command
+    assert str(
+        Path(sys.modules["websitebench.harbor.judge_v2"].__file__).with_name(
+            "sandbox_v2.py"
+        )
+    ) in command
+    assert len(captured["pass_fds"]) == 2
     assert captured["preexec_fn"] is None
 
 

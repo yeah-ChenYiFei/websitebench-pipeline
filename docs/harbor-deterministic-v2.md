@@ -1,45 +1,141 @@
 # Harbor v2 deterministic evaluation
 
-Harbor v2 evaluates an entire offline website reconstruction with no
-LLM-as-Judge component. The verifier has three independent deterministic
-outputs:
+Harbor v2 evaluates an offline website reconstruction with deterministic
+contracts. The active deployment ABI is
+`websitebench.harbor.compile-executable.v1`; the active scoring input is one
+sealed 200-case manifest and one exact 200-result set. There is no
+LLM-as-Judge component.
+
+## Active deployment ABI
+
+A new `websitebench.harbor.site.v2` manifest declares:
+
+- `runtime.deployment_abi: websitebench.harbor.compile-executable.v1`;
+- compile entrypoint `compile.sh` and runtime entrypoint `executable` at the
+  candidate root;
+- runtime variables `HOST`, `PORT`, `DATA_DIR`, `SEED`, and `TZ`;
+- health endpoint `/__websitebench/health`, which must return HTTP 200 and the
+  exact JSON value `{"status":"ok"}`;
+- `formal_browsers: [playwright, browser-use]`, eight logical shards, and at
+  most four concurrent workers.
+
+`compile.sh` is executable, takes no arguments, and has 900 seconds by default.
+The verifier first quarantines `/app/repo` into a private build root. Symbolic
+links, hard links, special files, unsafe paths, and pre-existing build output
+are rejected; a submitted `executable` is deleted before compilation. The
+compiler runs without public network access and with CPU, memory, file and log
+limits. A successful compile must leave no child process or listener and must
+produce one independent regular executable at the build root. The complete
+build tree is hashed and frozen read-only.
+
+Every formal case receives a fresh runtime and `DATA_DIR`. The build stays
+read-only, and Landlock permits runtime writes only under that data directory.
+The verifier checks foreground lifetime, exact health output, a graceful
+ten-second SIGTERM, restart with the same data directory, persistence, and
+isolation from a fresh data directory. A stop whose process-group cleanup does
+not complete forbids restart.
+
+## Case manifest
+
+`websitebench.harbor.case-manifest.v1` supports three states:
+
+- `draft`: may contain no cases and is not scorable;
+- `complete`: authoring form with exactly 200 cases;
+- `sealed`: bundle-only projection of a complete manifest.
+
+The fixed distribution is:
+
+| Tier or level | Count |
+| --- | ---: |
+| T1 | 20 |
+| T2 | 165 |
+| T2/L1 | 35 |
+| T2/L2 | 50 |
+| T2/L3 | 80 |
+| T3 | 15 |
+| Total | 200 |
+
+T2 cases are journeys. T1 and T3 are direct HTTP/API or trusted CI/CD cases.
+Every task, visual checkpoint, and CI/CD check in the three hidden suites is
+referenced exactly once by the manifest; duplicate, missing, extra, or dangling
+IDs are rejected.
+
+New scaffolds intentionally contain empty case, task, visual and CI/CD suites
+with `status: draft`. Validation succeeds and reports `status: draft`,
+`scorable: false`, the current counts and the missing counts. Capture,
+materialization, calibration, and scoring reject a draft with exit code 2. Site
+authors fill the current site's private case data; the repository does not
+provide test content for a new site.
+
+## Formal execution
+
+Journey actions use a Playwright-neutral deterministic DSL with explicit
+terminal observations. The same declaration is compiled into two independent
+candidate runs:
+
+1. pinned Playwright 1.61.0; and
+2. pinned Browser Use 0.12.6 in `/opt/websitebench/browser-use-0.12.6`.
+
+Both runs use a fresh candidate runtime, data directory, browser context and
+profile. Both must match the declared terminal observations or the case's
+functional value is zero. Browser Use is exposed only as a deterministic CDP
+transport. Agent `run`, `extract`, `eval`, Python execution, cloud, profile,
+tunnel, MCP, and cookie import/export surfaces are forbidden. Its HOME, temp,
+XDG, socket and Chrome profile paths are isolated; model/cloud credentials are
+removed; only the candidate and deterministic CDP loopback ports are allowed.
+The Browser Use dependency closure is installed only into its separate virtual
+environment and does not enter the main scoring interpreter.
+
+HTTP/API and CI/CD cases execute directly and do not pass through a browser.
+Only the fixed Playwright renderer produces formal screenshots and
+area-weighted RGB SSIM. Rendering uses the recorded Chromium, Playwright, font,
+viewport, locale, timezone, reduced-motion, color-scheme and deterministic
+Chromium argument contract. Dynamic or sensitive rectangles must be masked
+before persisted visual evidence is compared.
+
+The manifest is deterministically divided into eight logical shards and at
+most four shards execute concurrently. Each case seed is derived from the trial
+seed and case ID. Candidate compilation, startup, timeout or assertion failures
+are case failures and remain in the denominator; candidate failures are not
+retried. A trusted verifier, browser, broker or sandbox infrastructure failure
+is retried once with the identical seed. A second infrastructure failure makes
+the entire trial `INVALID_RUN` and no reward is published.
+
+If the candidate cannot be deployed at all, Harbor synthesizes a complete set
+of 200 candidate-failure results with zero functional value. This is a valid,
+scorable zero run rather than infrastructure invalidity.
+
+## Scoring
+
+For each T2 journey:
 
 ```text
-task_score   = passed_tasks / total_tasks * 100
-reward       = task_score / 100
-visual_score = mean(checkpoint_area_weighted_rgb_ssim) * 100
-cicd_score   = passed_trusted_checks / total_trusted_checks * 100
+F = 1 only when Playwright and Browser Use both pass
+V = area-weighted RGB SSIM, or 1 when no visual checkpoint is declared
+J = F * V
 ```
 
-`visual_score` and `cicd_score` are report-only. They cannot cap, raise, or
-otherwise modify reward. Skipped and flaky CI/CD checks count as zero. A task is
-worth one point only when every declared terminal observation matches on its
-first execution.
+Let `R_L1`, `R_L2`, and `R_L3` be the mean journey values for each level:
 
-## Contracts
+```text
+Score20 = 4 * R_L1 + 6 * R_L2 + 10 * R_L3
+reward  = Score20 / 20
+ranking = [Score20, T1 pass rate, T3 pass rate]
+```
 
-New site and instance scaffolds use `websitebench.harbor.site.v2` and
-`websitebench.harbor.instance.v2`. Each site has exactly one same-id instance;
-journeys are tasks inside that instance rather than additional instances. The
-instance references exactly one hidden suite of each type:
+T1 and T3 therefore serve only as deterministic tie-breaks; they never change
+reward. Every result must bind to the exact case-manifest bytes, contain the
+exact 200 IDs, retain the derived seed across retry, and declare the appropriate
+direct or dual-browser functional fields.
 
-- `websitebench.harbor.task-suite.v1`: versioned Playwright actions and explicit
-  terminal observations using exact, normalized-exact, regex, ordered-list,
-  set, finite-number tolerance, or SHA-256 comparators;
-- `websitebench.harbor.visual-suite.v1`: fixed route, actions, viewport,
-  non-overlapping regions, masks, and reference raster paths;
-- `websitebench.harbor.cicd-suite.v1`: the exact fixed platform check set plus
-  optional verifier-only site checks whose boolean verdict is their exit
-  status.
+The active score command is:
 
-The scorecard is `websitebench.harbor.score.v2`. Historical v1 manifests are
-still read explicitly and materialize through their unchanged v1 templates.
-They do not satisfy v2 reference-observation or scoring contracts.
-Every public legacy read requires `allow_legacy_v1=True`; the equivalent
-`validate`, `validate-corpus`, and `materialize` CLI calls require
-`--legacy-v1`.
-Without that flag, `validate-corpus` validates only current one-to-one v2 pairs
-and reports the number of skipped legacy manifests.
+```bash
+websitebench-harbor score-v2 \
+  --case-manifest case-manifest.json \
+  --case-results case-results.json \
+  --out result
+```
 
 ## Authoring flow
 
@@ -56,143 +152,69 @@ websitebench-harbor init-instance \
   --author-name "Benchmark Team" \
   --author-email benchmark@example.test
 
-websitebench-harbor validate \
-  --instance harbor/instances/example
+# A new empty scaffold is a valid draft.
+websitebench-harbor validate --instance harbor/instances/example
 
-websitebench-harbor capture-reference \
-  --instance harbor/instances/example
-
+# After its private 200-case data is complete:
+websitebench-harbor capture-reference --instance harbor/instances/example
 websitebench-harbor materialize \
   --instance harbor/instances/example \
   --out harbor-dist/example
-
-websitebench-harbor validate-bundle \
-  --bundle harbor-dist/example
-
+websitebench-harbor validate-bundle --bundle harbor-dist/example
 websitebench-harbor calibrate-v2 \
   --bundle harbor-dist/example \
   --out harbor-calibration/example
 ```
 
-`capture-reference` starts the local reference unless `--reference-url` is
-provided. It executes every task and visual checkpoint. It writes structured
-terminal observations and fixed-size reference screenshots. Any action,
-observation, or screenshot failure leaves the instance `pending`; pending
-observations cannot materialize.
+Capture follows the source-evidence access policy. It records structured
+terminal observations and fixed-size reference screenshots without persisting
+credentials, cookies, authorization headers, payment data or sensitive form
+values. Non-GET source actions require both the scenario declaration and the
+explicit source-mutation command option. Authenticated storage state and reset
+gateway credentials remain runtime-only.
 
-Capture must run in the canonical Playwright 1.61.0 / Chromium / Linux font
-profile. The artifact records the actual Chromium version, Playwright version
-and configured font profile; the formal verifier refuses to compare screenshots
-when its render fingerprint differs. Remote reference actions stay on the
-configured primary origin plus the comma-separated origins supplied through
-`WEBSITEBENCH_REFERENCE_ALLOWED_ORIGINS`. Non-GET source requests are blocked
-unless the exact task/checkpoint declares `reference_mutation_authorized: true`
-and the author also passes `--allow-source-mutations`; loopback alone is not
-authorization. For any explicitly supplied reference, mutation also requires
-an allowlisted HTTPS gateway (HTTP is accepted only when both fixture and
-gateway are loopback)
-named by `WEBSITEBENCH_REFERENCE_RESET_URL` and the runtime-only
-`WEBSITEBENCH_REFERENCE_RESET_CREDENTIAL`. The gateway runs before every
-scenario so captured facts cannot depend on prior tasks; neither credential nor
-reset URL is persisted.
-Authenticated references may inject a Playwright storage-state JSON path through
-`WEBSITEBENCH_REFERENCE_STORAGE_STATE`. It is loaded into every fresh reference
-browser context but is never copied, logged, or included in the observations;
-the artifact records only whether authenticated state was used.
+Calibration runs a NOP once and the oracle twice in fresh candidates. For the
+active protocol it compares Score20 and the T1/T3 tie-break rates and requires
+the two oracle case-results, eval and receipt hashes to be identical. This is an
+independent NOP/oracle trust check; it does not consume any of the 200 site
+cases.
 
-`calibrate-v2` copies the public seed into three fresh candidate trees, runs the
-NOP once, applies `solution/solve.sh` independently to two oracle copies, and
-executes the same four-worker evaluator for all three. Evidence passes
-only when NOP task score is at most 5, both oracle task and CI/CD scores are
-100, both oracle visual scores are at least 95, and the two oracle discrete
-verdict/score projections are exactly equal.
+## Atomic results
 
-## Candidate runtime
+`tests/test.sh` only invokes the generic runner and finalizer. A run is first
+written beneath a private temporary directory. Every artifact and directory is
+flushed, then the directory is atomically published. `receipt.json` is the last
+file written and binds the manifest and all published artifact hashes.
 
-The sole artifact is `/app/repo`. Its root `deploy.sh` must be executable, take
-no arguments, remain in the foreground, listen on `$PORT`, return HTTP 200 from
-`/healthz`, handle SIGTERM, and write runtime data only beneath
-`$WEBSITEBENCH_DATA_DIR`. Runtime dependency downloads and unauthorized network
-access are forbidden.
+A valid run includes:
 
-The formal verifier uses four workers. Each task owns a different loopback
-port, data directory, mailbox namespace, and browser context. The candidate
-process also receives a distinct, phase-independent random unprivileged UID
-with no supplementary groups,
-and its data directory is mode `0700`. Before candidate `exec`, a Linux Landlock
-ruleset makes the candidate tree read-only, grants read/write access only to
-that worker's data directory, and permits TCP bind/connect only on declared
-ports. A seccomp filter rejects datagram and cross-worker Unix sockets, SysV and
-POSIX message/shared-memory IPC, shared inode locks, keyrings, inotify/fanotify,
-session/process-group escape, and io_uring. `/proc` and `/sys` are not exposed.
-SQLite byte-range locks on regular files beneath the worker data directory are
-executed by a trusted seccomp notification broker without continuing the
-candidate syscall, so descriptor-swap races cannot redirect them to a shared
-inode. These restrictions are inherited by descendants and block shared
-`/tmp`, loopback, procfs/sysfs, lock, and IPC side channels before data can
-cross workers. A trusted kernel preflight verifies Landlock ABI, seccomp user
-notification, architecture and x32 closure before scoring. A candidate deployment failure produces
-valid zero task and visual results; a verifier crash produces `INVALID_RUN` and
-removes `reward.txt` and `scorecard.json`.
+- `case-results.json`, `eval.json`, `events.jsonl`, and JUnit XML;
+- build/runtime logs, capped at 256 MiB;
+- failure screenshots, SSIM heatmaps and sanitized failure traces when
+  applicable;
+- `reward.txt` with one fixed eight-decimal value; and
+- a valid `websitebench.harbor.receipt.v1` receipt.
 
-The platform checks run the candidate under a trusted file-syscall audit,
-redirect HOME/TMP/XDG state into its task data directory, verify the whole
-process group stops on SIGTERM, preserve distinct data sentinels across restart
-and concurrent launches, sample process-group RSS and data bytes, enforce CPU
-affinity and OS resource limits, and reject any attempted write outside the
-assigned data directory. The audit covers every task, visual checkpoint, deploy
-probe, and CI process; it also rejects undeclared loopback ports, non-loopback
-destinations, and shared IPC attempts. Any such event invalidates both scoring
-suites so a sacrificial worker cannot contaminate later work. Chromium smoke
-blocks non-loopback subresource attempts.
+An invalid run includes diagnostic eval/events/log evidence and an invalid
+receipt, but never a reward. The finalizer independently verifies every receipt
+hash before exposing a fixed Harbor reward file.
 
-## Mail and anti-model boundary
+Candidate audit logs are generation-specific. A trusted broker TID is attested
+before candidate execution; trusted broker syscalls are excluded from candidate
+write evidence. The process-group audit rejects undeclared ports, public
+destinations, shared IPC and writes outside `DATA_DIR`, and performs complete
+group cleanup before a runtime may be reused.
 
-`local-sidecar` is the default mailbox. It provides loopback SMTP, a namespaced
-Inbox Web/API, and deterministic OTP extraction without sending real mail.
-Each worker receives an opaque `WEBSITEBENCH_MAILBOX_CAPABILITY` bound only to
-its namespace. SMTP messages must copy the namespace and capability into the
-`X-WebsiteBench-Namespace` and `X-WebsiteBench-Capability` headers; Inbox API
-requests use the capability as a Bearer token. A worker cannot read or deliver
-into another worker's mailbox namespace.
-`external-proxy` requires an exact HTTPS hostname allowlist and a runtime-only
-credential; evidence redaction removes credentials, OTPs, tokens, cookies, and
-sensitive form fields. If the verifier has a default route, formal startup also
-requires `WEBSITEBENCH_NETWORK_POLICY_ENFORCED=1` from the platform network
-controller. Merely declaring a non-empty hostname allowlist is not accepted as
-proof that the policy is enforced.
+## Compatibility and OpenCLI
 
-The local SMTP/Inbox sidecar has fixed message, per-namespace storage,
-recipient, command, connection, idle-time and total-lifetime limits. Candidate
-traffic therefore cannot allocate unbounded trusted verifier memory or threads.
+Historical v1 manifests still require `--legacy-v1` and retain their immutable
+identity. Existing pre-compile v2 sites have no deployment ABI/case manifest
+marker and are rejected by default. They can be validated, captured,
+materialized, calibrated or scored only with the explicit
+`--legacy-deploy-v2` option; their six-suite/result score interface remains
+available only behind that option. Compatibility reads normalize only in
+memory and do not rewrite historical files.
 
-The external mailbox credential remains in the trusted observer only and is
-removed from every candidate process environment. The mailbox runtime evidence
-records only mode, allowlist, and a credential-present boolean.
-
-Bundle validation verifies the exact file/hash set and rejects model SDKs,
-model service URLs, model credential names, model/prompt/embedding/completion
-Judge configuration, public verifier networks, hidden-suite/reference-raster
-leaks into the Agent image, and candidate-visible verifier result paths. The
-verifier image records its installed dependency manifest and runtime network /
-credential evidence.
-
-Those runtime facts are derived from the actual dependency list, importable
-modules, credential environment, font files, and sealed network policy. They
-are not accepted as candidate- or author-supplied booleans.
-
-## Outputs
-
-A valid run emits `scorecard.json`, `reward.txt`, the three `*-results.json`
-files, JSONL mirrors, JUnit XML, sanitized action traces, mask-redacted candidate
-screenshots, SSIM heatmaps, hashes, and sanitized logs. Raw browser traces are
-not retained because they can contain cookies, headers, credentials, or form
-values. `reward.txt` contains only the task completion fraction with exactly
-eight decimal places. Visual suite authors must mask every dynamic or sensitive
-rectangle; masks are blacked out before reference or candidate rasters persist.
-`sandbox-runtime-evidence.json` records the trusted kernel fingerprint and
-successful enforcement probe; a missing capability makes the run invalid.
-
-The required `harbor-v2-deterministic` CI job installs the pinned Chromium and
-`strace`, runs the suite as root so opaque-UID isolation is exercised, and turns
-any unavailable real E2E/calibration prerequisite into a test failure.
+OpenCLI replay remains an advisory diagnostic against repository-owned clones
+on `127.0.0.1`. It does not create cases, affect Score20 or reward, or become a
+merge or deployment condition.

@@ -448,7 +448,9 @@ separately:
 - asset closure and runtime network results;
 - backend runtime path, site ID, database/volume, cookie, mail, and payment
   profile;
-- Harbor contract, replay status, and unresolved pending items;
+- Harbor same-id site/instance paths, deployment ABI, draft/complete status,
+  exact case counts and missing counts, interaction contract, replay status,
+  and unresolved pending items;
 - complete commands, exit codes, and structured evidence;
 - changed paths;
 - deployment dry-run or real deployment identity; and

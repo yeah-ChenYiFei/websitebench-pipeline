@@ -48,7 +48,7 @@ NETWORK_ALLOWLIST = ("127.0.0.1", "localhost")
 # The clone manifest and the Harbor site agree on an id everywhere but here.
 # Keep this table empty-by-default and explicit: a silent fuzzy match would
 # happily bind a contract to the wrong site.
-SITE_ID_ALIASES: dict[str, str] = {}
+SITE_ID_ALIASES = {"edx": "edx-learning-mainline"}
 
 
 class DerivationError(ValueError):
@@ -721,7 +721,13 @@ def bind_clone(
         site_manifest = harbor_site_manifest(repository, clone_site_id)
     site_id = clone_site_id
     if site_manifest is not None:
-        site_id = str(load_site(site_manifest, allow_legacy_v1=True).data["site_id"])
+        site_id = str(
+            load_site(
+                site_manifest,
+                allow_legacy_v1=True,
+                allow_legacy_deploy_v2=True,
+            ).data["site_id"]
+        )
     return CloneBinding(
         manifest_path=path,
         manifest_root=manifest.root,
@@ -767,7 +773,9 @@ def instances_missing_profile(
 def require_current_site_instance(repository: Path, site_manifest: Path) -> None:
     """Require the current same-id site/instance pair before derivation."""
 
-    site = load_site(site_manifest, allow_legacy_v1=True)
+    site = load_site(
+        site_manifest, allow_legacy_v1=True, allow_legacy_deploy_v2=True
+    )
     if site.data.get("schema_version") != "websitebench.harbor.site.v2":
         return
     site_id = str(site.data["site_id"])
@@ -849,7 +857,9 @@ def _write_contract(path: Path, contract: dict[str, Any]) -> None:
 
 
 def _regenerate_adapters(site_manifest: Path) -> list[str]:
-    site = load_site(site_manifest, allow_legacy_v1=True)
+    site = load_site(
+        site_manifest, allow_legacy_v1=True, allow_legacy_deploy_v2=True
+    )
     contract = load_contract_from_site(site_manifest, allow_legacy_v1=True)
     display_name = str(site.data.get("display_name") or contract.site_id)
     rendered = opencli_adapters.render_for_contract(contract, display_name)
@@ -889,7 +899,11 @@ def run_derive(
     derivation = _derive_bound(binding, max_profiles, max_steps, generated_from)
     profiles = set(derivation.contract["profiles"])
     if assign_profile:
-        site = load_site(binding.site_manifest, allow_legacy_v1=True)
+        site = load_site(
+            binding.site_manifest,
+            allow_legacy_v1=True,
+            allow_legacy_deploy_v2=True,
+        )
         if site.data.get("schema_version") == "websitebench.harbor.site.v2" and set(
             assign_profile
         ) != {binding.site_id}:

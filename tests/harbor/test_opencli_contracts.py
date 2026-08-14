@@ -51,7 +51,11 @@ def test_the_corpus_declares_opencli_contracts() -> None:
 
 @pytest.mark.parametrize("manifest", SITES, ids=SITE_IDS)
 def test_contract_loads_and_matches_its_site(manifest: Path) -> None:
-    site = load_site(manifest, allow_legacy_v1=True)
+    site = load_site(
+        manifest,
+        allow_legacy_v1=True,
+        allow_legacy_deploy_v2=True,
+    )
     contract = load_contract_from_site(manifest, allow_legacy_v1=True)
     assert contract.site_id == site.data["site_id"]
     assert contract.opencli_version == site.data["opencli"]["version"]

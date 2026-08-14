@@ -13,6 +13,7 @@
     "metadata",
     "budgets",
     "paths",
+    "case_manifest",
     "suites",
     "reference_observations",
     "calibration"
@@ -77,6 +78,7 @@
         "cicd": {"$ref": "#/$defs/relative_path"}
       }
     },
+    "case_manifest": {"$ref": "#/$defs/relative_path"},
     "reference_observations": {
       "type": "object",
       "additionalProperties": false,
@@ -90,14 +92,21 @@
     "calibration": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["nop_max_task_score", "oracle_task_score", "oracle_min_visual_score", "oracle_cicd_score", "repeat_deterministic"],
       "properties": {
         "nop_max_task_score": {"type": "number", "minimum": 0, "maximum": 5},
         "oracle_task_score": {"const": 100},
         "oracle_min_visual_score": {"type": "number", "minimum": 95, "maximum": 100},
         "oracle_cicd_score": {"const": 100},
+        "nop_max_score20": {"type": "number", "minimum": 0, "maximum": 1},
+        "oracle_score20": {"const": 20},
+        "oracle_t1_pass_rate": {"const": 1},
+        "oracle_t3_pass_rate": {"const": 1},
         "repeat_deterministic": {"const": true}
-      }
+      },
+      "oneOf": [
+        {"required": ["nop_max_task_score", "oracle_task_score", "oracle_min_visual_score", "oracle_cicd_score", "repeat_deterministic"]},
+        {"required": ["nop_max_score20", "oracle_score20", "oracle_t1_pass_rate", "oracle_t3_pass_rate", "repeat_deterministic"]}
+      ]
     }
   },
   "$defs": {

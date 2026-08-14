@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/harbor-eval-v2.schema.json",
+  "title": "WebsiteBench Harbor 200-case evaluation v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "scorable", "score20", "reward", "rates", "tie_break", "counts", "manifest_sha256", "case_results_sha256"],
+  "properties": {
+    "schema_version": {"const": "websitebench.harbor.eval.v2"},
+    "status": {"enum": ["VALID_RUN", "INVALID_RUN"]},
+    "scorable": {"type": "boolean"},
+    "score20": {"type": ["number", "null"], "minimum": 0, "maximum": 20},
+    "reward": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "rates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["T1", "T3", "L1", "L2", "L3"],
+      "properties": {
+        "T1": {"$ref": "#/$defs/rate"},
+        "T3": {"$ref": "#/$defs/rate"},
+        "L1": {"$ref": "#/$defs/rate"},
+        "L2": {"$ref": "#/$defs/rate"},
+        "L3": {"$ref": "#/$defs/rate"}
+      }
+    },
+    "tie_break": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"type": "number", "minimum": 0, "maximum": 20}
+    },
+    "counts": {"type": "object"},
+    "manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "case_results_sha256": {"$ref": "#/$defs/sha256"},
+    "reason": {"type": "string", "maxLength": 4000}
+  },
+  "$defs": {
+    "rate": {"type": "number", "minimum": 0, "maximum": 1},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

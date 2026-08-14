@@ -19,6 +19,12 @@ from typing import Any
 import yaml
 from PIL import Image
 
+from .case_protocol import (
+    CaseProtocolError,
+    load_case_manifest,
+    validate_case_references,
+)
+
 class BundleValidationError(ValueError):
     def __init__(self, problems: list[str]) -> None:
         self.problems = tuple(problems)
@@ -310,7 +316,9 @@ def _archive_hidden_leaks(
     return sorted(findings)
 
 
-def validate_bundle(root: Path | str) -> dict[str, Any]:
+def validate_bundle(
+    root: Path | str, *, allow_legacy_deploy_v2: bool = False
+) -> dict[str, Any]:
     bundle = Path(root).resolve()
     problems: list[str] = []
     try:
@@ -325,6 +333,56 @@ def validate_bundle(root: Path | str) -> dict[str, Any]:
         "websitebench.harbor.bundle.v2"
     ):
         raise BundleValidationError(["bundle is not websitebench.harbor.bundle.v2"])
+    active_case_protocol = (bundle / "tests/fixtures/case-manifest.json").is_file()
+    if not active_case_protocol and not allow_legacy_deploy_v2:
+        raise BundleValidationError(
+            [
+                "pre-compile Harbor v2 bundle validation requires "
+                "allow_legacy_deploy_v2=True (CLI: --legacy-deploy-v2)"
+            ]
+        )
+    if active_case_protocol:
+        try:
+            case_manifest, case_summary = load_case_manifest(
+                bundle / "tests/fixtures/case-manifest.json",
+                allow_draft=False,
+                allow_sealed=True,
+            )
+            if case_summary.status != "sealed":
+                problems.append("bundle case manifest must have bundle-only sealed status")
+            task_suite = json.loads(
+                (bundle / "tests/fixtures/task-suite.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            visual_suite = json.loads(
+                (bundle / "tests/fixtures/visual-suite.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            cicd_suite = json.loads(
+                (bundle / "tests/fixtures/cicd-suite.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            validate_case_references(
+                case_manifest,
+                task_suite=task_suite,
+                visual_suite=visual_suite,
+                cicd_suite=cicd_suite,
+            )
+            platform_cases = sorted(
+                str(check.get("id"))
+                for check in cicd_suite.get("checks", [])
+                if isinstance(check, dict) and check.get("kind") == "platform"
+            )
+            if platform_cases:
+                problems.append(
+                    "trusted platform checks cannot occupy active site cases: "
+                    f"{platform_cases}"
+                )
+        except (CaseProtocolError, OSError, UnicodeError, json.JSONDecodeError) as exc:
+            problems.append(f"bundle case protocol is invalid: {exc}")
     judge = manifest.get("judge")
     if (
         not isinstance(judge, dict)
@@ -378,7 +436,6 @@ def validate_bundle(root: Path | str) -> dict[str, Any]:
     required = {
         "environment/Dockerfile",
         "environment/docker-compose.yaml",
-        "environment/seed/deploy.sh",
         "tests/Dockerfile",
         "tests/test.sh",
         "tests/run_v2.py",
@@ -393,12 +450,29 @@ def validate_bundle(root: Path | str) -> dict[str, Any]:
         "tests/calibration-contract.json",
         "task.toml",
     }
+    if active_case_protocol:
+        required.update(
+            {
+                "tests/fixtures/case-manifest.json",
+                "tests/websitebench/harbor/browser_use_adapter.py",
+                "tests/websitebench/harbor/case_protocol.py",
+                "tests/websitebench/harbor/compiler_v2.py",
+                "tests/websitebench/harbor/executors_v2.py",
+                "tests/websitebench/harbor/formal_v2.py",
+                "tests/websitebench/harbor/finalizer_v2.py",
+                "tests/websitebench/viewer/_schemas/harbor-case-manifest.schema.json",
+                "tests/websitebench/viewer/_schemas/harbor-case-result.schema.json",
+                "tests/websitebench/viewer/_schemas/harbor-eval-v2.schema.json",
+                "tests/websitebench/viewer/_schemas/harbor-receipt.schema.json",
+            }
+        )
     absent = sorted(required - set(declared))
     if absent:
         problems.append(f"bundle is missing required v2 files: {absent}")
 
     seed = bundle / "environment/seed"
     for forbidden in (
+        "case-manifest.json",
         "task-suite.json",
         "visual-suite.json",
         "cicd-suite.json",
@@ -509,6 +583,7 @@ def validate_bundle(root: Path | str) -> dict[str, Any]:
             )
 
     sensitive_files = {
+        bundle / "tests/fixtures/case-manifest.json",
         bundle / "tests/fixtures/task-suite.json",
         bundle / "tests/fixtures/visual-suite.json",
         bundle / "tests/fixtures/cicd-suite.json",
@@ -591,6 +666,17 @@ def validate_bundle(root: Path | str) -> dict[str, Any]:
             problems.append(
                 "evaluation contract differs from the captured four-worker render environment"
             )
+        if active_case_protocol and (
+            evaluation_contract.get("deployment_abi")
+            != "websitebench.harbor.compile-executable.v1"
+            or evaluation_contract.get("logical_shards") != 8
+            or evaluation_contract.get("formal_browsers")
+            != ["playwright", "browser-use"]
+            or evaluation_contract.get("browser_use", {}).get("version") != "0.12.6"
+            or evaluation_contract.get("paths", {}).get("case_manifest")
+            != "/tests/fixtures/case-manifest.json"
+        ):
+            problems.append("evaluation contract differs from the active 200-case ABI")
     except (OSError, KeyError, TypeError, json.JSONDecodeError):
         problems.append("evaluation contract/reference render environment is unreadable")
 
@@ -632,9 +718,12 @@ def validate_bundle(root: Path | str) -> dict[str, Any]:
         dependencies = {}
     expected_runtime = [
         "python==3.12.11",
+        "attrs==26.1.0",
         "greenlet==3.5.4",
         "imageio==2.37.4",
         "iniconfig==2.3.0",
+        "jsonschema==4.26.0",
+        "jsonschema-specifications==2025.9.1",
         "lazy-loader==0.5",
         "networkx==3.6.1",
         "numpy==2.5.1",
@@ -645,6 +734,8 @@ def validate_bundle(root: Path | str) -> dict[str, Any]:
         "pyee==13.0.1",
         "pygments==2.20.0",
         "pytest==9.1.1",
+        "referencing==0.37.0",
+        "rpds-py==2026.6.3",
         "scikit-image==0.26.0",
         "scipy==1.18.0",
         "tifffile==2026.7.14",
@@ -664,6 +755,7 @@ def validate_bundle(root: Path | str) -> dict[str, Any]:
                 r"(?m)^\s+([a-zA-Z0-9_.-]+==[^\s\\]+)\s*\\?$", dockerfile
             )
         }
+        installed.discard("browser-use==0.12.6")
         declared = {value.lower().replace("_", "-") for value in expected_runtime[1:]}
         if (
             not dockerfile.startswith("FROM python:3.12.11-slim-bookworm\n")
@@ -673,6 +765,11 @@ def validate_bundle(root: Path | str) -> dict[str, Any]:
             problems.append(
                 "Judge Dockerfile differs from the fixed browser/dependency closure"
             )
+        if active_case_protocol and (
+            "python -m venv /opt/websitebench/browser-use-0.12.6" not in dockerfile
+            or "browser-use==0.12.6" not in dockerfile
+        ):
+            problems.append("Browser Use 0.12.6 is not confined to its isolated venv")
     except (OSError, UnicodeError):
         problems.append("Judge Dockerfile is unreadable")
 
@@ -701,5 +798,7 @@ def validate_bundle(root: Path | str) -> dict[str, Any]:
         "site_id": manifest.get("site_id"),
         "files": len(declared),
         "model_runtime": False,
-        "reward_source": "task_completion",
+        "reward_source": (
+            "weighted_t2_journey" if active_case_protocol else "task_completion"
+        ),
     }

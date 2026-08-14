@@ -26,7 +26,10 @@
       "required": [
         "reference_access",
         "agent_browser",
-        "formal_browser",
+        "formal_browsers",
+        "deployment_abi",
+        "compile_entrypoint",
+        "executable_entrypoint",
         "reference_url_env",
         "reference_allowed_origins_env",
         "reference_storage_state_env",
@@ -36,16 +39,26 @@
         "reference_port",
         "candidate_port",
         "ready_path",
+        "health_response",
         "judge_network",
-        "candidate_entrypoint",
+        "candidate_host_env",
+        "candidate_port_env",
         "candidate_data_dir_env",
+        "candidate_seed_env",
+        "candidate_timezone_env",
+        "logical_shards",
         "formal_workers",
-        "browser"
+        "browser",
+        "browser_use"
       ],
       "properties": {
         "reference_access": {"const": "browser-only"},
         "agent_browser": {"const": "browser-use-cli"},
         "formal_browser": {"const": "playwright"},
+        "formal_browsers": {"const": ["playwright", "browser-use"]},
+        "deployment_abi": {"const": "websitebench.harbor.compile-executable.v1"},
+        "compile_entrypoint": {"const": "compile.sh"},
+        "executable_entrypoint": {"const": "executable"},
         "reference_url_env": {"$ref": "#/$defs/env_name"},
         "reference_allowed_origins_env": {"const": "WEBSITEBENCH_REFERENCE_ALLOWED_ORIGINS"},
         "reference_storage_state_env": {"const": "WEBSITEBENCH_REFERENCE_STORAGE_STATE"},
@@ -53,11 +66,16 @@
         "reference_reset_credential_env": {"const": "WEBSITEBENCH_REFERENCE_RESET_CREDENTIAL"},
         "candidate_url_env": {"$ref": "#/$defs/env_name"},
         "reference_port": {"$ref": "#/$defs/port"},
-        "candidate_port": {"$ref": "#/$defs/port"},
-        "ready_path": {"$ref": "#/$defs/http_path"},
+        "candidate_port": {"const": 3000},
+        "ready_path": {"const": "/__websitebench/health"},
+        "health_response": {"const": {"status": "ok"}},
         "judge_network": {"const": "loopback-only"},
-        "candidate_entrypoint": {"const": "deploy.sh"},
-        "candidate_data_dir_env": {"const": "WEBSITEBENCH_DATA_DIR"},
+        "candidate_host_env": {"const": "HOST"},
+        "candidate_port_env": {"const": "PORT"},
+        "candidate_data_dir_env": {"const": "DATA_DIR"},
+        "candidate_seed_env": {"const": "SEED"},
+        "candidate_timezone_env": {"const": "TZ"},
+        "logical_shards": {"const": 8},
         "formal_workers": {"const": 4},
         "browser": {
           "type": "object",
@@ -72,6 +90,18 @@
             "color_scheme": {"enum": ["light", "dark", "no-preference"]},
             "frozen_time": {"type": "string", "format": "date-time"},
             "disable_animations": {"const": true}
+          }
+        },
+        "browser_use": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["version", "venv", "mode", "public_network", "credentials"],
+          "properties": {
+            "version": {"const": "0.12.6"},
+            "venv": {"const": "/opt/websitebench/browser-use-0.12.6"},
+            "mode": {"const": "deterministic-cdp-only"},
+            "public_network": {"const": false},
+            "credentials": {"const": false}
           }
         }
       }
@@ -139,12 +169,12 @@
     "scoring": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["reward_source", "task_score", "visual_score", "cicd_score"],
+      "required": ["reward_source", "t2_journey_score", "visual_score", "tie_break"],
       "properties": {
-        "reward_source": {"const": "task_completion"},
-        "task_score": {"const": "equal_weight_exact_terminal_state"},
-        "visual_score": {"const": "checkpoint_area_weighted_rgb_ssim_report_only"},
-        "cicd_score": {"const": "equal_weight_trusted_checks_report_only"}
+        "reward_source": {"const": "weighted_t2_journey"},
+        "t2_journey_score": {"const": "4*R_L1+6*R_L2+10*R_L3"},
+        "visual_score": {"const": "area_weighted_rgb_ssim"},
+        "tie_break": {"const": ["Score20", "T1_pass_rate", "T3_pass_rate"]}
       }
     }
   },

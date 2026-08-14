@@ -9,7 +9,7 @@
     "schema_version": {"const": "websitebench.harbor.cicd-suite.v1"},
     "suite_id": {"$ref": "#/$defs/id"},
     "site_id": {"$ref": "#/$defs/id"},
-    "checks": {"type": "array", "minItems": 1, "maxItems": 500, "items": {"$ref": "#/$defs/check"}}
+    "checks": {"type": "array", "minItems": 0, "maxItems": 500, "items": {"$ref": "#/$defs/check"}}
   },
   "$defs": {
     "id": {"type": "string", "pattern": "^[a-z0-9](?:[a-z0-9._:/-]*[a-z0-9])?$", "maxLength": 200},

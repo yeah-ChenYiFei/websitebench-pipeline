@@ -20,9 +20,16 @@ from typing import Any, Callable, Mapping, Sequence
 
 import yaml
 
+from .dsl_v2 import (
+    _AWAIT_PARALLEL_FETCH,
+    _SCHEDULE_PARALLEL_FETCH,
+    _api_request_body,
+    _response_json,
+)
 from .judge_v2 import (
     accessibility_role_name,
     json_pointer,
+    launch_deterministic_chromium,
     normalize_observed_url,
     redact_visual_masks,
     render_environment_fingerprint,
@@ -46,6 +53,67 @@ def _download_sha256(path: Path) -> str:
 
 class ReferenceObservationError(RuntimeError):
     """The reference did not complete every declared deterministic scenario."""
+
+
+def _run_parallel_api(
+    action: Mapping[str, Any],
+    *,
+    actors: Mapping[str, tuple[Any, Any]],
+    captures: dict[str, Any],
+    base_url: str,
+    timeout_ms: int,
+    reference_mutation_allowed: bool,
+) -> None:
+    requests = action.get("requests")
+    if not isinstance(requests, Sequence) or isinstance(requests, (str, bytes)):
+        raise ReferenceObservationError("parallel_api requires requests")
+    launch_at = int(time.time() * 1000) + 150
+    scheduled: list[tuple[Any, str, str]] = []
+    for index, declaration in enumerate(requests):
+        if not isinstance(declaration, Mapping):
+            raise ReferenceObservationError("parallel_api request must be an object")
+        actor = str(declaration.get("actor") or "")
+        if actor not in actors:
+            raise ReferenceObservationError(f"unknown actor: {actor}")
+        method = str(declaration.get("method", "GET")).upper()
+        if method not in {"GET", "HEAD", "OPTIONS"} and not reference_mutation_allowed:
+            raise ReferenceObservationError(
+                "non-GET reference request requires scenario authorization and "
+                "explicit command opt-in"
+            )
+        page = actors[actor][1]
+        path = str(_interpolate(declaration.get("path", "/"), captures))
+        url = _target_url(base_url, path)
+        capture_as = str(declaration.get("capture_as") or "")
+        key = f"__websitebench_parallel_{index}"
+        headers = _interpolate(declaration.get("headers", {}), captures)
+        if not isinstance(headers, Mapping):
+            raise ReferenceObservationError("parallel_api headers must be an object")
+        page.evaluate(
+            _SCHEDULE_PARALLEL_FETCH,
+            {
+                "key": key,
+                "url": url,
+                "method": method,
+                "body": _interpolate(declaration.get("body"), captures),
+                "headers": dict(headers),
+                "launchAt": launch_at,
+                "timeoutMs": timeout_ms,
+            },
+        )
+        scheduled.append((page, key, capture_as))
+    results: list[tuple[str, Mapping[str, Any]]] = []
+    for page, key, capture_as in scheduled:
+        result = page.evaluate(_AWAIT_PARALLEL_FETCH, key)
+        if not isinstance(result, Mapping) or result.get("error"):
+            error = result.get("error") if isinstance(result, Mapping) else result
+            raise ReferenceObservationError(f"parallel_api request failed: {error}")
+        results.append((capture_as, result))
+    for capture_as, result in results:
+        captures[capture_as] = {
+            "status": result.get("status"),
+            "json": result.get("json"),
+        }
 
 
 def _origin(value: str) -> tuple[str, str]:
@@ -82,7 +150,9 @@ def _remote_reset(reset_url: str, credential: str, reference_url: str) -> str:
         with urlopen_no_redirect(request, timeout=30) as response:
             response.read()
             if not 200 <= response.status < 300:
-                raise ReferenceObservationError("remote reference reset did not succeed")
+                raise ReferenceObservationError(
+                    "remote reference reset did not succeed"
+                )
     except (OSError, urllib.error.URLError) as exc:
         raise ReferenceObservationError("remote reference reset failed") from exc
     return reference_url
@@ -329,10 +399,13 @@ def _run_actions(
                     "explicit command opt-in"
                 )
             data = _interpolate(action.get("body"), captures)
+            headers = _interpolate(action.get("headers", {}), captures)
+            request_headers = dict(headers) if isinstance(headers, Mapping) else {}
             response = current_page.context.request.fetch(
                 url,
                 method=method,
-                data=data,
+                data=_api_request_body(data, request_headers),
+                headers=request_headers,
                 timeout=timeout,
                 fail_on_status_code=False,
                 max_redirects=0,
@@ -342,10 +415,17 @@ def _run_actions(
             if isinstance(capture_as, str):
                 captures[capture_as] = {
                     "status": status,
-                    "json": json.loads(response_body.decode("utf-8"))
-                    if response_body
-                    else None,
+                    "json": _response_json(response_body),
                 }
+        elif operation == "parallel_api":
+            _run_parallel_api(
+                action,
+                actors=actors,
+                captures=captures,
+                base_url=current_base,
+                timeout_ms=timeout,
+                reference_mutation_allowed=reference_mutation_allowed,
+            )
         else:
             raise ReferenceObservationError(f"unsupported action: {operation}")
     return current_page, current_base
@@ -385,7 +465,9 @@ def _observe(
     if kind == "download_sha256":
         capture = declaration.get("capture_as", declaration.get("id"))
         if capture not in captures:
-            raise ReferenceObservationError(f"download capture is unavailable: {capture}")
+            raise ReferenceObservationError(
+                f"download capture is unavailable: {capture}"
+            )
         return captures[str(capture)]
     selector = declaration.get("selector")
     if not isinstance(selector, dict):
@@ -524,7 +606,7 @@ def _capture_observations(
     visual_facts: list[dict[str, Any]] = []
     with sync_playwright() as playwright:
         try:
-            browser = playwright.chromium.launch(headless=True)
+            browser = launch_deterministic_chromium(playwright)
         except Exception as exc:
             raise ReferenceObservationError(
                 f"reference browser launch failed: {type(exc).__name__}"
@@ -807,10 +889,15 @@ def capture_reference(
     reference_url: str | None = None,
     force: bool = False,
     allow_source_mutations: bool = False,
+    allow_legacy_deploy_v2: bool = False,
 ) -> Path:
     """Capture declared task observations and visual rasters atomically."""
 
-    instance = load_instance(instance_path, corpus_root=corpus_root)
+    instance = load_instance(
+        instance_path,
+        corpus_root=corpus_root,
+        allow_legacy_deploy_v2=allow_legacy_deploy_v2,
+    )
     if instance.data.get("schema_version") != "websitebench.harbor.instance.v2":
         raise HarborManifestError(["reference capture is available only for Harbor v2"])
     suites = instance.data["suites"]
@@ -911,7 +998,9 @@ def capture_reference(
                     or parsed.username is not None
                     or parsed.password is not None
                 ):
-                    raise ReferenceObservationError("reference URL must be absolute HTTP(S)")
+                    raise ReferenceObservationError(
+                        "reference URL must be absolute HTTP(S)"
+                    )
                 configured = os.environ.get(
                     instance.site.data["runtime"]["reference_url_env"]
                 )
@@ -1086,7 +1175,11 @@ def capture_reference(
         newline="\n",
     )
     try:
-        load_instance(replacement_manifest, corpus_root=instance.corpus_root)
+        load_instance(
+            replacement_manifest,
+            corpus_root=instance.corpus_root,
+            allow_legacy_deploy_v2=allow_legacy_deploy_v2,
+        )
     except BaseException:
         replacement_manifest.unlink(missing_ok=True)
         raise

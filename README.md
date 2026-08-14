@@ -29,8 +29,10 @@ Harbor 产物与部署准备。
    → 部署准备。
 3. **人**：按 `ACCEPTANCE.md` 分阶段验收。机器诊断（`clean/findings/incomplete`）
    永远只是输入，验收决定由人做出。
-4. **Agent**：`websitebench-harbor init-instance` 起 instance 骨架，人与 agent
-   共同完成任务定义、oracle 与校准证据。
+4. **Agent**：用 `websitebench-harbor init-site` 与 `init-instance` 建立严格同 ID
+   的 Harbor v2 authoring pair。新骨架只生成空白 draft case/task/visual/CI/CD
+   文件；它可校验但不可 capture、materialize、calibrate 或评分。后续再由人与
+   agent 基于站点证据完成恰好 200 项 case、oracle 与校准证据。
 5. **人**：显式授权公网发布后，**agent** 走 `deploy-<site>-public.yml`
    （`deploy=true`）发布并按 `references/08-deploy.md` 在线复检；未授权前
    只允许 `--check-only` / `--dry-run`。
@@ -143,8 +145,9 @@ websitebench-offline-clone verify --site materials/<site-id>
 
 ## 金样本：tripit
 
-`materials/tripit/` + `harbor/sites/tripit/` 展示了当前链路的目录与产物形状；
-新站可以用它对照结构，但应以当前 prompt 和 CLI 为准：
+`materials/tripit/` + `harbor/sites/tripit/` 是历史兼容样本；新站不得复制它的
+Harbor 布局或测试内容，必须以当前 prompt 和 CLI 生成的 compile-executable v2
+空白 draft 为准：
 
 - `materials/tripit/scope/` — 冻结的范围契约、checkpoints、verify.json
 - `materials/tripit/source-current/`、`source-assets/` — 源证据与资产闭包
@@ -152,9 +155,8 @@ websitebench-offline-clone verify --site materials/<site-id>
 - `materials/tripit/tools/frontend_samples.json` — Harbor 派生的硬输入
 - `harbor/sites/tripit/` — 站点契约、interactions（OpenCLI 契约 + adapters）、
   reference、verifier
-- `harbor/instances/tripit/` — Harbor instance（v1 布局，与 tripit 的 v1 站点
-  契约一致；`instance.yaml` + instruction/public/verifier/solution/fixtures。
-  oracle 与校准尚未执行，`solve.sh` 如实返回未实现）
+- `harbor/instances/tripit/` — 不可改写的 v1 兼容 instance；它只能说明历史身份，
+  不能作为新 v2 的 `deploy.sh`、suite 数量或评分协议模板。
 - `deploy/generic-offline-clone/deployment.tripit.v2.json` +
   `.github/workflows/deploy-tripit-public.yml` — 部署描述符与 dispatcher；
   线上参照：<https://tripit.website-bench.com>（匿名访问 401 是 Basic-auth

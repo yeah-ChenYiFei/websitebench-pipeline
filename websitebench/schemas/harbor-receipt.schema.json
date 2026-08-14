@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://websitebench.local/schemas/harbor-receipt.schema.json",
+  "title": "WebsiteBench Harbor atomic publication receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "valid", "trial_id", "seed", "manifest_sha256", "artifacts"],
+  "properties": {
+    "schema_version": {"const": "websitebench.harbor.receipt.v1"},
+    "status": {"enum": ["VALID_RUN", "INVALID_RUN"]},
+    "valid": {"type": "boolean"},
+    "trial_id": {"type": "string", "minLength": 1, "maxLength": 160},
+    "seed": {"type": "integer", "minimum": 0, "maximum": 9223372036854775807},
+    "manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "reason": {"type": "string", "maxLength": 4000},
+    "artifacts": {
+      "type": "object",
+      "propertyNames": {"pattern": "^(?![A-Za-z]:)(?![\\/])(?!.*(?:^|[\\/])\\.\\.(?:[\\/]|$))[A-Za-z0-9._/-]+$"},
+      "additionalProperties": {"$ref": "#/$defs/sha256"}
+    }
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+}

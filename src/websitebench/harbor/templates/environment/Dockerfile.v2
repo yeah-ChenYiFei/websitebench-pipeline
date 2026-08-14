@@ -21,8 +21,7 @@ RUN pip install --no-cache-dir \
 
 COPY seed/ /app/repo/
 
-RUN chmod 755 /app/repo/deploy.sh \
-    && if [ -f /app/repo/.websitebench/site/install-agent.sh ]; then \
+RUN if [ -f /app/repo/.websitebench/site/install-agent.sh ]; then \
       bash /app/repo/.websitebench/site/install-agent.sh; \
     fi \
     && if [ -f /app/repo/install-agent.sh ]; then \

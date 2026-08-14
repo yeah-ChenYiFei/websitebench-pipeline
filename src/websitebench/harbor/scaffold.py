@@ -158,15 +158,18 @@ def initialize_site(
         }
     else:
         scoring = {
-            "reward_source": "task_completion",
-            "task_score": "equal_weight_exact_terminal_state",
-            "visual_score": "checkpoint_area_weighted_rgb_ssim_report_only",
-            "cicd_score": "equal_weight_trusted_checks_report_only",
+            "reward_source": "weighted_t2_journey",
+            "t2_journey_score": "4*R_L1+6*R_L2+10*R_L3",
+            "visual_score": "area_weighted_rgb_ssim",
+            "tie_break": ["Score20", "T1_pass_rate", "T3_pass_rate"],
         }
         runtime = {
             "reference_access": "browser-only",
             "agent_browser": "browser-use-cli",
-            "formal_browser": "playwright",
+            "formal_browsers": ["playwright", "browser-use"],
+            "deployment_abi": "websitebench.harbor.compile-executable.v1",
+            "compile_entrypoint": "compile.sh",
+            "executable_entrypoint": "executable",
             "reference_url_env": "WEBSITEBENCH_REFERENCE_URL",
             "reference_allowed_origins_env": "WEBSITEBENCH_REFERENCE_ALLOWED_ORIGINS",
             "reference_storage_state_env": "WEBSITEBENCH_REFERENCE_STORAGE_STATE",
@@ -175,10 +178,15 @@ def initialize_site(
             "candidate_url_env": "WEBSITEBENCH_CANDIDATE_URL",
             "reference_port": 8080,
             "candidate_port": 3000,
-            "ready_path": "/healthz",
+            "ready_path": "/__websitebench/health",
+            "health_response": {"status": "ok"},
             "judge_network": "loopback-only",
-            "candidate_entrypoint": "deploy.sh",
-            "candidate_data_dir_env": "WEBSITEBENCH_DATA_DIR",
+            "candidate_host_env": "HOST",
+            "candidate_port_env": "PORT",
+            "candidate_data_dir_env": "DATA_DIR",
+            "candidate_seed_env": "SEED",
+            "candidate_timezone_env": "TZ",
+            "logical_shards": 8,
             "formal_workers": 4,
             "browser": {
                 "engine": "chromium",
@@ -189,6 +197,13 @@ def initialize_site(
                 "color_scheme": "light",
                 "frozen_time": "2026-01-01T00:00:00Z",
                 "disable_animations": True,
+            },
+            "browser_use": {
+                "version": "0.12.6",
+                "venv": "/opt/websitebench/browser-use-0.12.6",
+                "mode": "deterministic-cdp-only",
+                "public_network": False,
+                "credentials": False,
             },
         }
     site_payload: dict[str, object] = {
@@ -253,39 +268,57 @@ def initialize_instance(
     root = _prepare_empty(destination)
     for directory in ("public", "verifier", "fixtures/hidden", "solution"):
         (root / directory).mkdir(parents=True, exist_ok=True)
-    (root / "instruction.md").write_text(
-        "# Reconstruct the offline website\n\n"
+    instruction = (
         "Use Browser Use CLI to inspect the browser-only reference website. Rebuild "
-        "the complete scoped frontend and backend in `/app/repo`. The formal verifier uses "
-        + (
-            "Playwright and direct HTTP checks against a fresh candidate instance.\n"
-            if legacy_v1
-            else "A deterministic verifier evaluates hidden exact-state tasks, RGB "
-            "SSIM checkpoints, and trusted CI/CD checks. Only task completion "
-            "contributes to reward.\n"
-        ),
+        "the complete scoped frontend and backend in `/app/repo`. The formal verifier "
+        "uses Playwright and direct HTTP checks against a fresh candidate instance.\n"
+        if legacy_v1
+        else (
+            "Use Browser Use CLI or the environment's Chrome MCP to inspect the "
+            "browser-only reference website and self-check the reconstruction. Rebuild "
+            "the complete scoped frontend and backend in `/app/repo` as entirely local "
+            "HTML, CSS, JavaScript, assets, fonts, APIs, and backend. Create an "
+            "executable root `compile.sh` that takes no arguments and produces a root "
+            "`executable`. The executable must stay in the foreground, bind to "
+            "`$HOST:$PORT`, write runtime data only beneath `$DATA_DIR`, use `$SEED` "
+            "and `$TZ`, and handle SIGTERM. `/__websitebench/health` must return "
+            "exact JSON `{\"status\":\"ok\"}` with HTTP 200. There must be no "
+            "compile-time or runtime dependency downloads or "
+            "public network access. A deterministic verifier evaluates a sealed "
+            "200-case manifest. Both formal browser executors must match explicit "
+            "terminal observations; T2 journey reward uses area-weighted RGB SSIM.\n"
+        )
+    )
+    (root / "instruction.md").write_text(
+        "# Reconstruct the offline website\n\n" + instruction,
         encoding="utf-8",
         newline="\n",
     )
     (root / "public" / "README.md").write_text(
         "# Site-instance public files\n\n"
-        "Place the candidate scaffold and Agent-visible site contracts here. Keep "
-        + ("`run.sh`" if legacy_v1 else "root `deploy.sh`")
-        + ": the verifier sets `PORT` and `WEBSITEBENCH_DATA_DIR`, then runs "
-        "it from `/app/repo`.\n",
+        "Place the candidate scaffold and Agent-visible site contracts here. "
+        + (
+            "Keep `run.sh`: the verifier sets `PORT` and "
+            "`WEBSITEBENCH_DATA_DIR`, then runs it from `/app/repo`.\n"
+            if legacy_v1
+            else "The starter may be empty; the candidate must author executable root "
+            "`compile.sh` in `/app/repo`; it creates `executable` during the private "
+            "offline build phase.\n"
+        ),
         encoding="utf-8",
         newline="\n",
     )
-    candidate_run = root / "public" / ("run.sh" if legacy_v1 else "deploy.sh")
-    candidate_run.write_text(
-        "#!/usr/bin/env bash\n"
-        "set -Eeuo pipefail\n"
-        "echo 'implement the candidate server; listen on $PORT' >&2\n"
-        "exit 2\n",
-        encoding="utf-8",
-        newline="\n",
-    )
-    candidate_run.chmod(0o755)
+    if legacy_v1:
+        candidate_run = root / "public/run.sh"
+        candidate_run.write_text(
+            "#!/usr/bin/env bash\n"
+            "set -Eeuo pipefail\n"
+            "echo 'implement the candidate server; listen on $PORT' >&2\n"
+            "exit 2\n",
+            encoding="utf-8",
+            newline="\n",
+        )
+        candidate_run.chmod(0o755)
     (root / "verifier" / "README.md").write_text(
         "# Site-instance verifier overlay\n\n"
         "Put evaluator-only checks for the complete scoped site here.\n",
@@ -298,11 +331,33 @@ def initialize_instance(
         newline="\n",
     )
     solve = root / "solution" / "solve.sh"
-    solve.write_text(
+    solve_body = (
         "#!/usr/bin/env bash\n"
         "set -Eeuo pipefail\n"
         "echo 'oracle solution is not implemented' >&2\n"
-        "exit 2\n",
+        "exit 2\n"
+        if legacy_v1
+        else (
+            "#!/usr/bin/env bash\n"
+            "set -Eeuo pipefail\n"
+            ': "${WEBSITEBENCH_CANDIDATE_ROOT:?required}"\n'
+            "cat > \"$WEBSITEBENCH_CANDIDATE_ROOT/compile.sh\" <<'SH'\n"
+            "#!/usr/bin/env bash\n"
+            "set -Eeuo pipefail\n"
+            "cat > executable <<'EXE'\n"
+            "#!/usr/bin/env bash\n"
+            "echo 'oracle server is not implemented' >&2\n"
+            "exit 2\n"
+            "EXE\n"
+            "chmod 755 executable\n"
+            "SH\n"
+            'chmod 755 "$WEBSITEBENCH_CANDIDATE_ROOT/compile.sh"\n'
+            "echo 'oracle solution is not implemented' >&2\n"
+            "exit 2\n"
+        )
+    )
+    solve.write_text(
+        solve_body,
         encoding="utf-8",
         newline="\n",
     )
@@ -315,68 +370,27 @@ def initialize_instance(
                 "suite_id": f"{instance_id}-tasks",
                 "site_id": site_parts[1],
                 "dsl_version": "websitebench.harbor.playwright-dsl.v1",
-                "tasks": [
-                    {
-                        "id": "healthz",
-                        "timeout_sec": 30,
-                        "actions": [],
-                        "observations": [
-                            {
-                                "id": "status",
-                                "kind": "api_status",
-                                "path": "/healthz",
-                                "comparator": {"type": "exact"},
-                            }
-                        ],
-                    }
-                ],
+                "tasks": [],
             },
             "visual-suite.json": {
                 "schema_version": "websitebench.harbor.visual-suite.v1",
                 "suite_id": f"{instance_id}-visual",
                 "site_id": site_parts[1],
-                "checkpoints": [
-                    {
-                        "id": "home",
-                        "route": "/",
-                        "timeout_sec": 60,
-                        "viewport": {"width": 1280, "height": 720},
-                        "actions": [],
-                        "regions": [
-                            {
-                                "id": "page",
-                                "rect": {"x": 0, "y": 0, "width": 1280, "height": 720},
-                                "masks": [],
-                            }
-                        ],
-                        "reference_image": "visual/home.png",
-                    }
-                ],
+                "checkpoints": [],
             },
             "cicd-suite.json": {
                 "schema_version": "websitebench.harbor.cicd-suite.v1",
                 "suite_id": f"{instance_id}-cicd",
                 "site_id": site_parts[1],
-                "checks": [
-                    {"id": identifier, "kind": "platform", "timeout_sec": 60}
-                    for identifier in (
-                        "platform::artifact/complete",
-                        "platform::artifact/deploy-path-safe",
-                        "platform::deploy/offline-clean",
-                        "platform::deploy/healthz",
-                        "platform::deploy/foreground-lifecycle",
-                        "platform::deploy/graceful-sigterm",
-                        "platform::deploy/restart-persistence",
-                        "platform::deploy/concurrent-isolation",
-                        "platform::artifact/code-tree-unchanged",
-                        "platform::network/external-closed",
-                        "platform::security/secret-reference-verifier-scan",
-                        "platform::browser/chromium-smoke",
-                        "platform::accessibility/basic",
-                        "platform::performance/startup-budget",
-                        "platform::performance/resource-budget",
-                    )
-                ],
+                "checks": [],
+            },
+            "case-manifest.json": {
+                "schema_version": "websitebench.harbor.case-manifest.v1",
+                "manifest_id": f"{instance_id}-cases",
+                "site_id": site_parts[1],
+                "status": "draft",
+                "dsl_version": "websitebench.harbor.neutral-dsl.v1",
+                "cases": [],
             },
         }
         for filename, payload in suites.items():
@@ -461,15 +475,16 @@ def initialize_instance(
                     "visual": "fixtures/hidden/visual-suite.json",
                     "cicd": "fixtures/hidden/cicd-suite.json",
                 },
+                "case_manifest": "fixtures/hidden/case-manifest.json",
                 "reference_observations": {
                     "status": "pending",
                     "artifact": "fixtures/hidden/reference-observations.json",
                 },
                 "calibration": {
-                    "nop_max_task_score": 5,
-                    "oracle_task_score": 100,
-                    "oracle_min_visual_score": 95,
-                    "oracle_cicd_score": 100,
+                    "nop_max_score20": 1,
+                    "oracle_score20": 20,
+                    "oracle_t1_pass_rate": 1,
+                    "oracle_t3_pass_rate": 1,
                     "repeat_deterministic": True,
                 },
             }

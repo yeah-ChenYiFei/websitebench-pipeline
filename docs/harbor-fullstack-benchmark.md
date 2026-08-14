@@ -1,9 +1,10 @@
 # Harbor 前后端离线网站复刻 Benchmark 规范
 
-> 本文保留 Harbor v1 的历史维度、CTRF 和 `run.sh` 合同。新建任务默认使用纯确定性
-> Harbor v2；其 `deploy.sh`、三套隐藏 suite、reference freeze 和唯一 task reward
-> 合同见 [`harbor-deterministic-v2.md`](harbor-deterministic-v2.md)。v1 记录只做显式
-> 兼容读取，不能作为 v2 验证或评分证据。
+> 本文保留 Harbor v1 的历史维度、CTRF 和 `run.sh` 合同，以及 pre-compile v2 的
+> `deploy.sh`/三套 suite 描述。新建任务必须使用
+> [`harbor-deterministic-v2.md`](harbor-deterministic-v2.md) 中的
+> `compile.sh -> executable`、200-case、双浏览器和 receipt 协议。旧 v2 仅能经
+> `--legacy-deploy-v2` 显式兼容读取，不能作为新任务模板或当前评分证据。
 >
 > 当前 v2 authoring 严格采用一 site、一同 ID instance。下文出现的同站多题
 > instance、`run.sh` 和 CTRF node 分组只是在说明不可改写的 v1 历史合同。

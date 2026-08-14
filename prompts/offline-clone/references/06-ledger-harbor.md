@@ -59,6 +59,36 @@ repair loop, but **it is not an acceptance decision, creates no source
 coverage, and does not replace phase 10 functional or visual verification.** It
 has the same advisory standing as OpenCLI replay.
 
+Before contract derivation, create the current same-id Harbor authoring pair for
+every new site. Do not copy an existing site's suites or use a pre-compile v2
+layout as a starter:
+
+```bash
+websitebench-harbor init-site \
+  --site-dir harbor/sites/<site-id> \
+  --site-id <site-id> \
+  --display-name "<display-name>"
+
+websitebench-harbor init-instance \
+  --instance-dir harbor/instances/<site-id> \
+  --instance-id <site-id> \
+  --site-manifest sites/<site-id>/site.yaml \
+  --author-name "WebsiteBench Pipeline" \
+  --author-email websitebench@example.test
+```
+
+The new instance is intentionally a non-scorable draft. Its case manifest and
+task, visual, and CI/CD suites must remain empty until site-specific evidence is
+authored. `validate` must return exit code 0 with `status: draft`,
+`scorable: false`, and the missing case counts. Do not call capture,
+materialize, calibration, or scoring on that draft.
+
+The generated public contract is `compile.sh -> executable`, not `deploy.sh`.
+The candidate must use `HOST`, `PORT`, `DATA_DIR`, `SEED`, and `TZ`, stay in the
+foreground, handle SIGTERM, and return exact JSON `{"status":"ok"}` from
+`/__websitebench/health`. The site declares both `playwright` and
+`browser-use` as formal browsers.
+
 After the frontend diagnostics complete, run:
 
 ```bash
@@ -71,6 +101,23 @@ ledger, then rerun with `--force` when the contract needs to change. Derivation
 writes the contract and `browser: false` adapters directly. Run
 `websitebench-harbor run-opencli` for each profile against the running loopback
 clone.
+
+If the unique instance needs a derived profile assignment, rerun derivation
+with `--assign-profile <site-id>=<profile-id>`. Then confirm the generated draft
+shape:
+
+```bash
+websitebench-harbor validate \
+  --instance harbor/instances/<site-id> \
+  --corpus-root harbor
+```
+
+When benchmark authoring later completes the private case data, require exactly
+200 cases: T1=20, T2=165, T3=15, with T2 split L1=35, L2=50, L3=80. Every T2
+journey uses explicit terminal observations and must pass both formal browser
+executors; screenshots and area-weighted RGB SSIM come only from fixed
+Playwright rendering. Trusted platform checks are verifier infrastructure and
+must not consume any of the 200 site cases.
 
 OpenCLI replay is advisory: it creates no trace coverage and does not decide
 acceptance. When OpenCLI is unavailable, record `opencli-unavailable` and

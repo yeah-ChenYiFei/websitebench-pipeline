@@ -36,10 +36,19 @@ Build and verify in this order:
 5. Resolve semantic ambiguity mechanically: P0/P1 use `full-local-model`; P2
    uses `truthful-simulation`. Preserve certainty, evidence references and
    machine rationale.
-6. Derive the Harbor interaction contract from
-   what the build already captured; do not defer it to a later Harbor phase. Run
-   `websitebench-harbor derive-from-clone --clone-manifest
-   materials/<site-dir>/clone.yaml`. The command returns a `pending` work list
+6. Create the same-id `harbor/sites/<site-id>` and
+   `harbor/instances/<site-id>` pair with `websitebench-harbor init-site` and
+   `init-instance`. For a new site, retain the generated empty draft case,
+   task, visual, and CI/CD files; do not copy another site's test content.
+   Confirm `validate` reports `status: draft`, `scorable: false`, and the
+   missing count for the exact 200-case protocol. The generated deployment
+   contract is `compile.sh -> executable` with `HOST`, `PORT`, `DATA_DIR`,
+   `SEED`, `TZ`, dual formal browsers, and exact
+   `/__websitebench/health` JSON. Then derive the Harbor interaction contract
+   from what the build already captured; do not defer it to a later Harbor
+   phase. Run `websitebench-harbor derive-from-clone --clone-manifest
+   materials/<site-dir>/clone.yaml`, assigning the derived profile to the
+   unique instance when requested. The command returns a `pending` work list
    and writes the contract plus adapters directly. Tighten the inputs from the
    step 2 ledger: fill every `selector`, resolve each pending entry, remove steps
    the ledger cannot support, and rerun with `--force`. Then start the clone and replay each profile with

@@ -197,3 +197,35 @@ def test_long_runs_have_a_fresh_context_rollover_contract() -> None:
     assert "Use a standard subagent, not a fork" in handoff
     assert "must never claim" in handoff and "`/clear`" in handoff
     assert settings["env"]["CLAUDE_AUTOCOMPACT_PCT_OVERRIDE"] == "70"
+
+
+def test_harbor_phase_tracks_the_current_compile_case_protocol() -> None:
+    phase = (REFERENCES / "06-ledger-harbor.md").read_text(encoding="utf-8")
+    build = (PROMPT_DIR / "build.md").read_text(encoding="utf-8")
+    combined = phase + "\n" + build
+
+    for requirement in (
+        "websitebench-harbor init-site",
+        "websitebench-harbor init-instance",
+        "status: draft",
+        "scorable: false",
+        "compile.sh -> executable",
+        "HOST",
+        "PORT",
+        "DATA_DIR",
+        "SEED",
+        "TZ",
+        "/__websitebench/health",
+        "playwright",
+        "browser-use",
+        "T1=20",
+        "T2=165",
+        "T3=15",
+        "L1=35",
+        "L2=50",
+        "L3=80",
+    ):
+        assert requirement in combined
+
+    assert "do not copy another site's test content" in combined.lower()
+    assert "must not consume any of the 200 site cases" in phase

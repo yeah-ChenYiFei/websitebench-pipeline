@@ -223,7 +223,11 @@ def load_contract_from_site(
     """Load the contract declared by ``site.yaml``'s ``opencli.contract``."""
 
     try:
-        site = load_site(site_manifest, allow_legacy_v1=allow_legacy_v1)
+        site = load_site(
+            site_manifest,
+            allow_legacy_v1=allow_legacy_v1,
+            allow_legacy_deploy_v2=True,
+        )
     except HarborManifestError as exc:
         raise OpenCliContractError(str(exc)) from exc
     opencli = site.data.get("opencli")
