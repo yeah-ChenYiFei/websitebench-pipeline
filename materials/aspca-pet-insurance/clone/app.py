@@ -53,6 +53,9 @@ PORTAL_DIR = ROOT / "frontend" / "portal"
 STATIC_DIR = ROOT / "static"
 
 _HEALTH_BODY = json.dumps({"ok": True, "site_id": SITE_ID}, separators=(",", ":"))
+_MARKETING_RUNTIME_TAG = (
+    '<script src="/static/site/marketing-app.js" defer></script>'
+)
 
 # Real source route -> frozen fixture page (captured anonymously, localized).
 PAGE_ROUTES: dict[str, str] = {
@@ -104,6 +107,13 @@ def _load_page(name: str) -> str:
     cached = _PAGE_CACHE.get(name)
     if cached is None:
         cached = (PAGES_DIR / f"{name}.html").read_text(encoding="utf-8")
+        if _MARKETING_RUNTIME_TAG not in cached:
+            if "</body>" in cached:
+                cached = cached.replace(
+                    "</body>", f"{_MARKETING_RUNTIME_TAG}</body>", 1
+                )
+            else:
+                cached = f"{cached}{_MARKETING_RUNTIME_TAG}"
         _PAGE_CACHE[name] = cached
     return cached
 

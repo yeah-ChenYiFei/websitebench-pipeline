@@ -17,12 +17,35 @@ PAGE_PATHS = [
     "/about-us/contact-us/",
 ]
 
+MARKETING_RUNTIME_TAG = '<script src="/static/site/marketing-app.js" defer></script>'
+
 
 def test_all_frozen_pages_serve(client) -> None:
     for path in PAGE_PATHS:
         response = client.get(path)
         assert response.status_code == 200, path
         assert response.headers["content-type"].startswith("text/html"), path
+
+
+def test_all_marketing_pages_load_the_local_interaction_runtime(client) -> None:
+    for path in PAGE_PATHS:
+        response = client.get(path)
+        assert MARKETING_RUNTIME_TAG in response.text, path
+
+    runtime = client.get("/static/site/marketing-app.js")
+    assert runtime.status_code == 200
+
+
+def test_marketing_runtime_covers_navigation_and_preferences() -> None:
+    script = (CLONE_DIR / "static/site/marketing-app.js").read_text(
+        encoding="utf-8"
+    )
+    assert "#menuToggle" in script
+    assert "#mobileNavContainer" in script
+    assert ".dropdownBtn" in script
+    assert ".osano-cm-dialog__close" in script
+    assert ".osano-cm-manage" in script
+    assert "aria-expanded" in script
 
 
 def test_security_headers_on_every_response(client) -> None:
