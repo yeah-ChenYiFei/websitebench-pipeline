@@ -144,7 +144,7 @@ def test_payment_fields_are_memory_only_and_review_submits_two_safe_keys(
     [
         "scenario_id=sandbox-declined",
         "idempotency_key=browser-attempt-001",
-        "scenario_id=sandbox-declined&idempotency_key=browser-attempt-001&card_number=4111111111111111",
+        "scenario_id=sandbox-declined&idempotency_key=browser-attempt-001&card_number=synthetic-card-value",
         "scenario_id=sandbox-declined&scenario_id=sandbox-retry&idempotency_key=browser-attempt-001",
         "scenario_id=sandbox-declined&idempotency_key=browser-attempt-001&idempotency_key=browser-attempt-002",
     ],
