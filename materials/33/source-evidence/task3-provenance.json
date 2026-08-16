@@ -8,14 +8,14 @@
       "runtime_path": "clone/static/site.css",
       "reconstruction_kind": "synthetic-reconstruction",
       "source_material_status": "reconstructed-from-current-observation",
-      "grounded_by": ["ea1-home", "ea1-browse", "ea2-home", "ea2-browse-subjects"],
+      "grounded_by": ["ea1-home", "ea2-browse-retained", "ea2-home", "ea2-browse-subjects"],
       "basis": "Shared audience bar, navigation, typography hierarchy, page width, footer, and home/browse spacing were reconstructed from current screenshots and structural observations; no source stylesheet was copied."
     },
     {
       "runtime_path": "clone/static/components.css",
       "reconstruction_kind": "synthetic-reconstruction",
       "source_material_status": "reconstructed-from-current-observation",
-      "grounded_by": ["ea1-browse", "ea1-specialization", "ea1-course-detail", "ea2-search", "ea2-specialization"],
+      "grounded_by": ["ea2-browse-retained", "ea1-specialization", "ea1-course-detail", "ea2-search", "ea2-specialization"],
       "basis": "Catalog cards, filters, course-series, detail panels, and recovery components were reconstructed from current surface screenshots and bounded DOM observations."
     },
     {
@@ -41,16 +41,16 @@
     }
   ],
   "choices": [
-    {"id": "layout-shared-chrome", "grounded_by": ["ea1-home", "ea1-browse", "ea2-home"], "basis": "Shared utility navigation, primary search/navigation, content width, and footer."},
+    {"id": "layout-shared-chrome", "grounded_by": ["ea1-home", "ea2-browse-retained", "ea2-home"], "basis": "Shared utility navigation, primary search/navigation, content width, and footer."},
     {"id": "layout-home-hero-cards", "grounded_by": ["ea1-home", "ea2-home"], "basis": "Large hero, Learn without limits heading, and card-led learning sections."},
-    {"id": "layout-browse-categories", "grounded_by": ["ea1-browse", "ea2-browse-subjects"], "basis": "Explore Categories, canonical subject siblings, and Most popular cards."},
+    {"id": "layout-browse-categories", "grounded_by": ["ea2-browse-retained", "ea2-browse-subjects"], "basis": "Explore Categories, canonical subject siblings, and Most popular cards."},
     {"id": "layout-search-filter-results", "grounded_by": ["ea2-search"], "basis": "All-results shell with filters, sorting, and result cards; filter semantics are deterministic offline behavior because source mutation was not exercised."},
     {"id": "layout-specialization-series", "grounded_by": ["ea1-specialization", "ea2-specialization"], "basis": "Specialization hero, public metadata, outcomes, and five-course series."},
     {"id": "layout-course-detail", "grounded_by": ["ea1-course-detail"], "basis": "Course heading and public detail groups; preview content is visibly disclosed deterministic offline simulation."},
     {"id": "layout-auth-entry", "grounded_by": ["ea1-auth-contact-recovery", "ea2-auth"], "basis": "Anonymous login/signup form shells only; all controls remain non-operational in Task 3."},
     {"id": "layout-support-contact", "grounded_by": ["ea1-auth-contact-recovery", "ea2-contact"], "basis": "Contact Us, Learner Support, Inquiries, and Partnerships labels with same-origin local guidance."},
     {"id": "layout-not-found-recovery", "grounded_by": ["ea1-auth-contact-recovery", "ea2-not-found"], "basis": "Branded missing-page recovery retaining safe navigation links."},
-    {"id": "copy-source-observed-labels", "grounded_by": ["ea1-browse", "ea1-specialization", "ea1-course-detail", "ea2-home", "ea2-contact"], "basis": "Observed headings and public labels are used only where the current evidence records them."},
+    {"id": "copy-source-observed-labels", "grounded_by": ["ea2-browse-retained", "ea1-specialization", "ea1-course-detail", "ea2-home", "ea2-contact"], "basis": "Observed headings and public labels are used only where the current evidence records them."},
     {"id": "copy-offline-disclosures", "grounded_by": ["ea1-course-detail", "ea2-search"], "basis": "Unavailable metadata, filter semantics, preview content, auth behavior, and media are explicitly identified as deterministic offline reconstruction rather than source-observed facts."}
   ],
   "unavailable_source_material": [

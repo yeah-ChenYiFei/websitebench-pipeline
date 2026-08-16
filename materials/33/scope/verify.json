@@ -21,6 +21,12 @@
           "account": "empty-learner"
         },
         "routes": ["checkout"]
+      },
+      "progress-learner": {
+        "form": {
+          "account": "progress-learner"
+        },
+        "routes": ["my-learning", "lesson", "quiz", "account-history", "preferences"]
       }
     }
   },
@@ -44,9 +50,9 @@
     "login": "/login",
     "signup": "/signup",
     "password-recovery": "/account-recovery",
-    "dashboard": "/dashboard",
-    "lesson": "/learn/neural-networks-deep-learning/lesson/foundations",
-    "quiz": "/learn/neural-networks-deep-learning/quiz/foundations",
+    "my-learning": "/my-learning",
+    "lesson": "/learn/neural-networks-deep-learning/lesson/lesson-optimization",
+    "quiz": "/learn/neural-networks-deep-learning/lesson/lesson-optimization",
     "account-history": "/account/history",
     "preferences": "/account/preferences",
     "checkout": "/checkout/deep-learning",
@@ -66,10 +72,37 @@
     "login.loaded": [{"expect": "body"}],
     "signup.loaded": [{"expect": "body"}],
     "password-recovery.loaded": [{"expect": "body"}],
-    "dashboard.seeded": [{"goto": "/dashboard?fixture=seeded-learner"}, {"expect": "body"}],
-    "lesson.opened": [{"expect": "body"}],
-    "quiz.feedback": [{"goto": "/learn/neural-networks-deep-learning/quiz/foundations?fixture=feedback"}, {"expect": "body"}],
-    "account-history.seeded": [{"goto": "/account/history?fixture=seeded-learner"}, {"expect": "body"}],
+    "my-learning.progress": {
+      "session": "progress-learner",
+      "steps": [
+        {"expect": "h1:has-text(\"My Learning\")"},
+        {"expect": "[data-enrollment-id]"},
+        {"expect": "a[data-resume-lesson]"}
+      ]
+    },
+    "lesson.opened": {
+      "session": "progress-learner",
+      "steps": [
+        {"expect": "h1:has-text(\"Optimization methods\")"},
+        {"expect": "form[action=\"/learning/quizzes/quiz-improving-networks\"]"}
+      ]
+    },
+    "quiz.feedback": {
+      "session": "progress-learner",
+      "steps": [
+        {"click": "input[name=\"answer\"][value=\"Regularization\"]"},
+        {"click": "form[action=\"/learning/quizzes/quiz-improving-networks\"] button[type=\"submit\"]"},
+        {"expect": "h1:has-text(\"Quiz score: 100\")"},
+        {"expect": "p:has-text(\"Correct: regularization\")"}
+      ]
+    },
+    "account-history.seeded": {
+      "session": "progress-learner",
+      "steps": [
+        {"expect": "h1:has-text(\"Enrollment history\")"},
+        {"expect": ".enrollment-card:has-text(\"Active\")"}
+      ]
+    },
     "checkout.validation": {
       "session": "empty-learner",
       "steps": [

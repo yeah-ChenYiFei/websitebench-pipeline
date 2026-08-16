@@ -7,7 +7,9 @@ from pathlib import Path
 SITE_ROOT = Path(__file__).resolve().parents[2]
 
 
-def test_task3_reconstruction_maps_assets_layout_and_copy_to_current_ea_evidence() -> None:
+def test_task3_reconstruction_maps_assets_layout_and_copy_to_current_ea_evidence() -> (
+    None
+):
     observations_path = SITE_ROOT / "source-evidence" / "task3-ea-observations.json"
     provenance_path = SITE_ROOT / "source-evidence" / "task3-provenance.json"
     assert observations_path.is_file()
@@ -70,6 +72,110 @@ def test_task3_reconstruction_maps_assets_layout_and_copy_to_current_ea_evidence
     assert all(item["status"] == "unavailable" for item in unavailable)
 
 
+def test_retained_visual_oracle_matches_selected_ea2_route_and_explorer() -> None:
+    """Catch retained EA2 browse bytes being attributed to the EA1 explorer."""
+
+    observations = json.loads(
+        (SITE_ROOT / "source-evidence" / "task3-ea-observations.json").read_text(
+            encoding="utf-8"
+        )
+    )["observations"]
+    selected = json.loads(
+        (SITE_ROOT / "scope" / "derived-task-brief.json").read_text(encoding="utf-8")
+    )["evidence"]["selected_visual_oracle"]
+    artifact = selected.removeprefix("source-evidence/")
+    matches = [item for item in observations if item["capture_artifact"] == artifact]
+
+    assert matches == [
+        {
+            "id": "ea2-browse-retained",
+            "explorer": "EA2",
+            "route": "/browse",
+            "sanitized": True,
+            "capture_artifact": "browse.desktop.png",
+            "observed": [
+                "Explore Categories heading",
+                "11 direct subject links",
+                "Most popular course-card composition",
+                "shared footer",
+            ],
+        }
+    ]
+
+
+def test_claims_resolve_to_committed_sanitized_observations() -> None:
+    """Catch source claims depending on machine-local scratch evidence."""
+
+    observations = json.loads(
+        (SITE_ROOT / "source-evidence" / "task3-ea-observations.json").read_text(
+            encoding="utf-8"
+        )
+    )["observations"]
+    observation_ids = {item["id"] for item in observations if item["sanitized"]}
+    claims = [
+        json.loads(line)
+        for line in (SITE_ROOT / "scope" / "claims.jsonl")
+        .read_text(encoding="utf-8")
+        .splitlines()
+        if line
+    ]
+
+    for claim in claims:
+        assert claim["evidence_refs"]
+        for reference in claim["evidence_refs"]:
+            prefix = "source-evidence/task3-ea-observations.json#observation:"
+            assert reference.startswith(prefix)
+            assert reference.removeprefix(prefix) in observation_ids
+
+
+def test_learning_verify_contract_uses_real_authenticated_routes_and_actions() -> None:
+    """Catch dashboard/foundations GET aliases replacing implemented states."""
+
+    routes = json.loads(
+        (SITE_ROOT / "scope" / "routes.json").read_text(encoding="utf-8")
+    )["routes"]
+    route_by_id = {item["id"]: item for item in routes}
+    assert route_by_id["my-learning"]["route_pattern"] == "/my-learning"
+    assert route_by_id["lesson"]["route_pattern"] == (
+        "/learn/neural-networks-deep-learning/lesson/{lesson_id}"
+    )
+    assert route_by_id["quiz"]["route_pattern"] == "/learning/quizzes/{quiz_id}"
+
+    driver = json.loads(
+        (SITE_ROOT / "scope" / "verify.json").read_text(encoding="utf-8")
+    )
+    assert set(driver["session"]["accounts"]) == {
+        "empty-learner",
+        "progress-learner",
+    }
+    progress = driver["session"]["accounts"]["progress-learner"]
+    assert progress["form"] == {"account": "progress-learner"}
+    assert {"my-learning", "lesson", "quiz", "account-history", "preferences"} <= set(
+        progress["routes"]
+    )
+    assert driver["routes"]["my-learning"] == "/my-learning"
+    assert driver["routes"]["lesson"].endswith("/lesson/lesson-optimization")
+    assert driver["routes"]["quiz"] == driver["routes"]["lesson"]
+    assert driver["routes"]["account-history"] == "/account/history"
+
+    expected_states = {
+        "my-learning.progress": "My Learning",
+        "lesson.opened": "Optimization methods",
+        "quiz.feedback": "Quiz score: 100",
+        "account-history.seeded": "Enrollment history",
+    }
+    for state, visible_text in expected_states.items():
+        recipe = driver["states"][state]
+        assert recipe["session"] == "progress-learner"
+        assert any(visible_text in step.get("expect", "") for step in recipe["steps"])
+    quiz_steps = driver["states"]["quiz.feedback"]["steps"]
+    assert any("answer" in step.get("click", "") for step in quiz_steps)
+    assert any("/learning/quizzes/" in step.get("click", "") for step in quiz_steps)
+    serialized = json.dumps(driver)
+    assert "/dashboard" not in serialized
+    assert "foundations?fixture" not in serialized
+
+
 def test_checkout_verify_recipes_use_named_session_and_reach_distinct_states() -> None:
     """Catch authenticated checkout checkpoints that stop at the plan page."""
 
@@ -77,7 +183,7 @@ def test_checkout_verify_recipes_use_named_session_and_reach_distinct_states() -
         (SITE_ROOT / "scope" / "verify.json").read_text(encoding="utf-8")
     )
     session = driver["session"]
-    assert set(session["accounts"]) == {"empty-learner"}
+    assert "empty-learner" in session["accounts"]
 
     validation = driver["states"]["checkout.validation"]
     review = driver["states"]["checkout.review"]
@@ -97,8 +203,7 @@ def test_checkout_verify_recipes_use_named_session_and_reach_distinct_states() -
         for step in review["steps"]
     )
     assert any(
-        step.get("expect")
-        == 'input[name="scenario_id"][value="sandbox-approved"]'
+        step.get("expect") == 'input[name="scenario_id"][value="sandbox-approved"]'
         for step in review["steps"]
     )
 
@@ -107,9 +212,7 @@ def test_task3_css_identity_is_unchanged_and_checkout_css_is_task5_owned() -> No
     """Catch checkout styling being folded into the historical Task 3 asset."""
 
     manifest = json.loads(
-        (SITE_ROOT / "source-assets" / "manifest.json").read_text(
-            encoding="utf-8"
-        )
+        (SITE_ROOT / "source-assets" / "manifest.json").read_text(encoding="utf-8")
     )
     assets = {item["id"]: item for item in manifest["assets"]}
     task3 = assets["task3-components-css"]
@@ -151,9 +254,7 @@ def test_task5_asset_manifest_has_its_own_collection_identity() -> None:
     """Catch Task 5 assets mutating the historical Task 3 snapshot identity."""
 
     manifest = json.loads(
-        (SITE_ROOT / "source-assets" / "manifest.json").read_text(
-            encoding="utf-8"
-        )
+        (SITE_ROOT / "source-assets" / "manifest.json").read_text(encoding="utf-8")
     )
 
     assert manifest["snapshot_id"] == "33-task5-local-assets"
@@ -178,15 +279,11 @@ def test_checkout_verify_session_uses_ephemeral_token_without_credentials() -> N
 
     assert session["token_env"] == "WEBSITEBENCH_VERIFY_SESSION_TOKEN"
     assert session["post"] == "/__websitebench/session"
-    assert session["headers"] == {
-        "X-WebsiteBench-Verify-Token": "{{token}}"
-    }
+    assert session["headers"] == {"X-WebsiteBench-Verify-Token": "{{token}}"}
     assert session["expect_status"] == [204]
-    assert session["accounts"] == {
-        "empty-learner": {
-            "form": {"account": "empty-learner"},
-            "routes": ["checkout"],
-        }
+    assert session["accounts"]["empty-learner"] == {
+        "form": {"account": "empty-learner"},
+        "routes": ["checkout"],
     }
     assert "Empty-Learner-33" not in raw
     assert all(

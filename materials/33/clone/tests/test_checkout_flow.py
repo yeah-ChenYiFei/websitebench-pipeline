@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib
+import json
 import re
 from html.parser import HTMLParser
 from pathlib import Path
@@ -16,9 +17,7 @@ class _InputCollector(HTMLParser):
         super().__init__()
         self.inputs: list[dict[str, str | None]] = []
 
-    def handle_starttag(
-        self, tag: str, attrs: list[tuple[str, str | None]]
-    ) -> None:
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if tag == "input":
             self.inputs.append(dict(attrs))
 
@@ -70,7 +69,9 @@ def _create_browser_draft(client: TestClient) -> str:
         follow_redirects=False,
     )
     assert response.status_code == 303
-    assert re.fullmatch(r"/checkout/checkout_[^/]+/payment", response.headers["location"])
+    assert re.fullmatch(
+        r"/checkout/checkout_[^/]+/payment", response.headers["location"]
+    )
     return response.headers["location"].split("/")[2]
 
 
@@ -109,6 +110,46 @@ def test_diagnostic_session_requires_ephemeral_token_and_authenticates_alias(
     checkout = checkout_client.get("/checkout/deep-learning")
     assert checkout.status_code == 200
     assert "Choose the Deep Learning paid plan" in checkout.text
+
+
+def test_progress_verifier_alias_reaches_declared_learning_states(
+    checkout_client: TestClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Catch stale diagnostic aliases or progress recipes that remain anonymous."""
+
+    token = "final-wave-ephemeral-verifier-token"
+    monkeypatch.setenv("WEBSITEBENCH_VERIFY_SESSION_TOKEN", token)
+    opened = checkout_client.post(
+        "/__websitebench/session",
+        data={"account": "progress-learner"},
+        headers={"X-WebsiteBench-Verify-Token": token},
+    )
+    assert opened.status_code == 204
+
+    driver = json.loads(
+        (Path(__file__).resolve().parents[2] / "scope" / "verify.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    expected = {
+        "my-learning": (200, "<h1>My Learning</h1>"),
+        "lesson": (200, "<h1>Optimization methods</h1>"),
+        "account-history": (200, "<h1>Enrollment history</h1>"),
+        "preferences": (200, "<h1>Learning preferences</h1>"),
+    }
+    for alias, (status, marker) in expected.items():
+        response = checkout_client.get(driver["routes"][alias])
+        assert response.status_code == status, alias
+        assert marker in response.text, alias
+
+    lesson = checkout_client.get(driver["routes"]["quiz"])
+    assert 'action="/learning/quizzes/quiz-improving-networks"' in lesson.text
+    feedback = checkout_client.post(
+        "/learning/quizzes/quiz-improving-networks",
+        data={"answer": "Regularization"},
+    )
+    assert feedback.status_code == 200
+    assert "<h1>Quiz score: 100</h1>" in feedback.text
 
 
 def test_public_entry_and_authenticated_plan_show_inferred_totals(
@@ -152,7 +193,8 @@ def test_payment_fields_are_memory_only_and_review_submits_two_safe_keys(
     payment_inputs = {
         item["id"]: item
         for item in collector.inputs
-        if item.get("id") in {"synthetic-card-number", "synthetic-expiry", "synthetic-cvv"}
+        if item.get("id")
+        in {"synthetic-card-number", "synthetic-expiry", "synthetic-cvv"}
     }
     assert set(payment_inputs) == {
         "synthetic-card-number",

@@ -61,7 +61,34 @@ def test_public_home_browse_and_all_subject_routes_render_real_catalog() -> None
         assert category.text.count('data-catalog-record="') >= 3
 
 
-def test_search_combines_every_filter_sorts_server_side_and_recovers_from_no_match() -> None:
+def test_browse_matches_the_retained_oracle_course_collection_composition() -> None:
+    """Catch removal of the oracle's popular filters, four-card row, and reveal."""
+
+    browse = client.get("/browse")
+    assert browse.status_code == 200
+    assert 'aria-label="Most popular categories"' in browse.text
+    for label in (
+        "All",
+        "Business",
+        "Data Science",
+        "Information Technology",
+        "Computer Science",
+    ):
+        assert f">{label}<" in browse.text
+    popular = re.search(
+        r'<div class="card-grid popular-grid">(.*?)</div><details',
+        browse.text,
+        re.S,
+    )
+    assert popular is not None
+    assert popular.group(1).count('data-catalog-record="') == 4
+    assert "Show 8 more" in browse.text
+    assert 'class="browse-roles"' in browse.text
+
+
+def test_search_combines_every_filter_sorts_server_side_and_recovers_from_no_match() -> (
+    None
+):
     combined = client.get(
         "/search",
         params={
@@ -190,7 +217,9 @@ def test_specialization_component_details_and_free_preview_are_complete() -> Non
     assert 'href="/learn/neural-networks-deep-learning"' in preview.text
 
 
-def test_non_direct_catalog_facts_are_visibly_disclosed_on_every_public_surface() -> None:
+def test_non_direct_catalog_facts_are_visibly_disclosed_on_every_public_surface() -> (
+    None
+):
     business_card = client.get("/browse/business")
     assert 'data-evidence-classification="truthful-simulation"' in business_card.text
     assert "Evidence: offline simulation; not source-verified." in business_card.text
@@ -264,14 +293,16 @@ def test_course_breadcrumb_uses_each_records_real_subject_slug() -> None:
             r'<nav class="breadcrumbs">(.*?)</nav>', detail.text, re.S
         )
         assert breadcrumb is not None
-        assert f'href="/browse/{subject_slug}">{subject_name}</a>' in breadcrumb.group(1)
+        assert f'href="/browse/{subject_slug}">{subject_name}</a>' in breadcrumb.group(
+            1
+        )
         assert 'href="/browse/data-science"' not in breadcrumb.group(1)
 
 
 def test_auth_hashes_standalone_shells_recovery_help_and_contact_are_local() -> None:
     home = client.get("/")
-    assert 'href="/#login"' in home.text
-    assert 'href="/#signup"' in home.text
+    assert 'href="/login">Log In</a>' in home.text
+    assert 'href="/signup">Join for Free</a>' in home.text
     assert 'id="login"' in home.text
     assert 'id="signup"' in home.text
 

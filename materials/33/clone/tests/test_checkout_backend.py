@@ -36,8 +36,7 @@ def test_checkout_schema_exposes_the_frozen_inferred_plan(
         "course_id": "deep-learning-specialization",
         "currency": "USD",
         "fingerprint": (
-            "94b7b58e2a6fc0b45b7aae588169b477"
-            "56a0dd1a8cc84a3ca672216a24676b76"
+            "94b7b58e2a6fc0b45b7aae588169b47756a0dd1a8cc84a3ca672216a24676b76"
         ),
         "plan_id": "deep-learning-specialization-paid",
         "plan_label": "Deep Learning Specialization paid plan",
@@ -74,8 +73,7 @@ def test_create_draft_binds_owner_and_frozen_facts_to_generated_payment(
     assert draft["total_minor"] == 4900
     assert draft["currency"] == "USD"
     assert draft["fingerprint"] == (
-        "94b7b58e2a6fc0b45b7aae588169b477"
-        "56a0dd1a8cc84a3ca672216a24676b76"
+        "94b7b58e2a6fc0b45b7aae588169b47756a0dd1a8cc84a3ca672216a24676b76"
     )
     assert draft["draft_id"].startswith("checkout_")
     assert draft["payment_flow_id"].startswith("payflow_")
@@ -90,10 +88,7 @@ def test_create_draft_binds_owner_and_frozen_facts_to_generated_payment(
         "learner-empty",
         4900,
         "USD",
-        (
-            "94b7b58e2a6fc0b45b7aae588169b477"
-            "56a0dd1a8cc84a3ca672216a24676b76"
-        ),
+        ("94b7b58e2a6fc0b45b7aae588169b47756a0dd1a8cc84a3ca672216a24676b76"),
         "local-sandbox",
         "OPEN",
     )
@@ -115,17 +110,21 @@ def test_create_draft_rejects_unsupported_plan_without_payment_side_effects(
 
     checkout, learning, _backend = checkout_site
     with pytest.raises(ValueError, match="plan is unavailable"):
-        checkout.create_draft(
-            "learner-empty", course_id=course_id, plan_id=plan_id
-        )
+        checkout.create_draft("learner-empty", course_id=course_id, plan_id=plan_id)
 
     with learning.connection() as opened:
-        assert opened.execute(
-            "SELECT COUNT(*) FROM coursera_checkout_drafts"
-        ).fetchone()[0] == 0
-        assert opened.execute(
-            "SELECT COUNT(*) FROM websitebench_payment_flows"
-        ).fetchone()[0] == 0
+        assert (
+            opened.execute("SELECT COUNT(*) FROM coursera_checkout_drafts").fetchone()[
+                0
+            ]
+            == 0
+        )
+        assert (
+            opened.execute(
+                "SELECT COUNT(*) FROM websitebench_payment_flows"
+            ).fetchone()[0]
+            == 0
+        )
 
 
 def test_get_draft_hides_foreign_owner_records(checkout_site) -> None:
@@ -196,6 +195,52 @@ def test_approved_attempt_atomically_creates_paid_order_and_enrollment(
     assert flow_status == "CONSUMED"
 
 
+def test_independent_approved_drafts_cannot_share_one_paid_enrollment(
+    checkout_site,
+) -> None:
+    """Catch a second draft creating another PAID order for one entitlement."""
+
+    checkout, learning, _backend = checkout_site
+    first = _new_empty_learner_draft(checkout)
+    second = _new_empty_learner_draft(checkout)
+
+    approved = checkout.attempt(
+        "learner-empty",
+        first["draft_id"],
+        scenario_id="sandbox-approved",
+        idempotency_key="independent-first-approval",
+    )
+    with pytest.raises(PaymentConflict, match="active paid order already exists"):
+        checkout.attempt(
+            "learner-empty",
+            second["draft_id"],
+            scenario_id="sandbox-approved",
+            idempotency_key="independent-second-approval",
+        )
+
+    replay = checkout.attempt(
+        "learner-empty",
+        first["draft_id"],
+        scenario_id="sandbox-approved",
+        idempotency_key="independent-first-approval",
+    )
+    assert replay["order"] == approved["order"]
+    assert checkout.list_orders("learner-empty") == [approved["order"]]
+    assert len(learning.list_enrollments("learner-empty")) == 1
+
+    with learning.connection() as opened:
+        second_draft = opened.execute(
+            "SELECT status FROM coursera_checkout_drafts WHERE draft_id=?",
+            (second["draft_id"],),
+        ).fetchone()
+        second_flow = opened.execute(
+            "SELECT status FROM websitebench_payment_flows WHERE flow_id=?",
+            (second["payment_flow_id"],),
+        ).fetchone()
+    assert tuple(second_draft) == ("OPEN",)
+    assert tuple(second_flow) == ("OPEN",)
+
+
 @pytest.mark.parametrize(
     ("scenario_id", "expected_outcome", "expected_status"),
     [
@@ -233,10 +278,13 @@ def test_nonapproved_attempt_is_idempotent_without_business_state(
     assert first["order"] is None
     assert checkout.list_orders("learner-empty") == []
     with learning.connection() as opened:
-        assert opened.execute(
-            """SELECT COUNT(*) FROM coursera_enrollments
+        assert (
+            opened.execute(
+                """SELECT COUNT(*) FROM coursera_enrollments
                 WHERE owner_subject_id='learner-empty'"""
-        ).fetchone()[0] == 0
+            ).fetchone()[0]
+            == 0
+        )
 
 
 @pytest.mark.parametrize(
@@ -270,16 +318,20 @@ def test_final_submit_rejects_stale_server_stored_draft_facts(
         )
 
     with learning.connection() as opened:
-        assert opened.execute(
-            "SELECT COUNT(*) FROM websitebench_payment_attempts"
-        ).fetchone()[0] == 0
-        assert opened.execute(
-            "SELECT COUNT(*) FROM coursera_orders"
-        ).fetchone()[0] == 0
-        assert opened.execute(
-            """SELECT COUNT(*) FROM coursera_enrollments
+        assert (
+            opened.execute(
+                "SELECT COUNT(*) FROM websitebench_payment_attempts"
+            ).fetchone()[0]
+            == 0
+        )
+        assert opened.execute("SELECT COUNT(*) FROM coursera_orders").fetchone()[0] == 0
+        assert (
+            opened.execute(
+                """SELECT COUNT(*) FROM coursera_enrollments
                 WHERE owner_subject_id='learner-empty'"""
-        ).fetchone()[0] == 0
+            ).fetchone()[0]
+            == 0
+        )
 
 
 def test_generated_flow_staleness_and_foreign_owner_are_rejected(
@@ -367,16 +419,20 @@ def test_exact_approved_replay_returns_original_result_without_reconsumption(
     assert replay == first
     assert checkout.list_orders("learner-empty") == [first["order"]]
     with learning.connection() as opened:
-        assert opened.execute(
-            "SELECT COUNT(*) FROM websitebench_payment_attempts"
-        ).fetchone()[0] == 1
-        assert opened.execute(
-            "SELECT COUNT(*) FROM coursera_orders"
-        ).fetchone()[0] == 1
-        assert opened.execute(
-            """SELECT COUNT(*) FROM coursera_enrollments
+        assert (
+            opened.execute(
+                "SELECT COUNT(*) FROM websitebench_payment_attempts"
+            ).fetchone()[0]
+            == 1
+        )
+        assert opened.execute("SELECT COUNT(*) FROM coursera_orders").fetchone()[0] == 1
+        assert (
+            opened.execute(
+                """SELECT COUNT(*) FROM coursera_enrollments
                 WHERE owner_subject_id='learner-empty' AND track='paid'"""
-        ).fetchone()[0] == 1
+            ).fetchone()[0]
+            == 1
+        )
 
     with pytest.raises(PaymentRejected, match="no longer open"):
         checkout.attempt(
@@ -421,16 +477,20 @@ def test_order_insert_failure_rolls_back_approval_and_enrollment(
             "SELECT status FROM websitebench_payment_flows WHERE flow_id=?",
             (draft["payment_flow_id"],),
         ).fetchone()[0]
-        assert opened.execute(
-            "SELECT COUNT(*) FROM websitebench_payment_attempts"
-        ).fetchone()[0] == 0
-        assert opened.execute(
-            "SELECT COUNT(*) FROM coursera_orders"
-        ).fetchone()[0] == 0
-        assert opened.execute(
-            """SELECT COUNT(*) FROM coursera_enrollments
+        assert (
+            opened.execute(
+                "SELECT COUNT(*) FROM websitebench_payment_attempts"
+            ).fetchone()[0]
+            == 0
+        )
+        assert opened.execute("SELECT COUNT(*) FROM coursera_orders").fetchone()[0] == 0
+        assert (
+            opened.execute(
+                """SELECT COUNT(*) FROM coursera_enrollments
                 WHERE owner_subject_id='learner-empty'"""
-        ).fetchone()[0] == 0
+            ).fetchone()[0]
+            == 0
+        )
     assert flow_status == "OPEN"
 
 
@@ -524,11 +584,14 @@ def test_cancel_order_rolls_back_if_enrollment_update_fails(checkout_site) -> No
 
     assert checkout.get_order("learner-empty", order["order_id"])["status"] == "PAID"
     with learning.connection() as opened:
-        assert opened.execute(
-            """SELECT status FROM coursera_enrollments
+        assert (
+            opened.execute(
+                """SELECT status FROM coursera_enrollments
                 WHERE enrollment_id=?""",
-            (order["enrollment_id"],),
-        ).fetchone()[0] == "active"
+                (order["enrollment_id"],),
+            ).fetchone()[0]
+            == "active"
+        )
 
 
 def test_order_persists_across_restart_and_reset_clears_checkout_state(

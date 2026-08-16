@@ -54,9 +54,12 @@ def test_runtime_hooks_create_site_bound_schema_content_and_two_seed_users(
         "path": "/",
     }
     with backend.lifecycle.connection() as connection:
-        assert connection.execute(
-            "SELECT site_id FROM websitebench_site_binding WHERE singleton=1"
-        ).fetchone()[0] == "33"
+        assert (
+            connection.execute(
+                "SELECT site_id FROM websitebench_site_binding WHERE singleton=1"
+            ).fetchone()[0]
+            == "33"
+        )
         counts = {
             table: connection.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
             for table in (
@@ -250,6 +253,94 @@ def _login_seeded(client: TestClient, email: str, password: str) -> None:
     assert response.status_code == 303
 
 
+def test_login_continuation_is_same_origin_and_course_cta_enrolls(
+    site_client: TestClient,
+) -> None:
+    """Catch discarded/unsafe next targets and the authenticated login-only CTA."""
+
+    course_path = "/learn/neural-networks-deep-learning"
+    signed_out = site_client.get(course_path)
+    assert signed_out.status_code == 200
+    assert f'href="/login?next={course_path}"' in signed_out.text
+
+    login = site_client.get("/login", params={"next": course_path})
+    assert f'<input type="hidden" name="next" value="{course_path}">' in login.text
+    accepted = site_client.post(
+        "/auth/login",
+        data={
+            "email": "empty@coursera.test",
+            "password": "Empty-Learner-33",
+            "next": course_path,
+        },
+        follow_redirects=False,
+    )
+    assert accepted.status_code == 303
+    assert accepted.headers["location"] == course_path
+
+    authenticated = site_client.get(course_path)
+    assert authenticated.status_code == 200
+    assert f'href="/login?next={course_path}"' not in authenticated.text
+    assert 'form class="enrollment-options" action="/enrollments"' in authenticated.text
+    enrolled = site_client.post(
+        "/enrollments",
+        data={"course_id": "deep-learning-specialization", "track": "free"},
+        follow_redirects=False,
+    )
+    assert enrolled.status_code == 303
+    assert enrolled.headers["location"] == "/my-learning"
+
+
+@pytest.mark.parametrize(
+    "unsafe_next",
+    [
+        "//outside.example/path",
+        "https://outside.example/path",
+        "/../orders",
+        "/%2e%2e/orders",
+        "/%ZZ/orders",
+        "/\\outside.example/path",
+    ],
+)
+def test_login_rejects_unsafe_or_malformed_continuations(
+    site_client: TestClient, unsafe_next: str
+) -> None:
+    """Catch login redirecting to a scheme-relative, external, or unsafe path."""
+
+    login = site_client.get("/login", params={"next": unsafe_next})
+    expected_hidden = '<input type="hidden" name="next" value="/my-learning">'
+    assert expected_hidden in login.text
+    response = site_client.post(
+        "/auth/login",
+        data={
+            "email": "empty@coursera.test",
+            "password": "Empty-Learner-33",
+            "next": unsafe_next,
+        },
+        follow_redirects=False,
+    )
+    assert response.status_code == 303
+    assert response.headers["location"] == "/my-learning"
+
+
+def test_shared_header_switches_between_anonymous_and_learner_controls(
+    site_client: TestClient,
+) -> None:
+    """Catch authenticated pages retaining anonymous login/join chrome."""
+
+    anonymous = site_client.get("/")
+    assert 'href="/login">Log In</a>' in anonymous.text
+    assert 'href="/signup">Join for Free</a>' in anonymous.text
+    assert 'class="learner-nav"' not in anonymous.text
+
+    _login_seeded(site_client, "progress@coursera.test", "Progress-Learner-33")
+    dashboard = site_client.get("/my-learning")
+    assert 'class="learner-nav"' in dashboard.text
+    assert 'href="/my-learning">My Learning</a>' in dashboard.text
+    assert 'class="header-logout" action="/auth/logout"' in dashboard.text
+    assert 'href="/login">Log In</a>' not in dashboard.text
+    assert 'href="/signup">Join for Free</a>' not in dashboard.text
+
+
 def test_enrollment_history_cancel_idempotency_and_owner_isolation(
     site_client: TestClient,
 ) -> None:
@@ -321,9 +412,7 @@ def test_canceled_enrollment_reactivates_with_new_track_and_retains_history(
     assert duplicate == first
     assert len(learning.list_enrollments("learner-empty")) == 1
 
-    canceled = learning.cancel_enrollment(
-        "learner-empty", first["enrollment_id"]
-    )
+    canceled = learning.cancel_enrollment("learner-empty", first["enrollment_id"])
     assert canceled["status"] == "canceled"
     assert canceled["canceled_at"] == "2026-08-16T00:00:00Z"
 
@@ -405,7 +494,7 @@ def test_active_enrollment_gates_protected_learning_and_mutations(
     assert [response.status_code for response in blocked_requests] == [404] * 4
 
     dashboard = site_client.get("/my-learning")
-    assert 'data-resume-lesson=' not in dashboard.text
+    assert "data-resume-lesson=" not in dashboard.text
     assert 'action="/learning/review"' not in dashboard.text
     assert "Certificate available" not in dashboard.text
 
@@ -453,8 +542,14 @@ def test_learning_preview_navigation_bookmarks_progress_quizzes_and_certificate(
     )
     assert lesson.status_code == 200
     assert "Module 2 of 3" in lesson.text
-    assert 'href="/learn/neural-networks-deep-learning/lesson/lesson-forward-propagation"' in lesson.text
-    assert 'href="/learn/neural-networks-deep-learning/lesson/lesson-regularization"' in lesson.text
+    assert (
+        'href="/learn/neural-networks-deep-learning/lesson/lesson-forward-propagation"'
+        in lesson.text
+    )
+    assert (
+        'href="/learn/neural-networks-deep-learning/lesson/lesson-regularization"'
+        in lesson.text
+    )
 
     for _ in range(2):
         bookmarked = site_client.post(
@@ -536,9 +631,12 @@ def test_progress_replay_keeps_resume_at_first_incomplete_lesson(
     assert learning.learning_state("learner-in-progress")["resume_lesson_id"] == (
         "lesson-regularization"
     )
-    assert learning.learning_state("learner-in-progress")[
-        "completed_lessons"
-    ].count("lesson-neural-intro") == 1
+    assert (
+        learning.learning_state("learner-in-progress")["completed_lessons"].count(
+            "lesson-neural-intro"
+        )
+        == 1
+    )
 
 
 def test_unknown_bookmark_and_progress_lessons_return_safe_branded_404(
@@ -603,7 +701,7 @@ def test_review_preferences_are_updatable_and_quiz_attempts_are_owner_scoped(
     dashboard = site_client.get("/my-learning")
     assert 'action="/learning/review"' in dashboard.text
     assert '<option value="5" selected>' in dashboard.text
-    assert '>Updated offline review</textarea>' in dashboard.text
+    assert ">Updated offline review</textarea>" in dashboard.text
 
     attempt = learning.submit_quiz(
         "learner-in-progress",
@@ -641,15 +739,20 @@ def test_business_state_persists_across_backend_reopen(site_client: TestClient) 
     assert resolved_session is not None
     assert resolved_session["authenticated"] is True
     assert resolved_session["account"]["subject_id"] == "learner-empty"
-    assert learning.list_enrollments("learner-empty")[0]["enrollment_id"] == created[
-        "enrollment_id"
-    ]
-    assert "lesson-neural-intro" in learning.learning_state("learner-empty")[
-        "completed_lessons"
-    ]
-    assert learning.get_review("learner-empty", "deep-learning-specialization")[
-        "review_text"
-    ] == "Persistent local review"
+    assert (
+        learning.list_enrollments("learner-empty")[0]["enrollment_id"]
+        == created["enrollment_id"]
+    )
+    assert (
+        "lesson-neural-intro"
+        in learning.learning_state("learner-empty")["completed_lessons"]
+    )
+    assert (
+        learning.get_review("learner-empty", "deep-learning-specialization")[
+            "review_text"
+        ]
+        == "Persistent local review"
+    )
 
 
 def test_concurrent_enrollment_and_progress_are_lossless_and_idempotent(
@@ -782,16 +885,12 @@ def test_local_inbox_presence_is_cleared_after_each_equivalent_reset(
             follow_redirects=False,
         )
         assert recovery_started.status_code == 303
-        recovery_inbox = recovery_browser.get(
-            "/local-inbox?purpose=password-reset"
-        )
+        recovery_inbox = recovery_browser.get("/local-inbox?purpose=password-reset")
 
         assert registration_inbox.headers.get("x-local-inbox-purpose") == (
             "registration"
         )
-        assert recovery_inbox.headers.get("x-local-inbox-purpose") == (
-            "password-reset"
-        )
+        assert recovery_inbox.headers.get("x-local-inbox-purpose") == ("password-reset")
 
         learning.reset()
         after_first_reset = (

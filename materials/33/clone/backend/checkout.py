@@ -6,7 +6,7 @@ import sqlite3
 import secrets
 from typing import Any
 
-from websitebench.site_backend import PaymentRejected
+from websitebench.site_backend import PaymentConflict, PaymentRejected
 
 
 COURSE_ID = "deep-learning-specialization"
@@ -17,10 +17,7 @@ CURRENCY = "USD"
 SUBTOTAL_MINOR = 4900
 TAX_MINOR = 0
 TOTAL_MINOR = 4900
-PLAN_FINGERPRINT = (
-    "94b7b58e2a6fc0b45b7aae588169b477"
-    "56a0dd1a8cc84a3ca672216a24676b76"
-)
+PLAN_FINGERPRINT = "94b7b58e2a6fc0b45b7aae588169b47756a0dd1a8cc84a3ca672216a24676b76"
 FROZEN_TIME = "2026-08-16T00:00:00Z"
 
 _SCHEMA = (
@@ -58,6 +55,9 @@ _SCHEMA = (
         created_at TEXT NOT NULL,
         canceled_at TEXT
     )""",
+    """CREATE UNIQUE INDEX IF NOT EXISTS coursera_one_active_paid_order
+        ON coursera_orders(owner_subject_id,course_id)
+        WHERE status='PAID'""",
 )
 
 
@@ -218,9 +218,7 @@ def get_order(owner: str, order_id: str) -> dict[str, Any]:
     return _order_dict(row)
 
 
-def get_order_for_enrollment(
-    owner: str, enrollment_id: int
-) -> dict[str, Any]:
+def get_order_for_enrollment(owner: str, enrollment_id: int) -> dict[str, Any]:
     """Resolve the current paid order for an owner-scoped enrollment."""
 
     from backend import learning_db
@@ -312,6 +310,14 @@ def attempt(
             raise PaymentRejected("checkout is no longer open")
         if draft["status"] != "OPEN":
             raise PaymentRejected("checkout is no longer open")
+
+        existing_paid_order = opened.execute(
+            """SELECT order_id FROM coursera_orders
+                WHERE owner_subject_id=? AND course_id=? AND status='PAID'""",
+            (owner, COURSE_ID),
+        ).fetchone()
+        if existing_paid_order is not None:
+            raise PaymentConflict("active paid order already exists")
 
         payment_attempt = backend.payments.attempt(
             flow_id=str(draft["payment_flow_id"]),
@@ -443,8 +449,6 @@ def snapshot_queries() -> dict[str, str]:
     """Expose deterministic checkout rows to the site reset snapshot."""
 
     return {
-        "checkout_drafts": (
-            "SELECT * FROM coursera_checkout_drafts ORDER BY draft_id"
-        ),
+        "checkout_drafts": ("SELECT * FROM coursera_checkout_drafts ORDER BY draft_id"),
         "orders": "SELECT * FROM coursera_orders ORDER BY order_id",
     }
