@@ -281,6 +281,10 @@ def test_login_continuation_is_same_origin_and_course_cta_enrolls(
     assert authenticated.status_code == 200
     assert f'href="/login?next={course_path}"' not in authenticated.text
     assert 'form class="enrollment-options" action="/enrollments"' in authenticated.text
+    assert (
+        '<input type="hidden" name="course_id" '
+        'value="deep-learning-specialization">' in authenticated.text
+    )
     enrolled = site_client.post(
         "/enrollments",
         data={"course_id": "deep-learning-specialization", "track": "free"},
@@ -288,6 +292,51 @@ def test_login_continuation_is_same_origin_and_course_cta_enrolls(
     )
     assert enrolled.status_code == 303
     assert enrolled.headers["location"] == "/my-learning"
+
+
+def test_authenticated_course_cta_enrolls_the_displayed_catalog_course(
+    site_client: TestClient,
+) -> None:
+    """Catch a generic course CTA silently enrolling Deep Learning instead."""
+
+    _login_seeded(site_client, "empty@coursera.test", "Empty-Learner-33")
+    detail = site_client.get("/learn/business-strategy")
+    assert detail.status_code == 200
+    assert "Foundations of Business Strategy" in detail.text
+    assert '<input type="hidden" name="course_id" value="business-strategy">' in detail.text
+
+    enrolled = site_client.post(
+        "/enrollments",
+        data={"course_id": "business-strategy", "track": "free"},
+        follow_redirects=False,
+    )
+    assert enrolled.status_code == 303
+    assert enrolled.headers["location"] == "/my-learning"
+
+    learning = _learning_module()
+    records = learning.list_enrollments("learner-empty")
+    assert [(record["course_id"], record["track"]) for record in records] == [
+        ("business-strategy", "free")
+    ]
+    dashboard = site_client.get("/my-learning")
+    assert "Foundations of Business Strategy" in dashboard.text
+    assert 'href="/learn/business-strategy"' in dashboard.text
+
+
+def test_enrollment_rejects_unknown_catalog_ids_without_substitution(
+    site_client: TestClient,
+) -> None:
+    """Catch invalid IDs being accepted or substituted with a default course."""
+
+    _login_seeded(site_client, "empty@coursera.test", "Empty-Learner-33")
+    rejected = site_client.post(
+        "/enrollments",
+        data={"course_id": "not-a-catalog-course", "track": "audit"},
+        follow_redirects=False,
+    )
+    assert rejected.status_code == 422
+    assert "course is unavailable" in rejected.text
+    assert _learning_module().list_enrollments("learner-empty") == []
 
 
 @pytest.mark.parametrize(
@@ -325,20 +374,32 @@ def test_login_rejects_unsafe_or_malformed_continuations(
 def test_shared_header_switches_between_anonymous_and_learner_controls(
     site_client: TestClient,
 ) -> None:
-    """Catch authenticated pages retaining anonymous login/join chrome."""
+    """Catch shared pages forgetting the authenticated request's chrome."""
 
-    anonymous = site_client.get("/")
-    assert 'href="/login">Log In</a>' in anonymous.text
-    assert 'href="/signup">Join for Free</a>' in anonymous.text
-    assert 'class="learner-nav"' not in anonymous.text
+    shared_paths = (
+        "/",
+        "/browse",
+        "/learn/business-strategy",
+        "/help",
+        "/websitebench-auth-chrome-missing",
+    )
+    for path in shared_paths:
+        anonymous = site_client.get(path)
+        assert 'href="/login">Log In</a>' in anonymous.text, path
+        assert 'href="/signup">Join for Free</a>' in anonymous.text, path
+        assert 'class="learner-nav"' not in anonymous.text, path
 
     _login_seeded(site_client, "progress@coursera.test", "Progress-Learner-33")
-    dashboard = site_client.get("/my-learning")
-    assert 'class="learner-nav"' in dashboard.text
-    assert 'href="/my-learning">My Learning</a>' in dashboard.text
-    assert 'class="header-logout" action="/auth/logout"' in dashboard.text
-    assert 'href="/login">Log In</a>' not in dashboard.text
-    assert 'href="/signup">Join for Free</a>' not in dashboard.text
+    for path in shared_paths:
+        authenticated = site_client.get(path)
+        assert 'class="learner-nav"' in authenticated.text, path
+        assert 'href="/my-learning">My Learning</a>' in authenticated.text, path
+        assert (
+            'class="header-logout" action="/auth/logout"'
+            in authenticated.text
+        ), path
+        assert 'href="/login">Log In</a>' not in authenticated.text, path
+        assert 'href="/signup">Join for Free</a>' not in authenticated.text, path
 
 
 def test_enrollment_history_cancel_idempotency_and_owner_isolation(

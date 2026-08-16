@@ -13,6 +13,7 @@ from websitebench.site_backend import SiteBackend
 
 from backend import checkout
 from backend.site_backend_integration import open_site_services
+from catalog import load_catalog_seed
 
 
 SITE_ID = "33"
@@ -252,7 +253,13 @@ def _enrollment_dict(row: sqlite3.Row) -> dict[str, Any]:
 
 
 def enroll(subject_id: str, *, course_id: str, track: str) -> dict[str, Any]:
-    if course_id != COURSE_ID:
+    catalog_record = next(
+        (record for record in load_catalog_seed() if record["id"] == course_id),
+        None,
+    )
+    if catalog_record is None or not (
+        catalog_record["type"] == "course" or course_id == COURSE_ID
+    ):
         raise ValueError("course is unavailable")
     if track == "paid":
         raise ValueError("paid enrollment requires checkout")
