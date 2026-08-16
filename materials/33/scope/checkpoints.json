@@ -39,6 +39,7 @@
     {"id": "history.seeded.desktop", "route_id": "account-history", "state": "seeded", "viewport": "desktop", "priority": "p1", "evidence_kind": "unavailable-truthful-simulation", "acceptance_eligible": false, "verification_kind": "browser-diagnostic"},
     {"id": "checkout.validation.desktop", "route_id": "checkout", "state": "validation", "viewport": "desktop", "priority": "p1", "evidence_kind": "unavailable-truthful-simulation", "acceptance_eligible": false, "verification_kind": "browser-diagnostic"},
     {"id": "checkout.review.desktop", "route_id": "checkout", "state": "review", "viewport": "desktop", "priority": "p0", "evidence_kind": "unavailable-truthful-simulation", "acceptance_eligible": false, "verification_kind": "browser-diagnostic"},
+    {"id": "help.loaded.desktop", "route_id": "help", "state": "loaded", "viewport": "desktop", "priority": "p2", "evidence_kind": "truthful-simulation", "acceptance_eligible": false, "verification_kind": "browser-diagnostic"},
     {"id": "support.loaded.desktop", "route_id": "support", "state": "loaded", "viewport": "desktop", "priority": "p2", "evidence_kind": "current-direct", "acceptance_eligible": false, "verification_kind": "browser-diagnostic"},
     {"id": "not-found.loaded.desktop", "route_id": "not-found", "state": "loaded", "viewport": "desktop", "priority": "p2", "evidence_kind": "current-direct", "acceptance_eligible": false, "verification_kind": "browser-diagnostic"}
   ]

@@ -34,6 +34,7 @@
     "account-history": "/account/history",
     "preferences": "/account/preferences",
     "checkout": "/checkout/deep-learning",
+    "help": "/help",
     "support": "/about/contact",
     "not-found": "/websitebench-nonexistent-route"
   },
@@ -45,7 +46,7 @@
     "search.no-results": [{"goto": "/search?q=zzzz-no-match-websitebench"}, {"expect": "body"}],
     "specialization.loaded": [{"expect": "body"}],
     "course.loaded": [{"expect": "body"}],
-    "course.preview": [{"goto": "/learn/neural-networks-deep-learning?preview=1"}, {"expect": "body"}],
+    "course.preview": [{"goto": "/learn/neural-networks-deep-learning/preview"}, {"expect": "body"}],
     "login.loaded": [{"expect": "body"}],
     "signup.loaded": [{"expect": "body"}],
     "password-recovery.loaded": [{"expect": "body"}],
@@ -55,6 +56,7 @@
     "account-history.seeded": [{"goto": "/account/history?fixture=seeded-learner"}, {"expect": "body"}],
     "checkout.validation": [{"goto": "/checkout/deep-learning?fixture=validation"}, {"expect": "body"}],
     "checkout.review": [{"goto": "/checkout/deep-learning?fixture=review"}, {"expect": "body"}],
+    "help.loaded": [{"expect": "body"}],
     "support.loaded": [{"expect": "body"}],
     "not-found.loaded": [{"expect": "body"}]
   },

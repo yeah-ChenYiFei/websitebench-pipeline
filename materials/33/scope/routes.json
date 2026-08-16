@@ -16,6 +16,7 @@
     {"id": "quiz", "route_pattern": "/learn/neural-networks-deep-learning/quiz/{quiz}", "priority": "p1", "purpose_edge": "secondary", "local_destination": true, "states": ["opened", "feedback"]},
     {"id": "account-history", "route_pattern": "/account/history", "priority": "p1", "purpose_edge": "secondary", "local_destination": true, "states": ["seeded", "signed-out"]},
     {"id": "preferences", "route_pattern": "/account/preferences", "priority": "p2", "purpose_edge": "secondary", "local_destination": true, "states": ["loaded", "signed-out"]},
+    {"id": "help", "route_pattern": "/help", "priority": "p2", "purpose_edge": "recovery", "local_destination": true, "states": ["loaded"]},
     {"id": "support", "route_pattern": "/about/contact", "priority": "p2", "purpose_edge": "recovery", "local_destination": true, "states": ["loaded"]},
     {"id": "not-found", "route_pattern": "/websitebench-nonexistent-route", "priority": "p2", "purpose_edge": "recovery", "local_destination": true, "states": ["loaded"]}
   ]

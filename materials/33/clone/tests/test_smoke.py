@@ -15,7 +15,7 @@ def test_healthz() -> None:
 def test_home() -> None:
     response = client.get("/")
     assert response.status_code == 200
-    assert "WebsiteBench offline contribution scaffold" in response.text
+    assert "Learn without limits" in response.text
 
 
 def test_unknown_route() -> None:
