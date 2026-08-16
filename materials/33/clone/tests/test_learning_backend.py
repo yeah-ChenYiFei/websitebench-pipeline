@@ -343,7 +343,7 @@ def test_canceled_enrollment_reactivates_with_new_track_and_retains_history(
     assert "Previously canceled" in history.text
 
 
-def test_authenticated_specialization_offers_all_local_tracks_without_checkout(
+def test_authenticated_specialization_keeps_free_audit_and_routes_paid_to_checkout(
     site_client: TestClient,
 ) -> None:
     _login_seeded(site_client, "empty@coursera.test", "Empty-Learner-33")
@@ -352,9 +352,17 @@ def test_authenticated_specialization_offers_all_local_tracks_without_checkout(
     assert 'action="/enrollments"' in detail.text
     assert 'value="free"' in detail.text
     assert 'value="audit"' in detail.text
-    assert 'value="paid"' in detail.text
-    assert "No checkout or payment occurs in Task 4" in detail.text
-    assert 'action="/checkout' not in detail.text
+    assert 'value="paid"' not in detail.text
+    assert 'href="/checkout/deep-learning"' in detail.text
+    assert "No real payment occurs" in detail.text
+
+    bypass = site_client.post(
+        "/enrollments",
+        data={"course_id": "deep-learning-specialization", "track": "paid"},
+        follow_redirects=False,
+    )
+    assert bypass.status_code == 422
+    assert "paid enrollment requires checkout" in bypass.text
 
 
 def test_active_enrollment_gates_protected_learning_and_mutations(
@@ -676,7 +684,7 @@ def test_two_equivalent_resets_restore_identical_seed_state(
     first = learning.state_snapshot()
 
     learning.enroll(
-        "learner-empty", course_id="deep-learning-specialization", track="paid"
+        "learner-empty", course_id="deep-learning-specialization", track="audit"
     )
     learning.complete_lesson("learner-empty", "lesson-neural-intro")
     learning.submit_quiz(

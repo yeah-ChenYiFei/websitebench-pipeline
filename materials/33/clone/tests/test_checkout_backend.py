@@ -387,3 +387,16 @@ def test_order_insert_failure_rolls_back_approval_and_enrollment(
                 WHERE owner_subject_id='learner-empty'"""
         ).fetchone()[0] == 0
     assert flow_status == "OPEN"
+
+
+def test_paid_enrollment_cannot_bypass_checkout(checkout_site) -> None:
+    """Catch the legacy enrollment helper creating paid state without approval."""
+
+    _checkout, learning, _backend = checkout_site
+    with pytest.raises(ValueError, match="paid enrollment requires checkout"):
+        learning.enroll(
+            "learner-empty",
+            course_id="deep-learning-specialization",
+            track="paid",
+        )
+    assert learning.list_enrollments("learner-empty") == []

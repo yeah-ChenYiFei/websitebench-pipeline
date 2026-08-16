@@ -3,18 +3,20 @@
 from __future__ import annotations
 
 import json
+import secrets
 from html import escape
 from pathlib import Path
 from typing import Any
-from urllib.parse import parse_qs, urlencode
+from urllib.parse import parse_qs, parse_qsl, urlencode
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 
-from backend import learning_db
+from backend import checkout, learning_db
 from catalog import load_catalog_seed
 from websitebench.local_clone_auth import AuthError
+from websitebench.site_backend import PaymentConflict, PaymentError, PaymentRejected
 
 
 SITE_ID = "33"
@@ -145,8 +147,43 @@ def _permission_page(message: str) -> HTMLResponse:
 
 
 def _enrollment_required_page(message: str) -> HTMLResponse:
-    body = f"""<section class="not-found permission-prompt"><p class="eyebrow">Active enrollment required</p><h1>{escape(message)}</h1><p>Select a local free, audit, or paid track. No checkout or payment occurs.</p><a class="primary-button" href="/specializations/deep-learning">Choose a local enrollment</a></section>"""
+    body = f"""<section class="not-found permission-prompt"><p class="eyebrow">Active enrollment required</p><h1>{escape(message)}</h1><p>Select a local free or audit track, or complete the inferred sandbox checkout for paid access.</p><a class="primary-button" href="/specializations/deep-learning">Choose a local enrollment</a></section>"""
     return HTMLResponse(_page("Enrollment required", body), status_code=403)
+
+
+def _checkout_not_found() -> HTMLResponse:
+    body = """<section class="not-found"><h1>Checkout not found</h1><p>The checkout record is unavailable for this local learner.</p><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
+    return HTMLResponse(_page("Checkout not found", body), status_code=404)
+
+
+def _checkout_validation(message: str, *, status_code: int = 422) -> HTMLResponse:
+    body = f"""<section class="not-found"><p class="eyebrow">Safe local checkout</p><h1>Checkout could not continue</h1><p>{escape(message)}</p><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
+    return HTMLResponse(_page("Checkout validation", body), status_code=status_code)
+
+
+def _checkout_totals() -> str:
+    return """<dl class="checkout-totals"><div><dt>Subtotal</dt><dd>USD 49.00</dd></div><div><dt>Tax</dt><dd>USD 0.00</dd></div><div class="checkout-total"><dt>Total</dt><dd>USD 49.00</dd></div></dl>"""
+
+
+async def _exact_checkout_attempt_values(request: Request) -> dict[str, str]:
+    content_type = request.headers.get("content-type", "").split(";", 1)[0]
+    if content_type != "application/x-www-form-urlencoded":
+        raise ValueError("Submit exactly scenario_id and idempotency_key.")
+    try:
+        pairs = parse_qsl(
+            (await request.body()).decode("utf-8"), keep_blank_values=True
+        )
+    except UnicodeDecodeError as exc:
+        raise ValueError(
+            "Submit exactly scenario_id and idempotency_key."
+        ) from exc
+    if (
+        len(pairs) != 2
+        or {key for key, _value in pairs}
+        != {"scenario_id", "idempotency_key"}
+    ):
+        raise ValueError("Submit exactly scenario_id and idempotency_key.")
+    return dict(pairs)
 
 
 def _learning_not_found() -> HTMLResponse:
@@ -413,9 +450,9 @@ def deep_learning_specialization(request: Request) -> str:
     )
     _backend, _auth, _token, session = _request_session(request)
     enrollment_action = (
-        """<form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><label>Enrollment track<select name="track" required><option value="free">Free track</option><option value="audit">Audit track</option><option value="paid">Paid track selection</option></select></label><button class="primary-button" type="submit">Save local enrollment</button><p>No checkout or payment occurs in Task 4. Paid is only a local track selection.</p></form>"""
+        """<div class="enrollment-actions"><form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><label>Enrollment track<select name="track" required><option value="free">Free track</option><option value="audit">Audit track</option></select></label><button class="secondary-button" type="submit">Save free or audit enrollment</button></form><a class="primary-button" href="/checkout/deep-learning">Choose inferred paid plan</a><p>The paid plan opens a deterministic local-sandbox checkout. No real payment occurs.</p></div>"""
         if session["authenticated"]
-        else '<a class="primary-button" href="/login?next=/specializations/deep-learning">Enroll for free</a>'
+        else '<div class="enrollment-actions"><a class="primary-button" href="/login?next=/checkout/deep-learning">Sign in locally to choose the inferred paid plan</a><a class="secondary-button" href="/login?next=/specializations/deep-learning">Sign in for free or audit enrollment</a></div>'
     )
     body = f"""
 <nav class="breadcrumbs"><a href="/browse">Browse</a><span>›</span><a href="/browse/data-science">Data Science</a><span>›</span>Deep Learning</nav>
@@ -423,6 +460,109 @@ def deep_learning_specialization(request: Request) -> str:
 <section class="program-facts"><div><strong>5 course series</strong><span>Get in-depth knowledge of a subject</span></div><div><strong>4.8 ★</strong><span>from 147,224 reviews</span></div><div><strong>Intermediate level</strong><span>Recommended experience</span></div><div><strong>Flexible schedule</strong><span>3 months at 10 hours a week</span></div></section>
 <section class="detail-section"><h2>What you'll learn</h2><p>Build and train deep neural networks, analyze model performance, and apply convolutional and sequence models to practical tasks.</p><h2>Courses</h2><ol class="course-series">{course_list}</ol></section>"""
     return _page("Deep Learning Specialization", body)
+
+
+@app.get("/checkout/deep-learning", response_class=HTMLResponse)
+def checkout_plan(request: Request) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, _subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in before choosing a checkout plan")
+    body = f"""<nav class="breadcrumbs"><a href="/specializations/deep-learning">Deep Learning Specialization</a><span>›</span>Plan</nav><section class="checkout-shell"><p class="eyebrow">Inferred local price</p><h1>Choose the Deep Learning paid plan</h1><p class="safe-note">Authenticated source checkout evidence is unavailable. This USD 49.00 price is explicitly inferred for the deterministic offline clone.</p>{_checkout_totals()}<p><strong>No real purchase or payment will occur.</strong> The generated site backend uses only the local-sandbox adapter.</p><form action="/checkout/deep-learning" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><input type="hidden" name="plan_id" value="deep-learning-specialization-paid"><button class="primary-button" type="submit">Continue to synthetic payment</button></form><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
+    return HTMLResponse(_page("Deep Learning checkout plan", body))
+
+
+@app.post("/checkout/deep-learning")
+async def create_checkout(request: Request) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in before starting checkout")
+    values = await _form_values(request)
+    try:
+        draft = checkout.create_draft(
+            subject,
+            course_id=values.get("course_id", ""),
+            plan_id=values.get("plan_id", ""),
+        )
+    except ValueError as exc:
+        return _checkout_validation(str(exc))
+    return RedirectResponse(
+        f"/checkout/{draft['draft_id']}/payment", status_code=303
+    )
+
+
+@app.get("/checkout/{draft_id}/payment", response_class=HTMLResponse)
+def checkout_payment(request: Request, draft_id: str) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to open this synthetic payment page")
+    try:
+        checkout.get_draft(subject, draft_id)
+    except LookupError:
+        return _checkout_not_found()
+    body = f"""<nav class="breadcrumbs"><a href="/checkout/deep-learning">Plan</a><span>›</span>Synthetic payment</nav><section class="checkout-shell"><p class="eyebrow">Memory-only demonstration</p><h1>Synthetic payment form</h1><p class="safe-note"><strong>Do not enter real payment data.</strong> Anything typed below stays only in this browser page and has no submitted field name.</p><form class="synthetic-payment" action="/checkout/{escape(draft_id)}/review" method="get" autocomplete="off"><label>Example card number<input id="synthetic-card-number" inputmode="numeric" autocomplete="off" placeholder="Synthetic digits only"></label><label>Example expiry<input id="synthetic-expiry" autocomplete="off" placeholder="MM / YY"></label><label>Example security code<input id="synthetic-cvv" inputmode="numeric" autocomplete="off" placeholder="Synthetic code"></label><button class="primary-button" type="submit">Continue without submitting these fields</button></form><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
+    return HTMLResponse(_page("Synthetic payment", body))
+
+
+@app.get("/checkout/{draft_id}/review", response_class=HTMLResponse)
+def checkout_review(request: Request, draft_id: str) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to review this checkout")
+    try:
+        checkout.get_draft(subject, draft_id)
+    except LookupError:
+        return _checkout_not_found()
+    idempotency_key = f"browser-attempt:{secrets.token_urlsafe(18)}"
+    body = f"""<nav class="breadcrumbs"><a href="/checkout/{escape(draft_id)}/payment">Synthetic payment</a><span>›</span>Review</nav><section class="checkout-shell"><p class="eyebrow">Local sandbox only</p><h1>Review inferred total</h1><p>This price is inferred and this action has no external or real payment effect.</p>{_checkout_totals()}<form class="sandbox-scenarios" action="/checkout/{escape(draft_id)}/attempt" method="post"><input type="hidden" name="idempotency_key" value="{escape(idempotency_key)}"><fieldset><legend>Choose a deterministic sandbox result</legend><label><input type="radio" name="scenario_id" value="sandbox-approved" required>Simulated approval</label><label><input type="radio" name="scenario_id" value="sandbox-declined" required>Simulated decline</label><label><input type="radio" name="scenario_id" value="sandbox-retry" required>Simulated retry</label></fieldset><button class="primary-button" type="submit">Run local sandbox attempt</button></form><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
+    return HTMLResponse(_page("Review local checkout", body))
+
+
+@app.post("/checkout/{draft_id}/attempt")
+async def checkout_attempt(request: Request, draft_id: str) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to submit this local checkout")
+    try:
+        values = await _exact_checkout_attempt_values(request)
+    except ValueError as exc:
+        return _checkout_validation(str(exc))
+    if values["scenario_id"] not in {
+        "sandbox-approved",
+        "sandbox-declined",
+        "sandbox-retry",
+    }:
+        return _checkout_validation("Choose one available sandbox scenario.")
+    try:
+        result = checkout.attempt(
+            subject,
+            draft_id,
+            scenario_id=values["scenario_id"],
+            idempotency_key=values["idempotency_key"],
+        )
+    except LookupError:
+        return _checkout_not_found()
+    except PaymentConflict as exc:
+        return _checkout_validation(str(exc), status_code=409)
+    except PaymentRejected as exc:
+        return _checkout_validation(str(exc), status_code=409)
+    except PaymentError as exc:
+        return _checkout_validation(str(exc))
+    if result["outcome"] == "approved":
+        return RedirectResponse(
+            f"/orders/{result['order']['order_id']}", status_code=303
+        )
+    heading = (
+        "Simulated payment declined"
+        if result["outcome"] == "declined"
+        else "Simulated payment needs a retry"
+    )
+    body = f"""<section class="checkout-shell"><p class="eyebrow">Local sandbox result</p><h1>{heading}</h1><p>No order or paid enrollment was created. No external payment was attempted.</p><a class="primary-button" href="/checkout/{escape(draft_id)}/review">Try another sandbox result</a><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
+    return HTMLResponse(_page("Local sandbox result", body))
 
 
 @app.get("/learn/{course_id}/preview", response_class=HTMLResponse)

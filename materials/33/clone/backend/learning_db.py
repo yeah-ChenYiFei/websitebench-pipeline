@@ -254,8 +254,10 @@ def _enrollment_dict(row: sqlite3.Row) -> dict[str, Any]:
 def enroll(subject_id: str, *, course_id: str, track: str) -> dict[str, Any]:
     if course_id != COURSE_ID:
         raise ValueError("course is unavailable")
-    if track not in {"free", "audit", "paid"}:
-        raise ValueError("choose a free, audit, or paid track")
+    if track == "paid":
+        raise ValueError("paid enrollment requires checkout")
+    if track not in {"free", "audit"}:
+        raise ValueError("choose a free or audit track")
     with connection(transaction=True) as opened:
         created = opened.execute(
             """INSERT INTO coursera_enrollments(
