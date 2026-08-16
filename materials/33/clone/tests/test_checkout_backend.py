@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import importlib
 import importlib.util
+import sqlite3
 from pathlib import Path
 
 import pytest
+from websitebench.site_backend import PaymentConflict, PaymentRejected
 
 
 @pytest.fixture
@@ -139,3 +141,249 @@ def test_get_draft_hides_foreign_owner_records(checkout_site) -> None:
     with pytest.raises(LookupError, match="Checkout not found"):
         checkout.get_draft("learner-in-progress", draft["draft_id"])
     assert checkout.get_draft("learner-empty", draft["draft_id"]) == draft
+
+
+def _new_empty_learner_draft(checkout):
+    return checkout.create_draft(
+        "learner-empty",
+        course_id="deep-learning-specialization",
+        plan_id="deep-learning-specialization-paid",
+    )
+
+
+def test_approved_attempt_atomically_creates_paid_order_and_enrollment(
+    checkout_site,
+) -> None:
+    """Catch approval consumption without the matching order/enrollment write."""
+
+    checkout, learning, _backend = checkout_site
+    draft = _new_empty_learner_draft(checkout)
+
+    result = checkout.attempt(
+        "learner-empty",
+        draft["draft_id"],
+        scenario_id="sandbox-approved",
+        idempotency_key="attempt-approved-001",
+    )
+
+    assert result["outcome"] == "approved"
+    assert result["attempt"]["status"] == "APPROVED"
+    assert result["order"] == checkout.get_order(
+        "learner-empty", result["order"]["order_id"]
+    )
+    assert result["order"]["status"] == "PAID"
+    assert result["order"]["subtotal_minor"] == 4900
+    assert result["order"]["tax_minor"] == 0
+    assert result["order"]["total_minor"] == 4900
+    assert checkout.list_orders("learner-empty") == [result["order"]]
+
+    with learning.connection() as opened:
+        enrollment = opened.execute(
+            """SELECT owner_subject_id,course_id,track,status
+                FROM coursera_enrollments WHERE enrollment_id=?""",
+            (result["order"]["enrollment_id"],),
+        ).fetchone()
+        flow_status = opened.execute(
+            "SELECT status FROM websitebench_payment_flows WHERE flow_id=?",
+            (draft["payment_flow_id"],),
+        ).fetchone()[0]
+    assert tuple(enrollment) == (
+        "learner-empty",
+        "deep-learning-specialization",
+        "paid",
+        "active",
+    )
+    assert flow_status == "CONSUMED"
+
+
+@pytest.mark.parametrize(
+    ("scenario_id", "expected_outcome", "expected_status"),
+    [
+        ("sandbox-declined", "declined", "DECLINED"),
+        ("sandbox-retry", "retryable", "RETRYABLE"),
+    ],
+)
+def test_nonapproved_attempt_is_idempotent_without_business_state(
+    checkout_site,
+    scenario_id: str,
+    expected_outcome: str,
+    expected_status: str,
+) -> None:
+    """Catch decline/retry paths that create orders or paid enrollments."""
+
+    checkout, learning, _backend = checkout_site
+    draft = _new_empty_learner_draft(checkout)
+
+    first = checkout.attempt(
+        "learner-empty",
+        draft["draft_id"],
+        scenario_id=scenario_id,
+        idempotency_key="attempt-nonapproved-001",
+    )
+    repeated = checkout.attempt(
+        "learner-empty",
+        draft["draft_id"],
+        scenario_id=scenario_id,
+        idempotency_key="attempt-nonapproved-001",
+    )
+
+    assert first == repeated
+    assert first["outcome"] == expected_outcome
+    assert first["attempt"]["status"] == expected_status
+    assert first["order"] is None
+    assert checkout.list_orders("learner-empty") == []
+    with learning.connection() as opened:
+        assert opened.execute(
+            """SELECT COUNT(*) FROM coursera_enrollments
+                WHERE owner_subject_id='learner-empty'"""
+        ).fetchone()[0] == 0
+
+
+@pytest.mark.parametrize(
+    ("column", "stale_value"),
+    [
+        ("total_minor", 5000),
+        ("fingerprint", "0" * 64),
+    ],
+)
+def test_final_submit_rejects_stale_server_stored_draft_facts(
+    checkout_site,
+    column: str,
+    stale_value,
+) -> None:
+    """Catch final submit that trusts a stale draft over the current plan."""
+
+    checkout, learning, _backend = checkout_site
+    draft = _new_empty_learner_draft(checkout)
+    with learning.connection(transaction=True) as opened:
+        opened.execute(
+            f"UPDATE coursera_checkout_drafts SET {column}=? WHERE draft_id=?",
+            (stale_value, draft["draft_id"]),
+        )
+
+    with pytest.raises(PaymentRejected, match="checkout facts are stale"):
+        checkout.attempt(
+            "learner-empty",
+            draft["draft_id"],
+            scenario_id="sandbox-approved",
+            idempotency_key="attempt-stale-draft-001",
+        )
+
+    with learning.connection() as opened:
+        assert opened.execute(
+            "SELECT COUNT(*) FROM websitebench_payment_attempts"
+        ).fetchone()[0] == 0
+        assert opened.execute(
+            "SELECT COUNT(*) FROM coursera_orders"
+        ).fetchone()[0] == 0
+        assert opened.execute(
+            """SELECT COUNT(*) FROM coursera_enrollments
+                WHERE owner_subject_id='learner-empty'"""
+        ).fetchone()[0] == 0
+
+
+def test_generated_flow_staleness_and_foreign_owner_are_rejected(
+    checkout_site,
+) -> None:
+    """Catch final submit that bypasses generated stale/owner validation."""
+
+    checkout, learning, _backend = checkout_site
+    draft = _new_empty_learner_draft(checkout)
+    with pytest.raises(LookupError, match="Checkout not found"):
+        checkout.attempt(
+            "learner-in-progress",
+            draft["draft_id"],
+            scenario_id="sandbox-approved",
+            idempotency_key="attempt-foreign-001",
+        )
+
+    with learning.connection(transaction=True) as opened:
+        opened.execute(
+            """UPDATE websitebench_payment_flows SET fingerprint=?
+                WHERE flow_id=?""",
+            ("f" * 64, draft["payment_flow_id"]),
+        )
+    with pytest.raises(PaymentRejected, match="payment facts are stale"):
+        checkout.attempt(
+            "learner-empty",
+            draft["draft_id"],
+            scenario_id="sandbox-approved",
+            idempotency_key="attempt-stale-flow-001",
+        )
+
+
+def test_attempt_idempotency_conflict_and_duplicate_consumption_are_rejected(
+    checkout_site,
+) -> None:
+    """Catch key reuse across scenarios or a second order from one approval."""
+
+    checkout, _learning, _backend = checkout_site
+    declined_draft = _new_empty_learner_draft(checkout)
+    checkout.attempt(
+        "learner-empty",
+        declined_draft["draft_id"],
+        scenario_id="sandbox-declined",
+        idempotency_key="attempt-conflict-001",
+    )
+    with pytest.raises(PaymentConflict, match="idempotency key conflicts"):
+        checkout.attempt(
+            "learner-empty",
+            declined_draft["draft_id"],
+            scenario_id="sandbox-retry",
+            idempotency_key="attempt-conflict-001",
+        )
+
+    approved_draft = _new_empty_learner_draft(checkout)
+    checkout.attempt(
+        "learner-empty",
+        approved_draft["draft_id"],
+        scenario_id="sandbox-approved",
+        idempotency_key="attempt-consume-once-001",
+    )
+    with pytest.raises(PaymentRejected, match="no longer open"):
+        checkout.attempt(
+            "learner-empty",
+            approved_draft["draft_id"],
+            scenario_id="sandbox-approved",
+            idempotency_key="attempt-consume-twice-002",
+        )
+
+
+def test_order_insert_failure_rolls_back_approval_and_enrollment(
+    checkout_site,
+) -> None:
+    """Catch a transaction boundary that consumes approval before order commit."""
+
+    checkout, learning, _backend = checkout_site
+    draft = _new_empty_learner_draft(checkout)
+    with learning.connection(transaction=True) as opened:
+        opened.execute(
+            """CREATE TRIGGER force_order_failure
+                BEFORE INSERT ON coursera_orders
+                BEGIN SELECT RAISE(ABORT,'forced order failure'); END"""
+        )
+
+    with pytest.raises(sqlite3.IntegrityError, match="forced order failure"):
+        checkout.attempt(
+            "learner-empty",
+            draft["draft_id"],
+            scenario_id="sandbox-approved",
+            idempotency_key="attempt-atomic-rollback-001",
+        )
+
+    with learning.connection() as opened:
+        flow_status = opened.execute(
+            "SELECT status FROM websitebench_payment_flows WHERE flow_id=?",
+            (draft["payment_flow_id"],),
+        ).fetchone()[0]
+        assert opened.execute(
+            "SELECT COUNT(*) FROM websitebench_payment_attempts"
+        ).fetchone()[0] == 0
+        assert opened.execute(
+            "SELECT COUNT(*) FROM coursera_orders"
+        ).fetchone()[0] == 0
+        assert opened.execute(
+            """SELECT COUNT(*) FROM coursera_enrollments
+                WHERE owner_subject_id='learner-empty'"""
+        ).fetchone()[0] == 0
+    assert flow_status == "OPEN"
