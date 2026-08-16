@@ -1,0 +1,22 @@
+{
+  "schema_version": "offline-clone.routes.v1",
+  "routes": [
+    {"id": "home", "route_pattern": "/", "priority": "p0", "purpose_edge": "primary", "local_destination": true, "states": ["loaded"]},
+    {"id": "browse", "route_pattern": "/browse", "priority": "p0", "purpose_edge": "primary", "local_destination": true, "states": ["loaded"]},
+    {"id": "browse-subject", "route_pattern": "/browse/{subject}", "priority": "p0", "purpose_edge": "primary", "local_destination": true, "states": ["loaded"]},
+    {"id": "search", "route_pattern": "/search", "priority": "p0", "purpose_edge": "primary", "local_destination": true, "states": ["results", "filtered", "no-results"]},
+    {"id": "specialization", "route_pattern": "/specializations/deep-learning", "priority": "p0", "purpose_edge": "primary", "local_destination": true, "states": ["loaded", "track-selection"]},
+    {"id": "course", "route_pattern": "/learn/{course}", "priority": "p0", "purpose_edge": "primary", "local_destination": true, "states": ["loaded", "preview"]},
+    {"id": "checkout", "route_pattern": "/checkout/deep-learning", "priority": "p0", "purpose_edge": "primary", "local_destination": true, "states": ["track-selection", "validation", "review"]},
+    {"id": "login", "route_pattern": "/login", "priority": "p1", "purpose_edge": "boundary", "local_destination": true, "states": ["loaded", "validation"]},
+    {"id": "signup", "route_pattern": "/signup", "priority": "p1", "purpose_edge": "boundary", "local_destination": true, "states": ["loaded", "onboarding", "validation"]},
+    {"id": "password-recovery", "route_pattern": "/account-recovery", "priority": "p1", "purpose_edge": "boundary", "local_destination": true, "states": ["loaded", "validation"]},
+    {"id": "dashboard", "route_pattern": "/dashboard", "priority": "p1", "purpose_edge": "secondary", "local_destination": true, "states": ["seeded", "progress", "signed-out"]},
+    {"id": "lesson", "route_pattern": "/learn/neural-networks-deep-learning/lesson/{unit}", "priority": "p1", "purpose_edge": "secondary", "local_destination": true, "states": ["opened"]},
+    {"id": "quiz", "route_pattern": "/learn/neural-networks-deep-learning/quiz/{quiz}", "priority": "p1", "purpose_edge": "secondary", "local_destination": true, "states": ["opened", "feedback"]},
+    {"id": "account-history", "route_pattern": "/account/history", "priority": "p1", "purpose_edge": "secondary", "local_destination": true, "states": ["seeded", "signed-out"]},
+    {"id": "preferences", "route_pattern": "/account/preferences", "priority": "p2", "purpose_edge": "secondary", "local_destination": true, "states": ["loaded", "signed-out"]},
+    {"id": "support", "route_pattern": "/about/contact", "priority": "p2", "purpose_edge": "recovery", "local_destination": true, "states": ["loaded"]},
+    {"id": "not-found", "route_pattern": "/websitebench-nonexistent-route", "priority": "p2", "purpose_edge": "recovery", "local_destination": true, "states": ["loaded"]}
+  ]
+}

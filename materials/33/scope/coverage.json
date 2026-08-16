@@ -1,0 +1,104 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "frozen",
+  "dimensions": [
+    {
+      "id": "browse-subjects",
+      "label": "All 11 public browse subjects",
+      "unit": "subject",
+      "category": "catalog",
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "direct",
+      "population_size": 11,
+      "sample_size": 11,
+      "sampling_method": "complete frozen denominator from the observed /browse sibling links",
+      "required_evidence_kinds": ["browser", "full-suite"],
+      "required_items": [
+        "arts-and-humanities",
+        "business",
+        "computer-science",
+        "data-science",
+        "health",
+        "information-technology",
+        "language-learning",
+        "math-and-logic",
+        "personal-development",
+        "physical-science-and-engineering",
+        "social-sciences"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "catalog-records",
+      "label": "Deterministic 40-record catalog contract",
+      "unit": "record-contract",
+      "category": "catalog",
+      "source_evidence_kind": "inferred",
+      "local_contract_evidence_kind": "direct",
+      "population_size": 40,
+      "sample_size": 40,
+      "sampling_method": "complete deterministic seed",
+      "required_evidence_kinds": ["full-suite"],
+      "required_items": ["cardinality", "deep-learning-series", "subject-coverage", "field-completeness", "deterministic-reset"],
+      "satisfied_items": []
+    },
+    {
+      "id": "route-state-matrix",
+      "label": "Frozen public, authenticated-simulation, validation, and recovery route states",
+      "unit": "route-state",
+      "category": "functional",
+      "source_evidence_kind": "structural-only",
+      "local_contract_evidence_kind": "direct",
+      "required_evidence_kinds": ["browser", "network"],
+      "required_items": [
+        "home.loaded.desktop",
+        "browse.loaded.desktop",
+        "search.results.desktop",
+        "search.no-results.desktop",
+        "specialization.loaded.desktop",
+        "course.loaded.desktop",
+        "login.loaded.desktop",
+        "signup.loaded.desktop",
+        "support.loaded.desktop",
+        "not-found.loaded.desktop"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "browse-visual",
+      "label": "Anonymous public browse viewport",
+      "unit": "checkpoint",
+      "category": "visual",
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "direct",
+      "population_size": 1,
+      "sample_size": 1,
+      "sampling_method": "selected current EA2 anonymous browse capture",
+      "required_evidence_kinds": ["visual"],
+      "required_items": ["browse.loaded.desktop"],
+      "satisfied_items": []
+    },
+    {
+      "id": "authenticated-simulation",
+      "label": "Unavailable authenticated source states represented honestly in the clone",
+      "unit": "journey",
+      "category": "backend",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "direct",
+      "required_evidence_kinds": ["browser", "full-suite"],
+      "required_items": ["signup-local", "login-dashboard", "lesson", "quiz-feedback", "progress-bookmark", "preferences", "history"],
+      "satisfied_items": []
+    },
+    {
+      "id": "checkout-local-sandbox",
+      "label": "Deep Learning enrollment review and local-sandbox payment boundary",
+      "unit": "scenario",
+      "category": "payment",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "direct",
+      "required_evidence_kinds": ["browser", "full-suite"],
+      "required_items": ["free-track", "paid-review", "sandbox-approved", "sandbox-declined", "sandbox-retry", "tamper-rejected", "foreign-owner-rejected"],
+      "satisfied_items": []
+    }
+  ]
+}

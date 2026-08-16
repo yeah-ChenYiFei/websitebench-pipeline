@@ -1,0 +1,40 @@
+schema_version: offline-clone.manifest.v2
+site_id: '33'
+display_name: Coursera
+state_model: stateful
+source:
+  origins:
+  - https://www.coursera.org/
+  baseline:
+    locale: en-US
+    currency: null
+    delivery_region: null
+    timezone: null
+    auth_state: anonymous
+    tenant: null
+    workspace: null
+    role: null
+    capabilities: []
+    feature_flags: []
+    user_agent: null
+    viewport: null
+    capture_id: null
+  capture_policy:
+    safe_methods:
+    - GET
+    - HEAD
+    runtime_remote_requests: forbidden
+scope:
+  purpose: scope/purpose.json
+  invariants: scope/invariants.json
+  routes: scope/routes.json
+  journeys: scope/journeys.json
+  checkpoints: scope/checkpoints.json
+  claims: scope/claims.jsonl
+  coverage: scope/coverage.json
+paths:
+  candidate_root: clone
+  candidate_excludes: []
+  asset_manifest: source-assets/manifest.json
+  backend_model: backend/model.json
+  artifact_root: artifacts/offline-clone
