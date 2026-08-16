@@ -385,21 +385,19 @@ def test_shared_header_switches_between_anonymous_and_learner_controls(
     )
     for path in shared_paths:
         anonymous = site_client.get(path)
-        assert 'href="/login">Log In</a>' in anonymous.text, path
-        assert 'href="/signup">Join for Free</a>' in anonymous.text, path
-        assert 'class="learner-nav"' not in anonymous.text, path
+        assert 'href="/login">登录</a>' in anonymous.text, path
+        assert 'class="wb-join" href="/signup">免费加入</a>' in anonymous.text, path
+        assert 'href="/my-learning">我的学习</a>' not in anonymous.text, path
 
     _login_seeded(site_client, "progress@coursera.test", "Progress-Learner-33")
     for path in shared_paths:
         authenticated = site_client.get(path)
-        assert 'class="learner-nav"' in authenticated.text, path
-        assert 'href="/my-learning">My Learning</a>' in authenticated.text, path
-        assert (
-            'class="header-logout" action="/auth/logout"'
-            in authenticated.text
-        ), path
-        assert 'href="/login">Log In</a>' not in authenticated.text, path
-        assert 'href="/signup">Join for Free</a>' not in authenticated.text, path
+        assert 'class="wb-account-nav"' in authenticated.text, path
+        assert 'href="/my-learning">我的学习</a>' in authenticated.text, path
+        assert 'action="/auth/logout"' in authenticated.text, path
+        assert "退出登录" in authenticated.text, path
+        assert 'href="/login">登录</a>' not in authenticated.text, path
+        assert 'href="/signup">免费加入</a>' not in authenticated.text, path
 
 
 def test_enrollment_history_cancel_idempotency_and_owner_isolation(
@@ -504,7 +502,7 @@ def test_authenticated_specialization_keeps_free_audit_and_routes_paid_to_checko
     assert 'value="audit"' in detail.text
     assert 'value="paid"' not in detail.text
     assert 'href="/checkout/deep-learning"' in detail.text
-    assert "No real payment occurs" in detail.text
+    assert "不会产生真实付款" in detail.text
 
     bypass = site_client.post(
         "/enrollments",
@@ -549,10 +547,10 @@ def test_authenticated_validation_errors_render_422_with_learner_chrome(
 
     assert response.status_code == 422
     assert f"<h1>{expected_heading}</h1>" in response.text
-    assert 'class="learner-nav"' in response.text
-    assert 'class="header-logout" action="/auth/logout"' in response.text
-    assert 'href="/login">Log In</a>' not in response.text
-    assert 'href="/signup">Join for Free</a>' not in response.text
+    assert 'class="wb-account-nav"' in response.text
+    assert 'action="/auth/logout"' in response.text
+    assert 'href="/login">登录</a>' not in response.text
+    assert 'href="/signup">免费加入</a>' not in response.text
 
 
 def test_active_enrollment_gates_protected_learning_and_mutations(

@@ -159,3 +159,43 @@ def test_not_found_matches_observed_safe_recovery(
     assert "我们无法找到您要查找的页面" in response.text
     assert 'href="/browse"' in response.text
     assert 'href="/search"' in response.text
+
+
+def test_unified_auth_entry_has_email_identity_choices_and_terms(
+    desktop_client: TestClient,
+) -> None:
+    """Catch the account entry regressing to a separate English-only form."""
+
+    html = desktop_client.get("/login").text
+
+    assert "登录或创建账户" in html
+    assert 'type="email"' in html
+    assert "继续使用 Google" in html
+    assert "使用条款" in html
+    assert "隐私声明" in html
+
+
+def test_recovery_requires_local_address_and_returns_to_login(
+    desktop_client: TestClient,
+) -> None:
+    """Catch password recovery losing validation context or a safe return route."""
+
+    html = desktop_client.get("/account-recovery").text
+
+    assert "重置您的 Coursera 密码" in html
+    assert 'type="email"' in html
+    assert 'href="/login"' in html
+
+
+def test_seeded_dashboard_has_resume_progress_and_history_links(
+    desktop_client: TestClient,
+) -> None:
+    """Catch the seeded learner dashboard omitting its usable continuation path."""
+
+    _login_seeded_progress_learner(desktop_client)
+
+    html = desktop_client.get("/my-learning").text
+
+    assert "我的学习" in html
+    assert "继续学习" in html
+    assert 'href="/account/history"' in html

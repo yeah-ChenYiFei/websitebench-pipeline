@@ -1,0 +1,10 @@
+.learning-page { width: var(--wb-shell); margin: 0 auto; padding: 38px 0; }
+.learning-page h1 { margin: 0 0 10px; font-size: 38px; }
+.learning-page > p { color: #555; }
+.learning-actions { display: flex; flex-wrap: wrap; gap: 18px; margin: 20px 0 30px; }
+.learning-actions a { color: var(--wb-blue); font-weight: 700; }
+.learning-review { max-width: 590px; margin-top: 26px; padding: 24px; border: 1px solid var(--wb-line); border-radius: 8px; }
+.learning-history-links { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 22px; }
+.learning-history-links a { color: var(--wb-blue); font-weight: 700; }
+.enrollment-card form { margin: 12px 0; }
+.enrollment-card button { border: 1px solid var(--wb-blue); border-radius: 4px; padding: 8px 12px; background: #fff; color: var(--wb-blue); font-weight: 700; cursor: pointer; }

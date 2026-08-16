@@ -323,22 +323,22 @@ def test_auth_hashes_standalone_shells_recovery_help_and_contact_are_local() -> 
     assert '<form class="auth-form"' in login.text
     assert 'name="email"' in login.text
     assert 'name="password"' in login.text
-    assert "Continue with Google" in login.text
+    assert "继续使用 Google" in login.text
     assert 'href="/account-recovery"' in login.text
-    assert "does not submit credentials" in login.text
+    assert "不会将凭据提交到 Coursera" in login.text
 
     signup = client.get("/signup")
     assert signup.status_code == 200
     assert 'name="full_name"' in signup.text
     assert 'name="email"' in signup.text
     assert 'name="password"' in signup.text
-    assert "Terms of Use" in signup.text
-    assert "verification code" in signup.text
+    assert "使用条款" in signup.text
+    assert "验证代码" in signup.text
 
     recovery = client.get("/account-recovery")
     assert recovery.status_code == 200
     assert 'name="address"' in recovery.text
-    assert "No reset message is sent" in recovery.text
+    assert "不会发送外部重置消息" in recovery.text
     assert 'href="/login"' in recovery.text
 
     help_page = client.get("/help")
@@ -394,6 +394,7 @@ def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
 
     assert static_paths == {
         "/static/auth.css",
+        "/static/auth-desktop.css",
         "/static/catalog-desktop.css",
         "/static/checkout.css",
         "/static/components.css",
@@ -401,6 +402,7 @@ def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
         "/static/deep-learning-mark.svg",
         "/static/desktop-base.css",
         "/static/desktop-chrome.css",
+        "/static/learning-desktop.css",
         "/static/site.css",
     }
     for path in static_paths:
