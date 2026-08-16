@@ -95,9 +95,16 @@ def _footer() -> str:
 """
 
 
-def _page(title: str, body: str, *, body_class: str = "") -> str:
+def _page(
+    title: str,
+    body: str,
+    *,
+    body_class: str = "",
+    document_title: str | None = None,
+) -> str:
+    rendered_title = document_title or f"{title} | Coursera"
     return f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Coursera</title><link rel="stylesheet" href="/static/site.css"><link rel="stylesheet" href="/static/components.css"><link rel="stylesheet" href="/static/auth.css"><link rel="stylesheet" href="/static/checkout.css"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(rendered_title)}</title><link rel="stylesheet" href="/static/site.css"><link rel="stylesheet" href="/static/components.css"><link rel="stylesheet" href="/static/auth.css"><link rel="stylesheet" href="/static/checkout.css"></head>
 <body class="{escape(body_class)}">{_header()}<main>{body}</main>{_footer()}</body></html>"""
 
 
@@ -431,7 +438,12 @@ def home() -> str:
 <section class="subject-band"><h2>Explore by subject</h2>{_category_pills()}</section>
 <section class="auth-hash-panel" id="login"><h2>Log in to continue learning</h2><p>This public entry does not accept credentials yet.</p><a class="primary-button" href="/login">Open standalone login</a><a class="close-link" href="#top">Close</a></section>
 <section class="auth-hash-panel" id="signup"><h2>Join Coursera locally</h2><p>Review the offline account fields and verification guidance.</p><a class="primary-button" href="/signup">Open standalone signup</a><a class="close-link" href="#top">Close</a></section>"""
-    return _page("Online Courses, Certificates, & Degrees", body, body_class="home")
+    return _page(
+        "Online Courses, Certificates, & Degrees",
+        body,
+        body_class="home",
+        document_title="Coursera | Online Courses, Certificates, & Degrees",
+    )
 
 
 @app.get("/browse", response_class=HTMLResponse)
@@ -495,7 +507,13 @@ def search(
         clear_query = urlencode({"q": ""})
         result_body = f"""<div class="empty-state"><h2>No results for “{escape(q)}”</h2><p>Try a broader term or remove a filter.</p><a href="/search?{clear_query}">Clear search</a><a href="/search">Reset all filters</a><a href="/browse">Browse available categories</a></div>"""
     body = f"""<section class="page-heading search-heading"><p class="eyebrow">Coursera catalog</p><h1>Search learning opportunities</h1></section><section class="search-layout">{form}<div class="results" data-result-count="{len(records)}"><h2>{len(records)} results</h2>{result_body}</div></section>"""
-    return _page("Search", body)
+    return _page(
+        "Search",
+        body,
+        document_title=(
+            "Coursera | Online Courses From Top Universities. Join for Free"
+        ),
+    )
 
 
 @app.get("/specializations/deep-learning", response_class=HTMLResponse)

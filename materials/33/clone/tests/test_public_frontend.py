@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from html import unescape
 import re
 
 from fastapi.testclient import TestClient
@@ -22,6 +23,23 @@ SUBJECTS = {
     "physical-science-and-engineering": "Physical Science and Engineering",
     "social-sciences": "Social Sciences",
 }
+
+
+def test_home_and_search_use_the_source_observed_document_titles() -> None:
+    expected_titles = {
+        "/": "Coursera | Online Courses, Certificates, & Degrees",
+        "/search?query=deep": (
+            "Coursera | Online Courses From Top Universities. Join for Free"
+        ),
+    }
+
+    for path, expected_title in expected_titles.items():
+        response = client.get(path)
+
+        assert response.status_code == 200
+        title = re.search(r"<title>(.*?)</title>", response.text)
+        assert title is not None
+        assert unescape(title.group(1)) == expected_title
 
 
 def test_public_home_browse_and_all_subject_routes_render_real_catalog() -> None:
