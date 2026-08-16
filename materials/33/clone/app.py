@@ -264,14 +264,14 @@ def _checkout_validation(
 
 
 def _checkout_totals() -> str:
-    return """<dl class="checkout-totals"><div><dt>Subtotal</dt><dd>USD 49.00</dd></div><div><dt>Tax</dt><dd>USD 0.00</dd></div><div class="checkout-total"><dt>Total</dt><dd>USD 49.00</dd></div></dl>"""
+    return """<dl class="checkout-totals"><div><dt>之后为 ¥196/月</dt><dd>¥196/月</dd></div><div><dt>今天应付</dt><dd>¥0</dd></div><div class="checkout-total"><dt>今日合计：¥0</dt><dd>¥0</dd></div></dl>"""
 
 
 def _order_rows(records: list[dict[str, Any]]) -> str:
     if not records:
         return """<div class="empty-state"><h2>No local orders yet</h2><p>Approved sandbox checkouts will appear here.</p><a href="/specializations/deep-learning">Back to Deep Learning</a></div>"""
     return "".join(
-        f"""<article class="catalog-card order-card" data-order-status="{escape(str(record["status"]))}"><p class="eyebrow">{escape(str(record["status"]).title())}</p><h2>Deep Learning Specialization</h2><p>Order {escape(str(record["order_id"]))}</p><p>Inferred total: USD 49.00</p><a href="/orders/{escape(str(record["order_id"]))}">View order detail</a></article>"""
+        f"""<article class="catalog-card order-card" data-order-status="{escape(str(record["status"]))}"><p class="eyebrow">{"已付款" if record["status"] == "PAID" else "已取消"}</p><h2>深度学习专项课程</h2><p>订单 {escape(str(record["order_id"]))}</p><p>今天应付：¥0</p><a href="/orders/{escape(str(record["order_id"]))}">查看订单详情</a></article>"""
         for record in records
     )
 
@@ -301,7 +301,7 @@ def _learning_not_found(request: Request) -> HTMLResponse:
 
 def _enrollment_rows(records: list[dict[str, Any]]) -> str:
     if not records:
-        return '<div class="empty-state"><h2>No local enrollments yet</h2><a href="/specializations/deep-learning">Explore Deep Learning</a></div>'
+        return '<div class="empty-state"><h2>还没有本地报名记录</h2><a href="/specializations/deep-learning">浏览深度学习专项课程</a></div>'
     rows = []
     for record in records:
         course_id = str(record["course_id"])
@@ -318,17 +318,26 @@ def _enrollment_rows(records: list[dict[str, Any]]) -> str:
         )
         paid = record["track"] == "paid"
         if paid and record.get("order_id"):
-            cancellation = f'<a href="/orders/{escape(str(record["order_id"]))}">Manage paid order</a>'
-            origin = "Created by an approved local-sandbox checkout."
+            cancellation = f'<a href="/orders/{escape(str(record["order_id"]))}">管理本地付费订单</a>'
+            origin = "由模拟成功的 local-sandbox 结账创建。"
         else:
             cancellation = (
-                f'<form action="/enrollments/{record["enrollment_id"]}/cancel" method="post"><button type="submit">Cancel enrollment</button></form>'
+                f'<form action="/enrollments/{record["enrollment_id"]}/cancel" method="post"><button type="submit">取消报名</button></form>'
                 if record["status"] == "active"
                 else ""
             )
-            origin = "No checkout or payment was created."
+            origin = "未创建结账或付款记录。"
+        status_label = "进行中" if record["status"] == "active" else "已取消"
+        track_label = {"free": "免费学习", "audit": "旁听", "paid": "付费"}.get(
+            str(record["track"]), str(record["track"])
+        )
+        reactivated_note = (
+            "<p>此前已取消；本地报名现已重新启用。</p>"
+            if record["status"] == "active" and record["canceled_at"]
+            else ""
+        )
         rows.append(
-            f"""<article class="catalog-card enrollment-card" data-enrollment-id="{record["enrollment_id"]}"><p class="eyebrow">{escape(str(record["status"]).title())}</p><h2>{escape(course_title)}</h2><p>{escape(str(record["track"]).title())} track</p>{"<p>Previously canceled; the local enrollment was reactivated.</p>" if record["status"] == "active" and record["canceled_at"] else ""}<p>{origin}</p>{cancellation}<a href="{course_href}">Open course</a></article>"""
+            f"""<article class="catalog-card enrollment-card" data-enrollment-id="{record["enrollment_id"]}"><p class="eyebrow">{status_label}</p><h2>{escape(course_title)}</h2><p>{escape(track_label)}轨道</p>{reactivated_note}<p>{origin}</p>{cancellation}<a href="{course_href}">打开课程</a></article>"""
         )
     return "".join(rows)
 
@@ -656,7 +665,7 @@ def checkout_plan(request: Request) -> HTMLResponse:
         _backend, _auth, _token, _subject = _authenticated_subject(request)
     except HTTPException:
         return _permission_page(request, "Sign in before choosing a checkout plan")
-    body = f"""<nav class="breadcrumbs"><a href="/specializations/deep-learning">Deep Learning Specialization</a><span>›</span>Plan</nav><section class="checkout-shell"><p class="eyebrow">Inferred local price</p><h1>Choose the Deep Learning paid plan</h1><p class="safe-note">Authenticated source checkout evidence is unavailable. This USD 49.00 price is explicitly inferred for the deterministic offline clone.</p>{_checkout_totals()}<p><strong>No real purchase or payment will occur.</strong> The generated site backend uses only the local-sandbox adapter.</p><form action="/checkout/deep-learning" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><input type="hidden" name="plan_id" value="deep-learning-specialization-paid"><button class="primary-button" type="submit">Continue to synthetic payment</button></form><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
+    body = f"""<nav class="course-breadcrumbs"><a href="/specializations/deep-learning">深度学习专项课程</a><span>›</span>结账</nav><section class="checkout-shell"><p class="eyebrow">本地结账</p><h1>开始 7 天免费试用</h1><p class="safe-note">该页面按当前观察到的 Coursera 结账信息重建。不会提交真实付款数据，也不会联系 Coursera。</p><section class="checkout-billing"><h2>账单信息</h2><label>名称<input type="text" placeholder="请输入您的姓名" readonly></label><label>国家<select disabled><option>选择您所在的国家</option></select></label><h2>支付方式</h2><p>付款信息只会在下一页的无提交本地演示控件中显示。</p></section>{_checkout_totals()}<p><strong>今天不会向您收费。</strong>试用结束后可在本地订单历史中取消。</p><form action="/checkout/deep-learning" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><input type="hidden" name="plan_id" value="deep-learning-specialization-paid"><button class="wb-primary" type="submit">开始免费试用</button></form><a href="/specializations/deep-learning">返回专项课程</a></section>"""
     return HTMLResponse(_page(request, "Deep Learning checkout plan", body))
 
 
@@ -665,6 +674,26 @@ def source_checkout_alias(request: Request) -> HTMLResponse:
     """Expose the observed source-shaped checkout entry locally."""
 
     return checkout_plan(request)
+
+
+@app.post("/payments/checkout")
+async def source_checkout_alias_post(request: Request) -> Response:
+    """Create the same owner-bound local draft from the observed source path."""
+
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in before starting checkout")
+    values = await _form_values(request)
+    try:
+        draft = checkout.create_draft(
+            subject,
+            course_id=values.get("course_id", "deep-learning-specialization"),
+            plan_id=values.get("plan_id", ""),
+        )
+    except ValueError as exc:
+        return _checkout_validation(request, str(exc))
+    return RedirectResponse(f"/checkout/{draft['draft_id']}/payment", status_code=303)
 
 
 @app.post("/checkout/deep-learning")
@@ -695,8 +724,8 @@ def checkout_payment(request: Request, draft_id: str) -> HTMLResponse:
         checkout.get_draft(subject, draft_id)
     except LookupError:
         return _checkout_not_found(request)
-    body = f"""<nav class="breadcrumbs"><a href="/checkout/deep-learning">Plan</a><span>›</span>Synthetic payment</nav><section class="checkout-shell"><p class="eyebrow">Memory-only demonstration</p><h1>Synthetic payment form</h1><p class="safe-note"><strong>Do not enter real payment data.</strong> Anything typed below stays only in this browser page and has no submitted field name.</p><form class="synthetic-payment" action="/checkout/{escape(draft_id)}/review" method="get" autocomplete="off"><label>Example card number<input id="synthetic-card-number" inputmode="numeric" autocomplete="off" placeholder="Synthetic digits only"></label><label>Example expiry<input id="synthetic-expiry" autocomplete="off" placeholder="MM / YY"></label><label>Example security code<input id="synthetic-cvv" inputmode="numeric" autocomplete="off" placeholder="Synthetic code"></label><button class="primary-button" type="submit">Continue without submitting these fields</button></form><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
-    return HTMLResponse(_page(request, "Synthetic payment", body))
+    body = f"""<nav class="course-breadcrumbs"><a href="/checkout/deep-learning">结账</a><span>›</span>付款方式</nav><section class="checkout-shell"><p class="eyebrow">本地安全演示</p><h1>付款方式</h1><p class="safe-note"><strong>请不要输入真实付款信息。</strong>下方演示输入内容只保留在当前浏览器页面，不会作为表单字段提交或保存。</p><form class="synthetic-payment" action="/checkout/{escape(draft_id)}/review" method="get" autocomplete="off"><label>示例卡号<input id="synthetic-card-number" inputmode="numeric" autocomplete="off" placeholder="仅用于本地演示"></label><label>示例有效期<input id="synthetic-expiry" autocomplete="off" placeholder="MM / YY"></label><label>示例安全码<input id="synthetic-cvv" inputmode="numeric" autocomplete="off" placeholder="仅用于本地演示"></label><button class="wb-primary" type="submit">继续（不提交上述内容）</button></form><a href="/specializations/deep-learning">返回专项课程</a></section>"""
+    return HTMLResponse(_page(request, "本地付款方式", body))
 
 
 @app.get("/checkout/{draft_id}/review", response_class=HTMLResponse)
@@ -710,8 +739,8 @@ def checkout_review(request: Request, draft_id: str) -> HTMLResponse:
     except LookupError:
         return _checkout_not_found(request)
     idempotency_key = f"browser-attempt:{secrets.token_urlsafe(18)}"
-    body = f"""<nav class="breadcrumbs"><a href="/checkout/{escape(draft_id)}/payment">Synthetic payment</a><span>›</span>Review</nav><section class="checkout-shell"><p class="eyebrow">Local sandbox only</p><h1>Review inferred total</h1><p>This price is inferred and this action has no external or real payment effect.</p>{_checkout_totals()}<form class="sandbox-scenarios" action="/checkout/{escape(draft_id)}/attempt" method="post"><input type="hidden" name="idempotency_key" value="{escape(idempotency_key)}"><fieldset><legend>Choose a deterministic sandbox result</legend><label><input type="radio" name="scenario_id" value="sandbox-approved" required>Simulated approval</label><label><input type="radio" name="scenario_id" value="sandbox-declined" required>Simulated decline</label><label><input type="radio" name="scenario_id" value="sandbox-retry" required>Simulated retry</label></fieldset><button class="primary-button" type="submit">Run local sandbox attempt</button></form><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
-    return HTMLResponse(_page(request, "Review local checkout", body))
+    body = f"""<nav class="course-breadcrumbs"><a href="/checkout/{escape(draft_id)}/payment">付款方式</a><span>›</span>确认</nav><section class="checkout-shell"><p class="eyebrow">仅限本地 sandbox</p><h1>确认免费试用</h1><p>这是一项本地演示，不会产生外部或真实付款效果。</p>{_checkout_totals()}<p class="checkout-terms">点击下方操作即表示您已阅读本地演示的使用条款，并可在订单历史中取消。</p><form class="sandbox-scenarios" action="/checkout/{escape(draft_id)}/attempt" method="post"><input type="hidden" name="idempotency_key" value="{escape(idempotency_key)}"><fieldset><legend>选择确定的本地 sandbox 结果</legend><label><input type="radio" name="scenario_id" value="sandbox-approved" required>模拟成功</label><label><input type="radio" name="scenario_id" value="sandbox-declined" required>模拟被拒绝</label><label><input type="radio" name="scenario_id" value="sandbox-retry" required>模拟需重试</label></fieldset><button class="wb-primary" type="submit">开始免费试用</button></form><a href="/specializations/deep-learning">返回专项课程</a></section>"""
+    return HTMLResponse(_page(request, "确认本地结账", body))
 
 
 @app.post("/checkout/{draft_id}/attempt")
@@ -749,13 +778,9 @@ async def checkout_attempt(request: Request, draft_id: str) -> Response:
         return RedirectResponse(
             f"/orders/{result['order']['order_id']}", status_code=303
         )
-    heading = (
-        "Simulated payment declined"
-        if result["outcome"] == "declined"
-        else "Simulated payment needs a retry"
-    )
-    body = f"""<section class="checkout-shell"><p class="eyebrow">Local sandbox result</p><h1>{heading}</h1><p>No order or paid enrollment was created. No external payment was attempted.</p><a class="primary-button" href="/checkout/{escape(draft_id)}/review">Try another sandbox result</a><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
-    return HTMLResponse(_page(request, "Local sandbox result", body))
+    heading = "模拟付款被拒绝" if result["outcome"] == "declined" else "模拟付款需要重试"
+    body = f"""<section class="checkout-shell"><p class="eyebrow">本地 sandbox 结果</p><h1>{heading}</h1><p>未创建订单或付费报名，也没有尝试任何外部付款。</p><a class="wb-primary" href="/checkout/{escape(draft_id)}/review">选择其他本地结果</a><a href="/specializations/deep-learning">返回专项课程</a></section>"""
+    return HTMLResponse(_page(request, "本地 sandbox 结果", body))
 
 
 @app.get("/learn/{course_id}/preview", response_class=HTMLResponse)
@@ -989,8 +1014,8 @@ def account_history(request: Request) -> HTMLResponse:
         _backend, _auth, _token, subject = _authenticated_subject(request)
     except HTTPException:
         return _permission_page(request, "Sign in to view enrollment history")
-    body = f"""<section class="page-heading"><p class="eyebrow">Local account history</p><h1>Enrollment history</h1><p>Canceled items remain visible and private to their owner.</p></section><section class="section"><div class="card-grid">{_enrollment_rows(learning_db.list_enrollments(subject))}</div><a href="/orders">View order history</a> · <a href="/my-learning">Back to My Learning</a></section>"""
-    return HTMLResponse(_page(request, "Enrollment history", body))
+    body = f"""<section class="page-heading"><p class="eyebrow">本地账户历史</p><h1>报名历史</h1><p>已取消的项目仍会保留，并且仅对其所有者可见。</p></section><section class="section"><div class="card-grid">{_enrollment_rows(learning_db.list_enrollments(subject))}</div><a href="/orders">查看订单历史</a> · <a href="/my-learning">返回我的学习</a></section>"""
+    return HTMLResponse(_page(request, "报名历史", body))
 
 
 @app.get("/orders", response_class=HTMLResponse)
@@ -1000,8 +1025,8 @@ def order_history(request: Request) -> HTMLResponse:
     except HTTPException:
         return _permission_page(request, "Sign in to view order history")
     records = checkout.list_orders(subject)
-    body = f"""<section class="page-heading"><p class="eyebrow">Owner-private local history</p><h1>Order history</h1><p>Only approved local-sandbox checkouts create durable orders. Canceled snapshots remain visible.</p></section><section class="section"><div class="card-grid">{_order_rows(records)}</div><a href="/my-learning">Back to My Learning</a></section>"""
-    return HTMLResponse(_page(request, "Order history", body))
+    body = f"""<section class="page-heading"><p class="eyebrow">仅限所有者的本地历史</p><h1>订单历史</h1><p>只有模拟成功的 local-sandbox 结账会创建持久订单。已取消的快照仍会显示。</p></section><section class="section"><div class="card-grid">{_order_rows(records)}</div><a href="/my-learning">返回我的学习</a></section>"""
+    return HTMLResponse(_page(request, "订单历史", body))
 
 
 @app.get("/orders/{order_id}", response_class=HTMLResponse)
@@ -1015,12 +1040,13 @@ def order_detail(request: Request, order_id: str) -> HTMLResponse:
     except LookupError:
         return _order_not_found(request)
     cancellation = (
-        f"""<form action="/orders/{escape(order_id)}/cancel" method="post"><button type="submit">Cancel paid enrollment</button></form>"""
+        f"""<form action="/orders/{escape(order_id)}/cancel" method="post"><button type="submit">取消本地付费报名</button></form>"""
         if order["status"] == "PAID"
-        else "<p>This order and its paid enrollment were canceled; the immutable snapshot remains in history.</p>"
+        else "<p>该订单及其付费报名已经取消；不可变快照仍保留在历史中。</p>"
     )
-    body = f"""<nav class="breadcrumbs"><a href="/orders">Order history</a><span>›</span>{escape(order_id)}</nav><section class="checkout-shell" data-order-status="{escape(str(order["status"]))}"><p class="eyebrow">Local sandbox order</p><h1>{escape(str(order["status"]).title())}</h1><p>Order {escape(order_id)}</p><p>Deep Learning Specialization · {escape(str(order["plan_label"]))}</p><p class="safe-note">This is an immutable simulation snapshot. No real payment or external purchase occurred.</p>{_checkout_totals()}{cancellation}<a href="/orders">Back to order history</a><a href="/specializations/deep-learning">Back to Deep Learning collection</a></section>"""
-    return HTMLResponse(_page(request, "Order detail", body))
+    status_label = "已付款" if order["status"] == "PAID" else "已取消"
+    body = f"""<nav class="course-breadcrumbs"><a href="/orders">订单历史</a><span>›</span>{escape(order_id)}</nav><section class="checkout-shell" data-order-status="{escape(str(order["status"]))}"><p class="eyebrow">本地 sandbox 订单</p><h1>{status_label}</h1><p>订单 {escape(order_id)}</p><p>深度学习专项课程 · {escape(str(order["plan_label"]))}</p><p class="safe-note">这是不可变的本地模拟快照，没有发生真实付款或外部购买。</p>{_checkout_totals()}{cancellation}<a href="/orders">返回订单历史</a><a href="/specializations/deep-learning">返回专项课程</a></section>"""
+    return HTMLResponse(_page(request, "订单详情", body))
 
 
 @app.post("/orders/{order_id}/cancel")
@@ -1192,8 +1218,8 @@ async def learning_quiz(request: Request, quiz_id: str) -> HTMLResponse:
             ),
             status_code=422,
         )
-    body = f"""<section class="page-heading"><p class="eyebrow">Local quiz feedback</p><h1>Quiz score: {attempt["score"]}</h1><p>{escape(attempt["feedback"])}</p><a href="/my-learning">Return to My Learning</a></section>"""
-    return HTMLResponse(_page(request, "Quiz feedback", body))
+    body = f"""<section class="page-heading"><p class="eyebrow">本地测验反馈</p><h1>测验得分：{attempt["score"]}</h1><p>{escape(attempt["feedback"])}</p><a href="/my-learning">返回我的学习</a></section>"""
+    return HTMLResponse(_page(request, "测验反馈", body))
 
 
 @app.post("/learning/review")
@@ -1231,8 +1257,8 @@ def account_preferences(request: Request) -> HTMLResponse:
         return _permission_page(request, "Sign in to manage learning preferences")
     preferences = learning_db.get_preferences(subject)
     checked = " checked" if preferences["email_updates"] else ""
-    body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Local learning settings</p><h1>Learning preferences</h1><form class="auth-form" action="/account/preferences" method="post"><label>Language<input name="language" value="{escape(preferences["language"])}" required></label><label>Timezone<input name="timezone" value="{escape(preferences["timezone"])}" required></label><label><input type="checkbox" name="email_updates" value="1"{checked}>Local learning reminders</label><button type="submit">Save preferences</button></form></div></section>"""
-    return HTMLResponse(_page(request, "Learning preferences", body))
+    body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">本地学习设置</p><h1>学习偏好</h1><form class="auth-form" action="/account/preferences" method="post"><label>语言<input name="language" value="{escape(preferences["language"])}" required></label><label>时区<input name="timezone" value="{escape(preferences["timezone"])}" required></label><label><input type="checkbox" name="email_updates" value="1"{checked}>本地学习提醒</label><button type="submit">保存偏好</button></form></div></section>"""
+    return HTMLResponse(_page(request, "学习偏好", body))
 
 
 @app.post("/account/preferences")

@@ -159,10 +159,10 @@ def test_learning_verify_contract_uses_real_authenticated_routes_and_actions() -
     assert driver["routes"]["account-history"] == "/account/history"
 
     expected_states = {
-        "my-learning.progress": "My Learning",
+        "my-learning.progress": "我的学习",
         "lesson.opened": "Optimization methods",
-        "quiz.feedback": "Quiz score: 100",
-        "account-history.seeded": "Enrollment history",
+        "quiz.feedback": "测验得分：100",
+        "account-history.seeded": "报名历史",
     }
     for state, visible_text in expected_states.items():
         recipe = driver["states"][state]
@@ -199,7 +199,7 @@ def test_checkout_verify_recipes_use_named_session_and_reach_distinct_states() -
     )
     assert sum("click" in step for step in review["steps"]) >= 2
     assert any(
-        step.get("expect") == 'h1:has-text("Review inferred total")'
+        step.get("expect") == 'h1:has-text("确认免费试用")'
         for step in review["steps"]
     )
     assert any(

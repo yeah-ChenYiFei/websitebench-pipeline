@@ -12,7 +12,7 @@ from websitebench.site_backend import PaymentConflict, PaymentRejected
 COURSE_ID = "deep-learning-specialization"
 PLAN_ID = "deep-learning-specialization-paid"
 PLAN_LABEL = "Deep Learning Specialization paid plan"
-PRICING_EVIDENCE = "inferred-no-authenticated-checkout-evidence"
+PRICING_EVIDENCE = "observed-authenticated-checkout-display-with-local-sandbox-ledger"
 CURRENCY = "USD"
 SUBTOTAL_MINOR = 4900
 TAX_MINOR = 0

@@ -430,8 +430,8 @@ def test_enrollment_history_cancel_idempotency_and_owner_isolation(
     enrollment_ids = re.findall(r'data-enrollment-id="([0-9]+)"', learning_page.text)
     assert len(enrollment_ids) == 1
     enrollment_id = enrollment_ids[0]
-    assert "Free track" in learning_page.text
-    assert "No checkout or payment was created" in learning_page.text
+    assert "免费学习轨道" in learning_page.text
+    assert "未创建结账或付款记录" in learning_page.text
 
     with TestClient(app, base_url="https://33.offline.invalid") as other:
         _login_seeded(other, "progress@coursera.test", "Progress-Learner-33")
@@ -454,8 +454,8 @@ def test_enrollment_history_cancel_idempotency_and_owner_isolation(
     history = site_client.get("/account/history")
     assert history.status_code == 200
     assert f'data-enrollment-id="{enrollment_id}"' in history.text
-    assert "Canceled" in history.text
-    assert "Free track" in history.text
+    assert "已取消" in history.text
+    assert "免费学习轨道" in history.text
 
 
 def test_canceled_enrollment_reactivates_with_new_track_and_retains_history(
@@ -486,9 +486,9 @@ def test_canceled_enrollment_reactivates_with_new_track_and_retains_history(
 
     _login_seeded(site_client, "empty@coursera.test", "Empty-Learner-33")
     history = site_client.get("/account/history")
-    assert "Active" in history.text
-    assert "Audit track" in history.text
-    assert "Previously canceled" in history.text
+    assert "进行中" in history.text
+    assert "旁听轨道" in history.text
+    assert "此前已取消" in history.text
 
 
 def test_authenticated_specialization_keeps_free_audit_and_routes_paid_to_checkout(
@@ -680,9 +680,9 @@ def test_learning_preview_navigation_bookmarks_progress_quizzes_and_certificate(
         follow_redirects=False,
     )
     assert wrong.status_code == correct.status_code == 200
-    assert "score: 0" in wrong.text
+    assert "测验得分：0" in wrong.text
     assert "Review the regularization lesson" in wrong.text
-    assert "score: 100" in correct.text
+    assert "测验得分：100" in correct.text
     assert "Correct: regularization" in correct.text
 
     for lesson_id in (

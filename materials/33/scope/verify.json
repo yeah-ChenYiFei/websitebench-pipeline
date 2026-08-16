@@ -76,7 +76,7 @@
     "my-learning.progress": {
       "session": "progress-learner",
       "steps": [
-        {"expect": "h1:has-text(\"My Learning\")"},
+        {"expect": "h1:has-text(\"我的学习\")"},
         {"expect": "[data-enrollment-id]"},
         {"expect": "a[data-resume-lesson]"}
       ]
@@ -93,15 +93,15 @@
       "steps": [
         {"click": "input[name=\"answer\"][value=\"Regularization\"]"},
         {"click": "form[action=\"/learning/quizzes/quiz-improving-networks\"] button[type=\"submit\"]"},
-        {"expect": "h1:has-text(\"Quiz score: 100\")"},
+        {"expect": "h1:has-text(\"测验得分：100\")"},
         {"expect": "p:has-text(\"Correct: regularization\")"}
       ]
     },
     "account-history.seeded": {
       "session": "progress-learner",
       "steps": [
-        {"expect": "h1:has-text(\"Enrollment history\")"},
-        {"expect": ".enrollment-card:has-text(\"Active\")"}
+        {"expect": "h1:has-text(\"报名历史\")"},
+        {"expect": ".enrollment-card:has-text(\"进行中\")"}
       ]
     },
     "checkout.validation": {
@@ -117,12 +117,12 @@
       "session": "empty-learner",
       "steps": [
         {"click": "form[action=\"/checkout/deep-learning\"] button[type=\"submit\"]"},
-        {"expect": "h1:has-text(\"Synthetic payment form\")"},
+        {"expect": "h1:has-text(\"付款方式\")"},
         {"expect": "#synthetic-card-number:not([name])"},
         {"click": "form[action$=\"/review\"] button[type=\"submit\"]"},
-        {"expect": "h1:has-text(\"Review inferred total\")"},
+        {"expect": "h1:has-text(\"确认免费试用\")"},
         {"expect": "input[name=\"scenario_id\"][value=\"sandbox-approved\"]"},
-        {"expect": ".checkout-total:has-text(\"USD 49.00\")"}
+        {"expect": ".checkout-total:has-text(\"今日合计：¥0\")"}
       ]
     },
     "help.loaded": [{"expect": "body"}],

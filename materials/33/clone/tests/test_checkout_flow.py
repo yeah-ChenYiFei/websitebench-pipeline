@@ -109,7 +109,7 @@ def test_diagnostic_session_requires_ephemeral_token_and_authenticates_alias(
     assert opened.status_code == 204
     checkout = checkout_client.get("/checkout/deep-learning")
     assert checkout.status_code == 200
-    assert "Choose the Deep Learning paid plan" in checkout.text
+    assert "开始 7 天免费试用" in checkout.text
 
 
 def test_progress_verifier_alias_reaches_declared_learning_states(
@@ -132,10 +132,10 @@ def test_progress_verifier_alias_reaches_declared_learning_states(
         )
     )
     expected = {
-        "my-learning": (200, "<h1>My Learning</h1>"),
+        "my-learning": (200, "<h1>我的学习</h1>"),
         "lesson": (200, "<h1>Optimization methods</h1>"),
-        "account-history": (200, "<h1>Enrollment history</h1>"),
-        "preferences": (200, "<h1>Learning preferences</h1>"),
+        "account-history": (200, "<h1>报名历史</h1>"),
+        "preferences": (200, "<h1>学习偏好</h1>"),
     }
     for alias, (status, marker) in expected.items():
         response = checkout_client.get(driver["routes"][alias])
@@ -149,17 +149,17 @@ def test_progress_verifier_alias_reaches_declared_learning_states(
         data={"answer": "Regularization"},
     )
     assert feedback.status_code == 200
-    assert "<h1>Quiz score: 100</h1>" in feedback.text
+    assert "<h1>测验得分：100</h1>" in feedback.text
 
 
-def test_public_entry_and_authenticated_plan_show_inferred_totals(
+def test_public_entry_and_authenticated_plan_show_observed_trial_totals(
     checkout_client: TestClient,
 ) -> None:
     """Catch a paid entry that bypasses auth or hides inferred pricing."""
 
     anonymous = checkout_client.get("/specializations/deep-learning")
     assert anonymous.status_code == 200
-    assert "Sign in locally to choose the inferred paid plan" in anonymous.text
+    assert "免费注册" in anonymous.text
     assert 'href="/login?next=/checkout/deep-learning"' in anonymous.text
     signed_out_plan = checkout_client.get("/checkout/deep-learning")
     assert signed_out_plan.status_code == 401
@@ -169,11 +169,11 @@ def test_public_entry_and_authenticated_plan_show_inferred_totals(
     assert 'href="/checkout/deep-learning"' in specialization.text
     plan = checkout_client.get("/checkout/deep-learning")
     assert plan.status_code == 200
-    assert "Inferred local price" in plan.text
-    assert "Subtotal" in plan.text and "USD 49.00" in plan.text
-    assert "Tax" in plan.text and "USD 0.00" in plan.text
-    assert "Total" in plan.text and plan.text.count("USD 49.00") >= 2
-    assert "No real purchase or payment will occur" in plan.text
+    assert "开始 7 天免费试用" in plan.text
+    assert "之后为 ¥196/月" in plan.text
+    assert "今天应付" in plan.text and "¥0" in plan.text
+    assert "今日合计：¥0" in plan.text
+    assert "不会提交真实付款数据" in plan.text
     assert 'action="/checkout/deep-learning"' in plan.text
 
 
@@ -186,8 +186,8 @@ def test_payment_fields_are_memory_only_and_review_submits_two_safe_keys(
     draft_id = _create_browser_draft(checkout_client)
     payment = checkout_client.get(f"/checkout/{draft_id}/payment")
     assert payment.status_code == 200
-    assert "Synthetic payment form" in payment.text
-    assert "stays only in this browser page" in payment.text
+    assert "付款方式" in payment.text
+    assert "只保留在当前浏览器页面" in payment.text
     collector = _InputCollector()
     collector.feed(payment.text)
     payment_inputs = {
@@ -207,9 +207,8 @@ def test_payment_fields_are_memory_only_and_review_submits_two_safe_keys(
 
     review = checkout_client.get(f"/checkout/{draft_id}/review")
     assert review.status_code == 200
-    assert "Review inferred total" in review.text
-    assert "Subtotal" in review.text and "USD 49.00" in review.text
-    assert "Tax" in review.text and "USD 0.00" in review.text
+    assert "确认免费试用" in review.text
+    assert "之后为 ¥196/月" in review.text and "今日合计：¥0" in review.text
     assert "sandbox-approved" in review.text
     assert "sandbox-declined" in review.text
     assert "sandbox-retry" in review.text
@@ -253,8 +252,8 @@ def test_browser_attempt_maps_decline_retry_and_approval_results(
 
     _login_empty(checkout_client)
     for scenario, expected in (
-        ("sandbox-declined", "Simulated payment declined"),
-        ("sandbox-retry", "Simulated payment needs a retry"),
+        ("sandbox-declined", "模拟付款被拒绝"),
+        ("sandbox-retry", "模拟付款需要重试"),
     ):
         draft_id = _create_browser_draft(checkout_client)
         result = checkout_client.post(
@@ -318,9 +317,8 @@ def test_order_history_detail_cancel_and_foreign_owner_boundaries(
     assert order_id in history.text
     assert 'data-order-status="PAID"' in history.text
     assert order_id in detail.text
-    assert "Paid" in detail.text
-    assert "Subtotal" in detail.text and "USD 49.00" in detail.text
-    assert "Tax" in detail.text and "USD 0.00" in detail.text
+    assert "已付款" in detail.text
+    assert "之后为 ¥196/月" in detail.text and "今日合计：¥0" in detail.text
     assert 'href="/specializations/deep-learning"' in detail.text
     assert 'href="/orders"' in detail.text
 
@@ -341,8 +339,8 @@ def test_order_history_detail_cancel_and_foreign_owner_boundaries(
     assert canceled.headers["location"] == order_path
     canceled_detail = checkout_client.get(order_path)
     assert 'data-order-status="CANCELED"' in canceled_detail.text
-    assert "Canceled" in canceled_detail.text
-    assert "USD 49.00" in canceled_detail.text
+    assert "已取消" in canceled_detail.text
+    assert "今日合计：¥0" in canceled_detail.text
 
     learning = importlib.import_module("backend.learning_db")
     enrollment = learning.list_enrollments("learner-empty")[0]
@@ -372,7 +370,7 @@ def test_paid_enrollment_card_and_legacy_cancel_route_preserve_paid_order(
     dashboard = checkout_client.get("/my-learning")
     assert f'action="/enrollments/{enrollment_id}/cancel"' not in dashboard.text
     assert f'href="{order_path}"' in dashboard.text
-    assert "Manage paid order" in dashboard.text
+    assert "管理本地付费订单" in dashboard.text
 
     legacy = checkout_client.post(
         f"/enrollments/{enrollment_id}/cancel", follow_redirects=False

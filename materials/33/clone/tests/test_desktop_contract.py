@@ -199,3 +199,51 @@ def test_seeded_dashboard_has_resume_progress_and_history_links(
     assert "我的学习" in html
     assert "继续学习" in html
     assert 'href="/account/history"' in html
+
+
+def test_seeded_enrollment_status_is_presented_in_chinese(
+    desktop_client: TestClient,
+) -> None:
+    """The Chinese desktop contract must cover learner records, not just headers."""
+
+    _login_seeded_progress_learner(desktop_client)
+
+    html = desktop_client.get("/account/history").text
+
+    assert 'class="catalog-card enrollment-card"' in html
+    assert "进行中" in html
+
+
+def test_checkout_plan_matches_observed_trial_price_and_total(
+    desktop_client: TestClient,
+) -> None:
+    """Catch the local checkout drifting from the observed trial and price facts."""
+
+    _login_seeded_progress_learner(desktop_client)
+
+    html = desktop_client.get("/checkout/deep-learning").text
+
+    assert "7 天免费试用" in html
+    assert "之后为 ¥196/月" in html
+    assert "今日合计：¥0" in html
+    assert "账单信息" in html
+    assert "支付方式" in html
+    assert 'href="/static/checkout-desktop.css"' in html
+
+
+def test_source_checkout_post_alias_creates_an_owner_bound_local_draft(
+    desktop_client: TestClient,
+) -> None:
+    """The source-shaped endpoint must never redirect to Coursera or skip auth."""
+
+    _login_seeded_progress_learner(desktop_client)
+
+    response = desktop_client.post(
+        "/payments/checkout",
+        data={"plan_id": "deep-learning-specialization-paid"},
+        follow_redirects=False,
+    )
+
+    assert response.status_code == 303
+    assert response.headers["location"].startswith("/checkout/checkout_")
+    assert "coursera.org" not in response.headers["location"]

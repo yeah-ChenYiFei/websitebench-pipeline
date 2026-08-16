@@ -21,7 +21,7 @@ def checkout_site(tmp_path: Path, monkeypatch):
     learning.close_services()
 
 
-def test_checkout_schema_exposes_the_frozen_inferred_plan(
+def test_checkout_schema_exposes_the_frozen_local_sandbox_plan(
     checkout_site,
 ) -> None:
     """Catch a missing checkout migration or drifted server-owned plan facts."""
@@ -40,7 +40,7 @@ def test_checkout_schema_exposes_the_frozen_inferred_plan(
         ),
         "plan_id": "deep-learning-specialization-paid",
         "plan_label": "Deep Learning Specialization paid plan",
-        "pricing_evidence": "inferred-no-authenticated-checkout-evidence",
+        "pricing_evidence": "observed-authenticated-checkout-display-with-local-sandbox-ledger",
         "subtotal_minor": 4900,
         "tax_minor": 0,
         "total_minor": 4900,
