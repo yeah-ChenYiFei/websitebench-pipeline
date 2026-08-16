@@ -9,13 +9,16 @@
   },
   "prepare": [],
   "session": {
-    "post": "/auth/login",
-    "expect_status": [303],
+    "token_env": "WEBSITEBENCH_VERIFY_SESSION_TOKEN",
+    "post": "/__websitebench/session",
+    "headers": {
+      "X-WebsiteBench-Verify-Token": "{{token}}"
+    },
+    "expect_status": [204],
     "accounts": {
       "empty-learner": {
         "form": {
-          "email": "empty@coursera.test",
-          "password": "Empty-Learner-33"
+          "account": "empty-learner"
         },
         "routes": ["checkout"]
       }

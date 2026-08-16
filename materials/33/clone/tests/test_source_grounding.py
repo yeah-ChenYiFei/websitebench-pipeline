@@ -70,24 +70,14 @@ def test_task3_reconstruction_maps_assets_layout_and_copy_to_current_ea_evidence
     assert all(item["status"] == "unavailable" for item in unavailable)
 
 
-def test_checkout_verify_recipes_use_named_login_and_reach_distinct_states() -> None:
+def test_checkout_verify_recipes_use_named_session_and_reach_distinct_states() -> None:
     """Catch authenticated checkout checkpoints that stop at the plan page."""
 
     driver = json.loads(
         (SITE_ROOT / "scope" / "verify.json").read_text(encoding="utf-8")
     )
     session = driver["session"]
-    assert session["post"] == "/auth/login"
-    assert session["expect_status"] == [303]
-    assert session["accounts"] == {
-        "empty-learner": {
-            "form": {
-                "email": "empty@coursera.test",
-                "password": "Empty-Learner-33",
-            },
-            "routes": ["checkout"],
-        }
-    }
+    assert set(session["accounts"]) == {"empty-learner"}
 
     validation = driver["states"]["checkout.validation"]
     review = driver["states"]["checkout.review"]
@@ -155,3 +145,52 @@ def test_task3_css_identity_is_unchanged_and_checkout_css_is_task5_owned() -> No
             "source_material_status": "task5-owned-synthetic-offline-style",
         }
     ]
+
+
+def test_task5_asset_manifest_has_its_own_collection_identity() -> None:
+    """Catch Task 5 assets mutating the historical Task 3 snapshot identity."""
+
+    manifest = json.loads(
+        (SITE_ROOT / "source-assets" / "manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+
+    assert manifest["snapshot_id"] == "33-task5-local-assets"
+    assert manifest["created_at"] == "2026-08-16T09:15:04Z"
+    assert {item["id"] for item in manifest["assets"]} == {
+        "task3-site-css",
+        "task3-components-css",
+        "task3-auth-css",
+        "task3-hero-learning",
+        "task3-deep-learning-mark",
+        "task5-checkout-css",
+    }
+
+
+def test_checkout_verify_session_uses_ephemeral_token_without_credentials() -> None:
+    """Catch diagnostic authentication persisting a seeded login password."""
+
+    verify_path = SITE_ROOT / "scope" / "verify.json"
+    raw = verify_path.read_text(encoding="utf-8")
+    driver = json.loads(raw)
+    session = driver["session"]
+
+    assert session["token_env"] == "WEBSITEBENCH_VERIFY_SESSION_TOKEN"
+    assert session["post"] == "/__websitebench/session"
+    assert session["headers"] == {
+        "X-WebsiteBench-Verify-Token": "{{token}}"
+    }
+    assert session["expect_status"] == [204]
+    assert session["accounts"] == {
+        "empty-learner": {
+            "form": {"account": "empty-learner"},
+            "routes": ["checkout"],
+        }
+    }
+    assert "Empty-Learner-33" not in raw
+    assert all(
+        "password" not in form
+        for account in session["accounts"].values()
+        for form in [account.get("form", {})]
+    )

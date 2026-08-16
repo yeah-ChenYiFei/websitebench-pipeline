@@ -74,6 +74,43 @@ def _create_browser_draft(client: TestClient) -> str:
     return response.headers["location"].split("/")[2]
 
 
+def test_diagnostic_session_requires_ephemeral_token_and_authenticates_alias(
+    checkout_client: TestClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Catch the verifier fixture accepting requests without its minted token."""
+
+    token = "round2-ephemeral-verifier-token-0001"
+    monkeypatch.setenv("WEBSITEBENCH_VERIFY_SESSION_TOKEN", token)
+    endpoint = "/__websitebench/session"
+    form = {"account": "empty-learner"}
+
+    missing = checkout_client.post(endpoint, data=form)
+    wrong = checkout_client.post(
+        endpoint,
+        data=form,
+        headers={"X-WebsiteBench-Verify-Token": "wrong-token"},
+    )
+    unknown = checkout_client.post(
+        endpoint,
+        data={"account": "unknown"},
+        headers={"X-WebsiteBench-Verify-Token": token},
+    )
+
+    assert missing.status_code == 403
+    assert wrong.status_code == 403
+    assert unknown.status_code == 400
+
+    opened = checkout_client.post(
+        endpoint,
+        data=form,
+        headers={"X-WebsiteBench-Verify-Token": token},
+    )
+    assert opened.status_code == 204
+    checkout = checkout_client.get("/checkout/deep-learning")
+    assert checkout.status_code == 200
+    assert "Choose the Deep Learning paid plan" in checkout.text
+
+
 def test_public_entry_and_authenticated_plan_show_inferred_totals(
     checkout_client: TestClient,
 ) -> None:

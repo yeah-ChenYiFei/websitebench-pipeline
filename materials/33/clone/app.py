@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import hmac
 import json
+import os
 import secrets
 from html import escape
 from pathlib import Path
@@ -22,6 +24,8 @@ from websitebench.site_backend import PaymentConflict, PaymentError, PaymentReje
 SITE_ID = "33"
 DISPLAY_NAME = "Coursera"
 STATIC_DIR = Path(__file__).resolve().parent / "static"
+VERIFY_SESSION_TOKEN_ENV = "WEBSITEBENCH_VERIFY_SESSION_TOKEN"
+VERIFY_SESSION_TOKEN_HEADER = "X-WebsiteBench-Verify-Token"
 
 SUBJECTS = {
     "arts-and-humanities": "Arts and Humanities",
@@ -154,6 +158,37 @@ def _enrollment_required_page(message: str) -> HTMLResponse:
 def _checkout_not_found() -> HTMLResponse:
     body = """<section class="not-found"><h1>Checkout not found</h1><p>The checkout record is unavailable for this local learner.</p><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
     return HTMLResponse(_page("Checkout not found", body), status_code=404)
+
+
+@app.post("/__websitebench/session", include_in_schema=False)
+async def websitebench_session(request: Request) -> Response:
+    """Open a verifier-owned fixture session using only its ephemeral token."""
+
+    expected = os.environ.get(VERIFY_SESSION_TOKEN_ENV, "")
+    if not expected:
+        return Response(status_code=404)
+    supplied = request.headers.get(VERIFY_SESSION_TOKEN_HEADER, "")
+    if not hmac.compare_digest(supplied, expected):
+        return Response(status_code=403)
+    values = await _form_values(request)
+    aliases = {"empty-learner": "learner-empty"}
+    subject_id = aliases.get(values.get("account", ""))
+    if set(values) != {"account"} or subject_id is None:
+        return Response(status_code=400)
+    account = next(
+        record
+        for record in learning_db.SEED_ACCOUNTS
+        if record["subject_id"] == subject_id
+    )
+    backend, auth, token, _session = _request_session(request)
+    signed_in = auth.sign_in(
+        token,
+        email=str(account["email"]),
+        password=str(account["password"]),
+    )
+    response = Response(status_code=204)
+    _set_session_cookie(response, backend, str(signed_in["session_token"]))
+    return response
 
 
 def _order_not_found() -> HTMLResponse:
