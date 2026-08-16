@@ -742,3 +742,65 @@ def test_two_equivalent_resets_restore_identical_seed_state(
         "outbox": [],
         "rate_limits": [],
     }
+
+
+def test_local_inbox_presence_is_cleared_after_each_equivalent_reset(
+    site_client: TestClient,
+) -> None:
+    learning = _learning_module()
+    with (
+        TestClient(app, base_url="https://33.offline.invalid") as registration_browser,
+        TestClient(app, base_url="https://33.offline.invalid") as recovery_browser,
+    ):
+        registration_browser.get("/signup")
+        registration_started = registration_browser.post(
+            "/auth/registration/start",
+            data={
+                "email": "reset-inbox@coursera.test",
+                "display_name": "Reset Inbox",
+                "password": "Reset-Inbox-33",
+            },
+            follow_redirects=False,
+        )
+        assert registration_started.status_code == 303
+        registration_inbox = registration_browser.get(
+            "/local-inbox?purpose=registration"
+        )
+
+        recovery_browser.get("/account-recovery")
+        recovery_started = recovery_browser.post(
+            "/auth/recovery/start",
+            data={"email": "progress@coursera.test"},
+            follow_redirects=False,
+        )
+        assert recovery_started.status_code == 303
+        recovery_inbox = recovery_browser.get(
+            "/local-inbox?purpose=password-reset"
+        )
+
+        assert registration_inbox.headers.get("x-local-inbox-purpose") == (
+            "registration"
+        )
+        assert recovery_inbox.headers.get("x-local-inbox-purpose") == (
+            "password-reset"
+        )
+
+        learning.reset()
+        after_first_reset = (
+            registration_browser.get("/local-inbox?purpose=registration"),
+            recovery_browser.get("/local-inbox?purpose=password-reset"),
+        )
+        assert all(
+            response.headers.get("x-local-inbox-purpose") is None
+            for response in after_first_reset
+        )
+
+        learning.reset()
+        after_second_reset = (
+            registration_browser.get("/local-inbox?purpose=registration"),
+            recovery_browser.get("/local-inbox?purpose=password-reset"),
+        )
+        assert all(
+            response.headers.get("x-local-inbox-purpose") is None
+            for response in after_second_reset
+        )

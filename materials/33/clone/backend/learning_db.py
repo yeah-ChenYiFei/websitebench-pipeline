@@ -602,6 +602,7 @@ def reset() -> None:
         seed(opened)
 
     auth.reset_site_state(site_reset=site_reset, seed_accounts=SEED_ACCOUNTS)
+    close_services()
 
 
 def state_snapshot() -> dict[str, Any]:

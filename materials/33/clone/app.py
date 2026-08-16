@@ -579,6 +579,8 @@ def local_inbox(request: Request, purpose: str = "registration") -> HTMLResponse
         content = f"""<p>Template: {escape(str(mail['template']))}</p><p class="verification-code" data-verification-code="{escape(str(mail['verification_code']))}">{escape(str(mail['verification_code']))}</p><form class="auth-form" action="{'/auth/registration/verify' if purpose == 'registration' else '/auth/recovery/complete'}" method="post"><label>Verification code<input name="code" required></label>{'<label>New password<input type="password" name="new_password" required></label>' if purpose == 'password-reset' else ''}<button type="submit">Verify locally</button></form>"""
     body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Local outbox delivery</p><h1>Coursera local inbox</h1><p>No real email was sent. This message is visible only to the browser session that requested it.</p>{content}</div></section>"""
     response = HTMLResponse(_page("Local inbox", body))
+    if mail is not None:
+        response.headers["X-Local-Inbox-Purpose"] = purpose
     _set_session_cookie(response, backend, token)
     return response
 
