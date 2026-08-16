@@ -308,6 +308,41 @@ def test_enrollment_history_cancel_idempotency_and_owner_isolation(
     assert "Free track" in history.text
 
 
+def test_canceled_enrollment_reactivates_with_new_track_and_retains_history(
+    site_client: TestClient,
+) -> None:
+    learning = _learning_module()
+    first = learning.enroll(
+        "learner-empty", course_id="deep-learning-specialization", track="free"
+    )
+    duplicate = learning.enroll(
+        "learner-empty", course_id="deep-learning-specialization", track="free"
+    )
+    assert duplicate == first
+    assert len(learning.list_enrollments("learner-empty")) == 1
+
+    canceled = learning.cancel_enrollment(
+        "learner-empty", first["enrollment_id"]
+    )
+    assert canceled["status"] == "canceled"
+    assert canceled["canceled_at"] == "2026-08-16T00:00:00Z"
+
+    reactivated = learning.enroll(
+        "learner-empty", course_id="deep-learning-specialization", track="audit"
+    )
+    assert reactivated["enrollment_id"] == first["enrollment_id"]
+    assert reactivated["status"] == "active"
+    assert reactivated["track"] == "audit"
+    assert reactivated["canceled_at"] == canceled["canceled_at"]
+    assert len(learning.list_enrollments("learner-empty")) == 1
+
+    _login_seeded(site_client, "empty@coursera.test", "Empty-Learner-33")
+    history = site_client.get("/account/history")
+    assert "Active" in history.text
+    assert "Audit track" in history.text
+    assert "Previously canceled" in history.text
+
+
 def test_authenticated_specialization_offers_all_local_tracks_without_checkout(
     site_client: TestClient,
 ) -> None:
@@ -320,6 +355,74 @@ def test_authenticated_specialization_offers_all_local_tracks_without_checkout(
     assert 'value="paid"' in detail.text
     assert "No checkout or payment occurs in Task 4" in detail.text
     assert 'action="/checkout' not in detail.text
+
+
+def test_active_enrollment_gates_protected_learning_and_mutations(
+    site_client: TestClient,
+) -> None:
+    _login_seeded(site_client, "empty@coursera.test", "Empty-Learner-33")
+
+    preview = site_client.get(
+        "/learn/neural-networks-deep-learning/lesson/lesson-neural-intro"
+    )
+    protected = site_client.get(
+        "/learn/neural-networks-deep-learning/lesson/lesson-optimization"
+    )
+    assert preview.status_code == 200
+    assert "Public offline preview" in preview.text
+    assert protected.status_code == 403
+    assert "Enroll locally to open this lesson" in protected.text
+
+    blocked_requests = (
+        site_client.post(
+            "/learning/bookmarks/lesson-neural-intro",
+            data={"bookmarked": "1"},
+            follow_redirects=False,
+        ),
+        site_client.post(
+            "/learning/progress/lesson-neural-intro",
+            follow_redirects=False,
+        ),
+        site_client.post(
+            "/learning/quizzes/quiz-neural-foundations",
+            data={"answer": "Activation function"},
+            follow_redirects=False,
+        ),
+        site_client.post(
+            "/learning/review",
+            data={"rating": "5", "review_text": "Blocked without enrollment"},
+            follow_redirects=False,
+        ),
+    )
+    assert [response.status_code for response in blocked_requests] == [404] * 4
+
+    dashboard = site_client.get("/my-learning")
+    assert 'data-resume-lesson=' not in dashboard.text
+    assert 'action="/learning/review"' not in dashboard.text
+    assert "Certificate available" not in dashboard.text
+
+    enrolled = site_client.post(
+        "/enrollments",
+        data={"course_id": "deep-learning-specialization", "track": "free"},
+        follow_redirects=False,
+    )
+    assert enrolled.status_code == 303
+    protected_after_enrollment = site_client.get(
+        "/learn/neural-networks-deep-learning/lesson/lesson-optimization"
+    )
+    assert protected_after_enrollment.status_code == 200
+    assert "Mark complete" in protected_after_enrollment.text
+
+    learning = _learning_module()
+    enrollment_id = learning.list_enrollments("learner-empty")[0]["enrollment_id"]
+    canceled = site_client.post(
+        f"/enrollments/{enrollment_id}/cancel", follow_redirects=False
+    )
+    assert canceled.status_code == 303
+    blocked_after_cancel = site_client.post(
+        "/learning/progress/lesson-neural-intro", follow_redirects=False
+    )
+    assert blocked_after_cancel.status_code == 404
 
 
 def test_learning_preview_navigation_bookmarks_progress_quizzes_and_certificate(
@@ -406,6 +509,55 @@ def test_learning_preview_navigation_bookmarks_progress_quizzes_and_certificate(
     assert 'data-resume-lesson="lesson-transfer-learning"' in dashboard.text
 
 
+def test_progress_replay_keeps_resume_at_first_incomplete_lesson(
+    site_client: TestClient,
+) -> None:
+    learning = _learning_module()
+
+    learning.complete_lesson("learner-in-progress", "lesson-error-analysis")
+    assert learning.learning_state("learner-in-progress")["resume_lesson_id"] == (
+        "lesson-optimization"
+    )
+
+    learning.complete_lesson("learner-in-progress", "lesson-optimization")
+    assert learning.learning_state("learner-in-progress")["resume_lesson_id"] == (
+        "lesson-regularization"
+    )
+
+    learning.complete_lesson("learner-in-progress", "lesson-neural-intro")
+    assert learning.learning_state("learner-in-progress")["resume_lesson_id"] == (
+        "lesson-regularization"
+    )
+    assert learning.learning_state("learner-in-progress")[
+        "completed_lessons"
+    ].count("lesson-neural-intro") == 1
+
+
+def test_unknown_bookmark_and_progress_lessons_return_safe_branded_404(
+    site_client: TestClient,
+) -> None:
+    with TestClient(
+        app,
+        base_url="https://33.offline.invalid",
+        raise_server_exceptions=False,
+    ) as browser:
+        _login_seeded(browser, "progress@coursera.test", "Progress-Learner-33")
+        bookmark = browser.post(
+            "/learning/bookmarks/lesson-does-not-exist",
+            data={"bookmarked": "1"},
+            follow_redirects=False,
+        )
+        progress = browser.post(
+            "/learning/progress/lesson-does-not-exist",
+            follow_redirects=False,
+        )
+
+    assert bookmark.status_code == progress.status_code == 404
+    assert "Learning item not found" in bookmark.text
+    assert "Learning item not found" in progress.text
+    assert "Traceback" not in bookmark.text + progress.text
+
+
 def test_review_preferences_are_updatable_and_quiz_attempts_are_owner_scoped(
     site_client: TestClient,
 ) -> None:
@@ -456,6 +608,7 @@ def test_review_preferences_are_updatable_and_quiz_attempts_are_owner_scoped(
 
 def test_business_state_persists_across_backend_reopen(site_client: TestClient) -> None:
     learning = _learning_module()
+    initial_backend, initial_auth = learning.services()
     created = learning.enroll(
         "learner-empty", course_id="deep-learning-specialization", track="audit"
     )
@@ -463,11 +616,23 @@ def test_business_state_persists_across_backend_reopen(site_client: TestClient) 
     learning.upsert_review(
         "learner-empty", rating=4, review_text="Persistent local review"
     )
-    database_path = learning.services()[0].lifecycle.database_path
+    anonymous_session = initial_auth.create_anonymous_session()
+    authenticated_session = initial_auth.sign_in(
+        anonymous_session,
+        email="empty@coursera.test",
+        password="Empty-Learner-33",
+    )["session_token"]
+    database_path = initial_backend.lifecycle.database_path
 
     learning.close_services()
-    reopened = learning.services()[0]
-    assert reopened.lifecycle.database_path == database_path
+    reopened_backend, reopened_auth = learning.services()
+    assert reopened_backend is not initial_backend
+    assert reopened_auth is not initial_auth
+    assert reopened_backend.lifecycle.database_path == database_path
+    resolved_session = reopened_auth.resolve_session(authenticated_session)
+    assert resolved_session is not None
+    assert resolved_session["authenticated"] is True
+    assert resolved_session["account"]["subject_id"] == "learner-empty"
     assert learning.list_enrollments("learner-empty")[0]["enrollment_id"] == created[
         "enrollment_id"
     ]
@@ -524,6 +689,25 @@ def test_two_equivalent_resets_restore_identical_seed_state(
         timezone="Europe/Paris",
         email_updates=True,
     )
+    _backend, auth = learning.services()
+    registration_session = auth.create_anonymous_session()
+    auth.start_registration(
+        registration_session,
+        email="reset-candidate@coursera.test",
+        display_name="Reset Candidate",
+        password="Reset-Candidate-33",
+    )
+    recovery_session = auth.create_anonymous_session()
+    auth.start_password_reset(
+        recovery_session,
+        email="progress@coursera.test",
+    )
+    login_session = auth.create_anonymous_session()
+    auth.sign_in(
+        login_session,
+        email="progress@coursera.test",
+        password="Progress-Learner-33",
+    )
 
     learning.reset()
     second = learning.state_snapshot()
@@ -537,3 +721,24 @@ def test_two_equivalent_resets_restore_identical_seed_state(
         "learner-empty",
         "learner-in-progress",
     ]
+    assert first["auth"] == {
+        "accounts": [
+            (
+                "learner-empty",
+                "empty@coursera.test",
+                "Empty Learner",
+                1,
+            ),
+            (
+                "learner-in-progress",
+                "progress@coursera.test",
+                "Progress Learner",
+                1,
+            ),
+        ],
+        "sessions": {"anonymous": 0, "authenticated": 0, "revoked": 0},
+        "registration_challenges": {"active": 0, "verified": 0},
+        "recovery_challenges": {"active": 0, "verified": 0},
+        "outbox": [],
+        "rate_limits": [],
+    }

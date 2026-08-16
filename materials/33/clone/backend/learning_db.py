@@ -6,7 +6,6 @@ import json
 import sqlite3
 import threading
 from contextlib import contextmanager
-from pathlib import Path
 from typing import Any, Iterator
 
 from websitebench.local_clone_auth import LocalAuthStore
@@ -178,30 +177,36 @@ def seed(connection: sqlite3.Connection) -> None:
     )
 
 
-_SERVICES_LOCK = threading.Lock()
-_SERVICES: tuple[SiteBackend, LocalAuthStore] | None = None
-_SERVICES_DATABASE: Path | None = None
+class _ServiceRegistry:
+    def __init__(self) -> None:
+        self._lock = threading.Lock()
+        self._current: tuple[SiteBackend, LocalAuthStore] | None = None
+
+    def open(self) -> tuple[SiteBackend, LocalAuthStore]:
+        with self._lock:
+            if self._current is None:
+                backend, auth = open_site_services()
+                for account in SEED_ACCOUNTS:
+                    auth.seed_account(**account)
+                self._current = (backend, auth)
+            return self._current
+
+    def close(self) -> None:
+        with self._lock:
+            self._current = None
+
+
+_SERVICE_REGISTRY = _ServiceRegistry()
 
 
 def services() -> tuple[SiteBackend, LocalAuthStore]:
     """Open the generated seam and idempotently bind synthetic seed accounts."""
 
-    global _SERVICES, _SERVICES_DATABASE
-    with _SERVICES_LOCK:
-        if _SERVICES is None:
-            backend, auth = open_site_services()
-            for account in SEED_ACCOUNTS:
-                auth.seed_account(**account)
-            _SERVICES = (backend, auth)
-            _SERVICES_DATABASE = backend.lifecycle.database_path
-        return _SERVICES
+    return _SERVICE_REGISTRY.open()
 
 
 def close_services() -> None:
-    global _SERVICES, _SERVICES_DATABASE
-    with _SERVICES_LOCK:
-        _SERVICES = None
-        _SERVICES_DATABASE = None
+    _SERVICE_REGISTRY.close()
 
 
 def create_profile(
@@ -250,35 +255,20 @@ def enroll(subject_id: str, *, course_id: str, track: str) -> dict[str, Any]:
     if track not in {"free", "audit", "paid"}:
         raise ValueError("choose a free, audit, or paid track")
     with connection(transaction=True) as opened:
-        existing = opened.execute(
-            """SELECT * FROM coursera_enrollments
-                WHERE owner_subject_id=? AND course_id=?""",
-            (subject_id, course_id),
-        ).fetchone()
-        if existing is not None:
-            return _enrollment_dict(existing)
-        try:
-            cursor = opened.execute(
-                """INSERT INTO coursera_enrollments(
-                    owner_subject_id,course_id,track,status,created_at,canceled_at)
-                    VALUES (?,?,?,'active',?,NULL)""",
-                (subject_id, course_id, track, FROZEN_TIME),
-            )
-        except sqlite3.IntegrityError:
-            existing = opened.execute(
-                """SELECT * FROM coursera_enrollments
-                    WHERE owner_subject_id=? AND course_id=?""",
-                (subject_id, course_id),
-            ).fetchone()
-            if existing is None:
-                raise
-            return _enrollment_dict(existing)
         created = opened.execute(
-            "SELECT * FROM coursera_enrollments WHERE enrollment_id=?",
-            (cursor.lastrowid,),
+            """INSERT INTO coursera_enrollments(
+                owner_subject_id,course_id,track,status,created_at,canceled_at)
+                VALUES (?,?,?,'active',?,NULL)
+                ON CONFLICT(owner_subject_id,course_id) DO UPDATE SET
+                track=CASE WHEN coursera_enrollments.status='canceled'
+                    THEN excluded.track ELSE coursera_enrollments.track END,
+                status='active',
+                canceled_at=coursera_enrollments.canceled_at
+                RETURNING *""",
+            (subject_id, course_id, track, FROZEN_TIME),
         ).fetchone()
-        if created is None:  # pragma: no cover - transaction invariant
-            raise RuntimeError("enrollment insert was lost")
+        if created is None:  # pragma: no cover - SQLite RETURNING invariant
+            raise RuntimeError("enrollment upsert returned no row")
         return _enrollment_dict(created)
 
 
@@ -292,6 +282,28 @@ def list_enrollments(subject_id: str) -> list[dict[str, Any]]:
                 (subject_id,),
             )
         ]
+
+
+def _active_enrollment(
+    opened: sqlite3.Connection, subject_id: str
+) -> sqlite3.Row | None:
+    return opened.execute(
+        """SELECT * FROM coursera_enrollments
+            WHERE owner_subject_id=? AND course_id=? AND status='active'""",
+        (subject_id, COURSE_ID),
+    ).fetchone()
+
+
+def has_active_enrollment(subject_id: str) -> bool:
+    with connection() as opened:
+        return _active_enrollment(opened, subject_id) is not None
+
+
+def _require_active_enrollment(
+    opened: sqlite3.Connection, subject_id: str
+) -> None:
+    if _active_enrollment(opened, subject_id) is None:
+        raise LookupError("Active enrollment not found")
 
 
 def cancel_enrollment(subject_id: str, enrollment_id: int) -> dict[str, Any]:
@@ -367,6 +379,7 @@ def get_lesson(lesson_id: str) -> dict[str, Any]:
 def set_bookmark(subject_id: str, lesson_id: str, *, bookmarked: bool) -> None:
     get_lesson(lesson_id)
     with connection(transaction=True) as opened:
+        _require_active_enrollment(opened, subject_id)
         if bookmarked:
             opened.execute(
                 """INSERT OR IGNORE INTO coursera_bookmarks(
@@ -381,15 +394,26 @@ def set_bookmark(subject_id: str, lesson_id: str, *, bookmarked: bool) -> None:
 
 
 def complete_lesson(subject_id: str, lesson_id: str) -> None:
-    lesson = get_lesson(lesson_id)
-    resume = lesson["next_lesson_id"] or lesson_id
+    get_lesson(lesson_id)
     with connection(transaction=True) as opened:
+        _require_active_enrollment(opened, subject_id)
         opened.execute(
             """INSERT INTO coursera_lesson_progress(
                 owner_subject_id,lesson_id,completed,updated_at) VALUES (?,?,1,?)
-                ON CONFLICT(owner_subject_id,lesson_id) DO UPDATE SET
-                completed=1,updated_at=excluded.updated_at""",
+                ON CONFLICT(owner_subject_id,lesson_id) DO NOTHING""",
             (subject_id, lesson_id, FROZEN_TIME),
+        )
+        completed = {
+            str(row[0])
+            for row in opened.execute(
+                """SELECT lesson_id FROM coursera_lesson_progress
+                    WHERE owner_subject_id=? AND completed=1""",
+                (subject_id,),
+            )
+        }
+        resume = next(
+            (lesson[0] for lesson in LESSONS if lesson[0] not in completed),
+            LESSONS[-1][0],
         )
         opened.execute(
             """INSERT INTO coursera_resume_state(owner_subject_id,lesson_id,updated_at)
@@ -402,6 +426,7 @@ def complete_lesson(subject_id: str, lesson_id: str) -> None:
 def submit_quiz(subject_id: str, quiz_id: str, answer: str) -> dict[str, Any]:
     selected = answer.strip()
     with connection(transaction=True) as opened:
+        _require_active_enrollment(opened, subject_id)
         quiz = opened.execute(
             "SELECT * FROM coursera_quizzes WHERE quiz_id=?", (quiz_id,)
         ).fetchone()
@@ -442,6 +467,7 @@ def get_quiz_attempt(subject_id: str, attempt_id: int) -> dict[str, Any]:
 
 def learning_state(subject_id: str) -> dict[str, Any]:
     with connection() as opened:
+        active_enrollment = _active_enrollment(opened, subject_id) is not None
         completed = [
             row[0]
             for row in opened.execute(
@@ -471,7 +497,7 @@ def learning_state(subject_id: str) -> dict[str, Any]:
         "completed_lessons": completed,
         "bookmarks": bookmarks,
         "resume_lesson_id": str(resume[0]) if resume else "lesson-neural-intro",
-        "certificate_available": len(completed) == len(LESSONS) and passed_quizzes == len(QUIZZES),
+        "certificate_available": active_enrollment and len(completed) == len(LESSONS) and passed_quizzes == len(QUIZZES),
     }
 
 
@@ -480,6 +506,7 @@ def upsert_review(subject_id: str, *, rating: int, review_text: str) -> None:
     if rating not in {1, 2, 3, 4, 5} or not text:
         raise ValueError("rating from 1 to 5 and review text are required")
     with connection(transaction=True) as opened:
+        _require_active_enrollment(opened, subject_id)
         opened.execute(
             """INSERT INTO coursera_reviews(
                 owner_subject_id,course_id,rating,review_text,updated_at)
@@ -577,8 +604,8 @@ def reset() -> None:
     auth.reset_site_state(site_reset=site_reset, seed_accounts=SEED_ACCOUNTS)
 
 
-def state_snapshot() -> dict[str, list[tuple[Any, ...]]]:
-    """Return deterministic business rows for reset/reopen integration proofs."""
+def state_snapshot() -> dict[str, Any]:
+    """Return deterministic, non-secret auth and business reset semantics."""
 
     queries = {
         "modules": "SELECT * FROM coursera_modules ORDER BY module_id",
@@ -594,10 +621,70 @@ def state_snapshot() -> dict[str, list[tuple[Any, ...]]]:
         "preferences": "SELECT * FROM coursera_preferences ORDER BY owner_subject_id",
     }
     with connection() as opened:
-        return {
+        snapshot: dict[str, Any] = {
             name: [tuple(row) for row in opened.execute(query)]
             for name, query in queries.items()
         }
+        session_counts = opened.execute(
+            """SELECT
+                SUM(CASE WHEN revoked_at IS NULL AND account_id IS NULL THEN 1 ELSE 0 END),
+                SUM(CASE WHEN revoked_at IS NULL AND account_id IS NOT NULL THEN 1 ELSE 0 END),
+                SUM(CASE WHEN revoked_at IS NOT NULL THEN 1 ELSE 0 END)
+                FROM local_auth_sessions"""
+        ).fetchone()
+        registration_counts = opened.execute(
+            """SELECT
+                SUM(CASE WHEN verified_at IS NULL THEN 1 ELSE 0 END),
+                SUM(CASE WHEN verified_at IS NOT NULL THEN 1 ELSE 0 END)
+                FROM local_auth_registration_flows"""
+        ).fetchone()
+        recovery_counts = opened.execute(
+            """SELECT
+                SUM(CASE WHEN verified_at IS NULL THEN 1 ELSE 0 END),
+                SUM(CASE WHEN verified_at IS NOT NULL THEN 1 ELSE 0 END)
+                FROM local_auth_password_reset_flows"""
+        ).fetchone()
+        snapshot["auth"] = {
+            "accounts": [
+                tuple(row)
+                for row in opened.execute(
+                    """SELECT subject_id,email_normalized,display_name,email_verified
+                        FROM local_auth_accounts ORDER BY subject_id"""
+                )
+            ],
+            "sessions": {
+                "anonymous": int(session_counts[0] or 0),
+                "authenticated": int(session_counts[1] or 0),
+                "revoked": int(session_counts[2] or 0),
+            },
+            "registration_challenges": {
+                "active": int(registration_counts[0] or 0),
+                "verified": int(registration_counts[1] or 0),
+            },
+            "recovery_challenges": {
+                "active": int(recovery_counts[0] or 0),
+                "verified": int(recovery_counts[1] or 0),
+            },
+            "outbox": [
+                tuple(row)
+                for row in opened.execute(
+                    """SELECT purpose,template,status,COUNT(*)
+                        FROM local_auth_mail_outbox
+                        GROUP BY purpose,template,status
+                        ORDER BY purpose,template,status"""
+                )
+            ],
+            "rate_limits": [
+                tuple(row)
+                for row in opened.execute(
+                    """SELECT purpose,scope_type,COUNT(*)
+                        FROM local_auth_mail_rate_limits
+                        GROUP BY purpose,scope_type
+                        ORDER BY purpose,scope_type"""
+                )
+            ],
+        }
+        return snapshot
 
 
 @contextmanager

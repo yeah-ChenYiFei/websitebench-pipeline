@@ -144,11 +144,21 @@ def _permission_page(message: str) -> HTMLResponse:
     return HTMLResponse(_page("Sign in required", body), status_code=401)
 
 
+def _enrollment_required_page(message: str) -> HTMLResponse:
+    body = f"""<section class="not-found permission-prompt"><p class="eyebrow">Active enrollment required</p><h1>{escape(message)}</h1><p>Select a local free, audit, or paid track. No checkout or payment occurs.</p><a class="primary-button" href="/specializations/deep-learning">Choose a local enrollment</a></section>"""
+    return HTMLResponse(_page("Enrollment required", body), status_code=403)
+
+
+def _learning_not_found() -> HTMLResponse:
+    body = """<section class="not-found"><p class="error-code">404</p><h1>Learning item not found</h1><p>The item is unavailable for this local learner.</p><a class="primary-button" href="/my-learning">Return to My Learning</a></section>"""
+    return HTMLResponse(_page("Learning item not found", body), status_code=404)
+
+
 def _enrollment_rows(records: list[dict[str, Any]]) -> str:
     if not records:
         return '<div class="empty-state"><h2>No local enrollments yet</h2><a href="/specializations/deep-learning">Explore Deep Learning</a></div>'
     return "".join(
-        f"""<article class="catalog-card enrollment-card" data-enrollment-id="{record['enrollment_id']}"><p class="eyebrow">{escape(str(record['status']).title())}</p><h2>Deep Learning Specialization</h2><p>{escape(str(record['track']).title())} track</p><p>No checkout or payment was created.</p>{f'<form action="/enrollments/{record["enrollment_id"]}/cancel" method="post"><button type="submit">Cancel enrollment</button></form>' if record['status'] == 'active' else ''}<a href="/learn/neural-networks-deep-learning/lesson/lesson-neural-intro">Open course</a></article>"""
+        f"""<article class="catalog-card enrollment-card" data-enrollment-id="{record['enrollment_id']}"><p class="eyebrow">{escape(str(record['status']).title())}</p><h2>Deep Learning Specialization</h2><p>{escape(str(record['track']).title())} track</p>{'<p>Previously canceled; the local enrollment was reactivated.</p>' if record['status'] == 'active' and record['canceled_at'] else ''}<p>No checkout or payment was created.</p>{f'<form action="/enrollments/{record["enrollment_id"]}/cancel" method="post"><button type="submit">Cancel enrollment</button></form>' if record['status'] == 'active' else ''}<a href="/learn/neural-networks-deep-learning/lesson/lesson-neural-intro">Open course</a></article>"""
         for record in records
     )
 
@@ -602,20 +612,23 @@ def my_learning(request: Request) -> HTMLResponse:
     except HTTPException:
         return _permission_page("Sign in to view My Learning")
     enrollments = learning_db.list_enrollments(subject)
-    state = learning_db.learning_state(subject)
-    certificate = (
-        "Certificate available"
-        if state["certificate_available"]
-        else "Certificate available after all lessons and quizzes"
-    )
-    review = learning_db.get_review(subject, "deep-learning-specialization")
-    current_rating = int(review["rating"]) if review else 5
-    current_review = str(review["review_text"]) if review else ""
-    rating_options = "".join(
-        f'<option value="{rating}"{" selected" if rating == current_rating else ""}>{rating} stars</option>'
-        for rating in range(1, 6)
-    )
-    body = f"""<section class="page-heading"><p class="eyebrow">Site-33 learner</p><h1>My Learning</h1><p>Your enrollments, progress, and bookmarks stay in this offline clone.</p><a data-resume-lesson="{escape(state['resume_lesson_id'])}" href="/learn/neural-networks-deep-learning/lesson/{escape(state['resume_lesson_id'])}">Resume course</a><p>{certificate}</p></section><section class="section"><div class="card-grid">{_enrollment_rows(enrollments)}</div></section><section class="auth-shell single"><div class="auth-card"><h2>Course review</h2><p>Your single local review can be updated at any time.</p><form class="auth-form" action="/learning/review" method="post"><label>Rating<select name="rating" required>{rating_options}</select></label><label>Review<textarea name="review_text" required>{escape(current_review)}</textarea></label><button type="submit">Save local review</button></form></div></section><p><a href="/account/preferences">Learning preferences</a> · <a href="/account/history">Enrollment history</a></p><form action="/auth/logout" method="post"><button type="submit">Log out</button></form>"""
+    learning_tools = ""
+    if learning_db.has_active_enrollment(subject):
+        state = learning_db.learning_state(subject)
+        certificate = (
+            "Certificate available"
+            if state["certificate_available"]
+            else "Certificate available after all lessons and quizzes"
+        )
+        review = learning_db.get_review(subject, "deep-learning-specialization")
+        current_rating = int(review["rating"]) if review else 5
+        current_review = str(review["review_text"]) if review else ""
+        rating_options = "".join(
+            f'<option value="{rating}"{" selected" if rating == current_rating else ""}>{rating} stars</option>'
+            for rating in range(1, 6)
+        )
+        learning_tools = f"""<a data-resume-lesson="{escape(state['resume_lesson_id'])}" href="/learn/neural-networks-deep-learning/lesson/{escape(state['resume_lesson_id'])}">Resume course</a><p>{certificate}</p><section class="auth-shell single"><div class="auth-card"><h2>Course review</h2><p>Your single local review can be updated at any time.</p><form class="auth-form" action="/learning/review" method="post"><label>Rating<select name="rating" required>{rating_options}</select></label><label>Review<textarea name="review_text" required>{escape(current_review)}</textarea></label><button type="submit">Save local review</button></form></div></section>"""
+    body = f"""<section class="page-heading"><p class="eyebrow">Site-33 learner</p><h1>My Learning</h1><p>Your enrollments, progress, and bookmarks stay in this offline clone.</p>{learning_tools}</section><section class="section"><div class="card-grid">{_enrollment_rows(enrollments)}</div></section><p><a href="/account/preferences">Learning preferences</a> · <a href="/account/history">Enrollment history</a></p><form action="/auth/logout" method="post"><button type="submit">Log out</button></form>"""
     return HTMLResponse(_page("My Learning", body))
 
 
@@ -683,7 +696,10 @@ def learning_lesson(request: Request, lesson_id: str) -> HTMLResponse:
         if session["authenticated"]
         else None
     )
-    state = learning_db.learning_state(subject) if subject else None
+    active_enrollment = bool(subject and learning_db.has_active_enrollment(subject))
+    if not lesson["preview"] and not active_enrollment:
+        return _enrollment_required_page("Enroll locally to open this lesson")
+    state = learning_db.learning_state(subject) if active_enrollment else None
     previous_link = (
         f'<a href="/learn/neural-networks-deep-learning/lesson/{escape(lesson["previous_lesson_id"])}">Previous lesson</a>'
         if lesson["previous_lesson_id"]
@@ -704,7 +720,7 @@ def learning_lesson(request: Request, lesson_id: str) -> HTMLResponse:
         for module in lesson["outline"]
     )
     learner_controls = ""
-    if subject:
+    if active_enrollment:
         bookmarked = lesson_id in state["bookmarks"]
         choices = "".join(
             f'<label><input type="radio" name="answer" value="{escape(choice)}" required>{escape(choice)}</label>'
@@ -726,9 +742,12 @@ async def learning_bookmark(request: Request, lesson_id: str) -> Response:
     except HTTPException:
         return _permission_page("Sign in to save bookmarks")
     values = await _form_values(request)
-    learning_db.set_bookmark(
-        subject, lesson_id, bookmarked=values.get("bookmarked") == "1"
-    )
+    try:
+        learning_db.set_bookmark(
+            subject, lesson_id, bookmarked=values.get("bookmarked") == "1"
+        )
+    except LookupError:
+        return _learning_not_found()
     return RedirectResponse(
         f"/learn/neural-networks-deep-learning/lesson/{lesson_id}", status_code=303
     )
@@ -740,7 +759,10 @@ def learning_progress(request: Request, lesson_id: str) -> Response:
         _backend, _auth, _token, subject = _authenticated_subject(request)
     except HTTPException:
         return _permission_page("Sign in to save progress")
-    learning_db.complete_lesson(subject, lesson_id)
+    try:
+        learning_db.complete_lesson(subject, lesson_id)
+    except LookupError:
+        return _learning_not_found()
     return RedirectResponse("/my-learning", status_code=303)
 
 
@@ -755,7 +777,9 @@ async def learning_quiz(request: Request, quiz_id: str) -> HTMLResponse:
         attempt = learning_db.submit_quiz(
             subject, quiz_id, values.get("answer", "")
         )
-    except (ValueError, LookupError) as exc:
+    except LookupError:
+        return _learning_not_found()
+    except ValueError as exc:
         return HTMLResponse(_page("Quiz validation", f"<section class='not-found'><h1>Check your answer</h1><p>{escape(str(exc))}</p></section>"), status_code=422)
     body = f"""<section class="page-heading"><p class="eyebrow">Local quiz feedback</p><h1>Quiz score: {attempt['score']}</h1><p>{escape(attempt['feedback'])}</p><a href="/my-learning">Return to My Learning</a></section>"""
     return HTMLResponse(_page("Quiz feedback", body))
@@ -774,6 +798,8 @@ async def learning_review(request: Request) -> Response:
             rating=int(values.get("rating", "0")),
             review_text=values.get("review_text", ""),
         )
+    except LookupError:
+        return _learning_not_found()
     except (ValueError, TypeError) as exc:
         return HTMLResponse(_page("Review validation", f"<section class='not-found'><h1>Check your review</h1><p>{escape(str(exc))}</p></section>"), status_code=422)
     return RedirectResponse("/my-learning", status_code=303)
