@@ -11,6 +11,7 @@ from typing import Any, Iterator
 from websitebench.local_clone_auth import LocalAuthStore
 from websitebench.site_backend import SiteBackend
 
+from backend import checkout
 from backend.site_backend_integration import open_site_services
 
 
@@ -110,6 +111,7 @@ def migrate(connection: sqlite3.Connection) -> None:
 
     for statement in _SCHEMA:
         connection.execute(statement)
+    checkout.migrate(connection)
     connection.execute(
         "INSERT OR IGNORE INTO coursera_schema_migrations(migration_id,applied_at) VALUES (?,?)",
         ("0001-learning-core", FROZEN_TIME),
