@@ -169,6 +169,23 @@ def _order_dict(row: sqlite3.Row) -> dict[str, Any]:
     return dict(row)
 
 
+def _payment_attempt_dict(
+    row: sqlite3.Row, *, replay_approved: bool = False
+) -> dict[str, Any]:
+    return {
+        "attempt_id": row["attempt_id"],
+        "site_id": row["site_id"],
+        "flow_id": row["flow_id"],
+        "owner": row["owner"],
+        "scenario_id": row["scenario_id"],
+        "amount_minor": int(row["amount_minor"]),
+        "currency": row["currency"],
+        "fingerprint": row["fingerprint"],
+        "status": "APPROVED" if replay_approved else row["status"],
+        "is_simulation": bool(row["is_simulation"]),
+    }
+
+
 def list_orders(owner: str) -> list[dict[str, Any]]:
     """List durable order snapshots for one owner."""
 
@@ -201,6 +218,26 @@ def get_order(owner: str, order_id: str) -> dict[str, Any]:
     return _order_dict(row)
 
 
+def get_order_for_enrollment(
+    owner: str, enrollment_id: int
+) -> dict[str, Any]:
+    """Resolve the current paid order for an owner-scoped enrollment."""
+
+    from backend import learning_db
+
+    with learning_db.connection() as opened:
+        row = opened.execute(
+            """SELECT * FROM coursera_orders
+                WHERE enrollment_id=? AND owner_subject_id=?
+                ORDER BY CASE status WHEN 'PAID' THEN 0 ELSE 1 END,rowid DESC
+                LIMIT 1""",
+            (enrollment_id, owner),
+        ).fetchone()
+    if row is None:
+        raise LookupError("Order not found")
+    return _order_dict(row)
+
+
 def attempt(
     owner: str,
     draft_id: str,
@@ -221,8 +258,6 @@ def attempt(
         ).fetchone()
         if draft is None:
             raise LookupError("Checkout not found")
-        if draft["status"] != "OPEN":
-            raise PaymentRejected("checkout is no longer open")
         current_facts = {
             "course_id": COURSE_ID,
             "plan_id": PLAN_ID,
@@ -235,6 +270,48 @@ def attempt(
         }
         if any(draft[key] != value for key, value in current_facts.items()):
             raise PaymentRejected("checkout facts are stale")
+        if draft["status"] == "COMPLETED":
+            order = opened.execute(
+                """SELECT * FROM coursera_orders
+                    WHERE draft_id=? AND owner_subject_id=? AND payment_flow_id=?""",
+                (draft_id, owner, draft["payment_flow_id"]),
+            ).fetchone()
+            prior_attempt = opened.execute(
+                """SELECT * FROM websitebench_payment_attempts
+                    WHERE flow_id=? AND owner=? AND scenario_id=?
+                    AND idempotency_key=? AND status='CONSUMED'""",
+                (
+                    draft["payment_flow_id"],
+                    owner,
+                    scenario_id,
+                    idempotency_key,
+                ),
+            ).fetchone()
+            order_facts = {
+                "course_id": COURSE_ID,
+                "plan_id": PLAN_ID,
+                "plan_label": PLAN_LABEL,
+                "subtotal_minor": SUBTOTAL_MINOR,
+                "tax_minor": TAX_MINOR,
+                "total_minor": TOTAL_MINOR,
+                "currency": CURRENCY,
+                "fingerprint": PLAN_FINGERPRINT,
+            }
+            if (
+                order is not None
+                and prior_attempt is not None
+                and all(order[key] == value for key, value in order_facts.items())
+            ):
+                return {
+                    "attempt": _payment_attempt_dict(
+                        prior_attempt, replay_approved=True
+                    ),
+                    "order": _order_dict(order),
+                    "outcome": "approved",
+                }
+            raise PaymentRejected("checkout is no longer open")
+        if draft["status"] != "OPEN":
+            raise PaymentRejected("checkout is no longer open")
 
         payment_attempt = backend.payments.attempt(
             flow_id=str(draft["payment_flow_id"]),

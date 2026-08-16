@@ -349,6 +349,51 @@ def test_attempt_idempotency_conflict_and_duplicate_consumption_are_rejected(
         )
 
 
+def test_exact_approved_replay_returns_original_result_without_reconsumption(
+    checkout_site,
+) -> None:
+    """Catch a lost-response retry that rejects or creates a second order."""
+
+    checkout, learning, _backend = checkout_site
+    draft = _new_empty_learner_draft(checkout)
+    submitted = {
+        "scenario_id": "sandbox-approved",
+        "idempotency_key": "attempt-approved-replay-001",
+    }
+
+    first = checkout.attempt("learner-empty", draft["draft_id"], **submitted)
+    replay = checkout.attempt("learner-empty", draft["draft_id"], **submitted)
+
+    assert replay == first
+    assert checkout.list_orders("learner-empty") == [first["order"]]
+    with learning.connection() as opened:
+        assert opened.execute(
+            "SELECT COUNT(*) FROM websitebench_payment_attempts"
+        ).fetchone()[0] == 1
+        assert opened.execute(
+            "SELECT COUNT(*) FROM coursera_orders"
+        ).fetchone()[0] == 1
+        assert opened.execute(
+            """SELECT COUNT(*) FROM coursera_enrollments
+                WHERE owner_subject_id='learner-empty' AND track='paid'"""
+        ).fetchone()[0] == 1
+
+    with pytest.raises(PaymentRejected, match="no longer open"):
+        checkout.attempt(
+            "learner-empty",
+            draft["draft_id"],
+            scenario_id="sandbox-approved",
+            idempotency_key="attempt-approved-replay-different-key",
+        )
+    with pytest.raises(PaymentRejected, match="no longer open"):
+        checkout.attempt(
+            "learner-empty",
+            draft["draft_id"],
+            scenario_id="sandbox-declined",
+            idempotency_key="attempt-approved-replay-001",
+        )
+
+
 def test_order_insert_failure_rolls_back_approval_and_enrollment(
     checkout_site,
 ) -> None:
@@ -443,6 +488,23 @@ def test_cancel_order_retains_snapshot_and_cancels_paid_enrollment(
         checkout.cancel_order("learner-in-progress", order["order_id"])
     with pytest.raises(LookupError, match="Order not found"):
         checkout.get_order("learner-in-progress", order["order_id"])
+
+
+def test_legacy_enrollment_cancel_rejects_paid_order_without_state_change(
+    checkout_site,
+) -> None:
+    """Catch legacy cancellation leaving an active PAID order inconsistent."""
+
+    checkout, learning, _backend = checkout_site
+    order = _approved_empty_learner_order(checkout)
+
+    with pytest.raises(ValueError, match="paid order detail"):
+        learning.cancel_enrollment("learner-empty", order["enrollment_id"])
+
+    assert checkout.get_order("learner-empty", order["order_id"])["status"] == "PAID"
+    enrollment = learning.list_enrollments("learner-empty")[0]
+    assert enrollment["status"] == "active"
+    assert enrollment["track"] == "paid"
 
 
 def test_cancel_order_rolls_back_if_enrollment_update_fails(checkout_site) -> None:

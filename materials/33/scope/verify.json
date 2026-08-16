@@ -8,6 +8,19 @@
     "env": {}
   },
   "prepare": [],
+  "session": {
+    "post": "/auth/login",
+    "expect_status": [303],
+    "accounts": {
+      "empty-learner": {
+        "form": {
+          "email": "empty@coursera.test",
+          "password": "Empty-Learner-33"
+        },
+        "routes": ["checkout"]
+      }
+    }
+  },
   "routes": {
     "home": "/",
     "browse": "/browse",
@@ -54,8 +67,27 @@
     "lesson.opened": [{"expect": "body"}],
     "quiz.feedback": [{"goto": "/learn/neural-networks-deep-learning/quiz/foundations?fixture=feedback"}, {"expect": "body"}],
     "account-history.seeded": [{"goto": "/account/history?fixture=seeded-learner"}, {"expect": "body"}],
-    "checkout.validation": [{"goto": "/checkout/deep-learning?fixture=validation"}, {"expect": "body"}],
-    "checkout.review": [{"goto": "/checkout/deep-learning?fixture=review"}, {"expect": "body"}],
+    "checkout.validation": {
+      "session": "empty-learner",
+      "steps": [
+        {"eval": "document.querySelector('input[name=\"plan_id\"]').value='unsupported-plan'"},
+        {"click": "form[action=\"/checkout/deep-learning\"] button[type=\"submit\"]"},
+        {"expect": "h1:has-text(\"Checkout could not continue\")"},
+        {"expect": "p:has-text(\"plan is unavailable\")"}
+      ]
+    },
+    "checkout.review": {
+      "session": "empty-learner",
+      "steps": [
+        {"click": "form[action=\"/checkout/deep-learning\"] button[type=\"submit\"]"},
+        {"expect": "h1:has-text(\"Synthetic payment form\")"},
+        {"expect": "#synthetic-card-number:not([name])"},
+        {"click": "form[action$=\"/review\"] button[type=\"submit\"]"},
+        {"expect": "h1:has-text(\"Review inferred total\")"},
+        {"expect": "input[name=\"scenario_id\"][value=\"sandbox-approved\"]"},
+        {"expect": ".checkout-total:has-text(\"USD 49.00\")"}
+      ]
+    },
     "help.loaded": [{"expect": "body"}],
     "support.loaded": [{"expect": "body"}],
     "not-found.loaded": [{"expect": "body"}]

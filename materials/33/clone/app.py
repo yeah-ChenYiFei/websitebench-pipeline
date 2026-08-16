@@ -93,7 +93,7 @@ def _footer() -> str:
 
 def _page(title: str, body: str, *, body_class: str = "") -> str:
     return f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Coursera</title><link rel="stylesheet" href="/static/site.css"><link rel="stylesheet" href="/static/components.css"><link rel="stylesheet" href="/static/auth.css"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Coursera</title><link rel="stylesheet" href="/static/site.css"><link rel="stylesheet" href="/static/components.css"><link rel="stylesheet" href="/static/auth.css"><link rel="stylesheet" href="/static/checkout.css"></head>
 <body class="{escape(body_class)}">{_header()}<main>{body}</main>{_footer()}</body></html>"""
 
 
@@ -208,10 +208,25 @@ def _learning_not_found() -> HTMLResponse:
 def _enrollment_rows(records: list[dict[str, Any]]) -> str:
     if not records:
         return '<div class="empty-state"><h2>No local enrollments yet</h2><a href="/specializations/deep-learning">Explore Deep Learning</a></div>'
-    return "".join(
-        f"""<article class="catalog-card enrollment-card" data-enrollment-id="{record['enrollment_id']}"><p class="eyebrow">{escape(str(record['status']).title())}</p><h2>Deep Learning Specialization</h2><p>{escape(str(record['track']).title())} track</p>{'<p>Previously canceled; the local enrollment was reactivated.</p>' if record['status'] == 'active' and record['canceled_at'] else ''}<p>No checkout or payment was created.</p>{f'<form action="/enrollments/{record["enrollment_id"]}/cancel" method="post"><button type="submit">Cancel enrollment</button></form>' if record['status'] == 'active' else ''}<a href="/learn/neural-networks-deep-learning/lesson/lesson-neural-intro">Open course</a></article>"""
-        for record in records
-    )
+    rows = []
+    for record in records:
+        paid = record["track"] == "paid"
+        if paid and record.get("order_id"):
+            cancellation = (
+                f'<a href="/orders/{escape(str(record["order_id"]))}">Manage paid order</a>'
+            )
+            origin = "Created by an approved local-sandbox checkout."
+        else:
+            cancellation = (
+                f'<form action="/enrollments/{record["enrollment_id"]}/cancel" method="post"><button type="submit">Cancel enrollment</button></form>'
+                if record["status"] == "active"
+                else ""
+            )
+            origin = "No checkout or payment was created."
+        rows.append(
+            f"""<article class="catalog-card enrollment-card" data-enrollment-id="{record['enrollment_id']}"><p class="eyebrow">{escape(str(record['status']).title())}</p><h2>Deep Learning Specialization</h2><p>{escape(str(record['track']).title())} track</p>{'<p>Previously canceled; the local enrollment was reactivated.</p>' if record['status'] == 'active' and record['canceled_at'] else ''}<p>{origin}</p>{cancellation}<a href="/learn/neural-networks-deep-learning/lesson/lesson-neural-intro">Open course</a></article>"""
+        )
+    return "".join(rows)
 
 
 @app.exception_handler(404)
@@ -875,6 +890,12 @@ def cancel_enrollment(request: Request, enrollment_id: int) -> Response:
             _page("Enrollment not found", '<section class="not-found"><h1>Enrollment not found</h1><p>The record is unavailable for this local learner.</p></section>'),
             status_code=404,
         )
+    except ValueError:
+        try:
+            order = checkout.get_order_for_enrollment(subject, enrollment_id)
+        except LookupError:
+            return RedirectResponse("/orders", status_code=303)
+        return RedirectResponse(f"/orders/{order['order_id']}", status_code=303)
     return RedirectResponse("/account/history", status_code=303)
 
 

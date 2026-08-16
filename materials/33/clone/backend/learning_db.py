@@ -281,8 +281,15 @@ def list_enrollments(subject_id: str) -> list[dict[str, Any]]:
         return [
             _enrollment_dict(row)
             for row in opened.execute(
-                """SELECT * FROM coursera_enrollments WHERE owner_subject_id=?
-                    ORDER BY enrollment_id DESC""",
+                """SELECT enrollment.*,
+                    (SELECT orders.order_id FROM coursera_orders AS orders
+                        WHERE orders.enrollment_id=enrollment.enrollment_id
+                        AND orders.owner_subject_id=enrollment.owner_subject_id
+                        ORDER BY CASE orders.status WHEN 'PAID' THEN 0 ELSE 1 END,
+                            orders.rowid DESC LIMIT 1) AS order_id
+                    FROM coursera_enrollments AS enrollment
+                    WHERE enrollment.owner_subject_id=?
+                    ORDER BY enrollment.enrollment_id DESC""",
                 (subject_id,),
             )
         ]
@@ -319,6 +326,8 @@ def cancel_enrollment(subject_id: str, enrollment_id: int) -> dict[str, Any]:
         ).fetchone()
         if row is None:
             raise LookupError("Enrollment not found")
+        if row["track"] == "paid":
+            raise ValueError("cancel paid enrollment from its paid order detail")
         if row["status"] == "active":
             opened.execute(
                 """UPDATE coursera_enrollments SET status='canceled',canceled_at=?

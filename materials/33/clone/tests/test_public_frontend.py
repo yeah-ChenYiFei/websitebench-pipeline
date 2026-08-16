@@ -333,6 +333,7 @@ def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
 
     assert static_paths == {
         "/static/auth.css",
+        "/static/checkout.css",
         "/static/components.css",
         "/static/deep-learning-mark.svg",
         "/static/hero-learning.svg",

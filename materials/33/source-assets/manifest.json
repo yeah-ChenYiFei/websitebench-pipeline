@@ -7,9 +7,10 @@
   "no_assets_reason": null,
   "assets": [
     {"id": "task3-site-css", "priority": "p0", "required": true, "source_path": "source-assets/task3/site.css", "runtime_path": "clone/static/site.css", "bytes": 4135, "mime_type": "text/css", "dimensions": null, "referenced_by": ["public-shell"], "evidence_kind": "synthetic"},
-    {"id": "task3-components-css", "priority": "p0", "required": true, "source_path": "source-assets/task3/components.css", "runtime_path": "clone/static/components.css", "bytes": 4507, "mime_type": "text/css", "dimensions": null, "referenced_by": ["public-shell"], "evidence_kind": "synthetic"},
+    {"id": "task3-components-css", "priority": "p0", "required": true, "source_path": "source-assets/task3/components.css", "runtime_path": "clone/static/components.css", "bytes": 3181, "mime_type": "text/css", "dimensions": null, "referenced_by": ["public-shell"], "evidence_kind": "synthetic"},
     {"id": "task3-auth-css", "priority": "p0", "required": true, "source_path": "source-assets/task3/auth.css", "runtime_path": "clone/static/auth.css", "bytes": 2186, "mime_type": "text/css", "dimensions": null, "referenced_by": ["public-shell"], "evidence_kind": "synthetic"},
     {"id": "task3-hero-learning", "priority": "p0", "required": true, "source_path": "source-assets/task3/hero-learning.svg", "runtime_path": "clone/static/hero-learning.svg", "bytes": 1103, "mime_type": "image/svg+xml", "dimensions": {"width": 620, "height": 360}, "referenced_by": ["home.loaded"], "evidence_kind": "synthetic"},
-    {"id": "task3-deep-learning-mark", "priority": "p0", "required": true, "source_path": "source-assets/task3/deep-learning-mark.svg", "runtime_path": "clone/static/deep-learning-mark.svg", "bytes": 758, "mime_type": "image/svg+xml", "dimensions": {"width": 420, "height": 300}, "referenced_by": ["specialization.loaded"], "evidence_kind": "synthetic"}
+    {"id": "task3-deep-learning-mark", "priority": "p0", "required": true, "source_path": "source-assets/task3/deep-learning-mark.svg", "runtime_path": "clone/static/deep-learning-mark.svg", "bytes": 758, "mime_type": "image/svg+xml", "dimensions": {"width": 420, "height": 300}, "referenced_by": ["specialization.loaded"], "evidence_kind": "synthetic"},
+    {"id": "task5-checkout-css", "priority": "p0", "required": true, "source_path": "source-assets/task5/checkout.css", "runtime_path": "clone/static/checkout.css", "bytes": 1326, "mime_type": "text/css", "dimensions": null, "referenced_by": ["public-shell"], "evidence_kind": "synthetic"}
   ]
 }

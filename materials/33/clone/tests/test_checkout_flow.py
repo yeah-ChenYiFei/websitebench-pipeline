@@ -203,6 +203,17 @@ def test_browser_attempt_maps_decline_retry_and_approval_results(
     assert approved.status_code == 303
     assert re.fullmatch(r"/orders/order_[^/]+", approved.headers["location"])
 
+    replay = checkout_client.post(
+        f"/checkout/{approved_id}/attempt",
+        data={
+            "scenario_id": "sandbox-approved",
+            "idempotency_key": "browser-approved-001",
+        },
+        follow_redirects=False,
+    )
+    assert replay.status_code == 303
+    assert replay.headers["location"] == approved.headers["location"]
+
 
 def test_order_history_detail_cancel_and_foreign_owner_boundaries(
     checkout_client: TestClient,
@@ -258,3 +269,41 @@ def test_order_history_detail_cancel_and_foreign_owner_boundaries(
     enrollment = learning.list_enrollments("learner-empty")[0]
     assert enrollment["track"] == "paid"
     assert enrollment["status"] == "canceled"
+
+
+def test_paid_enrollment_card_and_legacy_cancel_route_preserve_paid_order(
+    checkout_client: TestClient,
+) -> None:
+    """Catch paid cards exposing the enrollment-only cancellation path."""
+
+    _login_empty(checkout_client)
+    draft_id = _create_browser_draft(checkout_client)
+    approved = checkout_client.post(
+        f"/checkout/{draft_id}/attempt",
+        data={
+            "scenario_id": "sandbox-approved",
+            "idempotency_key": "browser-paid-card-approved-001",
+        },
+        follow_redirects=False,
+    )
+    order_path = approved.headers["location"]
+    learning = importlib.import_module("backend.learning_db")
+    enrollment_id = learning.list_enrollments("learner-empty")[0]["enrollment_id"]
+
+    dashboard = checkout_client.get("/my-learning")
+    assert f'action="/enrollments/{enrollment_id}/cancel"' not in dashboard.text
+    assert f'href="{order_path}"' in dashboard.text
+    assert "Manage paid order" in dashboard.text
+
+    legacy = checkout_client.post(
+        f"/enrollments/{enrollment_id}/cancel", follow_redirects=False
+    )
+    assert legacy.status_code == 303
+    assert legacy.headers["location"] == order_path
+
+    checkout = importlib.import_module("backend.checkout")
+    order_id = order_path.rsplit("/", 1)[1]
+    assert checkout.get_order("learner-empty", order_id)["status"] == "PAID"
+    enrollment = learning.list_enrollments("learner-empty")[0]
+    assert enrollment["status"] == "active"
+    assert enrollment["track"] == "paid"

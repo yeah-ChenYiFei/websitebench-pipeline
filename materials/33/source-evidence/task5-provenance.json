@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.site-reconstruction-provenance.v1",
+  "site_id": "33",
+  "authority": "diagnostic-only",
+  "runtime_assets": [
+    {
+      "asset_id": "task5-checkout-css",
+      "runtime_path": "clone/static/checkout.css",
+      "reconstruction_kind": "synthetic-reconstruction",
+      "grounded_by": ["task5-safe-local-checkout-design"],
+      "source_material_status": "task5-owned-synthetic-offline-style"
+    }
+  ]
+}
