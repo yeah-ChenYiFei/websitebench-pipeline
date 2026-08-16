@@ -20,6 +20,9 @@ from backend import checkout, learning_db
 from catalog import load_catalog_seed
 from websitebench.local_clone_auth import AuthError
 from websitebench.site_backend import PaymentConflict, PaymentError, PaymentRejected
+from ui import footer as desktop_footer
+from ui import header as desktop_header
+from ui import page as desktop_page
 
 
 SITE_ID = "33"
@@ -78,30 +81,11 @@ async def security_headers(request: Request, call_next):
 
 
 def _header(*, authenticated: bool = False) -> str:
-    account_controls = (
-        '<div class="learner-nav"><a href="/my-learning">My Learning</a>'
-        '<form class="header-logout" action="/auth/logout" method="post">'
-        '<button type="submit">Log out</button></form></div>'
-        if authenticated
-        else '<a class="auth-placeholder" href="/login">Log In</a>'
-        '<a class="join-placeholder" href="/signup">Join for Free</a>'
-    )
-    return f"""
-<div class="audience-bar"><strong>为个人</strong><span>为商务</span><span>为大学</span><span>为政府</span></div>
-<header class="site-header">
-  <a class="wordmark" href="/" aria-label="Coursera home">coursera</a>
-  <a class="nav-link" href="/browse">Explore <span aria-hidden="true">⌄</span></a>
-  <span class="nav-link">Degrees</span>
-  <form class="header-search" action="/search" method="get"><label class="sr-only" for="header-q">Search</label><input id="header-q" name="q" placeholder="What do you want to learn?"><button aria-label="Search">⌕</button></form>
-  {account_controls}
-</header>
-"""
+    return desktop_header(authenticated=authenticated)
 
 
 def _footer() -> str:
-    return """
-<footer><div><h2>Coursera</h2><a href="/browse">Catalog</a><a href="/about/contact">Contact</a></div><div><h2>Community</h2><span>Learners</span><span>Partners</span></div><div><h2>More</h2><a href="/help">Help</a><span>Terms</span><span>Privacy</span></div><p>© 2026 Coursera offline learning experience.</p></footer>
-"""
+    return desktop_footer()
 
 
 def _request_authenticated(request: Request) -> bool:
@@ -121,10 +105,13 @@ def _page(
     body_class: str = "",
     document_title: str | None = None,
 ) -> str:
-    rendered_title = document_title or f"{title} | Coursera"
-    return f"""<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(rendered_title)}</title><link rel="stylesheet" href="/static/site.css"><link rel="stylesheet" href="/static/components.css"><link rel="stylesheet" href="/static/auth.css"><link rel="stylesheet" href="/static/checkout.css"></head>
-<body class="{escape(body_class)}">{_header(authenticated=_request_authenticated(request))}<main>{body}</main>{_footer()}</body></html>"""
+    return desktop_page(
+        title=title,
+        body=body,
+        authenticated=_request_authenticated(request),
+        body_class=body_class,
+        document_title=document_title,
+    )
 
 
 async def _form_values(request: Request) -> dict[str, str]:
