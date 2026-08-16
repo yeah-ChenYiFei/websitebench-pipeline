@@ -175,7 +175,7 @@ def test_specialization_component_details_and_free_preview_are_complete() -> Non
 def test_non_direct_catalog_facts_are_visibly_disclosed_on_every_public_surface() -> None:
     business_card = client.get("/browse/business")
     assert 'data-evidence-classification="truthful-simulation"' in business_card.text
-    assert "Offline simulated details — not source-verified." in business_card.text
+    assert "Evidence: offline simulation; not source-verified." in business_card.text
 
     business_detail = client.get("/learn/business-strategy")
     assert 'href="/specializations/deep-learning"' not in business_detail.text
@@ -207,6 +207,31 @@ def test_non_direct_catalog_facts_are_visibly_disclosed_on_every_public_surface(
         preview = client.get(f"/learn/{course_id}/preview")
         assert note in detail.text
         assert note in preview.text
+
+
+def test_catalog_cards_visibly_name_each_non_direct_evidence_classification() -> None:
+    pages = {
+        "improving-deep-neural-networks": client.get("/browse/data-science").text,
+        "sequence-models": client.get("/browse/data-science").text,
+        "business-strategy": client.get("/browse/business").text,
+    }
+    expected_labels = {
+        "improving-deep-neural-networks": (
+            "Evidence: public structure observed; details simulated."
+        ),
+        "sequence-models": "Evidence: architecture inferred; details simulated.",
+        "business-strategy": "Evidence: offline simulation; not source-verified.",
+    }
+
+    for record_id, page in pages.items():
+        card = re.search(
+            rf'<article class="catalog-card" data-catalog-record="{record_id}">'
+            r"(.*?)</article>",
+            page,
+            re.S,
+        )
+        assert card is not None
+        assert expected_labels[record_id] in card.group(1)
 
 
 def test_course_breadcrumb_uses_each_records_real_subject_slug() -> None:

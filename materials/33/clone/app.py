@@ -125,6 +125,12 @@ _SERIES_EVIDENCE_NOTES = {
     "truthful-simulation": "Course and displayed details are an offline simulation.",
 }
 
+_CARD_EVIDENCE_NOTES = {
+    "structural-only": "Evidence: public structure observed; details simulated.",
+    "inferred-architecture": "Evidence: architecture inferred; details simulated.",
+    "truthful-simulation": "Evidence: offline simulation; not source-verified.",
+}
+
 
 def _evidence_note(record: dict[str, Any], *, compact: bool = False) -> str:
     classification = record["source_evidence_classification"]
@@ -140,6 +146,16 @@ def _evidence_note(record: dict[str, Any], *, compact: bool = False) -> str:
     )
 
 
+def _card_evidence_note(record: dict[str, Any]) -> str:
+    classification = record["source_evidence_classification"]
+    if classification == "directly-observed":
+        return ""
+    return (
+        f'<p class="evidence-note" data-evidence-classification="{escape(classification)}">'
+        f"{escape(_CARD_EVIDENCE_NOTES[classification])}</p>"
+    )
+
+
 def _card(record: dict[str, Any]) -> str:
     return f"""
 <article class="catalog-card" data-catalog-record="{escape(record['id'])}">
@@ -148,7 +164,7 @@ def _card(record: dict[str, Any]) -> str:
   <h2><a href="{escape(_record_href(record))}">{escape(record['title'])}</a></h2>
   <p class="rating">★ {record['rating']:.1f} · Offline reviews</p>
   <p>{escape(record['level'])} · {escape(record['type'].title())} · {escape(record['duration'])}</p>
-  {f'<p class="evidence-note" data-evidence-classification="{escape(record["source_evidence_classification"])}">Offline simulated details — not source-verified.</p>' if record['source_evidence_classification'] != 'directly-observed' else ''}
+  {_card_evidence_note(record)}
 </article>"""
 
 
