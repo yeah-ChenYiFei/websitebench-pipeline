@@ -67,5 +67,5 @@ def page(
     rendered_title = document_title or f"{title} | Coursera"
     classes = " ".join(part for part in ("wb-page", body_class) if part)
     return f"""<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(rendered_title)}</title><link rel="stylesheet" href="/static/desktop-base.css"><link rel="stylesheet" href="/static/desktop-chrome.css"><link rel="stylesheet" href="/static/site.css"><link rel="stylesheet" href="/static/components.css"><link rel="stylesheet" href="/static/auth.css"><link rel="stylesheet" href="/static/checkout.css"></head>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(rendered_title)}</title><link rel="stylesheet" href="/static/site.css"><link rel="stylesheet" href="/static/components.css"><link rel="stylesheet" href="/static/auth.css"><link rel="stylesheet" href="/static/checkout.css"><link rel="stylesheet" href="/static/desktop-base.css"><link rel="stylesheet" href="/static/desktop-chrome.css"><link rel="stylesheet" href="/static/catalog-desktop.css"></head>
 <body class="{escape(classes)}">{header(authenticated=authenticated)}<main>{body}</main>{footer()}</body></html>"""

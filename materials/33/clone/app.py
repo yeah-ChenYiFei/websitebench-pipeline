@@ -46,6 +46,20 @@ SUBJECTS = {
 }
 SUBJECT_SLUGS = {subject: slug for slug, subject in SUBJECTS.items()}
 
+SUBJECTS_ZH = {
+    "Arts and Humanities": "艺术与人文",
+    "Business": "商业",
+    "Computer Science": "计算机科学",
+    "Data Science": "数据科学",
+    "Health": "健康",
+    "Information Technology": "信息技术",
+    "Language Learning": "语言学习",
+    "Math and Logic": "数学与逻辑",
+    "Personal Development": "个人发展",
+    "Physical Science and Engineering": "物理科学与工程",
+    "Social Sciences": "社会科学",
+}
+
 SUBJECT_ICONS = {
     "arts-and-humanities": "✎",
     "business": "▣",
@@ -389,7 +403,7 @@ def _card(record: dict[str, Any]) -> str:
   <div class="card-art" aria-hidden="true"><span>{escape(record["subject"][0])}</span></div>
   <p class="provider">{escape(record["provider"])}</p>
   <h2><a href="{escape(_record_href(record))}">{escape(record["title"])}</a></h2>
-  <p class="rating">★ {record["rating"]:.1f} · Offline reviews</p>
+  <p class="rating">★ {record["rating"]:.1f} · 评分与评论</p>
   <p>{escape(record["level"])} · {escape(record["type"].title())} · {escape(record["duration"])}</p>
   {_card_evidence_note(record)}
 </article>"""
@@ -397,7 +411,7 @@ def _card(record: dict[str, Any]) -> str:
 
 def _card_grid(records: list[dict[str, Any]]) -> str:
     return (
-        '<div class="card-grid">'
+        '<div class="card-grid course-collection">'
         + "".join(_card(record) for record in records)
         + "</div>"
     )
@@ -405,9 +419,9 @@ def _card_grid(records: list[dict[str, Any]]) -> str:
 
 def _category_pills() -> str:
     return (
-        '<nav class="category-pills" aria-label="Browse subjects">'
+        '<nav class="subject-tile-grid" aria-label="按主题浏览课程">'
         + "".join(
-            f'<a href="/browse/{slug}"><span aria-hidden="true">{SUBJECT_ICONS[slug]}</span>{escape(subject)}</a>'
+            f'<a class="subject-tile" href="/browse/{slug}"><span class="subject-tile-icon" aria-hidden="true">{SUBJECT_ICONS[slug]}</span>{escape(SUBJECTS_ZH[subject])}</a>'
             for slug, subject in SUBJECTS.items()
         )
         + "</nav>"
@@ -489,16 +503,14 @@ def healthz() -> dict[str, object]:
 def home(request: Request) -> str:
     catalog = load_catalog_seed()
     body = f"""
-<section class="home-hero"><div><p class="eyebrow">Professional learning for everyone</p><h1>Learn without limits</h1><p>Build skills with flexible, offline courses and a deterministic local learning experience.</p><a class="primary-button" href="/browse">Explore the catalog</a></div><img src="/static/hero-learning.svg" alt="Learners building new skills"></section>
-<section class="section"><p class="eyebrow">New and popular</p><h2>Courses and specializations for your goals</h2>{_card_grid(catalog[:8])}</section>
-<section class="subject-band"><h2>Explore by subject</h2>{_category_pills()}</section>
-<section class="auth-hash-panel" id="login"><h2>Log in to continue learning</h2><p>This public entry does not accept credentials yet.</p><a class="primary-button" href="/login">Open standalone login</a><a class="close-link" href="#top">Close</a></section>
-<section class="auth-hash-panel" id="signup"><h2>Join Coursera locally</h2><p>Review the offline account fields and verification guidance.</p><a class="primary-button" href="/signup">Open standalone signup</a><a class="close-link" href="#top">Close</a></section>"""
+<section class="catalog-hero"><div><p class="eyebrow">适合每一位学习者</p><h1>学习新技能，开启更多可能</h1><p>从顶尖大学和公司提供的课程中，按自己的节奏学习。此站点使用可持久化的本地离线学习数据。</p><a class="wb-primary" href="/browse">探索课程</a></div><div class="catalog-hero-visual" aria-hidden="true"></div></section>
+<section class="wb-section"><p class="eyebrow">热门推荐</p><h2>为你的目标选择课程和专项课程</h2>{_card_grid(catalog[:8])}</section>
+<section class="wb-section"><h2>按主题浏览课程</h2>{_category_pills()}</section>"""
     return _page(
         request,
         "Online Courses, Certificates, & Degrees",
         body,
-        body_class="home",
+        body_class="catalog-landing",
         document_title="Coursera | Online Courses, Certificates, & Degrees",
     )
 
@@ -520,21 +532,21 @@ def browse(request: Request) -> str:
     remaining_records = [
         record for record in catalog if record["id"] not in popular_ids
     ]
-    popular_filters = """<nav class="popular-filters" aria-label="Most popular categories"><strong>All</strong><a href="/browse/business">Business</a><a href="/browse/data-science">Data Science</a><a href="/browse/information-technology">Information Technology</a><a href="/browse/computer-science">Computer Science</a></nav>"""
+    popular_filters = """<nav class="popular-filters" aria-label="热门课程分类"><strong>全部</strong><a href="/browse/business">商业</a><a href="/browse/data-science">数据科学</a><a href="/browse/information-technology">信息技术</a><a href="/browse/computer-science">计算机科学</a></nav>"""
     popular = (
         '<div class="card-grid popular-grid">'
         + "".join(_card(record) for record in popular_records)
-        + '</div><details class="more-popular"><summary>Show 8 more</summary><div class="card-grid expanded-popular-grid">'
+        + '</div><details class="more-popular"><summary>显示更多课程</summary><div class="card-grid expanded-popular-grid">'
         + "".join(_card(record) for record in remaining_records[:8])
         + "</div></details>"
     )
-    roles = """<section class="browse-roles"><div class="role-filters"><strong>Level: Beginner</strong><span>Popular</span><span>Software Engineering &amp; IT</span><span>Business</span><span>Sales &amp; Marketing</span></div><h2>Explore roles</h2><p>Find deterministic offline learning paths by role and skill.</p></section>"""
-    body = f"""<section class="page-heading browse-heading"><h1>Explore Categories</h1>{_category_pills()}</section><section class="section popular-section"><h2>Most popular</h2>{popular_filters}{popular}</section>{roles}"""
+    roles = """<section class="wb-section browse-roles"><div class="role-filters"><strong>级别：初级</strong><span>热门</span><span>软件工程与 IT</span><span>商业</span><span>销售与营销</span></div><h2>探索职业方向</h2><p>按职业角色和技能发现可重复使用的本地学习路径。</p></section>"""
+    body = f"""<section class="catalog-heading"><h1>按主题浏览课程</h1><p>探索课程、专项课程和灵活的学习路径。</p></section><section class="wb-section"><h2>热门课程</h2>{popular_filters}{popular}</section><section class="wb-section"><h2>探索全部主题</h2>{_category_pills()}</section>{roles}"""
     return _page(
         request,
         "Online Course Catalog by Topic and Skill",
         body,
-        body_class="browse-page",
+        body_class="browse-page catalog-landing",
     )
 
 
@@ -544,7 +556,8 @@ def browse_category(request: Request, category: str) -> str:
     if subject is None:
         raise HTTPException(status_code=404)
     records = [record for record in load_catalog_seed() if record["subject"] == subject]
-    body = f"""<nav class="breadcrumbs"><a href="/browse">Browse</a><span>›</span>{escape(subject)}</nav><section class="page-heading"><h1>{escape(subject)}</h1><p>Explore flexible courses and build practical skills at your own pace.</p></section><section class="section"><h2>Most popular</h2>{_card_grid(records)}</section>"""
+    localized_subject = SUBJECTS_ZH[subject]
+    body = f"""<nav class="catalog-breadcrumbs"><a href="/browse">浏览</a><span>›</span>{escape(localized_subject)}</nav><section class="catalog-heading"><h1>{escape(localized_subject)}</h1><p>探索灵活课程，按自己的节奏培养实用技能。</p></section><section class="wb-section"><h2>热门课程</h2>{_card_grid(records)}</section>"""
     return _page(request, f"{subject} Online Courses", body)
 
 
@@ -576,23 +589,25 @@ def search(
     rating_value = "" if rating is None else f"{rating:g}"
     form = f"""
 <form class="filters" action="/search" method="get">
-  <label class="search-wide">Search<input name="q" value="{escape(q)}" placeholder="Course, topic, or skill"></label>
-  {_select("category", "Category", list(SUBJECTS), category)}
-  {_select("level", "Level", ["Beginner", "Intermediate", "Advanced", "Mixed"], level)}
-  <label>Topic<input name="topic" value="{escape(topic)}" placeholder="e.g. Neural"></label>
-  {_select("duration", "Duration", sorted({record["duration"] for record in catalog}), duration)}
-  {_select("rating", "Rating", ["4.5", "4.7", "4.8", "4.9"], rating_value)}
-  {_select("language", "Language", sorted({record["language"] for record in catalog}), language)}
-  {_select("schedule", "Schedule", sorted({record["schedule"] for record in catalog}), schedule)}
-  <label>Sort<select name="sort">{_option("title-asc", "Title A–Z", sort)}{_option("title-desc", "Title Z–A", sort)}{_option("rating-desc", "Highest rated", sort)}</select></label>
-  <button class="primary-button" type="submit">Show results</button>
+  <h2>筛选和排序</h2>
+  <label class="search-wide">搜索<input name="q" value="{escape(q)}" placeholder="课程、主题或技能"></label>
+  {_select("category", "主题", list(SUBJECTS), category)}
+  {_select("level", "级别", ["Beginner", "Intermediate", "Advanced", "Mixed"], level)}
+  <label>主题关键词<input name="topic" value="{escape(topic)}" placeholder="例如 Neural"></label>
+  {_select("duration", "课程长度", sorted({record["duration"] for record in catalog}), duration)}
+  {_select("rating", "评分", ["4.5", "4.7", "4.8", "4.9"], rating_value)}
+  {_select("language", "语言", sorted({record["language"] for record in catalog}), language)}
+  {_select("schedule", "学习节奏", sorted({record["schedule"] for record in catalog}), schedule)}
+  <label>排序<select name="sort">{_option("title-asc", "标题 A–Z", sort)}{_option("title-desc", "标题 Z–A", sort)}{_option("rating-desc", "评分最高", sort)}</select></label>
+  <button class="wb-primary" type="submit">显示结果</button>
 </form>"""
     if records:
         result_body = _card_grid(records)
     else:
         clear_query = urlencode({"q": ""})
-        result_body = f"""<div class="empty-state"><h2>No results for “{escape(q)}”</h2><p>Try a broader term or remove a filter.</p><a href="/search?{clear_query}">Clear search</a><a href="/search">Reset all filters</a><a href="/browse">Browse available categories</a></div>"""
-    body = f"""<section class="page-heading search-heading"><p class="eyebrow">Coursera catalog</p><h1>Search learning opportunities</h1></section><section class="search-layout">{form}<div class="results" data-result-count="{len(records)}"><h2>{len(records)} results</h2>{result_body}</div></section>"""
+        recommendations = _card_grid(catalog[:3])
+        result_body = f"""<div class="empty-state"><h2>没有找到与“{escape(q)}”匹配的课程</h2><p>请尝试更宽泛的关键词、移除筛选条件，或浏览全部主题。</p><div class="empty-state-links"><a href="/search?{clear_query}">清除搜索</a><a href="/search">重置全部筛选</a><a href="/browse">浏览可用课程</a></div><section class="recommendations"><h3>推荐课程</h3><p>当前 Coursera 也会针对该关键词显示学习建议；本地 clone 保留一组可浏览的恢复选项。</p>{recommendations}</section></div>"""
+    body = f"""<section class="search-banner"><div><p class="eyebrow">Coursera 课程目录</p><h1>搜索课程</h1></div></section><section class="search-layout">{form}<div class="results" data-result-count="{len(records)}"><h2>{len(records)} 个结果</h2>{result_body}</div></section>"""
     return _page(
         request,
         "Search",

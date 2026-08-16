@@ -24,6 +24,20 @@ SUBJECTS = {
     "social-sciences": "Social Sciences",
 }
 
+SUBJECTS_ZH = {
+    "arts-and-humanities": "艺术与人文",
+    "business": "商业",
+    "computer-science": "计算机科学",
+    "data-science": "数据科学",
+    "health": "健康",
+    "information-technology": "信息技术",
+    "language-learning": "语言学习",
+    "math-and-logic": "数学与逻辑",
+    "personal-development": "个人发展",
+    "physical-science-and-engineering": "物理科学与工程",
+    "social-sciences": "社会科学",
+}
+
 
 def test_home_and_search_use_the_source_observed_document_titles() -> None:
     expected_titles = {
@@ -45,19 +59,19 @@ def test_home_and_search_use_the_source_observed_document_titles() -> None:
 def test_public_home_browse_and_all_subject_routes_render_real_catalog() -> None:
     home = client.get("/")
     assert home.status_code == 200
-    assert "Learn without limits" in home.text
+    assert "学习新技能，开启更多可能" in home.text
     assert 'href="/browse"' in home.text
 
     browse = client.get("/browse")
     assert browse.status_code == 200
-    assert "Explore Categories" in browse.text
+    assert "按主题浏览课程" in browse.text
     for slug, subject in SUBJECTS.items():
         assert f'href="/browse/{slug}"' in browse.text
-        assert subject in browse.text
+        assert SUBJECTS_ZH[slug] in browse.text
 
         category = client.get(f"/browse/{slug}")
         assert category.status_code == 200
-        assert f"<h1>{subject}</h1>" in category.text
+        assert f"<h1>{SUBJECTS_ZH[slug]}</h1>" in category.text
         assert category.text.count('data-catalog-record="') >= 3
 
 
@@ -66,13 +80,13 @@ def test_browse_matches_the_retained_oracle_course_collection_composition() -> N
 
     browse = client.get("/browse")
     assert browse.status_code == 200
-    assert 'aria-label="Most popular categories"' in browse.text
+    assert 'aria-label="热门课程分类"' in browse.text
     for label in (
-        "All",
-        "Business",
-        "Data Science",
-        "Information Technology",
-        "Computer Science",
+        "全部",
+        "商业",
+        "数据科学",
+        "信息技术",
+        "计算机科学",
     ):
         assert f">{label}<" in browse.text
     popular = re.search(
@@ -82,8 +96,8 @@ def test_browse_matches_the_retained_oracle_course_collection_composition() -> N
     )
     assert popular is not None
     assert popular.group(1).count('data-catalog-record="') == 4
-    assert "Show 8 more" in browse.text
-    assert 'class="browse-roles"' in browse.text
+    assert "显示更多课程" in browse.text
+    assert "browse-roles" in browse.text
 
 
 def test_search_combines_every_filter_sorts_server_side_and_recovers_from_no_match() -> (
@@ -143,7 +157,7 @@ def test_search_combines_every_filter_sorts_server_side_and_recovers_from_no_mat
     no_match = client.get("/search", params={"q": "zzzz-no-match-websitebench"})
     assert no_match.status_code == 200
     assert 'data-result-count="0"' in no_match.text
-    assert "No results for" in no_match.text
+    assert "没有找到与“zzzz-no-match-websitebench”匹配的课程" in no_match.text
     assert "zzzz-no-match-websitebench" in no_match.text
     assert 'href="/browse"' in no_match.text
     assert 'href="/search"' in no_match.text
@@ -301,10 +315,8 @@ def test_course_breadcrumb_uses_each_records_real_subject_slug() -> None:
 
 def test_auth_hashes_standalone_shells_recovery_help_and_contact_are_local() -> None:
     home = client.get("/")
-    assert 'href="/login">Log In</a>' in home.text
-    assert 'href="/signup">Join for Free</a>' in home.text
-    assert 'id="login"' in home.text
-    assert 'id="signup"' in home.text
+    assert 'href="/login">登录</a>' in home.text
+    assert 'href="/signup">免费加入</a>' in home.text
 
     login = client.get("/login")
     assert login.status_code == 200
@@ -382,10 +394,12 @@ def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
 
     assert static_paths == {
         "/static/auth.css",
+        "/static/catalog-desktop.css",
         "/static/checkout.css",
         "/static/components.css",
         "/static/deep-learning-mark.svg",
-        "/static/hero-learning.svg",
+        "/static/desktop-base.css",
+        "/static/desktop-chrome.css",
         "/static/site.css",
     }
     for path in static_paths:
