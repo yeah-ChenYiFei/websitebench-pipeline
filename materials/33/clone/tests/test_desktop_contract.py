@@ -120,3 +120,42 @@ def test_catalog_filters_preserve_selected_values_and_real_result_ids(
     assert "筛选和排序" in html
     assert 'value="Beginner" selected' in html
     assert 'data-catalog-record=' in html
+
+
+def test_specialization_shows_observed_trial_and_course_series(
+    desktop_client: TestClient,
+) -> None:
+    """Catch the Deep Learning landing page losing source-observed trial facts."""
+
+    html = desktop_client.get("/specializations/deep-learning").text
+
+    assert "深度学习专项课程" in html
+    assert "5 门课程系列" in html
+    assert "7 天免费试用" in html
+    assert "¥196/月" in html
+
+
+def test_course_exposes_modules_instructors_reviews_and_preview(
+    desktop_client: TestClient,
+) -> None:
+    """Catch the local course detail omitting a route the learner can inspect."""
+
+    html = desktop_client.get("/learn/neural-networks-deep-learning").text
+
+    assert "课程模块" in html
+    assert "讲师" in html
+    assert "评论" in html
+    assert 'href="/learn/neural-networks-deep-learning/preview"' in html
+
+
+def test_not_found_matches_observed_safe_recovery(
+    desktop_client: TestClient,
+) -> None:
+    """Catch a missing route dropping the catalog recovery links."""
+
+    response = desktop_client.get("/websitebench-not-found-33")
+
+    assert response.status_code == 404
+    assert "我们无法找到您要查找的页面" in response.text
+    assert 'href="/browse"' in response.text
+    assert 'href="/search"' in response.text

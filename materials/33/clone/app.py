@@ -335,7 +335,7 @@ def _enrollment_rows(records: list[dict[str, Any]]) -> str:
 
 @app.exception_handler(404)
 async def branded_not_found(request: Request, _exception: Exception) -> HTMLResponse:
-    body = """<section class="not-found"><p class="error-code">404</p><h1>We couldn't find that page</h1><p>The page may have moved, but your offline learning path is still available.</p><div><a class="primary-button" href="/browse">Browse the catalog</a><a class="secondary-button" href="/search">Search courses</a><a class="secondary-button" href="/">Return home</a></div></section>"""
+    body = """<section class="not-found"><p class="error-code">404</p><h1>我们无法找到您要查找的页面</h1><p>页面可能已移动，但您仍可继续浏览课程或重新搜索。</p><div><a class="wb-primary" href="/browse">浏览课程目录</a><a class="secondary-button" href="/search">搜索课程目录</a><a class="secondary-button" href="/">返回首页</a></div></section>"""
     return HTMLResponse(_page(request, "Page not found", body), status_code=404)
 
 
@@ -629,20 +629,20 @@ def deep_learning_specialization(request: Request) -> str:
         if record.get("parent_specialization_id") == specialization["id"]
     ]
     course_list = "".join(
-        f"""<li><span class="course-number">{index}</span><div><p>Course {index}</p><h3><a href="/learn/{escape(record["id"])}">{escape(record["title"])}</a></h3><p>{escape(record["duration"])} · {escape(record["level"])}</p>{_evidence_note(record, compact=True)}</div></li>"""
+        f"""<li><span class="course-number">{index}</span><div><p>课程 {index}</p><h3><a href="/learn/{escape(record["id"])}">{escape(record["title"])}</a></h3><p>{escape(record["duration"])} · {escape(record["level"])}</p>{_evidence_note(record, compact=True)}</div></li>"""
         for index, record in enumerate(components, start=1)
     )
     _backend, _auth, _token, session = _request_session(request)
     enrollment_action = (
-        """<div class="enrollment-actions"><form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><label>Enrollment track<select name="track" required><option value="free">Free track</option><option value="audit">Audit track</option></select></label><button class="secondary-button" type="submit">Save free or audit enrollment</button></form><a class="primary-button" href="/checkout/deep-learning">Choose inferred paid plan</a><p>The paid plan opens a deterministic local-sandbox checkout. No real payment occurs.</p></div>"""
+        """<div class="enrollment-actions"><form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><label>报名轨道<select name="track" required><option value="free">免费学习</option><option value="audit">旁听</option></select></label><button class="secondary-button" type="submit">保存本地报名</button></form><a class="wb-primary" href="/checkout/deep-learning">进入本地结账</a><p>本地结账仅使用 local-sandbox，不会产生真实付款。</p></div>"""
         if session["authenticated"]
-        else '<div class="enrollment-actions"><a class="primary-button" href="/login?next=/checkout/deep-learning">Sign in locally to choose the inferred paid plan</a><a class="secondary-button" href="/login?next=/specializations/deep-learning">Sign in for free or audit enrollment</a></div>'
+        else '<div class="enrollment-actions"><a class="wb-primary" href="/login?next=/checkout/deep-learning">免费注册</a><a class="secondary-button" href="/login?next=/specializations/deep-learning">登录后报名或旁听</a></div>'
     )
     body = f"""
-<nav class="breadcrumbs"><a href="/browse">Browse</a><span>›</span><a href="/browse/data-science">Data Science</a><span>›</span>Deep Learning</nav>
-<section class="program-hero"><div><p class="provider">DeepLearning.AI</p><h1>Deep Learning Specialization</h1><p class="lead">Become a Machine Learning expert. Master the fundamentals of deep learning and break into AI.</p><p>Instructors: <strong>Andrew Ng +2 more</strong> <span class="badge">Top Instructor</span></p>{enrollment_action}</div><img src="/static/deep-learning-mark.svg" alt="Deep Learning program mark"></section>
-<section class="program-facts"><div><strong>5 course series</strong><span>Get in-depth knowledge of a subject</span></div><div><strong>4.8 ★</strong><span>from 147,224 reviews</span></div><div><strong>Intermediate level</strong><span>Recommended experience</span></div><div><strong>Flexible schedule</strong><span>3 months at 10 hours a week</span></div></section>
-<section class="detail-section"><h2>What you'll learn</h2><p>Build and train deep neural networks, analyze model performance, and apply convolutional and sequence models to practical tasks.</p><h2>Courses</h2><ol class="course-series">{course_list}</ol></section>"""
+<nav class="course-breadcrumbs"><a href="/browse">浏览</a><span>›</span><a href="/browse/data-science">数据科学</a><span>›</span>Deep Learning</nav>
+<section class="program-hero"><div><p class="provider">DeepLearning.AI</p><h1>深度学习专项课程</h1><p class="lead">掌握深度学习基础，构建机器学习能力，并把 AI 知识应用到真实问题中。</p><p>讲师：<strong>Andrew Ng 等 3 位讲师</strong> <span class="badge">顶级讲师</span></p><section class="trial-card"><h2>7 天免费试用</h2><p>无限制访问专项课程中的全部课程，可随时取消。</p><p><strong>试用结束后，¥196/月</strong></p>{enrollment_action}</section></div><img src="/static/deep-learning-mark.svg" alt="Deep Learning program mark"></section>
+<section class="program-facts"><div><strong>5 门课程系列</strong><span>系统学习一个主题</span></div><div><strong>4.8 ★</strong><span>来自学习者评分</span></div><div><strong>中级水平</strong><span>建议具备基础经验</span></div><div><strong>灵活安排</strong><span>每周 10 小时，约 3 个月</span></div></section>
+<section class="detail-section"><h2>你将学到什么</h2><p>构建和训练深度神经网络，分析模型表现，并将卷积模型和序列模型用于实践任务。</p><h2>课程系列</h2><ol class="course-series">{course_list}</ol></section>"""
     return _page(
         request,
         "Deep Learning Specialization",
@@ -764,7 +764,7 @@ def course_preview(request: Request, course_id: str) -> str:
     if record is None or record["type"] != "course":
         raise HTTPException(status_code=404)
     first_lesson = record["syllabus"][0]
-    body = f"""<nav class="breadcrumbs"><a href="/learn/{escape(course_id)}">{escape(record["title"])}</a><span>›</span>Preview</nav><section class="preview-shell"><p class="eyebrow">No enrollment required</p><h1>Free preview: {escape(record["title"])}</h1>{_evidence_note(record)}<div class="lesson-player"><span aria-hidden="true">▶</span><div><h2>{escape(first_lesson)}</h2><p>This deterministic offline sample introduces the core ideas and provides a short guided practice activity. Your preview does not create progress or contact any external service.</p></div></div><a class="secondary-button" href="/learn/{escape(course_id)}">Back to course details</a></section>"""
+    body = f"""<nav class="course-breadcrumbs"><a href="/learn/{escape(course_id)}">{escape(record["title"])}</a><span>›</span>免费预览</nav><section class="preview-shell"><p class="eyebrow">无需报名</p><h1>免费预览：{escape(record["title"])}</h1>{_evidence_note(record)}<div class="lesson-player"><span aria-hidden="true">▶</span><div><h2>{escape(first_lesson)}</h2><p>此本地示例介绍核心概念并提供简短练习；预览不会创建学习进度或连接外部服务。</p></div></div><a class="secondary-button" href="/learn/{escape(course_id)}">返回课程详情</a></section>"""
     return _page(request, f"Free preview: {record['title']}", body)
 
 
@@ -778,8 +778,8 @@ def course_detail(request: Request, course_id: str) -> str:
     tracks = "".join(f"<li>{escape(item)}</li>" for item in record["enrollment_tracks"])
     subject_slug = SUBJECT_SLUGS[record["subject"]]
     specialization_membership = (
-        '<p>This course is part of the <a href="/specializations/deep-learning">'
-        "Deep Learning Specialization</a></p>"
+        '<p>此课程属于 <a href="/specializations/deep-learning">'
+        "Deep Learning 专项课程</a></p>"
         if record.get("parent_specialization_id") == "deep-learning-specialization"
         else ""
     )
@@ -788,14 +788,14 @@ def course_detail(request: Request, course_id: str) -> str:
     )
     _backend, _auth, _token, session = _request_session(request)
     enrollment_action = (
-        f"""<form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="{escape(enrollment_course_id)}"><label>Enrollment track<select name="track" required><option value="free">Free track</option><option value="audit">Audit track</option></select></label><button class="primary-button" type="submit">Enroll locally</button></form>"""
+        f"""<form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="{escape(enrollment_course_id)}"><label>报名轨道<select name="track" required><option value="free">免费学习</option><option value="audit">旁听</option></select></label><button class="wb-primary" type="submit">保存本地报名</button></form>"""
         if session["authenticated"]
-        else f'<a class="primary-button" href="/login?next=/learn/{escape(record["id"])}">Enroll for free</a>'
+        else f'<a class="wb-primary" href="/login?next=/learn/{escape(record["id"])}">免费注册</a>'
     )
     body = f"""
-<nav class="breadcrumbs"><a href="/browse">Browse</a><span>›</span><a href="/browse/{escape(subject_slug)}">{escape(record["subject"])}</a><span>›</span>{escape(record["title"])}</nav>
-<section class="course-hero" data-course-detail="{escape(record["id"])}"><div><p class="eyebrow">{escape(record["provider"])}</p><h1>{escape(record["title"])}</h1>{specialization_membership}{_evidence_note(record)}<p><strong>★ {record["rating"]:.1f}</strong> · {escape(record["level"])} · {escape(record["duration"])} · {escape(record["schedule"])}</p>{enrollment_action}<a class="secondary-button" href="/learn/{escape(record["id"])}/preview">Preview course</a></div><div class="course-art">{escape(record["title"][0])}</div></section>
-<section class="detail-grid"><article><h2>Syllabus</h2><ol>{syllabus}</ol></article><article><h2>Instructors</h2><p>{instructors}</p></article><article><h2>Prerequisites</h2><p>{escape(record["prerequisites"])}</p></article><article><h2>Reviews</h2><p>{escape(record["reviews_summary"])}</p></article><article><h2>Pricing</h2><p>{escape(record["pricing"])}</p></article><article><h2>Enrollment options</h2><ul>{tracks}</ul></article></section>"""
+<nav class="course-breadcrumbs"><a href="/browse">浏览</a><span>›</span><a href="/browse/{escape(subject_slug)}">{escape(SUBJECTS_ZH[record["subject"]])}</a><span>›</span>{escape(record["title"])}</nav>
+<section class="course-hero" data-course-detail="{escape(record["id"])}"><div><p class="eyebrow">{escape(record["provider"])}</p><h1>{escape(record["title"])}</h1>{specialization_membership}{_evidence_note(record)}<p><strong>★ {record["rating"]:.1f}</strong> · {escape(record["level"])} · {escape(record["duration"])} · {escape(record["schedule"])}</p>{enrollment_action}<a class="secondary-button" href="/learn/{escape(record["id"])}/preview">预览课程</a></div><div class="course-art">{escape(record["title"][0])}</div></section>
+<section class="detail-grid"><article><h2>课程模块</h2><ol>{syllabus}</ol></article><article><h2>讲师</h2><p>{instructors}</p></article><article><h2>先修知识</h2><p>{escape(record["prerequisites"])}</p></article><article><h2>评论</h2><p>{escape(record["reviews_summary"])}</p></article><article><h2>价格</h2><p>{escape(record["pricing"])}</p></article><article><h2>报名选项</h2><ul>{tracks}</ul></article></section>"""
     return _page(request, record["title"], body)
 
 
@@ -1305,7 +1305,7 @@ async def recovery_complete(request: Request) -> Response:
 
 @app.get("/help", response_class=HTMLResponse)
 def help_center(request: Request) -> str:
-    body = """<section class="page-heading help-hero"><p class="eyebrow">Public support</p><h1>Learner Help Center</h1><p>Find safe, local guidance without opening an external support origin.</p></section><section class="support-grid"><article><h2>Courses and enrollment</h2><p>Browse categories, search learning opportunities, preview courses, and understand offline enrollment options.</p><a href="/browse">Browse the catalog</a></article><article><h2>Account access</h2><p>Review sign-in, registration, and password-recovery guidance. Never enter real credentials in this offline fixture.</p><a href="/login">Account access help</a></article><article><h2>Failed actions</h2><p>Clear filters, recover from missing pages, and return safely to available public records.</p><a href="/search">Search again</a></article><article id="terms"><h2>Terms of Use</h2><p>This is a deterministic WebsiteBench offline reconstruction with no publication, legal, or source-account effect.</p></article></section>"""
+    body = """<section class="help-hero"><p class="eyebrow">公开支持</p><h1>学习者帮助中心</h1><p>获取课程、账户访问和失败操作的安全本地指引。</p></section><section class="support-grid"><article><h2>课程与报名</h2><p>浏览主题、搜索课程、预览教材，并了解本地报名选项。</p><a href="/browse">浏览课程目录</a></article><article><h2>账户访问</h2><p>查看登录、注册和密码重置指引。请勿在此离线 fixture 中输入真实凭据。</p><a href="/login">账户访问帮助</a></article><article><h2>失败的操作</h2><p>清除筛选、从缺失页面恢复，并安全返回可用记录。</p><a href="/search">重新搜索</a></article><article id="terms"><h2>使用条款</h2><p>这是确定性的 WebsiteBench 离线复刻，不会产生发布、法律或源站账号效果。</p></article></section>"""
     return _page(request, "Learner Help Center", body)
 
 

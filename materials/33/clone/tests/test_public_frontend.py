@@ -202,11 +202,11 @@ def test_specialization_component_details_and_free_preview_are_complete() -> Non
     )
     specialization = client.get("/specializations/deep-learning")
     assert specialization.status_code == 200
-    assert "<h1>Deep Learning Specialization</h1>" in specialization.text
-    assert "5 course series" in specialization.text
+    assert "<h1>深度学习专项课程</h1>" in specialization.text
+    assert "5 门课程系列" in specialization.text
     assert "4.8" in specialization.text
-    assert "Intermediate level" in specialization.text
-    assert "3 months at 10 hours a week" in specialization.text
+    assert "中级水平" in specialization.text
+    assert "每周 10 小时，约 3 个月" in specialization.text
     for course_id in component_ids:
         assert f'href="/learn/{course_id}"' in specialization.text
 
@@ -214,19 +214,19 @@ def test_specialization_component_details_and_free_preview_are_complete() -> Non
         assert detail.status_code == 200
         assert 'data-course-detail="' in detail.text
         for section in (
-            "Syllabus",
-            "Instructors",
-            "Prerequisites",
-            "Reviews",
-            "Pricing",
-            "Enrollment options",
+            "课程模块",
+            "讲师",
+            "先修知识",
+            "评论",
+            "价格",
+            "报名选项",
         ):
             assert f">{section}<" in detail.text
         assert f'href="/learn/{course_id}/preview"' in detail.text
 
     preview = client.get("/learn/neural-networks-deep-learning/preview")
     assert preview.status_code == 200
-    assert "<h1>Free preview" in preview.text
+    assert "<h1>免费预览：" in preview.text
     assert "Neural network foundations" in preview.text
     assert 'href="/learn/neural-networks-deep-learning"' in preview.text
 
@@ -297,14 +297,14 @@ def test_catalog_cards_visibly_name_each_non_direct_evidence_classification() ->
 
 def test_course_breadcrumb_uses_each_records_real_subject_slug() -> None:
     expected = {
-        "business-strategy": ("business", "Business"),
-        "public-health": ("health", "Health"),
+        "business-strategy": ("business", "商业"),
+        "public-health": ("health", "健康"),
     }
     for course_id, (subject_slug, subject_name) in expected.items():
         detail = client.get(f"/learn/{course_id}")
         assert detail.status_code == 200
         breadcrumb = re.search(
-            r'<nav class="breadcrumbs">(.*?)</nav>', detail.text, re.S
+            r'<nav class="course-breadcrumbs">(.*?)</nav>', detail.text, re.S
         )
         assert breadcrumb is not None
         assert f'href="/browse/{subject_slug}">{subject_name}</a>' in breadcrumb.group(
@@ -344,8 +344,8 @@ def test_auth_hashes_standalone_shells_recovery_help_and_contact_are_local() -> 
     help_page = client.get("/help")
     assert help_page.status_code == 200
     assert "Learner Help Center" in help_page.text
-    assert "Account access" in help_page.text
-    assert "Failed actions" in help_page.text
+    assert "账户访问" in help_page.text
+    assert "失败的操作" in help_page.text
 
     contact = client.get("/about/contact")
     assert contact.status_code == 200
@@ -357,7 +357,7 @@ def test_auth_hashes_standalone_shells_recovery_help_and_contact_are_local() -> 
 def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
     missing = client.get("/websitebench-task3-missing-deep-link")
     assert missing.status_code == 404
-    assert "We couldn't find that page" in missing.text
+    assert "我们无法找到您要查找的页面" in missing.text
     assert 'href="/"' in missing.text
     assert 'href="/browse"' in missing.text
     assert 'href="/search"' in missing.text
@@ -397,6 +397,7 @@ def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
         "/static/catalog-desktop.css",
         "/static/checkout.css",
         "/static/components.css",
+        "/static/course-desktop.css",
         "/static/deep-learning-mark.svg",
         "/static/desktop-base.css",
         "/static/desktop-chrome.css",
