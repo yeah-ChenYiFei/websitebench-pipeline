@@ -104,6 +104,35 @@ def test_search_combines_every_filter_sorts_server_side_and_recovers_from_no_mat
     assert 'href="/search"' in no_match.text
 
 
+def test_language_and_schedule_filters_each_narrow_results_and_combine() -> None:
+    spanish = client.get("/search", params={"language": "Spanish"})
+    fixed = client.get("/search", params={"schedule": "Fixed schedule"})
+    combined = client.get(
+        "/search",
+        params={"language": "Spanish", "schedule": "Fixed schedule"},
+    )
+
+    assert spanish.status_code == fixed.status_code == combined.status_code == 200
+    assert re.findall(r'data-catalog-record="([^"]+)"', spanish.text) == [
+        "algorithms",
+        "business-strategy",
+        "nutrition-wellness",
+        "spanish-beginners",
+    ]
+    assert re.findall(r'data-catalog-record="([^"]+)"', fixed.text) == [
+        "financial-accounting",
+        "medical-neuroscience",
+        "web-development",
+        "spanish-beginners",
+    ]
+    assert re.findall(r'data-catalog-record="([^"]+)"', combined.text) == [
+        "spanish-beginners"
+    ]
+    assert 'data-result-count="4"' in spanish.text
+    assert 'data-result-count="4"' in fixed.text
+    assert 'data-result-count="1"' in combined.text
+
+
 def test_specialization_component_details_and_free_preview_are_complete() -> None:
     component_ids = (
         "neural-networks-deep-learning",
@@ -141,6 +170,59 @@ def test_specialization_component_details_and_free_preview_are_complete() -> Non
     assert "<h1>Free preview" in preview.text
     assert "Neural network foundations" in preview.text
     assert 'href="/learn/neural-networks-deep-learning"' in preview.text
+
+
+def test_non_direct_catalog_facts_are_visibly_disclosed_on_every_public_surface() -> None:
+    business_card = client.get("/browse/business")
+    assert 'data-evidence-classification="truthful-simulation"' in business_card.text
+    assert "Offline simulated details — not source-verified." in business_card.text
+
+    business_detail = client.get("/learn/business-strategy")
+    assert 'href="/specializations/deep-learning"' not in business_detail.text
+
+    specialization = client.get("/specializations/deep-learning")
+    assert "Source-observed course structure; displayed details are simulated." in (
+        specialization.text
+    )
+    assert "Inferred course structure; displayed details are simulated." in (
+        specialization.text
+    )
+
+    expected_notes = {
+        "business-strategy": (
+            "Displayed catalog details are a deterministic offline simulation, "
+            "not verified source facts."
+        ),
+        "improving-deep-neural-networks": (
+            "Only the public course structure was observed; displayed details are "
+            "a deterministic offline simulation."
+        ),
+        "sequence-models": (
+            "Course architecture was inferred; displayed details are a deterministic "
+            "offline simulation."
+        ),
+    }
+    for course_id, note in expected_notes.items():
+        detail = client.get(f"/learn/{course_id}")
+        preview = client.get(f"/learn/{course_id}/preview")
+        assert note in detail.text
+        assert note in preview.text
+
+
+def test_course_breadcrumb_uses_each_records_real_subject_slug() -> None:
+    expected = {
+        "business-strategy": ("business", "Business"),
+        "public-health": ("health", "Health"),
+    }
+    for course_id, (subject_slug, subject_name) in expected.items():
+        detail = client.get(f"/learn/{course_id}")
+        assert detail.status_code == 200
+        breadcrumb = re.search(
+            r'<nav class="breadcrumbs">(.*?)</nav>', detail.text, re.S
+        )
+        assert breadcrumb is not None
+        assert f'href="/browse/{subject_slug}">{subject_name}</a>' in breadcrumb.group(1)
+        assert 'href="/browse/data-science"' not in breadcrumb.group(1)
 
 
 def test_auth_hashes_standalone_shells_recovery_help_and_contact_are_local() -> None:

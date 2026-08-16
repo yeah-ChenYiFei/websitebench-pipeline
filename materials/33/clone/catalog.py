@@ -58,6 +58,28 @@ _OBSERVED_COMPONENT_IDS = {
     "convolutional-neural-networks",
 }
 
+_LANGUAGE_BY_ID = {
+    "algorithms": "Spanish",
+    "business-strategy": "Spanish",
+    "digital-marketing": "French",
+    "nutrition-wellness": "Spanish",
+    "public-health": "French",
+    "spanish-beginners": "Spanish",
+    "french-communication": "French",
+    "web-development": "French",
+}
+
+_SCHEDULE_BY_ID = {
+    "algorithms": "Self-paced",
+    "business-strategy": "Self-paced",
+    "financial-accounting": "Fixed schedule",
+    "mandarin-basics": "Self-paced",
+    "medical-neuroscience": "Fixed schedule",
+    "nutrition-wellness": "Self-paced",
+    "spanish-beginners": "Fixed schedule",
+    "web-development": "Fixed schedule",
+}
+
 
 def _complete_record(record: dict[str, Any], index: int) -> dict[str, Any]:
     """Add explicit offline detail fields without claiming unavailable source facts."""
@@ -109,8 +131,8 @@ def _complete_record(record: dict[str, Any], index: int) -> dict[str, Any]:
                 ),
             }
         )
-    completed["language"] = "English"
-    completed["schedule"] = "Flexible schedule"
+    completed["language"] = _LANGUAGE_BY_ID.get(record["id"], "English")
+    completed["schedule"] = _SCHEDULE_BY_ID.get(record["id"], "Flexible schedule")
     return completed
 
 

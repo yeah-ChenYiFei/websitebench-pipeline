@@ -31,6 +31,7 @@ SUBJECTS = {
     "physical-science-and-engineering": "Physical Science and Engineering",
     "social-sciences": "Social Sciences",
 }
+SUBJECT_SLUGS = {subject: slug for slug, subject in SUBJECTS.items()}
 
 SUBJECT_ICONS = {
     "arts-and-humanities": "✎",
@@ -103,6 +104,42 @@ def _record_href(record: dict[str, Any]) -> str:
     return f"/learn/{record['id']}"
 
 
+_EVIDENCE_NOTES = {
+    "structural-only": (
+        "Only the public course structure was observed; displayed details are "
+        "a deterministic offline simulation."
+    ),
+    "inferred-architecture": (
+        "Course architecture was inferred; displayed details are a deterministic "
+        "offline simulation."
+    ),
+    "truthful-simulation": (
+        "Displayed catalog details are a deterministic offline simulation, "
+        "not verified source facts."
+    ),
+}
+
+_SERIES_EVIDENCE_NOTES = {
+    "structural-only": "Source-observed course structure; displayed details are simulated.",
+    "inferred-architecture": "Inferred course structure; displayed details are simulated.",
+    "truthful-simulation": "Course and displayed details are an offline simulation.",
+}
+
+
+def _evidence_note(record: dict[str, Any], *, compact: bool = False) -> str:
+    classification = record["source_evidence_classification"]
+    if classification == "directly-observed":
+        return ""
+    if compact:
+        message = _SERIES_EVIDENCE_NOTES[classification]
+    else:
+        message = _EVIDENCE_NOTES[classification]
+    return (
+        f'<p class="evidence-note" data-evidence-classification="{escape(classification)}">'
+        f"{escape(message)}</p>"
+    )
+
+
 def _card(record: dict[str, Any]) -> str:
     return f"""
 <article class="catalog-card" data-catalog-record="{escape(record['id'])}">
@@ -111,6 +148,7 @@ def _card(record: dict[str, Any]) -> str:
   <h2><a href="{escape(_record_href(record))}">{escape(record['title'])}</a></h2>
   <p class="rating">★ {record['rating']:.1f} · Offline reviews</p>
   <p>{escape(record['level'])} · {escape(record['type'].title())} · {escape(record['duration'])}</p>
+  {f'<p class="evidence-note" data-evidence-classification="{escape(record["source_evidence_classification"])}">Offline simulated details — not source-verified.</p>' if record['source_evidence_classification'] != 'directly-observed' else ''}
 </article>"""
 
 
@@ -283,7 +321,7 @@ def deep_learning_specialization() -> str:
         if record.get("parent_specialization_id") == specialization["id"]
     ]
     course_list = "".join(
-        f"""<li><span class="course-number">{index}</span><div><p>Course {index}</p><h3><a href="/learn/{escape(record['id'])}">{escape(record['title'])}</a></h3><p>{escape(record['duration'])} · {escape(record['level'])}</p></div></li>"""
+        f"""<li><span class="course-number">{index}</span><div><p>Course {index}</p><h3><a href="/learn/{escape(record['id'])}">{escape(record['title'])}</a></h3><p>{escape(record['duration'])} · {escape(record['level'])}</p>{_evidence_note(record, compact=True)}</div></li>"""
         for index, record in enumerate(components, start=1)
     )
     body = f"""
@@ -300,7 +338,7 @@ def course_preview(course_id: str) -> str:
     if record is None or record["type"] != "course":
         raise HTTPException(status_code=404)
     first_lesson = record["syllabus"][0]
-    body = f"""<nav class="breadcrumbs"><a href="/learn/{escape(course_id)}">{escape(record['title'])}</a><span>›</span>Preview</nav><section class="preview-shell"><p class="eyebrow">No enrollment required</p><h1>Free preview: {escape(record['title'])}</h1><div class="lesson-player"><span aria-hidden="true">▶</span><div><h2>{escape(first_lesson)}</h2><p>This deterministic offline sample introduces the core ideas and provides a short guided practice activity. Your preview does not create progress or contact any external service.</p></div></div><a class="secondary-button" href="/learn/{escape(course_id)}">Back to course details</a></section>"""
+    body = f"""<nav class="breadcrumbs"><a href="/learn/{escape(course_id)}">{escape(record['title'])}</a><span>›</span>Preview</nav><section class="preview-shell"><p class="eyebrow">No enrollment required</p><h1>Free preview: {escape(record['title'])}</h1>{_evidence_note(record)}<div class="lesson-player"><span aria-hidden="true">▶</span><div><h2>{escape(first_lesson)}</h2><p>This deterministic offline sample introduces the core ideas and provides a short guided practice activity. Your preview does not create progress or contact any external service.</p></div></div><a class="secondary-button" href="/learn/{escape(course_id)}">Back to course details</a></section>"""
     return _page(f"Free preview: {record['title']}", body)
 
 
@@ -312,9 +350,16 @@ def course_detail(course_id: str) -> str:
     syllabus = "".join(f"<li>{escape(item)}</li>" for item in record["syllabus"])
     instructors = ", ".join(escape(item) for item in record["instructors"])
     tracks = "".join(f"<li>{escape(item)}</li>" for item in record["enrollment_tracks"])
+    subject_slug = SUBJECT_SLUGS[record["subject"]]
+    specialization_membership = (
+        '<p>This course is part of the <a href="/specializations/deep-learning">'
+        "Deep Learning Specialization</a></p>"
+        if record.get("parent_specialization_id") == "deep-learning-specialization"
+        else ""
+    )
     body = f"""
-<nav class="breadcrumbs"><a href="/browse">Browse</a><span>›</span><a href="/browse/data-science">{escape(record['subject'])}</a><span>›</span>{escape(record['title'])}</nav>
-<section class="course-hero" data-course-detail="{escape(record['id'])}"><div><p class="eyebrow">{escape(record['provider'])}</p><h1>{escape(record['title'])}</h1><p>This course is part of the <a href="/specializations/deep-learning">Deep Learning Specialization</a></p><p><strong>★ {record['rating']:.1f}</strong> · {escape(record['level'])} · {escape(record['duration'])} · {escape(record['schedule'])}</p><a class="primary-button" href="/login?next=/learn/{escape(record['id'])}">Enroll for free</a><a class="secondary-button" href="/learn/{escape(record['id'])}/preview">Preview course</a></div><div class="course-art">{escape(record['title'][0])}</div></section>
+<nav class="breadcrumbs"><a href="/browse">Browse</a><span>›</span><a href="/browse/{escape(subject_slug)}">{escape(record['subject'])}</a><span>›</span>{escape(record['title'])}</nav>
+<section class="course-hero" data-course-detail="{escape(record['id'])}"><div><p class="eyebrow">{escape(record['provider'])}</p><h1>{escape(record['title'])}</h1>{specialization_membership}{_evidence_note(record)}<p><strong>★ {record['rating']:.1f}</strong> · {escape(record['level'])} · {escape(record['duration'])} · {escape(record['schedule'])}</p><a class="primary-button" href="/login?next=/learn/{escape(record['id'])}">Enroll for free</a><a class="secondary-button" href="/learn/{escape(record['id'])}/preview">Preview course</a></div><div class="course-art">{escape(record['title'][0])}</div></section>
 <section class="detail-grid"><article><h2>Syllabus</h2><ol>{syllabus}</ol></article><article><h2>Instructors</h2><p>{instructors}</p></article><article><h2>Prerequisites</h2><p>{escape(record['prerequisites'])}</p></article><article><h2>Reviews</h2><p>{escape(record['reviews_summary'])}</p></article><article><h2>Pricing</h2><p>{escape(record['pricing'])}</p></article><article><h2>Enrollment options</h2><ul>{tracks}</ul></article></section>"""
     return _page(record["title"], body)
 
