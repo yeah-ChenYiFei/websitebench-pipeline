@@ -87,7 +87,7 @@ def _header(*, authenticated: bool = False) -> str:
         '<a class="join-placeholder" href="/signup">Join for Free</a>'
     )
     return f"""
-<div class="audience-bar"><strong>For Individuals</strong><span>For Businesses</span><span>For Universities</span><span>For Governments</span></div>
+<div class="audience-bar"><strong>为个人</strong><span>为商务</span><span>为大学</span><span>为政府</span></div>
 <header class="site-header">
   <a class="wordmark" href="/" aria-label="Coursera home">coursera</a>
   <a class="nav-link" href="/browse">Explore <span aria-hidden="true">⌄</span></a>
@@ -123,7 +123,7 @@ def _page(
 ) -> str:
     rendered_title = document_title or f"{title} | Coursera"
     return f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(rendered_title)}</title><link rel="stylesheet" href="/static/site.css"><link rel="stylesheet" href="/static/components.css"><link rel="stylesheet" href="/static/auth.css"><link rel="stylesheet" href="/static/checkout.css"></head>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(rendered_title)}</title><link rel="stylesheet" href="/static/site.css"><link rel="stylesheet" href="/static/components.css"><link rel="stylesheet" href="/static/auth.css"><link rel="stylesheet" href="/static/checkout.css"></head>
 <body class="{escape(body_class)}">{_header(authenticated=_request_authenticated(request))}<main>{body}</main>{_footer()}</body></html>"""
 
 
@@ -656,6 +656,13 @@ def checkout_plan(request: Request) -> HTMLResponse:
         return _permission_page(request, "Sign in before choosing a checkout plan")
     body = f"""<nav class="breadcrumbs"><a href="/specializations/deep-learning">Deep Learning Specialization</a><span>›</span>Plan</nav><section class="checkout-shell"><p class="eyebrow">Inferred local price</p><h1>Choose the Deep Learning paid plan</h1><p class="safe-note">Authenticated source checkout evidence is unavailable. This USD 49.00 price is explicitly inferred for the deterministic offline clone.</p>{_checkout_totals()}<p><strong>No real purchase or payment will occur.</strong> The generated site backend uses only the local-sandbox adapter.</p><form action="/checkout/deep-learning" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><input type="hidden" name="plan_id" value="deep-learning-specialization-paid"><button class="primary-button" type="submit">Continue to synthetic payment</button></form><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
     return HTMLResponse(_page(request, "Deep Learning checkout plan", body))
+
+
+@app.get("/payments/checkout", response_class=HTMLResponse)
+def source_checkout_alias(request: Request) -> HTMLResponse:
+    """Expose the observed source-shaped checkout entry locally."""
+
+    return checkout_plan(request)
 
 
 @app.post("/checkout/deep-learning")

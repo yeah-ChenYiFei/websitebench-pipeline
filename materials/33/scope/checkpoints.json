@@ -2,8 +2,7 @@
   "schema_version": "offline-clone.checkpoints.v1",
   "status": "frozen",
   "viewports": {
-    "desktop": {"width": 1440, "height": 900},
-    "mobile": {"width": 390, "height": 844}
+    "desktop": {"width": 1191, "height": 979}
   },
   "checkpoints": [
     {"id": "home.loaded.desktop", "route_id": "home", "state": "loaded", "viewport": "desktop", "priority": "p0", "evidence_kind": "current-direct", "acceptance_eligible": false, "verification_kind": "browser-diagnostic"},
@@ -18,8 +17,8 @@
       "verification_kind": "region-visual-diagnostic",
       "visual_contract": {
         "source_artifact_path": "source-evidence/browse.desktop.png",
-        "viewport": {"width": 1440, "height": 900},
-        "comparison_region": {"x": 0, "y": 0, "width": 1440, "height": 900},
+        "viewport": {"width": 1191, "height": 979},
+        "comparison_region": {"x": 0, "y": 0, "width": 1191, "height": 979},
         "metric": "pixel-mae-similarity-v1",
         "threshold": 0.75
       },
