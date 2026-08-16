@@ -4,8 +4,8 @@
     "engine": "sqlite",
     "filename": "33.sqlite3",
     "legacy_unbound_migration": false,
-    "migration_hook": null,
-    "seed_hook": null
+    "migration_hook": "backend.learning_db:migrate",
+    "seed_hook": "backend.learning_db:seed"
   },
   "deployment": {
     "profiles": {

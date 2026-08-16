@@ -2,16 +2,19 @@
 
 from __future__ import annotations
 
+import json
 from html import escape
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlencode
+from urllib.parse import parse_qs, urlencode
 
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 
+from backend import learning_db
 from catalog import load_catalog_seed
+from websitebench.local_clone_auth import AuthError
 
 
 SITE_ID = "33"
@@ -90,6 +93,64 @@ def _page(title: str, body: str, *, body_class: str = "") -> str:
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Coursera</title><link rel="stylesheet" href="/static/site.css"><link rel="stylesheet" href="/static/components.css"><link rel="stylesheet" href="/static/auth.css"></head>
 <body class="{escape(body_class)}">{_header()}<main>{body}</main>{_footer()}</body></html>"""
+
+
+async def _form_values(request: Request) -> dict[str, str]:
+    parsed = parse_qs((await request.body()).decode("utf-8"), keep_blank_values=True)
+    return {key: values[-1] for key, values in parsed.items()}
+
+
+def _request_session(request: Request):
+    backend, auth = learning_db.services()
+    cookie = backend.session_cookie
+    token, session = auth.ensure_session(request.cookies.get(cookie["name"]))
+    return backend, auth, token, session
+
+
+def _set_session_cookie(response: Response, backend, token: str) -> None:
+    cookie = dict(backend.session_cookie)
+    name = cookie.pop("name")
+    response.set_cookie(name, token, **cookie)
+
+
+def _session_html(request: Request, title: str, body: str) -> HTMLResponse:
+    backend, _auth, token, _session = _request_session(request)
+    response = HTMLResponse(_page(title, body))
+    _set_session_cookie(response, backend, token)
+    return response
+
+
+def _auth_failure(message: str, *, status_code: int) -> HTMLResponse:
+    body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Local account</p><h1>We couldn't continue</h1><p class="safe-note">{escape(message)}</p><a href="/login">Return to sign in</a></div></section>"""
+    return HTMLResponse(_page("Account action", body), status_code=status_code)
+
+
+def _synthetic_email(email: str) -> str:
+    normalized = email.strip().casefold()
+    if not normalized.endswith(".test"):
+        raise ValueError("Use a synthetic .test address in this offline clone.")
+    return normalized
+
+
+def _authenticated_subject(request: Request):
+    backend, auth, token, session = _request_session(request)
+    if not session["authenticated"]:
+        raise HTTPException(status_code=401, detail="Sign in with a local account to continue")
+    return backend, auth, token, str(session["account"]["subject_id"])
+
+
+def _permission_page(message: str) -> HTMLResponse:
+    body = f"""<section class="not-found permission-prompt"><p class="eyebrow">Local account required</p><h1>{escape(message)}</h1><p>Sign in with a site-33 .test account. No source account is contacted.</p><a class="primary-button" href="/login">Sign in locally</a></section>"""
+    return HTMLResponse(_page("Sign in required", body), status_code=401)
+
+
+def _enrollment_rows(records: list[dict[str, Any]]) -> str:
+    if not records:
+        return '<div class="empty-state"><h2>No local enrollments yet</h2><a href="/specializations/deep-learning">Explore Deep Learning</a></div>'
+    return "".join(
+        f"""<article class="catalog-card enrollment-card" data-enrollment-id="{record['enrollment_id']}"><p class="eyebrow">{escape(str(record['status']).title())}</p><h2>Deep Learning Specialization</h2><p>{escape(str(record['track']).title())} track</p><p>No checkout or payment was created.</p>{f'<form action="/enrollments/{record["enrollment_id"]}/cancel" method="post"><button type="submit">Cancel enrollment</button></form>' if record['status'] == 'active' else ''}<a href="/learn/neural-networks-deep-learning/lesson/lesson-neural-intro">Open course</a></article>"""
+        for record in records
+    )
 
 
 @app.exception_handler(404)
@@ -327,7 +388,7 @@ def search(
 
 
 @app.get("/specializations/deep-learning", response_class=HTMLResponse)
-def deep_learning_specialization() -> str:
+def deep_learning_specialization(request: Request) -> str:
     specialization = _record_by_id("deep-learning-specialization")
     if specialization is None:
         raise HTTPException(status_code=404)
@@ -340,9 +401,15 @@ def deep_learning_specialization() -> str:
         f"""<li><span class="course-number">{index}</span><div><p>Course {index}</p><h3><a href="/learn/{escape(record['id'])}">{escape(record['title'])}</a></h3><p>{escape(record['duration'])} · {escape(record['level'])}</p>{_evidence_note(record, compact=True)}</div></li>"""
         for index, record in enumerate(components, start=1)
     )
+    _backend, _auth, _token, session = _request_session(request)
+    enrollment_action = (
+        """<form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><label>Enrollment track<select name="track" required><option value="free">Free track</option><option value="audit">Audit track</option><option value="paid">Paid track selection</option></select></label><button class="primary-button" type="submit">Save local enrollment</button><p>No checkout or payment occurs in Task 4. Paid is only a local track selection.</p></form>"""
+        if session["authenticated"]
+        else '<a class="primary-button" href="/login?next=/specializations/deep-learning">Enroll for free</a>'
+    )
     body = f"""
 <nav class="breadcrumbs"><a href="/browse">Browse</a><span>›</span><a href="/browse/data-science">Data Science</a><span>›</span>Deep Learning</nav>
-<section class="program-hero"><div><p class="provider">DeepLearning.AI</p><h1>Deep Learning Specialization</h1><p class="lead">Become a Machine Learning expert. Master the fundamentals of deep learning and break into AI.</p><p>Instructors: <strong>Andrew Ng +2 more</strong> <span class="badge">Top Instructor</span></p><a class="primary-button" href="/login?next=/checkout/deep-learning">Enroll for free</a></div><img src="/static/deep-learning-mark.svg" alt="Deep Learning program mark"></section>
+<section class="program-hero"><div><p class="provider">DeepLearning.AI</p><h1>Deep Learning Specialization</h1><p class="lead">Become a Machine Learning expert. Master the fundamentals of deep learning and break into AI.</p><p>Instructors: <strong>Andrew Ng +2 more</strong> <span class="badge">Top Instructor</span></p>{enrollment_action}</div><img src="/static/deep-learning-mark.svg" alt="Deep Learning program mark"></section>
 <section class="program-facts"><div><strong>5 course series</strong><span>Get in-depth knowledge of a subject</span></div><div><strong>4.8 ★</strong><span>from 147,224 reviews</span></div><div><strong>Intermediate level</strong><span>Recommended experience</span></div><div><strong>Flexible schedule</strong><span>3 months at 10 hours a week</span></div></section>
 <section class="detail-section"><h2>What you'll learn</h2><p>Build and train deep neural networks, analyze model performance, and apply convolutional and sequence models to practical tasks.</p><h2>Courses</h2><ol class="course-series">{course_list}</ol></section>"""
     return _page("Deep Learning Specialization", body)
@@ -383,27 +450,408 @@ def course_detail(course_id: str) -> str:
 def _auth_page(kind: str) -> str:
     if kind == "login":
         body = """
-<section class="auth-shell"><div class="auth-card"><p class="eyebrow">Welcome back</p><h1>Log in to your Coursera account</h1><p class="safe-note" id="credential-note">Public preview only: this form does not submit credentials. Do not enter a real email or password.</p><form class="auth-form" aria-describedby="credential-note" autocomplete="off"><label>Email<input type="email" name="email" placeholder="name@example.invalid"></label><label>Password<input type="password" name="password" placeholder="Password"></label><button type="button" disabled>Log in (available in Task 4)</button></form><div class="identity-options"><button type="button">Continue with Google</button><button type="button">Continue with Apple</button></div><a href="/account-recovery">Forgot password?</a><p>New to Coursera? <a href="/signup">Sign up</a></p></div><aside><h2>Continue learning offline</h2><p>Account creation, sessions, and progress are added separately through the generated WebsiteBench backend.</p></aside></section>"""
+<section class="auth-shell"><div class="auth-card"><p class="eyebrow">Welcome back</p><h1>Log in to your Coursera account</h1><p class="safe-note" id="credential-note">This form does not submit credentials to Coursera or any external service. Use only synthetic .test account data.</p><form class="auth-form" action="/auth/login" method="post" aria-describedby="credential-note" autocomplete="off"><label>Email<input type="email" name="email" placeholder="learner@coursera.test" required></label><label>Password<input type="password" name="password" placeholder="Password" required></label><button type="submit">Log in locally</button></form><div class="identity-options"><a href="/auth/provider/google">Continue with Google</a><a href="/auth/provider/facebook">Continue with Facebook</a><a href="/auth/provider/apple">Continue with Apple</a></div><a href="/account-recovery">Forgot password?</a><p>New to Coursera? <a href="/signup">Sign up</a></p></div><aside><h2>Continue learning offline</h2><p>Sessions and learner data stay in the site-33 local database.</p></aside></section>"""
         return _page("Login - Continue Learning", body)
     body = """
-<section class="auth-shell"><div class="auth-card"><p class="eyebrow">Join for free</p><h1>Create your Coursera account</h1><p class="safe-note" id="signup-note">Field preview only. Do not enter real personal data; account creation is not active in this task.</p><form class="auth-form" aria-describedby="signup-note" autocomplete="off"><label>Full name<input name="full_name" placeholder="Offline learner"></label><label>Email<input type="email" name="email" placeholder="name@example.invalid"></label><label>Password<input type="password" name="password" placeholder="Create a password"></label><button type="button" disabled>Join for free (available in Task 4)</button></form><p>After local submission is enabled, a verification code will appear only in the site-bound local outbox.</p><p>By joining, you agree to the <a href="/help#terms">Terms of Use</a> and Privacy Notice.</p><p>Already have an account? <a href="/login">Log in</a></p></div><aside><h2>Learn without limits</h2><p>Browse now and return when local account support is available.</p></aside></section>"""
+<section class="auth-shell"><div class="auth-card"><p class="eyebrow">Join for free</p><h1>Create your Coursera account</h1><p class="safe-note" id="signup-note">Use only synthetic .test data. Registration and its verification code remain in the branded site-33 local inbox.</p><form class="auth-form" action="/auth/registration/start" method="post" aria-describedby="signup-note" autocomplete="off"><label>Full name<input name="full_name" placeholder="Offline learner" required></label><label>Email<input type="email" name="email" placeholder="learner@coursera.test" required></label><label>Password<input type="password" name="password" placeholder="Create a password" required></label><button type="submit">Join locally for free</button></form><div class="identity-options"><a href="/auth/provider/google">Continue with Google</a><a href="/auth/provider/facebook">Continue with Facebook</a><a href="/auth/provider/apple">Continue with Apple</a></div><p>A verification code appears only in the site-bound local outbox; no real email is sent.</p><p>By joining, you agree to the <a href="/help#terms">Terms of Use</a> and Privacy Notice.</p><p>Already have an account? <a href="/login">Log in</a></p></div><aside><h2>Learn without limits</h2><p>Account state remains isolated to this offline clone.</p></aside></section>"""
     return _page("Signup - Start Learning", body)
 
 
 @app.get("/login", response_class=HTMLResponse)
-def login() -> str:
-    return _auth_page("login")
+def login(request: Request) -> HTMLResponse:
+    backend, _auth, token, _session = _request_session(request)
+    response = HTMLResponse(_auth_page("login"))
+    _set_session_cookie(response, backend, token)
+    return response
 
 
 @app.get("/signup", response_class=HTMLResponse)
-def signup() -> str:
-    return _auth_page("signup")
+def signup(request: Request) -> HTMLResponse:
+    backend, _auth, token, _session = _request_session(request)
+    response = HTMLResponse(_auth_page("signup"))
+    _set_session_cookie(response, backend, token)
+    return response
+
+
+@app.post("/auth/registration/start")
+async def registration_start(request: Request) -> Response:
+    backend, auth, token, _session = _request_session(request)
+    values = await _form_values(request)
+    try:
+        email = _synthetic_email(values.get("email", ""))
+        auth.start_registration(
+            token,
+            email=email,
+            display_name=values.get("display_name", values.get("full_name", "")),
+            password=values.get("password", ""),
+        )
+    except ValueError as exc:
+        return _auth_failure(str(exc), status_code=422)
+    except AuthError as exc:
+        return _auth_failure(str(exc), status_code=409)
+    response = RedirectResponse(
+        "/local-inbox?purpose=registration", status_code=303
+    )
+    _set_session_cookie(response, backend, token)
+    return response
+
+
+@app.post("/auth/registration/verify")
+async def registration_verify(request: Request) -> Response:
+    backend, auth, token, _session = _request_session(request)
+    values = await _form_values(request)
+    try:
+        auth.verify_registration_code(token, values.get("code", ""))
+        completed = auth.complete_registration(
+            token,
+            subject_factory=learning_db.create_profile,
+        )
+    except AuthError as exc:
+        return _auth_failure(str(exc), status_code=400)
+    response = RedirectResponse("/onboarding", status_code=303)
+    _set_session_cookie(response, backend, str(completed["session_token"]))
+    return response
+
+
+@app.post("/auth/login")
+async def auth_login(request: Request) -> Response:
+    backend, auth, token, _session = _request_session(request)
+    values = await _form_values(request)
+    try:
+        email = _synthetic_email(values.get("email", ""))
+        signed_in = auth.sign_in(
+            token,
+            email=email,
+            password=values.get("password", ""),
+        )
+    except (AuthError, ValueError) as exc:
+        return _auth_failure(str(exc), status_code=401)
+    response = RedirectResponse("/my-learning", status_code=303)
+    _set_session_cookie(response, backend, str(signed_in["session_token"]))
+    return response
+
+
+@app.post("/auth/logout")
+def auth_logout(request: Request) -> Response:
+    backend, auth = learning_db.services()
+    cookie = backend.session_cookie
+    auth.sign_out(request.cookies.get(cookie["name"]))
+    response = RedirectResponse("/", status_code=303)
+    response.delete_cookie(
+        cookie["name"],
+        path="/",
+        secure=True,
+        httponly=True,
+        samesite="Lax",
+    )
+    return response
+
+
+@app.get("/auth/provider/{provider}", response_class=HTMLResponse)
+def provider_boundary(provider: str) -> str:
+    labels = {"google": "Google", "facebook": "Facebook", "apple": "Apple"}
+    label = labels.get(provider)
+    if label is None:
+        raise HTTPException(status_code=404)
+    body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">{label}</p><h1>Offline identity boundary</h1><p>No external sign-in was opened. {label} identity is unavailable in this deterministic clone.</p><a href="/login">Use a local .test account</a></div></section>"""
+    return _page(f"{label} offline boundary", body)
+
+
+@app.get("/local-inbox", response_class=HTMLResponse)
+def local_inbox(request: Request, purpose: str = "registration") -> HTMLResponse:
+    if purpose not in {"registration", "password-reset"}:
+        raise HTTPException(status_code=404)
+    backend, auth, token, _session = _request_session(request)
+    mail = auth.local_mail_for_session(token, purpose=purpose)
+    if mail is None:
+        content = "<p>No local message is available for this browser session.</p>"
+    else:
+        content = f"""<p>Template: {escape(str(mail['template']))}</p><p class="verification-code" data-verification-code="{escape(str(mail['verification_code']))}">{escape(str(mail['verification_code']))}</p><form class="auth-form" action="{'/auth/registration/verify' if purpose == 'registration' else '/auth/recovery/complete'}" method="post"><label>Verification code<input name="code" required></label>{'<label>New password<input type="password" name="new_password" required></label>' if purpose == 'password-reset' else ''}<button type="submit">Verify locally</button></form>"""
+    body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Local outbox delivery</p><h1>Coursera local inbox</h1><p>No real email was sent. This message is visible only to the browser session that requested it.</p>{content}</div></section>"""
+    response = HTMLResponse(_page("Local inbox", body))
+    _set_session_cookie(response, backend, token)
+    return response
+
+
+@app.get("/onboarding", response_class=HTMLResponse)
+def onboarding(request: Request) -> str:
+    _backend, _auth, _token, _subject = _authenticated_subject(request)
+    body = """<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Local learner profile</p><h1>Tell us about your learning goals</h1><form class="auth-form" action="/onboarding" method="post"><label>Current role<input name="current_role" required></label><label>Learning goal<input name="learning_goal" required></label><button type="submit">Save local profile</button></form></div></section>"""
+    return _page("Learner onboarding", body)
+
+
+@app.post("/onboarding")
+async def save_onboarding(request: Request) -> Response:
+    _backend, _auth, _token, subject = _authenticated_subject(request)
+    values = await _form_values(request)
+    try:
+        learning_db.update_profile(
+            subject,
+            current_role=values.get("current_role", ""),
+            learning_goal=values.get("learning_goal", ""),
+        )
+    except ValueError as exc:
+        return _auth_failure(str(exc), status_code=422)
+    return RedirectResponse("/my-learning", status_code=303)
+
+
+@app.get("/my-learning", response_class=HTMLResponse)
+def my_learning(request: Request) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to view My Learning")
+    enrollments = learning_db.list_enrollments(subject)
+    state = learning_db.learning_state(subject)
+    certificate = (
+        "Certificate available"
+        if state["certificate_available"]
+        else "Certificate available after all lessons and quizzes"
+    )
+    review = learning_db.get_review(subject, "deep-learning-specialization")
+    current_rating = int(review["rating"]) if review else 5
+    current_review = str(review["review_text"]) if review else ""
+    rating_options = "".join(
+        f'<option value="{rating}"{" selected" if rating == current_rating else ""}>{rating} stars</option>'
+        for rating in range(1, 6)
+    )
+    body = f"""<section class="page-heading"><p class="eyebrow">Site-33 learner</p><h1>My Learning</h1><p>Your enrollments, progress, and bookmarks stay in this offline clone.</p><a data-resume-lesson="{escape(state['resume_lesson_id'])}" href="/learn/neural-networks-deep-learning/lesson/{escape(state['resume_lesson_id'])}">Resume course</a><p>{certificate}</p></section><section class="section"><div class="card-grid">{_enrollment_rows(enrollments)}</div></section><section class="auth-shell single"><div class="auth-card"><h2>Course review</h2><p>Your single local review can be updated at any time.</p><form class="auth-form" action="/learning/review" method="post"><label>Rating<select name="rating" required>{rating_options}</select></label><label>Review<textarea name="review_text" required>{escape(current_review)}</textarea></label><button type="submit">Save local review</button></form></div></section><p><a href="/account/preferences">Learning preferences</a> · <a href="/account/history">Enrollment history</a></p><form action="/auth/logout" method="post"><button type="submit">Log out</button></form>"""
+    return HTMLResponse(_page("My Learning", body))
+
+
+@app.get("/account/history", response_class=HTMLResponse)
+def account_history(request: Request) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to view enrollment history")
+    body = f"""<section class="page-heading"><p class="eyebrow">Local account history</p><h1>Enrollment history</h1><p>Canceled items remain visible and private to their owner.</p></section><section class="section"><div class="card-grid">{_enrollment_rows(learning_db.list_enrollments(subject))}</div><a href="/my-learning">Back to My Learning</a></section>"""
+    return HTMLResponse(_page("Enrollment history", body))
+
+
+@app.post("/enrollments")
+async def create_enrollment(request: Request) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in before enrolling")
+    values = await _form_values(request)
+    try:
+        learning_db.enroll(
+            subject,
+            course_id=values.get("course_id", ""),
+            track=values.get("track", ""),
+        )
+    except ValueError as exc:
+        return HTMLResponse(
+            _page("Enrollment validation", f'<section class="not-found"><h1>Check enrollment choices</h1><p>{escape(str(exc))}</p></section>'),
+            status_code=422,
+        )
+    return RedirectResponse("/my-learning", status_code=303)
+
+
+@app.post("/enrollments/{enrollment_id}/cancel")
+def cancel_enrollment(request: Request, enrollment_id: int) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in before changing enrollment")
+    try:
+        learning_db.cancel_enrollment(subject, enrollment_id)
+    except LookupError:
+        return HTMLResponse(
+            _page("Enrollment not found", '<section class="not-found"><h1>Enrollment not found</h1><p>The record is unavailable for this local learner.</p></section>'),
+            status_code=404,
+        )
+    return RedirectResponse("/account/history", status_code=303)
+
+
+@app.get(
+    "/learn/neural-networks-deep-learning/lesson/{lesson_id}",
+    response_class=HTMLResponse,
+)
+def learning_lesson(request: Request, lesson_id: str) -> HTMLResponse:
+    try:
+        lesson = learning_db.get_lesson(lesson_id)
+    except LookupError:
+        raise HTTPException(status_code=404) from None
+    backend, auth, token, session = _request_session(request)
+    if not session["authenticated"] and not lesson["preview"]:
+        return _permission_page("Sign in to open this lesson")
+    subject = (
+        str(session["account"]["subject_id"])
+        if session["authenticated"]
+        else None
+    )
+    state = learning_db.learning_state(subject) if subject else None
+    previous_link = (
+        f'<a href="/learn/neural-networks-deep-learning/lesson/{escape(lesson["previous_lesson_id"])}">Previous lesson</a>'
+        if lesson["previous_lesson_id"]
+        else ""
+    )
+    next_link = (
+        f'<a href="/learn/neural-networks-deep-learning/lesson/{escape(lesson["next_lesson_id"])}">Next lesson</a>'
+        if lesson["next_lesson_id"]
+        else ""
+    )
+    outline = "".join(
+        f"<li><strong>{escape(module['title'])}</strong><ul>"
+        + "".join(
+            f'<li><a href="/learn/neural-networks-deep-learning/lesson/{escape(item["lesson_id"])}">{escape(item["title"])}</a></li>'
+            for item in module["lessons"]
+        )
+        + "</ul></li>"
+        for module in lesson["outline"]
+    )
+    learner_controls = ""
+    if subject:
+        bookmarked = lesson_id in state["bookmarks"]
+        choices = "".join(
+            f'<label><input type="radio" name="answer" value="{escape(choice)}" required>{escape(choice)}</label>'
+            for choice in json.loads(str(lesson["quiz"]["choices_json"]))
+        )
+        learner_controls = f"""<div class="lesson-actions"><form action="/learning/bookmarks/{escape(lesson_id)}" method="post"><input type="hidden" name="bookmarked" value="{'0' if bookmarked else '1'}"><button type="submit">{'Remove bookmark' if bookmarked else 'Bookmark lesson'}</button></form><form action="/learning/progress/{escape(lesson_id)}" method="post"><button type="submit">Mark complete</button></form></div><section><h2>{escape(lesson['quiz']['title'])}</h2><p>{escape(lesson['quiz']['question'])}</p><form class="auth-form" action="/learning/quizzes/{escape(lesson['quiz']['quiz_id'])}" method="post">{choices}<button type="submit">Submit local quiz</button></form></section>"""
+    else:
+        learner_controls = '<p class="safe-note">Public offline preview. Sign in locally to save progress.</p>'
+    body = f"""<nav class="breadcrumbs"><a href="/my-learning">My Learning</a><span>›</span>{escape(lesson['module_title'])}</nav><section class="lesson-layout"><aside><h2>Course outline</h2><ol>{outline}</ol></aside><article><p class="eyebrow">Module {lesson['module_position']} of 3</p><h1>{escape(lesson['title'])}</h1><p>{escape(lesson['body'])}</p><nav>{previous_link} {next_link}</nav>{learner_controls}</article></section>"""
+    response = HTMLResponse(_page(lesson["title"], body))
+    _set_session_cookie(response, backend, token)
+    return response
+
+
+@app.post("/learning/bookmarks/{lesson_id}")
+async def learning_bookmark(request: Request, lesson_id: str) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to save bookmarks")
+    values = await _form_values(request)
+    learning_db.set_bookmark(
+        subject, lesson_id, bookmarked=values.get("bookmarked") == "1"
+    )
+    return RedirectResponse(
+        f"/learn/neural-networks-deep-learning/lesson/{lesson_id}", status_code=303
+    )
+
+
+@app.post("/learning/progress/{lesson_id}")
+def learning_progress(request: Request, lesson_id: str) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to save progress")
+    learning_db.complete_lesson(subject, lesson_id)
+    return RedirectResponse("/my-learning", status_code=303)
+
+
+@app.post("/learning/quizzes/{quiz_id}", response_class=HTMLResponse)
+async def learning_quiz(request: Request, quiz_id: str) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to submit a quiz")
+    values = await _form_values(request)
+    try:
+        attempt = learning_db.submit_quiz(
+            subject, quiz_id, values.get("answer", "")
+        )
+    except (ValueError, LookupError) as exc:
+        return HTMLResponse(_page("Quiz validation", f"<section class='not-found'><h1>Check your answer</h1><p>{escape(str(exc))}</p></section>"), status_code=422)
+    body = f"""<section class="page-heading"><p class="eyebrow">Local quiz feedback</p><h1>Quiz score: {attempt['score']}</h1><p>{escape(attempt['feedback'])}</p><a href="/my-learning">Return to My Learning</a></section>"""
+    return HTMLResponse(_page("Quiz feedback", body))
+
+
+@app.post("/learning/review")
+async def learning_review(request: Request) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to save an offline review")
+    values = await _form_values(request)
+    try:
+        learning_db.upsert_review(
+            subject,
+            rating=int(values.get("rating", "0")),
+            review_text=values.get("review_text", ""),
+        )
+    except (ValueError, TypeError) as exc:
+        return HTMLResponse(_page("Review validation", f"<section class='not-found'><h1>Check your review</h1><p>{escape(str(exc))}</p></section>"), status_code=422)
+    return RedirectResponse("/my-learning", status_code=303)
+
+
+@app.get("/account/preferences", response_class=HTMLResponse)
+def account_preferences(request: Request) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to manage learning preferences")
+    preferences = learning_db.get_preferences(subject)
+    checked = " checked" if preferences["email_updates"] else ""
+    body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Local learning settings</p><h1>Learning preferences</h1><form class="auth-form" action="/account/preferences" method="post"><label>Language<input name="language" value="{escape(preferences['language'])}" required></label><label>Timezone<input name="timezone" value="{escape(preferences['timezone'])}" required></label><label><input type="checkbox" name="email_updates" value="1"{checked}>Local learning reminders</label><button type="submit">Save preferences</button></form></div></section>"""
+    return HTMLResponse(_page("Learning preferences", body))
+
+
+@app.post("/account/preferences")
+async def save_preferences(request: Request) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to manage learning preferences")
+    values = await _form_values(request)
+    try:
+        learning_db.update_preferences(
+            subject,
+            language=values.get("language", ""),
+            timezone=values.get("timezone", ""),
+            email_updates=values.get("email_updates") == "1",
+        )
+    except ValueError as exc:
+        return HTMLResponse(_page("Preference validation", f"<section class='not-found'><h1>Check preferences</h1><p>{escape(str(exc))}</p></section>"), status_code=422)
+    return RedirectResponse("/account/preferences", status_code=303)
 
 
 @app.get("/account-recovery", response_class=HTMLResponse)
-def account_recovery() -> str:
-    body = """<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Account access</p><h1>Reset your password</h1><p>No reset message is sent from this public preview. Do not enter a real address.</p><form class="auth-form" autocomplete="off"><label>Account email<input type="email" name="address" placeholder="name@example.invalid"></label><p class="field-guidance">Enter the address for a local account. Validation and local-outbox delivery are implemented in Task 4.</p><button type="button" disabled>Send reset link (unavailable)</button></form><a href="/login">Return to sign in</a></div></section>"""
-    return _page("Password Recovery", body)
+def account_recovery(request: Request) -> HTMLResponse:
+    body = """<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Account access</p><h1>Reset your password</h1><p>No reset message is sent externally. Use only a synthetic .test address; the public response does not reveal whether it exists.</p><form class="auth-form" action="/auth/recovery/start" method="post" autocomplete="off"><label>Account email<input type="email" name="address" placeholder="learner@coursera.test" required></label><p class="field-guidance">A matching site-33 account receives a code only in this browser's local inbox.</p><button type="submit">Open local recovery</button></form><a href="/login">Return to sign in</a></div></section>"""
+    return _session_html(request, "Password Recovery", body)
+
+
+@app.post("/auth/recovery/start")
+async def recovery_start(request: Request) -> Response:
+    backend, auth, token, _session = _request_session(request)
+    values = await _form_values(request)
+    try:
+        email = _synthetic_email(values.get("email", values.get("address", "")))
+        auth.start_password_reset(token, email=email)
+    except ValueError as exc:
+        return _auth_failure(str(exc), status_code=422)
+    except AuthError as exc:
+        return _auth_failure(str(exc), status_code=429)
+    response = RedirectResponse(
+        "/local-inbox?purpose=password-reset", status_code=303
+    )
+    response.headers["X-Auth-Message"] = (
+        "If a matching local account exists, a local verification message is available."
+    )
+    _set_session_cookie(response, backend, token)
+    return response
+
+
+@app.post("/auth/recovery/complete")
+async def recovery_complete(request: Request) -> Response:
+    backend, auth, token, _session = _request_session(request)
+    values = await _form_values(request)
+    try:
+        auth.verify_password_reset_code(token, values.get("code", ""))
+        new_token = auth.complete_password_reset(
+            token,
+            new_password=values.get("new_password", ""),
+        )
+    except AuthError as exc:
+        return _auth_failure(str(exc), status_code=400)
+    response = RedirectResponse("/my-learning", status_code=303)
+    _set_session_cookie(response, backend, new_token)
+    return response
 
 
 @app.get("/help", response_class=HTMLResponse)
