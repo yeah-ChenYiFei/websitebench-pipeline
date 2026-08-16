@@ -1180,7 +1180,6 @@ async def learning_quiz(request: Request, quiz_id: str) -> HTMLResponse:
                 request,
                 "Quiz validation",
                 f"<section class='not-found'><h1>Check your answer</h1><p>{escape(str(exc))}</p></section>",
-                authenticated=True,
             ),
             status_code=422,
         )
@@ -1209,7 +1208,6 @@ async def learning_review(request: Request) -> Response:
                 request,
                 "Review validation",
                 f"<section class='not-found'><h1>Check your review</h1><p>{escape(str(exc))}</p></section>",
-                authenticated=True,
             ),
             status_code=422,
         )
@@ -1248,7 +1246,6 @@ async def save_preferences(request: Request) -> Response:
                 request,
                 "Preference validation",
                 f"<section class='not-found'><h1>Check preferences</h1><p>{escape(str(exc))}</p></section>",
-                authenticated=True,
             ),
             status_code=422,
         )

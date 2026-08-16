@@ -515,6 +515,46 @@ def test_authenticated_specialization_keeps_free_audit_and_routes_paid_to_checko
     assert "paid enrollment requires checkout" in bypass.text
 
 
+@pytest.mark.parametrize(
+    ("path", "payload", "expected_heading"),
+    [
+        (
+            "/learning/quizzes/quiz-improving-networks",
+            {"answer": "not-an-available-answer"},
+            "Check your answer",
+        ),
+        (
+            "/learning/review",
+            {"rating": "0", "review_text": "Synthetic invalid review"},
+            "Check your review",
+        ),
+        (
+            "/account/preferences",
+            {"language": "", "timezone": "", "email_updates": "1"},
+            "Check preferences",
+        ),
+    ],
+    ids=("quiz", "review", "preferences"),
+)
+def test_authenticated_validation_errors_render_422_with_learner_chrome(
+    site_client: TestClient,
+    path: str,
+    payload: dict[str, str],
+    expected_heading: str,
+) -> None:
+    """Catch validation branches calling the request renderer with stale args."""
+
+    _login_seeded(site_client, "progress@coursera.test", "Progress-Learner-33")
+    response = site_client.post(path, data=payload, follow_redirects=False)
+
+    assert response.status_code == 422
+    assert f"<h1>{expected_heading}</h1>" in response.text
+    assert 'class="learner-nav"' in response.text
+    assert 'class="header-logout" action="/auth/logout"' in response.text
+    assert 'href="/login">Log In</a>' not in response.text
+    assert 'href="/signup">Join for Free</a>' not in response.text
+
+
 def test_active_enrollment_gates_protected_learning_and_mutations(
     site_client: TestClient,
 ) -> None:
