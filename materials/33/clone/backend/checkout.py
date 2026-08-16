@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sqlite3
+import secrets
 from typing import Any
 
 
@@ -18,6 +19,7 @@ PLAN_FINGERPRINT = (
     "94b7b58e2a6fc0b45b7aae588169b477"
     "56a0dd1a8cc84a3ca672216a24676b76"
 )
+FROZEN_TIME = "2026-08-16T00:00:00Z"
 
 _SCHEMA = (
     """CREATE TABLE IF NOT EXISTS coursera_checkout_drafts (
@@ -78,3 +80,84 @@ def plan() -> dict[str, Any]:
         "tax_minor": TAX_MINOR,
         "total_minor": TOTAL_MINOR,
     }
+
+
+def _draft_dict(row: sqlite3.Row) -> dict[str, Any]:
+    return dict(row)
+
+
+def create_draft(
+    owner: str,
+    *,
+    course_id: str,
+    plan_id: str,
+) -> dict[str, Any]:
+    """Create one owner-bound draft and generated sandbox payment flow."""
+
+    if course_id != COURSE_ID or plan_id != PLAN_ID:
+        raise ValueError("plan is unavailable")
+
+    from backend import learning_db
+
+    backend, _auth = learning_db.services()
+    draft_id = f"checkout_{secrets.token_urlsafe(18)}"
+    with learning_db.connection(transaction=True) as opened:
+        owner_exists = opened.execute(
+            "SELECT 1 FROM coursera_profiles WHERE subject_id=?", (owner,)
+        ).fetchone()
+        if owner_exists is None:
+            raise LookupError("Learner not found")
+        flow = backend.payments.create_intent(
+            owner=owner,
+            amount_minor=TOTAL_MINOR,
+            currency=CURRENCY,
+            fingerprint=PLAN_FINGERPRINT,
+            idempotency_key=f"draft-create:{draft_id}",
+            adapter="local-sandbox",
+            connection=opened,
+        )
+        opened.execute(
+            """INSERT INTO coursera_checkout_drafts(
+                draft_id,owner_subject_id,course_id,plan_id,plan_label,
+                subtotal_minor,tax_minor,total_minor,currency,fingerprint,
+                payment_flow_id,status,created_at,updated_at)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,'OPEN',?,?)""",
+            (
+                draft_id,
+                owner,
+                COURSE_ID,
+                PLAN_ID,
+                PLAN_LABEL,
+                SUBTOTAL_MINOR,
+                TAX_MINOR,
+                TOTAL_MINOR,
+                CURRENCY,
+                PLAN_FINGERPRINT,
+                flow["flow_id"],
+                FROZEN_TIME,
+                FROZEN_TIME,
+            ),
+        )
+        row = opened.execute(
+            "SELECT * FROM coursera_checkout_drafts WHERE draft_id=?",
+            (draft_id,),
+        ).fetchone()
+        if row is None:  # pragma: no cover - insert invariant
+            raise RuntimeError("checkout draft insert returned no row")
+        return _draft_dict(row)
+
+
+def get_draft(owner: str, draft_id: str) -> dict[str, Any]:
+    """Read one checkout draft without revealing foreign records."""
+
+    from backend import learning_db
+
+    with learning_db.connection() as opened:
+        row = opened.execute(
+            """SELECT * FROM coursera_checkout_drafts
+                WHERE draft_id=? AND owner_subject_id=?""",
+            (draft_id, owner),
+        ).fetchone()
+    if row is None:
+        raise LookupError("Checkout not found")
+    return _draft_dict(row)
