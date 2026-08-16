@@ -400,3 +400,93 @@ def test_paid_enrollment_cannot_bypass_checkout(checkout_site) -> None:
             track="paid",
         )
     assert learning.list_enrollments("learner-empty") == []
+
+
+def _approved_empty_learner_order(checkout):
+    draft = _new_empty_learner_draft(checkout)
+    result = checkout.attempt(
+        "learner-empty",
+        draft["draft_id"],
+        scenario_id="sandbox-approved",
+        idempotency_key=f"approved-for-{draft['draft_id']}",
+    )
+    return result["order"]
+
+
+def test_cancel_order_retains_snapshot_and_cancels_paid_enrollment(
+    checkout_site,
+) -> None:
+    """Catch cancellation that deletes history or leaves paid access active."""
+
+    checkout, learning, _backend = checkout_site
+    order = _approved_empty_learner_order(checkout)
+
+    canceled = checkout.cancel_order("learner-empty", order["order_id"])
+    canceled_again = checkout.cancel_order("learner-empty", order["order_id"])
+
+    assert canceled_again == canceled
+    assert canceled["status"] == "CANCELED"
+    assert canceled["canceled_at"] == "2026-08-16T00:00:00Z"
+    assert canceled["subtotal_minor"] == 4900
+    assert canceled["tax_minor"] == 0
+    assert canceled["total_minor"] == 4900
+    assert checkout.list_orders("learner-empty") == [canceled]
+    with learning.connection() as opened:
+        enrollment = opened.execute(
+            """SELECT status,canceled_at FROM coursera_enrollments
+                WHERE enrollment_id=?""",
+            (order["enrollment_id"],),
+        ).fetchone()
+    assert tuple(enrollment) == ("canceled", "2026-08-16T00:00:00Z")
+
+    with pytest.raises(LookupError, match="Order not found"):
+        checkout.cancel_order("learner-in-progress", order["order_id"])
+    with pytest.raises(LookupError, match="Order not found"):
+        checkout.get_order("learner-in-progress", order["order_id"])
+
+
+def test_cancel_order_rolls_back_if_enrollment_update_fails(checkout_site) -> None:
+    """Catch order cancellation committing before its enrollment transition."""
+
+    checkout, learning, _backend = checkout_site
+    order = _approved_empty_learner_order(checkout)
+    with learning.connection(transaction=True) as opened:
+        opened.execute(
+            """CREATE TRIGGER force_enrollment_cancel_failure
+                BEFORE UPDATE OF status ON coursera_enrollments
+                BEGIN SELECT RAISE(ABORT,'forced enrollment failure'); END"""
+        )
+
+    with pytest.raises(sqlite3.IntegrityError, match="forced enrollment failure"):
+        checkout.cancel_order("learner-empty", order["order_id"])
+
+    assert checkout.get_order("learner-empty", order["order_id"])["status"] == "PAID"
+    with learning.connection() as opened:
+        assert opened.execute(
+            """SELECT status FROM coursera_enrollments
+                WHERE enrollment_id=?""",
+            (order["enrollment_id"],),
+        ).fetchone()[0] == "active"
+
+
+def test_order_persists_across_restart_and_reset_clears_checkout_state(
+    checkout_site,
+) -> None:
+    """Catch volatile order state or reset that inherits a prior checkout."""
+
+    checkout, learning, _backend = checkout_site
+    order = _approved_empty_learner_order(checkout)
+    learning.close_services()
+
+    assert checkout.get_order("learner-empty", order["order_id"]) == order
+    before_reset = learning.state_snapshot()
+    assert len(before_reset["checkout_drafts"]) == 1
+    assert len(before_reset["orders"]) == 1
+
+    learning.reset()
+    assert checkout.list_orders("learner-empty") == []
+    after_reset = learning.state_snapshot()
+    assert after_reset["checkout_drafts"] == []
+    assert after_reset["orders"] == []
+    learning.reset()
+    assert learning.state_snapshot() == after_reset

@@ -47,6 +47,19 @@ def _login_empty(client: TestClient) -> None:
     assert response.status_code == 303
 
 
+def _login_progress(client: TestClient) -> None:
+    client.get("/login")
+    response = client.post(
+        "/auth/login",
+        data={
+            "email": "progress@coursera.test",
+            "password": "Progress-Learner-33",
+        },
+        follow_redirects=False,
+    )
+    assert response.status_code == 303
+
+
 def _create_browser_draft(client: TestClient) -> str:
     response = client.post(
         "/checkout/deep-learning",
@@ -189,3 +202,59 @@ def test_browser_attempt_maps_decline_retry_and_approval_results(
     )
     assert approved.status_code == 303
     assert re.fullmatch(r"/orders/order_[^/]+", approved.headers["location"])
+
+
+def test_order_history_detail_cancel_and_foreign_owner_boundaries(
+    checkout_client: TestClient,
+) -> None:
+    """Catch order pages that hide history or expose it to another learner."""
+
+    _login_empty(checkout_client)
+    draft_id = _create_browser_draft(checkout_client)
+    approved = checkout_client.post(
+        f"/checkout/{draft_id}/attempt",
+        data={
+            "scenario_id": "sandbox-approved",
+            "idempotency_key": "browser-history-approved-001",
+        },
+        follow_redirects=False,
+    )
+    order_path = approved.headers["location"]
+    order_id = order_path.rsplit("/", 1)[1]
+
+    history = checkout_client.get("/orders")
+    detail = checkout_client.get(order_path)
+    assert history.status_code == detail.status_code == 200
+    assert order_id in history.text
+    assert 'data-order-status="PAID"' in history.text
+    assert order_id in detail.text
+    assert "Paid" in detail.text
+    assert "Subtotal" in detail.text and "USD 49.00" in detail.text
+    assert "Tax" in detail.text and "USD 0.00" in detail.text
+    assert 'href="/specializations/deep-learning"' in detail.text
+    assert 'href="/orders"' in detail.text
+
+    with TestClient(app, base_url="https://33.offline.invalid") as foreign:
+        _login_progress(foreign)
+        foreign_detail = foreign.get(order_path)
+        foreign_history = foreign.get("/orders")
+        assert foreign_detail.status_code == 404
+        assert order_id not in foreign_history.text
+
+    canceled = checkout_client.post(
+        f"/orders/{order_id}/cancel", follow_redirects=False
+    )
+    canceled_again = checkout_client.post(
+        f"/orders/{order_id}/cancel", follow_redirects=False
+    )
+    assert canceled.status_code == canceled_again.status_code == 303
+    assert canceled.headers["location"] == order_path
+    canceled_detail = checkout_client.get(order_path)
+    assert 'data-order-status="CANCELED"' in canceled_detail.text
+    assert "Canceled" in canceled_detail.text
+    assert "USD 49.00" in canceled_detail.text
+
+    learning = importlib.import_module("backend.learning_db")
+    enrollment = learning.list_enrollments("learner-empty")[0]
+    assert enrollment["track"] == "paid"
+    assert enrollment["status"] == "canceled"

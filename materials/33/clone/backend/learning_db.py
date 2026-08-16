@@ -596,6 +596,7 @@ def reset() -> None:
     backend, auth = services()
 
     def site_reset(opened: sqlite3.Connection) -> None:
+        checkout.reset(opened)
         for table in _MUTABLE_TABLES:
             opened.execute(f"DELETE FROM {table}")
         opened.execute(
@@ -625,6 +626,7 @@ def state_snapshot() -> dict[str, Any]:
         "reviews": "SELECT * FROM coursera_reviews ORDER BY owner_subject_id,course_id",
         "preferences": "SELECT * FROM coursera_preferences ORDER BY owner_subject_id",
     }
+    queries.update(checkout.snapshot_queries())
     with connection() as opened:
         snapshot: dict[str, Any] = {
             name: [tuple(row) for row in opened.execute(query)]

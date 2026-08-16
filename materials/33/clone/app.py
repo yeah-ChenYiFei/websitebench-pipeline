@@ -156,6 +156,11 @@ def _checkout_not_found() -> HTMLResponse:
     return HTMLResponse(_page("Checkout not found", body), status_code=404)
 
 
+def _order_not_found() -> HTMLResponse:
+    body = """<section class="not-found"><h1>Order not found</h1><p>The order record is unavailable for this local learner.</p><a href="/orders">Back to order history</a></section>"""
+    return HTMLResponse(_page("Order not found", body), status_code=404)
+
+
 def _checkout_validation(message: str, *, status_code: int = 422) -> HTMLResponse:
     body = f"""<section class="not-found"><p class="eyebrow">Safe local checkout</p><h1>Checkout could not continue</h1><p>{escape(message)}</p><a href="/specializations/deep-learning">Back to Deep Learning</a></section>"""
     return HTMLResponse(_page("Checkout validation", body), status_code=status_code)
@@ -163,6 +168,15 @@ def _checkout_validation(message: str, *, status_code: int = 422) -> HTMLRespons
 
 def _checkout_totals() -> str:
     return """<dl class="checkout-totals"><div><dt>Subtotal</dt><dd>USD 49.00</dd></div><div><dt>Tax</dt><dd>USD 0.00</dd></div><div class="checkout-total"><dt>Total</dt><dd>USD 49.00</dd></div></dl>"""
+
+
+def _order_rows(records: list[dict[str, Any]]) -> str:
+    if not records:
+        return """<div class="empty-state"><h2>No local orders yet</h2><p>Approved sandbox checkouts will appear here.</p><a href="/specializations/deep-learning">Back to Deep Learning</a></div>"""
+    return "".join(
+        f"""<article class="catalog-card order-card" data-order-status="{escape(str(record['status']))}"><p class="eyebrow">{escape(str(record['status']).title())}</p><h2>Deep Learning Specialization</h2><p>Order {escape(str(record['order_id']))}</p><p>Inferred total: USD 49.00</p><a href="/orders/{escape(str(record['order_id']))}">View order detail</a></article>"""
+        for record in records
+    )
 
 
 async def _exact_checkout_attempt_values(request: Request) -> dict[str, str]:
@@ -770,7 +784,7 @@ def my_learning(request: Request) -> HTMLResponse:
             for rating in range(1, 6)
         )
         learning_tools = f"""<a data-resume-lesson="{escape(state['resume_lesson_id'])}" href="/learn/neural-networks-deep-learning/lesson/{escape(state['resume_lesson_id'])}">Resume course</a><p>{certificate}</p><section class="auth-shell single"><div class="auth-card"><h2>Course review</h2><p>Your single local review can be updated at any time.</p><form class="auth-form" action="/learning/review" method="post"><label>Rating<select name="rating" required>{rating_options}</select></label><label>Review<textarea name="review_text" required>{escape(current_review)}</textarea></label><button type="submit">Save local review</button></form></div></section>"""
-    body = f"""<section class="page-heading"><p class="eyebrow">Site-33 learner</p><h1>My Learning</h1><p>Your enrollments, progress, and bookmarks stay in this offline clone.</p>{learning_tools}</section><section class="section"><div class="card-grid">{_enrollment_rows(enrollments)}</div></section><p><a href="/account/preferences">Learning preferences</a> · <a href="/account/history">Enrollment history</a></p><form action="/auth/logout" method="post"><button type="submit">Log out</button></form>"""
+    body = f"""<section class="page-heading"><p class="eyebrow">Site-33 learner</p><h1>My Learning</h1><p>Your enrollments, progress, and bookmarks stay in this offline clone.</p>{learning_tools}</section><section class="section"><div class="card-grid">{_enrollment_rows(enrollments)}</div></section><p><a href="/account/preferences">Learning preferences</a> · <a href="/account/history">Enrollment history</a> · <a href="/orders">Order history</a></p><form action="/auth/logout" method="post"><button type="submit">Log out</button></form>"""
     return HTMLResponse(_page("My Learning", body))
 
 
@@ -780,8 +794,51 @@ def account_history(request: Request) -> HTMLResponse:
         _backend, _auth, _token, subject = _authenticated_subject(request)
     except HTTPException:
         return _permission_page("Sign in to view enrollment history")
-    body = f"""<section class="page-heading"><p class="eyebrow">Local account history</p><h1>Enrollment history</h1><p>Canceled items remain visible and private to their owner.</p></section><section class="section"><div class="card-grid">{_enrollment_rows(learning_db.list_enrollments(subject))}</div><a href="/my-learning">Back to My Learning</a></section>"""
+    body = f"""<section class="page-heading"><p class="eyebrow">Local account history</p><h1>Enrollment history</h1><p>Canceled items remain visible and private to their owner.</p></section><section class="section"><div class="card-grid">{_enrollment_rows(learning_db.list_enrollments(subject))}</div><a href="/orders">View order history</a> · <a href="/my-learning">Back to My Learning</a></section>"""
     return HTMLResponse(_page("Enrollment history", body))
+
+
+@app.get("/orders", response_class=HTMLResponse)
+def order_history(request: Request) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to view order history")
+    records = checkout.list_orders(subject)
+    body = f"""<section class="page-heading"><p class="eyebrow">Owner-private local history</p><h1>Order history</h1><p>Only approved local-sandbox checkouts create durable orders. Canceled snapshots remain visible.</p></section><section class="section"><div class="card-grid">{_order_rows(records)}</div><a href="/my-learning">Back to My Learning</a></section>"""
+    return HTMLResponse(_page("Order history", body))
+
+
+@app.get("/orders/{order_id}", response_class=HTMLResponse)
+def order_detail(request: Request, order_id: str) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in to view this order")
+    try:
+        order = checkout.get_order(subject, order_id)
+    except LookupError:
+        return _order_not_found()
+    cancellation = (
+        f"""<form action="/orders/{escape(order_id)}/cancel" method="post"><button type="submit">Cancel paid enrollment</button></form>"""
+        if order["status"] == "PAID"
+        else "<p>This order and its paid enrollment were canceled; the immutable snapshot remains in history.</p>"
+    )
+    body = f"""<nav class="breadcrumbs"><a href="/orders">Order history</a><span>›</span>{escape(order_id)}</nav><section class="checkout-shell" data-order-status="{escape(str(order['status']))}"><p class="eyebrow">Local sandbox order</p><h1>{escape(str(order['status']).title())}</h1><p>Order {escape(order_id)}</p><p>Deep Learning Specialization · {escape(str(order['plan_label']))}</p><p class="safe-note">This is an immutable simulation snapshot. No real payment or external purchase occurred.</p>{_checkout_totals()}{cancellation}<a href="/orders">Back to order history</a><a href="/specializations/deep-learning">Back to Deep Learning collection</a></section>"""
+    return HTMLResponse(_page("Order detail", body))
+
+
+@app.post("/orders/{order_id}/cancel")
+def cancel_order(request: Request, order_id: str) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page("Sign in before canceling this order")
+    try:
+        checkout.cancel_order(subject, order_id)
+    except LookupError:
+        return _order_not_found()
+    return RedirectResponse(f"/orders/{order_id}", status_code=303)
 
 
 @app.post("/enrollments")
