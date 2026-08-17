@@ -94,6 +94,47 @@
       "satisfied_items": []
     },
     {
+      "id": "retained-source-artifact-scope",
+      "label": "Retained source artifact scope for public and authenticated surfaces",
+      "unit": "surface",
+      "category": "evidence",
+      "rationale": "The eight visual oracles are retained anonymous public artifacts. Authenticated account/learning, recovery, and checkout surfaces have no retained authenticated source artifact; checkout has only recorded display facts.",
+      "source_evidence_kind": "structural-only",
+      "local_contract_evidence_kind": "direct",
+      "population_size": 11,
+      "sample_size": 11,
+      "sampling_method": "complete retained-artifact boundary: every anonymous visual oracle plus each authenticated source limitation",
+      "authoritative_denominator_id": "retained-source-artifact-scope",
+      "denominator_rows": [
+        {"id": "public-home-desktop", "checkpoint": "home.loaded.desktop", "capture_id": "public-home-desktop", "actor": "anonymous", "retained_source_artifact": true, "artifact_scope": "public-visual-oracle"},
+        {"id": "public-catalog-desktop", "checkpoint": "browse.loaded.desktop", "capture_id": "public-catalog-desktop", "actor": "anonymous", "retained_source_artifact": true, "artifact_scope": "public-visual-oracle"},
+        {"id": "public-search-desktop", "checkpoint": "search.results.desktop", "capture_id": "public-search-desktop", "actor": "anonymous", "retained_source_artifact": true, "artifact_scope": "public-visual-oracle"},
+        {"id": "public-specialization-desktop", "checkpoint": "specialization.loaded.desktop", "capture_id": "public-specialization-desktop", "actor": "anonymous", "retained_source_artifact": true, "artifact_scope": "public-visual-oracle"},
+        {"id": "public-course-desktop", "checkpoint": "course.loaded.desktop", "capture_id": "public-course-desktop", "actor": "anonymous", "retained_source_artifact": true, "artifact_scope": "public-visual-oracle"},
+        {"id": "public-login-desktop", "checkpoint": "login.loaded.desktop", "capture_id": "public-login-desktop", "actor": "anonymous", "retained_source_artifact": true, "artifact_scope": "public-visual-oracle"},
+        {"id": "public-help-desktop", "checkpoint": "help.loaded.desktop", "capture_id": "public-help-desktop", "actor": "anonymous", "retained_source_artifact": true, "artifact_scope": "public-visual-oracle"},
+        {"id": "public-not-found-desktop", "checkpoint": "not-found.loaded.desktop", "capture_id": "public-not-found-desktop", "actor": "anonymous", "retained_source_artifact": true, "artifact_scope": "public-visual-oracle"},
+        {"id": "authenticated-account-learning", "actor": "authenticated", "retained_source_artifact": false, "artifact_scope": "no-retained-authenticated-artifact"},
+        {"id": "authenticated-recovery", "actor": "authenticated", "retained_source_artifact": false, "artifact_scope": "no-retained-authenticated-artifact"},
+        {"id": "authenticated-checkout-display", "actor": "authenticated", "retained_source_artifact": false, "artifact_scope": "no-retained-authenticated-artifact", "display_facts_observed": true}
+      ],
+      "required_evidence_kinds": ["visual", "full-suite"],
+      "required_items": [
+        "public-home-desktop",
+        "public-catalog-desktop",
+        "public-search-desktop",
+        "public-specialization-desktop",
+        "public-course-desktop",
+        "public-login-desktop",
+        "public-help-desktop",
+        "public-not-found-desktop",
+        "authenticated-account-learning",
+        "authenticated-recovery",
+        "authenticated-checkout-display"
+      ],
+      "satisfied_items": []
+    },
+    {
       "id": "checkout-local-sandbox",
       "label": "Deep Learning enrollment review and local-sandbox payment boundary",
       "unit": "scenario",

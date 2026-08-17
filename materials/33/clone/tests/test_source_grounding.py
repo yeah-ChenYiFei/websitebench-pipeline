@@ -39,6 +39,40 @@ def test_scope_does_not_claim_authenticated_source_visuals_are_directly_verified
     )
 
 
+def test_coverage_structures_retained_source_artifact_scope() -> None:
+    """Catch authenticated or payment source states entering public visual oracles."""
+
+    coverage = json.loads(
+        (SITE_ROOT / "scope" / "coverage.json").read_text(encoding="utf-8")
+    )
+    dimensions = {item["id"]: item for item in coverage["dimensions"]}
+    scope = dimensions["retained-source-artifact-scope"]
+    rows = {item["id"]: item for item in scope["denominator_rows"]}
+
+    public_rows = {
+        item["checkpoint"]: item
+        for item in rows.values()
+        if item["actor"] == "anonymous"
+    }
+    assert set(public_rows) == set(
+        dimensions["public-desktop-visual-oracles"]["required_items"]
+    )
+    assert all(
+        item["retained_source_artifact"] is True
+        and item["artifact_scope"] == "public-visual-oracle"
+        for item in public_rows.values()
+    )
+
+    restricted_rows = [item for item in rows.values() if item["actor"] == "authenticated"]
+    assert {item["id"] for item in restricted_rows} == {
+        "authenticated-account-learning",
+        "authenticated-recovery",
+        "authenticated-checkout-display",
+    }
+    assert all(item["retained_source_artifact"] is False for item in restricted_rows)
+    assert rows["authenticated-checkout-display"]["display_facts_observed"] is True
+
+
 def test_task3_reconstruction_maps_assets_layout_and_copy_to_current_ea_evidence() -> (
     None
 ):
