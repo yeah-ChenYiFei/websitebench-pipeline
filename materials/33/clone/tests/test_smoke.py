@@ -15,7 +15,7 @@ def test_healthz() -> None:
 def test_home() -> None:
     response = client.get("/")
     assert response.status_code == 200
-    assert "学习新技能，开启更多可能" in response.text
+    assert "New! Learn vibe coding with Google" in response.text
 
 
 def test_unknown_route() -> None:

@@ -177,6 +177,63 @@ def test_public_entry_and_authenticated_plan_show_observed_trial_totals(
     assert 'action="/checkout/deep-learning"' in plan.text
 
 
+def test_checkout_entry_matches_observed_chinese_source_payment_layout(
+    checkout_client: TestClient,
+) -> None:
+    """Catch the checkout entry drifting away from the captured Coursera layout."""
+
+    _login_empty(checkout_client)
+
+    html = checkout_client.get("/checkout/deep-learning").text
+
+    assert 'class="source-checkout-shell"' in html
+    assert "<h1>结帐</h1>" in html
+    assert "所有字段均为必填字段" in html
+    assert "账单信息" in html
+    assert "支付方式" in html
+    assert "银行卡" in html
+    assert "Paypal" in html
+    assert "1234 1234 1234 1234" in html
+    assert "Deep Learning" in html
+    assert "由 DeepLearning.AI 提供" in html
+    assert "无绑定合同。可随时取消。" in html
+    assert "7 天免费试用" in html
+    assert "之后为 ¥196/月" in html
+    assert "今日合计：¥0" in html
+
+    collector = _InputCollector()
+    collector.feed(html)
+    payment_inputs = {
+        item["id"]: item
+        for item in collector.inputs
+        if item.get("id")
+        in {"synthetic-card-number", "synthetic-expiry", "synthetic-cvv"}
+    }
+    assert set(payment_inputs) == {
+        "synthetic-card-number",
+        "synthetic-expiry",
+        "synthetic-cvv",
+    }
+    assert all("name" not in item for item in payment_inputs.values())
+
+
+def test_checkout_entry_uses_observed_minimal_checkout_chrome(
+    checkout_client: TestClient,
+) -> None:
+    """Catch the checkout page using the catalog header instead of checkout chrome."""
+
+    _login_empty(checkout_client)
+
+    html = checkout_client.get("/checkout/deep-learning").text
+
+    assert "checkout-page" in html
+    assert 'class="source-checkout-header"' in html
+    assert 'class="source-checkout-avatar"' in html
+    assert 'class="wb-audience-bar"' not in html
+    assert 'class="wb-search"' not in html
+    assert 'class="wb-footer"' not in html
+
+
 def test_payment_fields_are_memory_only_and_review_submits_two_safe_keys(
     checkout_client: TestClient,
 ) -> None:

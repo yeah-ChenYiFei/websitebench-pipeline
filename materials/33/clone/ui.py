@@ -5,7 +5,7 @@ from __future__ import annotations
 from html import escape
 
 
-def header(*, authenticated: bool) -> str:
+def header(*, authenticated: bool, search_value: str = "") -> str:
     """Render the two-tier desktop navigation without any remote dependency."""
 
     account_controls = (
@@ -18,6 +18,7 @@ def header(*, authenticated: bool) -> str:
         '<a href="/login">登录</a><a class="wb-join" href="/signup">免费加入</a>'
         "</nav>"
     )
+    rendered_search_value = escape(search_value, quote=True)
     return f"""
 <div class="wb-audience-bar">
   <div class="wb-shell"><strong>为个人</strong><a href="/about/contact">为商务</a><a href="/browse">为大学</a><a href="/about/contact">为政府</a></div>
@@ -29,7 +30,7 @@ def header(*, authenticated: bool) -> str:
     <a class="wb-degree-link" href="/browse">学位</a>
     <form class="wb-search" action="/search" method="get" role="search">
       <label class="wb-sr-only" for="wb-header-search">搜索课程</label>
-      <input id="wb-header-search" name="q" placeholder="您想学习什么？" autocomplete="off">
+      <input id="wb-header-search" name="q" value="{rendered_search_value}" placeholder="您想学习什么？" autocomplete="off">
       <button type="submit" aria-label="搜索"><span aria-hidden="true">⌕</span></button>
     </form>
     {account_controls}
@@ -54,6 +55,20 @@ def footer() -> str:
 """
 
 
+def checkout_header(*, authenticated: bool) -> str:
+    """Render the observed checkout-only chrome: logo left, learner avatar right."""
+
+    avatar = '<a class="source-checkout-avatar" href="/my-learning" aria-label="我的学习">郑</a>'
+    if not authenticated:
+        avatar = '<a class="source-checkout-avatar" href="/login" aria-label="登录">?</a>'
+    return f"""
+<header class="source-checkout-header">
+  <a class="source-checkout-wordmark" href="/" aria-label="Coursera 首页">coursera</a>
+  {avatar}
+</header>
+"""
+
+
 def page(
     *,
     title: str,
@@ -61,11 +76,27 @@ def page(
     authenticated: bool,
     body_class: str = "",
     document_title: str | None = None,
+    search_value: str = "",
+    checkout_chrome: bool = False,
 ) -> str:
     """Return one complete local HTML document for a desktop clone route."""
 
     rendered_title = document_title or f"{title} | Coursera"
-    classes = " ".join(part for part in ("wb-page", body_class) if part)
+    classes = " ".join(
+        part
+        for part in (
+            "wb-page",
+            "checkout-page" if checkout_chrome else "",
+            body_class,
+        )
+        if part
+    )
+    rendered_header = (
+        checkout_header(authenticated=authenticated)
+        if checkout_chrome
+        else header(authenticated=authenticated, search_value=search_value)
+    )
+    rendered_footer = "" if checkout_chrome else footer()
     return f"""<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(rendered_title)}</title><link rel="stylesheet" href="/static/site.css"><link rel="stylesheet" href="/static/components.css"><link rel="stylesheet" href="/static/auth.css"><link rel="stylesheet" href="/static/checkout.css"><link rel="stylesheet" href="/static/desktop-base.css"><link rel="stylesheet" href="/static/desktop-chrome.css"><link rel="stylesheet" href="/static/catalog-desktop.css"><link rel="stylesheet" href="/static/course-desktop.css"><link rel="stylesheet" href="/static/auth-desktop.css"><link rel="stylesheet" href="/static/learning-desktop.css"><link rel="stylesheet" href="/static/checkout-desktop.css"></head>
-<body class="{escape(classes)}">{header(authenticated=authenticated)}<main>{body}</main>{footer()}</body></html>"""
+<body class="{escape(classes)}">{rendered_header}<main>{body}</main>{rendered_footer}</body></html>"""

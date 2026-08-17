@@ -118,6 +118,8 @@ def _page(
     *,
     body_class: str = "",
     document_title: str | None = None,
+    search_value: str = "",
+    checkout_chrome: bool = False,
 ) -> str:
     return desktop_page(
         title=title,
@@ -125,6 +127,8 @@ def _page(
         authenticated=_request_authenticated(request),
         body_class=body_class,
         document_title=document_title,
+        search_value=search_value,
+        checkout_chrome=checkout_chrome,
     )
 
 
@@ -418,6 +422,121 @@ def _card(record: dict[str, Any]) -> str:
 </article>"""
 
 
+def _trend_card(record: dict[str, Any]) -> str:
+    type_label = "专项课程" if record["type"] == "specialization" else "课程"
+    href = str(record.get("href") or _record_href(record))
+    thumb_asset = record.get("thumb_asset")
+    thumb = (
+        f'<img src="{escape(str(thumb_asset))}" alt="" loading="lazy">'
+        if thumb_asset
+        else escape(record["provider"][0])
+    )
+    return f"""
+<a class="trend-mini-card" href="{escape(href)}" data-catalog-record="{escape(record["id"])}">
+  <span class="trend-thumb" aria-hidden="true">{thumb}</span>
+  <span class="trend-copy"><span class="trend-provider">{escape(record["provider"])}</span><strong>{escape(record["title"])}</strong><small>{escape(type_label)} · ★ {record["rating"]:.1f}</small></span>
+</a>"""
+
+
+def _trend_column(title: str, records: list[dict[str, Any]]) -> str:
+    return (
+        f'<section class="trend-column"><h3>{escape(title)} <span aria-hidden="true">→</span></h3>'
+        + "".join(_trend_card(record) for record in records)
+        + "</section>"
+    )
+
+
+def _home_lower_sections() -> str:
+    logos = (
+        "Google",
+        "IBM",
+        "Microsoft",
+        "University of Illinois",
+        "OpenAI",
+        "DeepLearning.AI",
+        "Stanford University",
+        "University of Michigan",
+        "University of Pennsylvania",
+    )
+    categories = (
+        ("商务", "/browse/business"),
+        ("人工智能", "/search?q=Generative+AI"),
+        ("数据科学", "/browse/data-science"),
+        ("计算机科学", "/browse/computer-science"),
+        ("个人发展", "/browse/personal-development"),
+        ("医疗保健", "/browse/health"),
+        ("语言学习", "/browse/language-learning"),
+        ("社会科学", "/browse/social-sciences"),
+        ("艺术与人文", "/browse/arts-and-humanities"),
+        ("物理科学与工程", "/browse/physical-science-and-engineering"),
+        ("数学和逻辑", "/browse/math-and-logic"),
+    )
+    releases = (
+        ("Google 人工智能要点", "/search?q=Google+%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%A6%81%E7%82%B9", "Google"),
+        ("Google 项目管理", "/search?q=Google+Project+Management", "Google"),
+        ("Google 网络安全", "/search?q=Google+Cybersecurity", "Google"),
+        ("Python", "/search?q=Python", "课程"),
+        ("IBM 数据分析师", "/search?q=IBM+Data+Analyst", "IBM"),
+        ("项目管理基础", "/search?q=Project+Management", "课程"),
+    )
+    career_tiles = (
+        ("数据科学家", "/search?q=data+scientist"),
+        ("机器学习工程师", "/search?q=machine+learning+engineer"),
+        ("内容创作者", "/search?q=content+creator"),
+        ("数据分析师", "/search?q=data+analyst"),
+        ("商业智能分析师", "/search?q=business+intelligence+analyst"),
+    )
+    faqs = (
+        "Coursera 是否经过认证，Coursera 证书是否得到雇主的认可？",
+        "Coursera 证书值得吗？",
+        "什么是 Coursera Plus，值得吗？",
+        "Coursera 是否提供免费在线课程？",
+        "Coursera 上最受欢迎的课程有哪些？",
+        "Coursera 如何帮助我找到工作或提升职业生涯？",
+    )
+    logo_markup = "".join(
+        f'<span class="source-logo-pill">{escape(name)}</span>' for name in logos
+    )
+    category_markup = "".join(
+        f'<a class="source-category-chip" href="{href}">{escape(label)}</a>'
+        for label, href in categories
+    )
+    release_markup = "".join(
+        f'<a class="source-release-card" href="{href}"><span>{escape(provider)}</span><strong>{escape(title)}</strong><small>了解更多</small></a>'
+        for title, href, provider in releases
+    )
+    career_markup = "".join(
+        f'<a href="{href}">{escape(label)}</a>' for label, href in career_tiles
+    )
+    faq_markup = "".join(
+        f'<details><summary>{escape(question)}</summary><p>此离线 clone 提供本地课程目录、搜索、账户入口、报名与学习流程，用于复刻 Coursera 的核心公开体验。</p></details>'
+        for question in faqs
+    )
+    return f"""
+<section class="source-plus-band"><div><p>Coursera Plus</p><h2>订阅即可解锁 10,000 多门课程</h2><p>开始 7 天免费试用，浏览证书、专项课程和职业技能内容。</p></div><a href="/checkout/deep-learning">开始 7 天免费试用</a></section>
+<section class="source-partners"><h2>学习来自 350 多家领先大学和公司的知识</h2><div>{logo_markup}</div></section>
+<section class="source-career-split"><article><p>开启新的职业生涯</p><h2>为热门职业做好就业准备</h2><a href="/browse">探索计划</a></article><article><p>获得学位</p><h2>从顶尖大学获取在线学位</h2><a href="/browse">探索学位</a></article></section>
+<section class="source-category-section"><h2>探索类别</h2><div>{category_markup}</div></section>
+<section class="source-release-section"><div class="source-section-heading"><h2>热门新版本</h2><a href="/browse">探索课程</a></div><div class="source-release-grid">{release_markup}</div></section>
+<section class="source-career-question"><h2>是什么让您今天来到 Coursera？</h2><nav>{career_markup}</nav><a class="source-explore-all" href="/browse">探索所有</a></section>
+<section class="source-outcomes"><h2>91% 的学员取得了积极的职业成果</h2><p>为什么人们选择 Coursera</p><div><blockquote>“课程让我能够更清晰地规划职业下一步。”<cite>Sarah W.</cite></blockquote><blockquote>“灵活学习帮助我持续提升技能。”<cite>Noeris B.</cite></blockquote><blockquote>“项目练习让我能把知识应用到工作中。”<cite>Abdullahi M.</cite></blockquote></div></section>
+<section class="source-faq"><h2>Frequently asked questions</h2>{faq_markup}</section>"""
+
+
+def _home_cookie_banner(request: Request) -> str:
+    if request.cookies.get("coursera_privacy_choice") in {"accept", "reject"}:
+        return ""
+    return """<aside class="source-cookie-banner" aria-label="隐私偏好"><form class="cookie-icon-form" action="/privacy-preferences" method="post"><button type="submit" name="choice" value="settings" class="cookie-icon" aria-label="Cookie settings">✓×</button></form><p>We process your personal information to measure and improve our sites and service, to assist our marketing campaigns and to provide personalized content and advertising. You can exercise your privacy rights by using the buttons on the right. For more information see our privacy notice. <a href="/privacy">Privacy Notice</a></p><div class="cookie-actions"><a href="/privacy">Your Privacy Rights</a><form action="/privacy-preferences" method="post"><button type="submit" name="choice" value="reject">Reject</button></form><form action="/privacy-preferences" method="post"><button type="submit" name="choice" value="accept">Accept</button></form></div><form class="cookie-close-form" action="/privacy-preferences" method="post"><button type="submit" name="choice" value="reject" class="cookie-close" aria-label="Close">×</button></form></aside>"""
+
+
+def _related_search_card(record: dict[str, Any]) -> str:
+    return f"""
+<a class="search-related-card" href="{escape(_record_href(record))}" data-catalog-record="{escape(record["id"])}">
+  <span class="related-thumb" aria-hidden="true">{escape(record["provider"][0])}</span>
+  <span class="related-copy"><span>{escape(record["provider"])}</span><strong>{escape(record["title"])}</strong><small>Best for: learners comparing deep learning options</small></span>
+</a>"""
+
+
 def _card_grid(records: list[dict[str, Any]]) -> str:
     return (
         '<div class="card-grid course-collection">'
@@ -431,6 +550,17 @@ def _category_pills() -> str:
         '<nav class="subject-tile-grid" aria-label="按主题浏览课程">'
         + "".join(
             f'<a class="subject-tile" href="/browse/{slug}"><span class="subject-tile-icon" aria-hidden="true">{SUBJECT_ICONS[slug]}</span>{escape(SUBJECTS_ZH[subject])}</a>'
+            for slug, subject in SUBJECTS.items()
+        )
+        + "</nav>"
+    )
+
+
+def _compact_category_pills() -> str:
+    return (
+        '<nav class="browse-category-pills" aria-label="Explore Categories">'
+        + "".join(
+            f'<a href="/browse/{slug}"><span aria-hidden="true">{SUBJECT_ICONS[slug]}</span>{escape(SUBJECTS_ZH[subject])}</a>'
             for slug, subject in SUBJECTS.items()
         )
         + "</nav>"
@@ -511,10 +641,47 @@ def healthz() -> dict[str, object]:
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request) -> str:
     catalog = load_catalog_seed()
+    by_id = {record["id"]: record for record in catalog}
+    most_popular = [
+        {
+            **by_id["applied-data-analysis"],
+            "title": "Google 数据分析",
+            "provider": "Google",
+            "thumb_asset": "/static/source-home-trend-google-analytics.png",
+            "href": "/search?q=Google+%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90",
+        },
+        by_id["machine-learning-foundations"],
+        by_id["python-programming"],
+    ]
+    weekly_focus = [
+        {
+            **by_id["tech-support"],
+            "title": "Microsoft 初级质量保证/软件测试工程师",
+            "provider": "Microsoft",
+            "thumb_asset": "/static/source-home-trend-microsoft-qa.png",
+            "href": "/search?q=Microsoft+QA",
+        },
+        by_id["financial-accounting"],
+        by_id["business-strategy"],
+    ]
+    ai_skills = [
+        {
+            **by_id["responsible-ai-basics"],
+            "title": "用于头脑风暴和规划的 AI",
+            "provider": "Google",
+            "thumb_asset": "/static/source-home-trend-google-ai.png",
+            "href": "/search?q=Google+AI",
+        },
+        by_id["deep-learning-specialization"],
+        by_id["medical-neuroscience"],
+    ]
     body = f"""
-<section class="catalog-hero"><div><p class="eyebrow">适合每一位学习者</p><h1>学习新技能，开启更多可能</h1><p>从顶尖大学和公司提供的课程中，按自己的节奏学习。此站点使用可持久化的本地离线学习数据。</p><a class="wb-primary" href="/browse">探索课程</a></div><div class="catalog-hero-visual" aria-hidden="true"></div></section>
-<section class="wb-section"><p class="eyebrow">热门推荐</p><h2>为你的目标选择课程和专项课程</h2>{_card_grid(catalog[:8])}</section>
-<section class="wb-section"><h2>按主题浏览课程</h2>{_category_pills()}</section>"""
+<section class="promo-rail" data-source-home-promo="true" aria-label="推荐学习内容"><article class="promo-panel promo-panel-dark" data-source-promo-image-card="true"><img src="/static/source-home-google-promo.png" alt="" aria-hidden="true"><div class="source-promo-overlay"><p class="promo-provider">Google</p><h1>New! Learn vibe coding with Google</h1><p>Build custom apps using AI, all without writing a single line of code.</p><a class="promo-action" href="/search?q=Google+AI">Enroll now <span aria-hidden="true">→</span></a></div></article><article class="promo-panel promo-panel-blue" data-source-promo-image-card="true"><img src="/static/source-home-career-promo.png" alt="" aria-hidden="true"><div class="source-promo-overlay"><p class="promo-provider">Coursera</p><h2>开始、转换或提升您的职业生涯</h2><p>与来自顶级机构的 10,000 多门课程一起成长</p><a class="promo-action promo-action-light" href="/signup">免费加入 <span aria-hidden="true">→</span></a></div></article></section>
+<div class="carousel-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+<section class="home-trends" aria-labelledby="home-trends-heading"><h2 id="home-trends-heading">趋势课程</h2><div class="trend-columns">{_trend_column("最受欢迎", most_popular)}{_trend_column("每周聚焦", weekly_focus)}{_trend_column("紧缺的 AI 技能", ai_skills)}</div></section>
+<section class="career-ready"><h2>为热门职业做好就业准备 <span aria-hidden="true">→</span></h2><p>入门无需经验。</p><nav aria-label="热门职业主题"><a href="/browse/data-science">数据</a><a href="/browse/business">商业</a><a href="/browse/business">销售与市场营销</a><a href="/browse/information-technology">信息技术</a><a href="/browse/computer-science">软件工程</a></nav></section>
+{_home_lower_sections()}
+{_home_cookie_banner(request)}"""
     return _page(
         request,
         "Online Courses, Certificates, & Degrees",
@@ -524,14 +691,46 @@ def home(request: Request) -> str:
     )
 
 
+@app.post("/privacy-preferences")
+async def privacy_preferences(request: Request) -> Response:
+    values = await _form_values(request)
+    choice = values.get("choice", "reject")
+    if choice not in {"accept", "reject", "settings"}:
+        choice = "reject"
+    if choice == "settings":
+        response = RedirectResponse("/privacy", status_code=303)
+    else:
+        response = RedirectResponse("/", status_code=303)
+    response.set_cookie(
+        "coursera_privacy_choice",
+        "accept" if choice == "accept" else "reject",
+        path="/",
+        httponly=True,
+        samesite="lax",
+    )
+    return response
+
+
+@app.get("/privacy", response_class=HTMLResponse)
+def privacy_notice(request: Request) -> HTMLResponse:
+    body = """<section class="page-heading"><p class="eyebrow">Privacy Notice</p><h1>隐私与 Cookie 偏好</h1><p>此离线 clone 只保存本地演示偏好，不连接 Coursera，不发送营销请求，也不保存真实个人资料。</p><form class="auth-form" action="/privacy-preferences" method="post"><button type="submit" name="choice" value="accept">Accept</button><button type="submit" name="choice" value="reject">Reject</button></form><a href="/">返回首页</a></section>"""
+    return HTMLResponse(_page(request, "Privacy Notice", body))
+
+
+@app.get("/terms", response_class=HTMLResponse)
+def terms(request: Request) -> HTMLResponse:
+    body = """<section class="page-heading"><p class="eyebrow">Terms</p><h1>本地服务条款</h1><p>此页面用于 WebsiteBench 离线复刻验收。报名、付款、学习记录和账户操作均为本地合成数据，不产生真实 Coursera 外部效果。</p><a href="/">返回首页</a></section>"""
+    return HTMLResponse(_page(request, "Terms", body))
+
+
 @app.get("/browse", response_class=HTMLResponse)
 def browse(request: Request) -> str:
     catalog = load_catalog_seed()
     popular_ids = (
+        "applied-data-analysis",
+        "machine-learning-foundations",
+        "python-programming",
         "business-strategy",
-        "deep-learning-specialization",
-        "cybersecurity",
-        "tech-support",
     )
     popular_records = [
         record
@@ -543,14 +742,14 @@ def browse(request: Request) -> str:
     ]
     popular_filters = """<nav class="popular-filters" aria-label="热门课程分类"><strong>全部</strong><a href="/browse/business">商业</a><a href="/browse/data-science">数据科学</a><a href="/browse/information-technology">信息技术</a><a href="/browse/computer-science">计算机科学</a></nav>"""
     popular = (
-        '<div class="card-grid popular-grid">'
+        '<div class="source-popular-row"><div class="card-grid popular-grid">'
         + "".join(_card(record) for record in popular_records)
-        + '</div><details class="more-popular"><summary>显示更多课程</summary><div class="card-grid expanded-popular-grid">'
+        + '</div></div><details class="more-popular"><summary>显示更多课程</summary><div class="card-grid expanded-popular-grid">'
         + "".join(_card(record) for record in remaining_records[:8])
         + "</div></details>"
     )
-    roles = """<section class="wb-section browse-roles"><div class="role-filters"><strong>级别：初级</strong><span>热门</span><span>软件工程与 IT</span><span>商业</span><span>销售与营销</span></div><h2>探索职业方向</h2><p>按职业角色和技能发现可重复使用的本地学习路径。</p></section>"""
-    body = f"""<section class="catalog-heading"><h1>按主题浏览课程</h1><p>探索课程、专项课程和灵活的学习路径。</p></section><section class="wb-section"><h2>热门课程</h2>{popular_filters}{popular}</section><section class="wb-section"><h2>探索全部主题</h2>{_category_pills()}</section>{roles}"""
+    roles = """<section class="browse-roles"><div class="role-filters"><strong>级别：初级</strong><span>热门</span><span>软件工程与信息技术</span><span>商务</span><span>销售与市场营销</span><span>数据科学与分析</span><span>医疗保健</span></div><h2>探索角色</h2><p>通过 7 天免费试听这些高级课程，提升您的职业发展并掌握新技能</p><div class="role-explorer-row"><article class="role-explorer-card"><h3>数据科学家</h3><p>数据科学家利用统计数据、机器学习和 visualization 来分析大型数据集。</p><a href="/search?q=data+scientist">查看所有</a></article><article class="role-explorer-card"><h3>机器学习工程师</h3><p>机器学习工程师使用大型数据集和神经网络构建现代化模型。</p><a href="/search?q=machine+learning">提供方</a></article></div></section>"""
+    body = f"""<section class="browse-source-heading"><h1>Explore Categories</h1>{_compact_category_pills()}</section><section class="browse-popular"><h2>最受欢迎</h2>{popular_filters}{popular}</section>{roles}<section class="wb-section browse-all-subjects"><h2>按主题浏览课程</h2>{_category_pills()}</section>"""
     return _page(
         request,
         "Online Course Catalog by Topic and Skill",
@@ -574,6 +773,7 @@ def browse_category(request: Request, category: str) -> str:
 def search(
     request: Request,
     q: str = "",
+    query: str = "",
     category: str = "",
     level: str = "",
     topic: str = "",
@@ -584,6 +784,7 @@ def search(
     sort: str = "title-asc",
 ) -> str:
     catalog = load_catalog_seed()
+    q = q or query
     records = _filter_catalog(
         q=q,
         category=category,
@@ -597,7 +798,7 @@ def search(
     )
     rating_value = "" if rating is None else f"{rating:g}"
     form = f"""
-<form class="filters" action="/search" method="get">
+<form class="filters source-filter-panel" action="/search" method="get">
   <h2>筛选和排序</h2>
   <label class="search-wide">搜索<input name="q" value="{escape(q)}" placeholder="课程、主题或技能"></label>
   {_select("category", "主题", list(SUBJECTS), category)}
@@ -616,7 +817,25 @@ def search(
         clear_query = urlencode({"q": ""})
         recommendations = _card_grid(catalog[:3])
         result_body = f"""<div class="empty-state"><h2>没有找到与“{escape(q)}”匹配的课程</h2><p>请尝试更宽泛的关键词、移除筛选条件，或浏览全部主题。</p><div class="empty-state-links"><a href="/search?{clear_query}">清除搜索</a><a href="/search">重置全部筛选</a><a href="/browse">浏览可用课程</a></div><section class="recommendations"><h3>推荐课程</h3><p>当前 Coursera 也会针对该关键词显示学习建议；本地 clone 保留一组可浏览的恢复选项。</p>{recommendations}</section></div>"""
-    body = f"""<section class="search-banner"><div><p class="eyebrow">Coursera 课程目录</p><h1>搜索课程</h1></div></section><section class="search-layout">{form}<div class="results" data-result-count="{len(records)}"><h2>{len(records)} 个结果</h2>{result_body}</div></section>"""
+    ai_overview = ""
+    if q:
+        lead = next((record for record in records if "Deep Learning" in record["title"]), None)
+        if lead is None:
+            lead = _record_by_id("deep-learning-specialization")
+        lead_card = _trend_card(lead) if lead is not None else ""
+        related = [
+            record
+            for record_id in (
+                "neural-networks-deep-learning",
+                "machine-learning-foundations",
+                "convolutional-neural-networks",
+            )
+            if (record := _record_by_id(record_id)) is not None
+        ]
+        related_cards = "".join(_related_search_card(record) for record in related)
+        ai_overview = f"""<section class="search-ai-overview"><h2>AI 概览</h2><p>You are looking for {escape(q)} from DeepLearning.AI:</p>{lead_card}<p class="ai-summary">This specialization covers key deep learning techniques including convolutional and recurrent neural networks, and computer vision applications.</p><a href="/specializations/deep-learning">显示更多</a><section class="search-related"><h3>其他类似课程：</h3><div class="search-related-cards">{related_cards}</div></section><nav class="ai-question-chips" aria-label="AI suggested prompts"><a href="/search?q=compare+deep+learning">对比这些课程</a><a href="/search?q=why+recommend+deep+learning">为什么向我推荐这些课程？</a><a href="/search?q=beginner+deep+learning">哪一个最适合完全的初学者？</a></nav></section>"""
+    chips = """<nav class="source-filter-chips" aria-label="搜索筛选"><a href="#filters">筛选和排序</a><a href="/search?category=data-science">主题</a><a href="/search?duration=3+weeks+at+10+hours+a+week">课程长度</a><a href="/search?q=Deep+Learning">了解产品</a><a href="/search?language=English">语言</a><a href="/search?level=Beginner">级别</a></nav>"""
+    body = f"""<section class="search-source-layout"><div class="search-source-main">{ai_overview}<section class="source-results"><h2>所有结果</h2>{chips}<div class="results" data-result-count="{len(records)}"><h3>{len(records)} 个结果</h3>{result_body}</div></section></div><aside class="search-chat-panel" aria-label="Coursera assistant"><div class="chat-notice"><strong>您的隐私与本次聊天</strong><p>您的聊天记录可能会被暂时保存，以便为您提供个性化体验。</p><button type="button">确定</button></div><div class="chat-thread"><p>You'll find a mix of Deep Learning specializations, courses, and professional certificates.</p><div class="chat-levels"><span>Beginner</span><span>Intermediate</span><span>Advanced</span></div><label>或者提问…<input placeholder="Deep Learning Specialization"></label></div></aside></section><section id="filters" class="search-filter-details">{form}</section>"""
     return _page(
         request,
         "Search",
@@ -624,6 +843,7 @@ def search(
         document_title=(
             "Coursera | Online Courses From Top Universities. Join for Free"
         ),
+        search_value=q,
     )
 
 
@@ -665,8 +885,56 @@ def checkout_plan(request: Request) -> HTMLResponse:
         _backend, _auth, _token, _subject = _authenticated_subject(request)
     except HTTPException:
         return _permission_page(request, "Sign in before choosing a checkout plan")
-    body = f"""<nav class="course-breadcrumbs"><a href="/specializations/deep-learning">深度学习专项课程</a><span>›</span>结账</nav><section class="checkout-shell"><p class="eyebrow">本地结账</p><h1>开始 7 天免费试用</h1><p class="safe-note">该页面按当前观察到的 Coursera 结账信息重建。不会提交真实付款数据，也不会联系 Coursera。</p><section class="checkout-billing"><h2>账单信息</h2><label>名称<input type="text" placeholder="请输入您的姓名" readonly></label><label>国家<select disabled><option>选择您所在的国家</option></select></label><h2>支付方式</h2><p>付款信息只会在下一页的无提交本地演示控件中显示。</p></section>{_checkout_totals()}<p><strong>今天不会向您收费。</strong>试用结束后可在本地订单历史中取消。</p><form action="/checkout/deep-learning" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><input type="hidden" name="plan_id" value="deep-learning-specialization-paid"><button class="wb-primary" type="submit">开始免费试用</button></form><a href="/specializations/deep-learning">返回专项课程</a></section>"""
-    return HTMLResponse(_page(request, "Deep Learning checkout plan", body))
+    body = f"""
+<nav class="course-breadcrumbs checkout-breadcrumbs"><a href="/specializations/deep-learning">Deep Learning Specialization</a><span>›</span><span>结帐</span></nav>
+<section class="source-checkout-shell">
+  <main class="source-checkout-main">
+    <h1>结帐</h1>
+    <p class="checkout-required">所有字段均为必填字段</p>
+    <p class="safe-note">该页面按当前观察到的 Coursera 结账信息重建。不会提交真实付款数据，也不会联系 Coursera。</p>
+    <form class="source-checkout-form" action="/checkout/deep-learning" method="post" autocomplete="off">
+      <input type="hidden" name="course_id" value="deep-learning-specialization">
+      <input type="hidden" name="plan_id" value="deep-learning-specialization-paid">
+      <section class="checkout-billing" aria-labelledby="billing-heading">
+        <h2 id="billing-heading">账单信息</h2>
+        <label>全名<input id="billing-name" type="text" placeholder="请输入您的姓名" autocomplete="off"></label>
+        <label>国家/地区<select id="billing-country" autocomplete="off"><option>中国</option><option>美国</option><option>新加坡</option></select></label>
+      </section>
+      <section class="source-payment-card" aria-labelledby="payment-heading">
+        <h2 id="payment-heading">支付方式</h2>
+        <div class="payment-choice is-selected"><span>银行卡</span><span>Visa · Mastercard · American Express</span></div>
+        <label>卡号<input id="synthetic-card-number" inputmode="numeric" autocomplete="off" placeholder="1234 1234 1234 1234"></label>
+        <div class="payment-grid">
+          <label>到期日<input id="synthetic-expiry" autocomplete="off" placeholder="MM / YY"></label>
+          <label>安全码<input id="synthetic-cvv" inputmode="numeric" autocomplete="off" placeholder="CVC"></label>
+        </div>
+        <label class="save-card"><input id="synthetic-save-card" type="checkbox"> 保存付款方式以供将来购买</label>
+        <div class="payment-choice paypal-choice"><span>Paypal</span><span>使用 PayPal 继续</span></div>
+      </section>
+      <p class="checkout-terms">点击“开始免费试用”即表示你同意 Coursera 的<a href="/terms">服务条款</a>和<a href="/privacy">隐私声明</a>。本 clone 使用 local-sandbox，只创建本地草稿。</p>
+      <button class="wb-primary checkout-start" type="submit">开始免费试用</button>
+    </form>
+    <p class="checkout-safety"><strong>开始 7 天免费试用。</strong>今天应付 ¥0；试用结束后可在本地订单历史中取消。</p>
+    <a class="checkout-return" href="/specializations/deep-learning">返回专项课程</a>
+  </main>
+  <aside class="source-checkout-summary" aria-label="订单摘要">
+    <article class="summary-course">
+      <a href="/specializations/deep-learning">Deep Learning</a>
+      <p>由 DeepLearning.AI 提供</p>
+      <a class="summary-remove" href="/specializations/deep-learning">移除</a>
+    </article>
+    <p class="summary-note">无绑定合同。可随时取消。</p>
+    <dl class="summary-prices">
+      <div><dt>月度订阅</dt><dd>7 天免费试用</dd></div>
+      <div><dt>之后为 ¥196/月</dt><dd>¥196/月</dd></div>
+      <div class="summary-total"><dt>今日合计：¥0</dt><dd>¥0</dd></div>
+    </dl>
+    <p class="summary-small">试用期结束前取消不会收费。此离线版本不会提交真实付款数据。</p>
+  </aside>
+</section>"""
+    return HTMLResponse(
+        _page(request, "Deep Learning checkout plan", body, checkout_chrome=True)
+    )
 
 
 @app.get("/payments/checkout", response_class=HTMLResponse)
@@ -725,7 +993,7 @@ def checkout_payment(request: Request, draft_id: str) -> HTMLResponse:
     except LookupError:
         return _checkout_not_found(request)
     body = f"""<nav class="course-breadcrumbs"><a href="/checkout/deep-learning">结账</a><span>›</span>付款方式</nav><section class="checkout-shell"><p class="eyebrow">本地安全演示</p><h1>付款方式</h1><p class="safe-note"><strong>请不要输入真实付款信息。</strong>下方演示输入内容只保留在当前浏览器页面，不会作为表单字段提交或保存。</p><form class="synthetic-payment" action="/checkout/{escape(draft_id)}/review" method="get" autocomplete="off"><label>示例卡号<input id="synthetic-card-number" inputmode="numeric" autocomplete="off" placeholder="仅用于本地演示"></label><label>示例有效期<input id="synthetic-expiry" autocomplete="off" placeholder="MM / YY"></label><label>示例安全码<input id="synthetic-cvv" inputmode="numeric" autocomplete="off" placeholder="仅用于本地演示"></label><button class="wb-primary" type="submit">继续（不提交上述内容）</button></form><a href="/specializations/deep-learning">返回专项课程</a></section>"""
-    return HTMLResponse(_page(request, "本地付款方式", body))
+    return HTMLResponse(_page(request, "本地付款方式", body, checkout_chrome=True))
 
 
 @app.get("/checkout/{draft_id}/review", response_class=HTMLResponse)
@@ -740,7 +1008,7 @@ def checkout_review(request: Request, draft_id: str) -> HTMLResponse:
         return _checkout_not_found(request)
     idempotency_key = f"browser-attempt:{secrets.token_urlsafe(18)}"
     body = f"""<nav class="course-breadcrumbs"><a href="/checkout/{escape(draft_id)}/payment">付款方式</a><span>›</span>确认</nav><section class="checkout-shell"><p class="eyebrow">仅限本地 sandbox</p><h1>确认免费试用</h1><p>这是一项本地演示，不会产生外部或真实付款效果。</p>{_checkout_totals()}<p class="checkout-terms">点击下方操作即表示您已阅读本地演示的使用条款，并可在订单历史中取消。</p><form class="sandbox-scenarios" action="/checkout/{escape(draft_id)}/attempt" method="post"><input type="hidden" name="idempotency_key" value="{escape(idempotency_key)}"><fieldset><legend>选择确定的本地 sandbox 结果</legend><label><input type="radio" name="scenario_id" value="sandbox-approved" required>模拟成功</label><label><input type="radio" name="scenario_id" value="sandbox-declined" required>模拟被拒绝</label><label><input type="radio" name="scenario_id" value="sandbox-retry" required>模拟需重试</label></fieldset><button class="wb-primary" type="submit">开始免费试用</button></form><a href="/specializations/deep-learning">返回专项课程</a></section>"""
-    return HTMLResponse(_page(request, "确认本地结账", body))
+    return HTMLResponse(_page(request, "确认本地结账", body, checkout_chrome=True))
 
 
 @app.post("/checkout/{draft_id}/attempt")
@@ -817,10 +1085,31 @@ def course_detail(request: Request, course_id: str) -> str:
         if session["authenticated"]
         else f'<a class="wb-primary" href="/login?next=/learn/{escape(record["id"])}">免费注册</a>'
     )
+    localized_titles = {
+        "neural-networks-deep-learning": "神经网络与深度学习",
+    }
+    display_title = localized_titles.get(record["id"], record["title"])
+    skill_chips = "".join(
+        f"<span>{escape(skill)}</span>"
+        for skill in (
+            "人工智能和机器学习",
+            "深度学习",
+            "人工智能",
+            "模型优化",
+            "模型训练",
+            "卷积神经网络",
+            "应用机器学习",
+            "监督学习",
+            "机器学习方法",
+        )
+    )
     body = f"""
-<nav class="course-breadcrumbs"><a href="/browse">浏览</a><span>›</span><a href="/browse/{escape(subject_slug)}">{escape(SUBJECTS_ZH[record["subject"]])}</a><span>›</span>{escape(record["title"])}</nav>
-<section class="course-hero" data-course-detail="{escape(record["id"])}"><div><p class="eyebrow">{escape(record["provider"])}</p><h1>{escape(record["title"])}</h1>{specialization_membership}{_evidence_note(record)}<p><strong>★ {record["rating"]:.1f}</strong> · {escape(record["level"])} · {escape(record["duration"])} · {escape(record["schedule"])}</p>{enrollment_action}<a class="secondary-button" href="/learn/{escape(record["id"])}/preview">预览课程</a></div><div class="course-art">{escape(record["title"][0])}</div></section>
-<section class="detail-grid"><article><h2>课程模块</h2><ol>{syllabus}</ol></article><article><h2>讲师</h2><p>{instructors}</p></article><article><h2>先修知识</h2><p>{escape(record["prerequisites"])}</p></article><article><h2>评论</h2><p>{escape(record["reviews_summary"])}</p></article><article><h2>价格</h2><p>{escape(record["pricing"])}</p></article><article><h2>报名选项</h2><ul>{tracks}</ul></article></section>"""
+<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/browse">浏览</a><span>›</span><a href="/browse/{escape(subject_slug)}">{escape(SUBJECTS_ZH[record["subject"]])}</a><span>›</span>机器学习</nav>
+<section class="course-hero source-course-hero" data-course-detail="{escape(record["id"])}"><div><p class="provider">{escape(record["provider"])}</p><h1>{escape(display_title)}</h1>{specialization_membership}<p>位教师：<strong>{instructors}</strong> <span class="badge">顶尖授课教师</span></p>{enrollment_action}<a class="secondary-button" href="/learn/{escape(record["id"])}/preview">预览课程</a></div><div class="course-orbit" aria-hidden="true"></div></section>
+<section class="course-stats"><div><strong>4 个模块</strong><span>深入了解一个主题并学习基础知识。</span></div><div><strong>{record["rating"]:.1f} ★</strong><span>123,795 条评论</span></div><div><strong>中级 等级</strong><span>推荐体验</span></div><div><strong>灵活的计划</strong><span>3 周 在 10 小时 一周，自行安排学习进度</span></div><div><strong>👍 96%</strong><span>大多数学生喜欢此课程</span></div></section>
+<nav class="course-tabs" aria-label="课程详情"><a href="#about">关于</a><a href="#outcomes">结果</a><a href="#modules">单元</a><a href="#recommendations">推荐</a><a href="#reviews">评价</a><a href="#enroll">审阅</a></nav>
+<section id="about" class="course-source-detail"><h2>您将获得的技能</h2><div class="skill-chip-row">{skill_chips}</div>{_evidence_note(record)}<h2>您将学习的工具</h2><p>{escape(record["prerequisites"])}</p></section>
+<section class="detail-grid course-lower-detail"><article id="modules"><h2>课程模块</h2><ol>{syllabus}</ol></article><article><h2>讲师</h2><p>{instructors}</p></article><article><h2>先修知识</h2><p>{escape(record["prerequisites"])}</p></article><article id="reviews"><h2>评论</h2><p>{escape(record["reviews_summary"])}</p></article><article><h2>价格</h2><p>{escape(record["pricing"])}</p></article><article id="enroll"><h2>报名选项</h2><ul>{tracks}</ul></article></section>"""
     return _page(request, record["title"], body)
 
 
@@ -829,10 +1118,10 @@ def _auth_page(
 ) -> str:
     if kind == "login":
         body = f"""
-<section class="auth-shell"><div class="auth-card"><p class="eyebrow">Coursera</p><h1>登录或创建账户</h1><p class="safe-note" id="credential-note">此离线 clone 不会将凭据提交到 Coursera 或任何外部服务；仅使用合成的 .test 账号。</p><form class="auth-form" action="/auth/login" method="post" aria-describedby="credential-note" autocomplete="off"><input type="hidden" name="next" value="{escape(next_path)}"><label>电子邮件<input type="email" name="email" placeholder="learner@coursera.test" required></label><label>密码<input type="password" name="password" placeholder="输入密码" required></label><button type="submit">继续</button></form><div class="identity-options"><a href="/auth/provider/google">继续使用 Google</a><a href="/auth/provider/facebook">继续使用 Facebook</a><a href="/auth/provider/apple">继续使用 Apple</a></div><a href="/account-recovery">登录时遇到问题？</a><p>还没有账户？<a href="/signup">免费注册</a></p><p>继续即表示您同意 Coursera 的<a href="/help#terms">使用条款</a>和<a href="/help#terms">隐私声明</a>。</p></div><aside><h2>继续学习</h2><p>学习会话和数据保留在 site-33 本地数据库中。</p></aside></section>"""
+<section class="auth-modal-shell"><div class="auth-modal-backdrop" aria-hidden="true"><div class="auth-modal-course"><p>DeepLearning.AI</p><strong>神经网络与深度学习</strong><span>免费注册后开始学习</span></div></div><div class="auth-modal-card auth-card"><button class="auth-modal-close" type="button" aria-label="关闭">×</button><p class="eyebrow">Coursera</p><h1>登录或创建账户</h1><p class="safe-note" id="credential-note">此离线 clone 不会将凭据提交到 Coursera 或任何外部服务；仅使用合成的 .test 账号。</p><form class="auth-form" action="/auth/login" method="post" aria-describedby="credential-note" autocomplete="off"><input type="hidden" name="next" value="{escape(next_path)}"><label>电子邮件<input type="email" name="email" placeholder="learner@coursera.test" required></label><label>密码<input type="password" name="password" placeholder="输入密码" required></label><button type="submit">继续</button></form><div class="identity-options"><a href="/auth/provider/google">继续使用 Google</a><a href="/auth/provider/facebook">继续使用 Facebook</a><a href="/auth/provider/apple">继续使用 Apple</a></div><a href="/account-recovery">登录时遇到问题？</a><p>还没有账户？<a href="/signup">免费注册</a></p><p>继续即表示您同意 Coursera 的<a href="/help#terms">使用条款</a>和<a href="/help#terms">隐私声明</a>。</p></div></section>"""
         return _page(request, "Login - Continue Learning", body)
     body = """
-<section class="auth-shell"><div class="auth-card"><p class="eyebrow">Coursera</p><h1>登录或创建账户</h1><p class="safe-note" id="signup-note">仅使用合成的 .test 数据。注册验证代码只会出现在 site-33 本地收件箱中。</p><form class="auth-form" action="/auth/registration/start" method="post" aria-describedby="signup-note" autocomplete="off"><label>姓名<input name="full_name" placeholder="离线学习者" required></label><label>电子邮件<input type="email" name="email" placeholder="learner@coursera.test" required></label><label>创建密码<input type="password" name="password" placeholder="创建密码" required></label><button type="submit">免费加入</button></form><div class="identity-options"><a href="/auth/provider/google">继续使用 Google</a><a href="/auth/provider/facebook">继续使用 Facebook</a><a href="/auth/provider/apple">继续使用 Apple</a></div><p>验证代码仅显示在受此浏览器会话保护的本地收件箱中，不会发送真实邮件。</p><p>继续即表示您同意 Coursera 的<a href="/help#terms">使用条款</a>和<a href="/help#terms">隐私声明</a>。</p><p>已有账户？<a href="/login">登录</a></p></div><aside><h2>开始学习</h2><p>账户状态仅保存在此离线 clone 中。</p></aside></section>"""
+<section class="auth-modal-shell"><div class="auth-modal-backdrop" aria-hidden="true"><div class="auth-modal-course"><p>DeepLearning.AI</p><strong>从一门课程开始新的学习旅程</strong><span>本地数据仅保存在此 clone 中</span></div></div><div class="auth-modal-card auth-card"><button class="auth-modal-close" type="button" aria-label="关闭">×</button><p class="eyebrow">Coursera</p><h1>登录或创建账户</h1><p class="safe-note" id="signup-note">仅使用合成的 .test 数据。注册验证代码只会出现在 site-33 本地收件箱中。</p><form class="auth-form" action="/auth/registration/start" method="post" aria-describedby="signup-note" autocomplete="off"><label>姓名<input name="full_name" placeholder="离线学习者" required></label><label>电子邮件<input type="email" name="email" placeholder="learner@coursera.test" required></label><label>创建密码<input type="password" name="password" placeholder="创建密码" required></label><button type="submit">免费加入</button></form><div class="identity-options"><a href="/auth/provider/google">继续使用 Google</a><a href="/auth/provider/facebook">继续使用 Facebook</a><a href="/auth/provider/apple">继续使用 Apple</a></div><p>验证代码仅显示在受此浏览器会话保护的本地收件箱中，不会发送真实邮件。</p><p>继续即表示您同意 Coursera 的<a href="/help#terms">使用条款</a>和<a href="/help#terms">隐私声明</a>。</p><p>已有账户？<a href="/login">登录</a></p></div></section>"""
     return _page(request, "Signup - Start Learning", body)
 
 
@@ -1331,8 +1620,15 @@ async def recovery_complete(request: Request) -> Response:
 
 @app.get("/help", response_class=HTMLResponse)
 def help_center(request: Request) -> str:
-    body = """<section class="help-hero"><p class="eyebrow">公开支持</p><h1>学习者帮助中心</h1><p>获取课程、账户访问和失败操作的安全本地指引。</p></section><section class="support-grid"><article><h2>课程与报名</h2><p>浏览主题、搜索课程、预览教材，并了解本地报名选项。</p><a href="/browse">浏览课程目录</a></article><article><h2>账户访问</h2><p>查看登录、注册和密码重置指引。请勿在此离线 fixture 中输入真实凭据。</p><a href="/login">账户访问帮助</a></article><article><h2>失败的操作</h2><p>清除筛选、从缺失页面恢复，并安全返回可用记录。</p><a href="/search">重新搜索</a></article><article id="terms"><h2>使用条款</h2><p>这是确定性的 WebsiteBench 离线复刻，不会产生发布、法律或源站账号效果。</p></article></section>"""
-    return _page(request, "Learner Help Center", body)
+    account_controls = (
+        '<nav class="wb-account-nav"><a href="/my-learning">我的学习</a><form action="/auth/logout" method="post"><button type="submit">退出登录</button></form></nav>'
+        if _request_authenticated(request)
+        else '<nav class="wb-account-nav"><a href="/login">登录</a><a class="wb-join" href="/signup">免费加入</a></nav>'
+    )
+    return f"""<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learner Help Center | Coursera</title><link rel="stylesheet" href="/static/desktop-base.css"><link rel="stylesheet" href="/static/course-desktop.css"></head>
+<body class="help-center-page"><header class="help-center-header"><a class="wb-wordmark" href="/">coursera</a><form action="/help" method="get" role="search"><label class="wb-sr-only" for="help-search">Search for help</label><input id="help-search" name="q" placeholder="Search for help"><button type="submit">⌕</button></form>{account_controls}</header>
+<main class="help-article-shell"><nav class="help-breadcrumbs"><a href="/help">Learner Help Center</a><span>›</span><a href="/help#account">Account & notifications</a><span>›</span><span>Troubleshooting login and account issues</span></nav><article class="help-article"><h1>Troubleshooting login and account issues</h1><p><em>Reading time: 3 minutes</em></p><p>This article can help you troubleshoot:</p><ul><li>Login issues on Coursera.</li><li>Issues with verifying or changing your email.</li></ul><p>If you want to reset your password, see <a href="/account-recovery">Reset your Coursera password</a>.</p><p>If you are part of an organization’s learning program that uses single sign-on, use <a href="/login">single sign-on guidance to log in</a>.</p><aside class="help-skip"><strong>Skip to:</strong><ul><li><a href="#unable">Unable to log in</a><ul><li>Error message: “We couldn't find an account associated with that email address”</li><li>Log in using SSO</li></ul></li><li><a href="#email">Issues selecting images after log in</a></li><li><a href="#verify">I can't verify my email</a></li><li><a href="#change">Changes to your Coursera email</a></li></ul></aside><h2 id="unable">Unable to log in</h2><blockquote><p>If you’re having trouble logging in, follow these steps:</p></blockquote><ol><li>Double check your email address for misspellings. The email address must match exactly what you typed in when you signed up.</li><li>Use the steps in our article on <a href="/account-recovery">resetting your password</a>.</li><li>Return to <a href="/login">Coursera sign in</a> without submitting credentials here.</li></ol><h2 id="account">Account access and failed actions</h2><p><strong>账户访问</strong>、registration, password recovery, checkout errors and <strong>失败的操作</strong> are represented locally. No private account data is exposed.</p><p><a href="/browse">Browse course catalog</a> · <a href="/search">Search course catalog</a> · <a href="/about/contact">Contact support</a></p><section id="terms"><h2>Terms and privacy</h2><p>Continuing in this clone uses local WebsiteBench data only. No real email, payment, or Coursera account effect is produced.</p></section></article><aside class="help-floating"><strong>New! Search with AI</strong><button type="button">×</button><p>Ask a question and get an instant answer.</p></aside><aside class="help-feedback"><strong>Was this article helpful?</strong><button type="button">👍 Yes</button><button type="button">👎 No</button></aside></main></body></html>"""
 
 
 @app.get("/about/contact", response_class=HTMLResponse)

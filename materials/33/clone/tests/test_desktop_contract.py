@@ -73,6 +73,59 @@ def test_public_shell_has_observed_desktop_chrome(
         assert marker in html
 
 
+def test_home_uses_the_observed_two_panel_promotional_rail(
+    desktop_client: TestClient,
+) -> None:
+    """Keep the first desktop viewport card-led rather than a generic hero."""
+
+    html = desktop_client.get("/").text
+
+    assert 'class="promo-rail"' in html
+    assert html.count('class="promo-panel') == 2
+    assert 'class="promo-panel promo-panel-dark"' in html
+    assert 'class="promo-panel promo-panel-blue"' in html
+
+
+def test_home_matches_observed_trending_course_columns(
+    desktop_client: TestClient,
+) -> None:
+    """Catch the home page drifting back to oversized generic catalog cards."""
+
+    html = desktop_client.get("/").text
+
+    assert 'class="trend-columns"' in html
+    for heading in ("最受欢迎", "每周聚焦", "紧缺的 AI 技能"):
+        assert heading in html
+    assert html.count('class="trend-mini-card"') >= 9
+    assert "为热门职业做好就业准备" in html
+
+
+def test_home_uses_source_observed_visual_assets_and_cookie_banner(
+    desktop_client: TestClient,
+) -> None:
+    """Catch the homepage falling back to placeholder art and a too-short viewport."""
+
+    html = desktop_client.get("/").text
+
+    for asset in (
+        "/static/source-home-google-promo.png",
+        "/static/source-home-career-promo.png",
+        "/static/source-home-trend-google-analytics.png",
+        "/static/source-home-trend-microsoft-qa.png",
+        "/static/source-home-trend-google-ai.png",
+    ):
+        assert asset in html
+    for observed_title in (
+        "Google 数据分析",
+        "Microsoft 初级质量保证/软件测试工程师",
+        "用于头脑风暴和规划的 AI",
+    ):
+        assert observed_title in html
+    assert 'class="source-cookie-banner"' in html
+    assert "Your Privacy Rights" in html
+    assert "Reject" in html and "Accept" in html
+
+
 def test_authenticated_shell_replaces_auth_links_with_my_learning(
     desktop_client: TestClient,
 ) -> None:
@@ -98,6 +151,20 @@ def test_browse_has_source_style_subject_grid_and_canonical_heading(
     assert 'class="subject-tile-grid"' in response.text
 
 
+def test_browse_matches_observed_explore_categories_and_role_rows(
+    desktop_client: TestClient,
+) -> None:
+    """Catch Browse losing the compact source category/chip and role layout."""
+
+    html = desktop_client.get("/browse").text
+
+    assert "<h1>Explore Categories</h1>" in html
+    assert 'class="browse-category-pills"' in html
+    assert 'class="source-popular-row"' in html
+    assert 'class="role-explorer-row"' in html
+    assert html.count('class="role-explorer-card"') >= 2
+
+
 def test_impossible_query_shows_no_match_and_recovery(
     desktop_client: TestClient,
 ) -> None:
@@ -120,6 +187,33 @@ def test_catalog_filters_preserve_selected_values_and_real_result_ids(
     assert "筛选和排序" in html
     assert 'value="Beginner" selected' in html
     assert 'data-catalog-record=' in html
+
+
+def test_search_matches_observed_ai_overview_and_filter_chips(
+    desktop_client: TestClient,
+) -> None:
+    """Catch search reverting to a generic sidebar-first result page."""
+
+    html = desktop_client.get("/search?q=Deep+Learning+Specialization").text
+
+    assert 'class="search-ai-overview"' in html
+    assert "AI 概览" in html
+    assert "You are looking for Deep Learning Specialization" in html
+    assert 'class="source-filter-chips"' in html
+    for chip in ("筛选和排序", "主题", "课程长度", "了解产品", "语言", "级别"):
+        assert chip in html
+
+
+def test_search_retains_query_in_header_and_related_cards(
+    desktop_client: TestClient,
+) -> None:
+    """Catch search losing the source-observed query context and related row."""
+
+    html = desktop_client.get("/search?q=Deep+Learning+Specialization").text
+
+    assert 'id="wb-header-search" name="q" value="Deep Learning Specialization"' in html
+    assert 'class="search-related-cards"' in html
+    assert html.count('class="search-related-card"') >= 3
 
 
 def test_specialization_shows_observed_trial_and_course_series(
@@ -148,6 +242,21 @@ def test_course_exposes_modules_instructors_reviews_and_preview(
     assert 'href="/learn/neural-networks-deep-learning/preview"' in html
 
 
+def test_course_detail_matches_observed_source_layout_sections(
+    desktop_client: TestClient,
+) -> None:
+    """Catch course detail pages reverting to generic cards above the fold."""
+
+    html = desktop_client.get("/learn/neural-networks-deep-learning").text
+
+    assert "神经网络与深度学习" in html
+    assert 'class="course-stats"' in html
+    assert 'class="course-tabs"' in html
+    assert 'class="skill-chip-row"' in html
+    for tab in ("关于", "结果", "单元", "推荐", "评价"):
+        assert f">{tab}<" in html
+
+
 def test_not_found_matches_observed_safe_recovery(
     desktop_client: TestClient,
 ) -> None:
@@ -159,6 +268,21 @@ def test_not_found_matches_observed_safe_recovery(
     assert "我们无法找到您要查找的页面" in response.text
     assert 'href="/browse"' in response.text
     assert 'href="/search"' in response.text
+
+
+def test_help_matches_observed_learner_center_article_layout(
+    desktop_client: TestClient,
+) -> None:
+    """Catch public help reverting to a generic marketing support grid."""
+
+    html = desktop_client.get("/help").text
+
+    assert 'class="help-center-page"' in html
+    assert 'placeholder="Search for help"' in html
+    assert "Learner Help Center" in html
+    assert "Troubleshooting login and account issues" in html
+    assert "Skip to:" in html
+    assert "Unable to log in" in html
 
 
 def test_unified_auth_entry_has_email_identity_choices_and_terms(
@@ -173,6 +297,18 @@ def test_unified_auth_entry_has_email_identity_choices_and_terms(
     assert "继续使用 Google" in html
     assert "使用条款" in html
     assert "隐私声明" in html
+
+
+def test_unified_auth_entry_uses_an_observed_modal_surface(
+    desktop_client: TestClient,
+) -> None:
+    """The public auth form is a centered entry modal over a local backdrop."""
+
+    html = desktop_client.get("/login").text
+
+    assert 'class="auth-modal-shell"' in html
+    assert 'class="auth-modal-backdrop"' in html
+    assert 'class="auth-modal-card auth-card"' in html
 
 
 def test_recovery_requires_local_address_and_returns_to_login(

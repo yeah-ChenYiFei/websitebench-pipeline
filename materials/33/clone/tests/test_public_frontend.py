@@ -59,7 +59,7 @@ def test_home_and_search_use_the_source_observed_document_titles() -> None:
 def test_public_home_browse_and_all_subject_routes_render_real_catalog() -> None:
     home = client.get("/")
     assert home.status_code == 200
-    assert "学习新技能，开启更多可能" in home.text
+    assert "New! Learn vibe coding with Google" in home.text
     assert 'href="/browse"' in home.text
 
     browse = client.get("/browse")
@@ -73,6 +73,61 @@ def test_public_home_browse_and_all_subject_routes_render_real_catalog() -> None
         assert category.status_code == 200
         assert f"<h1>{SUBJECTS_ZH[slug]}</h1>" in category.text
         assert category.text.count('data-catalog-record="') >= 3
+
+
+def test_home_extends_below_the_first_viewport_with_source_observed_sections() -> None:
+    """Catch a home page that appears to stop loading after the trend cards."""
+
+    home = client.get("/")
+
+    assert home.status_code == 200
+    for marker in (
+        "订阅即可解锁 10,000 多门课程",
+        "学习来自 350 多家领先大学和公司的知识",
+        "探索类别",
+        "热门新版本",
+        "是什么让您今天来到 Coursera？",
+        "为什么人们选择 Coursera",
+        "Frequently asked questions",
+    ):
+        assert marker in home.text
+    assert home.text.count('class="source-category-chip"') >= 10
+    assert home.text.count('class="source-logo-pill"') >= 8
+    assert home.text.count('class="source-release-card"') >= 6
+    assert 'href="/browse/data-science"' in home.text
+    assert 'href="/search?q=Google+%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%A6%81%E7%82%B9"' in home.text
+
+
+def test_home_cookie_banner_accept_and_reject_are_real_local_interactions() -> None:
+    """Catch inert cookie buttons that make the page feel non-functional."""
+
+    with TestClient(app) as isolated:
+        first = isolated.get("/")
+        assert 'class="source-cookie-banner"' in first.text
+        assert 'action="/privacy-preferences"' in first.text
+        assert 'name="choice" value="accept"' in first.text
+        assert 'name="choice" value="reject"' in first.text
+
+        accepted = isolated.post(
+            "/privacy-preferences",
+            data={"choice": "accept"},
+            follow_redirects=False,
+        )
+        assert accepted.status_code == 303
+        assert accepted.headers["location"] == "/"
+
+        after_accept = isolated.get("/")
+        assert 'class="source-cookie-banner"' not in after_accept.text
+
+    with TestClient(app) as isolated:
+        rejected = isolated.post(
+            "/privacy-preferences",
+            data={"choice": "reject"},
+            follow_redirects=False,
+        )
+        assert rejected.status_code == 303
+        after_reject = isolated.get("/")
+        assert 'class="source-cookie-banner"' not in after_reject.text
 
 
 def test_browse_matches_the_retained_oracle_course_collection_composition() -> None:
@@ -405,6 +460,11 @@ def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
         "/static/desktop-chrome.css",
         "/static/learning-desktop.css",
         "/static/site.css",
+        "/static/source-home-career-promo.png",
+        "/static/source-home-google-promo.png",
+        "/static/source-home-trend-google-ai.png",
+        "/static/source-home-trend-google-analytics.png",
+        "/static/source-home-trend-microsoft-qa.png",
     }
     for path in static_paths:
         assert client.get(path).status_code == 200
