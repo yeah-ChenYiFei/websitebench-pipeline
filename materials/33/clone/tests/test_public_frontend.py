@@ -397,6 +397,7 @@ def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
         "/static/auth-desktop.css",
         "/static/catalog-desktop.css",
         "/static/checkout.css",
+        "/static/checkout-desktop.css",
         "/static/components.css",
         "/static/course-desktop.css",
         "/static/deep-learning-mark.svg",
