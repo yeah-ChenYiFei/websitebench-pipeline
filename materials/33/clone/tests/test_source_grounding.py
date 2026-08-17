@@ -7,6 +7,38 @@ from pathlib import Path
 SITE_ROOT = Path(__file__).resolve().parents[2]
 
 
+def test_known_differences_records_authenticated_source_limitations() -> None:
+    """Prevent local simulations from being described as direct source evidence."""
+
+    text = (SITE_ROOT / "KNOWN_DIFFERENCES.md").read_text(encoding="utf-8")
+
+    assert "authenticated source" in text
+    assert "not directly verified" in text
+
+
+def test_scope_does_not_claim_authenticated_source_visuals_are_directly_verified() -> None:
+    """The frozen coverage scope must keep direct and local-only evidence distinct."""
+
+    coverage = json.loads(
+        (SITE_ROOT / "scope" / "coverage.json").read_text(encoding="utf-8")
+    )
+    dimensions = {item["id"]: item for item in coverage["dimensions"]}
+
+    assert dimensions["authenticated-simulation"]["source_evidence_kind"] == (
+        "unavailable"
+    )
+    assert dimensions["checkout-local-sandbox"]["source_evidence_kind"] == (
+        "unavailable"
+    )
+    assert dimensions["public-desktop-visual-oracles"]["source_evidence_kind"] == (
+        "direct"
+    )
+    assert all(
+        "authenticated" not in item
+        for item in dimensions["public-desktop-visual-oracles"]["required_items"]
+    )
+
+
 def test_task3_reconstruction_maps_assets_layout_and_copy_to_current_ea_evidence() -> (
     None
 ):
@@ -31,7 +63,22 @@ def test_task3_reconstruction_maps_assets_layout_and_copy_to_current_ea_evidence
         item for item in manifest["assets"] if item["id"].startswith("task3-")
     ]
     runtime_assets = {item["runtime_path"] for item in task3_assets}
-    assert {item["evidence_kind"] for item in manifest["assets"]} == {"synthetic"}
+    assert {item["evidence_kind"] for item in task3_assets} == {"synthetic"}
+    direct_public_assets = [
+        item for item in manifest["assets"] if item["evidence_kind"] == "current-direct"
+    ]
+    assert {item["id"] for item in direct_public_assets} == {
+        "task7-home-career-promo",
+        "task7-home-google-promo",
+        "task7-home-trend-google-ai",
+        "task7-home-trend-google-analytics",
+        "task7-home-trend-microsoft-qa",
+    }
+    assert all(
+        item["source_url"] == "https://www.coursera.org/"
+        and item["capture_id"] == "public-home-desktop"
+        for item in direct_public_assets
+    )
     asset_provenance = {
         item["runtime_path"]: item for item in provenance["runtime_assets"]
     }
@@ -112,6 +159,12 @@ def test_claims_resolve_to_committed_sanitized_observations() -> None:
         )
     )["observations"]
     observation_ids = {item["id"] for item in observations if item["sanitized"]}
+    capture_observations = json.loads(
+        (SITE_ROOT / "source-evidence" / "desktop-public-captures.json").read_text(
+            encoding="utf-8"
+        )
+    )["observations"]
+    capture_ids = {item["id"] for item in capture_observations if item["sanitized"]}
     claims = [
         json.loads(line)
         for line in (SITE_ROOT / "scope" / "claims.jsonl")
@@ -123,9 +176,15 @@ def test_claims_resolve_to_committed_sanitized_observations() -> None:
     for claim in claims:
         assert claim["evidence_refs"]
         for reference in claim["evidence_refs"]:
-            prefix = "source-evidence/task3-ea-observations.json#observation:"
-            assert reference.startswith(prefix)
-            assert reference.removeprefix(prefix) in observation_ids
+            task3_prefix = "source-evidence/task3-ea-observations.json#observation:"
+            captures_prefix = (
+                "source-evidence/desktop-public-captures.json#observation:"
+            )
+            if reference.startswith(task3_prefix):
+                assert reference.removeprefix(task3_prefix) in observation_ids
+            else:
+                assert reference.startswith(captures_prefix)
+                assert reference.removeprefix(captures_prefix) in capture_ids
 
 
 def test_learning_verify_contract_uses_real_authenticated_routes_and_actions() -> None:
@@ -250,15 +309,15 @@ def test_task3_css_identity_is_unchanged_and_checkout_css_is_task5_owned() -> No
     ]
 
 
-def test_task5_asset_manifest_has_its_own_collection_identity() -> None:
-    """Catch Task 5 assets mutating the historical Task 3 snapshot identity."""
+def test_asset_manifest_records_task7_public_desktop_collection_identity() -> None:
+    """Catch current public evidence being attributed to the pre-Task-7 collection."""
 
     manifest = json.loads(
         (SITE_ROOT / "source-assets" / "manifest.json").read_text(encoding="utf-8")
     )
 
-    assert manifest["snapshot_id"] == "33-task5-local-assets"
-    assert manifest["created_at"] == "2026-08-16T09:15:04Z"
+    assert manifest["snapshot_id"] == "33-task7-public-desktop-evidence"
+    assert manifest["created_at"] == "2026-08-17T00:00:00Z"
     assert {item["id"] for item in manifest["assets"]} == {
         "task3-site-css",
         "task3-components-css",
@@ -266,6 +325,11 @@ def test_task5_asset_manifest_has_its_own_collection_identity() -> None:
         "task3-hero-learning",
         "task3-deep-learning-mark",
         "task5-checkout-css",
+        "task7-home-career-promo",
+        "task7-home-google-promo",
+        "task7-home-trend-google-ai",
+        "task7-home-trend-google-analytics",
+        "task7-home-trend-microsoft-qa",
     }
 
 
