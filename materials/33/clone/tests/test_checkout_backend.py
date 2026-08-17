@@ -21,7 +21,7 @@ def checkout_site(tmp_path: Path, monkeypatch):
     learning.close_services()
 
 
-def test_checkout_schema_exposes_the_frozen_local_sandbox_plan(
+def test_checkout_schema_exposes_the_server_owned_cny_trial_plan(
     checkout_site,
 ) -> None:
     """Catch a missing checkout migration or drifted server-owned plan facts."""
@@ -34,16 +34,18 @@ def test_checkout_schema_exposes_the_frozen_local_sandbox_plan(
 
     assert checkout.plan() == {
         "course_id": "deep-learning-specialization",
-        "currency": "USD",
-        "fingerprint": (
-            "94b7b58e2a6fc0b45b7aae588169b47756a0dd1a8cc84a3ca672216a24676b76"
-        ),
-        "plan_id": "deep-learning-specialization-paid",
-        "plan_label": "Deep Learning Specialization paid plan",
-        "pricing_evidence": "observed-authenticated-checkout-display-with-local-sandbox-ledger",
-        "subtotal_minor": 4900,
+        "currency": "CNY",
+        "fingerprint": "a8f095ae0d249f93a5c6adfeb1729f4580139a88046ee210560b71e4a2f83f7e",
+        "plan_id": "deep-learning-specialization-trial",
+        "plan_label": "Deep Learning Specialization 7-day trial",
+        "pricing_evidence": "observed-authenticated-checkout-display",
+        "renewal_currency": "CNY",
+        "renewal_interval": "month",
+        "renewal_minor": 19600,
+        "subtotal_minor": 0,
         "tax_minor": 0,
-        "total_minor": 4900,
+        "total_minor": 0,
+        "trial_days": 7,
     }
 
     with learning.connection() as opened:
@@ -56,7 +58,39 @@ def test_checkout_schema_exposes_the_frozen_local_sandbox_plan(
     assert {"coursera_checkout_drafts", "coursera_orders"} <= tables
 
 
-def test_create_draft_binds_owner_and_frozen_facts_to_generated_payment(
+def test_pricing_copy_uses_trial_facts_and_preserves_legacy_currency() -> None:
+    """Catch UI pricing that restates a trial or rewrites a legacy snapshot."""
+
+    from app import _checkout_totals, _trial_terms
+
+    trial_label, renewal = _trial_terms(
+        {
+            "currency": "CNY",
+            "renewal_currency": "CNY",
+            "renewal_interval": "month",
+            "renewal_minor": 19600,
+            "trial_days": 7,
+        }
+    )
+    assert trial_label == "7 天免费试用"
+    assert renewal == "¥196/月"
+
+    legacy = _checkout_totals(
+        {
+            "currency": "USD",
+            "renewal_currency": "USD",
+            "renewal_interval": "none",
+            "renewal_minor": 0,
+            "total_minor": 4900,
+            "trial_days": 0,
+        }
+    )
+    assert "一次性本地结账" in legacy
+    assert "$49.00" in legacy
+    assert "¥" not in legacy
+
+
+def test_create_draft_binds_owner_and_cny_trial_facts_to_generated_payment(
     checkout_site,
 ) -> None:
     """Catch missing or client-controlled facts in payment intent creation."""
@@ -65,16 +99,17 @@ def test_create_draft_binds_owner_and_frozen_facts_to_generated_payment(
     draft = checkout.create_draft(
         "learner-empty",
         course_id="deep-learning-specialization",
-        plan_id="deep-learning-specialization-paid",
+        plan_id="deep-learning-specialization-trial",
     )
 
     assert draft["owner_subject_id"] == "learner-empty"
     assert draft["status"] == "OPEN"
-    assert draft["total_minor"] == 4900
-    assert draft["currency"] == "USD"
-    assert draft["fingerprint"] == (
-        "94b7b58e2a6fc0b45b7aae588169b47756a0dd1a8cc84a3ca672216a24676b76"
-    )
+    assert draft["total_minor"] == 0
+    assert draft["currency"] == "CNY"
+    assert draft["trial_days"] == 7
+    assert draft["renewal_minor"] == 19600
+    assert draft["renewal_currency"] == "CNY"
+    assert draft["renewal_interval"] == "month"
     assert draft["draft_id"].startswith("checkout_")
     assert draft["payment_flow_id"].startswith("payflow_")
 
@@ -86,9 +121,9 @@ def test_create_draft_binds_owner_and_frozen_facts_to_generated_payment(
         ).fetchone()
     assert tuple(flow) == (
         "learner-empty",
-        4900,
-        "USD",
-        ("94b7b58e2a6fc0b45b7aae588169b47756a0dd1a8cc84a3ca672216a24676b76"),
+        0,
+        "CNY",
+        "a8f095ae0d249f93a5c6adfeb1729f4580139a88046ee210560b71e4a2f83f7e",
         "local-sandbox",
         "OPEN",
     )
@@ -97,7 +132,7 @@ def test_create_draft_binds_owner_and_frozen_facts_to_generated_payment(
 @pytest.mark.parametrize(
     ("course_id", "plan_id"),
     [
-        ("different-course", "deep-learning-specialization-paid"),
+        ("different-course", "deep-learning-specialization-trial"),
         ("deep-learning-specialization", "different-plan"),
     ],
 )
@@ -134,7 +169,7 @@ def test_get_draft_hides_foreign_owner_records(checkout_site) -> None:
     draft = checkout.create_draft(
         "learner-empty",
         course_id="deep-learning-specialization",
-        plan_id="deep-learning-specialization-paid",
+        plan_id="deep-learning-specialization-trial",
     )
 
     with pytest.raises(LookupError, match="Checkout not found"):
@@ -146,7 +181,7 @@ def _new_empty_learner_draft(checkout):
     return checkout.create_draft(
         "learner-empty",
         course_id="deep-learning-specialization",
-        plan_id="deep-learning-specialization-paid",
+        plan_id="deep-learning-specialization-trial",
     )
 
 
@@ -171,9 +206,14 @@ def test_approved_attempt_atomically_creates_paid_order_and_enrollment(
         "learner-empty", result["order"]["order_id"]
     )
     assert result["order"]["status"] == "PAID"
-    assert result["order"]["subtotal_minor"] == 4900
+    assert result["order"]["subtotal_minor"] == 0
     assert result["order"]["tax_minor"] == 0
-    assert result["order"]["total_minor"] == 4900
+    assert result["order"]["total_minor"] == 0
+    assert result["order"]["currency"] == "CNY"
+    assert result["order"]["trial_days"] == 7
+    assert result["order"]["renewal_minor"] == 19600
+    assert result["order"]["renewal_currency"] == "CNY"
+    assert result["order"]["renewal_interval"] == "month"
     assert checkout.list_orders("learner-empty") == [result["order"]]
 
     with learning.connection() as opened:
@@ -532,9 +572,11 @@ def test_cancel_order_retains_snapshot_and_cancels_paid_enrollment(
     assert canceled_again == canceled
     assert canceled["status"] == "CANCELED"
     assert canceled["canceled_at"] == "2026-08-16T00:00:00Z"
-    assert canceled["subtotal_minor"] == 4900
+    assert canceled["subtotal_minor"] == 0
     assert canceled["tax_minor"] == 0
-    assert canceled["total_minor"] == 4900
+    assert canceled["total_minor"] == 0
+    assert canceled["trial_days"] == 7
+    assert canceled["renewal_minor"] == 19600
     assert checkout.list_orders("learner-empty") == [canceled]
     with learning.connection() as opened:
         enrollment = opened.execute(

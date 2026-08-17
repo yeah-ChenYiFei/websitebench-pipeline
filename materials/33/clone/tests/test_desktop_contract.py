@@ -376,7 +376,7 @@ def test_source_checkout_post_alias_creates_an_owner_bound_local_draft(
 
     response = desktop_client.post(
         "/payments/checkout",
-        data={"plan_id": "deep-learning-specialization-paid"},
+        data={"plan_id": "deep-learning-specialization-trial"},
         follow_redirects=False,
     )
 

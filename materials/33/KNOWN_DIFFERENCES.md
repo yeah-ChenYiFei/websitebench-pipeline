@@ -11,7 +11,7 @@
 ## Intentional offline reconstruction
 
 - Accounts, registration verification, inbox, progress, bookmarks, reviews, quiz results, history, cancellation, and checkout are clone-local simulations backed by the generated WebsiteBench runtime. They are not claims about source-side persistence or behavior.
-- The clone shows the observed CNY trial facts in the checkout UI. Its generated `local-sandbox` ledger remains frozen to the runtime contract's USD minor-unit currency; it never receives card data or contacts a payment provider.
+- The clone records the observed CNY trial facts through its generated `local-sandbox` ledger: a zero-value CNY activation today, seven trial days, and CNY ¥196/month renewal metadata. It never receives card data, charges a payment method, or contacts a payment provider.
 - The source's anonymous login was captured as a modal overlay. The clone uses a synthetic local course backdrop and no external identity provider.
 - The Deep Learning AI overview and the `zzzz-no-match-websitebench` no-match recommendation/recovery behavior are deterministic clone-local search behavior. The public capture establishes search context and filters, but does not verify source AI output or an impossible-query response.
 - Help evidence is limited to the public article and recovery guidance in the anonymous capture. The clone's account-aware help and recovery actions do not submit to a source service.

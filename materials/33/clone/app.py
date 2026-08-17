@@ -267,15 +267,44 @@ def _checkout_validation(
     return HTMLResponse(_page(request, "Checkout validation", body), status_code=status_code)
 
 
-def _checkout_totals() -> str:
-    return """<dl class="checkout-totals"><div><dt>之后为 ¥196/月</dt><dd>¥196/月</dd></div><div><dt>今天应付</dt><dd>¥0</dd></div><div class="checkout-total"><dt>今日合计：¥0</dt><dd>¥0</dd></div></dl>"""
+def _money_amount(minor: int, currency: str) -> str:
+    whole, fraction = divmod(minor, 100)
+    if currency == "CNY":
+        return f"¥{whole}" if fraction == 0 else f"¥{whole}.{fraction:02d}"
+    if currency == "USD":
+        return f"${whole}.{fraction:02d}"
+    return f"{currency} {whole}.{fraction:02d}"
+
+
+def _trial_terms(pricing: dict[str, Any]) -> tuple[str, str]:
+    trial_days = int(pricing["trial_days"])
+    if trial_days <= 0:
+        return "一次性本地结账", ""
+    renewal = _money_amount(
+        int(pricing["renewal_minor"]), str(pricing["renewal_currency"])
+    )
+    interval = "月" if pricing["renewal_interval"] == "month" else str(
+        pricing["renewal_interval"]
+    )
+    return f"{trial_days} 天免费试用", f"{renewal}/{interval}"
+
+
+def _checkout_totals(pricing: dict[str, Any]) -> str:
+    trial_label, renewal = _trial_terms(pricing)
+    due_today = _money_amount(int(pricing["total_minor"]), str(pricing["currency"]))
+    renewal_row = (
+        f"<div><dt>之后为 {renewal}</dt><dd>{renewal}</dd></div>"
+        if renewal
+        else ""
+    )
+    return f"""<dl class="checkout-totals"><div><dt>{trial_label}</dt><dd>{trial_label}</dd></div>{renewal_row}<div><dt>今天应付</dt><dd>{due_today}</dd></div><div class="checkout-total"><dt>今日合计：{due_today}</dt><dd>{due_today}</dd></div></dl>"""
 
 
 def _order_rows(records: list[dict[str, Any]]) -> str:
     if not records:
         return """<div class="empty-state"><h2>No local orders yet</h2><p>Approved sandbox checkouts will appear here.</p><a href="/specializations/deep-learning">Back to Deep Learning</a></div>"""
     return "".join(
-        f"""<article class="catalog-card order-card" data-order-status="{escape(str(record["status"]))}"><p class="eyebrow">{"已付款" if record["status"] == "PAID" else "已取消"}</p><h2>深度学习专项课程</h2><p>订单 {escape(str(record["order_id"]))}</p><p>今天应付：¥0</p><a href="/orders/{escape(str(record["order_id"]))}">查看订单详情</a></article>"""
+        f"""<article class="catalog-card order-card" data-order-status="{escape(str(record["status"]))}"><p class="eyebrow">{"已付款" if record["status"] == "PAID" else "已取消"}</p><h2>深度学习专项课程</h2><p>订单 {escape(str(record["order_id"]))}</p><p>今天应付：{_money_amount(int(record["total_minor"]), str(record["currency"]))}</p><p>{_trial_terms(record)[0]}{f'；之后为 {_trial_terms(record)[1]}' if _trial_terms(record)[1] else ''}</p><a href="/orders/{escape(str(record["order_id"]))}">查看订单详情</a></article>"""
         for record in records
     )
 
@@ -861,6 +890,7 @@ def deep_learning_specialization(request: Request) -> str:
         f"""<li><span class="course-number">{index}</span><div><p>课程 {index}</p><h3><a href="/learn/{escape(record["id"])}">{escape(record["title"])}</a></h3><p>{escape(record["duration"])} · {escape(record["level"])}</p>{_evidence_note(record, compact=True)}</div></li>"""
         for index, record in enumerate(components, start=1)
     )
+    trial_label, renewal = _trial_terms(checkout.plan())
     _backend, _auth, _token, session = _request_session(request)
     enrollment_action = (
         """<div class="enrollment-actions"><form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><label>报名轨道<select name="track" required><option value="free">免费学习</option><option value="audit">旁听</option></select></label><button class="secondary-button" type="submit">保存本地报名</button></form><a class="wb-primary" href="/checkout/deep-learning">进入本地结账</a><p>本地结账仅使用 local-sandbox，不会产生真实付款。</p></div>"""
@@ -869,7 +899,7 @@ def deep_learning_specialization(request: Request) -> str:
     )
     body = f"""
 <nav class="course-breadcrumbs"><a href="/browse">浏览</a><span>›</span><a href="/browse/data-science">数据科学</a><span>›</span>Deep Learning</nav>
-<section class="program-hero"><div><p class="provider">DeepLearning.AI</p><h1>深度学习专项课程</h1><p class="lead">掌握深度学习基础，构建机器学习能力，并把 AI 知识应用到真实问题中。</p><p>讲师：<strong>Andrew Ng 等 3 位讲师</strong> <span class="badge">顶级讲师</span></p><section class="trial-card"><h2>7 天免费试用</h2><p>无限制访问专项课程中的全部课程，可随时取消。</p><p><strong>试用结束后，¥196/月</strong></p>{enrollment_action}</section></div><img src="/static/deep-learning-mark.svg" alt="Deep Learning program mark"></section>
+<section class="program-hero"><div><p class="provider">DeepLearning.AI</p><h1>深度学习专项课程</h1><p class="lead">掌握深度学习基础，构建机器学习能力，并把 AI 知识应用到真实问题中。</p><p>讲师：<strong>Andrew Ng 等 3 位讲师</strong> <span class="badge">顶级讲师</span></p><section class="trial-card"><h2>{trial_label}</h2><p>无限制访问专项课程中的全部课程，可随时取消。</p><p><strong>试用结束后，{renewal}</strong></p>{enrollment_action}</section></div><img src="/static/deep-learning-mark.svg" alt="Deep Learning program mark"></section>
 <section class="program-facts"><div><strong>5 门课程系列</strong><span>系统学习一个主题</span></div><div><strong>4.8 ★</strong><span>来自学习者评分</span></div><div><strong>中级水平</strong><span>建议具备基础经验</span></div><div><strong>灵活安排</strong><span>每周 10 小时，约 3 个月</span></div></section>
 <section class="detail-section"><h2>你将学到什么</h2><p>构建和训练深度神经网络，分析模型表现，并将卷积模型和序列模型用于实践任务。</p><h2>课程系列</h2><ol class="course-series">{course_list}</ol></section>"""
     return _page(
@@ -885,6 +915,9 @@ def checkout_plan(request: Request) -> HTMLResponse:
         _backend, _auth, _token, _subject = _authenticated_subject(request)
     except HTTPException:
         return _permission_page(request, "Sign in before choosing a checkout plan")
+    pricing = checkout.plan()
+    trial_label, renewal = _trial_terms(pricing)
+    due_today = _money_amount(int(pricing["total_minor"]), str(pricing["currency"]))
     body = f"""
 <nav class="course-breadcrumbs checkout-breadcrumbs"><a href="/specializations/deep-learning">Deep Learning Specialization</a><span>›</span><span>结帐</span></nav>
 <section class="source-checkout-shell">
@@ -894,7 +927,7 @@ def checkout_plan(request: Request) -> HTMLResponse:
     <p class="safe-note">该页面按当前观察到的 Coursera 结账信息重建。不会提交真实付款数据，也不会联系 Coursera。</p>
     <form class="source-checkout-form" action="/checkout/deep-learning" method="post" autocomplete="off">
       <input type="hidden" name="course_id" value="deep-learning-specialization">
-      <input type="hidden" name="plan_id" value="deep-learning-specialization-paid">
+      <input type="hidden" name="plan_id" value="{escape(str(pricing["plan_id"]))}">
       <section class="checkout-billing" aria-labelledby="billing-heading">
         <h2 id="billing-heading">账单信息</h2>
         <label>全名<input id="billing-name" type="text" placeholder="请输入您的姓名" autocomplete="off"></label>
@@ -914,7 +947,7 @@ def checkout_plan(request: Request) -> HTMLResponse:
       <p class="checkout-terms">点击“开始免费试用”即表示你同意 Coursera 的<a href="/terms">服务条款</a>和<a href="/privacy">隐私声明</a>。本 clone 使用 local-sandbox，只创建本地草稿。</p>
       <button class="wb-primary checkout-start" type="submit">开始免费试用</button>
     </form>
-    <p class="checkout-safety"><strong>开始 7 天免费试用。</strong>今天应付 ¥0；试用结束后可在本地订单历史中取消。</p>
+    <p class="checkout-safety"><strong>开始 {trial_label}。</strong>今天应付 {due_today}；试用结束后为 {renewal}，可在本地订单历史中取消。</p>
     <a class="checkout-return" href="/specializations/deep-learning">返回专项课程</a>
   </main>
   <aside class="source-checkout-summary" aria-label="订单摘要">
@@ -925,9 +958,9 @@ def checkout_plan(request: Request) -> HTMLResponse:
     </article>
     <p class="summary-note">无绑定合同。可随时取消。</p>
     <dl class="summary-prices">
-      <div><dt>月度订阅</dt><dd>7 天免费试用</dd></div>
-      <div><dt>之后为 ¥196/月</dt><dd>¥196/月</dd></div>
-      <div class="summary-total"><dt>今日合计：¥0</dt><dd>¥0</dd></div>
+      <div><dt>月度订阅</dt><dd>{trial_label}</dd></div>
+      <div><dt>之后为 {renewal}</dt><dd>{renewal}</dd></div>
+      <div class="summary-total"><dt>今日合计：{due_today}</dt><dd>{due_today}</dd></div>
     </dl>
     <p class="summary-small">试用期结束前取消不会收费。此离线版本不会提交真实付款数据。</p>
   </aside>
@@ -1003,11 +1036,11 @@ def checkout_review(request: Request, draft_id: str) -> HTMLResponse:
     except HTTPException:
         return _permission_page(request, "Sign in to review this checkout")
     try:
-        checkout.get_draft(subject, draft_id)
+        draft = checkout.get_draft(subject, draft_id)
     except LookupError:
         return _checkout_not_found(request)
     idempotency_key = f"browser-attempt:{secrets.token_urlsafe(18)}"
-    body = f"""<nav class="course-breadcrumbs"><a href="/checkout/{escape(draft_id)}/payment">付款方式</a><span>›</span>确认</nav><section class="checkout-shell"><p class="eyebrow">仅限本地 sandbox</p><h1>确认免费试用</h1><p>这是一项本地演示，不会产生外部或真实付款效果。</p>{_checkout_totals()}<p class="checkout-terms">点击下方操作即表示您已阅读本地演示的使用条款，并可在订单历史中取消。</p><form class="sandbox-scenarios" action="/checkout/{escape(draft_id)}/attempt" method="post"><input type="hidden" name="idempotency_key" value="{escape(idempotency_key)}"><fieldset><legend>选择确定的本地 sandbox 结果</legend><label><input type="radio" name="scenario_id" value="sandbox-approved" required>模拟成功</label><label><input type="radio" name="scenario_id" value="sandbox-declined" required>模拟被拒绝</label><label><input type="radio" name="scenario_id" value="sandbox-retry" required>模拟需重试</label></fieldset><button class="wb-primary" type="submit">开始免费试用</button></form><a href="/specializations/deep-learning">返回专项课程</a></section>"""
+    body = f"""<nav class="course-breadcrumbs"><a href="/checkout/{escape(draft_id)}/payment">付款方式</a><span>›</span>确认</nav><section class="checkout-shell"><p class="eyebrow">仅限本地 sandbox</p><h1>确认免费试用</h1><p>这是一项本地演示，不会产生外部或真实付款效果。</p>{_checkout_totals(draft)}<p class="checkout-terms">点击下方操作即表示您已阅读本地演示的使用条款，并可在订单历史中取消。</p><form class="sandbox-scenarios" action="/checkout/{escape(draft_id)}/attempt" method="post"><input type="hidden" name="idempotency_key" value="{escape(idempotency_key)}"><fieldset><legend>选择确定的本地 sandbox 结果</legend><label><input type="radio" name="scenario_id" value="sandbox-approved" required>模拟成功</label><label><input type="radio" name="scenario_id" value="sandbox-declined" required>模拟被拒绝</label><label><input type="radio" name="scenario_id" value="sandbox-retry" required>模拟需重试</label></fieldset><button class="wb-primary" type="submit">开始免费试用</button></form><a href="/specializations/deep-learning">返回专项课程</a></section>"""
     return HTMLResponse(_page(request, "确认本地结账", body, checkout_chrome=True))
 
 
@@ -1334,7 +1367,7 @@ def order_detail(request: Request, order_id: str) -> HTMLResponse:
         else "<p>该订单及其付费报名已经取消；不可变快照仍保留在历史中。</p>"
     )
     status_label = "已付款" if order["status"] == "PAID" else "已取消"
-    body = f"""<nav class="course-breadcrumbs"><a href="/orders">订单历史</a><span>›</span>{escape(order_id)}</nav><section class="checkout-shell" data-order-status="{escape(str(order["status"]))}"><p class="eyebrow">本地 sandbox 订单</p><h1>{status_label}</h1><p>订单 {escape(order_id)}</p><p>深度学习专项课程 · {escape(str(order["plan_label"]))}</p><p class="safe-note">这是不可变的本地模拟快照，没有发生真实付款或外部购买。</p>{_checkout_totals()}{cancellation}<a href="/orders">返回订单历史</a><a href="/specializations/deep-learning">返回专项课程</a></section>"""
+    body = f"""<nav class="course-breadcrumbs"><a href="/orders">订单历史</a><span>›</span>{escape(order_id)}</nav><section class="checkout-shell" data-order-status="{escape(str(order["status"]))}"><p class="eyebrow">本地 sandbox 订单</p><h1>{status_label}</h1><p>订单 {escape(order_id)}</p><p>深度学习专项课程 · {escape(str(order["plan_label"]))}</p><p class="safe-note">这是不可变的本地模拟快照，没有发生真实付款或外部购买。</p>{_checkout_totals(order)}{cancellation}<a href="/orders">返回订单历史</a><a href="/specializations/deep-learning">返回专项课程</a></section>"""
     return HTMLResponse(_page(request, "订单详情", body))
 
 

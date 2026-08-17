@@ -9,15 +9,24 @@ from typing import Any
 from websitebench.site_backend import PaymentConflict, PaymentRejected
 
 
-COURSE_ID = "deep-learning-specialization"
-PLAN_ID = "deep-learning-specialization-paid"
-PLAN_LABEL = "Deep Learning Specialization paid plan"
-PRICING_EVIDENCE = "observed-authenticated-checkout-display-with-local-sandbox-ledger"
-CURRENCY = "USD"
-SUBTOTAL_MINOR = 4900
-TAX_MINOR = 0
-TOTAL_MINOR = 4900
-PLAN_FINGERPRINT = "94b7b58e2a6fc0b45b7aae588169b47756a0dd1a8cc84a3ca672216a24676b76"
+TRIAL_PLAN = {
+    "course_id": "deep-learning-specialization",
+    "currency": "CNY",
+    "fingerprint": "a8f095ae0d249f93a5c6adfeb1729f4580139a88046ee210560b71e4a2f83f7e",
+    "plan_id": "deep-learning-specialization-trial",
+    "plan_label": "Deep Learning Specialization 7-day trial",
+    "pricing_evidence": "observed-authenticated-checkout-display",
+    "renewal_currency": "CNY",
+    "renewal_interval": "month",
+    "renewal_minor": 19600,
+    "subtotal_minor": 0,
+    "tax_minor": 0,
+    "total_minor": 0,
+    "trial_days": 7,
+}
+COURSE_ID = str(TRIAL_PLAN["course_id"])
+PLAN_ID = str(TRIAL_PLAN["plan_id"])
+PLAN_FINGERPRINT = str(TRIAL_PLAN["fingerprint"])
 FROZEN_TIME = "2026-08-16T00:00:00Z"
 
 _SCHEMA = (
@@ -31,6 +40,10 @@ _SCHEMA = (
         tax_minor INTEGER NOT NULL,
         total_minor INTEGER NOT NULL,
         currency TEXT NOT NULL,
+        trial_days INTEGER NOT NULL,
+        renewal_minor INTEGER NOT NULL,
+        renewal_currency TEXT NOT NULL,
+        renewal_interval TEXT NOT NULL,
         fingerprint TEXT NOT NULL,
         payment_flow_id TEXT NOT NULL UNIQUE,
         status TEXT NOT NULL CHECK(status IN ('OPEN','COMPLETED','CANCELED')),
@@ -50,6 +63,10 @@ _SCHEMA = (
         tax_minor INTEGER NOT NULL,
         total_minor INTEGER NOT NULL,
         currency TEXT NOT NULL,
+        trial_days INTEGER NOT NULL,
+        renewal_minor INTEGER NOT NULL,
+        renewal_currency TEXT NOT NULL,
+        renewal_interval TEXT NOT NULL,
         fingerprint TEXT NOT NULL,
         status TEXT NOT NULL CHECK(status IN ('PAID','CANCELED')),
         created_at TEXT NOT NULL,
@@ -66,21 +83,38 @@ def migrate(connection: sqlite3.Connection) -> None:
 
     for statement in _SCHEMA:
         connection.execute(statement)
+    _add_trial_columns(connection, "coursera_checkout_drafts")
+    _add_trial_columns(connection, "coursera_orders")
+
+
+def _add_trial_columns(connection: sqlite3.Connection, table: str) -> None:
+    """Preserve legacy snapshots while making new trial facts durable."""
+
+    columns = {row[1] for row in connection.execute(f"PRAGMA table_info({table})")}
+    additions = {
+        "trial_days": "INTEGER NOT NULL DEFAULT 0",
+        "renewal_minor": "INTEGER NOT NULL DEFAULT 0",
+        "renewal_currency": "TEXT NOT NULL DEFAULT 'USD'",
+        "renewal_interval": "TEXT NOT NULL DEFAULT 'none'",
+    }
+    for name, definition in additions.items():
+        if name not in columns:
+            connection.execute(f"ALTER TABLE {table} ADD COLUMN {name} {definition}")
 
 
 def plan() -> dict[str, Any]:
     """Return a copy of the one current server-owned plan."""
 
+    return dict(TRIAL_PLAN)
+
+
+def _persisted_plan_facts() -> dict[str, Any]:
+    """Return the server-owned trial fields persisted on drafts and orders."""
+
     return {
-        "course_id": COURSE_ID,
-        "currency": CURRENCY,
-        "fingerprint": PLAN_FINGERPRINT,
-        "plan_id": PLAN_ID,
-        "plan_label": PLAN_LABEL,
-        "pricing_evidence": PRICING_EVIDENCE,
-        "subtotal_minor": SUBTOTAL_MINOR,
-        "tax_minor": TAX_MINOR,
-        "total_minor": TOTAL_MINOR,
+        key: value
+        for key, value in TRIAL_PLAN.items()
+        if key != "pricing_evidence"
     }
 
 
@@ -111,8 +145,8 @@ def create_draft(
             raise LookupError("Learner not found")
         flow = backend.payments.create_intent(
             owner=owner,
-            amount_minor=TOTAL_MINOR,
-            currency=CURRENCY,
+            amount_minor=int(TRIAL_PLAN["total_minor"]),
+            currency=str(TRIAL_PLAN["currency"]),
             fingerprint=PLAN_FINGERPRINT,
             idempotency_key=f"draft-create:{draft_id}",
             adapter="local-sandbox",
@@ -122,19 +156,24 @@ def create_draft(
             """INSERT INTO coursera_checkout_drafts(
                 draft_id,owner_subject_id,course_id,plan_id,plan_label,
                 subtotal_minor,tax_minor,total_minor,currency,fingerprint,
+                trial_days,renewal_minor,renewal_currency,renewal_interval,
                 payment_flow_id,status,created_at,updated_at)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,'OPEN',?,?)""",
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'OPEN',?,?)""",
             (
                 draft_id,
                 owner,
-                COURSE_ID,
-                PLAN_ID,
-                PLAN_LABEL,
-                SUBTOTAL_MINOR,
-                TAX_MINOR,
-                TOTAL_MINOR,
-                CURRENCY,
+                TRIAL_PLAN["course_id"],
+                TRIAL_PLAN["plan_id"],
+                TRIAL_PLAN["plan_label"],
+                TRIAL_PLAN["subtotal_minor"],
+                TRIAL_PLAN["tax_minor"],
+                TRIAL_PLAN["total_minor"],
+                TRIAL_PLAN["currency"],
                 PLAN_FINGERPRINT,
+                TRIAL_PLAN["trial_days"],
+                TRIAL_PLAN["renewal_minor"],
+                TRIAL_PLAN["renewal_currency"],
+                TRIAL_PLAN["renewal_interval"],
                 flow["flow_id"],
                 FROZEN_TIME,
                 FROZEN_TIME,
@@ -256,16 +295,7 @@ def attempt(
         ).fetchone()
         if draft is None:
             raise LookupError("Checkout not found")
-        current_facts = {
-            "course_id": COURSE_ID,
-            "plan_id": PLAN_ID,
-            "plan_label": PLAN_LABEL,
-            "subtotal_minor": SUBTOTAL_MINOR,
-            "tax_minor": TAX_MINOR,
-            "total_minor": TOTAL_MINOR,
-            "currency": CURRENCY,
-            "fingerprint": PLAN_FINGERPRINT,
-        }
+        current_facts = _persisted_plan_facts()
         if any(draft[key] != value for key, value in current_facts.items()):
             raise PaymentRejected("checkout facts are stale")
         if draft["status"] == "COMPLETED":
@@ -285,16 +315,7 @@ def attempt(
                     idempotency_key,
                 ),
             ).fetchone()
-            order_facts = {
-                "course_id": COURSE_ID,
-                "plan_id": PLAN_ID,
-                "plan_label": PLAN_LABEL,
-                "subtotal_minor": SUBTOTAL_MINOR,
-                "tax_minor": TAX_MINOR,
-                "total_minor": TOTAL_MINOR,
-                "currency": CURRENCY,
-                "fingerprint": PLAN_FINGERPRINT,
-            }
+            order_facts = _persisted_plan_facts()
             if (
                 order is not None
                 and prior_attempt is not None
@@ -322,8 +343,8 @@ def attempt(
         payment_attempt = backend.payments.attempt(
             flow_id=str(draft["payment_flow_id"]),
             owner=owner,
-            amount_minor=TOTAL_MINOR,
-            currency=CURRENCY,
+            amount_minor=int(TRIAL_PLAN["total_minor"]),
+            currency=str(TRIAL_PLAN["currency"]),
             fingerprint=PLAN_FINGERPRINT,
             scenario_id=scenario_id,
             idempotency_key=idempotency_key,
@@ -345,8 +366,8 @@ def attempt(
             opened,
             flow_id=str(draft["payment_flow_id"]),
             owner=owner,
-            amount_minor=TOTAL_MINOR,
-            currency=CURRENCY,
+            amount_minor=int(TRIAL_PLAN["total_minor"]),
+            currency=str(TRIAL_PLAN["currency"]),
             fingerprint=PLAN_FINGERPRINT,
         )
         enrollment = opened.execute(
@@ -366,22 +387,27 @@ def attempt(
             """INSERT INTO coursera_orders(
                 order_id,owner_subject_id,draft_id,payment_flow_id,enrollment_id,
                 course_id,plan_id,plan_label,subtotal_minor,tax_minor,total_minor,
-                currency,fingerprint,status,created_at,canceled_at)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,'PAID',?,NULL)""",
+                currency,fingerprint,trial_days,renewal_minor,renewal_currency,
+                renewal_interval,status,created_at,canceled_at)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'PAID',?,NULL)""",
             (
                 order_id,
                 owner,
                 draft_id,
                 draft["payment_flow_id"],
                 int(enrollment["enrollment_id"]),
-                COURSE_ID,
-                PLAN_ID,
-                PLAN_LABEL,
-                SUBTOTAL_MINOR,
-                TAX_MINOR,
-                TOTAL_MINOR,
-                CURRENCY,
+                TRIAL_PLAN["course_id"],
+                TRIAL_PLAN["plan_id"],
+                TRIAL_PLAN["plan_label"],
+                TRIAL_PLAN["subtotal_minor"],
+                TRIAL_PLAN["tax_minor"],
+                TRIAL_PLAN["total_minor"],
+                TRIAL_PLAN["currency"],
                 PLAN_FINGERPRINT,
+                TRIAL_PLAN["trial_days"],
+                TRIAL_PLAN["renewal_minor"],
+                TRIAL_PLAN["renewal_currency"],
+                TRIAL_PLAN["renewal_interval"],
                 FROZEN_TIME,
             ),
         )

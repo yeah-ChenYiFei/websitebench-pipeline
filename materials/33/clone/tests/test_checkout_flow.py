@@ -64,7 +64,7 @@ def _create_browser_draft(client: TestClient) -> str:
         "/checkout/deep-learning",
         data={
             "course_id": "deep-learning-specialization",
-            "plan_id": "deep-learning-specialization-paid",
+            "plan_id": "deep-learning-specialization-trial",
         },
         follow_redirects=False,
     )
