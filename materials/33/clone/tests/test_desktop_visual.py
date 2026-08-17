@@ -35,22 +35,35 @@ class DesktopRoute:
     """One anonymous public route and the landmark its rendered view must retain."""
 
     path: str
+    checkpoint_id: str
     landmark: str
     header: str = ".wb-header"
     footer: str = ".wb-footer"
 
 
 PUBLIC_ROUTES = (
-    DesktopRoute("/", ".promo-rail"),
-    DesktopRoute("/browse", ".browse-source-heading"),
-    DesktopRoute("/search?q=Deep+Learning", ".search-source-layout"),
-    DesktopRoute("/specializations/deep-learning", ".program-hero"),
-    DesktopRoute("/learn/neural-networks-deep-learning", ".source-course-hero"),
-    DesktopRoute("/login", ".auth-modal-card"),
+    DesktopRoute("/", "home.loaded.desktop", ".promo-rail"),
+    DesktopRoute("/browse", "browse.loaded.desktop", ".browse-source-heading"),
     DesktopRoute(
-        "/help", ".help-article", header=".help-center-header", footer=".help-feedback"
+        "/search?q=Deep+Learning", "search.results.desktop", ".search-source-layout"
     ),
-    DesktopRoute("/websitebench-not-found-33", ".not-found"),
+    DesktopRoute(
+        "/specializations/deep-learning", "specialization.loaded.desktop", ".program-hero"
+    ),
+    DesktopRoute(
+        "/learn/neural-networks-deep-learning",
+        "course.loaded.desktop",
+        ".source-course-hero",
+    ),
+    DesktopRoute("/login", "login.loaded.desktop", ".auth-modal-card"),
+    DesktopRoute(
+        "/help",
+        "help.loaded.desktop",
+        ".help-article",
+        header=".help-center-header",
+        footer=".help-feedback",
+    ),
+    DesktopRoute("/websitebench-not-found-33", "not-found.loaded.desktop", ".not-found"),
 )
 
 
@@ -149,8 +162,8 @@ def test_public_capture_provenance_keeps_authentication_out_of_oracles() -> None
     assert checkout["artifact_retained"] is False
 
 
-def test_visual_oracles_declare_header_content_and_footer_regions() -> None:
-    """Catch an oracle that cannot produce a complete region diagnostic."""
+def test_visual_oracles_declare_route_specific_semantic_regions() -> None:
+    """Catch an oracle that labels unrelated lower-page content as a footer."""
 
     spec = json.loads(
         (SITE_ROOT / "scope" / "desktop-visual-comparison.json").read_text(
@@ -174,12 +187,39 @@ def test_visual_oracles_declare_header_content_and_footer_regions() -> None:
         "help.loaded.desktop",
         "not-found.loaded.desktop",
     }
+    expected_regions = {
+        "home.loaded.desktop": {"header", "promotion-rail", "privacy-banner"},
+        "browse.loaded.desktop": {"header", "category-navigation", "browse-results"},
+        "search.results.desktop": {"header", "search-results", "assistant-panel"},
+        "specialization.loaded.desktop": {
+            "header",
+            "program-hero",
+            "program-course-list",
+        },
+        "course.loaded.desktop": {"header", "course-hero", "course-navigation"},
+        "login.loaded.desktop": {
+            "page-header",
+            "identity-modal",
+            "modal-lower-area",
+        },
+        "help.loaded.desktop": {"help-header", "help-article", "help-feedback"},
+        "not-found.loaded.desktop": {
+            "header",
+            "route-recovery",
+            "shared-footer",
+        },
+    }
     for checkpoint in spec["checkpoints"]:
         assert checkpoint["viewport"] == VIEWPORT
         regions = {region["id"]: region for region in checkpoint["regions"]}
-        assert regions.keys() == {"header", "content", "footer"}
+        assert regions.keys() == expected_regions[checkpoint["id"]]
         assert all(region["threshold"] > 0 for region in regions.values())
         assert all("ignore_regions" not in region for region in regions.values())
+        assert all(
+            region["x"] + region["width"] <= VIEWPORT["width"]
+            and region["y"] + region["height"] <= VIEWPORT["height"]
+            for region in regions.values()
+        )
     by_id = {checkpoint["id"]: checkpoint for checkpoint in checkpoints}
     for checkpoint in spec["checkpoints"]:
         declared = by_id[checkpoint["id"]]
@@ -187,6 +227,58 @@ def test_visual_oracles_declare_header_content_and_footer_regions() -> None:
         assert Path(declared["visual_contract"]["source_artifact_path"]).name == Path(
             checkpoint["source"]["path"]
         ).name
+
+
+def test_candidate_capture_plan_writes_every_declared_visual_candidate() -> None:
+    """Catch capture output drifting away from the comparison spec's inputs."""
+
+    from capture_desktop_visuals import declared_candidate_capture_plan
+
+    spec = json.loads(
+        (SITE_ROOT / "scope" / "desktop-visual-comparison.json").read_text(
+            encoding="utf-8"
+        )
+    )
+
+    expected = {
+        checkpoint["id"]: (SITE_ROOT / "scope" / checkpoint["candidate"]["path"])
+        for checkpoint in spec["checkpoints"]
+    }
+    actual = {
+        capture.checkpoint_id: capture.output_path
+        for capture in declared_candidate_capture_plan()
+    }
+
+    assert actual == expected
+
+
+def test_public_home_rasters_are_declared_with_source_provenance() -> None:
+    """Catch shipped source-derived homepage art escaping the asset closure."""
+
+    manifest = json.loads(
+        (SITE_ROOT / "source-assets" / "manifest.json").read_text(encoding="utf-8")
+    )
+    expected_runtime_paths = {
+        "clone/static/source-home-career-promo.png",
+        "clone/static/source-home-google-promo.png",
+        "clone/static/source-home-trend-google-ai.png",
+        "clone/static/source-home-trend-google-analytics.png",
+        "clone/static/source-home-trend-microsoft-qa.png",
+    }
+    rows = {
+        item["runtime_path"]: item
+        for item in manifest["assets"]
+        if item["runtime_path"] in expected_runtime_paths
+    }
+
+    assert rows.keys() == expected_runtime_paths
+    for runtime_path, row in rows.items():
+        source = SITE_ROOT / row["source_path"]
+        runtime = SITE_ROOT / runtime_path
+        assert source.is_file() and runtime.is_file()
+        assert source.read_bytes() == runtime.read_bytes()
+        assert row["evidence_kind"] == "current-direct"
+        assert row["capture_id"] == "public-home-desktop"
 
 
 def test_public_routes_keep_desktop_shell_landmarks_before_screenshots(
@@ -200,6 +292,7 @@ def test_public_routes_keep_desktop_shell_landmarks_before_screenshots(
             browser = runtime.chromium.launch()
             context = browser.new_context(viewport=VIEWPORT, device_scale_factor=1)
             try:
+                screenshots: dict[str, Path] = {}
                 with _clone_server() as base_url:
                     for route in PUBLIC_ROUTES:
                         page = context.new_page()
@@ -209,10 +302,41 @@ def test_public_routes_keep_desktop_shell_landmarks_before_screenshots(
                         assert page.locator(route.header).is_visible()
                         assert page.locator(route.footer).is_visible()
                         assert page.locator(route.landmark).is_visible()
-                        screenshot = tmp_path / f"candidate-{PUBLIC_ROUTES.index(route)}.png"
+                        screenshot = tmp_path / f"candidate-{route.checkpoint_id}.png"
                         page.screenshot(path=str(screenshot))
                         assert _png_size(screenshot) == (1191, 979)
+                        screenshots[route.checkpoint_id] = screenshot
                         page.close()
+                from websitebench.offline_clone.comparison_tools import compare_visual_spec
+
+                spec = json.loads(
+                    (SITE_ROOT / "scope" / "desktop-visual-comparison.json").read_text(
+                        encoding="utf-8"
+                    )
+                )
+                for checkpoint in spec["checkpoints"]:
+                    checkpoint["source"]["path"] = str(
+                        (SITE_ROOT / "scope" / checkpoint["source"]["path"]).resolve()
+                    )
+                    checkpoint["candidate"]["path"] = str(
+                        screenshots[checkpoint["id"]].resolve()
+                    )
+                diagnostic_spec = tmp_path / "desktop-visual-comparison.json"
+                diagnostic_spec.write_text(
+                    json.dumps(spec, ensure_ascii=False), encoding="utf-8"
+                )
+                report = compare_visual_spec(
+                    spec_path=diagnostic_spec,
+                    output_path=tmp_path / "visual-comparison-report.json",
+                    heatmap_dir=tmp_path / "visual-heatmaps",
+                )
+                assert report["counts"] == {
+                    "checkpoints_total": 8,
+                    "checkpoints_passed": 8,
+                    "regions_total": 24,
+                    "regions_passed": 24,
+                }
+                assert report["status"] == "passed"
             finally:
                 context.close()
                 browser.close()

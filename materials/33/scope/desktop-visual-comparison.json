@@ -2,13 +2,101 @@
   "schema_version": "websitebench.offline-clone.visual-comparison-spec.v1",
   "authority": "diagnostic-only",
   "checkpoints": [
-    {"id": "home.loaded.desktop", "source": {"path": "../source-evidence/home.desktop.png"}, "candidate": {"path": "candidate-desktop/home.loaded.desktop.png"}, "viewport": {"width": 1191, "height": 979}, "capture_mode": "viewport", "regions": [{"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45}, {"id": "content", "x": 0, "y": 140, "width": 1191, "height": 639, "metric": "normalized_mae", "threshold": 0.45}, {"id": "footer", "x": 0, "y": 779, "width": 1191, "height": 200, "metric": "normalized_mae", "threshold": 0.45}]},
-    {"id": "browse.loaded.desktop", "source": {"path": "../source-evidence/browse.desktop.png"}, "candidate": {"path": "candidate-desktop/browse.loaded.desktop.png"}, "viewport": {"width": 1191, "height": 979}, "capture_mode": "viewport", "regions": [{"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45}, {"id": "content", "x": 0, "y": 140, "width": 1191, "height": 639, "metric": "normalized_mae", "threshold": 0.45}, {"id": "footer", "x": 0, "y": 779, "width": 1191, "height": 200, "metric": "normalized_mae", "threshold": 0.45}]},
-    {"id": "search.results.desktop", "source": {"path": "../source-evidence/search.desktop.png"}, "candidate": {"path": "candidate-desktop/search.results.desktop.png"}, "viewport": {"width": 1191, "height": 979}, "capture_mode": "viewport", "regions": [{"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45}, {"id": "content", "x": 0, "y": 140, "width": 1191, "height": 639, "metric": "normalized_mae", "threshold": 0.45}, {"id": "footer", "x": 0, "y": 779, "width": 1191, "height": 200, "metric": "normalized_mae", "threshold": 0.45}]},
-    {"id": "specialization.loaded.desktop", "source": {"path": "../source-evidence/specialization.desktop.png"}, "candidate": {"path": "candidate-desktop/specialization.loaded.desktop.png"}, "viewport": {"width": 1191, "height": 979}, "capture_mode": "viewport", "regions": [{"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45}, {"id": "content", "x": 0, "y": 140, "width": 1191, "height": 639, "metric": "normalized_mae", "threshold": 0.45}, {"id": "footer", "x": 0, "y": 779, "width": 1191, "height": 200, "metric": "normalized_mae", "threshold": 0.45}]},
-    {"id": "course.loaded.desktop", "source": {"path": "../source-evidence/course.desktop.png"}, "candidate": {"path": "candidate-desktop/course.loaded.desktop.png"}, "viewport": {"width": 1191, "height": 979}, "capture_mode": "viewport", "regions": [{"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45}, {"id": "content", "x": 0, "y": 140, "width": 1191, "height": 639, "metric": "normalized_mae", "threshold": 0.45}, {"id": "footer", "x": 0, "y": 779, "width": 1191, "height": 200, "metric": "normalized_mae", "threshold": 0.45}]},
-    {"id": "login.loaded.desktop", "source": {"path": "../source-evidence/login.desktop.png"}, "candidate": {"path": "candidate-desktop/login.loaded.desktop.png"}, "viewport": {"width": 1191, "height": 979}, "capture_mode": "viewport", "regions": [{"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45}, {"id": "content", "x": 0, "y": 140, "width": 1191, "height": 639, "metric": "normalized_mae", "threshold": 0.45}, {"id": "footer", "x": 0, "y": 779, "width": 1191, "height": 200, "metric": "normalized_mae", "threshold": 0.45}]},
-    {"id": "help.loaded.desktop", "source": {"path": "../source-evidence/help.desktop.png"}, "candidate": {"path": "candidate-desktop/help.loaded.desktop.png"}, "viewport": {"width": 1191, "height": 979}, "capture_mode": "viewport", "regions": [{"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45}, {"id": "content", "x": 0, "y": 140, "width": 1191, "height": 639, "metric": "normalized_mae", "threshold": 0.45}, {"id": "footer", "x": 0, "y": 779, "width": 1191, "height": 200, "metric": "normalized_mae", "threshold": 0.45}]},
-    {"id": "not-found.loaded.desktop", "source": {"path": "../source-evidence/not-found.desktop.png"}, "candidate": {"path": "candidate-desktop/not-found.loaded.desktop.png"}, "viewport": {"width": 1191, "height": 979}, "capture_mode": "viewport", "regions": [{"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45}, {"id": "content", "x": 0, "y": 140, "width": 1191, "height": 639, "metric": "normalized_mae", "threshold": 0.45}, {"id": "footer", "x": 0, "y": 779, "width": 1191, "height": 200, "metric": "normalized_mae", "threshold": 0.45}]}
+    {
+      "id": "home.loaded.desktop",
+      "source": {"path": "../source-evidence/home.desktop.png"},
+      "candidate": {"path": "candidate-desktop/home.loaded.desktop.png"},
+      "viewport": {"width": 1191, "height": 979},
+      "capture_mode": "viewport",
+      "regions": [
+        {"id": "header", "x": 0, "y": 0, "width": 1191, "height": 160, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "promotion-rail", "x": 0, "y": 160, "width": 1191, "height": 480, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "privacy-banner", "x": 0, "y": 640, "width": 1191, "height": 339, "metric": "normalized_mae", "threshold": 0.45}
+      ]
+    },
+    {
+      "id": "browse.loaded.desktop",
+      "source": {"path": "../source-evidence/browse.desktop.png"},
+      "candidate": {"path": "candidate-desktop/browse.loaded.desktop.png"},
+      "viewport": {"width": 1191, "height": 979},
+      "capture_mode": "viewport",
+      "regions": [
+        {"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "category-navigation", "x": 0, "y": 140, "width": 1191, "height": 300, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "browse-results", "x": 0, "y": 440, "width": 1191, "height": 539, "metric": "normalized_mae", "threshold": 0.45}
+      ]
+    },
+    {
+      "id": "search.results.desktop",
+      "source": {"path": "../source-evidence/search.desktop.png"},
+      "candidate": {"path": "candidate-desktop/search.results.desktop.png"},
+      "viewport": {"width": 1191, "height": 979},
+      "capture_mode": "viewport",
+      "regions": [
+        {"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "search-results", "x": 0, "y": 140, "width": 1191, "height": 620, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "assistant-panel", "x": 0, "y": 760, "width": 1191, "height": 219, "metric": "normalized_mae", "threshold": 0.45}
+      ]
+    },
+    {
+      "id": "specialization.loaded.desktop",
+      "source": {"path": "../source-evidence/specialization.desktop.png"},
+      "candidate": {"path": "candidate-desktop/specialization.loaded.desktop.png"},
+      "viewport": {"width": 1191, "height": 979},
+      "capture_mode": "viewport",
+      "regions": [
+        {"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "program-hero", "x": 0, "y": 140, "width": 1191, "height": 490, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "program-course-list", "x": 0, "y": 630, "width": 1191, "height": 349, "metric": "normalized_mae", "threshold": 0.45}
+      ]
+    },
+    {
+      "id": "course.loaded.desktop",
+      "source": {"path": "../source-evidence/course.desktop.png"},
+      "candidate": {"path": "candidate-desktop/course.loaded.desktop.png"},
+      "viewport": {"width": 1191, "height": 979},
+      "capture_mode": "viewport",
+      "regions": [
+        {"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "course-hero", "x": 0, "y": 140, "width": 1191, "height": 480, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "course-navigation", "x": 0, "y": 620, "width": 1191, "height": 359, "metric": "normalized_mae", "threshold": 0.45}
+      ]
+    },
+    {
+      "id": "login.loaded.desktop",
+      "source": {"path": "../source-evidence/login.desktop.png"},
+      "candidate": {"path": "candidate-desktop/login.loaded.desktop.png"},
+      "viewport": {"width": 1191, "height": 979},
+      "capture_mode": "viewport",
+      "regions": [
+        {"id": "page-header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "identity-modal", "x": 0, "y": 140, "width": 1191, "height": 650, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "modal-lower-area", "x": 0, "y": 790, "width": 1191, "height": 189, "metric": "normalized_mae", "threshold": 0.45}
+      ]
+    },
+    {
+      "id": "help.loaded.desktop",
+      "source": {"path": "../source-evidence/help.desktop.png"},
+      "candidate": {"path": "candidate-desktop/help.loaded.desktop.png"},
+      "viewport": {"width": 1191, "height": 979},
+      "capture_mode": "viewport",
+      "regions": [
+        {"id": "help-header", "x": 0, "y": 0, "width": 1191, "height": 100, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "help-article", "x": 0, "y": 100, "width": 1191, "height": 650, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "help-feedback", "x": 0, "y": 750, "width": 1191, "height": 229, "metric": "normalized_mae", "threshold": 0.45}
+      ]
+    },
+    {
+      "id": "not-found.loaded.desktop",
+      "source": {"path": "../source-evidence/not-found.desktop.png"},
+      "candidate": {"path": "candidate-desktop/not-found.loaded.desktop.png"},
+      "viewport": {"width": 1191, "height": 979},
+      "capture_mode": "viewport",
+      "regions": [
+        {"id": "header", "x": 0, "y": 0, "width": 1191, "height": 140, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "route-recovery", "x": 0, "y": 140, "width": 1191, "height": 500, "metric": "normalized_mae", "threshold": 0.45},
+        {"id": "shared-footer", "x": 0, "y": 640, "width": 1191, "height": 339, "metric": "normalized_mae", "threshold": 0.45}
+      ]
+    }
   ]
 }
