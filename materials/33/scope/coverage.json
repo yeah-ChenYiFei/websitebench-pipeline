@@ -66,17 +66,17 @@
       "satisfied_items": []
     },
     {
-      "id": "browse-visual",
-      "label": "Anonymous public browse viewport",
+      "id": "public-desktop-visual-oracles",
+      "label": "Anonymous public desktop visual-oracle route matrix",
       "unit": "checkpoint",
       "category": "visual",
       "source_evidence_kind": "direct",
       "local_contract_evidence_kind": "direct",
-      "population_size": 1,
-      "sample_size": 1,
-      "sampling_method": "selected current EA2 anonymous browse capture",
+      "population_size": 8,
+      "sample_size": 8,
+      "sampling_method": "complete anonymous public-route matrix rendered from sanitized SingleFile captures at the frozen 1191x979 desktop viewport; dynamic source context is retained only in capture provenance",
       "required_evidence_kinds": ["visual"],
-      "required_items": ["browse.loaded.desktop"],
+      "required_items": ["home.loaded.desktop", "browse.loaded.desktop", "search.results.desktop", "specialization.loaded.desktop", "course.loaded.desktop", "login.loaded.desktop", "help.loaded.desktop", "not-found.loaded.desktop"],
       "satisfied_items": []
     },
     {
