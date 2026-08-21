@@ -249,6 +249,8 @@ def page(
     stylesheet_markup = (
         '<link rel="stylesheet" href="/static/coursera/cds-variables.css?v='
         f'{STATIC_REVISION}">'
+        + '<link rel="stylesheet" href="/static/coursera/fonts.css?v='
+        f'{STATIC_REVISION}">'
         + real_markup
         + "".join(
             f'<link rel="stylesheet" href="/static/{name}?v={STATIC_REVISION}">'
