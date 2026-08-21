@@ -59,6 +59,25 @@
   (`current-promo-third.png`) had been only 20x298 and rendered as an empty
   third slide; no promo slide is a screenshot anymore.
 
+
+## Harbor interaction contract (2026-08-21)
+
+- `tools/frontend_samples.json` (13 checks) + `harbor/sites/33` +
+  `harbor/instances/33` initialized; `derive-from-clone` produced the
+  OpenCLI interaction contract with three profiles (auth 3 steps,
+  discovery 2 steps, public 5 steps) carrying visible-state assertions
+  and failure/recovery paths; `validate-corpus` is valid (1 site,
+  1 same-id instance).
+- `opencli-adapters` generated browser:false adapters (state/click/submit).
+- `run-opencli` replay is recorded as `opencli-unavailable`: the OpenClaw
+  `opencli` binary is not installed in this environment (not an npm
+  package); replay is advisory and its absence is documented per the
+  workflow, not a gate.
+- `scope/journeys.json` gained six `harbor-audit` failure/recovery entries
+  so derived profiles carry negative-path journeys; the 23 human traces
+  remain the coverage contract and the two inventory tests filter on
+  `trace-` ids.
+
 ## Diagnostics
 
 - Static WebsiteBench diagnostics are complete with 76/76 verified assets, zero remote runtime references, and zero detected secrets.

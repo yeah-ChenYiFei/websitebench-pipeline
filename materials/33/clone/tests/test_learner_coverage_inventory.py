@@ -18,7 +18,11 @@ JOURNEYS_PATH = SITE_ROOT / "scope" / "journeys.json"
 def _frozen_journey_ids() -> set[str]:
     import json
 
-    return {entry["id"] for entry in json.loads(JOURNEYS_PATH.read_text())["journeys"]}
+    return {
+        entry["id"]
+        for entry in json.loads(JOURNEYS_PATH.read_text())["journeys"]
+        if str(entry.get("human_trace_text_id", "")).startswith("trace-")
+    }
 
 
 def test_inventory_has_unique_entries_and_represents_every_frozen_journey() -> None:

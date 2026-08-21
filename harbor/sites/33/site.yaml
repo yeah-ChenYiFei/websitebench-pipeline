@@ -1,0 +1,74 @@
+schema_version: websitebench.harbor.site.v2
+site_id: '33'
+display_name: Coursera
+benchmark_kind: fullstack-offline-reconstruction
+runtime:
+  reference_access: browser-only
+  agent_browser: browser-use-cli
+  formal_browsers:
+  - playwright
+  - browser-use
+  deployment_abi: websitebench.harbor.compile-executable.v1
+  compile_entrypoint: compile.sh
+  executable_entrypoint: executable
+  reference_url_env: WEBSITEBENCH_REFERENCE_URL
+  reference_allowed_origins_env: WEBSITEBENCH_REFERENCE_ALLOWED_ORIGINS
+  reference_storage_state_env: WEBSITEBENCH_REFERENCE_STORAGE_STATE
+  reference_reset_url_env: WEBSITEBENCH_REFERENCE_RESET_URL
+  reference_reset_credential_env: WEBSITEBENCH_REFERENCE_RESET_CREDENTIAL
+  candidate_url_env: WEBSITEBENCH_CANDIDATE_URL
+  reference_port: 8080
+  candidate_port: 3000
+  ready_path: /__websitebench/health
+  health_response:
+    status: ok
+  judge_network: loopback-only
+  candidate_host_env: HOST
+  candidate_port_env: PORT
+  candidate_data_dir_env: DATA_DIR
+  candidate_seed_env: SEED
+  candidate_timezone_env: TZ
+  logical_shards: 8
+  formal_workers: 4
+  browser:
+    engine: chromium
+    playwright_version: 1.61.0
+    font_profile: websitebench-linux-fonts-v1
+    locale: en-US
+    timezone: UTC
+    color_scheme: light
+    frozen_time: '2026-01-01T00:00:00Z'
+    disable_animations: true
+  browser_use:
+    version: 0.12.6
+    venv: /opt/websitebench/browser-use-0.12.6
+    mode: deterministic-cdp-only
+    public_network: false
+    credentials: false
+mailbox:
+  mode: local-sidecar
+  namespace_env: WEBSITEBENCH_MAILBOX_NAMESPACE
+  credential_env: WEBSITEBENCH_MAILBOX_CREDENTIAL
+  external_allowlist: []
+paths:
+  public: public
+  reference: reference
+  verifier: verifier
+  hidden_fixtures: fixtures/hidden
+  oracle: oracle
+scoring:
+  reward_source: weighted_t2_journey
+  t2_journey_score: 4*R_L1+6*R_L2+10*R_L3
+  visual_score: area_weighted_rgb_ssim
+  tie_break:
+  - Score20
+  - T1_pass_rate
+  - T3_pass_rate
+opencli:
+  version: 1.8.6
+  contract: interactions/opencli-interaction-contract.json
+  network_requirements:
+    allowlist:
+    - 127.0.0.1
+    - localhost
+    notes: Replay runs against a local clone only; no upstream origin.

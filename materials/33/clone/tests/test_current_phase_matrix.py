@@ -16,12 +16,17 @@ def test_current_phase_covers_every_frozen_journey_once_at_fullscreen_viewport()
     frozen = _read_json(FROZEN_JOURNEYS_PATH)
     current = _read_json(CURRENT_PHASE_PATH)
 
-    expected_ids = {journey["id"] for journey in frozen["journeys"]}
+    trace_journeys = [
+        journey
+        for journey in frozen["journeys"]
+        if str(journey.get("human_trace_text_id", "")).startswith("trace-")
+    ]
+    expected_ids = {journey["id"] for journey in trace_journeys}
     coverage = current["coverage"]
 
     assert current["schema_version"] == "current-accessible-fullscreen-phase.v1"
     assert current["viewport"] == {"width": 1692, "height": 979}
-    assert len(coverage) == 23
+    assert len(coverage) == len(trace_journeys)
     assert {entry["journey_id"] for entry in coverage} == expected_ids
     assert len({entry["journey_id"] for entry in coverage}) == len(coverage)
     assert all(entry["current_boundary"] for entry in coverage)
