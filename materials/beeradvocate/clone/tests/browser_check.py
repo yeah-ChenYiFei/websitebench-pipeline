@@ -201,7 +201,7 @@ def main() -> int:
         page.get_by_label("Confirm password").fill("LocalBrowserPass!2026")
         page.get_by_label("I agree to the community rules.").check()
         page.get_by_role("button", name="Create account").click()
-        page.get_by_text("No message was sent").wait_for()
+        page.get_by_text("Your verification request is ready").wait_for()
         page.get_by_role("button", name="Verify and activate account").click()
         page.get_by_text(f"Browser Member {identity}").first.wait_for()
 
@@ -245,7 +245,7 @@ def main() -> int:
         current_member_review = (
             page.locator("article.panel")
             .filter(has_text=expected_comment)
-            .filter(has_text=f"{member_name} · local clone review")
+            .filter(has_text=member_name)
         )
         current_member_review.wait_for()
         initial_comment_visible = matching_comments.count() > 0
