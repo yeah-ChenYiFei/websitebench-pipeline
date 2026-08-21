@@ -1,0 +1,9 @@
+{
+  "schema_version": "offline-clone.purpose.v1",
+  "status": "frozen",
+  "purpose_id": "bean-box-offline-purpose",
+  "statement": "Help anonymous coffee buyers discover specialty coffee and configure a recurring coffee subscription through a truthful local checkout fixture, with synthetic local-account lifecycle and subscription-management coverage for the WB016 expanded tasks.",
+  "primary_actor_ids": ["anonymous-shopper", "local-account"],
+  "mainline_journey_ids": ["configure-monthly-curated-ground", "browse-search-open-coffee", "local-account-lifecycle", "subscription-management"],
+  "out_of_scope": ["source checkout mutation", "source authenticated account mutation", "source credentials", "real subscription", "real address", "real email", "Stripe", "live payment", "public deployment"]
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "websitebench.site-backend-runtime.v1",
+  "site": {
+    "id": "bean-box",
+    "label": "Bean Box",
+    "public_origin": "https://bean-box.website-bench.com"
+  },
+  "database": {
+    "engine": "sqlite",
+    "data_dir": "data",
+    "filename": "bean-box.sqlite3",
+    "migration_hook": "backend.business:migrate",
+    "seed_hook": "backend.business:seed",
+    "legacy_unbound_migration": false
+  },
+  "session": {
+    "host_only": true,
+    "http_only": true,
+    "same_site": "Lax",
+    "secure": true
+  },
+  "mail": {
+    "purposes": {
+      "registration": {
+        "template_id": "bean-box.registration.v1",
+        "subject": "Verify your Bean Box account",
+        "lead": "Finish creating your Bean Box account.",
+        "body": "Your verification code is ${code}.",
+        "expiry": "This code expires in ${minutes} minutes.",
+        "footer": "This code is only for Bean Box.",
+        "required_variables": ["code", "minutes"],
+        "secret_variables": ["code"]
+      }
+    },
+    "sender": {
+      "address_env": "RESEND_FROM_EMAIL",
+      "display_name": "Bean Box"
+    }
+  },
+  "payments": {
+    "currency": "USD",
+    "default_adapter": "local-sandbox",
+    "local_sandbox": {
+      "scenarios": [
+        {"id": "sandbox-approved", "display_label": "Simulated approval", "outcome": "approved"},
+        {"id": "sandbox-declined", "display_label": "Simulated decline", "outcome": "declined"},
+        {"id": "sandbox-retry", "display_label": "Simulated retry", "outcome": "retryable"}
+      ]
+    },
+    "stripe_test": null
+  },
+  "deployment": {
+    "profiles": {
+      "offline-harbor": {"persistence": "persistent", "mail_adapter": "local-outbox", "payment_adapter": "local-sandbox"},
+      "cloudflare-review": {"persistence": "ephemeral-reset", "mail_adapter": "redis-resend", "payment_adapter": "local-sandbox"},
+      "docker-volume": {"persistence": "persistent-volume", "mail_adapter": "effects-gateway", "payment_adapter": "local-sandbox"}
+    }
+  }
+}
