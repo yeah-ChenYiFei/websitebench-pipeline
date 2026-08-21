@@ -245,9 +245,14 @@ def page(
         "enrolled-learning.css",
         "checkout-desktop.css",
     )
-    stylesheet_markup = real_markup + "".join(
-        f'<link rel="stylesheet" href="/static/{name}?v={STATIC_REVISION}">'
-        for name in stylesheets
+    stylesheet_markup = (
+        '<link rel="stylesheet" href="/static/coursera/cds-variables.css?v='
+        f'{STATIC_REVISION}">'
+        + real_markup
+        + "".join(
+            f'<link rel="stylesheet" href="/static/{name}?v={STATIC_REVISION}">'
+            for name in stylesheets
+        )
     )
     script_markup = (
         f'<script src="/static/public-interactions.js?v={STATIC_REVISION}" defer></script>'
