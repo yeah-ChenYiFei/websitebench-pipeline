@@ -7,7 +7,6 @@ import sqlite3
 import unicodedata
 from collections.abc import Mapping, Sequence
 from datetime import datetime, timedelta, timezone
-from typing import Any
 from uuid import uuid4
 
 import enrolled_course

@@ -12,7 +12,6 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from urllib.parse import urlsplit
 
 SOURCE_EVIDENCE_DIR = Path(__file__).resolve().parents[1] / "source-evidence"
 OUTPUT_DIR = SOURCE_EVIDENCE_DIR / "visual-baseline-2026-08-21"
