@@ -20,18 +20,49 @@
 {%- endmacro %}
 
 <section id="search-results" class="search-page-layout">
+  <nav class="source-filter-chips" aria-label="Search filters">
+    <a id="search-filter-open" class="search-filter-open" href="#search-filter-drawer" role="button"><span aria-hidden="true">☷</span> Filter &amp; Sort</a>
+    <a href="#search-filter-drawer">Topic <span aria-hidden="true">⌄</span></a>
+    <a href="#search-filter-drawer">Duration <span aria-hidden="true">⌄</span></a>
+    <a href="#search-filter-drawer">Learning Product <span aria-hidden="true">⌄</span></a>
+    <a href="#search-filter-drawer">Language <span aria-hidden="true">⌄</span></a>
+    <a href="#search-filter-drawer">Level <span aria-hidden="true">⌄</span></a>
+  </nav>
+  <div class="search-columns">
+  <aside class="source-filter-sidebar" aria-label="Refine results">
+    <div class="source-filter-group">
+      <h2>Status</h2>
+      <label><input type="checkbox" name="status" value="free-trial"> Free Trial</label>
+      <label><input type="checkbox" name="status" value="financial-aid"> Financial Aid</label>
+    </div>
+    <div class="source-filter-group">
+      <h2>Topic</h2>
+      {% for value in filter_options.category[:8] %}<label><input type="checkbox" name="category" value="{{ value }}"> {{ value|replace('-', ' ')|title }}</label>{% endfor %}
+      <label><input type="checkbox" name="topic" value="deep-learning"> Deep Learning</label>
+      <label><input type="checkbox" name="topic" value="machine-learning"> Machine Learning</label>
+      <label><input type="checkbox" name="topic" value="artificial-intelligence"> Artificial Intelligence</label>
+    </div>
+    <div class="source-filter-group">
+      <h2>Duration</h2>
+      {% for value in filter_options.duration[:6] %}<label><input type="checkbox" name="duration" value="{{ value }}"> {{ value }}</label>{% endfor %}
+    </div>
+    <div class="source-filter-group">
+      <h2>Learning Product</h2>
+      <label><input type="checkbox" name="product" value="courses"> Courses</label>
+      <label><input type="checkbox" name="product" value="specializations"> Specializations</label>
+      <label><input type="checkbox" name="product" value="professional-certificates"> Professional Certificates</label>
+      <label><input type="checkbox" name="product" value="degrees"> Degrees</label>
+    </div>
+    <div class="source-filter-group">
+      <h2>Language</h2>
+      {% for value in filter_options.language[:6] %}<label><input type="checkbox" name="language" value="{{ value }}"> {{ value }}</label>{% endfor %}
+    </div>
+    <div class="source-filter-group">
+      <h2>Level</h2>
+      {% for value in filter_options.level %}<label><input type="checkbox" name="level" value="{{ value }}"> {{ value }}</label>{% endfor %}
+    </div>
+  </aside>
   <div class="search-main-column">
-    
-
-    <nav class="source-filter-chips" aria-label="Search filters">
-      <a id="search-filter-open" class="search-filter-open" href="#search-filter-drawer" role="button"><span aria-hidden="true">☷</span> Filter &amp; Sort</a>
-      <a href="#search-filter-drawer">Topic <span aria-hidden="true">⌄</span></a>
-      <a href="#search-filter-drawer">Duration <span aria-hidden="true">⌄</span></a>
-      <a href="#search-filter-drawer">Learning Product <span aria-hidden="true">⌄</span></a>
-      <a href="#search-filter-drawer">Language <span aria-hidden="true">⌄</span></a>
-      <a href="#search-filter-drawer">Level <span aria-hidden="true">⌄</span></a>
-    </nav>
-
     <section class="search-results-section" aria-labelledby="all-results-heading">
       <h1 id="all-results-heading">All Results</h1>
       <div class="search-results-list" data-result-count="{{ result_count }}">
@@ -62,6 +93,7 @@
         {% endif %}
       </div>
     </section>
+  </div>
   </div>
 
 </section>

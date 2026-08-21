@@ -162,15 +162,16 @@ def test_fullscreen_search_result_grid_fills_the_content_shell() -> None:
                     wait_until="networkidle",
                 )
                 shell = page.locator(".search-page-layout").bounding_box()
+                columns = page.locator(".search-columns").bounding_box()
                 grid = page.locator(".search-result-grid").first.bounding_box()
                 first = page.locator('[data-result-position="1"]').bounding_box()
                 fourth = page.locator('[data-result-position="4"]').bounding_box()
 
                 assert shell is not None
+                assert columns is not None
                 assert grid is not None
                 assert first is not None
                 assert fourth is not None
-                assert abs(grid["x"] - shell["x"]) <= 1
                 # The result grid is intentionally narrower than the shell:
                 # the live site renders its result column at ~1054-1330px.
                 assert grid["width"] <= shell["width"] + 1
