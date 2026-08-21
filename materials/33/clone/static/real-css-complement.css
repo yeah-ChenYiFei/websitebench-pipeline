@@ -1,0 +1,9 @@
+/* Clone-side complement to the owner-authorized real Coursera stylesheets.
+   The captured page CSS gives .link-button.primary its blue fill but the
+   text color is inherited; pin the white text the live page shows. */
+.link-button.primary {
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 700;
+}

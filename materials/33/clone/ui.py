@@ -244,6 +244,7 @@ def page(
         "learning-desktop.css",
         "enrolled-learning.css",
         "checkout-desktop.css",
+        "real-css-complement.css",
     )
     stylesheet_markup = (
         '<link rel="stylesheet" href="/static/coursera/cds-variables.css?v='
