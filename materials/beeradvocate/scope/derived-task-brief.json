@@ -1,0 +1,36 @@
+{
+  "schema_version": "prompt.websitebench-clone-task-brief.v1",
+  "observed_at": "2026-08-19T09:20:00Z",
+  "source": {
+    "input_url": "https://beeradvocate.com/",
+    "canonical_url": "https://www.beeradvocate.com/",
+    "canonical_origin": "https://www.beeradvocate.com",
+    "approved_discovery_origins": ["https://beeradvocate.com", "https://www.beeradvocate.com", "https://cdn.beeradvocate.com"],
+    "proposed_additional_origins": ["https://ajax.googleapis.com", "https://cdn.jsdelivr.net", "https://ads.adthrive.com", "https://securepubads.g.doubleclick.net", "https://www.googletagmanager.com"]
+  },
+  "site": {
+    "site_id": "beeradvocate",
+    "display_name": "BeerAdvocate",
+    "existing_site": false,
+    "site_dir": "materials/beeradvocate",
+    "target_origin": "https://beeradvocate.website-bench.com",
+    "worker_name": "websitebench-beeradvocate-demo",
+    "purpose": "Help beer enthusiasts discover beers, inspect community ratings and reviews, and contribute their own beer reviews."
+  },
+  "baseline": {"locale": "en-US", "timezone": "Etc/UTC", "timezone_policy": "temporary deterministic default; re-freeze from browser evidence", "viewports": [{"id":"desktop","width":1440,"height":900},{"id":"mobile","width":390,"height":844}]},
+  "scope": {
+    "roles": [{"id":"anonymous","display_name":"Public visitor","authentication_required":false,"evidence_kind":"directly-observed","evidence_urls":["https://www.beeradvocate.com/","https://www.beeradvocate.com/beer/","https://www.beeradvocate.com/search/"]},{"id":"member","display_name":"BeerAdvocate member","authentication_required":true,"evidence_kind":"structural-only","evidence_urls":["https://www.beeradvocate.com/community/login/"],"live_view_required":true}],
+    "core_journeys": [
+      {"id":"discover-review","priority":"p0","role":"anonymous","purpose":"Search for an Imperial Stout, open a result, inspect score and review dimensions, then follow Rate It to the login gate.","preconditions":["anonymous browser"],"starting_url":"https://www.beeradvocate.com/","steps":["open Beers","search Imperial Stout","open result","inspect score/history","activate Rate It"],"expected_result":"detail page and login/join gate","failure_variant":"zero-result search","recovery_variant":"return to Beers","source_mutation_required":false,"evidence_kind":"directly-observed","confidence":"high"},
+      {"id":"submit-review","priority":"p0","role":"member","purpose":"Submit a review for an Imperial Stout with all dimension scores and the supplied comment.","preconditions":["authenticated member"],"starting_url":"https://www.beeradvocate.com/beer/profile/147/1160/","steps":["open Rate It","fill look/smell/taste/feel/overall","enter supplied comment","submit"],"expected_result":"review submission result","failure_variant":"validation failure","recovery_variant":"login or retry","source_mutation_required":true,"evidence_kind":"unavailable","confidence":"low"}
+    ],
+    "page_families":["public/marketing","discovery/list/search","entity detail","account/auth","error/recovery","creation/edit"],
+    "deterministic_seed_plan":{"beer_entities":200,"styles":["American Imperial Stout","American IPA","Märzen","Czech Pilsner"],"reviews":["synthetic public examples"],"empty_and_zero_result_states":true},
+    "external_services":[{"name":"BeerAdvocate CDN","evidence_kind":"directly-observed","local_adapter_required":true,"side_effect":false,"authorization_required":false},{"name":"ads/analytics","evidence_kind":"directly-observed","local_adapter_required":false,"side_effect":false,"authorization_required":false}]
+  },
+  "authority":{"authentication_access":"request-human-live-view","credentials_persisted":false,"authorized_source_mutations":[],"requested_source_mutations":[],"real_email_authorized":false,"stripe_test_authorized":false,"live_payment_authorized":false,"push_authorized":false,"pr_authorized":false,"public_deployment_authorized":false,"rights_or_redistribution_status":"unknown"},
+  "trace_acquisition":{"mode":"adaptive","agent_must_initiate":true,"text_ownership":"human-only","human_trace_texts":[{"human_trace_text_id":"ht-706","text":"[706] Submit a review for an Imperial Stout on BeerAdvocate with all dimension scores filled and exactly this comment: \"Rich malt, roasty aroma, full body.\"","provided_at":"2026-08-19T00:00:00Z","source":"initial-user-input","source_ref":"ASSIGNMENT_ID=17","status":"confirmed"}],"trace_candidates":[{"candidate_id":"tc-706","agent_suggested_scope":"Authenticated Rate It form, validation, success and recovery states","role":"member","why_needed":"Anonymous evidence ends at login gate; exact review fields and submission semantics are unobserved.","uncertainty_resolved":[],"expected_coverage":["review dimensions","comment","submission result"],"requires_authentication":true,"requires_source_mutation":true,"evidence_priority":"high","human_trace_text_id":"ht-706","text_status":"confirmed"}],"requested_traces":[],"completed_traces":[],"remaining_material_uncertainties":["authenticated review form and success semantics","exact catalog cardinality from source"]},
+  "trajectory_recording":{"channel":"human-local","recordings":[],"clone_side_recordings":[],"two_sided_findings":[]},
+  "field_evidence":[{"field":"canonical_url","value":"https://www.beeradvocate.com/","evidence":"materials/beeradvocate/source-current/ea1/journey.json","grade":"directly-observed","confidence":"high"},{"field":"review_dimensions","value":["look","smell","taste","feel","overall"],"evidence":"test-output/beeradvocate-source-ea2/beer-detail-key-evidence.json","grade":"directly-observed","confidence":"high"}],
+  "unresolved":["Cloudflare blocks direct HTTP/headless channels; headed Edge CDP was used.","Authenticated source mutation is not authorized and no credentials were supplied.","Society route was unstable and is excluded from strict P0 scope."]
+}
