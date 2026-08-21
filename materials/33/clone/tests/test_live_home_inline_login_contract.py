@@ -250,7 +250,8 @@ def test_login_overlay_preserves_the_invoking_public_page() -> None:
             browser.close()
 
 
-def test_direct_login_keeps_home_background_and_synthetic_email_reveals_password() -> None:
+def test_direct_login_is_standalone_page_and_synthetic_email_reveals_password() -> None:
+    """The observed /login renders its own white page with a centered dialog."""
     playwright = pytest.importorskip("playwright.sync_api")
     with playwright.sync_playwright() as runtime:
         browser = runtime.chromium.launch()
@@ -260,12 +261,8 @@ def test_direct_login_keeps_home_background_and_synthetic_email_reveals_password
                 page = context.new_page()
                 page.goto(base_url + "/login", wait_until="networkidle")
                 assert page.url == base_url + "/login"
-                assert page.locator(".source-home-shell").is_visible()
-                assert page.locator(".home-new-popular .home-source-columns").is_visible()
-                assert page.locator(".source-career-ready").is_visible()
-                assert page.get_by_text(
-                    "Get job-ready for an in-demand career", exact=True
-                ).is_visible()
+                assert page.locator(".source-auth-standalone").is_visible()
+                assert page.locator(".source-login-dialog").is_visible()
                 dialog = page.get_by_role("dialog")
                 assert dialog.is_visible()
                 assert dialog.locator('input[type="password"]').count() == 0
@@ -277,8 +274,8 @@ def test_direct_login_keeps_home_background_and_synthetic_email_reveals_password
             browser.close()
 
 
-def test_signup_keeps_the_home_background_and_uses_the_same_page_identity() -> None:
-    """Join for Free must not resurrect the obsolete promotional auth backdrop."""
+def test_signup_uses_the_standalone_page_identity() -> None:
+    """Join for Free opens the standalone auth surface, not a promo backdrop."""
     playwright = pytest.importorskip("playwright.sync_api")
     with playwright.sync_playwright() as runtime:
         browser = runtime.chromium.launch()
@@ -287,27 +284,21 @@ def test_signup_keeps_the_home_background_and_uses_the_same_page_identity() -> N
             with _clone_server() as base_url:
                 page = context.new_page()
                 page.goto(base_url + "/", wait_until="networkidle")
-                home_promo = page.locator(".promo-panel").first.locator(".promo-title").inner_text()
-                home_markers = (
-                    "New and popular",
-                    "Get job-ready for an in-demand career",
-                    "Learn from 350+ leading universities and companies",
-                )
 
                 page.get_by_role("link", name="Join for Free").first.click()
                 page.wait_for_load_state("networkidle")
 
                 assert page.url == base_url + "/signup"
-                assert page.locator(".source-home-shell").is_visible()
+                assert page.locator(".source-auth-standalone").is_visible()
                 dialog = page.locator("[data-login-dialog]")
                 assert dialog.is_visible()
                 assert dialog.locator('input[type="email"]').is_visible()
                 assert dialog.locator('input[type="password"]').count() == 0
                 assert page.locator("[data-signup-dialog]").count() == 0
                 assert page.locator(".auth-modal-shell").count() == 0
-                assert page.locator(".promo-panel").first.locator(".promo-title").inner_text() == home_promo
+                assert page.locator(".promo-panel").count() == 0
                 body_text = page.locator("body").inner_text()
-                assert all(marker in body_text for marker in home_markers)
+                assert "Log in or create an account" in body_text
         finally:
             context.close()
             browser.close()

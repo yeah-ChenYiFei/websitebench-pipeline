@@ -383,7 +383,7 @@ def test_shared_header_switches_between_anonymous_and_learner_controls(
         "/",
         "/browse",
         "/learn/business-strategy",
-        "/websitebench-auth-chrome-missing",
+        "/search?q=Deep+Learning",
     )
     for path in shared_paths:
         anonymous = site_client.get(path)

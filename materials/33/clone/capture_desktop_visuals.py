@@ -65,7 +65,7 @@ PUBLIC_ROUTE_DETAILS = {
         "/websitebench-not-found-33",
         ".source-not-found-page",
         ".wb-header",
-        ".wb-footer",
+        ".source-not-found",
     ),
 }
 

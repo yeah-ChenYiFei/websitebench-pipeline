@@ -76,6 +76,7 @@ PUBLIC_ROUTES = (
         "/websitebench-not-found-33",
         "not-found.loaded.desktop",
         ".source-not-found",
+        footer=".source-not-found",
     ),
 )
 

@@ -9,11 +9,20 @@ STATIC_REVISION = "20260821-public-interactions-v1"
 
 
 def header(
-    *, authenticated: bool, search_value: str = "", language: str = "en"
+    *, authenticated: bool, search_value: str = "", language: str = "en", minimal: bool = False
 ) -> str:
     """Render the two-tier desktop navigation without any remote dependency."""
 
     english = language == "en"
+    if minimal:
+        home_label = "Coursera home" if english else "Coursera 首页"
+        return f"""
+<header class="wb-header wb-header-minimal">
+  <div class="wb-shell wb-header-row">
+    <a class="wb-wordmark" href="/" aria-label="{home_label}">coursera</a>
+  </div>
+</header>
+"""
     account_controls = (
         '<nav class="wb-account-nav" aria-label="学习者账户">'
         '<a href="/my-learning">My Learning</a><a class="wb-notification-link" href="/updates" aria-label="Updates"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></a>'
@@ -71,6 +80,8 @@ def header(
 def footer(*, language: str = "en", variant: str = "default") -> str:
     """Render the local footer and keep every destination inside this clone."""
 
+    if variant == "none":
+        return ""
     if language == "en" and variant == "source-browse":
         return """
 <footer class="wb-footer source-browse-footer" aria-label="Coursera Footer">
@@ -183,6 +194,7 @@ def page(
     open_signup: bool = False,
     login_next_path: str = "/my-learning",
     real_css: str | None = None,
+    minimal_header: bool = False,
 ) -> str:
     """Return one complete local HTML document for a desktop clone route.
 
@@ -210,6 +222,7 @@ def page(
             authenticated=authenticated,
             search_value=search_value,
             language=language,
+            minimal=minimal_header,
         )
     )
     rendered_footer = (

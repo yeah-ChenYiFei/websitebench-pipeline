@@ -11,6 +11,7 @@
 .catalog-landing .wb-search input { padding: 15px 20px; font-size: 17px; }
 .catalog-landing .wb-search button { width: 58px; border-radius: 50%; margin: 4px; align-self: stretch; }
 .promo-rail { display: grid; grid-template-columns: 1.38fr 1fr; gap: 16px; width: var(--wb-shell); margin: 16px auto 0; }
+.source-home-page .promo-rail { display: block; }
 .promo-panel { position: relative; display: flex; min-height: 298px; padding: 38px 16px 26px; overflow: hidden; border-radius: 16px; }
 .promo-rail[data-source-home-promo="true"] { gap: 18px; }
 .promo-panel[data-source-promo-image-card="true"] { min-height: 358px; padding: 0; background: #111; }
