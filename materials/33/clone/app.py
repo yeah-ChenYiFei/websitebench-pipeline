@@ -119,6 +119,7 @@ def _page(
     open_login: bool = False,
     open_signup: bool = False,
     login_next_path: str = "/my-learning",
+    real_css: str | None = None,
 ) -> str:
     return desktop_page(
         title=title,
@@ -133,6 +134,7 @@ def _page(
         open_login=open_login,
         open_signup=open_signup,
         login_next_path=login_next_path,
+        real_css=real_css,
     )
 
 
@@ -649,6 +651,7 @@ def home(request: Request) -> str:
         document_title="Coursera | Online Courses, Certificates, & Degrees",
         language="en",
         footer_variant="source-browse",
+        real_css="front-page.css",
     )
 
 
@@ -695,6 +698,7 @@ def browse(request: Request) -> str:
         document_title="Coursera | Degrees, Certificates, & Free Online Courses",
         language="en",
         footer_variant="source-browse",
+        real_css="browse.css",
     )
 
 
@@ -712,6 +716,7 @@ def browse_category(request: Request, category: str) -> str:
             document_title="Data Science Online Courses | Coursera",
             language="en",
             footer_variant="source-browse",
+            real_css="browse.css",
         )
     if category == "business":
         return HTMLResponse(load_business_snapshot_html())
@@ -723,6 +728,7 @@ def browse_category(request: Request, category: str) -> str:
         document_title=f"{subject} Online Courses | Coursera",
         language="en",
         footer_variant="source-browse",
+        real_css="browse.css",
     )
 
 
@@ -791,6 +797,7 @@ def search(
         search_value="deep learning" if source_selected else q,
         language="en",
         footer_variant="source-course",
+        real_css="search-v2.css",
     )
 
 
@@ -1015,6 +1022,7 @@ def deep_learning_specialization(request: Request) -> str:
         document_title="Deep Learning Specialization | Coursera",
         language="en",
         login_next_path="/checkout/deep-learning",
+        real_css="consumer-description-page.css",
     )
 
 
@@ -1230,6 +1238,7 @@ def course_detail(request: Request, course_id: str) -> str:
             language="en",
             footer_variant="source-course",
             login_next_path="/learn/neural-networks-deep-learning",
+            real_css="consumer-description-page.css",
         )
     syllabus = "".join(f"<li>{escape(item)}</li>" for item in record["syllabus"])
     instructors = ", ".join(escape(item) for item in record["instructors"])
@@ -1302,6 +1311,7 @@ def login(request: Request) -> HTMLResponse:
         footer_variant="source-browse",
         open_login=True,
         login_next_path=next_path,
+        real_css="authentication.css",
     ))
     _set_session_cookie(response, backend, token)
     return response
@@ -1320,6 +1330,7 @@ def signup(request: Request) -> HTMLResponse:
             language="en",
             footer_variant="source-browse",
             open_login=True,
+            real_css="authentication.css",
         )
     )
     _set_session_cookie(response, backend, token)

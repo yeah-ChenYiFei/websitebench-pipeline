@@ -182,8 +182,15 @@ def page(
     open_login: bool = False,
     open_signup: bool = False,
     login_next_path: str = "/my-learning",
+    real_css: str | None = None,
 ) -> str:
-    """Return one complete local HTML document for a desktop clone route."""
+    """Return one complete local HTML document for a desktop clone route.
+
+    `real_css` names an owner-authorized real Coursera stylesheet shipped under
+    /static/coursera/ (e.g. "front-page.css"). It loads before the local
+    layers so matching classes pick up the source design system while local
+    rules continue to cover clone-specific classes.
+    """
 
     rendered_title = document_title or f"{title} | Coursera"
     classes = " ".join(
@@ -192,6 +199,7 @@ def page(
             "wb-page",
             "checkout-page" if checkout_chrome else "",
             body_class,
+            "coursera-real-css" if real_css else "",
         )
         if part
     )
@@ -211,6 +219,11 @@ def page(
     )
     login_markup = login_dialog(open_on_load=open_login, next_path=login_next_path) if not checkout_chrome else ""
     signup_markup = signup_dialog(open_on_load=True) if open_signup and not checkout_chrome else ""
+    real_markup = (
+        f'<link rel="stylesheet" href="/static/coursera/{escape(real_css, quote=True)}?v={STATIC_REVISION}">'
+        if real_css
+        else ""
+    )
     stylesheets = (
         "site.css",
         "components.css",
@@ -232,7 +245,7 @@ def page(
         "enrolled-learning.css",
         "checkout-desktop.css",
     )
-    stylesheet_markup = "".join(
+    stylesheet_markup = real_markup + "".join(
         f'<link rel="stylesheet" href="/static/{name}?v={STATIC_REVISION}">'
         for name in stylesheets
     )

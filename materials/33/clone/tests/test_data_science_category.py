@@ -28,7 +28,7 @@ def test_data_science_category_uses_the_complete_source_observed_page() -> None:
     assert response.status_code == 200
     assert "<title>Data Science Online Courses | Coursera</title>" in html
     assert '<html lang="en">' in html
-    assert '<body class="wb-page source-data-science-page">' in html
+    assert '<body class="wb-page source-data-science-page' in html
 
     section_headings = (
         "Most popular",
