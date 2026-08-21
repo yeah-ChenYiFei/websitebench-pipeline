@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("/static/deep-learning/source-sans-3.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --wb-blue: #0056d2;
   --wb-blue-ink: #00419b;
@@ -8,7 +16,7 @@
   --wb-shell: min(100% - 64px, 1192px);
   --wb-radius: 4px;
   color: var(--wb-ink);
-  font-family: Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  font-family: "Source Sans 3", Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif;
 }
 
 * { box-sizing: border-box; }

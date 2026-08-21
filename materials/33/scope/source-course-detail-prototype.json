@@ -1,0 +1,74 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-neural-networks-course-detail-prototype",
+  "viewport": {
+    "width": 1191,
+    "height": 979
+  },
+  "timeout_ms": 45000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://images.ctfassets.net",
+      "https://coursera_assets.s3.amazonaws.com"
+    ],
+    "clone": [
+      "http://127.0.0.1:8042"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-course-detail",
+      "action": "goto",
+      "path": "/learn/neural-networks-deep-learning",
+      "observations": [
+        {
+          "id": "canonical-route",
+          "kind": "url_path",
+          "expect": {
+            "equals": "/learn/neural-networks-deep-learning"
+          }
+        },
+        {
+          "id": "main-visible",
+          "kind": "visible",
+          "selector": {
+            "source": "main",
+            "clone": "main"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "course-detail-structure",
+      "action": "snapshot",
+      "observations": [
+        {
+          "id": "course-heading",
+          "kind": "text",
+          "selector": {
+            "source": "[data-e2e='hero-title']",
+            "clone": "h1"
+          }
+        },
+        {
+          "id": "course-controls",
+          "kind": "count",
+          "selector": {
+            "source": "button, a",
+            "clone": "button, a"
+          }
+        }
+      ],
+      "screenshot": true,
+      "full_page": false
+    }
+  ]
+}

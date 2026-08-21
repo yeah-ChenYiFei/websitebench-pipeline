@@ -1,0 +1,135 @@
+<nav class="source-specialization-breadcrumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a><span aria-hidden="true">›</span>
+  <a href="/browse">Browse</a><span aria-hidden="true">›</span>
+  <a href="/browse/data-science">Data Science</a><span aria-hidden="true">›</span>
+  <span>Machine Learning</span>
+</nav>
+
+<section class="source-specialization-hero">
+  <div class="source-specialization-hero-copy">
+    <p class="source-provider"><img src="/static/deep-learning/provider-icon.png" alt="">DeepLearning.AI</p>
+    <h1>Deep Learning Specialization</h1>
+    <p class="source-specialization-subtitle">Become a Machine Learning expert.</p>
+    <p class="source-specialization-lead">Master the fundamentals of deep learning and break into AI. Recently updated with cutting-edge techniques!</p>
+    <div class="source-instructor-line">
+      <span class="source-instructor-faces" aria-hidden="true">
+        <img src="/static/deep-learning/instructor-andrew-ng.jpg" alt="">
+        <img src="/static/deep-learning/instructor-younes.jpg" alt="">
+        <img src="/static/deep-learning/instructor-kian-katan.jpg" alt="">
+      </span>
+      <span><strong>3 Instructors:</strong> Andrew Ng + 2 more</span>
+      <span class="source-top-instructor">Top Instructor</span>
+    </div>
+    {% if authenticated %}
+      <div class="source-specialization-actions">
+        <form action="/enrollments" method="post">
+          <input type="hidden" name="course_id" value="deep-learning-specialization">
+          <button class="source-enroll-button" type="submit" name="track" value="free">Enroll for free <small>Starts Aug 19</small></button>
+        </form>
+        <a class="source-local-checkout" href="/checkout/deep-learning">View local paid option</a>
+      </div>
+    {% else %}
+      <div class="source-specialization-actions">
+        <button class="source-enroll-button" type="button" data-login-open data-enrollment-login-open>Enroll for free <small>Starts Aug 19</small></button>
+      </div>
+    {% endif %}
+    <p class="source-enrollment-count">997,307 already enrolled</p>
+  </div>
+  <div class="source-specialization-hero-art" aria-hidden="true">
+    <span class="source-orbit source-orbit-one"></span>
+    <span class="source-orbit source-orbit-two"></span>
+    <span class="source-orbit source-orbit-three"></span>
+  </div>
+</section>
+
+<section class="source-specialization-stats" aria-label="Program facts">
+  <article><strong>5 course series</strong><span>Get in-depth knowledge of a subject</span></article>
+  <article><strong>4.8 <span class="source-stars">★★★★★</span></strong><span>147,228 reviews of courses in this program</span></article>
+  <article><strong>Intermediate level</strong><span>Recommended experience</span></article>
+  <article><strong>Flexible schedule</strong><span>3 months at 10 hours a week</span></article>
+  <article><strong>Build toward a degree</strong><span>Learn more</span></article>
+</section>
+
+<nav class="source-specialization-tabs" aria-label="Specialization sections">
+  <a class="is-active" href="#about">About</a>
+  <a href="#outcomes">Outcomes</a>
+  <a href="#courses">Courses</a>
+  <a href="#testimonials">Testimonials</a>
+</nav>
+
+<div class="source-specialization-shell">
+  <section id="about" class="source-specialization-about">
+    <h2>What you'll learn</h2>
+    <div class="source-learning-grid">
+      <p>Build and train deep neural networks, identify key architecture parameters, implement vectorized neural networks and deep learning applications.</p>
+      <p>Train test sets, analyze variance for ML applications, use standard techniques and optimization algorithms, and build neural networks in TensorFlow.</p>
+      <p>Build a CNN and apply it to detection and recognition tasks, and use neural style transfer to generate art.</p>
+      <p>Build and train RNNs, work with NLP and word embeddings, and use HuggingFace tokenizers and transformer models.</p>
+    </div>
+
+    <h2>Skills you'll gain</h2>
+    <div class="source-skill-chips">
+      <span>Deep Learning</span><span>Recurrent Neural Network (RNN)</span><span>Convolutional Neural Network</span><span>Artificial Intelligence</span><span>Transfer Learning</span><span>Machine Learning</span><span>Neural Networks</span>
+    </div>
+
+    <h2>Tools you'll learn</h2>
+    <div class="source-skill-chips source-tool-chips">
+      <span>Generative AI</span><span>TensorFlow</span><span>Hugging Face</span>
+    </div>
+
+    <h2>Details to know</h2>
+    <div class="source-detail-row">
+      <article><span aria-hidden="true">▣</span><strong>Shareable certificate</strong><small>Add to your LinkedIn profile</small></article>
+      <article><span aria-hidden="true">▤</span><strong>Taught in English</strong><small>21 languages available</small></article>
+    </div>
+  </section>
+
+  <section class="source-business-callout">
+    <div><h2>See how employees at top companies are mastering in-demand skills</h2><a href="/about/contact">Learn more about Coursera for Business</a></div>
+    <div class="source-company-marks" aria-hidden="true"><span>P&amp;G</span><span>petrobras</span><span>TATA</span></div>
+  </section>
+
+  <section id="courses" class="source-course-series">
+    <h2>Specialization - 5 course series</h2>
+    <p>The Deep Learning Specialization is a foundational program that will help you understand the capabilities, challenges, and consequences of deep learning and prepare you to participate in the development of leading-edge AI technology.</p>
+    <div class="source-series-grid">
+      <div class="source-series-list">
+        {% for course in courses %}
+          <article class="source-specialization-course">
+            <img src="/static/deep-learning/{{ course.asset }}" alt="">
+            <div><a href="/learn/{{ course.id }}">{{ course.title }}</a><span>Course {{ course.number }} · {{ course.duration }}</span></div>
+            <span aria-hidden="true">⌄</span>
+          </article>
+        {% endfor %}
+        <div class="source-series-benefit"><strong>Earn a career certificate</strong><span>Add this credential to your LinkedIn profile, resume, or CV.</span></div>
+        <div class="source-series-benefit"><strong>Build toward a degree</strong><span>When you complete this Specialization, you may be able to apply your learning toward degree credit.</span></div>
+      </div>
+      <aside class="source-series-aside">
+        <h3>Instructors</h3>
+        <article><img src="/static/deep-learning/instructor-andrew-ng.jpg" alt="Andrew Ng"><div><strong>Andrew Ng</strong><span>DeepLearning.AI</span><small>23 Courses · 8,453,505 learners</small></div></article>
+        <article><img src="/static/deep-learning/instructor-younes.jpg" alt="Younes Bensouda Mourri"><div><strong>Younes Bensouda Mourri</strong><span>DeepLearning.AI</span><small>3 Courses · 1,478,407 learners</small></div></article>
+        <a href="#testimonials">View all 3 instructors</a>
+        <hr>
+        <h3>Offered by</h3>
+        <p class="source-offered"><img src="/static/deep-learning/provider-icon.png" alt=""> <strong>DeepLearning.AI</strong></p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="testimonials" class="source-testimonials">
+    <h2>Why people choose Coursera for their career</h2>
+    <div>
+      <blockquote>“To be able to take courses at my own pace and rhythm has been an amazing experience.”<cite>Felipe M.</cite></blockquote>
+      <blockquote>“I directly applied the concepts and skills I learned from my courses to an exciting new project at work.”<cite>Jennifer J.</cite></blockquote>
+      <blockquote>“When I need courses on topics that my university doesn't offer, Coursera is one of the best places to go.”<cite>Larry W.</cite></blockquote>
+      <blockquote>“Learning isn't just about being better at your job: it's so much more than that.”<cite>Chaitanya A.</cite></blockquote>
+    </div>
+  </section>
+
+  <section class="source-specialization-faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What is Deep Learning? Why is it relevant?</summary><p>Deep learning is a branch of machine learning built around multi-layer neural networks.</p></details>
+    <details><summary>What is the Deep Learning Specialization about?</summary><p>This five-course series introduces the foundations and practical applications of deep learning.</p></details>
+    <details><summary>What will I be able to do after completing the Deep Learning Specialization?</summary><p>You will be able to build and evaluate neural-network systems for several common AI tasks.</p></details>
+  </section>
+</div>

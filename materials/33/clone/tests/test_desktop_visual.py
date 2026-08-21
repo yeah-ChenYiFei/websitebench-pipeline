@@ -17,6 +17,13 @@ import pytest
 
 
 SITE_ROOT = Path(__file__).resolve().parents[2]
+REPOSITORY_ROOT = SITE_ROOT.parents[1]
+sys.path.insert(0, str(REPOSITORY_ROOT / "src"))
+import websitebench  # noqa: E402
+
+repository_package = str(REPOSITORY_ROOT / "src" / "websitebench")
+if repository_package not in websitebench.__path__:
+    websitebench.__path__.append(repository_package)
 VIEWPORT = {"width": 1191, "height": 979}
 PUBLIC_ORACLES = {
     "home.desktop.png",
@@ -45,17 +52,19 @@ PUBLIC_ROUTES = (
     DesktopRoute("/", "home.loaded.desktop", ".promo-rail"),
     DesktopRoute("/browse", "browse.loaded.desktop", ".browse-source-heading"),
     DesktopRoute(
-        "/search?q=Deep+Learning", "search.results.desktop", ".search-source-layout"
+        "/search?q=Deep+Learning", "search.results.desktop", ".search-page-layout"
     ),
     DesktopRoute(
-        "/specializations/deep-learning", "specialization.loaded.desktop", ".program-hero"
+        "/specializations/deep-learning",
+        "specialization.loaded.desktop",
+        ".source-specialization-hero",
     ),
     DesktopRoute(
         "/learn/neural-networks-deep-learning",
         "course.loaded.desktop",
-        ".source-course-hero",
+        ".source-course-detail-hero",
     ),
-    DesktopRoute("/login", "login.loaded.desktop", ".auth-modal-card"),
+    DesktopRoute("/login", "login.loaded.desktop", ".source-login-card"),
     DesktopRoute(
         "/help",
         "help.loaded.desktop",
@@ -63,7 +72,11 @@ PUBLIC_ROUTES = (
         header=".help-center-header",
         footer=".help-feedback",
     ),
-    DesktopRoute("/websitebench-not-found-33", "not-found.loaded.desktop", ".not-found"),
+    DesktopRoute(
+        "/websitebench-not-found-33",
+        "not-found.loaded.desktop",
+        ".source-not-found",
+    ),
 )
 
 
@@ -129,6 +142,203 @@ def test_public_desktop_oracles_are_present_at_the_frozen_viewport() -> None:
     assert observed == PUBLIC_ORACLES
     for name in PUBLIC_ORACLES:
         assert _png_size(evidence / name) == (1191, 979)
+
+
+def test_fullscreen_search_result_grid_fills_the_content_shell() -> None:
+    """Catch the removed assistant rail leaving a fixed-width results column."""
+
+    playwright = pytest.importorskip("playwright.sync_api")
+    with playwright.sync_playwright() as runtime:
+        browser = runtime.chromium.launch()
+        context = browser.new_context(
+            viewport={"width": 2559, "height": 1471}, device_scale_factor=1
+        )
+        try:
+            with _clone_server() as base_url:
+                page = context.new_page()
+                page.goto(
+                    base_url + "/search?query=Deep%20Learning",
+                    wait_until="networkidle",
+                )
+                shell = page.locator(".search-page-layout").bounding_box()
+                grid = page.locator(".search-result-grid").first.bounding_box()
+                first = page.locator('[data-result-position="1"]').bounding_box()
+                fourth = page.locator('[data-result-position="4"]').bounding_box()
+
+                assert shell is not None
+                assert grid is not None
+                assert first is not None
+                assert fourth is not None
+                assert abs(grid["x"] - shell["x"]) <= 1
+                assert abs(grid["width"] - shell["width"]) <= 1
+                assert abs(first["y"] - fourth["y"]) <= 1
+                assert abs(
+                    fourth["x"] + fourth["width"]
+                    - (shell["x"] + shell["width"])
+                ) <= 1
+        finally:
+            context.close()
+            browser.close()
+
+
+def test_fullscreen_search_result_media_keeps_source_ratio_and_equal_height() -> None:
+    """Catch wide cards retaining the obsolete fixed-height result covers."""
+
+    playwright = pytest.importorskip("playwright.sync_api")
+    with playwright.sync_playwright() as runtime:
+        browser = runtime.chromium.launch()
+        context = browser.new_context(
+            viewport={"width": 2559, "height": 1471}, device_scale_factor=1
+        )
+        try:
+            with _clone_server() as base_url:
+                page = context.new_page()
+                page.goto(
+                    base_url + "/search?query=Deep%20Learning",
+                    wait_until="networkidle",
+                )
+                covers = [
+                    page.locator(
+                        f'[data-result-position="{position}"] .search-result-cover'
+                    ).bounding_box()
+                    for position in range(1, 5)
+                ]
+                cards = [
+                    page.locator(
+                        f'[data-result-position="{position}"]'
+                    ).bounding_box()
+                    for position in range(1, 5)
+                ]
+
+                assert all(box is not None for box in covers)
+                assert all(box is not None for box in cards)
+                cover_boxes = [box for box in covers if box is not None]
+                card_boxes = [box for box in cards if box is not None]
+                assert max(box["height"] for box in cover_boxes) - min(
+                    box["height"] for box in cover_boxes
+                ) <= 1
+                for box in cover_boxes:
+                    assert 1.76 <= box["width"] / box["height"] <= 1.79
+                assert max(box["height"] for box in card_boxes) - min(
+                    box["height"] for box in card_boxes
+                ) <= 1
+        finally:
+            context.close()
+            browser.close()
+
+
+def test_primary_search_result_grid_uses_the_source_three_column_breakpoint() -> None:
+    """Catch the 1191px source cards being squeezed into four short columns."""
+
+    playwright = pytest.importorskip("playwright.sync_api")
+    with playwright.sync_playwright() as runtime:
+        browser = runtime.chromium.launch()
+        context = browser.new_context(viewport=VIEWPORT, device_scale_factor=1)
+        try:
+            with _clone_server() as base_url:
+                page = context.new_page()
+                page.goto(
+                    base_url + "/search?query=Deep%20Learning",
+                    wait_until="networkidle",
+                )
+                cards = [
+                    page.locator(
+                        f'[data-result-position="{position}"]'
+                    ).bounding_box()
+                    for position in range(1, 5)
+                ]
+                covers = [
+                    page.locator(
+                        f'[data-result-position="{position}"] .search-result-cover'
+                    ).bounding_box()
+                    for position in range(1, 13)
+                ]
+
+                assert all(box is not None for box in cards)
+                assert all(box is not None for box in covers)
+                card_boxes = [box for box in cards if box is not None]
+                cover_boxes = [box for box in covers if box is not None]
+                assert max(box["y"] for box in card_boxes[:3]) - min(
+                    box["y"] for box in card_boxes[:3]
+                ) <= 1
+                assert card_boxes[3]["y"] > (
+                    card_boxes[0]["y"] + card_boxes[0]["height"]
+                )
+                assert max(box["height"] for box in cover_boxes) - min(
+                    box["height"] for box in cover_boxes
+                ) <= 1
+                for box in cover_boxes:
+                    assert 1.76 <= box["width"] / box["height"] <= 1.79
+        finally:
+            context.close()
+            browser.close()
+
+
+def test_ai_starter_cards_align_the_source_best_for_row() -> None:
+    """Catch variable title wrapping pushing each starter description lower."""
+
+    playwright = pytest.importorskip("playwright.sync_api")
+    with playwright.sync_playwright() as runtime:
+        browser = runtime.chromium.launch()
+        context = browser.new_context(viewport=VIEWPORT, device_scale_factor=1)
+        try:
+            with _clone_server() as base_url:
+                page = context.new_page()
+                page.goto(
+                    base_url + "/search?query=Deep%20Learning",
+                    wait_until="networkidle",
+                )
+                descriptions = page.locator(
+                    "[data-ai-starter-card='true'] > p"
+                ).all()
+                boxes = [description.bounding_box() for description in descriptions]
+
+                assert len(boxes) == 4
+                assert all(box is not None for box in boxes)
+                description_boxes = [box for box in boxes if box is not None]
+                assert max(box["y"] for box in description_boxes) - min(
+                    box["y"] for box in description_boxes
+                ) <= 1
+        finally:
+            context.close()
+            browser.close()
+
+
+def test_wide_search_intent_panel_matches_the_user_supplied_geometry() -> None:
+    """Catch equal-width intent choices flattening the wide source panel."""
+
+    playwright = pytest.importorskip("playwright.sync_api")
+    with playwright.sync_playwright() as runtime:
+        browser = runtime.chromium.launch()
+        context = browser.new_context(
+            viewport={"width": 2239, "height": 979}, device_scale_factor=1
+        )
+        try:
+            with _clone_server() as base_url:
+                page = context.new_page()
+                page.goto(
+                    base_url + "/search?query=Deep%20Learning",
+                    wait_until="networkidle",
+                )
+                panel = page.locator(".search-intent-panel").bounding_box()
+                choices = [
+                    choice.bounding_box()
+                    for choice in page.locator(".search-intent-panel nav a").all()
+                ]
+
+                assert panel is not None
+                assert len(choices) == 4
+                assert all(choice is not None for choice in choices)
+                boxes = [choice for choice in choices if choice is not None]
+                assert abs(panel["height"] - 218) <= 2
+                for box, expected_width in zip(boxes, (255, 278, 332, 391)):
+                    assert abs(box["width"] - expected_width) <= 8
+                    assert abs(box["height"] - 84) <= 2
+                for left, right in zip(boxes, boxes[1:]):
+                    assert abs(right["x"] - (left["x"] + left["width"]) - 24) <= 3
+        finally:
+            context.close()
+            browser.close()
 
 
 def test_public_capture_provenance_keeps_authentication_out_of_oracles() -> None:
@@ -259,6 +469,11 @@ def test_public_home_rasters_are_declared_with_source_provenance() -> None:
         (SITE_ROOT / "source-assets" / "manifest.json").read_text(encoding="utf-8")
     )
     expected_runtime_paths = {
+        "clone/static/home/current-promo-plus.png",
+        "clone/static/home/current-promo-teams.png",
+        "clone/static/home/current-promo-third.png",
+        "clone/static/home/current-promo-barriers.png",
+        "clone/static/home/current-promo-teams-small.png",
         "clone/static/source-home-career-promo.png",
         "clone/static/source-home-google-promo.png",
         "clone/static/source-home-trend-google-ai.png",
@@ -278,7 +493,10 @@ def test_public_home_rasters_are_declared_with_source_provenance() -> None:
         assert source.is_file() and runtime.is_file()
         assert source.read_bytes() == runtime.read_bytes()
         assert row["evidence_kind"] == "current-direct"
-        assert row["capture_id"] == "public-home-desktop"
+        assert row["capture_id"] in {
+            "public-home-desktop",
+            "coursera-home-login-current-state-open-home",
+        }
 
 
 def test_public_routes_keep_desktop_shell_landmarks_before_screenshots(

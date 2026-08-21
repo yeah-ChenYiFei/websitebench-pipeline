@@ -1,0 +1,45 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-source-search-filter-panel",
+  "viewport": {"width": 1191, "height": 979},
+  "timeout_ms": 30000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://coursera-course-photos.s3.amazonaws.com",
+      "https://d15cw65ipctsrr.cloudfront.net",
+      "https://s3.amazonaws.com",
+      "https://coursera_assets.s3.amazonaws.com"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-deep-learning-search",
+      "action": "goto",
+      "path": "/search?query=Deep%20Learning"
+    },
+    {
+      "id": "wait-for-filter-controls",
+      "action": "wait",
+      "milliseconds": 2500
+    },
+    {
+      "id": "open-filter-sort",
+      "action": "click",
+      "selector": "button:has-text('Filter & Sort')"
+    },
+    {
+      "id": "capture-filter-sort",
+      "action": "snapshot",
+      "observations": [
+        {"id": "page-copy", "kind": "text", "selector": "body"},
+        {"id": "checkbox-count", "kind": "count", "selector": "input[type='checkbox']"},
+        {"id": "radio-count", "kind": "count", "selector": "input[type='radio']"}
+      ],
+      "screenshot": true,
+      "full_page": false
+    }
+  ]
+}

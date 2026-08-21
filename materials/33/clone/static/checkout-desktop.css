@@ -291,7 +291,7 @@
 .checkout-billing input, .checkout-billing select { min-height: 44px; padding: 10px 12px; border: 1px solid #8e92a3; border-radius: 4px; background: #fff; color: #666; }
 .checkout-billing select:disabled, .checkout-billing input[readonly] { background: #f8f8fa; cursor: not-allowed; }
 .checkout-totals { margin: 0; padding: 18px 20px; border: 1px solid var(--wb-line); border-radius: 4px; background: #fff; }
-.checkout-totals::before { content: "订单摘要"; display: block; padding-bottom: 14px; border-bottom: 1px solid var(--wb-line); font-weight: 700; font-size: 17px; }
+.checkout-totals::before { content: "Order summary"; display: block; padding-bottom: 14px; border-bottom: 1px solid var(--wb-line); font-weight: 700; font-size: 17px; }
 .checkout-totals div { padding: 14px 0; border-bottom: 1px solid var(--wb-line); }
 .checkout-totals .checkout-total { margin-top: 4px; padding-bottom: 0; border: 0; color: var(--wb-ink); font-size: 18px; }
 .checkout-totals dt { color: #4b4e5c; }

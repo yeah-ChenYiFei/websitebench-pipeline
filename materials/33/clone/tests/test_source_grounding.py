@@ -102,17 +102,22 @@ def test_task3_reconstruction_maps_assets_layout_and_copy_to_current_ea_evidence
         item for item in manifest["assets"] if item["evidence_kind"] == "current-direct"
     ]
     assert {item["id"] for item in direct_public_assets} == {
+        "current-live-home-promo-plus",
+        "current-live-home-promo-teams",
+        "current-live-home-promo-third",
+        "current-live-home-promo-barriers",
+        "current-live-home-promo-teams-small",
         "task7-home-career-promo",
         "task7-home-google-promo",
         "task7-home-trend-google-ai",
         "task7-home-trend-google-analytics",
         "task7-home-trend-microsoft-qa",
     }
-    assert all(
-        item["source_url"] == "https://www.coursera.org/"
-        and item["capture_id"] == "public-home-desktop"
-        for item in direct_public_assets
-    )
+    assert all(item["source_url"] == "https://www.coursera.org/" for item in direct_public_assets)
+    assert {item["capture_id"] for item in direct_public_assets} == {
+        "public-home-desktop",
+        "coursera-home-login-current-state-open-home",
+    }
     asset_provenance = {
         item["runtime_path"]: item for item in provenance["runtime_assets"]
     }
@@ -221,8 +226,8 @@ def test_claims_resolve_to_committed_sanitized_observations() -> None:
                 assert reference.removeprefix(captures_prefix) in capture_ids
 
 
-def test_learning_verify_contract_uses_real_authenticated_routes_and_actions() -> None:
-    """Catch dashboard/foundations GET aliases replacing implemented states."""
+def test_current_verify_contract_defers_source_inaccessible_learning_states() -> None:
+    """Catch clone-local compatibility states being presented as source fidelity."""
 
     routes = json.loads(
         (SITE_ROOT / "scope" / "routes.json").read_text(encoding="utf-8")
@@ -237,68 +242,34 @@ def test_learning_verify_contract_uses_real_authenticated_routes_and_actions() -
     driver = json.loads(
         (SITE_ROOT / "scope" / "verify.json").read_text(encoding="utf-8")
     )
-    assert set(driver["session"]["accounts"]) == {
-        "empty-learner",
-        "progress-learner",
-    }
-    progress = driver["session"]["accounts"]["progress-learner"]
-    assert progress["form"] == {"account": "progress-learner"}
-    assert {"my-learning", "lesson", "quiz", "account-history", "preferences"} <= set(
-        progress["routes"]
+    assert "session" not in driver
+    assert {"my-learning", "lesson", "quiz", "account-history", "preferences"}.isdisjoint(
+        driver["routes"]
     )
-    assert driver["routes"]["my-learning"] == "/my-learning"
-    assert driver["routes"]["lesson"].endswith("/lesson/lesson-optimization")
-    assert driver["routes"]["quiz"] == driver["routes"]["lesson"]
-    assert driver["routes"]["account-history"] == "/account/history"
-
-    expected_states = {
-        "my-learning.progress": "我的学习",
-        "lesson.opened": "Optimization methods",
-        "quiz.feedback": "测验得分：100",
-        "account-history.seeded": "报名历史",
-    }
-    for state, visible_text in expected_states.items():
-        recipe = driver["states"][state]
-        assert recipe["session"] == "progress-learner"
-        assert any(visible_text in step.get("expect", "") for step in recipe["steps"])
-    quiz_steps = driver["states"]["quiz.feedback"]["steps"]
-    assert any("answer" in step.get("click", "") for step in quiz_steps)
-    assert any("/learning/quizzes/" in step.get("click", "") for step in quiz_steps)
-    serialized = json.dumps(driver)
-    assert "/dashboard" not in serialized
-    assert "foundations?fixture" not in serialized
+    assert {
+        "my-learning.progress",
+        "lesson.opened",
+        "quiz.feedback",
+        "account-history.seeded",
+    }.isdisjoint(driver["states"])
+    assert {"my-learning", "lesson", "quiz", "account-history"} <= set(
+        driver["deferred"]
+    )
+    assert "source-enrolled-learning" in driver["states_out_of_scope"]
 
 
-def test_checkout_verify_recipes_use_named_session_and_reach_distinct_states() -> None:
-    """Catch authenticated checkout checkpoints that stop at the plan page."""
+def test_current_verify_contract_does_not_claim_unobserved_payment_review() -> None:
+    """Catch a clone-local sandbox review being presented as current source evidence."""
 
     driver = json.loads(
         (SITE_ROOT / "scope" / "verify.json").read_text(encoding="utf-8")
     )
-    session = driver["session"]
-    assert "empty-learner" in session["accounts"]
-
-    validation = driver["states"]["checkout.validation"]
-    review = driver["states"]["checkout.review"]
-    assert validation["session"] == review["session"] == "empty-learner"
-    assert all("fixture=" not in str(step) for step in validation["steps"])
-    assert all("fixture=" not in str(step) for step in review["steps"])
-
-    validation_actions = {next(iter(step)) for step in validation["steps"]}
-    assert {"eval", "click", "expect"} <= validation_actions
-    assert any(
-        step.get("expect") == 'h1:has-text("Checkout could not continue")'
-        for step in validation["steps"]
-    )
-    assert sum("click" in step for step in review["steps"]) >= 2
-    assert any(
-        step.get("expect") == 'h1:has-text("确认免费试用")'
-        for step in review["steps"]
-    )
-    assert any(
-        step.get("expect") == 'input[name="scenario_id"][value="sandbox-approved"]'
-        for step in review["steps"]
-    )
+    assert "session" not in driver
+    assert {"checkout", "payments-checkout"}.isdisjoint(driver["routes"])
+    assert {"checkout.validation", "checkout.review"}.isdisjoint(driver["states"])
+    assert "checkout" in driver["deferred"]
+    assert "source-empty-payment" in driver["states_out_of_scope"]
+    assert "source-payment-review-confirmation" in driver["states_out_of_scope"]
 
 
 def test_task3_css_identity_is_unchanged_and_checkout_css_is_task5_owned() -> None:
@@ -353,6 +324,11 @@ def test_asset_manifest_records_task7_public_desktop_collection_identity() -> No
     assert manifest["snapshot_id"] == "33-task7-public-desktop-evidence"
     assert manifest["created_at"] == "2026-08-17T00:00:00Z"
     assert {item["id"] for item in manifest["assets"]} == {
+        "current-live-home-promo-plus",
+        "current-live-home-promo-teams",
+        "current-live-home-promo-third",
+        "current-live-home-promo-barriers",
+        "current-live-home-promo-teams-small",
         "task3-site-css",
         "task3-components-css",
         "task3-auth-css",
@@ -367,25 +343,13 @@ def test_asset_manifest_records_task7_public_desktop_collection_identity() -> No
     }
 
 
-def test_checkout_verify_session_uses_ephemeral_token_without_credentials() -> None:
-    """Catch diagnostic authentication persisting a seeded login password."""
+def test_current_verify_has_no_authenticated_fixture_or_credentials() -> None:
+    """Catch current anonymous diagnostics retaining a compatibility login fixture."""
 
     verify_path = SITE_ROOT / "scope" / "verify.json"
     raw = verify_path.read_text(encoding="utf-8")
     driver = json.loads(raw)
-    session = driver["session"]
 
-    assert session["token_env"] == "WEBSITEBENCH_VERIFY_SESSION_TOKEN"
-    assert session["post"] == "/__websitebench/session"
-    assert session["headers"] == {"X-WebsiteBench-Verify-Token": "{{token}}"}
-    assert session["expect_status"] == [204]
-    assert session["accounts"]["empty-learner"] == {
-        "form": {"account": "empty-learner"},
-        "routes": ["checkout"],
-    }
+    assert "session" not in driver
     assert "Empty-Learner-33" not in raw
-    assert all(
-        "password" not in form
-        for account in session["accounts"].values()
-        for form in [account.get("form", {})]
-    )
+    assert "progress-learner" not in raw

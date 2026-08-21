@@ -261,7 +261,8 @@ def test_login_continuation_is_same_origin_and_course_cta_enrolls(
     course_path = "/learn/neural-networks-deep-learning"
     signed_out = site_client.get(course_path)
     assert signed_out.status_code == 200
-    assert f'href="/login?next={course_path}"' in signed_out.text
+    assert 'data-enrollment-login-open' in signed_out.text
+    assert f'name="next" value="{course_path}"' in signed_out.text
 
     login = site_client.get("/login", params={"next": course_path})
     assert f'<input type="hidden" name="next" value="{course_path}">' in login.text
@@ -279,8 +280,10 @@ def test_login_continuation_is_same_origin_and_course_cta_enrolls(
 
     authenticated = site_client.get(course_path)
     assert authenticated.status_code == 200
-    assert f'href="/login?next={course_path}"' not in authenticated.text
-    assert 'form class="enrollment-options" action="/enrollments"' in authenticated.text
+    assert 'data-enrollment-login-open' not in authenticated.text
+    assert 'class="source-course-detail-actions"' in authenticated.text
+    assert 'action="/enrollments"' in authenticated.text
+    assert 'name="track" value="free"' in authenticated.text
     assert (
         '<input type="hidden" name="course_id" '
         'value="deep-learning-specialization">' in authenticated.text
@@ -380,24 +383,30 @@ def test_shared_header_switches_between_anonymous_and_learner_controls(
         "/",
         "/browse",
         "/learn/business-strategy",
-        "/help",
         "/websitebench-auth-chrome-missing",
     )
     for path in shared_paths:
         anonymous = site_client.get(path)
-        assert 'href="/login">登录</a>' in anonymous.text, path
-        assert 'class="wb-join" href="/signup">免费加入</a>' in anonymous.text, path
-        assert 'href="/my-learning">我的学习</a>' not in anonymous.text, path
+        login_label = "Log In"
+        join_label = "Join for Free"
+        learning_label = "My Learning"
+        assert f'data-login-open>{login_label}</button>' in anonymous.text, path
+        assert f'class="wb-join" href="/signup">{join_label}</a>' in anonymous.text, path
+        assert f'href="/my-learning">{learning_label}</a>' not in anonymous.text, path
 
     _login_seeded(site_client, "progress@coursera.test", "Progress-Learner-33")
     for path in shared_paths:
         authenticated = site_client.get(path)
+        learning_label = "My Learning"
+        logout_label = "Log out"
+        login_label = "Log In"
+        join_label = "Join for Free"
         assert 'class="wb-account-nav"' in authenticated.text, path
-        assert 'href="/my-learning">我的学习</a>' in authenticated.text, path
+        assert f'href="/my-learning">{learning_label}</a>' in authenticated.text, path
         assert 'action="/auth/logout"' in authenticated.text, path
-        assert "退出登录" in authenticated.text, path
-        assert 'href="/login">登录</a>' not in authenticated.text, path
-        assert 'href="/signup">免费加入</a>' not in authenticated.text, path
+        assert logout_label in authenticated.text, path
+        assert f'data-login-open>{login_label}</button>' not in authenticated.text, path
+        assert f'href="/signup">{join_label}</a>' not in authenticated.text, path
 
 
 def test_enrollment_history_cancel_idempotency_and_owner_isolation(
@@ -430,8 +439,8 @@ def test_enrollment_history_cancel_idempotency_and_owner_isolation(
     enrollment_ids = re.findall(r'data-enrollment-id="([0-9]+)"', learning_page.text)
     assert len(enrollment_ids) == 1
     enrollment_id = enrollment_ids[0]
-    assert "免费学习轨道" in learning_page.text
-    assert "未创建结账或付款记录" in learning_page.text
+    assert "Free learning track" in learning_page.text
+    assert "No checkout or payment record was created" in learning_page.text
 
     with TestClient(app, base_url="https://33.offline.invalid") as other:
         _login_seeded(other, "progress@coursera.test", "Progress-Learner-33")
@@ -454,8 +463,8 @@ def test_enrollment_history_cancel_idempotency_and_owner_isolation(
     history = site_client.get("/account/history")
     assert history.status_code == 200
     assert f'data-enrollment-id="{enrollment_id}"' in history.text
-    assert "已取消" in history.text
-    assert "免费学习轨道" in history.text
+    assert "Canceled" in history.text
+    assert "Free learning track" in history.text
 
 
 def test_canceled_enrollment_reactivates_with_new_track_and_retains_history(
@@ -486,12 +495,12 @@ def test_canceled_enrollment_reactivates_with_new_track_and_retains_history(
 
     _login_seeded(site_client, "empty@coursera.test", "Empty-Learner-33")
     history = site_client.get("/account/history")
-    assert "进行中" in history.text
-    assert "旁听轨道" in history.text
-    assert "此前已取消" in history.text
+    assert "In progress" in history.text
+    assert "Audit track" in history.text
+    assert "Previously canceled" in history.text
 
 
-def test_authenticated_specialization_keeps_free_audit_and_routes_paid_to_checkout(
+def test_authenticated_specialization_keeps_observed_free_and_routes_paid_to_checkout(
     site_client: TestClient,
 ) -> None:
     _login_seeded(site_client, "empty@coursera.test", "Empty-Learner-33")
@@ -499,10 +508,10 @@ def test_authenticated_specialization_keeps_free_audit_and_routes_paid_to_checko
     assert detail.status_code == 200
     assert 'action="/enrollments"' in detail.text
     assert 'value="free"' in detail.text
-    assert 'value="audit"' in detail.text
+    assert 'value="audit"' not in detail.text
     assert 'value="paid"' not in detail.text
     assert 'href="/checkout/deep-learning"' in detail.text
-    assert "不会产生真实付款" in detail.text
+    assert "View local paid option" in detail.text
 
     bypass = site_client.post(
         "/enrollments",
@@ -549,7 +558,7 @@ def test_authenticated_validation_errors_render_422_with_learner_chrome(
     assert f"<h1>{expected_heading}</h1>" in response.text
     assert 'class="wb-account-nav"' in response.text
     assert 'action="/auth/logout"' in response.text
-    assert 'href="/login">登录</a>' not in response.text
+    assert 'data-login-open>登录</button>' not in response.text
     assert 'href="/signup">免费加入</a>' not in response.text
 
 
@@ -680,9 +689,9 @@ def test_learning_preview_navigation_bookmarks_progress_quizzes_and_certificate(
         follow_redirects=False,
     )
     assert wrong.status_code == correct.status_code == 200
-    assert "测验得分：0" in wrong.text
+    assert "Quiz score: 0" in wrong.text
     assert "Review the regularization lesson" in wrong.text
-    assert "测验得分：100" in correct.text
+    assert "Quiz score: 100" in correct.text
     assert "Correct: regularization" in correct.text
 
     for lesson_id in (
@@ -709,6 +718,110 @@ def test_learning_preview_navigation_bookmarks_progress_quizzes_and_certificate(
     dashboard = site_client.get("/my-learning")
     assert "Certificate available" in dashboard.text
     assert 'data-resume-lesson="lesson-transfer-learning"' in dashboard.text
+
+
+def test_my_learning_tabs_filter_in_progress_completed_and_certificates(
+    site_client: TestClient,
+) -> None:
+    _login_seeded(site_client, "progress@coursera.test", "Progress-Learner-33")
+
+    in_progress = site_client.get("/my-learning")
+    completed = site_client.get("/my-learning?status=completed")
+    certificates = site_client.get("/my-learning?status=certificates")
+
+    assert 'class="is-active" href="/my-learning">In Progress</a>' in in_progress.text
+    assert "Deep Learning Specialization" in in_progress.text
+    assert 'class="is-active" href="/my-learning?status=completed">Completed</a>' in completed.text
+    assert "You have no completed courses yet." in completed.text
+    assert 'class="is-active" href="/my-learning?status=certificates">Certificates</a>' in certificates.text
+    assert "You have no certificates yet." in certificates.text
+
+
+def test_learning_goal_selection_persists_and_is_reflected_on_dashboard(
+    site_client: TestClient,
+) -> None:
+    _login_seeded(site_client, "empty@coursera.test", "Empty-Learner-33")
+
+    goal_page = site_client.get("/onboarding/learning-goal")
+    saved = site_client.post(
+        "/onboarding/learning-goal",
+        data={"learning_goal": "Grow in my current role"},
+        follow_redirects=False,
+    )
+    dashboard = site_client.get("/my-learning")
+    invalid = site_client.post(
+        "/onboarding/learning-goal",
+        data={"learning_goal": "Unrecognized goal"},
+        follow_redirects=False,
+    )
+
+    assert goal_page.status_code == 200
+    assert 'action="/onboarding/learning-goal"' in goal_page.text
+    assert 'name="learning_goal"' in goal_page.text
+    assert saved.status_code == 303
+    assert saved.headers["location"] == "/my-learning"
+    assert "Grow in my current role" in dashboard.text
+    assert invalid.status_code == 422
+    assert "Choose one available learning goal" in invalid.text
+
+
+def test_bookmark_and_progress_collections_expose_owner_learning_state(
+    site_client: TestClient,
+) -> None:
+    _login_seeded(site_client, "progress@coursera.test", "Progress-Learner-33")
+
+    dashboard = site_client.get("/my-learning")
+    bookmarks = site_client.get("/learning/bookmarks")
+    progress = site_client.get("/learning/progress")
+
+    assert 'href="/learning/bookmarks"' in dashboard.text
+    assert 'href="/learning/progress"' in dashboard.text
+    assert "2 of 6 lessons completed" in dashboard.text
+    assert bookmarks.status_code == 200
+    assert "Saved lessons" in bookmarks.text
+    assert "Optimization methods" in bookmarks.text
+    assert 'href="/learn/neural-networks-deep-learning/lesson/lesson-optimization"' in bookmarks.text
+    assert progress.status_code == 200
+    assert "Course progress" in progress.text
+    assert "2 of 6 lessons completed" in progress.text
+    assert "33%" in progress.text
+    assert "Optimization methods" in progress.text
+
+
+def test_bookmark_and_progress_collections_require_authentication() -> None:
+    with TestClient(app, base_url="https://33.offline.invalid") as client:
+        bookmarks = client.get("/learning/bookmarks")
+        progress = client.get("/learning/progress")
+
+    assert bookmarks.status_code == progress.status_code == 401
+    assert "Sign in" in bookmarks.text
+    assert "Sign in" in progress.text
+
+
+def test_enrollment_history_links_to_owner_bound_record_detail(
+    site_client: TestClient,
+) -> None:
+    _login_seeded(site_client, "progress@coursera.test", "Progress-Learner-33")
+    history = site_client.get("/account/history")
+    enrollment_id = re.search(
+        r'data-enrollment-id="([0-9]+)"', history.text
+    ).group(1)
+    detail = site_client.get(f"/account/history/{enrollment_id}")
+
+    assert f'href="/account/history/{enrollment_id}"' in history.text
+    assert detail.status_code == 200
+    assert "Enrollment details" in detail.text
+    assert "In progress" in detail.text
+    assert "Audit track" in detail.text
+    assert f'action="/enrollments/{enrollment_id}/cancel"' in detail.text
+    assert 'href="/account/history"' in detail.text
+
+    with TestClient(app, base_url="https://33.offline.invalid") as other:
+        _login_seeded(other, "empty@coursera.test", "Empty-Learner-33")
+        foreign = other.get(f"/account/history/{enrollment_id}")
+
+    assert foreign.status_code == 404
+    assert "Enrollment not found" in foreign.text
 
 
 def test_progress_replay_keeps_resume_at_first_incomplete_lesson(

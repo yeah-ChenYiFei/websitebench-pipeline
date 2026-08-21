@@ -1,0 +1,260 @@
+{
+  "authority": "diagnostic-only",
+  "console_errors": [
+    "Applying inline style violates the following Content Security Policy directive 'style-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-5yj2RhDNpbWh7ZVkyJJHVrK9mERRM/PjqWHOt4L7vts='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked.",
+    "Applying inline style violates the following Content Security Policy directive 'style-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-FV+mUKf9lzqXwYW3a582iuqM7dcx+LGC8QMWcL1wf/8='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked.",
+    "Applying inline style violates the following Content Security Policy directive 'style-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-t1dplxhxqnGK1jsGjuNha/sIbzzBTFTgxTy2n8WIMlk='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked.",
+    "Applying inline style violates the following Content Security Policy directive 'style-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-0zsGxNwPJhd0VM6wMvT4NRydFEGWas+pqKONQPU5tZY='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked.",
+    "Applying inline style violates the following Content Security Policy directive 'style-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-Sc084ubbbxYu3wmOzIykWV+Efg70xCuWoelFl8zkCws='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked."
+  ],
+  "environment": "clone",
+  "network": {
+    "blocked": [],
+    "failed": [],
+    "requests": [
+      {
+        "method": "GET",
+        "resource_type": "document",
+        "url": "http://127.0.0.1:8042/learn/neural-networks-deep-learning"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/site.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/components.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/auth.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/checkout.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/desktop-base.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/desktop-chrome.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/catalog-desktop.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/course-desktop.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/specialization-prototype.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/course-detail-prototype.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/auth-desktop.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/learning-desktop.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "http://127.0.0.1:8042/static/checkout-desktop.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/provider-icon.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/instructor-andrew-ng.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/instructor-kian-katan.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/instructor-younes.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/linkedin.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/company-logos.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/subject-expertise.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/course-structuring-projects.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/course-sequence-models.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/course-convolutional.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/course-improving-networks.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/testimonial-felipe.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/testimonial-jennifer.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/testimonial-larry.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/testimonial-chaitanya.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/promo-plus.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/promo-degree.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "http://127.0.0.1:8042/static/deep-learning/promo-business.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "font",
+        "url": "http://127.0.0.1:8042/static/deep-learning/source-sans-3.woff2"
+      }
+    ]
+  },
+  "scenario_id": "coursera-neural-networks-course-detail-prototype",
+  "schema_version": "websitebench.offline-clone.browser-exploration.v1",
+  "spec": {
+    "path": "/home/alive/websitebench-pipeline/materials/33/scope/source-course-detail-prototype.json"
+  },
+  "status": "passed",
+  "steps": [
+    {
+      "action": "goto",
+      "error": null,
+      "id": "open-course-detail",
+      "observations": [
+        {
+          "actual": "/learn/neural-networks-deep-learning",
+          "id": "canonical-route",
+          "kind": "url_path",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "id": "main-visible",
+          "kind": "visible",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "route": "/learn/neural-networks-deep-learning",
+      "screenshot": {
+        "bytes": 821929,
+        "path": "/home/alive/websitebench-pipeline/materials/33/source-evidence/course-detail-prototype-clone-playwright/coursera-neural-networks-course-detail-prototype-open-course-detail.png"
+      }
+    },
+    {
+      "action": "snapshot",
+      "error": null,
+      "id": "course-detail-structure",
+      "observations": [
+        {
+          "actual": "Neural Networks and Deep Learning",
+          "id": "course-heading",
+          "kind": "text",
+          "passed": true
+        },
+        {
+          "actual": 47,
+          "id": "course-controls",
+          "kind": "count",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "route": "/learn/neural-networks-deep-learning",
+      "screenshot": {
+        "bytes": 120739,
+        "path": "/home/alive/websitebench-pipeline/materials/33/source-evidence/course-detail-prototype-clone-playwright/coursera-neural-networks-course-detail-prototype-course-detail-structure.png"
+      }
+    }
+  ],
+  "summary": {
+    "assertion_failures": 0,
+    "blocked_request_count": 0,
+    "console_error_count": 5,
+    "failed_request_count": 0,
+    "steps_passed": 2,
+    "steps_total": 2
+  },
+  "target": {
+    "allowed_origins": [
+      "http://127.0.0.1:8042"
+    ],
+    "authenticated_storage_consumed": false,
+    "base_origin": "http://127.0.0.1:8042",
+    "source_mutations_authorized": false,
+    "viewport": {
+      "height": 979,
+      "width": 1191
+    }
+  }
+}

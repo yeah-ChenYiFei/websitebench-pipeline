@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib
+import re
 
 import pytest
 from fastapi.testclient import TestClient
@@ -35,12 +36,12 @@ def _login_seeded_progress_learner(client: TestClient) -> None:
 def test_desktop_shell_uses_source_observed_language_and_navigation(
     desktop_client: TestClient,
 ) -> None:
-    """Catch the public entry remaining English-first after the source changed."""
+    """Catch the public entry reverting to the obsolete Chinese prototype."""
 
     response = desktop_client.get("/")
 
-    assert 'lang="zh-CN"' in response.text
-    assert "为个人" in response.text
+    assert 'lang="en"' in response.text
+    assert "For Individuals" in response.text
     assert 'href="/browse"' in response.text
     assert 'action="/search"' in response.text
 
@@ -67,8 +68,8 @@ def test_public_shell_has_observed_desktop_chrome(
         'class="wb-audience-bar"',
         'class="wb-header"',
         'class="wb-wordmark"',
-        'placeholder="您想学习什么？"',
-        'class="wb-footer"',
+        'placeholder="What do you want to learn?"',
+        '<footer class="wb-footer',
     ):
         assert marker in html
 
@@ -81,23 +82,42 @@ def test_home_uses_the_observed_two_panel_promotional_rail(
     html = desktop_client.get("/").text
 
     assert 'class="promo-rail"' in html
-    assert html.count('class="promo-panel') == 2
-    assert 'class="promo-panel promo-panel-dark"' in html
-    assert 'class="promo-panel promo-panel-blue"' in html
+    assert html.count('class="promo-panel') == 3
+    assert html.count('class="home-promo-choice"') == 3
+    assert "/static/home/current-promo-plus.png" in html
+    assert "/static/home/current-promo-teams.png" in html
 
 
-def test_home_matches_observed_trending_course_columns(
+def test_home_exposes_requested_complete_discovery_sections(
     desktop_client: TestClient,
 ) -> None:
-    """Catch the home page drifting back to oversized generic catalog cards."""
+    """Catch requested homepage collections being reduced to headings or omitted."""
 
     html = desktop_client.get("/").text
 
-    assert 'class="trend-columns"' in html
-    for heading in ("最受欢迎", "每周聚焦", "紧缺的 AI 技能"):
+    for heading in (
+        "New and popular",
+        "Get job-ready for an in-demand career",
+        "Learn from 350+ leading universities and companies",
+        "Explore categories",
+        "Trending searches",
+        "What brings you to Coursera today?",
+        "91% of learners achieved a positive career outcome",
+        "Why people choose Coursera",
+        "Frequently asked questions",
+    ):
         assert heading in html
-    assert html.count('class="trend-mini-card"') >= 9
-    assert "为热门职业做好就业准备" in html
+    assert html.count('class="home-promo-choice"') == 3
+    assert html.count('class="source-list-card"') == 18
+    assert html.count('class="source-learning-card"') >= 12
+    assert len(
+        re.findall(r'<a class="source-learning-card"[^>]*href="/[^"]+"', html)
+    ) == html.count('class="source-learning-card"')
+    assert html.count('class="source-role-card"') == 5
+    assert html.count('class="source-card-image"') >= 30
+    assert 'class="source-skeleton-card"' not in html
+    assert html.count('class="source-logo-pill"') >= 8
+    assert 'href="/search?q=Python"' in html
 
 
 def test_home_uses_source_observed_visual_assets_and_cookie_banner(
@@ -108,22 +128,21 @@ def test_home_uses_source_observed_visual_assets_and_cookie_banner(
     html = desktop_client.get("/").text
 
     for asset in (
-        "/static/source-home-google-promo.png",
-        "/static/source-home-career-promo.png",
-        "/static/source-home-trend-google-analytics.png",
-        "/static/source-home-trend-microsoft-qa.png",
-        "/static/source-home-trend-google-ai.png",
+        "/static/home/current-promo-plus.png",
+        "/static/home/current-promo-teams.png",
+        "/static/home/current-promo-third.png",
+        "/static/home/logo-google.avif",
+        "/static/home/logo-ibm.avif",
+        "/static/home/logo-microsoft.avif",
     ):
         assert asset in html
     for observed_title in (
-        "Google 数据分析",
-        "Microsoft 初级质量保证/软件测试工程师",
-        "用于头脑风暴和规划的 AI",
+        "Google Career Collection",
+        "Python for Everybody",
+        "Google Data Analytics",
     ):
         assert observed_title in html
-    assert 'class="source-cookie-banner"' in html
-    assert "Your Privacy Rights" in html
-    assert "Reject" in html and "Accept" in html
+    assert 'class="source-cookie-banner"' not in html
 
 
 def test_authenticated_shell_replaces_auth_links_with_my_learning(
@@ -136,7 +155,7 @@ def test_authenticated_shell_replaces_auth_links_with_my_learning(
     html = desktop_client.get("/my-learning").text
 
     assert 'href="/my-learning"' in html
-    assert "退出登录" in html
+    assert "Log out" in html
 
 
 def test_browse_has_source_style_subject_grid_and_canonical_heading(
@@ -146,23 +165,290 @@ def test_browse_has_source_style_subject_grid_and_canonical_heading(
 
     response = desktop_client.get("/browse")
 
-    assert "按主题浏览课程" in response.text
+    assert "Explore Categories" in response.text
     assert 'href="/browse/data-science"' in response.text
-    assert 'class="subject-tile-grid"' in response.text
+    assert 'class="source-category-chips"' in response.text
+    expected_order = (
+        "Arts and Humanities",
+        "Business",
+        "Computer Science",
+        "Data Science",
+        "Health",
+        "Information Technology",
+        "Language Learning",
+        "Math and Logic",
+        "Personal Development",
+        "Physical Science and Engineering",
+        "Social Sciences",
+    )
+    category_html = response.text.split(
+        '<nav class="source-category-chips"', 1
+    )[1].split("</nav>", 1)[0]
+    positions = [category_html.index(label) for label in expected_order]
+    assert positions == sorted(positions)
+    assert 'class="wb-ai-sparkle"' in response.text
 
 
 def test_browse_matches_observed_explore_categories_and_role_rows(
     desktop_client: TestClient,
 ) -> None:
-    """Catch Browse losing the compact source category/chip and role layout."""
+    """Catch Browse replacing archived role cards with a failed-query empty state."""
 
     html = desktop_client.get("/browse").text
 
-    assert "<h1>Explore Categories</h1>" in html
-    assert 'class="browse-category-pills"' in html
-    assert 'class="source-popular-row"' in html
-    assert 'class="role-explorer-row"' in html
-    assert html.count('class="role-explorer-card"') >= 2
+    assert ">Explore Categories</h1>" in html
+    assert 'class="source-category-chips"' in html
+    assert 'class="source-popular-grid"' in html
+    assert "Grow in your career and get new skills with these premium courses on a 7-day free trial" in html
+    for label in (
+        "Level: Beginner",
+        "Popular",
+        "Software Engineering &amp; IT",
+        "Business",
+        "Sales &amp; Marketing",
+        "Data Science &amp; Analytics",
+        "Healthcare",
+    ):
+        assert label in html
+    assert 'class="source-role-grid"' in html
+    expected_roles = (
+        (
+            "Data Scientist",
+            "/static/browse/roles/data-scientist.avif",
+            "$145,280",
+            "55,655 jobs available",
+        ),
+        (
+            "Machine Learning Engineer",
+            "/static/browse/roles/machine-learning-engineer.avif",
+            "$169,700",
+            "6,963 jobs available",
+        ),
+        (
+            "Data Analyst",
+            "/static/browse/roles/data-analyst.avif",
+            "$97,664",
+            "70,687 jobs available",
+        ),
+        (
+            "IT Project Manager",
+            "/static/browse/roles/it-project-manager.avif",
+            "$151,424",
+            "97,488 jobs available",
+        ),
+    )
+    for title, image, salary, openings in expected_roles:
+        assert f">{title}</h3>" in html
+        assert f'src="{image}"' in html
+        assert salary in html
+        assert openings in html
+    assert html.count('class="source-role-card"') == 4
+    assert "No results found" not in html
+    assert "source-role-skeleton" not in html
+
+
+def test_browse_lower_collections_match_the_supplied_and_playwright_evidence(
+    desktop_client: TestClient,
+) -> None:
+    """Catch invented lower-page cards replacing the observed Browse collections."""
+
+    html = desktop_client.get("/browse").text
+    role_position = html.index('class="source-role-explorer"')
+    faq_position = html.index('class="source-browse-faq"')
+    lower = html[role_position:faq_position]
+
+    headings = (
+        "Enhance Your Deep Learning Skills with Neural Networks",
+        "Online degrees",
+        "Trending now",
+        "In-demand skills",
+        "New releases",
+        "Leading partners",
+    )
+    positions = [lower.index(f">{heading}</h2>") for heading in headings]
+    assert positions == sorted(positions)
+    assert "home-learning-card" not in lower
+    assert "home-degree-card" not in lower
+
+    observed_cards = (
+        ("Deep Learning", "/specializations/deep-learning", "/static/browse/deep-learning.png"),
+        ("Neural Networks and Deep Learning", "/learn/neural-networks-deep-learning", "/static/deep-learning/course-neural-networks.png"),
+        ("Convolutional Neural Networks", "/learn/convolutional-neural-networks", "/static/deep-learning/course-convolutional.png"),
+        ("Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization", "/learn/deep-neural-network", "/static/deep-learning/course-improving-networks.png"),
+        ("Master of Advanced Study in Engineering", "/degrees/mas-engineering-berkeley", "/static/browse/lower/degree-berkeley.jpg"),
+        ("Master of Science in Data Analytics Engineering", "/degrees/ms-data-analytics-engineering-northeastern", "/static/browse/lower/degree-northeastern.jpg"),
+        ("Bachelor of Science in Computer Science", "/degrees/bachelor-of-science-computer-science-london", "/static/browse/lower/degree-london.jpg"),
+        ("BSc Data Science", "/degrees/bsc-data-science-huddersfield", "/static/browse/lower/degree-huddersfield.jpg"),
+        ("Introduction to AI", "/learn/google-introduction-to-ai", "/static/browse/lower/trending-introduction-ai.jpg"),
+        ("Google AI Essentials", "/specializations/ai-essentials-google", "/static/browse/lower/trending-google-ai-essentials.jpg"),
+        ("AI Fundamentals", "/learn/google-ai-fundamentals", "/static/browse/lower/trending-ai-fundamentals.jpg"),
+        ("AI for App Deployment", "/learn/google-ai-for-app-deployment", "/static/browse/lower/release-ai-app-deployment.jpg"),
+        ("Anti Money Laundering and Transaction Compliance", "/specializations/anti-money-laundering-and-transaction-compliance", "/static/browse/lower/release-anti-money-laundering.jpg"),
+        ("Emotional Intelligence, Creativity, and Mental Strength - 2026", "/specializations/emotional-intelligence", "/static/browse/lower/release-emotional-intelligence.jpg"),
+        ("Financial Modeling and Analysis", "/specializations/financial-modeling-and-analysis", "/static/browse/lower/release-financial-modeling.jpg"),
+    )
+    for title, href, image in observed_cards:
+        assert title in lower
+        assert f'href="{href}"' in lower
+        assert f'src="{image}"' in lower
+
+    for fact in (
+        "4.8 · 147K reviews",
+        "4.9 · 124K reviews",
+        "4.9 · 43K reviews",
+        "4.9 · 64K reviews",
+        "4.8 · 13K reviews",
+        "4.7 · 36K reviews",
+        "4.8 · 25K reviews",
+        "4.8 · 4.7K reviews",
+        "4.8 · 51 reviews",
+        "4.6 · 15 reviews",
+        "4.3 · 40 reviews",
+        "4.7 · 67 reviews",
+    ):
+        assert fact in lower
+
+    for skill, href in (
+        ("Responsible AI", "/courses?query=responsible%20ai"),
+        ("AI literacy", "/courses?query=ai%20literacy"),
+        ("Google Gemini", "/courses?query=google%20gemini"),
+        ("AI Enablement", "/courses?query=ai%20enablement"),
+        ("Machine Learning", "/courses?query=machine%20learning"),
+        ("Generative AI", "/courses?query=generative%20ai"),
+    ):
+        assert skill in lower
+        assert f'href="{href}"' in lower
+
+    for partner, href in (
+        ("University of Illinois at Urbana-Champaign", "/partners/illinois"),
+        ("Duke University", "/partners/duke"),
+        ("Google", "/partners/google"),
+        ("University of Michigan", "/partners/umich"),
+        ("IBM", "/partners/ibm-skills-network"),
+        ("Imperial College of London", "/partners/imperial"),
+        ("Stanford University", "/partners/stanford"),
+        ("University of Pennsylvania", "/partners/penn"),
+    ):
+        assert f'alt="{partner}"' in lower
+        assert f'href="{href}"' in lower
+
+    assert lower.count('class="source-lower-course-card"') == 12
+    assert lower.count('class="source-lower-degree-card"') == 4
+    assert lower.count('class="source-lower-skill-link"') == 6
+    assert lower.count('class="source-lower-partner"') == 8
+    assert lower.count("Show 8 more") == 4
+
+
+def test_browse_uses_the_source_observed_english_card_surface(
+    desktop_client: TestClient,
+) -> None:
+    """Catch Browse showing recommendations from a different source response."""
+
+    html = desktop_client.get("/browse").text
+
+    assert '<html lang="en">' in html
+    assert ">Most popular</h2>" in html
+    assert "Explore roles" in html
+    for subject in (
+        "Personal Development",
+        "Information Technology",
+        "Data Science",
+        "Arts and Humanities",
+    ):
+        assert subject in html
+    expected_cards = (
+        (
+            "Deep Learning",
+            "DeepLearning.AI",
+            "/specializations/deep-learning",
+            "/static/browse/deep-learning.png",
+            "4.8 · 147K reviews",
+            "Intermediate · Specialization",
+        ),
+        (
+            "IBM AI Product Manager",
+            "IBM",
+            "/professional-certificates/ibm-ai-product-manager",
+            "/static/browse/ibm-ai-product-manager.png",
+            "4.7 · 36K reviews",
+            "Beginner · Professional Certificate · 3 months",
+        ),
+        (
+            "Foundations of Cybersecurity",
+            "Google",
+            "/learn/foundations-of-cybersecurity",
+            "/static/browse/foundations-cybersecurity.png",
+            "4.8 · 42K reviews",
+            "Beginner · Course",
+        ),
+        (
+            "Technical Support Fundamentals",
+            "Google",
+            "/learn/technical-support-fundamentals",
+            "/static/browse/technical-support-fundamentals.png",
+            "4.8 · 165K reviews",
+            "Beginner · Course · 8 - 10 hours per module",
+        ),
+    )
+    for title, provider, href, asset, rating, meta in expected_cards:
+        assert title in html
+        assert provider in html
+        assert f'href="{href}"' in html
+        assert f'src="{asset}"' in html
+        assert rating in html
+        assert meta in html
+
+    popular = html.split('class="source-browse-popular"', 1)[1].split(
+        'class="source-role-explorer"', 1
+    )[0]
+    assert popular.count(">Free Trial<") == 4
+    assert ">AI skills<" in popular
+    assert "Build toward a degree" in popular
+
+
+def test_browse_includes_the_observed_faq_footnote_and_full_footer(
+    desktop_client: TestClient,
+) -> None:
+    """Catch the source Browse page being truncated below its role section."""
+
+    html = desktop_client.get("/browse").text
+
+    for text in (
+        "Frequently asked questions",
+        "What types of courses does Coursera offer?",
+        "What are the benefits of taking courses on Coursera?",
+        "Can I earn an accredited degree through Coursera?",
+        "Show all 7 frequently asked questions",
+        "More questions",
+        "Visit the learner help center",
+        "Median salary and job opening data are sourced from Lightcast™ Job Postings Report.",
+        "Skills",
+        "Professional Certificates",
+        "Courses &amp; Specializations",
+        "Career Resources",
+        "Accounting",
+        "Google AI Certificate",
+        "Deep Learning Specialization",
+        "Career Aptitude Test",
+        "What We Offer",
+        "The Coursera Podcast",
+        "Cookies Preference Center",
+    ):
+        assert text in html
+    assert 'class="source-browse-faq"' in html
+    assert 'class="wb-footer source-browse-footer"' in html
+
+
+def test_browse_includes_the_settled_personalized_signup_section(
+    desktop_client: TestClient,
+) -> None:
+    """Catch the page jumping directly from its footnote to the footer."""
+
+    html = desktop_client.get("/browse").text
+
+    assert 'class="source-browse-signup"' in html
+    assert "Join for free and get personalized recommendations, updates and offers." in html
+    assert 'class="source-browse-signup-button" href="/signup">Join for free</a>' in html
 
 
 def test_impossible_query_shows_no_match_and_recovery(
@@ -172,20 +458,20 @@ def test_impossible_query_shows_no_match_and_recovery(
 
     html = desktop_client.get("/search?q=zzzz-no-match-websitebench").text
 
-    assert "没有找到与“zzzz-no-match-websitebench”匹配的课程" in html
-    assert "推荐课程" in html
+    assert "No results for zzzz-no-match-websitebench" in html
+    assert "Try another search or explore the catalog." in html
     assert 'href="/browse"' in html
 
 
 def test_catalog_filters_preserve_selected_values_and_real_result_ids(
     desktop_client: TestClient,
 ) -> None:
-    """Catch the Chinese filter surface disconnecting from server-side results."""
+    """Catch the English filter drawer disconnecting from server-side results."""
 
-    html = desktop_client.get("/search?q=Deep+Learning&level=Beginner").text
+    html = desktop_client.get("/search?q=Deep&level=Intermediate").text
 
-    assert "筛选和排序" in html
-    assert 'value="Beginner" selected' in html
+    assert "Filter & Sort" in html
+    assert 'value="Intermediate" selected' in html
     assert 'data-catalog-record=' in html
 
 
@@ -197,10 +483,17 @@ def test_search_matches_observed_ai_overview_and_filter_chips(
     html = desktop_client.get("/search?q=Deep+Learning+Specialization").text
 
     assert 'class="search-ai-overview"' in html
-    assert "AI 概览" in html
-    assert "You are looking for Deep Learning Specialization" in html
+    assert "AI Overview" in html
+    assert "Top courses to get started:" in html
     assert 'class="source-filter-chips"' in html
-    for chip in ("筛选和排序", "主题", "课程长度", "了解产品", "语言", "级别"):
+    for chip in (
+        "Filter & Sort",
+        "Topic",
+        "Duration",
+        "Learning Product",
+        "Language",
+        "Level",
+    ):
         assert chip in html
 
 
@@ -212,34 +505,65 @@ def test_search_retains_query_in_header_and_related_cards(
     html = desktop_client.get("/search?q=Deep+Learning+Specialization").text
 
     assert 'id="wb-header-search" name="q" value="Deep Learning Specialization"' in html
-    assert 'class="search-related-cards"' in html
-    assert html.count('class="search-related-card"') >= 3
+    assert 'class="search-ai-starter-cards"' in html
+    assert html.count('class="search-ai-starter-card"') == 4
 
 
 def test_specialization_shows_observed_trial_and_course_series(
     desktop_client: TestClient,
 ) -> None:
-    """Catch the Deep Learning landing page losing source-observed trial facts."""
+    """Keep the prototype specialization grounded in the English Playwright page."""
 
     html = desktop_client.get("/specializations/deep-learning").text
 
-    assert "深度学习专项课程" in html
-    assert "5 门课程系列" in html
-    assert "7 天免费试用" in html
-    assert "¥196/月" in html
+    assert '<html lang="en">' in html
+    assert 'class="source-specialization-hero"' in html
+    assert "Deep Learning Specialization" in html
+    assert "Become a Machine Learning expert." in html
+    assert "Master the fundamentals of deep learning and break into AI." in html
+    assert "Enroll for free" in html
+    assert 'class="source-specialization-stats"' in html
+    assert "5 course series" in html
+    assert "4.8" in html
+    assert "Intermediate level" in html
+    assert "Flexible schedule" in html
+    assert 'class="source-specialization-tabs"' in html
+    for label in ("About", "Outcomes", "Courses", "Testimonials"):
+        assert f">{label}<" in html
 
 
-def test_course_exposes_modules_instructors_reviews_and_preview(
+def test_specialization_exposes_the_observed_english_content_and_local_art(
     desktop_client: TestClient,
 ) -> None:
-    """Catch the local course detail omitting a route the learner can inspect."""
+    """Catch the first prototype replacing direct source content with placeholders."""
+
+    html = desktop_client.get("/specializations/deep-learning").text
+
+    assert "What you'll learn" in html
+    assert "Skills you'll gain" in html
+    assert "Details to know" in html
+    assert "Specialization - 5 course series" in html
+    assert html.count('class="source-specialization-course"') == 5
+    for asset in (
+        "/static/deep-learning/provider-icon.png",
+        "/static/deep-learning/instructor-andrew-ng.jpg",
+        "/static/deep-learning/course-neural-networks.png",
+        "/static/deep-learning/course-sequence-models.png",
+    ):
+        assert asset in html
+
+
+def test_course_exposes_observed_materials_without_invented_preview(
+    desktop_client: TestClient,
+) -> None:
+    """Keep the course page on observed modules instead of a simulated route."""
 
     html = desktop_client.get("/learn/neural-networks-deep-learning").text
 
-    assert "课程模块" in html
-    assert "讲师" in html
-    assert "评论" in html
-    assert 'href="/learn/neural-networks-deep-learning/preview"' in html
+    assert "There are 4 modules in this course" in html
+    assert "Instructors" in html
+    assert "Learner reviews" in html
+    assert "/learn/neural-networks-deep-learning/preview" not in html
 
 
 def test_course_detail_matches_observed_source_layout_sections(
@@ -249,11 +573,11 @@ def test_course_detail_matches_observed_source_layout_sections(
 
     html = desktop_client.get("/learn/neural-networks-deep-learning").text
 
-    assert "神经网络与深度学习" in html
-    assert 'class="course-stats"' in html
-    assert 'class="course-tabs"' in html
-    assert 'class="skill-chip-row"' in html
-    for tab in ("关于", "结果", "单元", "推荐", "评价"):
+    assert "Neural Networks and Deep Learning" in html
+    assert 'class="source-course-detail-stats"' in html
+    assert 'class="source-course-detail-tabs"' in html
+    assert 'class="source-course-skill-chips"' in html
+    for tab in ("About", "Outcomes", "Modules", "Testimonials", "Reviews"):
         assert f">{tab}<" in html
 
 
@@ -265,7 +589,7 @@ def test_not_found_matches_observed_safe_recovery(
     response = desktop_client.get("/websitebench-not-found-33")
 
     assert response.status_code == 404
-    assert "我们无法找到您要查找的页面" in response.text
+    assert "We were not able to find the page you're looking for." in response.text
     assert 'href="/browse"' in response.text
     assert 'href="/search"' in response.text
 
@@ -292,11 +616,11 @@ def test_unified_auth_entry_has_email_identity_choices_and_terms(
 
     html = desktop_client.get("/login").text
 
-    assert "登录或创建账户" in html
+    assert "Log in or create account" in html
     assert 'type="email"' in html
-    assert "继续使用 Google" in html
-    assert "使用条款" in html
-    assert "隐私声明" in html
+    assert "Continue with Google" in html
+    assert "Terms of Use" in html
+    assert "Privacy Notice" in html
 
 
 def test_unified_auth_entry_uses_an_observed_modal_surface(
@@ -306,9 +630,9 @@ def test_unified_auth_entry_uses_an_observed_modal_surface(
 
     html = desktop_client.get("/login").text
 
-    assert 'class="auth-modal-shell"' in html
-    assert 'class="auth-modal-backdrop"' in html
-    assert 'class="auth-modal-card auth-card"' in html
+    assert 'class="source-login-dialog"' in html
+    assert 'data-login-dialog' in html
+    assert 'data-open-on-load="true"' in html
 
 
 def test_recovery_requires_local_address_and_returns_to_login(
@@ -318,7 +642,7 @@ def test_recovery_requires_local_address_and_returns_to_login(
 
     html = desktop_client.get("/account-recovery").text
 
-    assert "重置您的 Coursera 密码" in html
+    assert "Reset your Coursera password" in html
     assert 'type="email"' in html
     assert 'href="/login"' in html
 
@@ -332,22 +656,22 @@ def test_seeded_dashboard_has_resume_progress_and_history_links(
 
     html = desktop_client.get("/my-learning").text
 
-    assert "我的学习" in html
-    assert "继续学习" in html
+    assert "My Learning" in html
+    assert "Continue learning" in html
     assert 'href="/account/history"' in html
 
 
-def test_seeded_enrollment_status_is_presented_in_chinese(
+def test_seeded_enrollment_status_is_presented_in_english(
     desktop_client: TestClient,
 ) -> None:
-    """The Chinese desktop contract must cover learner records, not just headers."""
+    """The English desktop contract must cover learner records, not just headers."""
 
     _login_seeded_progress_learner(desktop_client)
 
     html = desktop_client.get("/account/history").text
 
     assert 'class="catalog-card enrollment-card"' in html
-    assert "进行中" in html
+    assert "In progress" in html
 
 
 def test_checkout_plan_matches_observed_trial_price_and_total(
@@ -359,12 +683,12 @@ def test_checkout_plan_matches_observed_trial_price_and_total(
 
     html = desktop_client.get("/checkout/deep-learning").text
 
-    assert "7 天免费试用" in html
-    assert "之后为 ¥196/月" in html
-    assert "今日合计：¥0" in html
-    assert "账单信息" in html
-    assert "支付方式" in html
-    assert 'href="/static/checkout-desktop.css"' in html
+    assert "7-day free trial" in html
+    assert "Then ¥196/month" in html
+    assert "Total due today: ¥0" in html
+    assert "Billing information" in html
+    assert "Payment method" in html
+    assert 'href="/static/checkout-desktop.css?v=' in html
 
 
 def test_source_checkout_post_alias_creates_an_owner_bound_local_draft(

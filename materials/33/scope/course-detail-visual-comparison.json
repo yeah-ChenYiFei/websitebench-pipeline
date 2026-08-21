@@ -1,0 +1,58 @@
+{
+  "schema_version": "websitebench.offline-clone.visual-comparison-spec.v1",
+  "authority": "diagnostic-only",
+  "checkpoints": [
+    {
+      "id": "neural-networks-course.loaded.desktop",
+      "source": {
+        "path": "../source-evidence/course-detail-prototype-playwright-v2/coursera-neural-networks-course-detail-prototype-course-detail-structure.png"
+      },
+      "candidate": {
+        "path": "../source-evidence/course-detail-prototype-clone-playwright-v9/coursera-neural-networks-course-detail-prototype-course-detail-structure.png"
+      },
+      "viewport": {
+        "width": 1191,
+        "height": 979
+      },
+      "capture_mode": "viewport",
+      "regions": [
+        {
+          "id": "header",
+          "x": 0,
+          "y": 0,
+          "width": 1191,
+          "height": 145,
+          "metric": "normalized_mae",
+          "threshold": 0.12
+        },
+        {
+          "id": "hero",
+          "x": 0,
+          "y": 145,
+          "width": 1191,
+          "height": 445,
+          "metric": "normalized_mae",
+          "threshold": 0.12
+        },
+        {
+          "id": "course-facts",
+          "x": 0,
+          "y": 590,
+          "width": 1191,
+          "height": 145,
+          "metric": "normalized_mae",
+          "threshold": 0.12
+        },
+        {
+          "id": "tabs-and-about",
+          "x": 0,
+          "y": 735,
+          "width": 1191,
+          "height": 244,
+          "metric": "normalized_mae",
+          "threshold": 0.12
+        }
+      ]
+    }
+  ]
+}

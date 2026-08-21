@@ -72,8 +72,8 @@ def test_pricing_copy_uses_trial_facts_and_preserves_legacy_currency() -> None:
             "trial_days": 7,
         }
     )
-    assert trial_label == "7 天免费试用"
-    assert renewal == "¥196/月"
+    assert trial_label == "7-day free trial"
+    assert renewal == "¥196/month"
 
     legacy = _checkout_totals(
         {
@@ -85,7 +85,7 @@ def test_pricing_copy_uses_trial_facts_and_preserves_legacy_currency() -> None:
             "trial_days": 0,
         }
     )
-    assert "一次性本地结账" in legacy
+    assert "One-time local checkout" in legacy
     assert "$49.00" in legacy
     assert "¥" not in legacy
 

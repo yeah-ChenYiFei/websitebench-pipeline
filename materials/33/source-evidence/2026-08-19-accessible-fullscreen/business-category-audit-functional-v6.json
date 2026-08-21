@@ -1,0 +1,298 @@
+{
+  "authority": "diagnostic-only",
+  "candidate_report": {
+    "bytes": 14855,
+    "path": "/home/alive/websitebench-pipeline/materials/33/source-evidence/2026-08-19-accessible-fullscreen/clone-business-category-audit-v6.json"
+  },
+  "counts": {
+    "candidate_steps": 7,
+    "differences": 15,
+    "source_steps": 7
+  },
+  "differences": [
+    {
+      "candidate": {
+        "actual": "Categories › Business Business Explore business courses on Coursera and build leadership, financial management, marketing, and entrepreneurship skills. Develop a strong foundation in business concepts and practical skills to succeed across diverse professional settings. 1062 credentials 14 online degrees 5998 courses Most popular All Beginner Intermediate Advanced Free Trial AI skills Google Google Project Management ♙ Build toward a degree ★ 4.8 · 145K reviews Beginner · Professional Certificate · 6 months Free Trial Google Foundations of Project Management ★ 4.9 · 102K reviews Beginner · Course Preview DeepLearning.AI AI For Everyone ★ 4.8 · 53K reviews Beginner · Course · 4 weeks of study, 2-3 hours/week Free Trial IBM Key Technologies for Business ★ 4.7 · 107K reviews Beginner · Specialization Show 8 more Explore roles Gain the knowledge and skills you need to advance. View all No results found for \"proficiencyLevel filterName\" Change your filters. Frequently asked questions What s",
+        "kind": "text",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "main-text",
+      "source": {
+        "actual": "Categories Business Business Explore business courses on Coursera and build leadership, financial management, marketing, and entrepreneurship skills. Develop a strong foundation in business concepts and practical skills to succeed across diverse professional settings. 1062 credentials 14 online degrees 5998 courses Most popular All Beginner Intermediate Advanced Status: Free Trial Free Trial Status: AI skills AI skills G Google Google Project Management Build toward a degree 4.8 Rating, 4.8 out of 5 stars · 145K reviews Beginner · Professional Certificate · 6 months Status: Free Trial Free Trial G Google Foundations of Project Management 4.9 Rating, 4.9 out of 5 stars · 102K reviews Beginner · Course Status: Preview Preview D DeepLearning.AI AI For Everyone 4.8 Rating, 4.8 out of 5 stars · 53K reviews Beginner · Course · 4 weeks of study, 2-3 hours/week Status: Free Trial Free Trial I IBM Key Technologies for Business 4.7 Rating, 4.7 out of 5 stars · 107K reviews Beginner · Specializat",
+        "kind": "text",
+        "passed": true
+      },
+      "step_id": "open-business",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": 4,
+        "kind": "count",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "main-heading-count",
+      "source": {
+        "actual": 3,
+        "kind": "count",
+        "passed": true
+      },
+      "step_id": "open-business",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": 17,
+        "kind": "count",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "main-link-count",
+      "source": {
+        "actual": 26,
+        "kind": "count",
+        "passed": true
+      },
+      "step_id": "open-business",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": 8,
+        "kind": "count",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "main-image-count",
+      "source": {
+        "actual": 4,
+        "kind": "count",
+        "passed": true
+      },
+      "step_id": "open-business",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": "Categories › Business Business Explore business courses on Coursera and build leadership, financial management, marketing, and entrepreneurship skills. Develop a strong foundation in business concepts and practical skills to succeed across diverse professional settings. 1062 credentials 14 online degrees 5998 courses Most popular All Beginner Intermediate Advanced Free Trial AI skills Google Google Project Management ♙ Build toward a degree ★ 4.8 · 145K reviews Beginner · Professional Certificate · 6 months Free Trial Google Foundations of Project Management ★ 4.9 · 102K reviews Beginner · Course Preview DeepLearning.AI AI For Everyone ★ 4.8 · 53K reviews Beginner · Course · 4 weeks of study, 2-3 hours/week Free Trial IBM Key Technologies for Business ★ 4.7 · 107K reviews Beginner · Specialization Show 8 more Explore roles Gain the knowledge and skills you need to advance. View all No results found for \"proficiencyLevel filterName\" Change your filters. Frequently asked questions What s",
+        "kind": "text",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "main-text-settled",
+      "source": {
+        "actual": "Categories Business Business Explore business courses on Coursera and build leadership, financial management, marketing, and entrepreneurship skills. Develop a strong foundation in business concepts and practical skills to succeed across diverse professional settings. 1062 credentials 14 online degrees 5998 courses Most popular All Beginner Intermediate Advanced Status: Free Trial Free Trial Status: AI skills AI skills Google Google Project Management Build toward a degree 4.8 Rating, 4.8 out of 5 stars · 145K reviews Beginner · Professional Certificate · 6 months Status: Free Trial Free Trial Google Foundations of Project Management 4.9 Rating, 4.9 out of 5 stars · 102K reviews Beginner · Course Status: Preview Preview DeepLearning.AI AI For Everyone 4.8 Rating, 4.8 out of 5 stars · 53K reviews Beginner · Course · 4 weeks of study, 2-3 hours/week Status: Free Trial Free Trial IBM Key Technologies for Business 4.7 Rating, 4.7 out of 5 stars · 107K reviews Beginner · Specialization Show",
+        "kind": "text",
+        "passed": true
+      },
+      "step_id": "capture-settled",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": 7,
+        "kind": "count",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "faq-question-count",
+      "source": {
+        "actual": 0,
+        "kind": "count",
+        "passed": true
+      },
+      "step_id": "capture-settled",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": 17,
+        "kind": "count",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "main-link-count-settled",
+      "source": {
+        "actual": 26,
+        "kind": "count",
+        "passed": true
+      },
+      "step_id": "capture-settled",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": "/static/categories/business/card-1.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "image-0-src",
+      "source": {
+        "actual": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/64/2c23361e8c42a680e3e34c57db8e27/GCC-Coursera-thumbnail-PM-foundations-emilio-cert-level.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "step_id": "capture-settled",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": "/static/categories/business/provider-google.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "image-1-src",
+      "source": {
+        "actual": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/92/d0d1ee4a844037be9a2d349ee5f59d/GoogleG_FullColor_RGB.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "step_id": "capture-settled",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": "/static/categories/business/card-2.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "image-2-src",
+      "source": {
+        "actual": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/a9/eeb6e302bb470c99e571e36a76af53/GCC-Coursera-thumbnail-PM-foundations-emilio.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "step_id": "capture-settled",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": "/static/categories/business/provider-google.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "image-3-src",
+      "source": {
+        "actual": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/92/d0d1ee4a844037be9a2d349ee5f59d/GoogleG_FullColor_RGB.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "step_id": "capture-settled",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": "/static/categories/business/card-3.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "image-4-src",
+      "source": {
+        "actual": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/e6/1e86d7a77b4c79a6e9c6e6126a9aa5/BC-5768_VisMerch-Phase-3-Assets_Google_AI_3_DeepLearning_AIForEveryone.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "step_id": "capture-settled",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": "/static/categories/business/provider-deeplearning-ai.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "image-5-src",
+      "source": {
+        "actual": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "step_id": "capture-settled",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": "/static/categories/business/card-4.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "image-6-src",
+      "source": {
+        "actual": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/07/d493bfaf224e5cba086cd42fa3d7a7/BC-5768_VisMerch-Phase-3-Assets_PartnerColorBlock_IBM_KeyTechforBusiness.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "step_id": "capture-settled",
+      "summary": "observable value or assertion outcome differs"
+    },
+    {
+      "candidate": {
+        "actual": "/static/categories/business/provider-ibm.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "category": "observable-state",
+      "observation_id": "image-7-src",
+      "source": {
+        "actual": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/bb/f5ced2bdd4437aa79f00eb1bf7fbf0/IBM-Logo-Blk---Square.png",
+        "kind": "attribute",
+        "passed": true
+      },
+      "step_id": "capture-settled",
+      "summary": "observable value or assertion outcome differs"
+    }
+  ],
+  "scenario_id": "coursera-business-category-audit",
+  "schema_version": "websitebench.offline-clone.functional-comparison.v1",
+  "source_report": {
+    "bytes": 43773,
+    "path": "/home/alive/websitebench-pipeline/materials/33/source-evidence/2026-08-19-accessible-fullscreen/source-business-category-audit-v2.json"
+  },
+  "status": "failed",
+  "steps": [
+    {
+      "difference_count": 4,
+      "id": "open-business",
+      "status": "different"
+    },
+    {
+      "difference_count": 0,
+      "id": "wait-initial",
+      "status": "matched"
+    },
+    {
+      "difference_count": 0,
+      "id": "scroll-1",
+      "status": "matched"
+    },
+    {
+      "difference_count": 0,
+      "id": "wait-1",
+      "status": "matched"
+    },
+    {
+      "difference_count": 0,
+      "id": "scroll-2",
+      "status": "matched"
+    },
+    {
+      "difference_count": 0,
+      "id": "wait-2",
+      "status": "matched"
+    },
+    {
+      "difference_count": 11,
+      "id": "capture-settled",
+      "status": "different"
+    }
+  ]
+}

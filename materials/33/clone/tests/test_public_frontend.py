@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from html import unescape
 import re
+from urllib.parse import urlsplit
 
 from fastapi.testclient import TestClient
 
@@ -24,18 +25,17 @@ SUBJECTS = {
     "social-sciences": "Social Sciences",
 }
 
-SUBJECTS_ZH = {
-    "arts-and-humanities": "艺术与人文",
-    "business": "商业",
-    "computer-science": "计算机科学",
-    "data-science": "数据科学",
-    "health": "健康",
-    "information-technology": "信息技术",
-    "language-learning": "语言学习",
-    "math-and-logic": "数学与逻辑",
-    "personal-development": "个人发展",
-    "physical-science-and-engineering": "物理科学与工程",
-    "social-sciences": "社会科学",
+SOURCE_CATEGORY_LEADS = {
+    "arts-and-humanities": "Graphic Design",
+    "business": "Google Project Management",
+    "computer-science": "Python for Everybody",
+    "health": "Introduction to Psychology",
+    "information-technology": "Google IT Support",
+    "language-learning": "Improve Your English Communication Skills",
+    "math-and-logic": "Introduction to Mathematical Thinking",
+    "personal-development": "Learning How to Learn",
+    "physical-science-and-engineering": "An Introduction to Programming the Internet of Things",
+    "social-sciences": "Academic English: Writing",
 }
 
 
@@ -59,20 +59,35 @@ def test_home_and_search_use_the_source_observed_document_titles() -> None:
 def test_public_home_browse_and_all_subject_routes_render_real_catalog() -> None:
     home = client.get("/")
     assert home.status_code == 200
-    assert "New! Learn vibe coding with Google" in home.text
+    assert "New and popular" in home.text
     assert 'href="/browse"' in home.text
 
     browse = client.get("/browse")
     assert browse.status_code == 200
-    assert "按主题浏览课程" in browse.text
+    assert "Explore Categories" in browse.text
     for slug, subject in SUBJECTS.items():
         assert f'href="/browse/{slug}"' in browse.text
-        assert SUBJECTS_ZH[slug] in browse.text
+        assert subject in browse.text
 
         category = client.get(f"/browse/{slug}")
         assert category.status_code == 200
-        assert f"<h1>{SUBJECTS_ZH[slug]}</h1>" in category.text
-        assert category.text.count('data-catalog-record="') >= 3
+        if slug == "data-science":
+            assert "<h1 id=\"ds-heading\">Data Science</h1>" in category.text
+            assert category.text.count('data-source-result-card="') == 12
+        elif slug == "business":
+            assert '<html lang="en"' in category.text
+            assert 'data-websitebench-snapshot="business-2026-08-19-233413"' in category.text
+            assert len(
+                re.findall(r'class="[^"]*\bcds-ProductCard-base\b', category.text)
+            ) == 34
+            assert "Trending now" in category.text
+        else:
+            assert '<html lang="en">' in category.text
+            assert f'<h1 id="category-heading">{subject}</h1>' in category.text
+            assert SOURCE_CATEGORY_LEADS[slug] in category.text
+            assert category.text.count('class="source-category-card"') == 4
+            assert "Coursera Offline Catalog" not in category.text
+            assert "Evidence: offline simulation" not in category.text
 
 
 def test_home_extends_below_the_first_viewport_with_source_observed_sections() -> None:
@@ -82,31 +97,36 @@ def test_home_extends_below_the_first_viewport_with_source_observed_sections() -
 
     assert home.status_code == 200
     for marker in (
-        "订阅即可解锁 10,000 多门课程",
-        "学习来自 350 多家领先大学和公司的知识",
-        "探索类别",
-        "热门新版本",
-        "是什么让您今天来到 Coursera？",
-        "为什么人们选择 Coursera",
+        "New and popular",
+        "Get job-ready for an in-demand career",
+        "Learn from 350+ leading universities and companies",
+        "Explore categories",
+        "Trending searches",
+        "What brings you to Coursera today?",
         "Frequently asked questions",
     ):
         assert marker in home.text
-    assert home.text.count('class="source-category-chip"') >= 10
+    home_card_hrefs = re.findall(
+        r'<a\b[^>]*\bdata-home-card="[^"]+"[^>]*\bhref="([^"]+)"', home.text
+    )
+    assert len(home_card_hrefs) >= 35
+    assert all(href.startswith("/") for href in home_card_hrefs)
+    assert home.text.count('class="source-list-card"') == 18
+    assert home.text.count('class="source-learning-card"') >= 12
+    assert home.text.count('class="source-role-card"') == 5
+    assert home.text.count('class="source-card-image"') >= 30
+    assert 'class="source-skeleton-card"' not in home.text
     assert home.text.count('class="source-logo-pill"') >= 8
-    assert home.text.count('class="source-release-card"') >= 6
     assert 'href="/browse/data-science"' in home.text
-    assert 'href="/search?q=Google+%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%A6%81%E7%82%B9"' in home.text
+    assert 'href="/specializations/deep-learning"' in home.text
 
 
 def test_home_cookie_banner_accept_and_reject_are_real_local_interactions() -> None:
-    """Catch inert cookie buttons that make the page feel non-functional."""
+    """The current observed home has no stale first-version cookie overlay."""
 
     with TestClient(app) as isolated:
         first = isolated.get("/")
-        assert 'class="source-cookie-banner"' in first.text
-        assert 'action="/privacy-preferences"' in first.text
-        assert 'name="choice" value="accept"' in first.text
-        assert 'name="choice" value="reject"' in first.text
+        assert 'class="source-cookie-banner"' not in first.text
 
         accepted = isolated.post(
             "/privacy-preferences",
@@ -135,24 +155,18 @@ def test_browse_matches_the_retained_oracle_course_collection_composition() -> N
 
     browse = client.get("/browse")
     assert browse.status_code == 200
-    assert 'aria-label="热门课程分类"' in browse.text
+    assert 'aria-label="Most popular categories"' in browse.text
     for label in (
-        "全部",
-        "商业",
-        "数据科学",
-        "信息技术",
-        "计算机科学",
+        "All",
+        "Business",
+        "Data Science",
+        "Information Technology",
+        "Computer Science",
     ):
         assert f">{label}<" in browse.text
-    popular = re.search(
-        r'<div class="card-grid popular-grid">(.*?)</div><details',
-        browse.text,
-        re.S,
-    )
-    assert popular is not None
-    assert popular.group(1).count('data-catalog-record="') == 4
-    assert "显示更多课程" in browse.text
-    assert "browse-roles" in browse.text
+    assert browse.text.count('class="source-popular-card"') == 4
+    assert "Show 8 more" in browse.text
+    assert "source-role-explorer" in browse.text
 
 
 def test_search_combines_every_filter_sorts_server_side_and_recovers_from_no_match() -> (
@@ -212,10 +226,24 @@ def test_search_combines_every_filter_sorts_server_side_and_recovers_from_no_mat
     no_match = client.get("/search", params={"q": "zzzz-no-match-websitebench"})
     assert no_match.status_code == 200
     assert 'data-result-count="0"' in no_match.text
-    assert "没有找到与“zzzz-no-match-websitebench”匹配的课程" in no_match.text
+    assert "No results for zzzz-no-match-websitebench" in no_match.text
     assert "zzzz-no-match-websitebench" in no_match.text
     assert 'href="/browse"' in no_match.text
-    assert 'href="/search"' in no_match.text
+    assert 'href="/search?query=Deep%20Learning"' in no_match.text
+
+
+def test_deep_learning_specialization_matches_the_english_playwright_prototype() -> None:
+    """Define the source-grounded structure before replacing the old Chinese page."""
+
+    response = client.get("/specializations/deep-learning")
+
+    assert response.status_code == 200
+    assert '<html lang="en">' in response.text
+    assert 'class="source-specialization-hero"' in response.text
+    assert "Become a Machine Learning expert." in response.text
+    assert 'class="source-specialization-stats"' in response.text
+    assert 'class="source-specialization-tabs"' in response.text
+    assert response.text.count('class="source-specialization-course"') == 5
 
 
 def test_language_and_schedule_filters_each_narrow_results_and_combine() -> None:
@@ -247,7 +275,7 @@ def test_language_and_schedule_filters_each_narrow_results_and_combine() -> None
     assert 'data-result-count="1"' in combined.text
 
 
-def test_specialization_component_details_and_free_preview_are_complete() -> None:
+def test_specialization_component_details_and_observed_course_materials_are_complete() -> None:
     component_ids = (
         "neural-networks-deep-learning",
         "improving-deep-neural-networks",
@@ -257,52 +285,56 @@ def test_specialization_component_details_and_free_preview_are_complete() -> Non
     )
     specialization = client.get("/specializations/deep-learning")
     assert specialization.status_code == 200
-    assert "<h1>深度学习专项课程</h1>" in specialization.text
-    assert "5 门课程系列" in specialization.text
+    assert "<h1>Deep Learning Specialization</h1>" in specialization.text
+    assert "5 course series" in specialization.text
     assert "4.8" in specialization.text
-    assert "中级水平" in specialization.text
-    assert "每周 10 小时，约 3 个月" in specialization.text
+    assert "Intermediate level" in specialization.text
+    assert "3 months at 10 hours a week" in specialization.text
     for course_id in component_ids:
         assert f'href="/learn/{course_id}"' in specialization.text
 
         detail = client.get(f"/learn/{course_id}")
         assert detail.status_code == 200
         assert 'data-course-detail="' in detail.text
+        if course_id == "neural-networks-deep-learning":
+            for section in (
+                "There are 4 modules in this course",
+                "Instructors",
+                "Learner reviews",
+                "Frequently asked questions",
+            ):
+                assert section in detail.text
+            assert f"/learn/{course_id}/preview" not in detail.text
+            continue
         for section in (
-            "课程模块",
-            "讲师",
-            "先修知识",
-            "评论",
-            "价格",
-            "报名选项",
+            "Course modules",
+            "Instructors",
+            "Prerequisites",
+            "Reviews",
+            "Pricing",
+            "Enrollment options",
         ):
             assert f">{section}<" in detail.text
-        assert f'href="/learn/{course_id}/preview"' in detail.text
+        assert f"/learn/{course_id}/preview" not in detail.text
 
-    preview = client.get("/learn/neural-networks-deep-learning/preview")
-    assert preview.status_code == 200
-    assert "<h1>免费预览：" in preview.text
-    assert "Neural network foundations" in preview.text
-    assert 'href="/learn/neural-networks-deep-learning"' in preview.text
+    assert client.get("/learn/neural-networks-deep-learning/preview").status_code == 404
 
 
 def test_non_direct_catalog_facts_are_visibly_disclosed_on_every_public_surface() -> (
     None
 ):
     business_card = client.get("/browse/business")
-    assert 'data-evidence-classification="truthful-simulation"' in business_card.text
-    assert "Evidence: offline simulation; not source-verified." in business_card.text
+    assert "Google Project Management" in business_card.text
+    assert "AI For Everyone" in business_card.text
+    assert 'data-evidence-classification="truthful-simulation"' not in business_card.text
+    assert "Evidence: offline simulation; not source-verified." not in business_card.text
 
     business_detail = client.get("/learn/business-strategy")
     assert 'href="/specializations/deep-learning"' not in business_detail.text
 
     specialization = client.get("/specializations/deep-learning")
-    assert "Source-observed course structure; displayed details are simulated." in (
-        specialization.text
-    )
-    assert "Inferred course structure; displayed details are simulated." in (
-        specialization.text
-    )
+    assert "Specialization - 5 course series" in specialization.text
+    assert specialization.text.count('class="source-specialization-course"') == 5
 
     expected_notes = {
         "business-strategy": (
@@ -320,23 +352,21 @@ def test_non_direct_catalog_facts_are_visibly_disclosed_on_every_public_surface(
     }
     for course_id, note in expected_notes.items():
         detail = client.get(f"/learn/{course_id}")
-        preview = client.get(f"/learn/{course_id}/preview")
         assert note in detail.text
-        assert note in preview.text
 
 
 def test_catalog_cards_visibly_name_each_non_direct_evidence_classification() -> None:
     pages = {
-        "improving-deep-neural-networks": client.get("/browse/data-science").text,
-        "sequence-models": client.get("/browse/data-science").text,
-        "business-strategy": client.get("/browse/business").text,
+        "improving-deep-neural-networks": client.get(
+            "/search?q=improving+deep+neural+networks"
+        ).text,
+        "sequence-models": client.get("/search?q=sequence+models").text,
     }
     expected_labels = {
         "improving-deep-neural-networks": (
             "Evidence: public structure observed; details simulated."
         ),
         "sequence-models": "Evidence: architecture inferred; details simulated.",
-        "business-strategy": "Evidence: offline simulation; not source-verified.",
     }
 
     for record_id, page in pages.items():
@@ -352,8 +382,8 @@ def test_catalog_cards_visibly_name_each_non_direct_evidence_classification() ->
 
 def test_course_breadcrumb_uses_each_records_real_subject_slug() -> None:
     expected = {
-        "business-strategy": ("business", "商业"),
-        "public-health": ("health", "健康"),
+        "business-strategy": ("business", "Business"),
+        "public-health": ("health", "Health"),
     }
     for course_id, (subject_slug, subject_name) in expected.items():
         detail = client.get(f"/learn/{course_id}")
@@ -368,39 +398,61 @@ def test_course_breadcrumb_uses_each_records_real_subject_slug() -> None:
         assert 'href="/browse/data-science"' not in breadcrumb.group(1)
 
 
+def test_public_policy_pages_are_english_only() -> None:
+    for path, heading in (
+        ("/privacy", "Privacy and cookie preferences"),
+        ("/terms", "Local terms of use"),
+    ):
+        response = client.get(path)
+        assert response.status_code == 200
+        assert f"<h1>{heading}</h1>" in response.text
+        assert re.search(r"[\u4e00-\u9fff]", response.text) is None
+
+
+def test_language_filter_does_not_change_the_site_locale() -> None:
+    response = client.get("/search", params={"language": "English"})
+    assert response.status_code == 200
+    assert '<html lang="en">' in response.text
+    assert "Log In" in response.text
+    assert re.search(r"[\u4e00-\u9fff]", response.text) is None
+
+
 def test_auth_hashes_standalone_shells_recovery_help_and_contact_are_local() -> None:
     home = client.get("/")
-    assert 'href="/login">登录</a>' in home.text
-    assert 'href="/signup">免费加入</a>' in home.text
+    assert 'data-login-open>Log In</button>' in home.text
+    assert 'href="/signup">Join for Free</a>' in home.text
 
     login = client.get("/login")
     assert login.status_code == 200
-    assert '<form class="auth-form"' in login.text
+    assert '<form class="source-login-form"' in login.text
     assert 'name="email"' in login.text
-    assert 'name="password"' in login.text
-    assert "继续使用 Google" in login.text
-    assert 'href="/account-recovery"' in login.text
-    assert "不会将凭据提交到 Coursera" in login.text
+    assert 'name="password"' not in login.text
+    assert "Continue with Google" in login.text
+    assert 'href="/help"' in login.text
+    assert "reCAPTCHA" in login.text
 
     signup = client.get("/signup")
     assert signup.status_code == 200
-    assert 'name="full_name"' in signup.text
+    assert 'data-login-dialog' in signup.text
+    assert 'data-open-on-load="true"' in signup.text
     assert 'name="email"' in signup.text
-    assert 'name="password"' in signup.text
-    assert "使用条款" in signup.text
-    assert "验证代码" in signup.text
+    assert 'name="full_name"' not in signup.text
+    assert 'name="password"' not in signup.text
+    assert 'data-signup-dialog' not in signup.text
+    assert "Terms of Use" in signup.text
+    assert "Log in or create account" in signup.text
 
     recovery = client.get("/account-recovery")
     assert recovery.status_code == 200
     assert 'name="address"' in recovery.text
-    assert "不会发送外部重置消息" in recovery.text
+    assert "No reset message is sent" in recovery.text
     assert 'href="/login"' in recovery.text
 
     help_page = client.get("/help")
     assert help_page.status_code == 200
     assert "Learner Help Center" in help_page.text
-    assert "账户访问" in help_page.text
-    assert "失败的操作" in help_page.text
+    assert "Account access" in help_page.text
+    assert "failed actions" in help_page.text
 
     contact = client.get("/about/contact")
     assert contact.status_code == 200
@@ -412,7 +464,7 @@ def test_auth_hashes_standalone_shells_recovery_help_and_contact_are_local() -> 
 def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
     missing = client.get("/websitebench-task3-missing-deep-link")
     assert missing.status_code == 404
-    assert "我们无法找到您要查找的页面" in missing.text
+    assert "We were not able to find the page you're looking for." in missing.text
     assert 'href="/"' in missing.text
     assert 'href="/browse"' in missing.text
     assert 'href="/search"' in missing.text
@@ -425,7 +477,6 @@ def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
         "/search?q=deep",
         "/specializations/deep-learning",
         "/learn/neural-networks-deep-learning",
-        "/learn/neural-networks-deep-learning/preview",
         "/login",
         "/signup",
         "/account-recovery",
@@ -440,31 +491,44 @@ def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
         assert "default-src 'self'" in policy
         assert "connect-src 'none'" in policy
         assert "frame-src 'none'" in policy
-        assert "script-src 'none'" in policy
+        assert "script-src 'self'" in policy
         assert response.headers["x-content-type-options"] == "nosniff"
         for attribute, value in re.findall(r'\b(src|href)="([^"]+)"', response.text):
             assert not value.startswith(("http://", "https://", "//", "data:"))
             if attribute == "src" or value.startswith("/static/"):
-                static_paths.add(value)
+                static_paths.add(urlsplit(value).path)
 
-    assert static_paths == {
+    required_static_paths = {
         "/static/auth.css",
         "/static/auth-desktop.css",
+        "/static/auth-dialog.js",
+        "/static/browse-prototype.css",
+        "/static/browse/deep-learning.png",
+        "/static/browse/ibm-ai-product-manager.png",
+        "/static/browse/foundations-cybersecurity.png",
+        "/static/browse/technical-support-fundamentals.png",
         "/static/catalog-desktop.css",
         "/static/checkout.css",
         "/static/checkout-desktop.css",
         "/static/components.css",
         "/static/course-desktop.css",
-        "/static/deep-learning-mark.svg",
         "/static/desktop-base.css",
         "/static/desktop-chrome.css",
         "/static/learning-desktop.css",
+        "/static/home-prototype.css",
         "/static/site.css",
-        "/static/source-home-career-promo.png",
-        "/static/source-home-google-promo.png",
-        "/static/source-home-trend-google-ai.png",
-        "/static/source-home-trend-google-analytics.png",
-        "/static/source-home-trend-microsoft-qa.png",
+        "/static/home/current-promo-plus.png",
+        "/static/home/current-promo-teams.png",
+        "/static/home/current-promo-third.png",
+        "/static/home/current-promo-barriers.png",
+        "/static/home/current-promo-teams-small.png",
+        "/static/home/logo-google.avif",
+        "/static/home/logo-ibm.avif",
+        "/static/home/logo-microsoft.avif",
+        "/static/home/pathway-career.avif",
+        "/static/browse/roles/data-scientist.avif",
+        "/static/browse/roles/machine-learning-engineer.avif",
     }
+    assert required_static_paths <= static_paths
     for path in static_paths:
         assert client.get(path).status_code == 200

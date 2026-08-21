@@ -1,0 +1,16 @@
+<div class="source-category-shell">
+  <nav class="source-category-breadcrumb" aria-label="Breadcrumb"><a href="/browse">Categories</a><span aria-hidden="true">›</span><span>{{ page.title }}</span></nav>
+  <section class="source-category-hero" aria-labelledby="category-heading">
+    <div><h1 id="category-heading">{{ page.title }}</h1><p>{{ page.description }}</p></div>
+    <dl>{% for value, label in page.stats %}<div><dt>{{ value }}</dt><dd>{{ label }}</dd></div>{% endfor %}</dl>
+  </section>
+  <section class="source-category-popular" aria-labelledby="category-popular-heading">
+    <h2 id="category-popular-heading">Most popular</h2>
+    <nav aria-label="Course level"><a class="is-active" href="/browse/{{ slug }}">All</a><a href="/browse/{{ slug }}?level=beginner">Beginner</a><a href="/browse/{{ slug }}?level=intermediate">Intermediate</a><a href="/browse/{{ slug }}?level=advanced">Advanced</a></nav>
+    <div class="source-category-grid">{% for card in cards %}<article class="source-category-card"><a class="source-category-image" href="{{ card.href }}"><img src="{{ card.image }}" alt=""></a><div class="source-category-copy"><p class="source-category-provider"><span aria-hidden="true">{{ card.provider[:1] }}</span>{{ card.provider }}</p><h3><a href="{{ card.href }}">{{ card.title }}</a></h3><p class="source-category-rating"><span aria-hidden="true">★</span> {{ card.rating }} · {{ card.reviews }}</p><p class="source-category-meta">{{ card.meta }}</p></div></article>{% endfor %}</div>
+    <a class="source-category-more" href="/search?category={{ slug }}">Show 8 more</a>
+  </section>
+  {% if page.show_roles %}<section class="source-category-roles"><div><h2>Explore roles</h2><p>Gain the knowledge and skills you need to advance.</p><a href="/browse">View all</a></div><article aria-label="Role loading"><span></span><i></i><i></i></article><article aria-label="Role loading"><span></span><i></i><i></i></article></section>{% endif %}
+  {% if page.show_faq %}<section class="source-category-faq"><h2>Frequently asked questions</h2><div><div>{% for question in page.questions %}<details><summary>{{ question }}</summary></details>{% endfor %}<a href="/help">Show all 7 frequently asked questions⌄</a></div><aside><span aria-hidden="true">?</span><h3>More questions</h3><a href="/help">Visit the learner help center</a></aside></div></section>{% endif %}
+  <p class="source-category-footnote">¹ Median salary and job opening data are sourced from Lightcast™ Job Postings Report.<br>All other job roles (7/1/2024 - 7/1/2025)</p>
+</div>

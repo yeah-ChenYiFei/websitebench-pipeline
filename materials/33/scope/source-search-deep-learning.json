@@ -1,0 +1,46 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-source-search-deep-learning",
+  "viewport": {"width": 1191, "height": 979},
+  "timeout_ms": 30000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://coursera-course-photos.s3.amazonaws.com",
+      "https://d15cw65ipctsrr.cloudfront.net",
+      "https://s3.amazonaws.com",
+      "https://coursera_assets.s3.amazonaws.com"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-deep-learning-search",
+      "action": "goto",
+      "path": "/search?query=Deep%20Learning",
+      "observations": [
+        {"id": "route", "kind": "url_path", "expect": {"equals": "/search"}},
+        {"id": "title", "kind": "title"},
+        {"id": "main-copy", "kind": "text", "selector": "main"},
+        {"id": "filter-sort-count", "kind": "count", "selector": "text=Filter & Sort"},
+        {"id": "topic-count", "kind": "count", "selector": "text=Topic"},
+        {"id": "duration-count", "kind": "count", "selector": "text=Duration"},
+        {"id": "level-count", "kind": "count", "selector": "text=Level"},
+        {"id": "language-count", "kind": "count", "selector": "text=Language"},
+        {"id": "deep-learning-link-count", "kind": "count", "selector": "a:has-text('Deep Learning')"}
+      ]
+    },
+    {
+      "id": "capture-complete-search",
+      "action": "snapshot",
+      "observations": [
+        {"id": "all-results-count", "kind": "count", "selector": "text=All Results"},
+        {"id": "free-trial-count", "kind": "count", "selector": "text=Free Trial"},
+        {"id": "beginner-count", "kind": "count", "selector": "text=Beginner"}
+      ],
+      "screenshot": true,
+      "full_page": true
+    }
+  ]
+}

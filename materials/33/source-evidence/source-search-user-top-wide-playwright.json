@@ -1,0 +1,842 @@
+{
+  "authority": "diagnostic-only",
+  "console_errors": [
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "{\"stack\":\"Error: Minified React error #421; visit https://reactjs.org/docs/error-decoder.html?invariant=421 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\\n    at https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/en.app.fc354eeec2f9520b0587.js:2:4177115\\n    at oj (https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/en.app.fc354eeec2f9520b0587.js:2:4177394)\\n    at So (https://d3njjcbhbojbot.cloudf",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "There was an issue loading the googleOneTap plugin. See the following error:",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+    "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+  ],
+  "environment": "source",
+  "network": {
+    "blocked": [
+      {
+        "method": "GET",
+        "reason": "origin-not-approved",
+        "url": "https://browser.sentry-cdn.com/7.116.0/bundle.tracing.min.js"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/dgs/search-application/subscriptions"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/client-gateway/eval"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/client-gateway/eval"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "GET",
+        "reason": "origin-not-approved",
+        "url": "https://accounts.google.com/gsi/client"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/api/rest/v1/client-gateway/eval"
+      },
+      {
+        "method": "POST",
+        "reason": "source-mutation-not-authorized",
+        "url": "https://www.coursera.org/dgs/search-application/subscriptions"
+      }
+    ],
+    "failed": [
+      {
+        "method": "GET",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://browser.sentry-cdn.com/7.116.0/bundle.tracing.min.js"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/dgs/search-application/subscriptions"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/client-gateway/eval"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/client-gateway/eval"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "GET",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://accounts.google.com/gsi/client"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/api/rest/v1/client-gateway/eval"
+      },
+      {
+        "method": "POST",
+        "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "url": "https://www.coursera.org/dgs/search-application/subscriptions"
+      }
+    ],
+    "requests": [
+      {
+        "method": "GET",
+        "resource_type": "document",
+        "url": "https://www.coursera.org/search"
+      },
+      {
+        "method": "GET",
+        "resource_type": "font",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-3-optimized/ss3-latin-normal.woff2"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/allStyles.abebcd4b8c5ec0f14a9a.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/0f/7b5e2c1622426e830b6b833156bc2b/BC-5768_VisMerch-Phase-3-Assets_Youtube_DeepLearning.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/c1/16a2fa16b943038f07cd0e4064a25e/Course-logo-1.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/81/5d41af53324cfa9f14565be1bdb848/600x600px_546456614.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/32/4eb6e0c62a4a75bb7e264002e8c0bd/DeepLearningAI_PyTorch_for_Deep-Learning_1000x1000-01.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://browser.sentry-cdn.com/7.116.0/bundle.tracing.min.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/3a/9d2a7af297483a845340bcfbac6f1e/MLS.course-banners-01_Course-Logo-.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/allStyles.abebcd4b8c5ec0f14a9a.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/en.app.fc354eeec2f9520b0587.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/25/015d50594c4e74b6e2099114a37905/Brain-under-layers-of-circuit-boards.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/e1/b25103cac240d7a1ac727f123a3665/310055_Logo-Image_1200x1200pxl-copy.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/79/67b45ce4f2494ca3a8170a60df82d1/Professional-Certificate---AI-Engineering.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/8e/cba7e1e62d47968b9d1f668c1a44f3/Copy-of-GettyImages-1017296544.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/91/147b5511594a7b94a5eae12b2de36f/Deep-Learning-with-Python-CNN-ANN-RNN.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/cd/44513cbd4940d8bdeef799e1e12883/CSRA_CVR_05.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/fb/c1bcfcefbd4991b919cb618162d900/info-tech-1.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/download_on_the_app_store_badge_en.svg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/en_generic_rgb_wo_45.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/2018-B-Corp-Logo-Black-S.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/footer/facebook.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/footer/linkedin.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/footer/twitter.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/footer/youtube.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/footer/instagram.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/images/9b7e964107839c77644d7e7d15035b73.png"
+      },
+      {
+        "method": "POST",
+        "resource_type": "ping",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/73.35ac54fcbaf6a5740631.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/74.d2bd21e59b7c9eef18e3.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/0.42f054fa07f983372ee1.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/3.38b56342b8ff3454b74e.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/23.77ee42c480d57e8ba7e7.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/en.asyncCommonJS.7e3e73af376a66ebaa7e.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/en.4.36e240d7462679cc4e54.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/8.2df8faaf163c05638fc7.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/16.10ef843deee1479e7006.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/en.21.7b63a2b9f5cc89a92cda.js"
+      },
+      {
+        "method": "POST",
+        "resource_type": "ping",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "resource_type": "ping",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "resource_type": "ping",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "resource_type": "ping",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "resource_type": "ping",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "POST",
+        "resource_type": "ping",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/info"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/11.702fcf19a98486d6b834.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/64.1c83892e919791d2db47.js"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/br/search-v2/en.43.dda1a5d94913076856db.js"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/dgs/search-application/subscriptions"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/bb/f5ced2bdd4437aa79f00eb1bf7fbf0/IBM-Logo-Blk---Square.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/c8/5fa17837ee411da8260f3ef1f479cf/360x360-stanford-online-logo.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/61/dec3c0d28a469da45e1fe410f69ed9/coursera-square-wordmark-logo-full-rgb.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/dd/f68c14f4f8434ea860e114554d9dbd/Educba-logo-Symbol-360-x-360.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/43/a1ab4d6b9d44139fe65fd93dd7398f/PEARSON_LOGO_PURPLE_RGB_square.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/3d/1c8fdf7ef5404aa83ab0c00fa12cf5/LOGO_1.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/0f/7b5e2c1622426e830b6b833156bc2b/BC-5768_VisMerch-Phase-3-Assets_Youtube_DeepLearning.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/e1/b25103cac240d7a1ac727f123a3665/310055_Logo-Image_1200x1200pxl-copy.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/79/67b45ce4f2494ca3a8170a60df82d1/Professional-Certificate---AI-Engineering.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/e1/b25103cac240d7a1ac727f123a3665/310055_Logo-Image_1200x1200pxl-copy.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/79/67b45ce4f2494ca3a8170a60df82d1/Professional-Certificate---AI-Engineering.png"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/bb/f5ced2bdd4437aa79f00eb1bf7fbf0/IBM-Logo-Blk---Square.png"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/api/rest/v1/client-gateway/eval"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "POST",
+        "resource_type": "xhr",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/graphql-gateway"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/api/rest/v1/client-gateway/eval"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "GET",
+        "resource_type": "script",
+        "url": "https://accounts.google.com/gsi/client"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/api/rest/v1/eventing/infobatch"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/api/rest/v1/client-gateway/eval"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/8e/cba7e1e62d47968b9d1f668c1a44f3/Copy-of-GettyImages-1017296544.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/91/147b5511594a7b94a5eae12b2de36f/Deep-Learning-with-Python-CNN-ANN-RNN.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/cd/44513cbd4940d8bdeef799e1e12883/CSRA_CVR_05.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera-course-photos/fb/c1bcfcefbd4991b919cb618162d900/info-tech-1.jpg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/download_on_the_app_store_badge_en.svg"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/en_generic_rgb_wo_45.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/2018-B-Corp-Logo-Black-S.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/footer/facebook.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/footer/linkedin.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/footer/twitter.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/footer/youtube.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/footer/instagram.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/images/9b7e964107839c77644d7e7d15035b73.png"
+      },
+      {
+        "method": "POST",
+        "resource_type": "fetch",
+        "url": "https://www.coursera.org/dgs/search-application/subscriptions"
+      }
+    ]
+  },
+  "scenario_id": "coursera-source-search-user-top-wide",
+  "schema_version": "websitebench.offline-clone.browser-exploration.v1",
+  "spec": {
+    "path": "/home/alive/websitebench-pipeline/materials/33/scope/source-search-user-top-wide.json"
+  },
+  "status": "passed",
+  "steps": [
+    {
+      "action": "goto",
+      "error": null,
+      "id": "open-deep-learning-search-wide",
+      "observations": [
+        {
+          "actual": "/search",
+          "id": "route",
+          "kind": "url_path",
+          "passed": true
+        },
+        {
+          "actual": "Coursera | Online Courses From Top Universities. Join for Free",
+          "id": "title",
+          "kind": "title",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "id": "all-results",
+          "kind": "count",
+          "passed": true
+        },
+        {
+          "actual": 11,
+          "id": "deep-learning-links",
+          "kind": "count",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "route": "/search",
+      "screenshot": null
+    },
+    {
+      "action": "wait",
+      "error": null,
+      "id": "wait-for-public-content",
+      "observations": [],
+      "outcome": "passed",
+      "route": "/search",
+      "screenshot": null
+    },
+    {
+      "action": "snapshot",
+      "error": null,
+      "id": "capture-wide-search",
+      "observations": [
+        {
+          "actual": "AI summary is loading... You might follow up with... deep learning specialization deep learning with pytorch artificial intelligence and machine learning (ai/ml) deep learning with pytorch convolutional neural networks deep learning stanford university deep learning with pytorch, keras and tensorflow deep learning.ai machine learning deep learning.ai unsupervised learning deep learning.ai decision tree learning deep learning.ai classification algorithms deep learning ai unsupervised learning Top courses to get started: All Results Filter & Sort Topic Duration Learning Product Language Level Status: Free Trial Free Trial DeepLearning.AI Deep Learning Skills you'll gain: Convolutional Neural Networks, Recurrent Neural Networks (RNNs), Computer Vision, Transfer Learning, Deep Learning, Image Analysis, Model Optimization, Artificial Intelligence and Machine Learning (AI/ML), Hugging Face, Natural Language Processing, Artificial Neural Networks, Tensorflow, Applied Machine Learning, Model T",
+          "id": "main-copy",
+          "kind": "text",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "id": "all-results-settled",
+          "kind": "count",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "route": "/search",
+      "screenshot": {
+        "bytes": 484937,
+        "path": "/home/alive/websitebench-pipeline/materials/33/source-evidence/source-search-user-top-wide-playwright/coursera-source-search-user-top-wide-capture-wide-search.png"
+      }
+    }
+  ],
+  "summary": {
+    "assertion_failures": 0,
+    "blocked_request_count": 25,
+    "console_error_count": 27,
+    "failed_request_count": 25,
+    "steps_passed": 3,
+    "steps_total": 3
+  },
+  "target": {
+    "allowed_origins": [
+      "https://coursera-course-photos.s3.amazonaws.com",
+      "https://coursera_assets.s3.amazonaws.com",
+      "https://d15cw65ipctsrr.cloudfront.net",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://s3.amazonaws.com",
+      "https://www.coursera.org"
+    ],
+    "authenticated_storage_consumed": false,
+    "base_origin": "https://www.coursera.org",
+    "source_mutations_authorized": false,
+    "viewport": {
+      "height": 1471,
+      "width": 2559
+    }
+  }
+}

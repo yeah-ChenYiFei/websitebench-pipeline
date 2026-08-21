@@ -1,0 +1,149 @@
+{
+  "schema_version": "websitebench.coursera-assignment-evidence.v1",
+  "site_id": "33",
+  "course_id": "neural-networks-deep-learning",
+  "assignment_id": "3KFZW",
+  "assignment_title": "Introduction to Deep Learning",
+  "observed_path": "/learn/neural-networks-deep-learning/assignment-submission/3KFZW/introduction-to-deep-learning/attempt",
+  "evidence_classification": "direct-source-authenticated-enrolled",
+  "viewport": {"width": 1692, "height": 979},
+  "attempt_rules": {
+    "duration_minutes": 50,
+    "submissions_per_attempt": 1,
+    "attempts_remaining_after_timeout": 2,
+    "wait_after_attempts_hours": 24,
+    "auto_submit_on_timeout": true,
+    "legal_name_required": true
+  },
+  "controls": ["Back", "Submit", "Save draft", "Like", "Dislike", "Report an issue"],
+  "questions": [
+    {
+      "number": 1,
+      "points": 1,
+      "type": "single-choice",
+      "prompt": "Which of the following best describes the role of AI in the expression \"an AI-powered society\"?",
+      "options": [
+        "AI is an essential ingredient in realizing tasks, in industry and in personal life.",
+        "AI helps to create a more efficient way of producing energy to power industries and personal devices.",
+        "AI controls the power grids for energy distribution, so all the power needed for industry and in daily life comes from AI."
+      ]
+    },
+    {
+      "number": 2,
+      "points": 1,
+      "type": "multiple-choice",
+      "prompt": "Which of the following are reasons that didn't allow Deep Learning to be developed during the '80s?",
+      "options": [
+        "Limited computational power.",
+        "Interesting applications such as image recognition require large amounts of data that were not available.",
+        "The theoretical tools didn’t exist during the 80’s.",
+        "People were afraid of a machine rebellion."
+      ]
+    },
+    {
+      "number": 3,
+      "points": 1,
+      "type": "multiple-choice",
+      "prompt": "Recall this diagram of iterating over different ML ideas. Which of the statements below are true? (Check all that apply.)",
+      "image": "screenshots/assignment-assets/q3-image-1.png",
+      "options": [
+        "Larger amounts of data allow researchers to try more ideas and then produce better algorithms in less time.",
+        "Better algorithms allow engineers to get more data and then produce better Deep Learning models.",
+        "Improvements in the GPU/CPU hardware enable the discovery of better Deep Learning algorithms.",
+        "Better algorithms can speed up the iterative process by reducing the necessary computation time."
+      ]
+    },
+    {
+      "number": 4,
+      "points": 1,
+      "type": "single-choice",
+      "prompt": "When experienced deep learning engineers work on a new problem, they can usually use insight from previous problems to train a good model on the first try, without needing to iterate multiple times through different models. True/False?",
+      "options": ["True", "False"]
+    },
+    {
+      "number": 5,
+      "points": 1,
+      "type": "single-choice-image",
+      "prompt": "Which of the following depicts a Sigmoid activation function?",
+      "options": [
+        {"label": "A", "image": "screenshots/assignment-assets/q5-image-1.png"},
+        {"label": "B", "image": "screenshots/assignment-assets/q5-image-2.png"},
+        {"label": "C", "image": "screenshots/assignment-assets/q5-image-3.png"},
+        {"label": "D", "image": "screenshots/assignment-assets/q5-image-4.png"}
+      ]
+    },
+    {
+      "number": 6,
+      "points": 1,
+      "type": "single-choice",
+      "prompt": "Features of animals, such as weight, height, and color, are used for classification between cats, dogs, or others. This is an example of \"structured\" data, because they are represented as arrays in a computer. True/False?",
+      "options": [
+        "True — Yes. The data can be represented by columns of data. This is an example of structured data, unlike images of the animal.",
+        "False — No. The data can be represented by columns of data. This is an example of structured data, unlike images of the animal."
+      ]
+    },
+    {
+      "number": 7,
+      "points": 1,
+      "type": "single-choice",
+      "prompt": "A dataset is composed of age and weight data for several people. This dataset is an example of \"structured\" data because it is represented as an array in a computer. True/False?",
+      "options": ["False", "True"]
+    },
+    {
+      "number": 8,
+      "points": 1,
+      "type": "multiple-choice",
+      "prompt": "Why is an RNN (Recurrent Neural Network) used for machine translation, say translating English to French? (Check all that apply.)",
+      "options": [
+        "It can be trained as a supervised learning problem.",
+        "RNNs represent the recurrent process of Idea->Code->Experiment->Idea->....",
+        "It is applicable when the input/output is a sequence (e.g., a sequence of words).",
+        "It is strictly more powerful than a Convolutional Neural Network (CNN)."
+      ]
+    },
+    {
+      "number": 9,
+      "points": 1,
+      "type": "single-choice",
+      "prompt": "In this diagram which we hand-drew in the lecture, what do the horizontal axis (x-axis) and vertical axis (y-axis) represent?",
+      "image": "screenshots/assignment-assets/q9-image-1.png",
+      "options": [
+        "x-axis is the amount of data; y-axis (vertical axis) is the performance of the algorithm.",
+        "x-axis is the amount of data; y-axis is the size of the model you train.",
+        "x-axis is the performance of the algorithm; y-axis (vertical axis) is the amount of data.",
+        "x-axis is the input to the algorithm; y-axis is outputs."
+      ]
+    },
+    {
+      "number": 10,
+      "points": 1,
+      "type": "multiple-choice",
+      "prompt": "Assuming the trends described in the figure are accurate. Which of the following statements are true? Choose all that apply.",
+      "image": "screenshots/assignment-assets/q10-image-1.png",
+      "options": [
+        "Decreasing the training set size generally does not hurt an algorithm’s performance, and it may help significantly.",
+        "Increasing the training set size of a traditional learning algorithm always improves its performance.",
+        "Increasing the size of a neural network generally does not hurt an algorithm’s performance, and it may help significantly.",
+        "Increasing the training set size of a traditional learning algorithm stops helping to improve the performance after a certain size."
+      ]
+    }
+  ],
+  "screenshots": [
+    "screenshots/graded-assignment-before-start-current.png",
+    "screenshots/graded-assignment-questions.png",
+    "screenshots/assignment-pages/questions-01.png",
+    "screenshots/assignment-pages/questions-02.png",
+    "screenshots/assignment-pages/questions-03.png",
+    "screenshots/assignment-pages/questions-04.png",
+    "screenshots/assignment-pages/questions-05.png",
+    "screenshots/assignment-pages/questions-06.png",
+    "screenshots/assignment-pages/questions-07.png",
+    "screenshots/assignment-pages/questions-08.png",
+    "screenshots/assignment-pages/questions-09.png"
+  ],
+  "answer_key_observed": false,
+  "source_answers_selected": false,
+  "source_draft_saved": false,
+  "source_submission_performed": false,
+  "untrusted_hidden_page_instructions_retained": false
+}

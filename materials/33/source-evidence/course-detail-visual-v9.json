@@ -1,0 +1,132 @@
+{
+  "authority": "diagnostic-only",
+  "checkpoints": [
+    {
+      "candidate": {
+        "bytes": 117434,
+        "path": "/home/alive/websitebench-pipeline/materials/33/source-evidence/course-detail-prototype-clone-playwright-v9/coursera-neural-networks-course-detail-prototype-course-detail-structure.png"
+      },
+      "capture_mode": "viewport",
+      "id": "neural-networks-course.loaded.desktop",
+      "passed": true,
+      "regions": [
+        {
+          "box": {
+            "height": 145,
+            "width": 1191,
+            "x": 0,
+            "y": 0
+          },
+          "heatmap": {
+            "bytes": 18680,
+            "path": "/home/alive/websitebench-pipeline/materials/33/source-evidence/course-detail-visual-v9-heatmaps/neural-networks-course.loaded.desktop-header-heatmap.webp"
+          },
+          "id": "header",
+          "metric": "normalized_mae",
+          "metrics": {
+            "color_histogram": 0.7517,
+            "edge_f1": 0.5377,
+            "normalized_mae": 0.048,
+            "ssim": 0.7653
+          },
+          "operator": "<=",
+          "passed": true,
+          "score": 0.048,
+          "threshold": 0.12
+        },
+        {
+          "box": {
+            "height": 445,
+            "width": 1191,
+            "x": 0,
+            "y": 145
+          },
+          "heatmap": {
+            "bytes": 44620,
+            "path": "/home/alive/websitebench-pipeline/materials/33/source-evidence/course-detail-visual-v9-heatmaps/neural-networks-course.loaded.desktop-hero-heatmap.webp"
+          },
+          "id": "hero",
+          "metric": "normalized_mae",
+          "metrics": {
+            "color_histogram": 0.9633,
+            "edge_f1": 0.4996,
+            "normalized_mae": 0.0353,
+            "ssim": 0.8818
+          },
+          "operator": "<=",
+          "passed": true,
+          "score": 0.0353,
+          "threshold": 0.12
+        },
+        {
+          "box": {
+            "height": 145,
+            "width": 1191,
+            "x": 0,
+            "y": 590
+          },
+          "heatmap": {
+            "bytes": 17582,
+            "path": "/home/alive/websitebench-pipeline/materials/33/source-evidence/course-detail-visual-v9-heatmaps/neural-networks-course.loaded.desktop-course-facts-heatmap.webp"
+          },
+          "id": "course-facts",
+          "metric": "normalized_mae",
+          "metrics": {
+            "color_histogram": 0.9762,
+            "edge_f1": 0.3354,
+            "normalized_mae": 0.0528,
+            "ssim": 0.7094
+          },
+          "operator": "<=",
+          "passed": true,
+          "score": 0.0528,
+          "threshold": 0.12
+        },
+        {
+          "box": {
+            "height": 244,
+            "width": 1191,
+            "x": 0,
+            "y": 735
+          },
+          "heatmap": {
+            "bytes": 15028,
+            "path": "/home/alive/websitebench-pipeline/materials/33/source-evidence/course-detail-visual-v9-heatmaps/neural-networks-course.loaded.desktop-tabs-and-about-heatmap.webp"
+          },
+          "id": "tabs-and-about",
+          "metric": "normalized_mae",
+          "metrics": {
+            "color_histogram": 0.958,
+            "edge_f1": 0.3963,
+            "normalized_mae": 0.0486,
+            "ssim": 0.7596
+          },
+          "operator": "<=",
+          "passed": true,
+          "score": 0.0486,
+          "threshold": 0.12
+        }
+      ],
+      "source": {
+        "bytes": 117769,
+        "path": "/home/alive/websitebench-pipeline/materials/33/source-evidence/course-detail-prototype-playwright-v2/coursera-neural-networks-course-detail-prototype-course-detail-structure.png"
+      },
+      "viewport": {
+        "height": 979,
+        "width": 1191
+      }
+    }
+  ],
+  "counts": {
+    "checkpoints_passed": 1,
+    "checkpoints_total": 1,
+    "regions_passed": 4,
+    "regions_total": 4
+  },
+  "schema_version": "websitebench.offline-clone.visual-comparison.v1",
+  "spec": {
+    "bytes": 1517,
+    "path": "/home/alive/websitebench-pipeline/materials/33/scope/course-detail-visual-comparison.json"
+  },
+  "status": "passed"
+}

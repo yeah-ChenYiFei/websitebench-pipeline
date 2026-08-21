@@ -109,13 +109,13 @@ def test_diagnostic_session_requires_ephemeral_token_and_authenticates_alias(
     assert opened.status_code == 204
     checkout = checkout_client.get("/checkout/deep-learning")
     assert checkout.status_code == 200
-    assert "开始 7 天免费试用" in checkout.text
+    assert "Start your 7-day free trial" in checkout.text
 
 
-def test_progress_verifier_alias_reaches_declared_learning_states(
+def test_compatibility_session_still_reaches_historical_learning_states(
     checkout_client: TestClient, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """Catch stale diagnostic aliases or progress recipes that remain anonymous."""
+    """Catch current scope cleanup deleting historical clone compatibility behavior."""
 
     token = "final-wave-ephemeral-verifier-token"
     monkeypatch.setenv("WEBSITEBENCH_VERIFY_SESSION_TOKEN", token)
@@ -126,30 +126,30 @@ def test_progress_verifier_alias_reaches_declared_learning_states(
     )
     assert opened.status_code == 204
 
-    driver = json.loads(
-        (Path(__file__).resolve().parents[2] / "scope" / "verify.json").read_text(
-            encoding="utf-8"
-        )
-    )
     expected = {
-        "my-learning": (200, "<h1>我的学习</h1>"),
-        "lesson": (200, "<h1>Optimization methods</h1>"),
-        "account-history": (200, "<h1>报名历史</h1>"),
-        "preferences": (200, "<h1>学习偏好</h1>"),
+        "/my-learning": (200, "<h1>My Learning</h1>"),
+        "/learn/neural-networks-deep-learning/lesson/lesson-optimization": (
+            200,
+            "<h1>Optimization methods</h1>",
+        ),
+        "/account/history": (200, "<h1>Enrollment history</h1>"),
+        "/account/preferences": (200, "<h1>Learning preferences</h1>"),
     }
-    for alias, (status, marker) in expected.items():
-        response = checkout_client.get(driver["routes"][alias])
-        assert response.status_code == status, alias
-        assert marker in response.text, alias
+    for route, (status, marker) in expected.items():
+        response = checkout_client.get(route)
+        assert response.status_code == status, route
+        assert marker in response.text, route
 
-    lesson = checkout_client.get(driver["routes"]["quiz"])
+    lesson = checkout_client.get(
+        "/learn/neural-networks-deep-learning/lesson/lesson-optimization"
+    )
     assert 'action="/learning/quizzes/quiz-improving-networks"' in lesson.text
     feedback = checkout_client.post(
         "/learning/quizzes/quiz-improving-networks",
         data={"answer": "Regularization"},
     )
     assert feedback.status_code == 200
-    assert "<h1>测验得分：100</h1>" in feedback.text
+    assert "<h1>Quiz score: 100</h1>" in feedback.text
 
 
 def test_public_entry_and_authenticated_plan_show_observed_trial_totals(
@@ -159,8 +159,9 @@ def test_public_entry_and_authenticated_plan_show_observed_trial_totals(
 
     anonymous = checkout_client.get("/specializations/deep-learning")
     assert anonymous.status_code == 200
-    assert "免费注册" in anonymous.text
-    assert 'href="/login?next=/checkout/deep-learning"' in anonymous.text
+    assert "Enroll for free" in anonymous.text
+    assert 'data-enrollment-login-open' in anonymous.text
+    assert 'name="next" value="/checkout/deep-learning"' in anonymous.text
     signed_out_plan = checkout_client.get("/checkout/deep-learning")
     assert signed_out_plan.status_code == 401
 
@@ -169,15 +170,15 @@ def test_public_entry_and_authenticated_plan_show_observed_trial_totals(
     assert 'href="/checkout/deep-learning"' in specialization.text
     plan = checkout_client.get("/checkout/deep-learning")
     assert plan.status_code == 200
-    assert "开始 7 天免费试用" in plan.text
-    assert "之后为 ¥196/月" in plan.text
-    assert "今天应付" in plan.text and "¥0" in plan.text
-    assert "今日合计：¥0" in plan.text
-    assert "不会提交真实付款数据" in plan.text
+    assert "Start your 7-day free trial" in plan.text
+    assert "Then ¥196/month" in plan.text
+    assert "Due today" in plan.text and "¥0" in plan.text
+    assert "Total due today: ¥0" in plan.text
+    assert "No real payment data is submitted" in plan.text
     assert 'action="/checkout/deep-learning"' in plan.text
 
 
-def test_checkout_entry_matches_observed_chinese_source_payment_layout(
+def test_checkout_entry_matches_observed_source_payment_layout_in_english(
     checkout_client: TestClient,
 ) -> None:
     """Catch the checkout entry drifting away from the captured Coursera layout."""
@@ -187,19 +188,20 @@ def test_checkout_entry_matches_observed_chinese_source_payment_layout(
     html = checkout_client.get("/checkout/deep-learning").text
 
     assert 'class="source-checkout-shell"' in html
-    assert "<h1>结帐</h1>" in html
-    assert "所有字段均为必填字段" in html
-    assert "账单信息" in html
-    assert "支付方式" in html
-    assert "银行卡" in html
-    assert "Paypal" in html
-    assert "1234 1234 1234 1234" in html
+    assert "<h1>Checkout</h1>" in html
+    assert "All fields are required" in html
+    assert "Billing information" in html
+    assert "Payment method" in html
+    assert "Card" in html
+    assert "PayPal" in html
+    assert 'placeholder="Card number"' in html
+    assert "1234 1234 1234 1234" not in html
     assert "Deep Learning" in html
-    assert "由 DeepLearning.AI 提供" in html
-    assert "无绑定合同。可随时取消。" in html
-    assert "7 天免费试用" in html
-    assert "之后为 ¥196/月" in html
-    assert "今日合计：¥0" in html
+    assert "Provided by DeepLearning.AI" in html
+    assert "No contracts. Cancel anytime." in html
+    assert "7-day free trial" in html
+    assert "Then ¥196/month" in html
+    assert "Total due today: ¥0" in html
 
     collector = _InputCollector()
     collector.feed(html)
@@ -243,8 +245,8 @@ def test_payment_fields_are_memory_only_and_review_submits_two_safe_keys(
     draft_id = _create_browser_draft(checkout_client)
     payment = checkout_client.get(f"/checkout/{draft_id}/payment")
     assert payment.status_code == 200
-    assert "付款方式" in payment.text
-    assert "只保留在当前浏览器页面" in payment.text
+    assert "Payment method" in payment.text
+    assert "remain only in this browser page" in payment.text
     collector = _InputCollector()
     collector.feed(payment.text)
     payment_inputs = {
@@ -264,8 +266,8 @@ def test_payment_fields_are_memory_only_and_review_submits_two_safe_keys(
 
     review = checkout_client.get(f"/checkout/{draft_id}/review")
     assert review.status_code == 200
-    assert "确认免费试用" in review.text
-    assert "之后为 ¥196/月" in review.text and "今日合计：¥0" in review.text
+    assert "Confirm free trial" in review.text
+    assert "Then ¥196/month" in review.text and "Total due today: ¥0" in review.text
     assert "sandbox-approved" in review.text
     assert "sandbox-declined" in review.text
     assert "sandbox-retry" in review.text
@@ -309,8 +311,8 @@ def test_browser_attempt_maps_decline_retry_and_approval_results(
 
     _login_empty(checkout_client)
     for scenario, expected in (
-        ("sandbox-declined", "模拟付款被拒绝"),
-        ("sandbox-retry", "模拟付款需要重试"),
+        ("sandbox-declined", "Sandbox payment declined"),
+        ("sandbox-retry", "Sandbox payment needs another try"),
     ):
         draft_id = _create_browser_draft(checkout_client)
         result = checkout_client.post(
@@ -374,8 +376,8 @@ def test_order_history_detail_cancel_and_foreign_owner_boundaries(
     assert order_id in history.text
     assert 'data-order-status="PAID"' in history.text
     assert order_id in detail.text
-    assert "已付款" in detail.text
-    assert "之后为 ¥196/月" in detail.text and "今日合计：¥0" in detail.text
+    assert "Paid" in detail.text
+    assert "Then ¥196/month" in detail.text and "Total due today: ¥0" in detail.text
     assert 'href="/specializations/deep-learning"' in detail.text
     assert 'href="/orders"' in detail.text
 
@@ -396,13 +398,21 @@ def test_order_history_detail_cancel_and_foreign_owner_boundaries(
     assert canceled.headers["location"] == order_path
     canceled_detail = checkout_client.get(order_path)
     assert 'data-order-status="CANCELED"' in canceled_detail.text
-    assert "已取消" in canceled_detail.text
-    assert "今日合计：¥0" in canceled_detail.text
+    assert "Canceled" in canceled_detail.text
+    assert "Total due today: ¥0" in canceled_detail.text
 
     learning = importlib.import_module("backend.learning_db")
     enrollment = learning.list_enrollments("learner-empty")[0]
     assert enrollment["track"] == "paid"
     assert enrollment["status"] == "canceled"
+
+
+def test_checkout_styles_do_not_render_a_chinese_order_summary_label() -> None:
+    stylesheet = (
+        Path(__file__).resolve().parents[1] / "static" / "checkout-desktop.css"
+    ).read_text(encoding="utf-8")
+    assert 'content: "Order summary"' in stylesheet
+    assert re.search(r"[\u4e00-\u9fff]", stylesheet) is None
 
 
 def test_paid_enrollment_card_and_legacy_cancel_route_preserve_paid_order(
@@ -427,7 +437,7 @@ def test_paid_enrollment_card_and_legacy_cancel_route_preserve_paid_order(
     dashboard = checkout_client.get("/my-learning")
     assert f'action="/enrollments/{enrollment_id}/cancel"' not in dashboard.text
     assert f'href="{order_path}"' in dashboard.text
-    assert "管理本地付费订单" in dashboard.text
+    assert "Manage local paid order" in dashboard.text
 
     legacy = checkout_client.post(
         f"/enrollments/{enrollment_id}/cancel", follow_redirects=False

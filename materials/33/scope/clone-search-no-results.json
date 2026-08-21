@@ -1,0 +1,23 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-clone-search-no-results",
+  "viewport": {"width": 1191, "height": 979},
+  "timeout_ms": 30000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {"clone": ["http://127.0.0.1:8044"]},
+  "steps": [
+    {
+      "id": "open-impossible-search",
+      "action": "goto",
+      "path": "/search?query=zzzz-no-match-websitebench",
+      "observations": [
+        {"id": "route", "kind": "url_path", "expect": {"equals": "/search"}},
+        {"id": "no-results", "kind": "count", "selector": "text=No results for zzzz-no-match-websitebench", "expect": {"equals": 1}},
+        {"id": "fake-result-count", "kind": "count", "selector": "[data-search-result='true']", "expect": {"equals": 0}},
+        {"id": "deep-learning-recovery", "kind": "count", "selector": "a[href='/search?query=Deep%20Learning']", "expect": {"equals": 1}},
+        {"id": "browse-recovery", "kind": "count", "selector": ".search-no-results a[href='/browse']", "expect": {"equals": 1}}
+      ]
+    },
+    {"id": "capture-no-results", "action": "snapshot", "screenshot": true, "full_page": false}
+  ]
+}

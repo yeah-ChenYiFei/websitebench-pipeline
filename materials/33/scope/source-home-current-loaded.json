@@ -1,0 +1,66 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-home-current-loaded",
+  "viewport": {"width": 1692, "height": 979},
+  "timeout_ms": 45000,
+  "source_mutations_authorized": true,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://images.ctfassets.net",
+      "https://coursera_assets.s3.amazonaws.com"
+    ],
+    "clone": ["http://127.0.0.1:8044"]
+  },
+  "steps": [
+    {
+      "id": "open-home",
+      "action": "goto",
+      "path": "/",
+      "observations": [
+        {"id": "home-route", "kind": "url_path"},
+        {"id": "home-title", "kind": "title"},
+        {"id": "home-headings", "kind": "text", "selector": "main"},
+        {"id": "home-link-count", "kind": "count", "selector": "main a"},
+        {"id": "home-image-count", "kind": "count", "selector": "main img"}
+      ],
+      "screenshot": true,
+      "full_page": false
+    },
+    {"id": "scroll-page-1", "action": "press", "selector": "body", "key": "PageDown"},
+    {"id": "wait-page-1", "action": "wait", "milliseconds": 900},
+    {"id": "scroll-page-2", "action": "press", "selector": "body", "key": "PageDown"},
+    {"id": "wait-page-2", "action": "wait", "milliseconds": 900},
+    {"id": "capture-page-2", "action": "snapshot", "screenshot": true, "full_page": false},
+    {"id": "scroll-page-3", "action": "press", "selector": "body", "key": "PageDown"},
+    {"id": "wait-page-3", "action": "wait", "milliseconds": 900},
+    {"id": "scroll-page-4", "action": "press", "selector": "body", "key": "PageDown"},
+    {"id": "wait-page-4", "action": "wait", "milliseconds": 900},
+    {"id": "capture-page-4", "action": "snapshot", "screenshot": true, "full_page": false},
+    {"id": "scroll-page-5", "action": "press", "selector": "body", "key": "PageDown"},
+    {"id": "wait-page-5", "action": "wait", "milliseconds": 900},
+    {"id": "scroll-page-6", "action": "press", "selector": "body", "key": "PageDown"},
+    {"id": "wait-page-6", "action": "wait", "milliseconds": 900},
+    {"id": "capture-page-6", "action": "snapshot", "screenshot": true, "full_page": false},
+    {"id": "scroll-page-7", "action": "press", "selector": "body", "key": "PageDown"},
+    {"id": "wait-page-7", "action": "wait", "milliseconds": 900},
+    {"id": "scroll-page-8", "action": "press", "selector": "body", "key": "PageDown"},
+    {"id": "wait-page-8", "action": "wait", "milliseconds": 900},
+    {
+      "id": "capture-loaded-home",
+      "action": "snapshot",
+      "observations": [
+        {"id": "home-headings-loaded", "kind": "text", "selector": "main"},
+        {"id": "home-card-links-loaded", "kind": "count", "selector": "main a"},
+        {"id": "home-images-loaded", "kind": "count", "selector": "main img"},
+        {"id": "home-new-popular", "kind": "count", "selector": "text='New and popular'"},
+        {"id": "home-career-ready", "kind": "count", "selector": "text='Get job-ready for an in-demand career'"},
+        {"id": "home-trending", "kind": "count", "selector": "text='Trending searches'"},
+        {"id": "home-purpose", "kind": "count", "selector": "text='What brings you to Coursera today?'"}
+      ],
+      "screenshot": true,
+      "full_page": true
+    }
+  ]
+}

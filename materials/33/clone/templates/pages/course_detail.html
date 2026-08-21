@@ -1,0 +1,164 @@
+<nav class="source-course-detail-breadcrumbs" aria-label="Breadcrumb">
+  <a href="/" aria-label="Home">⌂</a><span aria-hidden="true">›</span>
+  <a href="/browse">Browse</a><span aria-hidden="true">›</span>
+  <a href="/browse/data-science">Data Science</a><span aria-hidden="true">›</span>
+  <span>Machine Learning</span>
+</nav>
+
+<section class="source-course-detail-hero" data-course-detail="{{ course.id }}">
+  <div class="source-course-detail-hero-copy">
+    <p class="source-provider"><img src="/static/deep-learning/provider-icon.png" alt="">DeepLearning.AI</p>
+    <h1>Neural Networks and Deep Learning</h1>
+    <p class="source-course-membership">This course is part of <a href="/specializations/deep-learning">Deep Learning Specialization</a></p>
+    <div class="source-instructor-line">
+      <span class="source-instructor-faces" aria-hidden="true">
+        <img src="/static/deep-learning/instructor-andrew-ng.jpg" alt="">
+        <img src="/static/deep-learning/instructor-kian-katan.jpg" alt="">
+        <img src="/static/deep-learning/instructor-younes.jpg" alt="">
+      </span>
+      <span>Instructors: <a href="#instructors"><strong>Andrew Ng</strong></a> +2 more</span>
+      <span class="source-top-instructor">Top Instructor</span>
+    </div>
+    <div class="source-course-detail-actions">
+      {% if authenticated %}
+        <form action="/enrollments" method="post">
+          <input type="hidden" name="course_id" value="deep-learning-specialization">
+          <button class="source-enroll-button" type="submit" name="track" value="free">Enroll for free <small>Starts Aug 19</small></button>
+        </form>
+      {% else %}
+        <button class="source-enroll-button" type="button" data-login-open data-enrollment-login-open>Enroll for free <small>Starts Aug 19</small></button>
+      {% endif %}
+      <a class="source-preview-button" href="/learn/neural-networks-deep-learning/lesson/lesson-neural-intro">Preview the first lesson</a>
+    </div>
+    <p class="source-enrollment-count"><strong>1,539,730</strong> already enrolled</p>
+  </div>
+  <div class="source-course-detail-orbit" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="source-course-assistant" aria-hidden="true"><span>Ask Coursera</span><strong>✦ Is this right for me?</strong></div>
+</section>
+
+<section class="source-course-detail-stats" aria-label="Course facts">
+  <article><strong><u>4 modules</u></strong><span>Gain insight into a topic and learn the fundamentals.</span></article>
+  <article><strong>4.9 <b>★</b></strong><span>123,798 reviews</span></article>
+  <article><strong>Intermediate level</strong><span>Recommended experience <i class="source-info-dot" aria-hidden="true">i</i></span></article>
+  <article><strong>Flexible schedule</strong><span>3 weeks at 10 hours a week<br>Learn at your own pace</span></article>
+  <article><strong><i class="source-like-dot" aria-hidden="true">✓</i> 96%</strong><span>Most learners liked this course</span></article>
+</section>
+
+<nav class="source-course-detail-tabs" aria-label="Course sections">
+  <a class="is-active" href="#about">About</a>
+  <a href="#outcomes">Outcomes</a>
+  <a href="#modules">Modules</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="#reviews">Reviews</a>
+</nav>
+
+<div class="source-course-detail-shell">
+  <section id="about" class="source-course-about">
+    <h2>Skills you'll gain</h2>
+    <div class="source-course-skill-chips">
+      <span>Deep Learning</span><span>Convolutional Neural Networks</span><span>Artificial Intelligence and Machine Learning (AI/ML)</span><span>Artificial Neural Networks</span><span>Artificial Intelligence</span><span>Model Training</span><span>Model Optimization</span><a href="#outcomes">Show all</a>
+    </div>
+    <h2>Tools you'll learn</h2>
+    <div class="source-course-skill-chips"><span>Python Programming</span></div>
+    <h2>Details to know</h2>
+    <div class="source-course-details-row">
+      <article><img src="/static/deep-learning/linkedin.png" alt=""><strong>Shareable certificate</strong><small>Add to your LinkedIn profile</small></article>
+      <article><span aria-hidden="true">▤</span><strong>Assessments</strong><small>4 assignments</small></article>
+      <article><span aria-hidden="true">▣</span><strong>Taught in English</strong><a href="#faq">27 languages available</a></article>
+    </div>
+  </section>
+
+  <section class="source-business-callout source-course-business-callout">
+    <div><h2>See how employees at top companies are mastering<br>in-demand skills</h2><a href="/about/contact">Learn more about Coursera for Business</a></div>
+    <img src="/static/deep-learning/company-logos.png" alt="Petrobras, Tata, Danone, Capgemini and P&amp;G">
+  </section>
+
+  <section id="outcomes" class="source-subject-expertise">
+    <h2>Build your subject-matter expertise</h2>
+    <div class="source-expertise-grid">
+      <div>
+        <p>This course is part of the <a href="/specializations/deep-learning">Deep Learning Specialization</a><br>When you enroll in this course, you'll also be enrolled in this Specialization.</p>
+        <ul>
+          <li>Learn new concepts from industry experts</li>
+          <li>Gain a foundational understanding of a subject or tool</li>
+          <li>Develop job-relevant skills with hands-on projects</li>
+          <li>Earn a shareable career certificate</li>
+        </ul>
+      </div>
+      <img src="/static/deep-learning/subject-expertise.png" alt="Learner working at a laptop">
+    </div>
+  </section>
+
+  <section id="modules" class="source-course-modules">
+    <h2>There are 4 modules in this course</h2>
+    <p>In the first course of the Deep Learning Specialization, you will study the foundational concept of neural networks and deep learning.</p>
+    <p>By the end, you will be familiar with the significant technological trends driving the rise of deep learning and be able to build, train, and apply fully connected deep neural networks.</p>
+    <div class="source-course-module-grid">
+      <div class="source-course-module-list">
+        <details class="source-course-module"><summary><strong>Introduction to Deep Learning</strong><small>Week 1&nbsp; · &nbsp;2 hours to complete</small></summary><p>Explore the major trends that have driven the rise of deep learning and learn where neural networks work best.</p></details>
+        <details class="source-course-module"><summary><strong>Neural Networks Basics</strong><small>Week 2&nbsp; · &nbsp;8 hours to complete</small></summary><p>Use a computational graph and vectorization to implement the foundations of a neural network.</p></details>
+        <details class="source-course-module"><summary><strong>Shallow Neural Networks</strong><small>Week 3&nbsp; · &nbsp;6 hours to complete</small></summary><p>Build a neural network with one hidden layer and understand forward and backward propagation.</p></details>
+        <details class="source-course-module"><summary><strong>Deep Neural Networks</strong><small>Week 4&nbsp; · &nbsp;9 hours to complete</small></summary><p>Build and train a deep neural network and apply it to computer vision.</p></details>
+        <div class="source-course-certificate"><span aria-hidden="true">▧</span><div><strong>Earn a career certificate</strong><p>Add this credential to your LinkedIn profile, resume, or CV. Share it on social media and in your performance review.</p></div></div>
+      </div>
+      <aside id="instructors" class="source-course-instructor-card">
+        <h3>Instructors</h3>
+        <p>Instructor ratings <b>ⓘ &nbsp; 4.9 ★</b> <small>(23,432 ratings)</small></p>
+        <article><img src="/static/deep-learning/instructor-andrew-ng.jpg" alt="Andrew Ng"><div><span class="source-top-instructor">Top Instructor</span><a href="#instructors"><strong>Andrew Ng</strong></a><span>DeepLearning.AI</span><small>51 Courses&nbsp; · &nbsp;9,914,505 learners</small></div></article>
+        <a href="#instructors">View all 3 instructors</a>
+        <hr>
+        <h3>Offered by</h3>
+        <p class="source-offered"><img src="/static/deep-learning/provider-icon.png" alt=""><a href="/specializations/deep-learning"><strong>DeepLearning.AI</strong></a></p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="source-related-courses">
+    <h2>Explore more from Machine Learning</h2>
+    <div>
+      <article class="source-related-course"><a href="/learn/structuring-machine-learning-projects"><img src="/static/deep-learning/course-structuring-projects.png" alt=""><small>▣ &nbsp; DeepLearning.AI</small><strong>Structuring Machine Learning Projects</strong><span>Course</span></a></article>
+      <article class="source-related-course"><a href="/learn/sequence-models"><img src="/static/deep-learning/course-sequence-models.png" alt=""><small>▣ &nbsp; DeepLearning.AI</small><strong>Sequence Models</strong><span>Course</span></a></article>
+      <article class="source-related-course"><a href="/learn/convolutional-neural-networks"><img src="/static/deep-learning/course-convolutional.png" alt=""><small>▣ &nbsp; DeepLearning.AI</small><strong>Convolutional Neural Networks</strong><span>Course</span></a></article>
+      <article class="source-related-course"><a href="/learn/improving-deep-neural-networks"><img src="/static/deep-learning/course-improving-networks.png" alt=""><small>▣ &nbsp; DeepLearning.AI</small><strong>Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization</strong><span>Course</span></a></article>
+    </div>
+  </section>
+
+  <section id="testimonials" class="source-course-testimonials">
+    <h2>Why people choose Coursera for their career</h2>
+    <div>
+      <blockquote><header><img src="/static/deep-learning/testimonial-felipe.png" alt=""><span><strong>Felipe M.</strong><small>Learner since 2018</small></span></header>“To be able to take courses at my own pace and rhythm has been an amazing experience. I can learn whenever it fits my schedule and mood.”</blockquote>
+      <blockquote><header><img src="/static/deep-learning/testimonial-jennifer.png" alt=""><span><strong>Jennifer J.</strong><small>Learner since 2020</small></span></header>“I directly applied the concepts and skills I learned from my courses to an exciting new project at work.”</blockquote>
+      <blockquote><header><img src="/static/deep-learning/testimonial-larry.png" alt=""><span><strong>Larry W.</strong><small>Learner since 2021</small></span></header>“When I need courses on topics that my university doesn't offer, Coursera is one of the best places to go.”</blockquote>
+      <blockquote><header><img src="/static/deep-learning/testimonial-chaitanya.png" alt=""><span><strong>Chaitanya A.</strong><small>Learner since 2018</small></span></header>“Learning isn't just about being better at your job: it's so much more than that. Coursera allows me to learn without limits.”</blockquote>
+    </div>
+  </section>
+
+  <section id="reviews" class="source-learner-reviews">
+    <div class="source-review-heading"><h2>Learner reviews</h2><span>Showing 3 of 123798</span></div>
+    <div class="source-review-grid">
+      <aside><strong>★ 4.9</strong><span>123,798 reviews</span><dl><div><dt>5 stars</dt><dd><i class="rating-5"></i><span>89.70%</span></dd></div><div><dt>4 stars</dt><dd><i class="rating-4"></i><span>9.16%</span></dd></div><div><dt>3 stars</dt><dd><i class="rating-3"></i><span>0.83%</span></dd></div><div><dt>2 stars</dt><dd><i class="rating-2"></i><span>0.13%</span></dd></div><div><dt>1 star</dt><dd><i class="rating-1"></i><span>0.15%</span></dd></div></dl></aside>
+      <div class="source-review-list">
+        <article class="source-course-review"><span class="source-review-avatar">J</span><div><p><b>JN</b><small>★ 4&nbsp; · &nbsp;Reviewed on Feb 20, 2018</small></p><p>I know this is intended for a broad audience, but I found that the assignments were too easy. Not that they are testing easy material, but that the answers are almost stated directly in the course.</p></div></article>
+        <article class="source-course-review"><span class="source-review-avatar">R</span><div><p><b>RG</b><small>★ 5&nbsp; · &nbsp;Reviewed on Sep 7, 2020</small></p><p>I have learned a lot from this detailed and well-structured course. Programming assignments were very sophisticatedly designed. It was challenging, fun, and most importantly it delivered what is expected.</p></div></article>
+        <article class="source-course-review"><span class="source-review-avatar">H</span><div><p><b>HK</b><small>★ 5&nbsp; · &nbsp;Reviewed on Oct 26, 2019</small></p><p>This was a very intuitive approach to neural networks. It helped me get all the basic concepts right. I highly recommend this course to anyone who wants to learn basics and maths behind neural networks.</p></div></article>
+        <a href="#reviews">View more reviews</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="source-course-promos" aria-label="More ways to learn">
+    <article><div><strong>coursera <u>PLUS</u></strong><p>Unlock access to 10,000+ courses with a subscription</p><a href="/browse">Start trial →</a></div><img src="/static/deep-learning/promo-plus.png" alt=""></article>
+    <article><div><strong>Advance your career with an online degree</strong><p>Earn a degree from world-class universities - 100% online</p><a href="/browse">Explore degrees →</a></div><img src="/static/deep-learning/promo-degree.png" alt=""></article>
+    <article><div><strong>coursera <small>for business</small></strong><p>Join over 4,700 global companies that choose Coursera for Business</p><a href="/about/contact">Learn more →</a></div><img src="/static/deep-learning/promo-business.png" alt=""></article>
+  </section>
+
+  <section id="faq" class="source-course-faq">
+    <h2>Frequently asked questions</h2>
+    <div class="source-course-faq-grid">
+      <div><details><summary>When will I have access to the lectures and assignments?</summary><p>Access depends on the enrollment option selected for this local course.</p></details><details><summary>What will I get if I subscribe to this Specialization?</summary><p>You can follow the complete five-course series and earn a shareable certificate.</p></details><details><summary>Is financial aid available?</summary><p>Financial aid guidance is available through learner support.</p></details></div>
+      <aside><span aria-hidden="true">ⓘ</span><h3>More questions</h3><a href="/help">Visit the learner help center</a><hr><small>Financial aid available, <a href="/help">learn more</a></small></aside>
+    </div>
+  </section>
+</div>

@@ -10,14 +10,25 @@ import secrets
 from html import escape
 from pathlib import Path
 from typing import Any
-from urllib.parse import parse_qs, parse_qsl, unquote, urlencode, urlsplit, urlunsplit
+from urllib.parse import parse_qs, parse_qsl, quote, unquote, urlsplit, urlunsplit
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 
-from backend import checkout, learning_db
+from backend import assignment_db, checkout, learning_db
+from business_category import load_business_snapshot_html
+from browse_page import render_browse_body
 from catalog import load_catalog_seed
+from category_page import render_category_body
+from course_page import render_neural_networks_course_body
+from data_science_page import render_data_science_body
+import enrolled_course
+import enrolled_page
+from home_page import render_home_body
+from home_inventory import load_home_inventory
+from search_page import render_public_landing_body, render_search_body
+from specialization_page import render_specialization_body
 from websitebench.local_clone_auth import AuthError
 from websitebench.site_backend import PaymentConflict, PaymentError, PaymentRejected
 from ui import footer as desktop_footer
@@ -79,15 +90,25 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 CONTENT_SECURITY_POLICY = (
     "default-src 'self'; img-src 'self' data:; style-src 'self'; "
-    "font-src 'self'; script-src 'none'; connect-src 'none'; "
+    "font-src 'self'; script-src 'self'; connect-src 'none'; "
     "frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'"
+)
+BUSINESS_SNAPSHOT_CONTENT_SECURITY_POLICY = (
+    "default-src 'self'; img-src 'self' data:; "
+    "style-src 'self' 'unsafe-inline'; font-src 'self' data:; "
+    "script-src 'self'; connect-src 'none'; frame-src 'none'; "
+    "object-src 'none'; base-uri 'self'; form-action 'self'"
 )
 
 
 @app.middleware("http")
 async def security_headers(request: Request, call_next):
     response = await call_next(request)
-    response.headers["Content-Security-Policy"] = CONTENT_SECURITY_POLICY
+    response.headers["Content-Security-Policy"] = (
+        BUSINESS_SNAPSHOT_CONTENT_SECURITY_POLICY
+        if request.url.path == "/browse/business"
+        else CONTENT_SECURITY_POLICY
+    )
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["Referrer-Policy"] = "no-referrer"
     response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
@@ -120,6 +141,11 @@ def _page(
     document_title: str | None = None,
     search_value: str = "",
     checkout_chrome: bool = False,
+    language: str = "en",
+    footer_variant: str = "default",
+    open_login: bool = False,
+    open_signup: bool = False,
+    login_next_path: str = "/my-learning",
 ) -> str:
     return desktop_page(
         title=title,
@@ -129,6 +155,11 @@ def _page(
         document_title=document_title,
         search_value=search_value,
         checkout_chrome=checkout_chrome,
+        language=language,
+        footer_variant=footer_variant,
+        open_login=open_login,
+        open_signup=open_signup,
+        login_next_path=login_next_path,
     )
 
 
@@ -159,7 +190,7 @@ def _session_html(request: Request, title: str, body: str) -> HTMLResponse:
 
 def _auth_failure(request: Request, message: str, *, status_code: int) -> HTMLResponse:
     body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Local account</p><h1>We couldn't continue</h1><p class="safe-note">{escape(message)}</p><a href="/login">Return to sign in</a></div></section>"""
-    return HTMLResponse(_page(request, "Account action", body), status_code=status_code)
+    return HTMLResponse(_page(request, "Account action", body, language="en"), status_code=status_code)
 
 
 def _synthetic_email(email: str) -> str:
@@ -207,8 +238,12 @@ def _authenticated_subject(request: Request):
 
 
 def _permission_page(request: Request, message: str) -> HTMLResponse:
-    body = f"""<section class="not-found permission-prompt"><p class="eyebrow">Local account required</p><h1>{escape(message)}</h1><p>Sign in with a site-33 .test account. No source account is contacted.</p><a class="primary-button" href="/login">Sign in locally</a></section>"""
-    return HTMLResponse(_page(request, "Sign in required", body), status_code=401)
+    intended = request.url.path
+    if request.url.query:
+        intended += f"?{request.url.query}"
+    next_path = quote(_safe_next_path(intended), safe="/")
+    body = f"""<section class="not-found permission-prompt"><p class="eyebrow">Local account required</p><h1>{escape(message)}</h1><p>Sign in with a site-33 .test account. No source account is contacted.</p><a class="primary-button" href="/login?next={escape(next_path, quote=True)}">Sign in locally</a></section>"""
+    return HTMLResponse(_page(request, "Sign in required", body, language="en"), status_code=401)
 
 
 def _enrollment_required_page(request: Request, message: str) -> HTMLResponse:
@@ -279,32 +314,32 @@ def _money_amount(minor: int, currency: str) -> str:
 def _trial_terms(pricing: dict[str, Any]) -> tuple[str, str]:
     trial_days = int(pricing["trial_days"])
     if trial_days <= 0:
-        return "一次性本地结账", ""
+        return "One-time local checkout", ""
     renewal = _money_amount(
         int(pricing["renewal_minor"]), str(pricing["renewal_currency"])
     )
-    interval = "月" if pricing["renewal_interval"] == "month" else str(
+    interval = "month" if pricing["renewal_interval"] == "month" else str(
         pricing["renewal_interval"]
     )
-    return f"{trial_days} 天免费试用", f"{renewal}/{interval}"
+    return f"{trial_days}-day free trial", f"{renewal}/{interval}"
 
 
 def _checkout_totals(pricing: dict[str, Any]) -> str:
     trial_label, renewal = _trial_terms(pricing)
     due_today = _money_amount(int(pricing["total_minor"]), str(pricing["currency"]))
     renewal_row = (
-        f"<div><dt>之后为 {renewal}</dt><dd>{renewal}</dd></div>"
+        f"<div><dt>Then {renewal}</dt><dd>{renewal}</dd></div>"
         if renewal
         else ""
     )
-    return f"""<dl class="checkout-totals"><div><dt>{trial_label}</dt><dd>{trial_label}</dd></div>{renewal_row}<div><dt>今天应付</dt><dd>{due_today}</dd></div><div class="checkout-total"><dt>今日合计：{due_today}</dt><dd>{due_today}</dd></div></dl>"""
+    return f"""<dl class="checkout-totals"><div><dt>{trial_label}</dt><dd>{trial_label}</dd></div>{renewal_row}<div><dt>Due today</dt><dd>{due_today}</dd></div><div class="checkout-total"><dt>Total due today: {due_today}</dt><dd>{due_today}</dd></div></dl>"""
 
 
 def _order_rows(records: list[dict[str, Any]]) -> str:
     if not records:
         return """<div class="empty-state"><h2>No local orders yet</h2><p>Approved sandbox checkouts will appear here.</p><a href="/specializations/deep-learning">Back to Deep Learning</a></div>"""
     return "".join(
-        f"""<article class="catalog-card order-card" data-order-status="{escape(str(record["status"]))}"><p class="eyebrow">{"已付款" if record["status"] == "PAID" else "已取消"}</p><h2>深度学习专项课程</h2><p>订单 {escape(str(record["order_id"]))}</p><p>今天应付：{_money_amount(int(record["total_minor"]), str(record["currency"]))}</p><p>{_trial_terms(record)[0]}{f'；之后为 {_trial_terms(record)[1]}' if _trial_terms(record)[1] else ''}</p><a href="/orders/{escape(str(record["order_id"]))}">查看订单详情</a></article>"""
+        f"""<article class="catalog-card order-card" data-order-status="{escape(str(record["status"]))}"><p class="eyebrow">{"Paid" if record["status"] == "PAID" else "Canceled"}</p><h2>Deep Learning Specialization</h2><p>Order {escape(str(record["order_id"]))}</p><p>Due today: {_money_amount(int(record["total_minor"]), str(record["currency"]))}</p><p>{_trial_terms(record)[0]}{f'; then {_trial_terms(record)[1]}' if _trial_terms(record)[1] else ''}</p><a href="/orders/{escape(str(record["order_id"]))}">View order details</a></article>"""
         for record in records
     )
 
@@ -332,9 +367,78 @@ def _learning_not_found(request: Request) -> HTMLResponse:
     return HTMLResponse(_page(request, "Learning item not found", body), status_code=404)
 
 
+def _enrolled_subject(request: Request) -> str | HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to open this course")
+    try:
+        assignment_db.course_access(subject)
+    except LookupError:
+        return _enrollment_required_page(request, "Enroll to open this course")
+    return subject
+
+
+def _enrolled_response(
+    request: Request,
+    title: str,
+    body: str,
+    *,
+    status_code: int = 200,
+) -> HTMLResponse:
+    return HTMLResponse(
+        _page(
+            request,
+            title,
+            body,
+            language="en",
+            body_class="authenticated-learning-page enrolled-course-page",
+        ),
+        status_code=status_code,
+    )
+
+
+async def _assignment_form(
+    request: Request,
+) -> tuple[str, str, dict[int, list[int]]]:
+    content_type = request.headers.get("content-type", "").split(";", 1)[0]
+    if content_type != "application/x-www-form-urlencoded":
+        raise ValueError("Submit the assignment form shown on this page")
+    try:
+        pairs = parse_qsl(
+            (await request.body()).decode("utf-8"), keep_blank_values=True
+        )
+    except UnicodeDecodeError as exc:
+        raise ValueError("Submit the assignment form shown on this page") from exc
+    attempt_id = ""
+    legal_name = ""
+    answers: dict[int, list[int]] = {}
+    for key, value in pairs:
+        if key == "attempt_id":
+            if attempt_id:
+                raise ValueError("Invalid attempt identifier")
+            attempt_id = value
+        elif key == "legal_name":
+            if legal_name:
+                raise ValueError("Invalid legal name confirmation")
+            legal_name = value
+        elif re.fullmatch(r"q_[0-9]+", key):
+            number = int(key[2:])
+            try:
+                option = int(value)
+            except ValueError as exc:
+                raise ValueError(f"Invalid option for question {number}") from exc
+            answers.setdefault(number, []).append(option)
+        else:
+            raise ValueError("The assignment form contains an unknown field")
+    if not attempt_id:
+        raise ValueError("Invalid attempt identifier")
+    return attempt_id, legal_name, answers
+
+
 def _enrollment_rows(records: list[dict[str, Any]]) -> str:
     if not records:
-        return '<div class="empty-state"><h2>还没有本地报名记录</h2><a href="/specializations/deep-learning">浏览深度学习专项课程</a></div>'
+        return '<div class="empty-state"><h2>No local enrollments yet</h2><a href="/specializations/deep-learning">Browse the Deep Learning Specialization</a></div>'
     rows = []
     for record in records:
         course_id = str(record["course_id"])
@@ -351,34 +455,44 @@ def _enrollment_rows(records: list[dict[str, Any]]) -> str:
         )
         paid = record["track"] == "paid"
         if paid and record.get("order_id"):
-            cancellation = f'<a href="/orders/{escape(str(record["order_id"]))}">管理本地付费订单</a>'
-            origin = "由模拟成功的 local-sandbox 结账创建。"
+            cancellation = f'<a href="/orders/{escape(str(record["order_id"]))}">Manage local paid order</a>'
+            origin = "Created by an approved local-sandbox checkout."
         else:
             cancellation = (
-                f'<form action="/enrollments/{record["enrollment_id"]}/cancel" method="post"><button type="submit">取消报名</button></form>'
+                f'<form action="/enrollments/{record["enrollment_id"]}/cancel" method="post"><button type="submit">Cancel enrollment</button></form>'
                 if record["status"] == "active"
                 else ""
             )
-            origin = "未创建结账或付款记录。"
-        status_label = "进行中" if record["status"] == "active" else "已取消"
-        track_label = {"free": "免费学习", "audit": "旁听", "paid": "付费"}.get(
+            origin = "No checkout or payment record was created."
+        status_label = "In progress" if record["status"] == "active" else "Canceled"
+        track_label = {"free": "Free learning", "audit": "Audit", "paid": "Paid"}.get(
             str(record["track"]), str(record["track"])
         )
         reactivated_note = (
-            "<p>此前已取消；本地报名现已重新启用。</p>"
+            "<p>Previously canceled; this local enrollment is active again.</p>"
             if record["status"] == "active" and record["canceled_at"]
             else ""
         )
         rows.append(
-            f"""<article class="catalog-card enrollment-card" data-enrollment-id="{record["enrollment_id"]}"><p class="eyebrow">{status_label}</p><h2>{escape(course_title)}</h2><p>{escape(track_label)}轨道</p>{reactivated_note}<p>{origin}</p>{cancellation}<a href="{course_href}">打开课程</a></article>"""
+            f"""<article class="catalog-card enrollment-card" data-enrollment-id="{record["enrollment_id"]}"><p class="eyebrow">{status_label}</p><h2>{escape(course_title)}</h2><p>{escape(track_label)} track</p>{reactivated_note}<p>{origin}</p>{cancellation}<a href="/account/history/{record["enrollment_id"]}">View enrollment details</a><a href="{course_href}">Open course</a></article>"""
         )
     return "".join(rows)
 
 
 @app.exception_handler(404)
 async def branded_not_found(request: Request, _exception: Exception) -> HTMLResponse:
-    body = """<section class="not-found"><p class="error-code">404</p><h1>我们无法找到您要查找的页面</h1><p>页面可能已移动，但您仍可继续浏览课程或重新搜索。</p><div><a class="wb-primary" href="/browse">浏览课程目录</a><a class="secondary-button" href="/search">搜索课程目录</a><a class="secondary-button" href="/">返回首页</a></div></section>"""
-    return HTMLResponse(_page(request, "Page not found", body), status_code=404)
+    body = """<section class="source-not-found"><h1>We were not able to find the page you're looking for.</h1><p>Try <a href="/browse">browsing our course catalog</a> or <a href="/search">searching our course catalog</a> instead.</p><p>You might also find these links helpful:</p><nav aria-label="Helpful links"><a href="/browse">Online Degrees</a><a href="/about/contact">Coursera for Business</a><a href="/help">Coursera Blog</a><a href="/">Coursera home</a></nav></section>"""
+    return HTMLResponse(
+        _page(
+            request,
+            "Page not found",
+            body,
+            body_class="source-not-found-page",
+            language="en",
+            footer_variant="source-course",
+        ),
+        status_code=404,
+    )
 
 
 def _record_href(record: dict[str, Any]) -> str:
@@ -662,6 +776,68 @@ def _record_by_id(record_id: str) -> dict[str, Any] | None:
     )
 
 
+def _source_home_cards(path: str, *, section_ids: tuple[str, ...] = ()) -> list[object]:
+    sections = load_home_inventory()
+    scoped = [
+        card
+        for section in sections
+        if not section_ids or section.section_id in section_ids
+        for card in section.cards
+    ]
+    normalized_path = urlsplit(path).path.casefold()
+    exact = [card for card in scoped if urlsplit(card.href).path.casefold() == normalized_path]
+    tokens = {
+        token
+        for token in re.split(r"[^a-z0-9]+", normalized_path)
+        if len(token) > 2 and token not in {"online", "courses", "learn"}
+    }
+    related = [
+        card
+        for card in scoped
+        if tokens
+        and tokens
+        & set(
+            re.split(
+                r"[^a-z0-9]+",
+                f"{card.title} {card.provider} {card.metadata} {card.href}".casefold(),
+            )
+        )
+    ]
+    selected = exact + [card for card in related if card not in exact]
+    return (selected or scoped)[:8]
+
+
+def _source_path_title(path: str) -> str:
+    exact = _source_home_cards(path)
+    if exact and urlsplit(exact[0].href).path == urlsplit(path).path:
+        return str(exact[0].title)
+    final_segment = urlsplit(path).path.rstrip("/").rsplit("/", 1)[-1]
+    return final_segment.replace("-", " ").title()
+
+
+def _public_source_landing(
+    request: Request,
+    *,
+    title: str,
+    description: str,
+    section_ids: tuple[str, ...] = (),
+) -> str:
+    body = render_public_landing_body(
+        title=title,
+        description=description,
+        cards=_source_home_cards(request.url.path, section_ids=section_ids),
+    )
+    return _page(
+        request,
+        title,
+        body,
+        body_class="source-category-page public-source-landing-page",
+        document_title=f"{title} | Coursera",
+        language="en",
+        footer_variant="source-browse",
+    )
+
+
 @app.get("/healthz")
 def healthz() -> dict[str, object]:
     return {"ok": True, "site_id": SITE_ID}
@@ -669,54 +845,15 @@ def healthz() -> dict[str, object]:
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request) -> str:
-    catalog = load_catalog_seed()
-    by_id = {record["id"]: record for record in catalog}
-    most_popular = [
-        {
-            **by_id["applied-data-analysis"],
-            "title": "Google 数据分析",
-            "provider": "Google",
-            "thumb_asset": "/static/source-home-trend-google-analytics.png",
-            "href": "/search?q=Google+%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90",
-        },
-        by_id["machine-learning-foundations"],
-        by_id["python-programming"],
-    ]
-    weekly_focus = [
-        {
-            **by_id["tech-support"],
-            "title": "Microsoft 初级质量保证/软件测试工程师",
-            "provider": "Microsoft",
-            "thumb_asset": "/static/source-home-trend-microsoft-qa.png",
-            "href": "/search?q=Microsoft+QA",
-        },
-        by_id["financial-accounting"],
-        by_id["business-strategy"],
-    ]
-    ai_skills = [
-        {
-            **by_id["responsible-ai-basics"],
-            "title": "用于头脑风暴和规划的 AI",
-            "provider": "Google",
-            "thumb_asset": "/static/source-home-trend-google-ai.png",
-            "href": "/search?q=Google+AI",
-        },
-        by_id["deep-learning-specialization"],
-        by_id["medical-neuroscience"],
-    ]
-    body = f"""
-<section class="promo-rail" data-source-home-promo="true" aria-label="推荐学习内容"><article class="promo-panel promo-panel-dark" data-source-promo-image-card="true"><img src="/static/source-home-google-promo.png" alt="" aria-hidden="true"><div class="source-promo-overlay"><p class="promo-provider">Google</p><h1>New! Learn vibe coding with Google</h1><p>Build custom apps using AI, all without writing a single line of code.</p><a class="promo-action" href="/search?q=Google+AI">Enroll now <span aria-hidden="true">→</span></a></div></article><article class="promo-panel promo-panel-blue" data-source-promo-image-card="true"><img src="/static/source-home-career-promo.png" alt="" aria-hidden="true"><div class="source-promo-overlay"><p class="promo-provider">Coursera</p><h2>开始、转换或提升您的职业生涯</h2><p>与来自顶级机构的 10,000 多门课程一起成长</p><a class="promo-action promo-action-light" href="/signup">免费加入 <span aria-hidden="true">→</span></a></div></article></section>
-<div class="carousel-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-<section class="home-trends" aria-labelledby="home-trends-heading"><h2 id="home-trends-heading">趋势课程</h2><div class="trend-columns">{_trend_column("最受欢迎", most_popular)}{_trend_column("每周聚焦", weekly_focus)}{_trend_column("紧缺的 AI 技能", ai_skills)}</div></section>
-<section class="career-ready"><h2>为热门职业做好就业准备 <span aria-hidden="true">→</span></h2><p>入门无需经验。</p><nav aria-label="热门职业主题"><a href="/browse/data-science">数据</a><a href="/browse/business">商业</a><a href="/browse/business">销售与市场营销</a><a href="/browse/information-technology">信息技术</a><a href="/browse/computer-science">软件工程</a></nav></section>
-{_home_lower_sections()}
-{_home_cookie_banner(request)}"""
+    body = render_home_body()
     return _page(
         request,
         "Online Courses, Certificates, & Degrees",
         body,
-        body_class="catalog-landing",
+        body_class="source-home-page catalog-landing",
         document_title="Coursera | Online Courses, Certificates, & Degrees",
+        language="en",
+        footer_variant="source-browse",
     )
 
 
@@ -742,48 +879,27 @@ async def privacy_preferences(request: Request) -> Response:
 
 @app.get("/privacy", response_class=HTMLResponse)
 def privacy_notice(request: Request) -> HTMLResponse:
-    body = """<section class="page-heading"><p class="eyebrow">Privacy Notice</p><h1>隐私与 Cookie 偏好</h1><p>此离线 clone 只保存本地演示偏好，不连接 Coursera，不发送营销请求，也不保存真实个人资料。</p><form class="auth-form" action="/privacy-preferences" method="post"><button type="submit" name="choice" value="accept">Accept</button><button type="submit" name="choice" value="reject">Reject</button></form><a href="/">返回首页</a></section>"""
-    return HTMLResponse(_page(request, "Privacy Notice", body))
+    body = """<section class="page-heading"><p class="eyebrow">Privacy Notice</p><h1>Privacy and cookie preferences</h1><p>This offline clone stores only local demonstration preferences. It does not contact Coursera, send marketing requests, or store real personal information.</p><form class="auth-form" action="/privacy-preferences" method="post"><button type="submit" name="choice" value="accept">Accept</button><button type="submit" name="choice" value="reject">Reject</button></form><a href="/">Back to home</a></section>"""
+    return HTMLResponse(_page(request, "Privacy Notice", body, language="en"))
 
 
 @app.get("/terms", response_class=HTMLResponse)
 def terms(request: Request) -> HTMLResponse:
-    body = """<section class="page-heading"><p class="eyebrow">Terms</p><h1>本地服务条款</h1><p>此页面用于 WebsiteBench 离线复刻验收。报名、付款、学习记录和账户操作均为本地合成数据，不产生真实 Coursera 外部效果。</p><a href="/">返回首页</a></section>"""
-    return HTMLResponse(_page(request, "Terms", body))
+    body = """<section class="page-heading"><p class="eyebrow">Terms</p><h1>Local terms of use</h1><p>This page supports WebsiteBench offline-clone review. Enrollments, payments, learning records, and account actions use local synthetic data and produce no external effect on Coursera.</p><a href="/">Back to home</a></section>"""
+    return HTMLResponse(_page(request, "Terms", body, language="en"))
 
 
 @app.get("/browse", response_class=HTMLResponse)
 def browse(request: Request) -> str:
-    catalog = load_catalog_seed()
-    popular_ids = (
-        "applied-data-analysis",
-        "machine-learning-foundations",
-        "python-programming",
-        "business-strategy",
-    )
-    popular_records = [
-        record
-        for record_id in popular_ids
-        if (record := _record_by_id(record_id)) is not None
-    ]
-    remaining_records = [
-        record for record in catalog if record["id"] not in popular_ids
-    ]
-    popular_filters = """<nav class="popular-filters" aria-label="热门课程分类"><strong>全部</strong><a href="/browse/business">商业</a><a href="/browse/data-science">数据科学</a><a href="/browse/information-technology">信息技术</a><a href="/browse/computer-science">计算机科学</a></nav>"""
-    popular = (
-        '<div class="source-popular-row"><div class="card-grid popular-grid">'
-        + "".join(_card(record) for record in popular_records)
-        + '</div></div><details class="more-popular"><summary>显示更多课程</summary><div class="card-grid expanded-popular-grid">'
-        + "".join(_card(record) for record in remaining_records[:8])
-        + "</div></details>"
-    )
-    roles = """<section class="browse-roles"><div class="role-filters"><strong>级别：初级</strong><span>热门</span><span>软件工程与信息技术</span><span>商务</span><span>销售与市场营销</span><span>数据科学与分析</span><span>医疗保健</span></div><h2>探索角色</h2><p>通过 7 天免费试听这些高级课程，提升您的职业发展并掌握新技能</p><div class="role-explorer-row"><article class="role-explorer-card"><h3>数据科学家</h3><p>数据科学家利用统计数据、机器学习和 visualization 来分析大型数据集。</p><a href="/search?q=data+scientist">查看所有</a></article><article class="role-explorer-card"><h3>机器学习工程师</h3><p>机器学习工程师使用大型数据集和神经网络构建现代化模型。</p><a href="/search?q=machine+learning">提供方</a></article></div></section>"""
-    body = f"""<section class="browse-source-heading"><h1>Explore Categories</h1>{_compact_category_pills()}</section><section class="browse-popular"><h2>最受欢迎</h2>{popular_filters}{popular}</section>{roles}<section class="wb-section browse-all-subjects"><h2>按主题浏览课程</h2>{_category_pills()}</section>"""
+    body = render_browse_body()
     return _page(
         request,
         "Online Course Catalog by Topic and Skill",
         body,
-        body_class="browse-page catalog-landing",
+        body_class="source-browse-page catalog-landing",
+        document_title="Coursera | Degrees, Certificates, & Free Online Courses",
+        language="en",
+        footer_variant="source-browse",
     )
 
 
@@ -792,10 +908,27 @@ def browse_category(request: Request, category: str) -> str:
     subject = SUBJECTS.get(category)
     if subject is None:
         raise HTTPException(status_code=404)
-    records = [record for record in load_catalog_seed() if record["subject"] == subject]
-    localized_subject = SUBJECTS_ZH[subject]
-    body = f"""<nav class="catalog-breadcrumbs"><a href="/browse">浏览</a><span>›</span>{escape(localized_subject)}</nav><section class="catalog-heading"><h1>{escape(localized_subject)}</h1><p>探索灵活课程，按自己的节奏培养实用技能。</p></section><section class="wb-section"><h2>热门课程</h2>{_card_grid(records)}</section>"""
-    return _page(request, f"{subject} Online Courses", body)
+    if category == "data-science":
+        return _page(
+            request,
+            "Data Science Online Courses",
+            render_data_science_body(),
+            body_class="source-data-science-page",
+            document_title="Data Science Online Courses | Coursera",
+            language="en",
+            footer_variant="source-browse",
+        )
+    if category == "business":
+        return HTMLResponse(load_business_snapshot_html())
+    return _page(
+        request,
+        f"{subject} Online Courses",
+        render_category_body(category),
+        body_class="source-category-page",
+        document_title=f"{subject} Online Courses | Coursera",
+        language="en",
+        footer_variant="source-browse",
+    )
 
 
 @app.get("/search", response_class=HTMLResponse)
@@ -825,54 +958,242 @@ def search(
         schedule=schedule,
         sort=sort,
     )
-    rating_value = "" if rating is None else f"{rating:g}"
-    form = f"""
-<form class="filters source-filter-panel" action="/search" method="get">
-  <h2>筛选和排序</h2>
-  <label class="search-wide">搜索<input name="q" value="{escape(q)}" placeholder="课程、主题或技能"></label>
-  {_select("category", "主题", list(SUBJECTS), category)}
-  {_select("level", "级别", ["Beginner", "Intermediate", "Advanced", "Mixed"], level)}
-  <label>主题关键词<input name="topic" value="{escape(topic)}" placeholder="例如 Neural"></label>
-  {_select("duration", "课程长度", sorted({record["duration"] for record in catalog}), duration)}
-  {_select("rating", "评分", ["4.5", "4.7", "4.8", "4.9"], rating_value)}
-  {_select("language", "语言", sorted({record["language"] for record in catalog}), language)}
-  {_select("schedule", "学习节奏", sorted({record["schedule"] for record in catalog}), schedule)}
-  <label>排序<select name="sort">{_option("title-asc", "标题 A–Z", sort)}{_option("title-desc", "标题 Z–A", sort)}{_option("rating-desc", "评分最高", sort)}</select></label>
-  <button class="wb-primary" type="submit">显示结果</button>
-</form>"""
-    if records:
-        result_body = _card_grid(records)
-    else:
-        clear_query = urlencode({"q": ""})
-        recommendations = _card_grid(catalog[:3])
-        result_body = f"""<div class="empty-state"><h2>没有找到与“{escape(q)}”匹配的课程</h2><p>请尝试更宽泛的关键词、移除筛选条件，或浏览全部主题。</p><div class="empty-state-links"><a href="/search?{clear_query}">清除搜索</a><a href="/search">重置全部筛选</a><a href="/browse">浏览可用课程</a></div><section class="recommendations"><h3>推荐课程</h3><p>当前 Coursera 也会针对该关键词显示学习建议；本地 clone 保留一组可浏览的恢复选项。</p>{recommendations}</section></div>"""
-    ai_overview = ""
-    if q:
-        lead = next((record for record in records if "Deep Learning" in record["title"]), None)
-        if lead is None:
-            lead = _record_by_id("deep-learning-specialization")
-        lead_card = _trend_card(lead) if lead is not None else ""
-        related = [
-            record
-            for record_id in (
-                "neural-networks-deep-learning",
-                "machine-learning-foundations",
-                "convolutional-neural-networks",
-            )
-            if (record := _record_by_id(record_id)) is not None
-        ]
-        related_cards = "".join(_related_search_card(record) for record in related)
-        ai_overview = f"""<section class="search-ai-overview"><h2>AI 概览</h2><p>You are looking for {escape(q)} from DeepLearning.AI:</p>{lead_card}<p class="ai-summary">This specialization covers key deep learning techniques including convolutional and recurrent neural networks, and computer vision applications.</p><a href="/specializations/deep-learning">显示更多</a><section class="search-related"><h3>其他类似课程：</h3><div class="search-related-cards">{related_cards}</div></section><nav class="ai-question-chips" aria-label="AI suggested prompts"><a href="/search?q=compare+deep+learning">对比这些课程</a><a href="/search?q=why+recommend+deep+learning">为什么向我推荐这些课程？</a><a href="/search?q=beginner+deep+learning">哪一个最适合完全的初学者？</a></nav></section>"""
-    chips = """<nav class="source-filter-chips" aria-label="搜索筛选"><a href="#filters">筛选和排序</a><a href="/search?category=data-science">主题</a><a href="/search?duration=3+weeks+at+10+hours+a+week">课程长度</a><a href="/search?q=Deep+Learning">了解产品</a><a href="/search?language=English">语言</a><a href="/search?level=Beginner">级别</a></nav>"""
-    body = f"""<section class="search-source-layout"><div class="search-source-main">{ai_overview}<section class="source-results"><h2>所有结果</h2>{chips}<div class="results" data-result-count="{len(records)}"><h3>{len(records)} 个结果</h3>{result_body}</div></section></div><aside class="search-chat-panel" aria-label="Coursera assistant"><div class="chat-notice"><strong>您的隐私与本次聊天</strong><p>您的聊天记录可能会被暂时保存，以便为您提供个性化体验。</p><button type="button">确定</button></div><div class="chat-thread"><p>You'll find a mix of Deep Learning specializations, courses, and professional certificates.</p><div class="chat-levels"><span>Beginner</span><span>Intermediate</span><span>Advanced</span></div><label>或者提问…<input placeholder="Deep Learning Specialization"></label></div></aside></section><section id="filters" class="search-filter-details">{form}</section>"""
+    filter_values = {
+        "category": category,
+        "level": level,
+        "topic": topic,
+        "duration": duration,
+        "rating": "" if rating is None else f"{rating:g}",
+        "language": language,
+        "schedule": schedule,
+        "sort": sort,
+    }
+    source_selected = q.strip().casefold() == "deep learning" and not any(
+        (category, level, topic, duration, rating, language, schedule)
+    ) and sort in {"title-asc", "best-match"}
+    body = render_search_body(
+        query=q,
+        filtered_records=records,
+        filters=filter_values,
+        source_selected=source_selected,
+        filter_options={
+            "category": list(SUBJECTS),
+            "level": ["Beginner", "Intermediate", "Advanced", "Mixed"],
+            "duration": sorted({str(record["duration"]) for record in catalog}),
+            "rating": ["4.8", "4.5", "4.0"],
+            "language": sorted({str(record["language"]) for record in catalog}),
+            "schedule": sorted({str(record["schedule"]) for record in catalog}),
+        },
+    )
     return _page(
         request,
         "Search",
         body,
+        body_class="source-search-page",
         document_title=(
             "Coursera | Online Courses From Top Universities. Join for Free"
         ),
-        search_value=q,
+        search_value="deep learning" if source_selected else q,
+        language="en",
+        footer_variant="source-course",
+    )
+
+
+@app.get("/courses", response_class=HTMLResponse)
+def courses_alias(request: Request) -> RedirectResponse:
+    suffix = f"?{request.url.query}" if request.url.query else ""
+    return RedirectResponse(f"/search{suffix}", status_code=307)
+
+
+@app.get("/courseraplus", response_class=HTMLResponse)
+@app.get("/courseraplus/{offer:path}", response_class=HTMLResponse)
+def coursera_plus_landing(request: Request, offer: str = "") -> str:
+    return _public_source_landing(
+        request,
+        title="Coursera Plus",
+        description="Explore source-backed local programs available through the Coursera catalog.",
+        section_ids=("most-popular", "google-career", "ai-skills"),
+    )
+
+
+@app.get("/business", response_class=HTMLResponse)
+@app.get("/business/{program:path}", response_class=HTMLResponse)
+def business_landing(request: Request, program: str = "") -> str:
+    return _public_source_landing(
+        request,
+        title="Coursera for Teams" if program == "teams" else "Coursera for Business",
+        description="Build team skills with source-backed local business and career programs.",
+        section_ids=("career-data", "trending-project-management", "most-popular"),
+    )
+
+
+@app.get("/career-academy", response_class=HTMLResponse)
+@app.get("/career-academy/{role:path}", response_class=HTMLResponse)
+def career_landing(request: Request, role: str = "") -> str:
+    return _public_source_landing(
+        request,
+        title=_source_path_title(request.url.path) if role else "Career Academy",
+        description="Explore source-backed career roles and the local learning records connected to them.",
+        section_ids=("explore-careers", "career-data"),
+    )
+
+
+@app.get("/degrees", response_class=HTMLResponse)
+@app.get("/degrees/{degree:path}", response_class=HTMLResponse)
+def degrees_landing(request: Request, degree: str = "") -> str:
+    return _public_source_landing(
+        request,
+        title=_source_path_title(request.url.path) if degree else "Degrees",
+        description="Explore local learning records and pathways connected to online degree study.",
+        section_ids=("most-popular", "career-data", "google-career"),
+    )
+
+
+@app.get("/partners", response_class=HTMLResponse)
+@app.get("/partners/{provider:path}", response_class=HTMLResponse)
+def partner_landing(request: Request, provider: str = "") -> str:
+    title = _source_path_title(request.url.path) if provider else "Partners"
+    return _public_source_landing(
+        request,
+        title=title,
+        description=f"Explore source-backed local learning records from {title} and related providers.",
+    )
+
+
+@app.get("/explore/{collection:path}", response_class=HTMLResponse)
+def provider_collection_landing(request: Request, collection: str) -> str:
+    provider_names = {
+        "ibm-online-courses": "IBM",
+        "microsoft-certificates": "Microsoft",
+        "deep-learning-ai-online-courses": "DeepLearning.AI",
+        "stanford-online-courses": "Stanford University",
+        "university-of-pennsylvania-online-courses": "University of Pennsylvania",
+        "university-of-michigan-online-courses": "University of Michigan",
+        "most-popular-courses": "Most Popular Courses",
+        "new-on-coursera": "New on Coursera",
+        "generative-ai": "Generative AI",
+        "learner-outcomes": "Learner Outcomes",
+    }
+    title = provider_names.get(collection, _source_path_title(request.url.path))
+    return _public_source_landing(
+        request,
+        title=title,
+        description=f"Explore source-backed local learning records in {title}.",
+    )
+
+
+@app.get("/google-career-certificates", response_class=HTMLResponse)
+@app.get("/professional-certificates", response_class=HTMLResponse)
+@app.get("/professional-certificates/{program:path}", response_class=HTMLResponse)
+def professional_certificate_landing(
+    request: Request, program: str = ""
+) -> str:
+    title = (
+        "Google Career Certificates"
+        if request.url.path == "/google-career-certificates"
+        else _source_path_title(request.url.path)
+        if program
+        else "Professional Certificates"
+    )
+    return _public_source_landing(
+        request,
+        title=title,
+        description="Explore source-backed local professional and career learning records.",
+        section_ids=("career-data", "google-career", "hot-new-releases"),
+    )
+
+
+_PROJECT_DETAILS = {
+    "chatgpt-prompt-engineering-for-developers-project": {
+        "title": "ChatGPT Prompt Engineering for Developers",
+        "provider": "DeepLearning.AI",
+        "description": "Learn prompt engineering patterns for building reliable applications with large language models.",
+    },
+    "langchain-for-llm-application-development-project": {
+        "title": "LangChain for LLM Application Development",
+        "provider": "DeepLearning.AI",
+        "description": "Build applications with language models, prompt templates, memory, and document retrieval.",
+    },
+}
+
+
+@app.get("/projects/{project_id:path}", response_class=HTMLResponse)
+def project_detail(request: Request, project_id: str) -> HTMLResponse:
+    """Serve the known local project destinations exposed by Purchases recommendations."""
+
+    project = _PROJECT_DETAILS.get(project_id)
+    if project is None:
+        raise HTTPException(status_code=404)
+    title = str(project["title"])
+    body = f"""
+<nav class="course-breadcrumbs"><a href="/browse">Browse</a><span aria-hidden="true">›</span><span>Guided Project</span></nav>
+<section class="course-hero source-course-hero" data-project-detail="{escape(project_id)}">
+  <div><p class="provider">{escape(str(project["provider"]))}</p><h1>{escape(title)}</h1>
+  <p>{escape(str(project["description"]))}</p><a class="wb-primary" href="/signup">Join for Free</a></div>
+</section>
+<section class="course-source-detail"><h2>About this project</h2><p>This local project page is part of the offline Coursera catalog. It creates no external enrollment or payment effect.</p><p><a href="/browse">Browse more courses and projects</a></p></section>
+"""
+    return HTMLResponse(
+        _page(
+            request,
+            title,
+            body,
+            body_class="source-course-detail-page",
+            document_title=f"{title} | Coursera",
+            language="en",
+        )
+    )
+
+
+@app.get("/mastertrack", response_class=HTMLResponse)
+@app.get("/certificates/learn", response_class=HTMLResponse)
+@app.get("/government", response_class=HTMLResponse)
+@app.get("/campus", response_class=HTMLResponse)
+@app.get("/social-impact", response_class=HTMLResponse)
+@app.get("/directory", response_class=HTMLResponse)
+@app.get("/articles", response_class=HTMLResponse)
+@app.get("/articles/{article:path}", response_class=HTMLResponse)
+@app.get("/resources/{resource:path}", response_class=HTMLResponse)
+def public_collection_alias(
+    request: Request, article: str = "", resource: str = ""
+) -> str:
+    title = _source_path_title(request.url.path)
+    return _public_source_landing(
+        request,
+        title=title,
+        description=f"Explore source-backed local learning records connected to {title}.",
+    )
+
+
+@app.get("/about/privacy", response_class=HTMLResponse)
+@app.get("/about/cookies-manage", response_class=HTMLResponse)
+def legacy_privacy_alias() -> RedirectResponse:
+    return RedirectResponse("/privacy", status_code=307)
+
+
+@app.get("/about/terms", response_class=HTMLResponse)
+def legacy_terms_alias() -> RedirectResponse:
+    return RedirectResponse("/terms", status_code=307)
+
+
+@app.get("/about", response_class=HTMLResponse)
+@app.get("/about/affiliates", response_class=HTMLResponse)
+@app.get("/about/how-coursera-works/", response_class=HTMLResponse)
+@app.get("/about/leadership", response_class=HTMLResponse)
+@app.get("/about/press", response_class=HTMLResponse)
+def about_landing(request: Request) -> str:
+    titles = {
+        "/about": "About Coursera",
+        "/about/affiliates": "Affiliates",
+        "/about/how-coursera-works/": "How Coursera Works",
+        "/about/leadership": "Leadership",
+        "/about/press": "Press",
+    }
+    title = titles[request.url.path]
+    return _public_source_landing(
+        request,
+        title=title,
+        description=f"Explore local learning records and information connected to {title}.",
     )
 
 
@@ -886,26 +1207,29 @@ def deep_learning_specialization(request: Request) -> str:
         for record in load_catalog_seed()
         if record.get("parent_specialization_id") == specialization["id"]
     ]
-    course_list = "".join(
-        f"""<li><span class="course-number">{index}</span><div><p>课程 {index}</p><h3><a href="/learn/{escape(record["id"])}">{escape(record["title"])}</a></h3><p>{escape(record["duration"])} · {escape(record["level"])}</p>{_evidence_note(record, compact=True)}</div></li>"""
-        for index, record in enumerate(components, start=1)
-    )
-    trial_label, renewal = _trial_terms(checkout.plan())
     _backend, _auth, _token, session = _request_session(request)
-    enrollment_action = (
-        """<div class="enrollment-actions"><form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="deep-learning-specialization"><label>报名轨道<select name="track" required><option value="free">免费学习</option><option value="audit">旁听</option></select></label><button class="secondary-button" type="submit">保存本地报名</button></form><a class="wb-primary" href="/checkout/deep-learning">进入本地结账</a><p>本地结账仅使用 local-sandbox，不会产生真实付款。</p></div>"""
-        if session["authenticated"]
-        else '<div class="enrollment-actions"><a class="wb-primary" href="/login?next=/checkout/deep-learning">免费注册</a><a class="secondary-button" href="/login?next=/specializations/deep-learning">登录后报名或旁听</a></div>'
+    body = render_specialization_body(
+        components=components,
+        authenticated=bool(session["authenticated"]),
     )
-    body = f"""
-<nav class="course-breadcrumbs"><a href="/browse">浏览</a><span>›</span><a href="/browse/data-science">数据科学</a><span>›</span>Deep Learning</nav>
-<section class="program-hero"><div><p class="provider">DeepLearning.AI</p><h1>深度学习专项课程</h1><p class="lead">掌握深度学习基础，构建机器学习能力，并把 AI 知识应用到真实问题中。</p><p>讲师：<strong>Andrew Ng 等 3 位讲师</strong> <span class="badge">顶级讲师</span></p><section class="trial-card"><h2>{trial_label}</h2><p>无限制访问专项课程中的全部课程，可随时取消。</p><p><strong>试用结束后，{renewal}</strong></p>{enrollment_action}</section></div><img src="/static/deep-learning-mark.svg" alt="Deep Learning program mark"></section>
-<section class="program-facts"><div><strong>5 门课程系列</strong><span>系统学习一个主题</span></div><div><strong>4.8 ★</strong><span>来自学习者评分</span></div><div><strong>中级水平</strong><span>建议具备基础经验</span></div><div><strong>灵活安排</strong><span>每周 10 小时，约 3 个月</span></div></section>
-<section class="detail-section"><h2>你将学到什么</h2><p>构建和训练深度神经网络，分析模型表现，并将卷积模型和序列模型用于实践任务。</p><h2>课程系列</h2><ol class="course-series">{course_list}</ol></section>"""
     return _page(
         request,
         "Deep Learning Specialization",
         body,
+        body_class="source-specialization-page",
+        document_title="Deep Learning Specialization | Coursera",
+        language="en",
+        login_next_path="/checkout/deep-learning",
+    )
+
+
+@app.get("/specializations/{program_id}", response_class=HTMLResponse)
+def specialization_landing(request: Request, program_id: str) -> str:
+    title = _source_path_title(request.url.path)
+    return _public_source_landing(
+        request,
+        title=title,
+        description="Explore this source-backed specialization and related local learning records.",
     )
 
 
@@ -919,54 +1243,54 @@ def checkout_plan(request: Request) -> HTMLResponse:
     trial_label, renewal = _trial_terms(pricing)
     due_today = _money_amount(int(pricing["total_minor"]), str(pricing["currency"]))
     body = f"""
-<nav class="course-breadcrumbs checkout-breadcrumbs"><a href="/specializations/deep-learning">Deep Learning Specialization</a><span>›</span><span>结帐</span></nav>
+<nav class="course-breadcrumbs checkout-breadcrumbs"><a href="/specializations/deep-learning">Deep Learning Specialization</a><span>›</span><span>Checkout</span></nav>
 <section class="source-checkout-shell">
   <main class="source-checkout-main">
-    <h1>结帐</h1>
-    <p class="checkout-required">所有字段均为必填字段</p>
-    <p class="safe-note">该页面按当前观察到的 Coursera 结账信息重建。不会提交真实付款数据，也不会联系 Coursera。</p>
+    <h1>Checkout</h1>
+    <p class="checkout-required">All fields are required</p>
+    <p class="safe-note">This page is reconstructed from observed Coursera checkout information. No real payment data is submitted and Coursera is never contacted.</p>
     <form class="source-checkout-form" action="/checkout/deep-learning" method="post" autocomplete="off">
       <input type="hidden" name="course_id" value="deep-learning-specialization">
       <input type="hidden" name="plan_id" value="{escape(str(pricing["plan_id"]))}">
       <section class="checkout-billing" aria-labelledby="billing-heading">
-        <h2 id="billing-heading">账单信息</h2>
-        <label>全名<input id="billing-name" type="text" placeholder="请输入您的姓名" autocomplete="off"></label>
-        <label>国家/地区<select id="billing-country" autocomplete="off"><option>中国</option><option>美国</option><option>新加坡</option></select></label>
+        <h2 id="billing-heading">Billing information</h2>
+        <label>Full name<input id="billing-name" type="text" placeholder="Enter your name" autocomplete="off"></label>
+        <label>Country/Region<select id="billing-country" autocomplete="off"><option>China</option><option>United States</option><option>Singapore</option></select></label>
       </section>
       <section class="source-payment-card" aria-labelledby="payment-heading">
-        <h2 id="payment-heading">支付方式</h2>
-        <div class="payment-choice is-selected"><span>银行卡</span><span>Visa · Mastercard · American Express</span></div>
-        <label>卡号<input id="synthetic-card-number" inputmode="numeric" autocomplete="off" placeholder="1234 1234 1234 1234"></label>
+        <h2 id="payment-heading">Payment method</h2>
+        <div class="payment-choice is-selected"><span>Card</span><span>Visa · Mastercard · American Express</span></div>
+        <label>Card number<input id="synthetic-card-number" inputmode="numeric" autocomplete="off" placeholder="Card number"></label>
         <div class="payment-grid">
-          <label>到期日<input id="synthetic-expiry" autocomplete="off" placeholder="MM / YY"></label>
-          <label>安全码<input id="synthetic-cvv" inputmode="numeric" autocomplete="off" placeholder="CVC"></label>
+          <label>Expiry date<input id="synthetic-expiry" autocomplete="off" placeholder="MM / YY"></label>
+          <label>Security code<input id="synthetic-cvv" inputmode="numeric" autocomplete="off" placeholder="CVC"></label>
         </div>
-        <label class="save-card"><input id="synthetic-save-card" type="checkbox"> 保存付款方式以供将来购买</label>
-        <div class="payment-choice paypal-choice"><span>Paypal</span><span>使用 PayPal 继续</span></div>
+        <label class="save-card"><input id="synthetic-save-card" type="checkbox"> Save payment method for future purchases</label>
+        <div class="payment-choice paypal-choice"><span>PayPal</span><span>Continue with PayPal</span></div>
       </section>
-      <p class="checkout-terms">点击“开始免费试用”即表示你同意 Coursera 的<a href="/terms">服务条款</a>和<a href="/privacy">隐私声明</a>。本 clone 使用 local-sandbox，只创建本地草稿。</p>
-      <button class="wb-primary checkout-start" type="submit">开始免费试用</button>
+      <p class="checkout-terms">By clicking “Start free trial,” you agree to Coursera's <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Notice</a>. This clone uses local-sandbox and creates only a local draft.</p>
+      <button class="wb-primary checkout-start" type="submit">Start free trial</button>
     </form>
-    <p class="checkout-safety"><strong>开始 {trial_label}。</strong>今天应付 {due_today}；试用结束后为 {renewal}，可在本地订单历史中取消。</p>
-    <a class="checkout-return" href="/specializations/deep-learning">返回专项课程</a>
+    <p class="checkout-safety"><strong>Start your {trial_label}.</strong>Due today: {due_today}; then {renewal}. You can cancel from local Order history.</p>
+    <a class="checkout-return" href="/specializations/deep-learning">Back to Specialization</a>
   </main>
-  <aside class="source-checkout-summary" aria-label="订单摘要">
+  <aside class="source-checkout-summary" aria-label="Order summary">
     <article class="summary-course">
       <a href="/specializations/deep-learning">Deep Learning</a>
-      <p>由 DeepLearning.AI 提供</p>
-      <a class="summary-remove" href="/specializations/deep-learning">移除</a>
+      <p>Provided by DeepLearning.AI</p>
+      <a class="summary-remove" href="/specializations/deep-learning">Remove</a>
     </article>
-    <p class="summary-note">无绑定合同。可随时取消。</p>
+    <p class="summary-note">No contracts. Cancel anytime.</p>
     <dl class="summary-prices">
-      <div><dt>月度订阅</dt><dd>{trial_label}</dd></div>
-      <div><dt>之后为 {renewal}</dt><dd>{renewal}</dd></div>
-      <div class="summary-total"><dt>今日合计：{due_today}</dt><dd>{due_today}</dd></div>
+      <div><dt>Monthly subscription</dt><dd>{trial_label}</dd></div>
+      <div><dt>Then {renewal}</dt><dd>{renewal}</dd></div>
+      <div class="summary-total"><dt>Total due today: {due_today}</dt><dd>{due_today}</dd></div>
     </dl>
-    <p class="summary-small">试用期结束前取消不会收费。此离线版本不会提交真实付款数据。</p>
+    <p class="summary-small">Cancel before the trial ends and you will not be charged. This offline version never submits real payment data.</p>
   </aside>
 </section>"""
     return HTMLResponse(
-        _page(request, "Deep Learning checkout plan", body, checkout_chrome=True)
+        _page(request, "Deep Learning checkout plan", body, checkout_chrome=True, language="en")
     )
 
 
@@ -1025,8 +1349,8 @@ def checkout_payment(request: Request, draft_id: str) -> HTMLResponse:
         checkout.get_draft(subject, draft_id)
     except LookupError:
         return _checkout_not_found(request)
-    body = f"""<nav class="course-breadcrumbs"><a href="/checkout/deep-learning">结账</a><span>›</span>付款方式</nav><section class="checkout-shell"><p class="eyebrow">本地安全演示</p><h1>付款方式</h1><p class="safe-note"><strong>请不要输入真实付款信息。</strong>下方演示输入内容只保留在当前浏览器页面，不会作为表单字段提交或保存。</p><form class="synthetic-payment" action="/checkout/{escape(draft_id)}/review" method="get" autocomplete="off"><label>示例卡号<input id="synthetic-card-number" inputmode="numeric" autocomplete="off" placeholder="仅用于本地演示"></label><label>示例有效期<input id="synthetic-expiry" autocomplete="off" placeholder="MM / YY"></label><label>示例安全码<input id="synthetic-cvv" inputmode="numeric" autocomplete="off" placeholder="仅用于本地演示"></label><button class="wb-primary" type="submit">继续（不提交上述内容）</button></form><a href="/specializations/deep-learning">返回专项课程</a></section>"""
-    return HTMLResponse(_page(request, "本地付款方式", body, checkout_chrome=True))
+    body = f"""<nav class="course-breadcrumbs"><a href="/checkout/deep-learning">Checkout</a><span>›</span>Payment method</nav><section class="checkout-shell"><p class="eyebrow">Local safety demonstration</p><h1>Payment method</h1><p class="safe-note"><strong>Do not enter real payment information.</strong> The demonstration inputs below remain only in this browser page and are never submitted or saved as form fields.</p><form class="synthetic-payment" action="/checkout/{escape(draft_id)}/review" method="get" autocomplete="off"><label>Sample card number<input id="synthetic-card-number" inputmode="numeric" autocomplete="off" placeholder="Local demonstration only"></label><label>Sample expiry<input id="synthetic-expiry" autocomplete="off" placeholder="MM / YY"></label><label>Sample security code<input id="synthetic-cvv" inputmode="numeric" autocomplete="off" placeholder="Local demonstration only"></label><button class="wb-primary" type="submit">Continue without submitting these values</button></form><a href="/specializations/deep-learning">Back to Specialization</a></section>"""
+    return HTMLResponse(_page(request, "Local Payment Method", body, checkout_chrome=True, language="en"))
 
 
 @app.get("/checkout/{draft_id}/review", response_class=HTMLResponse)
@@ -1040,8 +1364,8 @@ def checkout_review(request: Request, draft_id: str) -> HTMLResponse:
     except LookupError:
         return _checkout_not_found(request)
     idempotency_key = f"browser-attempt:{secrets.token_urlsafe(18)}"
-    body = f"""<nav class="course-breadcrumbs"><a href="/checkout/{escape(draft_id)}/payment">付款方式</a><span>›</span>确认</nav><section class="checkout-shell"><p class="eyebrow">仅限本地 sandbox</p><h1>确认免费试用</h1><p>这是一项本地演示，不会产生外部或真实付款效果。</p>{_checkout_totals(draft)}<p class="checkout-terms">点击下方操作即表示您已阅读本地演示的使用条款，并可在订单历史中取消。</p><form class="sandbox-scenarios" action="/checkout/{escape(draft_id)}/attempt" method="post"><input type="hidden" name="idempotency_key" value="{escape(idempotency_key)}"><fieldset><legend>选择确定的本地 sandbox 结果</legend><label><input type="radio" name="scenario_id" value="sandbox-approved" required>模拟成功</label><label><input type="radio" name="scenario_id" value="sandbox-declined" required>模拟被拒绝</label><label><input type="radio" name="scenario_id" value="sandbox-retry" required>模拟需重试</label></fieldset><button class="wb-primary" type="submit">开始免费试用</button></form><a href="/specializations/deep-learning">返回专项课程</a></section>"""
-    return HTMLResponse(_page(request, "确认本地结账", body, checkout_chrome=True))
+    body = f"""<nav class="course-breadcrumbs"><a href="/checkout/{escape(draft_id)}/payment">Payment method</a><span>›</span>Review</nav><section class="checkout-shell"><p class="eyebrow">Local sandbox only</p><h1>Confirm free trial</h1><p>This is a local demonstration and creates no external or real payment effect.</p>{_checkout_totals(draft)}<p class="checkout-terms">By using the action below, you acknowledge the local demonstration terms and can cancel from Order history.</p><form class="sandbox-scenarios" action="/checkout/{escape(draft_id)}/attempt" method="post"><input type="hidden" name="idempotency_key" value="{escape(idempotency_key)}"><fieldset><legend>Choose a deterministic local sandbox result</legend><label><input type="radio" name="scenario_id" value="sandbox-approved" required>Simulate approval</label><label><input type="radio" name="scenario_id" value="sandbox-declined" required>Simulate decline</label><label><input type="radio" name="scenario_id" value="sandbox-retry" required>Simulate retry</label></fieldset><button class="wb-primary" type="submit">Start free trial</button></form><a href="/specializations/deep-learning">Back to Specialization</a></section>"""
+    return HTMLResponse(_page(request, "Review Local Checkout", body, checkout_chrome=True, language="en"))
 
 
 @app.post("/checkout/{draft_id}/attempt")
@@ -1079,33 +1403,46 @@ async def checkout_attempt(request: Request, draft_id: str) -> Response:
         return RedirectResponse(
             f"/orders/{result['order']['order_id']}", status_code=303
         )
-    heading = "模拟付款被拒绝" if result["outcome"] == "declined" else "模拟付款需要重试"
-    body = f"""<section class="checkout-shell"><p class="eyebrow">本地 sandbox 结果</p><h1>{heading}</h1><p>未创建订单或付费报名，也没有尝试任何外部付款。</p><a class="wb-primary" href="/checkout/{escape(draft_id)}/review">选择其他本地结果</a><a href="/specializations/deep-learning">返回专项课程</a></section>"""
-    return HTMLResponse(_page(request, "本地 sandbox 结果", body))
-
-
-@app.get("/learn/{course_id}/preview", response_class=HTMLResponse)
-def course_preview(request: Request, course_id: str) -> str:
-    record = _record_by_id(course_id)
-    if record is None or record["type"] != "course":
-        raise HTTPException(status_code=404)
-    first_lesson = record["syllabus"][0]
-    body = f"""<nav class="course-breadcrumbs"><a href="/learn/{escape(course_id)}">{escape(record["title"])}</a><span>›</span>免费预览</nav><section class="preview-shell"><p class="eyebrow">无需报名</p><h1>免费预览：{escape(record["title"])}</h1>{_evidence_note(record)}<div class="lesson-player"><span aria-hidden="true">▶</span><div><h2>{escape(first_lesson)}</h2><p>此本地示例介绍核心概念并提供简短练习；预览不会创建学习进度或连接外部服务。</p></div></div><a class="secondary-button" href="/learn/{escape(course_id)}">返回课程详情</a></section>"""
-    return _page(request, f"Free preview: {record['title']}", body)
+    heading = "Sandbox payment declined" if result["outcome"] == "declined" else "Sandbox payment needs another try"
+    body = f"""<section class="checkout-shell"><p class="eyebrow">Local sandbox result</p><h1>{heading}</h1><p>No order or paid enrollment was created, and no external payment was attempted.</p><a class="wb-primary" href="/checkout/{escape(draft_id)}/review">Choose another local result</a><a href="/specializations/deep-learning">Back to the Specialization</a></section>"""
+    return HTMLResponse(_page(request, "Local sandbox result", body, language="en"))
 
 
 @app.get("/learn/{course_id}", response_class=HTMLResponse)
 def course_detail(request: Request, course_id: str) -> str:
     record = _record_by_id(course_id)
-    if record is None or record["type"] != "course":
+    if record is None:
+        title = _source_path_title(request.url.path)
+        return _public_source_landing(
+            request,
+            title=title,
+            description="Explore this source-backed course and related local learning records.",
+        )
+    if record["type"] != "course":
         raise HTTPException(status_code=404)
+    if course_id == "neural-networks-deep-learning":
+        _backend, _auth, _token, session = _request_session(request)
+        body = render_neural_networks_course_body(
+            course=record,
+            authenticated=bool(session["authenticated"]),
+        )
+        return _page(
+            request,
+            record["title"],
+            body,
+            body_class="source-course-detail-page",
+            document_title="Neural Networks and Deep Learning | Coursera",
+            language="en",
+            footer_variant="source-course",
+            login_next_path="/learn/neural-networks-deep-learning",
+        )
     syllabus = "".join(f"<li>{escape(item)}</li>" for item in record["syllabus"])
     instructors = ", ".join(escape(item) for item in record["instructors"])
     tracks = "".join(f"<li>{escape(item)}</li>" for item in record["enrollment_tracks"])
     subject_slug = SUBJECT_SLUGS[record["subject"]]
     specialization_membership = (
-        '<p>此课程属于 <a href="/specializations/deep-learning">'
-        "Deep Learning 专项课程</a></p>"
+        '<p>This course is part of the <a href="/specializations/deep-learning">'
+        "Deep Learning Specialization</a></p>"
         if record.get("parent_specialization_id") == "deep-learning-specialization"
         else ""
     )
@@ -1114,36 +1451,33 @@ def course_detail(request: Request, course_id: str) -> str:
     )
     _backend, _auth, _token, session = _request_session(request)
     enrollment_action = (
-        f"""<form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="{escape(enrollment_course_id)}"><label>报名轨道<select name="track" required><option value="free">免费学习</option><option value="audit">旁听</option></select></label><button class="wb-primary" type="submit">保存本地报名</button></form>"""
+        f"""<form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="{escape(enrollment_course_id)}"><label>Enrollment track<select name="track" required><option value="free">Free learning</option><option value="audit">Audit</option></select></label><button class="wb-primary" type="submit">Save local enrollment</button></form>"""
         if session["authenticated"]
-        else f'<a class="wb-primary" href="/login?next=/learn/{escape(record["id"])}">免费注册</a>'
+        else f'<a class="wb-primary" href="/login?next=/learn/{escape(record["id"])}">Join for Free</a>'
     )
-    localized_titles = {
-        "neural-networks-deep-learning": "神经网络与深度学习",
-    }
-    display_title = localized_titles.get(record["id"], record["title"])
+    display_title = record["title"]
     skill_chips = "".join(
         f"<span>{escape(skill)}</span>"
         for skill in (
-            "人工智能和机器学习",
-            "深度学习",
-            "人工智能",
-            "模型优化",
-            "模型训练",
-            "卷积神经网络",
-            "应用机器学习",
-            "监督学习",
-            "机器学习方法",
+            "Artificial Intelligence and Machine Learning",
+            "Deep Learning",
+            "Artificial Intelligence",
+            "Model Optimization",
+            "Model Training",
+            "Convolutional Neural Networks",
+            "Applied Machine Learning",
+            "Supervised Learning",
+            "Machine Learning Methods",
         )
     )
     body = f"""
-<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/browse">浏览</a><span>›</span><a href="/browse/{escape(subject_slug)}">{escape(SUBJECTS_ZH[record["subject"]])}</a><span>›</span>机器学习</nav>
-<section class="course-hero source-course-hero" data-course-detail="{escape(record["id"])}"><div><p class="provider">{escape(record["provider"])}</p><h1>{escape(display_title)}</h1>{specialization_membership}<p>位教师：<strong>{instructors}</strong> <span class="badge">顶尖授课教师</span></p>{enrollment_action}<a class="secondary-button" href="/learn/{escape(record["id"])}/preview">预览课程</a></div><div class="course-orbit" aria-hidden="true"></div></section>
-<section class="course-stats"><div><strong>4 个模块</strong><span>深入了解一个主题并学习基础知识。</span></div><div><strong>{record["rating"]:.1f} ★</strong><span>123,795 条评论</span></div><div><strong>中级 等级</strong><span>推荐体验</span></div><div><strong>灵活的计划</strong><span>3 周 在 10 小时 一周，自行安排学习进度</span></div><div><strong>👍 96%</strong><span>大多数学生喜欢此课程</span></div></section>
-<nav class="course-tabs" aria-label="课程详情"><a href="#about">关于</a><a href="#outcomes">结果</a><a href="#modules">单元</a><a href="#recommendations">推荐</a><a href="#reviews">评价</a><a href="#enroll">审阅</a></nav>
-<section id="about" class="course-source-detail"><h2>您将获得的技能</h2><div class="skill-chip-row">{skill_chips}</div>{_evidence_note(record)}<h2>您将学习的工具</h2><p>{escape(record["prerequisites"])}</p></section>
-<section class="detail-grid course-lower-detail"><article id="modules"><h2>课程模块</h2><ol>{syllabus}</ol></article><article><h2>讲师</h2><p>{instructors}</p></article><article><h2>先修知识</h2><p>{escape(record["prerequisites"])}</p></article><article id="reviews"><h2>评论</h2><p>{escape(record["reviews_summary"])}</p></article><article><h2>价格</h2><p>{escape(record["pricing"])}</p></article><article id="enroll"><h2>报名选项</h2><ul>{tracks}</ul></article></section>"""
-    return _page(request, record["title"], body)
+<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/browse">Browse</a><span>›</span><a href="/browse/{escape(subject_slug)}">{escape(record["subject"])}</a><span>›</span>Machine Learning</nav>
+<section class="course-hero source-course-hero" data-course-detail="{escape(record["id"])}"><div><p class="provider">{escape(record["provider"])}</p><h1>{escape(display_title)}</h1>{specialization_membership}<p>Instructor: <strong>{instructors}</strong> <span class="badge">Top Instructor</span></p>{enrollment_action}</div><div class="course-orbit" aria-hidden="true"></div></section>
+<section class="course-stats"><div><strong>4 modules</strong><span>Gain insight into a topic and learn the fundamentals.</span></div><div><strong>{record["rating"]:.1f} ★</strong><span>123,795 reviews</span></div><div><strong>Intermediate level</strong><span>Recommended experience</span></div><div><strong>Flexible schedule</strong><span>3 weeks at 10 hours a week; learn at your own pace</span></div><div><strong>👍 96%</strong><span>Most learners liked this course</span></div></section>
+<nav class="course-tabs" aria-label="Course details"><a href="#about">About</a><a href="#outcomes">Outcomes</a><a href="#modules">Modules</a><a href="#recommendations">Recommendations</a><a href="#reviews">Reviews</a><a href="#enroll">Enrollment</a></nav>
+<section id="about" class="course-source-detail"><h2>Skills you'll gain</h2><div class="skill-chip-row">{skill_chips}</div>{_evidence_note(record)}<h2>Tools you'll learn</h2><p>{escape(record["prerequisites"])}</p></section>
+<section class="detail-grid course-lower-detail"><article id="modules"><h2>Course modules</h2><ol>{syllabus}</ol></article><article><h2>Instructors</h2><p>{instructors}</p></article><article><h2>Prerequisites</h2><p>{escape(record["prerequisites"])}</p></article><article id="reviews"><h2>Reviews</h2><p>{escape(record["reviews_summary"])}</p></article><article><h2>Pricing</h2><p>{escape(record["pricing"])}</p></article><article id="enroll"><h2>Enrollment options</h2><ul>{tracks}</ul></article></section>"""
+    return _page(request, record["title"], body, language="en")
 
 
 def _auth_page(
@@ -1151,24 +1485,29 @@ def _auth_page(
 ) -> str:
     if kind == "login":
         body = f"""
-<section class="auth-modal-shell"><div class="auth-modal-backdrop" aria-hidden="true"><div class="auth-modal-course"><p>DeepLearning.AI</p><strong>神经网络与深度学习</strong><span>免费注册后开始学习</span></div></div><div class="auth-modal-card auth-card"><button class="auth-modal-close" type="button" aria-label="关闭">×</button><p class="eyebrow">Coursera</p><h1>登录或创建账户</h1><p class="safe-note" id="credential-note">此离线 clone 不会将凭据提交到 Coursera 或任何外部服务；仅使用合成的 .test 账号。</p><form class="auth-form" action="/auth/login" method="post" aria-describedby="credential-note" autocomplete="off"><input type="hidden" name="next" value="{escape(next_path)}"><label>电子邮件<input type="email" name="email" placeholder="learner@coursera.test" required></label><label>密码<input type="password" name="password" placeholder="输入密码" required></label><button type="submit">继续</button></form><div class="identity-options"><a href="/auth/provider/google">继续使用 Google</a><a href="/auth/provider/facebook">继续使用 Facebook</a><a href="/auth/provider/apple">继续使用 Apple</a></div><a href="/account-recovery">登录时遇到问题？</a><p>还没有账户？<a href="/signup">免费注册</a></p><p>继续即表示您同意 Coursera 的<a href="/help#terms">使用条款</a>和<a href="/help#terms">隐私声明</a>。</p></div></section>"""
-        return _page(request, "Login - Continue Learning", body)
+<section class="auth-modal-shell"><div class="auth-modal-backdrop" aria-hidden="true"><div class="auth-modal-course"><p>DeepLearning.AI</p><strong>Neural Networks and Deep Learning</strong><span>Start learning after you sign in</span></div></div><div class="auth-modal-card auth-card"><button class="auth-modal-close" type="button" aria-label="Close">×</button><p class="eyebrow">Coursera</p><h1>Log in or create an account</h1><p class="safe-note" id="credential-note">Credentials entered here are local test data and are never sent to Coursera or another external service.</p><form class="auth-form" action="/auth/login" method="post" aria-describedby="credential-note" autocomplete="off"><input type="hidden" name="next" value="{escape(next_path)}"><label>Email<input type="email" name="email" placeholder="learner@coursera.test" required></label><label>Password<input type="password" name="password" placeholder="Enter your password" required></label><button type="submit">Continue</button></form><div class="identity-options"><a href="/auth/provider/google">Continue with Google</a><a href="/auth/provider/facebook">Continue with Facebook</a><a href="/auth/provider/apple">Continue with Apple</a></div><a href="/account-recovery">Having trouble logging in?</a><p>New to Coursera? <a href="/signup">Join for Free</a></p><p>By continuing, you agree to Coursera's <a href="/terms">Terms of Use</a> and acknowledge the <a href="/privacy">Privacy Notice</a>.</p></div></section>"""
+        return _page(request, "Login - Continue Learning", body, language="en")
     body = """
-<section class="auth-modal-shell"><div class="auth-modal-backdrop" aria-hidden="true"><div class="auth-modal-course"><p>DeepLearning.AI</p><strong>从一门课程开始新的学习旅程</strong><span>本地数据仅保存在此 clone 中</span></div></div><div class="auth-modal-card auth-card"><button class="auth-modal-close" type="button" aria-label="关闭">×</button><p class="eyebrow">Coursera</p><h1>登录或创建账户</h1><p class="safe-note" id="signup-note">仅使用合成的 .test 数据。注册验证代码只会出现在 site-33 本地收件箱中。</p><form class="auth-form" action="/auth/registration/start" method="post" aria-describedby="signup-note" autocomplete="off"><label>姓名<input name="full_name" placeholder="离线学习者" required></label><label>电子邮件<input type="email" name="email" placeholder="learner@coursera.test" required></label><label>创建密码<input type="password" name="password" placeholder="创建密码" required></label><button type="submit">免费加入</button></form><div class="identity-options"><a href="/auth/provider/google">继续使用 Google</a><a href="/auth/provider/facebook">继续使用 Facebook</a><a href="/auth/provider/apple">继续使用 Apple</a></div><p>验证代码仅显示在受此浏览器会话保护的本地收件箱中，不会发送真实邮件。</p><p>继续即表示您同意 Coursera 的<a href="/help#terms">使用条款</a>和<a href="/help#terms">隐私声明</a>。</p><p>已有账户？<a href="/login">登录</a></p></div></section>"""
-    return _page(request, "Signup - Start Learning", body)
+<section class="auth-modal-shell"><div class="auth-modal-backdrop" aria-hidden="true"><div class="auth-modal-course"><p>DeepLearning.AI</p><strong>Start a new learning journey</strong><span>Local data stays inside this offline site</span></div></div><div class="auth-modal-card auth-card"><button class="auth-modal-close" type="button" aria-label="Close">×</button><p class="eyebrow">Coursera</p><h1>Log in or create an account</h1><p class="safe-note" id="signup-note">Use synthetic .test data only. Local verification guidance appears only in this browser session.</p><form class="auth-form" action="/auth/registration/start" method="post" aria-describedby="signup-note" autocomplete="off"><label>Full name<input name="full_name" placeholder="Local learner" required></label><label>Email<input type="email" name="email" placeholder="learner@coursera.test" required></label><label>Create a password<input type="password" name="password" placeholder="Create a password" required></label><button type="submit">Join for Free</button></form><div class="identity-options"><a href="/auth/provider/google">Continue with Google</a><a href="/auth/provider/facebook">Continue with Facebook</a><a href="/auth/provider/apple">Continue with Apple</a></div><p>Verification guidance stays in the local inbox; no real email is sent.</p><p>By continuing, you agree to Coursera's <a href="/terms">Terms of Use</a> and acknowledge the <a href="/privacy">Privacy Notice</a>.</p><p>Already have an account? <a href="/login">Log in</a></p></div></section>"""
+    return _page(request, "Signup - Start Learning", body, language="en")
 
 
 @app.get("/login", response_class=HTMLResponse)
 def login(request: Request) -> HTMLResponse:
     backend, _auth, token, _session = _request_session(request)
     next_path = _safe_next_path(request.query_params.get("next"))
-    response = HTMLResponse(
-        _auth_page(
-            request,
-            "login",
-            next_path=next_path,
-        )
-    )
+    body = render_home_body()
+    response = HTMLResponse(_page(
+        request,
+        "Online Courses, Certificates, & Degrees",
+        body,
+        body_class="source-home-page catalog-landing",
+        document_title="Coursera | Online Courses, Certificates, & Degrees",
+        language="en",
+        footer_variant="source-browse",
+        open_login=True,
+        login_next_path=next_path,
+    ))
     _set_session_cookie(response, backend, token)
     return response
 
@@ -1176,7 +1515,18 @@ def login(request: Request) -> HTMLResponse:
 @app.get("/signup", response_class=HTMLResponse)
 def signup(request: Request) -> HTMLResponse:
     backend, _auth, token, _session = _request_session(request)
-    response = HTMLResponse(_auth_page(request, "signup"))
+    response = HTMLResponse(
+        _page(
+            request,
+            "Signup - Start Learning",
+            render_home_body(),
+            body_class="source-home-page catalog-landing",
+            document_title="Coursera | Online Courses, Certificates, & Degrees",
+            language="en",
+            footer_variant="source-browse",
+            open_login=True,
+        )
+    )
     _set_session_cookie(response, backend, token)
     return response
 
@@ -1232,6 +1582,38 @@ async def auth_login(request: Request) -> Response:
         )
     except (AuthError, ValueError) as exc:
         return _auth_failure(request, str(exc), status_code=401)
+    response = RedirectResponse(_safe_next_path(values.get("next")), status_code=303)
+    _set_session_cookie(response, backend, str(signed_in["session_token"]))
+    return response
+
+
+@app.post("/auth/local-learner")
+async def auth_local_learner(request: Request) -> Response:
+    """Enter the seeded empty learner without collecting real credentials."""
+
+    backend, auth, token, _session = _request_session(request)
+    values = await _form_values(request)
+    signed_in = auth.sign_in(
+        token,
+        email="empty@coursera.test",
+        password="Empty-Learner-33",
+    )
+    response = RedirectResponse(_safe_next_path(values.get("next")), status_code=303)
+    _set_session_cookie(response, backend, str(signed_in["session_token"]))
+    return response
+
+
+@app.post("/auth/learning-demo")
+async def auth_learning_demo(request: Request) -> Response:
+    """Enter the seeded enrolled learner for the offline learning journeys."""
+
+    backend, auth, token, _session = _request_session(request)
+    values = await _form_values(request)
+    signed_in = auth.sign_in(
+        token,
+        email="progress@coursera.test",
+        password="Progress-Learner-33",
+    )
     response = RedirectResponse(_safe_next_path(values.get("next")), status_code=303)
     _set_session_cookie(response, backend, str(signed_in["session_token"]))
     return response
@@ -1310,9 +1692,75 @@ def my_learning(request: Request) -> HTMLResponse:
     except HTTPException:
         return _permission_page(request, "Sign in to view My Learning")
     enrollments = learning_db.list_enrollments(subject)
+    profile = learning_db.get_profile(subject)
+    if learning_db.has_active_enrollment(subject):
+        raw_tab = request.query_params.get("myLearningTab")
+        if raw_tab not in {"IN_PROGRESS", "COMPLETED", "CERTIFICATES"}:
+            raw_tab = {
+                "completed": "COMPLETED",
+                "certificates": "CERTIFICATES",
+            }.get(request.query_params.get("status", ""), "IN_PROGRESS")
+        course_state = assignment_db.course_access(subject)
+        source_body = enrolled_page.render_my_learning_enrolled(
+            profile, raw_tab, course_state
+        )
+        legacy_state = learning_db.learning_state(subject)
+        review = learning_db.get_review(subject, "deep-learning-specialization")
+        rating = int(review["rating"]) if review else 5
+        review_text = str(review["review_text"]) if review else ""
+        rating_options = "".join(
+            f'<option value="{value}"{" selected" if value == rating else ""}>{value} stars</option>'
+            for value in range(1, 6)
+        )
+        legacy_status = {
+            "IN_PROGRESS": "in-progress",
+            "COMPLETED": "completed",
+            "CERTIFICATES": "certificates",
+        }[raw_tab]
+        legacy_tabs = "".join(
+            f'<a class="{"is-active" if legacy_status == key else ""}" href="{href}">{label}</a>'
+            for key, href, label in (
+                ("in-progress", "/my-learning", "In Progress"),
+                ("completed", "/my-learning?status=completed", "Completed"),
+                ("certificates", "/my-learning?status=certificates", "Certificates"),
+            )
+        )
+        completed_count = len(legacy_state["completed_lessons"])
+        certificate = (
+            "Certificate available"
+            if legacy_state["certificate_available"]
+            else "Certificate available after all lessons and quizzes"
+        )
+        legacy_empty = (
+            '<span class="wb-sr-only">You have no completed courses yet.</span>'
+            if raw_tab == "COMPLETED" and not legacy_state["certificate_available"]
+            else '<span class="wb-sr-only">You have no certificates yet.</span>'
+            if raw_tab == "CERTIFICATES" and not legacy_state["certificate_available"]
+            else ""
+        )
+        legacy_tools = f"""<details class="legacy-learning-tools"><summary>Learning tools</summary><nav class="wb-sr-only">{legacy_tabs}</nav>{legacy_empty}<span class="wb-sr-only">Deep Learning Specialization</span><div class="learning-actions"><a data-resume-lesson="{escape(legacy_state['resume_lesson_id'])}" href="/learn/neural-networks-deep-learning/lesson/{escape(legacy_state['resume_lesson_id'])}" title="Continue learning">Continue learning</a><a href="/learning/progress">{completed_count} of {len(learning_db.LESSONS)} lessons completed</a><a href="/learning/bookmarks">Saved lessons ({len(legacy_state['bookmarks'])})</a><span>{certificate}</span></div><section class="legacy-enrollment-cards"><h2>Enrollment management</h2><div class="card-grid">{_enrollment_rows(enrollments)}</div></section><section class="learning-review"><h2>Course review</h2><form class="auth-form" action="/learning/review" method="post"><label>Rating<select name="rating" required>{rating_options}</select></label><label>Review<textarea name="review_text" required>{escape(review_text)}</textarea></label><button type="submit">Save local review</button></form></section></details>"""
+        body = source_body + legacy_tools
+        return HTMLResponse(
+            _page(
+                request,
+                "My Learning",
+                body,
+                language="en",
+                body_class="authenticated-learning-page",
+            )
+        )
+    requested_status = request.query_params.get("status", "in-progress")
+    selected_status = (
+        requested_status
+        if requested_status in {"in-progress", "completed", "certificates"}
+        else "in-progress"
+    )
     learning_tools = ""
+    state = None
     if learning_db.has_active_enrollment(subject):
         state = learning_db.learning_state(subject)
+        completed_count = len(state["completed_lessons"])
+        lesson_count = len(learning_db.LESSONS)
         certificate = (
             "Certificate available"
             if state["certificate_available"]
@@ -1325,9 +1773,230 @@ def my_learning(request: Request) -> HTMLResponse:
             f'<option value="{rating}"{" selected" if rating == current_rating else ""}>{rating} stars</option>'
             for rating in range(1, 6)
         )
-        learning_tools = f"""<div class="learning-actions"><a data-resume-lesson="{escape(state["resume_lesson_id"])}" href="/learn/neural-networks-deep-learning/lesson/{escape(state["resume_lesson_id"])}">继续学习</a><span>{certificate}</span></div><section class="learning-review"><h2>课程评价</h2><p>您的本地评价可随时更新。</p><form class="auth-form" action="/learning/review" method="post"><label>评分<select name="rating" required>{rating_options}</select></label><label>评价<textarea name="review_text" required>{escape(current_review)}</textarea></label><button type="submit">保存本地评价</button></form></section>"""
-    body = f"""<section class="learning-page"><p class="eyebrow">site-33 学习者</p><h1>我的学习</h1><p>报名、进度和书签均保留在此离线 clone 中。</p>{learning_tools}<section class="wb-section"><div class="card-grid">{_enrollment_rows(enrollments)}</div></section><nav class="learning-history-links"><a href="/account/preferences">学习偏好</a><a href="/account/history">报名历史</a><a href="/orders">订单历史</a></nav></section>"""
-    return HTMLResponse(_page(request, "My Learning", body))
+        learning_tools = f"""<div class="learning-actions"><a data-resume-lesson="{escape(state["resume_lesson_id"])}" href="/learn/neural-networks-deep-learning/lesson/{escape(state["resume_lesson_id"])}">Continue learning</a><a href="/learning/progress">{completed_count} of {lesson_count} lessons completed</a><a href="/learning/bookmarks">Saved lessons ({len(state["bookmarks"])})</a><span>{certificate}</span></div><section class="learning-review"><h2>Course review</h2><p>Your local review can be updated at any time.</p><form class="auth-form" action="/learning/review" method="post"><label>Rating<select name="rating" required>{rating_options}</select></label><label>Review<textarea name="review_text" required>{escape(current_review)}</textarea></label><button type="submit">Save local review</button></form></section>"""
+    visible_enrollments = enrollments
+    status_empty = ""
+    if selected_status in {"completed", "certificates"}:
+        visible_enrollments = enrollments if state and state["certificate_available"] else []
+        if not visible_enrollments:
+            message = (
+                "You have no completed courses yet."
+                if selected_status == "completed"
+                else "You have no certificates yet."
+            )
+            status_empty = f'<section class="learning-empty-state"><h2>{message}</h2><p>Continue learning to make progress toward this collection.</p></section>'
+        learning_tools = ""
+    empty_state = "" if enrollments else """<section class="learning-empty-state" aria-labelledby="learning-empty-heading"><span class="learning-evidence-crop learning-empty-illustration"><img src="/static/authenticated-my-learning-evidence.png" alt=""></span><h2 id="learning-empty-heading">Start your learning journey</h2><p>Enroll in a course to begin tracking progress in My Learning. Set a career goal for more personalized recommendations.</p></section>"""
+    tabs = '<nav class="learning-tabs" aria-label="My Learning sections">' + "".join(
+        f'<a class="{"is-active" if selected_status == key else ""}" href="{href}">{label}</a>'
+        for key, href, label in (
+            ("in-progress", "/my-learning", "In Progress"),
+            ("completed", "/my-learning?status=completed", "Completed"),
+            ("certificates", "/my-learning?status=certificates", "Certificates"),
+        )
+    ) + "</nav>"
+    selected_goal = str(profile["learning_goal"]).strip()
+    goal_copy = (
+        escape(selected_goal)
+        if selected_goal
+        else "Start a career as a Data Scientist, Machine Learning Engineer, Content Creator, or 5 more"
+    )
+    greeting = f"""<section class="learning-greeting" data-learning-greeting><span class="learning-avatar">L</span><div><h1>Good evening, learner</h1><p>Your career goal: <strong>{goal_copy}</strong> &nbsp; <a href="/onboarding/learning-goal">Edit goal</a></p></div><span class="learning-evidence-crop learning-greeting-illustration"><img src="/static/authenticated-my-learning-evidence.png" alt=""></span></section>"""
+    enrolled_content = f"""{learning_tools}{status_empty}<section class="wb-section"><div class="card-grid">{_enrollment_rows(visible_enrollments)}</div></section><nav class="learning-history-links"><a href="/account/preferences">Learning preferences</a><a href="/account/history">Enrollment history</a><a href="/orders">Order history</a></nav>""" if enrollments else ""
+    surface_state = "my-learning-enrolled" if enrollments else "my-learning-empty"
+    body = f"""<section class="learning-page" data-authenticated-surface="{surface_state}"><h1>My Learning</h1>{greeting}{tabs}{empty_state}{enrolled_content}</section>"""
+    return HTMLResponse(_page(request, "My Learning", body, language="en", body_class="authenticated-learning-page"))
+
+
+@app.get("/my-purchases", response_class=HTMLResponse)
+def my_purchases(request: Request) -> Response:
+    """Keep the source account-menu destination and its canonical transactions path."""
+    try:
+        _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to view purchases")
+    return RedirectResponse("/my-purchases/transactions", status_code=303)
+
+
+@app.get("/my-purchases/transactions", response_class=HTMLResponse)
+def my_purchase_transactions(request: Request) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to view purchases")
+    orders = checkout.list_orders(subject)
+    order_state = (
+        '<p class="empty-state">No purchases found in your history. <a href="/browse">Browse courses offering Certificates now.</a></p>'
+        if not orders
+        else _order_rows(orders)
+    )
+    def purchase_card(
+        *, title: str, provider: str, kind: str, href: str, image: str
+    ) -> str:
+        return f"""<a class="purchase-card" href="{escape(href, quote=True)}"><img src="{escape(image, quote=True)}" alt=""><span>{escape(provider)}</span><strong>{escape(title)}</strong><small>{escape(kind)}</small></a>"""
+
+    recent_cards = (
+        ("Deep Learning", "DeepLearning.AI", "Specialization", "/specializations/deep-learning", "/static/home/cards/deep-learning.png"),
+        ("Neural Networks and Deep Learning", "DeepLearning.AI", "Course", "/learn/neural-networks-deep-learning", "/static/deep-learning/course-neural-networks.png"),
+        ("Google AI", "Google", "Professional Certificate", "/professional-certificates/google-ai", "/static/home/cards/google-ai.png"),
+    )
+    free_course_cards = (
+        ("Fundamentals of Machine Learning and Artificial Intelligence", "Amazon Web Services", "Course", "/learn/fundamentals-of-machine-learning-and-artificial-intelligence", "/static/data-science/machine-learning.png"),
+        ("ChatGPT Prompt Engineering for Developers", "DeepLearning.AI", "Guided Project", "/projects/chatgpt-prompt-engineering-for-developers-project", "/static/home/cards/prompt-engineering.png"),
+        ("Algorithms, Part I", "Princeton University", "Course", "/learn/algorithms-part1", "/static/home/cards/python-3-programming.png"),
+        ("LangChain for LLM Application Development", "DeepLearning.AI", "Guided Project", "/projects/langchain-for-llm-application-development-project", "/static/data-science/genai-everyone.png"),
+    )
+    degree_cards = (
+        ("Master of Advanced Study in Engineering", "University of California, Berkeley", "Degree", "/degrees/mas-engineering-berkeley", "/static/browse/lower/degree-berkeley.jpg"),
+        ("Master of Science in Data Analytics Engineering", "Northeastern University", "Degree", "/degrees/ms-data-analytics-engineering-northeastern", "/static/browse/lower/degree-northeastern.jpg"),
+        ("Bachelor of Science in Computer Science", "University of London", "Degree", "/degrees/bachelor-of-science-computer-science-london", "/static/browse/lower/degree-london.jpg"),
+        ("BSc Data Science", "University of Huddersfield", "Degree", "/degrees/bsc-data-science-huddersfield", "/static/browse/lower/degree-huddersfield.jpg"),
+    )
+
+    def recommendation_section(
+        heading: str,
+        cards: tuple[tuple[str, str, str, str, str], ...],
+        *, show_more: bool = False,
+        more_href: str = "/search",
+    ) -> str:
+        rendered_cards = "".join(
+            purchase_card(
+                title=title, provider=provider, kind=kind, href=href, image=image
+            )
+            for title, provider, kind, href, image in cards
+        )
+        more = (
+            f'<form class="purchase-show-more-form" action="{escape(more_href, quote=True)}" method="get"><button class="purchase-show-more" type="submit">Show 8 more</button></form>'
+            if show_more
+            else ""
+        )
+        return f"""<section class="purchase-recommendations"><h2>{escape(heading)}</h2><div class="purchase-card-grid">{rendered_cards}</div>{more}</section>"""
+
+    recommendations = "".join(
+        (
+            recommendation_section("Recently Viewed Products", recent_cards),
+            recommendation_section(
+                "Get Started with These Free Courses",
+                free_course_cards,
+                show_more=True,
+                more_href="/search",
+            ),
+            recommendation_section(
+                "Earn Your Degree", degree_cards, show_more=True, more_href="/degrees"
+            ),
+        )
+    )
+    body = f"""<section class="purchases-surface"><div class="purchases-content"><h1>Purchases</h1><p>Need more help? Check out our <a href="/help">Learner Help Center</a> and <a href="/terms">Terms of Use</a>.</p><nav class="surface-tabs" aria-label="Purchase sections"><a class="is-active" href="/my-purchases/transactions">Payment History</a></nav><section class="purchase-history">{order_state}</section>{recommendations}</div></section>"""
+    return HTMLResponse(_page(request, "My Purchases", body, language="en"))
+
+
+@app.get("/account-settings", response_class=HTMLResponse)
+def account_settings(request: Request) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to view account settings")
+    profile = learning_db.get_profile(subject)
+    preferences = learning_db.get_preferences(subject)
+    timezone_options = ("UTC", "Asia/Shanghai", "Europe/London", "America/Los_Angeles")
+    timezone_select = "".join(
+        f'<option value="{zone}"{" selected" if zone == preferences["timezone"] else ""}>{zone}</option>'
+        for zone in timezone_options
+    )
+    body = f"""<section class="settings-surface"><h1>Account settings</h1><nav class="settings-tabs"><a class="is-active" href="/account-settings">Account</a><a href="/account/preferences">Communication Preferences</a><a href="/account/preferences">Notes &amp; Highlights</a><a href="/account/preferences">Calendar Sync</a></nav><section class="settings-card"><h2>Personal information</h2><p>Update your personal details and how others see you.</p><form class="settings-form" action="/account-settings" method="post"><div class="settings-fields"><label>Full name<input name="display_name" value="{escape(str(profile['display_name']), quote=True)}" maxlength="80" required></label><label>Email address<input value="local.learner@coursera.test" readonly></label><label>Timezone<select name="timezone">{timezone_select}</select></label><label>Language<select disabled><option>Select a language</option></select></label></div><button type="submit">Save Changes</button></form></section><section class="settings-card"><h2>Profile photo</h2><p>Maximum size: 1MB. Supported formats: JPG, GIF, or PNG.</p><button type="button" disabled aria-describedby="photo-disabled">Upload image</button><p id="photo-disabled">Profile uploads are unavailable in this offline clone.</p></section><section class="settings-card settings-row"><div><h2>Appearance</h2><p>Personalize the way Coursera appears through theming controls.</p></div><select disabled aria-describedby="appearance-disabled"><option>Light mode</option></select><span id="appearance-disabled">Appearance changes are unavailable offline.</span></section><section class="settings-card"><h2>Name verification</h2><p>Verify your real name to make sure you're able to receive a certificate when you complete a course or Specialization.</p><button type="button" disabled aria-describedby="verification-disabled">Verify my name</button><p id="verification-disabled">Name verification is unavailable offline.</p></section><section class="settings-card"><h2>Change password</h2><p>Update your password regularly to keep your account secure.</p><a class="settings-button" href="/account-recovery">Change Password</a></section><section class="settings-card settings-row"><div><h2>Two factor authentication</h2><p>Two-factor authentication adds an additional layer of security to your local account.</p></div><span class="settings-toggle" aria-label="Off"></span></section><section class="settings-card"><h2>Connected devices</h2><p>If your account has been logged into on multiple devices, you can log out from here.</p><form action="/auth/logout" method="post"><button type="submit">Log out from all devices</button></form></section><section class="settings-card"><h2>Linked accounts</h2><p>Apple and Google remain unlinked in this offline clone.</p></section><section class="settings-card"><h2>Learner data report</h2><p>Request a report of all learner data stored by this local Coursera account.</p><input value="local.learner@coursera.test" readonly><button type="button" disabled aria-describedby="report-disabled">Send report</button><p id="report-disabled">Reports are unavailable offline.</p></section><section class="settings-card danger"><h2>Delete account</h2><p>This action cannot be undone. Cancel any active subscriptions before you delete your account.</p><button type="button" disabled aria-describedby="delete-disabled">Delete account</button><p id="delete-disabled">Account deletion is unavailable offline.</p></section></section>"""
+    return HTMLResponse(_page(request, "Account Settings", body, language="en"))
+
+
+@app.post("/account-settings")
+async def save_account_settings(request: Request) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to update account settings")
+    values = await _form_values(request)
+    try:
+        learning_db.update_account_settings(
+            subject,
+            display_name=values.get("display_name", ""),
+            timezone=values.get("timezone", ""),
+        )
+    except (LookupError, ValueError) as exc:
+        return _auth_failure(request, str(exc), status_code=422)
+    return RedirectResponse("/account-settings", status_code=303)
+
+
+@app.get("/updates", response_class=HTMLResponse)
+def updates(request: Request) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to view updates")
+    preferences = learning_db.get_update_preferences(subject)
+    product_checked = " checked" if preferences["product_updates"] else ""
+    course_checked = " checked" if preferences["course_updates"] else ""
+    body = f"""<section class="updates-surface"><h1>Updates</h1><section class="update-item"><span class="update-logo">C</span><div><small>4 days ago</small><h2>Please confirm your email</h2><p>You've registered for Coursera using your local learner email. Please check the local account guidance and confirm.</p></div></section><section class="settings-card"><h2>Notification preferences</h2><p>Choose which local updates appear in your account. No external messages are sent.</p><form class="auth-form" action="/updates" method="post"><label><input type="checkbox" name="product_updates" value="on"{product_checked}> Product and platform updates</label><label><input type="checkbox" name="course_updates" value="on"{course_checked}> Course and learning updates</label><button type="submit">Save notification preferences</button></form></section></section>"""
+    return HTMLResponse(_page(request, "Updates", body, language="en"))
+
+
+@app.post("/updates")
+async def save_updates(request: Request) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to update notifications")
+    values = await _form_values(request)
+    try:
+        learning_db.update_update_preferences(
+            subject,
+            product_updates=values.get("product_updates") in {"1", "on", "true"},
+            course_updates=values.get("course_updates") in {"1", "on", "true"},
+        )
+    except LookupError as exc:
+        return _auth_failure(request, str(exc), status_code=422)
+    return RedirectResponse("/updates", status_code=303)
+
+
+@app.get("/onboarding/learning-goal", response_class=HTMLResponse)
+def learning_goal_onboarding(request: Request) -> HTMLResponse:
+    try:
+        _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to set learning goals")
+    body = """<section class="learning-goal-page"><header><a class="wb-wordmark" href="/">coursera</a><a href="/my-learning">Exit</a></header><main><h1>Hello, learner!</h1><h2>Tell me a little about yourself so I can make the best recommendations. First, what's your goal?</h2><form class="goal-grid" action="/onboarding/learning-goal" method="post"><button type="submit" name="learning_goal" value="Start my career"><span>↗</span>Start my career</button><button type="submit" name="learning_goal" value="Change my career"><span>⇄</span>Change my career</button><button type="submit" name="learning_goal" value="Grow in my current role"><span>↗</span>Grow in my current role</button><button type="submit" name="learning_goal" value="Explore topics outside of work"><span>♧</span>Explore topics outside of work</button></form></main></section>"""
+    return HTMLResponse(_page(request, "Learning Goals", body, language="en", body_class="learning-goal-document"))
+
+
+@app.post("/onboarding/learning-goal")
+async def save_learning_goal(request: Request) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to set learning goals")
+    values = await _form_values(request)
+    selected = values.get("learning_goal", "")
+    available = {
+        "Start my career",
+        "Change my career",
+        "Grow in my current role",
+        "Explore topics outside of work",
+    }
+    if selected not in available:
+        return HTMLResponse(
+            _page(
+                request,
+                "Learning goal validation",
+                "<section class='not-found'><h1>Choose one available learning goal</h1><a href='/onboarding/learning-goal'>Return to learning goals</a></section>",
+                language="en",
+            ),
+            status_code=422,
+        )
+    profile = learning_db.get_profile(subject)
+    learning_db.update_profile(
+        subject,
+        current_role=str(profile["current_role"]) or "Learner",
+        learning_goal=selected,
+    )
+    return RedirectResponse("/my-learning", status_code=303)
 
 
 @app.get("/account/history", response_class=HTMLResponse)
@@ -1336,8 +2005,38 @@ def account_history(request: Request) -> HTMLResponse:
         _backend, _auth, _token, subject = _authenticated_subject(request)
     except HTTPException:
         return _permission_page(request, "Sign in to view enrollment history")
-    body = f"""<section class="page-heading"><p class="eyebrow">本地账户历史</p><h1>报名历史</h1><p>已取消的项目仍会保留，并且仅对其所有者可见。</p></section><section class="section"><div class="card-grid">{_enrollment_rows(learning_db.list_enrollments(subject))}</div><a href="/orders">查看订单历史</a> · <a href="/my-learning">返回我的学习</a></section>"""
-    return HTMLResponse(_page(request, "报名历史", body))
+    body = f"""<section class="page-heading"><p class="eyebrow">Local account history</p><h1>Enrollment history</h1><p>Canceled items remain visible and are shown only to their owner.</p></section><section class="section"><div class="card-grid">{_enrollment_rows(learning_db.list_enrollments(subject))}</div><a href="/orders">View order history</a> · <a href="/my-learning">Back to My Learning</a></section>"""
+    return HTMLResponse(_page(request, "Enrollment History", body, language="en"))
+
+
+@app.get("/account/history/{enrollment_id}", response_class=HTMLResponse)
+def enrollment_history_detail(request: Request, enrollment_id: int) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to view this enrollment")
+    try:
+        enrollment = learning_db.get_enrollment(subject, enrollment_id)
+    except LookupError:
+        return HTMLResponse(
+            _page(
+                request,
+                "Enrollment not found",
+                '<section class="not-found"><h1>Enrollment not found</h1><p>The record is unavailable for this local learner.</p><a href="/account/history">Back to enrollment history</a></section>',
+                language="en",
+            ),
+            status_code=404,
+        )
+    status_label = "In progress" if enrollment["status"] == "active" else "Canceled"
+    track_label = {"free": "Free learning", "audit": "Audit", "paid": "Paid"}[str(enrollment["track"])]
+    action = ""
+    if enrollment["status"] == "active":
+        if enrollment["track"] == "paid" and enrollment.get("order_id"):
+            action = f'<a class="primary-button" href="/orders/{escape(str(enrollment["order_id"]))}">Manage paid order</a>'
+        else:
+            action = f'<form action="/enrollments/{enrollment_id}/cancel" method="post"><button type="submit">Cancel enrollment</button></form>'
+    body = f'<nav class="course-breadcrumbs"><a href="/account/history">Enrollment history</a><span>›</span>{enrollment_id}</nav><section class="page-heading"><p class="eyebrow">{status_label}</p><h1>Enrollment details</h1><p>Deep Learning Specialization</p><p>{track_label} track</p><p>Created {escape(str(enrollment["created_at"]))}</p>{action}<a href="/account/history">Back to enrollment history</a> · <a href="/my-learning">Back to My Learning</a></section>'
+    return HTMLResponse(_page(request, "Enrollment Details", body, language="en"))
 
 
 @app.get("/orders", response_class=HTMLResponse)
@@ -1347,8 +2046,8 @@ def order_history(request: Request) -> HTMLResponse:
     except HTTPException:
         return _permission_page(request, "Sign in to view order history")
     records = checkout.list_orders(subject)
-    body = f"""<section class="page-heading"><p class="eyebrow">仅限所有者的本地历史</p><h1>订单历史</h1><p>只有模拟成功的 local-sandbox 结账会创建持久订单。已取消的快照仍会显示。</p></section><section class="section"><div class="card-grid">{_order_rows(records)}</div><a href="/my-learning">返回我的学习</a></section>"""
-    return HTMLResponse(_page(request, "订单历史", body))
+    body = f"""<section class="page-heading"><p class="eyebrow">Owner-only local history</p><h1>Order history</h1><p>Only successful local-sandbox checkouts create persistent orders. Canceled snapshots remain visible.</p></section><section class="section"><div class="card-grid">{_order_rows(records)}</div><a href="/my-learning">Back to My Learning</a></section>"""
+    return HTMLResponse(_page(request, "Order History", body, language="en"))
 
 
 @app.get("/orders/{order_id}", response_class=HTMLResponse)
@@ -1362,13 +2061,13 @@ def order_detail(request: Request, order_id: str) -> HTMLResponse:
     except LookupError:
         return _order_not_found(request)
     cancellation = (
-        f"""<form action="/orders/{escape(order_id)}/cancel" method="post"><button type="submit">取消本地付费报名</button></form>"""
+        f"""<form action="/orders/{escape(order_id)}/cancel" method="post"><button type="submit">Cancel local paid enrollment</button></form>"""
         if order["status"] == "PAID"
-        else "<p>该订单及其付费报名已经取消；不可变快照仍保留在历史中。</p>"
+        else "<p>This order and paid enrollment were canceled; the immutable snapshot remains in history.</p>"
     )
-    status_label = "已付款" if order["status"] == "PAID" else "已取消"
-    body = f"""<nav class="course-breadcrumbs"><a href="/orders">订单历史</a><span>›</span>{escape(order_id)}</nav><section class="checkout-shell" data-order-status="{escape(str(order["status"]))}"><p class="eyebrow">本地 sandbox 订单</p><h1>{status_label}</h1><p>订单 {escape(order_id)}</p><p>深度学习专项课程 · {escape(str(order["plan_label"]))}</p><p class="safe-note">这是不可变的本地模拟快照，没有发生真实付款或外部购买。</p>{_checkout_totals(order)}{cancellation}<a href="/orders">返回订单历史</a><a href="/specializations/deep-learning">返回专项课程</a></section>"""
-    return HTMLResponse(_page(request, "订单详情", body))
+    status_label = "Paid" if order["status"] == "PAID" else "Canceled"
+    body = f"""<nav class="course-breadcrumbs"><a href="/orders">Order history</a><span>›</span>{escape(order_id)}</nav><section class="checkout-shell" data-order-status="{escape(str(order["status"]))}"><p class="eyebrow">Local sandbox order</p><h1>{status_label}</h1><p>Order {escape(order_id)}</p><p>Deep Learning Specialization · {escape(str(order["plan_label"]))}</p><p class="safe-note">This immutable local simulation snapshot did not create a real payment or purchase.</p>{_checkout_totals(order)}{cancellation}<a href="/orders">Back to Order history</a><a href="/specializations/deep-learning">Back to Specialization</a></section>"""
+    return HTMLResponse(_page(request, "Order Details", body, language="en"))
 
 
 @app.post("/orders/{order_id}/cancel")
@@ -1436,6 +2135,382 @@ def cancel_enrollment(request: Request, enrollment_id: int) -> Response:
 
 
 @app.get(
+    "/learn/neural-networks-deep-learning/home/welcome",
+    response_class=HTMLResponse,
+)
+def enrolled_course_welcome(request: Request) -> Response:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    return RedirectResponse(
+        "/learn/neural-networks-deep-learning/home/module/1", status_code=303
+    )
+
+
+@app.get(
+    "/learn/neural-networks-deep-learning/home/module/{week}",
+    response_class=HTMLResponse,
+)
+def enrolled_course_module(request: Request, week: int) -> HTMLResponse:
+    if week not in {1, 2, 3, 4}:
+        return _learning_not_found(request)
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    state = assignment_db.course_access(access)
+    return _enrolled_response(
+        request,
+        str(enrolled_course.MODULES[week - 1]["title"]),
+        enrolled_page.render_course_home(
+            state,
+            week,
+            weekly_target=learning_db.get_weekly_target(access),
+        ),
+    )
+
+
+@app.post("/learn/neural-networks-deep-learning/weekly-target")
+async def enrolled_weekly_target(request: Request) -> Response:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    values = await _form_values(request)
+    try:
+        minutes = int(values.get("minutes", ""))
+        learning_db.set_weekly_target(access, minutes)
+    except (LookupError, TypeError, ValueError) as exc:
+        return _enrolled_response(
+            request,
+            "Weekly learning target",
+            enrolled_page.validation_page(
+                "Check your weekly target",
+                str(exc),
+                "/learn/neural-networks-deep-learning/home/module/1",
+            ),
+            status_code=422,
+        )
+    return RedirectResponse(
+        "/learn/neural-networks-deep-learning/home/module/1", status_code=303
+    )
+
+
+@app.get(
+    "/learn/neural-networks-deep-learning/lecture/Cuf2f/welcome",
+    response_class=HTMLResponse,
+)
+def enrolled_welcome_lesson(request: Request) -> HTMLResponse:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    assignment_db.mark_lesson_opened(access)
+    state = assignment_db.course_access(access)
+    return _enrolled_response(
+        request,
+        "Welcome",
+        enrolled_page.render_lesson(
+            state,
+            reaction=learning_db.get_lesson_reaction(access, "welcome"),
+            issue=learning_db.latest_lesson_issue(access, "welcome"),
+        ),
+    )
+
+
+@app.post(
+    "/learn/neural-networks-deep-learning/lecture/Cuf2f/welcome/reaction"
+)
+async def enrolled_lesson_reaction(request: Request) -> Response:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    values = await _form_values(request)
+    reaction = values.get("reaction")
+    try:
+        learning_db.set_lesson_reaction(access, "welcome", reaction)
+    except (LookupError, ValueError) as exc:
+        return _enrolled_response(
+            request,
+            "Welcome",
+            enrolled_page.validation_page(
+                "Check your lesson reaction", str(exc), f"{enrolled_page.COURSE_ROOT}/lecture/Cuf2f/welcome"
+            ),
+            status_code=422,
+        )
+    return RedirectResponse(
+        "/learn/neural-networks-deep-learning/lecture/Cuf2f/welcome",
+        status_code=303,
+    )
+
+
+@app.post("/learn/neural-networks-deep-learning/lecture/Cuf2f/welcome/report")
+async def enrolled_lesson_report(request: Request) -> Response:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    values = await _form_values(request)
+    try:
+        learning_db.report_lesson_issue(
+            access, "welcome", values.get("reason", "")
+        )
+    except (LookupError, ValueError) as exc:
+        return _enrolled_response(
+            request,
+            "Welcome",
+            enrolled_page.validation_page(
+                "Check your issue report", str(exc), f"{enrolled_page.COURSE_ROOT}/lecture/Cuf2f/welcome"
+            ),
+            status_code=422,
+        )
+    return RedirectResponse(
+        "/learn/neural-networks-deep-learning/lecture/Cuf2f/welcome",
+        status_code=303,
+    )
+
+
+@app.post("/learn/neural-networks-deep-learning/notes")
+async def enrolled_save_note(request: Request) -> Response:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    values = await _form_values(request)
+    try:
+        assignment_db.save_note(access, values.get("note_text", ""))
+    except ValueError as exc:
+        return _enrolled_response(
+            request,
+            "Welcome",
+            enrolled_page.render_lesson(
+                assignment_db.course_access(access), note_error=str(exc)
+            ),
+            status_code=422,
+        )
+    return RedirectResponse(
+        "/learn/neural-networks-deep-learning/home/notes", status_code=303
+    )
+
+
+@app.post("/learn/neural-networks-deep-learning/notes/{note_id}/delete")
+def enrolled_delete_note(request: Request, note_id: int) -> Response:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    try:
+        assignment_db.delete_note(access, note_id)
+    except LookupError:
+        return _learning_not_found(request)
+    return RedirectResponse(
+        "/learn/neural-networks-deep-learning/home/notes", status_code=303
+    )
+
+
+@app.get(
+    "/learn/neural-networks-deep-learning/home/assignments",
+    response_class=HTMLResponse,
+)
+def enrolled_grades(request: Request) -> HTMLResponse:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    return _enrolled_response(
+        request,
+        "Grades",
+        enrolled_page.render_grades(assignment_db.gradebook(access)),
+    )
+
+
+@app.get(
+    "/learn/neural-networks-deep-learning/home/notes",
+    response_class=HTMLResponse,
+)
+def enrolled_notes(request: Request) -> HTMLResponse:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    query = request.query_params.get("q", "")
+    return _enrolled_response(
+        request,
+        "Notes",
+        enrolled_page.render_notes(assignment_db.list_notes(access, query), query),
+    )
+
+
+@app.get(
+    "/learn/neural-networks-deep-learning/course-inbox",
+    response_class=HTMLResponse,
+)
+def enrolled_messages(request: Request) -> HTMLResponse:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    return _enrolled_response(request, "Messages", enrolled_page.render_messages())
+
+
+@app.get(
+    "/learn/neural-networks-deep-learning/home/info",
+    response_class=HTMLResponse,
+)
+def enrolled_course_info(request: Request) -> HTMLResponse:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    return _enrolled_response(
+        request, "Course Info", enrolled_page.render_course_info()
+    )
+
+
+@app.get(
+    "/learn/neural-networks-deep-learning/resources/{resource_id}",
+    response_class=HTMLResponse,
+)
+def enrolled_resource(request: Request, resource_id: str) -> HTMLResponse:
+    if resource_id not in {str(item["id"]) for item in enrolled_course.RESOURCES}:
+        return _learning_not_found(request)
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    return _enrolled_response(
+        request, "Resource", enrolled_page.render_resource(resource_id)
+    )
+
+
+ASSIGNMENT_PATH = (
+    "/learn/neural-networks-deep-learning/assignment-submission/3KFZW/"
+    "introduction-to-deep-learning"
+)
+
+
+@app.get(ASSIGNMENT_PATH, response_class=HTMLResponse)
+def enrolled_assignment_entry(request: Request) -> HTMLResponse:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    return _enrolled_response(
+        request,
+        "Introduction to Deep Learning",
+        enrolled_page.render_assignment_entry(),
+    )
+
+
+@app.post(f"{ASSIGNMENT_PATH}/start")
+async def enrolled_assignment_start(request: Request) -> Response:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    values = await _form_values(request)
+    if values.get("honor_code") != "accepted":
+        return _enrolled_response(
+            request,
+            "Introduction to Deep Learning",
+            enrolled_page.render_assignment_entry(
+                error="Agree to the Coursera Honor Code before starting"
+            ),
+            status_code=422,
+        )
+    try:
+        assignment_db.start_or_resume_attempt(access)
+    except ValueError as exc:
+        return _enrolled_response(
+            request,
+            "Introduction to Deep Learning",
+            enrolled_page.render_assignment_entry(error=str(exc)),
+            status_code=422,
+        )
+    return RedirectResponse(f"{ASSIGNMENT_PATH}/attempt", status_code=303)
+
+
+@app.get(f"{ASSIGNMENT_PATH}/attempt", response_class=HTMLResponse)
+def enrolled_assignment_attempt(request: Request) -> Response:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    try:
+        attempt = assignment_db.current_attempt(access)
+    except LookupError:
+        return RedirectResponse(ASSIGNMENT_PATH, status_code=303)
+    if attempt["status"] == "submitted":
+        return RedirectResponse(
+            f"{ASSIGNMENT_PATH}/result/{attempt['attempt_id']}", status_code=303
+        )
+    return _enrolled_response(
+        request,
+        "Introduction to Deep Learning",
+        enrolled_page.render_assignment_attempt(
+            attempt, saved=request.query_params.get("saved") == "1"
+        ),
+    )
+
+
+@app.post(f"{ASSIGNMENT_PATH}/attempt/draft")
+async def enrolled_assignment_draft(request: Request) -> Response:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    try:
+        attempt_id, _legal_name, answers = await _assignment_form(request)
+        saved = assignment_db.save_draft(access, attempt_id, answers)
+    except (LookupError, ValueError) as exc:
+        try:
+            current = assignment_db.current_attempt(access)
+        except LookupError:
+            return _learning_not_found(request)
+        return _enrolled_response(
+            request,
+            "Check your answers",
+            enrolled_page.render_assignment_attempt(current, error=str(exc)),
+            status_code=422,
+        )
+    if saved["status"] == "submitted":
+        return RedirectResponse(
+            f"{ASSIGNMENT_PATH}/result/{saved['attempt_id']}", status_code=303
+        )
+    return RedirectResponse(f"{ASSIGNMENT_PATH}/attempt?saved=1", status_code=303)
+
+
+@app.post(f"{ASSIGNMENT_PATH}/attempt/submit")
+async def enrolled_assignment_submit(request: Request) -> Response:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    try:
+        attempt_id, legal_name, answers = await _assignment_form(request)
+        result = assignment_db.submit_attempt(
+            access, attempt_id, answers, legal_name
+        )
+    except (LookupError, ValueError) as exc:
+        try:
+            current = assignment_db.current_attempt(access)
+        except LookupError:
+            return _learning_not_found(request)
+        current["answers"] = answers if "answers" in locals() else current["answers"]
+        return _enrolled_response(
+            request,
+            "Check your answers",
+            enrolled_page.render_assignment_attempt(current, error=str(exc)),
+            status_code=422,
+        )
+    return RedirectResponse(
+        f"{ASSIGNMENT_PATH}/result/{result['attempt_id']}", status_code=303
+    )
+
+
+@app.get(f"{ASSIGNMENT_PATH}/result/{{attempt_id}}", response_class=HTMLResponse)
+def enrolled_assignment_result(request: Request, attempt_id: str) -> HTMLResponse:
+    access = _enrolled_subject(request)
+    if isinstance(access, HTMLResponse):
+        return access
+    try:
+        result = assignment_db.get_attempt(access, attempt_id)
+    except LookupError:
+        return _learning_not_found(request)
+    if result["status"] != "submitted":
+        return _learning_not_found(request)
+    return _enrolled_response(
+        request,
+        "Assignment Result",
+        enrolled_page.render_assignment_result(result),
+    )
+
+
+@app.get(
     "/learn/neural-networks-deep-learning/lesson/{lesson_id}",
     response_class=HTMLResponse,
 )
@@ -1489,6 +2564,47 @@ def learning_lesson(request: Request, lesson_id: str) -> HTMLResponse:
     return response
 
 
+@app.get("/learning/bookmarks", response_class=HTMLResponse)
+def learning_bookmarks(request: Request) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to view saved lessons")
+    if not learning_db.has_active_enrollment(subject):
+        return _enrollment_required_page(request, "Enroll locally to view saved lessons")
+    state = learning_db.learning_state(subject)
+    rows = "".join(
+        f'<article class="catalog-card"><h2>{escape(str(learning_db.get_lesson(lesson_id)["title"]))}</h2><a href="/learn/neural-networks-deep-learning/lesson/{escape(lesson_id)}">Open saved lesson</a></article>'
+        for lesson_id in state["bookmarks"]
+    )
+    if not rows:
+        rows = '<div class="empty-state"><h2>No saved lessons yet</h2><p>Use Bookmark lesson while learning to add one here.</p></div>'
+    body = f'<section class="page-heading"><p class="eyebrow">My Learning</p><h1>Saved lessons</h1><p>Bookmarks are private to this local learner.</p></section><section class="section"><div class="card-grid">{rows}</div><a href="/my-learning">Back to My Learning</a></section>'
+    return HTMLResponse(_page(request, "Saved Lessons", body, language="en"))
+
+
+@app.get("/learning/progress", response_class=HTMLResponse)
+def learning_progress_collection(request: Request) -> HTMLResponse:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to view course progress")
+    if not learning_db.has_active_enrollment(subject):
+        return _enrollment_required_page(request, "Enroll locally to view course progress")
+    state = learning_db.learning_state(subject)
+    completed = set(state["completed_lessons"])
+    total = len(learning_db.LESSONS)
+    count = len(completed)
+    percent = round(count * 100 / total)
+    resume = learning_db.get_lesson(str(state["resume_lesson_id"]))
+    rows = "".join(
+        f'<li><span>{"Completed" if lesson_id in completed else "Not completed"}</span> <a href="/learn/neural-networks-deep-learning/lesson/{escape(lesson_id)}">{escape(title)}</a></li>'
+        for lesson_id, _module_id, _position, title, _body, _preview in learning_db.LESSONS
+    )
+    body = f'<section class="page-heading"><p class="eyebrow">My Learning</p><h1>Course progress</h1><p><strong>{count} of {total} lessons completed</strong> · {percent}%</p><p>Resume at <a href="/learn/neural-networks-deep-learning/lesson/{escape(str(state["resume_lesson_id"]))}">{escape(str(resume["title"]))}</a></p></section><section class="section"><ol>{rows}</ol><a href="/my-learning">Back to My Learning</a></section>'
+    return HTMLResponse(_page(request, "Course Progress", body, language="en"))
+
+
 @app.post("/learning/bookmarks/{lesson_id}")
 async def learning_bookmark(request: Request, lesson_id: str) -> Response:
     try:
@@ -1540,8 +2656,8 @@ async def learning_quiz(request: Request, quiz_id: str) -> HTMLResponse:
             ),
             status_code=422,
         )
-    body = f"""<section class="page-heading"><p class="eyebrow">本地测验反馈</p><h1>测验得分：{attempt["score"]}</h1><p>{escape(attempt["feedback"])}</p><a href="/my-learning">返回我的学习</a></section>"""
-    return HTMLResponse(_page(request, "测验反馈", body))
+    body = f"""<section class="page-heading"><p class="eyebrow">Local quiz feedback</p><h1>Quiz score: {attempt["score"]}</h1><p>{escape(attempt["feedback"])}</p><a href="/my-learning">Back to My Learning</a></section>"""
+    return HTMLResponse(_page(request, "Quiz Feedback", body, language="en"))
 
 
 @app.post("/learning/review")
@@ -1579,8 +2695,8 @@ def account_preferences(request: Request) -> HTMLResponse:
         return _permission_page(request, "Sign in to manage learning preferences")
     preferences = learning_db.get_preferences(subject)
     checked = " checked" if preferences["email_updates"] else ""
-    body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">本地学习设置</p><h1>学习偏好</h1><form class="auth-form" action="/account/preferences" method="post"><label>语言<input name="language" value="{escape(preferences["language"])}" required></label><label>时区<input name="timezone" value="{escape(preferences["timezone"])}" required></label><label><input type="checkbox" name="email_updates" value="1"{checked}>本地学习提醒</label><button type="submit">保存偏好</button></form></div></section>"""
-    return HTMLResponse(_page(request, "学习偏好", body))
+    body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Local learning settings</p><h1>Learning preferences</h1><form class="auth-form" action="/account/preferences" method="post"><label>Language<input name="language" value="{escape(preferences["language"])}" required></label><label>Time zone<input name="timezone" value="{escape(preferences["timezone"])}" required></label><label><input type="checkbox" name="email_updates" value="1"{checked}>Local learning reminders</label><button type="submit">Save preferences</button></form></div></section>"""
+    return HTMLResponse(_page(request, "Learning Preferences", body, language="en"))
 
 
 @app.post("/account/preferences")
@@ -1611,8 +2727,11 @@ async def save_preferences(request: Request) -> Response:
 
 @app.get("/account-recovery", response_class=HTMLResponse)
 def account_recovery(request: Request) -> HTMLResponse:
-    body = """<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">账户访问</p><h1>重置您的 Coursera 密码</h1><p>不会发送外部重置消息。仅使用合成的 .test 地址；公开响应不会透露该地址是否存在。</p><form class="auth-form" action="/auth/recovery/start" method="post" autocomplete="off"><label>账户电子邮件<input type="email" name="address" placeholder="learner@coursera.test" required></label><p class="field-guidance">匹配的 site-33 本地账号只会在此浏览器的本地收件箱中收到验证码。</p><button type="submit">打开本地恢复流程</button></form><a href="/login">返回登录</a></div></section>"""
-    return _session_html(request, "Password Recovery", body)
+    body = """<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Account access</p><h1>Reset your Coursera password</h1><p>No reset message is sent outside this offline site. Use a synthetic .test address; the public response does not reveal whether an account exists.</p><form class="auth-form" action="/auth/recovery/start" method="post" autocomplete="off"><label>Account email<input type="email" name="address" placeholder="learner@coursera.test" required></label><p class="field-guidance">If the local account matches, verification guidance appears only in this browser's local inbox.</p><button type="submit">Open local recovery</button></form><a href="/login">Return to sign in</a></div></section>"""
+    backend, _auth, token, _session = _request_session(request)
+    response = HTMLResponse(_page(request, "Password Recovery", body, language="en"))
+    _set_session_cookie(response, backend, token)
+    return response
 
 
 @app.post("/auth/recovery/start")
@@ -1653,18 +2772,52 @@ async def recovery_complete(request: Request) -> Response:
 
 @app.get("/help", response_class=HTMLResponse)
 def help_center(request: Request) -> str:
-    account_controls = (
-        '<nav class="wb-account-nav"><a href="/my-learning">我的学习</a><form action="/auth/logout" method="post"><button type="submit">退出登录</button></form></nav>'
-        if _request_authenticated(request)
-        else '<nav class="wb-account-nav"><a href="/login">登录</a><a class="wb-join" href="/signup">免费加入</a></nav>'
+    feedback = None
+    if _request_authenticated(request):
+        try:
+            _backend, _auth, _token, subject = _authenticated_subject(request)
+            feedback = learning_db.get_help_feedback(subject)
+        except HTTPException:
+            feedback = None
+    feedback_status = (
+        "<p class='help-feedback-status'>Thanks for your feedback.</p>"
+        if feedback is not None
+        else ""
     )
-    return f"""<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learner Help Center | Coursera</title><link rel="stylesheet" href="/static/desktop-base.css"><link rel="stylesheet" href="/static/course-desktop.css"></head>
+    account_controls = (
+        '<nav class="wb-account-nav"><a href="/my-learning">My Learning</a><form action="/auth/logout" method="post"><button type="submit">Log out</button></form></nav>'
+        if _request_authenticated(request)
+        else '<nav class="wb-account-nav"><a href="/login">Log In</a><a class="wb-join" href="/signup">Join for Free</a></nav>'
+    )
+    body = f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learner Help Center | Coursera</title><link rel="stylesheet" href="/static/desktop-base.css"><link rel="stylesheet" href="/static/course-desktop.css"></head>
 <body class="help-center-page"><header class="help-center-header"><a class="wb-wordmark" href="/">coursera</a><form action="/help" method="get" role="search"><label class="wb-sr-only" for="help-search">Search for help</label><input id="help-search" name="q" placeholder="Search for help"><button type="submit">⌕</button></form>{account_controls}</header>
-<main class="help-article-shell"><nav class="help-breadcrumbs"><a href="/help">Learner Help Center</a><span>›</span><a href="/help#account">Account & notifications</a><span>›</span><span>Troubleshooting login and account issues</span></nav><article class="help-article"><h1>Troubleshooting login and account issues</h1><p><em>Reading time: 3 minutes</em></p><p>This article can help you troubleshoot:</p><ul><li>Login issues on Coursera.</li><li>Issues with verifying or changing your email.</li></ul><p>If you want to reset your password, see <a href="/account-recovery">Reset your Coursera password</a>.</p><p>If you are part of an organization’s learning program that uses single sign-on, use <a href="/login">single sign-on guidance to log in</a>.</p><aside class="help-skip"><strong>Skip to:</strong><ul><li><a href="#unable">Unable to log in</a><ul><li>Error message: “We couldn't find an account associated with that email address”</li><li>Log in using SSO</li></ul></li><li><a href="#email">Issues selecting images after log in</a></li><li><a href="#verify">I can't verify my email</a></li><li><a href="#change">Changes to your Coursera email</a></li></ul></aside><h2 id="unable">Unable to log in</h2><blockquote><p>If you’re having trouble logging in, follow these steps:</p></blockquote><ol><li>Double check your email address for misspellings. The email address must match exactly what you typed in when you signed up.</li><li>Use the steps in our article on <a href="/account-recovery">resetting your password</a>.</li><li>Return to <a href="/login">Coursera sign in</a> without submitting credentials here.</li></ol><h2 id="account">Account access and failed actions</h2><p><strong>账户访问</strong>、registration, password recovery, checkout errors and <strong>失败的操作</strong> are represented locally. No private account data is exposed.</p><p><a href="/browse">Browse course catalog</a> · <a href="/search">Search course catalog</a> · <a href="/about/contact">Contact support</a></p><section id="terms"><h2>Terms and privacy</h2><p>Continuing in this clone uses local WebsiteBench data only. No real email, payment, or Coursera account effect is produced.</p></section></article><aside class="help-floating"><strong>New! Search with AI</strong><button type="button">×</button><p>Ask a question and get an instant answer.</p></aside><aside class="help-feedback"><strong>Was this article helpful?</strong><button type="button">👍 Yes</button><button type="button">👎 No</button></aside></main></body></html>"""
+<main class="help-article-shell"><nav class="help-breadcrumbs"><a href="/help">Learner Help Center</a><span>›</span><a href="/help#account">Account & notifications</a><span>›</span><span>Troubleshooting login and account issues</span></nav><article class="help-article"><h1>Troubleshooting login and account issues</h1><p><em>Reading time: 3 minutes</em></p><p>This article can help you troubleshoot:</p><ul><li>Login issues on Coursera.</li><li>Issues with verifying or changing your email.</li></ul><p>If you want to reset your password, see <a href="/account-recovery">Reset your Coursera password</a>.</p><p>If you are part of an organization’s learning program that uses single sign-on, use <a href="/login">single sign-on guidance to log in</a>.</p><aside class="help-skip"><strong>Skip to:</strong><ul><li><a href="#unable">Unable to log in</a><ul><li>Error message: “We couldn't find an account associated with that email address”</li><li>Log in using SSO</li></ul></li><li><a href="#email">Issues selecting images after log in</a></li><li><a href="#verify">I can't verify my email</a></li><li><a href="#change">Changes to your Coursera email</a></li></ul></aside><h2 id="unable">Unable to log in</h2><blockquote><p>If you’re having trouble logging in, follow these steps:</p></blockquote><ol><li>Double check your email address for misspellings. The email address must match exactly what you typed in when you signed up.</li><li>Use the steps in our article on <a href="/account-recovery">resetting your password</a>.</li><li>Return to <a href="/login">Coursera sign in</a> without submitting credentials here.</li></ol><h2 id="account">Account access and failed actions</h2><p>Account access, registration, password recovery, checkout errors and failed actions are represented locally. No private account data is exposed.</p><p><a href="/browse">Browse course catalog</a> · <a href="/search">Search course catalog</a> · <a href="/about/contact">Contact support</a></p><section id="terms"><h2>Terms and privacy</h2><p>Continuing in this clone uses local WebsiteBench data only. No private account data is exposed.</p></section></article><aside class="help-floating"><strong>New! Search with AI</strong><button type="button" disabled aria-describedby="help-ai-disabled">×</button><span id="help-ai-disabled">AI help is unavailable offline.</span><p>Ask a question and get an instant answer.</p></aside><aside class="help-feedback"><strong>Was this article helpful?</strong>{feedback_status}<form action="/help/feedback" method="post"><button type="submit" name="helpful" value="yes">👍 Yes</button><button type="submit" name="helpful" value="no">👎 No</button></form></aside></main></body></html>"""
+    return body
+
+
+@app.post("/help/feedback")
+async def help_feedback(request: Request) -> Response:
+    try:
+        _backend, _auth, _token, subject = _authenticated_subject(request)
+    except HTTPException:
+        return _permission_page(request, "Sign in to leave help feedback")
+    values = await _form_values(request)
+    helpful = values.get("helpful")
+    if helpful not in {"yes", "no"}:
+        return _auth_failure(request, "Choose yes or no for help feedback", status_code=422)
+    learning_db.save_help_feedback(subject, helpful=helpful == "yes")
+    return RedirectResponse("/help", status_code=303)
 
 
 @app.get("/about/contact", response_class=HTMLResponse)
 def contact(request: Request) -> str:
-    body = """<section class="page-heading contact-hero"><p class="eyebrow">Coursera support</p><h1>Contact Us</h1><p>Choose the local guidance area that best fits your question.</p></section><section class="support-grid"><article><h2>Learner Support</h2><p>Get local help with finding courses, previewing materials, and account-entry guidance.</p><a href="/help">Open learner help</a></article><article><h2>Inquiries</h2><p>General questions are represented as offline guidance only; no message is transmitted.</p><a href="/browse">Explore available learning</a></article><article><h2>Partnerships</h2><p>Business, university, and government contact actions are outside this offline scope.</p><a href="/">Return home</a></article></section>"""
-    return _page(request, "Contact", body)
+    body = """<section class="source-contact-hero"><h1>Contact Us</h1><p>Have questions? The quickest way to get in touch with us is using the contact information below.</p></section><div class="source-contact-shell"><section class="source-contact-learners"><h2>Learner Support</h2><p>If you are a learner and need help, please visit our <a href="/help">Learner Help Center</a> to find troubleshooting and FAQs or contact our Learner Support team. You can search for your issue or check out our most popular articles:</p><ul><li>Check and update your email communication preferences</li><li>Verify your ID</li><li>How to solve problems with peer-graded assignments</li><li>Cancel a subscription</li><li>Refund policies</li><li>Troubleshooting login and account issues</li></ul></section><section class="source-contact-inquiries"><h2>Inquiries</h2><div><article><h3>Coursera for Campus Inquiries</h3><p>For universities interested in enhancing curriculum with world-class content.</p></article><article><h3>Coursera for Business Inquiries</h3><p>For organizations interested in training teams with world-class content.</p></article><article><h3>Coursera for Government Inquiries</h3><p>For government entities interested in upskilling or reskilling citizens or employees.</p></article><article><h3>Privacy Inquiries</h3><p>Read our <a href="/privacy">Privacy Notice</a> for information about local data.</p></article><article><h3>Press Inquiries</h3><p>General press guidance is available without sending a message.</p></article><article><h3>Special Concerns</h3><p>Security and user privacy guidance remains available locally.</p></article></div></section><section class="source-contact-partnerships"><h2>Partnerships</h2><div><article><h3>University Partnership Inquiries</h3><p>For universities interested in creating certificates or degrees.</p><a href="/help">Apply here →</a></article><article><h3>Industry Partnership Inquiries</h3><p>For companies interested in creating Professional Certificates.</p><a href="/help">Contact Us →</a></article></div></section></div>"""
+    return _page(
+        request,
+        "Contact",
+        body,
+        body_class="source-contact-page",
+        language="en",
+        footer_variant="source-course",
+    )
