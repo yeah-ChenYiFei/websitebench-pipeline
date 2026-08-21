@@ -89,6 +89,13 @@
   color: #0f1114;
   background: #fff;
 }
+.source-search-page .search-main-column {
+  width: min(100%, 1400px);
+}
+.source-search-page .search-results-list,
+.source-search-page .search-result-grid {
+  max-width: 1330px;
+}
 
 .source-search-page .search-main-column {
   min-width: 0;
@@ -263,11 +270,11 @@
 }
 
 .source-search-page .search-results-section {
-  padding-top: 53px;
+  padding-top: 10px;
 }
 
 .source-search-page .search-results-section > h1 {
-  margin: 0 0 38px;
+  margin: 0 0 14px;
   font-size: 25px;
   line-height: 1.25;
 }
