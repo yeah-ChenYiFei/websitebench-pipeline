@@ -7,7 +7,7 @@
 }
 
 :root {
-  --wb-blue: #0056d2;
+  --wb-blue: var(--cds-color-blue-600);
   --wb-blue-ink: #00419b;
   --wb-ink: #1f1f1f;
   --wb-muted: #5d6070;

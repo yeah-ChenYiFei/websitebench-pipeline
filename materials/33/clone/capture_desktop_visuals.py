@@ -63,7 +63,7 @@ PUBLIC_ROUTE_DETAILS = {
     ),
     "not-found.loaded.desktop": (
         "/websitebench-not-found-33",
-        ".not-found",
+        ".source-not-found-page",
         ".wb-header",
         ".wb-footer",
     ),

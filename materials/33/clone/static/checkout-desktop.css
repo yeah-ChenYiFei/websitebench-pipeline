@@ -63,7 +63,7 @@
 .source-checkout-shell .safe-note {
   margin: 0 0 26px;
   padding: 12px 14px;
-  border-left: 4px solid #0056d2;
+  border-left: 4px solid var(--cds-color-blue-600);
   background: #f4f8ff;
   color: #374151;
   font-size: 14px;
@@ -137,8 +137,8 @@
 }
 
 .payment-choice.is-selected {
-  border-color: #0056d2;
-  box-shadow: inset 4px 0 0 #0056d2;
+  border-color: var(--cds-color-blue-600);
+  box-shadow: inset 4px 0 0 var(--cds-color-blue-600);
 }
 
 .payment-grid {
@@ -174,7 +174,7 @@
 }
 
 .checkout-terms a {
-  color: #0056d2;
+  color: var(--cds-color-blue-600);
   font-weight: 700;
 }
 
@@ -186,7 +186,7 @@
 .checkout-return {
   display: inline-block;
   margin-top: 18px;
-  color: #0056d2;
+  color: var(--cds-color-blue-600);
   font-weight: 700;
   text-decoration: none;
 }
@@ -224,7 +224,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  color: #0056d2;
+  color: var(--cds-color-blue-600);
   font-size: 13px;
   font-weight: 700;
   text-decoration: none;

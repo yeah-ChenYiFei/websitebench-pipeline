@@ -7,7 +7,7 @@
 }
 
 .source-specialization-page {
-  --source-blue: #0056d2;
+  --source-blue: var(--cds-color-blue-600);
   --source-ink: #1f1f1f;
   --source-line: #d8dce5;
   --source-shell: min(100% - 96px, 1344px);
