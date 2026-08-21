@@ -487,6 +487,7 @@ def test_public_home_rasters_are_declared_with_source_provenance() -> None:
         assert row["capture_id"] in {
             "public-home-desktop",
             "coursera-home-login-current-state-open-home",
+            "coursera-home-promo-current-2026-08-21",
         }
 
 
