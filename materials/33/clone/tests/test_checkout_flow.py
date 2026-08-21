@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import importlib
-import json
 import re
 from html.parser import HTMLParser
 from pathlib import Path
