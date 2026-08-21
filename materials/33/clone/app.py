@@ -1712,7 +1712,7 @@ def account_settings(request: Request) -> HTMLResponse:
         for zone in timezone_options
     )
     body = f"""<section class="settings-surface"><h1>Account settings</h1><nav class="settings-tabs"><a class="is-active" href="/account-settings">Account</a><a href="/account/preferences">Communication Preferences</a><a href="/account/preferences">Notes &amp; Highlights</a><a href="/account/preferences">Calendar Sync</a></nav><section class="settings-card"><h2>Personal information</h2><p>Update your personal details and how others see you.</p><form class="settings-form" action="/account-settings" method="post"><div class="settings-fields"><label>Full name<input name="display_name" value="{escape(str(profile['display_name']), quote=True)}" maxlength="80" required></label><label>Email address<input value="local.learner@coursera.test" readonly></label><label>Timezone<select name="timezone">{timezone_select}</select></label><label>Language<select disabled><option>Select a language</option></select></label></div><button type="submit">Save Changes</button></form></section><section class="settings-card"><h2>Profile photo</h2><p>Maximum size: 1MB. Supported formats: JPG, GIF, or PNG.</p><button type="button" disabled aria-describedby="photo-disabled">Upload image</button><p id="photo-disabled">Profile uploads are unavailable in this offline clone.</p></section><section class="settings-card settings-row"><div><h2>Appearance</h2><p>Personalize the way Coursera appears through theming controls.</p></div><select disabled aria-describedby="appearance-disabled"><option>Light mode</option></select><span id="appearance-disabled">Appearance changes are unavailable offline.</span></section><section class="settings-card"><h2>Name verification</h2><p>Verify your real name to make sure you're able to receive a certificate when you complete a course or Specialization.</p><button type="button" disabled aria-describedby="verification-disabled">Verify my name</button><p id="verification-disabled">Name verification is unavailable offline.</p></section><section class="settings-card"><h2>Change password</h2><p>Update your password regularly to keep your account secure.</p><a class="settings-button" href="/account-recovery">Change Password</a></section><section class="settings-card settings-row"><div><h2>Two factor authentication</h2><p>Two-factor authentication adds an additional layer of security to your local account.</p></div><span class="settings-toggle" aria-label="Off"></span></section><section class="settings-card"><h2>Connected devices</h2><p>If your account has been logged into on multiple devices, you can log out from here.</p><form action="/auth/logout" method="post"><button type="submit">Log out from all devices</button></form></section><section class="settings-card"><h2>Linked accounts</h2><p>Apple and Google remain unlinked in this offline clone.</p></section><section class="settings-card"><h2>Learner data report</h2><p>Request a report of all learner data stored by this local Coursera account.</p><input value="local.learner@coursera.test" readonly><button type="button" disabled aria-describedby="report-disabled">Send report</button><p id="report-disabled">Reports are unavailable offline.</p></section><section class="settings-card danger"><h2>Delete account</h2><p>This action cannot be undone. Cancel any active subscriptions before you delete your account.</p><button type="button" disabled aria-describedby="delete-disabled">Delete account</button><p id="delete-disabled">Account deletion is unavailable offline.</p></section></section>"""
-    return HTMLResponse(_page(request, "Account Settings", body, language="en"))
+    return HTMLResponse(_page(request, "Account Settings", body, language="en", real_css="consumer-description-page.css"))
 
 
 @app.post("/account-settings")
@@ -1743,7 +1743,7 @@ def updates(request: Request) -> HTMLResponse:
     product_checked = " checked" if preferences["product_updates"] else ""
     course_checked = " checked" if preferences["course_updates"] else ""
     body = f"""<section class="updates-surface"><h1>Updates</h1><section class="update-item"><span class="update-logo">C</span><div><small>4 days ago</small><h2>Please confirm your email</h2><p>You've registered for Coursera using your local learner email. Please check the local account guidance and confirm.</p></div></section><section class="settings-card"><h2>Notification preferences</h2><p>Choose which local updates appear in your account. No external messages are sent.</p><form class="auth-form" action="/updates" method="post"><label><input type="checkbox" name="product_updates" value="on"{product_checked}> Product and platform updates</label><label><input type="checkbox" name="course_updates" value="on"{course_checked}> Course and learning updates</label><button type="submit">Save notification preferences</button></form></section></section>"""
-    return HTMLResponse(_page(request, "Updates", body, language="en"))
+    return HTMLResponse(_page(request, "Updates", body, language="en", real_css="consumer-description-page.css"))
 
 
 @app.post("/updates")
@@ -1814,7 +1814,7 @@ def account_history(request: Request) -> HTMLResponse:
     except HTTPException:
         return _permission_page(request, "Sign in to view enrollment history")
     body = f"""<section class="page-heading"><p class="eyebrow">Local account history</p><h1>Enrollment history</h1><p>Canceled items remain visible and are shown only to their owner.</p></section><section class="section"><div class="card-grid">{_enrollment_rows(learning_db.list_enrollments(subject))}</div><a href="/orders">View order history</a> · <a href="/my-learning">Back to My Learning</a></section>"""
-    return HTMLResponse(_page(request, "Enrollment History", body, language="en"))
+    return HTMLResponse(_page(request, "Enrollment History", body, language="en", real_css="consumer-description-page.css"))
 
 
 @app.get("/account/history/{enrollment_id}", response_class=HTMLResponse)
@@ -1855,7 +1855,7 @@ def order_history(request: Request) -> HTMLResponse:
         return _permission_page(request, "Sign in to view order history")
     records = checkout.list_orders(subject)
     body = f"""<section class="page-heading"><p class="eyebrow">Owner-only local history</p><h1>Order history</h1><p>Only successful local-sandbox checkouts create persistent orders. Canceled snapshots remain visible.</p></section><section class="section"><div class="card-grid">{_order_rows(records)}</div><a href="/my-learning">Back to My Learning</a></section>"""
-    return HTMLResponse(_page(request, "Order History", body, language="en"))
+    return HTMLResponse(_page(request, "Order History", body, language="en", real_css="consumer-description-page.css"))
 
 
 @app.get("/orders/{order_id}", response_class=HTMLResponse)
@@ -1875,7 +1875,7 @@ def order_detail(request: Request, order_id: str) -> HTMLResponse:
     )
     status_label = "Paid" if order["status"] == "PAID" else "Canceled"
     body = f"""<nav class="course-breadcrumbs"><a href="/orders">Order history</a><span>›</span>{escape(order_id)}</nav><section class="checkout-shell" data-order-status="{escape(str(order["status"]))}"><p class="eyebrow">Local sandbox order</p><h1>{status_label}</h1><p>Order {escape(order_id)}</p><p>Deep Learning Specialization · {escape(str(order["plan_label"]))}</p><p class="safe-note">This immutable local simulation snapshot did not create a real payment or purchase.</p>{_checkout_totals(order)}{cancellation}<a href="/orders">Back to Order history</a><a href="/specializations/deep-learning">Back to Specialization</a></section>"""
-    return HTMLResponse(_page(request, "Order Details", body, language="en"))
+    return HTMLResponse(_page(request, "Order Details", body, language="en", real_css="consumer-description-page.css"))
 
 
 @app.post("/orders/{order_id}/cancel")
@@ -2504,7 +2504,7 @@ def account_preferences(request: Request) -> HTMLResponse:
     preferences = learning_db.get_preferences(subject)
     checked = " checked" if preferences["email_updates"] else ""
     body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Local learning settings</p><h1>Learning preferences</h1><form class="auth-form" action="/account/preferences" method="post"><label>Language<input name="language" value="{escape(preferences["language"])}" required></label><label>Time zone<input name="timezone" value="{escape(preferences["timezone"])}" required></label><label><input type="checkbox" name="email_updates" value="1"{checked}>Local learning reminders</label><button type="submit">Save preferences</button></form></div></section>"""
-    return HTMLResponse(_page(request, "Learning Preferences", body, language="en"))
+    return HTMLResponse(_page(request, "Learning Preferences", body, language="en", real_css="consumer-description-page.css"))
 
 
 @app.post("/account/preferences")
