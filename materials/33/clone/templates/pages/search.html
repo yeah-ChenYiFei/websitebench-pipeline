@@ -21,7 +21,52 @@
 
 <section id="search-results" class="search-page-layout">
   <div class="search-main-column">
-    <details class="search-ai-overview" open>
+    
+
+    <nav class="source-filter-chips" aria-label="Search filters">
+      <a id="search-filter-open" class="search-filter-open" href="#search-filter-drawer" role="button"><span aria-hidden="true">☷</span> Filter &amp; Sort</a>
+      <a href="#search-filter-drawer">Topic <span aria-hidden="true">⌄</span></a>
+      <a href="#search-filter-drawer">Duration <span aria-hidden="true">⌄</span></a>
+      <a href="#search-filter-drawer">Learning Product <span aria-hidden="true">⌄</span></a>
+      <a href="#search-filter-drawer">Language <span aria-hidden="true">⌄</span></a>
+      <a href="#search-filter-drawer">Level <span aria-hidden="true">⌄</span></a>
+    </nav>
+
+    <section class="search-results-section" aria-labelledby="all-results-heading">
+      <h1 id="all-results-heading">All Results</h1>
+      <div class="search-results-list" data-result-count="{{ result_count }}">
+        {% if no_results %}
+          <section class="search-no-results">
+            <h2>No results for {{ query }}</h2>
+            <p>Try another search or explore the catalog.</p>
+            <nav><a href="/search?query=Deep%20Learning">Return to Deep Learning results</a><a href="/browse">Browse all topics</a></nav>
+          </section>
+        {% else %}
+          <div class="search-result-grid">
+            {% for card in results[:6] %}{{ result_card(card, loop.index) }}{% endfor %}
+          </div>
+          {% if results|length > 6 %}
+            <aside class="search-intent-panel">
+              <h2>What brings you to Coursera today?</h2>
+              <nav>
+                <a href="/search?query=Start%20my%20career"><span>🚀</span>Start my career</a>
+                <a href="/search?query=Change%20my%20career"><span>↝</span>Change my career</a>
+                <a href="/search?query=Grow%20in%20my%20current%20role"><span>↗</span>Grow in my current role</a>
+                <a href="/browse"><span>♧</span>Explore topics outside of work</a>
+              </nav>
+            </aside>
+            <div class="search-result-grid search-result-grid-lower">
+              {% for card in results[6:] %}{{ result_card(card, loop.index + 6) }}{% endfor %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    </section>
+  </div>
+
+</section>
+
+<details class="search-ai-overview">
       <summary><span aria-hidden="true">✦</span> AI Overview</summary>
       <div class="search-ai-content">
         <div class="search-ai-answer">
@@ -56,51 +101,6 @@
         </aside>
       </div>
     </details>
-
-    <section class="search-results-section" aria-labelledby="all-results-heading">
-      <h1 id="all-results-heading">All Results</h1>
-      <nav class="source-filter-chips" aria-label="Search filters">
-        <a id="search-filter-open" class="search-filter-open" href="#search-filter-drawer" role="button"><span aria-hidden="true">☷</span> Filter &amp; Sort</a>
-        <a href="#search-filter-drawer">Topic <span aria-hidden="true">⌄</span></a>
-        <a href="#search-filter-drawer">Duration <span aria-hidden="true">⌄</span></a>
-        <a href="#search-filter-drawer">Learning Product <span aria-hidden="true">⌄</span></a>
-        <a href="#search-filter-drawer">Language <span aria-hidden="true">⌄</span></a>
-        <a href="#search-filter-drawer">Level <span aria-hidden="true">⌄</span></a>
-        <a class="search-ai-filter" href="#search-filter-drawer"><span aria-hidden="true">✦</span> Deep Learning Core Techniques <span aria-hidden="true">⌄</span></a>
-        <a class="search-ai-filter" href="#search-filter-drawer"><span aria-hidden="true">✦</span> Deep Learning Frameworks and Libraries <span aria-hidden="true">⌄</span></a>
-      </nav>
-
-      <div class="search-results-list" data-result-count="{{ result_count }}">
-        {% if no_results %}
-          <section class="search-no-results">
-            <h2>No results for {{ query }}</h2>
-            <p>Try another search or explore the catalog.</p>
-            <nav><a href="/search?query=Deep%20Learning">Return to Deep Learning results</a><a href="/browse">Browse all topics</a></nav>
-          </section>
-        {% else %}
-          <div class="search-result-grid">
-            {% for card in results[:6] %}{{ result_card(card, loop.index) }}{% endfor %}
-          </div>
-          {% if results|length > 6 %}
-            <aside class="search-intent-panel">
-              <h2>What brings you to Coursera today?</h2>
-              <nav>
-                <a href="/search?query=Start%20my%20career"><span>🚀</span>Start my career</a>
-                <a href="/search?query=Change%20my%20career"><span>↝</span>Change my career</a>
-                <a href="/search?query=Grow%20in%20my%20current%20role"><span>↗</span>Grow in my current role</a>
-                <a href="/browse"><span>♧</span>Explore topics outside of work</a>
-              </nav>
-            </aside>
-            <div class="search-result-grid search-result-grid-lower">
-              {% for card in results[6:] %}{{ result_card(card, loop.index + 6) }}{% endfor %}
-            </div>
-          {% endif %}
-        {% endif %}
-      </div>
-    </section>
-  </div>
-
-</section>
 
 <aside id="search-filter-drawer" class="search-filter-layer" aria-label="Filter & Sort">
   <a class="search-filter-backdrop" href="#search-results" aria-label="Close filters"></a>

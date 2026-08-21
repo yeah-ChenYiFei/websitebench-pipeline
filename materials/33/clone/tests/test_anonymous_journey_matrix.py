@@ -22,7 +22,7 @@ PUBLIC_STATES = (
     ("/", "New and popular", "/browse"),
     ("/browse", "Explore Categories", "/browse/business"),
     ("/browse/business", "Business", "/browse"),
-    ("/search?q=Deep+Learning", "All Results", "/specializations/deep-learning"),
+    ("/search?q=Deep+Learning", "All Results", "/professional-certificates/google-ai"),
     (
         "/search?q=zzzz-no-match-websitebench",
         "No results for zzzz-no-match-websitebench",

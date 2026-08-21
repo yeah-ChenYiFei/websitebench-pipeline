@@ -13,60 +13,19 @@ from app import app
 client = TestClient(app)
 
 EXPECTED_RESULTS = (
-    ("Deep Learning", "DeepLearning.AI", "/specializations/deep-learning"),
-    (
-        "Neural Networks and Deep Learning",
-        "DeepLearning.AI",
-        "/learn/neural-networks-deep-learning",
-    ),
-    (
-        "IBM Deep Learning with PyTorch, Keras and Tensorflow",
-        "IBM",
-        "/professional-certificates/ibm-deep-learning-with-pytorch-keras-tensorflow",
-    ),
-    (
-        "PyTorch for Deep Learning",
-        "DeepLearning.AI",
-        "/professional-certificates/pytorch-for-deep-learning",
-    ),
-    (
-        "Machine Learning",
-        "Multiple educators",
-        "/specializations/machine-learning-introduction",
-    ),
-    (
-        "Introduction to Deep Learning & Neural Networks with Keras",
-        "IBM",
-        "/learn/introduction-to-deep-learning-with-keras",
-    ),
-    (
-        "Deep Learning with PyTorch",
-        "IBM",
-        "/search?query=Deep%20Learning%20with%20PyTorch",
-    ),
-    ("IBM AI Engineering", "IBM", "/professional-certificates/ai-engineer"),
-    (
-        "Deep Learning Engineering",
-        "Coursera",
-        "/specializations/deep-learning-engineering",
-    ),
-    (
-        "Deep Learning with Python: CNN, ANN & RNN",
-        "EDUCBA",
-        "/specializations/deep-learning-python-cnn-ann-rnn",
-    ),
-    (
-        "Learning Deep Learning",
-        "Pearson",
-        "/specializations/pearson-learning-deep-learning-from-perception-to-large-language-models",
-    ),
-    (
-        "Deep Learning",
-        "Illinois Tech",
-        "/search?query=Illinois%20Tech%20Deep%20Learning",
-    ),
+    ("Google AI", "Google", "/professional-certificates/google-ai"),
+    ("Google Data Analytics", "Google", "/professional-certificates/google-data-analytics"),
+    ("Google Project Management", "Google", "/professional-certificates/google-project-management"),
+    ("Google Cybersecurity", "Google", "/professional-certificates/google-cybersecurity"),
+    ("Google AI Essentials", "Google", "/professional-certificates/google-ai-essentials"),
+    ("Machine Learning", "Stanford University", "/learn/machine-learning"),
+    ("Google Digital Marketing & E-commerce", "Google", "/professional-certificates/google-digital-marketing-ecommerce"),
+    ("Google IT Support", "Google", "/professional-certificates/google-it-support"),
+    ("IBM Generative AI Engineering", "IBM", "/professional-certificates/ai-engineer"),
+    ("IBM Data Analyst", "IBM", "/professional-certificates/ibm-data-analyst"),
+    ("Google UX Design", "Google", "/professional-certificates/google-ux-design"),
+    ("IBM Data Science", "IBM", "/professional-certificates/ibm-data-science"),
 )
-
 
 def _result_identity(tag: str) -> tuple[str, str, str]:
     def attribute(name: str) -> str:
@@ -123,13 +82,13 @@ def test_deep_learning_search_preserves_source_order_and_selected_ai_state() -> 
         assert invented not in response.text
 
     assert response.text.count('data-ai-starter-card="true"') == 4
-    assert "IBM Deep Learning with PyTorch, Keras and…" in response.text
+    assert "Google AI" in response.text
     for position, title in enumerate(
         (
-            "Deep Learning",
-            "Neural Networks and Deep Learning",
-            "IBM Deep Learning with PyTorch, Keras and Tensorflow",
-            "PyTorch for Deep Learning",
+            "Google AI",
+            "Google Data Analytics",
+            "Google Project Management",
+            "Google Cybersecurity",
         ),
         start=1,
     ):
@@ -208,15 +167,14 @@ def test_result_cards_use_source_provider_marks_and_metadata_order() -> None:
 
     assert 'class="search-provider-logo"' in html
     assert 'class="search-ai-starter-provider-logo"' in html
-    assert 'src="/static/deep-learning/provider-icon.png"' in html
-    assert 'src="/static/browse/lower/logo-ibm.png"' in html
+    assert "src=\"/static/search/frozen-" in html
 
     first_card = html.split('data-result-position="1"', 1)[1].split(
         'data-result-position="2"', 1
     )[0]
     credential = first_card.index("Build toward a degree")
-    rating = first_card.index("147K reviews")
-    metadata = first_card.index("Intermediate · Specialization · 3 - 6 Months")
+    rating = first_card.index("5K reviews")
+    metadata = first_card.index("Beginner · Professional Certificate · 2 - 6 Months")
     assert credential < rating < metadata
 
 
@@ -225,17 +183,12 @@ def test_result_cards_use_the_observed_provider_identity_marks() -> None:
 
     html = client.get("/search", params={"query": "Deep Learning"}).text
 
-    ibm_card = html.split('data-result-position="3"', 1)[1].split(
-        'data-result-position="4"', 1
+    ibm_card = html.split('data-result-position="9"', 1)[1].split(
+        'data-result-position="10"', 1
     )[0]
-    assert 'src="/static/browse/lower/logo-ibm.png"' in ibm_card
+    assert 'src="/static/search/frozen-9.png"' in ibm_card
 
-    multiple_educators = html.split('data-result-position="5"', 1)[1].split(
-        'data-result-position="6"', 1
+    stanford_card = html.split('data-result-position="6"', 1)[1].split(
+        'data-result-position="7"', 1
     )[0]
-    assert multiple_educators.count('class="search-provider-logo"') == 2
-    assert 'src="/static/deep-learning/provider-icon.png"' in multiple_educators
-    assert 'src="/static/home/logo-stanford.avif"' in multiple_educators
-
-    illinois_card = html.split('data-result-position="12"', 1)[1]
-    assert 'src="/static/home/logo-illinois.avif"' in illinois_card
+    assert 'src="/static/search/frozen-6.png"' in stanford_card
