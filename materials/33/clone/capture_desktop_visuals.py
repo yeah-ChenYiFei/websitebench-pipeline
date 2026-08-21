@@ -16,35 +16,45 @@ from urllib.request import urlopen
 
 
 SITE_ROOT = Path(__file__).resolve().parents[1]
-SPEC_PATH = SITE_ROOT / "scope" / "desktop-visual-comparison.json"
-VIEWPORT = {"width": 1191, "height": 979}
+SPEC_PATH = SITE_ROOT / "scope" / "desktop-visual-comparison-current.json"
+VIEWPORT = {"width": 1692, "height": 979}
 PUBLIC_ROUTE_DETAILS = {
-    "home.loaded.desktop": ("/", ".promo-rail", ".wb-header", ".wb-footer"),
+    "home.loaded.desktop": (
+        "/",
+        ".home-promo-switcher",
+        ".wb-header",
+        ".wb-footer",
+    ),
     "browse.loaded.desktop": (
         "/browse",
-        ".browse-source-heading",
+        ".source-browse-shell",
         ".wb-header",
         ".wb-footer",
     ),
     "search.results.desktop": (
         "/search?q=Deep+Learning",
-        ".search-source-layout",
+        ".search-results-section",
         ".wb-header",
         ".wb-footer",
     ),
     "specialization.loaded.desktop": (
         "/specializations/deep-learning",
-        ".program-hero",
+        ".source-specialization-hero",
         ".wb-header",
         ".wb-footer",
     ),
     "course.loaded.desktop": (
         "/learn/neural-networks-deep-learning",
-        ".source-course-hero",
+        ".source-course-detail-hero",
         ".wb-header",
         ".wb-footer",
     ),
-    "login.loaded.desktop": ("/login", ".auth-modal-card", ".wb-header", ".wb-footer"),
+    "login.loaded.desktop": (
+        "/login",
+        ".source-login-dialog",
+        ".wb-header",
+        ".wb-footer",
+    ),
     "help.loaded.desktop": (
         "/help",
         ".help-article",
@@ -192,9 +202,9 @@ def capture_declared_candidates(*, overwrite: bool = False) -> list[dict[str, st
                                     f"{capture.checkpoint_id}: missing landmark {selector}"
                                 )
                         page.screenshot(path=str(capture.output_path))
-                        if _png_size(capture.output_path) != (1191, 979):
+                        if _png_size(capture.output_path) != (1692, 979):
                             raise RuntimeError(
-                                f"{capture.checkpoint_id}: screenshot was not 1191x979"
+                                f"{capture.checkpoint_id}: screenshot was not 1692x979"
                             )
                         results.append(
                             {
