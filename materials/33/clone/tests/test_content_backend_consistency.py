@@ -153,9 +153,11 @@ def test_frontend_spec_assets_are_archived_and_remote_free() -> None:
 
     pairs = [
         ("home.source.json", "home.clone.json"),
+        ("browse.source.json", "browse.clone.json"),
         ("search.source.json", "search.clone.json"),
         ("course.source.json", "course.clone.json"),
         ("login.source.json", "login.clone.json"),
+        ("specialization.source.json", "specialization.clone.json"),
     ]
     for source_name, clone_name in pairs:
         source = json.loads((_SPEC_DIR / source_name).read_text(encoding="utf-8"))
