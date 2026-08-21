@@ -18,6 +18,7 @@ _TEMPLATES = Environment(
 PROMOS = (
     {
         "key": "coursera-plus",
+        "image": "/static/home/current-promo-plus.png",
         "href": "/courseraplus/special/cplus-monthly-august-2026-global",
         "eyebrow": "Coursera Plus",
         "title": "Save 40% on 3 months of Coursera Plus",
@@ -27,6 +28,7 @@ PROMOS = (
     },
     {
         "key": "for-business",
+        "image": "/static/home/current-promo-teams.png",
         "href": "/business/teams",
         "eyebrow": "For Business",
         "title": "Close team skill gaps for what's next",
@@ -36,6 +38,7 @@ PROMOS = (
     },
     {
         "key": "career",
+        "image": "/static/home/current-promo-career.png",
         "href": "/signup",
         "eyebrow": "For Individuals",
         "title": "Start, switch, or advance your career.",

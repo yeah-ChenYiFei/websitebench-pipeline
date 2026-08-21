@@ -1361,6 +1361,25 @@
    ],
    "evidence_kind": "current-direct",
    "capture_id": "coursera-live-css-authorized-2026-08-21"
+  },
+  {
+   "id": "coursera-promo-career",
+   "priority": "p0",
+   "required": true,
+   "source_path": "source-assets/coursera-css/promo-career-desktop.png",
+   "runtime_path": "clone/static/home/current-promo-career.png",
+   "bytes": 143997,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 646,
+    "height": 594
+   },
+   "referenced_by": [
+    "home.loaded.desktop"
+   ],
+   "evidence_kind": "current-direct",
+   "source_url": "https://www.coursera.org/",
+   "capture_id": "coursera-home-promo-career-2026-08-21"
   }
  ]
 }
