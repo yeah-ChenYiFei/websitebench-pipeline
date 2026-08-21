@@ -465,6 +465,7 @@ async def branded_not_found(request: Request, _exception: Exception) -> HTMLResp
             body_class="source-not-found-page",
             language="en",
             footer_variant="source-course",
+            real_css="browse.css",
         ),
         status_code=404,
     )
@@ -2596,7 +2597,7 @@ def help_center(request: Request) -> str:
         else '<nav class="wb-account-nav"><a href="/login">Log In</a><a class="wb-join" href="/signup">Join for Free</a></nav>'
     )
     body = f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learner Help Center | Coursera</title><link rel="stylesheet" href="/static/desktop-base.css"><link rel="stylesheet" href="/static/course-desktop.css"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learner Help Center | Coursera</title><link rel="stylesheet" href="/static/coursera/cds-variables.css"><link rel="stylesheet" href="/static/coursera/fonts.css"><link rel="stylesheet" href="/static/coursera/front-page.css"><link rel="stylesheet" href="/static/desktop-base.css"><link rel="stylesheet" href="/static/course-desktop.css"></head>
 <body class="help-center-page"><header class="help-center-header"><a class="wb-wordmark" href="/">coursera</a><form action="/help" method="get" role="search"><label class="wb-sr-only" for="help-search">Search for help</label><input id="help-search" name="q" placeholder="Search for help"><button type="submit">⌕</button></form>{account_controls}</header>
 <main class="help-article-shell"><nav class="help-breadcrumbs"><a href="/help">Learner Help Center</a><span>›</span><a href="/help#account">Account & notifications</a><span>›</span><span>Troubleshooting login and account issues</span></nav><article class="help-article"><h1>Troubleshooting login and account issues</h1><p><em>Reading time: 3 minutes</em></p><p>This article can help you troubleshoot:</p><ul><li>Login issues on Coursera.</li><li>Issues with verifying or changing your email.</li></ul><p>If you want to reset your password, see <a href="/account-recovery">Reset your Coursera password</a>.</p><p>If you are part of an organization’s learning program that uses single sign-on, use <a href="/login">single sign-on guidance to log in</a>.</p><aside class="help-skip"><strong>Skip to:</strong><ul><li><a href="#unable">Unable to log in</a><ul><li>Error message: “We couldn't find an account associated with that email address”</li><li>Log in using SSO</li></ul></li><li><a href="#email">Issues selecting images after log in</a></li><li><a href="#verify">I can't verify my email</a></li><li><a href="#change">Changes to your Coursera email</a></li></ul></aside><h2 id="unable">Unable to log in</h2><blockquote><p>If you’re having trouble logging in, follow these steps:</p></blockquote><ol><li>Double check your email address for misspellings. The email address must match exactly what you typed in when you signed up.</li><li>Use the steps in our article on <a href="/account-recovery">resetting your password</a>.</li><li>Return to <a href="/login">Coursera sign in</a> without submitting credentials here.</li></ol><h2 id="account">Account access and failed actions</h2><p>Account access, registration, password recovery, checkout errors and failed actions are represented locally. No private account data is exposed.</p><p><a href="/browse">Browse course catalog</a> · <a href="/search">Search course catalog</a> · <a href="/about/contact">Contact support</a></p><section id="terms"><h2>Terms and privacy</h2><p>Continuing in this clone uses local WebsiteBench data only. No private account data is exposed.</p></section></article><aside class="help-floating"><strong>New! Search with AI</strong><button type="button" disabled aria-describedby="help-ai-disabled">×</button><span id="help-ai-disabled">AI help is unavailable offline.</span><p>Ask a question and get an instant answer.</p></aside><aside class="help-feedback"><strong>Was this article helpful?</strong>{feedback_status}<form action="/help/feedback" method="post"><button type="submit" name="helpful" value="yes">👍 Yes</button><button type="submit" name="helpful" value="no">👎 No</button></form></aside></main></body></html>"""
     return body
@@ -2626,5 +2627,6 @@ def contact(request: Request) -> str:
         body_class="source-contact-page",
         language="en",
         footer_variant="source-course",
+        real_css="front-page.css",
     )
 
