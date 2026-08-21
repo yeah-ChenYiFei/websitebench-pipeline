@@ -41,6 +41,17 @@
 - Source and clone specifications for the key routes are archived under `scope/frontend-specs/` (`*.source.json` / `*.clone.json`).
 - `tests/test_content_backend_consistency.py` enforces that rendered copy (prices, order status, progress, course content) equals the backend state, and that no legacy Chinese copy leaks into any public route. Legacy unreferenced Chinese helpers were removed from `app.py`.
 
+
+## Frontend reconstruction (2026-08-21)
+
+- Screenshot-built UI removed: the My Learning empty state and greeting used
+  an authenticated evidence screenshot cropped by CSS; both are now local SVG
+  illustrations, and no page references screenshot rasters as UI.
+- The home promotion switcher is a real sliding carousel: a flex slide track
+  translates by 100% per panel with a 480ms ease transition, five-second
+  autoplay, manual previous/next controls, and aria-hidden for the inactive
+  panels. Backend behavior is unchanged.
+
 ## Diagnostics
 
 - Static WebsiteBench diagnostics are complete with 76/76 verified assets, zero remote runtime references, and zero detected secrets.

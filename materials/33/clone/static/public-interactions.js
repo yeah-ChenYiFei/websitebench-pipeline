@@ -22,31 +22,50 @@
     });
   };
 
-  const switchPromo = (direction) => {
+  let promoIndex = 0;
+  let promoCount = 0;
+  let promoTimer = null;
+
+  const syncPromo = () => {
+    const track = document.querySelector("[data-promo-track] .promo-slide-track");
     const panels = [...document.querySelectorAll("[data-promo-panel]")];
-    if (!panels.length) return;
-    const active = visiblePanels("[data-promo-panel]")[0] || panels[0];
-    const offset = direction === "previous" ? -1 : 1;
-    const next = (panels.indexOf(active) + offset + panels.length) % panels.length;
-    panels.forEach((panel, index) => {
-      panel.hidden = index !== next;
-    });
+    if (!track || !panels.length) return;
+    promoCount = panels.length;
+    const safe = (promoIndex + promoCount) % promoCount;
+    track.style.transform = `translateX(-${safe * 100}%)`;
     document.querySelectorAll("[data-promo-target]").forEach((control) => {
       control.setAttribute(
         "aria-pressed",
-        String(control.dataset.promoTarget === panels[next].dataset.key),
+        String(control.dataset.promoTarget === panels[safe].dataset.key),
       );
     });
+    document.querySelectorAll("[data-promo-panel]").forEach((panel, index) => {
+      panel.setAttribute("aria-hidden", String(index !== safe));
+    });
+  };
+
+  const armPromoAutoplay = () => {
+    if (promoTimer) window.clearInterval(promoTimer);
+    promoTimer = window.setInterval(() => {
+      promoIndex = (promoIndex + 1) % promoCount;
+      syncPromo();
+    }, 5000);
+  };
+
+  const switchPromo = (direction) => {
+    const panels = [...document.querySelectorAll("[data-promo-panel]")];
+    if (!panels.length) return;
+    promoIndex = (promoIndex + (direction === "previous" ? -1 : 1) + panels.length) % panels.length;
+    syncPromo();
+    armPromoAutoplay();
   };
 
   const selectPromo = (control) => {
     const target = control.dataset.promoTarget;
-    document.querySelectorAll("[data-promo-panel]").forEach((panel) => {
-      panel.hidden = panel.dataset.key !== target;
-    });
-    document.querySelectorAll("[data-promo-target]").forEach((item) => {
-      item.setAttribute("aria-pressed", String(item === control));
-    });
+    const panels = [...document.querySelectorAll("[data-promo-panel]")];
+    promoIndex = panels.findIndex((panel) => panel.dataset.key === target);
+    syncPromo();
+    armPromoAutoplay();
   };
 
   const expandableContainer = (panel) => {
@@ -148,4 +167,7 @@
         break;
     }
   });
+
+  syncPromo();
+  armPromoAutoplay();
 })();

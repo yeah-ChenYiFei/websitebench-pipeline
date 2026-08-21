@@ -14,8 +14,10 @@
 
 <div class="source-home-shell">
   <section class="home-promo-switcher" aria-label="Featured learning opportunities">
-    <div class="promo-rail" data-source-home-promo="true">
-      {% for promo in promos %}<a class="promo-panel" data-promo-panel data-key="promo-{{ loop.index }}" href="{{ promo.href }}"{% if not loop.first %} hidden{% endif %}><img src="{{ promo.image }}" alt="{{ promo.alt }}"></a>{% endfor %}
+    <div class="promo-rail" data-source-home-promo="true" data-promo-track>
+      <div class="promo-slide-track">
+      {% for promo in promos %}<a class="promo-panel" data-promo-panel data-key="promo-{{ loop.index }}" data-promo-index="{{ loop.index0 }}" href="{{ promo.href }}"><img src="{{ promo.image }}" alt="{{ promo.alt }}"></a>{% endfor %}
+      </div>
     </div>
     <div class="home-promo-controls" aria-label="Choose featured items">
       <button type="button" data-control-action="switch-promo" data-promo-direction="previous" aria-label="Previous promotion">‹</button>

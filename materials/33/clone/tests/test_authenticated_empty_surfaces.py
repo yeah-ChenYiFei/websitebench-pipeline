@@ -110,7 +110,7 @@ def test_empty_my_learning_uses_observed_english_structure_and_local_illustratio
 
     assert 'data-authenticated-surface="my-learning-empty"' in html
     assert 'data-learning-greeting' in html
-    assert 'src="/static/authenticated-my-learning-evidence.png"' in html
+    assert 'class="learning-illustration learning-empty-illustration"' in html
     assert 'aria-label="My Learning sections"' in html
     for label in ("In Progress", "Completed", "Certificates"):
         assert label in html

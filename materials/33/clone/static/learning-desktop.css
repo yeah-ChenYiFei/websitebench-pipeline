@@ -13,16 +13,15 @@
 .learning-greeting p { margin: 8px 0 0; color: #48556a; font-size: 14px; }
 .learning-greeting a { color: var(--wb-blue); font-weight: 700; text-decoration: none; }
 .learning-avatar { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 50%; background: #073b74; color: #fff; font-weight: 700; }
-.learning-evidence-crop { position: relative; display: block; overflow: hidden; }
-.learning-evidence-crop img { position: absolute; display: block; width: 1692px; max-width: none; height: 578px; }
+.learning-illustration { display: block; }
 .learning-greeting-illustration { justify-self: end; width: 210px; height: 140px; }
-.learning-greeting-illustration img { left: -1128px; top: -17px; }
+.learning-greeting-illustration circle,
+.learning-greeting-illustration path { shape-rendering: geometricPrecision; }
 .learning-tabs { display: flex; gap: 28px; min-height: 50px; border-bottom: 1px solid #d2d8e2; }
 .learning-tabs a { display: inline-flex; align-items: flex-start; padding: 0 1px 15px; color: #42526b; font-size: 15px; font-weight: 700; text-decoration: none; }
 .learning-tabs a.is-active { color: #1f1f1f; border-bottom: 4px solid #1f1f1f; }
 .learning-empty-state { min-height: 485px; margin: 0 auto; padding: 94px 24px 60px; text-align: center; }
-.learning-empty-illustration { width: 112px; height: 105px; margin: 0 auto 28px; }
-.learning-empty-illustration img { left: -802px; top: -285px; }
+.learning-empty-illustration { display: block; width: 112px; height: 105px; margin: 0 auto 28px; }
 .learning-empty-state h2 { margin: 0 0 14px; font-size: 28px; line-height: 1.2; }
 .learning-empty-state p { max-width: 570px; margin: 0 auto; color: #526078; line-height: 1.5; }
 .account-surface { width: var(--wb-shell); margin: 0 auto; padding: 46px 0 80px; }
