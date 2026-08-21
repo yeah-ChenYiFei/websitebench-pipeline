@@ -1,0 +1,83 @@
+{
+  "schema_version": "offline-clone.journeys.v1",
+  "journeys": [
+    {
+      "id": "discover-review",
+      "actor": "anonymous",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "direct",
+      "steps": ["home", "search", "filter", "result", "detail", "rate-login-gate"]
+    },
+    {
+      "id": "submit-review",
+      "actor": "member",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "unavailable",
+      "steps": ["authenticated-rate-form", "fill-five-dimensions", "comment", "submit", "source-result"],
+      "note": "Authenticated source form and source mutation result remain unavailable."
+    },
+    {
+      "id": "register-participate-review-local",
+      "actor": "clone-local-member",
+      "kind": "local-contract",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "local-contract",
+      "steps": ["open-register", "fill-account-fields", "start-local-verification", "activate-account", "open-forums", "start-thread", "reply-to-thread", "open-beer-detail", "fill-five-dimensions", "submit-exact-comment", "observe-persisted-review", "logout", "login-again"],
+      "note": "Clone-only account, local outbox challenge, site-bound session, forum writes, and SQLite review persistence; no source request or source account."
+    },
+    {
+      "id": "community-and-place-browse",
+      "actor": "anonymous",
+      "kind": "success",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "direct",
+      "steps": ["forums", "thread-detail", "whats-new", "places", "place-filter", "place-detail", "register-boundary"]
+    },
+    {
+      "id": "detail-invalid-beer",
+      "family": "detail",
+      "actor": "anonymous",
+      "kind": "failure",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "local-contract",
+      "steps": ["open-invalid-beer-detail", "observe-404"]
+    },
+    {
+      "id": "detail-recover-with-search",
+      "family": "detail",
+      "actor": "anonymous",
+      "kind": "recovery",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "local-contract",
+      "steps": ["search-imperial-stout", "open-valid-result", "observe-detail"]
+    },
+    {
+      "id": "health-invalid-method",
+      "family": "health",
+      "actor": "diagnostic",
+      "kind": "failure",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "local-contract",
+      "steps": ["post-healthz", "observe-method-not-allowed"]
+    },
+    {
+      "id": "health-recover-get",
+      "family": "health",
+      "actor": "diagnostic",
+      "kind": "recovery",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "local-contract",
+      "steps": ["get-healthz", "observe-site-id"]
+    }
+  ]
+}
