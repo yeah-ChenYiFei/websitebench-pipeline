@@ -137,6 +137,26 @@ TOOL_CATALOG: tuple[dict[str, Any], ...] = (
             "URLs are sanitized to path plus allowlisted query parameters",
         ],
     },
+    {
+        "id": "visual-diff-diagnose",
+        "command": "websitebench-offline-clone tools visual-diff",
+        "repository_command": (
+            "python tools/offline_clone/run.py tools visual-diff"
+        ),
+        "purpose": (
+            "Locate and classify difference regions between a source raster and "
+            "a candidate raster (bbox, intensity, kind) with heatmap and "
+            "overlay outputs, so visual similarity work targets exact areas."
+        ),
+        "input_schema_versions": [],
+        "output_schema_version": (
+            "websitebench.offline-clone.visual-diff.v1"
+        ),
+        "safety": [
+            "raster comparison only",
+            "diagnostic authority only",
+        ],
+    },
 )
 
 

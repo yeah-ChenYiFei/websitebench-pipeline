@@ -58,6 +58,7 @@ def test_tool_catalog_and_cli_are_discoverable() -> None:
         "visual-compare",
         "backend-semantic-test",
         "frontend-spec-extract",
+        "visual-diff-diagnose",
     }
     args = build_parser().parse_args(["tools", "list"])
     assert args.tool_command == "list"

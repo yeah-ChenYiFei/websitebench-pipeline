@@ -22,6 +22,7 @@ from .manifest import (
 from .report import full_report, status_report
 from .semantic_tools import run_backend_semantic_suite
 from .toolbox import ToolboxError, tool_catalog
+from .visual_diff import diagnose_visual_diff
 
 
 def _emit(value: dict[str, Any], output: Path | None = None) -> None:
@@ -203,6 +204,25 @@ def _tool_test_backend(args: argparse.Namespace) -> int:
     )
     return 0 if result["status"] == "passed" else 1
 
+
+
+def _tool_visual_diff(args: argparse.Namespace) -> int:
+    result = diagnose_visual_diff(
+        source_path=args.source,
+        candidate_path=args.candidate,
+        output_path=args.out,
+        heatmap_path=args.heatmap,
+        overlay_path=args.overlay,
+    )
+    _emit(
+        {
+            "status": "passed",
+            "schema_version": result["schema_version"],
+            "output": str(args.out),
+            "metrics": result["metrics"],
+        }
+    )
+    return 0
 
 def _tool_frontend_spec(args: argparse.Namespace) -> int:
     try:
@@ -407,6 +427,21 @@ def build_parser() -> argparse.ArgumentParser:
     spec_tool.add_argument("--out", type=Path, required=True)
     spec_tool.add_argument("--timeout-ms", type=int, default=30000)
     spec_tool.set_defaults(function=_tool_frontend_spec)
+
+    diff_tool = tool_commands.add_parser(
+        "visual-diff",
+        help=(
+            "locate and classify difference regions between a source raster "
+            "and a candidate raster"
+        ),
+    )
+    diff_tool.add_argument("--source", type=Path, required=True)
+    diff_tool.add_argument("--candidate", type=Path, required=True)
+    diff_tool.add_argument("--out", type=Path, required=True)
+    diff_tool.add_argument("--heatmap", type=Path)
+    diff_tool.add_argument("--overlay", type=Path)
+    diff_tool.set_defaults(function=_tool_visual_diff)
+
     return parser
 
 
