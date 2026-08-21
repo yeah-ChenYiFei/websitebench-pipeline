@@ -22,11 +22,24 @@
 ## Visual differences
 
 - Source frames include dynamic state that the clone intentionally does not recreate: cookie-consent banners, chat side panels, restored scroll positions, and source-served promotional photography. The clone uses local CSS illustrations and deterministic content instead.
-- The source 404 frame is a simplified English recovery view. The clone keeps its shared Chinese navigation and explicit browse/search recovery links to satisfy the human trace, so this checkpoint is structurally rather than pixel-identical.
+- The source 404 frame is a simplified English recovery view. The clone keeps its shared navigation and explicit browse/search recovery links to satisfy the human trace, so this checkpoint is structurally rather than pixel-identical.
 - Public screenshots are evidence aids only. They do not establish redistribution rights, legal authorization, or a visual acceptance gate.
+
+## Owner-authorized real stylesheets
+
+- The human owner directly authorized (2026-08-21) using real Coursera stylesheets **inside the offline evaluation clone only** — never external redistribution. The authorization is recorded in `scope/real-css-authorization.json`.
+- Real CSS for the home, browse, search, course/specialization, and authentication surfaces is captured under `source-assets/coursera-css/`, fully localized (fonts and images rewritten to local `assets/`, embedded base64 fonts kept inline), with **zero remote runtime references** and registered in `source-assets/manifest.json` (75 assets, static diagnostics clean).
+- The clone runtime ships the layer at `clone/static/coursera/`. Clone pages keep their local deterministic structure and content; the real CSS provides the source design-system layer (fonts, colors, components) that page markup increasingly adopts.
+- Visual similarity diagnostics remain diagnostic-only and never become a rights, license, or redistribution gate.
+
+## Frontend specification and consistency
+
+- The shared `frontend-spec-extract` tool (`websitebench-offline-clone tools frontend-spec`) extracts a sanitized page specification — headings, semantic regions, controls, forms, data points, and style references — from any approved-origin page. It is how the real page, the interaction logic, and the backend data contract stay aligned.
+- Source and clone specifications for the key routes are archived under `scope/frontend-specs/` (`*.source.json` / `*.clone.json`).
+- `tests/test_content_backend_consistency.py` enforces that rendered copy (prices, order status, progress, course content) equals the backend state, and that no legacy Chinese copy leaks into any public route. Legacy unreferenced Chinese helpers were removed from `app.py`.
 
 ## Diagnostics
 
-- Static WebsiteBench diagnostics are complete with 16/16 verified assets, zero remote runtime references, and zero detected secrets.
+- Static WebsiteBench diagnostics are complete with 75/75 verified assets, zero remote runtime references, and zero detected secrets.
 - Live diagnostics were not completed because the Harbor candidate sandbox returned `[Errno 95]` for its sandbox runtime. This is an environment limitation, not a page-test failure; local Playwright/browser suites remain the applicable verification evidence.
 - One historical home footer geometry assertion remains 17px outside its 16px tolerance (`source-browse-footer-secondary`); it predates this learner expansion and is reported rather than changed opportunistically.

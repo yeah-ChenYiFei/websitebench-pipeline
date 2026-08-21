@@ -1,0 +1,526 @@
+{
+  "schema_version": "websitebench.offline-clone.frontend-spec.v1",
+  "authority": "diagnostic-only",
+  "target_url": "http://127.0.0.1:8899/checkout/deep-learning",
+  "captured_at": "2026-08-21T10:24:58.447766+00:00",
+  "viewport": {
+    "width": 1692,
+    "height": 979
+  },
+  "environment": "clone",
+  "document": {
+    "title": "Sign in required | Coursera",
+    "lang": "en",
+    "canonical": "/",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Sign in before choosing a checkout plan"
+      },
+      {
+        "level": 2,
+        "text": "Coursera"
+      },
+      {
+        "level": 2,
+        "text": "Community"
+      },
+      {
+        "level": 2,
+        "text": "More"
+      },
+      {
+        "level": 2,
+        "text": "Learn anywhere"
+      }
+    ],
+    "regions": [
+      {
+        "kind": "header",
+        "role": "",
+        "label": ""
+      },
+      {
+        "kind": "nav",
+        "role": "",
+        "label": "Account"
+      },
+      {
+        "kind": "main",
+        "role": "",
+        "label": ""
+      },
+      {
+        "kind": "footer",
+        "role": "",
+        "label": ""
+      }
+    ]
+  },
+  "controls": [
+    {
+      "id": "c-0",
+      "kind": "a",
+      "type": "",
+      "text": "For Businesses",
+      "aria_label": "",
+      "href": "/business/teams",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-1",
+      "kind": "a",
+      "type": "",
+      "text": "For Universities",
+      "aria_label": "",
+      "href": "/degrees",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-2",
+      "kind": "a",
+      "type": "",
+      "text": "For Governments",
+      "aria_label": "",
+      "href": "/government",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-3",
+      "kind": "a",
+      "type": "",
+      "text": "coursera",
+      "aria_label": "Coursera home",
+      "href": "/",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-4",
+      "kind": "a",
+      "type": "",
+      "text": "Explore ⌄",
+      "aria_label": "",
+      "href": "/browse",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-5",
+      "kind": "a",
+      "type": "",
+      "text": "Degrees",
+      "aria_label": "",
+      "href": "/degrees",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-6",
+      "kind": "form",
+      "type": "",
+      "text": "Search courses",
+      "aria_label": "",
+      "href": "",
+      "action": "/search",
+      "method": "get",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "search",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-7",
+      "kind": "input",
+      "type": "",
+      "text": "",
+      "aria_label": "",
+      "href": "",
+      "action": "",
+      "method": "",
+      "name": "q",
+      "placeholder": "What do you want to learn?",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-8",
+      "kind": "button",
+      "type": "submit",
+      "text": "",
+      "aria_label": "Search courses",
+      "href": "",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-9",
+      "kind": "button",
+      "type": "button",
+      "text": "Log In",
+      "aria_label": "",
+      "href": "",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-10",
+      "kind": "a",
+      "type": "",
+      "text": "Join for Free",
+      "aria_label": "",
+      "href": "/signup",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-11",
+      "kind": "a",
+      "type": "",
+      "text": "Sign in locally",
+      "aria_label": "",
+      "href": "/login?next=/checkout/deep-learning",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-12",
+      "kind": "a",
+      "type": "",
+      "text": "Courses",
+      "aria_label": "",
+      "href": "/browse",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-13",
+      "kind": "a",
+      "type": "",
+      "text": "About",
+      "aria_label": "",
+      "href": "/about/contact",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-14",
+      "kind": "a",
+      "type": "",
+      "text": "Help Center",
+      "aria_label": "",
+      "href": "/help",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-15",
+      "kind": "a",
+      "type": "",
+      "text": "Learners",
+      "aria_label": "",
+      "href": "/my-learning",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-16",
+      "kind": "a",
+      "type": "",
+      "text": "Partners",
+      "aria_label": "",
+      "href": "/browse",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-17",
+      "kind": "a",
+      "type": "",
+      "text": "Businesses",
+      "aria_label": "",
+      "href": "/about/contact",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-18",
+      "kind": "a",
+      "type": "",
+      "text": "Account access",
+      "aria_label": "",
+      "href": "/account-recovery",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-19",
+      "kind": "a",
+      "type": "",
+      "text": "Support",
+      "aria_label": "",
+      "href": "/help",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-20",
+      "kind": "a",
+      "type": "",
+      "text": "Contact",
+      "aria_label": "",
+      "href": "/about/contact",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    }
+  ],
+  "data_points": [
+    {
+      "kind": "count",
+      "text": "2026 Course"
+    }
+  ],
+  "styles": [
+    {
+      "href": "/static/site.css",
+      "media": ""
+    },
+    {
+      "href": "/static/components.css",
+      "media": ""
+    },
+    {
+      "href": "/static/auth.css",
+      "media": ""
+    },
+    {
+      "href": "/static/checkout.css",
+      "media": ""
+    },
+    {
+      "href": "/static/desktop-base.css",
+      "media": ""
+    },
+    {
+      "href": "/static/desktop-chrome.css",
+      "media": ""
+    },
+    {
+      "href": "/static/catalog-desktop.css",
+      "media": ""
+    },
+    {
+      "href": "/static/course-desktop.css",
+      "media": ""
+    },
+    {
+      "href": "/static/specialization-prototype.css",
+      "media": ""
+    },
+    {
+      "href": "/static/course-detail-prototype.css",
+      "media": ""
+    },
+    {
+      "href": "/static/browse-prototype.css",
+      "media": ""
+    },
+    {
+      "href": "/static/data-science-category.css",
+      "media": ""
+    },
+    {
+      "href": "/static/category-page.css",
+      "media": ""
+    },
+    {
+      "href": "/static/search-page.css",
+      "media": ""
+    },
+    {
+      "href": "/static/home-prototype.css",
+      "media": ""
+    },
+    {
+      "href": "/static/auth-desktop.css",
+      "media": ""
+    },
+    {
+      "href": "/static/learning-desktop.css",
+      "media": ""
+    },
+    {
+      "href": "/static/enrolled-learning.css",
+      "media": ""
+    },
+    {
+      "href": "/static/checkout-desktop.css",
+      "media": ""
+    }
+  ],
+  "scripts": [
+    "/static/public-interactions.js",
+    "/static/auth-dialog.js",
+    "/static/assignment.js"
+  ],
+  "summary": {
+    "http_status": 401,
+    "heading_count": 5,
+    "region_count": 4,
+    "control_count": 21,
+    "form_count": 1,
+    "data_point_count": 1,
+    "style_count": 19,
+    "script_count": 3,
+    "blocked_request_count": 0,
+    "failed_request_count": 0,
+    "console_error_count": 1
+  },
+  "blocked_requests": [],
+  "failed_requests": [],
+  "console_errors": [
+    "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+  ]
+}

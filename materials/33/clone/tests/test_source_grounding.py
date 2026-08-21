@@ -101,7 +101,7 @@ def test_task3_reconstruction_maps_assets_layout_and_copy_to_current_ea_evidence
     direct_public_assets = [
         item for item in manifest["assets"] if item["evidence_kind"] == "current-direct"
     ]
-    assert {item["id"] for item in direct_public_assets} == {
+    legacy_public_ids = {
         "current-live-home-promo-plus",
         "current-live-home-promo-teams",
         "current-live-home-promo-third",
@@ -113,10 +113,16 @@ def test_task3_reconstruction_maps_assets_layout_and_copy_to_current_ea_evidence
         "task7-home-trend-google-analytics",
         "task7-home-trend-microsoft-qa",
     }
-    assert all(item["source_url"] == "https://www.coursera.org/" for item in direct_public_assets)
-    assert {item["capture_id"] for item in direct_public_assets} == {
-        "public-home-desktop",
-        "coursera-home-login-current-state-open-home",
+    # The owner-authorized real CSS layer adds more current-direct assets; the
+    # pre-existing public collection must remain fully present.
+    assert legacy_public_ids <= {item["id"] for item in direct_public_assets}
+    assert any(item["id"].startswith("coursera-") for item in direct_public_assets)
+    legacy_direct = [
+        item for item in direct_public_assets if item["id"] in legacy_public_ids
+    ]
+    assert all(item["source_url"] == "https://www.coursera.org/" for item in legacy_direct)
+    assert {"public-home-desktop", "coursera-home-login-current-state-open-home"} <= {
+        item["capture_id"] for item in legacy_direct
     }
     asset_provenance = {
         item["runtime_path"]: item for item in provenance["runtime_assets"]
@@ -323,7 +329,7 @@ def test_asset_manifest_records_task7_public_desktop_collection_identity() -> No
 
     assert manifest["snapshot_id"] == "33-task7-public-desktop-evidence"
     assert manifest["created_at"] == "2026-08-17T00:00:00Z"
-    assert {item["id"] for item in manifest["assets"]} == {
+    legacy_ids = {
         "current-live-home-promo-plus",
         "current-live-home-promo-teams",
         "current-live-home-promo-third",
@@ -341,6 +347,11 @@ def test_asset_manifest_records_task7_public_desktop_collection_identity() -> No
         "task7-home-trend-google-analytics",
         "task7-home-trend-microsoft-qa",
     }
+    ids = {item["id"] for item in manifest["assets"]}
+    # The authorized real CSS layer extends the manifest; the pre-existing
+    # public collection must stay fully attributed to the Task-7 snapshot.
+    assert legacy_ids <= ids
+    assert any(item["id"].startswith("coursera-") for item in manifest["assets"])
 
 
 def test_current_verify_has_no_authenticated_fixture_or_credentials() -> None:

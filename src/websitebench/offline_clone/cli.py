@@ -13,6 +13,7 @@ from .browser_tools import run_browser_exploration
 from .comparison_tools import compare_functional_reports, compare_visual_spec
 from .contribution import contribution_report, initialize_contribution
 from .diagnostics import DIAGNOSTIC_SECTIONS, verify as run_diagnostics
+from .frontend_spec import extract_frontend_spec
 from .manifest import (
     ManifestValidationError,
     initialize_site,
@@ -203,6 +204,31 @@ def _tool_test_backend(args: argparse.Namespace) -> int:
     return 0 if result["status"] == "passed" else 1
 
 
+def _tool_frontend_spec(args: argparse.Namespace) -> int:
+    try:
+        raw_width, raw_height = (part.strip() for part in args.viewport.split(","))
+        viewport = (int(raw_width), int(raw_height))
+    except (TypeError, ValueError) as exc:
+        raise ToolboxError(f"invalid --viewport {args.viewport!r}") from exc
+    result = extract_frontend_spec(
+        target_url=args.url,
+        allowed_origins=args.allowed_origin,
+        viewport=viewport,
+        environment=args.environment,
+        output_path=args.out,
+        timeout_ms=args.timeout_ms,
+    )
+    _emit(
+        {
+            "status": "passed",
+            "schema_version": result["schema_version"],
+            "output": str(args.out),
+            "summary": result["summary"],
+        }
+    )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="websitebench-offline-clone")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -358,6 +384,29 @@ def build_parser() -> argparse.ArgumentParser:
         help="explicitly allow an isolated clone target outside loopback",
     )
     semantic.set_defaults(function=_tool_test_backend)
+
+    spec_tool = tool_commands.add_parser(
+        "frontend-spec",
+        help=(
+            "extract a sanitized frontend spec (structure, controls, forms, "
+            "data points, style references) from one approved-origin page"
+        ),
+    )
+    spec_tool.add_argument("--url", required=True)
+    spec_tool.add_argument(
+        "--allowed-origin", action="append", required=True, dest="allowed_origin"
+    )
+    spec_tool.add_argument(
+        "--viewport",
+        default="1692,979",
+        help="comma-separated width,height (default 1692,979)",
+    )
+    spec_tool.add_argument(
+        "--environment", choices=("source", "clone"), default="source"
+    )
+    spec_tool.add_argument("--out", type=Path, required=True)
+    spec_tool.add_argument("--timeout-ms", type=int, default=30000)
+    spec_tool.set_defaults(function=_tool_frontend_spec)
     return parser
 
 

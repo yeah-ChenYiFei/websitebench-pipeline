@@ -113,6 +113,30 @@ TOOL_CATALOG: tuple[dict[str, Any], ...] = (
             "request and response bodies are never retained",
         ],
     },
+    {
+        "id": "frontend-spec-extract",
+        "command": "websitebench-offline-clone tools frontend-spec",
+        "repository_command": (
+            "python tools/offline_clone/run.py tools frontend-spec"
+        ),
+        "purpose": (
+            "Extract a sanitized frontend specification from one approved-origin "
+            "page: document structure, headings, semantic regions, interactive "
+            "controls, forms, data points, and style/script references that clone "
+            "implementations and backend contracts can share."
+        ),
+        "input_schema_versions": [],
+        "output_schema_version": (
+            "websitebench.offline-clone.frontend-spec.v1"
+        ),
+        "safety": [
+            "approved origins only",
+            "source exploration is GET-only",
+            "storage state is never retained",
+            "input values and cookies are never collected",
+            "URLs are sanitized to path plus allowlisted query parameters",
+        ],
+    },
 )
 
 

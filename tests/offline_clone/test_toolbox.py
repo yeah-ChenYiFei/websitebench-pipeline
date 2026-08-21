@@ -57,9 +57,24 @@ def test_tool_catalog_and_cli_are_discoverable() -> None:
         "functional-compare",
         "visual-compare",
         "backend-semantic-test",
+        "frontend-spec-extract",
     }
     args = build_parser().parse_args(["tools", "list"])
     assert args.tool_command == "list"
+    args = build_parser().parse_args(
+        [
+            "tools",
+            "frontend-spec",
+            "--url",
+            "https://example.test/",
+            "--allowed-origin",
+            "https://example.test",
+            "--out",
+            "spec.json",
+        ]
+    )
+    assert args.tool_command == "frontend-spec"
+    assert args.viewport == "1692,979"
 
 
 def test_functional_compare_reports_observable_difference(tmp_path: Path) -> None:
