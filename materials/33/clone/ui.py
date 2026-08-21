@@ -5,7 +5,7 @@ from __future__ import annotations
 from html import escape
 
 
-STATIC_REVISION = "20260821-public-interactions-v1"
+STATIC_REVISION = "20260822-structure-round-v2"
 
 
 def header(

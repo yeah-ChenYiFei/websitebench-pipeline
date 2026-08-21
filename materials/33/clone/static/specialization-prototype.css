@@ -139,6 +139,11 @@
 .source-specialization-faq details { border-top: 1px solid #dde1e8; padding: 17px 8px; }
 .source-specialization-faq summary { cursor: pointer; font-size: 13px; font-weight: 700; }
 .source-specialization-faq p { font-size: 13px; }
+.source-specialization-faq .source-faq-show-all { margin-top: 18px; border: 0; padding: 0; background: transparent; color: var(--cds-color-blue-600); font-size: 13px; font-weight: 700; cursor: pointer; }
+.source-specialization-aux-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0 4px; }
+.source-aux-action { border: 1px solid #a9b4c5; border-radius: 99px; padding: 9px 16px; background: #fff; color: #24334d; font-size: 13px; font-weight: 700; cursor: pointer; }
+.source-specialization-course { position: relative; }
+.source-course-details-toggle { border: 0; padding: 0; background: transparent; color: var(--cds-color-blue-600); font-size: 13px; font-weight: 700; cursor: pointer; }
 .source-specialization-page .wb-footer { margin-top: 0; }
 
 @media (max-width: 900px) {

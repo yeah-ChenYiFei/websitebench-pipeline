@@ -1,8 +1,8 @@
 {
   "schema_version": "websitebench.offline-clone.frontend-spec.v1",
   "authority": "diagnostic-only",
-  "target_url": "http://127.0.0.1:8896/browse",
-  "captured_at": "2026-08-21T11:22:14.935317+00:00",
+  "target_url": "http://127.0.0.1:43241/browse",
+  "captured_at": "2026-08-21T18:09:30.616266+00:00",
   "viewport": {
     "width": 1692,
     "height": 979
@@ -3584,6 +3584,10 @@
       "media": ""
     },
     {
+      "href": "/static/coursera/fonts.css",
+      "media": ""
+    },
+    {
       "href": "/static/coursera/browse.css",
       "media": ""
     },
@@ -3680,22 +3684,13 @@
     "control_count": 190,
     "form_count": 1,
     "data_point_count": 25,
-    "style_count": 22,
+    "style_count": 23,
     "script_count": 3,
     "blocked_request_count": 0,
     "failed_request_count": 0,
-    "console_error_count": 8
+    "console_error_count": 0
   },
   "blocked_requests": [],
   "failed_requests": [],
-  "console_errors": [
-    "Loading the font 'data:application/font-woff;base64,d09GMgABAAAAABXYAA4AAAAAMqAAABWBAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAA",
-    "Loading the font 'data:application/font-woff;base64,d09GRgABAAAAABooAA4AAAAAMnQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAAP",
-    "Loading the font 'data:application/font-woff;base64,d09GMgABAAAAABUQAA4AAAAAL6gAABS4AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAA",
-    "Loading the font 'data:application/font-woff;base64,d09GRgABAAAAABkkAA4AAAAAL4wAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAAO",
-    "Loading the font 'data:application/font-woff;base64,d09GMgABAAAAAA6QAA4AAAAAH9QAAA45AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAA",
-    "Loading the font 'data:application/font-woff;base64,d09GRgABAAAAABHYAA4AAAAAH7gAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAAH",
-    "Loading the font 'data:application/font-woff;base64,d09GMgABAAAAABOkAA4AAAAAK0AAABNOAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAA",
-    "Loading the font 'data:application/font-woff;base64,d09GRgABAAAAABgoAA4AAAAAKwgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAAN"
-  ]
+  "console_errors": []
 }

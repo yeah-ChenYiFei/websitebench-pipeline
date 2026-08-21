@@ -801,7 +801,7 @@ def search(
         ),
         search_value="deep learning" if source_selected else q,
         language="en",
-        footer_variant="source-course",
+        footer_variant="source-browse",
         real_css="search-v2.css",
     )
 
@@ -1027,6 +1027,7 @@ def deep_learning_specialization(request: Request) -> str:
         document_title="Deep Learning Specialization | Coursera",
         language="en",
         login_next_path="/checkout/deep-learning",
+        footer_variant="source-browse",
         real_css="consumer-description-page.css",
     )
 
@@ -1241,7 +1242,7 @@ def course_detail(request: Request, course_id: str) -> str:
             body_class="source-course-detail-page",
             document_title="Neural Networks and Deep Learning | Coursera",
             language="en",
-            footer_variant="source-course",
+            footer_variant="source-browse",
             login_next_path="/learn/neural-networks-deep-learning",
             real_css="consumer-description-page.css",
         )

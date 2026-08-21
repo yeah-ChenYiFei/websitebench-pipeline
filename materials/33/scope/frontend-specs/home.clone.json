@@ -1,8 +1,8 @@
 {
   "schema_version": "websitebench.offline-clone.frontend-spec.v1",
   "authority": "diagnostic-only",
-  "target_url": "http://127.0.0.1:8899/",
-  "captured_at": "2026-08-21T10:24:52.292152+00:00",
+  "target_url": "http://127.0.0.1:43241/",
+  "captured_at": "2026-08-21T18:09:28.416927+00:00",
   "viewport": {
     "width": 1692,
     "height": 979
@@ -362,7 +362,7 @@
       "id": "c-11",
       "kind": "a",
       "type": "",
-      "text": "",
+      "text": "COURSERA PLUS Save 40% on 3 months of Coursera Plus Get unlimited access to 10,000+ learning programs from world-class u",
       "aria_label": "",
       "href": "/courseraplus/special/cplus-monthly-august-2026-global",
       "action": "",
@@ -3405,6 +3405,10 @@
     },
     {
       "kind": "count",
+      "text": "10,000+ courses"
+    },
+    {
+      "kind": "count",
       "text": "3 Program"
     },
     {
@@ -3413,6 +3417,18 @@
     }
   ],
   "styles": [
+    {
+      "href": "/static/coursera/cds-variables.css",
+      "media": ""
+    },
+    {
+      "href": "/static/coursera/fonts.css",
+      "media": ""
+    },
+    {
+      "href": "/static/coursera/front-page.css",
+      "media": ""
+    },
     {
       "href": "/static/site.css",
       "media": ""
@@ -3488,6 +3504,10 @@
     {
       "href": "/static/checkout-desktop.css",
       "media": ""
+    },
+    {
+      "href": "/static/real-css-complement.css",
+      "media": ""
     }
   ],
   "scripts": [
@@ -3501,8 +3521,8 @@
     "region_count": 5,
     "control_count": 186,
     "form_count": 1,
-    "data_point_count": 19,
-    "style_count": 19,
+    "data_point_count": 20,
+    "style_count": 23,
     "script_count": 3,
     "blocked_request_count": 0,
     "failed_request_count": 0,

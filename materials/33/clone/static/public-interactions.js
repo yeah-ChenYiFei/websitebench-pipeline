@@ -137,6 +137,32 @@
     });
   };
 
+  const toggleCourseDetails = (control) => {
+    const course = control.closest(".source-specialization-course");
+    if (!course) return;
+    const expanded = control.getAttribute("aria-expanded") === "true";
+    control.setAttribute("aria-expanded", String(!expanded));
+    const arrow = control.querySelector("[aria-hidden]");
+    if (arrow) arrow.textContent = expanded ? "⌄" : "⌃";
+  };
+
+  const toggleFaqAll = (control) => {
+    const section = control.closest(".source-specialization-faq");
+    if (!section) return;
+    const expanded = control.getAttribute("aria-expanded") === "true";
+    control.setAttribute("aria-expanded", String(!expanded));
+    section.querySelectorAll("details").forEach((details) => {
+      details.open = !expanded;
+    });
+  };
+
+  const openFaqPanel = (control) => {
+    const target = control.dataset.faqTarget;
+    const panel = document.getElementById(target);
+    if (!panel) return;
+    panel.hidden = panel.hidden === undefined ? false : !panel.hidden;
+  };
+
   document.addEventListener("click", (event) => {
     const control = event.target.closest("[data-control-action]");
     if (!control) return;
@@ -155,6 +181,15 @@
         break;
       case "open-login":
         openLogin();
+        break;
+      case "toggle-course-details":
+        toggleCourseDetails(control);
+        break;
+      case "toggle-faq-all":
+        toggleFaqAll(control);
+        break;
+      case "open-faq-panel":
+        openFaqPanel(control);
         break;
       case "toggle-objectives":
         toggleControlledPanel(control);

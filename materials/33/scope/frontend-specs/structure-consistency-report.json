@@ -1,0 +1,139 @@
+{
+  "schema_version": "websitebench.offline-clone.structure-consistency.v1",
+  "authority": "diagnostic-only",
+  "pages": [
+    {
+      "page": "home",
+      "structure_score": 0.5305,
+      "headings": {
+        "source": 67,
+        "clone": 32,
+        "jaccard": 0.3562,
+        "coverage": 0.3881,
+        "level_match": 0.9615
+      },
+      "controls": {
+        "source": 195,
+        "clone": 176,
+        "jaccard": 0.5081,
+        "coverage": 0.641
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    },
+    {
+      "page": "browse",
+      "structure_score": 0.5939,
+      "headings": {
+        "source": 50,
+        "clone": 41,
+        "jaccard": 0.4444,
+        "coverage": 0.56,
+        "level_match": 0.9643
+      },
+      "controls": {
+        "source": 152,
+        "clone": 142,
+        "jaccard": 0.5722,
+        "coverage": 0.7039
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    },
+    {
+      "page": "search",
+      "structure_score": 0.5039,
+      "headings": {
+        "source": 21,
+        "clone": 18,
+        "jaccard": 0.3,
+        "coverage": 0.4286,
+        "level_match": 0.8889
+      },
+      "controls": {
+        "source": 104,
+        "clone": 126,
+        "jaccard": 0.5132,
+        "coverage": 0.75
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    },
+    {
+      "page": "course",
+      "structure_score": 0.6461,
+      "headings": {
+        "source": 39,
+        "clone": 21,
+        "jaccard": 0.5385,
+        "coverage": 0.5385,
+        "level_match": 0.9524
+      },
+      "controls": {
+        "source": 131,
+        "clone": 109,
+        "jaccard": 0.5894,
+        "coverage": 0.6794
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    },
+    {
+      "page": "specialization",
+      "structure_score": 0.6471,
+      "headings": {
+        "source": 36,
+        "clone": 18,
+        "jaccard": 0.5,
+        "coverage": 0.5,
+        "level_match": 0.9444
+      },
+      "controls": {
+        "source": 130,
+        "clone": 102,
+        "jaccard": 0.6571,
+        "coverage": 0.7077
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    },
+    {
+      "page": "login",
+      "structure_score": 0.5347,
+      "headings": {
+        "source": 5,
+        "clone": 8,
+        "jaccard": 0.4444,
+        "coverage": 0.8,
+        "level_match": 0.0
+      },
+      "controls": {
+        "source": 53,
+        "clone": 101,
+        "jaccard": 0.375,
+        "coverage": 0.7925
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    }
+  ],
+  "overall_structure_consistency": 0.576
+}

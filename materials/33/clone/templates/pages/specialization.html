@@ -33,6 +33,10 @@
         <button class="source-enroll-button" type="button" data-login-open data-enrollment-login-open>Enroll for free <small>Starts Aug 19</small></button>
       </div>
     {% endif %}
+    <div class="source-specialization-aux-actions">
+      <button type="button" class="source-aux-action" data-control-action="open-faq-panel" data-faq-target="right-for-me">Is this right for me?</button>
+      <button type="button" class="source-aux-action" data-control-action="open-faq-panel" data-faq-target="language-panel">27 languages available</button>
+    </div>
     <p class="source-enrollment-count">997,307 already enrolled</p>
   </div>
   <div class="source-specialization-hero-art" aria-hidden="true">
@@ -98,7 +102,7 @@
           <article class="source-specialization-course">
             <img src="/static/deep-learning/{{ course.asset }}" alt="">
             <div><a href="/learn/{{ course.id }}">{{ course.title }}</a><span>Course {{ course.number }} · {{ course.duration }}</span></div>
-            <span aria-hidden="true">⌄</span>
+            <button type="button" class="source-course-details-toggle" data-control-action="toggle-course-details" data-course-target="course-{{ course.number }}" aria-expanded="false">Course details <span aria-hidden="true">⌄</span></button>
           </article>
         {% endfor %}
         <div class="source-series-benefit"><strong>Earn a career certificate</strong><span>Add this credential to your LinkedIn profile, resume, or CV.</span></div>
@@ -131,5 +135,11 @@
     <details><summary>What is Deep Learning? Why is it relevant?</summary><p>Deep learning is a branch of machine learning built around multi-layer neural networks.</p></details>
     <details><summary>What is the Deep Learning Specialization about?</summary><p>This five-course series introduces the foundations and practical applications of deep learning.</p></details>
     <details><summary>What will I be able to do after completing the Deep Learning Specialization?</summary><p>You will be able to build and evaluate neural-network systems for several common AI tasks.</p></details>
+    <details><summary>Do I need to know programming or machine learning before starting?</summary><p>You should be comfortable with Python and basic programming; a background in machine learning is helpful but not required.</p></details>
+    <details><summary>What background knowledge is necessary to enroll?</summary><p>Familiarity with Python and an intermediate level of math including calculus and linear algebra is recommended.</p></details>
+    <details><summary>Do I need to take the courses in a specific order?</summary><p>We strongly recommend taking the five courses in sequence, starting with Neural Networks and Deep Learning.</p></details>
+    <details><summary>Will I earn university credit for completing the Specialization?</summary><p>You can earn a shareable career certificate; eligible learners may apply coursework toward degree credit.</p></details>
+    <details><summary>Can I enroll in just one course in the Specialization?</summary><p>Yes, each course can be taken independently, and you can start with a free audit of any course.</p></details>
+    <button type="button" class="source-faq-show-all" data-control-action="toggle-faq-all" data-faq-toggle>Show all 23 frequently asked questions</button>
   </section>
 </div>
