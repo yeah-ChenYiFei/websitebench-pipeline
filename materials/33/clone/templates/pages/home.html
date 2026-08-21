@@ -16,7 +16,7 @@
   <section class="home-promo-switcher" aria-label="Featured learning opportunities">
     <div class="promo-rail" data-source-home-promo="true" data-promo-track>
       <div class="promo-slide-track">
-      {% for promo in promos %}<a class="promo-panel" data-promo-panel data-key="promo-{{ loop.index }}" data-promo-index="{{ loop.index0 }}" data-promo-tone="{{ promo.tone }}" href="{{ promo.href }}"><span class="promo-art promo-art-{{ promo.key }}" aria-hidden="true"></span><span class="promo-overlay" aria-hidden="true"></span><span class="promo-copy"><span class="promo-eyebrow">{{ promo.eyebrow }}</span><strong class="promo-title">{{ promo.title }}</strong><span class="promo-subtitle">{{ promo.subtitle }}</span><span class="promo-cta">{{ promo.cta }} <span aria-hidden="true">→</span></span></span></a>{% endfor %}
+      {% for promo in promos %}<a class="promo-panel" data-promo-panel data-key="promo-{{ loop.index }}" data-promo-index="{{ loop.index0 }}" data-promo-tone="{{ promo.tone }}" href="{{ promo.href }}"><span class="promo-copy"><span class="promo-eyebrow">{{ promo.eyebrow }}</span><strong class="promo-title">{{ promo.title }}</strong><span class="promo-subtitle">{{ promo.subtitle }}</span><span class="promo-features">{% for feature in promo.features %}<span class="promo-feature">✓ {{ feature }}</span>{% endfor %}</span><span class="promo-cta">{{ promo.cta }} <span aria-hidden="true">→</span></span></span><span class="promo-art promo-art-{{ promo.key }}" aria-hidden="true"></span></a>{% endfor %}
       </div>
     </div>
     <div class="home-promo-controls" aria-label="Choose featured items">

@@ -24,6 +24,7 @@ PROMOS = (
         "title": "Save 40% on 3 months of Coursera Plus",
         "subtitle": "Get unlimited access to 10,000+ learning programs from world-class universities and companies.",
         "cta": "Start 7-day free trial",
+        "features": ("10,000+ courses and certificates", "Learn at your own pace", "Cancel anytime"),
         "tone": "blue",
     },
     {
@@ -34,6 +35,7 @@ PROMOS = (
         "title": "Close team skill gaps for what's next",
         "subtitle": "Empower your team with the skills to keep your organization moving forward.",
         "cta": "Explore Coursera for Business",
+        "features": ("Upskill your whole team", "Track learner progress", "Flexible team plans"),
         "tone": "light",
     },
     {
@@ -44,6 +46,7 @@ PROMOS = (
         "title": "Start, switch, or advance your career.",
         "subtitle": "Find the right course or certificate to build the career you want.",
         "cta": "Explore career paths",
+        "features": ("Beginner to advanced", "Job-relevant skills", "Certificates of completion"),
         "tone": "warm",
     },
 )

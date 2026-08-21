@@ -24,23 +24,22 @@
 .home-promo-choice { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .source-home-page .promo-rail { position: relative; width: 100%; overflow: hidden; margin: 0; }
 .promo-slide-track { display: flex; width: 100%; transition: transform 480ms cubic-bezier(0.22, 0.61, 0.36, 1); will-change: transform; }
-.source-home-page .promo-panel { position: relative; flex: 0 0 100%; height: 302px; border-radius: 14px; overflow: hidden; text-decoration: none; box-sizing: border-box; }
-.promo-art { position: absolute; inset: 0; background-position: center; background-size: cover; }
+.source-home-page .promo-panel { position: relative; display: flex; flex: 0 0 100%; height: 302px; border-radius: 14px; overflow: hidden; text-decoration: none; box-sizing: border-box; }
+.promo-copy { position: relative; display: flex; flex-direction: column; justify-content: center; gap: 9px; width: 58%; padding: 30px 34px; box-sizing: border-box; background: #f6f9ff; color: #1f2b3a; }
+.promo-eyebrow { display: block; font-size: 12px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: #227af9; }
+.promo-title { display: block; max-width: 100%; font-size: 27px; line-height: 1.1; letter-spacing: -.5px; }
+.promo-subtitle { display: block; max-width: 100%; font-size: 14px; line-height: 1.45; color: #44536b; }
+.promo-features { display: flex; flex-direction: column; gap: 5px; margin: 2px 0 4px; }
+.promo-feature { display: flex; align-items: center; gap: 7px; font-size: 13px; color: #2f3d55; }
+.promo-feature::before { content: "✓"; color: #1e9e4a; font-weight: 800; }
+.promo-cta { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 10px 18px; border-radius: 6px; background: #227af9; color: #fff; font-size: 14px; font-weight: 800; }
+.promo-art { position: relative; width: 42%; min-height: 100%; background-position: center; background-size: cover; background-repeat: no-repeat; background-color: #eef3fb; }
 .promo-art-coursera-plus { background-image: url("/static/home/current-promo-plus.png"); }
 .promo-art-for-business { background-image: url("/static/home/current-promo-teams.png"); }
 .promo-art-career { background-image: url("/static/home/current-promo-career.png"); }
-.promo-overlay { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(10, 24, 48, 0.42) 0%, rgba(10, 24, 48, 0.12) 38%, rgba(10, 24, 48, 0) 68%); }
-.promo-copy { position: relative; display: flex; flex-direction: column; justify-content: center; gap: 8px; width: 62%; height: 302px; padding: 30px 40px; box-sizing: border-box; overflow: hidden; color: #fff; }
-.promo-eyebrow { display: block; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #ffe08a; }
-.promo-title { display: block; max-width: 100%; font-size: 30px; line-height: 1.08; letter-spacing: -.6px; }
-.promo-subtitle { display: block; max-width: 100%; font-size: 14px; line-height: 1.4; opacity: .92; }
-.promo-cta { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; margin-top: 4px; padding: 10px 18px; border-radius: 6px; background: #fff; color: #0b3d91; font-size: 14px; font-weight: 800; }
 .source-home-shell [data-collection-panel][hidden],
 [data-career-collection-panel][hidden],
 [data-faq-panel][hidden] { display: none !important; }
-.source-home-page .promo-panel > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.source-home-page .promo-panel[data-promo-tone="dark"] > img,
-.source-home-page .promo-panel[data-promo-tone="blue"] > img { object-fit: fill; }
 .home-promo-copy { position: relative; z-index: 1; width: 56%; padding: 30px 24px; color: #fff; }
 .home-promo-copy h1,
 .home-promo-copy h2 { margin: 6px 0 10px; font-size: 28px; line-height: 1.05; letter-spacing: -.65px; }
@@ -180,9 +179,6 @@
 .source-home-shell .home-section { width: 100%; }
 .source-home-shell .home-promo-switcher { margin-top: 16px; }
 .source-home-shell .promo-rail { width: 100%; gap: 16px; grid-template-columns: 646px 646px 20px; overflow: hidden; }
-.source-home-shell .promo-panel { display: block !important; min-width: 0; min-height: 306px; padding: 0; border-radius: 14px; background: #eef2f8; }
-.source-home-shell .promo-panel img { width: 100%; height: 100%; object-fit: cover; }
-.source-home-shell .promo-panel:nth-child(3) { min-width: 20px; }
 .source-home-shell .home-promo-controls { margin-top: 10px; }
 .source-home-shell .home-source-section { margin-top: 18px; }
 .home-source-section h2,
@@ -301,7 +297,6 @@
 .home-faq summary, .home-faq p { font-size: 13px; }
 
 /* Current-source vertical landmarks at the 1692 x 979 acceptance viewport. */
-.source-home-shell .promo-panel { min-height: 298px; }
 .source-home-shell .home-new-popular { margin-top: 10px; }
 .source-home-shell .source-career-ready { min-height: 337px; }
 .source-home-shell .source-promo-row { margin-top: 35px; }
