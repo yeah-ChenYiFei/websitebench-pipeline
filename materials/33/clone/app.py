@@ -63,7 +63,7 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 CONTENT_SECURITY_POLICY = (
     "default-src 'self'; img-src 'self' data:; style-src 'self'; "
-    "font-src 'self'; script-src 'self'; connect-src 'none'; "
+    "font-src 'self' data:; script-src 'self'; connect-src 'none'; "
     "frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'"
 )
 BUSINESS_SNAPSHOT_CONTENT_SECURITY_POLICY = (
@@ -368,6 +368,7 @@ def _enrolled_response(
             body,
             language="en",
             body_class="authenticated-learning-page enrolled-course-page",
+            real_css="consumer-description-page.css",
         ),
         status_code=status_code,
     )
