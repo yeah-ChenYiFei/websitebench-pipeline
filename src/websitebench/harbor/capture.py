@@ -514,27 +514,49 @@ def _launch_reference(
             ),
         }
     )
-    return subprocess.Popen(
-        [str(run)],
-        cwd=reference,
-        env=environment,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        start_new_session=True,
+    # Keep a local diagnostic trail. Reference startup failures are otherwise
+    # indistinguishable from a missing health route, especially when the child
+    # process exits before the readiness poll completes.
+    log_path = data_dir / "reference-process.log"
+    log_fd = os.open(
+        log_path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600
     )
+    try:
+        return subprocess.Popen(
+            [str(run)],
+            cwd=reference,
+            env=environment,
+            stdout=log_fd,
+            stderr=log_fd,
+            start_new_session=True,
+        )
+    finally:
+        os.close(log_fd)
 
 
 def _wait_ready(
     base_url: str,
     ready_path: str,
     process: subprocess.Popen[bytes],
+    diagnostic_path: Path | None = None,
     timeout: float = 30,
 ) -> None:
+    max_diagnostic_bytes = 64 * 1024
     deadline = time.monotonic() + timeout
     url = urllib.parse.urljoin(base_url.rstrip("/") + "/", ready_path.lstrip("/"))
     while time.monotonic() < deadline:
         if process.poll() is not None:
-            raise ReferenceObservationError("reference process exited before readiness")
+            if diagnostic_path is not None and diagnostic_path.is_file():
+                try:
+                    payload = diagnostic_path.read_bytes()
+                    if len(payload) > max_diagnostic_bytes:
+                        diagnostic_path.write_bytes(payload[-max_diagnostic_bytes:])
+                except OSError:
+                    pass
+            suffix = f"; log={diagnostic_path}" if diagnostic_path is not None else ""
+            raise ReferenceObservationError(
+                f"reference process exited before readiness: {url}{suffix}"
+            )
         try:
             with urlopen_no_redirect(url, timeout=0.5) as response:
                 if response.status == 200:
@@ -982,6 +1004,7 @@ def capture_reference(
                         reference_url,
                         instance.site.data["runtime"]["ready_path"],
                         process,
+                        diagnostic_path=current_data / "reference-process.log",
                     )
                     return reference_url
 

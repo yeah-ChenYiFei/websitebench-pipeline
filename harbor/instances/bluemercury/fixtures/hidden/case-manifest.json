@@ -1,0 +1,1574 @@
+{
+  "cases": [
+    {
+      "id": "bm-case-t1-001",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-001-home"
+    },
+    {
+      "id": "bm-case-t1-002",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-002-skincare"
+    },
+    {
+      "id": "bm-case-t1-003",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-003-new-arrivals"
+    },
+    {
+      "id": "bm-case-t1-004",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-004-bestsellers"
+    },
+    {
+      "id": "bm-case-t1-005",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-005-makeup"
+    },
+    {
+      "id": "bm-case-t1-006",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-006-hair"
+    },
+    {
+      "id": "bm-case-t1-007",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-007-bath-body"
+    },
+    {
+      "id": "bm-case-t1-008",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-008-fragrance"
+    },
+    {
+      "id": "bm-case-t1-009",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-009-sun"
+    },
+    {
+      "id": "bm-case-t1-010",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-010-gifts"
+    },
+    {
+      "id": "bm-case-t1-011",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-011-sale"
+    },
+    {
+      "id": "bm-case-t1-012",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-012-search-serum"
+    },
+    {
+      "id": "bm-case-t1-013",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-013-search-cleanser"
+    },
+    {
+      "id": "bm-case-t1-014",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-014-search-zero"
+    },
+    {
+      "id": "bm-case-t1-015",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-015-empty-cart"
+    },
+    {
+      "id": "bm-case-t1-016",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-016-rewards"
+    },
+    {
+      "id": "bm-case-t1-017",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-017-brands"
+    },
+    {
+      "id": "bm-case-t1-018",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-018-shipping"
+    },
+    {
+      "id": "bm-case-t1-019",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-019-account-boundary"
+    },
+    {
+      "id": "bm-case-t1-020",
+      "tier": "T1",
+      "kind": "http",
+      "timeout_sec": 60,
+      "task_id": "bm-t1-020-not-found"
+    },
+    {
+      "id": "bm-case-t2-l1-001",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-001-dr-barbara-sturm-mens-kit"
+    },
+    {
+      "id": "bm-case-t2-l1-002",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-002-osea-undaria-uplift-fragrance-mood-oil"
+    },
+    {
+      "id": "bm-case-t2-l1-003",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-003-goop-signature-ritual-collection"
+    },
+    {
+      "id": "bm-case-t2-l1-004",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-004-lafco-autumn-plum-candle"
+    },
+    {
+      "id": "bm-case-t2-l1-005",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-005-nest-autumn-plum-reed-diffuser-2025"
+    },
+    {
+      "id": "bm-case-t2-l1-006",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-006-nest-pumpkin-chai-liquid-soap-2025"
+    },
+    {
+      "id": "bm-case-t2-l1-007",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-007-nest-pumpkin-chai-candle"
+    },
+    {
+      "id": "bm-case-t2-l1-008",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-008-marini-skinsolutions-marini-reboot-pdrn-face"
+    },
+    {
+      "id": "bm-case-t2-l1-009",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-009-furtuna-skin-05-oz-travel-size-triple-active"
+    },
+    {
+      "id": "bm-case-t2-l1-010",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-010-necessaire-the-moisture-conditioner"
+    },
+    {
+      "id": "bm-case-t2-l1-011",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-011-necessaire-the-moisture-shampoo"
+    },
+    {
+      "id": "bm-case-t2-l1-012",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-012-neurae-harmonie-the-sleeping-mask"
+    },
+    {
+      "id": "bm-case-t2-l1-013",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-013-neurae-serenite-the-balm"
+    },
+    {
+      "id": "bm-case-t2-l1-014",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-014-neurae-joie-the-emotion-booster"
+    },
+    {
+      "id": "bm-case-t2-l1-015",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-015-neurae-harmonie-the-treatment-lotion"
+    },
+    {
+      "id": "bm-case-t2-l1-016",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-016-magic-eye-rescue"
+    },
+    {
+      "id": "bm-case-t2-l1-017",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-017-jo-malone-london-sea-salt-and-bergamot-cologn"
+    },
+    {
+      "id": "bm-case-t2-l1-018",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-018-manucurist-nail-clippers"
+    },
+    {
+      "id": "bm-case-t2-l1-019",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-019-susanne-kaufmann-0-16-fl-oz-body-butter-sampl"
+    },
+    {
+      "id": "bm-case-t2-l1-020",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-020-nars-afterglow-lip-balm-7"
+    },
+    {
+      "id": "bm-case-t2-l1-021",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-021-angela-caglia-skincare-the-cell-forte-duo"
+    },
+    {
+      "id": "bm-case-t2-l1-022",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-022-nanette-de-gaspe-the-refined-radiance-ritual"
+    },
+    {
+      "id": "bm-case-t2-l1-023",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-023-nannette-de-gaspe-the-baume-noir-face-eye-duo"
+    },
+    {
+      "id": "bm-case-t2-l1-024",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-024-nannette-de-gaspe-the-replenishing-ritual"
+    },
+    {
+      "id": "bm-case-t2-l1-025",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-025-angela-cagila-skincare-the-cleansing-and-rene"
+    },
+    {
+      "id": "bm-case-t2-l1-026",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-026-skinceuticals-glycolic-10-renew-overnight-1"
+    },
+    {
+      "id": "bm-case-t2-l1-027",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-027-marini-skinsolutions-night-zyme"
+    },
+    {
+      "id": "bm-case-t2-l1-028",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-028-diptyque-electric-diffuser-for-the-home"
+    },
+    {
+      "id": "bm-case-t2-l1-029",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-029-charlotte-tilbury-0-12-fl-oz-charlottes-magic"
+    },
+    {
+      "id": "bm-case-t2-l1-030",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-030-m-61-the-perfect-collection-bundle"
+    },
+    {
+      "id": "bm-case-t2-l1-031",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-031-fall-candle-duo"
+    },
+    {
+      "id": "bm-case-t2-l1-032",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-032-bestseller-candle-duo"
+    },
+    {
+      "id": "bm-case-t2-l1-033",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-033-moroccanoil-frizz-shield-spray-sample"
+    },
+    {
+      "id": "bm-case-t2-l1-034",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-034-dr-few-core-4-deluxe-travel-set"
+    },
+    {
+      "id": "bm-case-t2-l1-035",
+      "tier": "T2",
+      "level": "L1",
+      "kind": "journey",
+      "timeout_sec": 90,
+      "task_id": "bm-t2-l1-035-sisley-paris-sisleyum-protective-shaving-care"
+    },
+    {
+      "id": "bm-case-t2-l2-001",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-001-sisley-paris-corrective-serum-for-skin-imperf"
+    },
+    {
+      "id": "bm-case-t2-l2-002",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-002-sisley-paris-supremya-prestige-vanity"
+    },
+    {
+      "id": "bm-case-t2-l2-003",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-003-sisley-paris-sisleya-lintegral-anti-age-longe"
+    },
+    {
+      "id": "bm-case-t2-l2-004",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-004-sisley-paris-sisleya-lintegral-anti-age-longe"
+    },
+    {
+      "id": "bm-case-t2-l2-005",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-005-sisley-paris-the-essentials-discovery-set"
+    },
+    {
+      "id": "bm-case-t2-l2-006",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-006-necessaire-the-body-wipe-eucalyptus"
+    },
+    {
+      "id": "bm-case-t2-l2-007",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-007-chantecaille-luster-glide-eyeliner-garnet"
+    },
+    {
+      "id": "bm-case-t2-l2-008",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-008-chantecaille-cheek-shade-lion-pride"
+    },
+    {
+      "id": "bm-case-t2-l2-009",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-009-chantecaille-lip-veil-lion-collection"
+    },
+    {
+      "id": "bm-case-t2-l2-010",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-010-chantecaille-luminescent-eye-shade-lion-colle"
+    },
+    {
+      "id": "bm-case-t2-l2-011",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-011-susanne-kaufmann-x-diptyque-lip-oil"
+    },
+    {
+      "id": "bm-case-t2-l2-012",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-012-m-61-perfect-peel-packette-sample"
+    },
+    {
+      "id": "bm-case-t2-l2-013",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-013-atwater-skin-armor-facial-cleansing-gel"
+    },
+    {
+      "id": "bm-case-t2-l2-014",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-014-philip-kingsley-0-67-fl-oz-flaky-scalp-hydrat"
+    },
+    {
+      "id": "bm-case-t2-l2-015",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-015-u-beauty-0-05-fl-oz-resurfacing-compound-samp"
+    },
+    {
+      "id": "bm-case-t2-l2-016",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-016-tan-luxe-the-face-illuminating-self-tan-drops"
+    },
+    {
+      "id": "bm-case-t2-l2-017",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-017-r-co-bleu-f-layer-deep-conditioning-serum-sam"
+    },
+    {
+      "id": "bm-case-t2-l2-018",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-018-m-61-1-treatment-powerglow-peel-body-sample-p"
+    },
+    {
+      "id": "bm-case-t2-l2-019",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-019-oribe-hair-alchemy-heatless-styling-balm-samp"
+    },
+    {
+      "id": "bm-case-t2-l2-020",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-020-tata-harper-2-piece-double-cleansing-duo-samp"
+    },
+    {
+      "id": "bm-case-t2-l2-021",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-021-111skin-0-07-fl-oz-dark-spot-correcting-serum"
+    },
+    {
+      "id": "bm-case-t2-l2-022",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-022-exponent-hydroglow-oxygen-ionizer-hyaluronic"
+    },
+    {
+      "id": "bm-case-t2-l2-023",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-023-111skin-repair-day-cream-nac-y"
+    },
+    {
+      "id": "bm-case-t2-l2-024",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-024-mara-pearl-peptide-glaze-hydrating-facial-ess"
+    },
+    {
+      "id": "bm-case-t2-l2-025",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-025-mara-aura-cleanse-foaming-gel-cleanse"
+    },
+    {
+      "id": "bm-case-t2-l2-026",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-026-dr-barbara-sturm-the-peptide-serum-sample"
+    },
+    {
+      "id": "bm-case-t2-l2-027",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-027-christophe-robin-color-shield-cleansing-mask"
+    },
+    {
+      "id": "bm-case-t2-l2-028",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-028-111skin-magic-towel-gift"
+    },
+    {
+      "id": "bm-case-t2-l2-029",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-029-laura-mercier-roseglow-caviar-stick-eye-color"
+    },
+    {
+      "id": "bm-case-t2-l2-030",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-030-rms-beauty-living-luminizer-1"
+    },
+    {
+      "id": "bm-case-t2-l2-031",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-031-111skin-the-black-diamond-ritual"
+    },
+    {
+      "id": "bm-case-t2-l2-032",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-032-111skin-the-restorative-duo"
+    },
+    {
+      "id": "bm-case-t2-l2-033",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-033-111skin-the-essential-repair-duo"
+    },
+    {
+      "id": "bm-case-t2-l2-034",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-034-necessaire-the-body-ritual"
+    },
+    {
+      "id": "bm-case-t2-l2-035",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-035-christophe-robin-pre-curved-blowdry-hairbrush"
+    },
+    {
+      "id": "bm-case-t2-l2-036",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-036-christophe-robin-travel-hairbrush"
+    },
+    {
+      "id": "bm-case-t2-l2-037",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-037-christophe-robin-detangling-hairbrush"
+    },
+    {
+      "id": "bm-case-t2-l2-038",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-038-virtue-healing-gloss"
+    },
+    {
+      "id": "bm-case-t2-l2-039",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-039-chantecaille-bio-lifting-serum-packette-sampl"
+    },
+    {
+      "id": "bm-case-t2-l2-040",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-040-ds-and-durga-debaser-eau-de-parfum-sample"
+    },
+    {
+      "id": "bm-case-t2-l2-041",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-041-liberty-lbty-liberty-maze-eau-de-parfum-sampl"
+    },
+    {
+      "id": "bm-case-t2-l2-042",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-042-costa-brazil-1-fl-oz-nutrient-rich-hand-and-b"
+    },
+    {
+      "id": "bm-case-t2-l2-043",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-043-virtue-healing-oil-gwp"
+    },
+    {
+      "id": "bm-case-t2-l2-044",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-044-u-beauty-the-mantle-cleansing-balm"
+    },
+    {
+      "id": "bm-case-t2-l2-045",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-045-chantecaille-biolifting-repair-concentrate"
+    },
+    {
+      "id": "bm-case-t2-l2-046",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-046-m-61-powerglow-peel-sample-packette"
+    },
+    {
+      "id": "bm-case-t2-l2-047",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-047-rms-beauty-legendary-lip-oil-deluxe-mini"
+    },
+    {
+      "id": "bm-case-t2-l2-048",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-048-mutha-up-all-night-eye-cream-sample"
+    },
+    {
+      "id": "bm-case-t2-l2-049",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-049-dr-barbara-sturm-future-proof-essentials-gwp"
+    },
+    {
+      "id": "bm-case-t2-l2-050",
+      "tier": "T2",
+      "level": "L2",
+      "kind": "journey",
+      "timeout_sec": 120,
+      "task_id": "bm-t2-l2-050-m61-hydraboost-eye-masks-1-treatment-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-001",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-001-m-61-the-double-cleansing-routine"
+    },
+    {
+      "id": "bm-case-t2-l3-002",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-002-rms-beauty-kakadu-beauty-body-oil"
+    },
+    {
+      "id": "bm-case-t2-l3-003",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-003-rms-beauty-kakadu-body-butter"
+    },
+    {
+      "id": "bm-case-t2-l3-004",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-004-ogee-elixir-bakuchiol"
+    },
+    {
+      "id": "bm-case-t2-l3-005",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-005-dermalogica-phyto-nature-e2"
+    },
+    {
+      "id": "bm-case-t2-l3-006",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-006-obagi-nu-gen-cellular-renewal-serum"
+    },
+    {
+      "id": "bm-case-t2-l3-007",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-007-charlotte-tilbury-matte-revolution-pillow-tal"
+    },
+    {
+      "id": "bm-case-t2-l3-008",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-008-oribe-hair-alchemy-bond-repair-leave-in-treat"
+    },
+    {
+      "id": "bm-case-t2-l3-009",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-009-skinmedica-ha5-hydra-collagen-facial-mist"
+    },
+    {
+      "id": "bm-case-t2-l3-010",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-010-hourglass-phantom-blur-balm"
+    },
+    {
+      "id": "bm-case-t2-l3-011",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-011-bask-suncare-non-aerosol-mineral-spray-fragra"
+    },
+    {
+      "id": "bm-case-t2-l3-012",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-012-exponent-hydroglow-oxygen-ionizer"
+    },
+    {
+      "id": "bm-case-t2-l3-013",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-013-oribe-serene-scalp-densifying-shampoo"
+    },
+    {
+      "id": "bm-case-t2-l3-014",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-014-perfect-microdermabrasion-facial-scrub"
+    },
+    {
+      "id": "bm-case-t2-l3-015",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-015-bluemercury-2026-summer-party-gwp-bag"
+    },
+    {
+      "id": "bm-case-t2-l3-016",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-016-charlotte-tilbury-exagger-eyes-waterproof-eye"
+    },
+    {
+      "id": "bm-case-t2-l3-017",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-017-ogee-beyond-clean-lip-gloss-1"
+    },
+    {
+      "id": "bm-case-t2-l3-018",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-018-nest-grapefruit-decorative-reed-diffuser"
+    },
+    {
+      "id": "bm-case-t2-l3-019",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-019-diptyque-eucalyptus-candle"
+    },
+    {
+      "id": "bm-case-t2-l3-020",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-020-perfect-tinted-mineral-sunscreen-set-spf-50"
+    },
+    {
+      "id": "bm-case-t2-l3-021",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-021-perfect-sheer-mineral-sunscreen-set-spf-50"
+    },
+    {
+      "id": "bm-case-t2-l3-022",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-022-tammy-fender-epi-peel-deluxe-sample-gwp-1"
+    },
+    {
+      "id": "bm-case-t2-l3-023",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-023-bluemercury-spring-2026-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-024",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-024-mutha-mini-detox-greens-exfoliating-body-bar"
+    },
+    {
+      "id": "bm-case-t2-l3-025",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-025-rodial-dragons-blood-hyaluronic-mask-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-026",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-026-sisley-paris-striped-pouch-1"
+    },
+    {
+      "id": "bm-case-t2-l3-027",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-027-diptyque-pinede-miniature-candle"
+    },
+    {
+      "id": "bm-case-t2-l3-028",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-028-dune-the-melt-stick-spf-50"
+    },
+    {
+      "id": "bm-case-t2-l3-029",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-029-m-61-hydraboost-body-butter-sample"
+    },
+    {
+      "id": "bm-case-t2-l3-030",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-030-lip-duo"
+    },
+    {
+      "id": "bm-case-t2-l3-031",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-031-canopy-restore-aroma-kit"
+    },
+    {
+      "id": "bm-case-t2-l3-032",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-032-canopy-bedside-humidifier"
+    },
+    {
+      "id": "bm-case-t2-l3-033",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-033-canopy-bath-tub-filter"
+    },
+    {
+      "id": "bm-case-t2-l3-034",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-034-canopy-bath-tub-filter-refill"
+    },
+    {
+      "id": "bm-case-t2-l3-035",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-035-canopy-nursery-humidifier"
+    },
+    {
+      "id": "bm-case-t2-l3-036",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-036-canopy-humidifier-filter"
+    },
+    {
+      "id": "bm-case-t2-l3-037",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-037-revive-brightening-face-mask-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-038",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-038-oribe-cote-dazur-replenishing-body-wash-17"
+    },
+    {
+      "id": "bm-case-t2-l3-039",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-039-parfums-de-marly-athalia-eau-de-parfum"
+    },
+    {
+      "id": "bm-case-t2-l3-040",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-040-solara-suncare-pout-protector-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-041",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-041-victoria-beckham-beauty-blush-stylus"
+    },
+    {
+      "id": "bm-case-t2-l3-042",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-042-realglow-duo"
+    },
+    {
+      "id": "bm-case-t2-l3-043",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-043-r-co-bleu-primary-color-ultra-protection-spra"
+    },
+    {
+      "id": "bm-case-t2-l3-044",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-044-r-co-bleu-primary-color-shampoo-1"
+    },
+    {
+      "id": "bm-case-t2-l3-045",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-045-r-co-bleu-primary-color-conditioner-2"
+    },
+    {
+      "id": "bm-case-t2-l3-046",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-046-supershine-hydrating-liter-duo"
+    },
+    {
+      "id": "bm-case-t2-l3-047",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-047-signature-liter-duo"
+    },
+    {
+      "id": "bm-case-t2-l3-048",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-048-dyson-supersonic-travel-hair-dryer"
+    },
+    {
+      "id": "bm-case-t2-l3-049",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-049-byredo-rose-of-no-mans-land-body-lotion"
+    },
+    {
+      "id": "bm-case-t2-l3-050",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-050-posh-gloss-1"
+    },
+    {
+      "id": "bm-case-t2-l3-051",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-051-post-procedure-barrier-support"
+    },
+    {
+      "id": "bm-case-t2-l3-052",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-052-dr-barbara-sturm-everything-hydrogel-mask"
+    },
+    {
+      "id": "bm-case-t2-l3-053",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-053-oribe-serene-scalp-soothing-leave-on-treatmen"
+    },
+    {
+      "id": "bm-case-t2-l3-054",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-054-chantecaille-blend-and-smooth-brush"
+    },
+    {
+      "id": "bm-case-t2-l3-055",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-055-charlotte-tilbury-hot-lips-2"
+    },
+    {
+      "id": "bm-case-t2-l3-056",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-056-byredo-cotton-blend-hand-wash"
+    },
+    {
+      "id": "bm-case-t2-l3-057",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-057-byredo-cotton-blend-hand-lotion"
+    },
+    {
+      "id": "bm-case-t2-l3-058",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-058-homecourt-mandarin-basile-hand-wash"
+    },
+    {
+      "id": "bm-case-t2-l3-059",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-059-dr-barbara-sturm-summer-skin-prep-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-060",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-060-dr-barbara-sturm-the-peptide-serum-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-061",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-061-tata-harper-2-piece-summer-party-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-062",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-062-anastasia-beverly-hills-clear-brow-gel"
+    },
+    {
+      "id": "bm-case-t2-l3-063",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-063-irene-forte-hibiscus-night-cream-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-064",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-064-r-co-bleu-gwp-bundle-life-styler-volume-textu"
+    },
+    {
+      "id": "bm-case-t2-l3-065",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-065-alo-luminizing-face-moisturizer-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-066",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-066-r-co-hot-spell-thermo-tech-blow-out-balm-mini"
+    },
+    {
+      "id": "bm-case-t2-l3-067",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-067-to-my-ships-of-the-gods-polygonum-hand-and-bo"
+    },
+    {
+      "id": "bm-case-t2-l3-068",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-068-olaplex-rich-moisture-hydration-and-anti-friz"
+    },
+    {
+      "id": "bm-case-t2-l3-069",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-069-homecourt-neroli-leaf-votive-candle-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-070",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-070-u-beauty-bundle-gwp"
+    },
+    {
+      "id": "bm-case-t2-l3-071",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-071-emma-lewisham-sunceutical-spf-50-mineral-face"
+    },
+    {
+      "id": "bm-case-t2-l3-072",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-072-diptyque-citronnelle-classic-candle-2026"
+    },
+    {
+      "id": "bm-case-t2-l3-073",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-073-charlotte-tilbury-the-feline-flick"
+    },
+    {
+      "id": "bm-case-t2-l3-074",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-074-m-61-hydraboost-gradual-tan-gwp-1"
+    },
+    {
+      "id": "bm-case-t2-l3-075",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-075-r-and-co-dallas-thick-shampoo-2020"
+    },
+    {
+      "id": "bm-case-t2-l3-076",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-076-prosculpt-contour-body-serum-with-aft3-gift"
+    },
+    {
+      "id": "bm-case-t2-l3-077",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-077-byredo-gypsy-water-body-lotion-1"
+    },
+    {
+      "id": "bm-case-t2-l3-078",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-078-laura-mercier-secret-camouflage-custom-comple"
+    },
+    {
+      "id": "bm-case-t2-l3-079",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-079-manucurist-green-jelly-nail-polish"
+    },
+    {
+      "id": "bm-case-t2-l3-080",
+      "tier": "T2",
+      "level": "L3",
+      "kind": "journey",
+      "timeout_sec": 180,
+      "task_id": "bm-t2-l3-080-manucurist-jelly-pouch-set"
+    },
+    {
+      "id": "bm-case-t3-001",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-001"
+    },
+    {
+      "id": "bm-case-t3-002",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-002"
+    },
+    {
+      "id": "bm-case-t3-003",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-003"
+    },
+    {
+      "id": "bm-case-t3-004",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-004"
+    },
+    {
+      "id": "bm-case-t3-005",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-005"
+    },
+    {
+      "id": "bm-case-t3-006",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-006"
+    },
+    {
+      "id": "bm-case-t3-007",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-007"
+    },
+    {
+      "id": "bm-case-t3-008",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-008"
+    },
+    {
+      "id": "bm-case-t3-009",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-009"
+    },
+    {
+      "id": "bm-case-t3-010",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-010"
+    },
+    {
+      "id": "bm-case-t3-011",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-011"
+    },
+    {
+      "id": "bm-case-t3-012",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-012"
+    },
+    {
+      "id": "bm-case-t3-013",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-013"
+    },
+    {
+      "id": "bm-case-t3-014",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-014"
+    },
+    {
+      "id": "bm-case-t3-015",
+      "tier": "T3",
+      "kind": "cicd",
+      "timeout_sec": 45,
+      "cicd_check_id": "bluemercury-static-015"
+    }
+  ],
+  "dsl_version": "websitebench.harbor.neutral-dsl.v1",
+  "manifest_id": "bluemercury-cases",
+  "schema_version": "websitebench.harbor.case-manifest.v1",
+  "site_id": "bluemercury",
+  "status": "complete"
+}

@@ -1,0 +1,97 @@
+{
+  "checks": [
+    {
+      "id": "bluemercury-static-001",
+      "kind": "static",
+      "runner": "runners/check-001.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-002",
+      "kind": "static",
+      "runner": "runners/check-002.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-003",
+      "kind": "static",
+      "runner": "runners/check-003.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-004",
+      "kind": "static",
+      "runner": "runners/check-004.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-005",
+      "kind": "static",
+      "runner": "runners/check-005.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-006",
+      "kind": "static",
+      "runner": "runners/check-006.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-007",
+      "kind": "static",
+      "runner": "runners/check-007.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-008",
+      "kind": "static",
+      "runner": "runners/check-008.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-009",
+      "kind": "static",
+      "runner": "runners/check-009.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-010",
+      "kind": "static",
+      "runner": "runners/check-010.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-011",
+      "kind": "static",
+      "runner": "runners/check-011.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-012",
+      "kind": "static",
+      "runner": "runners/check-012.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-013",
+      "kind": "static",
+      "runner": "runners/check-013.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-014",
+      "kind": "static",
+      "runner": "runners/check-014.py",
+      "timeout_sec": 30
+    },
+    {
+      "id": "bluemercury-static-015",
+      "kind": "static",
+      "runner": "runners/check-015.py",
+      "timeout_sec": 30
+    }
+  ],
+  "schema_version": "websitebench.harbor.cicd-suite.v1",
+  "site_id": "bluemercury",
+  "suite_id": "bluemercury-cicd"
+}

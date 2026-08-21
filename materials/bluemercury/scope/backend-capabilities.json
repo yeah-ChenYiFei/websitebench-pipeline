@@ -1,0 +1,20 @@
+{
+  "schema_version": "websitebench.clone-backend-capabilities.v1",
+  "site_id": "bluemercury",
+  "recorded_at": "2026-08-19T00:00:00Z",
+  "capabilities": {
+    "persistent_authentication": {"in_scope": false, "evidence": "Account entry exists structurally, but authenticated pages are unavailable and P2."},
+    "password_recovery": {"in_scope": false, "evidence": "Not established by current direct evidence."},
+    "transactional_email": {"in_scope": true, "mode": "local-outbox", "evidence": "Local order confirmation only; real email is not authorized."},
+    "uploads": {"in_scope": false, "evidence": "No upload is required by the frozen journey."},
+    "checkout_payment": {"in_scope": true, "mode": "local-sandbox", "evidence": "Formal trace requires local checkout; source order/payment submission is prohibited."},
+    "business_database": {"in_scope": true, "engine": "sqlite", "evidence": "Persistent cart, checkout attempts, and local orders require durable state."}
+  },
+  "safety": {
+    "synthetic_addresses_only": true,
+    "real_email_authorized": false,
+    "stripe_test_authorized": false,
+    "live_payment_authorized": false,
+    "source_mutations_authorized": []
+  }
+}

@@ -1,0 +1,752 @@
+{
+  "schema_version": "websitebench.source-explorer-summary.ea2.v1",
+  "explorer": "EA2 breadth-first",
+  "source": "https://bluemercury.com/",
+  "canonical": "https://bluemercury.com/",
+  "formal_human_trace_text": "[781] On the Bluemercury website, purchase a skincare product, add to cart, and proceed to checkout",
+  "authority": {
+    "source_mutations_authorized": false,
+    "network": "anonymous GET/HEAD only",
+    "storage_exported": false,
+    "headers_or_request_bodies_persisted": false
+  },
+  "directly_observed": {
+    "sitemap_counts": {
+      "agentic": 1,
+      "products": 5316,
+      "pages": 12154,
+      "collections": 812,
+      "blogs": 54
+    },
+    "actual_product_path_count": 5315,
+    "product_fact_fields": [
+      "url/path",
+      "lastmod",
+      "up to four image origins/paths/titles/captions"
+    ],
+    "captured_routes": [
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "home",
+        "family": "home",
+        "requested_path": "/",
+        "final_path": "/",
+        "status": 200,
+        "title": "Bluemercury | Skincare, Makeup, Hair Care, Fragrance & More",
+        "visible_text_chars": 3493,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__home.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "search-skincare",
+        "family": "search",
+        "requested_path": "/search",
+        "final_path": "/search",
+        "status": 200,
+        "title": "Search: 1002 results found for \"skincare\" – bluemercury",
+        "visible_text_chars": 1803,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__search-skincare.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "account-login",
+        "family": "account",
+        "requested_path": "/account/login",
+        "final_path": "/",
+        "status": 200,
+        "title": "Bluemercury | Skincare, Makeup, Hair Care, Fragrance & More",
+        "visible_text_chars": 3740,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__account-login.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "account-register",
+        "family": "account",
+        "requested_path": "/account/register",
+        "final_path": "/",
+        "status": 200,
+        "title": "Bluemercury | Skincare, Makeup, Hair Care, Fragrance & More",
+        "visible_text_chars": 5280,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__account-register.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "robots",
+        "family": "discovery",
+        "requested_path": "/robots.txt",
+        "final_path": "/robots.txt",
+        "status": 200,
+        "title": "",
+        "visible_text_chars": 5775,
+        "form_count": 0,
+        "link_count": 0,
+        "screenshot": "screenshots/desktop-1440x900__robots.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "collection-1",
+        "family": "collection",
+        "requested_path": "/collections/samples",
+        "final_path": "/collections/samples",
+        "status": 200,
+        "title": "Samples | bluemercury – bluemercury",
+        "visible_text_chars": 2554,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__collection-1.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "collection-2",
+        "family": "collection",
+        "requested_path": "/collections/8greens",
+        "final_path": "/collections/8greens",
+        "status": 200,
+        "title": "8Greens | bluemercury – bluemercury",
+        "visible_text_chars": 2557,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__collection-2.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "collection-3",
+        "family": "collection",
+        "requested_path": "/collections/acqua-di-parma",
+        "final_path": "/collections/acqua-di-parma",
+        "status": 200,
+        "title": "Acqua di Parma | bluemercury – bluemercury",
+        "visible_text_chars": 2407,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__collection-3.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "page-1",
+        "family": "page",
+        "requested_path": "/pages/brands",
+        "final_path": "/pages/brands",
+        "status": 200,
+        "title": "Shop All Brands | Bluemercury",
+        "visible_text_chars": 5245,
+        "form_count": 8,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__page-1.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "page-2",
+        "family": "page",
+        "requested_path": "/pages/bluerewards",
+        "final_path": "/pages/bluerewards",
+        "status": 200,
+        "title": "BlueRewards | bluemercury – bluemercury",
+        "visible_text_chars": 2914,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__page-2.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "page-3",
+        "family": "page",
+        "requested_path": "/pages/our-company",
+        "final_path": "/pages/our-company",
+        "status": 200,
+        "title": "Our Company | bluemercury – bluemercury",
+        "visible_text_chars": 2736,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__page-3.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "blog-1",
+        "family": "blog",
+        "requested_path": "/blogs/bluenotes",
+        "final_path": "/blogs/bluenotes",
+        "status": 200,
+        "title": "BlueNotes | Bluemercury",
+        "visible_text_chars": 4281,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__blog-1.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "product-1",
+        "family": "product",
+        "requested_path": "/",
+        "final_path": "/",
+        "status": 200,
+        "title": "Bluemercury | Skincare, Makeup, Hair Care, Fragrance & More",
+        "visible_text_chars": 3493,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__product-1.png",
+        "error": null
+      },
+      {
+        "viewport": "desktop-1440x900",
+        "route_id": "product-2",
+        "family": "product",
+        "requested_path": "/products/odacite-buriti-lime-serum-concentrate",
+        "final_path": "/products/odacite-buriti-lime-serum-concentrate",
+        "status": 200,
+        "title": "Odacité Buriti Lime Serum Concentrate – Odacité – bluemercury",
+        "visible_text_chars": 6227,
+        "form_count": 7,
+        "link_count": 250,
+        "screenshot": "screenshots/desktop-1440x900__product-2.png",
+        "error": null
+      }
+    ],
+    "form_methods": {
+      "GET": 14,
+      "POST": 78
+    },
+    "form_actions_without_queries": {
+      "/search": 13,
+      "/account/": 13,
+      "/account/login": 25,
+      "#": 13,
+      "/account": 1
+    },
+    "home_first_party_link_sample": [
+      {
+        "text": "Skip to content",
+        "path": "#main"
+      },
+      {
+        "text": "FREE SHIPPING AND RETURNS FOR BLUEREWARDS MEMBERS SIGN UP",
+        "path": "#join-blue-rewards"
+      },
+      {
+        "text": "BROWSE NOW",
+        "path": "/pages/gifts-with-purchase"
+      },
+      {
+        "text": "Sign in",
+        "path": "void(0)"
+      },
+      {
+        "text": "BlueRewards",
+        "path": "/pages/blue-rewards"
+      },
+      {
+        "text": "Bluemercury",
+        "path": "/"
+      },
+      {
+        "text": "View bag",
+        "path": "void(0)"
+      },
+      {
+        "text": "Wishlist",
+        "path": "/account"
+      },
+      {
+        "text": "View bag",
+        "path": "void(0)"
+      },
+      {
+        "text": "HSA/FSA",
+        "path": "/collections/hsa-fsa-eligible"
+      },
+      {
+        "text": "Bundles",
+        "path": "/collections/bundles-1"
+      },
+      {
+        "text": "Bestsellers",
+        "path": "/collections/best-sellers"
+      },
+      {
+        "text": "New",
+        "path": "/collections/new-arrivals"
+      },
+      {
+        "text": "Brands",
+        "path": "/pages/brands"
+      },
+      {
+        "text": "Skincare",
+        "path": "/collections/skin-care"
+      },
+      {
+        "text": "Makeup",
+        "path": "/collections/makeup"
+      },
+      {
+        "text": "Hair",
+        "path": "/collections/hair"
+      },
+      {
+        "text": "Bath & Body",
+        "path": "/collections/bath-body"
+      },
+      {
+        "text": "Fragrance",
+        "path": "/collections/fragrances"
+      },
+      {
+        "text": "Sun",
+        "path": "/collections/suncare"
+      },
+      {
+        "text": "Gifts",
+        "path": "/collections/gifts"
+      },
+      {
+        "text": "Sale",
+        "path": "/collections/sale"
+      },
+      {
+        "text": "HSA/FSA",
+        "path": "/collections/hsa-fsa-eligible"
+      },
+      {
+        "text": "Bundles",
+        "path": "/collections/bundles-1"
+      },
+      {
+        "text": "Shop All",
+        "path": "/collections/best-sellers"
+      },
+      {
+        "text": "Skincare",
+        "path": "/collections/skin-care-best-sellers"
+      },
+      {
+        "text": "Makeup",
+        "path": "/collections/makeup-best-sellers"
+      },
+      {
+        "text": "Hair",
+        "path": "/collections/hair-best-sellers"
+      },
+      {
+        "text": "Bath & Body",
+        "path": "/collections/bath-body-best-sellers"
+      },
+      {
+        "text": "Fragrance",
+        "path": "/collections/candles-perfume-best-sellers"
+      },
+      {
+        "text": "Tools & Accessories",
+        "path": "/collections/tools-accessories-best-sellers"
+      },
+      {
+        "text": "Shop All",
+        "path": "/pages/brands"
+      },
+      {
+        "text": "Augustinus Bader",
+        "path": "/collections/augustinus-bader"
+      },
+      {
+        "text": "Chantecaille",
+        "path": "/collections/chantecaille"
+      },
+      {
+        "text": "Dr. Barbara Sturm",
+        "path": "/collections/dr-barbara-sturm"
+      },
+      {
+        "text": "Dyson",
+        "path": "/collections/dyson"
+      },
+      {
+        "text": "La Mer",
+        "path": "/collections/la-mer"
+      },
+      {
+        "text": "Lune+Aster",
+        "path": "/collections/lune-aster"
+      },
+      {
+        "text": "M-61",
+        "path": "/collections/m-61"
+      },
+      {
+        "text": "Oribe",
+        "path": "/collections/oribe"
+      },
+      {
+        "text": "Sisley Paris",
+        "path": "/collections/sisley-paris"
+      },
+      {
+        "text": "SkinCeuticals",
+        "path": "/collections/skinceuticals"
+      },
+      {
+        "text": "Trish McEvoy",
+        "path": "/collections/trish-mcevoy"
+      },
+      {
+        "text": "Victoria Beckham Beauty",
+        "path": "/collections/victoria-beckham-beauty"
+      },
+      {
+        "text": "HSA & FSA Eligible",
+        "path": "/collections/hsa-fsa-eligible"
+      },
+      {
+        "text": "Destination: Beauty",
+        "path": "/collections/destination-beauty"
+      },
+      {
+        "text": "Routines + Bundles",
+        "path": "/collections/bundles-1"
+      },
+      {
+        "text": "Sun Care",
+        "path": "/collections/suncare"
+      },
+      {
+        "text": "Travel Essentials",
+        "path": "/collections/top-travel-picks"
+      },
+      {
+        "text": "Shop All",
+        "path": "/collections/new-arrivals"
+      },
+      {
+        "text": "Skincare",
+        "path": "/collections/skin-care"
+      },
+      {
+        "text": "Makeup",
+        "path": "/collections/makeup"
+      },
+      {
+        "text": "Hair",
+        "path": "/collections/hair"
+      },
+      {
+        "text": "Bath & Body",
+        "path": "/collections/bath-body"
+      },
+      {
+        "text": "Fragrance",
+        "path": "/collections/scents-home"
+      },
+      {
+        "text": "Shop All Brands",
+        "path": "/pages/brands"
+      },
+      {
+        "text": "Diverse Owned",
+        "path": "/pages/diversity-equity-inclusion"
+      },
+      {
+        "text": "Augustinus Bader",
+        "path": "/collections/augustinus-bader"
+      },
+      {
+        "text": "Chantecaille",
+        "path": "/collections/chantecaille"
+      },
+      {
+        "text": "Diptyque",
+        "path": "/collections/diptyque"
+      },
+      {
+        "text": "Dr. Barbara Sturm",
+        "path": "/collections/dr-barbara-sturm"
+      },
+      {
+        "text": "Dyson",
+        "path": "/collections/dyson"
+      },
+      {
+        "text": "La Mer",
+        "path": "/collections/la-mer"
+      },
+      {
+        "text": "Lune+Aster",
+        "path": "/collections/lune-aster"
+      },
+      {
+        "text": "M-61",
+        "path": "/collections/m-61"
+      },
+      {
+        "text": "Oribe",
+        "path": "/collections/oribe"
+      },
+      {
+        "text": "Sisley Paris",
+        "path": "/collections/sisley-paris"
+      },
+      {
+        "text": "SkinCeuticals",
+        "path": "/collections/skinceuticals"
+      },
+      {
+        "text": "Trish McEvoy",
+        "path": "/collections/trish-mcevoy"
+      },
+      {
+        "text": "Victoria Beckham Beauty",
+        "path": "/collections/victoria-beckham-beauty"
+      },
+      {
+        "text": "Aesop",
+        "path": "/collections/aesop"
+      },
+      {
+        "text": "Bask Suncare",
+        "path": "/collections/bask-suncare"
+      },
+      {
+        "text": "Byredo",
+        "path": "/collections/byredo"
+      },
+      {
+        "text": "Charlotte Tilbury",
+        "path": "/collections/charlotte-tilbury"
+      },
+      {
+        "text": "Element Eight",
+        "path": "/collections/element-eight"
+      },
+      {
+        "text": "Goop",
+        "path": "/collections/goop-beauty"
+      },
+      {
+        "text": "Liberty LBTY.",
+        "path": "/collections/liberty-lbty"
+      },
+      {
+        "text": "Nécessaire",
+        "path": "/collections/necessaire"
+      },
+      {
+        "text": "111Skin",
+        "path": "/collections/111skin"
+      },
+      {
+        "text": "Dr. Diamond’s Metacine",
+        "path": "/collections/dr-diamond-s-metacine"
+      },
+      {
+        "text": "EltaMD",
+        "path": "/collections/eltamd"
+      },
+      {
+        "text": "IS Clinical",
+        "path": "/collections/is-clinical"
+      },
+      {
+        "text": "M-61",
+        "path": "/collections/m-61"
+      },
+      {
+        "text": "Obagi",
+        "path": "/collections/obagi"
+      },
+      {
+        "text": "RéVive",
+        "path": "/collections/revive"
+      },
+      {
+        "text": "SkinCeuticals",
+        "path": "/collections/skinceuticals"
+      },
+      {
+        "text": "SkinMedica",
+        "path": "/collections/skinmedica"
+      },
+      {
+        "text": "Dr. Few",
+        "path": "/collections/dr-few"
+      },
+      {
+        "text": "Emme Lewisham",
+        "path": "/collections/emma-lewisham"
+      },
+      {
+        "text": "Exponent",
+        "path": "/collections/exponent"
+      },
+      {
+        "text": "Shop All",
+        "path": "/collections/skin-care"
+      },
+      {
+        "text": "Cleansers",
+        "path": "/collections/cleanser"
+      },
+      {
+        "text": "Serums & Treatments",
+        "path": "/collections/treatment-serum"
+      },
+      {
+        "text": "Moisturizers",
+        "path": "/collections/skin-care-moisturizers"
+      },
+      {
+        "text": "Exfoliators & Peels",
+        "path": "/collections/exfoliators-peels"
+      },
+      {
+        "text": "Masks",
+        "path": "/collections/mask"
+      },
+      {
+        "text": "Eye Care",
+        "path": "/collections/eye-care"
+      },
+      {
+        "text": "Lip Care",
+        "path": "/collections/lip-care"
+      },
+      {
+        "text": "Sun Care",
+        "path": "/collections/suncare"
+      },
+      {
+        "text": "Tools",
+        "path": "/collections/skin-care-tools-accessories"
+      }
+    ],
+    "home_external_link_origins": {},
+    "network_guard_probe": {
+      "route": "/",
+      "status": 200,
+      "guard": "non-GET/HEAD aborted before transmission",
+      "allowed_get_head_origins": {
+        "https://bluemercury.com": 103,
+        "https://truyoproductionuscdn.truyo.com": 9,
+        "https://cdn.shopify.com": 6,
+        "https://assets.adobedtm.com": 3,
+        "https://dpm.demdex.net": 2,
+        "https://www.lightboxcdn.com": 1,
+        "https://shop.app": 1,
+        "https://ob.andstarsbuilding.com": 1,
+        "https://bluemercury.demdex.net": 1,
+        "https://cm.everesttech.net": 1,
+        "https://obs.andstarsbuilding.com": 1,
+        "https://cdn.attn.tv": 1
+      },
+      "blocked_non_get_origins": {
+        "POST https://bluemercury.com": 7,
+        "POST https://otlp-http-production.shopifysvc.com": 2,
+        "POST https://swymstore-v3premium-01.swymrelay.com": 1,
+        "POST https://monorail-edge.shopifysvc.com": 1
+      },
+      "failed_request_origins": {
+        "POST https://bluemercury.com": 7,
+        "POST https://otlp-http-production.shopifysvc.com": 2,
+        "GET https://www.lightboxcdn.com": 1,
+        "GET https://shop.app": 1,
+        "POST https://swymstore-v3premium-01.swymrelay.com": 1,
+        "POST https://monorail-edge.shopifysvc.com": 1,
+        "GET https://dpm.demdex.net": 1
+      },
+      "storage_exported": false,
+      "headers_persisted": false,
+      "request_bodies_persisted": false
+    }
+  },
+  "structural_only": [
+    "POST account/login/newsletter/search forms were present in DOM but never submitted.",
+    "Account login/register GET entry paths returned to `/`; authentication behavior was not exercised.",
+    "Product, collection, page, blog and GET search families are evidenced by sitemap plus rendered desktop routes.",
+    "Cart and checkout semantics were not explored because source mutations are unauthorized and the parent stopped expansion after Task Brief evidence became sufficient."
+  ],
+  "unavailable": [
+    "A completed mobile 390x844 DOM/geometry checkpoint was not produced before the parent stop instruction; no prior screenshot is promoted as complete evidence.",
+    "Authenticated account states, submitted search forms, cart mutation, checkout submission, order creation, email and payment states were intentionally not exercised.",
+    "The interrupted broad pass did not retain a single consolidated browser report; sanitized per-page checkpoint and separate short guard probe are the authoritative artifacts."
+  ],
+  "proposed_additional_origins": [
+    {
+      "origin": "https://truyoproductionuscdn.truyo.com",
+      "basis": "GET/HEAD resource requested by already-covered home page",
+      "request_count": 9
+    },
+    {
+      "origin": "https://cdn.shopify.com",
+      "basis": "GET/HEAD resource requested by already-covered home page",
+      "request_count": 6
+    },
+    {
+      "origin": "https://assets.adobedtm.com",
+      "basis": "GET/HEAD resource requested by already-covered home page",
+      "request_count": 3
+    },
+    {
+      "origin": "https://dpm.demdex.net",
+      "basis": "GET/HEAD resource requested by already-covered home page",
+      "request_count": 2
+    },
+    {
+      "origin": "https://www.lightboxcdn.com",
+      "basis": "GET/HEAD resource requested by already-covered home page",
+      "request_count": 1
+    },
+    {
+      "origin": "https://shop.app",
+      "basis": "GET/HEAD resource requested by already-covered home page",
+      "request_count": 1
+    },
+    {
+      "origin": "https://ob.andstarsbuilding.com",
+      "basis": "GET/HEAD resource requested by already-covered home page",
+      "request_count": 1
+    },
+    {
+      "origin": "https://bluemercury.demdex.net",
+      "basis": "GET/HEAD resource requested by already-covered home page",
+      "request_count": 1
+    },
+    {
+      "origin": "https://cm.everesttech.net",
+      "basis": "GET/HEAD resource requested by already-covered home page",
+      "request_count": 1
+    },
+    {
+      "origin": "https://obs.andstarsbuilding.com",
+      "basis": "GET/HEAD resource requested by already-covered home page",
+      "request_count": 1
+    },
+    {
+      "origin": "https://cdn.attn.tv",
+      "basis": "GET/HEAD resource requested by already-covered home page",
+      "request_count": 1
+    }
+  ],
+  "remaining_frontier": [
+    "Freeze representative P0/P1 categories and product details from the 5,315 directly observed product paths.",
+    "Obtain mobile route/state evidence from the independent explorer or a later explicitly scoped source evidence pass.",
+    "Treat cart/checkout source success state as unavailable unless the human explicitly grants a narrowly scoped mutation or supplies a safe human-operated demonstration.",
+    "Do not treat sitemap entries alone as proof of rendered interaction semantics; use them as first-party catalog facts and route discovery evidence."
+  ],
+  "retention": "Task-scoped sanitized artifacts only; no credentials, cookies, authorization headers, browser profile, raw request bodies, payment data or private personal data retained."
+}

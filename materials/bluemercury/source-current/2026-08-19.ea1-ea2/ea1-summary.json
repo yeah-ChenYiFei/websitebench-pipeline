@@ -1,0 +1,291 @@
+{
+  "schema_version": "websitebench.source-explorer.ea1.result.v1",
+  "site_id": "bluemercury",
+  "role": "EA1-depth-first",
+  "artifact_root": "test-output/bluemercury-source-ea1",
+  "formal_human_trace_text": "[781] On the Bluemercury website, purchase a skincare product, add to cart, and proceed to checkout",
+  "authorization": {
+    "access": "anonymous-read-only",
+    "allowed_http_methods": [
+      "GET",
+      "HEAD"
+    ],
+    "source_mutations_authorized": false,
+    "login_performed": false,
+    "cart_mutation_performed": false,
+    "checkout_submission_performed": false,
+    "payment_performed": false
+  },
+  "runtime": {
+    "provider": "local Playwright bundled Chromium under the repository WSL .venv",
+    "browser_context": "new isolated non-persistent context per viewport",
+    "authenticated_storage_consumed": false,
+    "viewports": [
+      {
+        "id": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "id": "mobile-390x844",
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "locale": "en-US",
+    "timezone": "America/New_York"
+  },
+  "network_guard": {
+    "approved_origins": [
+      "https://bluemercury.com",
+      "https://cdn.shopify.com"
+    ],
+    "policy": "abort every browser request whose method is not GET/HEAD; abort every GET/HEAD outside the approved origins",
+    "requests_observed": 1625,
+    "non_get_head_attempts_blocked_before_dispatch": 243,
+    "other_non_get_head_methods_observed": 0,
+    "external_get_head_requests_blocked": 105,
+    "total_blocked": 348,
+    "methods_observed": [
+      "GET",
+      "HEAD",
+      "POST"
+    ],
+    "important_proposed_additional_origins": [
+      "https://connect.nosto.com",
+      "https://hss.optiversal.com",
+      "https://apps.bazaarvoice.com",
+      "https://d21m4dsqdd3b9h.cloudfront.net",
+      "https://truyoproductionuscdn.truyo.com",
+      "https://assets.adobedtm.com",
+      "https://www.lightboxcdn.com",
+      "https://config.gorgias.chat",
+      "https://shop.app"
+    ],
+    "evidence": "browser/browser-capture-summary.json"
+  },
+  "route_state_viewport_coverage": [
+    {
+      "route": "/",
+      "state": "anonymous home",
+      "viewports": [
+        "desktop-1440x900",
+        "mobile-390x844"
+      ],
+      "classification": "directly_observed",
+      "established": [
+        "canonical page returned 200 without redirect, access gate, or challenge",
+        "header announcement bar, Bluemercury wordmark, search, account/BlueRewards/locations and cart controls",
+        "primary navigation: HSA/FSA, Bundles, Bestsellers, New, Brands, Skincare, Makeup, Hair, Bath & Body, Fragrance, Sun, Gifts, Sale",
+        "hero and merchandising sections, New Arrivals, Featured Brands, BlueRewards panel and full footer",
+        "search is a GET form to /search with q and type fields"
+      ],
+      "artifact_dirs": [
+        "browser/desktop-1440x900/home",
+        "browser/mobile-390x844/home"
+      ]
+    },
+    {
+      "route": "/collections/skin-care",
+      "state": "anonymous skincare collection shell",
+      "viewports": [
+        "desktop-1440x900",
+        "mobile-390x844"
+      ],
+      "classification": "directly_observed",
+      "established": [
+        "breadcrumb Home > Skincare",
+        "Skincare heading with displayed total 1707",
+        "category chips: All Skincare, Cleansers, Serums & Treatments, Moisturizers, Exfoliators & Peels, Masks, Eye Care, Lip Care, Sun Care, Tools, Bundles & Sets"
+      ],
+      "limitation": "product grid is populated by an external Nosto/related GET surface that remained outside the approved-origin set, so the grid was not visually established in this run",
+      "artifact_dirs": [
+        "browser/desktop-1440x900/skincare-collection",
+        "browser/mobile-390x844/skincare-collection"
+      ]
+    },
+    {
+      "route": "/search?q=moisturizer&type=product",
+      "state": "anonymous GET search",
+      "viewports": [
+        "desktop-1440x900",
+        "mobile-390x844"
+      ],
+      "classification": "directly_observed",
+      "established": [
+        "document title reports: Search: 1000 results found for moisturizer",
+        "page heading displays the moisturizer query",
+        "same GET /search form is present"
+      ],
+      "limitation": "result cards/count widget did not populate while the external search/personalization origin was blocked; visual result-card evidence is unavailable",
+      "artifact_dirs": [
+        "browser/desktop-1440x900/search-moisturizer",
+        "browser/mobile-390x844/search-moisturizer"
+      ]
+    },
+    {
+      "route": "/collections/skin-care/products/skinceuticals-c-e-ferulic",
+      "state": "available skincare product detail",
+      "viewports": [
+        "desktop-1440x900",
+        "mobile-390x844"
+      ],
+      "classification": "directly_observed",
+      "established": [
+        "brand SkinCeuticals; product C E Ferulic; price $185; HSA/FSA eligible",
+        "size 1 FL OZ; quantity decrement/value/increment controls; ADD TO BAG call to action",
+        "displayed review count 7980 and product imagery/gallery",
+        "long detail sections include Why We Love It, Product Information, Highlights, Q&A, Clinical Trials, Ingredients, How To Use, Complete the Routine, Shipping & Returns",
+        "first-party /products/skinceuticals-c-e-ferulic.js GET reports product id 4585128984651, available=true, price=18500 cents and variant id 32352032096331"
+      ],
+      "artifact_dirs": [
+        "browser/desktop-1440x900/product-detail",
+        "browser/mobile-390x844/product-detail"
+      ]
+    },
+    {
+      "route": "/cart",
+      "state": "anonymous empty bag",
+      "viewports": [
+        "desktop-1440x900",
+        "mobile-390x844"
+      ],
+      "classification": "directly_observed",
+      "established": [
+        "title Your Shopping Cart",
+        "empty-state copy Your bag is empty",
+        "SHOP OUR PRODUCTS call to action"
+      ],
+      "artifact_dirs": [
+        "browser/desktop-1440x900/empty-cart",
+        "browser/mobile-390x844/empty-cart"
+      ]
+    }
+  ],
+  "catalog_evidence": {
+    "classification": "directly_observed",
+    "general_products_get": {
+      "url": "https://bluemercury.com/products.json?limit=250",
+      "http_status": 200,
+      "count": 250,
+      "fields_retained": [
+        "id",
+        "title",
+        "handle",
+        "vendor",
+        "product_type",
+        "published_at",
+        "tags",
+        "variants.id",
+        "variants.title",
+        "variants.sku",
+        "variants.available",
+        "variants.price",
+        "variants.compare_at_price",
+        "images"
+      ],
+      "artifact": "catalog/products-first-250.json"
+    },
+    "skincare_products_get": {
+      "url": "https://bluemercury.com/collections/skin-care/products.json?limit=250",
+      "http_status": 200,
+      "count": 250,
+      "first_three_handles": [
+        "skinceuticals-c-e-ferulic",
+        "m61-powerglow-peel",
+        "augustinus-the-rich-cream"
+      ]
+    },
+    "sitemap": {
+      "root_child_sitemaps": 14,
+      "product_sitemaps": 6,
+      "first_product_sitemap_product_urls": 1012,
+      "artifacts": [
+        "indexes/sitemap-index.json",
+        "indexes/product-sitemap-first.json"
+      ]
+    },
+    "conclusion": "first-party anonymous GET evidence is sufficient to seed at least 200 searchable/openable local product records; this is distinct from Harbor's exactly-200-case protocol"
+  },
+  "structural_only": [
+    {
+      "surface": "source add-to-bag mutation",
+      "evidence": "the product page directly exposes quantity controls and an ADD TO BAG control, but the mutation was not executed and its successful cart transition was not established"
+    },
+    {
+      "surface": "collection and search result card grids",
+      "evidence": "server route, heading, query/title, totals and category controls were observed; card population depends on a blocked proposed external service origin"
+    },
+    {
+      "surface": "checkout",
+      "evidence": "checkout is part of the formal trace, but empty cart exposes no checkout control; no populated cart was constructed"
+    }
+  ],
+  "unavailable": [
+    {
+      "surface": "populated source cart",
+      "reason": "AUTHORIZED_SOURCE_MUTATIONS is empty; adding an item would mutate source cart state"
+    },
+    {
+      "surface": "checkout entry and checkout form/state",
+      "reason": "requires a populated source cart and possibly additional checkout origins; neither was authorized or constructed"
+    },
+    {
+      "surface": "order submission/payment success and failure",
+      "reason": "explicitly prohibited on source; must exist only in the local clone with synthetic address and local-sandbox payment"
+    },
+    {
+      "surface": "visual collection/search cards under the full third-party runtime",
+      "reason": "functional external GET origins such as connect.nosto.com were recorded as proposed additional origins and blocked"
+    }
+  ],
+  "sanitization": {
+    "cookies_persisted": false,
+    "authorization_headers_persisted": false,
+    "request_headers_persisted": false,
+    "request_bodies_persisted": false,
+    "storage_state_persisted": false,
+    "browser_profile_persisted": false,
+    "input_values_persisted": false,
+    "dom_scripts_removed": true,
+    "sensitive_dom_attributes_removed": true,
+    "network_query_strings_removed": true,
+    "sensitive_value_scan": {
+      "command": "rg -n --glob '!*.py' '<credential/header/value patterns>' test-output/bluemercury-source-ea1",
+      "exit_code": 1,
+      "interpretation": "no matches"
+    }
+  },
+  "commands": [
+    {
+      "command": "wsl.exe bash -lc 'cd /mnt/d/codework/websitebench-pipeline && .venv/bin/websitebench-offline-clone tools explore --spec test-output/bluemercury-source-ea1/specs/home-desktop-initial.json --base-url https://bluemercury.com --environment source --out test-output/bluemercury-source-ea1/home-desktop-initial.report.json --artifacts-dir test-output/bluemercury-source-ea1/home-desktop-initial-artifacts'",
+      "exit_code": 0,
+      "result": "3/3 steps passed; 49 requests blocked; full-page home screenshot produced"
+    },
+    {
+      "command": "wsl.exe bash -lc 'cd /mnt/d/codework/websitebench-pipeline && .venv/bin/python test-output/bluemercury-source-ea1/capture_ea1.py'",
+      "exit_code": 0,
+      "result": "10 sanitized page-state/viewport captures plus indexes/catalog"
+    },
+    {
+      "command": "anonymous GET https://bluemercury.com/products.json?limit=250 parsed with repository .venv Python",
+      "exit_code": 0,
+      "result": "250 products"
+    },
+    {
+      "command": "anonymous GET https://bluemercury.com/collections/skin-care/products.json?limit=250 parsed with repository .venv Python",
+      "exit_code": 0,
+      "result": "250 skincare products"
+    },
+    {
+      "command": "anonymous GET https://bluemercury.com/products/skinceuticals-c-e-ferulic.js parsed with repository .venv Python",
+      "exit_code": 0,
+      "result": "available product/variant/price/image facts"
+    }
+  ],
+  "remaining_frontier": [
+    "source populated-cart appearance and line-item controls require a separately authorized reversible source cart mutation or a human demonstration",
+    "checkout entry/form/payment-method UI requires the same handoff; no source order or payment should ever be submitted",
+    "full collection/search grids would require explicit approval of the functional external GET origin or a different authorized evidence channel"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "bluemercury-search-grid-mobile",
+  "viewport": {"width": 390, "height": 844},
+  "timeout_ms": 20000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {"clone": ["http://127.0.0.1:8765"]},
+  "steps": [
+    {
+      "id": "search-results",
+      "action": "goto",
+      "path": "/search?q=moisturizer&type=product",
+      "observations": [
+        {"id": "search-route", "kind": "url_path", "expect": {"equals": "/search"}},
+        {"id": "search-grid", "kind": "visible", "selector": {"clone": ".product-grid"}, "expect": {"equals": true}}
+      ],
+      "screenshot": true
+    },
+    {"id": "search-settle", "action": "wait", "milliseconds": 1000, "screenshot": true}
+  ]
+}

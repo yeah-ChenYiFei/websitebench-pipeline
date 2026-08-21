@@ -1,0 +1,120 @@
+{
+  "authority": "diagnostic-only",
+  "backend": "adapter",
+  "contract": {
+    "path": "harbor/sites/bluemercury/interactions/opencli-interaction-contract.json"
+  },
+  "degradation": [],
+  "duration_seconds": 1.084654,
+  "instance_id": null,
+  "opencli": {
+    "binary_present": false,
+    "connectivity_ok": false,
+    "contract_version": "1.8.6",
+    "doctor_green": false,
+    "extension_connected": false,
+    "notes": [
+      "opencli-unavailable: binary not found on PATH"
+    ],
+    "version": null,
+    "version_matches": false
+  },
+  "profile_id": "catalog",
+  "profile_label": "bluemercury catalog (derived draft)",
+  "profile_tier": "p0",
+  "schema_version": "websitebench.harbor.opencli.replay-result.v1",
+  "site_id": "bluemercury",
+  "status": "failed",
+  "steps": [
+    {
+      "command": "state",
+      "declared_route": "collections/skin-care",
+      "duration_seconds": 0.149598,
+      "error": "[Errno 2] No such file or directory: 'opencli'",
+      "http_status": null,
+      "observation_id": "bluemercury_catalog_skincare",
+      "observations": [],
+      "outcome": "error",
+      "step_id": "catalog-skincare",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "collections/skin-care",
+      "duration_seconds": 0.142267,
+      "error": "[Errno 2] No such file or directory: 'opencli'",
+      "http_status": null,
+      "observation_id": "bluemercury_catalog_skincare-count",
+      "observations": [],
+      "outcome": "error",
+      "step_id": "catalog-skincare-count",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "search?q=serum&type=product",
+      "duration_seconds": 0.157369,
+      "error": "[Errno 2] No such file or directory: 'opencli'",
+      "http_status": null,
+      "observation_id": "bluemercury_catalog_search-serum",
+      "observations": [],
+      "outcome": "error",
+      "step_id": "catalog-search-serum",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "search?q=serum&type=product",
+      "duration_seconds": 0.155078,
+      "error": "[Errno 2] No such file or directory: 'opencli'",
+      "http_status": null,
+      "observation_id": "bluemercury_catalog_search-serum-term",
+      "observations": [],
+      "outcome": "error",
+      "step_id": "catalog-search-serum-term",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "search?q=zzzz-no-match&type=product",
+      "duration_seconds": 0.143261,
+      "error": "[Errno 2] No such file or directory: 'opencli'",
+      "http_status": null,
+      "observation_id": "bluemercury_catalog_search-zero",
+      "observations": [],
+      "outcome": "error",
+      "step_id": "catalog-search-zero",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "search?q=zzzz-no-match&type=product",
+      "duration_seconds": 0.148017,
+      "error": "[Errno 2] No such file or directory: 'opencli'",
+      "http_status": null,
+      "observation_id": "bluemercury_catalog_search-zero-recovery",
+      "observations": [],
+      "outcome": "error",
+      "step_id": "catalog-search-zero-recovery",
+      "tier": "p0"
+    }
+  ],
+  "summary": {
+    "assertion_failures": 0,
+    "steps_passed": 0,
+    "steps_total": 6,
+    "unasserted_observations": 0,
+    "unsupported_commands": 0
+  },
+  "target": "candidate",
+  "target_binding": {
+    "allowlist": [
+      "127.0.0.1",
+      "localhost"
+    ],
+    "base_origin": "http://127.0.0.1:8765",
+    "reset_status": null,
+    "session_fields": [],
+    "session_status": null
+  }
+}

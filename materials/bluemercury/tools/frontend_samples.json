@@ -1,0 +1,76 @@
+{
+  "schema_version": "offline-clone.frontend-samples.v1",
+  "site_id": "bluemercury",
+  "checks": [
+    {
+      "id": "catalog.skincare",
+      "method": "get",
+      "url": "/collections/skin-care",
+      "expect_status": 200,
+      "expect_contains": ["Skincare"]
+    },
+    {
+      "id": "catalog.skincare-count",
+      "method": "get",
+      "url": "/collections/skin-care",
+      "expect_status": 200,
+      "expect_contains": ["products"]
+    },
+    {
+      "id": "catalog.search-serum",
+      "method": "get",
+      "url": "/search?q=serum&type=product",
+      "expect_status": 200,
+      "expect_contains": ["Search results for"]
+    },
+    {
+      "id": "catalog.search-serum-term",
+      "method": "get",
+      "url": "/search?q=serum&type=product",
+      "expect_status": 200,
+      "expect_contains": ["serum"]
+    },
+    {
+      "id": "catalog.search-zero",
+      "method": "get",
+      "url": "/search?q=zzzz-no-match&type=product",
+      "expect_status": 200,
+      "expect_contains": ["No results found"]
+    },
+    {
+      "id": "catalog.search-zero-recovery",
+      "method": "get",
+      "url": "/search?q=zzzz-no-match&type=product",
+      "expect_status": 200,
+      "expect_contains": ["SHOP SKINCARE"]
+    },
+    {
+      "id": "bag.empty",
+      "method": "get",
+      "url": "/cart",
+      "expect_status": 200,
+      "expect_contains": ["Your bag is empty"]
+    },
+    {
+      "id": "bag.empty-cta",
+      "method": "get",
+      "url": "/cart",
+      "expect_status": 200,
+      "expect_contains": ["SHOP OUR PRODUCTS"]
+    },
+    {
+      "id": "bag.product",
+      "method": "get",
+      "url": "/products/skinceuticals-c-e-ferulic",
+      "expect_status": 200,
+      "expect_contains": ["C E Ferulic"]
+    },
+    {
+      "id": "bag.product-price",
+      "method": "get",
+      "url": "/products/skinceuticals-c-e-ferulic",
+      "expect_status": 200,
+      "expect_contains": ["$185.00"]
+    }
+  ]
+}
