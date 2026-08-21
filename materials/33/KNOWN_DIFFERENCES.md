@@ -28,8 +28,10 @@
 ## Owner-authorized real stylesheets
 
 - The human owner directly authorized (2026-08-21) using real Coursera stylesheets **inside the offline evaluation clone only** — never external redistribution. The authorization is recorded in `scope/real-css-authorization.json`.
-- Real CSS for the home, browse, search, course/specialization, and authentication surfaces is captured under `source-assets/coursera-css/`, fully localized (fonts and images rewritten to local `assets/`, embedded base64 fonts kept inline), with **zero remote runtime references** and registered in `source-assets/manifest.json` (75 assets, static diagnostics clean).
+- Real CSS for the home, browse, search, course/specialization, and authentication surfaces is captured under `source-assets/coursera-css/`, fully localized (fonts and images rewritten to local `assets/`, embedded base64 fonts kept inline), with **zero remote runtime references** and registered in `source-assets/manifest.json` (76 assets, static diagnostics clean).
 - The clone runtime ships the layer at `clone/static/coursera/`. Clone pages keep their local deterministic structure and content; the real CSS provides the source design-system layer (fonts, colors, components) that page markup increasingly adopts.
+- A pinned CDS variable layer (`cds-variables.css`, values measured from the live page such as `--cds-color-blue-600: #227af9`) makes the real component rules (e.g. `.link-button.primary`) effective. Home and browse CTAs use the real button classes; visual comparison vs the live source measured the search results region improving from 0.430 to 0.492 SSIM (+6.2%) and home primary +0.4%.
+- Search/browse result cards are client-rendered CDS components on the live site (`cds-ProductCard-*`), while the captured search-v2 bundle carries the older `rc-ProductCard` rules; the clone therefore keeps its own deterministic card markup rather than adopting the stale legacy card classes. Adapting to the current CDS card component would require capturing the client-rendered component stylesheet.
 - Visual similarity diagnostics remain diagnostic-only and never become a rights, license, or redistribution gate.
 
 ## Frontend specification and consistency
@@ -40,6 +42,6 @@
 
 ## Diagnostics
 
-- Static WebsiteBench diagnostics are complete with 75/75 verified assets, zero remote runtime references, and zero detected secrets.
+- Static WebsiteBench diagnostics are complete with 76/76 verified assets, zero remote runtime references, and zero detected secrets.
 - Live diagnostics were not completed because the Harbor candidate sandbox returned `[Errno 95]` for its sandbox runtime. This is an environment limitation, not a page-test failure; local Playwright/browser suites remain the applicable verification evidence.
 - One historical home footer geometry assertion remains 17px outside its 16px tolerance (`source-browse-footer-secondary`); it predates this learner expansion and is reported rather than changed opportunistically.
