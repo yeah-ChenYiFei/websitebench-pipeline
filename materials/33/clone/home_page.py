@@ -16,9 +16,33 @@ _TEMPLATES = Environment(
 )
 
 PROMOS = (
-    {"image": "/static/home/current-promo-plus.png", "alt": "Save 40% on 3 months of Coursera Plus", "href": "/courseraplus/special/cplus-monthly-august-2026-global"},
-    {"image": "/static/home/current-promo-teams.png", "alt": "Close team skill gaps for what's next", "href": "/business/teams"},
-    {"image": "/static/home/current-promo-third.png", "alt": "Start, switch, or advance your career", "href": "/signup"},
+    {
+        "key": "coursera-plus",
+        "href": "/courseraplus/special/cplus-monthly-august-2026-global",
+        "eyebrow": "Coursera Plus",
+        "title": "Save 40% on 3 months of Coursera Plus",
+        "subtitle": "Get unlimited access to 10,000+ learning programs from world-class universities and companies.",
+        "cta": "Start 7-day free trial",
+        "tone": "blue",
+    },
+    {
+        "key": "for-business",
+        "href": "/business/teams",
+        "eyebrow": "For Business",
+        "title": "Close team skill gaps for what's next",
+        "subtitle": "Empower your team with the skills to keep your organization moving forward.",
+        "cta": "Explore Coursera for Business",
+        "tone": "light",
+    },
+    {
+        "key": "career",
+        "href": "/signup",
+        "eyebrow": "For Individuals",
+        "title": "Start, switch, or advance your career.",
+        "subtitle": "Find the right course or certificate to build the career you want.",
+        "cta": "Explore career paths",
+        "tone": "warm",
+    },
 )
 
 PARTNERS = (

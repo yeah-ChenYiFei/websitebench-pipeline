@@ -52,6 +52,13 @@
   autoplay, manual previous/next controls, and aria-hidden for the inactive
   panels. Backend behavior is unchanged.
 
+
+- The home promotion carousel cards are HTML content cards (eyebrow, title,
+  subtitle, CTA, tone gradient) built from the observed source copy. This
+  replaces the previous raster panels — one captured raster
+  (`current-promo-third.png`) had been only 20x298 and rendered as an empty
+  third slide; no promo slide is a screenshot anymore.
+
 ## Diagnostics
 
 - Static WebsiteBench diagnostics are complete with 76/76 verified assets, zero remote runtime references, and zero detected secrets.

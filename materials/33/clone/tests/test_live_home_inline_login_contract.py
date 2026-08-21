@@ -287,7 +287,7 @@ def test_signup_keeps_the_home_background_and_uses_the_same_page_identity() -> N
             with _clone_server() as base_url:
                 page = context.new_page()
                 page.goto(base_url + "/", wait_until="networkidle")
-                home_promo = page.locator(".promo-panel").first.locator("img").get_attribute("src")
+                home_promo = page.locator(".promo-panel").first.locator(".promo-title").inner_text()
                 home_markers = (
                     "New and popular",
                     "Get job-ready for an in-demand career",
@@ -305,7 +305,7 @@ def test_signup_keeps_the_home_background_and_uses_the_same_page_identity() -> N
                 assert dialog.locator('input[type="password"]').count() == 0
                 assert page.locator("[data-signup-dialog]").count() == 0
                 assert page.locator(".auth-modal-shell").count() == 0
-                assert page.locator(".promo-panel").first.locator("img").get_attribute("src") == home_promo
+                assert page.locator(".promo-panel").first.locator(".promo-title").inner_text() == home_promo
                 body_text = page.locator("body").inner_text()
                 assert all(marker in body_text for marker in home_markers)
         finally:

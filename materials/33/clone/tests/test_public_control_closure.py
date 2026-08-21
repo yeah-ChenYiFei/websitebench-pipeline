@@ -54,12 +54,12 @@ def test_home_tabs_and_promo_controls_change_real_visible_content() -> None:
                 assert bestsellers.get_attribute("aria-selected") == "true"
 
                 before = page.locator(
-                    '[data-promo-panel][aria-hidden="false"] img'
-                ).get_attribute("src")
+                    '[data-promo-panel][aria-hidden="false"] .promo-title'
+                ).inner_text()
                 page.get_by_role("button", name="Next promotion").click()
                 after = page.locator(
-                    '[data-promo-panel][aria-hidden="false"] img'
-                ).get_attribute("src")
+                    '[data-promo-panel][aria-hidden="false"] .promo-title'
+                ).inner_text()
                 assert after != before
         finally:
             context.close()

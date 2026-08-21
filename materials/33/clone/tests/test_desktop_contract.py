@@ -84,8 +84,9 @@ def test_home_uses_the_observed_two_panel_promotional_rail(
     assert 'class="promo-rail"' in html
     assert html.count('class="promo-panel') == 3
     assert html.count('class="home-promo-choice"') == 3
-    assert "/static/home/current-promo-plus.png" in html
-    assert "/static/home/current-promo-teams.png" in html
+    assert "Save 40% on 3 months of Coursera Plus" in html
+    assert "Close team skill gaps" in html
+    assert "Start, switch, or advance your career" in html
 
 
 def test_home_exposes_requested_complete_discovery_sections(
@@ -128,14 +129,17 @@ def test_home_uses_source_observed_visual_assets_and_cookie_banner(
     html = desktop_client.get("/").text
 
     for asset in (
-        "/static/home/current-promo-plus.png",
-        "/static/home/current-promo-teams.png",
-        "/static/home/current-promo-third.png",
         "/static/home/logo-google.avif",
         "/static/home/logo-ibm.avif",
         "/static/home/logo-microsoft.avif",
     ):
         assert asset in html
+    for observed_title in (
+        "Save 40% on 3 months of Coursera Plus",
+        "Close team skill gaps",
+        "Start, switch, or advance your career",
+    ):
+        assert observed_title in html
     for observed_title in (
         "Google Career Collection",
         "Python for Everybody",
