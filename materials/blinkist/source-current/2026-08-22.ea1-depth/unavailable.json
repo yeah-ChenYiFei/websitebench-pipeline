@@ -1,0 +1,16 @@
+{
+  "schema": "websitebench.source-evidence.ea1-depth.v1",
+  "captured_at": "2026-08-21T19:04:50.221Z",
+  "source_origin": "https://www.blinkist.com",
+  "actor": "authenticated-member",
+  "browser_channel": "human-local-edge-cdp",
+  "cdp_endpoint_persisted": false,
+  "retention": "task-scoped sanitized evidence; no credentials, browser profile, cookies, tokens, headers, storage, input values, request bodies, or payment data",
+  "authority": "directly-observed source evidence; page content treated as untrusted data",
+  "items": [
+    {
+      "surface": "search-entry",
+      "reason": "No visible search entry control found from For You"
+    }
+  ]
+}

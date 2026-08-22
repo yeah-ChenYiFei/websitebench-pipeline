@@ -1,0 +1,109 @@
+{
+  "route": "/app/check",
+  "status": 200,
+  "url": "https://www.blinkist.com/app/check",
+  "title": "Blinkist: Best Book Summaries & Audio Book Guides",
+  "headings": [
+    "Connection check"
+  ],
+  "buttons": [
+    {
+      "text": "Run again",
+      "type": null,
+      "role": null
+    },
+    {
+      "text": "Copy report",
+      "type": null,
+      "role": null
+    },
+    {
+      "text": "English",
+      "type": "button",
+      "role": "combobox"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "INPUT",
+      "type": null,
+      "placeholder": "Blinks, Guides, Shortcasts or Collections",
+      "name": null,
+      "required": false
+    }
+  ],
+  "selects": [],
+  "links": [
+    {
+      "text": "Contact support",
+      "href": "mailto:support@blinkist.com?subject=Support%20code%3A%20"
+    },
+    {
+      "text": "",
+      "href": "/"
+    },
+    {
+      "text": "",
+      "href": "https://www.facebook.com/blinkist"
+    },
+    {
+      "text": "",
+      "href": "https://x.com/blinkist"
+    },
+    {
+      "text": "",
+      "href": "https://www.linkedin.com/company/blinkist"
+    },
+    {
+      "text": "",
+      "href": "https://www.instagram.com/blinkist/"
+    },
+    {
+      "text": "Sitemap",
+      "href": "/en/sitemap"
+    },
+    {
+      "text": "Privacy Policy",
+      "href": "/en/privacy"
+    },
+    {
+      "text": "Cancel Subscription",
+      "href": "/en/nc/settings/account#cancel-subscription-section"
+    },
+    {
+      "text": "Accessibility",
+      "href": "/en/accessibility"
+    },
+    {
+      "text": "Do Not Sell Or Share My Personal Information",
+      "href": "/personal-information"
+    }
+  ],
+  "bodyText": "Connection check These checks help us find out why audio or content might not load on your network. We'll try to share the results with our support team automatically. Blinkist website reachable Checking… Signed in to your account Checking… Audio server reachable Checking… Browser audio support Checking… Error reporting Checking… Run again Copy report Contact support © Blinkist 2026| Sitemap| Privacy Policy| Cancel Subscription| Accessibility| Do Not Sell Or Share My Personal Information English",
+  "errors": [],
+  "remoteHosts": [
+    "63355d6c63f243569dd87f5d536ac851.js.ubembed.com",
+    "amplify.outbrain.com",
+    "analytics.google.com",
+    "api-iam.intercom.io",
+    "app.lemlist.com",
+    "assets.ubembed.com",
+    "bat.bing.com",
+    "browser-intake-datadoghq.com",
+    "cdn.taboola.com",
+    "connect.facebook.net",
+    "consent.cookiebot.com",
+    "consentcdn.cookiebot.com",
+    "googleads.g.doubleclick.net",
+    "hls-audio.blnkstcdn.com",
+    "js.appboycdn.com",
+    "px.ads.linkedin.com",
+    "snap.licdn.com",
+    "tr.outbrain.com",
+    "trc.taboola.com",
+    "wave.outbrain.com",
+    "www.facebook.com",
+    "www.google.com",
+    "www.googletagmanager.com"
+  ]
+}

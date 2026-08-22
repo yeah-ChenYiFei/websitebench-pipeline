@@ -1,0 +1,17 @@
+{
+  "schema_version": "websitebench.command-results.v1",
+  "environment": "Windows host with WSL Ubuntu-24.04 for repository CLI",
+  "commands": [
+    {"command": "python tools/offline_clone/run.py tools list", "exit_code": 1, "result": "blocked: Windows Python lacks resource module"},
+    {"command": "websitebench-offline-clone --help", "exit_code": 1, "result": "command not found on Windows PATH"},
+    {"command": "websitebench-workflow --help", "exit_code": 1, "result": "command not found on Windows PATH"},
+    {"command": "websitebench-harbor --help", "exit_code": 1, "result": "command not found on Windows PATH"},
+    {"command": "wsl -d Ubuntu-24.04 -- .venv/bin/python tools/offline_clone/run.py tools list", "exit_code": 0, "result": "tool catalog emitted"},
+    {"command": "wsl -d Ubuntu-24.04 -- .venv/bin/websitebench-offline-clone --help", "exit_code": 0, "result": "help emitted"},
+    {"command": "wsl -d Ubuntu-24.04 -- .venv/bin/websitebench-workflow --help", "exit_code": 0, "result": "help emitted"},
+    {"command": "wsl -d Ubuntu-24.04 -- .venv/bin/websitebench-harbor --help", "exit_code": 0, "result": "help emitted"},
+    {"command": "npx playwright --version", "exit_code": 0, "result": "Version 1.62.1"},
+    {"command": "local Edge Playwright GET https://blinkist.com", "exit_code": 0, "result": "HTTP 403 challenge shell; no usable source page"},
+    {"command": "Browser Use MCP navigate/click/screenshot https://blinkist.com", "exit_code": 0, "result": "real Blinkist UI and click observed"}
+  ]
+}

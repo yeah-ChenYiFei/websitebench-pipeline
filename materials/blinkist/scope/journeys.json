@@ -1,0 +1,12 @@
+{
+  "schema_version": "offline-clone.journeys.v1",
+  "journeys": [
+    {"id": "search-favorite-library", "family": "for-you", "priority": "p0", "actor": "member", "start": "/en/app/for-you", "steps": ["search", "open-detail", "favorite", "open-library", "verify-title"], "source_mutation": "local clone only", "evidence_kind": "direct", "status": "frozen"},
+    {"id": "book-detail", "family": "book-detail", "priority": "p0", "actor": "member", "start": "/app/books/atomic-habits-en", "steps": ["open-detail", "observe-metadata", "return"], "source_mutation": "none", "evidence_kind": "direct", "status": "frozen"},
+    {"id": "book-detail-not-found", "family": "book-detail", "kind": "failure", "priority": "p1", "actor": "member", "steps": ["open-invalid-detail", "observe-404"], "evidence_kind": "local-contract", "status": "frozen"},
+    {"id": "book-detail-recover", "family": "book-detail", "kind": "recovery", "priority": "p1", "actor": "member", "steps": ["return-to-explore", "open-valid-detail"], "evidence_kind": "local-contract", "status": "frozen"},
+    {"id": "for-you-recover", "family": "for-you", "kind": "recovery", "priority": "p1", "actor": "member", "steps": ["refresh-for-you", "continue-browsing"], "evidence_kind": "local-contract", "status": "frozen"},
+    {"id": "registration-local-email", "priority": "p1", "actor": "anonymous", "start": "/register", "steps": ["fill", "create-local-outbox", "verify-code", "land-authenticated"], "source_mutation": "local clone only", "evidence_kind": "local-contract", "status": "frozen"},
+    {"id": "premium-local-sandbox", "priority": "p1", "actor": "member", "start": "/subscribe", "steps": ["select-annual", "sandbox-approved-or-declined", "return-to-app"], "source_mutation": "local sandbox only", "evidence_kind": "local-contract", "status": "frozen", "note": "Truthful local simulation; real payment unavailable and unauthorized."}
+  ]
+}

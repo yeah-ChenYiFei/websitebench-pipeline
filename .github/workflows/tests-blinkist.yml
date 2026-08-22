@@ -1,0 +1,30 @@
+name: diagnostics (blinkist)
+
+on:
+  pull_request:
+    paths:
+      - materials/blinkist/**
+      - harbor/sites/blinkist/**
+      - harbor/instances/blinkist/**
+      - .github/workflows/tests-blinkist.yml
+      - .github/workflows/clone-diagnostics.yml
+  push:
+    paths:
+      - materials/blinkist/**
+      - harbor/sites/blinkist/**
+      - harbor/instances/blinkist/**
+      - .github/workflows/tests-blinkist.yml
+      - .github/workflows/clone-diagnostics.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: diagnostics-blinkist-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  diagnostics:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: blinkist

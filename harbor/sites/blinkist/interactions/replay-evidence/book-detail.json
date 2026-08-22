@@ -1,0 +1,60 @@
+{
+  "authority": "diagnostic-only",
+  "backend": "adapter",
+  "contract": {
+    "path": "harbor/sites/blinkist/interactions/opencli-interaction-contract.json"
+  },
+  "degradation": [],
+  "duration_seconds": 0.100211,
+  "instance_id": null,
+  "opencli": {
+    "binary_present": false,
+    "connectivity_ok": false,
+    "contract_version": "1.8.6",
+    "doctor_green": false,
+    "extension_connected": false,
+    "notes": [
+      "opencli-unavailable: binary not found on PATH"
+    ],
+    "version": null,
+    "version_matches": false
+  },
+  "profile_id": "book-detail",
+  "profile_label": "blinkist book detail (derived draft)",
+  "profile_tier": "p1",
+  "schema_version": "websitebench.harbor.opencli.replay-result.v1",
+  "site_id": "blinkist",
+  "status": "failed",
+  "steps": [
+    {
+      "command": "state",
+      "declared_route": "app/books/atomic-habits-en",
+      "duration_seconds": 0.049702,
+      "error": "[Errno 2] No such file or directory: 'opencli'",
+      "http_status": null,
+      "observation_id": "blinkist_book-detail",
+      "observations": [],
+      "outcome": "error",
+      "step_id": "book-detail",
+      "tier": "p1"
+    }
+  ],
+  "summary": {
+    "assertion_failures": 0,
+    "steps_passed": 0,
+    "steps_total": 1,
+    "unasserted_observations": 0,
+    "unsupported_commands": 0
+  },
+  "target": "candidate",
+  "target_binding": {
+    "allowlist": [
+      "127.0.0.1",
+      "localhost"
+    ],
+    "base_origin": "http://127.0.0.1:8452",
+    "reset_status": null,
+    "session_fields": [],
+    "session_status": null
+  }
+}
