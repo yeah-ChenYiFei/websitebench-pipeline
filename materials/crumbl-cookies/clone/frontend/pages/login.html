@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in | Crumbl</title>
+<meta name="description" content="Sign in to Crumbl Cookies.">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/favicon-16x16.png">
+<link rel="stylesheet" href="/static/site/home.css">
+<style>
+.auth-wrap { max-width: 480px; margin: 0 auto; padding: 8rem 1.5rem 4rem; }
+.auth-card { border: 1px solid rgba(0,0,0,.1); border-radius: 1.5rem; padding: 2rem; }
+.auth-card h1 { font-size: 2rem; font-weight: 800; margin: 0 0 0.5rem; }
+.auth-card .sub { color: #555; margin: 0 0 1.5rem; }
+.form-field { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1rem; }
+.form-field label { font-weight: 700; font-size: 0.95rem; }
+.form-field input { min-height: 46px; padding: 0 0.9rem; border: 1px solid rgba(0,0,0,.2); border-radius: 0.75rem; font: inherit; }
+.form-field .error { color: #db4156; font-size: 0.85rem; min-height: 1em; }
+.terms { font-size: 0.85rem; color: #666; margin: 1rem 0; }
+.terms a { color: var(--color-ink); }
+.auth-note { margin-top: 1.5rem; font-size: 0.9rem; color: #777; }
+.back-link { display: inline-block; margin-top: 2rem; color: var(--color-ink); }
+.sim-sms { margin: 0 0 1.25rem; padding: 0.9rem 1rem; border-radius: 0.75rem; background: #f0f4f8; border: 1px solid #d7e2ea; font-size: 0.92rem; line-height: 1.5; }
+.sim-sms .sms-from { font-weight: 700; }
+.sim-sms .sms-code { font-weight: 800; letter-spacing: 0.2em; font-size: 1.05rem; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="menu-icon" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <span class="menu-label">Menu</span>
+    </button>
+    <a class="logo" href="/" aria-label="Crumbl Cookies logo">
+      <svg class="logo-svg" viewBox="0 0 220 60" role="img" aria-hidden="true">
+        <text x="8" y="44" font-size="42" font-weight="800" fill="#000">Crumbl</text>
+      </svg>
+    </a>
+    <div class="header-actions">
+      <a class="btn-pill btn-dark" href="/order">Order Now</a>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+    <a href="/">Home</a>
+    <a href="/order">Order</a>
+    <a href="/stores">Locations</a>
+    <a href="/catering">Catering</a>
+    <a href="/giftcards">Gift Cards</a>
+    <a href="/external/merch.crumbl.com">Merch</a>
+    <a href="/menu">Menu</a>
+    <a href="/order/carry_out">Order Now</a>
+    <a href="/login">Sign in</a>
+  </nav>
+</header>
+
+<main id="main-content">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h1 id="auth-title">Sign In</h1>
+      <p class="sub" id="auth-sub">We'll text you a confirmation code to get started</p>
+
+      <!-- Step 1: name + phone -->
+      <form id="login-form" novalidate>
+        <div class="form-field">
+          <label for="full-name">First &amp; Last Name</label>
+          <input id="full-name" name="name" autocomplete="name" placeholder="First &amp; Last Name">
+          <span class="error" id="name-error"></span>
+        </div>
+        <div class="form-field">
+          <label for="phone">Mobile Phone Number</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Mobile Phone Number">
+          <span class="error" id="phone-error"></span>
+        </div>
+        <button class="btn-pill btn-dark" type="submit" id="send-code-btn" style="width:100%">Send Confirmation Code</button>
+        <p class="terms">By proceeding you agree to our <a href="/termsandconditions">Terms and Conditions</a> and confirm you have read and understand our <a href="/privacy">Privacy policy</a></p>
+      </form>
+
+      <!-- Step 2: simulated text + code entry -->
+      <div id="code-step" hidden>
+        <div class="sim-sms" id="sim-sms"></div>
+        <form id="code-form" novalidate>
+          <div class="form-field">
+            <label for="code-input">Confirmation Code</label>
+            <input id="code-input" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6-digit code">
+            <span class="error" id="code-error"></span>
+          </div>
+          <button class="btn-pill btn-dark" type="submit" id="verify-btn" style="width:100%">Verify &amp; Sign In</button>
+        </form>
+        <p class="auth-note" id="code-note">The verification code above is generated locally — no real text message is sent.</p>
+      </div>
+
+      <p class="auth-note" id="signin-note">This offline clone sends no real text messages and creates no real account; sign-in is a local simulation.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <nav class="footer-inner" aria-label="Footer">
+    <div class="footer-col">
+      <p class="footer-heading">Company</p>
+      <a href="/rewards">Rewards</a>
+      <a href="/our-story">Our story</a>
+      <a href="/contact">Support</a>
+      <a href="/allergens">Allergens</a>
+      <a href="/blog">Blog</a>
+      <a href="/giftcard-balance">Gift Card Balance</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Flavors</p>
+      <a href="/flavors/secret-menu">Flavor Map</a>
+      <a href="/dirty-sodas">Dirty Sodas</a>
+      <a href="/flavor-vote">Fan Favorites Vote</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Get Involved</p>
+      <a href="/press">Press</a>
+      <a href="/collaborate">Collaborate</a>
+      <a href="/franchising">Franchising</a>
+      <a href="/jobs">Franchise Store Jobs</a>
+      <a href="/careers">HQ Careers</a>
+      <a href="/crumbl-cares">Crumbl Cares</a>
+    </div>
+  </nav>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 all rights reserved. | <a href="/external/www.openstreetmap.org/copyright">Map data © OpenStreetMap contributors</a></p>
+    <p class="footer-legal">
+      <a href="/privacy">Privacy policy</a>
+      <span class="legal-sep">|</span>
+      <a href="/termsandconditions">Terms and Conditions</a>
+      <span class="legal-sep">|</span>
+      <a href="/digital-giftcard-terms-and-conditions">Gift Card/Voucher Terms</a>
+    </p>
+  </div>
+</footer>
+
+<script src="/static/site/home.js" defer></script>
+<script src="/static/site/auth.js" defer></script>
+</body>
+</html>

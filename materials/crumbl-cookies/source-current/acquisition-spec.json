@@ -1,0 +1,33 @@
+{
+  "schema_version": "offline-clone.source-acquisition-spec.v2",
+  "site_id": "crumbl-cookies",
+  "capture_id": "2026-08-20.crumbl-cookies-r1",
+  "allowed_origins": [
+    "https://crumblcookies.com",
+    "https://crumbl.video"
+  ],
+  "pages": [
+    {
+      "row_id": "home.desktop",
+      "priority": "p0",
+      "url": "https://crumblcookies.com/",
+      "viewport": {"name": "desktop", "width": 1440, "height": 900},
+      "wait_until": "networkidle",
+      "full_page": true
+    },
+    {
+      "row_id": "home.mobile",
+      "priority": "p1",
+      "url": "https://crumblcookies.com/",
+      "viewport": {"name": "mobile", "width": 390, "height": 844},
+      "wait_until": "networkidle",
+      "full_page": true
+    }
+  ],
+  "limits": {
+    "navigation_timeout_ms": 60000,
+    "settle_ms": 4000,
+    "max_resource_bytes": 52428800,
+    "max_total_resource_bytes": 1073741824
+  }
+}

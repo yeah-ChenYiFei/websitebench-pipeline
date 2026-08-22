@@ -1,0 +1,660 @@
+{
+ "schema_version": "offline-clone.assets.v1",
+ "snapshot_id": "2026-08-20.crumbl-cookies-r1",
+ "closure_status": "declared",
+ "no_assets_reason": null,
+ "remote_runtime_policy": "forbidden",
+ "created_at": "2026-08-20T17:48:00Z",
+ "assets": [
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com._next.static.media.14609c67e54d6f4d-s.p.woff2.7509269c14",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/_next/static/media/14609c67e54d6f4d-s.p.woff2",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:static/site/home.css"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/14609c67e54d6f4d-s.p.woff2",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/14609c67e54d6f4d-s.p.woff2",
+   "bytes": 75612,
+   "mime_type": "font/woff2",
+   "dimensions": null,
+   "sha256": "7509269c14b7c8c1c08c070033cf4f6b845e66a70ab168318db24e33e343275e"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com._next.static.media.393c7750811dbd17-s.p.otf.f673fc9892",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/_next/static/media/393c7750811dbd17-s.p.otf",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:static/site/home.css"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/393c7750811dbd17-s.p.otf",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/393c7750811dbd17-s.p.otf",
+   "bytes": 19948,
+   "mime_type": "font/otf",
+   "dimensions": null,
+   "sha256": "f673fc9892ca45707cab1ee9366246fcc63ed177441d0e0aef1cb1b62e3b5120"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com._next.static.media.3d06f48d47675056-s.p.woff2.bf6a4783e7",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/_next/static/media/3d06f48d47675056-s.p.woff2",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:static/site/home.css"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/3d06f48d47675056-s.p.woff2",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/3d06f48d47675056-s.p.woff2",
+   "bytes": 73216,
+   "mime_type": "font/woff2",
+   "dimensions": null,
+   "sha256": "bf6a4783e73a2d51f004e0c77e4851a8b80d00aee0bc1985c99c5aa74c19c35a"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com._next.static.media.4cca2f169119d46e-s.p.woff2.83e3275803",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/_next/static/media/4cca2f169119d46e-s.p.woff2",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:static/site/home.css"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/4cca2f169119d46e-s.p.woff2",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/4cca2f169119d46e-s.p.woff2",
+   "bytes": 72484,
+   "mime_type": "font/woff2",
+   "dimensions": null,
+   "sha256": "83e32758039fc3efd86c082d69caed3824c9c48ce7ad1673be6481c5cb0cd7f0"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com._next.static.media.66c47d668edc4bc7-s.p.ttf.1e85101756",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/_next/static/media/66c47d668edc4bc7-s.p.ttf",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:static/site/home.css"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/66c47d668edc4bc7-s.p.ttf",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/66c47d668edc4bc7-s.p.ttf",
+   "bytes": 50328,
+   "mime_type": "font/ttf",
+   "dimensions": null,
+   "sha256": "1e851017567107991499f97fa328c0344c1d3262a43449057fe6266959d5a5df"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com._next.static.media.6e96e3e836b49e60-s.p.woff2.2a678760ae",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/_next/static/media/6e96e3e836b49e60-s.p.woff2",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:static/site/home.css"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/6e96e3e836b49e60-s.p.woff2",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/6e96e3e836b49e60-s.p.woff2",
+   "bytes": 74376,
+   "mime_type": "font/woff2",
+   "dimensions": null,
+   "sha256": "2a678760aefd10eb1d6ebfdb67a86908db45c4d11c7e26179a9708c91b9a6310"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com._next.static.media.aa255b3714fa8909-s.p.woff2.6df40cee2e",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/_next/static/media/aa255b3714fa8909-s.p.woff2",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:static/site/home.css"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/aa255b3714fa8909-s.p.woff2",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/aa255b3714fa8909-s.p.woff2",
+   "bytes": 70992,
+   "mime_type": "font/woff2",
+   "dimensions": null,
+   "sha256": "6df40cee2e7907c6375cc3cffeb13f1c9516953d726efe1cfdf4b30f570fa23b"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com._next.static.media.ba4d75f8b214c7cd-s.p.woff2.9117e27da9",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/_next/static/media/ba4d75f8b214c7cd-s.p.woff2",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:static/site/home.css"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/ba4d75f8b214c7cd-s.p.woff2",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/ba4d75f8b214c7cd-s.p.woff2",
+   "bytes": 75120,
+   "mime_type": "font/woff2",
+   "dimensions": null,
+   "sha256": "9117e27da916d3dc9d935103670a6bba912a1795247185d8ecc94a004fefad6e"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com._next.static.media.fe4e789810c239ba-s.p.woff2.f201ce61b4",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/_next/static/media/fe4e789810c239ba-s.p.woff2",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:static/site/home.css"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/fe4e789810c239ba-s.p.woff2",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/_next/static/media/fe4e789810c239ba-s.p.woff2",
+   "bytes": 78768,
+   "mime_type": "font/woff2",
+   "dimensions": null,
+   "sha256": "f201ce61b42097b6924ec61fba5799ebf847ad35dce7ee43ed3e576621076740"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com.favicons.apple-touch-icon.png.2f27004e8c",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/favicons/apple-touch-icon.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/apple-touch-icon.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/apple-touch-icon.png",
+   "bytes": 20942,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 180,
+    "height": 180
+   },
+   "sha256": "2f27004e8ca37585b7e5083e6e3d74975f921d654bfe27fadab1d455201a65c3"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com.favicons.favicon-16x16.png.88fa932916",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/favicons/favicon-16x16.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/favicon-16x16.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/favicon-16x16.png",
+   "bytes": 969,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 16,
+    "height": 16
+   },
+   "sha256": "88fa9329168ca996aa613b1e841a1a8992bf4c9656ed4aa3eec8738262b79381"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com.favicons.favicon-32x32.png.483abc85ee",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/favicons/favicon-32x32.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/favicon-32x32.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/favicon-32x32.png",
+   "bytes": 2631,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 32,
+    "height": 32
+   },
+   "sha256": "483abc85ee861ab33e7ad06c84a4df7311c5d112be70e6ea0381998990bf4e9d"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com.favicons.safari-pinned-tab.svg.be24c0b32d",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/favicons/safari-pinned-tab.svg",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/safari-pinned-tab.svg",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/safari-pinned-tab.svg",
+   "bytes": 603,
+   "mime_type": "image/svg+xml",
+   "dimensions": {
+    "width": 534,
+    "height": 534
+   },
+   "sha256": "be24c0b32d838dfc57de23cef5c5fe38005eaf7486f2e262bf6cf30305c15a5c"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumblcookies.com.favicons.site.webmanifest.5beb2f5ed7",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumblcookies.com/favicons/site.webmanifest",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/site.webmanifest",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/site.webmanifest",
+   "bytes": 378,
+   "mime_type": "application/manifest+json",
+   "dimensions": null,
+   "sha256": "5beb2f5ed795f86e2102baffe9b861ae30fdba7e08c88ad98df2c565760a8dc8"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.12d0e549-fc98-483f-aec4-8dd5b039d611_swedishcandycookieftbubs_flyingaerial_tech.png.b59965b7c9",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/12d0e549-fc98-483f-aec4-8dd5b039d611_SwedishCandyCookieftBUBS_FlyingAerial_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/12d0e549-fc98-483f-aec4-8dd5b039d611_SwedishCandyCookieftBUBS_FlyingAerial_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/12d0e549-fc98-483f-aec4-8dd5b039d611_SwedishCandyCookieftBUBS_FlyingAerial_TECH.png",
+   "bytes": 2436853,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "b59965b7c92431d7df6bf336337a3c3bd1c0345b43f15ec1440d6e2e8b3f65f7"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.158501ce-8660-4bb0-b698-283aea09e66e_chocolatechipcookie_flyingaerial_tech.png.2c80539f5d",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/158501ce-8660-4bb0-b698-283aea09e66e_ChocolateChipCookie_FlyingAerial_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/158501ce-8660-4bb0-b698-283aea09e66e_ChocolateChipCookie_FlyingAerial_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/158501ce-8660-4bb0-b698-283aea09e66e_ChocolateChipCookie_FlyingAerial_TECH.png",
+   "bytes": 3282064,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "2c80539f5da929ad55589f7dcf7f0a81a8de9dfe7f2f9dbbf6420e5d231d2948"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.39c858f4-1233-473c-9563-0a84d74a405a_cannolicookie_flyingaerial_tech.png.a0a48c9f57",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/39c858f4-1233-473c-9563-0a84d74a405a_CannoliCookie_FlyingAerial_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/39c858f4-1233-473c-9563-0a84d74a405a_CannoliCookie_FlyingAerial_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/39c858f4-1233-473c-9563-0a84d74a405a_CannoliCookie_FlyingAerial_TECH.png",
+   "bytes": 3150850,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "a0a48c9f574802f9b208eccf5543135af398b3d1c3eecba9f43a059882bbeba1"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.568d7e50-71f9-4223-826a-72672312ddbb_classicpinksugar_flyingaerial_tech.png.bdbac2da45",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/568d7e50-71f9-4223-826a-72672312ddbb_ClassicPinkSugar_FlyingAerial_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/568d7e50-71f9-4223-826a-72672312ddbb_ClassicPinkSugar_FlyingAerial_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/568d7e50-71f9-4223-826a-72672312ddbb_ClassicPinkSugar_FlyingAerial_TECH.png",
+   "bytes": 1702246,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1510
+   },
+   "sha256": "bdbac2da45072c87319ef2df44ff6d6c2447ec3d0546a38b2004becf8db55904"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.743de569-1ad6-4c3c-ac87-e66bf3a6c404_stroopwafelsandwichcookie_flyingaerial_tech.png.3b375161f0",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/743de569-1ad6-4c3c-ac87-e66bf3a6c404_StroopwafelSandwichCookie_FlyingAerial_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/743de569-1ad6-4c3c-ac87-e66bf3a6c404_StroopwafelSandwichCookie_FlyingAerial_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/743de569-1ad6-4c3c-ac87-e66bf3a6c404_StroopwafelSandwichCookie_FlyingAerial_TECH.png",
+   "bytes": 3131627,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "3b375161f0aec68a31b7d3a5f92ba35643cb95e887fe72c01c744e6f041a0d77"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.7922cc59-9ee7-4df4-b03f-51298a577838_mobile_86_.png.b4100663a7",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/7922cc59-9ee7-4df4-b03f-51298a577838_Mobile_86_.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/7922cc59-9ee7-4df4-b03f-51298a577838_Mobile_86_.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/7922cc59-9ee7-4df4-b03f-51298a577838_Mobile_86_.png",
+   "bytes": 1568715,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1280,
+    "height": 2580
+   },
+   "sha256": "b4100663a7af81f11c348556c3c9d40d5856934021317f479f026521d48afb74"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.8867a780-ad6e-4e5c-b013-e34353ae473a_chocolatetiramisucake_flyingaerial_tech.png.e4795d0c9d",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/8867a780-ad6e-4e5c-b013-e34353ae473a_ChocolateTiramisuCake_FlyingAerial_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/8867a780-ad6e-4e5c-b013-e34353ae473a_ChocolateTiramisuCake_FlyingAerial_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/8867a780-ad6e-4e5c-b013-e34353ae473a_ChocolateTiramisuCake_FlyingAerial_TECH.png",
+   "bytes": 3032031,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "e4795d0c9d3068f44dfda19a29a1bc20ed686946d2da5b676bf11ced41c42520"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.8d495e2d-68c9-4435-8e87-e1451f931903_mobile.png.6b35e8b259",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/8d495e2d-68c9-4435-8e87-e1451f931903_Mobile.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/8d495e2d-68c9-4435-8e87-e1451f931903_Mobile.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/8d495e2d-68c9-4435-8e87-e1451f931903_Mobile.png",
+   "bytes": 5362530,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1280,
+    "height": 2580
+   },
+   "sha256": "6b35e8b2592c070e60c41b4f503fd95d9c5c06bd6a91709642edce90e038e6e3"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.92c82cfe-d8a4-4390-84b0-2d1982693753_mobile_91_.png.3dac4fbc4a",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/92c82cfe-d8a4-4390-84b0-2d1982693753_Mobile_91_.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/92c82cfe-d8a4-4390-84b0-2d1982693753_Mobile_91_.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/92c82cfe-d8a4-4390-84b0-2d1982693753_Mobile_91_.png",
+   "bytes": 658781,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1280,
+    "height": 2580
+   },
+   "sha256": "3dac4fbc4a9bcfe650dd90e4499db628ed8473426ddf0c07a4f99feb12ba292e"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.9d5e199f-6054-4308-9134-c43c92327f10_cremebruleecookie_flyingaerial_tech.png.933afb2ea9",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/9d5e199f-6054-4308-9134-c43c92327f10_CremeBruleeCookie_FlyingAerial_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/9d5e199f-6054-4308-9134-c43c92327f10_CremeBruleeCookie_FlyingAerial_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/9d5e199f-6054-4308-9134-c43c92327f10_CremeBruleeCookie_FlyingAerial_TECH.png",
+   "bytes": 3142780,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "933afb2ea9d4b97e0ba80c3802afbf831aa672d991dd4a18de9333d7dff38360"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.a4aa9186-5975-459b-a162-ccb8c0d4d94a_bubs_logo_ot.png.9c70127197",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/a4aa9186-5975-459b-a162-ccb8c0d4d94a_BUBS_Logo_OT.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/a4aa9186-5975-459b-a162-ccb8c0d4d94a_BUBS_Logo_OT.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/a4aa9186-5975-459b-a162-ccb8c0d4d94a_BUBS_Logo_OT.png",
+   "bytes": 198604,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 3300,
+    "height": 2550
+   },
+   "sha256": "9c70127197208f65ff4d4cbcfc86691e25b12a5ab8b1dd400aaf6d6473f512b6"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.afb9951d-0bd2-475e-ade3-7ce49159f3e8_vanillachocolategelatocookie_flyingaerial_tech.png.6192d3758f",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/afb9951d-0bd2-475e-ade3-7ce49159f3e8_VanillaChocolateGelatoCookie_FlyingAerial_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/home.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/afb9951d-0bd2-475e-ade3-7ce49159f3e8_VanillaChocolateGelatoCookie_FlyingAerial_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/afb9951d-0bd2-475e-ade3-7ce49159f3e8_VanillaChocolateGelatoCookie_FlyingAerial_TECH.png",
+   "bytes": 2843577,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "6192d3758f6c7ca57ce68b085d934d069471b51180dbb16717fffee0bdbf75b6"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.10db2c83-4f24-47dd-9b8f-51ef82636743_chocolatechipcookie_overheadaerial_noshadow_tech.png.5bb45ca772",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/10db2c83-4f24-47dd-9b8f-51ef82636743_ChocolateChipCookie_OverheadAerial_NoShadow_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/flavor-profile.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/10db2c83-4f24-47dd-9b8f-51ef82636743_ChocolateChipCookie_OverheadAerial_NoShadow_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/10db2c83-4f24-47dd-9b8f-51ef82636743_ChocolateChipCookie_OverheadAerial_NoShadow_TECH.png",
+   "bytes": 3779572,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "5bb45ca772cbbfa4c1d76008e0844fd6a6ea5c9e35793eea1a80cc6d5db3c024"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.6b656251-4810-4771-acf8-c6b2e2e3762c_theoriginalpinksugarcookie_overheadaerial_noshadow_tech.png.6ba600429a",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/6b656251-4810-4771-acf8-c6b2e2e3762c_TheOriginalPinkSugarCookie_OverheadAerial_NoShadow_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/flavor-profile.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/6b656251-4810-4771-acf8-c6b2e2e3762c_TheOriginalPinkSugarCookie_OverheadAerial_NoShadow_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/6b656251-4810-4771-acf8-c6b2e2e3762c_TheOriginalPinkSugarCookie_OverheadAerial_NoShadow_TECH.png",
+   "bytes": 2558366,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "6ba600429a2fb21ba4f8b78a486c104310597a9958edb7510c388796d78d123d"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.7cd5427b-048f-41a2-823d-a7d0b0fa4c81_vanillachocolategelatocookie_overheadaerial_noshadow_tech.png.6f7b8da967",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/7cd5427b-048f-41a2-823d-a7d0b0fa4c81_VanillaChocolateGelatoCookie_OverheadAerial_NoShadow_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/flavor-profile.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/7cd5427b-048f-41a2-823d-a7d0b0fa4c81_VanillaChocolateGelatoCookie_OverheadAerial_NoShadow_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/7cd5427b-048f-41a2-823d-a7d0b0fa4c81_VanillaChocolateGelatoCookie_OverheadAerial_NoShadow_TECH.png",
+   "bytes": 4131997,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "6f7b8da9674d460eaee807b2086e93b7769a14912984526509271e682a9e341b"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.8672b58c-8b80-4b5d-ae7e-f2cdf65d8664_cremebruleecookie_overheadaerial_noshadow_tech.png.9bd546108e",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/8672b58c-8b80-4b5d-ae7e-f2cdf65d8664_CremeBruleeCookie_OverheadAerial_NoShadow_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/flavor-profile.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/8672b58c-8b80-4b5d-ae7e-f2cdf65d8664_CremeBruleeCookie_OverheadAerial_NoShadow_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/8672b58c-8b80-4b5d-ae7e-f2cdf65d8664_CremeBruleeCookie_OverheadAerial_NoShadow_TECH.png",
+   "bytes": 3781457,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "9bd546108ec7cd734e050f9738ddeb34e34bd67640140477985d1ee910b75ef3"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.d60f3fc8-5dab-4112-90db-d2ae7f47772d_swedishcandycookieftbubs_overheadaerial_noshadow_tech.png.037042f16f",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/d60f3fc8-5dab-4112-90db-d2ae7f47772d_SwedishCandyCookieftBUBS_OverheadAerial_NoShadow_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/flavor-profile.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/d60f3fc8-5dab-4112-90db-d2ae7f47772d_SwedishCandyCookieftBUBS_OverheadAerial_NoShadow_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/d60f3fc8-5dab-4112-90db-d2ae7f47772d_SwedishCandyCookieftBUBS_OverheadAerial_NoShadow_TECH.png",
+   "bytes": 3316410,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "037042f16fb5ee43caeeb011720ab3f51b6f75f1f397701ada420b33445f9952"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.ef9e0cf3-2db8-4e71-b568-a91dea0170d0_stroopwafelsandwichcookie_flyingaerial_tech.png.3b375161f0",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/ef9e0cf3-2db8-4e71-b568-a91dea0170d0_StroopwafelSandwichCookie_FlyingAerial_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/flavor-profile.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/ef9e0cf3-2db8-4e71-b568-a91dea0170d0_StroopwafelSandwichCookie_FlyingAerial_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/ef9e0cf3-2db8-4e71-b568-a91dea0170d0_StroopwafelSandwichCookie_FlyingAerial_TECH.png",
+   "bytes": 3131627,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "3b375161f0aec68a31b7d3a5f92ba35643cb95e887fe72c01c744e6f041a0d77"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.f7cb8372-b39c-4338-8b53-44d25ae8ad91_cannolicookie_flyingaerial_tech.png.7d2610ddb7",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/f7cb8372-b39c-4338-8b53-44d25ae8ad91_CannoliCookie_FlyingAerial_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/flavor-profile.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/f7cb8372-b39c-4338-8b53-44d25ae8ad91_CannoliCookie_FlyingAerial_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/f7cb8372-b39c-4338-8b53-44d25ae8ad91_CannoliCookie_FlyingAerial_TECH.png",
+   "bytes": 3261907,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "7d2610ddb747dbbac88a3fd3afb8b575d97ceab792a51c79b11684d9faf9873b"
+  },
+  {
+   "id": "2026-08-20.crumbl-cookies-r1.crumbl.video.fc76c1cb-80f3-44ca-a109-b92b74bebe75_chocolatetiramisucake_flyingaerial_tech.png.e4795d0c9d",
+   "capture_id": "2026-08-20.crumbl-cookies-r1",
+   "source_url": "https://crumbl.video/fc76c1cb-80f3-44ca-a109-b92b74bebe75_ChocolateTiramisuCake_FlyingAerial_TECH.png",
+   "evidence_kind": "current-direct",
+   "priority": "p0",
+   "required": true,
+   "referenced_by": [
+    "candidate:frontend/pages/flavor-profile.html"
+   ],
+   "source_path": "source-assets/2026-08-20.crumbl-cookies-r1/crumbl.video/fc76c1cb-80f3-44ca-a109-b92b74bebe75_ChocolateTiramisuCake_FlyingAerial_TECH.png",
+   "runtime_path": "clone/static/assets/2026-08-20.crumbl-cookies-r1/crumbl.video/fc76c1cb-80f3-44ca-a109-b92b74bebe75_ChocolateTiramisuCake_FlyingAerial_TECH.png",
+   "bytes": 3032031,
+   "mime_type": "image/png",
+   "dimensions": {
+    "width": 1500,
+    "height": 1500
+   },
+   "sha256": "e4795d0c9d3068f44dfda19a29a1bc20ed686946d2da5b676bf11ced41c42520"
+  }
+ ]
+}
