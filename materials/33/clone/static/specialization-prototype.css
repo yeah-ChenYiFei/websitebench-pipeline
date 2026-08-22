@@ -157,3 +157,7 @@
   .source-business-callout { grid-template-columns: 1fr; }
   .source-testimonials > div { grid-template-columns: 1fr 1fr; }
 }
+
+.source-course-details-toggle::after { content: "⌄"; margin-left: 7px; }
+.source-eligible-degrees { margin-top: 10px; border: 1px solid var(--wb-blue); border-radius: 4px; padding: 8px 14px; background: #fff; color: var(--wb-blue); font-weight: 700; cursor: pointer; }
+.source-explore-role { margin-left: 14px; color: var(--wb-blue); font-weight: 700; text-decoration: none; }

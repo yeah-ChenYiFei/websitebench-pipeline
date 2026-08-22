@@ -113,7 +113,7 @@ def test_home_exposes_requested_complete_discovery_sections(
     assert html.count('class="source-list-card"') == 18
     assert html.count('class="source-learning-card"') >= 12
     assert len(
-        re.findall(r'<a class="source-learning-card"[^>]*href="/[^"]+"', html)
+        re.findall(r'<div class="source-learning-card"[^>]*data-card-href="/[^"]+"', html)
     ) == html.count('class="source-learning-card"')
     assert html.count('class="source-role-card"') == 5
     assert html.count('class="source-card-image"') >= 30

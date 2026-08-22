@@ -20,7 +20,7 @@
     "volume_identity": "websitebench-33-data"
   },
   "bundle": {
-    "path": "/tmp/contrib-r2.zip",
+    "path": "/tmp/contrib-r3.zip",
     "payload_files": [
       {
         "bytes": 12279,
@@ -539,7 +539,7 @@
         "path": "clone/static/course-desktop.css"
       },
       {
-        "bytes": 17871,
+        "bytes": 17921,
         "path": "clone/static/course-detail-prototype.css"
       },
       {
@@ -1091,7 +1091,7 @@
         "path": "clone/static/desktop-base.css"
       },
       {
-        "bytes": 4695,
+        "bytes": 4794,
         "path": "clone/static/desktop-chrome.css"
       },
       {
@@ -1131,7 +1131,7 @@
         "path": "clone/static/hero-learning.svg"
       },
       {
-        "bytes": 30154,
+        "bytes": 30388,
         "path": "clone/static/home-prototype.css"
       },
       {
@@ -1419,11 +1419,11 @@
         "path": "clone/static/public-interactions.js"
       },
       {
-        "bytes": 2329,
+        "bytes": 2484,
         "path": "clone/static/real-css-complement.css"
       },
       {
-        "bytes": 20648,
+        "bytes": 20738,
         "path": "clone/static/search-page.css"
       },
       {
@@ -1551,7 +1551,7 @@
         "path": "clone/static/source-home-trend-microsoft-qa.png"
       },
       {
-        "bytes": 10768,
+        "bytes": 11148,
         "path": "clone/static/specialization-prototype.css"
       },
       {
@@ -1567,7 +1567,7 @@
         "path": "clone/templates/pages/category.html"
       },
       {
-        "bytes": 14670,
+        "bytes": 15091,
         "path": "clone/templates/pages/course_detail.html"
       },
       {
@@ -1575,15 +1575,15 @@
         "path": "clone/templates/pages/data_science.html"
       },
       {
-        "bytes": 10860,
+        "bytes": 11107,
         "path": "clone/templates/pages/home.html"
       },
       {
-        "bytes": 14772,
+        "bytes": 14758,
         "path": "clone/templates/pages/search.html"
       },
       {
-        "bytes": 10877,
+        "bytes": 11183,
         "path": "clone/templates/pages/specialization.html"
       },
       {
@@ -1647,7 +1647,7 @@
         "path": "clone/tests/test_data_science_category.py"
       },
       {
-        "bytes": 25412,
+        "bytes": 25424,
         "path": "clone/tests/test_desktop_contract.py"
       },
       {
@@ -1703,7 +1703,7 @@
         "path": "clone/tests/test_public_control_closure.py"
       },
       {
-        "bytes": 20171,
+        "bytes": 20141,
         "path": "clone/tests/test_public_frontend.py"
       },
       {
@@ -1735,7 +1735,7 @@
         "path": "clone/tools/sanitize_business_snapshot.py"
       },
       {
-        "bytes": 22413,
+        "bytes": 23034,
         "path": "clone/ui.py"
       },
       {
@@ -1823,7 +1823,7 @@
         "path": "scope/candidate-desktop/browse.loaded.desktop.png"
       },
       {
-        "bytes": 123771,
+        "bytes": 124728,
         "path": "scope/candidate-desktop/course.loaded.desktop.png"
       },
       {
@@ -1831,11 +1831,11 @@
         "path": "scope/candidate-desktop/help.loaded.desktop.png"
       },
       {
-        "bytes": 407304,
+        "bytes": 407294,
         "path": "scope/candidate-desktop/home.loaded.desktop.png"
       },
       {
-        "bytes": 105030,
+        "bytes": 119662,
         "path": "scope/candidate-desktop/login.loaded.desktop.png"
       },
       {
@@ -1843,11 +1843,11 @@
         "path": "scope/candidate-desktop/not-found.loaded.desktop.png"
       },
       {
-        "bytes": 399454,
+        "bytes": 402748,
         "path": "scope/candidate-desktop/search.results.desktop.png"
       },
       {
-        "bytes": 127190,
+        "bytes": 127163,
         "path": "scope/candidate-desktop/specialization.loaded.desktop.png"
       },
       {
@@ -2115,11 +2115,11 @@
         "path": "scope/diff-round-1/specialization.loaded.desktop-header.json"
       },
       {
-        "bytes": 4402,
+        "bytes": 5899,
         "path": "scope/frontend-90-percent-gap.md"
       },
       {
-        "bytes": 80621,
+        "bytes": 80973,
         "path": "scope/frontend-specs/browse.clone.json"
       },
       {
@@ -2127,7 +2127,7 @@
         "path": "scope/frontend-specs/browse.source.json"
       },
       {
-        "bytes": 49286,
+        "bytes": 50695,
         "path": "scope/frontend-specs/course.clone.json"
       },
       {
@@ -2135,7 +2135,7 @@
         "path": "scope/frontend-specs/course.source.json"
       },
       {
-        "bytes": 83476,
+        "bytes": 96783,
         "path": "scope/frontend-specs/home.clone.json"
       },
       {
@@ -2143,7 +2143,7 @@
         "path": "scope/frontend-specs/home.source.json"
       },
       {
-        "bytes": 20295,
+        "bytes": 25611,
         "path": "scope/frontend-specs/login.clone.json"
       },
       {
@@ -2151,7 +2151,7 @@
         "path": "scope/frontend-specs/login.source.json"
       },
       {
-        "bytes": 66859,
+        "bytes": 67123,
         "path": "scope/frontend-specs/search.clone.json"
       },
       {
@@ -2159,7 +2159,7 @@
         "path": "scope/frontend-specs/search.source.json"
       },
       {
-        "bytes": 48488,
+        "bytes": 50636,
         "path": "scope/frontend-specs/specialization.clone.json"
       },
       {
@@ -2167,7 +2167,7 @@
         "path": "scope/frontend-specs/specialization.source.json"
       },
       {
-        "bytes": 2838,
+        "bytes": 2840,
         "path": "scope/frontend-specs/structure-consistency-report.json"
       },
       {
@@ -2720,7 +2720,7 @@
   "diagnostic": {
     "authority": "diagnostic-only",
     "diagnostic_status": "incomplete",
-    "generated_at": "2026-08-22T03:17:26.353961Z",
+    "generated_at": "2026-08-22T03:36:04.809943Z",
     "qualification": "maintainer-judgment-required",
     "requested_sections": [
       "static",
@@ -2759,7 +2759,7 @@
     },
     "site_id": "33"
   },
-  "generated_at": "2026-08-22T03:17:28.402577Z",
+  "generated_at": "2026-08-22T03:36:06.850173Z",
   "qualification": "maintainer-judgment-required",
   "schema_version": "offline-clone.contribution-report.v1",
   "site_id": "33"

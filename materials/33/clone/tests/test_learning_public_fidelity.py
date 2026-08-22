@@ -15,7 +15,7 @@ def test_specialization_uses_current_source_enrollment_and_review_counts() -> No
 
     html = client.get("/specializations/deep-learning").text
 
-    assert "Starts Aug 19" in html
+    assert "Starts Aug 21" in html
     assert "997,307 already enrolled" in html
     assert "147,228 reviews of courses in this program" in html
     assert html.count('class="source-specialization-course"') == 5
@@ -26,7 +26,7 @@ def test_course_uses_current_source_enrollment_and_review_counts() -> None:
 
     html = client.get("/learn/neural-networks-deep-learning").text
 
-    assert "Starts Aug 19" in html
+    assert "Starts Aug 21" in html
     assert "1,539,730" in html
     assert "123,798 reviews" in html
     assert "Learner reviews" in html

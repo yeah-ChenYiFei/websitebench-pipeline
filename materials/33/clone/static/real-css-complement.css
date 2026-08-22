@@ -49,3 +49,6 @@
 .source-promo-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 800; color: #7fb0ff; }
 .source-promo-art { display: grid; place-items: center; }
 .source-promo-art img { width: 128px; height: auto; border-radius: 10px; }
+
+.source-list-card h3 a, .source-learning-card h3 a, .source-role-card h3 a { color: inherit; text-decoration: none; }
+.source-role-card h3 { margin: 0; }

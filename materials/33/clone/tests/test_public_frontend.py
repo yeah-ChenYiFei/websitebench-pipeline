@@ -107,7 +107,7 @@ def test_home_extends_below_the_first_viewport_with_source_observed_sections() -
     ):
         assert marker in home.text
     home_card_hrefs = re.findall(
-        r'<a\b[^>]*\bdata-home-card="[^"]+"[^>]*\bhref="([^"]+)"', home.text
+        r'data-card-href="([^"]+)"', home.text
     )
     assert len(home_card_hrefs) >= 35
     assert all(href.startswith("/") for href in home_card_hrefs)

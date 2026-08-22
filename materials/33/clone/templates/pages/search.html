@@ -5,10 +5,8 @@
       <img src="{{ card.image }}" alt="">
       <span class="search-card-badges">{% for badge in card.badges %}<span>{{ '✦ ' if badge == 'AI skills' else '' }}{{ badge }}</span>{% endfor %}</span>
     </span>
-    <a class="search-result-title-link" href="{{ card.href }}">
-      <span class="search-provider">{% if card.provider_icons %}<span class="search-provider-logos" aria-hidden="true">{% for icon in card.provider_icons %}<img class="search-provider-logo" src="{{ icon }}" alt="">{% endfor %}</span>{% elif card.provider_icon %}<img class="search-provider-logo" src="{{ card.provider_icon }}" alt="">{% else %}<span class="search-provider-mark" data-provider="{{ card.provider }}">{{ card.provider_mark }}</span>{% endif %}{{ card.provider }}</span>
-      <h3 class="search-result-title">{{ card.title }}</h3>
-    </a>
+    <span class="search-provider">{% if card.provider_icons %}<span class="search-provider-logos" aria-hidden="true">{% for icon in card.provider_icons %}<img class="search-provider-logo" src="{{ icon }}" alt="">{% endfor %}</span>{% elif card.provider_icon %}<img class="search-provider-logo" src="{{ card.provider_icon }}" alt="">{% else %}<span class="search-provider-mark" data-provider="{{ card.provider }}">{{ card.provider_mark }}</span>{% endif %}{{ card.provider }}</span>
+    <h3 class="search-result-title"><a class="search-result-title-link" href="{{ card.href }}">{{ card.title }}</a></h3>
     <span class="search-result-skills"><b>Skills you'll gain:</b> {{ card.skills }}</span>
     <span class="search-card-bottom">
       {% if card.credential %}<span class="search-credential">▧&nbsp; Build toward a degree</span>{% endif %}

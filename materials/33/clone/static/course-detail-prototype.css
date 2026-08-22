@@ -62,7 +62,7 @@
 .source-course-detail-orbit span:nth-child(1) { top: 0; left: 0; width: 430px; height: 430px; }
 .source-course-detail-orbit span:nth-child(2) { top: 100px; left: 105px; width: 245px; height: 245px; border-width: 46px; transform: rotate(8deg); }
 .source-course-detail-orbit span:nth-child(3) { right: -25px; bottom: -35px; width: 190px; height: 190px; border-width: 38px; transform: rotate(62deg); }
-.source-course-assistant { position: absolute; right: 75px; bottom: 88px; z-index: 2; display: flex; align-items: center; border-radius: 24px; background: #a9f4f6; color: #17324f; font-size: 12px; }
+.source-course-assistant { position: absolute; right: 75px; bottom: 88px; z-index: 2; display: flex; align-items: center; border: 0; border-radius: 24px; background: #a9f4f6; color: #17324f; font-size: 12px; cursor: pointer; font-family: inherit; }
 .source-course-assistant span { padding: 11px 14px; }
 .source-course-assistant strong { margin: 3px; border: 3px solid #91c8ff; border-radius: 20px; padding: 8px 13px; background: #fff; }
 

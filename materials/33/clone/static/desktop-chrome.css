@@ -3,8 +3,8 @@
 .wb-audience-bar a, .wb-audience-bar strong { display: inline-flex; align-items: center; color: inherit; text-decoration: none; white-space: nowrap; }
 .wb-audience-current { border-bottom: 4px solid #fff; font-weight: 700; }
 
-.wb-skip-link { position: absolute; z-index: 100; left: -9999px; top: 0; padding: 10px 16px; background: #fff; color: var(--wb-blue); font-weight: 700; text-decoration: none; }
-.wb-skip-link:focus { left: 12px; top: 12px; border: 2px solid var(--wb-blue); border-radius: 4px; }
+.wb-skip-link { position: absolute; z-index: 100; top: 0; left: 0; padding: 10px 16px; background: #fff; color: var(--wb-blue); font-weight: 700; text-decoration: none; clip: rect(1px, 1px, 1px, 1px); clip-path: inset(50%); white-space: nowrap; }
+.wb-skip-link:focus { clip: auto; clip-path: none; left: 12px; top: 12px; border: 2px solid var(--wb-blue); border-radius: 4px; }
 
 .wb-header { min-height: 72px; border-bottom: 1px solid var(--wb-line); background: #fff; }
 .wb-header-row { min-height: 72px; display: flex; align-items: center; gap: 22px; }

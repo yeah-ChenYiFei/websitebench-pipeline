@@ -23,10 +23,10 @@
       {% if authenticated %}
         <form action="/enrollments" method="post">
           <input type="hidden" name="course_id" value="deep-learning-specialization">
-          <button class="source-enroll-button" type="submit" name="track" value="free">Enroll for free <small>Starts Aug 19</small></button>
+          <button class="source-enroll-button" type="submit" name="track" value="free">Enroll for free <small>Starts Aug 21</small></button>
         </form>
       {% else %}
-        <button class="source-enroll-button" type="button" data-login-open data-enrollment-login-open>Enroll for free <small>Starts Aug 19</small></button>
+        <button class="source-enroll-button" type="button" data-login-open data-enrollment-login-open>Enroll for free <small>Starts Aug 21</small></button>
       {% endif %}
       <a class="source-preview-button" href="/learn/neural-networks-deep-learning/lesson/lesson-neural-intro">Preview the first lesson</a>
     </div>
@@ -35,11 +35,11 @@
   <div class="source-course-detail-orbit" aria-hidden="true">
     <span></span><span></span><span></span>
   </div>
-  <div class="source-course-assistant" aria-hidden="true"><span>Ask Coursera</span><strong>✦ Is this right for me?</strong></div>
+  <button type="button" class="source-course-assistant" data-control-action="toggle-course-details"><span>Ask Coursera</span><strong>✦ Is this right for me?</strong></button>
 </section>
 
 <section class="source-course-detail-stats" aria-label="Course facts">
-  <article><strong><u>4 modules</u></strong><span>Gain insight into a topic and learn the fundamentals.</span></article>
+  <article><a href="#modules"><strong><u>4 modules</u></strong></a><span>Gain insight into a topic and learn the fundamentals.</span></article>
   <article><strong>4.9 <b>★</b></strong><span>123,798 reviews</span></article>
   <article><strong>Intermediate level</strong><span>Recommended experience <i class="source-info-dot" aria-hidden="true">i</i></span></article>
   <article><strong>Flexible schedule</strong><span>3 weeks at 10 hours a week<br>Learn at your own pace</span></article>
@@ -50,6 +50,7 @@
   <a class="is-active" href="#about">About</a>
   <a href="#outcomes">Outcomes</a>
   <a href="#modules">Modules</a>
+  <a href="#recommendations">Recommendations</a>
   <a href="#testimonials">Testimonials</a>
   <a href="#reviews">Reviews</a>
 </nav>
@@ -58,7 +59,7 @@
   <section id="about" class="source-course-about">
     <h2>Skills you'll gain</h2>
     <div class="source-course-skill-chips">
-      <span>Deep Learning</span><span>Convolutional Neural Networks</span><span>Artificial Intelligence and Machine Learning (AI/ML)</span><span>Artificial Neural Networks</span><span>Artificial Intelligence</span><span>Model Training</span><span>Model Optimization</span><a href="#outcomes">Show all</a>
+      <span>Deep Learning</span><span>Convolutional Neural Networks</span><span>Artificial Intelligence and Machine Learning (AI/ML)</span><span>Artificial Neural Networks</span><span>Artificial Intelligence</span><span>Model Training</span><span>Model Optimization</span><a class="source-skill-more" href="#outcomes">Read more</a>
     </div>
     <h2>Tools you'll learn</h2>
     <div class="source-course-skill-chips"><span>Python Programming</span></div>
@@ -97,10 +98,10 @@
     <p>By the end, you will be familiar with the significant technological trends driving the rise of deep learning and be able to build, train, and apply fully connected deep neural networks.</p>
     <div class="source-course-module-grid">
       <div class="source-course-module-list">
-        <details class="source-course-module"><summary><h3>Introduction to Deep Learning</h3><small>Week 1&nbsp; · &nbsp;2 hours to complete</small></summary><p>Explore the major trends that have driven the rise of deep learning and learn where neural networks work best.</p></details>
-        <details class="source-course-module"><summary><h3>Neural Networks Basics</h3><small>Week 2&nbsp; · &nbsp;8 hours to complete</small></summary><p>Use a computational graph and vectorization to implement the foundations of a neural network.</p></details>
-        <details class="source-course-module"><summary><h3>Shallow Neural Networks</h3><small>Week 3&nbsp; · &nbsp;6 hours to complete</small></summary><p>Build a neural network with one hidden layer and understand forward and backward propagation.</p></details>
-        <details class="source-course-module"><summary><h3>Deep Neural Networks</h3><small>Week 4&nbsp; · &nbsp;9 hours to complete</small></summary><p>Build and train a deep neural network and apply it to computer vision.</p></details>
+        <details class="source-course-module"><summary><h3>Introduction to Deep Learning</h3><small>Week 1&nbsp; • &nbsp;2 hours to complete</small><span class="source-module-details-label">Module details</span></summary><p>Explore the major trends that have driven the rise of deep learning and learn where neural networks work best.</p></details>
+        <details class="source-course-module"><summary><h3>Neural Networks Basics</h3><small>Week 2&nbsp; • &nbsp;8 hours to complete</small><span class="source-module-details-label">Module details</span></summary><p>Use a computational graph and vectorization to implement the foundations of a neural network.</p></details>
+        <details class="source-course-module"><summary><h3>Shallow Neural Networks</h3><small>Week 3&nbsp; • &nbsp;6 hours to complete</small><span class="source-module-details-label">Module details</span></summary><p>Build a neural network with one hidden layer and understand forward and backward propagation.</p></details>
+        <details class="source-course-module"><summary><h3>Deep Neural Networks</h3><small>Week 4&nbsp; • &nbsp;9 hours to complete</small><span class="source-module-details-label">Module details</span></summary><p>Build and train a deep neural network and apply it to computer vision.</p></details>
         <div class="source-course-certificate"><span aria-hidden="true">▧</span><div><h3>Earn a career certificate</h3><p>Add this credential to your LinkedIn profile, resume, or CV. Share it on social media and in your performance review.</p></div></div>
       </div>
       <aside id="instructors" class="source-course-instructor-card">
@@ -115,7 +116,7 @@
     </div>
   </section>
 
-  <section class="source-related-courses">
+  <section id="recommendations" class="source-related-courses">
     <h2>Explore more from Machine Learning</h2>
     <div>
       <article class="source-related-course"><a href="/learn/structuring-machine-learning-projects"><img src="/static/deep-learning/course-structuring-projects.png" alt=""><small>▣ &nbsp; DeepLearning.AI</small><h3>Structuring Machine Learning Projects</h3><span>Course</span></a></article>

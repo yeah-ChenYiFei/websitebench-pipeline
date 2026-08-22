@@ -1,4 +1,33 @@
-# Site 33 — frontend similarity: visual + structure status (2026-08-22, round 2)
+# Site 33 — frontend similarity: visual + structure status (2026-08-22, round 3)
+
+## Round-3 summary
+
+Backend: systematic audit of all 23 trace categories' flows and error paths
+(registration validation/duplicates/wrong codes, login wrong password/unknown
+email auto-register, password recovery no-reveal/wrong code, anonymous
+enrollment guard, checkout declined/retry/invalid-scenario/approved/cancel,
+quiz 0/100 scores, lesson progress, bookmarks, no-match search, branded 404,
+empty-field validation) — all verified working end to end.
+
+Structure: overall consistency rose to **0.889** (spec 0.921, browse 0.897,
+course 0.891, search 0.885, login 0.883, home 0.856). Round-3 control work:
+search result card title links carry clean control text; home compact/product
+cards and role cards restructured to the same div + title-link pattern (also
+fixing nested-anchor breakage); skip-to-content link hidden with clip so the
+spec extractor sees it; login footer expanded to the source link set; course
+"4 modules" link, "Recommendations" tab, "Is this right for me?" button,
+module "Module details" labels, enroll date aligned; specialization
+instructor/offered-by links, "5 course series" link, "View eligible
+degrees"/"Explore this role" CTAs, "Course details" glyphs moved to CSS;
+"Essential IT Certifications" footer text fixed; home "91% of learners..."
+outcome heading is a link.
+
+Visual: overall region SSIM 0.746. The search AI summary panel was compacted
+to the source geometry; the remaining pixel gap is the panel's dynamic
+content, which is documented below.
+
+---
+
 
 Two independent diagnostic axes track the frontend's consistency with the
 live Coursera site at the 1692x979 acceptance viewport, pure-English UI.

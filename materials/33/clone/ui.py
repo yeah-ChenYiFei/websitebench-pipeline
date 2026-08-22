@@ -5,7 +5,7 @@ from __future__ import annotations
 from html import escape
 
 
-STATIC_REVISION = "20260822-search-v7"
+STATIC_REVISION = "20260822-controls-v9"
 
 
 def header(
@@ -86,9 +86,9 @@ def footer(*, language: str = "en", variant: str = "default") -> str:
         return """
 <footer class="wb-footer source-auth-footer">
   <div class="wb-shell wb-footer-grid">
-    <section><h3>Coursera</h3><a href="/about/contact">About</a><a href="/browse">What We Offer</a><a href="/browse">Catalog</a><a href="/career-academy">Careers</a></section>
+    <section><h3>Coursera</h3><a href="/about">About</a><a href="/browse">What We Offer</a><a href="/about/leadership">Leadership</a><a href="/career-academy">Careers</a><a href="/browse">Catalog</a><a href="/courseraplus">Coursera Plus</a><a href="/professional-certificates">Professional Certificates</a><a href="/mastertrack">MasterTrack® Certificates</a><a href="/business">For Enterprise</a><a href="/government">For Government</a><a href="/campus">For Campus</a><a href="/partners">Become a Partner</a><a href="/social-impact">Social Impact</a></section>
     <section><h3>Community</h3><a href="/my-learning">Learners</a><a href="/partners">Partners</a><a href="/about/contact">Developers</a><a href="/about/contact">Beta Testers</a><a href="/help">Blog</a><a href="/help">The Coursera Podcast</a><a href="/help">Tech Blog</a></section>
-    <section><h3>More</h3><a href="/about/contact">Press</a><a href="/about/contact">Investors</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/help">Help</a><a href="/help">Accessibility</a><a href="/about/contact">Contact</a></section>
+    <section><h3>More</h3><a href="/about/contact">Press</a><a href="/about/contact">Investors</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/help">Learner help center</a><a href="/help">Accessibility</a><a href="/about/contact">Contact</a><a href="/articles">Articles</a><a href="/directory">Directory</a><a href="/about/affiliates">Affiliates</a><a href="/terms">Modern Slavery Statement</a><a href="/about/cookies-manage">Cookies Preference Center</a></section>
     <section><h3>Mobile App</h3><a href="/browse">iOS and Android app</a></section>
   </div>
   <div class="wb-shell wb-footer-legal">© 2026 Coursera Inc. All rights reserved.</div>
@@ -108,7 +108,7 @@ def footer(*, language: str = "en", variant: str = "default") -> str:
       <a href="/search?q=AI+Essentials+Specialization">AI Essentials Specialization</a><a href="/search?q=AI+For+Business+Specialization">AI For Business Specialization</a><a href="/search?q=AI+For+Everyone+Course">AI For Everyone Course</a><a href="/search?q=AI+in+Healthcare+Specialization">AI in Healthcare Specialization</a><a href="/specializations/deep-learning">Deep Learning Specialization</a><a href="/search?q=Excel+Skills+for+Business+Specialization">Excel Skills for Business Specialization</a><a href="/search?q=Financial+Markets+Course">Financial Markets Course</a><a href="/search?q=Machine+Learning+Specialization">Machine Learning Specialization</a><a href="/search?q=Prompt+Engineering+for+ChatGPT+Course">Prompt Engineering for ChatGPT Course</a><a href="/search?q=Python+for+Everybody+Specialization">Python for Everybody Specialization</a>
     </section>
     <section><h2>Career Resources</h2>
-      <a href="/help">Career Aptitude Test</a><a href="/help">CAPM Certification Requirements</a><a href="/help">CompTIA A+ Certification Requirements</a><a href="/help">CompTIA Security+ Certification Requirements</a><a href="/help">ESI® IT Certifications</a><a href="/help">High-Income Skills to Learn</a><a href="/help">How to Learn Artificial Intelligence</a><a href="/help">PMP Certification Requirements</a><a href="/help">Popular Cybersecurity Certifications</a><a href="/help">Share your Coursera learning story</a>
+      <a href="/help">Career Aptitude Test</a><a href="/help">CAPM Certification Requirements</a><a href="/help">CompTIA A+ Certification Requirements</a><a href="/help">CompTIA Security+ Certification Requirements</a><a href="/help">Essential IT Certifications</a><a href="/help">High-Income Skills to Learn</a><a href="/help">How to Learn Artificial Intelligence</a><a href="/help">PMP Certification Requirements</a><a href="/help">Popular Cybersecurity Certifications</a><a href="/help">Share your Coursera learning story</a>
     </section>
   </div>
   <div class="wb-shell source-browse-footer-secondary">
