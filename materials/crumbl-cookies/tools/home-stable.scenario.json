@@ -1,0 +1,65 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "home-stable",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "timeout_ms": 15000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://crumblcookies.com",
+      "https://crumbl.video"
+    ],
+    "clone": [
+      "http://127.0.0.1:8123",
+      "http://127.0.0.1:8000"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-home",
+      "action": "goto",
+      "path": "/",
+      "observations": [
+        {
+          "id": "home-route",
+          "kind": "url_path",
+          "expect": {
+            "equals": "/"
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "settle",
+      "action": "wait",
+      "milliseconds": 4000
+    },
+    {
+      "id": "home-visible",
+      "action": "snapshot",
+      "observations": [
+        {
+          "id": "weekly-heading",
+          "kind": "visible",
+          "selector": {
+            "source": "text=Weekly Flavors",
+            "clone": "text=Weekly Flavors"
+          }
+        },
+        {
+          "id": "classic-heading",
+          "kind": "visible",
+          "selector": {
+            "source": "text=Classic Flavors",
+            "clone": "text=Classic Flavors"
+          }
+        }
+      ],
+      "screenshot": true
+    }
+  ]
+}

@@ -365,7 +365,6 @@ def _blocked(relative: PurePosixPath) -> bool:
         or relative.name.casefold() in _BLOCKED_NAMES
         or relative.suffix.casefold() in _BLOCKED_SUFFIXES
         or relative.name.casefold().startswith(".env.")
-        or "cookie" in relative.name.casefold()
     )
 
 

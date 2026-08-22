@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find Crumbl Cookies Near Me | Store Locations</title>
+<meta name="description" content="Find a Crumbl Cookies store near you.">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/favicon-16x16.png">
+<link rel="stylesheet" href="/static/site/home.css">
+<style>
+.stores-wrap { max-width: 1080px; margin: 0 auto; padding: 7.5rem 1.5rem 4rem; }
+.search-box { display: flex; gap: 0.75rem; margin: 1.5rem 0 2rem; }
+.search-box input { flex: 1; min-height: 48px; padding: 0 1rem; border: 1px solid rgba(0,0,0,.2); border-radius: 9999px; font-size: 1rem; font-family: inherit; }
+.search-box button { min-height: 48px; }
+.store-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+.store-card { border: 1px solid rgba(0,0,0,.1); border-radius: 1rem; padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: background-color 200ms ease; }
+.store-card:hover, .store-card:focus { background: var(--color-primary-light); }
+.store-card h2 { margin: 0 0 0.4rem; font-size: 1.25rem; font-weight: 800; }
+.store-address { margin: 0 0 0.75rem; color: #444; line-height: 1.4; }
+.store-hours { margin: 0 0 0.75rem; font-size: 0.9rem; color: #333; }
+.store-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag { font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; background: var(--color-primary); }
+.no-results { text-align: center; padding: 3rem 1rem; color: #555; }
+.no-results[hidden] { display: none; }
+.no-results a { color: var(--color-ink); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="menu-icon" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <span class="menu-label">Menu</span>
+    </button>
+    <a class="logo" href="/" aria-label="Crumbl Cookies logo">
+      <svg class="logo-svg" viewBox="0 0 220 60" role="img" aria-hidden="true">
+        <text x="8" y="44" font-size="42" font-weight="800" fill="#000">Crumbl</text>
+      </svg>
+    </a>
+    <div class="header-actions">
+      <a class="btn-pill btn-dark" href="/order">Order Now</a>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+    <a href="/">Home</a>
+    <a href="/order">Order</a>
+    <a href="/stores">Locations</a>
+    <a href="/catering">Catering</a>
+    <a href="/giftcards">Gift Cards</a>
+    <a href="/external/merch.crumbl.com">Merch</a>
+    <a href="/menu">Menu</a>
+    <a href="/order/carry_out">Order Now</a>
+    <a href="/login">Sign in</a>
+  </nav>
+</header>
+
+<main id="main-content">
+  <div class="stores-wrap">
+    <h1 class="section-title">Select a Store</h1>
+    <p class="section-sub">Enable location services to find stores nearest to you.</p>
+    <form class="search-box" id="store-search" role="search">
+      <input type="search" name="q" id="store-query" placeholder="Search City, State, or Zipcode" aria-label="Search City, State, or Zipcode">
+      <button class="btn-pill btn-dark" type="submit">Search</button>
+    </form>
+    <div class="store-list" id="store-list">
+      {{store_cards}}
+    </div>
+    <div class="no-results" id="no-results" hidden>
+      <p>No stores found.</p>
+    </div>  </div>
+</main>
+
+<footer class="site-footer">
+  <nav class="footer-inner" aria-label="Footer">
+    <div class="footer-col">
+      <p class="footer-heading">Company</p>
+      <a href="/rewards">Rewards</a>
+      <a href="/our-story">Our story</a>
+      <a href="/contact">Support</a>
+      <a href="/allergens">Allergens</a>
+      <a href="/blog">Blog</a>
+      <a href="/giftcard-balance">Gift Card Balance</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Flavors</p>
+      <a href="/flavors/secret-menu">Flavor Map</a>
+      <a href="/dirty-sodas">Dirty Sodas</a>
+      <a href="/flavor-vote">Fan Favorites Vote</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Get Involved</p>
+      <a href="/press">Press</a>
+      <a href="/collaborate">Collaborate</a>
+      <a href="/franchising">Franchising</a>
+      <a href="/jobs">Franchise Store Jobs</a>
+      <a href="/careers">HQ Careers</a>
+      <a href="/crumbl-cares">Crumbl Cares</a>
+    </div>
+  </nav>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 all rights reserved. | <a href="/external/www.openstreetmap.org/copyright">Map data © OpenStreetMap contributors</a></p>
+    <p class="footer-legal">
+      <a href="/privacy">Privacy policy</a>
+      <span class="legal-sep">|</span>
+      <a href="/termsandconditions">Terms and Conditions</a>
+      <span class="legal-sep">|</span>
+      <a href="/digital-giftcard-terms-and-conditions">Gift Card/Voucher Terms</a>
+    </p>
+  </div>
+</footer>
+
+<script src="/static/site/home.js" defer></script>
+<script src="/static/site/stores.js" defer></script>
+</body>
+</html>

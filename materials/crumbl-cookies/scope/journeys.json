@@ -1,0 +1,122 @@
+{
+  "journeys": [
+    {
+      "actor": "visitor",
+      "id": "home-mainline",
+      "kind": "success",
+      "priority": "p0",
+      "status": "draft",
+      "steps": [
+        "Open the public home route and inspect its local response."
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "menu-browse-weekly",
+      "kind": "success",
+      "priority": "p0",
+      "status": "draft",
+      "steps": [
+        "Open the weekly menu surface from the home page",
+        "View the weekly flavor cards (6 rotating flavors)",
+        "Open a flavor profile detail page"
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "flavor-profile-detail",
+      "kind": "success",
+      "priority": "p0",
+      "status": "draft",
+      "steps": [
+        "Open a flavor profile deep link",
+        "View name, description, nutrition, allergens, rating, and image"
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "store-locator-find",
+      "kind": "success",
+      "priority": "p0",
+      "status": "draft",
+      "steps": [
+        "Open the stores page",
+        "Search by ZIP or city",
+        "Open a store result with address and hours"
+      ]
+    },
+    {
+      "actor": "guest-orderer",
+      "id": "order-pickup-build",
+      "kind": "success",
+      "priority": "p0",
+      "status": "draft",
+      "steps": [
+        "Start a pickup order",
+        "Select a store",
+        "Choose a box size (4/6/12-pack)",
+        "Pick flavors per box",
+        "Add to cart and review the cart subtotal"
+      ]
+    },
+    {
+      "actor": "guest-orderer",
+      "id": "order-delivery-checkout",
+      "kind": "success",
+      "priority": "p0",
+      "status": "draft",
+      "steps": [
+        "Build a delivery order",
+        "Enter delivery address and time window",
+        "Enter contact details",
+        "Review totals",
+        "Complete simulated payment to a confirmation view"
+      ]
+    },
+    {
+      "actor": "guest-orderer",
+      "id": "order-validation-required",
+      "kind": "failure",
+      "priority": "p1",
+      "status": "draft",
+      "steps": [
+        "Submit order forms with required fields empty",
+        "Verify inline validation identifies missing fields"
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "search-no-results",
+      "kind": "failure",
+      "priority": "p1",
+      "status": "draft",
+      "steps": [
+        "Search an impossible store term",
+        "Verify a no-results message and a safe return path"
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "auth-shells",
+      "kind": "structural",
+      "priority": "p1",
+      "status": "draft",
+      "steps": [
+        "Open sign-in, registration, and password-recovery entry points",
+        "Verify visible fields and guidance without submitting credentials"
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "error-not-found",
+      "kind": "failure",
+      "priority": "p1",
+      "status": "draft",
+      "steps": [
+        "Open a non-existent deep link",
+        "Verify the branded not-found view preserving primary navigation"
+      ]
+    }
+  ],
+  "schema_version": "offline-clone.journeys.v1"
+}
