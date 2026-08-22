@@ -2,6 +2,14 @@
 
 ## Round-3 summary
 
+Round-3b control alignment: course related-course title links, skill chips as
+search links, "+2 more" instructor link, "Related" link, module-detail labels,
+promo CTA texts ("Get Coursera Plus", "Save 30% today", "Save 40% for 3
+months"); specialization skill chips + instructor links; home promo-dot
+labels ("Go to item N"). Structure rose to **0.888** (course 0.905,
+specialization 0.914).
+
+
 Backend: systematic audit of all 23 trace categories' flows and error paths
 (registration validation/duplicates/wrong codes, login wrong password/unknown
 email auto-register, password recovery no-reveal/wrong code, anonymous
@@ -68,14 +76,15 @@ the source/clone frontend-spec pairs (`scope/frontend-specs/`).
 
 | page | structure round 2 | headings (text/level) | controls | data points | structure round 1 |
 |---|---|---|---|---|---|
-| home | 0.796 | 0.99 / 0.98 | 0.65 | 1.00 | 0.530 |
-| browse | 0.893 | 1.00 / 0.98 | 0.81 | 1.00 | 0.594 |
-| search | 0.849 | 1.00 / 1.00 | 0.77 | 1.00 | 0.504 |
-| course | 0.883 | 1.00 / 0.97 | 0.69 | 1.00 | 0.646 |
-| specialization | 0.901 | 1.00 / 1.00 | 0.73 | 1.00 | 0.647 |
-| login | 0.827 | 1.00 / 1.00 | 0.57 | 1.00 | 0.535 |
+| home | 0.839 | 0.99 / 0.98 | 0.82 | 1.00 | 0.530 |
+| browse | 0.897 | 1.00 / 0.98 | 0.82 | 1.00 | 0.594 |
+| search | 0.885 | 1.00 / 1.00 | 0.90 | 1.00 | 0.504 |
+| course | 0.905 | 1.00 / 0.97 | 0.79 | 1.00 | 0.646 |
+| specialization | 0.914 | 1.00 / 1.00 | 0.81 | 1.00 | 0.647 |
+| login | 0.883 | 1.00 / 1.00 | 0.83 | 1.00 | 0.535 |
 
-Overall structure consistency: 0.858 (was 0.576 at the start of round 1).
+Overall structure consistency: 0.888 (was 0.576 at the start of round 1,
+0.858 after round 2).
 
 Round-2 structure work: source-observed heading semantics everywhere (module
 titles, reviewer names, promo card titles, career roles, testimonial names as

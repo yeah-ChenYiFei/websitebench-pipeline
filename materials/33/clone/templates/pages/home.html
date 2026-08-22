@@ -21,7 +21,7 @@
     </div>
     <div class="home-promo-controls" aria-label="Choose featured items">
       <button type="button" data-control-action="switch-promo" data-promo-direction="previous" aria-label="Previous promotion">‹</button>
-      {% for promo in promos %}<button class="home-promo-choice" type="button" data-control-action="switch-promo-choice" data-promo-target="promo-{{ loop.index }}" aria-label="Show promotion {{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ loop.index }}</button>{% endfor %}
+      {% for promo in promos %}<button class="home-promo-choice" type="button" data-control-action="switch-promo-choice" data-promo-target="promo-{{ loop.index }}" aria-label="Go to item {{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}"></button>{% endfor %}
       <button type="button" data-control-action="switch-promo" data-promo-direction="next" aria-label="Next promotion">›</button>
     </div>
   </section>
@@ -44,8 +44,8 @@
   </section>
 
   <section class="source-promo-band" aria-label="Coursera promotions">
-    <a class="source-promo-card" href="/courseraplus/special/cplus-monthly-august-2026-global"><span class="source-promo-art"><img src="/static/home/current-promo-plus-landscape.png" alt=""></span><span><span class="source-promo-eyebrow">Coursera Plus</span><h3>Break down barriers to learning with big savings</h3><span class="source-promo-cta">Explore Coursera Plus <span aria-hidden="true">→</span></span></span></a>
-    <a class="source-promo-card" href="/business/teams"><span class="source-promo-art"><img src="/static/home/current-promo-teams-small.png" alt=""></span><span><span class="source-promo-eyebrow">For Business</span><h3>Start with easy savings for hard-working teams</h3><span class="source-promo-cta">Explore Coursera for Business <span aria-hidden="true">→</span></span></span></a>
+    <a class="source-promo-card" href="/courseraplus/special/cplus-monthly-august-2026-global"><span class="source-promo-art"><img src="/static/home/current-promo-plus-landscape.png" alt=""></span><span><span class="source-promo-eyebrow">Coursera Plus · Save 40% for 3 months</span><h3>Break down barriers to learning with big savings</h3><span class="source-promo-cta">Get Coursera Plus <span aria-hidden="true">→</span></span></span></a>
+    <a class="source-promo-card" href="/business/teams"><span class="source-promo-art"><img src="/static/home/current-promo-teams-small.png" alt=""></span><span><span class="source-promo-eyebrow">For Business</span><h3>Start with easy savings for hard-working teams</h3><span class="source-promo-cta">Save 30% today <span aria-hidden="true">→</span></span></span></a>
   </section>
 
   <section class="source-partners" aria-labelledby="partners-heading"><h2 id="partners-heading">Learn from 350+ leading universities and companies</h2><div>{% for name, logo, href in partners %}<a class="source-logo-pill" href="{{ href }}"><img src="{{ logo }}" alt=""><span>{{ name }}</span></a>{% endfor %}</div></section>

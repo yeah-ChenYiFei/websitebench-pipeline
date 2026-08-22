@@ -96,7 +96,8 @@
 .source-learning-grid p { position: relative; margin: 0; padding-left: 24px; font-size: 13px; line-height: 1.48; }
 .source-learning-grid p::before { position: absolute; top: 0; left: 0; color: #34705a; content: "✓"; font-weight: 800; }
 .source-skill-chips { display: flex; flex-wrap: wrap; gap: 7px; max-width: 880px; }
-.source-skill-chips span { border-radius: 4px; padding: 6px 10px; background: #eef1f6; color: #3e4652; font-size: 11px; font-weight: 600; }
+.source-skill-chips span,
+.source-skill-chips a { border-radius: 4px; padding: 6px 10px; background: #eef1f6; color: #3e4652; font-size: 11px; font-weight: 600; text-decoration: none; }
 .source-tool-chips span { background: #f3f4f7; }
 .source-detail-row { display: flex; gap: 68px; }
 .source-detail-row article { display: grid; grid-template-columns: 28px auto; grid-template-rows: auto auto; column-gap: 7px; font-size: 13px; }

@@ -152,11 +152,12 @@
 .source-related-courses { margin-top: 48px; }
 .source-related-courses > h2 { font-size: 18px; }
 .source-related-courses > div { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.source-related-course { min-width: 0; border: 1px solid #cdd6e2; border-radius: 9px; overflow: hidden; }
-.source-related-course a { display: grid; grid-template-rows: 132px auto 54px 1fr; gap: 9px; height: 100%; padding: 8px 8px 20px; color: #222; text-decoration: none; }
+.source-related-course { display: grid; grid-template-rows: 132px auto 54px 1fr; gap: 9px; height: 100%; min-width: 0; padding: 8px 8px 20px; border: 1px solid #cdd6e2; border-radius: 9px; overflow: hidden; color: #222; }
 .source-related-course img { width: 100%; height: 132px; border-radius: 5px; object-fit: cover; }
 .source-related-course small { color: #59677a; font-size: 11px; }
-.source-related-course strong { overflow: hidden; font-size: 14px; line-height: 1.25; }
+.source-related-course h3 { overflow: hidden; margin: 0; font-size: 14px; line-height: 1.25; }
+.source-related-course h3 a { color: inherit; text-decoration: none; }
+.source-related-link { margin-left: 12px; color: var(--wb-blue); font-size: 13px; font-weight: 700; text-decoration: none; }
 .source-related-course span { align-self: end; color: #69758a; font-size: 12px; }
 
 .source-course-testimonials { margin-top: 113px; }
