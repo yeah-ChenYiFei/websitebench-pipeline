@@ -36,13 +36,13 @@ def _result_identity(tag: str) -> tuple[str, str, str]:
     return (
         attribute("data-result-title"),
         attribute("data-result-provider"),
-        attribute("href"),
+        attribute("data-result-href"),
     )
 
 
 def _result_identities(html: str) -> tuple[tuple[str, str, str], ...]:
     tags = re.findall(
-        r'<a class="search-result-card"[^>]*data-search-result="true"[^>]*>',
+        r'<div class="search-result-card"[^>]*data-search-result="true"[^>]*>',
         html,
     )
     return tuple(_result_identity(tag) for tag in tags)
@@ -110,7 +110,7 @@ def test_search_query_aliases_render_the_same_selected_state() -> None:
     assert _result_identities(source_alias) == EXPECTED_RESULTS
     assert _result_identities(local_alias) == EXPECTED_RESULTS
     for html in (source_alias, local_alias):
-        assert 'id="wb-header-search" name="q" value="deep learning"' in html
+        assert 'id="wb-header-search" name="query" value="deep learning"' in html
 
 
 def test_impossible_query_has_english_recovery_without_fake_matches() -> None:

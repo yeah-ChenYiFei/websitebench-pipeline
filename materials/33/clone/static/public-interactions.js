@@ -53,7 +53,8 @@
       );
     });
     document.querySelectorAll("[data-promo-panel]").forEach((panel, index) => {
-      panel.setAttribute("aria-hidden", String(index !== safe));
+      if (index === safe) panel.setAttribute("data-promo-active", "true");
+      else panel.removeAttribute("data-promo-active");
     });
   };
 
@@ -213,6 +214,21 @@
       case "switch-lesson-tab":
         switchLessonTab(control);
         break;
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    const card = event.target.closest("[data-card-href]");
+    if (card && !event.target.closest("a")) {
+      window.location.href = card.dataset.cardHref;
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const card = event.target.closest("[data-card-href]");
+    if (card && event.target === card) {
+      event.preventDefault();
+      window.location.href = card.dataset.cardHref;
     }
   });
 

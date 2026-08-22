@@ -1,12 +1,16 @@
 .wb-audience-bar { min-height: 40px; background: #181818; color: #fff; font-size: 14px; }
 .wb-audience-bar .wb-shell { display: flex; align-items: stretch; gap: 32px; height: 40px; }
 .wb-audience-bar a, .wb-audience-bar strong { display: inline-flex; align-items: center; color: inherit; text-decoration: none; white-space: nowrap; }
-.wb-audience-bar strong { border-bottom: 4px solid #fff; font-weight: 700; }
+.wb-audience-current { border-bottom: 4px solid #fff; font-weight: 700; }
+
+.wb-skip-link { position: absolute; z-index: 100; left: -9999px; top: 0; padding: 10px 16px; background: #fff; color: var(--wb-blue); font-weight: 700; text-decoration: none; }
+.wb-skip-link:focus { left: 12px; top: 12px; border: 2px solid var(--wb-blue); border-radius: 4px; }
 
 .wb-header { min-height: 72px; border-bottom: 1px solid var(--wb-line); background: #fff; }
 .wb-header-row { min-height: 72px; display: flex; align-items: center; gap: 22px; }
 .wb-wordmark { color: var(--wb-blue); font-size: 32px; font-weight: 800; letter-spacing: -2.4px; text-decoration: none; line-height: 1; }
 .wb-explore { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--wb-blue); border-radius: 4px; color: var(--wb-blue); padding: 10px 14px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.wb-explore::after { content: "⌄"; }
 .wb-degree-link { font-weight: 600; text-decoration: none; white-space: nowrap; }
 .wb-search { display: flex; align-items: center; flex: 1 1 300px; min-width: 180px; max-width: 530px; border: 1px solid #707070; border-radius: 3px; overflow: hidden; }
 .wb-search input { width: 100%; min-width: 0; border: 0; padding: 12px 14px; color: var(--wb-ink); outline: 0; }

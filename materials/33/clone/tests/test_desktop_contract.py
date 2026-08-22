@@ -82,8 +82,9 @@ def test_home_uses_the_observed_two_panel_promotional_rail(
     html = desktop_client.get("/").text
 
     assert 'class="promo-rail"' in html
-    assert html.count('class="promo-panel') == 3
-    assert html.count('class="home-promo-choice"') == 3
+    assert html.count('class="promo-panel') == 4
+    assert html.count('class="home-promo-choice"') == 4
+    assert "Learn without limits" in html
     assert "Save 40% on 3 months of Coursera Plus" in html
     assert "Close team skill gaps" in html
     assert "Start, switch, or advance your career" in html
@@ -108,7 +109,7 @@ def test_home_exposes_requested_complete_discovery_sections(
         "Frequently asked questions",
     ):
         assert heading in html
-    assert html.count('class="home-promo-choice"') == 3
+    assert html.count('class="home-promo-choice"') == 4
     assert html.count('class="source-list-card"') == 18
     assert html.count('class="source-learning-card"') >= 12
     assert len(
@@ -262,8 +263,9 @@ def test_browse_lower_collections_match_the_supplied_and_playwright_evidence(
     lower = html[role_position:faq_position]
 
     headings = (
-        "Enhance Your Deep Learning Skills with Neural Networks",
-        "Online degrees",
+        "Google Analytics for Data Insights",
+        "Your Path to Project Management: Google Project Management Essentials",
+        "AI Basics for Everyone",
         "Trending now",
         "In-demand skills",
         "New releases",
@@ -275,21 +277,19 @@ def test_browse_lower_collections_match_the_supplied_and_playwright_evidence(
     assert "home-degree-card" not in lower
 
     observed_cards = (
-        ("Deep Learning", "/specializations/deep-learning", "/static/browse/deep-learning.png"),
-        ("Neural Networks and Deep Learning", "/learn/neural-networks-deep-learning", "/static/deep-learning/course-neural-networks.png"),
-        ("Convolutional Neural Networks", "/learn/convolutional-neural-networks", "/static/deep-learning/course-convolutional.png"),
-        ("Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization", "/learn/deep-neural-network", "/static/deep-learning/course-improving-networks.png"),
-        ("Master of Advanced Study in Engineering", "/degrees/mas-engineering-berkeley", "/static/browse/lower/degree-berkeley.jpg"),
-        ("Master of Science in Data Analytics Engineering", "/degrees/ms-data-analytics-engineering-northeastern", "/static/browse/lower/degree-northeastern.jpg"),
-        ("Bachelor of Science in Computer Science", "/degrees/bachelor-of-science-computer-science-london", "/static/browse/lower/degree-london.jpg"),
-        ("BSc Data Science", "/degrees/bsc-data-science-huddersfield", "/static/browse/lower/degree-huddersfield.jpg"),
+        ("Google Analytics Insights", "/search?q=Google+Analytics+Insights", "/static/browse/google-data-analytics.png"),
+        ("Google Analytics: Data-Driven Marketing Mastery with AI", "/search?q=Google+Analytics+Data-Driven+Marketing+Mastery+with+AI", "/static/browse/google-data-analytics.png"),
+        ("Project Planning: Putting It All Together", "/search?q=Project+Planning+Putting+It+All+Together", "/static/browse/google-project-management.png"),
+        ("Foundations of Project Management", "/learn/foundations-of-project-management", "/static/browse/google-project-management.png"),
+        ("AI For Everyone", "/search?q=AI+For+Everyone", "/static/browse/lower/trending-introduction-ai.jpg"),
+        ("AI For All", "/search?q=AI+For+All", "/static/browse/lower/trending-ai-fundamentals.jpg"),
         ("Introduction to AI", "/learn/google-introduction-to-ai", "/static/browse/lower/trending-introduction-ai.jpg"),
-        ("Google AI Essentials", "/specializations/ai-essentials-google", "/static/browse/lower/trending-google-ai-essentials.jpg"),
+        ("Generative AI Fundamentals", "/search?q=Generative+AI+Fundamentals", "/static/browse/lower/trending-google-ai-essentials.jpg"),
         ("AI Fundamentals", "/learn/google-ai-fundamentals", "/static/browse/lower/trending-ai-fundamentals.jpg"),
         ("AI for App Deployment", "/learn/google-ai-for-app-deployment", "/static/browse/lower/release-ai-app-deployment.jpg"),
         ("Anti Money Laundering and Transaction Compliance", "/specializations/anti-money-laundering-and-transaction-compliance", "/static/browse/lower/release-anti-money-laundering.jpg"),
         ("Emotional Intelligence, Creativity, and Mental Strength - 2026", "/specializations/emotional-intelligence", "/static/browse/lower/release-emotional-intelligence.jpg"),
-        ("Financial Modeling and Analysis", "/specializations/financial-modeling-and-analysis", "/static/browse/lower/release-financial-modeling.jpg"),
+        ("Customer Service, Customer Support, Customer Experience", "/search?q=Customer+Service+Customer+Support+Customer+Experience", "/static/browse/lower/release-financial-modeling.jpg"),
     )
     for title, href, image in observed_cards:
         assert title in lower
@@ -297,12 +297,12 @@ def test_browse_lower_collections_match_the_supplied_and_playwright_evidence(
         assert f'src="{image}"' in lower
 
     for fact in (
-        "4.8 · 147K reviews",
-        "4.9 · 124K reviews",
-        "4.9 · 43K reviews",
-        "4.9 · 64K reviews",
+        "4.8 · 12K reviews",
+        "4.8 · 33K reviews",
+        "4.8 · 143K reviews",
+        "4.8 · 92K reviews",
+        "4.8 · 8K reviews",
         "4.8 · 13K reviews",
-        "4.7 · 36K reviews",
         "4.8 · 25K reviews",
         "4.8 · 4.7K reviews",
         "4.8 · 51 reviews",
@@ -336,11 +336,11 @@ def test_browse_lower_collections_match_the_supplied_and_playwright_evidence(
         assert f'alt="{partner}"' in lower
         assert f'href="{href}"' in lower
 
-    assert lower.count('class="source-lower-course-card"') == 12
-    assert lower.count('class="source-lower-degree-card"') == 4
+    assert lower.count('class="source-lower-course-card"') == 20
+    assert lower.count('class="source-lower-degree-card"') == 0
     assert lower.count('class="source-lower-skill-link"') == 6
     assert lower.count('class="source-lower-partner"') == 8
-    assert lower.count("Show 8 more") == 4
+    assert lower.count("Show 8 more") == 2
 
 
 def test_browse_uses_the_source_observed_english_card_surface(
@@ -508,8 +508,8 @@ def test_search_retains_query_in_header_and_related_cards(
 
     html = desktop_client.get("/search?q=Deep+Learning+Specialization").text
 
-    assert 'id="wb-header-search" name="q" value="Deep Learning Specialization"' in html
-    assert 'class="search-ai-starter-cards"' in html
+    assert 'id="wb-header-search" name="query" value="Deep Learning Specialization"' in html
+    assert 'class="search-ai-summary-cards"' in html
     assert html.count('class="search-ai-starter-card"') == 4
 
 

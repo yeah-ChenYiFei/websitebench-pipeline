@@ -5,7 +5,7 @@ from __future__ import annotations
 from html import escape
 
 
-STATIC_REVISION = "20260822-auth-footer-promo-v4"
+STATIC_REVISION = "20260822-search-v7"
 
 
 def header(
@@ -44,9 +44,9 @@ def header(
         )
     rendered_search_value = escape(search_value, quote=True)
     audience = (
-        '<strong>For Individuals</strong><a href="/business/teams">For Businesses</a><a href="/degrees">For Universities</a><a href="/government">For Governments</a>'
+        '<a class="wb-audience-current" href="/">For Individuals</a><a href="/business/teams">For Businesses</a><a href="/degrees">For Universities</a><a href="/government">For Governments</a>'
         if english
-        else '<strong>为个人</strong><a href="/about/contact">为商务</a><a href="/browse">为大学</a><a href="/about/contact">为政府</a>'
+        else '<a class="wb-audience-current" href="/">为个人</a><a href="/about/contact">为商务</a><a href="/browse">为大学</a><a href="/about/contact">为政府</a>'
     )
     explore = "Explore" if english else "探索"
     degrees = "Degrees" if english else "学位"
@@ -63,11 +63,11 @@ def header(
 <header class="wb-header">
   <div class="wb-shell wb-header-row">
     <a class="wb-wordmark" href="/" aria-label="{home_label}">coursera</a>
-    <a class="wb-explore" href="/browse">{explore} <span aria-hidden="true">⌄</span></a>
+    <a class="wb-explore" href="/browse">{explore}</a>
     <a class="wb-degree-link" href="/degrees">{degrees}</a>
     <form class="wb-search" action="/search" method="get" role="search">
       <label class="wb-sr-only" for="wb-header-search">{search_label}</label>
-      <input id="wb-header-search" name="q" value="{rendered_search_value}" placeholder="{search_placeholder}" autocomplete="off">
+      <input id="wb-header-search" name="query" value="{rendered_search_value}" placeholder="{search_placeholder}" autocomplete="off">
       <button type="submit" aria-label="{search_label}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
     </form>
     {ai_sparkle}
@@ -86,10 +86,10 @@ def footer(*, language: str = "en", variant: str = "default") -> str:
         return """
 <footer class="wb-footer source-auth-footer">
   <div class="wb-shell wb-footer-grid">
-    <section><h2>Coursera</h2><a href="/about/contact">About</a><a href="/browse">What We Offer</a><a href="/browse">Catalog</a><a href="/career-academy">Careers</a></section>
-    <section><h2>Community</h2><a href="/my-learning">Learners</a><a href="/partners">Partners</a><a href="/about/contact">Developers</a><a href="/about/contact">Beta Testers</a><a href="/help">Blog</a><a href="/help">The Coursera Podcast</a><a href="/help">Tech Blog</a></section>
-    <section><h2>More</h2><a href="/about/contact">Press</a><a href="/about/contact">Investors</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/help">Help</a><a href="/help">Accessibility</a><a href="/about/contact">Contact</a></section>
-    <section><h2>Mobile App</h2><a href="/browse">iOS and Android app</a></section>
+    <section><h3>Coursera</h3><a href="/about/contact">About</a><a href="/browse">What We Offer</a><a href="/browse">Catalog</a><a href="/career-academy">Careers</a></section>
+    <section><h3>Community</h3><a href="/my-learning">Learners</a><a href="/partners">Partners</a><a href="/about/contact">Developers</a><a href="/about/contact">Beta Testers</a><a href="/help">Blog</a><a href="/help">The Coursera Podcast</a><a href="/help">Tech Blog</a></section>
+    <section><h3>More</h3><a href="/about/contact">Press</a><a href="/about/contact">Investors</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/help">Help</a><a href="/help">Accessibility</a><a href="/about/contact">Contact</a></section>
+    <section><h3>Mobile App</h3><a href="/browse">iOS and Android app</a></section>
   </div>
   <div class="wb-shell wb-footer-legal">© 2026 Coursera Inc. All rights reserved.</div>
 </footer>
@@ -291,7 +291,7 @@ def page(
     )
     return f"""<!doctype html>
 <html lang="{escape(language)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(rendered_title)}</title>{stylesheet_markup}</head>
-<body class="{escape(classes)}">{rendered_header}<main>{body}</main>{rendered_footer}{login_markup}{signup_markup}{script_markup}</body></html>"""
+<body class="{escape(classes)}"><a class="wb-skip-link" href="#main-content">Skip to main content</a>{rendered_header}<main id="main-content">{body}</main>{rendered_footer}{login_markup}{signup_markup}{script_markup}</body></html>"""
 
 
 def login_dialog(*, open_on_load: bool = False, next_path: str = "/my-learning") -> str:

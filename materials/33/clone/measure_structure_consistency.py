@@ -111,8 +111,6 @@ def score_page(page: str) -> dict:
 
     src_headings = src.get("document", {}).get("headings", [])
     clone_headings = clone.get("document", {}).get("headings", [])
-    src_head = {_heading_key(h) for h in src_headings}
-    clone_head = {_heading_key(h) for h in clone_headings}
     src_ctrl = set(_controls_summary(src))
     clone_ctrl = set(_controls_summary(clone))
     src_dp = set(_datapoints(src))

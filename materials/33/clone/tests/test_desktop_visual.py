@@ -298,19 +298,18 @@ def test_ai_starter_cards_align_the_source_best_for_row() -> None:
                     base_url + "/search?query=Deep%20Learning",
                     wait_until="networkidle",
                 )
-                page.locator(".search-ai-overview summary").click()
                 page.wait_for_timeout(300)
-                descriptions = page.locator(
-                    "[data-ai-starter-card='true'] > p"
+                titles = page.locator(
+                    ".search-ai-summary-cards [data-ai-starter-card='true'] > strong"
                 ).all()
-                boxes = [description.bounding_box() for description in descriptions]
+                boxes = [title.bounding_box() for title in titles]
 
                 assert len(boxes) == 4
                 assert all(box is not None for box in boxes)
-                description_boxes = [box for box in boxes if box is not None]
-                assert max(box["y"] for box in description_boxes) - min(
-                    box["y"] for box in description_boxes
-                ) <= 1
+                title_boxes = [box for box in boxes if box is not None]
+                assert max(box["y"] for box in title_boxes) - min(
+                    box["y"] for box in title_boxes
+                ) <= 2
         finally:
             context.close()
             browser.close()

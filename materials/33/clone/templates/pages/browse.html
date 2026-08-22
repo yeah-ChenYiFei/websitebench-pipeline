@@ -25,10 +25,6 @@
     </nav>
   </section>
 
-  <section class="source-browse-promos" aria-label="Coursera promotions">
-    <a href="/courseraplus/special/cplus-monthly-august-2026-global">Get Coursera Plus</a>
-    <a href="/business/teams">Save 30% today</a>
-  </section>
 
   <section class="source-browse-popular" aria-labelledby="source-popular-heading">
     <h2 id="source-popular-heading">Most popular</h2>
@@ -40,6 +36,10 @@
       <a href="/browse/computer-science">Computer Science</a>
     </nav>
 
+  <section class="source-promo-band" aria-label="Coursera promotions">
+    <a class="source-promo-card" href="/courseraplus/special/cplus-monthly-august-2026-global"><span class="source-promo-art"><img src="/static/home/current-promo-plus-landscape.png" alt=""></span><span><span class="source-promo-eyebrow">Coursera Plus</span><h3>Break down barriers to learning with big savings</h3><span class="source-promo-cta">Explore Coursera Plus <span aria-hidden="true">→</span></span></span></a>
+    <a class="source-promo-card" href="/business/teams"><span class="source-promo-art"><img src="/static/home/current-promo-teams-small.png" alt=""></span><span><span class="source-promo-eyebrow">For Business</span><h3>Start with easy savings for hard-working teams</h3><span class="source-promo-cta">Explore Coursera for Business <span aria-hidden="true">→</span></span></span></a>
+  </section>
     <div class="source-popular-grid">
       {% for card in popular_cards %}
         <article class="source-popular-card">
@@ -96,29 +96,26 @@
     </div>
   </section>
 
-  <section class="source-lower-collection" data-browse-section="deep-learning" aria-labelledby="source-deep-learning-heading">
-    <h2 id="source-deep-learning-heading">Enhance Your Deep Learning Skills with Neural Networks</h2>
+
+  <section class="source-lower-collection" data-browse-section="google-analytics" aria-labelledby="source-ga-heading">
+    <h2 id="source-ga-heading">Google Analytics for Data Insights</h2>
     <div class="source-lower-course-grid">
-      {% for card in deep_learning_cards %}{{ lower_course_card(card) }}{% endfor %}
+      {% for card in ga_cards %}{{ lower_course_card(card) }}{% endfor %}
     </div>
-    <a class="source-lower-show-more" href="/search?q=Deep+Learning">Show 8 more</a>
   </section>
 
-  <section class="source-lower-collection source-lower-degrees" data-browse-section="online-degrees" aria-labelledby="source-degrees-heading">
-    <h2 id="source-degrees-heading">Online degrees</h2>
-    <nav class="source-degree-filters" aria-label="Degree types"><a class="is-active" href="/degrees">All degrees</a><a href="/degrees/bachelors">Bachelors</a><a href="/degrees/masters">Masters</a><a href="/certificates/learn">Postgraduate</a></nav>
-    <div class="source-lower-degree-grid">
-      {% for card in degree_cards %}
-        <article class="source-lower-degree-card">
-          <a class="source-lower-degree-image" href="{{ card.href }}" aria-label="{{ card.title }}"><img src="{{ card.image }}" alt=""></a>
-          <p class="source-lower-provider"><img src="{{ card.provider_logo }}" alt="">{{ card.provider }}</p>
-          <h3><a href="{{ card.href }}">{{ card.title }}</a></h3>
-          <a class="source-lower-credential" href="{{ card.href }}"><span aria-hidden="true">♙</span>Earn a degree</a>
-          <p class="source-lower-meta">Degree</p>
-        </article>
-      {% endfor %}
+  <section class="source-lower-collection" data-browse-section="project-management" aria-labelledby="source-pm-heading">
+    <h2 id="source-pm-heading">Your Path to Project Management: Google Project Management Essentials</h2>
+    <div class="source-lower-course-grid">
+      {% for card in pm_cards %}{{ lower_course_card(card) }}{% endfor %}
     </div>
-    <a class="source-lower-show-more" href="/degrees">Show 8 more</a>
+  </section>
+
+  <section class="source-lower-collection" data-browse-section="ai-basics" aria-labelledby="source-ai-basics-heading">
+    <h2 id="source-ai-basics-heading">AI Basics for Everyone</h2>
+    <div class="source-lower-course-grid">
+      {% for card in ai_basics_cards %}{{ lower_course_card(card) }}{% endfor %}
+    </div>
   </section>
 
   <section class="source-lower-collection" data-browse-section="trending-now" aria-labelledby="source-trending-heading">

@@ -34,7 +34,7 @@ CURRENT_HOME_IDENTITIES = {
         ("Google Data Analytics", "Google", "/professional-certificates/google-data-analytics"),
         ("Microsoft Power BI Data Analyst", "Microsoft", "/professional-certificates/microsoft-power-bi-data-analyst"),
         ("IBM Data Science", "IBM", "/professional-certificates/ibm-data-science"),
-        ("Tableau Business Intelligence Analyst", "Tableau Learning Partner", "/professional-certificates/tableau-business-intelligence-analyst"),
+        ("Meta Data Analyst", "Meta", "/professional-certificates/meta-data-analyst"),
     ),
     "google-career": (
         ("Google AI Essentials", "Google", "/specializations/ai-essentials-google"),

@@ -17,6 +17,18 @@ _TEMPLATES = Environment(
 
 PROMOS = (
     {
+        "key": "learn-without-limits",
+        "art": "coursera-plus",
+        "image": "/static/home/current-promo-plus-landscape.png",
+        "href": "/signup",
+        "eyebrow": "Coursera",
+        "title": "Learn without limits",
+        "subtitle": "Learn online and earn valuable credentials from top universities, like Yale, Michigan, and Google.",
+        "cta": "Join for free",
+        "features": ("7-day free trial", "Learn at your own pace", "Certificates of completion"),
+        "tone": "light",
+    },
+    {
         "key": "coursera-plus",
         "image": "/static/home/current-promo-plus.png",
         "href": "/courseraplus/special/cplus-monthly-august-2026-global",

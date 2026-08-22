@@ -63,7 +63,7 @@ def load_home_inventory() -> tuple[HomeSection, ...]:
             ("Google Data Analytics", "Google", "/professional-certificates/google-data-analytics", "/static/home/cards/google-data-analytics.png", "Professional Certificate", "4.8"),
             ("Microsoft Power BI Data Analyst", "Microsoft", "/professional-certificates/microsoft-power-bi-data-analyst", "/static/home/cards/microsoft-power-bi.png", "Professional Certificate", "4.6"),
             ("IBM Data Science", "IBM", "/professional-certificates/ibm-data-science", "/static/home/cards/ibm-data-science.png", "Professional Certificate", "4.6"),
-            ("Tableau Business Intelligence Analyst", "Tableau Learning Partner", "/professional-certificates/tableau-business-intelligence-analyst", "/static/home/cards/tableau-bi.png", "Professional Certificate", "4.7"),
+            ("Meta Data Analyst", "Meta", "/professional-certificates/meta-data-analyst", "/static/home/cards/tableau-bi.png", "Professional Certificate", "4.7"),
         )),
         _section(4, "google-career", "Google Career Collection", "feature-grid", (
             ("Google AI Essentials", "Google", "/specializations/ai-essentials-google", "/static/home/cards/google-ai-essentials.png", "Specialization", "4.8"),

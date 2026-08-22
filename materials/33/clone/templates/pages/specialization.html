@@ -51,7 +51,7 @@
   <article><strong>4.8 <span class="source-stars">★★★★★</span></strong><span>147,228 reviews of courses in this program</span></article>
   <article><strong>Intermediate level</strong><span>Recommended experience</span></article>
   <article><strong>Flexible schedule</strong><span>3 months at 10 hours a week</span></article>
-  <article><strong>Build toward a degree</strong><span>Learn more</span></article>
+  <article><h3>Build toward a degree</h3><span>Learn more</span></article>
 </section>
 
 <nav class="source-specialization-tabs" aria-label="Specialization sections">
@@ -89,7 +89,7 @@
   </section>
 
   <section class="source-business-callout">
-    <div><h2>See how employees at top companies are mastering in-demand skills</h2><a href="/about/contact">Learn more about Coursera for Business</a></div>
+    <div><h1>See how employees at top companies are mastering in-demand skills</h1><a href="/about/contact">Learn more about Coursera for Business</a></div>
     <div class="source-company-marks" aria-hidden="true"><span>P&amp;G</span><span>petrobras</span><span>TATA</span></div>
   </section>
 
@@ -101,12 +101,12 @@
         {% for course in courses %}
           <article class="source-specialization-course">
             <img src="/static/deep-learning/{{ course.asset }}" alt="">
-            <div><a href="/learn/{{ course.id }}">{{ course.title }}</a><span>Course {{ course.number }} · {{ course.duration }}</span></div>
+            <div><h3><a href="/learn/{{ course.id }}">{{ course.title }}</a></h3><span>Course {{ course.number }} · {{ course.duration }}</span></div>
             <button type="button" class="source-course-details-toggle" data-control-action="toggle-course-details" data-course-target="course-{{ course.number }}" aria-expanded="false">Course details <span aria-hidden="true">⌄</span></button>
           </article>
         {% endfor %}
-        <div class="source-series-benefit"><strong>Earn a career certificate</strong><span>Add this credential to your LinkedIn profile, resume, or CV.</span></div>
-        <div class="source-series-benefit"><strong>Build toward a degree</strong><span>When you complete this Specialization, you may be able to apply your learning toward degree credit.</span></div>
+        <div class="source-series-benefit"><h3>Earn a career certificate</h3><span>Add this credential to your LinkedIn profile, resume, or CV.</span></div>
+        <div class="source-series-benefit"><h3>Build toward a degree</h3><span>When you complete this Specialization, you may be able to apply your learning toward degree credit.</span></div>
       </div>
       <aside class="source-series-aside">
         <h3>Instructors</h3>
@@ -123,11 +123,21 @@
   <section id="testimonials" class="source-testimonials">
     <h2>Why people choose Coursera for their career</h2>
     <div>
-      <blockquote>“To be able to take courses at my own pace and rhythm has been an amazing experience.”<cite>Felipe M.</cite></blockquote>
-      <blockquote>“I directly applied the concepts and skills I learned from my courses to an exciting new project at work.”<cite>Jennifer J.</cite></blockquote>
-      <blockquote>“When I need courses on topics that my university doesn't offer, Coursera is one of the best places to go.”<cite>Larry W.</cite></blockquote>
-      <blockquote>“Learning isn't just about being better at your job: it's so much more than that.”<cite>Chaitanya A.</cite></blockquote>
+      <blockquote>“To be able to take courses at my own pace and rhythm has been an amazing experience.”<h3>Felipe M.</h3></blockquote>
+      <blockquote>“I directly applied the concepts and skills I learned from my courses to an exciting new project at work.”<h3>Jennifer J.</h3></blockquote>
+      <blockquote>“When I need courses on topics that my university doesn't offer, Coursera is one of the best places to go.”<h3>Larry W.</h3></blockquote>
+      <blockquote>“Learning isn't just about being better at your job: it's so much more than that.”<h3>Chaitanya A.</h3></blockquote>
     </div>
+  </section>
+  <section class="source-specialization-career">
+    <h2>Prepare for a career as a Machine Learning Engineer</h2>
+    <p>Machine learning engineers design, build, and maintain the systems that turn data into intelligent products. This Specialization builds the deep learning foundation you need to start on that path.</p>
+    <a class="link-button primary" href="/search?q=Machine+Learning+Engineer">Explore machine learning careers <span aria-hidden="true">→</span></a>
+  </section>
+
+  <section class="source-promo-band" aria-label="Coursera promotions">
+    <a class="source-promo-card" href="/courseraplus/special/cplus-monthly-august-2026-global"><span class="source-promo-art"><img src="/static/home/current-promo-plus-landscape.png" alt=""></span><span><span class="source-promo-eyebrow">Coursera Plus</span><h3>Break down barriers to learning with big savings</h3><span class="source-promo-cta">Explore Coursera Plus <span aria-hidden="true">→</span></span></span></a>
+    <a class="source-promo-card" href="/business/teams"><span class="source-promo-art"><img src="/static/home/current-promo-teams-small.png" alt=""></span><span><span class="source-promo-eyebrow">For Business</span><h3>Start with easy savings for hard-working teams</h3><span class="source-promo-cta">Explore Coursera for Business <span aria-hidden="true">→</span></span></span></a>
   </section>
 
   <section class="source-specialization-faq">
@@ -135,11 +145,7 @@
     <details><summary><h3>What is Deep Learning? Why is it relevant?</h3></summary><p>Deep learning is a branch of machine learning built around multi-layer neural networks.</p></details>
     <details><summary><h3>What is the Deep Learning Specialization about?</h3></summary><p>This five-course series introduces the foundations and practical applications of deep learning.</p></details>
     <details><summary><h3>What will I be able to do after completing the Deep Learning Specialization?</h3></summary><p>You will be able to build and evaluate neural-network systems for several common AI tasks.</p></details>
-    <details><summary><h3>Do I need to know programming or machine learning before starting?</h3></summary><p>You should be comfortable with Python and basic programming; a background in machine learning is helpful but not required.</p></details>
-    <details><summary><h3>What background knowledge is necessary to enroll?</h3></summary><p>Familiarity with Python and an intermediate level of math including calculus and linear algebra is recommended.</p></details>
-    <details><summary><h3>Do I need to take the courses in a specific order?</h3></summary><p>We strongly recommend taking the five courses in sequence, starting with Neural Networks and Deep Learning.</p></details>
-    <details><summary><h3>Will I earn university credit for completing the Specialization?</h3></summary><p>You can earn a shareable career certificate; eligible learners may apply coursework toward degree credit.</p></details>
-    <details><summary><h3>Can I enroll in just one course in the Specialization?</h3></summary><p>Yes, each course can be taken independently, and you can start with a free audit of any course.</p></details>
+    <div class="source-specialization-faq-more"><aside><span aria-hidden="true">ⓘ</span><h3>More questions</h3><a href="/help">Visit the learner help center</a></aside></div>
     <button type="button" class="source-faq-show-all" data-control-action="toggle-faq-all" data-faq-toggle>Show all 23 frequently asked questions</button>
   </section>
 </div>

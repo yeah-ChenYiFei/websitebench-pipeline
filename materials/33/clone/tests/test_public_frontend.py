@@ -517,7 +517,7 @@ def test_branded_404_csp_and_html_asset_references_are_offline_closed() -> None:
         "/static/learning-desktop.css",
         "/static/home-prototype.css",
         "/static/site.css",
-        "/static/home/current-promo-barriers.png",
+        "/static/home/current-promo-plus-landscape.png",
         "/static/home/current-promo-teams-small.png",
         "/static/home/logo-google.avif",
         "/static/home/logo-ibm.avif",

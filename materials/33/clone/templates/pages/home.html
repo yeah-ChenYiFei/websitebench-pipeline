@@ -16,7 +16,7 @@
   <section class="home-promo-switcher" aria-label="Featured learning opportunities">
     <div class="promo-rail" data-source-home-promo="true" data-promo-track>
       <div class="promo-slide-track">
-      {% for promo in promos %}<a class="promo-panel" data-promo-panel data-key="promo-{{ loop.index }}" data-promo-index="{{ loop.index0 }}" data-promo-tone="{{ promo.tone }}" href="{{ promo.href }}"><span class="promo-copy"><span class="promo-eyebrow">{{ promo.eyebrow }}</span><strong class="promo-title">{{ promo.title }}</strong><span class="promo-subtitle">{{ promo.subtitle }}</span><span class="promo-features">{% for feature in promo.features %}<span class="promo-feature">✓ {{ feature }}</span>{% endfor %}</span><span class="promo-cta">{{ promo.cta }} <span aria-hidden="true">→</span></span></span><span class="promo-art promo-art-{{ promo.key }}" aria-hidden="true"></span></a>{% endfor %}
+      {% for promo in promos %}<a class="promo-panel" data-promo-panel data-key="promo-{{ loop.index }}" data-promo-index="{{ loop.index0 }}" data-promo-tone="{{ promo.tone }}" href="{{ promo.href }}"><span class="promo-copy"><span class="promo-eyebrow">{{ promo.eyebrow }}</span>{% if loop.first %}<h1 class="promo-title">{{ promo.title }}</h1>{% else %}<h2 class="promo-title">{{ promo.title }}</h2>{% endif %}<span class="promo-subtitle">{{ promo.subtitle }}</span><span class="promo-features">{% for feature in promo.features %}<span class="promo-feature">✓ {{ feature }}</span>{% endfor %}</span><span class="promo-cta">{{ promo.cta }} <span aria-hidden="true">→</span></span></span><span class="promo-art promo-art-{{ promo.art|default(promo.key) }}" aria-hidden="true"></span></a>{% endfor %}
       </div>
     </div>
     <div class="home-promo-controls" aria-label="Choose featured items">
@@ -43,7 +43,10 @@
     </div>
   </section>
 
-  <section class="source-promo-row" aria-label="Coursera promotions"><a href="/courseraplus/special/cplus-monthly-august-2026-global"><img src="/static/home/current-promo-barriers.png" alt="Break down barriers to learning with big savings"></a><a href="/business/teams"><img src="/static/home/current-promo-teams-small.png" alt="Start with easy savings for hard-working teams"></a></section>
+  <section class="source-promo-band" aria-label="Coursera promotions">
+    <a class="source-promo-card" href="/courseraplus/special/cplus-monthly-august-2026-global"><span class="source-promo-art"><img src="/static/home/current-promo-plus-landscape.png" alt=""></span><span><span class="source-promo-eyebrow">Coursera Plus</span><h3>Break down barriers to learning with big savings</h3><span class="source-promo-cta">Explore Coursera Plus <span aria-hidden="true">→</span></span></span></a>
+    <a class="source-promo-card" href="/business/teams"><span class="source-promo-art"><img src="/static/home/current-promo-teams-small.png" alt=""></span><span><span class="source-promo-eyebrow">For Business</span><h3>Start with easy savings for hard-working teams</h3><span class="source-promo-cta">Explore Coursera for Business <span aria-hidden="true">→</span></span></span></a>
+  </section>
 
   <section class="source-partners" aria-labelledby="partners-heading"><h2 id="partners-heading">Learn from 350+ leading universities and companies</h2><div>{% for name, logo, href in partners %}<a class="source-logo-pill" href="{{ href }}"><img src="{{ logo }}" alt=""><span>{{ name }}</span></a>{% endfor %}</div></section>
 
@@ -59,11 +62,11 @@
 
   <section class="home-purpose" aria-labelledby="home-purpose-heading"><h2 id="home-purpose-heading">What brings you to Coursera today?</h2><div>{% for label, href in purposes %}<a href="{{ href }}"><span aria-hidden="true">▣</span>{{ label }}</a>{% endfor %}</div></section>
 
-  <section class="source-career-roles" aria-labelledby="roles-heading"><div class="source-section-heading"><h2 id="roles-heading">Explore careers</h2><a href="/career-academy">Explore all <span aria-hidden="true">›</span></a></div><div class="source-role-grid" data-home-section="explore-careers">{% for card in roles_section.cards %}<a class="source-role-card" data-home-card="{{ card.section_id }}:{{ card.position }}" href="{{ card.href }}"><img src="{{ card.image }}" alt=""><strong>{{ card.title }}</strong><small>{{ card.metadata }}</small></a>{% endfor %}</div></section>
+  <section class="source-career-roles" aria-labelledby="roles-heading"><div class="source-section-heading"><h2 id="roles-heading">Explore careers</h2><a href="/career-academy">Explore all <span aria-hidden="true">›</span></a></div><div class="source-role-grid" data-home-section="explore-careers">{% for card in roles_section.cards %}<a class="source-role-card" data-home-card="{{ card.section_id }}:{{ card.position }}" href="{{ card.href }}"><img src="{{ card.image }}" alt=""><h3>{{ card.title }}</h3><small>{{ card.metadata }}</small></a>{% endfor %}</div></section>
 
   <section class="source-outcomes" aria-labelledby="outcome-heading"><div><h2 id="outcome-heading">91% of learners achieved a positive career outcome</h2><p>They reported new job opportunities, increased knowledge, and improved work performance.</p><a class="link-button primary" href="/explore/learner-outcomes">Learn more <span aria-hidden="true">›</span></a></div><img src="/static/home/career-outcomes-graph.avif" alt="91 percent positive career outcome"></section>
 
-  <section class="home-section home-testimonials" aria-labelledby="testimonials-heading"><h2 id="testimonials-heading">Why people choose Coursera</h2><div class="home-testimonial-grid">{% for name, image, quote in learners %}<figure><figcaption><img src="{{ image }}" alt=""><strong>{{ name }}</strong></figcaption><blockquote>“{{ quote }}”</blockquote></figure>{% endfor %}</div></section>
+  <section class="home-section home-testimonials" aria-labelledby="testimonials-heading"><h2 id="testimonials-heading">Why people choose Coursera</h2><div class="home-testimonial-grid">{% for name, image, quote in learners %}<figure><figcaption><img src="{{ image }}" alt=""><h3>{{ name }}</h3></figcaption><blockquote>“{{ quote }}”</blockquote></figure>{% endfor %}</div></section>
 
   <section class="home-section home-faq" aria-labelledby="faq-heading"><h2 id="faq-heading">Frequently asked questions</h2>{% for question in faqs %}<div class="home-faq-item"><h3><button type="button" data-control-action="toggle-faq" aria-expanded="false" aria-controls="home-faq-answer-{{ loop.index }}">{{ question }}</button></h3><p id="home-faq-answer-{{ loop.index }}" data-faq-panel hidden>Coursera partners with leading universities and companies to offer flexible online learning.</p></div>{% endfor %}</section>
 
