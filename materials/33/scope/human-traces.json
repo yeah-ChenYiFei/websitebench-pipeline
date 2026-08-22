@@ -1,0 +1,144 @@
+{
+  "schema_version": "websitebench.human-trace-inventory.v1",
+  "text_ownership": "human-only",
+  "traces": [
+    {
+      "human_trace_text_id": "trace-001",
+      "text": "Open Coursera's public entry page and use its primary navigation to reach the section for general records and actions; verify the destination heading and canonical path are visible.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-002",
+      "text": "On Coursera, enroll in the \"Deep Learning Specialization\" by reaching the checkout or payment page with enrollment details filled in. Confirm the final review or confirmation view visibly reflects the requested choices and totals.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-003",
+      "text": "Browse coursera's course catalog by subject/category and open a category page.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-004",
+      "text": "Search coursera for a course/class and filter results by level, topic, duration, rating, language, or schedule.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-005",
+      "text": "Open a course page on coursera and inspect syllabus, instructor, prerequisites, reviews, pricing, and enrollment options.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-006",
+      "text": "Open a free preview/sample lesson or inspect course materials before enrolling on coursera.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-007",
+      "text": "Create a learner account on coursera and complete basic profile/onboarding.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-008",
+      "text": "Sign in to coursera and open the learning dashboard or enrolled courses.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-009",
+      "text": "Enroll in a course on coursera, selecting a free/audit or paid track where available.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-010",
+      "text": "Choose a paid course/subscription option on coursera, enter payment details, and reach order review/confirmation.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-011",
+      "text": "Open an enrolled lesson on coursera, play/read the content, and navigate between course units.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-012",
+      "text": "Complete a quiz/exercise/assignment on coursera and review the result or feedback.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-013",
+      "text": "Resume a course from the dashboard, bookmark/save content, and review progress/completion state on coursera.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-014",
+      "text": "Open certificate/completion options or leave a course rating/review and manage learning preferences on coursera.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-015",
+      "text": "Search Coursera for `zzzz-no-match-websitebench`, or apply an impossible public filter when discovery is browse-only, and verify a no-results message plus a route back to available general records and actions.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-016",
+      "text": "Open Coursera's sign-in entry, verify the username or email field and the available password or identity-provider choices, then return without submitting credentials.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-017",
+      "text": "Open Coursera's account-registration entry and verify the visible identity fields, terms links, and verification guidance without creating an account.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-018",
+      "text": "From Coursera's sign-in surface, open password recovery and verify the reset-address field, validation guidance, and return-to-sign-in link without sending a reset message.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-019",
+      "text": "With seeded offline data present, open Coursera's account history for general records and actions; verify the newest item exposes its status, detail, edit or cancellation options, and a route back to the relevant collection.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-020",
+      "text": "Open a Coursera action for general records and actions with required fields empty or while signed out and verify inline validation or a permission prompt identifies what must be corrected before continuation.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-021",
+      "text": "Open Coursera's public help, support, or contact entry and verify a user can reach guidance for general records and actions, account access, and failed actions without exposing private account data.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-022",
+      "text": "Open a non-existent Coursera deep link and verify a branded not-found or recovery view preserves primary navigation and provides a safe route back to general records and actions.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    },
+    {
+      "human_trace_text_id": "trace-023",
+      "text": "Starting at Coursera's public entry, complete task 265: On Coursera, enroll in the \"Deep Learning Specialization\" by reaching the checkout or payment page with enrollment details filled in. Confirm the final review or confirmation view visibly reflects the requested choices and totals.",
+      "source": "initial-user-input",
+      "status": "confirmed"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}} | Crumbl Cookies</title>
+<meta name="description" content="{{description}}">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/assets/2026-08-20.crumbl-cookies-r1/crumblcookies.com/favicons/favicon-16x16.png">
+<link rel="stylesheet" href="/static/site/home.css">
+<style>
+.profile-wrap { max-width: 1080px; margin: 0 auto; padding: 7.5rem 1.5rem 4rem; }
+.profile-card { display: flex; flex-direction: column; gap: 2rem; }
+@media (min-width: 900px) { .profile-card { flex-direction: row; align-items: flex-start; } }
+.profile-media { width: 100%; max-width: 560px; border-radius: 2rem; align-self: flex-start; }
+.profile-info { flex: 1; min-width: 0; }
+.profile-badge { display: inline-block; padding: 3px 18px; background: var(--color-primary); border-radius: 7.5px; font-size: 1rem; margin-bottom: 0.75rem; }
+.profile-name { margin: 0 0 1rem; font-size: 3rem; line-height: 1.05; font-weight: 800; }
+.profile-desc { margin: 0 0 1.5rem; font-size: 1.125rem; line-height: 1.5; }
+.rating { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1.5rem; font-weight: 700; }
+.rating .stars { color: var(--color-ink); letter-spacing: 0.1em; }
+.rating .count { color: #666; font-weight: 400; }
+.nutrition { border: 1px solid rgba(0,0,0,.12); border-radius: 1rem; padding: 1.25rem; margin-bottom: 1.5rem; }
+.nutrition h2 { margin: 0 0 0.75rem; font-size: 1.25rem; }
+.nutrition table { width: 100%; border-collapse: collapse; }
+.nutrition td { padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,.06); }
+.nutrition td:last-child { text-align: right; font-weight: 700; }
+.allergens { margin: 0 0 2rem; }
+.allergens strong { display: block; margin-bottom: 0.25rem; }
+.profile-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.back-link { display: inline-block; margin-top: 2rem; color: var(--color-ink); }
+.reviews-section { margin-top: 3rem; }
+.reviews-head { margin-bottom: 1rem; }
+.reviews-head h2 { font-size: 1.75rem; font-weight: 800; margin: 0 0 0.25rem; }
+.reviews-head p { margin: 0; color: #555; }
+.review-item { border-top: 1px solid rgba(0,0,0,.08); padding: 1.25rem 0; }
+.review-item p { margin: 0 0 0.4rem; line-height: 1.5; }
+.review-item .review-author { font-weight: 700; font-size: 0.95rem; }
+.review-write-prompt { margin-top: 1.5rem; padding: 1.25rem; border-radius: 1rem; background: var(--color-primary-light); color: #333; }
+.rating-line { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1.5rem; font-weight: 700; }
+.rating-line .stars { color: var(--color-ink); letter-spacing: 0.1em; }
+.rating-line .count { color: #666; font-weight: 400; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="menu-icon" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <span class="menu-label">Menu</span>
+    </button>
+    <a class="logo" href="/" aria-label="Crumbl Cookies logo">
+      <svg class="logo-svg" viewBox="0 0 220 60" role="img" aria-hidden="true">
+        <text x="8" y="44" font-size="42" font-weight="800" fill="#000">Crumbl</text>
+      </svg>
+    </a>
+    <div class="header-actions">
+      <a class="btn-pill btn-dark" href="/order">Order Now</a>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+    <a href="/">Home</a>
+    <a href="/order">Order</a>
+    <a href="/stores">Locations</a>
+    <a href="/catering">Catering</a>
+    <a href="/giftcards">Gift Cards</a>
+    <a href="/external/merch.crumbl.com">Merch</a>
+    <a href="/menu">Menu</a>
+    <a href="/order/carry_out">Order Now</a>
+    <a href="/login">Sign in</a>
+  </nav>
+</header>
+
+<main id="main-content">
+  <div class="profile-wrap">
+    <article class="profile-card">
+      <img class="profile-media" src="{{image}}" alt="{{title}}" loading="eager">
+      <div class="profile-info">
+        <span class="profile-badge">{{badge}}</span>
+        <h1 class="profile-name">{{title}}</h1>
+        <p class="profile-desc">{{description}}</p>
+        <p class="rating">
+          <span class="stars">★ {{rating}}</span>
+          <span class="count">({{review_count}} reviews)</span>
+        </p>
+        <div class="nutrition">
+          <h2>Nutrition &amp; Allergens</h2>
+          <table>
+            <tr><td>Calories</td><td>{{calories}}</td></tr>
+            <tr><td>Total Fat</td><td>{{total_fat}}</td></tr>
+            <tr><td>Saturated Fat</td><td>{{saturated_fat}}</td></tr>
+            <tr><td>Cholesterol</td><td>{{cholesterol}}</td></tr>
+            <tr><td>Sodium</td><td>{{sodium}}</td></tr>
+            <tr><td>Total Carbohydrates</td><td>{{carbohydrate}}</td></tr>
+            <tr><td>Sugars</td><td>{{sugars}}</td></tr>
+            <tr><td>Protein</td><td>{{protein}}</td></tr>
+          </table>
+        </div>
+        <p class="allergens"><strong>Allergens</strong>{{allergens}}</p>
+        <div class="profile-actions">
+          <a class="btn-pill btn-dark" href="/order">Order Now</a>
+          <button type="button" class="btn-pill btn-white" id="favorite-btn" data-slug="{{slug}}">Add To Favorites</button>
+        </div>
+      </div>
+    </article>
+
+    <section class="reviews-section" aria-labelledby="reviews-title">
+      <div class="reviews-head">
+        <h2 id="reviews-title">Top reviews</h2>
+        <p>Based on the highest ratings</p>
+      </div>
+      <div class="review-list">
+        {{reviews}}
+      </div>
+      <div class="review-write-prompt">
+        Tried this cookie? Download the Crumbl App to write a review!
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <nav class="footer-inner" aria-label="Footer">
+    <div class="footer-col">
+      <p class="footer-heading">Company</p>
+      <a href="/rewards">Rewards</a>
+      <a href="/our-story">Our story</a>
+      <a href="/contact">Support</a>
+      <a href="/allergens">Allergens</a>
+      <a href="/blog">Blog</a>
+      <a href="/giftcard-balance">Gift Card Balance</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Flavors</p>
+      <a href="/flavors/secret-menu">Flavor Map</a>
+      <a href="/dirty-sodas">Dirty Sodas</a>
+      <a href="/flavor-vote">Fan Favorites Vote</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Get Involved</p>
+      <a href="/press">Press</a>
+      <a href="/collaborate">Collaborate</a>
+      <a href="/franchising">Franchising</a>
+      <a href="/jobs">Franchise Store Jobs</a>
+      <a href="/careers">HQ Careers</a>
+      <a href="/crumbl-cares">Crumbl Cares</a>
+    </div>
+  </nav>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 all rights reserved. | <a href="/external/www.openstreetmap.org/copyright">Map data © OpenStreetMap contributors</a></p>
+    <p class="footer-legal">
+      <a href="/privacy">Privacy policy</a>
+      <span class="legal-sep">|</span>
+      <a href="/termsandconditions">Terms and Conditions</a>
+      <span class="legal-sep">|</span>
+      <a href="/digital-giftcard-terms-and-conditions">Gift Card/Voucher Terms</a>
+    </p>
+  </div>
+</footer>
+
+<script src="/static/site/home.js" defer></script>
+<script src="/static/site/profile.js" defer></script>
+</body>
+</html>

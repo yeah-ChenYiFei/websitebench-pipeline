@@ -1,0 +1,296 @@
+{
+ "schema_version": "websitebench.offline-clone.visual-comparison-spec.v1",
+ "note": "Current acceptance viewport 1692x979. Source rasters are anonymous public captures of https://www.coursera.org/ (2026-08-21); candidates are captured by capture_desktop_visuals.py against the local clone. Diagnostic-only.",
+ "checkpoints": [
+  {
+   "id": "home.loaded.desktop",
+   "source": {
+    "path": "../source-evidence/visual-baseline-2026-08-21/home.png"
+   },
+   "candidate": {
+    "path": "candidate-desktop/home.loaded.desktop.png"
+   },
+   "viewport": {
+    "width": 1692,
+    "height": 979
+   },
+   "capture_mode": "viewport",
+   "regions": [
+    {
+     "id": "header",
+     "x": 0,
+     "y": 0,
+     "width": 1692,
+     "height": 110,
+     "metric": "ssim",
+     "threshold": 0.5
+    },
+    {
+     "id": "promotion-rail",
+     "x": 0,
+     "y": 110,
+     "width": 1692,
+     "height": 400,
+     "metric": "ssim",
+     "threshold": 0.5
+    },
+    {
+     "id": "primary-content",
+     "x": 80,
+     "y": 510,
+     "width": 1532,
+     "height": 469,
+     "metric": "ssim",
+     "threshold": 0.5
+    }
+   ]
+  },
+  {
+   "id": "browse.loaded.desktop",
+   "source": {
+    "path": "../source-evidence/visual-baseline-2026-08-21/browse.png"
+   },
+   "candidate": {
+    "path": "candidate-desktop/browse.loaded.desktop.png"
+   },
+   "viewport": {
+    "width": 1692,
+    "height": 979
+   },
+   "capture_mode": "viewport",
+   "regions": [
+    {
+     "id": "header",
+     "x": 0,
+     "y": 0,
+     "width": 1692,
+     "height": 110,
+     "metric": "ssim",
+     "threshold": 0.5
+    },
+    {
+     "id": "primary-content",
+     "x": 80,
+     "y": 110,
+     "width": 1532,
+     "height": 869,
+     "metric": "ssim",
+     "threshold": 0.5
+    }
+   ]
+  },
+  {
+   "id": "search.results.desktop",
+   "source": {
+    "path": "../source-evidence/visual-baseline-2026-08-21/search.png"
+   },
+   "candidate": {
+    "path": "candidate-desktop/search.results.desktop.png"
+   },
+   "viewport": {
+    "width": 1692,
+    "height": 979
+   },
+   "capture_mode": "viewport",
+   "regions": [
+    {
+     "id": "header",
+     "x": 0,
+     "y": 0,
+     "width": 1692,
+     "height": 110,
+     "metric": "ssim",
+     "threshold": 0.5
+    },
+    {
+     "id": "filters",
+     "x": 80,
+     "y": 110,
+     "width": 320,
+     "height": 869,
+     "metric": "ssim",
+     "threshold": 0.5
+    },
+    {
+     "id": "results",
+     "x": 400,
+     "y": 110,
+     "width": 1212,
+     "height": 869,
+     "metric": "ssim",
+     "threshold": 0.5
+    }
+   ]
+  },
+  {
+   "id": "specialization.loaded.desktop",
+   "source": {
+    "path": "../source-evidence/visual-baseline-2026-08-21/specialization.png"
+   },
+   "candidate": {
+    "path": "candidate-desktop/specialization.loaded.desktop.png"
+   },
+   "viewport": {
+    "width": 1692,
+    "height": 979
+   },
+   "capture_mode": "viewport",
+   "regions": [
+    {
+     "id": "header",
+     "x": 0,
+     "y": 0,
+     "width": 1692,
+     "height": 110,
+     "metric": "ssim",
+     "threshold": 0.5
+    },
+    {
+     "id": "hero",
+     "x": 80,
+     "y": 110,
+     "width": 1532,
+     "height": 420,
+     "metric": "ssim",
+     "threshold": 0.5
+    }
+   ]
+  },
+  {
+   "id": "course.loaded.desktop",
+   "source": {
+    "path": "../source-evidence/visual-baseline-2026-08-21/course.png"
+   },
+   "candidate": {
+    "path": "candidate-desktop/course.loaded.desktop.png"
+   },
+   "viewport": {
+    "width": 1692,
+    "height": 979
+   },
+   "capture_mode": "viewport",
+   "regions": [
+    {
+     "id": "header",
+     "x": 0,
+     "y": 0,
+     "width": 1692,
+     "height": 110,
+     "metric": "ssim",
+     "threshold": 0.5
+    },
+    {
+     "id": "hero",
+     "x": 80,
+     "y": 110,
+     "width": 1532,
+     "height": 460,
+     "metric": "ssim",
+     "threshold": 0.5
+    }
+   ]
+  },
+  {
+   "id": "login.loaded.desktop",
+   "source": {
+    "path": "../source-evidence/visual-baseline-2026-08-21/login.png"
+   },
+   "candidate": {
+    "path": "candidate-desktop/login.loaded.desktop.png"
+   },
+   "viewport": {
+    "width": 1692,
+    "height": 979
+   },
+   "capture_mode": "viewport",
+   "regions": [
+    {
+     "id": "header",
+     "x": 0,
+     "y": 0,
+     "width": 1692,
+     "height": 110,
+     "metric": "ssim",
+     "threshold": 0.5
+    },
+    {
+     "id": "auth-surface",
+     "x": 460,
+     "y": 110,
+     "width": 772,
+     "height": 869,
+     "metric": "ssim",
+     "threshold": 0.5
+    }
+   ]
+  },
+  {
+   "id": "help.loaded.desktop",
+   "source": {
+    "path": "../source-evidence/visual-baseline-2026-08-21/help.png"
+   },
+   "candidate": {
+    "path": "candidate-desktop/help.loaded.desktop.png"
+   },
+   "viewport": {
+    "width": 1692,
+    "height": 979
+   },
+   "capture_mode": "viewport",
+   "regions": [
+    {
+     "id": "header",
+     "x": 0,
+     "y": 0,
+     "width": 1692,
+     "height": 110,
+     "metric": "ssim",
+     "threshold": 0.5
+    },
+    {
+     "id": "primary-content",
+     "x": 80,
+     "y": 110,
+     "width": 1532,
+     "height": 869,
+     "metric": "ssim",
+     "threshold": 0.5
+    }
+   ]
+  },
+  {
+   "id": "not-found.loaded.desktop",
+   "source": {
+    "path": "../source-evidence/visual-baseline-2026-08-21/not-found.png"
+   },
+   "candidate": {
+    "path": "candidate-desktop/not-found.loaded.desktop.png"
+   },
+   "viewport": {
+    "width": 1692,
+    "height": 979
+   },
+   "capture_mode": "viewport",
+   "regions": [
+    {
+     "id": "header",
+     "x": 0,
+     "y": 0,
+     "width": 1692,
+     "height": 110,
+     "metric": "ssim",
+     "threshold": 0.5
+    },
+    {
+     "id": "recovery",
+     "x": 80,
+     "y": 110,
+     "width": 1532,
+     "height": 869,
+     "metric": "ssim",
+     "threshold": 0.5
+    }
+   ]
+  }
+ ]
+}

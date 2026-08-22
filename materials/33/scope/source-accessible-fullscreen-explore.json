@@ -1,0 +1,188 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-accessible-fullscreen-public-spine",
+  "viewport": {"width": 1692, "height": 979},
+  "timeout_ms": 45000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://images.ctfassets.net",
+      "https://coursera_assets.s3.amazonaws.com"
+    ],
+    "clone": ["http://127.0.0.1:8044"]
+  },
+  "steps": [
+    {
+      "id": "home",
+      "action": "goto",
+      "path": "/",
+      "observations": [
+        {"id": "home-route", "kind": "url_path"},
+        {"id": "home-title", "kind": "title"},
+        {"id": "home-h1-count", "kind": "count", "selector": "h1"},
+        {"id": "home-text", "kind": "text", "selector": "body"}
+      ],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "browse",
+      "action": "goto",
+      "path": "/browse",
+      "observations": [
+        {"id": "browse-route", "kind": "url_path"},
+        {"id": "browse-title", "kind": "title"},
+        {"id": "browse-h1-count", "kind": "count", "selector": "h1"},
+        {"id": "browse-text", "kind": "text", "selector": "body"}
+      ],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "category-arts-humanities",
+      "action": "goto",
+      "path": "/browse/arts-and-humanities",
+      "observations": [{"id": "arts-route", "kind": "url_path"}, {"id": "arts-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "category-business",
+      "action": "goto",
+      "path": "/browse/business",
+      "observations": [{"id": "business-route", "kind": "url_path"}, {"id": "business-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "category-computer-science",
+      "action": "goto",
+      "path": "/browse/computer-science",
+      "observations": [{"id": "computer-science-route", "kind": "url_path"}, {"id": "computer-science-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "category-data-science",
+      "action": "goto",
+      "path": "/browse/data-science",
+      "observations": [{"id": "data-science-route", "kind": "url_path"}, {"id": "data-science-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "category-health",
+      "action": "goto",
+      "path": "/browse/health",
+      "observations": [{"id": "health-route", "kind": "url_path"}, {"id": "health-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "category-information-technology",
+      "action": "goto",
+      "path": "/browse/information-technology",
+      "observations": [{"id": "information-technology-route", "kind": "url_path"}, {"id": "information-technology-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "category-language-learning",
+      "action": "goto",
+      "path": "/browse/language-learning",
+      "observations": [{"id": "language-learning-route", "kind": "url_path"}, {"id": "language-learning-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "category-math-logic",
+      "action": "goto",
+      "path": "/browse/math-and-logic",
+      "observations": [{"id": "math-logic-route", "kind": "url_path"}, {"id": "math-logic-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "category-personal-development",
+      "action": "goto",
+      "path": "/browse/personal-development",
+      "observations": [{"id": "personal-development-route", "kind": "url_path"}, {"id": "personal-development-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "category-physical-science-engineering",
+      "action": "goto",
+      "path": "/browse/physical-science-and-engineering",
+      "observations": [{"id": "physical-science-route", "kind": "url_path"}, {"id": "physical-science-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "category-social-sciences",
+      "action": "goto",
+      "path": "/browse/social-sciences",
+      "observations": [{"id": "social-sciences-route", "kind": "url_path"}, {"id": "social-sciences-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "search-deep-learning",
+      "action": "goto",
+      "path": "/search?query=deep%20learning",
+      "observations": [{"id": "search-route", "kind": "url_path"}, {"id": "search-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "search-no-results",
+      "action": "goto",
+      "path": "/search?query=zzzz-no-match-websitebench",
+      "observations": [{"id": "no-results-route", "kind": "url_path"}, {"id": "no-results-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "deep-learning-specialization",
+      "action": "goto",
+      "path": "/specializations/deep-learning",
+      "observations": [{"id": "specialization-route", "kind": "url_path"}, {"id": "specialization-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "neural-networks-course",
+      "action": "goto",
+      "path": "/learn/neural-networks-deep-learning",
+      "observations": [{"id": "course-route", "kind": "url_path"}, {"id": "course-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "login-entry",
+      "action": "goto",
+      "path": "/login",
+      "observations": [{"id": "login-route", "kind": "url_path"}, {"id": "login-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "signup-entry",
+      "action": "goto",
+      "path": "/signup",
+      "observations": [{"id": "signup-route", "kind": "url_path"}, {"id": "signup-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "not-found",
+      "action": "goto",
+      "path": "/websitebench-non-existent-coursera-deep-link",
+      "observations": [{"id": "not-found-route", "kind": "url_path"}, {"id": "not-found-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    }
+  ]
+}

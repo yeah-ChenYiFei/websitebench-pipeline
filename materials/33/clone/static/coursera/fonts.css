@@ -1,0 +1,61 @@
+/* Owner-authorized @font-face registrations matching the live Coursera site
+   (measured 2026-08-21). The captured page bundles reference these families
+   but declare the faces in a shared type bundle, so the latin subsets the
+   clone needs are pinned here against the localized asset files. */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400 700;
+  src: url(assets/ss3-latin-normal.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+2000-206F;
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400 700;
+  src: url(assets/ss3-latin-ext-normal.woff2) format("woff2");
+  unicode-range: U+0100-024F;
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400 700;
+  src: url(assets/ss3-latin.woff2) format("woff2");
+  unicode-range: U+0102-0103, U+1EA0-1EF9;
+}
+@font-face {
+  font-family: OpenSans;
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/opensans-regular.woff2) format("woff2");
+}
+@font-face {
+  font-family: OpenSans;
+  font-style: normal;
+  font-weight: 300;
+  src: url(assets/opensans-300.woff2) format("woff2");
+}
+@font-face {
+  font-family: OpenSans;
+  font-style: normal;
+  font-weight: 600;
+  src: url(assets/opensans-600.woff2) format("woff2");
+}
+@font-face {
+  font-family: OpenSans;
+  font-style: normal;
+  font-weight: 700;
+  src: url(assets/opensans-700.woff2) format("woff2");
+}
+@font-face {
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/Merriweather-Regular.woff2) format("woff2");
+}
+@font-face {
+  font-family: Merriweather-Light;
+  font-style: normal;
+  font-weight: 300;
+  src: url(assets/Merriweather-Light.woff2) format("woff2");
+}

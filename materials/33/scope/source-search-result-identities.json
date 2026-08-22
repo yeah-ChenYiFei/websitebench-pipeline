@@ -1,0 +1,52 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-source-search-result-identities",
+  "viewport": {"width": 1191, "height": 979},
+  "timeout_ms": 30000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://coursera-course-photos.s3.amazonaws.com",
+      "https://d15cw65ipctsrr.cloudfront.net",
+      "https://s3.amazonaws.com",
+      "https://coursera_assets.s3.amazonaws.com"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-deep-learning-search",
+      "action": "goto",
+      "path": "/search?query=Deep%20Learning"
+    },
+    {
+      "id": "capture-result-identities",
+      "action": "snapshot",
+      "observations": [
+        {"id": "deep-learning-card", "kind": "text", "selector": "a:has-text('Deep Learning') >> nth=0"},
+        {"id": "deep-learning-href", "kind": "attribute", "selector": "a:has-text('Deep Learning') >> nth=0", "attribute": "href"},
+        {"id": "neural-networks-card", "kind": "text", "selector": "a:has-text('Neural Networks and Deep Learning') >> nth=0"},
+        {"id": "neural-networks-href", "kind": "attribute", "selector": "a:has-text('Neural Networks and Deep Learning') >> nth=0", "attribute": "href"},
+        {"id": "ibm-deep-learning-card", "kind": "text", "selector": "a:has-text('IBM Deep Learning with PyTorch, Keras and Tensorflow') >> nth=0"},
+        {"id": "ibm-deep-learning-href", "kind": "attribute", "selector": "a:has-text('IBM Deep Learning with PyTorch, Keras and Tensorflow') >> nth=0", "attribute": "href"},
+        {"id": "pytorch-card", "kind": "text", "selector": "a:has-text('PyTorch for Deep Learning') >> nth=0"},
+        {"id": "pytorch-href", "kind": "attribute", "selector": "a:has-text('PyTorch for Deep Learning') >> nth=0", "attribute": "href"},
+        {"id": "machine-learning-card", "kind": "text", "selector": "a:has-text('Machine Learning') >> nth=0"},
+        {"id": "machine-learning-href", "kind": "attribute", "selector": "a:has-text('Machine Learning') >> nth=0", "attribute": "href"},
+        {"id": "keras-card", "kind": "text", "selector": "a:has-text('Introduction to Deep Learning & Neural Networks with Keras') >> nth=0"},
+        {"id": "keras-href", "kind": "attribute", "selector": "a:has-text('Introduction to Deep Learning & Neural Networks with Keras') >> nth=0", "attribute": "href"},
+        {"id": "ibm-pytorch-card", "kind": "text", "selector": "a:has-text('Deep Learning with PyTorch') >> nth=0"},
+        {"id": "ibm-pytorch-href", "kind": "attribute", "selector": "a:has-text('Deep Learning with PyTorch') >> nth=0", "attribute": "href"},
+        {"id": "ibm-ai-engineering-card", "kind": "text", "selector": "a:has-text('IBM AI Engineering') >> nth=0"},
+        {"id": "ibm-ai-engineering-href", "kind": "attribute", "selector": "a:has-text('IBM AI Engineering') >> nth=0", "attribute": "href"},
+        {"id": "engineering-card", "kind": "text", "selector": "a:has-text('Deep Learning Engineering') >> nth=0"},
+        {"id": "engineering-href", "kind": "attribute", "selector": "a:has-text('Deep Learning Engineering') >> nth=0", "attribute": "href"},
+        {"id": "educba-card", "kind": "text", "selector": "a:has-text('Deep Learning with Python: CNN, ANN & RNN') >> nth=0"},
+        {"id": "educba-href", "kind": "attribute", "selector": "a:has-text('Deep Learning with Python: CNN, ANN & RNN') >> nth=0", "attribute": "href"},
+        {"id": "pearson-card", "kind": "text", "selector": "a:has-text('Learning Deep Learning') >> nth=0"},
+        {"id": "pearson-href", "kind": "attribute", "selector": "a:has-text('Learning Deep Learning') >> nth=0", "attribute": "href"}
+      ]
+    }
+  ]
+}

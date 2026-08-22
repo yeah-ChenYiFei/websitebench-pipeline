@@ -1,0 +1,53 @@
+{
+  "schema_version": "websitebench.visual-checkpoints.v1",
+  "viewports": [
+    "desktop-1440",
+    "mobile-390"
+  ],
+  "checkpoints": [
+    {
+      "id": "home",
+      "route": "/"
+    },
+    {
+      "id": "housing-index",
+      "route": "/search/area/toronto?cat=hhh"
+    },
+    {
+      "id": "housing-sublets",
+      "route": "/search/area/toronto?cat=sub"
+    },
+    {
+      "id": "search-results",
+      "route": "/search/area/toronto?query=annex"
+    },
+    {
+      "id": "search-no-results",
+      "route": "/search/area/toronto?query=zzzz-no-match-websitebench"
+    },
+    {
+      "id": "listing-detail",
+      "route": "/view/d/1br-near-annex-furnished-sublet-jul-aug/4c93"
+    },
+    {
+      "id": "login",
+      "route": "/account/login"
+    },
+    {
+      "id": "register",
+      "route": "/account/register"
+    },
+    {
+      "id": "forgot",
+      "route": "/account/forgot"
+    },
+    {
+      "id": "help",
+      "route": "/about/help"
+    },
+    {
+      "id": "not-found",
+      "route": "/view/d/does-not-exist/zzzzzz"
+    }
+  ]
+}

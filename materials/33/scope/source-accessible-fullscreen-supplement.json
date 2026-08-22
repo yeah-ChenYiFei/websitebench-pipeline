@@ -1,0 +1,105 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-accessible-fullscreen-public-supplement",
+  "viewport": {"width": 1692, "height": 979},
+  "timeout_ms": 45000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://www.coursera.support",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://images.ctfassets.net",
+      "https://coursera-course-photos.s3.amazonaws.com",
+      "https://d15cw65ipctsrr.cloudfront.net",
+      "https://s3.amazonaws.com",
+      "https://coursera_assets.s3.amazonaws.com"
+    ],
+    "clone": ["http://127.0.0.1:8044"]
+  },
+  "steps": [
+    {
+      "id": "help-entry",
+      "action": "goto",
+      "path": "/help",
+      "observations": [{"id": "help-route", "kind": "url_path"}, {"id": "help-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "contact-entry",
+      "action": "goto",
+      "path": "/about/contact",
+      "observations": [{"id": "contact-route", "kind": "url_path"}, {"id": "contact-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "reset-password-entry",
+      "action": "goto",
+      "path": "/reset-password",
+      "observations": [{"id": "reset-route", "kind": "url_path"}, {"id": "reset-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "ai-for-everyone-course",
+      "action": "goto",
+      "path": "/learn/ai-for-everyone",
+      "observations": [{"id": "preview-course-route", "kind": "url_path"}, {"id": "preview-course-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "home-for-explore",
+      "action": "goto",
+      "path": "/"
+    },
+    {
+      "id": "open-explore-menu",
+      "action": "hover",
+      "selector": "button[data-testid='megamenu-explore-button']"
+    },
+    {
+      "id": "capture-explore-menu",
+      "action": "snapshot",
+      "observations": [{"id": "explore-text", "kind": "text", "selector": "body"}, {"id": "explore-links", "kind": "count", "selector": "a"}],
+      "screenshot": true,
+      "full_page": false
+    },
+    {
+      "id": "search-for-filter",
+      "action": "goto",
+      "path": "/search?query=deep%20learning"
+    },
+    {
+      "id": "open-filter-sort",
+      "action": "click",
+      "selector": "button:has-text('Filter & Sort')"
+    },
+    {
+      "id": "capture-filter-sort",
+      "action": "snapshot",
+      "observations": [{"id": "filter-text", "kind": "text", "selector": "body"}, {"id": "filter-checkboxes", "kind": "count", "selector": "input[type='checkbox']"}, {"id": "filter-radios", "kind": "count", "selector": "input[type='radio']"}],
+      "screenshot": true,
+      "full_page": false
+    },
+    {
+      "id": "specialization-for-signed-out-enroll",
+      "action": "goto",
+      "path": "/specializations/deep-learning"
+    },
+    {
+      "id": "open-signed-out-enrollment",
+      "action": "click",
+      "selector": "button:has-text('Enroll for free')"
+    },
+    {
+      "id": "capture-signed-out-enrollment",
+      "action": "snapshot",
+      "observations": [{"id": "signed-out-route", "kind": "url_path"}, {"id": "signed-out-text", "kind": "text", "selector": "body"}],
+      "screenshot": true,
+      "full_page": false
+    }
+  ]
+}

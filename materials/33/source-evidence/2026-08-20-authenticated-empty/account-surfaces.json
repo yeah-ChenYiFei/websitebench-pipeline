@@ -1,0 +1,64 @@
+{
+  "schema_version": "coursera-authenticated-empty-surfaces.v1",
+  "capture_mode": "temporary-user-authenticated-read-only",
+  "observed_locale": "zh-CN",
+  "viewport": {"width": 1692, "height": 979},
+  "privacy": {
+    "credentials_persisted": false,
+    "storage_state_persisted": false,
+    "personal_identifiers_persisted": false,
+    "email_values": "redacted",
+    "payment_values": "not_entered"
+  },
+  "surfaces": [
+    {
+      "requested_path": "/my-learning",
+      "observed_path": "/my-learning",
+      "title": "Coursera | Online Courses From Top Universities. Join for Free",
+      "state": "empty-learning-dashboard",
+      "headings": ["[redacted-greeting]", "开始学习之旅", "Cookies Preference Center"],
+      "controls": ["编辑目标"],
+      "observations": [
+        "No enrolled-course cards were visible.",
+        "A learning-goal route was exposed from the empty state."
+      ],
+      "local_paths": ["/career-academy/roles/data-scientist", "/career-academy/roles/machine-learning-engineer", "/career-academy/roles/content-creator", "/onboarding/learning-goal"]
+    },
+    {
+      "requested_path": "/my-purchases",
+      "observed_path": "/my-purchases/transactions",
+      "title": "我的购买 | Coursera",
+      "state": "empty-purchases-with-recommendations",
+      "headings": ["购买", "Recently Viewed Products", "Get Started with These Free Courses", "获得您的学位", "Cookies Preference Center"],
+      "controls": ["支付记录", "显示另外 8 个"],
+      "observations": [
+        "No payment form or transaction submission control was opened.",
+        "The page exposes course, degree, certificate, and search links."
+      ]
+    },
+    {
+      "requested_path": "/account-settings",
+      "observed_path": "/account-settings",
+      "title": "My Account Settings | Coursera",
+      "state": "account-settings",
+      "headings": ["帐户设置", "个人信息", "资料照片", "外观", "音效", "姓名验证", "更改密码", "双重认证", "互联设备", "已关联的帐号", "学生数据报告", "删除帐户"],
+      "controls": [],
+      "observations": [
+        "Personal values were not captured.",
+        "No password, recovery, deletion, or account mutation was submitted."
+      ]
+    },
+    {
+      "requested_path": "/updates",
+      "observed_path": "/updates",
+      "title": "Coursera | Online Courses From Top Universities. Join for Free",
+      "state": "notifications",
+      "headings": ["更新", "Cookies Preference Center"],
+      "controls": [],
+      "observations": [
+        "A confirmation-email notification was visible with its address redacted.",
+        "No notification action or email send was submitted."
+      ]
+    }
+  ]
+}

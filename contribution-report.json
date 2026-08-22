@@ -1,0 +1,2770 @@
+{
+  "authority": "diagnostic-only",
+  "backend": {
+    "database_identity": {
+      "data_dir": "data",
+      "filename": "33.sqlite3"
+    },
+    "deployment_profiles": [
+      "cloudflare-review",
+      "docker-volume",
+      "offline-harbor"
+    ],
+    "mail_purposes": [
+      "password-reset",
+      "registration"
+    ],
+    "payment_profile": "local-sandbox",
+    "runtime": "backend/runtime.json",
+    "site_id": "33",
+    "volume_identity": "websitebench-33-data"
+  },
+  "bundle": {
+    "path": "/tmp/contrib-pr.zip",
+    "payload_files": [
+      {
+        "bytes": 12279,
+        "path": "backend/model.json"
+      },
+      {
+        "bytes": 2776,
+        "path": "backend/runtime.json"
+      },
+      {
+        "bytes": 933,
+        "path": "clone.yaml"
+      },
+      {
+        "bytes": 161509,
+        "path": "clone/app.py"
+      },
+      {
+        "bytes": 20659,
+        "path": "clone/backend/assignment_db.py"
+      },
+      {
+        "bytes": 17639,
+        "path": "clone/backend/checkout.py"
+      },
+      {
+        "bytes": 41896,
+        "path": "clone/backend/learning_db.py"
+      },
+      {
+        "bytes": 3470,
+        "path": "clone/backend/site_backend_integration.py"
+      },
+      {
+        "bytes": 17481,
+        "path": "clone/browse_page.py"
+      },
+      {
+        "bytes": 3339,
+        "path": "clone/browser_settle.py"
+      },
+      {
+        "bytes": 18641,
+        "path": "clone/business_category.py"
+      },
+      {
+        "bytes": 7789,
+        "path": "clone/capture_desktop_visuals.py"
+      },
+      {
+        "bytes": 3715,
+        "path": "clone/capture_source_visuals.py"
+      },
+      {
+        "bytes": 6587,
+        "path": "clone/catalog.py"
+      },
+      {
+        "bytes": 16193,
+        "path": "clone/category_page.py"
+      },
+      {
+        "bytes": 748,
+        "path": "clone/course_page.py"
+      },
+      {
+        "bytes": 14401,
+        "path": "clone/data_science_page.py"
+      },
+      {
+        "bytes": 13666,
+        "path": "clone/enrolled_course.py"
+      },
+      {
+        "bytes": 22660,
+        "path": "clone/enrolled_page.py"
+      },
+      {
+        "bytes": 8778,
+        "path": "clone/home_inventory.py"
+      },
+      {
+        "bytes": 7382,
+        "path": "clone/home_page.py"
+      },
+      {
+        "bytes": 9470,
+        "path": "clone/interaction_contract.py"
+      },
+      {
+        "bytes": 6420,
+        "path": "clone/measure_structure_consistency.py"
+      },
+      {
+        "bytes": 3403,
+        "path": "clone/measure_visual_regions.py"
+      },
+      {
+        "bytes": 29,
+        "path": "clone/requirements.txt"
+      },
+      {
+        "bytes": 13702,
+        "path": "clone/search_page.py"
+      },
+      {
+        "bytes": 1888300,
+        "path": "clone/snapshots/business-current.html"
+      },
+      {
+        "bytes": 854,
+        "path": "clone/source_inventory.py"
+      },
+      {
+        "bytes": 4027,
+        "path": "clone/specialization_page.py"
+      },
+      {
+        "bytes": 793,
+        "path": "clone/static/assignment.js"
+      },
+      {
+        "bytes": 6061,
+        "path": "clone/static/auth-desktop.css"
+      },
+      {
+        "bytes": 2140,
+        "path": "clone/static/auth-dialog.js"
+      },
+      {
+        "bytes": 2186,
+        "path": "clone/static/auth.css"
+      },
+      {
+        "bytes": 46483,
+        "path": "clone/static/authenticated-my-learning-evidence.png"
+      },
+      {
+        "bytes": 18031,
+        "path": "clone/static/browse-prototype.css"
+      },
+      {
+        "bytes": 468328,
+        "path": "clone/static/browse/data-foundations.png"
+      },
+      {
+        "bytes": 80192,
+        "path": "clone/static/browse/deep-learning.png"
+      },
+      {
+        "bytes": 415077,
+        "path": "clone/static/browse/foundations-cybersecurity.png"
+      },
+      {
+        "bytes": 129093,
+        "path": "clone/static/browse/google-data-analytics.png"
+      },
+      {
+        "bytes": 129356,
+        "path": "clone/static/browse/google-project-management.png"
+      },
+      {
+        "bytes": 104746,
+        "path": "clone/static/browse/ibm-ai-product-manager.png"
+      },
+      {
+        "bytes": 14415,
+        "path": "clone/static/browse/lower/degree-berkeley.jpg"
+      },
+      {
+        "bytes": 16382,
+        "path": "clone/static/browse/lower/degree-huddersfield.jpg"
+      },
+      {
+        "bytes": 17832,
+        "path": "clone/static/browse/lower/degree-london.jpg"
+      },
+      {
+        "bytes": 22675,
+        "path": "clone/static/browse/lower/degree-northeastern.jpg"
+      },
+      {
+        "bytes": 1850,
+        "path": "clone/static/browse/lower/logo-alex-genadinik.jpg"
+      },
+      {
+        "bytes": 1650,
+        "path": "clone/static/browse/lower/logo-berkeley.jpg"
+      },
+      {
+        "bytes": 2037,
+        "path": "clone/static/browse/lower/logo-cfi.jpg"
+      },
+      {
+        "bytes": 3106,
+        "path": "clone/static/browse/lower/logo-google.png"
+      },
+      {
+        "bytes": 2979,
+        "path": "clone/static/browse/lower/logo-huddersfield.png"
+      },
+      {
+        "bytes": 2367,
+        "path": "clone/static/browse/lower/logo-ibm.png"
+      },
+      {
+        "bytes": 2668,
+        "path": "clone/static/browse/lower/logo-london.png"
+      },
+      {
+        "bytes": 2365,
+        "path": "clone/static/browse/lower/logo-northeastern.jpg"
+      },
+      {
+        "bytes": 1483,
+        "path": "clone/static/browse/lower/logo-skillup.jpg"
+      },
+      {
+        "bytes": 3140,
+        "path": "clone/static/browse/lower/partner-duke.png"
+      },
+      {
+        "bytes": 3244,
+        "path": "clone/static/browse/lower/partner-google.png"
+      },
+      {
+        "bytes": 2965,
+        "path": "clone/static/browse/lower/partner-ibm.png"
+      },
+      {
+        "bytes": 2834,
+        "path": "clone/static/browse/lower/partner-illinois.png"
+      },
+      {
+        "bytes": 4884,
+        "path": "clone/static/browse/lower/partner-imperial.png"
+      },
+      {
+        "bytes": 2890,
+        "path": "clone/static/browse/lower/partner-michigan.png"
+      },
+      {
+        "bytes": 3959,
+        "path": "clone/static/browse/lower/partner-penn.png"
+      },
+      {
+        "bytes": 2984,
+        "path": "clone/static/browse/lower/partner-stanford.png"
+      },
+      {
+        "bytes": 13033,
+        "path": "clone/static/browse/lower/release-ai-app-deployment.jpg"
+      },
+      {
+        "bytes": 16980,
+        "path": "clone/static/browse/lower/release-anti-money-laundering.jpg"
+      },
+      {
+        "bytes": 9312,
+        "path": "clone/static/browse/lower/release-emotional-intelligence.jpg"
+      },
+      {
+        "bytes": 11435,
+        "path": "clone/static/browse/lower/release-financial-modeling.jpg"
+      },
+      {
+        "bytes": 14692,
+        "path": "clone/static/browse/lower/trending-ai-fundamentals.jpg"
+      },
+      {
+        "bytes": 15341,
+        "path": "clone/static/browse/lower/trending-google-ai-essentials.jpg"
+      },
+      {
+        "bytes": 8278,
+        "path": "clone/static/browse/lower/trending-introduction-ai.jpg"
+      },
+      {
+        "bytes": 173637,
+        "path": "clone/static/browse/python-for-everybody.jpg"
+      },
+      {
+        "bytes": 7020,
+        "path": "clone/static/browse/roles/data-analyst.avif"
+      },
+      {
+        "bytes": 7439,
+        "path": "clone/static/browse/roles/data-scientist.avif"
+      },
+      {
+        "bytes": 7960,
+        "path": "clone/static/browse/roles/it-project-manager.avif"
+      },
+      {
+        "bytes": 8699,
+        "path": "clone/static/browse/roles/machine-learning-engineer.avif"
+      },
+      {
+        "bytes": 437341,
+        "path": "clone/static/browse/technical-support-fundamentals.png"
+      },
+      {
+        "bytes": 664,
+        "path": "clone/static/business-category.js"
+      },
+      {
+        "bytes": 21984,
+        "path": "clone/static/catalog-desktop.css"
+      },
+      {
+        "bytes": 23474,
+        "path": "clone/static/categories/arts-humanities/card-1.png"
+      },
+      {
+        "bytes": 106145,
+        "path": "clone/static/categories/arts-humanities/card-2.png"
+      },
+      {
+        "bytes": 32594,
+        "path": "clone/static/categories/arts-humanities/card-3.png"
+      },
+      {
+        "bytes": 40984,
+        "path": "clone/static/categories/arts-humanities/card-4.png"
+      },
+      {
+        "bytes": 67921,
+        "path": "clone/static/categories/business/card-1.png"
+      },
+      {
+        "bytes": 67371,
+        "path": "clone/static/categories/business/card-2.png"
+      },
+      {
+        "bytes": 59045,
+        "path": "clone/static/categories/business/card-3.png"
+      },
+      {
+        "bytes": 26266,
+        "path": "clone/static/categories/business/card-4.png"
+      },
+      {
+        "bytes": 1183,
+        "path": "clone/static/categories/business/provider-adobe.png"
+      },
+      {
+        "bytes": 23110,
+        "path": "clone/static/categories/business/provider-deeplearning-ai.png"
+      },
+      {
+        "bytes": 38420,
+        "path": "clone/static/categories/business/provider-google.png"
+      },
+      {
+        "bytes": 5784,
+        "path": "clone/static/categories/business/provider-ibm.png"
+      },
+      {
+        "bytes": 919,
+        "path": "clone/static/categories/business/provider-skillup.png"
+      },
+      {
+        "bytes": 27797,
+        "path": "clone/static/categories/business/role-content-creator.png"
+      },
+      {
+        "bytes": 30121,
+        "path": "clone/static/categories/business/role-digital-marketing-specialist.png"
+      },
+      {
+        "bytes": 69010,
+        "path": "clone/static/categories/computer-science/card-1.png"
+      },
+      {
+        "bytes": 39074,
+        "path": "clone/static/categories/computer-science/card-2.png"
+      },
+      {
+        "bytes": 73654,
+        "path": "clone/static/categories/computer-science/card-3.png"
+      },
+      {
+        "bytes": 27063,
+        "path": "clone/static/categories/computer-science/card-4.png"
+      },
+      {
+        "bytes": 25511,
+        "path": "clone/static/categories/health/card-1.png"
+      },
+      {
+        "bytes": 61419,
+        "path": "clone/static/categories/health/card-2.png"
+      },
+      {
+        "bytes": 28568,
+        "path": "clone/static/categories/health/card-3.png"
+      },
+      {
+        "bytes": 85819,
+        "path": "clone/static/categories/health/card-4.png"
+      },
+      {
+        "bytes": 69735,
+        "path": "clone/static/categories/information-technology/card-1.png"
+      },
+      {
+        "bytes": 43546,
+        "path": "clone/static/categories/information-technology/card-2.png"
+      },
+      {
+        "bytes": 49918,
+        "path": "clone/static/categories/information-technology/card-3.png"
+      },
+      {
+        "bytes": 31239,
+        "path": "clone/static/categories/information-technology/card-4.png"
+      },
+      {
+        "bytes": 33632,
+        "path": "clone/static/categories/language-learning/card-1.png"
+      },
+      {
+        "bytes": 38949,
+        "path": "clone/static/categories/language-learning/card-2.png"
+      },
+      {
+        "bytes": 20112,
+        "path": "clone/static/categories/language-learning/card-3.png"
+      },
+      {
+        "bytes": 66491,
+        "path": "clone/static/categories/language-learning/card-4.png"
+      },
+      {
+        "bytes": 31688,
+        "path": "clone/static/categories/math-logic/card-1.png"
+      },
+      {
+        "bytes": 58662,
+        "path": "clone/static/categories/math-logic/card-2.png"
+      },
+      {
+        "bytes": 58674,
+        "path": "clone/static/categories/math-logic/card-3.png"
+      },
+      {
+        "bytes": 33692,
+        "path": "clone/static/categories/math-logic/card-4.png"
+      },
+      {
+        "bytes": 60030,
+        "path": "clone/static/categories/personal-development/card-1.png"
+      },
+      {
+        "bytes": 61430,
+        "path": "clone/static/categories/personal-development/card-2.png"
+      },
+      {
+        "bytes": 33152,
+        "path": "clone/static/categories/personal-development/card-3.png"
+      },
+      {
+        "bytes": 58675,
+        "path": "clone/static/categories/personal-development/card-4.png"
+      },
+      {
+        "bytes": 1794,
+        "path": "clone/static/categories/physical-science-engineering/card-1.png"
+      },
+      {
+        "bytes": 50281,
+        "path": "clone/static/categories/physical-science-engineering/card-2.png"
+      },
+      {
+        "bytes": 71550,
+        "path": "clone/static/categories/physical-science-engineering/card-3.png"
+      },
+      {
+        "bytes": 94841,
+        "path": "clone/static/categories/physical-science-engineering/card-4.png"
+      },
+      {
+        "bytes": 1794,
+        "path": "clone/static/categories/social-sciences/card-1.png"
+      },
+      {
+        "bytes": 87181,
+        "path": "clone/static/categories/social-sciences/card-2.png"
+      },
+      {
+        "bytes": 64163,
+        "path": "clone/static/categories/social-sciences/card-3.png"
+      },
+      {
+        "bytes": 86098,
+        "path": "clone/static/categories/social-sciences/card-4.png"
+      },
+      {
+        "bytes": 12337,
+        "path": "clone/static/category-page.css"
+      },
+      {
+        "bytes": 7693,
+        "path": "clone/static/checkout-desktop.css"
+      },
+      {
+        "bytes": 1326,
+        "path": "clone/static/checkout.css"
+      },
+      {
+        "bytes": 3181,
+        "path": "clone/static/components.css"
+      },
+      {
+        "bytes": 7019,
+        "path": "clone/static/course-desktop.css"
+      },
+      {
+        "bytes": 18498,
+        "path": "clone/static/course-detail-prototype.css"
+      },
+      {
+        "bytes": 19316,
+        "path": "clone/static/coursera/assets/021dd4dc61ee5f5cdf315f43b48c094b.ttf"
+      },
+      {
+        "bytes": 11696,
+        "path": "clone/static/coursera/assets/1e802ca9dedc4ed4e3c6f645e4316128.woff"
+      },
+      {
+        "bytes": 35464,
+        "path": "clone/static/coursera/assets/22086eb5d97009c3e99bcc1d16ce6865.woff"
+      },
+      {
+        "bytes": 16228,
+        "path": "clone/static/coursera/assets/2555754a67062cac3a0913b715ab982f.woff"
+      },
+      {
+        "bytes": 35924,
+        "path": "clone/static/coursera/assets/257023560753aeb0b89b7e434d3da17f.ttf"
+      },
+      {
+        "bytes": 21944,
+        "path": "clone/static/coursera/assets/284a17fe5baf72ff8217d4c7e70c0f82.woff2"
+      },
+      {
+        "bytes": 40992,
+        "path": "clone/static/coursera/assets/291e76b8871b84560701bd29f9d1dcc7.ttf"
+      },
+      {
+        "bytes": 47640,
+        "path": "clone/static/coursera/assets/29c86397e75cdcb3135af8295f1c2e28.ttf"
+      },
+      {
+        "bytes": 19784,
+        "path": "clone/static/coursera/assets/32a5339eb809f381a7357ba56f82aab3.woff2"
+      },
+      {
+        "bytes": 18516,
+        "path": "clone/static/coursera/assets/3fb419559955e3ce75619f1a5e8c6c84.woff"
+      },
+      {
+        "bytes": 20260,
+        "path": "clone/static/coursera/assets/3fe216d2a5f736c560cde71984554b64.woff"
+      },
+      {
+        "bytes": 30960,
+        "path": "clone/static/coursera/assets/4059868e460d2d2e6be18e180d20c43d.ttf"
+      },
+      {
+        "bytes": 20096,
+        "path": "clone/static/coursera/assets/4ad08b826b8065e1eab85324d726538c.woff2"
+      },
+      {
+        "bytes": 25352,
+        "path": "clone/static/coursera/assets/4c57dbc44bfff1fdf08a59cf556fdab3.woff"
+      },
+      {
+        "bytes": 10448,
+        "path": "clone/static/coursera/assets/4ec58befa687e9752c3c91cd9bcf1bcb.woff2"
+      },
+      {
+        "bytes": 29812,
+        "path": "clone/static/coursera/assets/5c58d168c0b66d2c32234a6718e74dfb.ttf"
+      },
+      {
+        "bytes": 32464,
+        "path": "clone/static/coursera/assets/5c734d78610fa35282f3379f866707f2.woff2"
+      },
+      {
+        "bytes": 69520,
+        "path": "clone/static/coursera/assets/5c94aef490324b0925dbe5f643e8fd04.ttf"
+      },
+      {
+        "bytes": 17272,
+        "path": "clone/static/coursera/assets/6cc31ea5c223c88705a13727a71417fa.woff2"
+      },
+      {
+        "bytes": 15732,
+        "path": "clone/static/coursera/assets/6e0830bee40435e72165345e0682fbfc.woff2"
+      },
+      {
+        "bytes": 17572,
+        "path": "clone/static/coursera/assets/727a9b0d97d72d2fc0228fe4e07fb4d8.woff"
+      },
+      {
+        "bytes": 12916,
+        "path": "clone/static/coursera/assets/7342d45b052c3a2abc21049959fbab7f.ttf"
+      },
+      {
+        "bytes": 12064,
+        "path": "clone/static/coursera/assets/755e2491f13b5269f0afd5a56f7aa692.woff2"
+      },
+      {
+        "bytes": 33688,
+        "path": "clone/static/coursera/assets/7dc027cba9f7b11ec92af4a311372a85.ttf"
+      },
+      {
+        "bytes": 8120,
+        "path": "clone/static/coursera/assets/7e02a40c41e52dc3b2b6b197bbdf05ea.ttf"
+      },
+      {
+        "bytes": 10240,
+        "path": "clone/static/coursera/assets/7edb53b6693d75b8a2232481eea1a52c.woff2"
+      },
+      {
+        "bytes": 38868,
+        "path": "clone/static/coursera/assets/7f06b4e30317f784d61d26686aed0ab2.woff"
+      },
+      {
+        "bytes": 30244,
+        "path": "clone/static/coursera/assets/8e1e01c4b1207c0a383d9a2b4f86e637.woff2"
+      },
+      {
+        "bytes": 26228,
+        "path": "clone/static/coursera/assets/99be0e10c38cd42466e6fe1665ef9536.woff"
+      },
+      {
+        "bytes": 39308,
+        "path": "clone/static/coursera/assets/9a2834a9ff8ab411153571e0e55ac693.ttf"
+      },
+      {
+        "bytes": 60784,
+        "path": "clone/static/coursera/assets/9ceff51b3cb7ce6eb4e8efa8163a1472.ttf"
+      },
+      {
+        "bytes": 14288,
+        "path": "clone/static/coursera/assets/Merriweather-Light.woff2"
+      },
+      {
+        "bytes": 13152,
+        "path": "clone/static/coursera/assets/Merriweather-Regular.woff2"
+      },
+      {
+        "bytes": 35660,
+        "path": "clone/static/coursera/assets/a31e7cba7b7221ebf1a2ae545fb306b2.ttf"
+      },
+      {
+        "bytes": 34352,
+        "path": "clone/static/coursera/assets/a48dad4f58c82e38a10da0ceebb86370.ttf"
+      },
+      {
+        "bytes": 70972,
+        "path": "clone/static/coursera/assets/aaf4eee9fba9907d61c3935e0b6a54ae.ttf"
+      },
+      {
+        "bytes": 11016,
+        "path": "clone/static/coursera/assets/ad7672524b64b730dfd176140a8945cb.ttf"
+      },
+      {
+        "bytes": 22324,
+        "path": "clone/static/coursera/assets/b13731ef4e2bfc3d8d859271e39550fc.woff"
+      },
+      {
+        "bytes": 38112,
+        "path": "clone/static/coursera/assets/b741441f6d71014d0453ca3ebc884dd4.woff"
+      },
+      {
+        "bytes": 22088,
+        "path": "clone/static/coursera/assets/b7d9c46bff5d51da6209e355cc4a235d.woff"
+      },
+      {
+        "bytes": 22632,
+        "path": "clone/static/coursera/assets/c4c8cab7d5be97b2bb283e531c077355.woff"
+      },
+      {
+        "bytes": 6988,
+        "path": "clone/static/coursera/assets/coursera-logo.svg"
+      },
+      {
+        "bytes": 24620,
+        "path": "clone/static/coursera/assets/d12ea9efb375f9dc331f562e69892638.ttf"
+      },
+      {
+        "bytes": 11460,
+        "path": "clone/static/coursera/assets/d3b46c3a530116933081d9d74e3e9fe8.woff"
+      },
+      {
+        "bytes": 18684,
+        "path": "clone/static/coursera/assets/d49f2d55ce4f40f982d8ba63d746fbf9.ttf"
+      },
+      {
+        "bytes": 13428,
+        "path": "clone/static/coursera/assets/d524c9a5b62a17f98f4a97af37fea735.woff"
+      },
+      {
+        "bytes": 20360,
+        "path": "clone/static/coursera/assets/d5b59ec9764e10f4a82369ae29f3ac58.woff2"
+      },
+      {
+        "bytes": 19720,
+        "path": "clone/static/coursera/assets/d747bd1e7a6a43864285edd73dcde253.woff2"
+      },
+      {
+        "bytes": 13708,
+        "path": "clone/static/coursera/assets/d929cd671b19f0cfea55b6200fb47461.woff2"
+      },
+      {
+        "bytes": 22748,
+        "path": "clone/static/coursera/assets/e533d5a2506cf053cd671b335ec04dde.woff2"
+      },
+      {
+        "bytes": 32944,
+        "path": "clone/static/coursera/assets/e78e28b4834954df047e4925e9dbf354.woff2"
+      },
+      {
+        "bytes": 44496,
+        "path": "clone/static/coursera/assets/e8b44b990516dab7937bf240fde8b46a.ttf"
+      },
+      {
+        "bytes": 12172,
+        "path": "clone/static/coursera/assets/eb130dcc661de766c999c60ba1525a88.ttf"
+      },
+      {
+        "bytes": 22844,
+        "path": "clone/static/coursera/assets/f0303906c2a67ac63bf1e8ccd638a89e.woff"
+      },
+      {
+        "bytes": 15024,
+        "path": "clone/static/coursera/assets/fba01c9c6fb2866a0f95bcacb2c187a5.woff2"
+      },
+      {
+        "bytes": 44352,
+        "path": "clone/static/coursera/assets/opensans-300.woff2"
+      },
+      {
+        "bytes": 44936,
+        "path": "clone/static/coursera/assets/opensans-600.woff2"
+      },
+      {
+        "bytes": 44988,
+        "path": "clone/static/coursera/assets/opensans-700.woff2"
+      },
+      {
+        "bytes": 43236,
+        "path": "clone/static/coursera/assets/opensans-regular.woff2"
+      },
+      {
+        "bytes": 10333,
+        "path": "clone/static/coursera/assets/promo-bg-web.png"
+      },
+      {
+        "bytes": 60048,
+        "path": "clone/static/coursera/assets/ss3-latin-ext-normal.woff2"
+      },
+      {
+        "bytes": 28792,
+        "path": "clone/static/coursera/assets/ss3-latin-normal.woff2"
+      },
+      {
+        "bytes": 28464,
+        "path": "clone/static/coursera/assets/ss3-latin.woff2"
+      },
+      {
+        "bytes": 77257,
+        "path": "clone/static/coursera/authentication.css"
+      },
+      {
+        "bytes": 249009,
+        "path": "clone/static/coursera/browse.css"
+      },
+      {
+        "bytes": 1125,
+        "path": "clone/static/coursera/cds-variables.css"
+      },
+      {
+        "bytes": 215022,
+        "path": "clone/static/coursera/consumer-description-page.css"
+      },
+      {
+        "bytes": 1727,
+        "path": "clone/static/coursera/fonts.css"
+      },
+      {
+        "bytes": 48564,
+        "path": "clone/static/coursera/front-page.css"
+      },
+      {
+        "bytes": 258726,
+        "path": "clone/static/coursera/search-v2.css"
+      },
+      {
+        "bytes": 14226,
+        "path": "clone/static/data-science-category.css"
+      },
+      {
+        "bytes": 41468,
+        "path": "clone/static/data-science/ai-executives.png"
+      },
+      {
+        "bytes": 15895,
+        "path": "clone/static/data-science/ai-foundations-everyone.png"
+      },
+      {
+        "bytes": 47012,
+        "path": "clone/static/data-science/ai-fundamentals.png"
+      },
+      {
+        "bytes": 34642,
+        "path": "clone/static/data-science/ai-healthcare.png"
+      },
+      {
+        "bytes": 40769,
+        "path": "clone/static/data-science/ai-literacy-everyone.png"
+      },
+      {
+        "bytes": 48849,
+        "path": "clone/static/data-science/applied-data-science-analytics.png"
+      },
+      {
+        "bytes": 52233,
+        "path": "clone/static/data-science/applied-data-science-sql.png"
+      },
+      {
+        "bytes": 29487,
+        "path": "clone/static/data-science/data-science-foundations.png"
+      },
+      {
+        "bytes": 31809,
+        "path": "clone/static/data-science/data-science-python-sql.png"
+      },
+      {
+        "bytes": 28904,
+        "path": "clone/static/data-science/deep-learning.png"
+      },
+      {
+        "bytes": 68210,
+        "path": "clone/static/data-science/degree-colorado.png"
+      },
+      {
+        "bytes": 53883,
+        "path": "clone/static/data-science/degree-huddersfield.png"
+      },
+      {
+        "bytes": 57675,
+        "path": "clone/static/data-science/degree-indian-statistical.png"
+      },
+      {
+        "bytes": 64562,
+        "path": "clone/static/data-science/degree-leeds.png"
+      },
+      {
+        "bytes": 73564,
+        "path": "clone/static/data-science/degree-northeastern.png"
+      },
+      {
+        "bytes": 94169,
+        "path": "clone/static/data-science/degree-pittsburgh.png"
+      },
+      {
+        "bytes": 44079,
+        "path": "clone/static/data-science/foundations-data.png"
+      },
+      {
+        "bytes": 40872,
+        "path": "clone/static/data-science/genai-everyone.png"
+      },
+      {
+        "bytes": 27984,
+        "path": "clone/static/data-science/google-advanced-data-analytics.png"
+      },
+      {
+        "bytes": 46689,
+        "path": "clone/static/data-science/google-ai-essentials.png"
+      },
+      {
+        "bytes": 37775,
+        "path": "clone/static/data-science/google-ai.png"
+      },
+      {
+        "bytes": 36444,
+        "path": "clone/static/data-science/google-analytics-hacks.png"
+      },
+      {
+        "bytes": 25558,
+        "path": "clone/static/data-science/google-analytics-insights.png"
+      },
+      {
+        "bytes": 42554,
+        "path": "clone/static/data-science/google-analytics-marketing-ai.png"
+      },
+      {
+        "bytes": 46826,
+        "path": "clone/static/data-science/google-analytics-seo.png"
+      },
+      {
+        "bytes": 47256,
+        "path": "clone/static/data-science/google-data-analytics.png"
+      },
+      {
+        "bytes": 17161,
+        "path": "clone/static/data-science/ibm-data-analyst.png"
+      },
+      {
+        "bytes": 35134,
+        "path": "clone/static/data-science/ibm-data-analytics.png"
+      },
+      {
+        "bytes": 15558,
+        "path": "clone/static/data-science/ibm-data-science.png"
+      },
+      {
+        "bytes": 53791,
+        "path": "clone/static/data-science/ibm-generative-ai.png"
+      },
+      {
+        "bytes": 32556,
+        "path": "clone/static/data-science/introduction-data-science.png"
+      },
+      {
+        "bytes": 1240,
+        "path": "clone/static/data-science/logo-colorado.png"
+      },
+      {
+        "bytes": 525,
+        "path": "clone/static/data-science/logo-fractal.png"
+      },
+      {
+        "bytes": 487,
+        "path": "clone/static/data-science/logo-leeds.png"
+      },
+      {
+        "bytes": 1534,
+        "path": "clone/static/data-science/logo-pittsburgh.png"
+      },
+      {
+        "bytes": 22938,
+        "path": "clone/static/data-science/machine-learning.png"
+      },
+      {
+        "bytes": 35639,
+        "path": "clone/static/data-science/python-data-science-mistakes.png"
+      },
+      {
+        "bytes": 39750,
+        "path": "clone/static/data-science/starting-data-science-career.png"
+      },
+      {
+        "bytes": 55159,
+        "path": "clone/static/data-science/trending-business-consultants.png"
+      },
+      {
+        "bytes": 34844,
+        "path": "clone/static/data-science/trending-discover-prompting.png"
+      },
+      {
+        "bytes": 61008,
+        "path": "clone/static/data-science/trending-generative-ai-fundamentals.png"
+      },
+      {
+        "bytes": 758,
+        "path": "clone/static/deep-learning-mark.svg"
+      },
+      {
+        "bytes": 12353,
+        "path": "clone/static/deep-learning/app-store.svg"
+      },
+      {
+        "bytes": 8250,
+        "path": "clone/static/deep-learning/b-corp.png"
+      },
+      {
+        "bytes": 39697,
+        "path": "clone/static/deep-learning/company-logos.png"
+      },
+      {
+        "bytes": 128135,
+        "path": "clone/static/deep-learning/course-convolutional.png"
+      },
+      {
+        "bytes": 136212,
+        "path": "clone/static/deep-learning/course-improving-networks.png"
+      },
+      {
+        "bytes": 138743,
+        "path": "clone/static/deep-learning/course-neural-networks.png"
+      },
+      {
+        "bytes": 111954,
+        "path": "clone/static/deep-learning/course-sequence-models.png"
+      },
+      {
+        "bytes": 143470,
+        "path": "clone/static/deep-learning/course-structuring-projects.png"
+      },
+      {
+        "bytes": 13720,
+        "path": "clone/static/deep-learning/google-play.png"
+      },
+      {
+        "bytes": 11090,
+        "path": "clone/static/deep-learning/instructor-andrew-ng.jpg"
+      },
+      {
+        "bytes": 11003,
+        "path": "clone/static/deep-learning/instructor-kian-katan.jpg"
+      },
+      {
+        "bytes": 11504,
+        "path": "clone/static/deep-learning/instructor-younes.jpg"
+      },
+      {
+        "bytes": 3094,
+        "path": "clone/static/deep-learning/linkedin.png"
+      },
+      {
+        "bytes": 311638,
+        "path": "clone/static/deep-learning/promo-business.png"
+      },
+      {
+        "bytes": 456414,
+        "path": "clone/static/deep-learning/promo-degree.png"
+      },
+      {
+        "bytes": 252617,
+        "path": "clone/static/deep-learning/promo-plus.png"
+      },
+      {
+        "bytes": 23110,
+        "path": "clone/static/deep-learning/provider-icon.png"
+      },
+      {
+        "bytes": 28796,
+        "path": "clone/static/deep-learning/source-sans-3.woff2"
+      },
+      {
+        "bytes": 385941,
+        "path": "clone/static/deep-learning/subject-expertise.png"
+      },
+      {
+        "bytes": 94231,
+        "path": "clone/static/deep-learning/testimonial-chaitanya.png"
+      },
+      {
+        "bytes": 142450,
+        "path": "clone/static/deep-learning/testimonial-felipe.png"
+      },
+      {
+        "bytes": 91519,
+        "path": "clone/static/deep-learning/testimonial-jennifer.png"
+      },
+      {
+        "bytes": 73013,
+        "path": "clone/static/deep-learning/testimonial-larry.png"
+      },
+      {
+        "bytes": 1043,
+        "path": "clone/static/desktop-base.css"
+      },
+      {
+        "bytes": 4794,
+        "path": "clone/static/desktop-chrome.css"
+      },
+      {
+        "bytes": 12273,
+        "path": "clone/static/enrolled-learning.css"
+      },
+      {
+        "bytes": 63147,
+        "path": "clone/static/enrolled/assignment/q10-image-1.png"
+      },
+      {
+        "bytes": 83379,
+        "path": "clone/static/enrolled/assignment/q3-image-1.png"
+      },
+      {
+        "bytes": 96174,
+        "path": "clone/static/enrolled/assignment/q5-image-1.png"
+      },
+      {
+        "bytes": 97342,
+        "path": "clone/static/enrolled/assignment/q5-image-2.png"
+      },
+      {
+        "bytes": 88986,
+        "path": "clone/static/enrolled/assignment/q5-image-3.png"
+      },
+      {
+        "bytes": 95580,
+        "path": "clone/static/enrolled/assignment/q5-image-4.png"
+      },
+      {
+        "bytes": 51335,
+        "path": "clone/static/enrolled/assignment/q9-image-1.png"
+      },
+      {
+        "bytes": 1103,
+        "path": "clone/static/hero-learning.svg"
+      },
+      {
+        "bytes": 30599,
+        "path": "clone/static/home-prototype.css"
+      },
+      {
+        "bytes": 297111,
+        "path": "clone/static/home/cards/ai-brainstorming.png"
+      },
+      {
+        "bytes": 14576,
+        "path": "clone/static/home/cards/ai-foundations.png"
+      },
+      {
+        "bytes": 83297,
+        "path": "clone/static/home/cards/ai-healthcare.png"
+      },
+      {
+        "bytes": 3470,
+        "path": "clone/static/home/cards/business-analytics-excel.png"
+      },
+      {
+        "bytes": 162440,
+        "path": "clone/static/home/cards/claude-ai-tools.png"
+      },
+      {
+        "bytes": 47551,
+        "path": "clone/static/home/cards/data-analysis-r.png"
+      },
+      {
+        "bytes": 80192,
+        "path": "clone/static/home/cards/deep-learning.png"
+      },
+      {
+        "bytes": 17990,
+        "path": "clone/static/home/cards/excel-skills.png"
+      },
+      {
+        "bytes": 415077,
+        "path": "clone/static/home/cards/foundations-cybersecurity.png"
+      },
+      {
+        "bytes": 468328,
+        "path": "clone/static/home/cards/foundations-data.png"
+      },
+      {
+        "bytes": 444199,
+        "path": "clone/static/home/cards/foundations-project-management.png"
+      },
+      {
+        "bytes": 113231,
+        "path": "clone/static/home/cards/generative-ai-software.png"
+      },
+      {
+        "bytes": 144429,
+        "path": "clone/static/home/cards/google-advanced-data.png"
+      },
+      {
+        "bytes": 153960,
+        "path": "clone/static/home/cards/google-ai-essentials.png"
+      },
+      {
+        "bytes": 80052,
+        "path": "clone/static/home/cards/google-ai.png"
+      },
+      {
+        "bytes": 120289,
+        "path": "clone/static/home/cards/google-business-intelligence.png"
+      },
+      {
+        "bytes": 125684,
+        "path": "clone/static/home/cards/google-cybersecurity.png"
+      },
+      {
+        "bytes": 109848,
+        "path": "clone/static/home/cards/google-data-analysis-python.png"
+      },
+      {
+        "bytes": 129093,
+        "path": "clone/static/home/cards/google-data-analytics.png"
+      },
+      {
+        "bytes": 129356,
+        "path": "clone/static/home/cards/google-project-management.png"
+      },
+      {
+        "bytes": 90888,
+        "path": "clone/static/home/cards/google-prompting.png"
+      },
+      {
+        "bytes": 104746,
+        "path": "clone/static/home/cards/ibm-ai-product-manager.png"
+      },
+      {
+        "bytes": 14446,
+        "path": "clone/static/home/cards/ibm-data-analyst.png"
+      },
+      {
+        "bytes": 14916,
+        "path": "clone/static/home/cards/ibm-data-science.png"
+      },
+      {
+        "bytes": 67905,
+        "path": "clone/static/home/cards/ibm-fpna.jpeg"
+      },
+      {
+        "bytes": 170445,
+        "path": "clone/static/home/cards/ibm-project-manager.png"
+      },
+      {
+        "bytes": 8337,
+        "path": "clone/static/home/cards/meta-data-analyst.png"
+      },
+      {
+        "bytes": 78392,
+        "path": "clone/static/home/cards/microsoft-ai-ml.png"
+      },
+      {
+        "bytes": 172502,
+        "path": "clone/static/home/cards/microsoft-junior-qa.png"
+      },
+      {
+        "bytes": 14687,
+        "path": "clone/static/home/cards/microsoft-power-bi.png"
+      },
+      {
+        "bytes": 14854,
+        "path": "clone/static/home/cards/microsoft-project-management.png"
+      },
+      {
+        "bytes": 43964,
+        "path": "clone/static/home/cards/pandas-python.png"
+      },
+      {
+        "bytes": 160930,
+        "path": "clone/static/home/cards/project-management.png"
+      },
+      {
+        "bytes": 91200,
+        "path": "clone/static/home/cards/prompt-engineering.png"
+      },
+      {
+        "bytes": 93351,
+        "path": "clone/static/home/cards/python-3-programming.png"
+      },
+      {
+        "bytes": 173637,
+        "path": "clone/static/home/cards/python-for-everybody.jpg"
+      },
+      {
+        "bytes": 113849,
+        "path": "clone/static/home/cards/role-business-intelligence.png"
+      },
+      {
+        "bytes": 36627,
+        "path": "clone/static/home/cards/role-content-creator.png"
+      },
+      {
+        "bytes": 117315,
+        "path": "clone/static/home/cards/role-data-analyst.png"
+      },
+      {
+        "bytes": 115170,
+        "path": "clone/static/home/cards/role-data-scientist.png"
+      },
+      {
+        "bytes": 126408,
+        "path": "clone/static/home/cards/role-machine-learning-engineer.png"
+      },
+      {
+        "bytes": 122248,
+        "path": "clone/static/home/cards/tableau-bi.png"
+      },
+      {
+        "bytes": 23250,
+        "path": "clone/static/home/career-outcomes-graph.avif"
+      },
+      {
+        "bytes": 48670,
+        "path": "clone/static/home/current-promo-barriers.png"
+      },
+      {
+        "bytes": 143997,
+        "path": "clone/static/home/current-promo-career.png"
+      },
+      {
+        "bytes": 91470,
+        "path": "clone/static/home/current-promo-plus-landscape.png"
+      },
+      {
+        "bytes": 59764,
+        "path": "clone/static/home/current-promo-plus.png"
+      },
+      {
+        "bytes": 62768,
+        "path": "clone/static/home/current-promo-teams-small.png"
+      },
+      {
+        "bytes": 107439,
+        "path": "clone/static/home/current-promo-teams.png"
+      },
+      {
+        "bytes": 914,
+        "path": "clone/static/home/current-promo-third.png"
+      },
+      {
+        "bytes": 53023,
+        "path": "clone/static/home/hero-join-free.avif"
+      },
+      {
+        "bytes": 2284,
+        "path": "clone/static/home/learner-abdullahi.avif"
+      },
+      {
+        "bytes": 1888,
+        "path": "clone/static/home/learner-anas.avif"
+      },
+      {
+        "bytes": 3258,
+        "path": "clone/static/home/learner-noeris.avif"
+      },
+      {
+        "bytes": 3451,
+        "path": "clone/static/home/learner-sarah.avif"
+      },
+      {
+        "bytes": 752,
+        "path": "clone/static/home/logo-anthropic.avif"
+      },
+      {
+        "bytes": 1662,
+        "path": "clone/static/home/logo-deeplearning-ai.avif"
+      },
+      {
+        "bytes": 766,
+        "path": "clone/static/home/logo-google.avif"
+      },
+      {
+        "bytes": 1162,
+        "path": "clone/static/home/logo-ibm.avif"
+      },
+      {
+        "bytes": 530,
+        "path": "clone/static/home/logo-illinois.avif"
+      },
+      {
+        "bytes": 824,
+        "path": "clone/static/home/logo-michigan.avif"
+      },
+      {
+        "bytes": 977,
+        "path": "clone/static/home/logo-microsoft.avif"
+      },
+      {
+        "bytes": 810,
+        "path": "clone/static/home/logo-openai.avif"
+      },
+      {
+        "bytes": 1436,
+        "path": "clone/static/home/logo-penn.avif"
+      },
+      {
+        "bytes": 1300,
+        "path": "clone/static/home/logo-stanford.avif"
+      },
+      {
+        "bytes": 2022,
+        "path": "clone/static/home/pathway-business.avif"
+      },
+      {
+        "bytes": 1179,
+        "path": "clone/static/home/pathway-career.avif"
+      },
+      {
+        "bytes": 2008,
+        "path": "clone/static/home/pathway-degree.avif"
+      },
+      {
+        "bytes": 32104,
+        "path": "clone/static/home/source-404-illustration.png"
+      },
+      {
+        "bytes": 9178,
+        "path": "clone/static/learning-desktop.css"
+      },
+      {
+        "bytes": 8455,
+        "path": "clone/static/public-interactions.js"
+      },
+      {
+        "bytes": 2752,
+        "path": "clone/static/real-css-complement.css"
+      },
+      {
+        "bytes": 20755,
+        "path": "clone/static/search-page.css"
+      },
+      {
+        "bytes": 53681,
+        "path": "clone/static/search/deep-learning-engineering.jpg"
+      },
+      {
+        "bytes": 101879,
+        "path": "clone/static/search/deep-learning.png"
+      },
+      {
+        "bytes": 142342,
+        "path": "clone/static/search/educba-deep-learning.png"
+      },
+      {
+        "bytes": 20178,
+        "path": "clone/static/search/frozen-1.png"
+      },
+      {
+        "bytes": 29,
+        "path": "clone/static/search/frozen-10.png"
+      },
+      {
+        "bytes": 25879,
+        "path": "clone/static/search/frozen-11.png"
+      },
+      {
+        "bytes": 25879,
+        "path": "clone/static/search/frozen-12.png"
+      },
+      {
+        "bytes": 24751,
+        "path": "clone/static/search/frozen-2.png"
+      },
+      {
+        "bytes": 26631,
+        "path": "clone/static/search/frozen-3.png"
+      },
+      {
+        "bytes": 22879,
+        "path": "clone/static/search/frozen-4.png"
+      },
+      {
+        "bytes": 29817,
+        "path": "clone/static/search/frozen-5.png"
+      },
+      {
+        "bytes": 11961,
+        "path": "clone/static/search/frozen-6.png"
+      },
+      {
+        "bytes": 24002,
+        "path": "clone/static/search/frozen-7.png"
+      },
+      {
+        "bytes": 26131,
+        "path": "clone/static/search/frozen-8.png"
+      },
+      {
+        "bytes": 26131,
+        "path": "clone/static/search/frozen-9.png"
+      },
+      {
+        "bytes": 3407,
+        "path": "clone/static/search/frozen-results.json"
+      },
+      {
+        "bytes": 60940,
+        "path": "clone/static/search/ibm-ai-engineering.png"
+      },
+      {
+        "bytes": 90852,
+        "path": "clone/static/search/ibm-deep-learning.jpg"
+      },
+      {
+        "bytes": 246424,
+        "path": "clone/static/search/ibm-pytorch.jpg"
+      },
+      {
+        "bytes": 293992,
+        "path": "clone/static/search/illinois-tech.jpg"
+      },
+      {
+        "bytes": 398705,
+        "path": "clone/static/search/keras.jpg"
+      },
+      {
+        "bytes": 19270,
+        "path": "clone/static/search/machine-learning.png"
+      },
+      {
+        "bytes": 138743,
+        "path": "clone/static/search/neural-networks.png"
+      },
+      {
+        "bytes": 26506,
+        "path": "clone/static/search/pearson-learning.jpg"
+      },
+      {
+        "bytes": 71543,
+        "path": "clone/static/search/pytorch-cert.png"
+      },
+      {
+        "bytes": 6751,
+        "path": "clone/static/site.css"
+      },
+      {
+        "bytes": 137544,
+        "path": "clone/static/source-home-career-promo.png"
+      },
+      {
+        "bytes": 157863,
+        "path": "clone/static/source-home-google-promo.png"
+      },
+      {
+        "bytes": 11367,
+        "path": "clone/static/source-home-trend-google-ai.png"
+      },
+      {
+        "bytes": 16397,
+        "path": "clone/static/source-home-trend-google-analytics.png"
+      },
+      {
+        "bytes": 17882,
+        "path": "clone/static/source-home-trend-microsoft-qa.png"
+      },
+      {
+        "bytes": 11194,
+        "path": "clone/static/specialization-prototype.css"
+      },
+      {
+        "bytes": 10347,
+        "path": "clone/templates/pages/browse.html"
+      },
+      {
+        "bytes": 4629,
+        "path": "clone/templates/pages/business_category.html"
+      },
+      {
+        "bytes": 2564,
+        "path": "clone/templates/pages/category.html"
+      },
+      {
+        "bytes": 16512,
+        "path": "clone/templates/pages/course_detail.html"
+      },
+      {
+        "bytes": 11924,
+        "path": "clone/templates/pages/course_generic.html"
+      },
+      {
+        "bytes": 10272,
+        "path": "clone/templates/pages/data_science.html"
+      },
+      {
+        "bytes": 11238,
+        "path": "clone/templates/pages/home.html"
+      },
+      {
+        "bytes": 15048,
+        "path": "clone/templates/pages/search.html"
+      },
+      {
+        "bytes": 12052,
+        "path": "clone/templates/pages/specialization.html"
+      },
+      {
+        "bytes": 98,
+        "path": "clone/tests/conftest.py"
+      },
+      {
+        "bytes": 4243,
+        "path": "clone/tests/test_account_control_closure.py"
+      },
+      {
+        "bytes": 10348,
+        "path": "clone/tests/test_anonymous_journey_matrix.py"
+      },
+      {
+        "bytes": 7305,
+        "path": "clone/tests/test_assignment_backend.py"
+      },
+      {
+        "bytes": 8626,
+        "path": "clone/tests/test_assignment_flow.py"
+      },
+      {
+        "bytes": 10719,
+        "path": "clone/tests/test_authenticated_empty_surfaces.py"
+      },
+      {
+        "bytes": 1632,
+        "path": "clone/tests/test_browser_settle.py"
+      },
+      {
+        "bytes": 8990,
+        "path": "clone/tests/test_business_category_fidelity.py"
+      },
+      {
+        "bytes": 4458,
+        "path": "clone/tests/test_catalog.py"
+      },
+      {
+        "bytes": 22721,
+        "path": "clone/tests/test_checkout_backend.py"
+      },
+      {
+        "bytes": 16371,
+        "path": "clone/tests/test_checkout_flow.py"
+      },
+      {
+        "bytes": 7175,
+        "path": "clone/tests/test_content_backend_consistency.py"
+      },
+      {
+        "bytes": 2546,
+        "path": "clone/tests/test_course_detail_prototype.py"
+      },
+      {
+        "bytes": 5861,
+        "path": "clone/tests/test_current_phase_matrix.py"
+      },
+      {
+        "bytes": 11662,
+        "path": "clone/tests/test_data_science_category.py"
+      },
+      {
+        "bytes": 25428,
+        "path": "clone/tests/test_desktop_contract.py"
+      },
+      {
+        "bytes": 22817,
+        "path": "clone/tests/test_desktop_visual.py"
+      },
+      {
+        "bytes": 11853,
+        "path": "clone/tests/test_discovery_fidelity.py"
+      },
+      {
+        "bytes": 3054,
+        "path": "clone/tests/test_enrolled_control_closure.py"
+      },
+      {
+        "bytes": 4443,
+        "path": "clone/tests/test_enrolled_learning_browser.py"
+      },
+      {
+        "bytes": 4017,
+        "path": "clone/tests/test_enrolled_learning_source_fidelity.py"
+      },
+      {
+        "bytes": 6049,
+        "path": "clone/tests/test_fullscreen_geometry_fidelity.py"
+      },
+      {
+        "bytes": 12357,
+        "path": "clone/tests/test_interaction_contract.py"
+      },
+      {
+        "bytes": 2771,
+        "path": "clone/tests/test_learner_coverage_inventory.py"
+      },
+      {
+        "bytes": 41144,
+        "path": "clone/tests/test_learning_backend.py"
+      },
+      {
+        "bytes": 1660,
+        "path": "clone/tests/test_learning_public_fidelity.py"
+      },
+      {
+        "bytes": 13743,
+        "path": "clone/tests/test_live_home_inline_login_contract.py"
+      },
+      {
+        "bytes": 5509,
+        "path": "clone/tests/test_local_complete_load.py"
+      },
+      {
+        "bytes": 7959,
+        "path": "clone/tests/test_public_control_closure.py"
+      },
+      {
+        "bytes": 20258,
+        "path": "clone/tests/test_public_frontend.py"
+      },
+      {
+        "bytes": 2256,
+        "path": "clone/tests/test_search_interactions_fidelity.py"
+      },
+      {
+        "bytes": 7389,
+        "path": "clone/tests/test_search_page_fidelity.py"
+      },
+      {
+        "bytes": 475,
+        "path": "clone/tests/test_smoke.py"
+      },
+      {
+        "bytes": 14470,
+        "path": "clone/tests/test_source_grounding.py"
+      },
+      {
+        "bytes": 1670,
+        "path": "clone/tests/test_specialization_prototype.py"
+      },
+      {
+        "bytes": 3099,
+        "path": "clone/tools/frontend_samples.json"
+      },
+      {
+        "bytes": 4695,
+        "path": "clone/tools/sanitize_business_snapshot.py"
+      },
+      {
+        "bytes": 23067,
+        "path": "clone/ui.py"
+      },
+      {
+        "bytes": 45,
+        "path": "clone/websitebench/__init__.py"
+      },
+      {
+        "bytes": 421,
+        "path": "clone/websitebench/local_clone_auth/VENDOR_MANIFEST.json"
+      },
+      {
+        "bytes": 820,
+        "path": "clone/websitebench/local_clone_auth/__init__.py"
+      },
+      {
+        "bytes": 85531,
+        "path": "clone/websitebench/local_clone_auth/store.py"
+      },
+      {
+        "bytes": 1889,
+        "path": "clone/websitebench/site_backend/VENDOR_MANIFEST.json"
+      },
+      {
+        "bytes": 1171,
+        "path": "clone/websitebench/site_backend/__init__.py"
+      },
+      {
+        "bytes": 9352,
+        "path": "clone/websitebench/site_backend/auth_mail.py"
+      },
+      {
+        "bytes": 1600,
+        "path": "clone/websitebench/site_backend/backend.py"
+      },
+      {
+        "bytes": 28523,
+        "path": "clone/websitebench/site_backend/database.py"
+      },
+      {
+        "bytes": 8499,
+        "path": "clone/websitebench/site_backend/effects_mail.py"
+      },
+      {
+        "bytes": 957,
+        "path": "clone/websitebench/site_backend/errors.py"
+      },
+      {
+        "bytes": 19662,
+        "path": "clone/websitebench/site_backend/mail.py"
+      },
+      {
+        "bytes": 28119,
+        "path": "clone/websitebench/site_backend/payments.py"
+      },
+      {
+        "bytes": 22902,
+        "path": "clone/websitebench/site_backend/runtime.py"
+      },
+      {
+        "bytes": 9289,
+        "path": "clone/websitebench/site_backend/stdio_bridge.py"
+      },
+      {
+        "bytes": 13752,
+        "path": "clone/websitebench/site_backend/stripe_test.py"
+      },
+      {
+        "bytes": 698,
+        "path": "clone/websitebench/site_backend/validation_cli.py"
+      },
+      {
+        "bytes": 1165,
+        "path": "diagnostics/diagnostic-report.json"
+      },
+      {
+        "bytes": 1677,
+        "path": "scope/backend-capabilities.json"
+      },
+      {
+        "bytes": 4606,
+        "path": "scope/backend-compliance-audit.md"
+      },
+      {
+        "bytes": 419225,
+        "path": "scope/candidate-desktop/browse.loaded.desktop.png"
+      },
+      {
+        "bytes": 126547,
+        "path": "scope/candidate-desktop/course.loaded.desktop.png"
+      },
+      {
+        "bytes": 103578,
+        "path": "scope/candidate-desktop/help.loaded.desktop.png"
+      },
+      {
+        "bytes": 407120,
+        "path": "scope/candidate-desktop/home.loaded.desktop.png"
+      },
+      {
+        "bytes": 123011,
+        "path": "scope/candidate-desktop/login.loaded.desktop.png"
+      },
+      {
+        "bytes": 80476,
+        "path": "scope/candidate-desktop/not-found.loaded.desktop.png"
+      },
+      {
+        "bytes": 337130,
+        "path": "scope/candidate-desktop/search.results.desktop.png"
+      },
+      {
+        "bytes": 127270,
+        "path": "scope/candidate-desktop/specialization.loaded.desktop.png"
+      },
+      {
+        "bytes": 8205,
+        "path": "scope/checkpoints.json"
+      },
+      {
+        "bytes": 4441,
+        "path": "scope/claims.jsonl"
+      },
+      {
+        "bytes": 1471,
+        "path": "scope/clone-accessible-fullscreen-public-sample.json"
+      },
+      {
+        "bytes": 1895,
+        "path": "scope/clone-browse-source-lower-sections.json"
+      },
+      {
+        "bytes": 3289,
+        "path": "scope/clone-business-category-current.json"
+      },
+      {
+        "bytes": 1402,
+        "path": "scope/clone-data-science-category-wide.json"
+      },
+      {
+        "bytes": 2693,
+        "path": "scope/clone-data-science-category.json"
+      },
+      {
+        "bytes": 1041,
+        "path": "scope/clone-home-promo-switch.json"
+      },
+      {
+        "bytes": 2029,
+        "path": "scope/clone-search-deep-learning.json"
+      },
+      {
+        "bytes": 1224,
+        "path": "scope/clone-search-filter-panel.json"
+      },
+      {
+        "bytes": 1173,
+        "path": "scope/clone-search-no-results.json"
+      },
+      {
+        "bytes": 1126,
+        "path": "scope/clone-search-user-top.json"
+      },
+      {
+        "bytes": 1517,
+        "path": "scope/course-detail-visual-comparison.json"
+      },
+      {
+        "bytes": 8525,
+        "path": "scope/coverage.json"
+      },
+      {
+        "bytes": 13948,
+        "path": "scope/current-accessible-fullscreen-phase.json"
+      },
+      {
+        "bytes": 2318,
+        "path": "scope/derived-task-brief.json"
+      },
+      {
+        "bytes": 5656,
+        "path": "scope/desktop-visual-comparison-current.json"
+      },
+      {
+        "bytes": 5613,
+        "path": "scope/desktop-visual-comparison.json"
+      },
+      {
+        "bytes": 25210,
+        "path": "scope/diff-round-1/browse.loaded.desktop-primary-content.json"
+      },
+      {
+        "bytes": 4352,
+        "path": "scope/diff-round-1/course.loaded.desktop-header.json"
+      },
+      {
+        "bytes": 13552,
+        "path": "scope/diff-round-1/course.loaded.desktop-hero.json"
+      },
+      {
+        "bytes": 356779,
+        "path": "scope/diff-round-1/crops/browse.loaded.desktop-primary-content-cand.png"
+      },
+      {
+        "bytes": 349379,
+        "path": "scope/diff-round-1/crops/browse.loaded.desktop-primary-content-src.png"
+      },
+      {
+        "bytes": 16506,
+        "path": "scope/diff-round-1/crops/course.loaded.desktop-header-cand.png"
+      },
+      {
+        "bytes": 15725,
+        "path": "scope/diff-round-1/crops/course.loaded.desktop-header-src.png"
+      },
+      {
+        "bytes": 52841,
+        "path": "scope/diff-round-1/crops/course.loaded.desktop-hero-cand.png"
+      },
+      {
+        "bytes": 66191,
+        "path": "scope/diff-round-1/crops/course.loaded.desktop-hero-src.png"
+      },
+      {
+        "bytes": 10458,
+        "path": "scope/diff-round-1/crops/help.loaded.desktop-header-cand.png"
+      },
+      {
+        "bytes": 7385,
+        "path": "scope/diff-round-1/crops/help.loaded.desktop-header-src.png"
+      },
+      {
+        "bytes": 109966,
+        "path": "scope/diff-round-1/crops/help.loaded.desktop-primary-content-cand.png"
+      },
+      {
+        "bytes": 62486,
+        "path": "scope/diff-round-1/crops/help.loaded.desktop-primary-content-src.png"
+      },
+      {
+        "bytes": 248650,
+        "path": "scope/diff-round-1/crops/home.loaded.desktop-primary-content-cand.png"
+      },
+      {
+        "bytes": 189644,
+        "path": "scope/diff-round-1/crops/home.loaded.desktop-primary-content-src.png"
+      },
+      {
+        "bytes": 170558,
+        "path": "scope/diff-round-1/crops/home.loaded.desktop-promotion-rail-cand.png"
+      },
+      {
+        "bytes": 214442,
+        "path": "scope/diff-round-1/crops/home.loaded.desktop-promotion-rail-src.png"
+      },
+      {
+        "bytes": 155560,
+        "path": "scope/diff-round-1/crops/login.loaded.desktop-auth-surface-cand.png"
+      },
+      {
+        "bytes": 39308,
+        "path": "scope/diff-round-1/crops/login.loaded.desktop-auth-surface-src.png"
+      },
+      {
+        "bytes": 18416,
+        "path": "scope/diff-round-1/crops/not-found.loaded.desktop-header-cand.png"
+      },
+      {
+        "bytes": 4454,
+        "path": "scope/diff-round-1/crops/not-found.loaded.desktop-header-src.png"
+      },
+      {
+        "bytes": 167863,
+        "path": "scope/diff-round-1/crops/search.results.desktop-filters-cand.png"
+      },
+      {
+        "bytes": 113903,
+        "path": "scope/diff-round-1/crops/search.results.desktop-filters-src.png"
+      },
+      {
+        "bytes": 315942,
+        "path": "scope/diff-round-1/crops/search.results.desktop-results-cand.png"
+      },
+      {
+        "bytes": 346030,
+        "path": "scope/diff-round-1/crops/search.results.desktop-results-src.png"
+      },
+      {
+        "bytes": 19215,
+        "path": "scope/diff-round-1/crops/specialization.loaded.desktop-header-cand.png"
+      },
+      {
+        "bytes": 15725,
+        "path": "scope/diff-round-1/crops/specialization.loaded.desktop-header-src.png"
+      },
+      {
+        "bytes": 153218,
+        "path": "scope/diff-round-1/help-header-heat.png"
+      },
+      {
+        "bytes": 115367,
+        "path": "scope/diff-round-1/help-header-overlay.png"
+      },
+      {
+        "bytes": 21203,
+        "path": "scope/diff-round-1/help-header.json"
+      },
+      {
+        "bytes": 823,
+        "path": "scope/diff-round-1/help.loaded.desktop-header.json"
+      },
+      {
+        "bytes": 20632,
+        "path": "scope/diff-round-1/help.loaded.desktop-primary-content.json"
+      },
+      {
+        "bytes": 558453,
+        "path": "scope/diff-round-1/home-primary-content-heat.png"
+      },
+      {
+        "bytes": 401251,
+        "path": "scope/diff-round-1/home-primary-content-overlay.png"
+      },
+      {
+        "bytes": 20466,
+        "path": "scope/diff-round-1/home-primary-content.json"
+      },
+      {
+        "bytes": 558453,
+        "path": "scope/diff-round-1/home-promotion-rail-heat.png"
+      },
+      {
+        "bytes": 401251,
+        "path": "scope/diff-round-1/home-promotion-rail-overlay.png"
+      },
+      {
+        "bytes": 20466,
+        "path": "scope/diff-round-1/home-promotion-rail.json"
+      },
+      {
+        "bytes": 9868,
+        "path": "scope/diff-round-1/home.loaded.desktop-primary-content.json"
+      },
+      {
+        "bytes": 7133,
+        "path": "scope/diff-round-1/home.loaded.desktop-promotion-rail.json"
+      },
+      {
+        "bytes": 4562,
+        "path": "scope/diff-round-1/login.loaded.desktop-auth-surface.json"
+      },
+      {
+        "bytes": 2199,
+        "path": "scope/diff-round-1/not-found.loaded.desktop-header.json"
+      },
+      {
+        "bytes": 7068,
+        "path": "scope/diff-round-1/search.results.desktop-filters.json"
+      },
+      {
+        "bytes": 20183,
+        "path": "scope/diff-round-1/search.results.desktop-results.json"
+      },
+      {
+        "bytes": 214442,
+        "path": "scope/diff-round-1/source-home-promo-full.png"
+      },
+      {
+        "bytes": 73207,
+        "path": "scope/diff-round-1/source-promo-art-crop.png"
+      },
+      {
+        "bytes": 214442,
+        "path": "scope/diff-round-1/source-promo-band-full.png"
+      },
+      {
+        "bytes": 3573,
+        "path": "scope/diff-round-1/specialization.loaded.desktop-header.json"
+      },
+      {
+        "bytes": 7945,
+        "path": "scope/frontend-90-percent-gap.md"
+      },
+      {
+        "bytes": 85456,
+        "path": "scope/frontend-specs/browse.clone.json"
+      },
+      {
+        "bytes": 78063,
+        "path": "scope/frontend-specs/browse.source.json"
+      },
+      {
+        "bytes": 60070,
+        "path": "scope/frontend-specs/course.clone.json"
+      },
+      {
+        "bytes": 66909,
+        "path": "scope/frontend-specs/course.source.json"
+      },
+      {
+        "bytes": 99246,
+        "path": "scope/frontend-specs/home.clone.json"
+      },
+      {
+        "bytes": 102782,
+        "path": "scope/frontend-specs/home.source.json"
+      },
+      {
+        "bytes": 25950,
+        "path": "scope/frontend-specs/login.clone.json"
+      },
+      {
+        "bytes": 28541,
+        "path": "scope/frontend-specs/login.source.json"
+      },
+      {
+        "bytes": 67123,
+        "path": "scope/frontend-specs/search.clone.json"
+      },
+      {
+        "bytes": 49664,
+        "path": "scope/frontend-specs/search.source.json"
+      },
+      {
+        "bytes": 57703,
+        "path": "scope/frontend-specs/specialization.clone.json"
+      },
+      {
+        "bytes": 70456,
+        "path": "scope/frontend-specs/specialization.source.json"
+      },
+      {
+        "bytes": 2839,
+        "path": "scope/frontend-specs/structure-consistency-report.json"
+      },
+      {
+        "bytes": 6661,
+        "path": "scope/human-traces.json"
+      },
+      {
+        "bytes": 10084,
+        "path": "scope/interaction-controls.json"
+      },
+      {
+        "bytes": 5220,
+        "path": "scope/invariants.json"
+      },
+      {
+        "bytes": 11147,
+        "path": "scope/journeys.json"
+      },
+      {
+        "bytes": 17500,
+        "path": "scope/learner-coverage.json"
+      },
+      {
+        "bytes": 6444,
+        "path": "scope/payment-scope.json"
+      },
+      {
+        "bytes": 4030,
+        "path": "scope/purpose.json"
+      },
+      {
+        "bytes": 1425,
+        "path": "scope/real-css-authorization.json"
+      },
+      {
+        "bytes": 4436,
+        "path": "scope/routes.json"
+      },
+      {
+        "bytes": 965,
+        "path": "scope/search-page-visual-comparison.json"
+      },
+      {
+        "bytes": 6814,
+        "path": "scope/source-accessible-fullscreen-explore.json"
+      },
+      {
+        "bytes": 1544,
+        "path": "scope/source-accessible-fullscreen-interactions.json"
+      },
+      {
+        "bytes": 3475,
+        "path": "scope/source-accessible-fullscreen-supplement.json"
+      },
+      {
+        "bytes": 4394,
+        "path": "scope/source-business-category-audit.json"
+      },
+      {
+        "bytes": 2856,
+        "path": "scope/source-business-category-current.json"
+      },
+      {
+        "bytes": 2631,
+        "path": "scope/source-business-faq-audit.json"
+      },
+      {
+        "bytes": 3127,
+        "path": "scope/source-business-faq-content-audit.json"
+      },
+      {
+        "bytes": 1677,
+        "path": "scope/source-business-faq-expanded-audit.json"
+      },
+      {
+        "bytes": 7166,
+        "path": "scope/source-business-faq-link-audit.json"
+      },
+      {
+        "bytes": 2115,
+        "path": "scope/source-business-faq-link-count-audit.json"
+      },
+      {
+        "bytes": 7756,
+        "path": "scope/source-business-faq-link-label-audit.json"
+      },
+      {
+        "bytes": 1708,
+        "path": "scope/source-business-faq-visual-audit.json"
+      },
+      {
+        "bytes": 6016,
+        "path": "scope/source-business-link-audit.json"
+      },
+      {
+        "bytes": 7341,
+        "path": "scope/source-capture-plan.json"
+      },
+      {
+        "bytes": 1718,
+        "path": "scope/source-course-detail-prototype.json"
+      },
+      {
+        "bytes": 2339,
+        "path": "scope/source-data-science-card-links.json"
+      },
+      {
+        "bytes": 2886,
+        "path": "scope/source-data-science-card-lookup.json"
+      },
+      {
+        "bytes": 799,
+        "path": "scope/source-data-science-colorado-link.json"
+      },
+      {
+        "bytes": 769,
+        "path": "scope/source-data-science-leeds-link.json"
+      },
+      {
+        "bytes": 1397,
+        "path": "scope/source-explore-menu-pages.json"
+      },
+      {
+        "bytes": 1230,
+        "path": "scope/source-home-content-correction.json"
+      },
+      {
+        "bytes": 3281,
+        "path": "scope/source-home-current-loaded.json"
+      },
+      {
+        "bytes": 4286,
+        "path": "scope/source-home-login-current-state.json"
+      },
+      {
+        "bytes": 3282,
+        "path": "scope/source-learner-expansion-public-recovery.json"
+      },
+      {
+        "bytes": 1371,
+        "path": "scope/source-search-deep-learning-settled.json"
+      },
+      {
+        "bytes": 1827,
+        "path": "scope/source-search-deep-learning.json"
+      },
+      {
+        "bytes": 1320,
+        "path": "scope/source-search-filter-panel.json"
+      },
+      {
+        "bytes": 3771,
+        "path": "scope/source-search-result-identities.json"
+      },
+      {
+        "bytes": 1507,
+        "path": "scope/source-search-two-link-clicks.json"
+      },
+      {
+        "bytes": 1420,
+        "path": "scope/source-search-two-links.json"
+      },
+      {
+        "bytes": 1450,
+        "path": "scope/source-search-user-top-wide.json"
+      },
+      {
+        "bytes": 1718,
+        "path": "scope/source-specialization-prototype.json"
+      },
+      {
+        "bytes": 4736,
+        "path": "scope/trace-coverage-audit.md"
+      },
+      {
+        "bytes": 4079,
+        "path": "scope/verify.json"
+      },
+      {
+        "bytes": 19316,
+        "path": "source-assets/coursera-css/assets/021dd4dc61ee5f5cdf315f43b48c094b.ttf"
+      },
+      {
+        "bytes": 11696,
+        "path": "source-assets/coursera-css/assets/1e802ca9dedc4ed4e3c6f645e4316128.woff"
+      },
+      {
+        "bytes": 35464,
+        "path": "source-assets/coursera-css/assets/22086eb5d97009c3e99bcc1d16ce6865.woff"
+      },
+      {
+        "bytes": 16228,
+        "path": "source-assets/coursera-css/assets/2555754a67062cac3a0913b715ab982f.woff"
+      },
+      {
+        "bytes": 35924,
+        "path": "source-assets/coursera-css/assets/257023560753aeb0b89b7e434d3da17f.ttf"
+      },
+      {
+        "bytes": 21944,
+        "path": "source-assets/coursera-css/assets/284a17fe5baf72ff8217d4c7e70c0f82.woff2"
+      },
+      {
+        "bytes": 40992,
+        "path": "source-assets/coursera-css/assets/291e76b8871b84560701bd29f9d1dcc7.ttf"
+      },
+      {
+        "bytes": 47640,
+        "path": "source-assets/coursera-css/assets/29c86397e75cdcb3135af8295f1c2e28.ttf"
+      },
+      {
+        "bytes": 19784,
+        "path": "source-assets/coursera-css/assets/32a5339eb809f381a7357ba56f82aab3.woff2"
+      },
+      {
+        "bytes": 18516,
+        "path": "source-assets/coursera-css/assets/3fb419559955e3ce75619f1a5e8c6c84.woff"
+      },
+      {
+        "bytes": 20260,
+        "path": "source-assets/coursera-css/assets/3fe216d2a5f736c560cde71984554b64.woff"
+      },
+      {
+        "bytes": 30960,
+        "path": "source-assets/coursera-css/assets/4059868e460d2d2e6be18e180d20c43d.ttf"
+      },
+      {
+        "bytes": 20096,
+        "path": "source-assets/coursera-css/assets/4ad08b826b8065e1eab85324d726538c.woff2"
+      },
+      {
+        "bytes": 25352,
+        "path": "source-assets/coursera-css/assets/4c57dbc44bfff1fdf08a59cf556fdab3.woff"
+      },
+      {
+        "bytes": 10448,
+        "path": "source-assets/coursera-css/assets/4ec58befa687e9752c3c91cd9bcf1bcb.woff2"
+      },
+      {
+        "bytes": 29812,
+        "path": "source-assets/coursera-css/assets/5c58d168c0b66d2c32234a6718e74dfb.ttf"
+      },
+      {
+        "bytes": 32464,
+        "path": "source-assets/coursera-css/assets/5c734d78610fa35282f3379f866707f2.woff2"
+      },
+      {
+        "bytes": 69520,
+        "path": "source-assets/coursera-css/assets/5c94aef490324b0925dbe5f643e8fd04.ttf"
+      },
+      {
+        "bytes": 17272,
+        "path": "source-assets/coursera-css/assets/6cc31ea5c223c88705a13727a71417fa.woff2"
+      },
+      {
+        "bytes": 15732,
+        "path": "source-assets/coursera-css/assets/6e0830bee40435e72165345e0682fbfc.woff2"
+      },
+      {
+        "bytes": 17572,
+        "path": "source-assets/coursera-css/assets/727a9b0d97d72d2fc0228fe4e07fb4d8.woff"
+      },
+      {
+        "bytes": 12916,
+        "path": "source-assets/coursera-css/assets/7342d45b052c3a2abc21049959fbab7f.ttf"
+      },
+      {
+        "bytes": 12064,
+        "path": "source-assets/coursera-css/assets/755e2491f13b5269f0afd5a56f7aa692.woff2"
+      },
+      {
+        "bytes": 33688,
+        "path": "source-assets/coursera-css/assets/7dc027cba9f7b11ec92af4a311372a85.ttf"
+      },
+      {
+        "bytes": 8120,
+        "path": "source-assets/coursera-css/assets/7e02a40c41e52dc3b2b6b197bbdf05ea.ttf"
+      },
+      {
+        "bytes": 10240,
+        "path": "source-assets/coursera-css/assets/7edb53b6693d75b8a2232481eea1a52c.woff2"
+      },
+      {
+        "bytes": 38868,
+        "path": "source-assets/coursera-css/assets/7f06b4e30317f784d61d26686aed0ab2.woff"
+      },
+      {
+        "bytes": 30244,
+        "path": "source-assets/coursera-css/assets/8e1e01c4b1207c0a383d9a2b4f86e637.woff2"
+      },
+      {
+        "bytes": 26228,
+        "path": "source-assets/coursera-css/assets/99be0e10c38cd42466e6fe1665ef9536.woff"
+      },
+      {
+        "bytes": 39308,
+        "path": "source-assets/coursera-css/assets/9a2834a9ff8ab411153571e0e55ac693.ttf"
+      },
+      {
+        "bytes": 60784,
+        "path": "source-assets/coursera-css/assets/9ceff51b3cb7ce6eb4e8efa8163a1472.ttf"
+      },
+      {
+        "bytes": 14288,
+        "path": "source-assets/coursera-css/assets/Merriweather-Light.woff2"
+      },
+      {
+        "bytes": 13152,
+        "path": "source-assets/coursera-css/assets/Merriweather-Regular.woff2"
+      },
+      {
+        "bytes": 35660,
+        "path": "source-assets/coursera-css/assets/a31e7cba7b7221ebf1a2ae545fb306b2.ttf"
+      },
+      {
+        "bytes": 34352,
+        "path": "source-assets/coursera-css/assets/a48dad4f58c82e38a10da0ceebb86370.ttf"
+      },
+      {
+        "bytes": 70972,
+        "path": "source-assets/coursera-css/assets/aaf4eee9fba9907d61c3935e0b6a54ae.ttf"
+      },
+      {
+        "bytes": 11016,
+        "path": "source-assets/coursera-css/assets/ad7672524b64b730dfd176140a8945cb.ttf"
+      },
+      {
+        "bytes": 22324,
+        "path": "source-assets/coursera-css/assets/b13731ef4e2bfc3d8d859271e39550fc.woff"
+      },
+      {
+        "bytes": 38112,
+        "path": "source-assets/coursera-css/assets/b741441f6d71014d0453ca3ebc884dd4.woff"
+      },
+      {
+        "bytes": 22088,
+        "path": "source-assets/coursera-css/assets/b7d9c46bff5d51da6209e355cc4a235d.woff"
+      },
+      {
+        "bytes": 22632,
+        "path": "source-assets/coursera-css/assets/c4c8cab7d5be97b2bb283e531c077355.woff"
+      },
+      {
+        "bytes": 6988,
+        "path": "source-assets/coursera-css/assets/coursera-logo.svg"
+      },
+      {
+        "bytes": 24620,
+        "path": "source-assets/coursera-css/assets/d12ea9efb375f9dc331f562e69892638.ttf"
+      },
+      {
+        "bytes": 11460,
+        "path": "source-assets/coursera-css/assets/d3b46c3a530116933081d9d74e3e9fe8.woff"
+      },
+      {
+        "bytes": 18684,
+        "path": "source-assets/coursera-css/assets/d49f2d55ce4f40f982d8ba63d746fbf9.ttf"
+      },
+      {
+        "bytes": 13428,
+        "path": "source-assets/coursera-css/assets/d524c9a5b62a17f98f4a97af37fea735.woff"
+      },
+      {
+        "bytes": 20360,
+        "path": "source-assets/coursera-css/assets/d5b59ec9764e10f4a82369ae29f3ac58.woff2"
+      },
+      {
+        "bytes": 19720,
+        "path": "source-assets/coursera-css/assets/d747bd1e7a6a43864285edd73dcde253.woff2"
+      },
+      {
+        "bytes": 13708,
+        "path": "source-assets/coursera-css/assets/d929cd671b19f0cfea55b6200fb47461.woff2"
+      },
+      {
+        "bytes": 22748,
+        "path": "source-assets/coursera-css/assets/e533d5a2506cf053cd671b335ec04dde.woff2"
+      },
+      {
+        "bytes": 32944,
+        "path": "source-assets/coursera-css/assets/e78e28b4834954df047e4925e9dbf354.woff2"
+      },
+      {
+        "bytes": 44496,
+        "path": "source-assets/coursera-css/assets/e8b44b990516dab7937bf240fde8b46a.ttf"
+      },
+      {
+        "bytes": 12172,
+        "path": "source-assets/coursera-css/assets/eb130dcc661de766c999c60ba1525a88.ttf"
+      },
+      {
+        "bytes": 22844,
+        "path": "source-assets/coursera-css/assets/f0303906c2a67ac63bf1e8ccd638a89e.woff"
+      },
+      {
+        "bytes": 15024,
+        "path": "source-assets/coursera-css/assets/fba01c9c6fb2866a0f95bcacb2c187a5.woff2"
+      },
+      {
+        "bytes": 44352,
+        "path": "source-assets/coursera-css/assets/opensans-300.woff2"
+      },
+      {
+        "bytes": 44936,
+        "path": "source-assets/coursera-css/assets/opensans-600.woff2"
+      },
+      {
+        "bytes": 44988,
+        "path": "source-assets/coursera-css/assets/opensans-700.woff2"
+      },
+      {
+        "bytes": 43236,
+        "path": "source-assets/coursera-css/assets/opensans-regular.woff2"
+      },
+      {
+        "bytes": 10333,
+        "path": "source-assets/coursera-css/assets/promo-bg-web.png"
+      },
+      {
+        "bytes": 60048,
+        "path": "source-assets/coursera-css/assets/ss3-latin-ext-normal.woff2"
+      },
+      {
+        "bytes": 28792,
+        "path": "source-assets/coursera-css/assets/ss3-latin-normal.woff2"
+      },
+      {
+        "bytes": 28464,
+        "path": "source-assets/coursera-css/assets/ss3-latin.woff2"
+      },
+      {
+        "bytes": 77257,
+        "path": "source-assets/coursera-css/authentication.css"
+      },
+      {
+        "bytes": 249009,
+        "path": "source-assets/coursera-css/browse.css"
+      },
+      {
+        "bytes": 1125,
+        "path": "source-assets/coursera-css/cds-variables.css"
+      },
+      {
+        "bytes": 215022,
+        "path": "source-assets/coursera-css/consumer-description-page.css"
+      },
+      {
+        "bytes": 1727,
+        "path": "source-assets/coursera-css/fonts.css"
+      },
+      {
+        "bytes": 48564,
+        "path": "source-assets/coursera-css/front-page.css"
+      },
+      {
+        "bytes": 143997,
+        "path": "source-assets/coursera-css/promo-career-desktop.png"
+      },
+      {
+        "bytes": 59764,
+        "path": "source-assets/coursera-css/promo-plus-desktop.png"
+      },
+      {
+        "bytes": 107439,
+        "path": "source-assets/coursera-css/promo-teams-desktop.png"
+      },
+      {
+        "bytes": 258726,
+        "path": "source-assets/coursera-css/search-v2.css"
+      },
+      {
+        "bytes": 48670,
+        "path": "source-assets/current-live/current-promo-barriers.png"
+      },
+      {
+        "bytes": 62768,
+        "path": "source-assets/current-live/current-promo-teams-small.png"
+      },
+      {
+        "bytes": 914,
+        "path": "source-assets/current-live/current-promo-third.png"
+      },
+      {
+        "bytes": 44393,
+        "path": "source-assets/manifest.json"
+      },
+      {
+        "bytes": 2186,
+        "path": "source-assets/task3/auth.css"
+      },
+      {
+        "bytes": 3181,
+        "path": "source-assets/task3/components.css"
+      },
+      {
+        "bytes": 758,
+        "path": "source-assets/task3/deep-learning-mark.svg"
+      },
+      {
+        "bytes": 1103,
+        "path": "source-assets/task3/hero-learning.svg"
+      },
+      {
+        "bytes": 6751,
+        "path": "source-assets/task3/site.css"
+      },
+      {
+        "bytes": 1326,
+        "path": "source-assets/task5/checkout.css"
+      },
+      {
+        "bytes": 137544,
+        "path": "source-assets/task7/source-home-career-promo.png"
+      },
+      {
+        "bytes": 157863,
+        "path": "source-assets/task7/source-home-google-promo.png"
+      },
+      {
+        "bytes": 11367,
+        "path": "source-assets/task7/source-home-trend-google-ai.png"
+      },
+      {
+        "bytes": 16397,
+        "path": "source-assets/task7/source-home-trend-google-analytics.png"
+      },
+      {
+        "bytes": 17882,
+        "path": "source-assets/task7/source-home-trend-microsoft-qa.png"
+      }
+    ]
+  },
+  "coverage_gaps": [
+    {
+      "count": 6,
+      "kind": "deferred_checkpoints",
+      "section": "static"
+    },
+    {
+      "count": 5,
+      "kind": "deferred_routes",
+      "section": "static"
+    },
+    {
+      "detail": "candidate sandbox unavailable: [Errno 95] candidate sandbox unavailable: {'schema_version': 'websitebench.harbor.sandbox-runtime.v1', 'architecture': 'x86_64', 'landlock_abi': 7, 'seccomp_user_notification': True, 'x32_unavailable': False}",
+      "kind": "incomplete",
+      "section": "live"
+    }
+  ],
+  "diagnostic": {
+    "authority": "diagnostic-only",
+    "diagnostic_status": "incomplete",
+    "generated_at": "2026-08-22T06:17:20.546949Z",
+    "qualification": "maintainer-judgment-required",
+    "requested_sections": [
+      "static",
+      "live"
+    ],
+    "schema_version": "offline-clone.diagnostic-report.v1",
+    "sections": {
+      "live": {
+        "coverage": {},
+        "execution": {
+          "complete": false,
+          "incomplete_reasons": [
+            "candidate sandbox unavailable: [Errno 95] candidate sandbox unavailable: {'schema_version': 'websitebench.harbor.sandbox-runtime.v1', 'architecture': 'x86_64', 'landlock_abi': 7, 'seccomp_user_notification': True, 'x32_unavailable': False}"
+          ]
+        },
+        "findings": [],
+        "observations": []
+      },
+      "static": {
+        "coverage": {
+          "assets_declared": 87,
+          "assets_verified": 87,
+          "deferred_checkpoints": 6,
+          "deferred_routes": 5,
+          "files_scanned": 45,
+          "remote_references": 0,
+          "secrets": 0
+        },
+        "execution": {
+          "complete": true,
+          "incomplete_reasons": []
+        },
+        "findings": [],
+        "observations": []
+      }
+    },
+    "site_id": "33"
+  },
+  "generated_at": "2026-08-22T06:17:22.577768Z",
+  "qualification": "maintainer-judgment-required",
+  "schema_version": "offline-clone.contribution-report.v1",
+  "site_id": "33"
+}

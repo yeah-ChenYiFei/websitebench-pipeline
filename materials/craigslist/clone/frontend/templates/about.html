@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}about craigslist{% endblock %}
+{% block content %}
+<div class="cl-columns">
+  <div class="cl-column-center">
+    <h1 class="cl-page-heading">about craigslist</h1>
+
+    <h2>what this site is</h2>
+    <p>This is an offline clone of craigslist, built as a benchmark fixture for
+    evaluating website replication and diagnostic tooling. It runs entirely on
+    your local machine: every page, style sheet, script, and data record is
+    served from this repository, and nothing on this site connects to the
+    internet. It is a demonstration of the craigslist experience, not the real
+    craigslist.</p>
+    <p>Because it is an offline clone, no real classifieds are for sale or rent
+    here. Postings, prices, locations, and users are local demo data created
+    for evaluation purposes. No actual transactions take place.</p>
+
+    <h2>the classifieds model</h2>
+    <p>Craigslist works on a simple classifieds model. People create postings
+    to advertise items, housing, jobs, services, gigs, and other things they
+    want to sell, rent, offer, or find. Each posting belongs to a region and a
+    category, and appears in search results and category listings. Interested
+    people contact the poster directly through the contact method the poster
+    chooses — usually an anonymous email relay or a phone number. The site
+    itself does not broker the deal, hold money, or arrange meetings; buyers
+    and sellers deal with each other directly.</p>
+    <p>This clone reproduces the core of that model: browse by region and
+    category, search, read postings, reply, save favorites, save searches, and
+    manage postings from an account.</p>
+
+    <h2>community norms</h2>
+    <p>The real craigslist relies on its users to keep the community working.
+    The same norms apply here as guidance for how this clone is meant to be
+    used:</p>
+    <ul>
+      <li>Post in the right category and location so listings are easy to find.</li>
+      <li>Be honest in your postings and in your replies.</li>
+      <li>Respect other people's privacy and do not publish anyone's personal information.</li>
+      <li>No spam, scams, or deceptive postings of any kind.</li>
+      <li>Deal locally and in person when possible, and be careful with your money and your information.</li>
+      <li>Flag postings that violate the rules so the community can stay clean.</li>
+    </ul>
+    <p>Since this is a local demo, abuse here affects nobody but the person
+    running the fixture — but the behavior modeled by the site is meant to
+    match the real community's expectations.</p>
+
+    <h2>more information</h2>
+    <ul>
+      <li><a href="/about/help">help</a> — answers to common questions</li>
+      <li><a href="/about/help/posting">posting rules</a> — how to post correctly</li>
+      <li><a href="/about/help/housing">avoid scams &amp; fraud</a> — safety guidance for housing searches</li>
+      <li><a href="/contact">contact</a> — send feedback or report an issue</li>
+      <li><a href="/about/terms">terms of use</a> — the rules for using this offline clone</li>
+      <li><a href="/about/privacy">privacy</a> — how this site handles your data</li>
+    </ul>
+    <p class="filter-label">craigslist offline clone &middot; websitebench &middot; benchmark fixture</p>
+  </div>
+  <div class="cl-column-right">
+    <div class="sidebox">
+      <h3>about this clone</h3>
+      <div class="sidebox-body">
+        <p>Local demo only. No real listings, no real transactions, and no
+        connection to craigslist or any external service.</p>
+      </div>
+    </div>
+    <div class="sidebox">
+      <h3>quick links</h3>
+      <div class="sidebox-body">
+        <ul>
+          <li><a href="/">craigslist home</a></li>
+          <li><a href="/about/help">help</a></li>
+          <li><a href="/contact">contact</a></li>
+          <li><a href="/about/terms">terms of use</a></li>
+          <li><a href="/about/privacy">privacy</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

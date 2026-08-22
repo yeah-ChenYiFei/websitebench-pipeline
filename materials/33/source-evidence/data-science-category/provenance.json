@@ -1,0 +1,32 @@
+{
+  "schema_version": "websitebench.source-asset-provenance.v1",
+  "captured_at": "2026-08-18",
+  "source_url": "https://www.coursera.org/browse/data-science",
+  "viewport": {"width": 1191, "height": 979},
+  "actor": "anonymous",
+  "language": "en-US",
+  "source_mutations_authorized": false,
+  "evidence": "source-1191x8978.png",
+  "document_title": "Data Science Online Courses | Coursera",
+  "full_page_height": 8978,
+  "allowed_read_only_graphql_operations": [
+    "BrowseDegreeCollection",
+    "BrowseDomainComponents",
+    "CareerRolesByDomainQuery",
+    "DiscoveryCollections",
+    "Search"
+  ],
+  "blocked_post_categories": ["client evaluation", "eventing", "analytics"],
+  "retention": "Public page presentation evidence only; no credentials, cookies, request bodies, tokens, or private account data retained.",
+  "derived_asset_method": "Lossless crops from the retained public full-page screenshot at device scale 1.",
+  "crop_geometry": {
+    "popular": {"columns_x": [57, 336, 614, 891], "y": 445, "width": 239, "height": 137},
+    "trending": {"columns_x": [57, 336, 614, 891], "y": 1236, "width": 239, "height": 134},
+    "google_analytics": {"columns_x": [57, 336, 614, 891], "y": 1792, "width": 239, "height": 134},
+    "ai_basics": {"columns_x": [57, 336, 614, 891], "y": 2214, "width": 239, "height": 133},
+    "ibm_essentials": {"columns_x": [57, 336, 614, 891], "y": 2621, "width": 239, "height": 134},
+    "degrees": {"columns_x": [57, 336, 614, 891], "y": 3115, "width": 239, "height": 137},
+    "results": {"columns_x": [330, 614, 897], "rows_y": [3775, 4212, 4648, 5084], "width": 254, "height": 143},
+    "new_releases": {"columns_x": [57, 336, 614, 891], "y": 5721, "width": 239, "height": 134}
+  }
+}

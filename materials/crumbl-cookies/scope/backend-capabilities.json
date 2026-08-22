@@ -1,0 +1,43 @@
+{
+  "backend_profile": "full",
+  "capabilities": [
+    {
+      "applicability": "in-scope",
+      "id": "accounts",
+      "rationale": "Included by the contribution scaffold's conservative full profile."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "password-recovery",
+      "rationale": "Included by the contribution scaffold's conservative full profile."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "transactional-mail",
+      "rationale": "Included by the contribution scaffold's conservative full profile."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "orders",
+      "rationale": "Included by the contribution scaffold's conservative full profile."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "checkout",
+      "rationale": "Included by the contribution scaffold's conservative full profile."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "payments",
+      "rationale": "Included by the contribution scaffold's conservative full profile."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "database",
+      "rationale": "Included by the contribution scaffold's conservative full profile."
+    }
+  ],
+  "runtime_required": true,
+  "schema_version": "offline-clone.contribution-backend-scope.v1",
+  "site_id": "crumbl-cookies"
+}

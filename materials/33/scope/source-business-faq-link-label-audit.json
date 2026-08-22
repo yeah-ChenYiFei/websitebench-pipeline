@@ -1,0 +1,62 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-business-faq-link-label-audit",
+  "viewport": {"width": 1692, "height": 979},
+  "timeout_ms": 45000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://images.ctfassets.net",
+      "https://coursera_assets.s3.amazonaws.com"
+    ],
+    "clone": ["http://127.0.0.1:8045"]
+  },
+  "steps": [
+    {"id": "open-business", "action": "goto", "path": "/browse/business"},
+    {"id": "wait-initial", "action": "wait", "milliseconds": 1500},
+    {"id": "show-all", "action": "click", "selector": "button:has-text('Show all 7 frequently asked questions')"},
+    {
+      "id": "capture-link-labels",
+      "action": "snapshot",
+      "observations": [
+        {"id": "q1-link1-aria", "kind": "attribute", "selector": "button:has-text('What skills can I develop with business courses on Coursera?') >> xpath=../.. >> a >> nth=0", "attribute": "aria-label"},
+        {"id": "q1-link1-title", "kind": "attribute", "selector": "button:has-text('What skills can I develop with business courses on Coursera?') >> xpath=../.. >> a >> nth=0", "attribute": "title"},
+        {"id": "q2-link1-aria", "kind": "attribute", "selector": "button:has-text('Do I need prior business experience to take courses on Coursera?') >> xpath=../.. >> a >> nth=0", "attribute": "aria-label"},
+        {"id": "q2-link1-title", "kind": "attribute", "selector": "button:has-text('Do I need prior business experience to take courses on Coursera?') >> xpath=../.. >> a >> nth=0", "attribute": "title"},
+        {"id": "q2-link2-aria", "kind": "attribute", "selector": "button:has-text('Do I need prior business experience to take courses on Coursera?') >> xpath=../.. >> a >> nth=1", "attribute": "aria-label"},
+        {"id": "q2-link2-title", "kind": "attribute", "selector": "button:has-text('Do I need prior business experience to take courses on Coursera?') >> xpath=../.. >> a >> nth=1", "attribute": "title"},
+        {"id": "q3-link1-aria", "kind": "attribute", "selector": "button:has-text('What careers can I pursue by taking business courses on Coursera?') >> xpath=../.. >> a >> nth=0", "attribute": "aria-label"},
+        {"id": "q3-link1-title", "kind": "attribute", "selector": "button:has-text('What careers can I pursue by taking business courses on Coursera?') >> xpath=../.. >> a >> nth=0", "attribute": "title"},
+        {"id": "q3-link2-aria", "kind": "attribute", "selector": "button:has-text('What careers can I pursue by taking business courses on Coursera?') >> xpath=../.. >> a >> nth=1", "attribute": "aria-label"},
+        {"id": "q3-link2-title", "kind": "attribute", "selector": "button:has-text('What careers can I pursue by taking business courses on Coursera?') >> xpath=../.. >> a >> nth=1", "attribute": "title"},
+        {"id": "q4-link1-aria", "kind": "attribute", "selector": "button:has-text('Are business courses on Coursera recognized by employers?') >> xpath=../.. >> a >> nth=0", "attribute": "aria-label"},
+        {"id": "q4-link1-title", "kind": "attribute", "selector": "button:has-text('Are business courses on Coursera recognized by employers?') >> xpath=../.. >> a >> nth=0", "attribute": "title"},
+        {"id": "q4-link2-aria", "kind": "attribute", "selector": "button:has-text('Are business courses on Coursera recognized by employers?') >> xpath=../.. >> a >> nth=1", "attribute": "aria-label"},
+        {"id": "q4-link2-title", "kind": "attribute", "selector": "button:has-text('Are business courses on Coursera recognized by employers?') >> xpath=../.. >> a >> nth=1", "attribute": "title"},
+        {"id": "q4-link3-aria", "kind": "attribute", "selector": "button:has-text('Are business courses on Coursera recognized by employers?') >> xpath=../.. >> a >> nth=2", "attribute": "aria-label"},
+        {"id": "q4-link3-title", "kind": "attribute", "selector": "button:has-text('Are business courses on Coursera recognized by employers?') >> xpath=../.. >> a >> nth=2", "attribute": "title"},
+        {"id": "q5-link1-aria", "kind": "attribute", "selector": "button:has-text('How do business courses on Coursera compare to traditional MBA programs?') >> xpath=../.. >> a >> nth=0", "attribute": "aria-label"},
+        {"id": "q5-link1-title", "kind": "attribute", "selector": "button:has-text('How do business courses on Coursera compare to traditional MBA programs?') >> xpath=../.. >> a >> nth=0", "attribute": "title"},
+        {"id": "q5-link2-aria", "kind": "attribute", "selector": "button:has-text('How do business courses on Coursera compare to traditional MBA programs?') >> xpath=../.. >> a >> nth=1", "attribute": "aria-label"},
+        {"id": "q5-link2-title", "kind": "attribute", "selector": "button:has-text('How do business courses on Coursera compare to traditional MBA programs?') >> xpath=../.. >> a >> nth=1", "attribute": "title"},
+        {"id": "q5-link3-aria", "kind": "attribute", "selector": "button:has-text('How do business courses on Coursera compare to traditional MBA programs?') >> xpath=../.. >> a >> nth=2", "attribute": "aria-label"},
+        {"id": "q5-link3-title", "kind": "attribute", "selector": "button:has-text('How do business courses on Coursera compare to traditional MBA programs?') >> xpath=../.. >> a >> nth=2", "attribute": "title"},
+        {"id": "q6-link1-aria", "kind": "attribute", "selector": "button:has-text('Does Coursera offer business courses for free?') >> xpath=../.. >> a >> nth=0", "attribute": "aria-label"},
+        {"id": "q6-link1-title", "kind": "attribute", "selector": "button:has-text('Does Coursera offer business courses for free?') >> xpath=../.. >> a >> nth=0", "attribute": "title"},
+        {"id": "q6-link2-aria", "kind": "attribute", "selector": "button:has-text('Does Coursera offer business courses for free?') >> xpath=../.. >> a >> nth=1", "attribute": "aria-label"},
+        {"id": "q6-link2-title", "kind": "attribute", "selector": "button:has-text('Does Coursera offer business courses for free?') >> xpath=../.. >> a >> nth=1", "attribute": "title"},
+        {"id": "q6-link3-aria", "kind": "attribute", "selector": "button:has-text('Does Coursera offer business courses for free?') >> xpath=../.. >> a >> nth=2", "attribute": "aria-label"},
+        {"id": "q6-link3-title", "kind": "attribute", "selector": "button:has-text('Does Coursera offer business courses for free?') >> xpath=../.. >> a >> nth=2", "attribute": "title"},
+        {"id": "q6-link4-aria", "kind": "attribute", "selector": "button:has-text('Does Coursera offer business courses for free?') >> xpath=../.. >> a >> nth=3", "attribute": "aria-label"},
+        {"id": "q6-link4-title", "kind": "attribute", "selector": "button:has-text('Does Coursera offer business courses for free?') >> xpath=../.. >> a >> nth=3", "attribute": "title"},
+        {"id": "q7-link1-aria", "kind": "attribute", "selector": "button:has-text('What types of business programs does Coursera offer?') >> xpath=../.. >> a >> nth=0", "attribute": "aria-label"},
+        {"id": "q7-link1-title", "kind": "attribute", "selector": "button:has-text('What types of business programs does Coursera offer?') >> xpath=../.. >> a >> nth=0", "attribute": "title"},
+        {"id": "q7-link2-aria", "kind": "attribute", "selector": "button:has-text('What types of business programs does Coursera offer?') >> xpath=../.. >> a >> nth=1", "attribute": "aria-label"},
+        {"id": "q7-link2-title", "kind": "attribute", "selector": "button:has-text('What types of business programs does Coursera offer?') >> xpath=../.. >> a >> nth=1", "attribute": "title"}
+      ],
+      "screenshot": false
+    }
+  ]
+}

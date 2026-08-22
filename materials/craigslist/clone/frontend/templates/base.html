@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}craigslist{% endblock %}</title>
+<link rel="stylesheet" href="/static/assets/cl-real/homePage.css">
+<link rel="stylesheet" href="/static/assets/cl-real/www.css">
+<link rel="stylesheet" href="/static/assets/cl-real/posting.css">
+<link rel="stylesheet" href="/static/css/site.css">
+<link rel="stylesheet" href="/static/css/cl-mobile.css">
+<link rel="icon" href="/static/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+{% block header %}
+<header class="cl-header">
+  <div class="cl-header-inner">
+    <a class="cl-logo" href="/">craigslist</a>
+    {% block breadcrumb %}
+    {% if region_row is defined and region_row %}
+    <nav class="cl-breadcrumb">
+      <a href="/area/{{ region_row.slug }}">{{ region_row.name }}</a>
+      {% block breadcrumb_tail %}{% endblock %}
+    </nav>
+    {% endif %}
+    {% endblock %}
+    {% block header_search %}{% endblock %}
+    <nav class="cl-header-links" style="margin-left:auto; display:flex; gap:16px; font-size:13px;">
+      {% if account %}
+      <a href="/account/home">👤 acct</a>
+      <form method="post" action="/account/logout" class="inline-form">
+        <button type="submit" class="linklike">log out</button>
+      </form>
+      {% else %}
+      <a href="/account/login">👤 acct</a>
+      {% endif %}
+      <a href="/post/">✍ post</a>
+      <a href="/account/saved">⭐ faves</a>
+    </nav>
+  </div>
+</header>
+{% endblock %}
+<main class="cl-main">
+{% block content %}{% endblock %}
+</main>
+<footer class="cl-footer">
+  <div class="link-container">
+    <a href="/about/help"><span class="label">help</span></a>
+    <a href="/about/help/housing"><span class="label">safety</span></a>
+    <a href="/about/privacy"><span class="label">privacy</span></a>
+    <a href="/about/terms"><span class="label">terms</span></a>
+  </div>
+  <div class="link-container-nowrap">
+    <a href="/about"><span class="label">about</span></a>
+    <a href="/contact"><span class="label">app</span></a>
+    <a href="/about/help"><span class="label">sitemap</span></a>
+    <a href="/about/help"><span class="label">best-of-craigslist</span></a>
+  </div>
+  <div class="copyright">craigslist offline clone &middot; websitebench &middot; local demo data &copy; 2026</div>
+</footer>
+<script src="/static/js/site.js" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,46 @@
+schema_version: offline-clone.manifest.v2
+site_id: coursera-wacz-home
+display_name: Coursera WACZ Homepage
+state_model: stateful
+source:
+  origins:
+    - https://www.coursera.org/
+  baseline:
+    locale: en-US
+    currency: null
+    delivery_region: null
+    timezone: Etc/UTC
+    auth_state: anonymous
+    tenant: null
+    workspace: null
+    role: public-visitor
+    capabilities:
+      - public-read-only
+    feature_flags:
+      - supplied-wacz-homepage
+      - manual-promotional-switching
+    user_agent: null
+    viewport:
+      width: 1191
+      height: 979
+    capture_id: wacz-home-2026-08-17
+  capture_policy:
+    safe_methods:
+      - GET
+      - HEAD
+    runtime_remote_requests: forbidden
+scope:
+  purpose: scope/purpose.json
+  invariants: scope/invariants.json
+  routes: scope/routes.json
+  journeys: scope/journeys.json
+  checkpoints: scope/checkpoints.json
+  claims: scope/claims.jsonl
+  coverage: scope/coverage.json
+paths:
+  candidate_root: clone
+  candidate_excludes:
+    - tests
+  asset_manifest: source-assets/manifest.json
+  backend_model: backend/model.json
+  artifact_root: artifacts/offline-clone

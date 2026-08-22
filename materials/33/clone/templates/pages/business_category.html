@@ -1,0 +1,30 @@
+<div class="source-category-shell source-business-shell">
+  <nav class="source-category-breadcrumb" aria-label="Breadcrumb"><a href="/browse">Categories</a><span aria-hidden="true">›</span><span>{{ page.title }}</span></nav>
+  <section class="source-category-hero" aria-labelledby="category-heading">
+    <div><h1 id="category-heading">{{ page.title }}</h1><p>{{ page.description }}</p></div>
+    <dl>{% for value, label in page.stats %}<div><dt>{{ value }}</dt><dd>{{ label }}</dd></div>{% endfor %}</dl>
+  </section>
+  <section class="source-category-popular" aria-labelledby="category-popular-heading">
+    <h2 id="category-popular-heading">Most popular</h2>
+    <nav aria-label="Course level"><a class="is-active" href="/browse/business">All</a><a href="/browse/business?level=beginner">Beginner</a><a href="/browse/business?level=intermediate">Intermediate</a><a href="/browse/business?level=advanced">Advanced</a></nav>
+    <div class="source-category-grid">{% for card in page.cards %}<article class="source-category-card" data-business-position="{{ card.position }}"><a class="source-category-image" href="{{ card.href }}"><img src="{{ card.image }}" alt=""><span class="source-business-badges">{% for badge in card.badges %}<b>{{ badge }}</b>{% endfor %}</span></a><div class="source-category-copy"><p class="source-category-provider"><img src="{{ card.provider_logo }}" alt="">{{ card.provider }}</p><h3><a href="{{ card.href }}">{{ card.title }}</a></h3>{% if card.builds_toward_degree %}<p class="source-business-degree"><span aria-hidden="true">♙</span> Build toward a degree</p>{% endif %}<p class="source-category-rating"><span aria-hidden="true">★</span> {{ card.rating }} · {{ card.reviews }}</p><p class="source-category-meta">{{ card.metadata }}</p></div></article>{% endfor %}</div>
+    <a class="source-category-more" href="/search?category=business">Show 8 more</a>
+  </section>
+  <section class="source-category-roles" aria-labelledby="business-roles-heading">
+    <div class="source-business-role-intro"><h2 id="business-roles-heading">Explore roles</h2><p>Gain the knowledge and skills you need to advance.</p><a href="/browse">View all</a></div>
+    {% for role in page.roles %}<article class="source-business-role-card" data-business-role-position="{{ role.position }}">
+      <div class="source-business-role-copy">
+        <h3><a href="{{ role.href }}">{{ role.title }}</a></h3>
+        <p class="source-business-role-description">{{ role.description }}</p>
+        {% if role.salary %}<p class="source-business-role-salary"><strong>{{ role.salary_amount }}</strong> {{ role.salary_label }} <sup>¹</sup></p>{% endif %}
+        <p class="source-business-role-offered">Offered by</p>
+        <div class="source-business-role-providers" aria-label="Providers">{% for provider in role.providers %}<span class="source-business-role-provider"><img src="{{ provider.logo }}" alt="{{ provider.name }}"></span>{% endfor %}</div>
+      </div>
+      <img class="source-business-role-image" src="{{ role.image }}" alt="">
+    </article>{% endfor %}
+  </section>
+  <section class="source-category-faq" aria-labelledby="business-faq-heading"><h2 id="business-faq-heading">Frequently asked questions</h2><div><div class="source-business-faq-list">{% for faq in page.faqs %}<details class="source-business-faq-item{% if loop.index > 3 %} source-business-faq-additional{% endif %}"{% if loop.index > 3 %} hidden{% endif %}><summary>{{ faq.question }}</summary><p>{% for segment in faq.segments %}{% if segment.href %}<a class="source-business-faq-link" href="{{ segment.href }}">{{ segment.text }}</a>{% else %}{{ segment.text }}{% endif %}{% endfor %}</p></details>{% endfor %}<button type="button" class="source-business-faq-toggle" data-business-faq-show-all aria-expanded="false"><span data-business-faq-label>Show all 7 frequently asked questions</span><span aria-hidden="true">⌄</span></button></div><aside><span aria-hidden="true">ⓘ</span><h3>More questions</h3><a href="/help">Visit the learner help center</a></aside></div></section>
+  <p class="source-category-footnote">¹ Median salary and job opening data are sourced from Lightcast™ Job Postings Report.<br>Content Creator, Machine Learning Engineer and Salesforce Development Representative (1/1/2024 - 12/31/2024)<br>All other job roles (7/1/2024 - 7/1/2025)</p>
+</div>
+<section class="source-business-signup" aria-label="Personalized recommendations"><h2>Join for free and get personalized recommendations, updates and offers.</h2><a href="/signup">Join for free</a></section>
+<script src="/static/business-category.js" defer></script>

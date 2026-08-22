@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}reset password - craigslist{% endblock %}
+{% block content %}
+<h1 class="cl-page-heading">reset your password</h1>
+<p>Enter the reset code from your email (local offline outbox) and choose a new password.</p>
+<form class="cl-form" method="post" action="/account/reset">
+  {% if errors %}
+  <div class="form-error-box">{% for msg in errors.values() %}<div>{{ msg }}</div>{% endfor %}</div>
+  {% endif %}
+  <label for="code">reset code</label>
+  <input type="text" id="code" name="code">
+  {% if errors and errors.code %}<div class="field-error">{{ errors.code }}</div>{% endif %}
+
+  <label for="password">new password</label>
+  <input type="password" id="password" name="password" autocomplete="new-password">
+  {% if errors and errors.password %}<div class="field-error">{{ errors.password }}</div>{% endif %}
+
+  <label for="confirm_password">confirm new password</label>
+  <input type="password" id="confirm_password" name="confirm_password" autocomplete="new-password">
+  {% if errors and errors.confirm_password %}<div class="field-error">{{ errors.confirm_password }}</div>{% endif %}
+
+  <div class="form-actions"><button type="submit">reset password</button></div>
+</form>
+<p><a href="/account/login">&larr; return to log in</a></p>
+{% endblock %}

@@ -1,0 +1,121 @@
+{
+  "schema_version": "websitebench.task.v1",
+  "task_id": "craigslist",
+  "journeys": [
+    {
+      "id": "t1",
+      "name": "housing-navigation",
+      "title": "public entry to housing section"
+    },
+    {
+      "id": "t2",
+      "name": "post-sublet",
+      "title": "post a sublet (1BR Annex $2400 Jul-Aug furnished)"
+    },
+    {
+      "id": "t3",
+      "name": "browse-by-location-category",
+      "title": "browse classifieds by location and category"
+    },
+    {
+      "id": "t4",
+      "name": "refine-search",
+      "title": "refine search with price/neighborhood/date/category filters"
+    },
+    {
+      "id": "t5",
+      "name": "listing-detail",
+      "title": "inspect description/photos/price/location/reply options"
+    },
+    {
+      "id": "t6",
+      "name": "save-search-bookmark",
+      "title": "save a search / bookmark a listing"
+    },
+    {
+      "id": "t7",
+      "name": "account-login-manage",
+      "title": "account/login flows to manage postings"
+    },
+    {
+      "id": "t8",
+      "name": "create-post",
+      "title": "create a new classified post in a chosen category and location"
+    },
+    {
+      "id": "t9",
+      "name": "enter-details",
+      "title": "enter title/price/description/attributes/contact/map"
+    },
+    {
+      "id": "t10",
+      "name": "photos",
+      "title": "upload/reorder/remove photos"
+    },
+    {
+      "id": "t11",
+      "name": "preview-publish",
+      "title": "preview and reach the publish/confirmation step"
+    },
+    {
+      "id": "t12",
+      "name": "manage-post",
+      "title": "edit/renew/repost/delete an existing post"
+    },
+    {
+      "id": "t13",
+      "name": "reply-contact",
+      "title": "reply/contact flow for an existing listing"
+    },
+    {
+      "id": "t14",
+      "name": "settings-flag",
+      "title": "posting/account settings or reporting/flagging controls"
+    },
+    {
+      "id": "t15",
+      "name": "no-results",
+      "title": "impossible search shows no-results and a route back"
+    },
+    {
+      "id": "t16",
+      "name": "signin-entry",
+      "title": "sign-in entry verification only"
+    },
+    {
+      "id": "t17",
+      "name": "register-entry",
+      "title": "registration entry verification only"
+    },
+    {
+      "id": "t18",
+      "name": "password-recovery-entry",
+      "title": "password recovery entry verification only"
+    },
+    {
+      "id": "t19",
+      "name": "account-history",
+      "title": "account history for housing records"
+    },
+    {
+      "id": "t20",
+      "name": "validation-prompt",
+      "title": "empty required fields / signed-out permission prompt"
+    },
+    {
+      "id": "t21",
+      "name": "help-support",
+      "title": "public help/support/contact guidance"
+    },
+    {
+      "id": "t22",
+      "name": "not-found",
+      "title": "branded not-found with navigation"
+    },
+    {
+      "id": "t23",
+      "name": "e2e-sublet",
+      "title": "end-to-end: from public entry post the sublet and verify"
+    }
+  ]
+}

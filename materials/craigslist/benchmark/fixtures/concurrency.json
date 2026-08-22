@@ -1,0 +1,12 @@
+{
+  "scenario": "dual-account isolation",
+  "accounts": [
+    "poster@example.com",
+    "seeker@example.com"
+  ],
+  "assertions": [
+    "seeker never sees poster's postings/favorites/searches",
+    "seeker cannot edit/delete poster's postings (403)",
+    "anonymous stateful actions get the sign-in prompt (401)"
+  ]
+}

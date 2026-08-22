@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} - craigslist{% endblock %}
+{% block content %}
+<main class="cl-main cl-wide" style="max-width:760px;">
+  <h1 class="cl-page-heading">{{ title }}</h1>
+  <p>{{ body }}</p>
+  <p class="filter-label"><a href="/about">&larr; about craigslist</a></p>
+</main>
+{% endblock %}

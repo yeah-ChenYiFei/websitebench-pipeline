@@ -1,0 +1,340 @@
+{
+  "schema_version": "offline-clone.journeys.v1",
+  "journeys": [
+    {
+      "id": "housing.navigate-from-entry.success",
+      "actor": "public-visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-1",
+      "steps": [
+        "Open the public entry page (/) and observe the craigslist wordmark, global search box, and region/category index.",
+        "Use the primary navigation (category index housing link and/or region index Toronto link) to reach the housing section.",
+        "Verify the destination heading (housing) and canonical path (/toronto/housing/) are visible.",
+        "Verify the housing subcategory list includes sublets & temporary."
+      ]
+    },
+    {
+      "id": "posting.create-sublet.publish.success",
+      "actor": "poster",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-15-e2e",
+      "steps": [
+        "Start at the public entry and open the create-a-posting wizard.",
+        "Sign in with the seeded poster account when prompted (or register first).",
+        "Choose category housing > sublets & temporary and location Toronto > Annex.",
+        "Enter title '1BR near Annex - furnished sublet Jul-Aug', price 2400, postal code, attributes: 1 bedroom, furnished, available July 1, 2026 through August 31, 2026.",
+        "Enter contact email and description stating one-bedroom near Toronto Annex, $2400/month, July-August, furnished.",
+        "Optionally upload one photo, preview the post, and publish.",
+        "Confirm the resulting detail view visibly matches every condition: one-bedroom, near Annex, $2400/month, July-August, furnished.",
+        "Confirm the listing appears in the sublets category listing and in housing search results for the same price/neighborhood filters."
+      ]
+    },
+    {
+      "id": "housing.search.browse-filters.success",
+      "actor": "housing-seeker",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-3",
+      "steps": [
+        "Browse classifieds by location (region page) and by category (housing subcategories).",
+        "Run a search from the housing search box with a free-text query.",
+        "Verify results render from the seeded data with titles, prices, locations, dates, and thumbnails."
+      ]
+    },
+    {
+      "id": "housing.search.refine-filters.success",
+      "actor": "housing-seeker",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-4",
+      "steps": [
+        "Refine a housing search using price (min/max), neighborhood (postal/area), posting date (posted today), and category-specific filters (bedrooms, housing type).",
+        "Verify each filter narrows the seeded result set deterministically and the filter values remain visible in the filter bar.",
+        "Verify sorting by newest and by price and grid/list views."
+      ]
+    },
+    {
+      "id": "listing.detail.inspect-reply.success",
+      "actor": "housing-seeker",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-5",
+      "steps": [
+        "Open a listing from search or category results.",
+        "Inspect description, photos, price, location, and reply/contact options.",
+        "Verify the post id, posted date, posted-by owner/dealer, map area, and avoid-scams guidance are present.",
+        "Verify the reply button opens the contact flow."
+      ]
+    },
+    {
+      "id": "listing.reply.contact-flow",
+      "actor": "housing-seeker",
+      "kind": "success",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-13",
+      "steps": [
+        "From a listing detail page open the reply/contact flow.",
+        "Submit the anonymous reply form with name, email, and message.",
+        "Verify inline validation when required fields are missing.",
+        "Verify the sent confirmation and that the message reaches the poster's local outbox without exposing a real address."
+      ]
+    },
+    {
+      "id": "listing.save-favorite.bookmark",
+      "actor": "housing-seeker",
+      "kind": "success",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-6",
+      "steps": [
+        "Open a listing and bookmark/favorite it.",
+        "Verify an anonymous actor receives the sign-in prompt.",
+        "Verify a signed-in actor's favorite persists across refresh and re-login and appears in the account saved page."
+      ]
+    },
+    {
+      "id": "search.save-search.persist",
+      "actor": "housing-seeker",
+      "kind": "success",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-6b",
+      "steps": [
+        "From a housing search, save the search.",
+        "Verify an anonymous actor receives the sign-in prompt.",
+        "Verify a signed-in actor's saved search persists and appears in the account searches page."
+      ]
+    },
+    {
+      "id": "account.signin.entry.verify-only",
+      "actor": "public-visitor",
+      "kind": "observation",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-16",
+      "steps": [
+        "Open the sign-in entry.",
+        "Verify the email (username) field and the password and identity-provider choices are present.",
+        "Return without submitting credentials."
+      ]
+    },
+    {
+      "id": "account.register.entry.verify-only",
+      "actor": "public-visitor",
+      "kind": "observation",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-17",
+      "steps": [
+        "Open the account-registration entry.",
+        "Verify the visible identity fields (email, password, confirm password), terms links, and verification guidance.",
+        "Do not create an account."
+      ]
+    },
+    {
+      "id": "account.password-recovery.entry.verify-only",
+      "actor": "public-visitor",
+      "kind": "observation",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-18",
+      "steps": [
+        "From the sign-in surface open password recovery.",
+        "Verify the reset-address (email) field and validation guidance.",
+        "Verify the return-to-sign-in link.",
+        "Do not send a reset message."
+      ]
+    },
+    {
+      "id": "account.register-login.session.success",
+      "actor": "poster",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-7",
+      "steps": [
+        "Register a new account with a synthetic email and a valid password.",
+        "Verify the five-minute per-email registration rate limit on a second immediate attempt.",
+        "Log in with the new credentials and verify the session persists across refresh.",
+        "Log out and verify the session is gone and stateful pages require sign-in again."
+      ]
+    },
+    {
+      "id": "account.history.manage-posting.success",
+      "actor": "poster",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-19",
+      "steps": [
+        "With seeded offline data present, open the account history for housing records and actions.",
+        "Verify the newest item exposes its status (active), a detail link, edit/renew/repost/delete or cancellation options.",
+        "Verify a route back to the relevant collection (housing section or the posting itself)."
+      ]
+    },
+    {
+      "id": "posting.wizard.create-full.success",
+      "actor": "poster",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-8",
+      "steps": [
+        "Create a new classified post in a chosen category (housing > sublets) and location (Toronto > Annex).",
+        "Walk the wizard steps: category, location, details, contact, photos, preview, publish.",
+        "Verify each step validates and persists server-side state as the wizard advances."
+      ]
+    },
+    {
+      "id": "posting.details.enter-attributes.success",
+      "actor": "poster",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-9",
+      "steps": [
+        "Enter title, price, description, attributes (housing type, bedrooms, baths, square feet, available date, laundry, parking, AC), contact method, and map/location (postal code + neighborhood).",
+        "Verify inline validation for missing title, invalid price, and missing description.",
+        "Verify the map/location render is local and deterministic."
+      ]
+    },
+    {
+      "id": "posting.photos.upload-reorder-remove",
+      "actor": "poster",
+      "kind": "success",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-10",
+      "steps": [
+        "In the photos step upload multiple images.",
+        "Reorder them and verify the order persists into the preview and detail page.",
+        "Remove an image and verify it disappears from the preview."
+      ]
+    },
+    {
+      "id": "posting.preview.publish-confirm",
+      "actor": "poster",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-11",
+      "steps": [
+        "Preview the post and verify it renders as the future detail page.",
+        "Reach the publish/confirmation step and verify the confirmation names the posting id and offers view/edit/delete."
+      ]
+    },
+    {
+      "id": "posting.manage.edit-delete.success",
+      "actor": "poster",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-12",
+      "steps": [
+        "Open an existing posting of the signed-in user.",
+        "Edit it and verify the change is visible on the detail page after saving.",
+        "Renew it and verify the posted date bumps.",
+        "Repost it and verify a new posting id is created.",
+        "Delete it and verify the detail URL renders the removed state and the listing leaves search results.",
+        "Verify a non-owner or anonymous actor gets a permission prompt on every mutation."
+      ]
+    },
+    {
+      "id": "flagging.report-entry",
+      "actor": "public-visitor",
+      "kind": "success",
+      "priority": "p2",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-14",
+      "steps": [
+        "Open the reporting/flagging control for a listing.",
+        "Pick a reason, optionally add a note, and submit.",
+        "Verify the sent confirmation and that no private account data is exposed."
+      ]
+    },
+    {
+      "id": "search.no-results.recovery.success",
+      "actor": "public-visitor",
+      "kind": "recovery",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-15-search",
+      "steps": [
+        "Search housing for the impossible query zzzz-no-match-websitebench (or apply an impossible public filter when discovery is browse-only).",
+        "Verify a no-results message is shown.",
+        "Verify a route back to available housing records and actions (return to search / housing section) works."
+      ]
+    },
+    {
+      "id": "validation.empty-or-signed-out.prompt",
+      "actor": "public-visitor",
+      "kind": "error",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-20",
+      "steps": [
+        "Open a stateful action (posting wizard, favorite, save search) while signed out.",
+        "Verify a permission prompt identifies that sign-in is required before continuation.",
+        "Open a mutation form with required fields empty (posting details, reply, contact, register).",
+        "Verify inline validation identifies what must be corrected before continuation and persists nothing."
+      ]
+    },
+    {
+      "id": "help.contact.entry.reachable",
+      "actor": "public-visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-21",
+      "steps": [
+        "Open the public help/support/contact entry from the footer.",
+        "Verify a user can reach guidance for housing records and actions, account access, and failed actions.",
+        "Verify no private account data is exposed anywhere on the help surface."
+      ]
+    },
+    {
+      "id": "notfound.deep-link.recovery",
+      "actor": "public-visitor",
+      "kind": "recovery",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "inferred",
+      "task_ref": "user-task-22",
+      "steps": [
+        "Open a non-existent deep link (for example /toronto/housing/d/999999999/does-not-exist).",
+        "Verify a branded not-found or recovery view preserves primary navigation.",
+        "Verify a safe route back to housing records and actions works."
+      ]
+    }
+  ]
+}

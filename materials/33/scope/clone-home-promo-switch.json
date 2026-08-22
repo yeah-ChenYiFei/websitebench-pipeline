@@ -1,0 +1,47 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-home-manual-promo-switch",
+  "viewport": {
+    "width": 1191,
+    "height": 979
+  },
+  "timeout_ms": 15000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org"
+    ],
+    "clone": [
+      "http://127.0.0.1:8044"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-home",
+      "action": "goto",
+      "path": "/"
+    },
+    {
+      "id": "show-neural-networks-promo",
+      "action": "click",
+      "selector": {
+        "source": "button[aria-label='Go to item 2']",
+        "clone": "label[for='home-promo-2']"
+      },
+      "observations": [
+        {
+          "id": "neural-networks-promo-visible",
+          "kind": "visible",
+          "selector": {
+            "source": "main h2",
+            "clone": ".promo-panel[data-promo-tone='neural'] h2"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    }
+  ]
+}

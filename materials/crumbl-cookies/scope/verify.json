@@ -1,0 +1,198 @@
+{
+ "boot": {
+  "argv": [
+   "{python}",
+   "-m",
+   "uvicorn",
+   "app:app",
+   "--host",
+   "127.0.0.1",
+   "--port",
+   "{port}",
+   "--log-level",
+   "warning"
+  ],
+  "cwd": "clone",
+  "env": {}
+ },
+ "deferred": {},
+ "prepare": [],
+ "routes": {
+  "home": "/",
+  "menu": "/menu",
+  "flavor-profile": "/profiles/creme-brulee-cookie",
+  "stores": "/stores",
+  "store-detail": "/stores/114th",
+  "order": "/order",
+  "order-pickup": "/order/pickup",
+  "order-delivery": "/order/delivery",
+  "not-found": "/does-not-exist-websitebench"
+ },
+ "schema_version": "offline-clone.verify-driver.v1",
+ "site_id": "crumbl-cookies",
+ "states": {
+  "order-pickup.store-selected": [
+   {
+    "goto": "/order/pickup"
+   },
+   {
+    "eval": "sessionStorage.removeItem('crumbl-order-pickup'); sessionStorage.removeItem('crumbl-order-delivery')"
+   },
+   {
+    "goto": "/order/pickup"
+   },
+   {
+    "click": "[data-testid='store-select']"
+   },
+   {
+    "expect": "[data-testid='box-grid']"
+   }
+  ],
+  "order-pickup.checkout-review": [
+   {
+    "goto": "/order/pickup"
+   },
+   {
+    "eval": "sessionStorage.removeItem('crumbl-order-pickup'); sessionStorage.removeItem('crumbl-order-delivery')"
+   },
+   {
+    "goto": "/order/pickup"
+   },
+   {
+    "click": "[data-testid='store-select']"
+   },
+   {
+    "click": "[data-testid='add-6-pack']"
+   },
+   {
+    "eval": "[...document.querySelectorAll('[data-testid=menu-grid] button')].forEach((el,i)=>{ if(i<6) el.click() })"
+   },
+   {
+    "click": "[data-testid='add-to-cart']"
+   },
+   {
+    "click": "[data-testid='checkout']"
+   },
+   {
+    "expect": "[data-testid='checkout-review']"
+   }
+  ],
+  "order-pickup.confirmation": [
+   {
+    "goto": "/order/pickup"
+   },
+   {
+    "eval": "sessionStorage.removeItem('crumbl-order-pickup'); sessionStorage.removeItem('crumbl-order-delivery')"
+   },
+   {
+    "goto": "/order/pickup"
+   },
+   {
+    "click": "[data-testid='store-select']"
+   },
+   {
+    "click": "[data-testid='add-6-pack']"
+   },
+   {
+    "eval": "[...document.querySelectorAll('[data-testid=menu-grid] button')].forEach((el,i)=>{ if(i<6) el.click() })"
+   },
+   {
+    "click": "[data-testid='add-to-cart']"
+   },
+   {
+    "click": "[data-testid='checkout']"
+   },
+   {
+    "fill": "[data-testid='pickup-name']",
+    "value": "WebsiteBench Test"
+   },
+   {
+    "click": "button:has-text('Continue to Review')"
+   },
+   {
+    "click": "[data-testid='continue-payment']"
+   },
+   {
+    "click": "[data-testid='place-order']"
+   },
+   {
+    "expect": "[data-testid='order-confirmation']"
+   }
+  ],
+  "order-delivery.checkout-review": [
+   {
+    "goto": "/order/delivery"
+   },
+   {
+    "eval": "sessionStorage.removeItem('crumbl-order-pickup'); sessionStorage.removeItem('crumbl-order-delivery')"
+   },
+   {
+    "goto": "/order/delivery"
+   },
+   {
+    "click": "[data-testid='store-select']"
+   },
+   {
+    "click": "[data-testid='add-6-pack']"
+   },
+   {
+    "eval": "[...document.querySelectorAll('[data-testid=menu-grid] button')].forEach((el,i)=>{ if(i<6) el.click() })"
+   },
+   {
+    "click": "[data-testid='add-to-cart']"
+   },
+   {
+    "click": "[data-testid='checkout']"
+   },
+   {
+    "expect": "[data-testid='checkout-review']"
+   }
+  ],
+  "order-delivery.confirmation": [
+   {
+    "goto": "/order/delivery"
+   },
+   {
+    "eval": "sessionStorage.removeItem('crumbl-order-pickup'); sessionStorage.removeItem('crumbl-order-delivery')"
+   },
+   {
+    "goto": "/order/delivery"
+   },
+   {
+    "click": "[data-testid='store-select']"
+   },
+   {
+    "click": "[data-testid='add-6-pack']"
+   },
+   {
+    "eval": "[...document.querySelectorAll('[data-testid=menu-grid] button')].forEach((el,i)=>{ if(i<6) el.click() })"
+   },
+   {
+    "click": "[data-testid='add-to-cart']"
+   },
+   {
+    "click": "[data-testid='checkout']"
+   },
+   {
+    "fill": "[data-testid='pickup-name']",
+    "value": "WebsiteBench Test"
+   },
+   {
+    "fill": "[data-testid='delivery-address']",
+    "value": "100 Main St, Provo, UT 84601"
+   },
+   {
+    "click": "button:has-text('Continue to Review')"
+   },
+   {
+    "click": "[data-testid='continue-payment']"
+   },
+   {
+    "click": "[data-testid='place-order']"
+   },
+   {
+    "expect": "[data-testid='order-confirmation']"
+   }
+  ]
+ }
+}

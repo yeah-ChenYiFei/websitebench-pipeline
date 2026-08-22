@@ -1,0 +1,139 @@
+{
+  "schema_version": "websitebench.offline-clone.structure-consistency.v1",
+  "authority": "diagnostic-only",
+  "pages": [
+    {
+      "page": "home",
+      "structure_score": 0.8496,
+      "headings": {
+        "source": 67,
+        "clone": 73,
+        "jaccard": 0.8919,
+        "coverage": 0.9851,
+        "level_match": 0.9848
+      },
+      "controls": {
+        "source": 195,
+        "clone": 218,
+        "jaccard": 0.6789,
+        "coverage": 0.8564
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    },
+    {
+      "page": "browse",
+      "structure_score": 0.9092,
+      "headings": {
+        "source": 50,
+        "clone": 52,
+        "jaccard": 0.9615,
+        "coverage": 1.0,
+        "level_match": 0.98
+      },
+      "controls": {
+        "source": 152,
+        "clone": 158,
+        "jaccard": 0.7614,
+        "coverage": 0.8816
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    },
+    {
+      "page": "search",
+      "structure_score": 0.8855,
+      "headings": {
+        "source": 21,
+        "clone": 21,
+        "jaccard": 1.0,
+        "coverage": 1.0,
+        "level_match": 1.0
+      },
+      "controls": {
+        "source": 104,
+        "clone": 142,
+        "jaccard": 0.6184,
+        "coverage": 0.9038
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    },
+    {
+      "page": "course",
+      "structure_score": 0.9265,
+      "headings": {
+        "source": 39,
+        "clone": 39,
+        "jaccard": 1.0,
+        "coverage": 1.0,
+        "level_match": 0.9744
+      },
+      "controls": {
+        "source": 131,
+        "clone": 134,
+        "jaccard": 0.755,
+        "coverage": 0.8702
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    },
+    {
+      "page": "specialization",
+      "structure_score": 0.9532,
+      "headings": {
+        "source": 36,
+        "clone": 36,
+        "jaccard": 1.0,
+        "coverage": 1.0,
+        "level_match": 1.0
+      },
+      "controls": {
+        "source": 130,
+        "clone": 130,
+        "jaccard": 0.844,
+        "coverage": 0.9154
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    },
+    {
+      "page": "login",
+      "structure_score": 0.8944,
+      "headings": {
+        "source": 5,
+        "clone": 5,
+        "jaccard": 1.0,
+        "coverage": 1.0,
+        "level_match": 1.0
+      },
+      "controls": {
+        "source": 53,
+        "clone": 64,
+        "jaccard": 0.6479,
+        "coverage": 0.8679
+      },
+      "data_points": {
+        "source": 1,
+        "clone": 1,
+        "coverage": 1.0
+      }
+    }
+  ],
+  "overall_structure_consistency": 0.9031
+}

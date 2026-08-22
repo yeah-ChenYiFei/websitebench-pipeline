@@ -1,0 +1,9 @@
+{
+  "schema_version": "offline-clone.assets.v1",
+  "snapshot_id": "craigslist-pending",
+  "created_at": "2026-08-21T00:00:00Z",
+  "remote_runtime_policy": "forbidden",
+  "closure_status": "no-assets",
+  "no_assets_reason": "Source evidence acquisition from craigslist.org is unavailable in the configured environment: the live site returns HTTP 403 to non-browser and datacenter-origin requests, and no authenticated session or cloud browser channel is configured. The clone therefore uses no third-party runtime assets; all images, fonts, stylesheets, and scripts are authored locally and served same-origin. Any future source capture round may add assets without altering this contract.",
+  "assets": []
+}

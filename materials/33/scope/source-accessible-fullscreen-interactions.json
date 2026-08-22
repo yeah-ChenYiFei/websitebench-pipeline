@@ -1,0 +1,37 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-accessible-fullscreen-safe-interactions",
+  "viewport": {"width": 1692, "height": 979},
+  "timeout_ms": 45000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://images.ctfassets.net",
+      "https://coursera-course-photos.s3.amazonaws.com",
+      "https://d15cw65ipctsrr.cloudfront.net",
+      "https://s3.amazonaws.com",
+      "https://coursera_assets.s3.amazonaws.com"
+    ],
+    "clone": ["http://127.0.0.1:8044"]
+  },
+  "steps": [
+    {"id": "open-specialization", "action": "goto", "path": "/specializations/deep-learning"},
+    {"id": "click-first-enroll", "action": "click", "selector": "button[data-e2e='enroll-button'] >> nth=0"},
+    {
+      "id": "capture-signed-out-enrollment",
+      "action": "snapshot",
+      "observations": [{"id": "signed-out-route", "kind": "url_path"}, {"id": "signed-out-text", "kind": "text", "selector": "body"}],
+      "screenshot": true
+    },
+    {"id": "open-home", "action": "goto", "path": "/"},
+    {"id": "click-explore", "action": "click", "selector": "button[data-testid='megamenu-explore-button']"},
+    {
+      "id": "capture-clicked-explore",
+      "action": "snapshot",
+      "observations": [{"id": "clicked-explore-text", "kind": "text", "selector": "body"}, {"id": "clicked-explore-links", "kind": "count", "selector": "a"}],
+      "screenshot": true
+    }
+  ]
+}

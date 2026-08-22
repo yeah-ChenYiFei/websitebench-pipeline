@@ -1,0 +1,32 @@
+{
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "coursera-wacz-home",
+  "boot": {
+    "argv": ["{python}", "-m", "uvicorn", "app:app", "--host", "127.0.0.1", "--port", "{port}", "--log-level", "warning"],
+    "cwd": "clone",
+    "env": {}
+  },
+  "prepare": [],
+  "routes": {"home": "/"},
+  "status": {},
+  "states": {
+    "home.loaded": [
+      {"expect": "h1:has-text(\"New! Learn vibe coding with Google\")"},
+      {"expect": "[data-promo-card]:visible"},
+      {"expect": "footer[aria-label=\"Coursera Footer\"]"}
+    ],
+    "home.promo-switched": [
+      {"click": "[data-promo-next]"},
+      {"expect": "[data-promo-card=\"coursera-business\"]:visible"},
+      {"expect": "[data-promo-dot=\"1\"][aria-current=\"true\"]"}
+    ],
+    "home.cookie-explanation": [
+      {"click": "[data-cookie-open]"},
+      {"expect": "dialog[open]:has-text(\"does not set analytics or marketing cookies\")"}
+    ]
+  },
+  "deferred": {},
+  "states_out_of_scope": {
+    "all-non-home-routes": "The supplied WACZ page list contains only the Coursera homepage."
+  }
+}

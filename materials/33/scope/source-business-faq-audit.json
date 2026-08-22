@@ -1,0 +1,38 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-business-faq-audit",
+  "viewport": {"width": 1692, "height": 979},
+  "timeout_ms": 45000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://images.ctfassets.net",
+      "https://coursera_assets.s3.amazonaws.com"
+    ],
+    "clone": ["http://127.0.0.1:8045"]
+  },
+  "steps": [
+    {"id": "open-business", "action": "goto", "path": "/browse/business"},
+    {"id": "wait-initial", "action": "wait", "milliseconds": 1500},
+    {"id": "open-faq-1", "action": "click", "selector": "button:has-text('What skills can I develop with business courses on Coursera?')"},
+    {"id": "capture-faq-1", "action": "snapshot", "observations": [
+      {"id": "faq-1-parent-text", "kind": "text", "selector": "button:has-text('What skills can I develop with business courses on Coursera?') >> xpath=.."},
+      {"id": "faq-1-region-link-count", "kind": "count", "selector": "button:has-text('What skills can I develop with business courses on Coursera?') >> xpath=.. >> a"},
+      {"id": "main-text-faq-1", "kind": "text", "selector": "main"}
+    ], "screenshot": true, "full_page": false},
+    {"id": "open-faq-2", "action": "click", "selector": "button:has-text('Do I need prior business experience to take courses on Coursera?')"},
+    {"id": "capture-faq-2", "action": "snapshot", "observations": [
+      {"id": "faq-2-parent-text", "kind": "text", "selector": "button:has-text('Do I need prior business experience to take courses on Coursera?') >> xpath=.."},
+      {"id": "faq-2-region-link-count", "kind": "count", "selector": "button:has-text('Do I need prior business experience to take courses on Coursera?') >> xpath=.. >> a"},
+      {"id": "main-text-faq-2", "kind": "text", "selector": "main"}
+    ], "screenshot": true, "full_page": false},
+    {"id": "open-faq-3", "action": "click", "selector": "button:has-text('What careers can I pursue by taking business courses on Coursera?')"},
+    {"id": "capture-faq-3", "action": "snapshot", "observations": [
+      {"id": "faq-3-parent-text", "kind": "text", "selector": "button:has-text('What careers can I pursue by taking business courses on Coursera?') >> xpath=.."},
+      {"id": "faq-3-region-link-count", "kind": "count", "selector": "button:has-text('What careers can I pursue by taking business courses on Coursera?') >> xpath=.. >> a"},
+      {"id": "main-text-faq-3", "kind": "text", "selector": "main"}
+    ], "screenshot": true, "full_page": false}
+  ]
+}
