@@ -1360,6 +1360,7 @@ def signup(request: Request) -> HTMLResponse:
             language="en",
             footer_variant="source-browse",
             open_login=True,
+            login_next_path="/onboarding",
             real_css="authentication.css",
         )
     )
@@ -1411,11 +1412,29 @@ async def auth_login(request: Request) -> Response:
     values = await _form_values(request)
     try:
         email = _synthetic_email(values.get("email", ""))
-        signed_in = auth.sign_in(
-            token,
-            email=email,
-            password=values.get("password", ""),
-        )
+        try:
+            signed_in = auth.sign_in(
+                token,
+                email=email,
+                password=values.get("password", ""),
+            )
+        except AuthError:
+            # The live Coursera entry treats an unknown email + password as a
+            # new registration. Mirror that: create the local account directly
+            # so the shared /login dialog can onboard new users too.
+            if not auth.account_exists(email):
+                registered = auth.complete_externally_verified_registration(
+                    token,
+                    email=email,
+                    display_name=values.get(
+                        "display_name", values.get("full_name", "Local learner")
+                    ),
+                    password=values.get("password", ""),
+                    subject_factory=learning_db.create_profile,
+                )
+                signed_in = registered
+            else:
+                raise
     except (AuthError, ValueError) as exc:
         return _auth_failure(request, str(exc), status_code=401)
     response = RedirectResponse(_safe_next_path(values.get("next")), status_code=303)
