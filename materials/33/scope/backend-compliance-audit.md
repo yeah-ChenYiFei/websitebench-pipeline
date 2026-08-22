@@ -56,3 +56,26 @@ Web2Code2Web execution plan in `requirements/`.
   derive-from-clone + materialize), not a backend-compliance gap.
 - Live diagnostics remain blocked by the host kernel-sandbox limitation
   (`[Errno 95]`), recorded in KNOWN_DIFFERENCES.
+
+## 2026-08-22 comprehensive machine re-check
+
+- `websitebench-workflow check-payment-scope` re-run: initially FAILED on a
+  stale `journeys.json` input hash (journeys.json was rewritten by the Harbor
+  interaction-contract build, commit aeb1392). Remediated under the
+  existing-overlay-audit mode: refreshed the input sha256 and recomputed
+  `scope_subject_sha256`; the check now passes.
+- Harbor interaction contract re-derived from the current clone build with
+  `--max-profiles 3`; the contract keeps the intended auth/discovery/public
+  profiles (10 steps) and matches the previously shipped contract structure.
+  The site-root check (`public.home`, url "/") remains an advisory
+  `unresolved-route`: the OpenCLI contract route field is minLength 1 and
+  cannot express the site root (same documented limitation as the aspca site).
+- Runtime contract spot checks all pass: session cookie
+  `__Host-websitebench-33-session` with Secure/HttpOnly/SameSite=Lax/Path=/
+  and no parent Domain; SQLite site binding "33"; password stored as a
+  64-byte salted hash; mail outbox carries only template_id + server
+  variables with no OTP plaintext; registration flows use code_salt/code_hash;
+  reset clears orders and payment flows and restores the deterministic seeds.
+- Backend seam suites 73 passed; site suite 292 passed; static diagnostics
+  clean (87/87); ruff, prompt-freshness, and project tests pass; public
+  routes carry zero Chinese copy; content/backend consistency test passes.
