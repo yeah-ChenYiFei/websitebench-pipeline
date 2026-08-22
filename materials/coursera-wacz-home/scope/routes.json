@@ -1,0 +1,15 @@
+{
+  "schema_version": "offline-clone.routes.v1",
+  "routes": [
+    {
+      "id": "home",
+      "route_pattern": "/",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "evidence_kind": "directly-observed",
+      "local_destination": true,
+      "roles": ["visitor"],
+      "states": ["loaded", "promo-switched", "cookie-explanation"]
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{% macro lower_course_card(card, is_new=false) -%}
+  <article class="source-lower-course-card">
+    <a class="source-lower-card-image" href="{{ card.href }}">
+      <img src="{{ card.image }}" alt="">
+      <span class="source-lower-badges">{% if is_new %}<small>New</small>{% endif %}<small>Free Trial</small>{% if card.ai %}<small>AI skills</small>{% endif %}</span>
+    </a>
+    <p class="source-lower-provider"><img src="{{ card.provider_logo }}" alt="">{{ card.provider }}</p>
+    <h3><a href="{{ card.href }}">{{ card.title }}</a></h3>
+    {% if card.credential %}<a class="source-lower-credential" href="{{ card.href }}"><span aria-hidden="true">♙</span>{{ card.credential }}</a>{% endif %}
+    <p class="source-lower-rating"><span aria-hidden="true">★</span> {{ card.rating }} · {{ card.reviews }}</p>
+    <p class="source-lower-meta">{{ card.meta }}</p>
+  </article>
+{%- endmacro %}
+
+<div class="source-browse-shell">
+  <section class="source-browse-categories" aria-labelledby="source-browse-heading">
+    <h1 id="source-browse-heading" class="browse-source-heading">Explore Categories</h1>
+    <nav class="source-category-chips" aria-label="Explore Categories">
+      {% for slug, label, icon in categories %}
+        <a href="/browse/{{ slug }}">
+          <span class="source-category-icon source-category-icon-{{ icon }}" aria-hidden="true"></span>
+          {{ label }}
+        </a>
+      {% endfor %}
+    </nav>
+  </section>
+
+
+  <section class="source-browse-popular" aria-labelledby="source-popular-heading">
+    <h2 id="source-popular-heading">Most popular</h2>
+    <nav class="source-popular-filters" aria-label="Most popular categories">
+      <a class="is-active" href="/browse">All</a>
+      <a href="/browse/business">Business</a>
+      <a href="/browse/data-science">Data Science</a>
+      <a href="/browse/information-technology">Information Technology</a>
+      <a href="/browse/computer-science">Computer Science</a>
+    </nav>
+
+  <section class="source-promo-band" aria-label="Coursera promotions">
+    <div class="source-promo-card" data-card-href="/courseraplus/special/cplus-monthly-august-2026-global" role="link" tabindex="0"><span class="source-promo-art"><img src="/static/home/current-promo-plus-landscape.png" alt=""></span><span><span class="source-promo-eyebrow">Coursera Plus</span><h3>Break down barriers to learning with big savings</h3><span class="source-promo-cta"><a href="/courseraplus/special/cplus-monthly-august-2026-global">Get Coursera Plus</a></span><a class="source-promo-save" href="/courseraplus/special/cplus-monthly-august-2026-global">Save 40% for 3 months</a></span></div>
+    <div class="source-promo-card" data-card-href="/business/teams" role="link" tabindex="0"><span class="source-promo-art"><img src="/static/home/current-promo-teams-small.png" alt=""></span><span><span class="source-promo-eyebrow">For Business</span><h3>Start with easy savings for hard-working teams</h3><span class="source-promo-cta"><a href="/business/teams">Save 30% today</a></span></span></div>
+  </section>
+    <div class="source-popular-grid">
+      {% for card in popular_cards %}
+        <article class="source-popular-card">
+          <a class="source-popular-image" href="{{ card.href }}">
+            <img src="{{ card.image }}" alt="">
+            <span class="source-card-badges">
+              {% for badge in card.badges %}<span class="{{ 'source-ai-badge' if badge == 'AI skills' else '' }}">{{ badge }}</span>{% endfor %}
+            </span>
+          </a>
+          <div class="source-popular-card-copy">
+            <p class="source-popular-provider"><i class="provider-mark provider-mark-{{ card.provider_kind }}" aria-hidden="true">{{ card.provider_mark }}</i>{{ card.provider }}</p>
+            <h3><a href="{{ card.href }}">{{ card.title }}</a></h3>
+            {% if card.credential %}<a class="source-credential-link" href="{{ card.href }}"><span aria-hidden="true">♙</span>{{ card.credential }}</a>{% endif %}
+            <p class="source-card-rating"><span aria-hidden="true">★</span> {{ card.rating }} · {{ card.reviews }}</p>
+            <p class="source-card-meta">{{ card.meta }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    <a class="source-more-popular" href="/search">Show 8 more</a>
+  </section>
+
+  <section class="source-role-explorer" aria-labelledby="source-role-heading">
+    <div class="source-role-intro">
+      <h2 id="source-role-heading">Explore roles</h2>
+      <p>Grow in your career and get new skills with these premium courses on a 7-day free trial</p>
+      <a class="link-button primary" href="/search">View all</a>
+    </div>
+    <div class="source-role-content">
+      <nav class="source-role-filters" aria-label="Role filters">
+        <a class="source-level-filter" href="/search?level=Beginner">Level: Beginner</a>
+        <a class="is-active" href="/browse">Popular</a>
+        <a href="/browse/information-technology">Software Engineering &amp; IT</a>
+        <a href="/browse/business">Business</a>
+        <a href="/search?topic=Marketing">Sales &amp; Marketing</a>
+        <a href="/browse/data-science">Data Science &amp; Analytics</a>
+        <a href="/browse/health">Healthcare</a>
+      </nav>
+      <div class="source-role-grid" aria-label="Popular beginner roles">
+        {% for role in role_cards %}
+          <article class="source-role-card">
+            <a class="source-role-card-image" href="{{ role.href }}"><img src="{{ role.image }}" alt="{{ role.title }}"></a>
+            <h3><a href="{{ role.href }}">{{ role.title }}</a></h3>
+            <p>{{ role.description }}</p>
+            <div class="source-role-stats">
+              <strong>{{ role.salary }} <small>median salary</small></strong>
+              <strong>{{ role.openings }}</strong>
+            </div>
+            <a class="source-role-card-link" href="{{ role.href }}" aria-label="Explore {{ role.title }} programs">Explore role</a>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+
+  <section class="source-lower-collection" data-browse-section="google-analytics" aria-labelledby="source-ga-heading">
+    <h2 id="source-ga-heading">Google Analytics for Data Insights</h2>
+    <div class="source-lower-course-grid">
+      {% for card in ga_cards %}{{ lower_course_card(card) }}{% endfor %}
+    </div>
+  </section>
+
+  <section class="source-lower-collection" data-browse-section="project-management" aria-labelledby="source-pm-heading">
+    <h2 id="source-pm-heading">Your Path to Project Management: Google Project Management Essentials</h2>
+    <div class="source-lower-course-grid">
+      {% for card in pm_cards %}{{ lower_course_card(card) }}{% endfor %}
+    </div>
+  </section>
+
+  <section class="source-lower-collection" data-browse-section="ai-basics" aria-labelledby="source-ai-basics-heading">
+    <h2 id="source-ai-basics-heading">AI Basics for Everyone</h2>
+    <div class="source-lower-course-grid">
+      {% for card in ai_basics_cards %}{{ lower_course_card(card) }}{% endfor %}
+    </div>
+  </section>
+
+  <section class="source-lower-collection" data-browse-section="trending-now" aria-labelledby="source-trending-heading">
+    <h2 id="source-trending-heading">Trending now</h2>
+    <div class="source-lower-course-grid">
+      {% for card in trending_cards %}{{ lower_course_card(card) }}{% endfor %}
+    </div>
+    <a class="source-lower-show-more" href="/search">Show 8 more</a>
+  </section>
+
+  <section class="source-lower-collection source-lower-skills" data-browse-section="in-demand-skills" aria-labelledby="source-skills-heading">
+    <h2 id="source-skills-heading">In-demand skills</h2>
+    <nav aria-label="In-demand skills">
+      {% for label, href in skill_links %}<a class="source-lower-skill-link" href="{{ href }}">{{ label }}</a>{% endfor %}
+      <a class="source-lower-skill-more" href="/courses?query=skills">Show more</a>
+    </nav>
+  </section>
+
+  <section class="source-lower-collection" data-browse-section="new-releases" aria-labelledby="source-releases-heading">
+    <h2 id="source-releases-heading">New releases</h2>
+    <div class="source-lower-course-grid">
+      {% for card in release_cards %}{{ lower_course_card(card, true) }}{% endfor %}
+    </div>
+    <a class="source-lower-show-more" href="/search?q=New+Courses">Show 8 more</a>
+  </section>
+
+  <section class="source-lower-collection source-lower-partners" data-browse-section="leading-partners" aria-labelledby="source-partners-heading">
+    <h2 id="source-partners-heading">Leading partners</h2>
+    <div class="source-lower-partner-grid">
+      {% for name, href, logo in partners %}<a class="source-lower-partner" href="{{ href }}"><img src="{{ logo }}" alt="{{ name }}"></a>{% endfor %}
+    </div>
+  </section>
+
+  <section class="source-browse-faq" aria-labelledby="source-browse-faq-heading">
+    <h2 id="source-browse-faq-heading">Frequently asked questions</h2>
+    <div class="source-browse-faq-layout">
+      <div class="source-browse-faq-list">
+        <details><summary><h3><button type="button">What types of courses does Coursera offer?</button></h3></summary></details>
+        <details><summary><h3><button type="button">What are the benefits of taking courses on Coursera?</button></h3></summary></details>
+        <details><summary><h3><button type="button">Can I earn an accredited degree through Coursera?</button></h3></summary></details>
+        <a class="source-show-all-faq" href="/help">Show all 7 frequently asked questions</a>
+      </div>
+      <aside class="source-more-questions">
+        <span aria-hidden="true">?</span>
+        <h3>More questions</h3>
+        <a href="/help">Visit the learner help center</a>
+      </aside>
+    </div>
+  </section>
+
+  <p class="source-browse-footnote"><sup>1</sup> Median salary and job opening data are sourced from Lightcast™ Job Postings Report.<br>
+    Content Creator, Machine Learning Engineer and Salesforce Development Representative<br>
+    (1/1/2024 - 12/31/2024)<br>
+    All other job roles (7/1/2024 - 7/1/2025)
+  </p>
+</div>
+
+<section class="source-browse-signup" aria-labelledby="source-browse-signup-heading">
+  <h2 id="source-browse-signup-heading">Join for free and get personalized recommendations, updates and offers.</h2>
+  <a class="source-browse-signup-button" href="/signup">Join for free</a>
+</section>

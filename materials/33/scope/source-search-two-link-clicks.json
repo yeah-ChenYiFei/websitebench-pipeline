@@ -1,0 +1,50 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-source-search-two-link-clicks",
+  "viewport": {"width": 1191, "height": 979},
+  "timeout_ms": 30000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://coursera-course-photos.s3.amazonaws.com",
+      "https://d15cw65ipctsrr.cloudfront.net",
+      "https://s3.amazonaws.com",
+      "https://coursera_assets.s3.amazonaws.com"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-deep-learning-search",
+      "action": "goto",
+      "path": "/search?query=Deep%20Learning"
+    },
+    {
+      "id": "open-pytorch-course",
+      "action": "click",
+      "selector": "text=\"Deep Learning with PyTorch\""
+    },
+    {
+      "id": "observe-pytorch-route",
+      "action": "snapshot",
+      "observations": [
+        {"id": "route", "kind": "url_path"},
+        {"id": "title", "kind": "title"}
+      ]
+    },
+    {
+      "id": "search-illinois-tech-course",
+      "action": "goto",
+      "path": "/search?query=Illinois%20Tech%20Deep%20Learning"
+    },
+    {
+      "id": "observe-illinois-tech-result",
+      "action": "snapshot",
+      "observations": [
+        {"id": "illinois-tech-count", "kind": "count", "selector": "text=Illinois Tech"},
+        {"id": "illinois-tech-href", "kind": "attribute", "selector": "a:has-text('Illinois Tech') >> nth=0", "attribute": "href"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "schema_version": "offline-clone.backend-model.v1",
+  "site_id": "coursera-wacz-home",
+  "status": "draft",
+  "profile": "offline-benchmark",
+  "database": {
+    "engine": "sqlite",
+    "location_policy": "runtime-data-outside-candidate",
+    "concurrency_model": "wal-transactional-single-writer",
+    "migration_strategy": "versioned-forward-migrations",
+    "deterministic_reset": true,
+    "restart_persistence": true,
+    "site_isolation": "one-database-per-site",
+    "proofs": [
+      {"obligation": "data-location", "status": "planned", "evidence": []},
+      {"obligation": "schema-migration", "status": "planned", "evidence": []},
+      {"obligation": "deterministic-reset", "status": "planned", "evidence": []},
+      {"obligation": "restart-persistence", "status": "planned", "evidence": []},
+      {"obligation": "backup-restore", "status": "planned", "evidence": []},
+      {"obligation": "concurrency", "status": "planned", "evidence": []}
+    ]
+  },
+  "auth_semantics": {
+    "account_database_scope": "site-isolated",
+    "credential_storage": "salted-scrypt-hash",
+    "session_storage": "opaque-cookie-digest-at-rest",
+    "registration_account_creation": "after-email-verification",
+    "verification_challenge_storage": "salted-hash",
+    "password_reset_enumeration": "indistinguishable-public-response",
+    "mail_default": "LOCAL_ONLY",
+    "mail_statuses": ["LOCAL_ONLY", "SMTP_PENDING", "SMTP_SENT", "SMTP_FAILED"],
+    "smtp_activation": "explicit-complete-config-only",
+    "smtp_delivery_ceiling": 3,
+    "rejected_secret_journaling": "forbidden",
+    "legacy_write_policy": "read-compatible-write-rejected"
+  },
+  "common_capabilities": {
+    "account_registration": "account-registration",
+    "account_sign_in": "account-sign-in",
+    "session_lifecycle": "session-lifecycle",
+    "password_recovery": "password-recovery",
+    "email_delivery": "email-delivery"
+  },
+  "capabilities": [
+    {
+      "id": "account-registration",
+      "label": "Inactive common registration contract",
+      "priority": "p2",
+      "category": "authentication",
+      "implementation_status": "planned",
+      "semantic_profile": "local-account-registration-v1",
+      "external_effect": "none",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {},
+        "planned": ["valid", "invalid", "duplicate", "stale", "foreign-owner", "unauthorized-role", "restart", "migration", "concurrency"],
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "account-sign-in",
+      "label": "Inactive common sign-in contract",
+      "priority": "p2",
+      "category": "authentication",
+      "implementation_status": "planned",
+      "semantic_profile": "local-account-sign-in-v1",
+      "external_effect": "none",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {},
+        "planned": ["valid", "invalid", "duplicate", "stale", "foreign-owner", "unauthorized-role", "restart", "migration", "concurrency"],
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "session-lifecycle",
+      "label": "Inactive common session contract",
+      "priority": "p2",
+      "category": "authentication",
+      "implementation_status": "planned",
+      "semantic_profile": "local-session-lifecycle-v1",
+      "external_effect": "none",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {},
+        "planned": ["valid", "invalid", "duplicate", "stale", "foreign-owner", "unauthorized-role", "restart", "migration", "concurrency"],
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "password-recovery",
+      "label": "Password recovery is outside the homepage archive",
+      "priority": "p2",
+      "category": "authentication",
+      "implementation_status": "not-applicable",
+      "semantic_profile": "not-applicable-v1",
+      "external_effect": "none",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {},
+        "planned": [],
+        "not_applicable": [
+          {"obligation": "valid", "rationale": "Password recovery is outside the supplied homepage archive."},
+          {"obligation": "invalid", "rationale": "Password recovery is outside the supplied homepage archive."},
+          {"obligation": "duplicate", "rationale": "Password recovery is outside the supplied homepage archive."},
+          {"obligation": "stale", "rationale": "Password recovery is outside the supplied homepage archive."},
+          {"obligation": "foreign-owner", "rationale": "Password recovery is outside the supplied homepage archive."},
+          {"obligation": "unauthorized-role", "rationale": "Password recovery is outside the supplied homepage archive."},
+          {"obligation": "restart", "rationale": "Password recovery is outside the supplied homepage archive."},
+          {"obligation": "migration", "rationale": "Password recovery is outside the supplied homepage archive."},
+          {"obligation": "concurrency", "rationale": "Password recovery is outside the supplied homepage archive."}
+        ]
+      }
+    },
+    {
+      "id": "email-delivery",
+      "label": "Email delivery is outside the homepage archive",
+      "priority": "p2",
+      "category": "communication",
+      "implementation_status": "not-applicable",
+      "semantic_profile": "not-applicable-v1",
+      "external_effect": "none",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {},
+        "planned": [],
+        "not_applicable": [
+          {"obligation": "valid", "rationale": "Email delivery is outside the supplied homepage archive."},
+          {"obligation": "invalid", "rationale": "Email delivery is outside the supplied homepage archive."},
+          {"obligation": "duplicate", "rationale": "Email delivery is outside the supplied homepage archive."},
+          {"obligation": "stale", "rationale": "Email delivery is outside the supplied homepage archive."},
+          {"obligation": "foreign-owner", "rationale": "Email delivery is outside the supplied homepage archive."},
+          {"obligation": "unauthorized-role", "rationale": "Email delivery is outside the supplied homepage archive."},
+          {"obligation": "restart", "rationale": "Email delivery is outside the supplied homepage archive."},
+          {"obligation": "migration", "rationale": "Email delivery is outside the supplied homepage archive."},
+          {"obligation": "concurrency", "rationale": "Email delivery is outside the supplied homepage archive."}
+        ]
+      }
+    }
+  ]
+}

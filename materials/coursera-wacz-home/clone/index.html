@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Offline reconstruction of the Coursera homepage captured in a supplied WACZ archive.">
+  <title>Coursera | Online Courses &amp; Credentials From Top Educators. Join for Free</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script type="module" src="/static/home.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <nav class="audience-nav" aria-label="Audience navigation">
+      <div class="page-shell audience-links">
+        <a class="is-active" href="#main-content">For Individuals</a>
+        <button type="button" data-archive-boundary>For Businesses</button>
+        <button type="button" data-archive-boundary>For Universities</button>
+        <button type="button" data-archive-boundary>For Governments</button>
+      </div>
+    </nav>
+    <div class="main-nav page-shell">
+      <a class="wordmark" href="/" aria-label="Coursera homepage">coursera</a>
+      <button class="nav-link explore-button" type="button" aria-expanded="false" aria-controls="explore-menu" data-explore-toggle>
+        Explore <span aria-hidden="true">⌄</span>
+      </button>
+      <button class="nav-link" type="button" data-archive-boundary>Degrees</button>
+      <form class="search-form" role="search" data-archive-search>
+        <label class="sr-only" for="site-search">What do you want to learn?</label>
+        <input id="site-search" name="query" type="search" placeholder="What do you want to learn?">
+        <button type="submit" aria-label="Search">⌕</button>
+      </form>
+      <button class="login-link" type="button" data-archive-boundary>Log In</button>
+      <button class="join-button" type="button" data-archive-boundary>Join for Free</button>
+    </div>
+    <div class="explore-menu page-shell" id="explore-menu" hidden>
+      <a href="#categories">Explore categories</a>
+      <a href="#careers">Explore careers</a>
+      <a href="#popular">New and popular</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero page-shell" aria-label="Featured learning opportunities" data-promo-region>
+      <div class="promo-grid" aria-live="polite">
+        <article class="promo-card promo-dark" data-promo-card="google-vibe">
+          <img src="/static/assets/hero-google-vibe.avif" alt="Google instructor demonstrating Gemini vibe coding">
+          <div class="promo-copy">
+            <span>Google</span>
+            <h1>New! Learn vibe coding with Google</h1>
+            <p>Build custom apps using AI, all without writing a single line of code.</p>
+            <button type="button" data-archive-boundary>Enroll now <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+        <article class="promo-card promo-blue" data-promo-card="join-free">
+          <img src="/static/assets/hero-join-free.avif" alt="Learner portrait">
+          <div class="promo-copy">
+            <h2>Start, switch, or advance your career</h2>
+            <p>Grow with courses from top organizations</p>
+            <button type="button" data-archive-boundary>Join for Free <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+        <article class="promo-card promo-business" data-promo-card="coursera-business" hidden>
+          <img src="/static/assets/hero-business.avif" alt="Coursera for Business learner">
+          <div class="promo-copy">
+            <h2>Drive your business forward and empower your talent</h2>
+            <p>Train teams with industry-leading experts</p>
+            <button type="button" data-archive-boundary>Try Coursera for Business <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+      </div>
+      <div class="promo-controls">
+        <button class="arrow-button" type="button" aria-label="Previous featured items" data-promo-prev>‹</button>
+        <div class="promo-dots" aria-label="Choose featured item">
+          <button class="promo-dot is-current" type="button" aria-label="Go to item 1" aria-current="true" data-promo-dot="0"></button>
+          <button class="promo-dot" type="button" aria-label="Go to item 2" data-promo-dot="1"></button>
+          <button class="promo-dot" type="button" aria-label="Go to item 3" data-promo-dot="2"></button>
+        </div>
+        <button class="arrow-button" type="button" aria-label="Next featured items" data-promo-next>›</button>
+        <span class="sr-only" data-promo-status>Displaying items 1 and 2 of 3.</span>
+      </div>
+    </section>
+
+    <section class="page-shell section-block" id="popular">
+      <div class="section-heading"><h2>New and popular</h2><button type="button" data-archive-boundary>Explore all <span aria-hidden="true">→</span></button></div>
+      <div class="course-columns">
+        <article class="course-group"><h3>Most popular</h3>
+          <div class="mini-course"><span class="provider-mark coral">D</span><p><small>DeepLearning.AI</small><strong>Deep Learning</strong><span>Specialization · ★ 4.8</span></p></div>
+          <div class="mini-course"><span class="provider-mark coral">D</span><p><small>DeepLearning.AI</small><strong>Neural Networks and Deep Learning</strong><span>Course · ★ 4.9</span></p></div>
+          <div class="mini-course"><span class="provider-mark dark">IBM</span><p><small>IBM</small><strong>IBM Generative AI Engineering</strong><span>Professional Certificate · ★ 4.7</span></p></div>
+        </article>
+        <article class="course-group"><h3>Hot new releases</h3>
+          <div class="mini-course"><span class="provider-mark google">G</span><p><small>Google</small><strong>Google AI Essentials</strong><span>Specialization · ★ 4.8</span></p></div>
+          <div class="mini-course"><span class="provider-mark google">G</span><p><small>Google</small><strong>Google AI</strong><span>Professional Certificate · ★ 4.8</span></p></div>
+          <div class="mini-course"><span class="provider-mark purple">C</span><p><small>SkillsBooster Academy</small><strong>Claude AI Tools for Beginners</strong><span>Specialization · ★ 4.3</span></p></div>
+        </article>
+        <article class="course-group"><h3>Trending AI courses</h3>
+          <div class="mini-course"><span class="provider-mark red">S</span><p><small>Stanford Online</small><strong>AI in Healthcare</strong><span>Specialization · ★ 4.7</span></p></div>
+          <div class="mini-course"><span class="provider-mark microsoft">M</span><p><small>Microsoft</small><strong>Microsoft AI &amp; ML Engineering</strong><span>Professional Certificate · ★ 4.5</span></p></div>
+          <div class="mini-course"><span class="provider-mark google">G</span><p><small>Google</small><strong>Google AI Essentials</strong><span>Specialization · ★ 4.8</span></p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-shell feature-grid section-block" aria-label="Subscription and business offers">
+      <article class="feature-card plus-card">
+        <img src="/static/assets/coursera-plus-card.avif" alt="Coursera Plus learner">
+        <div><span class="feature-brand">coursera <b>PLUS</b></span><h2>Unlock 10,000+ courses with a subscription</h2><button type="button" data-archive-boundary>Start 7-day free trial <span aria-hidden="true">→</span></button></div>
+      </article>
+      <article class="feature-card business-card">
+        <img src="/static/assets/business-team-portrait.avif" alt="Coursera for Business learner">
+        <div><img class="business-wordmark" src="/static/assets/coursera-business-card.avif" alt="coursera for business"><h2>Drive your business forward and empower your teams</h2><button type="button" data-archive-boundary>Try Coursera for Business <span aria-hidden="true">→</span></button></div>
+      </article>
+    </section>
+
+    <section class="page-shell organizations section-block">
+      <h2>Learn from 350+ leading universities and companies</h2>
+      <div class="logo-strip" aria-label="Partner organizations">
+        <span><img src="/static/assets/logo-google.avif" alt="">Google</span>
+        <span><img src="/static/assets/logo-ibm.avif" alt="">IBM</span>
+        <span><img src="/static/assets/logo-microsoft.avif" alt="">Microsoft</span>
+        <span><img src="/static/assets/logo-illinois.avif" alt="">University of Illinois</span>
+        <span><img src="/static/assets/logo-openai.avif" alt="">OpenAI</span>
+        <span><img src="/static/assets/logo-anthropic.avif" alt="">Anthropic</span>
+        <span><img src="/static/assets/logo-deeplearning-ai.avif" alt="">DeepLearning.AI</span>
+        <span><img src="/static/assets/logo-stanford.avif" alt="">Stanford</span>
+      </div>
+    </section>
+
+    <section class="page-shell pathway-grid section-block" aria-label="Learning pathways">
+      <button type="button" data-archive-boundary data-pathway-card>
+        <span>Launch a new career</span>
+        <img class="pathway-art pathway-art-career" data-pathway-art src="/static/assets/pathway-career.avif" alt="">
+      </button>
+      <button type="button" data-archive-boundary data-pathway-card>
+        <span>Try Coursera for Business</span>
+        <img class="pathway-art pathway-art-business" data-pathway-art src="/static/assets/pathway-business.avif" alt="">
+      </button>
+      <button type="button" data-archive-boundary data-pathway-card>
+        <span>Earn a degree</span>
+        <img class="pathway-art pathway-art-degree" data-pathway-art src="/static/assets/pathway-degree.avif" alt="">
+      </button>
+    </section>
+
+    <section class="page-shell section-block" id="categories">
+      <h2>Explore categories</h2>
+      <div class="category-list">
+        <button type="button" data-archive-boundary>Business</button><button type="button" data-archive-boundary>Artificial Intelligence</button>
+        <button type="button" data-archive-boundary>Data Science</button><button type="button" data-archive-boundary>Computer Science</button>
+        <button type="button" data-archive-boundary>Information Technology</button><button type="button" data-archive-boundary>Personal Development</button>
+        <button type="button" data-archive-boundary>Healthcare</button><button type="button" data-archive-boundary>Language Learning</button>
+        <button type="button" data-archive-boundary>Social Sciences</button><button type="button" data-archive-boundary>Arts and Humanities</button>
+        <button type="button" data-archive-boundary>Physical Science and Engineering</button><button type="button" data-archive-boundary>Math and Logic</button>
+      </div>
+    </section>
+
+    <section class="page-shell section-block trending-searches">
+      <h2>Trending searches</h2>
+      <div class="search-topic-grid">
+        <button type="button" data-archive-boundary><strong>Python</strong><span>Python 3 Programming · ★ 4.8</span></button>
+        <button type="button" data-archive-boundary><strong>Data Analytics</strong><span>Google Advanced Data Analytics · ★ 4.8</span></button>
+        <button type="button" data-archive-boundary><strong>Project Management</strong><span>Foundations of Project Management · ★ 4.9</span></button>
+      </div>
+    </section>
+
+    <section class="page-shell purpose-panel section-block">
+      <h2>What brings you to Coursera today?</h2>
+      <div>
+        <button type="button" data-archive-boundary data-purpose-choice>
+          <span class="purpose-icon" data-purpose-icon aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20.985 4.41714C20.9628 4.05145 20.8075 3.70653 20.5484 3.44747C20.2894 3.18841 19.9445 3.03312 19.5788 3.01089C18.3994 2.94058 15.3853 3.04839 12.8841 5.54871L12.4388 5.99964H6.97033C6.77259 5.99853 6.5766 6.03674 6.39377 6.11207C6.21093 6.18739 6.0449 6.29832 5.90533 6.43839L2.6897 9.65589C2.4925 9.85296 2.35412 10.1011 2.29009 10.3724C2.22606 10.6438 2.23893 10.9276 2.32724 11.192C2.41555 11.4565 2.57581 11.6911 2.79003 11.8695C3.00425 12.0479 3.26396 12.1631 3.54001 12.2021L7.14658 12.7056L11.2913 16.8503L11.7947 20.4587C11.8334 20.7348 11.9486 20.9945 12.1272 21.2085C12.3058 21.4226 12.5407 21.5824 12.8053 21.67C12.9595 21.7215 13.1209 21.7477 13.2835 21.7478C13.4802 21.7481 13.6752 21.7096 13.857 21.6343C14.0388 21.559 14.2039 21.4484 14.3428 21.309L17.5603 18.0934C17.7004 17.9538 17.8113 17.7878 17.8867 17.605C17.962 17.4221 18.0002 17.2261 17.9991 17.0284V11.56L18.4463 11.1128C20.9475 8.61152 21.0553 5.59746 20.985 4.41714ZM6.97033 7.49964H10.9388L7.23283 11.2046L3.74908 10.719L6.97033 7.49964ZM13.9463 6.61371C14.6669 5.88859 15.5341 5.32559 16.4897 4.96232C17.4453 4.59905 18.4674 4.44387 19.4878 4.50714C19.5535 5.52806 19.4 6.55122 19.0374 7.50786C18.6749 8.4645 18.1118 9.33245 17.386 10.0534L11.9991 15.4384L8.56033 11.9996L13.9463 6.61371ZM16.4991 17.0284L13.2806 20.2496L12.7941 16.765L16.4991 13.06V17.0284ZM9.54658 17.919C9.1247 18.8434 7.71376 20.9996 3.74908 20.9996C3.55016 20.9996 3.3594 20.9206 3.21875 20.78C3.07809 20.6393 2.99908 20.4486 2.99908 20.2496C2.99908 16.285 5.15533 14.874 6.0797 14.4512C6.16933 14.4103 6.26613 14.3875 6.36458 14.384C6.46302 14.3806 6.56119 14.3965 6.65346 14.431C6.74574 14.4655 6.83033 14.5178 6.90239 14.585C6.97445 14.6521 7.03258 14.7328 7.07345 14.8225C7.11433 14.9121 7.13715 15.0089 7.14061 15.1073C7.14407 15.2058 7.12811 15.3039 7.09364 15.3962C7.05917 15.4885 7.00685 15.5731 6.93969 15.6451C6.87253 15.7172 6.79183 15.7753 6.7022 15.8162C6.09939 16.0909 4.76908 16.975 4.5347 19.464C7.02376 19.2296 7.9097 17.8993 8.18251 17.2965C8.22339 17.2069 8.28152 17.1262 8.35358 17.059C8.42564 16.9919 8.51022 16.9396 8.6025 16.9051C8.69478 16.8706 8.79294 16.8546 8.89139 16.8581C8.98984 16.8616 9.08664 16.8844 9.17626 16.9253C9.26589 16.9661 9.34659 17.0243 9.41375 17.0963C9.48092 17.1684 9.53323 17.253 9.5677 17.3453C9.60217 17.4375 9.61814 17.5357 9.61467 17.6341C9.61121 17.7326 9.58839 17.8294 9.54751 17.919H9.54658Z" fill="white"></path></svg>
+          </span>
+          <span>Start my career</span>
+        </button>
+        <button type="button" data-archive-boundary data-purpose-choice>
+          <span class="purpose-icon" data-purpose-icon aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M22.2806 16.7198C22.3504 16.7894 22.4057 16.8722 22.4434 16.9632C22.4812 17.0543 22.5006 17.1519 22.5006 17.2504C22.5006 17.349 22.4812 17.4466 22.4434 17.5376C22.4057 17.6287 22.3504 17.7114 22.2806 17.781L20.0306 20.031C19.8899 20.1718 19.699 20.2508 19.5 20.2508C19.301 20.2508 19.1101 20.1718 18.9694 20.031C18.8286 19.8903 18.7496 19.6994 18.7496 19.5004C18.7496 19.3014 18.8286 19.1105 18.9694 18.9698L19.9397 18.0004H18.8381C17.7639 17.9995 16.7053 17.7427 15.75 17.2511C14.7948 16.7596 13.9705 16.0475 13.3453 15.1739L9.43406 9.69885C8.94778 9.0194 8.30662 8.46559 7.56368 8.08328C6.82074 7.70096 5.99741 7.50116 5.16188 7.50042H3C2.80109 7.50042 2.61032 7.4214 2.46967 7.28075C2.32902 7.14009 2.25 6.94933 2.25 6.75042C2.25 6.5515 2.32902 6.36074 2.46967 6.22009C2.61032 6.07943 2.80109 6.00042 3 6.00042H5.16188C6.23615 6.00131 7.29474 6.25817 8.24996 6.74972C9.20518 7.24127 10.0295 7.95335 10.6547 8.82698L14.5659 14.302C15.0522 14.9814 15.6934 15.5352 16.4363 15.9176C17.1793 16.2999 18.0026 16.4997 18.8381 16.5004H19.9397L18.9694 15.531C18.8286 15.3903 18.7496 15.1994 18.7496 15.0004C18.7496 14.8014 18.8286 14.6105 18.9694 14.4698C19.1101 14.3291 19.301 14.25 19.5 14.25C19.699 14.25 19.8899 14.3291 20.0306 14.4698L22.2806 16.7198ZM13.4062 10.0317C13.4864 10.0889 13.577 10.1298 13.673 10.152C13.7689 10.1743 13.8683 10.1774 13.9655 10.1612C14.0626 10.145 14.1557 10.1098 14.2392 10.0577C14.3228 10.0055 14.3953 9.93744 14.4525 9.85729L14.565 9.70073C15.0512 9.0208 15.6924 8.46655 16.4355 8.0839C17.1786 7.70125 18.0023 7.50123 18.8381 7.50042H19.9397L18.9694 8.46979C18.8286 8.61052 18.7496 8.80139 18.7496 9.00042C18.7496 9.19944 18.8286 9.39031 18.9694 9.53104C19.1101 9.67177 19.301 9.75083 19.5 9.75083C19.699 9.75083 19.8899 9.67177 20.0306 9.53104L22.2806 7.28104C22.3504 7.21139 22.4057 7.12867 22.4434 7.03762C22.4812 6.94657 22.5006 6.84898 22.5006 6.75042C22.5006 6.65186 22.4812 6.55426 22.4434 6.46321C22.4057 6.37216 22.3504 6.28945 22.2806 6.21979L20.0306 3.96979C19.8899 3.82906 19.699 3.75 19.5 3.75C19.301 3.75 19.1101 3.82906 18.9694 3.96979C18.8286 4.11052 18.7496 4.30139 18.7496 4.50042C18.7496 4.69944 18.8286 4.89031 18.9694 5.03104L19.9397 6.00042H18.8381C17.7639 6.00131 16.7053 6.25817 15.75 6.74972C14.7948 7.24127 13.9705 7.95335 13.3453 8.82698L13.2328 8.98354C13.1752 9.06369 13.134 9.15443 13.1116 9.25053C13.0891 9.34664 13.0858 9.44624 13.102 9.54361C13.1181 9.64098 13.1532 9.73421 13.2055 9.81796C13.2577 9.90172 13.3259 9.97434 13.4062 10.0317ZM10.5938 13.9692C10.5136 13.9119 10.423 13.871 10.327 13.8488C10.2311 13.8266 10.1317 13.8235 10.0345 13.8397C9.93736 13.8559 9.84434 13.891 9.76078 13.9432C9.67722 13.9953 9.60475 14.0634 9.5475 14.1435L9.435 14.3001C8.94883 14.98 8.30761 15.5343 7.56448 15.9169C6.82136 16.2996 5.99773 16.4996 5.16188 16.5004H3C2.80109 16.5004 2.61032 16.5794 2.46967 16.7201C2.32902 16.8607 2.25 17.0515 2.25 17.2504C2.25 17.4493 2.32902 17.6401 2.46967 17.7807C2.61032 17.9214 2.80109 18.0004 3 18.0004H5.16188C6.23615 17.9995 7.29474 17.7427 8.24996 17.2511C9.20518 16.7596 10.0295 16.0475 10.6547 15.1739L10.7672 15.0173C10.8248 14.9371 10.866 14.8464 10.8884 14.7503C10.9109 14.6542 10.9142 14.5546 10.898 14.4572C10.8819 14.3599 10.8468 14.2666 10.7945 14.1829C10.7423 14.0991 10.6741 14.0265 10.5938 13.9692Z" fill="white"></path></svg>
+          </span>
+          <span>Change my career</span>
+        </button>
+        <button type="button" data-archive-boundary data-purpose-choice>
+          <span class="purpose-icon" data-purpose-icon aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M22.5004 5.25V11.25C22.5004 11.4489 22.4214 11.6397 22.2807 11.7803C22.1401 11.921 21.9493 12 21.7504 12C21.5515 12 21.3607 11.921 21.2201 11.7803C21.0794 11.6397 21.0004 11.4489 21.0004 11.25V7.06031L13.281 14.7806C13.2114 14.8504 13.1287 14.9057 13.0376 14.9434C12.9466 14.9812 12.849 15.0006 12.7504 15.0006C12.6519 15.0006 12.5543 14.9812 12.4632 14.9434C12.3722 14.9057 12.2894 14.8504 12.2198 14.7806L9.00042 11.5603L2.78104 17.7806C2.64031 17.9214 2.44944 18.0004 2.25042 18.0004C2.05139 18.0004 1.86052 17.9214 1.71979 17.7806C1.57906 17.6399 1.5 17.449 1.5 17.25C1.5 17.051 1.57906 16.8601 1.71979 16.7194L8.46979 9.96937C8.53945 9.89964 8.62216 9.84432 8.71321 9.80658C8.80426 9.76884 8.90186 9.74941 9.00042 9.74941C9.09898 9.74941 9.19657 9.76884 9.28762 9.80658C9.37867 9.84432 9.46139 9.89964 9.53104 9.96937L12.7504 13.1897L19.9401 6H15.7504C15.5515 6 15.3607 5.92098 15.2201 5.78033C15.0794 5.63968 15.0004 5.44891 15.0004 5.25C15.0004 5.05109 15.0794 4.86032 15.2201 4.71967C15.3607 4.57902 15.5515 4.5 15.7504 4.5H21.7504C21.9493 4.5 22.1401 4.57902 22.2807 4.71967C22.4214 4.86032 22.5004 5.05109 22.5004 5.25Z" fill="white"></path></svg>
+          </span>
+          <span>Grow in my current role</span>
+        </button>
+        <button type="button" data-archive-boundary data-purpose-choice>
+          <span class="purpose-icon" data-purpose-icon aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M22.2375 14.2372C22.1749 14.0624 22.1013 13.8918 22.0172 13.7263L18.1181 4.85564C18.0812 4.7702 18.0284 4.69257 17.9625 4.62689C17.6839 4.34824 17.3532 4.1272 16.9891 3.9764C16.6251 3.82559 16.235 3.74797 15.8409 3.74797C15.4469 3.74797 15.0568 3.82559 14.6927 3.9764C14.3287 4.1272 13.998 4.34824 13.7194 4.62689C13.5792 4.7672 13.5003 4.95732 13.5 5.15564V7.49939H10.5V5.15564C10.5001 5.05712 10.4807 4.95955 10.4431 4.8685C10.4055 4.77746 10.3503 4.69472 10.2806 4.62502C10.002 4.34637 9.67129 4.12533 9.30727 3.97452C8.94325 3.82371 8.55309 3.74609 8.15906 3.74609C7.76504 3.74609 7.37488 3.82371 7.01085 3.97452C6.64683 4.12533 6.31609 4.34637 6.0375 4.62502C5.97158 4.6907 5.91876 4.76833 5.88188 4.85377L1.98281 13.7244C1.89871 13.8899 1.82512 14.0606 1.7625 14.2353C1.54172 14.8531 1.45867 15.5116 1.51918 16.1649C1.57969 16.8181 1.78229 17.4502 2.11279 18.0169C2.44329 18.5835 2.89369 19.0711 3.43245 19.4454C3.97121 19.8197 4.58529 20.0717 5.23168 20.1837C5.87806 20.2957 6.54112 20.265 7.17441 20.0938C7.80769 19.9226 8.39589 19.615 8.89779 19.1926C9.39968 18.7701 9.80315 18.2431 10.0799 17.6483C10.3567 17.0535 10.5001 16.4054 10.5 15.7494V8.99939H13.5V15.7494C13.4997 16.4055 13.6428 17.0537 13.9194 17.6487C14.196 18.2436 14.5993 18.7709 15.1011 19.1936C15.603 19.6162 16.1911 19.924 16.8245 20.0954C17.4578 20.2668 18.1209 20.2976 18.7674 20.1857C19.4139 20.0739 20.0281 19.822 20.567 19.4477C21.1059 19.0734 21.5564 18.5859 21.887 18.0191C22.2176 17.4524 22.4202 16.8203 22.4808 16.167C22.5413 15.5137 22.4583 14.855 22.2375 14.2372ZM7.19156 5.60095C7.44161 5.39041 7.75359 5.26731 8.08004 5.25039C8.40648 5.23347 8.72952 5.32365 9 5.5072V12.3988C8.41444 11.873 7.70098 11.5103 6.93111 11.3471C6.16123 11.1838 5.36198 11.2258 4.61344 11.4688L7.19156 5.60095ZM6 18.7494C5.40666 18.7494 4.82664 18.5734 4.33329 18.2438C3.83994 17.9142 3.45542 17.4456 3.22836 16.8974C3.0013 16.3493 2.94189 15.7461 3.05764 15.1641C3.1734 14.5822 3.45912 14.0476 3.87868 13.6281C4.29824 13.2085 4.83279 12.9228 5.41473 12.807C5.99667 12.6913 6.59987 12.7507 7.14805 12.9778C7.69623 13.2048 8.16476 13.5893 8.49441 14.0827C8.82405 14.576 9 15.156 9 15.7494C9 16.545 8.68393 17.3081 8.12132 17.8707C7.55871 18.4333 6.79565 18.7494 6 18.7494ZM15 5.50627C15.2705 5.32271 15.5935 5.23253 15.92 5.24945C16.2464 5.26638 16.5584 5.38947 16.8084 5.60002L19.3866 11.4669C18.6379 11.2241 17.8386 11.1822 17.0688 11.3456C16.2989 11.509 15.5855 11.8719 15 12.3978V5.50627ZM18 18.7494C17.4067 18.7494 16.8266 18.5734 16.3333 18.2438C15.8399 17.9142 15.4554 17.4456 15.2284 16.8974C15.0013 16.3493 14.9419 15.7461 15.0576 15.1641C15.1734 14.5822 15.4591 14.0476 15.8787 13.6281C16.2982 13.2085 16.8328 12.9228 17.4147 12.807C17.9967 12.6913 18.5999 12.7507 19.1481 12.9778C19.6962 13.2048 20.1648 13.5893 20.4944 14.0827C20.8241 14.576 21 15.156 21 15.7494C21 16.545 20.6839 17.3081 20.1213 17.8707C19.5587 18.4333 18.7956 18.7494 18 18.7494Z" fill="white"></path></svg>
+          </span>
+          <span>Explore topics outside of work</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="page-shell section-block" id="careers">
+      <div class="section-heading"><h2>Explore careers</h2><button type="button" data-archive-boundary>Explore all <span aria-hidden="true">→</span></button></div>
+      <div class="career-grid">
+        <article class="career-card"><img src="/static/assets/career-data-scientist.avif" alt="Data Scientist"><h3>Data Scientist</h3><p>A Data Scientist analyzes large datasets to uncover insights.</p><strong>$145,280 <small>median salary</small></strong><strong>55,655 <small>jobs available</small></strong></article>
+        <article class="career-card"><img src="/static/assets/career-machine-learning.avif" alt="Machine Learning Engineer"><h3>Machine Learning Engineer</h3><p>A Machine Learning Engineer builds and optimizes algorithms.</p><strong>$169,700 <small>median salary</small></strong><strong>6,963 <small>jobs available</small></strong></article>
+        <article class="career-card"><img src="/static/assets/career-data-analyst.avif" alt="Data Analyst"><h3>Data Analyst</h3><p>A Data Analyst collects, cleans, and interprets data.</p><strong>$97,664 <small>median salary</small></strong><strong>70,687 <small>jobs available</small></strong></article>
+        <article class="career-card"><img src="/static/assets/career-it-project-manager.avif" alt="IT Project Manager"><h3>IT Project Manager</h3><p>An IT Project Manager plans and delivers IT projects.</p><strong>$151,424 <small>median salary</small></strong><strong>97,488 <small>jobs available</small></strong></article>
+      </div>
+    </section>
+
+    <section class="page-shell outcomes section-block">
+      <div><h2>91% of learners achieved a positive career outcome</h2><p>They reported new job opportunities, increased knowledge, and improved work performance.</p><button type="button" data-archive-boundary>Learn more <span aria-hidden="true">→</span></button></div>
+      <img src="/static/assets/career-outcomes-graph.avif" alt="91 percent positive career outcome">
+    </section>
+
+    <section class="page-shell section-block testimonials">
+      <h2>Why people choose Coursera</h2>
+      <div class="testimonial-grid">
+        <figure><figcaption><img src="/static/assets/learner-sarah.avif" alt="">Sarah W.</figcaption><blockquote>“Coursera's reputation for high-quality content, paired with its flexible structure, made it possible for me to dive into data analytics while managing family, health, and everyday life.”</blockquote></figure>
+        <figure><figcaption><img src="/static/assets/learner-noeris.avif" alt="">Noeris B.</figcaption><blockquote>“Coursera rebuilt my confidence and showed me I could dream bigger. It wasn't just about gaining knowledge—it was about believing in my potential again.”</blockquote></figure>
+        <figure><figcaption><img src="/static/assets/learner-abdullahi.avif" alt="">Abdullahi M.</figcaption><blockquote>“I now feel more prepared to take on leadership roles and have already started mentoring some of my colleagues.”</blockquote></figure>
+        <figure><figcaption><img src="/static/assets/learner-anas.avif" alt="">Anas A.</figcaption><blockquote>“Learning with Coursera has expanded my professional expertise by giving me access to cutting-edge research, practical tools, and global perspectives.”</blockquote></figure>
+      </div>
+    </section>
+
+    <section class="page-shell section-block faq">
+      <h2>Frequently asked questions</h2>
+      <details><summary>Is Coursera accredited, and are Coursera certificates recognized by employers?</summary><p>Coursera partners with accredited universities and leading companies such as Google and IBM to offer courses, Specializations, and Professional Certificates.</p></details>
+      <details><summary>Is a Coursera certificate worth it?</summary><p>For many learners, a Coursera certificate provides job-ready skills and a verifiable credential from respected universities and companies.</p></details>
+      <details><summary>What is Coursera Plus, and is it worth it?</summary><p>Coursera Plus is an annual subscription that gives learners access to thousands of courses, Specializations, and Professional Certificates.</p></details>
+      <details><summary>Does Coursera offer free online courses?</summary><p>Coursera offers thousands of courses that you can preview for free, including access to the first module.</p></details>
+      <details><summary>What are the most popular courses on Coursera?</summary><p>Popular programs span AI, data science, cybersecurity, software engineering, Machine Learning, and Deep Learning.</p></details>
+      <details><summary>How can Coursera help me get a job or advance my career?</summary><p>Job-aligned Professional Certificates and Specializations help learners build employer-relevant skills.</p></details>
+      <details><summary>What is Coursera for Business, and how much does it cost?</summary><p>Coursera for Business helps organizations reskill and upskill employees. Pricing varies by team size and learning needs.</p></details>
+      <p class="source-note">¹ Median salary and job opening data are sourced from Lightcast™ Job Postings Report.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Coursera Footer">
+    <div class="page-shell footer-grid">
+      <section><h2>Skills</h2><button data-archive-boundary>Artificial Intelligence (AI)</button><button data-archive-boundary>Cybersecurity</button><button data-archive-boundary>Data Analytics</button><button data-archive-boundary>Project Management</button><button data-archive-boundary>Python</button><button data-archive-boundary>SQL</button></section>
+      <section><h2>Professional Certificates</h2><button data-archive-boundary>Google AI Certificate</button><button data-archive-boundary>Google Data Analytics Certificate</button><button data-archive-boundary>IBM AI Engineering Certificate</button><button data-archive-boundary>IBM Data Science Certificate</button></section>
+      <section><h2>Courses &amp; Specializations</h2><button data-archive-boundary>AI Essentials Specialization</button><button data-archive-boundary>AI For Everyone Course</button><button data-archive-boundary>Deep Learning Specialization</button><button data-archive-boundary>Machine Learning Specialization</button></section>
+      <section><h2>Career Resources</h2><button data-archive-boundary>Career Aptitude Test</button><button data-archive-boundary>High-Income Skills to Learn</button><button data-archive-boundary>How to Learn Artificial Intelligence</button><button data-archive-boundary>Popular Cybersecurity Certifications</button></section>
+      <section><h2>Coursera</h2><button data-archive-boundary>About</button><button data-archive-boundary>Careers</button><button data-archive-boundary>Catalog</button><button data-archive-boundary>Coursera Plus</button><button data-archive-boundary>Degrees</button></section>
+      <section><h2>Community</h2><button data-archive-boundary>Learners</button><button data-archive-boundary>Partners</button><button data-archive-boundary>Blog</button><button data-archive-boundary>The Coursera Podcast</button></section>
+      <section><h2>More</h2><button data-archive-boundary>Terms</button><button data-archive-boundary>Privacy</button><button data-cookie-open>Cookie preferences</button><button data-archive-boundary>Help</button><button data-archive-boundary>Accessibility</button></section>
+      <section class="download-column"><h2>Learn Anywhere</h2><img src="/static/assets/app-store-badge.avif" alt="Download on the App Store"><img src="/static/assets/google-play-badge.avif" alt="Get it on Google Play"><img class="b-corp" src="/static/assets/b-corp-logo.avif" alt="Certified B Corporation"></section>
+    </div>
+    <div class="page-shell footer-bottom"><span>© 2026 Coursera Inc. All rights reserved.</span><span>Offline homepage reconstruction</span></div>
+  </footer>
+
+  <p class="archive-notice" role="status" aria-live="polite" data-archive-notice hidden></p>
+  <dialog class="cookie-dialog" aria-labelledby="cookie-title" data-cookie-dialog>
+    <button class="dialog-close" type="button" aria-label="Close cookie preferences" data-cookie-close>×</button>
+    <h2 id="cookie-title">Cookie preferences</h2>
+    <p>This offline reconstruction does not set analytics or marketing cookies and does not send consent to any external service.</p>
+    <button class="primary-button" type="button" data-cookie-close>Close</button>
+  </dialog>
+</body>
+</html>

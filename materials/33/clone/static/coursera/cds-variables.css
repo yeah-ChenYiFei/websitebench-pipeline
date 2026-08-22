@@ -1,0 +1,19 @@
+/* Owner-authorized CDS variables measured from the live Coursera page
+   (2026-08-21, viewport 1692x979). The captured page CSS references these
+   variables but defines them in a shared file that is not part of the
+   per-page bundles, so the subset the clone uses is pinned here. */
+:root {
+  --cds-color-blue-600: light-dark(#227af9, #227af9);
+  --cds-color-blue-700: light-dark(#1a62c9, #4d9cff);
+  --cds-color-blue-100: light-dark(#cfe2ff, #0d2f60);
+  --cds-color-darken-100: light-dark(rgba(15, 17, 20, 0.1), rgba(255, 255, 255, 0.1));
+  --cds-color-darken-500: light-dark(rgba(15, 17, 20, 0.5), rgba(255, 255, 255, 0.5));
+  --cds-color-white-0: light-dark(#ffffff, #000000);
+  --cds-color-grey-750: light-dark(#48546e, #8495b0);
+  --cds-color-grey-50: light-dark(#e9eef7, #1c2026);
+  --cds-color-emphasis-neutral-background-xxstrong: light-dark(#0d0f12, #f2f5fa);
+  --cds-color-feedback-success-hover: light-dark(#1e6a16, #7ed874);
+  --cds-color-blue-300: light-dark(#87b8ff, #0056d2);
+  --cds-color-blue-900: light-dark(#0d2f60, #cfe2ff);
+  --cds-font-family-source-sans-pro: "Source Sans Pro", Arial, sans-serif;
+}

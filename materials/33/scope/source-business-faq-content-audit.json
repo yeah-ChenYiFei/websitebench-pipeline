@@ -1,0 +1,33 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-business-faq-content-audit",
+  "viewport": {"width": 1692, "height": 979},
+  "timeout_ms": 45000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://images.ctfassets.net",
+      "https://coursera_assets.s3.amazonaws.com"
+    ],
+    "clone": ["http://127.0.0.1:8045"]
+  },
+  "steps": [
+    {"id": "open-business", "action": "goto", "path": "/browse/business"},
+    {"id": "wait-initial", "action": "wait", "milliseconds": 1500},
+    {"id": "show-all", "action": "click", "selector": "button:has-text('Show all 7 frequently asked questions')"},
+    {"id": "open-question-2", "action": "click", "selector": "button:has-text('Do I need prior business experience to take courses on Coursera?')"},
+    {"id": "capture-question-2", "action": "snapshot", "observations": [{"id": "question-2-block", "kind": "text", "selector": "button:has-text('Do I need prior business experience to take courses on Coursera?') >> xpath=../.."}], "screenshot": false},
+    {"id": "open-question-3", "action": "click", "selector": "button:has-text('What careers can I pursue by taking business courses on Coursera?')"},
+    {"id": "capture-question-3", "action": "snapshot", "observations": [{"id": "question-3-block", "kind": "text", "selector": "button:has-text('What careers can I pursue by taking business courses on Coursera?') >> xpath=../.."}], "screenshot": false},
+    {"id": "open-question-4", "action": "click", "selector": "button:has-text('Are business courses on Coursera recognized by employers?')"},
+    {"id": "capture-question-4", "action": "snapshot", "observations": [{"id": "question-4-block", "kind": "text", "selector": "button:has-text('Are business courses on Coursera recognized by employers?') >> xpath=../.."}], "screenshot": false},
+    {"id": "open-question-5", "action": "click", "selector": "button:has-text('How do business courses on Coursera compare to traditional MBA programs?')"},
+    {"id": "capture-question-5", "action": "snapshot", "observations": [{"id": "question-5-block", "kind": "text", "selector": "button:has-text('How do business courses on Coursera compare to traditional MBA programs?') >> xpath=../.."}], "screenshot": false},
+    {"id": "open-question-6", "action": "click", "selector": "button:has-text('Does Coursera offer business courses for free?')"},
+    {"id": "capture-question-6", "action": "snapshot", "observations": [{"id": "question-6-block", "kind": "text", "selector": "button:has-text('Does Coursera offer business courses for free?') >> xpath=../.."}], "screenshot": false},
+    {"id": "open-question-7", "action": "click", "selector": "button:has-text('What types of business programs does Coursera offer?')"},
+    {"id": "capture-question-7", "action": "snapshot", "observations": [{"id": "question-7-block", "kind": "text", "selector": "button:has-text('What types of business programs does Coursera offer?') >> xpath=../.."}], "screenshot": false}
+  ]
+}

@@ -113,6 +113,50 @@ TOOL_CATALOG: tuple[dict[str, Any], ...] = (
             "request and response bodies are never retained",
         ],
     },
+    {
+        "id": "frontend-spec-extract",
+        "command": "websitebench-offline-clone tools frontend-spec",
+        "repository_command": (
+            "python tools/offline_clone/run.py tools frontend-spec"
+        ),
+        "purpose": (
+            "Extract a sanitized frontend specification from one approved-origin "
+            "page: document structure, headings, semantic regions, interactive "
+            "controls, forms, data points, and style/script references that clone "
+            "implementations and backend contracts can share."
+        ),
+        "input_schema_versions": [],
+        "output_schema_version": (
+            "websitebench.offline-clone.frontend-spec.v1"
+        ),
+        "safety": [
+            "approved origins only",
+            "source exploration is GET-only",
+            "storage state is never retained",
+            "input values and cookies are never collected",
+            "URLs are sanitized to path plus allowlisted query parameters",
+        ],
+    },
+    {
+        "id": "visual-diff-diagnose",
+        "command": "websitebench-offline-clone tools visual-diff",
+        "repository_command": (
+            "python tools/offline_clone/run.py tools visual-diff"
+        ),
+        "purpose": (
+            "Locate and classify difference regions between a source raster and "
+            "a candidate raster (bbox, intensity, kind) with heatmap and "
+            "overlay outputs, so visual similarity work targets exact areas."
+        ),
+        "input_schema_versions": [],
+        "output_schema_version": (
+            "websitebench.offline-clone.visual-diff.v1"
+        ),
+        "safety": [
+            "raster comparison only",
+            "diagnostic authority only",
+        ],
+    },
 )
 
 

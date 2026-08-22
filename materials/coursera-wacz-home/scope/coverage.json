@@ -1,0 +1,34 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "frozen",
+  "dimensions": [
+    {
+      "id": "homepage-route-state",
+      "label": "Captured homepage and explicit local states",
+      "unit": "checkpoint",
+      "category": "functional",
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "direct",
+      "population_size": 4,
+      "sample_size": 4,
+      "sampling_method": "complete single-route state matrix",
+      "required_evidence_kinds": ["browser", "network"],
+      "required_items": ["home.loaded.desktop", "home.promo-switched.desktop", "home.cookie-explanation.desktop", "home.loaded.mobile"],
+      "satisfied_items": []
+    },
+    {
+      "id": "asset-closure",
+      "label": "WACZ presentation asset closure",
+      "unit": "asset",
+      "category": "evidence",
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "direct",
+      "population_size": 29,
+      "sample_size": 29,
+      "sampling_method": "complete retained presentation asset inventory",
+      "required_evidence_kinds": ["full-suite"],
+      "required_items": ["all-required-assets"],
+      "satisfied_items": []
+    }
+  ]
+}

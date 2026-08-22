@@ -1,0 +1,112 @@
+{
+  "schema_version": "websitebench.site-source-observations.v1",
+  "site_id": "33",
+  "captured_on": "2026-08-16",
+  "authority": "diagnostic-only",
+  "source_origin": "https://www.coursera.org",
+  "authenticated_storage_consumed": false,
+  "source_mutations_authorized": false,
+  "observations": [
+    {
+      "id": "ea1-home",
+      "explorer": "EA1",
+      "route": "/",
+      "sanitized": true,
+      "capture_artifact": "home-artifacts/coursera-home-home.png",
+      "observed": ["Coursera online courses title", "one main landmark", "primary links to /browse"]
+    },
+    {
+      "id": "ea2-browse-retained",
+      "explorer": "EA2",
+      "route": "/browse",
+      "sanitized": true,
+      "capture_artifact": "browse.desktop.png",
+      "observed": ["Explore Categories heading", "11 direct subject links", "Most popular course-card composition", "shared footer"]
+    },
+    {
+      "id": "ea1-specialization",
+      "explorer": "EA1",
+      "route": "/specializations/deep-learning",
+      "sanitized": true,
+      "capture_artifact": "remainder-artifacts/coursera-depth-remainder-deep-learning-specialization.png",
+      "observed": ["Deep Learning Specialization hero title", "five-course series", "course links", "outcomes and courses sections"]
+    },
+    {
+      "id": "ea1-course-detail",
+      "explorer": "EA1",
+      "route": "/learn/neural-networks-deep-learning",
+      "sanitized": true,
+      "capture_artifact": "remainder-artifacts/coursera-depth-remainder-component-course.png",
+      "observed": ["Neural Networks and Deep Learning heading", "visible public metadata", "skills, certificate, assessment, and language sections", "no public lecture link observed"]
+    },
+    {
+      "id": "ea1-auth-contact-recovery",
+      "explorer": "EA1",
+      "route": "/login, /signup, /about/contact, and a missing route",
+      "sanitized": true,
+      "capture_artifact": "remainder-artifacts and contact-artifacts screenshots",
+      "observed": ["anonymous login and signup form structure", "Contact Us with learner support, inquiries, and partnerships", "missing-page catalog recovery copy"]
+    },
+    {
+      "id": "ea2-home",
+      "explorer": "EA2",
+      "route": "/",
+      "sanitized": true,
+      "capture_artifact": "coursera-ea2-breadth-matrix-home.png",
+      "observed": ["Learn without limits heading", "shared navigation", "course and career sections", "one search input"]
+    },
+    {
+      "id": "ea2-browse-subjects",
+      "explorer": "EA2",
+      "route": "/browse and all 11 /browse/{subject} siblings",
+      "sanitized": true,
+      "capture_artifact": "coursera-ea2-breadth-matrix-browse.png and subject screenshots",
+      "observed": ["Explore Categories", "Most popular", "11 canonical subject routes", "subject title and card collections"]
+    },
+    {
+      "id": "ea2-search",
+      "explorer": "EA2",
+      "route": "/search",
+      "sanitized": true,
+      "capture_artifact": "coursera-ea2-breadth-matrix-search.png",
+      "observed": ["All results surface", "filter and sort controls", "program and course result headings"]
+    },
+    {
+      "id": "ea2-specialization",
+      "explorer": "EA2",
+      "route": "/specializations/deep-learning",
+      "sanitized": true,
+      "capture_artifact": "coursera-ea2-breadth-matrix-specialization.png",
+      "observed": ["Deep Learning Specialization heading", "learning and skills sections", "five-course series", "shared navigation"]
+    },
+    {
+      "id": "ea2-auth",
+      "explorer": "EA2",
+      "route": "/login and /signup",
+      "sanitized": true,
+      "capture_artifact": "coursera-ea2-breadth-matrix-login.png and coursera-ea2-breadth-matrix-signup.png",
+      "observed": ["anonymous form structure", "login title", "signup title", "shared navigation and footer structure"]
+    },
+    {
+      "id": "ea2-contact",
+      "explorer": "EA2",
+      "route": "/about/contact",
+      "sanitized": true,
+      "capture_artifact": "coursera-ea2-breadth-matrix-contact.png",
+      "observed": ["Contact Us", "Learner Support", "Inquiries", "Partnerships"]
+    },
+    {
+      "id": "ea2-not-found",
+      "explorer": "EA2",
+      "route": "/websitebench-ea2-nonexistent-route",
+      "sanitized": true,
+      "capture_artifact": "coursera-ea2-breadth-matrix-missing.png",
+      "observed": ["HTTP 404", "canonical missing path preserved", "six links remained"]
+    }
+  ],
+  "limitations": [
+    "Third-party fonts, CSS, images, media, and telemetry were blocked because only the configured Coursera origin was approved.",
+    "Authenticated, form-submission, account, recovery-send, enrollment, and checkout behavior remains unavailable.",
+    "Capture artifact names identify the current formal EA1/EA2 evidence summarized here; only browse.desktop.png is retained as a screenshot in this site evidence directory."
+  ]
+}

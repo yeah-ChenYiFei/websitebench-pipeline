@@ -1,0 +1,64 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "coursera-source-explore-menu-pages",
+  "viewport": {
+    "width": 1191,
+    "height": 979
+  },
+  "timeout_ms": 45000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.coursera.org",
+      "https://d3njjcbhbojbot.cloudfront.net",
+      "https://images.ctfassets.net",
+      "https://coursera_assets.s3.amazonaws.com"
+    ],
+    "clone": [
+      "http://127.0.0.1:8044"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-home",
+      "action": "goto",
+      "path": "/"
+    },
+    {
+      "id": "open-explore-menu",
+      "action": "hover",
+      "selector": {
+        "source": "button[data-testid='megamenu-explore-button']",
+        "clone": ".wb-explore"
+      }
+    },
+    {
+      "id": "wait-for-explore-menu",
+      "action": "wait",
+      "milliseconds": 1000
+    },
+    {
+      "id": "capture-explore-menu",
+      "action": "snapshot",
+      "observations": [
+        {
+          "id": "expanded-page-text",
+          "kind": "text",
+          "selector": {
+            "source": "body",
+            "clone": "body"
+          }
+        },
+        {
+          "id": "expanded-links",
+          "kind": "count",
+          "selector": {
+            "source": "a",
+            "clone": "a"
+          }
+        }
+      ],
+      "screenshot": true
+    }
+  ]
+}

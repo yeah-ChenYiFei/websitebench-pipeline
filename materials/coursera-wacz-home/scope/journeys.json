@@ -1,0 +1,42 @@
+{
+  "schema_version": "offline-clone.journeys.v1",
+  "status": "frozen",
+  "journeys": [
+    {
+      "id": "homepage.loaded",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "direct",
+      "steps": ["Open the homepage.", "Observe the archived navigation, two-card promotional state, homepage sections, FAQ, and footer."]
+    },
+    {
+      "id": "homepage.promo-switch",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "direct-plus-local-interaction",
+      "steps": ["Open the homepage.", "Activate Next or a position indicator.", "Observe the selected pair remain stable without autoplay."]
+    },
+    {
+      "id": "homepage.cookie-explanation",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p1",
+      "status": "frozen",
+      "evidence_kind": "bounded-local-interaction",
+      "steps": ["Open Cookie preferences from the footer.", "Read the local-only explanation.", "Close it without a remote request."]
+    },
+    {
+      "id": "homepage.uncaptured-action",
+      "actor": "visitor",
+      "kind": "boundary",
+      "priority": "p0",
+      "status": "frozen",
+      "evidence_kind": "truthful-boundary",
+      "steps": ["Activate search, login, join, or a course destination.", "Remain on the homepage.", "Observe that the supplied archive contains only the homepage."]
+    }
+  ]
+}

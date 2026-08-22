@@ -1,0 +1,54 @@
+{
+  "schema_version": "websitebench.learner-payment-evidence.v1",
+  "site_id": "33",
+  "capture_mode": "user-assisted-empty-payment-read-only",
+  "observed_locale": "en-US",
+  "viewport": {"width": 1692, "height": 979},
+  "privacy": {
+    "payment_values_entered": false,
+    "payment_values_observed": false,
+    "credentials_observed": false,
+    "cookies_observed": false,
+    "storage_state_persisted": false,
+    "personal_identifiers_retained": false,
+    "screenshot_anonymized": true
+  },
+  "requested_product_path": "/specializations/deep-learning",
+  "observed_path": "/payments/checkout",
+  "title": "Secure Checkout | Coursera",
+  "document_height": 1103,
+  "headings": ["Checkout", "Billing information", "Payment methods", "Today's Total:"],
+  "field_labels": ["NAME", "Country", "Card Number", "Expiration Date", "Security Code"],
+  "field_placeholders": ["Enter your name", "Select your country", "1234 1234 1234 1234", "MM / YY", "CVC"],
+  "payment_choices": ["Card", "Paypal"],
+  "product": {
+    "title": "Deep Learning",
+    "provider": "DeepLearning.AI",
+    "plan": "Monthly subscription",
+    "trial": "7-Day Free Trial",
+    "renewal": "then CN¥196/mo",
+    "due_today_label": "Today's Total:",
+    "due_today": "CN¥0",
+    "commitment_copy": "No commitment. Cancel anytime."
+  },
+  "primary_action": "Start Free Trial",
+  "primary_action_supporting_copy": "You won't be charged today",
+  "terms_links": ["Terms of Use", "Refund Policy", "Privacy Policy"],
+  "recovery_link": {"label": "Remove from cart", "path": "/browse"},
+  "visible_geometry": {
+    "checkout_heading": {"x": 358, "y": 101, "width": 111.6, "height": 42},
+    "billing_heading": {"x": 359, "y": 179, "width": 558, "height": 60},
+    "payment_heading": {"x": 359, "y": 427, "width": 558, "height": 60},
+    "secure_payment_frame": {"x": 355, "y": 483, "width": 566, "height": 285.5},
+    "start_trial_button": {"x": 358, "y": 894.5, "width": 272, "height": 48},
+    "today_total_heading": {"x": 978, "y": 379, "width": 108.5, "height": 24}
+  },
+  "presentation_images_healthy": true,
+  "screenshot": "screenshots/payment-empty-authenticated-full.png",
+  "evidence_classification": "direct-source-authenticated-empty-payment",
+  "notes": [
+    "The secure third-party payment iframe was treated only as a visible rectangle.",
+    "No sensitive field was focused, filled, read, or submitted.",
+    "The Start Free Trial action was not clicked; no enrollment, trial, order, or payment mutation occurred."
+  ]
+}

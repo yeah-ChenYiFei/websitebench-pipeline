@@ -1,0 +1,177 @@
+{% macro result_card(card, position) -%}
+{% if card.source_result %}<article class="search-result-item">{% else %}<article class="catalog-card" data-catalog-record="{{ card.catalog_id }}">{% endif %}
+  <div class="search-result-card" data-search-result="{{ 'true' if card.source_result else 'false' }}" data-result-position="{{ position }}" data-result-title="{{ card.title }}" data-result-provider="{{ card.provider }}" data-result-href="{{ card.href }}" data-card-href="{{ card.href }}" role="link" tabindex="0">
+    <span class="search-result-cover">
+      <img src="{{ card.image }}" alt="">
+      <span class="search-card-badges">{% for badge in card.badges %}<span>{{ '✦ ' if badge == 'AI skills' else '' }}{{ badge }}</span>{% endfor %}</span>
+    </span>
+    <span class="search-provider">{% if card.provider_icons %}<span class="search-provider-logos" aria-hidden="true">{% for icon in card.provider_icons %}<img class="search-provider-logo" src="{{ icon }}" alt="">{% endfor %}</span>{% elif card.provider_icon %}<img class="search-provider-logo" src="{{ card.provider_icon }}" alt="">{% else %}<span class="search-provider-mark" data-provider="{{ card.provider }}">{{ card.provider_mark }}</span>{% endif %}{{ card.provider }}</span>
+    <h3 class="search-result-title"><a class="search-result-title-link" href="{{ card.href }}">{{ card.title }}</a></h3>
+    <span class="search-result-skills"><b>Skills you'll gain:</b> {{ card.skills }}</span>
+    <span class="search-card-bottom">
+      {% if card.credential %}<span class="search-credential">▧&nbsp; Build toward a degree</span>{% endif %}
+      {% if card.rating %}<span class="search-result-rating">★&nbsp; {{ card.rating }} <small>· {{ card.reviews }}</small></span>{% endif %}
+      <span class="search-result-meta">{{ card.meta }}</span>
+      <span class="search-compare"><i aria-hidden="true"></i>Compare</span>
+    </span>
+  </div>
+  {% if card.evidence_note %}<p class="evidence-note" data-evidence-classification="{{ card.evidence_classification }}">{{ card.evidence_note }}</p>{% endif %}
+</article>
+{%- endmacro %}
+
+<section id="search-results" class="search-page-layout">
+  <nav class="source-filter-chips" aria-label="Search filters">
+    <a id="search-filter-open" class="search-filter-open" href="#search-filter-drawer" role="button">Filter &amp; Sort</a>
+    <a href="#search-filter-drawer">Topic</a>
+    <a href="#search-filter-drawer">Duration</a>
+    <a href="#search-filter-drawer">Learning Product</a>
+    <a href="#search-filter-drawer">Language</a>
+    <a href="#search-filter-drawer">Level</a>
+  </nav>
+
+  <h2 id="all-results-heading" class="search-all-results-heading">All Results</h2>
+
+  <section class="search-ai-summary" aria-label="AI summary">
+    <div class="search-ai-summary-head"><span class="search-ai-summary-eyebrow">✦ AI summary</span><p class="search-ai-summary-title">Top courses to get started:</p></div>
+    <div class="search-ai-summary-cards">
+      {% for card in ai_starter_cards %}
+        <a class="search-ai-starter-card" data-ai-starter-card="true" data-ai-starter-position="{{ loop.index }}" data-ai-starter-title="{{ card.title }}" href="{{ card.href }}">
+          <img src="{{ card.image }}" alt="">
+          <span class="search-ai-starter-provider">{% if card.provider_icons %}<span class="search-provider-logos" aria-hidden="true">{% for icon in card.provider_icons %}<img class="search-ai-starter-provider-logo" src="{{ icon }}" alt="">{% endfor %}</span>{% elif card.provider_icon %}<img class="search-ai-starter-provider-logo" src="{{ card.provider_icon }}" alt="">{% else %}<span class="search-ai-starter-provider-mark" data-provider="{{ card.provider }}" aria-hidden="true">{{ card.provider_mark }}</span>{% endif %}{{ card.provider }}</span>
+          <strong>{{ card.starter_title or card.title }}</strong>
+          <p><b>Best for:</b> {{ card.best_for }}</p>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <div class="search-columns">
+  <form class="source-filter-sidebar" action="/search" method="get" aria-label="Refine results">
+    <input type="hidden" name="q" value="{{ query }}">
+    <div class="source-filter-group">
+      <p class="source-filter-title">Topic</p>
+      {% for value in filter_options.category[:7] %}<label><input type="checkbox" name="category" value="{{ value }}"{% if value == filters.category %} checked{% endif %}> {{ value|replace('-', ' ')|title }}</label>{% endfor %}
+    </div>
+    <div class="source-filter-group">
+      <p class="source-filter-title">Duration</p>
+      {% for value in filter_options.duration[:6] %}<label><input type="checkbox" name="duration" value="{{ value }}"{% if value == filters.duration %} checked{% endif %}> {{ value }}</label>{% endfor %}
+    </div>
+    <div class="source-filter-group">
+      <p class="source-filter-title">Learning Product</p>
+      <label><input type="checkbox" name="product" value="courses"> Courses</label>
+      <label><input type="checkbox" name="product" value="specializations"> Specializations</label>
+      <label><input type="checkbox" name="product" value="professional-certificates"> Professional Certificates</label>
+      <label><input type="checkbox" name="product" value="degrees"> Degrees</label>
+    </div>
+    <div class="source-filter-group">
+      <p class="source-filter-title">Language</p>
+      {% for value in filter_options.language[:6] %}<label><input type="checkbox" name="language" value="{{ value }}"{% if value == filters.language %} checked{% endif %}> {{ value }}</label>{% endfor %}
+    </div>
+    <div class="source-filter-group">
+      <p class="source-filter-title">Level</p>
+      {% for value in filter_options.level %}<label><input type="checkbox" name="level" value="{{ value }}"{% if value == filters.level %} checked{% endif %}> {{ value }}</label>{% endfor %}
+    </div>
+    <div class="source-filter-group">
+      <p class="source-filter-title">Status</p>
+      <label><input type="checkbox" name="status" value="free-trial"{% if filters.status == 'free-trial' %} checked{% endif %}> Free Trial</label>
+      <label><input type="checkbox" name="status" value="financial-aid"{% if filters.status == 'financial-aid' %} checked{% endif %}> Financial Aid</label>
+    </div>
+    <div class="source-filter-group">
+      <p class="source-filter-title">AI skills</p>
+      <label><input type="checkbox" name="ai_skills" value="1"{% if filters.ai_skills == '1' %} checked{% endif %}> AI skills</label>
+    </div>
+    <button type="submit" class="source-filter-apply">Apply filters</button>
+    {% if filters_active %}<a class="source-filter-clear" href="{{ clear_filters_href }}">Clear all</a>{% endif %}
+  </form>
+  <div class="search-main-column">
+    <section class="search-results-section" aria-labelledby="all-results-heading">
+      <div class="search-results-list" data-result-count="{{ result_count }}">
+        {% if no_results %}
+          <section class="search-no-results">
+            <h2>No results for {{ query }}</h2>
+            <p>Try another search or explore the catalog.</p>
+            <nav><a href="/search?query=Deep%20Learning">Return to Deep Learning results</a><a href="/browse">Browse all topics</a></nav>
+            {% if recommended %}
+              <h3>Popular courses to explore</h3>
+              <div class="search-result-grid search-no-result-grid">
+                {% for card in recommended %}{{ result_card(card, loop.index) }}{% endfor %}
+              </div>
+            {% endif %}
+          </section>
+        {% else %}
+          <div class="search-results-region">
+            <div class="search-result-grid">
+              {% for card in results[:6] %}{{ result_card(card, loop.index) }}{% endfor %}
+              {% if results|length > 6 %}
+                {% for card in results[6:] %}{{ result_card(card, loop.index + 6) }}{% endfor %}
+              {% endif %}
+            </div>
+            <aside class="search-intent-panel">
+              <h2>What brings you to Coursera today?</h2>
+              <nav>
+                <a href="/search?query=Start%20my%20career"><span>🚀</span>Start my career</a>
+                <a href="/search?query=Change%20my%20career"><span>↝</span>Change my career</a>
+                <a href="/search?query=Grow%20in%20my%20current%20role"><span>↗</span>Grow in my current role</a>
+                <a class="source-intent-explore" href="/browse">Explore topics outside of work</a>
+              </nav>
+            </aside>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  </div>
+  </div>
+
+</section>
+
+<details class="search-ai-overview">
+      <summary><span aria-hidden="true">✦</span> AI Overview</summary>
+      <div class="search-ai-content">
+        <div class="search-ai-answer">
+          <p class="search-ai-heading">Understanding deep learning and how to get started</p>
+          <p>Deep learning is a subset of machine learning focused on neural networks with multiple layers, enabling advanced tasks like computer vision and natural language processing. To begin, build a solid foundation in <strong>neural networks, key architectures like convolutional and recurrent networks, and relevant frameworks such as PyTorch or TensorFlow.</strong> Intermediate programming skills and familiarity with machine learning concepts will help you progress efficiently. Consider starting with shorter courses to grasp fundamentals before moving to comprehensive specializations or professional certificates that cover practical model building and deployment.</p>
+        </div>
+        <aside class="search-ai-followups">
+          <p class="search-ai-followups-title">You might follow up with...</p>
+          <nav aria-label="AI suggested follow-up searches">
+            <a href="/search?query=deep%20learning%20specialization">deep learning specialization</a>
+            <a href="/search?query=deep%20learning%20with%20pytorch%20artificial%20intelligence%20and%20machine%20learning%20ai%20ml">deep learning with pytorch artificial intelligence and machine learning (ai/ml)</a>
+            <a href="/search?query=deep%20learning%20with%20pytorch%20keras%20and%20tensorflow">deep learning with pytorch, keras and tensorflow</a>
+            <a href="/search?query=neural%20networks%20and%20deep%20learning">neural networks &amp; deep learning</a>
+            <a href="/search?query=machine%20learning%20and%20deep%20learning%20machine%20learning%20algorithms">machine learning and deep learning machine learning algorithms</a>
+            <a href="/search?query=deep%20learning%20ai%20unsupervised%20learning">deep learning ai unsupervised learning</a>
+            <a href="/search?query=deep%20learning%20ai%20classification%20algorithms">deep learning.ai classification algorithms</a>
+            <a href="/search?query=deep%20learning%20ai%20decision%20tree%20learning">deep learning.ai decision tree learning</a>
+            <a href="/search?query=deep%20learning%20ai%20unsupervised%20learning">deep learning.ai unsupervised learning</a>
+            <a href="/search?query=deep%20learning%20stanford%20university">deep learning stanford university</a>
+          </nav>
+        </aside>
+      </div>
+    </details>
+
+<aside id="search-filter-drawer" class="search-filter-layer" aria-label="Filter & Sort">
+  <a class="search-filter-backdrop" href="#search-results" aria-label="Close filters"></a>
+  <div class="search-filter-panel">
+    <header><h2>Filter &amp; Sort</h2><a href="#search-results" data-search-filter-close aria-label="Close filters">×</a></header>
+    <form action="/search" method="get">
+      <input type="hidden" name="q" value="{{ query }}">
+      <fieldset class="search-sort-section">
+        <legend>Sort by <span aria-hidden="true">⌃</span></legend>
+        <label><input type="radio" name="sort" value="best-match"{% if filters.sort in ('best-match', 'title-asc', '') %} checked{% endif %}> Best Match</label>
+        <label><input type="radio" name="sort" value="newest"{% if filters.sort == 'newest' %} checked{% endif %}> Newest</label>
+      </fieldset>
+      <details><summary>Topic <span>⌄</span></summary><label>Category<select name="category"><option value="">All topics</option>{% for value in filter_options.category %}<option value="{{ value }}"{% if value == filters.category %} selected{% endif %}>{{ value|replace('-', ' ')|title }}</option>{% endfor %}</select></label><label>Topic keyword<input name="topic" value="{{ filters.topic }}"></label></details>
+      <details><summary>Duration <span>⌄</span></summary><select name="duration"><option value="">Any duration</option>{% for value in filter_options.duration %}<option value="{{ value }}"{% if value == filters.duration %} selected{% endif %}>{{ value }}</option>{% endfor %}</select></details>
+      <details><summary>Rating <span>⌄</span></summary><select name="rating"><option value="">Any rating</option>{% for value in filter_options.rating %}<option value="{{ value }}"{% if value == filters.rating %} selected{% endif %}>{{ value }} and above</option>{% endfor %}</select></details>
+      <details><summary>Learning Product <span>⌄</span></summary><select name="product"><option value="">All products</option><option>Courses</option><option>Specializations</option><option>Professional Certificates</option></select></details>
+      <details><summary>Skills <span>⌄</span></summary><input name="skills" value=""></details>
+      <details><summary>Language <span>⌄</span></summary><select name="language"><option value="">All languages</option>{% for value in filter_options.language %}<option value="{{ value }}"{% if value == filters.language %} selected{% endif %}>{{ value }}</option>{% endfor %}</select></details>
+      <details><summary>Level <span>⌄</span></summary><select name="level"><option value="">All levels</option>{% for value in filter_options.level %}<option value="{{ value }}"{% if value == filters.level %} selected{% endif %}>{{ value }}</option>{% endfor %}</select></details>
+      <details><summary>Educator <span>⌄</span></summary><input name="educator" value=""></details>
+      <details><summary>Subtitles <span>⌄</span></summary><input name="subtitles" value=""></details>
+      <details><summary>Hands-on Learning <span>⌄</span></summary><select name="schedule"><option value="">Any schedule</option>{% for value in filter_options.schedule %}<option value="{{ value }}"{% if value == filters.schedule %} selected{% endif %}>{{ value }}</option>{% endfor %}</select></details>
+      <details><summary>Tools <span>⌄</span></summary><input name="tools" value=""></details>
+      <footer><button type="submit" data-search-filter-view>View</button>{% if filters_active %}<a data-search-filter-clear href="{{ clear_filters_href }}">Clear all</a>{% else %}<button type="button" data-search-filter-clear disabled aria-describedby="search-clear-disabled">Clear all</button><span id="search-clear-disabled" class="wb-sr-only">No filters are currently selected.</span>{% endif %}</footer>
+    </form>
+  </div>
+</aside>
