@@ -636,7 +636,7 @@ async def register_post(request: Request) -> HTMLResponse:
             if mail is None:
                 raise AuthError("Local verification message is unavailable.")
             fields = f"<input type='hidden' name='phase' value='verify'><div class='fixture-note'>Local-only verification code: <strong data-local-code>{esc(mail['verification_code'])}</strong></div><div class='field'><label for='code'>Verification code</label><input id='code' name='code' inputmode='numeric' required></div>"
-            return page("Verify registration | Bean Box®", auth_form("Verify your local account", fields, "/account/register", note="The code is rendered from the isolated local outbox; no message was sent."), request_owner(request))
+            return page("Verify registration | Bean Box®", auth_form("Verify your account", fields, "/account/register", note="The code is rendered from an isolated verification outbox; no message was sent."), request_owner(request))
         _AUTH.verify_registration_code(token, str(form.get("code") or ""))
         result = _AUTH.complete_registration(token)
         response = RedirectResponse("/account", status_code=303)
@@ -678,7 +678,7 @@ async def signout(request: Request) -> Response:
 @app.get("/account/password-reset", include_in_schema=False)
 async def password_reset_get(request: Request) -> HTMLResponse:
     fields = "<input type='hidden' name='phase' value='start'><div class='field'><label for='email'>Synthetic email</label><input id='email' name='email' type='email' required></div>"
-    return page("Password recovery | Bean Box®", auth_form("Reset local password", fields, "/account/password-reset", note="Only a matching @example.test local account can produce a local code."), request_owner(request))
+    return page("Password recovery | Bean Box®", auth_form("Reset your password", fields, "/account/password-reset", note="Only a matching synthetic @example.test account can produce a verification code."), request_owner(request))
 
 
 @app.post("/account/password-reset", include_in_schema=False)
