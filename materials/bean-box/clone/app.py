@@ -55,11 +55,11 @@ TASTES = [
     ("cold-brew", "COLD BREW", "Smooth coffees that shine over ice.", "139 coffees curated"),
 ]
 QUANTITIES = [
-    ("trace-six-cup", "6-Cup Size", "6 cups", "Compatibility option; not observed on the current source"),
     ("solo-sipper", "The Solo Sipper", "1 × 12 oz", "About 24–36 cups"),
     ("duo", "The Duo", "2 × 12 oz", "Share or stock up"),
     ("large-solo", "Large Solo", "1 × 2 lb", "About 72–108 cups"),
     ("office-duo", "Office Duo", "2 × 2 lb", "Built for busy mornings"),
+    ("trace-six-cup", "6-Cup Size", "6 cups", "Candidate-only compatibility option; current source exposes bag quantities"),
 ]
 
 
@@ -299,7 +299,19 @@ def subscription_body(draft: dict, owner: str, error: str = "") -> str:
         cards = "".join(f"<label class='choice'>{'<span class=popular>MOST POPULAR</span>' if key == 'curators-choice' else ''}<input type='radio' name='taste' value='{key}' {'checked' if draft['taste']==key else ''}><span class='choice-icon icon-{key}' aria-hidden='true'></span><span class='choice-copy'><strong>{label}</strong><span>{copy}</span><b>{count}</b></span></label>" for key,label,copy,count in TASTES)
         return prefix + f"<h1 class='display'>What's your ideal coffee tasting experience?</h1><p class='lede'>Choose a preparation, then a profile for your plan.</p><form method='post'>{hidden_owner(owner)}<input type='hidden' name='action' value='to-quantity'><label class='prep-select'>How do you take your coffee?<select name='preparation'><option value='whole-bean' {'selected' if draft['preparation']=='whole-bean' else ''}>Whole Bean</option><option value='freshly-ground' {'selected' if draft['preparation']=='freshly-ground' else ''}>Freshly Ground</option></select></label><div class='choice-grid'>{cards}</div><div class='form-actions'><a class='button secondary' href='/'>Back</a><button class='button' type='submit'>CONTINUE TO QUANTITY</button></div></form></section>"
     if active == 2:
-        quantities = "".join(f"<label class='quantity-card'><input type='radio' name='quantity' value='{key}' {'checked' if draft['quantity']==key else ''}><strong>{label}</strong><br>{amount}<br><span class='muted'>{detail}</span></label>" for key,label,amount,detail in QUANTITIES)
+        def render_quantity(item: tuple[str, str, str, str]) -> str:
+            key, label, amount, detail = item
+            candidate_class = " candidate-only" if key == "trace-six-cup" else ""
+            candidate_badge = "<span class='badge'>TRACE COMPATIBILITY</span>" if key == "trace-six-cup" else ""
+            checked = "checked" if draft["quantity"] == key else ""
+            return (
+                f"<label class='quantity-card{candidate_class}' data-quantity-option='{key}'>"
+                f"<input type='radio' name='quantity' value='{key}' aria-describedby='quantity-note-{key}' {checked}>"
+                f"<strong>{label}</strong>{candidate_badge}<br>{amount}<br>"
+                f"<span id='quantity-note-{key}' class='muted'>{detail}</span></label>"
+            )
+
+        quantities = "".join(render_quantity(item) for item in QUANTITIES)
         cadence = "".join(f"<label><input type='radio' name='cadence' value='{week}' {'checked' if draft['cadence']==week else ''}> Every {week} weeks{' · Monthly' if week=='4' else ''}</label>" for week in ("2","3","4","5","6"))
         return prefix + f"<h1 class='display'>How much coffee would you like per delivery?</h1><p class='lede'>Choose the amount and schedule that fits your mornings.</p><form method='post'>{hidden_owner(owner)}<input type='hidden' name='action' value='to-review'><div class='quantity-grid'>{quantities}</div><h2>Delivery frequency</h2><div class='cadence'>{cadence}</div><div class='form-actions'><button class='button secondary' name='action' value='back-tasting'>BACK</button><button class='button' type='submit'>CONTINUE TO REVIEW</button></div></form></section>"
     plan_cards = "".join(f"<label class='plan-card'><input type='radio' name='plan' value='{key}' {'checked' if draft['plan']==key else ''}><strong>{label}</strong><p>{copy}</p></label>" for key,label,copy in (("pay-per-delivery","Pay-Per-Delivery","About $17 per 12 oz bag plus $5.45 shipping."),("annual","Annual Plan","About $15 per bag with shipping included.")))
