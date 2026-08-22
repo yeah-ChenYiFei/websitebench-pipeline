@@ -6,7 +6,7 @@
       <span class="search-card-badges">{% for badge in card.badges %}<span>{{ '✦ ' if badge == 'AI skills' else '' }}{{ badge }}</span>{% endfor %}</span>
     </span>
     <span class="search-provider">{% if card.provider_icons %}<span class="search-provider-logos" aria-hidden="true">{% for icon in card.provider_icons %}<img class="search-provider-logo" src="{{ icon }}" alt="">{% endfor %}</span>{% elif card.provider_icon %}<img class="search-provider-logo" src="{{ card.provider_icon }}" alt="">{% else %}<span class="search-provider-mark" data-provider="{{ card.provider }}">{{ card.provider_mark }}</span>{% endif %}{{ card.provider }}</span>
-    <strong class="search-result-title">{{ card.title }}</strong>
+    <h3 class="search-result-title">{{ card.title }}</h3>
     <span class="search-result-skills"><b>Skills you'll gain:</b> {{ card.skills }}</span>
     <span class="search-card-bottom">
       {% if card.credential %}<span class="search-credential">▧&nbsp; Build toward a degree</span>{% endif %}
@@ -38,10 +38,7 @@
     </div>
     <div class="source-filter-group">
       <h2>Topic</h2>
-      {% for value in filter_options.category[:8] %}<label><input type="checkbox" name="category" value="{{ value }}"{% if value == filters.category %} checked{% endif %}> {{ value|replace('-', ' ')|title }}</label>{% endfor %}
-      <label><input type="checkbox" name="topic" value="deep-learning"{% if filters.topic == 'deep-learning' %} checked{% endif %}> Deep Learning</label>
-      <label><input type="checkbox" name="topic" value="machine-learning"{% if filters.topic == 'machine-learning' %} checked{% endif %}> Machine Learning</label>
-      <label><input type="checkbox" name="topic" value="artificial-intelligence"{% if filters.topic == 'artificial-intelligence' %} checked{% endif %}> Artificial Intelligence</label>
+      {% for value in filter_options.category[:7] %}<label><input type="checkbox" name="category" value="{{ value }}"{% if value == filters.category %} checked{% endif %}> {{ value|replace('-', ' ')|title }}</label>{% endfor %}
     </div>
     <div class="source-filter-group">
       <h2>Duration</h2>
@@ -62,6 +59,10 @@
       <h2>Level</h2>
       {% for value in filter_options.level %}<label><input type="checkbox" name="level" value="{{ value }}"{% if value == filters.level %} checked{% endif %}> {{ value }}</label>{% endfor %}
     </div>
+    <div class="source-filter-group">
+      <h2>AI skills</h2>
+      <label><input type="checkbox" name="ai_skills" value="1"{% if filters.ai_skills == '1' %} checked{% endif %}> AI skills</label>
+    </div>
     <button type="submit" class="source-filter-apply">Apply filters</button>
     {% if filters_active %}<a class="source-filter-clear" href="{{ clear_filters_href }}">Clear all</a>{% endif %}
   </form>
@@ -76,10 +77,13 @@
             <nav><a href="/search?query=Deep%20Learning">Return to Deep Learning results</a><a href="/browse">Browse all topics</a></nav>
           </section>
         {% else %}
-          <div class="search-result-grid">
-            {% for card in results[:6] %}{{ result_card(card, loop.index) }}{% endfor %}
-          </div>
-          {% if results|length > 6 %}
+          <div class="search-results-region">
+            <div class="search-result-grid">
+              {% for card in results[:6] %}{{ result_card(card, loop.index) }}{% endfor %}
+              {% if results|length > 6 %}
+                {% for card in results[6:] %}{{ result_card(card, loop.index + 6) }}{% endfor %}
+              {% endif %}
+            </div>
             <aside class="search-intent-panel">
               <h2>What brings you to Coursera today?</h2>
               <nav>
@@ -89,10 +93,7 @@
                 <a href="/browse"><span>♧</span>Explore topics outside of work</a>
               </nav>
             </aside>
-            <div class="search-result-grid search-result-grid-lower">
-              {% for card in results[6:] %}{{ result_card(card, loop.index + 6) }}{% endfor %}
-            </div>
-          {% endif %}
+          </div>
         {% endif %}
       </div>
     </section>

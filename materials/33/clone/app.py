@@ -796,6 +796,7 @@ def search(
     sort: str = "title-asc",
     status: str = "",
     product: str = "",
+    ai_skills: str = "",
 ) -> str:
     catalog = load_catalog_seed()
     q = q or query
@@ -831,6 +832,7 @@ def search(
         "sort": sort,
         "status": status,
         "product": product,
+        "ai_skills": ai_skills,
     }
     deep_learning_query = q.strip().casefold() == "deep learning"
     catalog_scope = deep_learning_query and any(

@@ -352,25 +352,25 @@
   margin-right: 3px;
 }
 
+.source-search-page .search-results-region {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 48px;
+  align-items: start;
+}
 .source-search-page .search-result-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   width: 100%;
   column-gap: 18px;
   row-gap: 22px;
   margin-left: 0;
 }
 
-.source-search-page .search-result-grid:not(.search-result-grid-lower) .search-result-item,
-.source-search-page .search-result-grid:not(.search-result-grid-lower) .catalog-card,
-.source-search-page .search-result-grid:not(.search-result-grid-lower) .search-result-card {
+.source-search-page .search-result-grid .search-result-item,
+.source-search-page .search-result-grid .catalog-card,
+.source-search-page .search-result-grid .search-result-card {
   min-height: 454px;
-}
-
-.source-search-page .search-result-grid-lower .search-result-item,
-.source-search-page .search-result-grid-lower .catalog-card,
-.source-search-page .search-result-grid-lower .search-result-card {
-  min-height: 436px;
 }
 
 .source-search-page .search-result-item,
@@ -403,7 +403,7 @@
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 11 / 4;
   overflow: hidden;
   border-radius: 8px;
   background: #e5e9f0;
@@ -438,7 +438,7 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  margin: 14px 7px 9px;
+  margin: 34px 7px 9px;
   color: #5d6879;
   font-size: 12px;
 }
@@ -477,7 +477,7 @@
 }
 
 .source-search-page .search-result-title {
-  margin: 0 7px;
+  margin: 6px 7px;
   font-size: 14px;
   line-height: 1.35;
 }
@@ -542,38 +542,39 @@
 }
 
 .source-search-page .search-intent-panel {
-  margin: 34px 7px 42px;
-  border: 1px solid #cbd5e5;
-  border-radius: 20px;
-  padding: 25px 21px 27px;
-  background: #fff;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 52px 26px 48px;
+  background: #e3eeff;
 }
 
 .source-search-page .search-intent-panel h2 {
   margin: 0 0 20px;
   text-align: center;
-  font-size: 17px;
+  font-size: 19px;
 }
 
 .source-search-page .search-intent-panel nav {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: 1fr;
+  gap: 14px;
 }
 
 .source-search-page .search-intent-panel a {
   display: flex;
-  min-height: 67px;
+  min-height: 52px;
   align-items: center;
-  gap: 9px;
-  border: 1px solid #cbd5e5;
-  border-radius: 13px;
-  padding: 9px;
+  gap: 12px;
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 13px;
   color: #17223b;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
+  background: #fff;
 }
 
 .source-search-page .search-intent-panel a span {

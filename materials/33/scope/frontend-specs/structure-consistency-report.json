@@ -4,13 +4,13 @@
   "pages": [
     {
       "page": "home",
-      "structure_score": 0.5305,
+      "structure_score": 0.697,
       "headings": {
         "source": 67,
-        "clone": 32,
-        "jaccard": 0.3562,
-        "coverage": 0.3881,
-        "level_match": 0.9615
+        "clone": 58,
+        "jaccard": 0.6892,
+        "coverage": 0.7612,
+        "level_match": 0.9804
       },
       "controls": {
         "source": 195,
@@ -26,13 +26,13 @@
     },
     {
       "page": "browse",
-      "structure_score": 0.5939,
+      "structure_score": 0.6177,
       "headings": {
         "source": 50,
-        "clone": 41,
-        "jaccard": 0.4444,
-        "coverage": 0.56,
-        "level_match": 0.9643
+        "clone": 44,
+        "jaccard": 0.4921,
+        "coverage": 0.62,
+        "level_match": 0.9677
       },
       "controls": {
         "source": 152,
@@ -48,18 +48,18 @@
     },
     {
       "page": "search",
-      "structure_score": 0.5039,
+      "structure_score": 0.6906,
       "headings": {
         "source": 21,
-        "clone": 18,
-        "jaccard": 0.3,
-        "coverage": 0.4286,
-        "level_match": 0.8889
+        "clone": 31,
+        "jaccard": 0.6774,
+        "coverage": 1.0,
+        "level_match": 0.9524
       },
       "controls": {
         "source": 104,
-        "clone": 126,
-        "jaccard": 0.5132,
+        "clone": 128,
+        "jaccard": 0.5065,
         "coverage": 0.75
       },
       "data_points": {
@@ -70,13 +70,13 @@
     },
     {
       "page": "course",
-      "structure_score": 0.6461,
+      "structure_score": 0.6845,
       "headings": {
         "source": 39,
-        "clone": 21,
-        "jaccard": 0.5385,
-        "coverage": 0.5385,
-        "level_match": 0.9524
+        "clone": 24,
+        "jaccard": 0.6154,
+        "coverage": 0.6154,
+        "level_match": 0.9583
       },
       "controls": {
         "source": 131,
@@ -92,13 +92,13 @@
     },
     {
       "page": "specialization",
-      "structure_score": 0.6471,
+      "structure_score": 0.6532,
       "headings": {
         "source": 36,
-        "clone": 18,
-        "jaccard": 0.5,
-        "coverage": 0.5,
-        "level_match": 0.9444
+        "clone": 26,
+        "jaccard": 0.5122,
+        "coverage": 0.5833,
+        "level_match": 0.9524
       },
       "controls": {
         "source": 130,
@@ -135,5 +135,5 @@
       }
     }
   ],
-  "overall_structure_consistency": 0.576
+  "overall_structure_consistency": 0.6463
 }

@@ -1,14 +1,14 @@
 {% macro compact_card(card) -%}
 <a class="source-list-card" data-home-card="{{ card.section_id }}:{{ card.position }}" href="{{ card.href }}">
   <img class="source-card-image" src="{{ card.image }}" alt="">
-  <span class="source-card-copy"><small>{{ card.provider }}</small><strong>{{ card.title }}</strong><em>{{ card.metadata }}{% if card.rating %} · {{ card.rating }} ★{% endif %}</em></span>
+  <span class="source-card-copy"><small>{{ card.provider }}</small><h3>{{ card.title }}</h3><em>{{ card.metadata }}{% if card.rating %} · {{ card.rating }} ★{% endif %}</em></span>
 </a>
 {%- endmacro %}
 
 {% macro product_card(card) -%}
 <a class="source-learning-card" data-home-card="{{ card.section_id }}:{{ card.position }}" href="{{ card.href }}">
   <img class="source-card-image" src="{{ card.image }}" alt="">
-  <span><small>{{ card.provider }}</small><strong>{{ card.title }}</strong><em>{{ card.metadata }}{% if card.rating %}<b>★ {{ card.rating }}</b>{% endif %}</em></span>
+  <span><small>{{ card.provider }}</small><h3>{{ card.title }}</h3><em>{{ card.metadata }}{% if card.rating %}<b>★ {{ card.rating }}</b>{% endif %}</em></span>
 </a>
 {%- endmacro %}
 
