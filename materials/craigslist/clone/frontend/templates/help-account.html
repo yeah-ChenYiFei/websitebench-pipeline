@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}account help - craigslist{% endblock %}
+{% block content %}
+<div class="cl-columns">
+  <div class="cl-column-center">
+    <h1 class="cl-page-heading">account help</h1>
+
+    <h2>sign in</h2>
+    <p>Use the <a href="/account/login">my account</a> link in the header to
+    reach the log in page. Sign in with the email address and password you
+    registered with. If you stay signed in, the header will show links to your
+    account, settings, and log out.</p>
+    <p>If you enter the wrong password, the log in page shows an error — check
+    the spelling and try again. Passwords are case-sensitive.</p>
+
+    <h2>registration</h2>
+    <p>Creating an account is free. From the <a href="/account/login">log in</a>
+    page, choose the "create one" link to open the
+    <a href="/account/register">registration</a> page. Enter an email address
+    and choose a password, then confirm the password and agree to the terms of
+    use.</p>
+    <p>After registration, a verification code is sent to your email address.
+    In this offline clone, the code is delivered to the local offline outbox —
+    no real email leaves your machine. Enter the code on the verification page
+    to finish creating your account.</p>
+    <p class="verify-note">Registration is limited to once every five minutes
+    per email address. If you try to register the same email address again too
+    soon, you will see an error asking you to wait.</p>
+
+    <h2>password recovery</h2>
+    <p>If you forget your password, use the <a href="/account/forgot">forgot
+    your password?</a> link on the log in page. Enter the email address you
+    registered with and a recovery code will be sent to that address (again,
+    delivered to the local offline outbox in this clone). Use the code to reset
+    your password and then sign in with the new password.</p>
+
+    <h2>managing your postings</h2>
+    <p>From <a href="/account/home">my account</a> you can see every posting
+    you have created and its status (for example active or removed). From the
+    postings list you can:</p>
+    <ul>
+      <li>edit a posting to change its details or photos,</li>
+      <li>renew a posting to move it back to the top of results,</li>
+      <li>repost a posting to create a new copy, or</li>
+      <li>delete a posting to remove it from the site.</li>
+    </ul>
+    <p>See the <a href="/about/help/posting">posting help</a> page for details
+    on each of these actions.</p>
+
+    <h2>saved searches</h2>
+    <p>When you run a search you can save it from your account. Saved searches
+    appear on the <a href="/account/searches">saved searches</a> page, where
+    you can run them again with one click or remove the ones you no longer
+    need. Saving a search lets you return to the same set of results quickly
+    without retyping your keywords and filters.</p>
+
+    <h2>favorites</h2>
+    <p>Postings you mark as favorites are kept on the
+    <a href="/account/saved">saved postings</a> page. Favoriting a posting does
+    not notify the poster and does not reserve the item — it is just a private
+    bookmark in your account. Remove a posting from favorites whenever you
+    like.</p>
+
+    <p class="filter-label"><a href="/about/help">back to help</a></p>
+  </div>
+  <div class="cl-column-right">
+    <div class="sidebox">
+      <h3>account pages</h3>
+      <div class="sidebox-body">
+        <ul>
+          <li><a href="/account/login">log in</a></li>
+          <li><a href="/account/register">create an account</a></li>
+          <li><a href="/account/forgot">forgot password</a></li>
+          <li><a href="/account/home">my account</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sidebox">
+      <h3>privacy note</h3>
+      <div class="sidebox-body">
+        <p>Account data in this offline clone is stored locally on your
+        machine. Nothing is sent anywhere. See the
+        <a href="/about/privacy">privacy policy</a> for details.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

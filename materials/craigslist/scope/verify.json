@@ -1,0 +1,52 @@
+{
+  "boot": {
+    "argv": [
+      "{python}",
+      "-m",
+      "uvicorn",
+      "app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "{port}",
+      "--log-level",
+      "warning"
+    ],
+    "cwd": "clone",
+    "env": {}
+  },
+  "deferred": {
+    "account-home": "Authenticated account management routes require a sign-in session; the anonymous live diagnostic visits the sign-in prompt instead (401).",
+    "posting-wizard": "The posting wizard requires a sign-in session; the anonymous live diagnostic visits the sign-in prompt instead (401).",
+    "listing-detail-sublet-removed": "The removed-posting state requires an owner action; the anonymous diagnostic records it as a coverage gap."
+  },
+  "prepare": [],
+  "routes": {
+    "home": "/"
+  },
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "craigslist",
+  "status": {
+    "not-found": 404
+  },
+  "states": {
+    "home.loaded": [],
+    "housing-index.loaded": [],
+    "housing-sublets.loaded": [],
+    "housing-search.loaded": [],
+    "housing-search.refined": [],
+    "housing-search.no-results": [],
+    "listing-detail-sublet.loaded": [],
+    "reply-contact.loaded": [],
+    "account-login.loaded": [],
+    "account-register.loaded": [],
+    "account-forgot.loaded": [],
+    "help-index.loaded": [],
+    "help-posting.loaded": [],
+    "help-account.loaded": [],
+    "contact-entry.loaded": [],
+    "flag-report.loaded": [],
+    "about.loaded": [],
+    "not-found.loaded": []
+  }
+}

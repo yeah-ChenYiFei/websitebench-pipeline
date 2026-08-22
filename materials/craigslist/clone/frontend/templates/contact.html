@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}contact us - craigslist{% endblock %}
+{% block content %}
+<div class="cl-columns">
+  <div class="cl-column-center">
+    <h1 class="cl-page-heading">contact us</h1>
+
+    {% if sent %}
+    <div class="banner">
+      <p><strong>your message has been received</strong></p>
+      <p>Thank you for contacting us. In this offline clone your message is
+      stored locally and will not be sent anywhere. You can
+      <a href="/">return to craigslist home</a> or
+      <a href="/about/help">browse the help pages</a>.</p>
+    </div>
+    {% else %}
+
+    <p>Use this form to send feedback or report an issue. Messages are handled
+    locally by this offline clone — nothing is sent over the internet.</p>
+
+    <form class="cl-form" method="post" action="/contact">
+      {% if errors %}
+      <div class="form-error-box">{% for msg in errors.values() %}<div>{{ msg }}</div>{% endfor %}</div>
+      {% endif %}
+
+      <label for="category">category</label>
+      <select id="category" name="category">
+        <option value="">choose a category&hellip;</option>
+        <option value="help with an account"{% if values and values.category == 'help with an account' %} selected{% endif %}>help with an account</option>
+        <option value="help with a posting"{% if values and values.category == 'help with a posting' %} selected{% endif %}>help with a posting</option>
+        <option value="report an issue"{% if values and values.category == 'report an issue' %} selected{% endif %}>report an issue</option>
+        <option value="other"{% if values and values.category == 'other' %} selected{% endif %}>other</option>
+      </select>
+      {% if errors and errors.category %}<div class="field-error">{{ errors.category }}</div>{% endif %}
+
+      <label for="subject">subject</label>
+      <input type="text" id="subject" name="subject" value="{{ values.subject if values and values.subject is defined else '' }}">
+      {% if errors and errors.subject %}<div class="field-error">{{ errors.subject }}</div>{% endif %}
+
+      <label for="message">message</label>
+      <textarea id="message" name="message">{{ values.message if values and values.message is defined else '' }}</textarea>
+      {% if errors and errors.message %}<div class="field-error">{{ errors.message }}</div>{% endif %}
+
+      <div class="form-actions"><button type="submit">send</button></div>
+    </form>
+    <p class="filter-label">responses in this offline clone are simulated &middot; no real email is sent</p>
+    {% endif %}
+  </div>
+  <div class="cl-column-right">
+    <div class="sidebox">
+      <h3>before you write</h3>
+      <div class="sidebox-body">
+        <p>Many questions are answered in the <a href="/about/help">help</a>
+        pages, including <a href="/about/help/posting">posting help</a> and
+        <a href="/about/help/account">account help</a>.</p>
+      </div>
+    </div>
+    <div class="sidebox">
+      <h3>safety</h3>
+      <div class="sidebox-body">
+        <p>Suspicious or fraudulent postings can be reported through the
+        <a href="/about/help/housing">avoid scams &amp; fraud</a> page's
+        guidance — flag the posting and describe the issue here.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}{{ category.name }} - {{ region_row.name }} housing{% endblock %}
+{% block content %}
+<div class="cl-columns">
+  <div class="cl-column-left">
+    <div class="cl-section-list">
+      <h2>craigslist &gt; {{ region_row.name }} &gt; housing</h2>
+      <ul>
+        {% for c in housing_categories %}
+        <li>
+          <a href="/{{ region_row.slug }}/housing/{{ c.slug }}/">{{ c.name }}</a>
+          <span class="count">({{ counts.get(c.slug, 0) }})</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="cl-column-center">
+    <h1 class="cl-page-heading">{{ category.name }}</h1>
+    {% if rows %}
+    <ul class="result-list">
+      {% for r in rows %}
+      <li class="result-row">
+        <div class="thumb">
+          {% if r.photos %}
+          <a href="{{ r.detail_url }}"><img src="{{ r.photos[0].url }}" alt=""></a>
+          {% endif %}
+        </div>
+        <div class="body">
+          <div class="title"><a href="{{ r.detail_url }}">{{ r.posting.title }}</a></div>
+          {% if r.price_label %}<div><span class="price">{{ r.price_label }}</span></div>{% endif %}
+          <div class="meta">{{ r.posting.neighborhood | title }} &middot; posted: {{ r.posting.created_at[:10] }}</div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="no-results"><h2>no postings in this category yet</h2><p><a href="/{{ region_row.slug }}/housing/">back to housing</a></p></div>
+    {% endif %}
+  </div>
+  <div class="cl-column-right">
+    <div class="sidebox">
+      <h3>search {{ category.name }}</h3>
+      <div class="sidebox-body">
+        <form method="get" action="/{{ region_row.slug }}/search/housing/{{ category.slug }}">
+          <input type="text" name="query" placeholder="search">
+          <p><button type="submit">update search</button></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

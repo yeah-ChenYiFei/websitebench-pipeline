@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}reply - {{ posting.title }} - {{ region_row.name }}{% endblock %}
+{% block content %}
+<div class="cl-columns">
+  <div class="cl-column-center">
+    <h1 class="cl-page-heading">reply to: {{ posting.title }}</h1>
+    <p class="filter-label">{{ price_label if price_label is defined else '' }} &middot; {{ posting.neighborhood | title }} &middot; {{ region_row.name }}</p>
+
+    {% if sent %}
+    <div class="banner">
+      <h2 style="margin-top:0;">your reply has been sent</h2>
+      <p>The poster will receive your message through the local offline outbox. No real email was sent.</p>
+      <p><a href="/{{ posting.region_slug }}/housing/d/{{ posting.id }}">back to posting</a></p>
+    </div>
+    {% else %}
+    <form class="cl-form" method="post" action="/{{ posting.region_slug }}/housing/reply/{{ posting.id }}">
+      {% if errors %}
+      <div class="form-error-box">
+        {% for field, msg in errors.items() %}<div>{{ msg }}</div>{% endfor %}
+      </div>
+      {% endif %}
+      <label for="name">your name</label>
+      <input type="text" id="name" name="name" value="{{ values.name if values and values.name is defined else '' }}">
+      {% if errors and errors.name %}<div class="field-error">{{ errors.name }}</div>{% endif %}
+
+      <label for="email">your email</label>
+      <input type="email" id="email" name="email" value="{{ values.email if values and values.email is defined else '' }}">
+      {% if errors and errors.email %}<div class="field-error">{{ errors.email }}</div>{% endif %}
+
+      <label for="phone">phone (optional)</label>
+      <input type="text" id="phone" name="phone" value="{{ values.phone if values and values.phone is defined else '' }}">
+
+      <label for="message">message</label>
+      <textarea id="message" name="message" placeholder="hello, I'm interested in your posting...">{{ values.message if values and values.message is defined else '' }}</textarea>
+      {% if errors and errors.message %}<div class="field-error">{{ errors.message }}</div>{% endif %}
+
+      <div class="verify-note">Your message is relayed anonymously; the poster never sees your email address directly.</div>
+      <div class="form-actions"><button type="submit">send reply</button></div>
+    </form>
+    {% endif %}
+  </div>
+  <div class="cl-column-right">
+    <div class="sidebox">
+      <h3>about this posting</h3>
+      <div class="sidebox-body">
+        <p><strong>{{ posting.title }}</strong></p>
+        <p>post id: {{ posting.id }}</p>
+        <p><a href="/{{ posting.region_slug }}/housing/d/{{ posting.id }}">view full posting</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}my saved searches - craigslist{% endblock %}
+{% block content %}
+<main class="account-searches cl-main">
+<h1 class="cl-page-heading">saved searches</h1>
+<nav class="account-nav">
+  <a href="/account/home">your postings</a>
+  <a href="/account/saved">favorites</a>
+  <a href="/account/searches" class="active">saved searches</a>
+  <a href="/account/settings">settings</a>
+</nav>
+{% if searches %}
+<table style="width:100%; border-collapse:collapse;">
+  <tbody>
+    {% for s in searches %}
+    {% set q = s.query_json | from_json %}
+    <tr style="border-bottom:1px solid var(--cl-border-light);">
+      <td style="padding:6px;">
+        <a href="/{{ q.region or 'toronto' }}/search/{{ q.section or 'housing' }}?query={{ q.query or '' }}{% if q.min_price %}&amp;min_price={{ q.min_price }}{% endif %}{% if q.max_price %}&amp;max_price={{ q.max_price }}{% endif %}">{{ s.name }}</a>
+        <div class="filter-label">saved {{ s.created_at[:10] }}</div>
+      </td>
+      <td style="white-space:nowrap;">
+        <form method="post" action="/account/searches/{{ s.id }}/delete" style="display:inline;"><button type="submit" class="linklike">delete</button></form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="no-results"><h2>no saved searches</h2><p>Use the save-search link on any search results page.</p></div>
+{% endif %}
+</main>
+{% endblock %}

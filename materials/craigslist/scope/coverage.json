@@ -1,0 +1,152 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "frozen",
+  "dimensions": [
+    {
+      "id": "source-direct-states",
+      "label": "Anonymous public surface states captured directly from craigslist.org",
+      "unit": "state",
+      "category": "source",
+      "required_evidence_kinds": [
+        "browser"
+      ],
+      "required_items": [
+        "home.desktop",
+        "region-home.desktop",
+        "housing-index.desktop",
+        "housing-sublets.desktop",
+        "housing-search.desktop",
+        "housing-search.no-results.desktop",
+        "listing-detail-sublet.desktop",
+        "reply-contact.desktop",
+        "account-login.desktop",
+        "account-register.desktop",
+        "account-forgot.desktop",
+        "help-index.desktop",
+        "contact-entry.desktop",
+        "not-found.desktop"
+      ],
+      "satisfied_items": [],
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "inferred",
+      "rationale": "Round 2026-08-21.craigslist-r1 captured direct frames from craigslist.org through a Steel cloud browser (entry, toronto area, sublets search, listing detail, login, help, 404) at 1915x989. The clone's content regions substitute deterministic synthetic catalog data and local map placeholders; structural regions (header/footer/nav) are the fidelity signal. Verified pages: SSIM full-frame 0.51-0.95, mean 0.79; structural pages (login 0.92, help 0.88, not-found 0.95) are closest."
+    },
+    {
+      "id": "clone-anonymous-routes",
+      "label": "Clone routes reachable anonymously, asserted live (200, title, no overflow, no outbound requests)",
+      "unit": "route",
+      "category": "clone",
+      "required_evidence_kinds": [
+        "browser",
+        "network"
+      ],
+      "required_items": [
+        "home",
+        "region-home",
+        "housing-index",
+        "housing-sublets",
+        "housing-apartments",
+        "housing-rooms",
+        "housing-real-estate",
+        "housing-search",
+        "housing-search-sublets",
+        "listing-detail-sublet",
+        "listing-detail-apartment",
+        "listing-detail-room",
+        "reply-contact",
+        "posting-wizard",
+        "account-login",
+        "account-register",
+        "account-forgot",
+        "account-home",
+        "help-index",
+        "help-posting",
+        "help-account",
+        "contact-entry",
+        "flag-report",
+        "about",
+        "terms",
+        "privacy",
+        "not-found"
+      ],
+      "satisfied_items": [],
+      "rationale": "The anonymous clone surface is asserted by websitebench-offline-clone verify live section per checkpoint (HTTP 200, title, no horizontal overflow, zero outbound requests)."
+    },
+    {
+      "id": "stateful-journeys",
+      "label": "Stateful journeys exercised by the site test suite (browser + backend semantics)",
+      "unit": "journey",
+      "category": "clone",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "housing.navigate-from-entry.success",
+        "housing.search.browse-filters.success",
+        "housing.search.refine-filters.success",
+        "listing.detail.inspect-reply.success",
+        "listing.reply.contact-flow",
+        "listing.save-favorite.bookmark",
+        "search.save-search.persist",
+        "account.signin.entry.verify-only",
+        "account.register.entry.verify-only",
+        "account.password-recovery.entry.verify-only",
+        "account.register-login.session.success",
+        "account.history.manage-posting.success",
+        "posting.wizard.create-full.success",
+        "posting.details.enter-attributes.success",
+        "posting.photos.upload-reorder-remove",
+        "posting.preview.publish-confirm",
+        "posting.create-sublet.publish.success",
+        "posting.manage.edit-delete.success",
+        "flagging.report-entry",
+        "search.no-results.recovery.success",
+        "validation.empty-or-signed-out.prompt",
+        "help.contact.entry.reachable",
+        "notfound.deep-link.recovery"
+      ],
+      "satisfied_items": [],
+      "rationale": "Each frozen journey has at least one automated test (backend semantic or browser) in clone/tests; the coverage claims are updated when the suite passes."
+    },
+    {
+      "id": "p0-network-invariants",
+      "label": "Zero outbound runtime requests across checkpoints and journeys",
+      "unit": "request",
+      "category": "invariant",
+      "required_evidence_kinds": [
+        "network"
+      ],
+      "required_items": [
+        "runtime.local-only",
+        "runtime.deterministic-reset"
+      ],
+      "satisfied_items": [],
+      "rationale": "The clone serves only same-origin resources; the live diagnostic asserts zero outbound requests and the asset closure is declared empty (no third-party runtime assets)."
+    },
+    {
+      "id": "backend-semantics",
+      "label": "Backend semantic coverage: identity, ownership, validation, persistence, isolation, reset",
+      "unit": "check",
+      "category": "backend",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "identity.account-unique",
+        "identity.session-bound",
+        "identity.cookie-scoped",
+        "posting.owner-only",
+        "posting.required-fields",
+        "posting.publish-visible",
+        "persistence.refresh-relogin",
+        "account.rate-limit",
+        "account.recovery-token",
+        "validation.inline",
+        "isolation.per-user-data",
+        "runtime.deterministic-reset"
+      ],
+      "satisfied_items": [],
+      "rationale": "The backend semantic suite (clone/tests/test_backend_semantics.py) asserts the frozen invariants with actor-isolated tests against the loopback clone."
+    }
+  ]
+}

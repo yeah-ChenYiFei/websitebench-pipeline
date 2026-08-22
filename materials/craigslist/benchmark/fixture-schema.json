@@ -1,0 +1,18 @@
+{
+  "schema_version": "websitebench.fixture.v1",
+  "entity_kinds": [
+    "account",
+    "posting",
+    "photo",
+    "favorite",
+    "saved-search",
+    "reply",
+    "flag"
+  ],
+  "rules": [
+    "deterministic",
+    "reset-table",
+    "no-credentials-in-fixtures",
+    "synthetic-emails-only"
+  ]
+}

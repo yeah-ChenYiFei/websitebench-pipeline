@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}posting published - craigslist{% endblock %}
+{% block content %}
+<h1 class="cl-page-heading">your posting is now live</h1>
+<div class="banner">
+  <p><strong>Success!</strong> Your posting was published to craigslist (offline clone).</p>
+  <p>post id: <strong>{{ posting.id }}</strong></p>
+</div>
+<div class="cl-columns">
+  <div class="cl-column-center">
+    <div class="listing-head">
+      <h1 class="listing-title"><a href="{{ detail_url }}">{{ posting.title }}</a></h1>
+      <div class="listing-sub">
+        <span class="listing-price">${{ '%d' | format(posting.price) }}</span>
+        &middot; {{ posting.neighborhood | title }} &middot; {{ posting.created_at[:16] }}
+      </div>
+    </div>
+  </div>
+  <div class="cl-column-right">
+    <div class="sidebox">
+      <h3>what next?</h3>
+      <div class="sidebox-body">
+        <p><a href="{{ detail_url }}">view your posting</a></p>
+        <p><a href="/account/home">manage your postings</a></p>
+        <p><a href="/post/">post another</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

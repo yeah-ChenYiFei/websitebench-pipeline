@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% block title %}craigslist: {{ region_row.name }} jobs, apartments, for sale, services, community, and events{% endblock %}
+{% block bodyclass %}area{% endblock %}
+{% block content %}
+<div class="cl-desktop-homepage">
+  <div class="content">
+
+    <div class="left">
+      <div class="logo-post-group">
+        <a class="cl-goto-home" href="/area/{{ region_row.slug }}">craigslist</a>
+        <form class="cl-home-search-query-ng" method="get" action="/search/area/{{ region_row.slug }}">
+          <div class="bd-posit-box">
+            <input type="text" name="query" placeholder="search craigslist" aria-label="search craigslist">
+          </div>
+          <button type="submit" class="decoration">&#128269;</button>
+        </form>
+      </div>
+
+      <div class="calendar" aria-label="event calendar">
+        <a class="cl-app-anchor" href="/search/area/{{ region_row.slug }}?cat=eee"><span class="label">event calendar</span></a>
+        <table class="cl-date-picker">
+          <tbody>
+            <tr class="day-header"><td>S</td><td>M</td><td>T</td><td>W</td><td>T</td><td>F</td><td>S</td></tr>
+            {% for week in calendar_rows %}
+            <tr class="week">
+              {% for day in week %}<td class="{{ day.class }}">{{ day.label }}</td>{% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="link-group-1">
+        <a href="/about/help">help, faq, abuse, legal</a>
+        <a href="/about/help/housing">avoid scams &amp; fraud</a>
+        <a href="/about/help/housing">personal safety tips</a>
+        <a href="/about">about craigslist</a>
+        <a href="/about/help">best-of-craigslist</a>
+        <a href="/about/help">craigslist is hiring</a>
+        <a href="/about/help">what's new</a>
+        <a href="/about/help">system status</a>
+      </div>
+      <div class="link-group-2">
+        <a href="/about/privacy">privacy</a>
+        <a href="/about/terms">terms</a>
+        <a href="/about">about</a>
+        <a href="/contact">app</a>
+        <a href="/about/help">sitemap</a>
+      </div>
+    </div>
+
+    <div class="center">
+      <div class="cl-homepage-top-banner">
+        <div class="location">{{ region_row.name }}</div>
+        <div class="cl-subareas">
+          <button type="button" class="bd-button">{{ region_row.slug }}</button>
+          <button type="button" class="bd-button">tor</button>
+          <button type="button" class="bd-button">drh</button>
+          <button type="button" class="bd-button">yrk</button>
+          <button type="button" class="bd-button">bra</button>
+          <button type="button" class="bd-button">mss</button>
+          <button type="button" class="bd-button">oak</button>
+        </div>
+        <div class="action-buttons">
+          <a href="/post/">&#128394; post an ad</a>
+          <a href="/account/saved">⭐ faves</a>
+          <a href="/account/login">👤 acct</a>
+        </div>
+      </div>
+
+      <div class="categories">
+        <div class="left">
+          <div class="cl-link-table">
+            <div class="cat-header">community</div>
+            <div class="link-container">
+              <div class="column">
+                {% for label, cat in [
+                  ('activities','act'), ('artists','ats'), ('childcare','kid'), ('classes','cls'),
+                  ('events','eve'), ('general','com'), ('groups','grp'), ('local news','vnn'),
+                  ('lost + found','laf'), ('missed connections','mis'), ('musicians','muc'), ('pets','pet'),
+                  ('politics','pol'), ('rants &amp; raves','rnr'), ('rideshare','rid'), ('volunteers','vol')] %}
+                <a href="/search/area/{{ region_row.slug }}?cat={{ cat }}">{{ label }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="cl-link-table">
+            <div class="cat-header">services</div>
+            <div class="link-container">
+              <div class="column">
+                {% for label, cat in [
+                  ('automotive','aos'), ('beauty','bts'), ('cell / mobile','cms'), ('computer','cps'),
+                  ('creative','crs'), ('cycle','cys'), ('event','evs'), ('farm + garden','fgs'),
+                  ('financial','fns'), ('health / well','hws'), ('household','hss'), ('labor / move','lbs'),
+                  ('legal','lgs'), ('lessons','lss'), ('marine','mas'), ('pet','pas'),
+                  ('real estate','rts'), ('skilled trade','sks'), ('sm biz ads','biz'),
+                  ('travel / vac','trv'), ('write / ed / tran','wet')] %}
+                <a href="/search/area/{{ region_row.slug }}?cat={{ cat }}">{{ label }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="center">
+          <div class="cl-link-table">
+            <div class="cat-header">discussion forums</div>
+            <div class="link-container">
+              <div class="column">
+                <a href="/about/help">apple</a><a href="/about/help">arts</a><a href="/about/help">autos</a>
+                <a href="/about/help">bikes</a><a href="/about/help">computer</a><a href="/about/help">food</a>
+                <a href="/about/help">gaming</a><a href="/about/help">garden</a><a href="/about/help">health</a>
+              </div>
+              <div class="column">
+                <a href="/about/help">help</a><a href="/about/help">history</a><a href="/about/help/housing">housing</a>
+                <a href="/about/help">jobs</a><a href="/about/help">legal</a><a href="/about/help">music</a>
+                <a href="/about/help">pets</a><a href="/about/help">photo</a><a href="/about/help">politics</a>
+              </div>
+            </div>
+          </div>
+          <div class="cl-link-table">
+            <div class="cat-header">housing</div>
+            <div class="link-container">
+              <div class="column">
+                {% for c in housing_categories %}
+                <a href="/search/area/{{ region_row.slug }}?cat={{ c.slug }}">{{ c.name }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="cl-link-table">
+            <div class="cat-header">autos</div>
+            <div class="link-container">
+              <div class="column">
+                {% for label, cat in [
+                  ('auto parts','pta'), ('aviation','ava'), ('boats','boo'), ('cars + trucks','cta'),
+                  ('heavy equip','hva'), ('motorcycles','mca'), ('rvs + camp','rva'), ('trailers','tra'),
+                  ('wheels + tires','wta')] %}
+                <a href="/search/area/{{ region_row.slug }}?cat={{ cat }}">{{ label }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="cl-link-table">
+            <div class="cat-header">for sale</div>
+            <div class="link-container">
+              <div class="column">
+                {% for c in for_sale_categories %}
+                <a href="/search/area/{{ region_row.slug }}?cat={{ c.slug }}">{{ c.name }}</a>
+                {% endfor %}
+                <a href="/search/area/{{ region_row.slug }}?cat=sss">all for sale</a>
+              </div>
+            </div>
+          </div>
+          <div class="cl-link-table">
+            <div class="cat-header">jobs</div>
+            <div class="link-container">
+              <div class="column">
+                {% for label, cat in [
+                  ('accounting + finance','acc'), ('admin / office','ofc'), ('arch / engineering','egr'),
+                  ('art / media / design','med'), ('business / mgmt','bus'), ('customer service','csr'),
+                  ('education','edu'), ('food / bev / hosp','fbh'), ('general labor','lab'),
+                  ('medical / health','hea'), ('real estate','rej'), ('retail / wholesale','ret'),
+                  ('sales / biz dev','sls'), ('skilled trade / craft','trd'), ('software / qa / dba','sof'),
+                  ('systems / network','sad'), ('technical support','tch'), ('transport','trp'),
+                  ('tv / film / video','tfr'), ('web / info design','web'), ('writing / editing','wri')] %}
+                <a href="/search/area/{{ region_row.slug }}?cat={{ cat }}">{{ label }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="cl-link-table">
+            <div class="cat-header">gigs</div>
+            <div class="link-container">
+              <div class="column">
+                {% for label, cat in [
+                  ('computer','cpg'), ('creative','crg'), ('crew','cwg'), ('domestic','dmg'),
+                  ('event','evg'), ('labor','lbg'), ('talent','tlg'), ('writing','wrg')] %}
+                <a href="/search/area/{{ region_row.slug }}?cat={{ cat }}">{{ label }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="cl-link-table">
+            <div class="cat-header">resumes</div>
+            <div class="link-container">
+              <div class="column"><a href="/search/area/{{ region_row.slug }}?cat=rrr">resumes</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="cl-link-table">
+        <div class="cat-header">nearby cl</div>
+        <div class="link-container">
+          <div class="column">
+            {% for r in regions %}
+            <a href="/area/{{ r.slug }}">{{ r.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="cl-link-table">
+        <div class="cat-header">ca cities</div>
+        <div class="link-container">
+          <div class="column">
+            <a href="/area/toronto">toronto</a>
+            <a href="/area/vancouver">vancouver</a>
+            <a href="/area/montreal">montreal</a>
+          </div>
+        </div>
+      </div>
+      <div class="cl-link-table">
+        <div class="cat-header">us cities</div>
+        <div class="link-container">
+          <div class="column">
+            <a href="/area/newyork">new york</a>
+            <a href="/area/losangeles">los angeles</a>
+            <a href="/area/chicago">chicago</a>
+            <a href="/area/seattle">seattle</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

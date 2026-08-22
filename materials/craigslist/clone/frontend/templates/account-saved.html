@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}my favorites - craigslist{% endblock %}
+{% block content %}
+<h1 class="cl-page-heading">favorites</h1>
+<nav class="account-nav">
+  <a href="/account/home">your postings</a>
+  <a href="/account/saved" class="active">favorites</a>
+  <a href="/account/searches">saved searches</a>
+  <a href="/account/settings">settings</a>
+</nav>
+{% if rows %}
+<ul class="result-list">
+  {% for r in rows %}
+  <li class="result-row">
+    <div class="thumb">{% if r.photos %}<a href="{{ r.detail_url }}"><img src="{{ r.photos[0].url }}" alt=""></a>{% endif %}</div>
+    <div class="body">
+      <div class="title"><a href="{{ r.detail_url }}">{{ r.posting.title }}</a></div>
+      {% if r.price_label %}<div><span class="price">{{ r.price_label }}</span></div>{% endif %}
+      <div class="meta">{{ r.posting.neighborhood | title }} &middot; posted: {{ r.posting.created_at[:10] }}</div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class="no-results"><h2>no favorites yet</h2><p>Use the save link on any posting to bookmark it here.</p></div>
+{% endif %}
+{% endblock %}
