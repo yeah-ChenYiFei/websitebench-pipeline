@@ -80,9 +80,9 @@ CATEGORIES = (
 )
 
 PURPOSES = (
-    ("Start my career", "/career-academy"),
-    ("Change my career", "/career-academy"),
-    ("Grow in my current role", "/browse"),
+    ("Start my career", "/search?query=Start%20my%20career"),
+    ("Change my career", "/search?query=Change%20my%20career"),
+    ("Grow in my current role", "/search?query=Grow%20in%20my%20current%20role"),
     ("Explore topics outside of work", "/browse"),
 )
 

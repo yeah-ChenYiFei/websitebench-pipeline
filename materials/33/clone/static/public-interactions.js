@@ -2,6 +2,19 @@
   const visiblePanels = (selector, scope = document) =>
     [...scope.querySelectorAll(selector)].filter((panel) => !panel.hidden);
 
+  const armSidebarFilters = () => {
+    const sidebar = document.querySelector(".source-filter-sidebar");
+    if (!sidebar || !sidebar.matches("form")) return;
+    sidebar.querySelectorAll('input[type="checkbox"]').forEach((box) => {
+      box.addEventListener("change", () => {
+        sidebar.querySelectorAll('input[type="checkbox"]').forEach((other) => {
+          if (other.name === box.name && other !== box) other.checked = false;
+        });
+        sidebar.requestSubmit();
+      });
+    });
+  };
+
   const activateCollection = (control) => {
     const switcher = control.closest("[data-collection-switcher]");
     if (!switcher) return;
@@ -205,4 +218,5 @@
 
   syncPromo();
   armPromoAutoplay();
+  armSidebarFilters();
 })();

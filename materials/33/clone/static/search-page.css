@@ -105,6 +105,28 @@
 .source-search-page .source-filter-sidebar {
   padding: 38px 0 0;
 }
+.source-search-page .source-filter-apply {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid var(--cds-color-blue-600);
+  border-radius: 6px;
+  padding: 10px 22px;
+  background: var(--cds-color-blue-600);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.source-search-page .source-filter-clear {
+  display: inline-block;
+  margin: 14px 0 0;
+  color: var(--cds-color-blue-600);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
 .source-search-page .source-filter-group {
   margin: 0 0 34px;
 }

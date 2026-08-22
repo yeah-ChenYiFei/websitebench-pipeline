@@ -750,6 +750,8 @@ def search(
     language: str = "",
     schedule: str = "",
     sort: str = "title-asc",
+    status: str = "",
+    product: str = "",
 ) -> str:
     catalog = load_catalog_seed()
     q = q or query
@@ -764,6 +766,16 @@ def search(
         schedule=schedule,
         sort=sort,
     )
+    if status == "free-trial":
+        records = [r for r in records if "free" in str(r.get("pricing", "")).casefold()]
+    if product == "courses":
+        records = [r for r in records if r.get("type") == "course"]
+    elif product == "specializations":
+        records = [r for r in records if r.get("type") == "specialization"]
+    elif product == "professional-certificates":
+        records = [r for r in records if r.get("type") in {"professional-certificate", "specialization"} and "certificate" in str(r.get("title", "")).casefold()]
+    elif product == "degrees":
+        records = [r for r in records if r.get("type") == "degree"]
     filter_values = {
         "category": category,
         "level": level,
@@ -773,10 +785,17 @@ def search(
         "language": language,
         "schedule": schedule,
         "sort": sort,
+        "status": status,
+        "product": product,
     }
-    source_selected = q.strip().casefold() == "deep learning" and not any(
-        (category, level, topic, duration, rating, language, schedule)
-    ) and sort in {"title-asc", "best-match"}
+    deep_learning_query = q.strip().casefold() == "deep learning"
+    catalog_scope = deep_learning_query and any(
+        (category, topic, duration, rating, language, schedule)
+    )
+    source_selected = deep_learning_query and not catalog_scope and sort in {
+        "title-asc",
+        "best-match",
+    }
     body = render_search_body(
         query=q,
         filtered_records=records,
@@ -1720,7 +1739,7 @@ def account_settings(request: Request) -> HTMLResponse:
         f'<option value="{zone}"{" selected" if zone == preferences["timezone"] else ""}>{zone}</option>'
         for zone in timezone_options
     )
-    body = f"""<section class="settings-surface"><h1>Account settings</h1><nav class="settings-tabs"><a class="is-active" href="/account-settings">Account</a><a href="/account/preferences">Communication Preferences</a><a href="/account/preferences">Notes &amp; Highlights</a><a href="/account/preferences">Calendar Sync</a></nav><section class="settings-card"><h2>Personal information</h2><p>Update your personal details and how others see you.</p><form class="settings-form" action="/account-settings" method="post"><div class="settings-fields"><label>Full name<input name="display_name" value="{escape(str(profile['display_name']), quote=True)}" maxlength="80" required></label><label>Email address<input value="local.learner@coursera.test" readonly></label><label>Timezone<select name="timezone">{timezone_select}</select></label><label>Language<select disabled><option>Select a language</option></select></label></div><button type="submit">Save Changes</button></form></section><section class="settings-card"><h2>Profile photo</h2><p>Maximum size: 1MB. Supported formats: JPG, GIF, or PNG.</p><button type="button" disabled aria-describedby="photo-disabled">Upload image</button><p id="photo-disabled">Profile uploads are unavailable in this offline clone.</p></section><section class="settings-card settings-row"><div><h2>Appearance</h2><p>Personalize the way Coursera appears through theming controls.</p></div><select disabled aria-describedby="appearance-disabled"><option>Light mode</option></select><span id="appearance-disabled">Appearance changes are unavailable offline.</span></section><section class="settings-card"><h2>Name verification</h2><p>Verify your real name to make sure you're able to receive a certificate when you complete a course or Specialization.</p><button type="button" disabled aria-describedby="verification-disabled">Verify my name</button><p id="verification-disabled">Name verification is unavailable offline.</p></section><section class="settings-card"><h2>Change password</h2><p>Update your password regularly to keep your account secure.</p><a class="settings-button" href="/account-recovery">Change Password</a></section><section class="settings-card settings-row"><div><h2>Two factor authentication</h2><p>Two-factor authentication adds an additional layer of security to your local account.</p></div><span class="settings-toggle" aria-label="Off"></span></section><section class="settings-card"><h2>Connected devices</h2><p>If your account has been logged into on multiple devices, you can log out from here.</p><form action="/auth/logout" method="post"><button type="submit">Log out from all devices</button></form></section><section class="settings-card"><h2>Linked accounts</h2><p>Apple and Google remain unlinked in this offline clone.</p></section><section class="settings-card"><h2>Learner data report</h2><p>Request a report of all learner data stored by this local Coursera account.</p><input value="local.learner@coursera.test" readonly><button type="button" disabled aria-describedby="report-disabled">Send report</button><p id="report-disabled">Reports are unavailable offline.</p></section><section class="settings-card danger"><h2>Delete account</h2><p>This action cannot be undone. Cancel any active subscriptions before you delete your account.</p><button type="button" disabled aria-describedby="delete-disabled">Delete account</button><p id="delete-disabled">Account deletion is unavailable offline.</p></section></section>"""
+    body = f"""<section class="settings-surface"><h1>Account settings</h1><nav class="settings-tabs"><a class="is-active" href="/account-settings">Account</a><a href="/account/preferences#communication">Communication Preferences</a><a href="/account/preferences#notes">Notes &amp; Highlights</a><a href="/account/preferences#calendar">Calendar Sync</a></nav><section class="settings-card"><h2>Personal information</h2><p>Update your personal details and how others see you.</p><form class="settings-form" action="/account-settings" method="post"><div class="settings-fields"><label>Full name<input name="display_name" value="{escape(str(profile['display_name']), quote=True)}" maxlength="80" required></label><label>Email address<input value="local.learner@coursera.test" readonly></label><label>Timezone<select name="timezone">{timezone_select}</select></label><label>Language<select disabled><option>Select a language</option></select></label></div><button type="submit">Save Changes</button></form></section><section class="settings-card"><h2>Profile photo</h2><p>Maximum size: 1MB. Supported formats: JPG, GIF, or PNG.</p><button type="button" disabled aria-describedby="photo-disabled">Upload image</button><p id="photo-disabled">Profile uploads are unavailable in this offline clone.</p></section><section class="settings-card settings-row"><div><h2>Appearance</h2><p>Personalize the way Coursera appears through theming controls.</p></div><select disabled aria-describedby="appearance-disabled"><option>Light mode</option></select><span id="appearance-disabled">Appearance changes are unavailable offline.</span></section><section class="settings-card"><h2>Name verification</h2><p>Verify your real name to make sure you're able to receive a certificate when you complete a course or Specialization.</p><button type="button" disabled aria-describedby="verification-disabled">Verify my name</button><p id="verification-disabled">Name verification is unavailable offline.</p></section><section class="settings-card"><h2>Change password</h2><p>Update your password regularly to keep your account secure.</p><a class="settings-button" href="/account-recovery">Change Password</a></section><section class="settings-card settings-row"><div><h2>Two factor authentication</h2><p>Two-factor authentication adds an additional layer of security to your local account.</p></div><span class="settings-toggle" aria-label="Off"></span></section><section class="settings-card"><h2>Connected devices</h2><p>If your account has been logged into on multiple devices, you can log out from here.</p><form action="/auth/logout" method="post"><button type="submit">Log out from all devices</button></form></section><section class="settings-card"><h2>Linked accounts</h2><p>Apple and Google remain unlinked in this offline clone.</p></section><section class="settings-card"><h2>Learner data report</h2><p>Request a report of all learner data stored by this local Coursera account.</p><input value="local.learner@coursera.test" readonly><button type="button" disabled aria-describedby="report-disabled">Send report</button><p id="report-disabled">Reports are unavailable offline.</p></section><section class="settings-card danger"><h2>Delete account</h2><p>This action cannot be undone. Cancel any active subscriptions before you delete your account.</p><button type="button" disabled aria-describedby="delete-disabled">Delete account</button><p id="delete-disabled">Account deletion is unavailable offline.</p></section></section>"""
     return HTMLResponse(_page(request, "Account Settings", body, language="en", real_css="consumer-description-page.css"))
 
 
@@ -2512,7 +2531,10 @@ def account_preferences(request: Request) -> HTMLResponse:
         return _permission_page(request, "Sign in to manage learning preferences")
     preferences = learning_db.get_preferences(subject)
     checked = " checked" if preferences["email_updates"] else ""
-    body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Local learning settings</p><h1>Learning preferences</h1><form class="auth-form" action="/account/preferences" method="post"><label>Language<input name="language" value="{escape(preferences["language"])}" required></label><label>Time zone<input name="timezone" value="{escape(preferences["timezone"])}" required></label><label><input type="checkbox" name="email_updates" value="1"{checked}>Local learning reminders</label><button type="submit">Save preferences</button></form></div></section>"""
+    body = f"""<section class="auth-shell single"><div class="auth-card"><p class="eyebrow">Local learning settings</p><h1>Learning preferences</h1><nav class="settings-tabs preferences-tabs"><a href="/account/preferences#communication">Communication Preferences</a><a href="/account/preferences#notes">Notes &amp; Highlights</a><a href="/account/preferences#calendar">Calendar Sync</a></nav>
+<section id="communication" class="settings-card"><h2>Communication Preferences</h2><p>Choose which local reminders and announcements you receive.</p><form class="auth-form" action="/account/preferences" method="post"><label>Language<input name="language" value="{escape(preferences["language"])}" required></label><label>Time zone<input name="timezone" value="{escape(preferences["timezone"])}" required></label><label><input type="checkbox" name="email_updates" value="1"{checked}>Local learning reminders</label><button type="submit">Save preferences</button></form></section>
+<section id="notes" class="settings-card"><h2>Notes &amp; Highlights</h2><p>Notes and highlights you create while learning stay in this local clone and are never sent to a server.</p><p class="safe-note">Offline note-taking is available from any lesson page.</p></section>
+<section id="calendar" class="settings-card"><h2>Calendar Sync</h2><p>Sync your learning schedule to your local calendar.</p><button type="button" disabled aria-describedby="calendar-disabled">Connect calendar</button><p id="calendar-disabled">Calendar sync is unavailable in this offline clone.</p></section></div></section>"""
     return HTMLResponse(_page(request, "Learning Preferences", body, language="en", real_css="consumer-description-page.css"))
 
 

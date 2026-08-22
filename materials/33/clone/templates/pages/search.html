@@ -29,22 +29,23 @@
     <a href="#search-filter-drawer">Level <span aria-hidden="true">⌄</span></a>
   </nav>
   <div class="search-columns">
-  <aside class="source-filter-sidebar" aria-label="Refine results">
+  <form class="source-filter-sidebar" action="/search" method="get" aria-label="Refine results">
+    <input type="hidden" name="q" value="{{ query }}">
     <div class="source-filter-group">
       <h2>Status</h2>
-      <label><input type="checkbox" name="status" value="free-trial"> Free Trial</label>
-      <label><input type="checkbox" name="status" value="financial-aid"> Financial Aid</label>
+      <label><input type="checkbox" name="status" value="free-trial"{% if filters.status == 'free-trial' %} checked{% endif %}> Free Trial</label>
+      <label><input type="checkbox" name="status" value="financial-aid"{% if filters.status == 'financial-aid' %} checked{% endif %}> Financial Aid</label>
     </div>
     <div class="source-filter-group">
       <h2>Topic</h2>
-      {% for value in filter_options.category[:8] %}<label><input type="checkbox" name="category" value="{{ value }}"> {{ value|replace('-', ' ')|title }}</label>{% endfor %}
-      <label><input type="checkbox" name="topic" value="deep-learning"> Deep Learning</label>
-      <label><input type="checkbox" name="topic" value="machine-learning"> Machine Learning</label>
-      <label><input type="checkbox" name="topic" value="artificial-intelligence"> Artificial Intelligence</label>
+      {% for value in filter_options.category[:8] %}<label><input type="checkbox" name="category" value="{{ value }}"{% if value == filters.category %} checked{% endif %}> {{ value|replace('-', ' ')|title }}</label>{% endfor %}
+      <label><input type="checkbox" name="topic" value="deep-learning"{% if filters.topic == 'deep-learning' %} checked{% endif %}> Deep Learning</label>
+      <label><input type="checkbox" name="topic" value="machine-learning"{% if filters.topic == 'machine-learning' %} checked{% endif %}> Machine Learning</label>
+      <label><input type="checkbox" name="topic" value="artificial-intelligence"{% if filters.topic == 'artificial-intelligence' %} checked{% endif %}> Artificial Intelligence</label>
     </div>
     <div class="source-filter-group">
       <h2>Duration</h2>
-      {% for value in filter_options.duration[:6] %}<label><input type="checkbox" name="duration" value="{{ value }}"> {{ value }}</label>{% endfor %}
+      {% for value in filter_options.duration[:6] %}<label><input type="checkbox" name="duration" value="{{ value }}"{% if value == filters.duration %} checked{% endif %}> {{ value }}</label>{% endfor %}
     </div>
     <div class="source-filter-group">
       <h2>Learning Product</h2>
@@ -55,13 +56,15 @@
     </div>
     <div class="source-filter-group">
       <h2>Language</h2>
-      {% for value in filter_options.language[:6] %}<label><input type="checkbox" name="language" value="{{ value }}"> {{ value }}</label>{% endfor %}
+      {% for value in filter_options.language[:6] %}<label><input type="checkbox" name="language" value="{{ value }}"{% if value == filters.language %} checked{% endif %}> {{ value }}</label>{% endfor %}
     </div>
     <div class="source-filter-group">
       <h2>Level</h2>
-      {% for value in filter_options.level %}<label><input type="checkbox" name="level" value="{{ value }}"> {{ value }}</label>{% endfor %}
+      {% for value in filter_options.level %}<label><input type="checkbox" name="level" value="{{ value }}"{% if value == filters.level %} checked{% endif %}> {{ value }}</label>{% endfor %}
     </div>
-  </aside>
+    <button type="submit" class="source-filter-apply">Apply filters</button>
+    {% if filters_active %}<a class="source-filter-clear" href="{{ clear_filters_href }}">Clear all</a>{% endif %}
+  </form>
   <div class="search-main-column">
     <section class="search-results-section" aria-labelledby="all-results-heading">
       <h1 id="all-results-heading">All Results</h1>
