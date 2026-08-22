@@ -96,6 +96,9 @@ def test_manifest_writer_reconstructs_canonical_webp_runtime(
     assert writer.main() == 0
     runtime = site_root / "clone/static/assets/brand/beeradvocate-nav-logo.webp"
     assert runtime.read_bytes() == body
+    manifest_bytes = manifest_path.read_bytes()
+    assert b"\r\n" not in manifest_bytes
+    assert manifest_bytes.endswith(b"\n")
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert manifest["closure_status"] == "declared"
     assert manifest["assets"][0]["runtime_path"].endswith(".webp")

@@ -195,7 +195,9 @@ def main() -> int:
     }
     temporary_manifest = MANIFEST.with_suffix(".json.tmp")
     temporary_manifest.write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
     )
     temporary_manifest.replace(MANIFEST)
     print(

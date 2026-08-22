@@ -2356,4 +2356,3 @@ def compare_beers(
         f"<th>Style</th><th>ABV</th><th>Score</th></tr></thead><tbody>{rows}</tbody></table></div>"
     )
     return page('Compare Beers | BeerAdvocate', body, local_member(ba_local_member))
-
