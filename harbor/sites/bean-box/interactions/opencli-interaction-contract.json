@@ -29,7 +29,7 @@
           "intent": "Exercise clone check checkout (GET /checkout).",
           "observation_id": "bean-box_checkout",
           "required_state": {
-            "text_absent": "name=\"card_number\"",
+            "text_absent": "Card number",
             "visible": "Payment simulation"
           },
           "route": "checkout"
