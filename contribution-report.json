@@ -20,7 +20,7 @@
     "volume_identity": "websitebench-33-data"
   },
   "bundle": {
-    "path": "/tmp/contrib-r5.zip",
+    "path": "/tmp/contrib-f.zip",
     "payload_files": [
       {
         "bytes": 12279,
@@ -35,7 +35,7 @@
         "path": "clone.yaml"
       },
       {
-        "bytes": 142775,
+        "bytes": 162489,
         "path": "clone/app.py"
       },
       {
@@ -47,7 +47,7 @@
         "path": "clone/backend/checkout.py"
       },
       {
-        "bytes": 41918,
+        "bytes": 41896,
         "path": "clone/backend/learning_db.py"
       },
       {
@@ -75,7 +75,7 @@
         "path": "clone/capture_source_visuals.py"
       },
       {
-        "bytes": 6472,
+        "bytes": 6587,
         "path": "clone/catalog.py"
       },
       {
@@ -123,7 +123,7 @@
         "path": "clone/requirements.txt"
       },
       {
-        "bytes": 12905,
+        "bytes": 13702,
         "path": "clone/search_page.py"
       },
       {
@@ -135,7 +135,7 @@
         "path": "clone/source_inventory.py"
       },
       {
-        "bytes": 1802,
+        "bytes": 4027,
         "path": "clone/specialization_page.py"
       },
       {
@@ -1579,11 +1579,11 @@
         "path": "clone/templates/pages/home.html"
       },
       {
-        "bytes": 14758,
+        "bytes": 15048,
         "path": "clone/templates/pages/search.html"
       },
       {
-        "bytes": 11897,
+        "bytes": 12052,
         "path": "clone/templates/pages/specialization.html"
       },
       {
@@ -1619,7 +1619,7 @@
         "path": "clone/tests/test_business_category_fidelity.py"
       },
       {
-        "bytes": 4457,
+        "bytes": 4458,
         "path": "clone/tests/test_catalog.py"
       },
       {
@@ -1707,7 +1707,7 @@
         "path": "clone/tests/test_public_frontend.py"
       },
       {
-        "bytes": 2363,
+        "bytes": 2256,
         "path": "clone/tests/test_search_interactions_fidelity.py"
       },
       {
@@ -1815,7 +1815,7 @@
         "path": "scope/backend-capabilities.json"
       },
       {
-        "bytes": 3117,
+        "bytes": 4606,
         "path": "scope/backend-compliance-audit.md"
       },
       {
@@ -2159,7 +2159,7 @@
         "path": "scope/frontend-specs/search.source.json"
       },
       {
-        "bytes": 57343,
+        "bytes": 57703,
         "path": "scope/frontend-specs/specialization.clone.json"
       },
       {
@@ -2720,7 +2720,7 @@
   "diagnostic": {
     "authority": "diagnostic-only",
     "diagnostic_status": "incomplete",
-    "generated_at": "2026-08-22T05:11:49.978124Z",
+    "generated_at": "2026-08-22T05:53:56.934976Z",
     "qualification": "maintainer-judgment-required",
     "requested_sections": [
       "static",
@@ -2759,7 +2759,7 @@
     },
     "site_id": "33"
   },
-  "generated_at": "2026-08-22T05:11:51.998304Z",
+  "generated_at": "2026-08-22T05:53:58.936174Z",
   "qualification": "maintainer-judgment-required",
   "schema_version": "offline-clone.contribution-report.v1",
   "site_id": "33"
