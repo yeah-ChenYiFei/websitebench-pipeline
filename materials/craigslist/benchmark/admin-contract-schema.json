@@ -1,0 +1,17 @@
+{
+  "schema_version": "websitebench.admin-contract.v1",
+  "reset": {
+    "method": "POST",
+    "path": "/__admin/reset",
+    "auth": "X-WebsiteBench-Admin-Token"
+  },
+  "mail_query": {
+    "method": "GET",
+    "path": "/__admin/mail/query",
+    "purpose_filter": [
+      "registration",
+      "password-reset",
+      "posting-reply"
+    ]
+  }
+}

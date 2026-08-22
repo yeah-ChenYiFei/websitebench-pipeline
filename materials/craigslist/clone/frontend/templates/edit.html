@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}edit posting - craigslist{% endblock %}
+{% block content %}
+<h1 class="cl-page-heading">edit posting #{{ posting.id }}</h1>
+<form class="cl-form" method="post" action="/post/edit/{{ posting.id }}">
+  {% if errors %}
+  <div class="form-error-box">{% for msg in errors.values() %}<div>{{ msg }}</div>{% endfor %}</div>
+  {% endif %}
+  <label for="title">title</label>
+  <input type="text" id="title" name="title" maxlength="120" value="{{ values.title if values and values.title is defined else '' }}">
+  {% if errors and errors.title %}<div class="field-error">{{ errors.title }}</div>{% endif %}
+
+  <label for="price">price ($)</label>
+  <input type="text" id="price" name="price" value="{{ values.price if values and values.price is defined else '' }}">
+  {% if errors and errors.price %}<div class="field-error">{{ errors.price }}</div>{% endif %}
+
+  <label for="postal_code">postal code</label>
+  <input type="text" id="postal_code" name="postal_code" value="{{ values.postal_code if values and values.postal_code is defined else '' }}">
+  {% if errors and errors.postal_code %}<div class="field-error">{{ errors.postal_code }}</div>{% endif %}
+
+  <label for="description">description</label>
+  <textarea id="description" name="description">{{ values.description if values and values.description is defined else '' }}</textarea>
+  {% if errors and errors.description %}<div class="field-error">{{ errors.description }}</div>{% endif %}
+
+  <div class="form-actions"><button type="submit">save changes</button></div>
+</form>
+<p><a href="{{ detail_url if detail_url is defined else ('/' + posting.region_slug + '/housing/d/' + posting.id|string) }}">&larr; back to posting</a></p>
+{% endblock %}

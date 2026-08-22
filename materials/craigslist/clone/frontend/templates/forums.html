@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}discussion forums - craigslist{% endblock %}
+{% block content %}
+<main class="cl-main cl-wide" style="max-width:900px;">
+  <h1 class="cl-page-heading">craigslist discussion forums</h1>
+  <p class="filter-label">pick a forum to join the conversation. discussions come straight from the live craigslist forums snapshot.</p>
+
+  <ul class="forum-board-list">
+    {% for b in boards %}
+    <li class="forum-board-row">
+      <a href="/forums/{{ b.slug }}">{{ b.name }}</a>
+      <span class="filter-label">{{ b.thread_count }} threads</span>
+    </li>
+    {% endfor %}
+  </ul>
+</main>
+{% endblock %}

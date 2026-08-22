@@ -1,0 +1,38 @@
+{
+  "schema_version": "websitebench.smoke.v1",
+  "cases": [
+    {
+      "id": "smoke-home",
+      "path": "/",
+      "expect": 200
+    },
+    {
+      "id": "smoke-housing",
+      "path": "/toronto/housing/",
+      "expect": 200
+    },
+    {
+      "id": "smoke-canonical-listing",
+      "path": "/toronto/housing/sub/d/1000001/1br-near-annex-furnished-sublet-jul-aug",
+      "expect": 200
+    },
+    {
+      "id": "smoke-health",
+      "path": "/__websitebench/health",
+      "expect": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "id": "smoke-login-page",
+      "path": "/account/login",
+      "expect": 200
+    },
+    {
+      "id": "smoke-not-found",
+      "path": "/nope",
+      "expect": 404
+    }
+  ]
+}

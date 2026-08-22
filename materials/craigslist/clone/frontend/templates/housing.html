@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}housing for rent / sublets / real estate - {{ region_row.name }}{% endblock %}
+{% block content %}
+<div class="cl-columns">
+  <div class="cl-column-left">
+    <div class="cl-section-list">
+      <h2>craigslist &gt; {{ region_row.name }} &gt; housing</h2>
+      <ul>
+        {% for c in housing_categories %}
+        <li>
+          <a href="/{{ region_row.slug }}/housing/{{ c.slug }}/">{{ c.name }}</a>
+          <span class="count">({{ counts.get(c.slug, 0) }})</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="cl-column-center">
+    <h1 class="cl-page-heading">housing for rent / sublets / real estate</h1>
+    <form class="search-bar" method="get" action="/{{ region_row.slug }}/search/housing">
+      <input type="text" name="query" placeholder="search housing in {{ region_row.name }}" aria-label="search housing">
+      <button type="submit">search</button>
+    </form>
+    <p>Browse {{ region_row.name }} housing: apartments for rent, sublets &amp; temporary, rooms &amp; shares, real estate for sale and more.</p>
+  </div>
+  <div class="cl-column-right">
+    <div class="sidebox">
+      <h3>search nearby areas</h3>
+      <div class="sidebox-body">
+        <form method="get" action="/{{ region_row.slug }}/search/housing">
+          <label for="postal">postal code</label>
+          <input type="text" id="postal" name="postal" placeholder="e.g. M6G">
+          <p class="filter-label">or choose a neighborhood</p>
+          <select name="postal">
+            <option value="">any neighborhood</option>
+            {% for n in ['annex','kensington','yorkville','leslieville','corktown','st-lawrence','liberty','parkdale','roncesvalles','beaches','north-york','etobicoke','scarborough','east-york','cityplace','crosstown'] %}
+            <option value="{{ n }}">{{ n | replace('-', ' ') | title }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit" class="cl-submit">update search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

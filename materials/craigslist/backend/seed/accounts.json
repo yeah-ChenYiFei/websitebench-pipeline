@@ -1,0 +1,18 @@
+{
+  "schema_version": "craigslist.seed-accounts.v1",
+  "accounts": [
+    {
+      "subject_id": "poster-1001",
+      "email": "poster@example.com",
+      "display_name": "Poster"
+    },
+    {
+      "subject_id": "seeker-1002",
+      "email": "seeker@example.com",
+      "display_name": "Seeker"
+    }
+  ],
+  "password_policy": {
+    "min_length": 8
+  }
+}

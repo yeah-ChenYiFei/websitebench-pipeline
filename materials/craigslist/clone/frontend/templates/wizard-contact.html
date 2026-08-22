@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}create a posting - contact - craigslist{% endblock %}
+{% block content %}
+<h1 class="cl-page-heading">create a posting</h1>
+<ol class="wizard-steps">
+  <li class="done">category</li>
+  <li class="done">location</li>
+  <li class="done">details</li>
+  <li class="current">contact</li>
+  <li>photos</li>
+  <li>preview &amp; publish</li>
+</ol>
+<form class="cl-form" method="post" action="/post/contact">
+  {% if errors %}
+  <div class="form-error-box">{% for msg in errors.values() %}<div>{{ msg }}</div>{% endfor %}</div>
+  {% endif %}
+  <label for="contact_method">how should people contact you?</label>
+  <select id="contact_method" name="contact_method">
+    <option value="email" {% if not values or values.contact_method in ('', 'email') %}selected{% endif %}>via email</option>
+    <option value="phone" {% if values and values.contact_method == 'phone' %}selected{% endif %}>via phone</option>
+    <option value="both" {% if values and values.contact_method == 'both' %}selected{% endif %}>email and phone</option>
+  </select>
+
+  <label for="contact_email">contact email</label>
+  <input type="email" id="contact_email" name="contact_email" value="{{ values.contact_email if values and values.contact_email is defined else '' }}">
+  {% if errors and errors.contact_email %}<div class="field-error">{{ errors.contact_email }}</div>{% endif %}
+
+  <label for="contact_phone">contact phone (optional)</label>
+  <input type="text" id="contact_phone" name="contact_phone" value="{{ values.contact_phone if values and values.contact_phone is defined else '' }}">
+  {% if errors and errors.contact_phone %}<div class="field-error">{{ errors.contact_phone }}</div>{% endif %}
+
+  <div class="verify-note">Replies are relayed anonymously through the local offline outbox; your address is never shown to responders.</div>
+  <div class="form-actions"><button type="submit">continue</button></div>
+</form>
+{% endblock %}

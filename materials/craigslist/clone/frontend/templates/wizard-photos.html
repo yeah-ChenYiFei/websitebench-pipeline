@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}create a posting - photos - craigslist{% endblock %}
+{% block content %}
+<h1 class="cl-page-heading">create a posting</h1>
+<ol class="wizard-steps">
+  <li class="done">category</li>
+  <li class="done">location</li>
+  <li class="done">details</li>
+  <li class="done">contact</li>
+  <li class="current">photos</li>
+  <li>preview &amp; publish</li>
+</ol>
+
+{% if uploaded %}
+<div class="banner">uploaded: {{ uploaded | length }} photo(s)</div>
+{% endif %}
+
+{% if photos %}
+<ul class="wizard-photo-list" data-photo-list>
+  {% for p in photos %}
+  <li data-photo-item data-filename="{{ p.filename }}">
+    <img src="/uploads/{{ p.filename }}" alt="">
+    <div class="controls">
+      <button type="button" class="linklike" data-photo-up>up</button>
+      <button type="button" class="linklike" data-photo-down>down</button>
+      <form method="post" action="/post/photos/remove" style="display:inline;">
+        <input type="hidden" name="filename" value="{{ p.filename }}">
+        <button type="submit" class="linklike">remove</button>
+      </form>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+<form method="post" action="/post/photos/reorder" data-reorder-form>
+  <input type="hidden" name="order" value="">
+  <button type="submit">save photo order</button>
+</form>
+{% endif %}
+
+<form class="cl-form" method="post" action="/post/photos" enctype="multipart/form-data" style="margin-top:16px;">
+  <label for="photo1">add photos (optional, up to 6)</label>
+  <input type="file" id="photo1" name="photo1" accept="image/*">
+  <input type="file" id="photo2" name="photo2" accept="image/*">
+  <input type="file" id="photo3" name="photo3" accept="image/*">
+  <div class="form-actions"><button type="submit">upload photos</button></div>
+</form>
+<p class="filter-label">or skip photos and <a href="/post/preview">continue to preview</a></p>
+{% endblock %}

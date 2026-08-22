@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}log in to continue - craigslist{% endblock %}
+{% block content %}
+<div class="cl-columns">
+  <div class="cl-column-center">
+    <h1 class="cl-page-heading">log in to continue</h1>
+    <div class="banner warn">
+      <p><strong>This action requires an account.</strong> Please <a href="/account/login?next={{ next | urlencode }}">log in</a> or <a href="/account/register">create an account</a> to continue.</p>
+      <p class="filter-label">Your account lets you create and manage postings, save searches, and bookmark listings.</p>
+    </div>
+    <p><a href="/">&larr; back to craigslist</a></p>
+  </div>
+  <div class="cl-column-right">
+    <div class="sidebox">
+      <h3>account actions</h3>
+      <div class="sidebox-body">
+        <p><a href="/account/login">log in</a></p>
+        <p><a href="/account/register">create an account</a></p>
+        <p><a href="/account/forgot">forgot password</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

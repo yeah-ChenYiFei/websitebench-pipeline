@@ -1,0 +1,30 @@
+/* Offline-clone responsive overrides for narrow viewports.
+   The live desktop CSS is column-based; below 900px we stack the homepage
+   columns so the clone stays usable and overflow-free on mobile. */
+@media (max-width: 900px) {
+  .cl-desktop-homepage .content { flex-direction: column !important; align-items: stretch !important; }
+  .cl-desktop-homepage .content > .left,
+  .cl-desktop-homepage .content > .center,
+  .cl-desktop-homepage .content > .right { width: auto !important; max-width: 100% !important; margin: 8px 0 !important; }
+  .cl-desktop-homepage .content > .right { display: block !important; }
+  .cl-desktop-homepage .categories { flex-direction: column !important; }
+  .cl-desktop-homepage .categories .left,
+  .cl-desktop-homepage .categories .center,
+  .cl-desktop-homepage .categories .right { width: 100% !important; }
+  .cl-search-ng { flex-direction: column !important; }
+  .cl-search-filters-panel { width: 100% !important; flex: none !important; }
+  .userbody { flex-direction: column !important; }
+  .userbody .gallery, .userbody .mapAndAttrs { width: 100% !important; flex: none !important; }
+  .cl-header-inner { flex-wrap: wrap !important; }
+  .header-search { flex: 1 1 100% !important; order: 5; }
+}
+@media (max-width: 900px) {
+  .cl-search-ng { min-width: 0 !important; }
+  .cl-search-results { min-width: 0 !important; width: 100% !important; overflow-x: hidden !important; }
+  .cl-search-toolbar { flex-wrap: wrap !important; min-width: 0 !important; }
+  .cl-horiz-scroller, .cl-filter-buttons { overflow-x: auto !important; }
+  .cl-segmented-selector, .cl-search-sort-mode { max-width: 100% !important; }
+  .cl-search-results-container { min-width: 0 !important; overflow-x: hidden !important; }
+  .cl-gallery, .gallery-card, .cl-search-result { min-width: 0 !important; max-width: 100% !important; }
+  body { overflow-x: hidden; }
+}

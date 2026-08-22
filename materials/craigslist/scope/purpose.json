@@ -1,0 +1,46 @@
+{
+  "schema_version": "offline-clone.purpose.v1",
+  "status": "frozen",
+  "purpose_id": "craigslist-classifieds-housing",
+  "statement": "Craigslist is a classified-advertisements platform: users browse, search, and filter community postings by region and category; open listing detail pages to inspect description, photos, price, location, and reply options; create and manage their own postings through a multi-step wizard (category, location, details, contact, photos, preview, publish); and manage them later through account login, posting history, edit/renew/repost/delete, saved searches, and favorites. The offline clone reproduces the anonymous public surface (region/category index, housing section, search with price/neighborhood/date/category filters, listing detail, reply and flagging entry points, help, sign-in/registration/password-recovery entry surfaces, branded not-found) plus the full stateful backend needed for registration, login, posting CRUD, persistence across refresh and re-login, per-user data isolation, deterministic seeds, and a no-results state.",
+  "primary_actor_ids": [
+    "public-visitor",
+    "poster"
+  ],
+  "secondary_actor_ids": [
+    "housing-seeker"
+  ],
+  "mainline_journey_ids": [
+    "housing.navigate-from-entry.success",
+    "housing.search.browse-filters.success",
+    "listing.detail.inspect-reply.success",
+    "posting.create-sublet.publish.success",
+    "posting.manage.edit-delete.success",
+    "account.register-login.session.success",
+    "search.no-results.recovery.success",
+    "account.history.manage-posting.success"
+  ],
+  "boundary_journey_ids": [
+    "account.signin.entry.verify-only",
+    "account.register.entry.verify-only",
+    "account.password-recovery.entry.verify-only",
+    "help.contact.entry.reachable",
+    "notfound.deep-link.recovery"
+  ],
+  "secondary_journey_ids": [
+    "listing.reply.contact-flow",
+    "listing.save-favorite.bookmark",
+    "search.save-search.persist",
+    "posting.photos.upload-reorder-remove",
+    "posting.preview.publish-confirm",
+    "flagging.report-entry"
+  ],
+  "out_of_scope": [
+    "Real craigslist multi-region full corpus: only a curated region set is populated; other regions render the region shell with empty listings.",
+    "Real-world cross-site identity, real email delivery, real payments, and external network access: the clone is offline with a local mail outbox and local-sandbox effects.",
+    "Discussion forums, personals-adjacent content, jobs/services/gigs full verticals: category shells exist but the populated catalog centers on housing with representative for-sale/community items.",
+    "Realtime chat, WebSockets, and third-party map tiles: map/location rendering uses local deterministic data with a truthful simulation label.",
+    "Source-side authenticated surfaces (posting wizard, account management) are implemented from the public PRD and inferred semantics because direct authenticated source evidence is unavailable; evidence grades are recorded accordingly.",
+    "Live reproduction of craigslist's dynamic timestamps and per-region moderation content: seeded deterministic data is used instead."
+  ]
+}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}privacy policy - craigslist{% endblock %}
+{% block content %}
+<div class="cl-columns">
+  <div class="cl-column-center">
+    <h1 class="cl-page-heading">privacy policy</h1>
+    <p class="filter-label">offline clone &middot; benchmark fixture &middot; local data only</p>
+
+    <h2>1. local data only</h2>
+    <p>This site is an offline clone of craigslist that runs entirely on your
+    local machine. Everything you do on it — browsing, searching, accounts,
+    postings, saved searches, favorites, and messages — is stored locally in
+    this repository's local storage. No data leaves your machine, and nothing
+    is transmitted to any external server.</p>
+
+    <h2>2. no tracking</h2>
+    <p>The site does not use analytics, advertising, fingerprinting, or any
+    other tracking technology. There are no tracking pixels, no embedded
+    third-party content, and no remote scripts. The pages load only their own
+    local styles and scripts from this repository.</p>
+
+    <h2>3. no third-party cookies</h2>
+    <p>No third-party cookies are used, and no third-party content is loaded
+    from other domains. Because this is an offline demo, nothing on the page
+    ever contacts another website.</p>
+
+    <h2>4. session cookie note</h2>
+    <p>The site uses a single local session cookie so you can stay signed in to
+    your demo account while you use the site. This cookie is created and read
+    only by this local clone, and it disappears when you close your browser
+    session or log out. It is not shared with anyone.</p>
+
+    <h2>5. data you enter</h2>
+    <p>Data you enter — such as an email address for a demo account, posting
+    text, or contact form messages — is stored locally and used only to
+    exercise the clone's features. This is demo data; do not enter real
+    sensitive information. Verification codes and recovery codes are delivered
+    to the local offline outbox, not to a real inbox.</p>
+
+    <h2>6. children</h2>
+    <p>The site is a technical benchmark fixture intended for developers,
+    testers, and evaluators. It is not directed at children, and no real
+    personal information is collected from anyone.</p>
+
+    <h2>7. contact</h2>
+    <p>Questions about this privacy policy? See the <a href="/contact">contact</a>
+    page. For the rules of use, see the <a href="/about/terms">terms of use</a>.</p>
+
+    <p class="filter-label"><a href="/">craigslist home</a> &middot; <a href="/about">about</a> &middot; <a href="/about/help">help</a></p>
+  </div>
+  <div class="cl-column-right">
+    <div class="sidebox">
+      <h3>in short</h3>
+      <div class="sidebox-body">
+        <p>Local data only. No tracking. No third-party cookies. One local
+        session cookie for signing in.</p>
+      </div>
+    </div>
+    <div class="sidebox">
+      <h3>related</h3>
+      <div class="sidebox-body">
+        <ul>
+          <li><a href="/about/terms">terms of use</a></li>
+          <li><a href="/about/help">help</a></li>
+          <li><a href="/contact">contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

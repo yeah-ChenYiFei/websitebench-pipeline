@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}preview posting - craigslist{% endblock %}
+{% block content %}
+<h1 class="cl-page-heading">preview your posting</h1>
+<ol class="wizard-steps">
+  <li class="done">category</li>
+  <li class="done">location</li>
+  <li class="done">details</li>
+  <li class="done">contact</li>
+  <li class="done">photos</li>
+  <li class="current">preview &amp; publish</li>
+</ol>
+<div class="banner">This is how your posting will appear to others.</div>
+<div class="cl-columns">
+  <div class="cl-column-center">
+    <div class="listing-head">
+      <h1 class="listing-title">{{ preview_title }}</h1>
+      <div class="listing-sub">
+        <span class="listing-price">{{ preview_price }}</span>
+        &middot; {{ preview_neighborhood | title }} &middot; {{ preview_region }} &middot; {{ preview_category }}
+      </div>
+    </div>
+    {% if photos %}
+    <div class="gallery-main"><img src="/uploads/{{ photos[0].filename }}" alt=""></div>
+    {% else %}
+    <div class="gallery-main"><span class="filter-label">no photos</span></div>
+    {% endif %}
+    <h2 class="cl-page-heading" style="font-size:15px;">description</h2>
+    <div style="white-space: pre-line;">{{ draft.description or '' }}</div>
+  </div>
+  <div class="cl-column-right">
+    <div class="sidebox">
+      <h3>confirm</h3>
+      <div class="sidebox-body">
+        <p>Everything look right? Publish your posting.</p>
+        <form method="post" action="/post/publish">
+          <button type="submit" class="cl-submit" style="width:100%; padding:9px; background:var(--cl-accent); border:1px solid #c8a100; font-weight:600; cursor:pointer;">publish posting</button>
+        </form>
+        <p class="filter-label" style="margin-top:8px;"><a href="/post/details">&larr; back to details</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
