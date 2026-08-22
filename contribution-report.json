@@ -20,7 +20,7 @@
     "volume_identity": "websitebench-33-data"
   },
   "bundle": {
-    "path": "/tmp/contrib-final.zip",
+    "path": "/tmp/contrib-v2.zip",
     "payload_files": [
       {
         "bytes": 12279,
@@ -35,7 +35,7 @@
         "path": "clone.yaml"
       },
       {
-        "bytes": 137780,
+        "bytes": 142680,
         "path": "clone/app.py"
       },
       {
@@ -103,7 +103,7 @@
         "path": "clone/home_inventory.py"
       },
       {
-        "bytes": 6672,
+        "bytes": 6747,
         "path": "clone/home_page.py"
       },
       {
@@ -123,7 +123,7 @@
         "path": "clone/requirements.txt"
       },
       {
-        "bytes": 11048,
+        "bytes": 12905,
         "path": "clone/search_page.py"
       },
       {
@@ -1415,7 +1415,7 @@
         "path": "clone/static/learning-desktop.css"
       },
       {
-        "bytes": 7334,
+        "bytes": 7864,
         "path": "clone/static/public-interactions.js"
       },
       {
@@ -1423,7 +1423,7 @@
         "path": "clone/static/real-css-complement.css"
       },
       {
-        "bytes": 16833,
+        "bytes": 17367,
         "path": "clone/static/search-page.css"
       },
       {
@@ -1579,7 +1579,7 @@
         "path": "clone/templates/pages/home.html"
       },
       {
-        "bytes": 13959,
+        "bytes": 14755,
         "path": "clone/templates/pages/search.html"
       },
       {
@@ -1735,7 +1735,7 @@
         "path": "clone/tools/sanitize_business_snapshot.py"
       },
       {
-        "bytes": 21213,
+        "bytes": 21215,
         "path": "clone/ui.py"
       },
       {
@@ -2720,7 +2720,7 @@
   "diagnostic": {
     "authority": "diagnostic-only",
     "diagnostic_status": "incomplete",
-    "generated_at": "2026-08-21T18:39:40.042292Z",
+    "generated_at": "2026-08-22T00:39:04.252499Z",
     "qualification": "maintainer-judgment-required",
     "requested_sections": [
       "static",
@@ -2759,7 +2759,7 @@
     },
     "site_id": "33"
   },
-  "generated_at": "2026-08-21T18:39:41.978520Z",
+  "generated_at": "2026-08-22T00:39:06.181908Z",
   "qualification": "maintainer-judgment-required",
   "schema_version": "offline-clone.contribution-report.v1",
   "site_id": "33"
