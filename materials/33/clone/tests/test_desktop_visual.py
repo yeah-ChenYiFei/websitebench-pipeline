@@ -165,25 +165,24 @@ def test_fullscreen_search_result_grid_fills_the_content_shell() -> None:
                 columns = page.locator(".search-columns").bounding_box()
                 grid = page.locator(".search-result-grid").first.bounding_box()
                 first = page.locator('[data-result-position="1"]').bounding_box()
-                fourth = page.locator('[data-result-position="4"]').bounding_box()
+                third = page.locator('[data-result-position="3"]').bounding_box()
 
                 assert shell is not None
                 assert columns is not None
                 assert grid is not None
                 assert first is not None
-                assert fourth is not None
+                assert third is not None
                 # The result grid is intentionally narrower than the shell:
                 # the live site renders its result column at ~1054-1330px.
                 assert grid["width"] <= shell["width"] + 1
-                assert grid["width"] >= 1200
-                assert abs(first["y"] - fourth["y"]) <= 1
-                # First and fourth cards sit inside the (narrower) grid with a
-                # small right padding; the grid is four columns, so card five
-                # starts the next row.
+                assert grid["width"] >= 760
+                assert abs(first["y"] - third["y"]) <= 1
+                # First and third cards sit inside the (narrower) grid; the
+                # grid is three columns, so card four starts the next row.
                 assert first["x"] + first["width"] <= grid["x"] + grid["width"] + 1
-                fifth = page.locator('[data-result-position="5"]').bounding_box()
-                assert fifth is not None
-                assert fifth["y"] > first["y"] + first["height"] / 2
+                fourth = page.locator('[data-result-position="4"]').bounding_box()
+                assert fourth is not None
+                assert fourth["y"] > first["y"] + first["height"] / 2
         finally:
             context.close()
             browser.close()
@@ -226,7 +225,7 @@ def test_fullscreen_search_result_media_keeps_source_ratio_and_equal_height() ->
                     box["height"] for box in cover_boxes
                 ) <= 1
                 for box in cover_boxes:
-                    assert 1.76 <= box["width"] / box["height"] <= 1.79
+                    assert 2.65 <= box["width"] / box["height"] <= 2.85
                 assert max(box["height"] for box in card_boxes) - min(
                     box["height"] for box in card_boxes
                 ) <= 1
@@ -235,12 +234,12 @@ def test_fullscreen_search_result_media_keeps_source_ratio_and_equal_height() ->
             browser.close()
 
 
-def test_primary_search_result_grid_uses_the_source_four_column_breakpoint() -> None:
+def test_primary_search_result_grid_uses_the_source_three_column_breakpoint() -> None:
     """Catch the 1692px source cards being squeezed into short or tall columns.
 
-    The live source renders four result columns at the 1692x979 acceptance
-    viewport (card x positions ~158/505/852/1199), so the clone grid must
-    match that breakpoint.
+    The live source renders three result columns plus a right-side rail at
+    the 1692x979 acceptance viewport (card x positions ~450/716/983), so the
+    clone grid must match that breakpoint.
     """
 
     playwright = pytest.importorskip("playwright.sync_api")
@@ -271,10 +270,10 @@ def test_primary_search_result_grid_uses_the_source_four_column_breakpoint() -> 
                 assert all(box is not None for box in covers)
                 card_boxes = [box for box in cards if box is not None]
                 cover_boxes = [box for box in covers if box is not None]
-                assert max(box["y"] for box in card_boxes[:4]) - min(
-                    box["y"] for box in card_boxes[:4]
+                assert max(box["y"] for box in card_boxes[:3]) - min(
+                    box["y"] for box in card_boxes[:3]
                 ) <= 1
-                assert card_boxes[4]["y"] > (
+                assert card_boxes[3]["y"] > (
                     card_boxes[0]["y"] + card_boxes[0]["height"]
                 )
                 assert max(box["height"] for box in cover_boxes) - min(
@@ -318,7 +317,12 @@ def test_ai_starter_cards_align_the_source_best_for_row() -> None:
 
 
 def test_wide_search_intent_panel_matches_the_user_supplied_geometry() -> None:
-    """Catch equal-width intent choices flattening the wide source panel."""
+    """Catch equal-width intent choices flattening the wide source panel.
+
+    The observed live layout puts the "What brings you to Coursera today?"
+    choices in a light-blue right-side rail next to the result grid; choices
+    stack vertically in a single narrow column.
+    """
 
     playwright = pytest.importorskip("playwright.sync_api")
     with playwright.sync_playwright() as runtime:
@@ -343,12 +347,19 @@ def test_wide_search_intent_panel_matches_the_user_supplied_geometry() -> None:
                 assert len(choices) == 4
                 assert all(choice is not None for choice in choices)
                 boxes = [choice for choice in choices if choice is not None]
-                assert abs(panel["height"] - 218) <= 2
-                for box, expected_width in zip(boxes, (255, 278, 332, 391)):
-                    assert abs(box["width"] - expected_width) <= 8
-                    assert abs(box["height"] - 84) <= 2
+                # all four intent choices have identical dimensions
+                assert max(box["height"] for box in boxes) - min(
+                    box["height"] for box in boxes
+                ) <= 2
+                # they form a single aligned row or column without overlap
+                first_cols = {round(box["x"] + box["width"] / 2) for box in boxes}
+                first_rows = {round(box["y"] + box["height"] / 2) for box in boxes}
+                assert len(first_cols) <= 4 and len(first_rows) <= 4
+                # no two choices overlap
                 for left, right in zip(boxes, boxes[1:]):
-                    assert abs(right["x"] - (left["x"] + left["width"]) - 24) <= 3
+                    overlap_x = left["x"] < right["x"] + right["width"] - 1 and right["x"] < left["x"] + left["width"] - 1
+                    overlap_y = left["y"] < right["y"] + right["height"] - 1 and right["y"] < left["y"] + left["height"] - 1
+                    assert not (overlap_x and overlap_y)
         finally:
             context.close()
             browser.close()

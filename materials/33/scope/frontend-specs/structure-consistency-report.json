@@ -26,7 +26,7 @@
     },
     {
       "page": "browse",
-      "structure_score": 0.6177,
+      "structure_score": 0.6209,
       "headings": {
         "source": 50,
         "clone": 44,
@@ -36,9 +36,9 @@
       },
       "controls": {
         "source": 152,
-        "clone": 142,
-        "jaccard": 0.5722,
-        "coverage": 0.7039
+        "clone": 144,
+        "jaccard": 0.5829,
+        "coverage": 0.7171
       },
       "data_points": {
         "source": 1,
@@ -114,19 +114,19 @@
     },
     {
       "page": "login",
-      "structure_score": 0.5347,
+      "structure_score": 0.8167,
       "headings": {
         "source": 5,
-        "clone": 8,
-        "jaccard": 0.4444,
-        "coverage": 0.8,
-        "level_match": 0.0
+        "clone": 5,
+        "jaccard": 1.0,
+        "coverage": 1.0,
+        "level_match": 0.2
       },
       "controls": {
         "source": 53,
-        "clone": 101,
-        "jaccard": 0.375,
-        "coverage": 0.7925
+        "clone": 47,
+        "jaccard": 0.3889,
+        "coverage": 0.5283
       },
       "data_points": {
         "source": 1,
@@ -135,5 +135,5 @@
       }
     }
   ],
-  "overall_structure_consistency": 0.6463
+  "overall_structure_consistency": 0.6938
 }

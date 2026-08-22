@@ -1372,7 +1372,7 @@ def login(request: Request) -> HTMLResponse:
     backend, _auth, token, _session = _request_session(request)
     next_path = _safe_next_path(request.query_params.get("next"))
     body = """<section class="source-auth-page" aria-label="Log in or create account">
-  <div class="source-auth-page-card"><p class="eyebrow">Coursera</p><h1>Log in or create account</h1><p>Learn on your own time from top universities and businesses.</p></div>
+  <div class="source-auth-page-card"><p class="eyebrow">Coursera</p><p class="source-auth-hint">Sign in to continue to Coursera.</p></div>
 </section>"""
     response = HTMLResponse(_page(
         request,
@@ -1381,7 +1381,7 @@ def login(request: Request) -> HTMLResponse:
         body_class="source-auth-standalone",
         document_title="Log in or create account | Coursera",
         language="en",
-        footer_variant="source-browse",
+        footer_variant="source-auth",
         open_login=True,
         login_next_path=next_path,
         real_css="authentication.css",
@@ -1394,7 +1394,7 @@ def login(request: Request) -> HTMLResponse:
 def signup(request: Request) -> HTMLResponse:
     backend, _auth, token, _session = _request_session(request)
     body = """<section class="source-auth-page" aria-label="Join for free">
-  <div class="source-auth-page-card"><p class="eyebrow">Coursera</p><h1>Log in or create an account</h1><p>Learn on your own time from top universities and businesses.</p></div>
+  <div class="source-auth-page-card"><p class="eyebrow">Coursera</p><h1 class="source-auth-title">Log in or create an account</h1><p class="source-auth-hint">Create your free Coursera account.</p></div>
 </section>"""
     response = HTMLResponse(
         _page(
@@ -1404,7 +1404,7 @@ def signup(request: Request) -> HTMLResponse:
             body_class="source-auth-standalone",
             document_title="Signup - Start Learning | Coursera",
             language="en",
-            footer_variant="source-browse",
+            footer_variant="source-auth",
             open_login=True,
             login_next_path="/onboarding",
             real_css="authentication.css",
