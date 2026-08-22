@@ -104,7 +104,7 @@
 }
 
 .source-search-page .source-filter-sidebar {
-  padding: 16px 0 0;
+  padding: 8px 0 0;
 }
 .source-search-page .source-filter-apply {
   display: inline-flex;
@@ -129,20 +129,20 @@
   text-decoration: none;
 }
 .source-search-page .source-filter-group {
-  margin: 0 0 22px;
+  margin: 0 0 12px;
 }
 .source-search-page .source-filter-group .source-filter-title {
-  margin: 0 0 10px;
-  font-size: 15px;
+  margin: 0 0 6px;
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: .02em;
 }
 .source-search-page .source-filter-group label {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin: 0 0 8px;
-  font-size: 14px;
+  gap: 8px;
+  margin: 0 0 3px;
+  font-size: 12.5px;
   color: #33415a;
 }
 .source-search-page .source-filter-group input {
@@ -876,8 +876,9 @@
   margin: 0 0 18px;
   padding: 10px 16px 10px;
   border-radius: 14px;
-  background: linear-gradient(115deg, #0a1c38 0%, #123561 60%, #0d2c52 100%);
-  color: #fff;
+  background: linear-gradient(115deg, #e8f1fb 0%, #f4f9fd 55%, #e3edf8 100%);
+  border: 1px solid #cfdcec;
+  color: #17233b;
 }
 .source-search-page .search-ai-summary-head {
   display: flex;
@@ -891,13 +892,13 @@
   font-weight: 800;
   letter-spacing: .04em;
   text-transform: uppercase;
-  color: #8fc0ff;
+  color: #227af9;
 }
 .source-search-page .search-ai-summary-title {
   margin: 0;
   font-size: 17px;
   font-weight: 800;
-  color: #fff;
+  color: #17233b;
 }
 .source-search-page .search-ai-summary-cards {
   display: grid;
@@ -912,10 +913,10 @@
   align-items: center;
   min-height: 48px;
   padding: 6px 9px;
-  border: 1px solid #2c4a78;
+  border: 1px solid #d4e0ee;
   border-radius: 10px;
-  background: rgba(255, 255, 255, .07);
-  color: #fff;
+  background: #fff;
+  color: #17233b;
   text-decoration: none;
 }
 .source-search-page .search-ai-summary-cards .search-ai-starter-card > img {
@@ -930,7 +931,7 @@
   min-width: 0;
   overflow: hidden;
   font-size: 11px;
-  color: #a9c6f0;
+  color: #5b6b85;
   white-space: nowrap;
   text-overflow: ellipsis;
 }

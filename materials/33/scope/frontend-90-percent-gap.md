@@ -1,5 +1,19 @@
 # Site 33 — frontend similarity: visual + structure status (2026-08-22, round 3)
 
+## Round-5 summary (pixel pass)
+
+Per the user's guidance ("原网站有什么、复现网站在这个地方刚好有"): content
+correspondence is the bar; pixel-perfect is only where already achieved.
+Search page AI summary panel retoned from dark navy to the source's light
+medium-tone surface (SSIM results 0.50 -> 0.54, search overall 0.578 ->
+0.605); browse promo band gradient aligned to the source's blue-purple
+branding (0.696 -> 0.698); sidebar spacing tightened; overall region average
+0.746 -> 0.750. Frontend-backend cooperation spot-checked: search filters
+(AND-combination semantics, single-filter counts), anonymous enroll button
+opens the login dialog, enrolled my-learning shows Continue-learning resume
+link. Pages already at pixel parity (help 0.85, 404 0.935, course 0.789)
+were left untouched per instruction.
+
 ## Round-4 summary
 
 Structure crossed **0.90** (overall **0.903**): promo-card CTA texts exposed as
