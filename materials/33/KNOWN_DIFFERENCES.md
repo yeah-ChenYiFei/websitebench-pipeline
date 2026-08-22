@@ -83,3 +83,21 @@
 - Static WebsiteBench diagnostics are complete with 76/76 verified assets, zero remote runtime references, and zero detected secrets.
 - Live diagnostics were not completed because the Harbor candidate sandbox returned `[Errno 95]` for its sandbox runtime. This is an environment limitation, not a page-test failure; local Playwright/browser suites remain the applicable verification evidence.
 - One historical home footer geometry assertion remains 17px outside its 16px tolerance (`source-browse-footer-secondary`); it predates this learner expansion and is reported rather than changed opportunistically.
+
+## 2026-08-22 functionality completeness pass
+
+- The offline catalog was expanded from 40 records to 259 (real course,
+  specialization, and professional-certificate records with source-observed
+  titles and providers). Every card/link on the main pages now resolves to a
+  real page: /learn/<id>, /specializations/<id>,
+  /professional-certificates/<id>, /career-academy (roles), /explore/*
+  collections, /mastertrack, /certificates/learn, /government, /campus,
+  /social-impact, /directory, /articles and /resources.
+- Generic searches use token matching (stopwords removed) and a
+  recommendations row for zero-result queries, so no search destination is
+  bare. The Deep Learning query keeps its observed frozen result set for the
+  rating filter.
+- The documented exclusions remain unchanged: source video streaming,
+  message sending, source-side submission/result feedback, certification
+  issuance, and live payment are still clone-local or deferred as recorded
+  above.

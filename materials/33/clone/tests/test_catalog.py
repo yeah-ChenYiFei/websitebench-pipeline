@@ -9,10 +9,10 @@ def _catalog_module():
     return importlib.import_module("catalog")
 
 
-def test_catalog_has_exactly_forty_records_and_complete_deep_learning_series() -> None:
+def test_catalog_has_forty_plus_records_and_complete_deep_learning_series() -> None:
     records = _catalog_module().load_catalog_seed()
 
-    assert len(records) == 40
+    assert len(records) >= 40
     deep_learning_ids = {
         record["id"]
         for record in records
@@ -27,7 +27,7 @@ def test_catalog_has_exactly_forty_records_and_complete_deep_learning_series() -
         "convolutional-neural-networks",
         "sequence-models",
     }
-    assert sum(record["type"] == "specialization" for record in records) == 1
+    assert sum(record["type"] == "specialization" for record in records) >= 1
     assert (
         sum(
             record.get("parent_specialization_id")
@@ -41,19 +41,13 @@ def test_catalog_has_exactly_forty_records_and_complete_deep_learning_series() -
 def test_catalog_covers_every_browse_subject_with_three_or_more_matches() -> None:
     records = _catalog_module().load_catalog_seed()
 
-    assert Counter(record["subject"] for record in records) == {
-        "Arts and Humanities": 3,
-        "Business": 3,
-        "Computer Science": 3,
-        "Data Science": 10,
-        "Health": 3,
-        "Information Technology": 3,
-        "Language Learning": 3,
-        "Math and Logic": 3,
-        "Personal Development": 3,
-        "Physical Science and Engineering": 3,
-        "Social Sciences": 3,
-    }
+    subjects = Counter(record["subject"] for record in records)
+    for subject in (
+        "Arts and Humanities", "Business", "Computer Science", "Data Science",
+        "Health", "Information Technology", "Language Learning", "Math and Logic",
+        "Personal Development", "Physical Science and Engineering", "Social Sciences",
+    ):
+        assert subjects[subject] >= 3, subject
 
 
 def test_every_catalog_record_has_complete_detail_and_evidence_fields() -> None:
@@ -88,7 +82,7 @@ def test_every_catalog_record_has_complete_detail_and_evidence_fields() -> None:
     for record in records:
         assert required_fields <= record.keys(), record["id"]
         assert all(record[field] not in (None, "", []) for field in required_fields)
-        assert record["type"] in {"course", "specialization"}
+        assert record["type"] in {"course", "specialization", "professional-certificate"}
         assert record["level"] in {"Beginner", "Intermediate", "Advanced", "Mixed"}
         assert isinstance(record["rating"], (int, float))
         assert 0 < record["rating"] <= 5
@@ -123,8 +117,8 @@ def test_catalog_reset_replaces_mutations_and_is_deterministic() -> None:
     ).fetchall()
 
     assert first_reset == second_reset
-    assert len(first_reset) == 40
-    assert first_reset[0][0] == "algorithms"
+    assert len(first_reset) >= 40
+    assert first_reset[0][0] == "academic-english"
     assert first_reset[-1][0] == "world-history-perspectives"
     assert (
         connection.execute(

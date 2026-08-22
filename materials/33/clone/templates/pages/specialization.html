@@ -7,26 +7,26 @@
 
 <section class="source-specialization-hero">
   <div class="source-specialization-hero-copy">
-    <p class="source-provider"><img src="/static/deep-learning/provider-icon.png" alt="">DeepLearning.AI</p>
-    <h1>Deep Learning Specialization</h1>
-    <p class="source-specialization-subtitle">Become a Machine Learning expert.</p>
-    <p class="source-specialization-lead">Master the fundamentals of deep learning and break into AI. Recently updated with cutting-edge techniques!</p>
+    <p class="source-provider"><img src="/static/deep-learning/provider-icon.png" alt="">{{ program.provider }}</p>
+    <h1>{{ program.title }}</h1>
+    <p class="source-specialization-subtitle">{{ program.subtitle }}</p>
+    <p class="source-specialization-lead">{{ program.lead }}</p>
     <div class="source-instructor-line">
       <span class="source-instructor-faces" aria-hidden="true">
         <img src="/static/deep-learning/instructor-andrew-ng.jpg" alt="">
         <img src="/static/deep-learning/instructor-younes.jpg" alt="">
         <img src="/static/deep-learning/instructor-kian-katan.jpg" alt="">
       </span>
-      <span><strong>3 Instructors:</strong> <a href="#instructors">Andrew Ng</a> <a href="#instructors">+2 more</a></span>
-      <span class="source-top-instructor">Top Instructor</span>
+      <span><strong>{{ program.instructors|length }} Instructors:</strong> {% for name in program.instructors %}<a href="#instructors">{{ name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>
+      {% if program.top_instructor %}<span class="source-top-instructor">Top Instructor</span>{% endif %}
     </div>
     {% if authenticated %}
       <div class="source-specialization-actions">
         <form action="/enrollments" method="post">
-          <input type="hidden" name="course_id" value="deep-learning-specialization">
+          <input type="hidden" name="course_id" value="{{ program.id }}">
           <button class="source-enroll-button" type="submit" name="track" value="free">Enroll for free <small>Starts Aug 21</small></button>
         </form>
-        <a class="source-local-checkout" href="/checkout/deep-learning">View local paid option</a>
+        {% if program.id == 'deep-learning-specialization' %}<a class="source-local-checkout" href="/checkout/deep-learning">View local paid option</a>{% endif %}
       </div>
     {% else %}
       <div class="source-specialization-actions">
@@ -37,7 +37,7 @@
       <button type="button" class="source-aux-action" data-control-action="open-faq-panel" data-faq-target="right-for-me">Is this right for me?</button>
       <button type="button" class="source-aux-action" data-control-action="open-faq-panel" data-faq-target="language-panel">27 languages available</button>
     </div>
-    <p class="source-enrollment-count">997,307 already enrolled</p>
+    <p class="source-enrollment-count">{{ program.enrolled }} already enrolled</p>
   </div>
   <div class="source-specialization-hero-art" aria-hidden="true">
     <span class="source-orbit source-orbit-one"></span>
@@ -47,10 +47,10 @@
 </section>
 
 <section class="source-specialization-stats" aria-label="Program facts">
-  <article><a href="#courses"><strong>5 course series</strong></a><span>Get in-depth knowledge of a subject</span></article>
-  <article><strong>4.8 <span class="source-stars">★★★★★</span></strong><span>147,228 reviews of courses in this program</span></article>
-  <article><strong>Intermediate level</strong><span>Recommended experience</span></article>
-  <article><strong>Flexible schedule</strong><span>3 months at 10 hours a week</span></article>
+  <article><a href="#courses"><strong>{{ program.course_count }} course series</strong></a><span>Get in-depth knowledge of a subject</span></article>
+  <article><strong>4.8 <span class="source-stars">★★★★★</span></strong><span>{{ program.reviews }} reviews of courses in this program</span></article>
+  <article><strong>{{ program.level }} level</strong><span>Recommended experience</span></article>
+  <article><strong>Flexible schedule</strong><span>{{ program.duration }}</span></article>
   <article><h3>Build toward a degree</h3><span>Learn more</span></article>
 </section>
 
@@ -94,7 +94,7 @@
   </section>
 
   <section id="courses" class="source-course-series">
-    <h2>Specialization - 5 course series</h2>
+    <h2>Specialization - {{ program.course_count }} course series</h2>
     <p>The Deep Learning Specialization is a foundational program that will help you understand the capabilities, challenges, and consequences of deep learning and prepare you to participate in the development of leading-edge AI technology.</p>
     <div class="source-series-grid">
       <div class="source-series-list">

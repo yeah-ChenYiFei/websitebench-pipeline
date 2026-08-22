@@ -356,9 +356,7 @@ def enroll(subject_id: str, *, course_id: str, track: str) -> dict[str, Any]:
         (record for record in load_catalog_seed() if record["id"] == course_id),
         None,
     )
-    if catalog_record is None or not (
-        catalog_record["type"] == "course" or course_id == COURSE_ID
-    ):
+    if catalog_record is None or catalog_record["type"] not in {"course", "specialization"}:
         raise ValueError("course is unavailable")
     if track == "paid":
         raise ValueError("paid enrollment requires checkout")

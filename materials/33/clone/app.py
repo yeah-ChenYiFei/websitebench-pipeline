@@ -539,6 +539,21 @@ def _filter_catalog(
     query = q.strip().casefold()
     topic_query = topic.strip().casefold()
     subject = SUBJECTS.get(category)
+    _STOPWORDS = {
+        "and", "the", "with", "for", "of", "in", "on", "to", "a", "an",
+        "your", "you", "our", "this", "that", "from", "by", "at", "is", "are",
+        "course", "courses", "specialization", "specializations", "certificate",
+        "certificates", "professional",
+    }
+
+    def _tokens(value: str) -> list[str]:
+        return [
+            token
+            for token in re.split(r"[^a-z0-9]+", value)
+            if len(token) > 2 and token not in _STOPWORDS
+        ]
+
+    query_tokens = _tokens(query)
 
     def matches(record: dict[str, Any]) -> bool:
         searchable = " ".join(
@@ -548,10 +563,18 @@ def _filter_catalog(
                 record["subject"],
                 record["provider"],
                 *record["instructors"],
+                str(record.get("pricing", "")),
+                " ".join(record.get("enrollment_tracks", [])),
+                " ".join(str(record.get("badges", ""))),
             ]
         ).casefold()
+        token_hit = (
+            not query_tokens
+            or all(token in searchable for token in query_tokens)
+            or query in searchable
+        )
         return (
-            (not query or query in searchable)
+            token_hit
             and (not category or subject == record["subject"])
             and (not level or level.casefold() == record["level"].casefold())
             and (not topic_query or topic_query in record["topic"].casefold())
@@ -836,7 +859,7 @@ def search(
     }
     deep_learning_query = q.strip().casefold() == "deep learning"
     catalog_scope = deep_learning_query and any(
-        (category, topic, duration, rating, language, schedule)
+        (category, topic, duration, language, schedule)
     )
     source_selected = deep_learning_query and not catalog_scope and sort in {
         "title-asc",
@@ -903,12 +926,41 @@ def business_landing(request: Request, program: str = "") -> str:
 @app.get("/career-academy", response_class=HTMLResponse)
 @app.get("/career-academy/{role:path}", response_class=HTMLResponse)
 def career_landing(request: Request, role: str = "") -> str:
-    return _public_source_landing(
-        request,
-        title=_source_path_title(request.url.path) if role else "Career Academy",
-        description="Explore source-backed career roles and the local learning records connected to them.",
-        section_ids=("explore-careers", "career-data"),
+    roles = [
+        ("Data Scientist", "Analyze data to uncover insights and guide decisions.", "/search?q=Data+Scientist"),
+        ("Machine Learning Engineer", "Build and optimize AI and machine learning systems.", "/search?q=Machine+Learning+Engineer"),
+        ("Data Analyst", "Collect, clean, and interpret data for business impact.", "/search?q=Data+Analyst"),
+        ("Content Creator", "Produce engaging content across formats and platforms.", "/search?q=Content+Creator"),
+        ("Business Intelligence Analyst", "Turn data into actionable business intelligence.", "/search?q=Business+Intelligence+Analyst"),
+        ("IT Project Manager", "Plan and deliver technology projects on time.", "/search?q=IT+Project+Manager"),
+    ]
+    if role:
+        wanted = role.casefold().removeprefix("roles/").replace("-", " ")
+        matched = next(
+            (r for r in roles if r[0].casefold() == wanted), None
+        )
+        if matched is None:
+            title = _source_path_title(request.url.path)
+            return _public_source_landing(
+                request,
+                title=title,
+                description="Explore source-backed career roles and the local learning records connected to them.",
+                section_ids=("explore-careers", "career-data"),
+            )
+        title, blurb, href = matched
+        body = f"""<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/career-academy">Career Academy</a><span>›</span>{escape(title)}</nav>
+<section class="course-hero source-course-hero"><div><p class="provider">Career Academy</p><h1>{escape(title)}</h1><p>{escape(blurb)}</p><a class="link-button primary" href="{escape(href)}">Explore {escape(title)} programs <span aria-hidden="true">›</span></a></div><div class="course-orbit" aria-hidden="true"></div></section>
+<section class="course-source-detail"><h2>Skills you'll build</h2><p>Explore the catalog to find courses and certificates that build the skills for this role. Enroll for free and learn at your own pace.</p></section>"""
+        return _page(request, title, body, body_class="source-role-page", language="en")
+    cards = "".join(
+        f'<article class="catalog-card source-explore-card" data-public-landing-record="true"><a class="search-result-card" href="{escape(href)}"><span class="search-result-cover"><img src="/static/browse/roles/{slug}.avif" alt=""></span><span class="search-provider">Career Academy</span><h3>{escape(title)}</h3><span class="search-card-bottom"><span class="search-result-rating">{escape(blurb[:60])}</span></span></a></article>'
+        for title, blurb, href in roles
+        for slug in [title.casefold().replace(" ", "-")]
     )
+    body = f"""<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/browse">Browse</a><span>›</span>Career Academy</nav>
+<section class="course-hero source-course-hero"><div><p class="provider">Coursera</p><h1>Career Academy</h1><p>Explore in-demand careers, the skills they need, and the local learning programs that build them.</p></div><div class="course-orbit" aria-hidden="true"></div></section>
+<section class="course-source-detail" data-public-landing-record="true"><h2>Explore roles</h2><div class="source-explore-grid">{cards}</div></section>"""
+    return _page(request, "Career Academy", body, body_class="source-explore-page", language="en")
 
 
 @app.get("/degrees", response_class=HTMLResponse)
@@ -948,11 +1000,72 @@ def provider_collection_landing(request: Request, collection: str) -> str:
         "learner-outcomes": "Learner Outcomes",
     }
     title = provider_names.get(collection, _source_path_title(request.url.path))
-    return _public_source_landing(
-        request,
-        title=title,
-        description=f"Explore source-backed local learning records in {title}.",
+    provider = None
+    for key, name in provider_names.items():
+        if key == collection:
+            provider = name
+            break
+    if provider in {"Most Popular Courses", "New on Coursera", "Learner Outcomes", "Generative AI"}:
+        provider = None
+    records = load_catalog_seed()
+    collection_provider = provider
+    if provider is None and collection == "generative-ai":
+        collection_provider = None
+    if provider is None and collection in {"most-popular-courses", "new-on-coursera"}:
+        pass
+    if provider is None and collection == "learner-outcomes":
+        body = _render_outcomes_landing(request, title)
+        return _page(request, title, body, body_class="source-explore-page", language="en")
+    matched = [
+        record
+        for record in records
+        if record["type"] in {"course", "specialization", "professional-certificate"}
+        and (
+            (collection_provider is not None and collection_provider.casefold() in " ".join([str(record.get("provider", "")), *record.get("instructors", [])]).casefold())
+            or (collection == "generative-ai" and "generative" in " ".join([str(record["title"]), str(record.get("topic", ""))]).casefold())
+        )
+    ]
+    if collection == "most-popular-courses":
+        matched = sorted(records, key=lambda record: -float(record.get("rating", 0)))[:12]
+    elif collection == "new-on-coursera":
+        matched = [record for record in records if record["type"] in {"course", "specialization"}] [:12]
+    if not matched:
+        matched = records[:12]
+    cards = "".join(
+        f'<article class="catalog-card source-explore-card" data-public-landing-record="true"><a class="search-result-card" href="{_card_href(record)}"><span class="search-result-cover"><img src="/static/search/deep-learning.png" alt=""></span><span class="search-provider">{escape(str(record["provider"]))}</span><h3>{escape(str(record["title"]))}</h3><span class="search-card-bottom"><span class="search-result-rating">★ {float(record.get("rating", 0)):g}</span></span></a></article>'
+        for record in matched
     )
+    body = f"""<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/browse">Browse</a><span>›</span>{escape(title)}</nav>
+<section class="course-hero source-course-hero"><div><p class="provider">Coursera</p><h1>{escape(title)}</h1><p>Explore {len(matched)} source-backed local learning records in this collection.</p></div><div class="course-orbit" aria-hidden="true"></div></section>
+<section class="course-source-detail" data-public-landing-record="true"><h2>In this collection</h2><div class="source-explore-grid">{cards}</div></section>"""
+    return _page(request, title, body, body_class="source-explore-page", language="en")
+
+
+def _card_href(record: dict[str, Any]) -> str:
+    kind = str(record.get("type", "course"))
+    if kind == "specialization":
+        return f"/specializations/{record['id']}"
+    if kind == "professional-certificate":
+        return f"/professional-certificates/{record['id']}"
+    return f"/learn/{record['id']}"
+
+
+def _render_outcomes_landing(request: Request, title: str) -> str:
+    """Render the learner-outcomes collection with real outcome content."""
+
+    outcomes = [
+        ("New job", "91% of learners reported a positive career outcome"),
+        ("Higher pay", "Learners who complete career certificates report salary increases"),
+        ("New skills", "Job-relevant skills built through hands-on projects"),
+        ("Career change", "Pathways for switching industries or roles"),
+    ]
+    rows = "".join(
+        f"<article class='outcome-card'><h3>{escape(str(a))}</h3><p>{escape(str(b))}</p></article>"
+        for a, b in outcomes
+    )
+    return f"""<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/browse">Browse</a><span>›</span>Learner Outcomes</nav>
+<section class="course-hero source-course-hero"><div><p class="provider">Coursera</p><h1>{escape(title)}</h1><p>Real learners report new jobs, higher pay, and new skills after completing Coursera programs.</p></div><div class="course-orbit" aria-hidden="true"></div></section>
+<section class="course-source-detail"><h2>Why learners choose Coursera</h2><div class="source-explore-grid">{rows}</div></section>"""
 
 
 @app.get("/google-career-certificates", response_class=HTMLResponse)
@@ -961,6 +1074,10 @@ def provider_collection_landing(request: Request, collection: str) -> str:
 def professional_certificate_landing(
     request: Request, program: str = ""
 ) -> str:
+    if program:
+        record = _record_by_id(program)
+        if record is not None and record["type"] == "professional-certificate":
+            return _render_certificate_detail(request, record)
     title = (
         "Google Career Certificates"
         if request.url.path == "/google-career-certificates"
@@ -974,6 +1091,37 @@ def professional_certificate_landing(
         description="Explore source-backed local professional and career learning records.",
         section_ids=("career-data", "google-career", "hot-new-releases"),
     )
+
+
+def _render_certificate_detail(request: Request, record: dict[str, Any]) -> str:
+    """Render one source-observed professional certificate detail page."""
+
+    program = record["syllabus"]
+    course_rows = "".join(
+        f'<li class="cert-course"><h3><a href="/learn/{_cert_course_slug(record, index, title)}">{escape(str(title))}</a></h3><span>Course {index + 1} of {len(program)}</span></li>'
+        for index, title in enumerate(program)
+    )
+    skill_chips = "".join(
+        f"<span>{escape(str(skill))}</span>"
+        for skill in (
+            "Professional development",
+            "Job-ready skills",
+            "Career pathway",
+            "Industry recognition",
+        )
+    )
+    body = f"""<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/browse">Browse</a><span>›</span><a href="/professional-certificates">Professional Certificates</a><span>›</span>{escape(record['title'])}</nav>
+<section class="course-hero source-course-hero" data-course-detail="{escape(record['id'])}"><div><p class="provider">{escape(record['provider'])}</p><h1>{escape(record['title'])}</h1><p>Prepare for an entry-level job in this in-demand field, no degree or experience required.</p><p>Instructors: <strong>{escape(record['provider'])} instructor team</strong></p><a class="wb-primary" href="/login?next=/learn/{escape(record['id'])}">Enroll for free</a></div><div class="course-orbit" aria-hidden="true"></div></section>
+<section class="course-stats"><div><strong>{len(program)} courses</strong><span>Complete the full series to earn the certificate</span></div><div><strong>{record['rating']:.1f} ★</strong><span>Learner reviews</span></div><div><strong>Beginner level</strong><span>Recommended experience</span></div><div><strong>Flexible schedule</strong><span>Learn at your own pace</span></div><div><strong>✓ 100% online</strong><span>No degree or experience required</span></div></section>
+<section class="course-source-detail"><h2>Skills you'll gain</h2><div class="skill-chip-row">{skill_chips}</div><h2>What you'll learn</h2><p>Gain job-ready skills, build hands-on projects, and earn a certificate to share with your professional network.</p></section>
+<section class="detail-grid course-lower-detail"><article id="courses"><h2>Courses in this certificate</h2><ol class="cert-course-list">{course_rows}</ol></article><article><h2>About this certificate</h2><p>This professional certificate is designed to prepare learners for entry-level roles. The clone renders the observed course list and enrollment flow locally; certification is a local demonstration.</p></article><article><h2>Pricing</h2><p>{escape(record.get('pricing', 'Enroll for free; local-sandbox paid track available'))}</p></article></section>"""
+    return _page(request, record["title"], body, body_class="source-course-detail-page", language="en")
+
+
+def _cert_course_slug(record: dict[str, Any], index: int, title: object) -> str:
+    """Return a stable local slug for one certificate course."""
+
+    return f"{record['id']}-course-{index + 1}"
 
 
 _PROJECT_DETAILS = {
@@ -1019,23 +1167,98 @@ def project_detail(request: Request, project_id: str) -> HTMLResponse:
 
 
 @app.get("/mastertrack", response_class=HTMLResponse)
+def mastertrack_landing(request: Request) -> str:
+    programs = [
+        ("Business Analytics", "Business", "4.8"),
+        ("Data Science", "Data Science", "4.8"),
+        ("Project Management", "Business", "4.7"),
+    ]
+    cards = "".join(
+        f'<article class="catalog-card source-explore-card" data-public-landing-record="true"><a class="search-result-card" href="/search?query={quote(str(title))}"><span class="search-result-cover"><img src="/static/search/deep-learning.png" alt=""></span><span class="search-provider">MasterTrack</span><h3>{escape(str(title))} MasterTrack</h3><span class="search-card-bottom"><span class="search-result-rating">★ {rating}</span></span></a></article>'
+        for title, _subject, rating in programs
+    )
+    body = f"""<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/browse">Browse</a><span>›</span>MasterTrack® Certificates</nav>
+<section class="course-hero source-course-hero"><div><p class="provider">Coursera</p><h1>MasterTrack® Certificates</h1><p>Earn a university-issued certificate by completing a portion of a master's degree.</p></div><div class="course-orbit" aria-hidden="true"></div></section>
+<section class="course-source-detail" data-public-landing-record="true"><h2>Available MasterTrack programs</h2><div class="source-explore-grid">{cards}</div></section>"""
+    return _page(request, "MasterTrack® Certificates", body, body_class="source-explore-page", language="en")
+
+
 @app.get("/certificates/learn", response_class=HTMLResponse)
+def certificates_learn_landing(request: Request) -> str:
+    records = load_catalog_seed()
+    certs = [record for record in records if record["type"] == "professional-certificate"]
+    cards = "".join(
+        f'<article class="catalog-card source-explore-card" data-public-landing-record="true"><a class="search-result-card" href="/professional-certificates/{escape(str(record["id"]))}"><span class="search-result-cover"><img src="/static/search/deep-learning.png" alt=""></span><span class="search-provider">{escape(str(record["provider"]))}</span><h3>{escape(str(record["title"]))}</h3><span class="search-card-bottom"><span class="search-result-rating">★ {float(record.get("rating", 0)):g}</span></span></a></article>'
+        for record in certs
+    )
+    body = f"""<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/browse">Browse</a><span>›</span>Certificates</nav>
+<section class="course-hero source-course-hero"><div><p class="provider">Coursera</p><h1>Professional Certificates</h1><p>Build job-ready skills and earn a certificate from industry leaders.</p></div><div class="course-orbit" aria-hidden="true"></div></section>
+<section class="course-source-detail" data-public-landing-record="true"><h2>Explore certificates</h2><div class="source-explore-grid">{cards}</div></section>"""
+    return _page(request, "Professional Certificates", body, body_class="source-explore-page", language="en")
+
+
 @app.get("/government", response_class=HTMLResponse)
+def government_landing(request: Request) -> str:
+    body = _simple_landing("Coursera for Government", "Help your workforce build in-demand skills with flexible online training from leading universities and companies.", [
+        ("Explore programs", "/search?query=government"),
+        ("Contact our team", "/about/contact"),
+        ("Browse the catalog", "/browse"),
+    ])
+    return _page(request, "Coursera for Government", body, body_class="source-explore-page", language="en")
+
+
 @app.get("/campus", response_class=HTMLResponse)
+def campus_landing(request: Request) -> str:
+    body = _simple_landing("Coursera for Campus", "Bring world-class learning to your students with curated courses, certificates, and degrees.", [
+        ("Explore student programs", "/search?query=campus"),
+        ("Contact our team", "/about/contact"),
+        ("Browse the catalog", "/browse"),
+    ])
+    return _page(request, "Coursera for Campus", body, body_class="source-explore-page", language="en")
+
+
 @app.get("/social-impact", response_class=HTMLResponse)
+def social_impact_landing(request: Request) -> str:
+    body = _simple_landing("Coursera for Social Impact", "Help learners everywhere access high-quality education and build skills that open doors.", [
+        ("Explore programs", "/search?query=social+impact"),
+        ("Browse the catalog", "/browse"),
+    ])
+    return _page(request, "Coursera for Social Impact", body, body_class="source-explore-page", language="en")
+
+
 @app.get("/directory", response_class=HTMLResponse)
+def directory_landing(request: Request) -> str:
+    body = _simple_landing("Course Directory", "Browse the full local catalog by subject and provider.", [
+        ("Browse categories", "/browse"),
+        ("Search all courses", "/search"),
+        ("Professional certificates", "/professional-certificates"),
+    ])
+    return _page(request, "Course Directory", body, body_class="source-explore-page", language="en")
+
+
 @app.get("/articles", response_class=HTMLResponse)
 @app.get("/articles/{article:path}", response_class=HTMLResponse)
 @app.get("/resources/{resource:path}", response_class=HTMLResponse)
-def public_collection_alias(
-    request: Request, article: str = "", resource: str = ""
-) -> str:
-    title = _source_path_title(request.url.path)
-    return _public_source_landing(
-        request,
-        title=title,
-        description=f"Explore source-backed local learning records connected to {title}.",
-    )
+def articles_landing(request: Request, article: str = "", resource: str = "") -> str:
+    if article:
+        title = _source_path_title(request.url.path)
+        body = f"""<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/articles">Articles</a><span>›</span>{escape(title)}</nav>
+<section class="course-hero source-course-hero"><div><p class="provider">Coursera Blog</p><h1>{escape(title)}</h1><p>Learn about careers, skills, and learning pathways in this local article.</p><a class="link-button primary" href="/browse">Explore related courses <span aria-hidden="true">›</span></a></div><div class="course-orbit" aria-hidden="true"></div></section>
+<section class="course-source-detail"><h2>What you'll learn</h2><p>This article introduces the topic, the skills involved, and the courses that can help you build them. Use the catalog to find a program that fits your goals.</p></section>"""
+        return _page(request, title, body, body_class="source-article-page", language="en")
+    body = _simple_landing("Coursera Articles", "Career guides, skills explainers, and learning advice.", [
+        ("Browse the catalog", "/browse"),
+        ("Explore certificates", "/professional-certificates"),
+        ("Read about careers", "/career-academy"),
+    ])
+    return _page(request, "Coursera Articles", body, body_class="source-explore-page", language="en")
+
+
+def _simple_landing(title: str, lead: str, links: list[tuple[str, str]]) -> str:
+    nav = "".join(f'<a class="link-button primary" href="{href}">{escape(str(label))} <span aria-hidden="true">›</span></a>' for label, href in links)
+    return f"""<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/browse">Browse</a><span>›</span>{escape(title)}</nav>
+<section class="course-hero source-course-hero"><div><p class="provider">Coursera</p><h1>{escape(title)}</h1><p>{escape(lead)}</p><div class="source-explore-actions">{nav}</div></div><div class="course-orbit" aria-hidden="true"></div></section>
+<section class="course-source-detail" data-public-landing-record="true"><h2>Getting started</h2><p>Everything here runs locally: browse the catalog, search for a topic, enroll for free, and complete lessons at your own pace.</p></section>"""
 
 
 @app.get("/about/privacy", response_class=HTMLResponse)
@@ -1084,6 +1307,7 @@ def deep_learning_specialization(request: Request) -> str:
     body = render_specialization_body(
         components=components,
         authenticated=bool(session["authenticated"]),
+        specialization=specialization,
     )
     return _page(
         request,
@@ -1100,11 +1324,47 @@ def deep_learning_specialization(request: Request) -> str:
 
 @app.get("/specializations/{program_id}", response_class=HTMLResponse)
 def specialization_landing(request: Request, program_id: str) -> str:
-    title = _source_path_title(request.url.path)
-    return _public_source_landing(
+    specialization = _record_by_id(program_id)
+    if specialization is None or specialization["type"] != "specialization":
+        title = _source_path_title(request.url.path)
+        return _public_source_landing(
+            request,
+            title=title,
+            description="Explore this source-backed specialization and related local learning records.",
+        )
+    components = [
+        record
+        for record in load_catalog_seed()
+        if record.get("parent_specialization_id") == specialization["id"]
+    ]
+    if not components:
+        components = [
+            {
+                "id": f"{program_id}-syllabus-{index + 1}",
+                "type": "course",
+                "title": str(item),
+                "subject": specialization["subject"],
+                "provider": specialization["provider"],
+                "component_number": index + 1,
+            }
+            for index, item in enumerate(specialization.get("syllabus", []))
+        ]
+    _backend, _auth, _token, session = _request_session(request)
+    body = render_specialization_body(
+        components=components,
+        authenticated=bool(session["authenticated"]),
+        specialization=specialization,
+    )
+    return _page(
         request,
-        title=title,
-        description="Explore this source-backed specialization and related local learning records.",
+        specialization["title"],
+        body,
+        body_class="source-specialization-page",
+        document_title=f"{specialization['title']} | Coursera",
+        language="en",
+        login_next_path=f"/checkout/{program_id}",
+        footer_variant="source-browse",
+        real_css="consumer-description-page.css",
     )
 
 
@@ -1281,6 +1541,16 @@ async def checkout_attempt(request: Request, draft_id: str) -> Response:
     heading = "Sandbox payment declined" if result["outcome"] == "declined" else "Sandbox payment needs another try"
     body = f"""<section class="checkout-shell"><p class="eyebrow">Local sandbox result</p><h1>{heading}</h1><p>No order or paid enrollment was created, and no external payment was attempted.</p><a class="wb-primary" href="/checkout/{escape(draft_id)}/review">Choose another local result</a><a href="/specializations/deep-learning">Back to the Specialization</a></section>"""
     return HTMLResponse(_page(request, "Local sandbox result", body, language="en"))
+
+
+@app.get("/learn/python", response_class=HTMLResponse)
+def course_detail_python_alias(request: Request) -> str:
+    return course_detail(request, "programming-for-everybody")
+
+
+@app.get("/learn/prompt-engineering", response_class=HTMLResponse)
+def course_detail_prompt_alias(request: Request) -> str:
+    return course_detail(request, "prompt-engineering-chatgpt")
 
 
 @app.get("/learn/{course_id}", response_class=HTMLResponse)

@@ -91,6 +91,12 @@
             <h2>No results for {{ query }}</h2>
             <p>Try another search or explore the catalog.</p>
             <nav><a href="/search?query=Deep%20Learning">Return to Deep Learning results</a><a href="/browse">Browse all topics</a></nav>
+            {% if recommended %}
+              <h3>Popular courses to explore</h3>
+              <div class="search-result-grid search-no-result-grid">
+                {% for card in recommended %}{{ result_card(card, loop.index) }}{% endfor %}
+              </div>
+            {% endif %}
           </section>
         {% else %}
           <div class="search-results-region">

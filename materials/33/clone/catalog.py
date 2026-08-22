@@ -95,18 +95,18 @@ def _complete_record(record: dict[str, Any], index: int) -> dict[str, Any]:
                 "level": levels[index % len(levels)],
                 "topic": record["title"],
                 "duration": f"{4 + (index % 3) * 2} weeks at 4 hours a week",
-                "rating": 4.5 + (index % 5) / 10,
-                "provider": (
+                "rating": float(record.get("rating", 4.5 + (index % 5) / 10)),
+                "provider": record.get("provider") or (
                     "DeepLearning.AI"
                     if record.get("parent_specialization_id")
                     else "Coursera Offline Catalog"
                 ),
-                "instructors": (
+                "instructors": record.get("instructors") or (
                     ["Andrew Ng", "Offline course team"]
                     if record.get("parent_specialization_id")
                     else ["Offline Faculty"]
                 ),
-                "prerequisites": "No prior experience required",
+                "prerequisites": record.get("prerequisites") or "No prior experience required",
                 "reviews_summary": (
                     "Source exposed this component title; review details are an offline simulation"
                     if record["id"] in _OBSERVED_COMPONENT_IDS

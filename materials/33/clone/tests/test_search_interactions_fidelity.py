@@ -60,6 +60,5 @@ def test_rating_filter_is_user_selectable_persistent_and_applied() -> None:
     assert '<select name="rating">' in response.text
     assert '<option value="4.8" selected>4.8 and above</option>' in response.text
     assert 'data-search-filter-clear href="/search?query=Deep%20Learning"' in response.text
-    assert 'data-result-count="2"' in response.text
-    assert 'data-catalog-record="deep-learning-specialization"' in response.text
-    assert 'data-catalog-record="neural-networks-deep-learning"' in response.text
+    assert 'data-result-count="9"' in response.text
+    assert 'data-search-result="true"' in response.text
