@@ -66,7 +66,11 @@ def initialize_site(
         "import os\n\n"
         "class Handler(BaseHTTPRequestHandler):\n"
         "    def do_GET(self):\n"
-        "        if self.path == '/healthz':\n"
+        "        if self.path == '/__websitebench/health':\n"
+        "            body = b'{\"status\":\"ok\"}'\n"
+        "            self.send_response(200)\n"
+        "            self.send_header('Content-Type', 'application/json')\n"
+        "        elif self.path == '/healthz':\n"
         "            body = b'ok\\n'\n"
         "            self.send_response(200)\n"
         "            self.send_header('Content-Type', 'text/plain')\n"
@@ -91,14 +95,14 @@ def initialize_site(
         "ENV PORT=8080\n"
         "HEALTHCHECK --interval=2s --timeout=3s --retries=30 "
         'CMD python -c "import urllib.request; '
-        "urllib.request.urlopen('http://127.0.0.1:8080/healthz', timeout=2)\"\n"
+        "urllib.request.urlopen('http://127.0.0.1:8080/__websitebench/health', timeout=2)\"\n"
         'CMD ["python", "server.py"]\n',
         encoding="utf-8",
         newline="\n",
     )
     reference_run = root / "reference" / "run.sh"
     reference_run.write_text(
-        "#!/usr/bin/env bash\nset -Eeuo pipefail\nexec python server.py\n",
+        "#!/usr/bin/env bash\nset -Eeuo pipefail\nexec \"${PYTHON_BIN:-python3}\" server.py\n",
         encoding="utf-8",
         newline="\n",
     )

@@ -1,0 +1,26 @@
+name: diagnostics (bluemercury)
+
+on:
+  pull_request:
+    paths:
+      - materials/bluemercury/**
+      - .github/workflows/tests-bluemercury.yml
+      - .github/workflows/clone-diagnostics.yml
+  push:
+    paths:
+      - materials/bluemercury/**
+      - .github/workflows/tests-bluemercury.yml
+      - .github/workflows/clone-diagnostics.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: diagnostics-bluemercury-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  diagnostics:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: bluemercury

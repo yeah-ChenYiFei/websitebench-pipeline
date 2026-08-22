@@ -1,0 +1,262 @@
+{
+  "schema_version": "prompt.websitebench-clone-task-brief.v1",
+  "observed_at": "2026-08-19T05:08:30.291Z",
+  "source": {
+    "input_url": "https://bluemercury.com",
+    "canonical_url": "https://bluemercury.com/",
+    "canonical_origin": "https://bluemercury.com",
+    "approved_discovery_origins": [
+      "https://bluemercury.com"
+    ],
+    "proposed_additional_origins": [
+      "https://cdn.shopify.com",
+      "https://connect.nosto.com",
+      "https://hss.optiversal.com",
+      "https://apps.bazaarvoice.com",
+      "https://d21m4dsqdd3b9h.cloudfront.net",
+      "https://truyoproductionuscdn.truyo.com",
+      "https://assets.adobedtm.com",
+      "https://www.lightboxcdn.com",
+      "https://config.gorgias.chat",
+      "https://shop.app"
+    ]
+  },
+  "site": {
+    "site_id": "bluemercury",
+    "display_name": "Bluemercury",
+    "existing_site": false,
+    "site_dir": "materials/bluemercury",
+    "target_origin": "https://bluemercury.website-bench.com",
+    "worker_name": "websitebench-bluemercury-demo",
+    "purpose": "Help anonymous beauty shoppers discover products, inspect skincare details, manage a local bag, and complete a synthetic local-sandbox checkout."
+  },
+  "baseline": {
+    "locale": "en-US",
+    "timezone": "Etc/UTC",
+    "timezone_policy": "temporary deterministic default; no source business timezone was directly observed",
+    "viewports": [
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      }
+    ]
+  },
+  "scope": {
+    "roles": [
+      {
+        "id": "anonymous-shopper",
+        "display_name": "Anonymous shopper",
+        "authentication_required": false,
+        "evidence_kind": "directly-observed",
+        "evidence_urls": [
+          "https://bluemercury.com/"
+        ],
+        "changes": "Public browsing, search, product, and empty bag",
+        "live_view_required": false,
+        "existing_entitlement_required": false
+      }
+    ],
+    "core_journeys": [
+      {
+        "id": "shopping-mainline",
+        "priority": "p0",
+        "role": "anonymous-shopper",
+        "purpose": "Discover and buy a skincare product locally",
+        "preconditions": [
+          "anonymous local session",
+          "available catalog variant"
+        ],
+        "starting_url": "/",
+        "steps": [
+          "open Skincare",
+          "search product",
+          "open detail",
+          "choose quantity",
+          "add to bag",
+          "review bag",
+          "proceed to checkout",
+          "enter synthetic address",
+          "choose local-sandbox outcome",
+          "submit local order"
+        ],
+        "expected_result": "local order confirmation for approved scenario",
+        "failure_variant": "declined or retryable sandbox outcome",
+        "recovery_variant": "retry with approved scenario",
+        "source_mutation_required": true,
+        "evidence_kind": "mixed: direct through product CTA; source populated cart/checkout unavailable",
+        "evidence_urls": [
+          "https://bluemercury.com/",
+          "https://bluemercury.com/collections/skin-care",
+          "https://bluemercury.com/products/skinceuticals-c-e-ferulic"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "page_families": [
+      "public/marketing",
+      "discovery/list/search",
+      "entity detail",
+      "cart",
+      "clone-local checkout/order",
+      "account/auth structural-only P2 unavailable",
+      "error/recovery"
+    ],
+    "deterministic_seed_plan": {
+      "actors": [
+        "anonymous-shopper",
+        "isolation-shopper"
+      ],
+      "entities": [
+        "250 source-derived products",
+        "cart",
+        "checkout attempt",
+        "local order",
+        "local outbox job"
+      ],
+      "states": [
+        "empty",
+        "populated",
+        "validation failure",
+        "approved",
+        "declined",
+        "retryable"
+      ],
+      "reset_restart_duplicate_probes": true
+    },
+    "external_services": [
+      {
+        "service": "Shopify CDN",
+        "evidence_kind": "directly-observed",
+        "local_adapter": true,
+        "external_side_effect": false,
+        "user_authorization_required": false,
+        "runtime_zero_remote_dependencies": true
+      },
+      {
+        "service": "Nosto/search/personalization",
+        "evidence_kind": "structural-only",
+        "local_adapter": true,
+        "external_side_effect": false,
+        "user_authorization_required": false,
+        "runtime_zero_remote_dependencies": true
+      },
+      {
+        "service": "payments",
+        "evidence_kind": "unavailable",
+        "local_adapter": "local-sandbox",
+        "external_side_effect": false,
+        "user_authorization_required": false,
+        "runtime_zero_remote_dependencies": true
+      }
+    ]
+  },
+  "authority": {
+    "authentication_access": "request-human-live-view",
+    "credentials_persisted": false,
+    "authorized_source_mutations": [],
+    "requested_source_mutations": [
+      "human demonstration of populated cart and checkout first screen only; no Agent source mutation"
+    ],
+    "real_email_authorized": false,
+    "stripe_test_authorized": false,
+    "live_payment_authorized": false,
+    "push_authorized": false,
+    "pr_authorized": false,
+    "public_deployment_authorized": false,
+    "rights_or_redistribution_status": "unknown"
+  },
+  "trace_acquisition": {
+    "mode": "adaptive",
+    "agent_must_initiate": true,
+    "text_ownership": "human-only",
+    "human_trace_texts": [
+      {
+        "human_trace_text_id": "ht-001",
+        "text": "[781] On the Bluemercury website, purchase a skincare product, add to cart, and proceed to checkout",
+        "provided_at": "2026-08-19T05:08:30.291Z",
+        "source": "initial-user-input",
+        "source_ref": "ASSIGNMENT_ID=20",
+        "status": "confirmed"
+      }
+    ],
+    "trace_candidates": [
+      {
+        "candidate_id": "tc-001",
+        "agent_suggested_scope": "Human demonstrates source add-to-bag, populated bag, and checkout first screen without submitting order or payment.",
+        "role": "anonymous-shopper",
+        "why_needed": "Populated cart and checkout were unavailable under read-only authority.",
+        "uncertainty_resolved": [
+          "cart transition",
+          "checkout entry",
+          "checkout field order"
+        ],
+        "expected_coverage": [
+          "populated cart",
+          "checkout first screen"
+        ],
+        "requires_authentication": false,
+        "requires_source_mutation": true,
+        "evidence_priority": "high",
+        "human_trace_text_id": "ht-001",
+        "text_status": "confirmed"
+      }
+    ],
+    "requested_traces": [
+      "tc-001"
+    ],
+    "completed_traces": [],
+    "remaining_material_uncertainties": [
+      "source populated cart pixels and controls",
+      "source checkout fields, errors, and ordering"
+    ]
+  },
+  "trajectory_recording": {
+    "channel": "not-used",
+    "recordings": [],
+    "clone_side_recordings": [],
+    "two_sided_findings": []
+  },
+  "field_evidence": [
+    {
+      "field": "site/display_name",
+      "value": "Bluemercury",
+      "observation": "Wordmark, title, and og:site_name",
+      "grade": "directly-observed",
+      "confidence": "high",
+      "browserbase_refreeze": false,
+      "evidence_urls": [
+        "https://bluemercury.com/"
+      ]
+    },
+    {
+      "field": "baseline/timezone",
+      "value": "Etc/UTC",
+      "observation": "No source business timezone directly observed",
+      "grade": "inferred",
+      "confidence": "low",
+      "browserbase_refreeze": true,
+      "evidence_urls": []
+    },
+    {
+      "field": "catalog/count",
+      "value": 250,
+      "observation": "First-party products.json returned 250 retained records",
+      "grade": "directly-observed",
+      "confidence": "high",
+      "browserbase_refreeze": false,
+      "evidence_urls": [
+        "https://bluemercury.com/products.json?limit=250"
+      ]
+    }
+  ],
+  "unresolved": [
+    "Source populated cart and checkout require optional human demonstration.",
+    "Collection/search cards depended on blocked external GET origins during EA1 visual capture."
+  ]
+}
