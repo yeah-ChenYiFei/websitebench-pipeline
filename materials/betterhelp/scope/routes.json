@@ -1,0 +1,302 @@
+{
+  "schema_version": "offline-clone.routes.v1",
+  "status": "frozen",
+  "routes": [
+    {
+      "id": "home",
+      "family": "public/marketing",
+      "evidence": "directly-observed",
+      "priority": "p0",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/"
+    },
+    {
+      "id": "about",
+      "family": "public/marketing",
+      "evidence": "directly-observed",
+      "priority": "p1",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/about/"
+    },
+    {
+      "id": "advice",
+      "family": "discovery/editorial",
+      "evidence": "directly-observed",
+      "priority": "p1",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/advice/"
+    },
+    {
+      "id": "faq",
+      "family": "public/information",
+      "evidence": "directly-observed",
+      "priority": "p1",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/faq/"
+    },
+    {
+      "id": "reviews",
+      "family": "public/information",
+      "evidence": "directly-observed",
+      "priority": "p1",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/reviews/"
+    },
+    {
+      "id": "therapists",
+      "family": "discovery/provider-search",
+      "evidence": "directly-observed-public-shell-plus-local-simulation",
+      "priority": "p0",
+      "roles": [
+        "anonymous-visitor",
+        "synthetic-member"
+      ],
+      "route_pattern": "/therapists/"
+    },
+    {
+      "id": "therapist-detail",
+      "family": "discovery/provider-detail",
+      "evidence": "task-inventory-plus-local-simulation",
+      "priority": "p0",
+      "roles": [
+        "synthetic-member"
+      ],
+      "route_pattern": "/therapists/{provider_id}/"
+    },
+    {
+      "id": "online-therapy",
+      "family": "public/marketing",
+      "evidence": "directly-observed",
+      "priority": "p1",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/online-therapy/"
+    },
+    {
+      "id": "contact",
+      "family": "public/information",
+      "evidence": "directly-observed-public-form-plus-local-simulation",
+      "priority": "p1",
+      "roles": [
+        "anonymous-visitor",
+        "synthetic-member"
+      ],
+      "route_pattern": "/contact/"
+    },
+    {
+      "id": "help",
+      "family": "public/information",
+      "evidence": "task-inventory-plus-local-simulation",
+      "priority": "p1",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/help/"
+    },
+    {
+      "id": "gethelpnow",
+      "family": "public/information",
+      "evidence": "directly-observed",
+      "priority": "p1",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/gethelpnow/"
+    },
+    {
+      "id": "onboarding",
+      "family": "account/auth",
+      "evidence": "directly-observed-step-1-plus-local-simulation",
+      "priority": "p0",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/get-started/"
+    },
+    {
+      "id": "login",
+      "family": "account/auth",
+      "evidence": "directly-observed",
+      "priority": "p1",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/login/"
+    },
+    {
+      "id": "signup",
+      "family": "account/auth",
+      "evidence": "task-inventory-plus-local-simulation",
+      "priority": "p0",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/signup/"
+    },
+    {
+      "id": "password-reset",
+      "aliases": [
+        "/login/?action=forgot"
+      ],
+      "family": "account/auth",
+      "evidence": "directly-observed-source-alias-plus-local-simulation",
+      "priority": "p1",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/password-reset/"
+    },
+    {
+      "id": "next",
+      "family": "account/member",
+      "evidence": "directly-observed-authenticated-structure-plus-local-simulation",
+      "priority": "p0",
+      "roles": [
+        "synthetic-member"
+      ],
+      "route_pattern": "/next/"
+    },
+    {
+      "id": "member",
+      "family": "account/member",
+      "evidence": "task-inventory-plus-local-simulation",
+      "priority": "p0",
+      "roles": [
+        "synthetic-member"
+      ],
+      "route_pattern": "/member/"
+    },
+    {
+      "id": "matches",
+      "family": "discovery/provider-search",
+      "evidence": "task-inventory-plus-local-simulation",
+      "priority": "p0",
+      "roles": [
+        "synthetic-member"
+      ],
+      "route_pattern": "/matches/"
+    },
+    {
+      "id": "saved",
+      "family": "account/member",
+      "evidence": "task-inventory-plus-local-simulation",
+      "priority": "p1",
+      "roles": [
+        "synthetic-member"
+      ],
+      "route_pattern": "/member/saved/"
+    },
+    {
+      "id": "booking-details",
+      "family": "member/booking",
+      "evidence": "task-inventory-plus-local-simulation",
+      "priority": "p0",
+      "roles": [
+        "synthetic-member"
+      ],
+      "route_pattern": "/booking/{booking_id}/details/"
+    },
+    {
+      "id": "booking-payment",
+      "family": "member/booking",
+      "evidence": "task-inventory-plus-local-simulation",
+      "priority": "p0",
+      "roles": [
+        "synthetic-member"
+      ],
+      "route_pattern": "/booking/{booking_id}/payment/"
+    },
+    {
+      "id": "booking-confirmation",
+      "family": "member/booking",
+      "evidence": "task-inventory-plus-local-simulation",
+      "priority": "p0",
+      "roles": [
+        "synthetic-member"
+      ],
+      "route_pattern": "/booking/{booking_id}/confirmation/"
+    },
+    {
+      "id": "booking-history",
+      "family": "member/history",
+      "evidence": "task-inventory-plus-local-simulation",
+      "priority": "p0",
+      "roles": [
+        "synthetic-member"
+      ],
+      "route_pattern": "/member/bookings/"
+    },
+    {
+      "id": "financialaid",
+      "family": "account/member",
+      "evidence": "directly-observed-route-only-plus-local-simulation",
+      "priority": "p1",
+      "roles": [
+        "synthetic-member"
+      ],
+      "route_pattern": "/financialaid/"
+    },
+    {
+      "id": "terms",
+      "family": "public/legal",
+      "evidence": "structural-only",
+      "priority": "p2",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/terms/"
+    },
+    {
+      "id": "privacy",
+      "family": "public/legal",
+      "evidence": "structural-only",
+      "priority": "p2",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/privacy/"
+    },
+    {
+      "id": "health-data",
+      "family": "public/legal",
+      "evidence": "structural-only",
+      "priority": "p2",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/health-data/"
+    },
+    {
+      "id": "accessibility",
+      "family": "public/legal",
+      "evidence": "structural-only",
+      "priority": "p2",
+      "roles": [
+        "anonymous-visitor"
+      ],
+      "route_pattern": "/accessibility/"
+    },
+    {
+      "id": "not-found",
+      "family": "error/recovery",
+      "evidence": "directly-observed-source-404-plus-local-simulation",
+      "priority": "p1",
+      "roles": [
+        "anonymous-visitor",
+        "synthetic-member"
+      ],
+      "route_pattern": "/{unknown_path}"
+    }
+  ]
+}

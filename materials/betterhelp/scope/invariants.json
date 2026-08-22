@@ -1,0 +1,123 @@
+{
+  "schema_version": "offline-clone.invariants.v1",
+  "status": "frozen",
+  "invariants": [
+    {
+      "id": "no-source-runtime-network",
+      "statement": "Clone runtime requests remain same-origin loopback/local assets only.",
+      "priority": "p0",
+      "journey_ids": [
+        "j-authenticated-therapy-process",
+        "j-formal-task-35",
+        "j-home-to-onboarding",
+        "j-public-information"
+      ],
+      "acceptance_obligations": [
+        "Clone runtime requests remain same-origin loopback/local assets only."
+      ]
+    },
+    {
+      "id": "synthetic-health-data-only",
+      "statement": "No real health information, source credentials, payment data or external messages are accepted or stored.",
+      "priority": "p0",
+      "journey_ids": [
+        "j-authenticated-therapy-process",
+        "j-formal-task-35",
+        "j-home-to-onboarding",
+        "j-public-information"
+      ],
+      "acceptance_obligations": [
+        "No real health information, source credentials, payment data or external messages are accepted or stored."
+      ]
+    },
+    {
+      "id": "site-isolated-runtime",
+      "statement": "Any local account/session state is isolated to site_id betterhelp and its own runtime database.",
+      "priority": "p0",
+      "journey_ids": [
+        "j-authenticated-therapy-process",
+        "j-formal-task-35",
+        "j-home-to-onboarding",
+        "j-public-information"
+      ],
+      "acceptance_obligations": [
+        "Any local account/session state is isolated to site_id betterhelp and its own runtime database."
+      ]
+    },
+    {
+      "id": "public-route-reachability",
+      "statement": "Observed public navigation routes resolve locally with meaningful content and no placeholder anchors.",
+      "priority": "p1",
+      "journey_ids": [
+        "j-authenticated-therapy-process",
+        "j-formal-task-35",
+        "j-home-to-onboarding",
+        "j-public-information"
+      ],
+      "acceptance_obligations": [
+        "Observed public navigation routes resolve locally with meaningful content and no placeholder anchors."
+      ]
+    },
+    {
+      "id": "responsive-shell",
+      "statement": "Shared header, hero, content sections, consent and footer adapt at desktop/tablet/mobile anchors.",
+      "priority": "p1",
+      "journey_ids": [
+        "j-authenticated-therapy-process",
+        "j-formal-task-35",
+        "j-home-to-onboarding",
+        "j-public-information"
+      ],
+      "acceptance_obligations": [
+        "Shared header, hero, content sections, consent and footer adapt at desktop/tablet/mobile anchors."
+      ]
+    },
+    {
+      "id": "refresh-persistence",
+      "statement": "Synthetic account, intake, saved-provider, booking and management state persist across refresh and process restart within the site-scoped database.",
+      "priority": "p0",
+      "journey_ids": [
+        "j-formal-task-35"
+      ],
+      "acceptance_obligations": [
+        "Persist verified local state across refresh and restart."
+      ]
+    },
+    {
+      "id": "mail-local-only",
+      "statement": "Registration, password-reset and booking-confirmation messages are written only to the local outbox adapter and never sent externally.",
+      "priority": "p0",
+      "journey_ids": [
+        "j-local-synthetic-auth",
+        "j-formal-task-35"
+      ],
+      "acceptance_obligations": [
+        "No external mail delivery.",
+        "Codes remain secret and site-scoped."
+      ]
+    },
+    {
+      "id": "payment-local-sandbox-only",
+      "statement": "Payment uses deterministic local approved, declined and retryable scenarios and never loads Stripe or accepts real payment credentials.",
+      "priority": "p0",
+      "journey_ids": [
+        "j-formal-task-35"
+      ],
+      "acceptance_obligations": [
+        "No Stripe runtime request.",
+        "Immutable booking facts are checked before approval."
+      ]
+    },
+    {
+      "id": "actor-isolation",
+      "statement": "A second synthetic member cannot read or mutate another member's intake, saved providers, bookings, messages or payment attempts.",
+      "priority": "p0",
+      "journey_ids": [
+        "j-formal-task-35"
+      ],
+      "acceptance_obligations": [
+        "Cross-actor access fails closed."
+      ]
+    }
+  ]
+}

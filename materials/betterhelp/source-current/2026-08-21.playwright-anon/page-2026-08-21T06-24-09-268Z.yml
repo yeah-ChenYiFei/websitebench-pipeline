@@ -1,0 +1,155 @@
+- generic [ref=f1e1]:
+  - generic [ref=f1e3]:
+    - banner [ref=f1e4]:
+      - generic [ref=f1e5]:
+        - list
+        - list "Main Menu" [ref=f1e6]:
+          - listitem [ref=f1e7]:
+            - link [ref=f1e8]:
+              - /url: "#"
+              - img "BetterHelp logo" [ref=f1e11]
+    - main [ref=f1e12]:
+      - generic [ref=f1e14]:
+        - generic [ref=f1e15]:
+          - heading "Help us match you to the right therapist" [level=1] [ref=f1e17]:
+            - text: Help us match you to the
+            - generic [ref=f1e18]: right therapist
+          - meter "Quiz progress 1 of 8" [ref=f1e20]:
+            - list [ref=f1e22]:
+              - listitem [ref=f1e23]
+              - listitem [ref=f1e24]
+              - listitem [ref=f1e25]
+              - listitem [ref=f1e26]
+              - listitem [ref=f1e27]
+              - listitem [ref=f1e28]
+              - listitem [ref=f1e29]
+              - listitem [ref=f1e30]
+          - generic [ref=f1e31]:
+            - list [ref=f1e38]:
+              - listitem [ref=f1e39]:
+                - generic [ref=f1e40]:
+                  - generic [ref=f1e41]:
+                    - generic [ref=f1e42]:
+                      - generic [ref=f1e43]: What type of therapy are you looking for?
+                      - radiogroup "What type of therapy are you looking for?" [ref=f1e47]:
+                        - generic [ref=f1e48]:
+                          - radio "Individual (for myself)" [ref=f1e49]
+                          - generic [ref=f1e50] [cursor=pointer]: Individual (for myself)
+                        - generic [ref=f1e51]:
+                          - radio "Couples (for myself and my partner)" [ref=f1e52]
+                          - generic [ref=f1e53] [cursor=pointer]: Couples (for myself and my partner)
+                        - generic [ref=f1e54]:
+                          - radio "Teen (for my child)" [ref=f1e55]
+                          - generic [ref=f1e56] [cursor=pointer]: Teen (for my child)
+                    - generic [ref=f1e57]: Let's walk through the process of finding the best therapist for you! We'll start off with some basic questions.
+                  - generic [ref=f1e61]:
+                    - separator [ref=f1e62]
+                    - link "Already registered? Log in" [ref=f1e63] [cursor=pointer]:
+                      - /url: /login/
+            - generic [ref=f1e64]:
+              - separator [ref=f1e65]
+              - generic [ref=f1e66]:
+                - generic [ref=f1e67]: The role of AI in identifying a therapist
+                - paragraph [ref=f1e68]:
+                  - text: We strive to connect you with a therapist who aligns with your needs and preferences. To make this process as smooth as possible, we use automated tools, including...
+                  - button "Read more" [ref=f1e69] [cursor=pointer]
+        - text:   "" "" "" "" "" "" "" "" "" "" "" ""
+    - contentinfo [ref=f1e70]:
+      - generic [ref=f1e73]:
+        - generic [ref=f1e75]:
+          - text: If you are in a crisis or any other person may be in danger - don't use this site.
+          - link "These resources" [ref=f1e76] [cursor=pointer]:
+            - /url: /gethelpnow/
+          - text: can provide you with immediate help.
+        - generic:
+          - generic:
+            - link "SSL Labs Logo":
+              - /url: https://www.ssllabs.com/ssltest/analyze.html?d=www.betterhelp.com
+      - navigation "footer" [ref=f1e78]:
+        - generic [ref=f1e79]:
+          - list [ref=f1e80]:
+            - listitem [ref=f1e81]:
+              - link "Home" [ref=f1e82] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/
+            - listitem [ref=f1e83]:
+              - link "Business" [ref=f1e84] [cursor=pointer]:
+                - /url: https://www.betterhelporg.com
+            - listitem [ref=f1e85]:
+              - link "About" [ref=f1e86] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/about/
+            - listitem [ref=f1e87]:
+              - link "FAQ" [ref=f1e88] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/faq/
+            - listitem [ref=f1e89]:
+              - link "Reviews" [ref=f1e90] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/reviews/
+            - listitem [ref=f1e91]:
+              - link "Advice" [ref=f1e92] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/advice/
+            - listitem [ref=f1e93]:
+              - link "Careers" [ref=f1e94] [cursor=pointer]:
+                - /url: /careers/
+            - listitem [ref=f1e95]:
+              - link "Find a Therapist" [ref=f1e96] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/therapists/
+            - listitem [ref=f1e97]:
+              - link "Online Therapy" [ref=f1e98] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/online-therapy/
+            - listitem [ref=f1e99]:
+              - link "Contact" [ref=f1e100] [cursor=pointer]:
+                - /url: /contact/
+            - listitem [ref=f1e101]:
+              - link "For Therapists" [ref=f1e102] [cursor=pointer]:
+                - /url: /counselor_application/
+            - listitem [ref=f1e103]:
+              - link "AARP" [ref=f1e104] [cursor=pointer]:
+                - /url: /aarp/
+          - list [ref=f1e106]:
+            - listitem [ref=f1e107]:
+              - link "Link to Facebook" [ref=f1e108] [cursor=pointer]:
+                - /url: https://www.facebook.com/BetterHelp
+                - generic [ref=f1e109]: 
+            - listitem [ref=f1e110]:
+              - link "Link to Instagram" [ref=f1e111] [cursor=pointer]:
+                - /url: https://www.instagram.com/betterhelp/
+                - generic [ref=f1e112]: 
+            - listitem [ref=f1e113]:
+              - link "Link to TikTok" [ref=f1e114] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@betterhelp
+                - generic [ref=f1e115]: 
+            - listitem [ref=f1e116]:
+              - link "Link to Twitter" [ref=f1e117] [cursor=pointer]:
+                - /url: https://twitter.com/betterhelp
+                - generic [ref=f1e118]: 
+            - listitem [ref=f1e119]:
+              - link "Link to LinkedIn" [ref=f1e120] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/betterhelp
+                - generic [ref=f1e121]: 
+        - list [ref=f1e122]:
+          - generic [ref=f1e123]:
+            - listitem [ref=f1e124]:
+              - link "Terms & Conditions" [ref=f1e125] [cursor=pointer]:
+                - /url: /terms/
+            - listitem [ref=f1e126]:
+              - link "Privacy Policy" [ref=f1e127] [cursor=pointer]:
+                - /url: /privacy/
+            - listitem [ref=f1e128]:
+              - link "Health Data" [ref=f1e129] [cursor=pointer]:
+                - /url: /health-data/
+            - listitem [ref=f1e130]:
+              - button "Do Not Sell My Information" [ref=f1e131] [cursor=pointer]
+            - listitem [ref=f1e132]:
+              - link "Web Accessibility" [ref=f1e133] [cursor=pointer]:
+                - /url: /accessibility/
+            - listitem [ref=f1e134]: © 2026 BetterHelp
+    - region "cookie consent banner" [ref=f1e135]:
+      - paragraph [ref=f1e136]: Cookie Consent
+      - generic [ref=f1e139]:
+        - text: We process personally identifiable and personal health information to conduct our business, as described in our
+        - link "Privacy Policy" [ref=f1e140] [cursor=pointer]:
+          - /url: /privacy/
+        - text: . Some data processing and sharing is required for our business to function. By clicking "I agree" we may share PII with third party advertising partners to deliver relevant ads or analytics partners to improve our services. To learn more or to opt-out go to "Sharing settings".
+      - generic [ref=f1e141]:
+        - button "Open Sharing settings modal" [ref=f1e142] [cursor=pointer]: Sharing settings
+        - button "I agree and close dialog" [active] [ref=f1e143] [cursor=pointer]: I agree
+  - alert [ref=f1e144]

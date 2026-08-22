@@ -1,0 +1,280 @@
+- generic [ref=f4e1]:
+  - generic [ref=f4e3]:
+    - banner [ref=f4e4]:
+      - generic [ref=f4e5]:
+        - list
+        - list "Main Menu" [ref=f4e6]:
+          - listitem [ref=f4e7]:
+            - link [ref=f4e8]:
+              - /url: "#"
+              - img "BetterHelp logo" [ref=f4e11]
+        - list "Main Menu" [ref=f4e12]:
+          - listitem [ref=f4e13] [cursor=pointer]:
+            - link "Log in" [ref=f4e14]:
+              - /url: /login/
+    - main [ref=f4e15]:
+      - generic [ref=f4e17]:
+        - generic [ref=f4e18]:
+          - meter "Quiz progress 1 of 8" [ref=f4e20]:
+            - list [ref=f4e22]:
+              - listitem [ref=f4e23]
+              - listitem [ref=f4e24]
+              - listitem [ref=f4e25]
+              - listitem [ref=f4e26]
+              - listitem [ref=f4e27]
+              - listitem [ref=f4e28]
+              - listitem [ref=f4e29]
+              - listitem [ref=f4e30]
+          - generic [ref=f4e31]:
+            - generic [ref=f4e32]:
+              - heading "Help us match you to the right therapist" [level=2] [ref=f4e33]:
+                - text: Help us match you to the
+                - generic [ref=f4e34]: right therapist
+              - paragraph [ref=f4e35]: It's important to have a therapist who you can establish a personal connection with. The following questions are designed to help match you to a licensed therapist based on your needs and personal preferences.
+            - list [ref=f4e42]:
+              - listitem [ref=f4e43]:
+                - generic [ref=f4e45]:
+                  - generic [ref=f4e46]:
+                    - generic [ref=f4e47]: Which country are you in?
+                    - generic [ref=f4e48]:
+                      - generic [ref=f4e50]:
+                        - text: Select Country
+                        - combobox [ref=f4e51]
+                      - generic [ref=f4e52]:
+                        - generic [ref=f4e53]: Select Country
+                        - generic [ref=f4e54]:
+                          - button "United States Select Country" [ref=f4e55] [cursor=pointer]:
+                            - generic [ref=f4e56]: United States
+                            - generic [ref=f4e57]: 
+                          - generic: Select Country
+                  - button "Next" [ref=f4e59] [cursor=pointer]
+            - generic [ref=f4e61]:
+              - generic [ref=f4e62]: The role of AI in identifying a therapist
+              - paragraph [ref=f4e63]:
+                - text: We strive to connect you with a therapist who aligns with your needs and preferences. To make this process as smooth as possible, we use automated tools, including...
+                - button "Read more" [ref=f4e64] [cursor=pointer]
+        - generic [ref=f4e71]:
+          - generic [ref=f4e72]: Reviews
+          - generic [ref=f4e73]: Slide 1 of 4
+          - region "Reviews carousel" [ref=f4e74]:
+            - generic [ref=f4e76]:
+              - button "Show slide 1" [ref=f4e77] [cursor=pointer]
+              - button "Show slide 2" [ref=f4e79] [cursor=pointer]
+              - button "Show slide 3" [ref=f4e81] [cursor=pointer]
+              - button "Show slide 4" [ref=f4e83] [cursor=pointer]
+            - generic [ref=f4e85]:
+              - generic:
+                - generic:
+                  - button "Previous slide" [ref=f4e86] [cursor=pointer]:
+                    - generic [ref=f4e87]: 
+                  - button "Next slide" [ref=f4e88] [cursor=pointer]:
+                    - generic [ref=f4e89]: 
+              - group "Reviews" [ref=f4e90]:
+                - group "Slide 4 of 4" [ref=f4e91]:
+                  - generic [ref=f4e92]:
+                    - generic [ref=f4e95]:
+                      - generic [ref=f4e96]:
+                        - img "Bryan Hixson (null)" [ref=f4e98]
+                        - generic [ref=f4e99]:
+                          - generic [ref=f4e100]: "Latest review for:"
+                          - generic [ref=f4e101]: Bryan Hixson
+                      - generic [ref=f4e102]:
+                        - generic [ref=f4e103]: "C.L. wrote 45 days ago:"
+                        - blockquote [ref=f4e104]: "\"Feel seen and heard- Bryan provides practical advice; he is compassionate and very thorough with his therapeutic approach. Thank you!\""
+                    - generic [ref=f4e107]:
+                      - generic [ref=f4e108]:
+                        - img "Tiffany Wilhelm ()" [ref=f4e110]
+                        - generic [ref=f4e111]:
+                          - generic [ref=f4e112]: "Latest review for:"
+                          - generic [ref=f4e113]: Tiffany Wilhelm
+                      - generic [ref=f4e114]:
+                        - generic [ref=f4e115]: "J.O. wrote 45 days ago:"
+                        - blockquote [ref=f4e116]: "\"I met Tiffany at my lowest in life, 6 months later I’m finally living the life I want. From day I she made me feel heard and with her help I have improved in all aspects of my life.\""
+                - group "Slide 1 of 4" [ref=f4e117]:
+                  - generic [ref=f4e118]:
+                    - generic [ref=f4e121]:
+                      - generic [ref=f4e122]:
+                        - img "Roberto Diaz (LMHC ,LPC,NCC)" [ref=f4e124]
+                        - generic [ref=f4e125]:
+                          - generic [ref=f4e126]: "Latest review for:"
+                          - generic [ref=f4e127]:
+                            - text: Roberto Diaz
+                            - generic [ref=f4e128]: (LMHC ,LPC,NCC)
+                      - generic [ref=f4e129]:
+                        - generic [ref=f4e130]: "C.E. wrote 13 days ago:"
+                        - blockquote [ref=f4e131]: "\"Roberto is a great therapist. He listens to my concerns and provides good feedback and ideas to resolve emotional issues. Thank you.\""
+                    - generic [ref=f4e134]:
+                      - generic [ref=f4e135]:
+                        - img "Angela DaSilva ()" [ref=f4e137]
+                        - generic [ref=f4e138]:
+                          - generic [ref=f4e139]: "Latest review for:"
+                          - generic [ref=f4e140]: Angela DaSilva
+                      - generic [ref=f4e141]:
+                        - generic [ref=f4e142]: "T.I. wrote 13 days ago:"
+                        - blockquote [ref=f4e143]: "\"Angela is exactly the kind of therapist I was hoping to work with. Angela is not afraid to give practical homework and ask pointed questions. I could not be happier, both during and after my sessions, as I know I am always working towards a goal.\""
+                - group "Slide 2 of 4" [ref=f4e144]:
+                  - generic [ref=f4e145]:
+                    - generic [ref=f4e148]:
+                      - generic [ref=f4e150]:
+                        - generic [ref=f4e151]: "Latest review for:"
+                        - generic [ref=f4e152]:
+                          - text: Ashley Brummett
+                          - generic [ref=f4e153]: (LCSW,MSW,BSW)
+                      - generic [ref=f4e154]:
+                        - generic [ref=f4e155]: "S.H. wrote 29 days ago:"
+                        - blockquote [ref=f4e156]: "\"Ashley is wonderful. I have been with her for a few years now and I have always appreciated her expertise and support. It has helped me tremendously and I appreciate her so much!\""
+                    - generic [ref=f4e159]:
+                      - generic [ref=f4e161]:
+                        - generic [ref=f4e162]: "Latest review for:"
+                        - generic [ref=f4e163]: Jeanette Joyner
+                      - generic [ref=f4e164]:
+                        - generic [ref=f4e165]: "S.H. wrote 42 days ago:"
+                        - blockquote [ref=f4e166]: "\"She was very sweet and kind and understanding as well. I liked talking to her. I could feel that she truly cares. Thank you Ms. Joyner.\""
+                - group "Slide 3 of 4" [ref=f4e167]:
+                  - generic [ref=f4e168]:
+                    - generic [ref=f4e171]:
+                      - generic [ref=f4e173]:
+                        - generic [ref=f4e174]: "Latest review for:"
+                        - generic [ref=f4e175]: Latrice Todd
+                      - generic [ref=f4e176]:
+                        - generic [ref=f4e177]: "A.N. wrote 43 days ago:"
+                        - blockquote [ref=f4e178]: "\"Latrice actively listens and offers empathetic, helpful feedback that is helping me make progress towards my mental health goals.\""
+                    - generic [ref=f4e181]:
+                      - generic [ref=f4e183]:
+                        - generic [ref=f4e184]: "Latest review for:"
+                        - generic [ref=f4e185]: Thomas Moore
+                      - generic [ref=f4e186]:
+                        - generic [ref=f4e187]: "B.L. wrote 43 days ago:"
+                        - blockquote [ref=f4e188]: "\"I am so very thankful for the time I have with Thomas. He is very professional honest and provided me with so many resources and tools to become a better me.\""
+                - group "Slide 4 of 4" [ref=f4e189]:
+                  - generic [ref=f4e190]:
+                    - generic [ref=f4e193]:
+                      - generic [ref=f4e195]:
+                        - generic [ref=f4e196]: "Latest review for:"
+                        - generic [ref=f4e197]: Bryan Hixson
+                      - generic [ref=f4e198]:
+                        - generic [ref=f4e199]: "C.L. wrote 45 days ago:"
+                        - blockquote [ref=f4e200]: "\"Feel seen and heard- Bryan provides practical advice; he is compassionate and very thorough with his therapeutic approach. Thank you!\""
+                    - generic [ref=f4e203]:
+                      - generic [ref=f4e205]:
+                        - generic [ref=f4e206]: "Latest review for:"
+                        - generic [ref=f4e207]: Tiffany Wilhelm
+                      - generic [ref=f4e208]:
+                        - generic [ref=f4e209]: "J.O. wrote 45 days ago:"
+                        - blockquote [ref=f4e210]: "\"I met Tiffany at my lowest in life, 6 months later I’m finally living the life I want. From day I she made me feel heard and with her help I have improved in all aspects of my life.\""
+                - group "Slide 1 of 4" [ref=f4e211]:
+                  - generic [ref=f4e212]:
+                    - generic [ref=f4e215]:
+                      - generic [ref=f4e217]:
+                        - generic [ref=f4e218]: "Latest review for:"
+                        - generic [ref=f4e219]:
+                          - text: Roberto Diaz
+                          - generic [ref=f4e220]: (LMHC ,LPC,NCC)
+                      - generic [ref=f4e221]:
+                        - generic [ref=f4e222]: "C.E. wrote 13 days ago:"
+                        - blockquote [ref=f4e223]: "\"Roberto is a great therapist. He listens to my concerns and provides good feedback and ideas to resolve emotional issues. Thank you.\""
+                    - generic [ref=f4e226]:
+                      - generic [ref=f4e228]:
+                        - generic [ref=f4e229]: "Latest review for:"
+                        - generic [ref=f4e230]: Angela DaSilva
+                      - generic [ref=f4e231]:
+                        - generic [ref=f4e232]: "T.I. wrote 13 days ago:"
+                        - blockquote [ref=f4e233]: "\"Angela is exactly the kind of therapist I was hoping to work with. Angela is not afraid to give practical homework and ask pointed questions. I could not be happier, both during and after my sessions, as I know I am always working towards a goal.\""
+    - contentinfo [ref=f4e234]:
+      - generic [ref=f4e237]:
+        - generic [ref=f4e239]:
+          - text: If you are in a crisis or any other person may be in danger - don't use this site.
+          - link "These resources" [ref=f4e240] [cursor=pointer]:
+            - /url: /gethelpnow/
+          - text: can provide you with immediate help.
+        - link "SSL Labs Logo" [ref=f4e243] [cursor=pointer]:
+          - /url: https://www.ssllabs.com/ssltest/analyze.html?d=www.betterhelp.com
+          - img "256-bit SSL Secure Logo" [ref=f4e245]
+      - navigation "footer" [ref=f4e247]:
+        - generic [ref=f4e248]:
+          - list [ref=f4e249]:
+            - listitem [ref=f4e250]:
+              - link "Home" [ref=f4e251] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/
+            - listitem [ref=f4e252]:
+              - link "Business" [ref=f4e253] [cursor=pointer]:
+                - /url: https://www.betterhelporg.com
+            - listitem [ref=f4e254]:
+              - link "About" [ref=f4e255] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/about/
+            - listitem [ref=f4e256]:
+              - link "FAQ" [ref=f4e257] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/faq/
+            - listitem [ref=f4e258]:
+              - link "Reviews" [ref=f4e259] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/reviews/
+            - listitem [ref=f4e260]:
+              - link "Advice" [ref=f4e261] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/advice/
+            - listitem [ref=f4e262]:
+              - link "Careers" [ref=f4e263] [cursor=pointer]:
+                - /url: /careers/
+            - listitem [ref=f4e264]:
+              - link "Find a Therapist" [ref=f4e265] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/therapists/
+            - listitem [ref=f4e266]:
+              - link "Online Therapy" [ref=f4e267] [cursor=pointer]:
+                - /url: https://www.betterhelp.com/online-therapy/
+            - listitem [ref=f4e268]:
+              - link "Contact" [ref=f4e269] [cursor=pointer]:
+                - /url: /contact/
+            - listitem [ref=f4e270]:
+              - link "For Therapists" [ref=f4e271] [cursor=pointer]:
+                - /url: /counselor_application/
+            - listitem [ref=f4e272]:
+              - link "AARP" [ref=f4e273] [cursor=pointer]:
+                - /url: /aarp/
+          - list [ref=f4e275]:
+            - listitem [ref=f4e276]:
+              - link "Link to Facebook" [ref=f4e277] [cursor=pointer]:
+                - /url: https://www.facebook.com/BetterHelp
+                - generic [ref=f4e278]: 
+            - listitem [ref=f4e279]:
+              - link "Link to Instagram" [ref=f4e280] [cursor=pointer]:
+                - /url: https://www.instagram.com/betterhelp/
+                - generic [ref=f4e281]: 
+            - listitem [ref=f4e282]:
+              - link "Link to TikTok" [ref=f4e283] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@betterhelp
+                - generic [ref=f4e284]: 
+            - listitem [ref=f4e285]:
+              - link "Link to Twitter" [ref=f4e286] [cursor=pointer]:
+                - /url: https://twitter.com/betterhelp
+                - generic [ref=f4e287]: 
+            - listitem [ref=f4e288]:
+              - link "Link to LinkedIn" [ref=f4e289] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/betterhelp
+                - generic [ref=f4e290]: 
+        - list [ref=f4e291]:
+          - generic [ref=f4e292]:
+            - listitem [ref=f4e293]:
+              - link "Terms & Conditions" [ref=f4e294] [cursor=pointer]:
+                - /url: /terms/
+            - listitem [ref=f4e295]:
+              - link "Privacy Policy" [ref=f4e296] [cursor=pointer]:
+                - /url: /privacy/
+            - listitem [ref=f4e297]:
+              - link "Health Data" [ref=f4e298] [cursor=pointer]:
+                - /url: /health-data/
+            - listitem [ref=f4e299]:
+              - button "Do Not Sell My Information" [ref=f4e300] [cursor=pointer]
+            - listitem [ref=f4e301]:
+              - link "Web Accessibility" [ref=f4e302] [cursor=pointer]:
+                - /url: /accessibility/
+            - listitem [ref=f4e303]: © 2026 BetterHelp
+    - region "cookie consent banner" [ref=f4e304]:
+      - paragraph [ref=f4e305]: Cookie Consent
+      - generic [ref=f4e308]:
+        - text: We process personally identifiable and personal health information to conduct our business, as described in our
+        - link "Privacy Policy" [ref=f4e309] [cursor=pointer]:
+          - /url: /privacy/
+        - text: . Some data processing and sharing is required for our business to function. By clicking "I agree" we may share PII with third party advertising partners to deliver relevant ads or analytics partners to improve our services. To learn more or to opt-out go to "Sharing settings".
+      - generic [ref=f4e310]:
+        - button "Open Sharing settings modal" [ref=f4e311] [cursor=pointer]: Sharing settings
+        - button "I agree and close dialog" [active] [ref=f4e312] [cursor=pointer]: I agree
+  - alert [ref=f4e313]

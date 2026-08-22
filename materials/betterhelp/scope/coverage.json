@@ -1,0 +1,180 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "frozen",
+  "dimensions": [
+    {
+      "id": "expanded-task",
+      "label": "Expanded task coverage",
+      "unit": "evidence-item",
+      "category": "offline-clone",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "WB018-T01",
+        "WB018-T02",
+        "WB018-T03",
+        "WB018-T04",
+        "WB018-T05",
+        "WB018-T06",
+        "WB018-T07",
+        "WB018-T08",
+        "WB018-T09",
+        "WB018-T10",
+        "WB018-T11",
+        "WB018-T12",
+        "WB018-T13",
+        "WB018-T14",
+        "WB018-T15",
+        "WB018-T16",
+        "WB018-T17",
+        "WB018-T18",
+        "WB018-T19",
+        "WB018-T20",
+        "WB018-T21",
+        "WB018-T22",
+        "WB018-T23"
+      ],
+      "satisfied_items": [],
+      "rationale": "A task is satisfied only after a reproducible local browser or full-suite result; the frozen source ledger leaves numerators to verification evidence.",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "direct"
+    },
+    {
+      "id": "source-public-functional",
+      "label": "Source public functional coverage",
+      "unit": "evidence-item",
+      "category": "offline-clone",
+      "required_evidence_kinds": [
+        "browser"
+      ],
+      "required_items": [
+        "home-navigation",
+        "get-started-step-1",
+        "individual-country-question",
+        "couples-transfer-prompt",
+        "teen-transfer-prompt",
+        "login-entry",
+        "password-reset-entry",
+        "faq-expanded",
+        "public-page-family",
+        "mobile-menu"
+      ],
+      "satisfied_items": [],
+      "rationale": "Satisfied by the two independent anonymous GET/HEAD Edge/Playwright evidence roots captured on 2026-08-22.",
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "unavailable"
+    },
+    {
+      "id": "visual",
+      "label": "Visual coverage",
+      "unit": "evidence-item",
+      "category": "offline-clone",
+      "required_evidence_kinds": [
+        "visual",
+        "independent-audit"
+      ],
+      "required_items": [
+        "home-desktop-1440x900",
+        "home-mobile-390x844",
+        "faq-desktop-1440x900",
+        "advice-desktop-1440x900",
+        "formal-three-frame-calibration",
+        "independent-blind-review"
+      ],
+      "satisfied_items": [],
+      "rationale": "Current frames and an independent review exist, but formal three-frame source stability calibration remains unavailable; verification evidence owns numerators.",
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "unavailable"
+    },
+    {
+      "id": "state",
+      "label": "State coverage",
+      "unit": "evidence-item",
+      "category": "offline-clone",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "source-public-states",
+        "candidate-validation",
+        "candidate-empty",
+        "candidate-permission",
+        "candidate-payment-declined",
+        "candidate-payment-retryable",
+        "candidate-confirmed",
+        "candidate-refresh",
+        "candidate-rescheduled",
+        "candidate-cancelled",
+        "candidate-reviewed"
+      ],
+      "satisfied_items": [],
+      "rationale": "Private candidate states require verification evidence from the final site suite and browser walk.",
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "direct"
+    },
+    {
+      "id": "role",
+      "label": "Role coverage",
+      "unit": "evidence-item",
+      "category": "offline-clone",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "anonymous-visitor",
+        "synthetic-member",
+        "isolation-member-fixture"
+      ],
+      "satisfied_items": [],
+      "rationale": "Anonymous source role is directly captured; local member and cross-actor isolation remain verification evidence.",
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "direct"
+    },
+    {
+      "id": "viewport",
+      "label": "Viewport coverage",
+      "unit": "evidence-item",
+      "category": "offline-clone",
+      "required_evidence_kinds": [
+        "browser",
+        "visual"
+      ],
+      "required_items": [
+        "desktop-1440x900",
+        "mobile-390x844",
+        "tablet-768x1024"
+      ],
+      "satisfied_items": [],
+      "rationale": "Frozen source evidence declares the viewport requirements; verification evidence owns numerators.",
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "unavailable"
+    },
+    {
+      "id": "runtime-closure",
+      "label": "Runtime and asset closure",
+      "unit": "evidence-item",
+      "category": "offline-clone",
+      "required_evidence_kinds": [
+        "network",
+        "migration",
+        "full-suite"
+      ],
+      "required_items": [
+        "asset-byte-closure",
+        "zero-remote-runtime",
+        "site-isolated-database",
+        "local-mailbox",
+        "local-sandbox-payment",
+        "migration-v4"
+      ],
+      "satisfied_items": [],
+      "rationale": "Static/live diagnostics and the site suite supply verification evidence; the frozen source ledger remains empty by schema.",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "direct"
+    }
+  ]
+}
