@@ -81,9 +81,12 @@ def test_subscription_has_more_than_five_meaningful_operations_and_local_approva
     review = client.get("/coffee-subscription/configure")
     assert "6 cups" in review.text
     assert "Freshly Ground" in review.text
+    assert "data-quantity-option='trace-six-cup'" in review.text
+    assert "TRACE COMPATIBILITY" in review.text
     response = client.post("/checkout", data=checkout_payload(owner))
     assert response.status_code == 200
     assert "Simulation complete" in response.text
+    assert "6 cups" in response.text
     assert "No subscription, email, address or payment was sent" in response.text
     duplicate = client.post("/checkout", data=checkout_payload(owner))
     assert duplicate.status_code == 200
