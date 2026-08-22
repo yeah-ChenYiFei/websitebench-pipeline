@@ -1,0 +1,45 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "frozen",
+  "dimensions": [
+    {
+      "id": "runtime",
+      "label": "Runtime isolation",
+      "unit": "journey",
+      "category": "candidate",
+      "required_evidence_kinds": ["network"],
+      "required_items": ["discover-review", "community-and-place-browse"],
+      "satisfied_items": [],
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "direct",
+      "rationale": "The frozen ledger records denominators only. The site browser check provides current numerator evidence: 70 of 70 homepage destinations completed and external_requests is empty."
+    },
+    {
+      "id": "review",
+      "label": "Review contract",
+      "unit": "journey",
+      "category": "candidate",
+      "required_evidence_kinds": ["browser"],
+      "required_items": ["submit-review", "register-participate-review-local"],
+      "satisfied_items": [],
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "direct",
+      "rationale": "The clone-local review journey is exercised by browser_check.py and test_app.py. The authenticated source submission terminal remains unavailable because no source write was performed."
+    },
+    {
+      "id": "catalog",
+      "label": "Searchable beer catalog",
+      "unit": "entity",
+      "category": "candidate",
+      "required_evidence_kinds": ["full-suite"],
+      "required_items": ["beer-catalog-240"],
+      "satisfied_items": [],
+      "population_size": 240,
+      "sample_size": 240,
+      "sampling_method": "Deterministic full-population search-result and detail-route assertions for every entry in candidate.beers in materials/beeradvocate/clone/tests/test_app.py.",
+      "source_evidence_kind": "inferred",
+      "local_contract_evidence_kind": "direct",
+      "rationale": "The candidate test suite searches for and opens the detail route of each of the 240 local entities. This does not claim that the synthetic catalog is a complete BeerAdvocate source catalog."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "offline-clone.rights-metadata.v2",
+  "site_id": "beeradvocate",
+  "categories": {
+    "trademark": {
+      "status": "not-documented",
+      "notes": "The captured first-party page marks BeerAdvocate and Respect Beer as registered marks and states All rights reserved; no redistribution license was observed.",
+      "evidence": [
+        {
+          "path": "materials/beeradvocate/source-current/ea1/01-home-desktop.txt",
+          "bytes": 4617
+        }
+      ]
+    },
+    "images": {
+      "status": "not-documented",
+      "notes": "The assets were captured for internal offline diagnostic use under the source-evidence policy. No license permitting redistribution of logos, labels, beer photos, or avatars was observed.",
+      "evidence": [
+        {
+          "path": "materials/beeradvocate/source-current/ea1/01-home-desktop.txt",
+          "bytes": 4617
+        }
+      ]
+    },
+    "fonts": {
+      "status": "not-documented",
+      "notes": "The source loaded font resources, but no font redistribution license was captured. The candidate therefore continues to use system fonts.",
+      "evidence": []
+    },
+    "content": {
+      "status": "not-documented",
+      "notes": "The captured page states Copyright 1996-2026 BeerAdvocate and All rights reserved; no content redistribution license was observed.",
+      "evidence": [
+        {
+          "path": "materials/beeradvocate/source-current/ea1/01-home-desktop.txt",
+          "bytes": 4617
+        }
+      ]
+    },
+    "code": {
+      "status": "documented",
+      "notes": "The clone implementation is authored within the WebsiteBench repository and is governed by the repository license; this does not grant rights to source-site trademarks, media, fonts, or content.",
+      "evidence": [
+        {
+          "path": "LICENSE",
+          "bytes": 11350
+        }
+      ]
+    }
+  }
+}

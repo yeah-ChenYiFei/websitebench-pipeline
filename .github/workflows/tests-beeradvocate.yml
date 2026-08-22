@@ -1,0 +1,22 @@
+name: diagnostics (beeradvocate)
+on:
+  pull_request:
+    paths:
+      - materials/beeradvocate/**
+      - .github/workflows/tests-beeradvocate.yml
+      - .github/workflows/clone-diagnostics.yml
+  push:
+    paths:
+      - materials/beeradvocate/**
+      - .github/workflows/tests-beeradvocate.yml
+      - .github/workflows/clone-diagnostics.yml
+permissions:
+  contents: read
+concurrency:
+  group: diagnostics-beeradvocate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  diagnostics:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: beeradvocate
