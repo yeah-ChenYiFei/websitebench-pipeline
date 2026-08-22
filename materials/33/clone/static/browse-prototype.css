@@ -209,3 +209,7 @@
   filter: brightness(1.55) contrast(.82) saturate(.9);
   opacity: .92;
 }
+
+.source-role-card h3 a { color: inherit; text-decoration: none; }
+.source-show-all-faq::after { content: "⌄"; margin-left: 7px; }
+.source-role-card-link::after { content: "→"; margin-left: 6px; }

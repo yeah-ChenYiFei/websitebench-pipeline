@@ -243,7 +243,7 @@ def test_browse_matches_observed_explore_categories_and_role_rows(
         ),
     )
     for title, image, salary, openings in expected_roles:
-        assert f">{title}</h3>" in html
+        assert f">{title}</a></h3>" in html
         assert f'src="{image}"' in html
         assert salary in html
         assert openings in html
@@ -338,7 +338,7 @@ def test_browse_lower_collections_match_the_supplied_and_playwright_evidence(
 
     assert lower.count('class="source-lower-course-card"') == 20
     assert lower.count('class="source-lower-degree-card"') == 0
-    assert lower.count('class="source-lower-skill-link"') == 6
+    assert lower.count('class="source-lower-skill-link"') == 8
     assert lower.count('class="source-lower-partner"') == 8
     assert lower.count("Show 8 more") == 2
 

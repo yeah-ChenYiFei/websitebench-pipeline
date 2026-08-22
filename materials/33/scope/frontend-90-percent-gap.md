@@ -1,5 +1,18 @@
 # Site 33 — frontend similarity: visual + structure status (2026-08-22, round 3)
 
+## Round-4 summary
+
+Structure crossed **0.90** (overall **0.903**): promo-card CTA texts exposed as
+separate links ("Get Coursera Plus" / "Save 30% today" / "Save 40% for 3
+months" on all four public pages), promo + FAQ + module arrows moved to CSS,
+home pathways renamed to the source's Coursera for Business/Enterprise/Teams,
+browse role-card title links + skill links extended, specialization skill
+chips aligned to the source's exact labels, course "Is this right for me?"
+button + "Show all" + module-info buttons, and the three FAQ questions on each
+of browse/course/specialization now carry button controls alongside their h3
+headings (source-observed dual semantics). Page scores: specialization 0.953,
+course 0.926, browse 0.909, login 0.894, search 0.885, home 0.850.
+
 ## Round-3 summary
 
 Round-3b control alignment: course related-course title links, skill chips as
@@ -83,8 +96,8 @@ the source/clone frontend-spec pairs (`scope/frontend-specs/`).
 | specialization | 0.914 | 1.00 / 1.00 | 0.81 | 1.00 | 0.647 |
 | login | 0.883 | 1.00 / 1.00 | 0.83 | 1.00 | 0.535 |
 
-Overall structure consistency: 0.888 (was 0.576 at the start of round 1,
-0.858 after round 2).
+Overall structure consistency: 0.903 (was 0.576 at the start of round 1,
+0.858 after round 2, 0.888 after round 3).
 
 Round-2 structure work: source-observed heading semantics everywhere (module
 titles, reviewer names, promo card titles, career roles, testimonial names as

@@ -393,3 +393,7 @@
 .source-role-card h3 a { color: inherit; text-decoration: none; }
 .source-role-card small { padding: 0 12px 13px; color: #536071; font-size: 10px; }
 .source-home-shell .source-outcomes { margin-top: 44px; }
+
+.link-button.primary::after, .source-section-heading a::after, .source-collection-copy .link-button.primary::after { content: "›"; margin-left: 6px; }
+
+.promo-cta::after { content: "→"; margin-left: 8px; }

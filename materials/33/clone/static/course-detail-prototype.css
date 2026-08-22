@@ -63,7 +63,7 @@
 .source-course-detail-orbit span:nth-child(2) { top: 100px; left: 105px; width: 245px; height: 245px; border-width: 46px; transform: rotate(8deg); }
 .source-course-detail-orbit span:nth-child(3) { right: -25px; bottom: -35px; width: 190px; height: 190px; border-width: 38px; transform: rotate(62deg); }
 .source-course-assistant { position: absolute; right: 75px; bottom: 88px; z-index: 2; display: flex; align-items: center; border: 0; border-radius: 24px; background: #a9f4f6; color: #17324f; font-size: 12px; cursor: pointer; font-family: inherit; }
-.source-course-assistant span { padding: 11px 14px; }
+.source-course-assistant::before { content: "Ask Coursera"; padding: 11px 14px; }
 .source-course-assistant strong { margin: 3px; border: 3px solid #91c8ff; border-radius: 20px; padding: 8px 13px; background: #fff; }
 
 .source-course-detail-stats {
@@ -261,3 +261,6 @@
   .source-related-courses > div,
   .source-course-testimonials > div { grid-template-columns: 1fr 1fr; }
 }
+
+.source-course-module-info { margin-left: 8px; border: 0; background: transparent; color: #1466d9; font-size: 12px; font-weight: 700; cursor: pointer; }
+.source-course-faq summary h3 button, .source-browse-faq-list summary h3 button, .source-specialization-faq summary h3 button { border: 0; background: transparent; padding: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }

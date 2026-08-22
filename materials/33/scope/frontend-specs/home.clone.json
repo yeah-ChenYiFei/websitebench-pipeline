@@ -2,7 +2,7 @@
   "schema_version": "websitebench.offline-clone.frontend-spec.v1",
   "authority": "diagnostic-only",
   "target_url": "http://127.0.0.1:8899/",
-  "captured_at": "2026-08-22T03:37:46.540735+00:00",
+  "captured_at": "2026-08-22T03:46:43.861556+00:00",
   "viewport": {
     "width": 1692,
     "height": 979
@@ -35,7 +35,7 @@
       },
       {
         "level": 3,
-        "text": "Most popular ›"
+        "text": "Most popular"
       },
       {
         "level": 3,
@@ -51,7 +51,7 @@
       },
       {
         "level": 3,
-        "text": "Hot new releases ›"
+        "text": "Hot new releases"
       },
       {
         "level": 3,
@@ -67,7 +67,7 @@
       },
       {
         "level": 3,
-        "text": "Trending AI courses ›"
+        "text": "Trending AI courses"
       },
       {
         "level": 3,
@@ -143,7 +143,7 @@
       },
       {
         "level": 3,
-        "text": "Python ›"
+        "text": "Python"
       },
       {
         "level": 3,
@@ -159,7 +159,7 @@
       },
       {
         "level": 3,
-        "text": "Data Analytics ›"
+        "text": "Data Analytics"
       },
       {
         "level": 3,
@@ -175,7 +175,7 @@
       },
       {
         "level": 3,
-        "text": "Project Management ›"
+        "text": "Project Management"
       },
       {
         "level": 3,
@@ -746,7 +746,7 @@
       "id": "c-23",
       "kind": "a",
       "type": "",
-      "text": "Most popular ›",
+      "text": "Most popular",
       "aria_label": "",
       "href": "/explore/most-popular-courses",
       "action": "",
@@ -865,7 +865,7 @@
       "id": "c-30",
       "kind": "a",
       "type": "",
-      "text": "Hot new releases ›",
+      "text": "Hot new releases",
       "aria_label": "",
       "href": "/explore/new-on-coursera",
       "action": "",
@@ -984,7 +984,7 @@
       "id": "c-37",
       "kind": "a",
       "type": "",
-      "text": "Trending AI courses ›",
+      "text": "Trending AI courses",
       "aria_label": "",
       "href": "/browse",
       "action": "",
@@ -1103,7 +1103,7 @@
       "id": "c-44",
       "kind": "a",
       "type": "",
-      "text": "Explore programs ›",
+      "text": "Explore programs",
       "aria_label": "",
       "href": "/search",
       "action": "",
@@ -1339,9 +1339,26 @@
     },
     {
       "id": "c-58",
+      "kind": "div",
+      "type": "",
+      "text": "COURSERA PLUS Break down barriers to learning with big savings Get Coursera Plus Save 40% for 3 months",
+      "aria_label": "",
+      "href": "",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "link",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-59",
       "kind": "a",
       "type": "",
-      "text": "COURSERA PLUS · SAVE 40% FOR 3 MONTHS Break down barriers to learning with big savings Get Coursera Plus →",
+      "text": "Get Coursera Plus",
       "aria_label": "",
       "href": "/courseraplus/special/cplus-monthly-august-2026-global",
       "action": "",
@@ -1355,10 +1372,44 @@
       "options": []
     },
     {
-      "id": "c-59",
+      "id": "c-60",
       "kind": "a",
       "type": "",
-      "text": "FOR BUSINESS Start with easy savings for hard-working teams Save 30% today →",
+      "text": "Save 40% for 3 months",
+      "aria_label": "",
+      "href": "/courseraplus/special/cplus-monthly-august-2026-global",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-61",
+      "kind": "div",
+      "type": "",
+      "text": "FOR BUSINESS Start with easy savings for hard-working teams Save 30% today",
+      "aria_label": "",
+      "href": "",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "link",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-62",
+      "kind": "a",
+      "type": "",
+      "text": "Save 30% today",
       "aria_label": "",
       "href": "/business/teams",
       "action": "",
@@ -1372,7 +1423,7 @@
       "options": []
     },
     {
-      "id": "c-60",
+      "id": "c-63",
       "kind": "a",
       "type": "",
       "text": "Google",
@@ -1389,7 +1440,7 @@
       "options": []
     },
     {
-      "id": "c-61",
+      "id": "c-64",
       "kind": "a",
       "type": "",
       "text": "IBM",
@@ -1406,7 +1457,7 @@
       "options": []
     },
     {
-      "id": "c-62",
+      "id": "c-65",
       "kind": "a",
       "type": "",
       "text": "Microsoft",
@@ -1423,7 +1474,7 @@
       "options": []
     },
     {
-      "id": "c-63",
+      "id": "c-66",
       "kind": "a",
       "type": "",
       "text": "University of Illinois",
@@ -1440,7 +1491,7 @@
       "options": []
     },
     {
-      "id": "c-64",
+      "id": "c-67",
       "kind": "a",
       "type": "",
       "text": "OpenAI",
@@ -1457,7 +1508,7 @@
       "options": []
     },
     {
-      "id": "c-65",
+      "id": "c-68",
       "kind": "a",
       "type": "",
       "text": "Anthropic",
@@ -1474,7 +1525,7 @@
       "options": []
     },
     {
-      "id": "c-66",
+      "id": "c-69",
       "kind": "a",
       "type": "",
       "text": "DeepLearning.AI",
@@ -1491,7 +1542,7 @@
       "options": []
     },
     {
-      "id": "c-67",
+      "id": "c-70",
       "kind": "a",
       "type": "",
       "text": "Stanford University",
@@ -1508,7 +1559,7 @@
       "options": []
     },
     {
-      "id": "c-68",
+      "id": "c-71",
       "kind": "a",
       "type": "",
       "text": "University of Pennsylvania",
@@ -1525,7 +1576,7 @@
       "options": []
     },
     {
-      "id": "c-69",
+      "id": "c-72",
       "kind": "a",
       "type": "",
       "text": "University of Michigan",
@@ -1542,27 +1593,10 @@
       "options": []
     },
     {
-      "id": "c-70",
+      "id": "c-73",
       "kind": "a",
       "type": "",
-      "text": "Launch a new career",
-      "aria_label": "",
-      "href": "/career-academy",
-      "action": "",
-      "method": "",
-      "name": "",
-      "placeholder": "",
-      "required": false,
-      "disabled": false,
-      "role": "",
-      "data_testid": "",
-      "options": []
-    },
-    {
-      "id": "c-71",
-      "kind": "a",
-      "type": "",
-      "text": "Try Coursera for Business",
+      "text": "Coursera for Business",
       "aria_label": "",
       "href": "/business",
       "action": "",
@@ -1576,7 +1610,41 @@
       "options": []
     },
     {
-      "id": "c-72",
+      "id": "c-74",
+      "kind": "a",
+      "type": "",
+      "text": "Coursera for Enterprise",
+      "aria_label": "",
+      "href": "/enterprise",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-75",
+      "kind": "a",
+      "type": "",
+      "text": "Coursera for Teams",
+      "aria_label": "",
+      "href": "/business/teams",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-76",
       "kind": "a",
       "type": "",
       "text": "Earn a degree",
@@ -1593,7 +1661,24 @@
       "options": []
     },
     {
-      "id": "c-73",
+      "id": "c-77",
+      "kind": "a",
+      "type": "",
+      "text": "Bachelor’s programs",
+      "aria_label": "",
+      "href": "/degrees/bachelors",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-78",
       "kind": "a",
       "type": "",
       "text": "Business",
@@ -1610,7 +1695,7 @@
       "options": []
     },
     {
-      "id": "c-74",
+      "id": "c-79",
       "kind": "a",
       "type": "",
       "text": "Artificial Intelligence",
@@ -1627,7 +1712,41 @@
       "options": []
     },
     {
-      "id": "c-75",
+      "id": "c-80",
+      "kind": "a",
+      "type": "",
+      "text": "Generative AI",
+      "aria_label": "",
+      "href": "/courses?query=generative%20ai",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-81",
+      "kind": "a",
+      "type": "",
+      "text": "English speaking",
+      "aria_label": "",
+      "href": "/courses?query=english",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-82",
       "kind": "a",
       "type": "",
       "text": "Data Science",
@@ -1644,7 +1763,7 @@
       "options": []
     },
     {
-      "id": "c-76",
+      "id": "c-83",
       "kind": "a",
       "type": "",
       "text": "Computer Science",
@@ -1661,7 +1780,7 @@
       "options": []
     },
     {
-      "id": "c-77",
+      "id": "c-84",
       "kind": "a",
       "type": "",
       "text": "Information Technology",
@@ -1678,7 +1797,7 @@
       "options": []
     },
     {
-      "id": "c-78",
+      "id": "c-85",
       "kind": "a",
       "type": "",
       "text": "Personal Development",
@@ -1695,7 +1814,7 @@
       "options": []
     },
     {
-      "id": "c-79",
+      "id": "c-86",
       "kind": "a",
       "type": "",
       "text": "Healthcare",
@@ -1712,7 +1831,7 @@
       "options": []
     },
     {
-      "id": "c-80",
+      "id": "c-87",
       "kind": "a",
       "type": "",
       "text": "Language Learning",
@@ -1729,7 +1848,7 @@
       "options": []
     },
     {
-      "id": "c-81",
+      "id": "c-88",
       "kind": "a",
       "type": "",
       "text": "Social Sciences",
@@ -1746,7 +1865,7 @@
       "options": []
     },
     {
-      "id": "c-82",
+      "id": "c-89",
       "kind": "a",
       "type": "",
       "text": "Arts and Humanities",
@@ -1763,7 +1882,7 @@
       "options": []
     },
     {
-      "id": "c-83",
+      "id": "c-90",
       "kind": "a",
       "type": "",
       "text": "Physical Science and Engineering",
@@ -1780,7 +1899,7 @@
       "options": []
     },
     {
-      "id": "c-84",
+      "id": "c-91",
       "kind": "a",
       "type": "",
       "text": "Math and Logic",
@@ -1797,10 +1916,10 @@
       "options": []
     },
     {
-      "id": "c-85",
+      "id": "c-92",
       "kind": "a",
       "type": "",
-      "text": "Learn more ›",
+      "text": "Learn more",
       "aria_label": "",
       "href": "/google-career-certificates",
       "action": "",
@@ -1814,7 +1933,7 @@
       "options": []
     },
     {
-      "id": "c-86",
+      "id": "c-93",
       "kind": "div",
       "type": "",
       "text": "Google Google AI Essentials Specialization ★ 4.8",
@@ -1831,7 +1950,7 @@
       "options": []
     },
     {
-      "id": "c-87",
+      "id": "c-94",
       "kind": "a",
       "type": "",
       "text": "Google AI Essentials",
@@ -1848,7 +1967,7 @@
       "options": []
     },
     {
-      "id": "c-88",
+      "id": "c-95",
       "kind": "div",
       "type": "",
       "text": "Google Google Advanced Data Analytics Professional Certificate ★ 4.8",
@@ -1865,7 +1984,7 @@
       "options": []
     },
     {
-      "id": "c-89",
+      "id": "c-96",
       "kind": "a",
       "type": "",
       "text": "Google Advanced Data Analytics",
@@ -1882,7 +2001,7 @@
       "options": []
     },
     {
-      "id": "c-90",
+      "id": "c-97",
       "kind": "div",
       "type": "",
       "text": "Google Google Project Management Professional Certificate ★ 4.8",
@@ -1899,7 +2018,7 @@
       "options": []
     },
     {
-      "id": "c-91",
+      "id": "c-98",
       "kind": "a",
       "type": "",
       "text": "Google Project Management",
@@ -1916,7 +2035,7 @@
       "options": []
     },
     {
-      "id": "c-92",
+      "id": "c-99",
       "kind": "div",
       "type": "",
       "text": "Google Google Cybersecurity Professional Certificate ★ 4.8",
@@ -1933,7 +2052,7 @@
       "options": []
     },
     {
-      "id": "c-93",
+      "id": "c-100",
       "kind": "a",
       "type": "",
       "text": "Google Cybersecurity",
@@ -1950,10 +2069,10 @@
       "options": []
     },
     {
-      "id": "c-94",
+      "id": "c-101",
       "kind": "a",
       "type": "",
-      "text": "Python ›",
+      "text": "Python",
       "aria_label": "",
       "href": "/search?query=Python",
       "action": "",
@@ -1967,7 +2086,7 @@
       "options": []
     },
     {
-      "id": "c-95",
+      "id": "c-102",
       "kind": "div",
       "type": "",
       "text": "University of Michigan Python for Everybody Specialization · 4.8 ★",
@@ -1984,7 +2103,7 @@
       "options": []
     },
     {
-      "id": "c-96",
+      "id": "c-103",
       "kind": "a",
       "type": "",
       "text": "Python for Everybody",
@@ -2001,7 +2120,7 @@
       "options": []
     },
     {
-      "id": "c-97",
+      "id": "c-104",
       "kind": "div",
       "type": "",
       "text": "University of Michigan Python 3 Programming Specialization · 4.8 ★",
@@ -2018,7 +2137,7 @@
       "options": []
     },
     {
-      "id": "c-98",
+      "id": "c-105",
       "kind": "a",
       "type": "",
       "text": "Python 3 Programming",
@@ -2035,7 +2154,7 @@
       "options": []
     },
     {
-      "id": "c-99",
+      "id": "c-106",
       "kind": "div",
       "type": "",
       "text": "Packt Data Analysis with Pandas and Python Specialization · 4.6 ★",
@@ -2052,7 +2171,7 @@
       "options": []
     },
     {
-      "id": "c-100",
+      "id": "c-107",
       "kind": "a",
       "type": "",
       "text": "Data Analysis with Pandas and Python",
@@ -2069,10 +2188,10 @@
       "options": []
     },
     {
-      "id": "c-101",
+      "id": "c-108",
       "kind": "a",
       "type": "",
-      "text": "Data Analytics ›",
+      "text": "Data Analytics",
       "aria_label": "",
       "href": "/search?query=Data%20Analytics",
       "action": "",
@@ -2086,7 +2205,7 @@
       "options": []
     },
     {
-      "id": "c-102",
+      "id": "c-109",
       "kind": "div",
       "type": "",
       "text": "Macquarie University Excel Skills for Business Specialization · 4.9 ★",
@@ -2103,7 +2222,7 @@
       "options": []
     },
     {
-      "id": "c-103",
+      "id": "c-110",
       "kind": "a",
       "type": "",
       "text": "Excel Skills for Business",
@@ -2120,7 +2239,7 @@
       "options": []
     },
     {
-      "id": "c-104",
+      "id": "c-111",
       "kind": "div",
       "type": "",
       "text": "IBM IBM Data Analyst Professional Certificate · 4.7 ★",
@@ -2137,7 +2256,7 @@
       "options": []
     },
     {
-      "id": "c-105",
+      "id": "c-112",
       "kind": "a",
       "type": "",
       "text": "IBM Data Analyst",
@@ -2154,7 +2273,7 @@
       "options": []
     },
     {
-      "id": "c-106",
+      "id": "c-113",
       "kind": "div",
       "type": "",
       "text": "Google Google Advanced Data Analytics Professional Certificate · 4.8 ★",
@@ -2171,7 +2290,7 @@
       "options": []
     },
     {
-      "id": "c-107",
+      "id": "c-114",
       "kind": "a",
       "type": "",
       "text": "Google Advanced Data Analytics",
@@ -2188,10 +2307,10 @@
       "options": []
     },
     {
-      "id": "c-108",
+      "id": "c-115",
       "kind": "a",
       "type": "",
-      "text": "Project Management ›",
+      "text": "Project Management",
       "aria_label": "",
       "href": "/search?query=Project%20Management",
       "action": "",
@@ -2205,7 +2324,7 @@
       "options": []
     },
     {
-      "id": "c-109",
+      "id": "c-116",
       "kind": "div",
       "type": "",
       "text": "Google Foundations of Project Management Course · 4.9 ★",
@@ -2222,7 +2341,7 @@
       "options": []
     },
     {
-      "id": "c-110",
+      "id": "c-117",
       "kind": "a",
       "type": "",
       "text": "Foundations of Project Management",
@@ -2239,7 +2358,7 @@
       "options": []
     },
     {
-      "id": "c-111",
+      "id": "c-118",
       "kind": "div",
       "type": "",
       "text": "IBM IBM Project Manager Professional Certificate · 4.8 ★",
@@ -2256,7 +2375,7 @@
       "options": []
     },
     {
-      "id": "c-112",
+      "id": "c-119",
       "kind": "a",
       "type": "",
       "text": "IBM Project Manager",
@@ -2273,7 +2392,7 @@
       "options": []
     },
     {
-      "id": "c-113",
+      "id": "c-120",
       "kind": "div",
       "type": "",
       "text": "Microsoft Microsoft Project Management: Build Job-Ready Skills Professional Certificate · 4.7 ★",
@@ -2290,7 +2409,7 @@
       "options": []
     },
     {
-      "id": "c-114",
+      "id": "c-121",
       "kind": "a",
       "type": "",
       "text": "Microsoft Project Management: Build Job-Ready Skills",
@@ -2307,10 +2426,10 @@
       "options": []
     },
     {
-      "id": "c-115",
+      "id": "c-122",
       "kind": "a",
       "type": "",
-      "text": "Explore programs ›",
+      "text": "Explore programs",
       "aria_label": "",
       "href": "/explore/generative-ai",
       "action": "",
@@ -2324,7 +2443,7 @@
       "options": []
     },
     {
-      "id": "c-116",
+      "id": "c-123",
       "kind": "button",
       "type": "button",
       "text": "Get Started",
@@ -2341,7 +2460,7 @@
       "options": []
     },
     {
-      "id": "c-117",
+      "id": "c-124",
       "kind": "button",
       "type": "button",
       "text": "Bestsellers",
@@ -2358,7 +2477,7 @@
       "options": []
     },
     {
-      "id": "c-118",
+      "id": "c-125",
       "kind": "button",
       "type": "button",
       "text": "Tools",
@@ -2375,7 +2494,7 @@
       "options": []
     },
     {
-      "id": "c-119",
+      "id": "c-126",
       "kind": "button",
       "type": "button",
       "text": "Advanced",
@@ -2392,7 +2511,7 @@
       "options": []
     },
     {
-      "id": "c-120",
+      "id": "c-127",
       "kind": "button",
       "type": "button",
       "text": "Agentic AI",
@@ -2409,7 +2528,7 @@
       "options": []
     },
     {
-      "id": "c-121",
+      "id": "c-128",
       "kind": "button",
       "type": "button",
       "text": "Resume Builder",
@@ -2426,7 +2545,7 @@
       "options": []
     },
     {
-      "id": "c-122",
+      "id": "c-129",
       "kind": "div",
       "type": "",
       "text": "Google Google AI Essentials Specialization ★ 4.8",
@@ -2443,7 +2562,7 @@
       "options": []
     },
     {
-      "id": "c-123",
+      "id": "c-130",
       "kind": "a",
       "type": "",
       "text": "Google AI Essentials",
@@ -2460,7 +2579,7 @@
       "options": []
     },
     {
-      "id": "c-124",
+      "id": "c-131",
       "kind": "div",
       "type": "",
       "text": "IBM AI Foundations for Everyone Specialization ★ 4.7",
@@ -2477,7 +2596,7 @@
       "options": []
     },
     {
-      "id": "c-125",
+      "id": "c-132",
       "kind": "a",
       "type": "",
       "text": "AI Foundations for Everyone",
@@ -2494,7 +2613,7 @@
       "options": []
     },
     {
-      "id": "c-126",
+      "id": "c-133",
       "kind": "div",
       "type": "",
       "text": "Vanderbilt University Prompt Engineering Specialization ★ 4.8",
@@ -2511,7 +2630,7 @@
       "options": []
     },
     {
-      "id": "c-127",
+      "id": "c-134",
       "kind": "a",
       "type": "",
       "text": "Prompt Engineering",
@@ -2528,7 +2647,7 @@
       "options": []
     },
     {
-      "id": "c-128",
+      "id": "c-135",
       "kind": "div",
       "type": "",
       "text": "Google Google Prompting Essentials Specialization ★ 4.8",
@@ -2545,7 +2664,7 @@
       "options": []
     },
     {
-      "id": "c-129",
+      "id": "c-136",
       "kind": "a",
       "type": "",
       "text": "Google Prompting Essentials",
@@ -2562,7 +2681,7 @@
       "options": []
     },
     {
-      "id": "c-130",
+      "id": "c-137",
       "kind": "a",
       "type": "",
       "text": "▣ Start my career",
@@ -2579,7 +2698,7 @@
       "options": []
     },
     {
-      "id": "c-131",
+      "id": "c-138",
       "kind": "a",
       "type": "",
       "text": "▣ Change my career",
@@ -2596,7 +2715,7 @@
       "options": []
     },
     {
-      "id": "c-132",
+      "id": "c-139",
       "kind": "a",
       "type": "",
       "text": "▣ Grow in my current role",
@@ -2613,7 +2732,7 @@
       "options": []
     },
     {
-      "id": "c-133",
+      "id": "c-140",
       "kind": "a",
       "type": "",
       "text": "▣ Explore topics outside of work",
@@ -2630,10 +2749,10 @@
       "options": []
     },
     {
-      "id": "c-134",
+      "id": "c-141",
       "kind": "a",
       "type": "",
-      "text": "Explore all ›",
+      "text": "Explore all",
       "aria_label": "",
       "href": "/career-academy",
       "action": "",
@@ -2647,7 +2766,7 @@
       "options": []
     },
     {
-      "id": "c-135",
+      "id": "c-142",
       "kind": "div",
       "type": "",
       "text": "Data Scientist Median salary: $125,000",
@@ -2664,7 +2783,7 @@
       "options": []
     },
     {
-      "id": "c-136",
+      "id": "c-143",
       "kind": "a",
       "type": "",
       "text": "Data Scientist",
@@ -2681,7 +2800,7 @@
       "options": []
     },
     {
-      "id": "c-137",
+      "id": "c-144",
       "kind": "div",
       "type": "",
       "text": "Machine Learning Engineer Median salary: $145,000",
@@ -2698,7 +2817,7 @@
       "options": []
     },
     {
-      "id": "c-138",
+      "id": "c-145",
       "kind": "a",
       "type": "",
       "text": "Machine Learning Engineer",
@@ -2715,7 +2834,7 @@
       "options": []
     },
     {
-      "id": "c-139",
+      "id": "c-146",
       "kind": "div",
       "type": "",
       "text": "Content Creator Median salary: $116,000",
@@ -2732,7 +2851,7 @@
       "options": []
     },
     {
-      "id": "c-140",
+      "id": "c-147",
       "kind": "a",
       "type": "",
       "text": "Content Creator",
@@ -2749,7 +2868,7 @@
       "options": []
     },
     {
-      "id": "c-141",
+      "id": "c-148",
       "kind": "div",
       "type": "",
       "text": "Data Analyst Median salary: $103,000",
@@ -2766,7 +2885,7 @@
       "options": []
     },
     {
-      "id": "c-142",
+      "id": "c-149",
       "kind": "a",
       "type": "",
       "text": "Data Analyst",
@@ -2783,7 +2902,7 @@
       "options": []
     },
     {
-      "id": "c-143",
+      "id": "c-150",
       "kind": "div",
       "type": "",
       "text": "Business Intelligence Analyst Median salary: $116,000",
@@ -2800,7 +2919,7 @@
       "options": []
     },
     {
-      "id": "c-144",
+      "id": "c-151",
       "kind": "a",
       "type": "",
       "text": "Business Intelligence Analyst",
@@ -2817,7 +2936,7 @@
       "options": []
     },
     {
-      "id": "c-145",
+      "id": "c-152",
       "kind": "a",
       "type": "",
       "text": "91% of learners achieved a positive career outcome",
@@ -2834,10 +2953,10 @@
       "options": []
     },
     {
-      "id": "c-146",
+      "id": "c-153",
       "kind": "a",
       "type": "",
-      "text": "Learn more ›",
+      "text": "Learn more",
       "aria_label": "",
       "href": "/explore/learner-outcomes",
       "action": "",
@@ -2851,7 +2970,7 @@
       "options": []
     },
     {
-      "id": "c-147",
+      "id": "c-154",
       "kind": "button",
       "type": "button",
       "text": "Is Coursera accredited, and are Coursera certificates recognized by employers?",
@@ -2868,7 +2987,7 @@
       "options": []
     },
     {
-      "id": "c-148",
+      "id": "c-155",
       "kind": "button",
       "type": "button",
       "text": "Is a Coursera certificate worth it?",
@@ -2885,7 +3004,7 @@
       "options": []
     },
     {
-      "id": "c-149",
+      "id": "c-156",
       "kind": "button",
       "type": "button",
       "text": "What is Coursera Plus, and is it worth it?",
@@ -2902,7 +3021,7 @@
       "options": []
     },
     {
-      "id": "c-150",
+      "id": "c-157",
       "kind": "button",
       "type": "button",
       "text": "Does Coursera offer free online courses?",
@@ -2919,7 +3038,7 @@
       "options": []
     },
     {
-      "id": "c-151",
+      "id": "c-158",
       "kind": "button",
       "type": "button",
       "text": "What are the most popular courses on Coursera?",
@@ -2936,7 +3055,7 @@
       "options": []
     },
     {
-      "id": "c-152",
+      "id": "c-159",
       "kind": "button",
       "type": "button",
       "text": "How can Coursera help me get a job or advance my career?",
@@ -2953,7 +3072,7 @@
       "options": []
     },
     {
-      "id": "c-153",
+      "id": "c-160",
       "kind": "button",
       "type": "button",
       "text": "What is Coursera for Business, and how much does it cost?",
@@ -2970,7 +3089,7 @@
       "options": []
     },
     {
-      "id": "c-154",
+      "id": "c-161",
       "kind": "a",
       "type": "",
       "text": "Accounting",
@@ -2987,7 +3106,7 @@
       "options": []
     },
     {
-      "id": "c-155",
+      "id": "c-162",
       "kind": "a",
       "type": "",
       "text": "Artificial Intelligence (AI)",
@@ -3004,7 +3123,7 @@
       "options": []
     },
     {
-      "id": "c-156",
+      "id": "c-163",
       "kind": "a",
       "type": "",
       "text": "Cybersecurity",
@@ -3021,7 +3140,7 @@
       "options": []
     },
     {
-      "id": "c-157",
+      "id": "c-164",
       "kind": "a",
       "type": "",
       "text": "Data Analytics",
@@ -3038,7 +3157,7 @@
       "options": []
     },
     {
-      "id": "c-158",
+      "id": "c-165",
       "kind": "a",
       "type": "",
       "text": "Digital Marketing",
@@ -3055,7 +3174,7 @@
       "options": []
     },
     {
-      "id": "c-159",
+      "id": "c-166",
       "kind": "a",
       "type": "",
       "text": "Human Resources (HR)",
@@ -3072,7 +3191,7 @@
       "options": []
     },
     {
-      "id": "c-160",
+      "id": "c-167",
       "kind": "a",
       "type": "",
       "text": "Microsoft Excel",
@@ -3089,7 +3208,7 @@
       "options": []
     },
     {
-      "id": "c-161",
+      "id": "c-168",
       "kind": "a",
       "type": "",
       "text": "Project Management",
@@ -3106,7 +3225,7 @@
       "options": []
     },
     {
-      "id": "c-162",
+      "id": "c-169",
       "kind": "a",
       "type": "",
       "text": "Python",
@@ -3123,7 +3242,7 @@
       "options": []
     },
     {
-      "id": "c-163",
+      "id": "c-170",
       "kind": "a",
       "type": "",
       "text": "SQL",
@@ -3140,7 +3259,7 @@
       "options": []
     },
     {
-      "id": "c-164",
+      "id": "c-171",
       "kind": "a",
       "type": "",
       "text": "Google AI Certificate",
@@ -3157,7 +3276,7 @@
       "options": []
     },
     {
-      "id": "c-165",
+      "id": "c-172",
       "kind": "a",
       "type": "",
       "text": "Google Cybersecurity Certificate",
@@ -3174,7 +3293,7 @@
       "options": []
     },
     {
-      "id": "c-166",
+      "id": "c-173",
       "kind": "a",
       "type": "",
       "text": "Google Data Analytics Certificate",
@@ -3191,7 +3310,7 @@
       "options": []
     },
     {
-      "id": "c-167",
+      "id": "c-174",
       "kind": "a",
       "type": "",
       "text": "Google IT Support Certificate",
@@ -3208,7 +3327,7 @@
       "options": []
     },
     {
-      "id": "c-168",
+      "id": "c-175",
       "kind": "a",
       "type": "",
       "text": "Google Project Management Certificate",
@@ -3225,7 +3344,7 @@
       "options": []
     },
     {
-      "id": "c-169",
+      "id": "c-176",
       "kind": "a",
       "type": "",
       "text": "Google UX Design Certificate",
@@ -3242,7 +3361,7 @@
       "options": []
     },
     {
-      "id": "c-170",
+      "id": "c-177",
       "kind": "a",
       "type": "",
       "text": "IBM AI Engineering Certificate",
@@ -3259,7 +3378,7 @@
       "options": []
     },
     {
-      "id": "c-171",
+      "id": "c-178",
       "kind": "a",
       "type": "",
       "text": "IBM AI Product Manager Certificate",
@@ -3276,7 +3395,7 @@
       "options": []
     },
     {
-      "id": "c-172",
+      "id": "c-179",
       "kind": "a",
       "type": "",
       "text": "IBM Data Science Certificate",
@@ -3293,7 +3412,7 @@
       "options": []
     },
     {
-      "id": "c-173",
+      "id": "c-180",
       "kind": "a",
       "type": "",
       "text": "Intuit Academy Bookkeeping Certificate",
@@ -3310,7 +3429,7 @@
       "options": []
     },
     {
-      "id": "c-174",
+      "id": "c-181",
       "kind": "a",
       "type": "",
       "text": "AI Essentials Specialization",
@@ -3327,7 +3446,7 @@
       "options": []
     },
     {
-      "id": "c-175",
+      "id": "c-182",
       "kind": "a",
       "type": "",
       "text": "AI For Business Specialization",
@@ -3344,7 +3463,7 @@
       "options": []
     },
     {
-      "id": "c-176",
+      "id": "c-183",
       "kind": "a",
       "type": "",
       "text": "AI For Everyone Course",
@@ -3361,7 +3480,7 @@
       "options": []
     },
     {
-      "id": "c-177",
+      "id": "c-184",
       "kind": "a",
       "type": "",
       "text": "AI in Healthcare Specialization",
@@ -3378,7 +3497,7 @@
       "options": []
     },
     {
-      "id": "c-178",
+      "id": "c-185",
       "kind": "a",
       "type": "",
       "text": "Deep Learning Specialization",
@@ -3395,7 +3514,7 @@
       "options": []
     },
     {
-      "id": "c-179",
+      "id": "c-186",
       "kind": "a",
       "type": "",
       "text": "Excel Skills for Business Specialization",
@@ -3412,7 +3531,7 @@
       "options": []
     },
     {
-      "id": "c-180",
+      "id": "c-187",
       "kind": "a",
       "type": "",
       "text": "Financial Markets Course",
@@ -3429,7 +3548,7 @@
       "options": []
     },
     {
-      "id": "c-181",
+      "id": "c-188",
       "kind": "a",
       "type": "",
       "text": "Machine Learning Specialization",
@@ -3446,7 +3565,7 @@
       "options": []
     },
     {
-      "id": "c-182",
+      "id": "c-189",
       "kind": "a",
       "type": "",
       "text": "Prompt Engineering for ChatGPT Course",
@@ -3463,7 +3582,7 @@
       "options": []
     },
     {
-      "id": "c-183",
+      "id": "c-190",
       "kind": "a",
       "type": "",
       "text": "Python for Everybody Specialization",
@@ -3480,7 +3599,7 @@
       "options": []
     },
     {
-      "id": "c-184",
+      "id": "c-191",
       "kind": "a",
       "type": "",
       "text": "Career Aptitude Test",
@@ -3497,7 +3616,7 @@
       "options": []
     },
     {
-      "id": "c-185",
+      "id": "c-192",
       "kind": "a",
       "type": "",
       "text": "CAPM Certification Requirements",
@@ -3514,7 +3633,7 @@
       "options": []
     },
     {
-      "id": "c-186",
+      "id": "c-193",
       "kind": "a",
       "type": "",
       "text": "CompTIA A+ Certification Requirements",
@@ -3531,7 +3650,7 @@
       "options": []
     },
     {
-      "id": "c-187",
+      "id": "c-194",
       "kind": "a",
       "type": "",
       "text": "CompTIA Security+ Certification Requirements",
@@ -3548,7 +3667,7 @@
       "options": []
     },
     {
-      "id": "c-188",
+      "id": "c-195",
       "kind": "a",
       "type": "",
       "text": "Essential IT Certifications",
@@ -3565,7 +3684,7 @@
       "options": []
     },
     {
-      "id": "c-189",
+      "id": "c-196",
       "kind": "a",
       "type": "",
       "text": "High-Income Skills to Learn",
@@ -3582,7 +3701,7 @@
       "options": []
     },
     {
-      "id": "c-190",
+      "id": "c-197",
       "kind": "a",
       "type": "",
       "text": "How to Learn Artificial Intelligence",
@@ -3599,7 +3718,7 @@
       "options": []
     },
     {
-      "id": "c-191",
+      "id": "c-198",
       "kind": "a",
       "type": "",
       "text": "PMP Certification Requirements",
@@ -3616,7 +3735,7 @@
       "options": []
     },
     {
-      "id": "c-192",
+      "id": "c-199",
       "kind": "a",
       "type": "",
       "text": "Popular Cybersecurity Certifications",
@@ -3633,7 +3752,7 @@
       "options": []
     },
     {
-      "id": "c-193",
+      "id": "c-200",
       "kind": "a",
       "type": "",
       "text": "Share your Coursera learning story",
@@ -3650,7 +3769,7 @@
       "options": []
     },
     {
-      "id": "c-194",
+      "id": "c-201",
       "kind": "a",
       "type": "",
       "text": "About",
@@ -3667,7 +3786,7 @@
       "options": []
     },
     {
-      "id": "c-195",
+      "id": "c-202",
       "kind": "a",
       "type": "",
       "text": "What We Offer",
@@ -3684,7 +3803,7 @@
       "options": []
     },
     {
-      "id": "c-196",
+      "id": "c-203",
       "kind": "a",
       "type": "",
       "text": "Leadership",
@@ -3701,7 +3820,7 @@
       "options": []
     },
     {
-      "id": "c-197",
+      "id": "c-204",
       "kind": "a",
       "type": "",
       "text": "Careers",
@@ -3718,7 +3837,7 @@
       "options": []
     },
     {
-      "id": "c-198",
+      "id": "c-205",
       "kind": "a",
       "type": "",
       "text": "Catalog",
@@ -3735,7 +3854,7 @@
       "options": []
     },
     {
-      "id": "c-199",
+      "id": "c-206",
       "kind": "a",
       "type": "",
       "text": "Coursera Plus",
@@ -3752,7 +3871,7 @@
       "options": []
     },
     {
-      "id": "c-200",
+      "id": "c-207",
       "kind": "a",
       "type": "",
       "text": "Professional Certificates",
@@ -3769,7 +3888,7 @@
       "options": []
     },
     {
-      "id": "c-201",
+      "id": "c-208",
       "kind": "a",
       "type": "",
       "text": "MasterTrack® Certificates",
@@ -3786,7 +3905,7 @@
       "options": []
     },
     {
-      "id": "c-202",
+      "id": "c-209",
       "kind": "a",
       "type": "",
       "text": "Degrees",
@@ -3803,7 +3922,7 @@
       "options": []
     },
     {
-      "id": "c-203",
+      "id": "c-210",
       "kind": "a",
       "type": "",
       "text": "For Enterprise",
@@ -3820,7 +3939,7 @@
       "options": []
     },
     {
-      "id": "c-204",
+      "id": "c-211",
       "kind": "a",
       "type": "",
       "text": "For Government",
@@ -3837,7 +3956,7 @@
       "options": []
     },
     {
-      "id": "c-205",
+      "id": "c-212",
       "kind": "a",
       "type": "",
       "text": "For Campus",
@@ -3854,7 +3973,7 @@
       "options": []
     },
     {
-      "id": "c-206",
+      "id": "c-213",
       "kind": "a",
       "type": "",
       "text": "Become a Partner",
@@ -3871,7 +3990,7 @@
       "options": []
     },
     {
-      "id": "c-207",
+      "id": "c-214",
       "kind": "a",
       "type": "",
       "text": "Social Impact",
@@ -3888,7 +4007,7 @@
       "options": []
     },
     {
-      "id": "c-208",
+      "id": "c-215",
       "kind": "a",
       "type": "",
       "text": "Free Courses",
@@ -3905,7 +4024,7 @@
       "options": []
     },
     {
-      "id": "c-209",
+      "id": "c-216",
       "kind": "a",
       "type": "",
       "text": "Udemy",
@@ -3922,7 +4041,7 @@
       "options": []
     },
     {
-      "id": "c-210",
+      "id": "c-217",
       "kind": "a",
       "type": "",
       "text": "Learners",
@@ -3939,7 +4058,7 @@
       "options": []
     },
     {
-      "id": "c-211",
+      "id": "c-218",
       "kind": "a",
       "type": "",
       "text": "Partners",
@@ -3956,7 +4075,7 @@
       "options": []
     },
     {
-      "id": "c-212",
+      "id": "c-219",
       "kind": "a",
       "type": "",
       "text": "Beta Testers",
@@ -3973,7 +4092,7 @@
       "options": []
     },
     {
-      "id": "c-213",
+      "id": "c-220",
       "kind": "a",
       "type": "",
       "text": "Blog",
@@ -3990,7 +4109,7 @@
       "options": []
     },
     {
-      "id": "c-214",
+      "id": "c-221",
       "kind": "a",
       "type": "",
       "text": "The Coursera Podcast",
@@ -4007,7 +4126,7 @@
       "options": []
     },
     {
-      "id": "c-215",
+      "id": "c-222",
       "kind": "a",
       "type": "",
       "text": "Tech Blog",
@@ -4024,7 +4143,7 @@
       "options": []
     },
     {
-      "id": "c-216",
+      "id": "c-223",
       "kind": "a",
       "type": "",
       "text": "Press",
@@ -4041,7 +4160,7 @@
       "options": []
     },
     {
-      "id": "c-217",
+      "id": "c-224",
       "kind": "a",
       "type": "",
       "text": "Investors",
@@ -4058,7 +4177,7 @@
       "options": []
     },
     {
-      "id": "c-218",
+      "id": "c-225",
       "kind": "a",
       "type": "",
       "text": "Terms",
@@ -4075,7 +4194,7 @@
       "options": []
     },
     {
-      "id": "c-219",
+      "id": "c-226",
       "kind": "a",
       "type": "",
       "text": "Privacy",
@@ -4092,7 +4211,7 @@
       "options": []
     },
     {
-      "id": "c-220",
+      "id": "c-227",
       "kind": "a",
       "type": "",
       "text": "Help",
@@ -4109,7 +4228,7 @@
       "options": []
     },
     {
-      "id": "c-221",
+      "id": "c-228",
       "kind": "a",
       "type": "",
       "text": "Accessibility",
@@ -4126,7 +4245,7 @@
       "options": []
     },
     {
-      "id": "c-222",
+      "id": "c-229",
       "kind": "a",
       "type": "",
       "text": "Contact",
@@ -4143,7 +4262,7 @@
       "options": []
     },
     {
-      "id": "c-223",
+      "id": "c-230",
       "kind": "a",
       "type": "",
       "text": "Articles",
@@ -4160,7 +4279,7 @@
       "options": []
     },
     {
-      "id": "c-224",
+      "id": "c-231",
       "kind": "a",
       "type": "",
       "text": "Directory",
@@ -4177,7 +4296,7 @@
       "options": []
     },
     {
-      "id": "c-225",
+      "id": "c-232",
       "kind": "a",
       "type": "",
       "text": "Affiliates",
@@ -4194,7 +4313,7 @@
       "options": []
     },
     {
-      "id": "c-226",
+      "id": "c-233",
       "kind": "a",
       "type": "",
       "text": "Modern Slavery Statement",
@@ -4211,7 +4330,7 @@
       "options": []
     },
     {
-      "id": "c-227",
+      "id": "c-234",
       "kind": "a",
       "type": "",
       "text": "Cookies Preference Center",
@@ -4417,7 +4536,7 @@
     "http_status": 200,
     "heading_count": 77,
     "region_count": 5,
-    "control_count": 228,
+    "control_count": 235,
     "form_count": 1,
     "data_point_count": 21,
     "style_count": 23,

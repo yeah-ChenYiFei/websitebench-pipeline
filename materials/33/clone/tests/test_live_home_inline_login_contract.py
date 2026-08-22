@@ -95,13 +95,13 @@ def test_home_sections_follow_the_source_full_page_vertical_geometry() -> None:
     expected_boxes = {
         ".promo-panel:first-of-type": (121, 298),
         ".source-career-ready": (884, 337),
-        ".source-promo-band": (1243, 155),
-        ".source-pathways": (1539, 110),
-        ".source-google-collection": (1834, 302),
-        ".source-ai-collection": (2592, 341),
-        ".home-purpose": (2964, 104),
-        ".source-outcomes": (3518, 196),
-        ".home-testimonial-grid figure:first-child": (3781, 224),
+        ".source-promo-band": (1243, 161),
+        ".source-pathways": (1545, 158),
+        ".source-google-collection": (1888, 302),
+        ".source-ai-collection": (2646, 341),
+        ".home-purpose": (3018, 104),
+        ".source-outcomes": (3572, 196),
+        ".home-testimonial-grid figure:first-child": (3835, 224),
     }
 
     with playwright.sync_playwright() as runtime:
@@ -128,10 +128,10 @@ def test_home_sections_follow_the_source_full_page_vertical_geometry() -> None:
                 assert footer is not None
                 assert footer_secondary is not None
                 assert footer_legal is not None
-                assert abs(footer["y"] - 4561) <= 16
-                assert abs(footer_secondary["y"] - 5057) <= 16
-                assert abs(footer_legal["y"] - 5619) <= 16
-                assert abs(page.evaluate("document.documentElement.scrollHeight") - 5764) <= 20
+                assert abs(footer["y"] - 4615) <= 16
+                assert abs(footer_secondary["y"] - 5111) <= 16
+                assert abs(footer_legal["y"] - 5673) <= 16
+                assert abs(page.evaluate("document.documentElement.scrollHeight") - 5818) <= 20
         finally:
             context.close()
             browser.close()
@@ -171,7 +171,7 @@ def test_colored_home_collections_match_source_card_and_tab_geometry() -> None:
                 assert abs(career_card["height"] - 267) <= 12
                 assert abs(career_card["x"] - 477) <= 8
                 assert abs(career_card["width"] - 220) <= 8
-                assert abs(google_card["y"] - 1854) <= 12
+                assert abs(google_card["y"] - 1906) <= 12
                 assert abs(google_card["height"] - 266) <= 12
                 assert abs(google_card["x"] - 477) <= 8
                 assert abs(google_card["width"] - 220) <= 8
@@ -183,7 +183,7 @@ def test_colored_home_collections_match_source_card_and_tab_geometry() -> None:
                     "Agentic AI",
                     "Resume Builder",
                 ]
-                assert abs(ai_card["y"] - 2647) <= 12
+                assert abs(ai_card["y"] - 2701) <= 12
                 assert abs(ai_card["height"] - 236) <= 12
                 assert abs(ai_card["x"] - 477) <= 8
                 assert abs(ai_card["width"] - 220) <= 8

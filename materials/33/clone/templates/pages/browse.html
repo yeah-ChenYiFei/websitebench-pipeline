@@ -37,8 +37,8 @@
     </nav>
 
   <section class="source-promo-band" aria-label="Coursera promotions">
-    <a class="source-promo-card" href="/courseraplus/special/cplus-monthly-august-2026-global"><span class="source-promo-art"><img src="/static/home/current-promo-plus-landscape.png" alt=""></span><span><span class="source-promo-eyebrow">Coursera Plus · Save 40% for 3 months</span><h3>Break down barriers to learning with big savings</h3><span class="source-promo-cta">Get Coursera Plus <span aria-hidden="true">→</span></span></span></a>
-    <a class="source-promo-card" href="/business/teams"><span class="source-promo-art"><img src="/static/home/current-promo-teams-small.png" alt=""></span><span><span class="source-promo-eyebrow">For Business</span><h3>Start with easy savings for hard-working teams</h3><span class="source-promo-cta">Save 30% today <span aria-hidden="true">→</span></span></span></a>
+    <div class="source-promo-card" data-card-href="/courseraplus/special/cplus-monthly-august-2026-global" role="link" tabindex="0"><span class="source-promo-art"><img src="/static/home/current-promo-plus-landscape.png" alt=""></span><span><span class="source-promo-eyebrow">Coursera Plus</span><h3>Break down barriers to learning with big savings</h3><span class="source-promo-cta"><a href="/courseraplus/special/cplus-monthly-august-2026-global">Get Coursera Plus</a></span><a class="source-promo-save" href="/courseraplus/special/cplus-monthly-august-2026-global">Save 40% for 3 months</a></span></div>
+    <div class="source-promo-card" data-card-href="/business/teams" role="link" tabindex="0"><span class="source-promo-art"><img src="/static/home/current-promo-teams-small.png" alt=""></span><span><span class="source-promo-eyebrow">For Business</span><h3>Start with easy savings for hard-working teams</h3><span class="source-promo-cta"><a href="/business/teams">Save 30% today</a></span></span></div>
   </section>
     <div class="source-popular-grid">
       {% for card in popular_cards %}
@@ -71,7 +71,7 @@
     </div>
     <div class="source-role-content">
       <nav class="source-role-filters" aria-label="Role filters">
-        <a class="source-level-filter" href="/search?level=Beginner">Level: Beginner <span class="source-zero-width" aria-hidden="true">&#8203;</span></a>
+        <a class="source-level-filter" href="/search?level=Beginner">Level: Beginner</a>
         <a class="is-active" href="/browse">Popular</a>
         <a href="/browse/information-technology">Software Engineering &amp; IT</a>
         <a href="/browse/business">Business</a>
@@ -83,13 +83,13 @@
         {% for role in role_cards %}
           <article class="source-role-card">
             <a class="source-role-card-image" href="{{ role.href }}"><img src="{{ role.image }}" alt="{{ role.title }}"></a>
-            <h3>{{ role.title }}</h3>
+            <h3><a href="{{ role.href }}">{{ role.title }}</a></h3>
             <p>{{ role.description }}</p>
             <div class="source-role-stats">
               <strong>{{ role.salary }} <small>median salary</small></strong>
               <strong>{{ role.openings }}</strong>
             </div>
-            <a class="source-role-card-link" href="{{ role.href }}" aria-label="Explore {{ role.title }} programs">Explore role <span aria-hidden="true">→</span></a>
+            <a class="source-role-card-link" href="{{ role.href }}" aria-label="Explore {{ role.title }} programs">Explore role</a>
           </article>
         {% endfor %}
       </div>
@@ -153,10 +153,10 @@
     <h2 id="source-browse-faq-heading">Frequently asked questions</h2>
     <div class="source-browse-faq-layout">
       <div class="source-browse-faq-list">
-        <details><summary><h3>What types of courses does Coursera offer?</h3></summary></details>
-        <details><summary><h3>What are the benefits of taking courses on Coursera?</h3></summary></details>
-        <details><summary><h3>Can I earn an accredited degree through Coursera?</h3></summary></details>
-        <a class="source-show-all-faq" href="/help">Show all 7 frequently asked questions <span aria-hidden="true">⌄</span></a>
+        <details><summary><h3><button type="button">What types of courses does Coursera offer?</button></h3></summary></details>
+        <details><summary><h3><button type="button">What are the benefits of taking courses on Coursera?</button></h3></summary></details>
+        <details><summary><h3><button type="button">Can I earn an accredited degree through Coursera?</button></h3></summary></details>
+        <a class="source-show-all-faq" href="/help">Show all 7 frequently asked questions</a>
       </div>
       <aside class="source-more-questions">
         <span aria-hidden="true">?</span>

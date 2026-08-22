@@ -4,7 +4,7 @@
   "pages": [
     {
       "page": "home",
-      "structure_score": 0.8391,
+      "structure_score": 0.8496,
       "headings": {
         "source": 67,
         "clone": 73,
@@ -14,9 +14,9 @@
       },
       "controls": {
         "source": 195,
-        "clone": 211,
-        "jaccard": 0.6437,
-        "coverage": 0.8154
+        "clone": 218,
+        "jaccard": 0.6789,
+        "coverage": 0.8564
       },
       "data_points": {
         "source": 1,
@@ -26,7 +26,7 @@
     },
     {
       "page": "browse",
-      "structure_score": 0.8975,
+      "structure_score": 0.9092,
       "headings": {
         "source": 50,
         "clone": 52,
@@ -36,9 +36,9 @@
       },
       "controls": {
         "source": 152,
-        "clone": 146,
-        "jaccard": 0.7225,
-        "coverage": 0.8224
+        "clone": 158,
+        "jaccard": 0.7614,
+        "coverage": 0.8816
       },
       "data_points": {
         "source": 1,
@@ -70,7 +70,7 @@
     },
     {
       "page": "course",
-      "structure_score": 0.9053,
+      "structure_score": 0.9265,
       "headings": {
         "source": 39,
         "clone": 39,
@@ -80,9 +80,9 @@
       },
       "controls": {
         "source": 131,
-        "clone": 125,
-        "jaccard": 0.6842,
-        "coverage": 0.7939
+        "clone": 134,
+        "jaccard": 0.755,
+        "coverage": 0.8702
       },
       "data_points": {
         "source": 1,
@@ -92,7 +92,7 @@
     },
     {
       "page": "specialization",
-      "structure_score": 0.9143,
+      "structure_score": 0.9532,
       "headings": {
         "source": 36,
         "clone": 36,
@@ -102,9 +102,9 @@
       },
       "controls": {
         "source": 130,
-        "clone": 122,
-        "jaccard": 0.7143,
-        "coverage": 0.8077
+        "clone": 130,
+        "jaccard": 0.844,
+        "coverage": 0.9154
       },
       "data_points": {
         "source": 1,
@@ -114,7 +114,7 @@
     },
     {
       "page": "login",
-      "structure_score": 0.8833,
+      "structure_score": 0.8944,
       "headings": {
         "source": 5,
         "clone": 5,
@@ -124,9 +124,9 @@
       },
       "controls": {
         "source": 53,
-        "clone": 63,
-        "jaccard": 0.6111,
-        "coverage": 0.8302
+        "clone": 64,
+        "jaccard": 0.6479,
+        "coverage": 0.8679
       },
       "data_points": {
         "source": 1,
@@ -135,5 +135,5 @@
       }
     }
   ],
-  "overall_structure_consistency": 0.8875
+  "overall_structure_consistency": 0.9031
 }

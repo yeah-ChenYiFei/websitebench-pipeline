@@ -890,6 +890,7 @@ def coursera_plus_landing(request: Request, offer: str = "") -> str:
 
 @app.get("/business", response_class=HTMLResponse)
 @app.get("/business/{program:path}", response_class=HTMLResponse)
+@app.get("/enterprise", response_class=HTMLResponse)
 def business_landing(request: Request, program: str = "") -> str:
     return _public_source_landing(
         request,

@@ -79,6 +79,8 @@ PARTNERS = (
 CATEGORIES = (
     ("Business", "/browse/business"),
     ("Artificial Intelligence", "/explore/generative-ai"),
+    ("Generative AI", "/courses?query=generative%20ai"),
+    ("English speaking", "/courses?query=english"),
     ("Data Science", "/browse/data-science"),
     ("Computer Science", "/browse/computer-science"),
     ("Information Technology", "/browse/information-technology"),

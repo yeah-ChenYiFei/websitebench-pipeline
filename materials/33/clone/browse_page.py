@@ -381,6 +381,8 @@ _SKILL_LINKS = (
     ("AI Enablement", "/courses?query=ai%20enablement"),
     ("Machine Learning", "/courses?query=machine%20learning"),
     ("Generative AI", "/courses?query=generative%20ai"),
+    ("Leadership and Management", "/courses?query=leadership%20and%20management"),
+    ("Prompt Patterns", "/courses?query=prompt%20patterns"),
 )
 
 _NEW_RELEASE_CARDS = (
