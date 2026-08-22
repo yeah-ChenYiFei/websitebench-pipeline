@@ -446,6 +446,21 @@ def test_forum_thread_reply_and_local_contributions() -> None:
     assert "Local Bottle Room" in history.text
 
 
+def test_every_catalog_beer_is_searchable_and_has_a_detail_route() -> None:
+    test_client = client()
+    assert len(candidate.beers) == 240
+
+    for beer in candidate.beers:
+        detail_path = f"/beer/profile/{beer['brewery_id']}/{beer['beer_id']}/"
+        detail = test_client.get(detail_path)
+        assert detail.status_code == 200, detail_path
+        assert str(beer["name"]) in detail.text
+
+        search = test_client.get("/search/", params={"q": str(beer["name"])})
+        assert search.status_code == 200
+        assert detail_path in search.text
+
+
 def test_beer_directory_places_and_review_journey() -> None:
     test_client = client()
     directory = test_client.get("/beer/?page=10&sort=name")

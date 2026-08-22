@@ -90,6 +90,7 @@ def test_manifest_writer_reconstructs_canonical_webp_runtime(
     monkeypatch.setattr(writer, "SITE_ROOT", site_root)
     monkeypatch.setattr(writer, "CAPTURE_REPORT", report_path)
     monkeypatch.setattr(writer, "MANIFEST", manifest_path)
+    monkeypatch.setattr(writer, "ACTIVE_SUFFIXES", {"brand/beeradvocate-nav-logo.png"})
     monkeypatch.setattr(writer, "SCREENSHOT_DERIVED_ASSETS", ())
 
     assert writer.main() == 0
@@ -115,3 +116,48 @@ def test_manifest_writer_rejects_source_path_escape(
 
     with pytest.raises(ValueError, match="source_path must be a site-relative path"):
         writer.main()
+
+
+def test_manifest_writer_keeps_closure_pending_for_reported_required_gap(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    site_root = tmp_path / "site"
+    source_path = "source-assets/snapshot/brand/beeradvocate-nav-logo.png"
+    report_path, _ = write_report(site_root, source_path)
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    report["missing_required_paths"] = ["beers/required-but-missing.jpg"]
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+    writer = load_writer()
+    manifest_path = site_root / "source-assets" / "manifest.json"
+    monkeypatch.setattr(writer, "SITE_ROOT", site_root)
+    monkeypatch.setattr(writer, "CAPTURE_REPORT", report_path)
+    monkeypatch.setattr(writer, "MANIFEST", manifest_path)
+    monkeypatch.setattr(writer, "ACTIVE_SUFFIXES", {"brand/beeradvocate-nav-logo.png"})
+    monkeypatch.setattr(writer, "SCREENSHOT_DERIVED_ASSETS", ())
+
+    assert writer.main() == 2
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["closure_status"] == "pending"
+
+
+def test_manifest_writer_detects_unreported_required_gap(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    site_root = tmp_path / "site"
+    source_path = "source-assets/snapshot/brand/beeradvocate-nav-logo.png"
+    report_path, _ = write_report(site_root, source_path)
+    writer = load_writer()
+    manifest_path = site_root / "source-assets" / "manifest.json"
+    monkeypatch.setattr(writer, "SITE_ROOT", site_root)
+    monkeypatch.setattr(writer, "CAPTURE_REPORT", report_path)
+    monkeypatch.setattr(writer, "MANIFEST", manifest_path)
+    monkeypatch.setattr(
+        writer,
+        "ACTIVE_SUFFIXES",
+        {"brand/beeradvocate-nav-logo.png", "beers/required-but-missing.jpg"},
+    )
+    monkeypatch.setattr(writer, "SCREENSHOT_DERIVED_ASSETS", ())
+
+    assert writer.main() == 2
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["closure_status"] == "pending"
