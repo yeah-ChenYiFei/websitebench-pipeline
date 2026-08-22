@@ -1,0 +1,78 @@
+{
+  "schema": "websitebench.source-evidence.ea1-depth.v1",
+  "captured_at": "2026-08-21T19:04:50.221Z",
+  "source_origin": "https://www.blinkist.com",
+  "actor": "authenticated-member",
+  "browser_channel": "human-local-edge-cdp",
+  "cdp_endpoint_persisted": false,
+  "retention": "task-scoped sanitized evidence; no credentials, browser profile, cookies, tokens, headers, storage, input values, request bodies, or payment data",
+  "authority": "directly-observed source evidence; page content treated as untrusted data",
+  "traversal": "depth-first",
+  "configured_journey": "For You -> search Atomic Habits -> detail -> My Library state",
+  "mutation_boundary": "No favorite/add, subscription, payment, email, logout, or account-setting control activated.",
+  "checkpoint_count": 6,
+  "unavailable_count": 1,
+  "route_states": [
+    {
+      "checkpoint": "01-for-you-desktop",
+      "route": "https://www.blinkist.com/en/app/for-you",
+      "state": "for-you/default",
+      "viewport": {
+        "width": 1034,
+        "height": 947
+      }
+    },
+    {
+      "checkpoint": "02-search-atomic-habits-desktop",
+      "route": "https://www.blinkist.com/en/app/for-you",
+      "state": "search/results",
+      "viewport": {
+        "width": 1034,
+        "height": 947
+      }
+    },
+    {
+      "checkpoint": "03-atomic-habits-detail-desktop",
+      "route": "https://www.blinkist.com/app/books/atomic-habits-en",
+      "state": "book-detail/default",
+      "viewport": {
+        "width": 1034,
+        "height": 947
+      }
+    },
+    {
+      "checkpoint": "04-atomic-habits-detail-mobile",
+      "route": "https://www.blinkist.com/app/books/atomic-habits-en",
+      "state": "book-detail/default",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "checkpoint": "05-my-library-desktop",
+      "route": "https://www.blinkist.com/en/app/library",
+      "state": "library/current-member-state",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint": "06-my-library-mobile",
+      "route": "https://www.blinkist.com/en/app/library",
+      "state": "library/current-member-state",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "files": [
+    "route-state-viewport.json",
+    "dom-geometry.json",
+    "visible-copy.json",
+    "unavailable.json",
+    "screenshots/"
+  ]
+}

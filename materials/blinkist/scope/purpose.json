@@ -1,0 +1,9 @@
+{
+  "schema_version": "offline-clone.purpose.v1",
+  "status": "frozen",
+  "purpose_id": "reading-self-study",
+  "statement": "Help readers discover concise book and audio summaries, consume learning content, and organize selected titles in a personal library.",
+  "primary_actor_ids": ["anonymous", "member"],
+  "mainline_journey_ids": ["search-favorite-library"],
+  "out_of_scope": ["real source registration", "real email delivery", "real subscription payment", "public deployment"]
+}

@@ -1,0 +1,52 @@
+{
+  "route": "/help",
+  "status": 404,
+  "url": "https://www.blinkist.com/help",
+  "title": "Blinkist: Serving curious minds.",
+  "headings": [
+    "Hello? Is it me you’re looking for?",
+    "Perhaps not, but now that you’re here, let us plot together!"
+  ],
+  "buttons": [],
+  "inputs": [],
+  "selects": [],
+  "links": [
+    {
+      "text": "Go back to Explore",
+      "href": "/en?utm_source=404"
+    },
+    {
+      "text": "Who is this guy?!",
+      "href": "/en/books/the-prince-en?utm_source=404"
+    }
+  ],
+  "bodyText": "Hello? Is it me you’re looking for? Perhaps not, but now that you’re here, let us plot together! Or Go back to Explore Who is this guy?!",
+  "errors": [
+    "TimeoutError: page.screenshot: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n"
+  ],
+  "remoteHosts": [
+    "63355d6c63f243569dd87f5d536ac851.js.ubembed.com",
+    "ad.doubleclick.net",
+    "amplify.outbrain.com",
+    "analytics.google.com",
+    "apis.google.com",
+    "app.lemlist.com",
+    "assets.ubembed.com",
+    "bat.bing.com",
+    "browser-intake-datadoghq.com",
+    "cdn.taboola.com",
+    "connect.facebook.net",
+    "consent.cookiebot.com",
+    "consentcdn.cookiebot.com",
+    "googleads.g.doubleclick.net",
+    "js.appboycdn.com",
+    "px.ads.linkedin.com",
+    "snap.licdn.com",
+    "tr.outbrain.com",
+    "trc.taboola.com",
+    "wave.outbrain.com",
+    "www.facebook.com",
+    "www.google.com",
+    "www.googletagmanager.com"
+  ]
+}

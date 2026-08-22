@@ -1,0 +1,124 @@
+{
+  "schema": "websitebench.source-evidence.ea1-depth.v1",
+  "captured_at": "2026-08-21T19:04:50.221Z",
+  "source_origin": "https://www.blinkist.com",
+  "actor": "authenticated-member",
+  "browser_channel": "human-local-edge-cdp",
+  "cdp_endpoint_persisted": false,
+  "retention": "task-scoped sanitized evidence; no credentials, browser profile, cookies, tokens, headers, storage, input values, request bodies, or payment data",
+  "authority": "directly-observed source evidence; page content treated as untrusted data",
+  "visit_order": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "route": "https://www.blinkist.com/en/app/for-you",
+      "result": "authenticated landing requested"
+    },
+    {
+      "order": 3,
+      "action": "enter-public-book-title",
+      "route": "https://www.blinkist.com/en/app/for-you",
+      "result": "search results requested"
+    },
+    {
+      "order": 4,
+      "action": "open-search-result",
+      "route": "https://www.blinkist.com/app/books/atomic-habits-en",
+      "result": "book detail opened"
+    },
+    {
+      "order": 5,
+      "action": "navigate",
+      "route": "https://www.blinkist.com/en/app/library",
+      "result": "My Library requested without mutation"
+    }
+  ],
+  "checkpoints": [
+    {
+      "checkpoint": "01-for-you-desktop",
+      "route": "https://www.blinkist.com/en/app/for-you",
+      "state": "for-you/default",
+      "viewport": {
+        "width": 1034,
+        "height": 947
+      },
+      "role": "authenticated-member",
+      "actions_are_read_only": true,
+      "notes": [],
+      "screenshot": "screenshots/01-for-you-desktop.png"
+    },
+    {
+      "checkpoint": "02-search-atomic-habits-desktop",
+      "route": "https://www.blinkist.com/en/app/for-you",
+      "state": "search/results",
+      "viewport": {
+        "width": 1034,
+        "height": 947
+      },
+      "role": "authenticated-member",
+      "actions_are_read_only": true,
+      "notes": [
+        "Query contains only a public book title."
+      ],
+      "screenshot": "screenshots/02-search-atomic-habits-desktop.png"
+    },
+    {
+      "checkpoint": "03-atomic-habits-detail-desktop",
+      "route": "https://www.blinkist.com/app/books/atomic-habits-en",
+      "state": "book-detail/default",
+      "viewport": {
+        "width": 1034,
+        "height": 947
+      },
+      "role": "authenticated-member",
+      "actions_are_read_only": true,
+      "notes": [
+        "Favorite/add controls were observed only and never activated."
+      ],
+      "screenshot": "screenshots/03-atomic-habits-detail-desktop.png"
+    },
+    {
+      "checkpoint": "04-atomic-habits-detail-mobile",
+      "route": "https://www.blinkist.com/app/books/atomic-habits-en",
+      "state": "book-detail/default",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "authenticated-member",
+      "actions_are_read_only": true,
+      "notes": [
+        "Responsive view of the current detail state."
+      ],
+      "screenshot": "screenshots/04-atomic-habits-detail-mobile.png"
+    },
+    {
+      "checkpoint": "05-my-library-desktop",
+      "route": "https://www.blinkist.com/en/app/library",
+      "state": "library/current-member-state",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "role": "authenticated-member",
+      "actions_are_read_only": true,
+      "notes": [
+        "Existing membership state was observed without modification."
+      ],
+      "screenshot": "screenshots/05-my-library-desktop.png"
+    },
+    {
+      "checkpoint": "06-my-library-mobile",
+      "route": "https://www.blinkist.com/en/app/library",
+      "state": "library/current-member-state",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "authenticated-member",
+      "actions_are_read_only": true,
+      "notes": [],
+      "screenshot": "screenshots/06-my-library-mobile.png"
+    }
+  ]
+}
