@@ -1,8 +1,8 @@
 {
   "schema_version": "websitebench.offline-clone.frontend-spec.v1",
   "authority": "diagnostic-only",
-  "target_url": "http://127.0.0.1:36951/learn/neural-networks-deep-learning",
-  "captured_at": "2026-08-22T02:01:59.677087+00:00",
+  "target_url": "http://127.0.0.1:8899/learn/neural-networks-deep-learning",
+  "captured_at": "2026-08-22T03:16:58.040500+00:00",
   "viewport": {
     "width": 1692,
     "height": 979
@@ -43,6 +43,26 @@
       },
       {
         "level": 3,
+        "text": "Introduction to Deep Learning"
+      },
+      {
+        "level": 3,
+        "text": "Neural Networks Basics"
+      },
+      {
+        "level": 3,
+        "text": "Shallow Neural Networks"
+      },
+      {
+        "level": 3,
+        "text": "Deep Neural Networks"
+      },
+      {
+        "level": 3,
+        "text": "Earn a career certificate"
+      },
+      {
+        "level": 3,
         "text": "Instructors"
       },
       {
@@ -54,12 +74,52 @@
         "text": "Explore more from Machine Learning"
       },
       {
+        "level": 3,
+        "text": "Structuring Machine Learning Projects"
+      },
+      {
+        "level": 3,
+        "text": "Sequence Models"
+      },
+      {
+        "level": 3,
+        "text": "Convolutional Neural Networks"
+      },
+      {
+        "level": 3,
+        "text": "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization"
+      },
+      {
         "level": 2,
         "text": "Why people choose Coursera for their career"
       },
       {
+        "level": 3,
+        "text": "Felipe M."
+      },
+      {
+        "level": 3,
+        "text": "Jennifer J."
+      },
+      {
+        "level": 3,
+        "text": "Larry W."
+      },
+      {
+        "level": 3,
+        "text": "Chaitanya A."
+      },
+      {
         "level": 2,
         "text": "Learner reviews"
+      },
+      {
+        "level": 3,
+        "text": "Break down barriers to learning with big savings"
+      },
+      {
+        "level": 3,
+        "text": "Start with easy savings for hard-working teams"
       },
       {
         "level": 2,
@@ -188,6 +248,23 @@
       "id": "c-0",
       "kind": "a",
       "type": "",
+      "text": "For Individuals",
+      "aria_label": "",
+      "href": "/",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-1",
+      "kind": "a",
+      "type": "",
       "text": "For Businesses",
       "aria_label": "",
       "href": "/business/teams",
@@ -202,7 +279,7 @@
       "options": []
     },
     {
-      "id": "c-1",
+      "id": "c-2",
       "kind": "a",
       "type": "",
       "text": "For Universities",
@@ -219,7 +296,7 @@
       "options": []
     },
     {
-      "id": "c-2",
+      "id": "c-3",
       "kind": "a",
       "type": "",
       "text": "For Governments",
@@ -236,7 +313,7 @@
       "options": []
     },
     {
-      "id": "c-3",
+      "id": "c-4",
       "kind": "a",
       "type": "",
       "text": "coursera",
@@ -253,10 +330,10 @@
       "options": []
     },
     {
-      "id": "c-4",
+      "id": "c-5",
       "kind": "a",
       "type": "",
-      "text": "Explore ⌄",
+      "text": "Explore",
       "aria_label": "",
       "href": "/browse",
       "action": "",
@@ -270,7 +347,7 @@
       "options": []
     },
     {
-      "id": "c-5",
+      "id": "c-6",
       "kind": "a",
       "type": "",
       "text": "Degrees",
@@ -287,7 +364,7 @@
       "options": []
     },
     {
-      "id": "c-6",
+      "id": "c-7",
       "kind": "form",
       "type": "",
       "text": "Search courses",
@@ -304,7 +381,7 @@
       "options": []
     },
     {
-      "id": "c-7",
+      "id": "c-8",
       "kind": "input",
       "type": "",
       "text": "",
@@ -312,7 +389,7 @@
       "href": "",
       "action": "",
       "method": "",
-      "name": "q",
+      "name": "query",
       "placeholder": "What do you want to learn?",
       "required": false,
       "disabled": false,
@@ -321,7 +398,7 @@
       "options": []
     },
     {
-      "id": "c-8",
+      "id": "c-9",
       "kind": "button",
       "type": "submit",
       "text": "",
@@ -338,7 +415,7 @@
       "options": []
     },
     {
-      "id": "c-9",
+      "id": "c-10",
       "kind": "button",
       "type": "button",
       "text": "Log In",
@@ -355,7 +432,7 @@
       "options": []
     },
     {
-      "id": "c-10",
+      "id": "c-11",
       "kind": "a",
       "type": "",
       "text": "Join for Free",
@@ -372,7 +449,7 @@
       "options": []
     },
     {
-      "id": "c-11",
+      "id": "c-12",
       "kind": "a",
       "type": "",
       "text": "⌂",
@@ -389,7 +466,7 @@
       "options": []
     },
     {
-      "id": "c-12",
+      "id": "c-13",
       "kind": "a",
       "type": "",
       "text": "Browse",
@@ -406,7 +483,7 @@
       "options": []
     },
     {
-      "id": "c-13",
+      "id": "c-14",
       "kind": "a",
       "type": "",
       "text": "Data Science",
@@ -423,7 +500,7 @@
       "options": []
     },
     {
-      "id": "c-14",
+      "id": "c-15",
       "kind": "a",
       "type": "",
       "text": "Deep Learning Specialization",
@@ -440,7 +517,7 @@
       "options": []
     },
     {
-      "id": "c-15",
+      "id": "c-16",
       "kind": "a",
       "type": "",
       "text": "Andrew Ng",
@@ -457,7 +534,7 @@
       "options": []
     },
     {
-      "id": "c-16",
+      "id": "c-17",
       "kind": "button",
       "type": "button",
       "text": "Enroll for free Starts Aug 19",
@@ -474,7 +551,7 @@
       "options": []
     },
     {
-      "id": "c-17",
+      "id": "c-18",
       "kind": "a",
       "type": "",
       "text": "Preview the first lesson",
@@ -491,7 +568,7 @@
       "options": []
     },
     {
-      "id": "c-18",
+      "id": "c-19",
       "kind": "a",
       "type": "",
       "text": "About",
@@ -508,7 +585,7 @@
       "options": []
     },
     {
-      "id": "c-19",
+      "id": "c-20",
       "kind": "a",
       "type": "",
       "text": "Outcomes",
@@ -525,7 +602,7 @@
       "options": []
     },
     {
-      "id": "c-20",
+      "id": "c-21",
       "kind": "a",
       "type": "",
       "text": "Modules",
@@ -542,7 +619,7 @@
       "options": []
     },
     {
-      "id": "c-21",
+      "id": "c-22",
       "kind": "a",
       "type": "",
       "text": "Testimonials",
@@ -559,7 +636,7 @@
       "options": []
     },
     {
-      "id": "c-22",
+      "id": "c-23",
       "kind": "a",
       "type": "",
       "text": "Reviews",
@@ -576,7 +653,7 @@
       "options": []
     },
     {
-      "id": "c-23",
+      "id": "c-24",
       "kind": "a",
       "type": "",
       "text": "Show all",
@@ -593,7 +670,7 @@
       "options": []
     },
     {
-      "id": "c-24",
+      "id": "c-25",
       "kind": "a",
       "type": "",
       "text": "27 languages available",
@@ -610,7 +687,7 @@
       "options": []
     },
     {
-      "id": "c-25",
+      "id": "c-26",
       "kind": "a",
       "type": "",
       "text": "Learn more about Coursera for Business",
@@ -627,7 +704,7 @@
       "options": []
     },
     {
-      "id": "c-26",
+      "id": "c-27",
       "kind": "a",
       "type": "",
       "text": "Deep Learning Specialization",
@@ -644,7 +721,7 @@
       "options": []
     },
     {
-      "id": "c-27",
+      "id": "c-28",
       "kind": "a",
       "type": "",
       "text": "Andrew Ng",
@@ -661,7 +738,7 @@
       "options": []
     },
     {
-      "id": "c-28",
+      "id": "c-29",
       "kind": "a",
       "type": "",
       "text": "View all 3 instructors",
@@ -678,7 +755,7 @@
       "options": []
     },
     {
-      "id": "c-29",
+      "id": "c-30",
       "kind": "a",
       "type": "",
       "text": "DeepLearning.AI",
@@ -695,7 +772,7 @@
       "options": []
     },
     {
-      "id": "c-30",
+      "id": "c-31",
       "kind": "a",
       "type": "",
       "text": "▣ DeepLearning.AI Structuring Machine Learning Projects Course",
@@ -712,7 +789,7 @@
       "options": []
     },
     {
-      "id": "c-31",
+      "id": "c-32",
       "kind": "a",
       "type": "",
       "text": "▣ DeepLearning.AI Sequence Models Course",
@@ -729,7 +806,7 @@
       "options": []
     },
     {
-      "id": "c-32",
+      "id": "c-33",
       "kind": "a",
       "type": "",
       "text": "▣ DeepLearning.AI Convolutional Neural Networks Course",
@@ -746,7 +823,7 @@
       "options": []
     },
     {
-      "id": "c-33",
+      "id": "c-34",
       "kind": "a",
       "type": "",
       "text": "▣ DeepLearning.AI Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization Course",
@@ -763,7 +840,7 @@
       "options": []
     },
     {
-      "id": "c-34",
+      "id": "c-35",
       "kind": "a",
       "type": "",
       "text": "View more reviews",
@@ -780,29 +857,12 @@
       "options": []
     },
     {
-      "id": "c-35",
-      "kind": "a",
-      "type": "",
-      "text": "Start trial →",
-      "aria_label": "",
-      "href": "/browse",
-      "action": "",
-      "method": "",
-      "name": "",
-      "placeholder": "",
-      "required": false,
-      "disabled": false,
-      "role": "",
-      "data_testid": "",
-      "options": []
-    },
-    {
       "id": "c-36",
       "kind": "a",
       "type": "",
-      "text": "Explore degrees →",
+      "text": "COURSERA PLUS Break down barriers to learning with big savings Explore Coursera Plus →",
       "aria_label": "",
-      "href": "/browse",
+      "href": "/courseraplus/special/cplus-monthly-august-2026-global",
       "action": "",
       "method": "",
       "name": "",
@@ -817,9 +877,9 @@
       "id": "c-37",
       "kind": "a",
       "type": "",
-      "text": "Learn more →",
+      "text": "FOR BUSINESS Start with easy savings for hard-working teams Explore Coursera for Business →",
       "aria_label": "",
-      "href": "/about/contact",
+      "href": "/business/teams",
       "action": "",
       "method": "",
       "name": "",
@@ -2150,10 +2210,6 @@
     },
     {
       "kind": "count",
-      "text": "10,000+ courses"
-    },
-    {
-      "kind": "count",
       "text": "2026 Course"
     }
   ],
@@ -2258,11 +2314,11 @@
   ],
   "summary": {
     "http_status": 200,
-    "heading_count": 24,
+    "heading_count": 39,
     "region_count": 14,
     "control_count": 114,
     "form_count": 1,
-    "data_point_count": 8,
+    "data_point_count": 7,
     "style_count": 23,
     "script_count": 3,
     "blocked_request_count": 0,

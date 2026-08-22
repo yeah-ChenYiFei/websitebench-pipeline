@@ -4,19 +4,19 @@
   "pages": [
     {
       "page": "home",
-      "structure_score": 0.697,
+      "structure_score": 0.7965,
       "headings": {
         "source": 67,
-        "clone": 58,
-        "jaccard": 0.6892,
-        "coverage": 0.7612,
-        "level_match": 0.9804
+        "clone": 73,
+        "jaccard": 0.8919,
+        "coverage": 0.9851,
+        "level_match": 0.9848
       },
       "controls": {
         "source": 195,
-        "clone": 176,
-        "jaccard": 0.5081,
-        "coverage": 0.641
+        "clone": 182,
+        "jaccard": 0.502,
+        "coverage": 0.6462
       },
       "data_points": {
         "source": 1,
@@ -26,19 +26,19 @@
     },
     {
       "page": "browse",
-      "structure_score": 0.6209,
+      "structure_score": 0.8928,
       "headings": {
         "source": 50,
-        "clone": 44,
-        "jaccard": 0.4921,
-        "coverage": 0.62,
-        "level_match": 0.9677
+        "clone": 52,
+        "jaccard": 0.9615,
+        "coverage": 1.0,
+        "level_match": 0.98
       },
       "controls": {
         "source": 152,
-        "clone": 144,
-        "jaccard": 0.5829,
-        "coverage": 0.7171
+        "clone": 145,
+        "jaccard": 0.7069,
+        "coverage": 0.8092
       },
       "data_points": {
         "source": 1,
@@ -48,19 +48,19 @@
     },
     {
       "page": "search",
-      "structure_score": 0.6906,
+      "structure_score": 0.8491,
       "headings": {
         "source": 21,
-        "clone": 31,
-        "jaccard": 0.6774,
+        "clone": 21,
+        "jaccard": 1.0,
         "coverage": 1.0,
-        "level_match": 0.9524
+        "level_match": 1.0
       },
       "controls": {
         "source": 104,
-        "clone": 128,
-        "jaccard": 0.5065,
-        "coverage": 0.75
+        "clone": 137,
+        "jaccard": 0.4969,
+        "coverage": 0.7692
       },
       "data_points": {
         "source": 1,
@@ -70,19 +70,19 @@
     },
     {
       "page": "course",
-      "structure_score": 0.6845,
+      "structure_score": 0.8832,
       "headings": {
         "source": 39,
-        "clone": 24,
-        "jaccard": 0.6154,
-        "coverage": 0.6154,
-        "level_match": 0.9583
+        "clone": 39,
+        "jaccard": 1.0,
+        "coverage": 1.0,
+        "level_match": 0.9744
       },
       "controls": {
         "source": 131,
         "clone": 109,
-        "jaccard": 0.5894,
-        "coverage": 0.6794
+        "jaccard": 0.6107,
+        "coverage": 0.6947
       },
       "data_points": {
         "source": 1,
@@ -92,19 +92,19 @@
     },
     {
       "page": "specialization",
-      "structure_score": 0.6532,
+      "structure_score": 0.9007,
       "headings": {
         "source": 36,
-        "clone": 26,
-        "jaccard": 0.5122,
-        "coverage": 0.5833,
-        "level_match": 0.9524
+        "clone": 36,
+        "jaccard": 1.0,
+        "coverage": 1.0,
+        "level_match": 1.0
       },
       "controls": {
         "source": 130,
-        "clone": 102,
-        "jaccard": 0.6571,
-        "coverage": 0.7077
+        "clone": 107,
+        "jaccard": 0.669,
+        "coverage": 0.7308
       },
       "data_points": {
         "source": 1,
@@ -114,19 +114,19 @@
     },
     {
       "page": "login",
-      "structure_score": 0.8167,
+      "structure_score": 0.8268,
       "headings": {
         "source": 5,
         "clone": 5,
         "jaccard": 1.0,
         "coverage": 1.0,
-        "level_match": 0.2
+        "level_match": 1.0
       },
       "controls": {
         "source": 53,
-        "clone": 47,
-        "jaccard": 0.3889,
-        "coverage": 0.5283
+        "clone": 48,
+        "jaccard": 0.4225,
+        "coverage": 0.566
       },
       "data_points": {
         "source": 1,
@@ -135,5 +135,5 @@
       }
     }
   ],
-  "overall_structure_consistency": 0.6938
+  "overall_structure_consistency": 0.8582
 }

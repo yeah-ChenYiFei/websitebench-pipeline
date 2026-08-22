@@ -1,8 +1,8 @@
 {
   "schema_version": "websitebench.offline-clone.frontend-spec.v1",
   "authority": "diagnostic-only",
-  "target_url": "http://127.0.0.1:51377/login",
-  "captured_at": "2026-08-22T02:07:51.936320+00:00",
+  "target_url": "http://127.0.0.1:8899/login",
+  "captured_at": "2026-08-22T03:17:02.457168+00:00",
   "viewport": {
     "width": 1692,
     "height": 979
@@ -14,19 +14,19 @@
     "canonical": "/",
     "headings": [
       {
-        "level": 2,
+        "level": 3,
         "text": "Coursera"
       },
       {
-        "level": 2,
+        "level": 3,
         "text": "Community"
       },
       {
-        "level": 2,
+        "level": 3,
         "text": "More"
       },
       {
-        "level": 2,
+        "level": 3,
         "text": "Mobile App"
       },
       {
@@ -62,6 +62,23 @@
       "id": "c-0",
       "kind": "a",
       "type": "",
+      "text": "For Individuals",
+      "aria_label": "",
+      "href": "/",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-1",
+      "kind": "a",
+      "type": "",
       "text": "For Businesses",
       "aria_label": "",
       "href": "/business/teams",
@@ -76,7 +93,7 @@
       "options": []
     },
     {
-      "id": "c-1",
+      "id": "c-2",
       "kind": "a",
       "type": "",
       "text": "For Universities",
@@ -93,7 +110,7 @@
       "options": []
     },
     {
-      "id": "c-2",
+      "id": "c-3",
       "kind": "a",
       "type": "",
       "text": "For Governments",
@@ -110,7 +127,7 @@
       "options": []
     },
     {
-      "id": "c-3",
+      "id": "c-4",
       "kind": "a",
       "type": "",
       "text": "coursera",
@@ -127,10 +144,10 @@
       "options": []
     },
     {
-      "id": "c-4",
+      "id": "c-5",
       "kind": "a",
       "type": "",
-      "text": "Explore ⌄",
+      "text": "Explore",
       "aria_label": "",
       "href": "/browse",
       "action": "",
@@ -144,7 +161,7 @@
       "options": []
     },
     {
-      "id": "c-5",
+      "id": "c-6",
       "kind": "a",
       "type": "",
       "text": "Degrees",
@@ -161,7 +178,7 @@
       "options": []
     },
     {
-      "id": "c-6",
+      "id": "c-7",
       "kind": "form",
       "type": "",
       "text": "Search courses",
@@ -178,7 +195,7 @@
       "options": []
     },
     {
-      "id": "c-7",
+      "id": "c-8",
       "kind": "input",
       "type": "",
       "text": "",
@@ -186,7 +203,7 @@
       "href": "",
       "action": "",
       "method": "",
-      "name": "q",
+      "name": "query",
       "placeholder": "What do you want to learn?",
       "required": false,
       "disabled": false,
@@ -195,7 +212,7 @@
       "options": []
     },
     {
-      "id": "c-8",
+      "id": "c-9",
       "kind": "button",
       "type": "submit",
       "text": "",
@@ -212,7 +229,7 @@
       "options": []
     },
     {
-      "id": "c-9",
+      "id": "c-10",
       "kind": "button",
       "type": "button",
       "text": "Log In",
@@ -229,7 +246,7 @@
       "options": []
     },
     {
-      "id": "c-10",
+      "id": "c-11",
       "kind": "a",
       "type": "",
       "text": "Join for Free",
@@ -246,7 +263,7 @@
       "options": []
     },
     {
-      "id": "c-11",
+      "id": "c-12",
       "kind": "a",
       "type": "",
       "text": "About",
@@ -263,7 +280,7 @@
       "options": []
     },
     {
-      "id": "c-12",
+      "id": "c-13",
       "kind": "a",
       "type": "",
       "text": "What We Offer",
@@ -280,7 +297,7 @@
       "options": []
     },
     {
-      "id": "c-13",
+      "id": "c-14",
       "kind": "a",
       "type": "",
       "text": "Catalog",
@@ -297,7 +314,7 @@
       "options": []
     },
     {
-      "id": "c-14",
+      "id": "c-15",
       "kind": "a",
       "type": "",
       "text": "Careers",
@@ -314,7 +331,7 @@
       "options": []
     },
     {
-      "id": "c-15",
+      "id": "c-16",
       "kind": "a",
       "type": "",
       "text": "Learners",
@@ -331,7 +348,7 @@
       "options": []
     },
     {
-      "id": "c-16",
+      "id": "c-17",
       "kind": "a",
       "type": "",
       "text": "Partners",
@@ -348,7 +365,7 @@
       "options": []
     },
     {
-      "id": "c-17",
+      "id": "c-18",
       "kind": "a",
       "type": "",
       "text": "Developers",
@@ -365,7 +382,7 @@
       "options": []
     },
     {
-      "id": "c-18",
+      "id": "c-19",
       "kind": "a",
       "type": "",
       "text": "Beta Testers",
@@ -382,7 +399,7 @@
       "options": []
     },
     {
-      "id": "c-19",
+      "id": "c-20",
       "kind": "a",
       "type": "",
       "text": "Blog",
@@ -399,7 +416,7 @@
       "options": []
     },
     {
-      "id": "c-20",
+      "id": "c-21",
       "kind": "a",
       "type": "",
       "text": "The Coursera Podcast",
@@ -416,7 +433,7 @@
       "options": []
     },
     {
-      "id": "c-21",
+      "id": "c-22",
       "kind": "a",
       "type": "",
       "text": "Tech Blog",
@@ -433,7 +450,7 @@
       "options": []
     },
     {
-      "id": "c-22",
+      "id": "c-23",
       "kind": "a",
       "type": "",
       "text": "Press",
@@ -450,7 +467,7 @@
       "options": []
     },
     {
-      "id": "c-23",
+      "id": "c-24",
       "kind": "a",
       "type": "",
       "text": "Investors",
@@ -467,7 +484,7 @@
       "options": []
     },
     {
-      "id": "c-24",
+      "id": "c-25",
       "kind": "a",
       "type": "",
       "text": "Terms",
@@ -484,7 +501,7 @@
       "options": []
     },
     {
-      "id": "c-25",
+      "id": "c-26",
       "kind": "a",
       "type": "",
       "text": "Privacy",
@@ -501,7 +518,7 @@
       "options": []
     },
     {
-      "id": "c-26",
+      "id": "c-27",
       "kind": "a",
       "type": "",
       "text": "Help",
@@ -518,7 +535,7 @@
       "options": []
     },
     {
-      "id": "c-27",
+      "id": "c-28",
       "kind": "a",
       "type": "",
       "text": "Accessibility",
@@ -535,7 +552,7 @@
       "options": []
     },
     {
-      "id": "c-28",
+      "id": "c-29",
       "kind": "a",
       "type": "",
       "text": "Contact",
@@ -552,7 +569,7 @@
       "options": []
     },
     {
-      "id": "c-29",
+      "id": "c-30",
       "kind": "a",
       "type": "",
       "text": "iOS and Android app",
@@ -569,7 +586,7 @@
       "options": []
     },
     {
-      "id": "c-30",
+      "id": "c-31",
       "kind": "button",
       "type": "button",
       "text": "×",
@@ -586,7 +603,7 @@
       "options": []
     },
     {
-      "id": "c-31",
+      "id": "c-32",
       "kind": "form",
       "type": "",
       "text": "Email * Continue",
@@ -603,7 +620,7 @@
       "options": []
     },
     {
-      "id": "c-32",
+      "id": "c-33",
       "kind": "input",
       "type": "email",
       "text": "",
@@ -620,7 +637,7 @@
       "options": []
     },
     {
-      "id": "c-33",
+      "id": "c-34",
       "kind": "button",
       "type": "submit",
       "text": "Continue",
@@ -637,7 +654,7 @@
       "options": []
     },
     {
-      "id": "c-34",
+      "id": "c-35",
       "kind": "form",
       "type": "",
       "text": "Continue with local learner",
@@ -654,7 +671,7 @@
       "options": []
     },
     {
-      "id": "c-35",
+      "id": "c-36",
       "kind": "button",
       "type": "submit",
       "text": "Continue with local learner",
@@ -671,7 +688,7 @@
       "options": []
     },
     {
-      "id": "c-36",
+      "id": "c-37",
       "kind": "form",
       "type": "",
       "text": "Continue with learning demo",
@@ -688,7 +705,7 @@
       "options": []
     },
     {
-      "id": "c-37",
+      "id": "c-38",
       "kind": "button",
       "type": "submit",
       "text": "Continue with learning demo",
@@ -705,7 +722,7 @@
       "options": []
     },
     {
-      "id": "c-38",
+      "id": "c-39",
       "kind": "a",
       "type": "",
       "text": "Continue with Google",
@@ -722,7 +739,7 @@
       "options": []
     },
     {
-      "id": "c-39",
+      "id": "c-40",
       "kind": "a",
       "type": "",
       "text": "Continue with Facebook",
@@ -739,7 +756,7 @@
       "options": []
     },
     {
-      "id": "c-40",
+      "id": "c-41",
       "kind": "a",
       "type": "",
       "text": "Continue with Apple",
@@ -756,7 +773,7 @@
       "options": []
     },
     {
-      "id": "c-41",
+      "id": "c-42",
       "kind": "a",
       "type": "",
       "text": "Sign up with your organization",
@@ -773,7 +790,7 @@
       "options": []
     },
     {
-      "id": "c-42",
+      "id": "c-43",
       "kind": "a",
       "type": "",
       "text": "Terms of Use",
@@ -790,7 +807,7 @@
       "options": []
     },
     {
-      "id": "c-43",
+      "id": "c-44",
       "kind": "a",
       "type": "",
       "text": "Privacy Notice",
@@ -807,7 +824,7 @@
       "options": []
     },
     {
-      "id": "c-44",
+      "id": "c-45",
       "kind": "a",
       "type": "",
       "text": "Privacy Policy",
@@ -824,7 +841,7 @@
       "options": []
     },
     {
-      "id": "c-45",
+      "id": "c-46",
       "kind": "a",
       "type": "",
       "text": "Terms of Service",
@@ -841,7 +858,7 @@
       "options": []
     },
     {
-      "id": "c-46",
+      "id": "c-47",
       "kind": "a",
       "type": "",
       "text": "Learner help",
@@ -967,7 +984,7 @@
     "http_status": 200,
     "heading_count": 5,
     "region_count": 4,
-    "control_count": 47,
+    "control_count": 48,
     "form_count": 4,
     "data_point_count": 1,
     "style_count": 23,
