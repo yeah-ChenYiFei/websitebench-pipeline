@@ -4,7 +4,7 @@
   "pages": [
     {
       "page": "home",
-      "structure_score": 0.7965,
+      "structure_score": 0.8391,
       "headings": {
         "source": 67,
         "clone": 73,
@@ -14,9 +14,9 @@
       },
       "controls": {
         "source": 195,
-        "clone": 182,
-        "jaccard": 0.502,
-        "coverage": 0.6462
+        "clone": 211,
+        "jaccard": 0.6437,
+        "coverage": 0.8154
       },
       "data_points": {
         "source": 1,
@@ -26,7 +26,7 @@
     },
     {
       "page": "browse",
-      "structure_score": 0.8928,
+      "structure_score": 0.8975,
       "headings": {
         "source": 50,
         "clone": 52,
@@ -36,9 +36,9 @@
       },
       "controls": {
         "source": 152,
-        "clone": 145,
-        "jaccard": 0.7069,
-        "coverage": 0.8092
+        "clone": 146,
+        "jaccard": 0.7225,
+        "coverage": 0.8224
       },
       "data_points": {
         "source": 1,
@@ -48,7 +48,7 @@
     },
     {
       "page": "search",
-      "structure_score": 0.8491,
+      "structure_score": 0.8855,
       "headings": {
         "source": 21,
         "clone": 21,
@@ -58,9 +58,9 @@
       },
       "controls": {
         "source": 104,
-        "clone": 137,
-        "jaccard": 0.4969,
-        "coverage": 0.7692
+        "clone": 142,
+        "jaccard": 0.6184,
+        "coverage": 0.9038
       },
       "data_points": {
         "source": 1,
@@ -70,7 +70,7 @@
     },
     {
       "page": "course",
-      "structure_score": 0.8832,
+      "structure_score": 0.9053,
       "headings": {
         "source": 39,
         "clone": 39,
@@ -80,9 +80,9 @@
       },
       "controls": {
         "source": 131,
-        "clone": 109,
-        "jaccard": 0.6107,
-        "coverage": 0.6947
+        "clone": 125,
+        "jaccard": 0.6842,
+        "coverage": 0.7939
       },
       "data_points": {
         "source": 1,
@@ -92,7 +92,7 @@
     },
     {
       "page": "specialization",
-      "structure_score": 0.9007,
+      "structure_score": 0.9143,
       "headings": {
         "source": 36,
         "clone": 36,
@@ -102,9 +102,9 @@
       },
       "controls": {
         "source": 130,
-        "clone": 107,
-        "jaccard": 0.669,
-        "coverage": 0.7308
+        "clone": 122,
+        "jaccard": 0.7143,
+        "coverage": 0.8077
       },
       "data_points": {
         "source": 1,
@@ -114,7 +114,7 @@
     },
     {
       "page": "login",
-      "structure_score": 0.8268,
+      "structure_score": 0.8833,
       "headings": {
         "source": 5,
         "clone": 5,
@@ -124,9 +124,9 @@
       },
       "controls": {
         "source": 53,
-        "clone": 48,
-        "jaccard": 0.4225,
-        "coverage": 0.566
+        "clone": 63,
+        "jaccard": 0.6111,
+        "coverage": 0.8302
       },
       "data_points": {
         "source": 1,
@@ -135,5 +135,5 @@
       }
     }
   ],
-  "overall_structure_consistency": 0.8582
+  "overall_structure_consistency": 0.8875
 }

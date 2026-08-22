@@ -2,7 +2,7 @@
   "schema_version": "websitebench.offline-clone.frontend-spec.v1",
   "authority": "diagnostic-only",
   "target_url": "http://127.0.0.1:8899/search?q=Deep+Learning",
-  "captured_at": "2026-08-22T03:16:55.814519+00:00",
+  "captured_at": "2026-08-22T03:37:51.158143+00:00",
   "viewport": {
     "width": 1692,
     "height": 979
@@ -156,7 +156,7 @@
       "id": "c-0",
       "kind": "a",
       "type": "",
-      "text": "For Individuals",
+      "text": "Skip to main content",
       "aria_label": "",
       "href": "/",
       "action": "",
@@ -173,6 +173,23 @@
       "id": "c-1",
       "kind": "a",
       "type": "",
+      "text": "For Individuals",
+      "aria_label": "",
+      "href": "/",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-2",
+      "kind": "a",
+      "type": "",
       "text": "For Businesses",
       "aria_label": "",
       "href": "/business/teams",
@@ -187,7 +204,7 @@
       "options": []
     },
     {
-      "id": "c-2",
+      "id": "c-3",
       "kind": "a",
       "type": "",
       "text": "For Universities",
@@ -204,7 +221,7 @@
       "options": []
     },
     {
-      "id": "c-3",
+      "id": "c-4",
       "kind": "a",
       "type": "",
       "text": "For Governments",
@@ -221,7 +238,7 @@
       "options": []
     },
     {
-      "id": "c-4",
+      "id": "c-5",
       "kind": "a",
       "type": "",
       "text": "coursera",
@@ -238,7 +255,7 @@
       "options": []
     },
     {
-      "id": "c-5",
+      "id": "c-6",
       "kind": "a",
       "type": "",
       "text": "Explore",
@@ -255,7 +272,7 @@
       "options": []
     },
     {
-      "id": "c-6",
+      "id": "c-7",
       "kind": "a",
       "type": "",
       "text": "Degrees",
@@ -272,7 +289,7 @@
       "options": []
     },
     {
-      "id": "c-7",
+      "id": "c-8",
       "kind": "form",
       "type": "",
       "text": "Search courses",
@@ -289,7 +306,7 @@
       "options": []
     },
     {
-      "id": "c-8",
+      "id": "c-9",
       "kind": "input",
       "type": "",
       "text": "",
@@ -306,7 +323,7 @@
       "options": []
     },
     {
-      "id": "c-9",
+      "id": "c-10",
       "kind": "button",
       "type": "submit",
       "text": "",
@@ -323,7 +340,7 @@
       "options": []
     },
     {
-      "id": "c-10",
+      "id": "c-11",
       "kind": "button",
       "type": "button",
       "text": "Log In",
@@ -340,7 +357,7 @@
       "options": []
     },
     {
-      "id": "c-11",
+      "id": "c-12",
       "kind": "a",
       "type": "",
       "text": "Join for Free",
@@ -357,7 +374,7 @@
       "options": []
     },
     {
-      "id": "c-12",
+      "id": "c-13",
       "kind": "a",
       "type": "",
       "text": "Filter & Sort",
@@ -374,7 +391,7 @@
       "options": []
     },
     {
-      "id": "c-13",
+      "id": "c-14",
       "kind": "a",
       "type": "",
       "text": "Topic",
@@ -391,7 +408,7 @@
       "options": []
     },
     {
-      "id": "c-14",
+      "id": "c-15",
       "kind": "a",
       "type": "",
       "text": "Duration",
@@ -408,7 +425,7 @@
       "options": []
     },
     {
-      "id": "c-15",
+      "id": "c-16",
       "kind": "a",
       "type": "",
       "text": "Learning Product",
@@ -425,7 +442,7 @@
       "options": []
     },
     {
-      "id": "c-16",
+      "id": "c-17",
       "kind": "a",
       "type": "",
       "text": "Language",
@@ -442,7 +459,7 @@
       "options": []
     },
     {
-      "id": "c-17",
+      "id": "c-18",
       "kind": "a",
       "type": "",
       "text": "Level",
@@ -459,7 +476,7 @@
       "options": []
     },
     {
-      "id": "c-18",
+      "id": "c-19",
       "kind": "a",
       "type": "",
       "text": "Google Google AI",
@@ -476,7 +493,7 @@
       "options": []
     },
     {
-      "id": "c-19",
+      "id": "c-20",
       "kind": "a",
       "type": "",
       "text": "Google Google Data Analytics",
@@ -493,7 +510,7 @@
       "options": []
     },
     {
-      "id": "c-20",
+      "id": "c-21",
       "kind": "a",
       "type": "",
       "text": "Google Google Project Management",
@@ -510,7 +527,7 @@
       "options": []
     },
     {
-      "id": "c-21",
+      "id": "c-22",
       "kind": "a",
       "type": "",
       "text": "Google Google Cybersecurity",
@@ -527,7 +544,7 @@
       "options": []
     },
     {
-      "id": "c-22",
+      "id": "c-23",
       "kind": "form",
       "type": "",
       "text": "Topic Arts And Humanities Business Computer Science Data Science Health Information Technology Language Learning Duratio",
@@ -536,23 +553,6 @@
       "action": "/search",
       "method": "get",
       "name": "",
-      "placeholder": "",
-      "required": false,
-      "disabled": false,
-      "role": "",
-      "data_testid": "",
-      "options": []
-    },
-    {
-      "id": "c-23",
-      "kind": "input",
-      "type": "checkbox",
-      "text": "",
-      "aria_label": "",
-      "href": "",
-      "action": "",
-      "method": "",
-      "name": "category",
       "placeholder": "",
       "required": false,
       "disabled": false,
@@ -671,7 +671,7 @@
       "href": "",
       "action": "",
       "method": "",
-      "name": "duration",
+      "name": "category",
       "placeholder": "",
       "required": false,
       "disabled": false,
@@ -756,7 +756,7 @@
       "href": "",
       "action": "",
       "method": "",
-      "name": "product",
+      "name": "duration",
       "placeholder": "",
       "required": false,
       "disabled": false,
@@ -824,7 +824,7 @@
       "href": "",
       "action": "",
       "method": "",
-      "name": "language",
+      "name": "product",
       "placeholder": "",
       "required": false,
       "disabled": false,
@@ -875,7 +875,7 @@
       "href": "",
       "action": "",
       "method": "",
-      "name": "level",
+      "name": "language",
       "placeholder": "",
       "required": false,
       "disabled": false,
@@ -943,7 +943,7 @@
       "href": "",
       "action": "",
       "method": "",
-      "name": "status",
+      "name": "level",
       "placeholder": "",
       "required": false,
       "disabled": false,
@@ -977,7 +977,7 @@
       "href": "",
       "action": "",
       "method": "",
-      "name": "ai_skills",
+      "name": "status",
       "placeholder": "",
       "required": false,
       "disabled": false,
@@ -987,6 +987,23 @@
     },
     {
       "id": "c-49",
+      "kind": "input",
+      "type": "checkbox",
+      "text": "",
+      "aria_label": "",
+      "href": "",
+      "action": "",
+      "method": "",
+      "name": "ai_skills",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-50",
       "kind": "button",
       "type": "submit",
       "text": "Apply filters",
@@ -1003,7 +1020,7 @@
       "options": []
     },
     {
-      "id": "c-50",
+      "id": "c-51",
       "kind": "div",
       "type": "",
       "text": "Beginner Google Google AI Skills you'll gain: Generative AI, Artificial Intelligence, Prompt Engineering, Machine Learni",
@@ -1020,10 +1037,10 @@
       "options": []
     },
     {
-      "id": "c-51",
+      "id": "c-52",
       "kind": "a",
       "type": "",
-      "text": "Google Google AI",
+      "text": "Google AI",
       "aria_label": "",
       "href": "/professional-certificates/google-ai",
       "action": "",
@@ -1037,7 +1054,7 @@
       "options": []
     },
     {
-      "id": "c-52",
+      "id": "c-53",
       "kind": "div",
       "type": "",
       "text": "Beginner Google Google Data Analytics Skills you'll gain: Data Analysis, SQL, Spreadsheet, Data Visualization, Data Clea",
@@ -1054,10 +1071,10 @@
       "options": []
     },
     {
-      "id": "c-53",
+      "id": "c-54",
       "kind": "a",
       "type": "",
-      "text": "Google Google Data Analytics",
+      "text": "Google Data Analytics",
       "aria_label": "",
       "href": "/professional-certificates/google-data-analytics",
       "action": "",
@@ -1071,7 +1088,7 @@
       "options": []
     },
     {
-      "id": "c-54",
+      "id": "c-55",
       "kind": "div",
       "type": "",
       "text": "Beginner Google Google Project Management Skills you'll gain: Project Management, Agile, Risk Management, Strategic Thin",
@@ -1088,10 +1105,10 @@
       "options": []
     },
     {
-      "id": "c-55",
+      "id": "c-56",
       "kind": "a",
       "type": "",
-      "text": "Google Google Project Management",
+      "text": "Google Project Management",
       "aria_label": "",
       "href": "/professional-certificates/google-project-management",
       "action": "",
@@ -1105,7 +1122,7 @@
       "options": []
     },
     {
-      "id": "c-56",
+      "id": "c-57",
       "kind": "div",
       "type": "",
       "text": "Beginner Google Google Cybersecurity Skills you'll gain: Cybersecurity, Security Hardening, Risk Assessment, Incident Re",
@@ -1122,10 +1139,10 @@
       "options": []
     },
     {
-      "id": "c-57",
+      "id": "c-58",
       "kind": "a",
       "type": "",
-      "text": "Google Google Cybersecurity",
+      "text": "Google Cybersecurity",
       "aria_label": "",
       "href": "/professional-certificates/google-cybersecurity",
       "action": "",
@@ -1139,7 +1156,7 @@
       "options": []
     },
     {
-      "id": "c-58",
+      "id": "c-59",
       "kind": "div",
       "type": "",
       "text": "Beginner Google Google AI Essentials Skills you'll gain: Generative AI, Artificial Intelligence, Machine Learning, Promp",
@@ -1156,10 +1173,10 @@
       "options": []
     },
     {
-      "id": "c-59",
+      "id": "c-60",
       "kind": "a",
       "type": "",
-      "text": "Google Google AI Essentials",
+      "text": "Google AI Essentials",
       "aria_label": "",
       "href": "/professional-certificates/google-ai-essentials",
       "action": "",
@@ -1173,7 +1190,7 @@
       "options": []
     },
     {
-      "id": "c-60",
+      "id": "c-61",
       "kind": "div",
       "type": "",
       "text": "Free Trial Stanford University Machine Learning Skills you'll gain: Machine Learning, Supervised Learning, Regression, N",
@@ -1190,10 +1207,10 @@
       "options": []
     },
     {
-      "id": "c-61",
+      "id": "c-62",
       "kind": "a",
       "type": "",
-      "text": "Stanford University Machine Learning",
+      "text": "Machine Learning",
       "aria_label": "",
       "href": "/learn/machine-learning",
       "action": "",
@@ -1207,7 +1224,7 @@
       "options": []
     },
     {
-      "id": "c-62",
+      "id": "c-63",
       "kind": "div",
       "type": "",
       "text": "Beginner Google Google Digital Marketing & E-commerce Skills you'll gain: Digital Marketing, E-Commerce, SEO, Marketing ",
@@ -1224,10 +1241,10 @@
       "options": []
     },
     {
-      "id": "c-63",
+      "id": "c-64",
       "kind": "a",
       "type": "",
-      "text": "Google Google Digital Marketing & E-commerce",
+      "text": "Google Digital Marketing & E-commerce",
       "aria_label": "",
       "href": "/professional-certificates/google-digital-marketing-ecommerce",
       "action": "",
@@ -1241,7 +1258,7 @@
       "options": []
     },
     {
-      "id": "c-64",
+      "id": "c-65",
       "kind": "div",
       "type": "",
       "text": "Beginner Google Google IT Support Skills you'll gain: Technical Support, Networking, Operating Systems, Security ▧ Build",
@@ -1258,10 +1275,10 @@
       "options": []
     },
     {
-      "id": "c-65",
+      "id": "c-66",
       "kind": "a",
       "type": "",
-      "text": "Google Google IT Support",
+      "text": "Google IT Support",
       "aria_label": "",
       "href": "/professional-certificates/google-it-support",
       "action": "",
@@ -1275,7 +1292,7 @@
       "options": []
     },
     {
-      "id": "c-66",
+      "id": "c-67",
       "kind": "div",
       "type": "",
       "text": "Intermediate IBM IBM Generative AI Engineering Skills you'll gain: Generative AI, Machine Learning, Python, Prompt Engin",
@@ -1292,10 +1309,10 @@
       "options": []
     },
     {
-      "id": "c-67",
+      "id": "c-68",
       "kind": "a",
       "type": "",
-      "text": "IBM IBM Generative AI Engineering",
+      "text": "IBM Generative AI Engineering",
       "aria_label": "",
       "href": "/professional-certificates/ai-engineer",
       "action": "",
@@ -1309,7 +1326,7 @@
       "options": []
     },
     {
-      "id": "c-68",
+      "id": "c-69",
       "kind": "div",
       "type": "",
       "text": "Beginner IBM IBM Data Analyst Skills you'll gain: Python, SQL, Data Analysis, Data Visualization, Excel ▧ Build toward a",
@@ -1326,10 +1343,10 @@
       "options": []
     },
     {
-      "id": "c-69",
+      "id": "c-70",
       "kind": "a",
       "type": "",
-      "text": "IBM IBM Data Analyst",
+      "text": "IBM Data Analyst",
       "aria_label": "",
       "href": "/professional-certificates/ibm-data-analyst",
       "action": "",
@@ -1343,7 +1360,7 @@
       "options": []
     },
     {
-      "id": "c-70",
+      "id": "c-71",
       "kind": "div",
       "type": "",
       "text": "Beginner Google Google UX Design Skills you'll gain: UX Research, Design Thinking, Prototyping, Wireframing ▧ Build towa",
@@ -1360,10 +1377,10 @@
       "options": []
     },
     {
-      "id": "c-71",
+      "id": "c-72",
       "kind": "a",
       "type": "",
-      "text": "Google Google UX Design",
+      "text": "Google UX Design",
       "aria_label": "",
       "href": "/professional-certificates/google-ux-design",
       "action": "",
@@ -1377,7 +1394,7 @@
       "options": []
     },
     {
-      "id": "c-72",
+      "id": "c-73",
       "kind": "div",
       "type": "",
       "text": "Beginner IBM IBM Data Science Skills you'll gain: Data Science, Python, Machine Learning, Statistics, SQL ▧ Build toward",
@@ -1394,10 +1411,10 @@
       "options": []
     },
     {
-      "id": "c-73",
+      "id": "c-74",
       "kind": "a",
       "type": "",
-      "text": "IBM IBM Data Science",
+      "text": "IBM Data Science",
       "aria_label": "",
       "href": "/professional-certificates/ibm-data-science",
       "action": "",
@@ -1411,7 +1428,7 @@
       "options": []
     },
     {
-      "id": "c-74",
+      "id": "c-75",
       "kind": "a",
       "type": "",
       "text": "🚀 Start my career",
@@ -1428,7 +1445,7 @@
       "options": []
     },
     {
-      "id": "c-75",
+      "id": "c-76",
       "kind": "a",
       "type": "",
       "text": "↝ Change my career",
@@ -1445,7 +1462,7 @@
       "options": []
     },
     {
-      "id": "c-76",
+      "id": "c-77",
       "kind": "a",
       "type": "",
       "text": "↗ Grow in my current role",
@@ -1462,7 +1479,7 @@
       "options": []
     },
     {
-      "id": "c-77",
+      "id": "c-78",
       "kind": "a",
       "type": "",
       "text": "Explore topics outside of work",
@@ -1479,7 +1496,7 @@
       "options": []
     },
     {
-      "id": "c-78",
+      "id": "c-79",
       "kind": "a",
       "type": "",
       "text": "deep learning specialization",
@@ -1496,7 +1513,7 @@
       "options": []
     },
     {
-      "id": "c-79",
+      "id": "c-80",
       "kind": "a",
       "type": "",
       "text": "deep learning with pytorch artificial intelligence and machine learning (ai/ml)",
@@ -1513,7 +1530,7 @@
       "options": []
     },
     {
-      "id": "c-80",
+      "id": "c-81",
       "kind": "a",
       "type": "",
       "text": "deep learning with pytorch, keras and tensorflow",
@@ -1530,7 +1547,7 @@
       "options": []
     },
     {
-      "id": "c-81",
+      "id": "c-82",
       "kind": "a",
       "type": "",
       "text": "neural networks & deep learning",
@@ -1547,7 +1564,7 @@
       "options": []
     },
     {
-      "id": "c-82",
+      "id": "c-83",
       "kind": "a",
       "type": "",
       "text": "machine learning and deep learning machine learning algorithms",
@@ -1564,7 +1581,7 @@
       "options": []
     },
     {
-      "id": "c-83",
+      "id": "c-84",
       "kind": "a",
       "type": "",
       "text": "deep learning ai unsupervised learning",
@@ -1581,7 +1598,7 @@
       "options": []
     },
     {
-      "id": "c-84",
+      "id": "c-85",
       "kind": "a",
       "type": "",
       "text": "deep learning.ai classification algorithms",
@@ -1598,7 +1615,7 @@
       "options": []
     },
     {
-      "id": "c-85",
+      "id": "c-86",
       "kind": "a",
       "type": "",
       "text": "deep learning.ai decision tree learning",
@@ -1615,7 +1632,7 @@
       "options": []
     },
     {
-      "id": "c-86",
+      "id": "c-87",
       "kind": "a",
       "type": "",
       "text": "deep learning.ai unsupervised learning",
@@ -1632,7 +1649,7 @@
       "options": []
     },
     {
-      "id": "c-87",
+      "id": "c-88",
       "kind": "a",
       "type": "",
       "text": "deep learning stanford university",
@@ -1649,7 +1666,7 @@
       "options": []
     },
     {
-      "id": "c-88",
+      "id": "c-89",
       "kind": "a",
       "type": "",
       "text": "Accounting",
@@ -1666,7 +1683,7 @@
       "options": []
     },
     {
-      "id": "c-89",
+      "id": "c-90",
       "kind": "a",
       "type": "",
       "text": "Artificial Intelligence (AI)",
@@ -1683,7 +1700,7 @@
       "options": []
     },
     {
-      "id": "c-90",
+      "id": "c-91",
       "kind": "a",
       "type": "",
       "text": "Cybersecurity",
@@ -1700,7 +1717,7 @@
       "options": []
     },
     {
-      "id": "c-91",
+      "id": "c-92",
       "kind": "a",
       "type": "",
       "text": "Data Analytics",
@@ -1717,7 +1734,7 @@
       "options": []
     },
     {
-      "id": "c-92",
+      "id": "c-93",
       "kind": "a",
       "type": "",
       "text": "Digital Marketing",
@@ -1734,7 +1751,7 @@
       "options": []
     },
     {
-      "id": "c-93",
+      "id": "c-94",
       "kind": "a",
       "type": "",
       "text": "Human Resources (HR)",
@@ -1751,7 +1768,7 @@
       "options": []
     },
     {
-      "id": "c-94",
+      "id": "c-95",
       "kind": "a",
       "type": "",
       "text": "Microsoft Excel",
@@ -1768,7 +1785,7 @@
       "options": []
     },
     {
-      "id": "c-95",
+      "id": "c-96",
       "kind": "a",
       "type": "",
       "text": "Project Management",
@@ -1785,7 +1802,7 @@
       "options": []
     },
     {
-      "id": "c-96",
+      "id": "c-97",
       "kind": "a",
       "type": "",
       "text": "Python",
@@ -1802,7 +1819,7 @@
       "options": []
     },
     {
-      "id": "c-97",
+      "id": "c-98",
       "kind": "a",
       "type": "",
       "text": "SQL",
@@ -1819,7 +1836,7 @@
       "options": []
     },
     {
-      "id": "c-98",
+      "id": "c-99",
       "kind": "a",
       "type": "",
       "text": "Google AI Certificate",
@@ -1836,7 +1853,7 @@
       "options": []
     },
     {
-      "id": "c-99",
+      "id": "c-100",
       "kind": "a",
       "type": "",
       "text": "Google Cybersecurity Certificate",
@@ -1853,7 +1870,7 @@
       "options": []
     },
     {
-      "id": "c-100",
+      "id": "c-101",
       "kind": "a",
       "type": "",
       "text": "Google Data Analytics Certificate",
@@ -1870,7 +1887,7 @@
       "options": []
     },
     {
-      "id": "c-101",
+      "id": "c-102",
       "kind": "a",
       "type": "",
       "text": "Google IT Support Certificate",
@@ -1887,7 +1904,7 @@
       "options": []
     },
     {
-      "id": "c-102",
+      "id": "c-103",
       "kind": "a",
       "type": "",
       "text": "Google Project Management Certificate",
@@ -1904,7 +1921,7 @@
       "options": []
     },
     {
-      "id": "c-103",
+      "id": "c-104",
       "kind": "a",
       "type": "",
       "text": "Google UX Design Certificate",
@@ -1921,7 +1938,7 @@
       "options": []
     },
     {
-      "id": "c-104",
+      "id": "c-105",
       "kind": "a",
       "type": "",
       "text": "IBM AI Engineering Certificate",
@@ -1938,7 +1955,7 @@
       "options": []
     },
     {
-      "id": "c-105",
+      "id": "c-106",
       "kind": "a",
       "type": "",
       "text": "IBM AI Product Manager Certificate",
@@ -1955,7 +1972,7 @@
       "options": []
     },
     {
-      "id": "c-106",
+      "id": "c-107",
       "kind": "a",
       "type": "",
       "text": "IBM Data Science Certificate",
@@ -1972,7 +1989,7 @@
       "options": []
     },
     {
-      "id": "c-107",
+      "id": "c-108",
       "kind": "a",
       "type": "",
       "text": "Intuit Academy Bookkeeping Certificate",
@@ -1989,7 +2006,7 @@
       "options": []
     },
     {
-      "id": "c-108",
+      "id": "c-109",
       "kind": "a",
       "type": "",
       "text": "AI Essentials Specialization",
@@ -2006,7 +2023,7 @@
       "options": []
     },
     {
-      "id": "c-109",
+      "id": "c-110",
       "kind": "a",
       "type": "",
       "text": "AI For Business Specialization",
@@ -2023,7 +2040,7 @@
       "options": []
     },
     {
-      "id": "c-110",
+      "id": "c-111",
       "kind": "a",
       "type": "",
       "text": "AI For Everyone Course",
@@ -2040,7 +2057,7 @@
       "options": []
     },
     {
-      "id": "c-111",
+      "id": "c-112",
       "kind": "a",
       "type": "",
       "text": "AI in Healthcare Specialization",
@@ -2057,7 +2074,7 @@
       "options": []
     },
     {
-      "id": "c-112",
+      "id": "c-113",
       "kind": "a",
       "type": "",
       "text": "Deep Learning Specialization",
@@ -2074,7 +2091,7 @@
       "options": []
     },
     {
-      "id": "c-113",
+      "id": "c-114",
       "kind": "a",
       "type": "",
       "text": "Excel Skills for Business Specialization",
@@ -2091,7 +2108,7 @@
       "options": []
     },
     {
-      "id": "c-114",
+      "id": "c-115",
       "kind": "a",
       "type": "",
       "text": "Financial Markets Course",
@@ -2108,7 +2125,7 @@
       "options": []
     },
     {
-      "id": "c-115",
+      "id": "c-116",
       "kind": "a",
       "type": "",
       "text": "Machine Learning Specialization",
@@ -2125,7 +2142,7 @@
       "options": []
     },
     {
-      "id": "c-116",
+      "id": "c-117",
       "kind": "a",
       "type": "",
       "text": "Prompt Engineering for ChatGPT Course",
@@ -2142,7 +2159,7 @@
       "options": []
     },
     {
-      "id": "c-117",
+      "id": "c-118",
       "kind": "a",
       "type": "",
       "text": "Python for Everybody Specialization",
@@ -2159,7 +2176,7 @@
       "options": []
     },
     {
-      "id": "c-118",
+      "id": "c-119",
       "kind": "a",
       "type": "",
       "text": "Career Aptitude Test",
@@ -2176,7 +2193,7 @@
       "options": []
     },
     {
-      "id": "c-119",
+      "id": "c-120",
       "kind": "a",
       "type": "",
       "text": "CAPM Certification Requirements",
@@ -2193,7 +2210,7 @@
       "options": []
     },
     {
-      "id": "c-120",
+      "id": "c-121",
       "kind": "a",
       "type": "",
       "text": "CompTIA A+ Certification Requirements",
@@ -2210,7 +2227,7 @@
       "options": []
     },
     {
-      "id": "c-121",
+      "id": "c-122",
       "kind": "a",
       "type": "",
       "text": "CompTIA Security+ Certification Requirements",
@@ -2227,27 +2244,10 @@
       "options": []
     },
     {
-      "id": "c-122",
-      "kind": "a",
-      "type": "",
-      "text": "ESI® IT Certifications",
-      "aria_label": "",
-      "href": "/help",
-      "action": "",
-      "method": "",
-      "name": "",
-      "placeholder": "",
-      "required": false,
-      "disabled": false,
-      "role": "",
-      "data_testid": "",
-      "options": []
-    },
-    {
       "id": "c-123",
       "kind": "a",
       "type": "",
-      "text": "High-Income Skills to Learn",
+      "text": "Essential IT Certifications",
       "aria_label": "",
       "href": "/help",
       "action": "",
@@ -2264,7 +2264,7 @@
       "id": "c-124",
       "kind": "a",
       "type": "",
-      "text": "How to Learn Artificial Intelligence",
+      "text": "High-Income Skills to Learn",
       "aria_label": "",
       "href": "/help",
       "action": "",
@@ -2281,7 +2281,7 @@
       "id": "c-125",
       "kind": "a",
       "type": "",
-      "text": "PMP Certification Requirements",
+      "text": "How to Learn Artificial Intelligence",
       "aria_label": "",
       "href": "/help",
       "action": "",
@@ -2298,7 +2298,7 @@
       "id": "c-126",
       "kind": "a",
       "type": "",
-      "text": "Popular Cybersecurity Certifications",
+      "text": "PMP Certification Requirements",
       "aria_label": "",
       "href": "/help",
       "action": "",
@@ -2315,7 +2315,7 @@
       "id": "c-127",
       "kind": "a",
       "type": "",
-      "text": "Share your Coursera learning story",
+      "text": "Popular Cybersecurity Certifications",
       "aria_label": "",
       "href": "/help",
       "action": "",
@@ -2332,6 +2332,23 @@
       "id": "c-128",
       "kind": "a",
       "type": "",
+      "text": "Share your Coursera learning story",
+      "aria_label": "",
+      "href": "/help",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-129",
+      "kind": "a",
+      "type": "",
       "text": "About",
       "aria_label": "",
       "href": "/about/contact",
@@ -2346,7 +2363,7 @@
       "options": []
     },
     {
-      "id": "c-129",
+      "id": "c-130",
       "kind": "a",
       "type": "",
       "text": "What We Offer",
@@ -2363,7 +2380,7 @@
       "options": []
     },
     {
-      "id": "c-130",
+      "id": "c-131",
       "kind": "a",
       "type": "",
       "text": "Leadership",
@@ -2380,7 +2397,7 @@
       "options": []
     },
     {
-      "id": "c-131",
+      "id": "c-132",
       "kind": "a",
       "type": "",
       "text": "Careers",
@@ -2397,7 +2414,7 @@
       "options": []
     },
     {
-      "id": "c-132",
+      "id": "c-133",
       "kind": "a",
       "type": "",
       "text": "Catalog",
@@ -2414,7 +2431,7 @@
       "options": []
     },
     {
-      "id": "c-133",
+      "id": "c-134",
       "kind": "a",
       "type": "",
       "text": "Coursera Plus",
@@ -2431,7 +2448,7 @@
       "options": []
     },
     {
-      "id": "c-134",
+      "id": "c-135",
       "kind": "a",
       "type": "",
       "text": "Professional Certificates",
@@ -2448,7 +2465,7 @@
       "options": []
     },
     {
-      "id": "c-135",
+      "id": "c-136",
       "kind": "a",
       "type": "",
       "text": "MasterTrack® Certificates",
@@ -2465,7 +2482,7 @@
       "options": []
     },
     {
-      "id": "c-136",
+      "id": "c-137",
       "kind": "a",
       "type": "",
       "text": "Degrees",
@@ -2482,7 +2499,7 @@
       "options": []
     },
     {
-      "id": "c-137",
+      "id": "c-138",
       "kind": "a",
       "type": "",
       "text": "For Enterprise",
@@ -2499,7 +2516,7 @@
       "options": []
     },
     {
-      "id": "c-138",
+      "id": "c-139",
       "kind": "a",
       "type": "",
       "text": "For Government",
@@ -2516,7 +2533,7 @@
       "options": []
     },
     {
-      "id": "c-139",
+      "id": "c-140",
       "kind": "a",
       "type": "",
       "text": "For Campus",
@@ -2533,7 +2550,7 @@
       "options": []
     },
     {
-      "id": "c-140",
+      "id": "c-141",
       "kind": "a",
       "type": "",
       "text": "Become a Partner",
@@ -2550,7 +2567,7 @@
       "options": []
     },
     {
-      "id": "c-141",
+      "id": "c-142",
       "kind": "a",
       "type": "",
       "text": "Social Impact",
@@ -2567,7 +2584,7 @@
       "options": []
     },
     {
-      "id": "c-142",
+      "id": "c-143",
       "kind": "a",
       "type": "",
       "text": "Free Courses",
@@ -2584,7 +2601,7 @@
       "options": []
     },
     {
-      "id": "c-143",
+      "id": "c-144",
       "kind": "a",
       "type": "",
       "text": "Udemy",
@@ -2601,7 +2618,7 @@
       "options": []
     },
     {
-      "id": "c-144",
+      "id": "c-145",
       "kind": "a",
       "type": "",
       "text": "Learners",
@@ -2618,7 +2635,7 @@
       "options": []
     },
     {
-      "id": "c-145",
+      "id": "c-146",
       "kind": "a",
       "type": "",
       "text": "Partners",
@@ -2635,7 +2652,7 @@
       "options": []
     },
     {
-      "id": "c-146",
+      "id": "c-147",
       "kind": "a",
       "type": "",
       "text": "Beta Testers",
@@ -2652,7 +2669,7 @@
       "options": []
     },
     {
-      "id": "c-147",
+      "id": "c-148",
       "kind": "a",
       "type": "",
       "text": "Blog",
@@ -2669,7 +2686,7 @@
       "options": []
     },
     {
-      "id": "c-148",
+      "id": "c-149",
       "kind": "a",
       "type": "",
       "text": "The Coursera Podcast",
@@ -2686,7 +2703,7 @@
       "options": []
     },
     {
-      "id": "c-149",
+      "id": "c-150",
       "kind": "a",
       "type": "",
       "text": "Tech Blog",
@@ -2703,7 +2720,7 @@
       "options": []
     },
     {
-      "id": "c-150",
+      "id": "c-151",
       "kind": "a",
       "type": "",
       "text": "Press",
@@ -2720,7 +2737,7 @@
       "options": []
     },
     {
-      "id": "c-151",
+      "id": "c-152",
       "kind": "a",
       "type": "",
       "text": "Investors",
@@ -2737,7 +2754,7 @@
       "options": []
     },
     {
-      "id": "c-152",
+      "id": "c-153",
       "kind": "a",
       "type": "",
       "text": "Terms",
@@ -2754,7 +2771,7 @@
       "options": []
     },
     {
-      "id": "c-153",
+      "id": "c-154",
       "kind": "a",
       "type": "",
       "text": "Privacy",
@@ -2771,7 +2788,7 @@
       "options": []
     },
     {
-      "id": "c-154",
+      "id": "c-155",
       "kind": "a",
       "type": "",
       "text": "Help",
@@ -2788,7 +2805,7 @@
       "options": []
     },
     {
-      "id": "c-155",
+      "id": "c-156",
       "kind": "a",
       "type": "",
       "text": "Accessibility",
@@ -2805,7 +2822,7 @@
       "options": []
     },
     {
-      "id": "c-156",
+      "id": "c-157",
       "kind": "a",
       "type": "",
       "text": "Contact",
@@ -2822,7 +2839,7 @@
       "options": []
     },
     {
-      "id": "c-157",
+      "id": "c-158",
       "kind": "a",
       "type": "",
       "text": "Articles",
@@ -2839,7 +2856,7 @@
       "options": []
     },
     {
-      "id": "c-158",
+      "id": "c-159",
       "kind": "a",
       "type": "",
       "text": "Directory",
@@ -2856,7 +2873,7 @@
       "options": []
     },
     {
-      "id": "c-159",
+      "id": "c-160",
       "kind": "a",
       "type": "",
       "text": "Affiliates",
@@ -2873,7 +2890,7 @@
       "options": []
     },
     {
-      "id": "c-160",
+      "id": "c-161",
       "kind": "a",
       "type": "",
       "text": "Modern Slavery Statement",
@@ -2890,7 +2907,7 @@
       "options": []
     },
     {
-      "id": "c-161",
+      "id": "c-162",
       "kind": "a",
       "type": "",
       "text": "Cookies Preference Center",
@@ -3064,7 +3081,7 @@
     "http_status": 200,
     "heading_count": 21,
     "region_count": 10,
-    "control_count": 162,
+    "control_count": 163,
     "form_count": 2,
     "data_point_count": 13,
     "style_count": 23,
