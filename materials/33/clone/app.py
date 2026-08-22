@@ -22,6 +22,8 @@ from browse_page import render_browse_body
 from catalog import load_catalog_seed
 from category_page import render_category_body
 from course_page import render_neural_networks_course_body
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+
 from data_science_page import render_data_science_body
 import enrolled_course
 import enrolled_page
@@ -87,6 +89,11 @@ async def security_headers(request: Request, call_next):
     response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
     return response
 
+_TEMPLATE_ROOT = Path(__file__).resolve().parent / "templates"
+_TEMPLATES = Environment(
+    loader=FileSystemLoader(_TEMPLATE_ROOT),
+    autoescape=select_autoescape(("html", "xml")),
+)
 
 def _header(*, authenticated: bool = False) -> str:
     return desktop_header(authenticated=authenticated)
@@ -1582,48 +1589,72 @@ def course_detail(request: Request, course_id: str) -> str:
             login_next_path="/learn/neural-networks-deep-learning",
             real_css="consumer-description-page.css",
         )
-    syllabus = "".join(f"<li>{escape(item)}</li>" for item in record["syllabus"])
-    instructors = ", ".join(escape(item) for item in record["instructors"])
-    tracks = "".join(f"<li>{escape(item)}</li>" for item in record["enrollment_tracks"])
-    subject_slug = SUBJECT_SLUGS[record["subject"]]
-    specialization_membership = (
-        '<p>This course is part of the <a href="/specializations/deep-learning">'
-        "Deep Learning Specialization</a></p>"
+    subject_slug = SUBJECT_SLUGS.get(record["subject"], "data-science")
+    membership = (
+        '<p>This course is part of the <a href="/specializations/deep-learning">Deep Learning Specialization</a></p>'
         if record.get("parent_specialization_id") == "deep-learning-specialization"
         else ""
     )
-    enrollment_course_id = str(
-        record.get("parent_specialization_id") or record["id"]
-    )
+    if record.get("parent_specialization_id"):
+        parent = _record_by_id(str(record["parent_specialization_id"]))
+        if parent is not None:
+            membership = f'<p>This course is part of the <a href="/specializations/{escape(str(parent["id"]))}">{escape(str(parent["title"]))}</a></p>'
     _backend, _auth, _token, session = _request_session(request)
-    enrollment_action = (
-        f"""<form class="enrollment-options" action="/enrollments" method="post"><input type="hidden" name="course_id" value="{escape(enrollment_course_id)}"><label>Enrollment track<select name="track" required><option value="free">Free learning</option><option value="audit">Audit</option></select></label><button class="wb-primary" type="submit">Save local enrollment</button></form>"""
-        if session["authenticated"]
-        else f'<a class="wb-primary" href="/login?next=/learn/{escape(record["id"])}">Join for Free</a>'
+    related = [
+        {
+            "title": str(other["title"]),
+            "provider": str(other["provider"]),
+            "kind": str(other["type"]).replace("-", " ").title(),
+            "href": _card_href(other),
+        }
+        for other in load_catalog_seed()
+        if other["id"] != record["id"]
+        and other["subject"] == record["subject"]
+        and other["type"] in {"course", "specialization"}
+    ][:4]
+    modules = [
+        {
+            "title": str(item),
+            "meta": f"Module {index + 1}",
+            "body": f"Explore this module to build practical skills in {escape(str(item))}.",
+        }
+        for index, item in enumerate(record["syllabus"][:8])
+    ]
+    skills = [
+        " ".join(word.capitalize() for word in str(record["topic"]).split())
+    ]
+    skills += [str(item).split(":")[0].strip() for item in record["syllabus"][:5]]
+    skills = list(dict.fromkeys(skills))[:8]
+    body = _TEMPLATES.get_template("pages/course_generic.html").render(
+        evidence_note=_evidence_note(record),
+        course=record,
+        authenticated=bool(session["authenticated"]),
+        subject_slug=subject_slug,
+        membership=membership,
+        instructor_names=", ".join(record["instructors"][:2]),
+        enrolled_count=f"{int(float(record.get('rating', 4.5)) * 200000):,}",
+        module_count=len(record["syllabus"]),
+        rating=f"{float(record['rating']):g}",
+        reviews="12,345",
+        level=str(record["level"]),
+        duration=str(record["duration"]),
+        modules=modules,
+        skills=skills,
+        related=related,
+        assessment_count=max(1, len(record["syllabus"]) // 2),
+        instructor_courses="8",
     )
-    display_title = record["title"]
-    skill_chips = "".join(
-        f"<span>{escape(skill)}</span>"
-        for skill in (
-            "Artificial Intelligence and Machine Learning",
-            "Deep Learning",
-            "Artificial Intelligence",
-            "Model Optimization",
-            "Model Training",
-            "Convolutional Neural Networks",
-            "Applied Machine Learning",
-            "Supervised Learning",
-            "Machine Learning Methods",
-        )
+    return _page(
+        request,
+        record["title"],
+        body,
+        body_class="source-course-detail-page",
+        document_title=f"{record['title']} | Coursera",
+        language="en",
+        footer_variant="source-browse",
+        login_next_path=f"/learn/{record['id']}",
+        real_css="consumer-description-page.css",
     )
-    body = f"""
-<nav class="course-breadcrumbs"><a href="/">⌂</a><span>›</span><a href="/browse">Browse</a><span>›</span><a href="/browse/{escape(subject_slug)}">{escape(record["subject"])}</a><span>›</span>Machine Learning</nav>
-<section class="course-hero source-course-hero" data-course-detail="{escape(record["id"])}"><div><p class="provider">{escape(record["provider"])}</p><h1>{escape(display_title)}</h1>{specialization_membership}<p>Instructor: <strong>{instructors}</strong> <span class="badge">Top Instructor</span></p>{enrollment_action}</div><div class="course-orbit" aria-hidden="true"></div></section>
-<section class="course-stats"><div><strong>4 modules</strong><span>Gain insight into a topic and learn the fundamentals.</span></div><div><strong>{record["rating"]:.1f} ★</strong><span>123,795 reviews</span></div><div><strong>Intermediate level</strong><span>Recommended experience</span></div><div><strong>Flexible schedule</strong><span>3 weeks at 10 hours a week; learn at your own pace</span></div><div><strong>👍 96%</strong><span>Most learners liked this course</span></div></section>
-<nav class="course-tabs" aria-label="Course details"><a href="#about">About</a><a href="#outcomes">Outcomes</a><a href="#modules">Modules</a><a href="#recommendations">Recommendations</a><a href="#reviews">Reviews</a><a href="#enroll">Enrollment</a></nav>
-<section id="about" class="course-source-detail"><h2>Skills you'll gain</h2><div class="skill-chip-row">{skill_chips}</div>{_evidence_note(record)}<h2>Tools you'll learn</h2><p>{escape(record["prerequisites"])}</p></section>
-<section class="detail-grid course-lower-detail"><article id="modules"><h2>Course modules</h2><ol>{syllabus}</ol></article><article><h2>Instructors</h2><p>{instructors}</p></article><article><h2>Prerequisites</h2><p>{escape(record["prerequisites"])}</p></article><article id="reviews"><h2>Reviews</h2><p>{escape(record["reviews_summary"])}</p></article><article><h2>Pricing</h2><p>{escape(record["pricing"])}</p></article><article id="enroll"><h2>Enrollment options</h2><ul>{tracks}</ul></article></section>"""
-    return _page(request, record["title"], body, language="en")
 
 
 def _auth_page(

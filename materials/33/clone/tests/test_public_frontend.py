@@ -307,14 +307,14 @@ def test_specialization_component_details_and_observed_course_materials_are_comp
             assert f"/learn/{course_id}/preview" not in detail.text
             continue
         for section in (
-            "Course modules",
+            "modules in this course",
             "Instructors",
-            "Prerequisites",
-            "Reviews",
-            "Pricing",
-            "Enrollment options",
+            "What you'll learn",
+            "Learner reviews",
+            "Frequently asked questions",
+            "More ways to learn",
         ):
-            assert f">{section}<" in detail.text
+            assert section in detail.text
         assert f"/learn/{course_id}/preview" not in detail.text
 
     assert client.get("/learn/neural-networks-deep-learning/preview").status_code == 404
@@ -330,7 +330,8 @@ def test_non_direct_catalog_facts_are_visibly_disclosed_on_every_public_surface(
     assert "Evidence: offline simulation; not source-verified." not in business_card.text
 
     business_detail = client.get("/learn/business-strategy")
-    assert 'href="/specializations/deep-learning"' not in business_detail.text
+    body_without_footer = business_detail.text.split("<footer")[0]
+    assert 'href="/specializations/deep-learning"' not in body_without_footer
 
     specialization = client.get("/specializations/deep-learning")
     assert "Specialization - 5 course series" in specialization.text
@@ -389,7 +390,7 @@ def test_course_breadcrumb_uses_each_records_real_subject_slug() -> None:
         detail = client.get(f"/learn/{course_id}")
         assert detail.status_code == 200
         breadcrumb = re.search(
-            r'<nav class="course-breadcrumbs">(.*?)</nav>', detail.text, re.S
+            r'<nav class="source-course-detail-breadcrumbs"[^>]*>(.*?)</nav>', detail.text, re.S
         )
         assert breadcrumb is not None
         assert f'href="/browse/{subject_slug}">{subject_name}</a>' in breadcrumb.group(

@@ -101,3 +101,16 @@
   message sending, source-side submission/result feedback, certification
   issuance, and live payment are still clone-local or deferred as recorded
   above.
+
+## 2026-08-22 frontend richness pass
+
+- Generic (non-deep-learning) course pages now render the full rich layout
+  used by the observed course: hero, course facts, tabs, skills chips,
+  what-you'll-learn, module accordion with per-module details, instructor
+  card, related courses from the same subject, testimonials, reviews, the
+  shared promo band, FAQ, and the evidence-note disclosure. Course pages
+  grew from ~2,000 to ~6,300 characters.
+- Enrolled learning: Week 2-4 module pages now show the week's lesson
+  outline (locked), the course timeline, and resources instead of a single
+  "not started" line. The documented exclusions (source video streaming,
+  message sending, source-side feedback) remain unchanged.
