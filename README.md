@@ -29,6 +29,9 @@ source .venv/bin/activate
 uv pip install -e '.[dev]'
 python -m playwright install chromium
 
+# 修复被删除或损坏的 .venv（WSL/Linux；也可设置 UV_BIN 指定 uv 路径）
+./scripts/bootstrap_env.sh
+
 # 查看通用离线 clone 工具
 python tools/offline_clone/run.py tools list
 
