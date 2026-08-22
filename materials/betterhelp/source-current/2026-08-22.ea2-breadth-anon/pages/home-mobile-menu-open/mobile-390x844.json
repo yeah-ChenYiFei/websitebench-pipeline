@@ -1,0 +1,124 @@
+{
+  "schema": "websitebench.source-observation.ea2.state.v1",
+  "role": "EA2-breadth-first-anonymous",
+  "requested_url": "https://www.betterhelp.com/",
+  "final_url": "https://www.betterhelp.com/",
+  "status": 200,
+  "visited_at": "2026-08-22T10:41:44.389Z",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "state": "mobile-primary-menu-open",
+  "action": "click-public-navigation-toggle",
+  "before": "false",
+  "after": "true",
+  "visible_links": [
+    {
+      "text": "Home",
+      "href": "https://www.betterhelp.com/"
+    },
+    {
+      "text": "Business",
+      "href": "https://www.betterhelporg.com/"
+    },
+    {
+      "text": "About",
+      "href": "https://www.betterhelp.com/about/"
+    },
+    {
+      "text": "FAQ",
+      "href": "https://www.betterhelp.com/faq/"
+    },
+    {
+      "text": "Reviews",
+      "href": "https://www.betterhelp.com/reviews/"
+    },
+    {
+      "text": "Advice",
+      "href": "https://www.betterhelp.com/advice/"
+    },
+    {
+      "text": "Careers",
+      "href": "https://www.betterhelp.com/careers/"
+    },
+    {
+      "text": "Find a Therapist",
+      "href": "https://www.betterhelp.com/therapists/"
+    },
+    {
+      "text": "Online Therapy",
+      "href": "https://www.betterhelp.com/online-therapy/"
+    },
+    {
+      "text": "Contact",
+      "href": "https://www.betterhelp.com/contact/"
+    },
+    {
+      "text": "For Therapists",
+      "href": "https://www.betterhelp.com/counselor_application/"
+    },
+    {
+      "text": "AARP",
+      "href": "https://www.betterhelp.com/aarp/"
+    },
+    {
+      "text": "",
+      "href": "https://www.facebook.com/BetterHelp"
+    },
+    {
+      "text": "",
+      "href": "https://www.instagram.com/betterhelp/"
+    },
+    {
+      "text": "",
+      "href": "https://www.tiktok.com/@betterhelp"
+    },
+    {
+      "text": "",
+      "href": "https://twitter.com/betterhelp"
+    },
+    {
+      "text": "",
+      "href": "https://www.linkedin.com/company/betterhelp"
+    },
+    {
+      "text": "Terms & Conditions",
+      "href": "https://www.betterhelp.com/terms/"
+    },
+    {
+      "text": "Privacy Policy",
+      "href": "https://www.betterhelp.com/privacy/"
+    },
+    {
+      "text": "Health Data",
+      "href": "https://www.betterhelp.com/health-data/"
+    },
+    {
+      "text": "Do Not Sell My Information",
+      "href": "nullvoid(0)"
+    },
+    {
+      "text": "Web Accessibility",
+      "href": "https://www.betterhelp.com/accessibility/"
+    }
+  ],
+  "blocked_non_readonly_requests": [
+    {
+      "method": "POST",
+      "url": "https://www.betterhelp.com/api/set_performance_cookie",
+      "resource_type": "xhr"
+    },
+    {
+      "method": "POST",
+      "url": "https://events.betterhelp.com/com.snowplowanalytics.snowplow/tp2",
+      "resource_type": "xhr"
+    },
+    {
+      "method": "POST",
+      "url": "https://ingress.us1.rum-ingress-coralogix.com/browser/v1beta/logs",
+      "resource_type": "fetch"
+    }
+  ],
+  "stop_reason": "state-variant-captured"
+}

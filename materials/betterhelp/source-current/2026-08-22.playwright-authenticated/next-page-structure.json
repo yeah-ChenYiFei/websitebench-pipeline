@@ -1,0 +1,96 @@
+{
+  "source_url": "https://www.betterhelp.com/next/",
+  "capture_mode": "headed Edge CDP, user-authenticated isolated profile",
+  "read_only": true,
+  "title": "Get started",
+  "account_specific_text": "redacted",
+  "headings": [
+    "[ACCOUNT_NAME], welcome to BetterHelp!",
+    "BetterHelp vs. traditional in-office therapy",
+    "Cost: $90 $65 per week - Includes a weekly live session and text, audio and video messaging whenever you like. Cancel anytime.",
+    "More about the therapy process",
+    "Language settings",
+    "Your therapist is requesting a live chat",
+    "Profile picture upload failed",
+    "Why don't you want to try therapy?",
+    "Would you be interested in financial aid?",
+    "Enter benefit code:",
+    "Benefit code does not apply"
+  ],
+  "visible_controls": [
+    "Logout",
+    "Start therapy",
+    "I can't afford therapy",
+    "Keep me active",
+    "Log out",
+    "Save",
+    "English",
+    "Decline",
+    "OK",
+    "Still not ready",
+    "I am ready to start",
+    "Start my trial now",
+    "Cancel",
+    "Submit",
+    "Sharing settings",
+    "I agree"
+  ],
+  "same_origin_routes": [
+    "/",
+    "/financialaid/",
+    "/gethelpnow/",
+    "/about/",
+    "/faq/",
+    "/reviews/",
+    "/advice/",
+    "/careers/",
+    "/online-therapy/",
+    "/contact/",
+    "/counselor_application/",
+    "/terms/",
+    "/privacy/",
+    "/health-data/",
+    "/accessibility/"
+  ],
+  "forms": [
+    {
+      "method": "post",
+      "action": "/next/",
+      "fields": ["action", "[REDACTED_TOKEN]", "[REDACTED_TOKEN]", "donation[amount]", "donation[charity_id]", "[REDACTED_TOKEN]"]
+    },
+    {
+      "method": "post",
+      "action": "/api/give-free-trial/",
+      "fields": ["[REDACTED_TOKEN]", "[REDACTED_TOKEN]"]
+    },
+    {
+      "method": "post",
+      "action": "/api/apply_promo_code",
+      "fields": ["promo-code", "[REDACTED_TOKEN]", "[REDACTED_TOKEN]"]
+    }
+  ],
+  "images": [
+    "icon-color-2024.png",
+    "info-green.svg",
+    "counseling.svg",
+    "begin.svg",
+    "steps.svg",
+    "ways.svg",
+    "outcomes.svg",
+    "ssl-secure-bw-logo.png"
+  ],
+  "source_mutations": [],
+  "public_content_facts": [
+    "Weekly membership price shown as $90 reduced to $65.",
+    "Membership copy says cancel anytime and includes weekly live sessions plus text, audio, and video messaging.",
+    "Live sessions are described as 30 to 45 minutes by phone, video, or live chat.",
+    "HSA/FSA cards are described as accepted.",
+    "The page compares BetterHelp with traditional in-office therapy.",
+    "The financial-aid control is labeled I can't afford therapy."
+  ],
+  "notes": [
+    "No source form was submitted.",
+    "No account credentials, cookies, authorization headers, tokens, payment values, or health-data values were read or stored.",
+    "Account-specific visible text and values were intentionally omitted."
+  ]
+}

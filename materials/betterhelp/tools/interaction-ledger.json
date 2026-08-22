@@ -1,0 +1,24 @@
+{
+  "schema_version": "betterhelp.interaction-ledger.v1",
+  "human_trace_text": "[35] Sign up on BetterHelp, book a counseling session, and complete the initial questionnaire",
+  "entries": [
+    {"clone_url": "http://127.0.0.1:8458/", "selector": "a[href='/get-started/?skip_redirect_question=1']", "visible_text_proof": "Individual", "raw_markup_proof": "href='/get-started/?skip_redirect_question=1'", "form_action": null, "action": "click"},
+    {"clone_url": "http://127.0.0.1:8458/get-started/", "selector": "input[value='individual']", "visible_text_proof": "Individual", "raw_markup_proof": "value='individual'", "form_action": "/get-started/", "action": "check"},
+    {"clone_url": "http://127.0.0.1:8458/get-started/", "selector": "button[type='submit']", "visible_text_proof": "Next", "raw_markup_proof": "type='submit'", "form_action": "/get-started/", "action": "click"},
+    {"clone_url": "http://127.0.0.1:8458/get-started/?skip_redirect_question=1", "selector": "select#state", "visible_text_proof": "Select State", "raw_markup_proof": "id='state' name='state'", "form_action": "/get-started/", "action": "select"},
+    {"clone_url": "http://127.0.0.1:8458/get-started/?skip_redirect_question=1", "selector": "button[type='submit']", "visible_text_proof": "Next", "raw_markup_proof": "type='submit'", "form_action": "/get-started/", "action": "click"},
+    {"clone_url": "http://127.0.0.1:8458/login/", "selector": "#emailInput", "visible_text_proof": "Email Address", "raw_markup_proof": "id='emailInput'", "form_action": "/login/", "action": "fill"},
+    {"clone_url": "http://127.0.0.1:8458/login/", "selector": "#login-password", "visible_text_proof": "Password", "raw_markup_proof": "id='login-password'", "form_action": "/login/", "action": "fill"},
+    {"clone_url": "http://127.0.0.1:8458/login/", "selector": "#redesigned-login-btn", "visible_text_proof": "Log in", "raw_markup_proof": "id='redesigned-login-btn'", "form_action": "/login/", "action": "click"},
+    {"clone_url": "http://127.0.0.1:8458/signup/", "selector": "#signup-email", "visible_text_proof": "Email Address", "raw_markup_proof": "id='signup-email'", "form_action": "/signup/", "action": "fill", "journey": "j-local-synthetic-auth"},
+    {"clone_url": "http://127.0.0.1:8458/signup/", "selector": "#signup-password", "visible_text_proof": "Password", "raw_markup_proof": "id='signup-password'", "form_action": "/signup/", "action": "fill", "journey": "j-local-synthetic-auth"},
+    {"clone_url": "http://127.0.0.1:8458/signup/", "selector": "[data-local-code]", "visible_text_proof": "LOCAL_ONLY", "raw_markup_proof": "data-local-code", "form_action": "/signup/", "action": "observe", "journey": "j-local-synthetic-auth"},
+    {"clone_url": "http://127.0.0.1:8458/signup/", "selector": "#code", "visible_text_proof": "Verification code", "raw_markup_proof": "id='code'", "form_action": "/signup/", "action": "fill", "journey": "j-local-synthetic-auth"},
+    {"clone_url": "http://127.0.0.1:8458/get-started/", "selector": "input[name='goal'][value='coping-tools']", "visible_text_proof": "Build coping tools", "raw_markup_proof": "name='goal' value='coping-tools'", "form_action": "/get-started/", "action": "check", "journey": "j-intake-booking"},
+    {"clone_url": "http://127.0.0.1:8458/matches/", "selector": "a[href='/therapists/michelle-wilkinson/']", "visible_text_proof": "View profile", "raw_markup_proof": "href='/therapists/michelle-wilkinson/'", "form_action": null, "action": "click", "journey": "j-intake-booking"},
+    {"clone_url": "http://127.0.0.1:8458/therapists/michelle-wilkinson/", "selector": "select[name='slot_id']", "visible_text_proof": "Availability", "raw_markup_proof": "name='slot_id'", "form_action": "/book/michelle-wilkinson/", "action": "select", "journey": "j-intake-booking"},
+    {"clone_url": "http://127.0.0.1:8458/booking/BH-synthetic/details/", "selector": "input[name='display_name']", "visible_text_proof": "Name", "raw_markup_proof": "name='display_name'", "form_action": "/booking/{booking_id}/details/", "action": "fill", "journey": "j-intake-booking"},
+    {"clone_url": "http://127.0.0.1:8458/booking/BH-synthetic/payment/", "selector": "select[name='scenario_id']", "visible_text_proof": "Payment simulation", "raw_markup_proof": "name='scenario_id'", "form_action": "/booking/{booking_id}/payment/", "action": "select", "journey": "j-intake-booking"},
+    {"clone_url": "http://127.0.0.1:8458/booking/BH-synthetic/confirmation/", "selector": "[role='status']", "visible_text_proof": "Session confirmed", "raw_markup_proof": "role='status'", "form_action": null, "action": "observe", "journey": "j-intake-booking"}
+  ]
+}

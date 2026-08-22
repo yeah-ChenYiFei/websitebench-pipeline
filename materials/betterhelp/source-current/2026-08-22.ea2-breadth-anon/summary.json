@@ -1,0 +1,764 @@
+{
+  "schema": "websitebench.source-explorer-summary.ea2.v1",
+  "role": "EA2-breadth-first-anonymous",
+  "status": "completed",
+  "source": {
+    "input_url": "https://betterhelp.com",
+    "canonical_origin": "https://www.betterhelp.com",
+    "captured_from": "public anonymous surfaces only"
+  },
+  "environment": {
+    "started_at": "2026-08-22T10:38:32.229Z",
+    "completed_at": "2026-08-22T10:46:16.916Z",
+    "system_timezone": "Asia/Shanghai (UTC+08:00)",
+    "evidence_timezone": "America/New_York",
+    "locale": "en-US",
+    "browser": "Microsoft Edge via Playwright",
+    "browser_version": "151.0.4129.93",
+    "viewports": [
+      "1440x900",
+      "390x844"
+    ],
+    "git_branch": "site/betterhelp",
+    "git_head": "a4e20ba93f6ad3d04efc74a61942603b44cc6ee9"
+  },
+  "guardrails": {
+    "allowed_http_methods": [
+      "GET",
+      "HEAD"
+    ],
+    "source_mutations_performed": [],
+    "credentials_or_session_material_persisted": false,
+    "raw_headers_or_bodies_persisted": false,
+    "real_personal_or_health_data_persisted": false,
+    "notes": [
+      "All non-GET/HEAD browser requests were aborted before transmission.",
+      "No login, registration, questionnaire answers, bookings, messages, email, payment, or form submissions were attempted."
+    ]
+  },
+  "observations": [
+    {
+      "id": "home",
+      "requested_url": "https://www.betterhelp.com/",
+      "final_url": "https://www.betterhelp.com/",
+      "status": 200,
+      "title": "BetterHelp | Professional Therapy With A Licensed Therapist",
+      "h1": "You deserve to be happy.",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [],
+      "artifact_json": "pages/home/desktop-1440x900.json",
+      "screenshots": [
+        "pages/home/desktop-1440x900-full.png",
+        "pages/home/desktop-1440x900-viewport.png"
+      ]
+    },
+    {
+      "id": "about",
+      "requested_url": "https://www.betterhelp.com/about/",
+      "final_url": "https://www.betterhelp.com/about/",
+      "status": 200,
+      "title": "About Us - The Largest Online Therapy Provider | BetterHelp",
+      "h1": "About us",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [],
+      "artifact_json": "pages/about/desktop-1440x900.json",
+      "screenshots": [
+        "pages/about/desktop-1440x900-full.png",
+        "pages/about/desktop-1440x900-viewport.png"
+      ]
+    },
+    {
+      "id": "advice",
+      "requested_url": "https://www.betterhelp.com/advice/",
+      "final_url": "https://www.betterhelp.com/advice/",
+      "status": 200,
+      "title": "Advice | Definitions, Research, Treatment, News, Mental Health Awareness, And Advice",
+      "h1": "Advice",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [],
+      "artifact_json": "pages/advice/desktop-1440x900.json",
+      "screenshots": [
+        "pages/advice/desktop-1440x900-full.png",
+        "pages/advice/desktop-1440x900-viewport.png"
+      ]
+    },
+    {
+      "id": "faq",
+      "requested_url": "https://www.betterhelp.com/faq/",
+      "final_url": "https://www.betterhelp.com/faq/",
+      "status": 200,
+      "title": "FAQ - Get Answers To Common Questions About Therapy | BetterHelp",
+      "h1": "Frequently asked questions",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [],
+      "artifact_json": "pages/faq/desktop-1440x900.json",
+      "screenshots": [
+        "pages/faq/desktop-1440x900-expanded.png",
+        "pages/faq/desktop-1440x900-full.png",
+        "pages/faq/desktop-1440x900-second-expanded-verified.png",
+        "pages/faq/desktop-1440x900-second-expanded.png",
+        "pages/faq/desktop-1440x900-viewport.png"
+      ]
+    },
+    {
+      "id": "reviews",
+      "requested_url": "https://www.betterhelp.com/reviews/",
+      "final_url": "https://www.betterhelp.com/reviews/",
+      "status": 200,
+      "title": "BetterHelp Reviews. Read 1,000s Of Customer Online Therapy Reviews Of Their Therapist, Counselor, Or Psychologist",
+      "h1": "BetterHelp reviews",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [],
+      "artifact_json": "pages/reviews/desktop-1440x900.json",
+      "screenshots": [
+        "pages/reviews/desktop-1440x900-full.png",
+        "pages/reviews/desktop-1440x900-viewport.png"
+      ]
+    },
+    {
+      "id": "therapists",
+      "requested_url": "https://www.betterhelp.com/therapists/",
+      "final_url": "https://www.betterhelp.com/therapists/",
+      "status": 200,
+      "title": "Find a Therapist Near You Online | Insurance Accepted | BetterHelp",
+      "h1": "Find a licensed therapist online near you",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [
+        "POST",
+        "GET"
+      ],
+      "artifact_json": "pages/therapists/desktop-1440x900.json",
+      "screenshots": [
+        "pages/therapists/desktop-1440x900-full.png",
+        "pages/therapists/desktop-1440x900-viewport.png"
+      ]
+    },
+    {
+      "id": "contact",
+      "requested_url": "https://www.betterhelp.com/contact/",
+      "final_url": "https://www.betterhelp.com/contact/",
+      "status": 200,
+      "title": "Contact our support team if you have questions, concerns, ideas or feedback about our services here at BetterHelp.com. We would be happy to help as needed!",
+      "h1": "Contact us",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [
+        "GET"
+      ],
+      "artifact_json": "pages/contact/desktop-1440x900.json",
+      "screenshots": [
+        "pages/contact/desktop-1440x900-full.png",
+        "pages/contact/desktop-1440x900-viewport.png"
+      ]
+    },
+    {
+      "id": "online-therapy",
+      "requested_url": "https://www.betterhelp.com/online-therapy/",
+      "final_url": "https://www.betterhelp.com/online-therapy/",
+      "status": 200,
+      "title": "Online Therapy | Fast Matching & Insurance Acceptance",
+      "h1": "Online therapy with licensed therapists",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [
+        "GET"
+      ],
+      "artifact_json": "pages/online-therapy/desktop-1440x900.json",
+      "screenshots": [
+        "pages/online-therapy/desktop-1440x900-full.png",
+        "pages/online-therapy/desktop-1440x900-viewport.png"
+      ]
+    },
+    {
+      "id": "get-help-now",
+      "requested_url": "https://www.betterhelp.com/get-help-now/",
+      "final_url": "https://www.betterhelp.com/get-help-now/",
+      "status": 404,
+      "title": "Page not found",
+      "h1": "Page not found",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [
+        "GET"
+      ],
+      "artifact_json": "pages/get-help-now/desktop-1440x900.json",
+      "screenshots": [
+        "pages/get-help-now/desktop-1440x900-full.png",
+        "pages/get-help-now/desktop-1440x900-viewport.png"
+      ]
+    },
+    {
+      "id": "get-started-entry",
+      "requested_url": "https://www.betterhelp.com/get-started/",
+      "final_url": "https://www.betterhelp.com/get-started/",
+      "status": 200,
+      "title": "BetterHelp - Get Started & Sign-Up Today",
+      "h1": "Help us match you to the right therapist",
+      "state": "anonymous-entry-only",
+      "viewport": {
+        "label": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [],
+      "artifact_json": "pages/get-started-entry/desktop-1440x900.json",
+      "screenshots": [
+        "pages/get-started-entry/desktop-1440x900-full.png",
+        "pages/get-started-entry/desktop-1440x900-viewport.png"
+      ]
+    },
+    {
+      "id": "login-entry",
+      "requested_url": "https://www.betterhelp.com/login/",
+      "final_url": "https://www.betterhelp.com/login/",
+      "status": 200,
+      "title": "Login",
+      "h1": null,
+      "state": "anonymous-entry-only",
+      "viewport": {
+        "label": "desktop-1440x900",
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [
+        "POST"
+      ],
+      "artifact_json": "pages/login-entry/desktop-1440x900.json",
+      "screenshots": [
+        "pages/login-entry/desktop-1440x900-full.png",
+        "pages/login-entry/desktop-1440x900-viewport.png"
+      ]
+    },
+    {
+      "id": "home-mobile",
+      "requested_url": "https://www.betterhelp.com/",
+      "final_url": "https://www.betterhelp.com/",
+      "status": 200,
+      "title": "BetterHelp | Professional Therapy With A Licensed Therapist",
+      "h1": "You deserve to be happy.",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "mobile-390x844",
+        "width": 390,
+        "height": 844
+      },
+      "form_methods": [],
+      "artifact_json": "pages/home-mobile/mobile-390x844.json",
+      "screenshots": [
+        "pages/home-mobile/mobile-390x844-full.png",
+        "pages/home-mobile/mobile-390x844-viewport.png"
+      ]
+    },
+    {
+      "id": "advice-mobile",
+      "requested_url": "https://www.betterhelp.com/advice/",
+      "final_url": "https://www.betterhelp.com/advice/",
+      "status": 200,
+      "title": "Advice | Definitions, Research, Treatment, News, Mental Health Awareness, And Advice",
+      "h1": "Advice",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "mobile-390x844",
+        "width": 390,
+        "height": 844
+      },
+      "form_methods": [],
+      "artifact_json": "pages/advice-mobile/mobile-390x844.json",
+      "screenshots": [
+        "pages/advice-mobile/mobile-390x844-full.png",
+        "pages/advice-mobile/mobile-390x844-viewport.png"
+      ]
+    },
+    {
+      "id": "faq-mobile",
+      "requested_url": "https://www.betterhelp.com/faq/",
+      "final_url": "https://www.betterhelp.com/faq/",
+      "status": 200,
+      "title": "FAQ - Get Answers To Common Questions About Therapy | BetterHelp",
+      "h1": "Frequently asked questions",
+      "state": "anonymous-default",
+      "viewport": {
+        "label": "mobile-390x844",
+        "width": 390,
+        "height": 844
+      },
+      "form_methods": [],
+      "artifact_json": "pages/faq-mobile/mobile-390x844.json",
+      "screenshots": [
+        "pages/faq-mobile/mobile-390x844-full.png",
+        "pages/faq-mobile/mobile-390x844-viewport.png"
+      ]
+    },
+    {
+      "id": "gethelpnow",
+      "requested_url": "https://www.betterhelp.com/gethelpnow/",
+      "final_url": "https://www.betterhelp.com/gethelpnow/",
+      "status": 200,
+      "title": "Get Help Now - Resources For Crisis & Immediate Help | BetterHelp",
+      "h1": "Get Help Now",
+      "state": "anonymous-default",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "form_methods": [],
+      "artifact_json": "pages/gethelpnow/desktop-1440x900.json",
+      "screenshots": [
+        "pages/gethelpnow/desktop-1440x900-full.png",
+        "pages/gethelpnow/desktop-1440x900-viewport.png"
+      ]
+    }
+  ],
+  "state_variants": [
+    {
+      "id": "mobile-primary-menu-open",
+      "status": "proven",
+      "before": "false",
+      "after": "true",
+      "artifact": "pages/home-mobile-menu-open/mobile-390x844.json",
+      "screenshot": "pages/home-mobile-menu-open/mobile-390x844-menu-open.png"
+    },
+    {
+      "id": "faq-second-question-expanded",
+      "status": "proven",
+      "before": "false",
+      "after": "true",
+      "visible_text_delta": 967,
+      "artifact": "pages/faq/desktop-1440x900-second-expanded-verified.json",
+      "screenshot": "pages/faq/desktop-1440x900-second-expanded-verified.png"
+    },
+    {
+      "id": "faq-first-generic-selector-attempt",
+      "status": "not-acceptance-eligible",
+      "reason": "ARIA state did not change; retained only as raw attempt evidence",
+      "artifact": "pages/faq/desktop-1440x900.json"
+    }
+  ],
+  "public_navigation": [
+    {
+      "text": "Home",
+      "href": "https://www.betterhelp.com/"
+    },
+    {
+      "text": "Business",
+      "href": "https://www.betterhelporg.com/"
+    },
+    {
+      "text": "About",
+      "href": "https://www.betterhelp.com/about/"
+    },
+    {
+      "text": "FAQ",
+      "href": "https://www.betterhelp.com/faq/"
+    },
+    {
+      "text": "Reviews",
+      "href": "https://www.betterhelp.com/reviews/"
+    },
+    {
+      "text": "Advice",
+      "href": "https://www.betterhelp.com/advice/"
+    },
+    {
+      "text": "Careers",
+      "href": "https://www.betterhelp.com/careers/"
+    },
+    {
+      "text": "Find a Therapist",
+      "href": "https://www.betterhelp.com/therapists/"
+    },
+    {
+      "text": "Online Therapy",
+      "href": "https://www.betterhelp.com/online-therapy/"
+    },
+    {
+      "text": "Contact",
+      "href": "https://www.betterhelp.com/contact/"
+    },
+    {
+      "text": "For Therapists",
+      "href": "https://www.betterhelp.com/counselor_application/"
+    },
+    {
+      "text": "AARP",
+      "href": "https://www.betterhelp.com/aarp/"
+    },
+    {
+      "text": "",
+      "href": "https://www.facebook.com/BetterHelp"
+    },
+    {
+      "text": "",
+      "href": "https://www.instagram.com/betterhelp/"
+    },
+    {
+      "text": "",
+      "href": "https://www.tiktok.com/@betterhelp"
+    },
+    {
+      "text": "",
+      "href": "https://twitter.com/betterhelp"
+    },
+    {
+      "text": "",
+      "href": "https://www.linkedin.com/company/betterhelp"
+    },
+    {
+      "text": "Terms & Conditions",
+      "href": "https://www.betterhelp.com/terms/"
+    },
+    {
+      "text": "Privacy Policy",
+      "href": "https://www.betterhelp.com/privacy/"
+    },
+    {
+      "text": "Health Data",
+      "href": "https://www.betterhelp.com/health-data/"
+    },
+    {
+      "text": "Do Not Sell My Information",
+      "href": "nullvoid(0)"
+    },
+    {
+      "text": "Web Accessibility",
+      "href": "https://www.betterhelp.com/accessibility/"
+    }
+  ],
+  "sitemap": {
+    "robots_artifact": "robots.txt",
+    "robots_declared_index": "https://betterhelp.com/sitemap",
+    "incorrect_common_guess": {
+      "url": "https://www.betterhelp.com/sitemap.xml",
+      "status": 404,
+      "artifact": "sitemap.xml"
+    },
+    "index": {
+      "url": "https://www.betterhelp.com/sitemap/",
+      "status": 200,
+      "artifact": "sitemap",
+      "metadata": "sitemap-metadata.json"
+    },
+    "children_artifact": "sitemap-children.json",
+    "child_count": 9,
+    "total_urls": 45170,
+    "children": [
+      {
+        "url": "https://www.betterhelp.com/main-sitemap/",
+        "status": 200,
+        "url_count": 58,
+        "bytes": 39844
+      },
+      {
+        "url": "https://www.betterhelp.com/mental_health_site_map/",
+        "status": 200,
+        "url_count": 284,
+        "bytes": 31251
+      },
+      {
+        "url": "https://www.betterhelp.com/advice_site_map/",
+        "status": 200,
+        "url_count": 4220,
+        "bytes": 1227681
+      },
+      {
+        "url": "https://www.betterhelp.com/ca_site_map/",
+        "status": 200,
+        "url_count": 3476,
+        "bytes": 533421
+      },
+      {
+        "url": "https://www.betterhelp.com/geo_site_map/",
+        "status": 200,
+        "url_count": 36213,
+        "bytes": 3321860
+      },
+      {
+        "url": "https://www.betterhelp.com/de/artikel_site_map/",
+        "status": 200,
+        "url_count": 200,
+        "bytes": 67985
+      },
+      {
+        "url": "https://www.betterhelp.com/nl/artikelen_site_map/",
+        "status": 200,
+        "url_count": 206,
+        "bytes": 71467
+      },
+      {
+        "url": "https://www.betterhelp.com/fr/conseils_site_map/",
+        "status": 200,
+        "url_count": 347,
+        "bytes": 121721
+      },
+      {
+        "url": "https://www.betterhelp.com/es/blog_site_map/",
+        "status": 200,
+        "url_count": 166,
+        "bytes": 57101
+      }
+    ]
+  },
+  "route_correction": {
+    "unverified_guess": "https://www.betterhelp.com/get-help-now/",
+    "guess_status": 404,
+    "observed_navigation_target": "https://www.betterhelp.com/gethelpnow/",
+    "observed_status": 200,
+    "evidence": [
+      "pages/get-help-now/desktop-1440x900.json",
+      "pages/gethelpnow/desktop-1440x900.json"
+    ]
+  },
+  "blocked_non_readonly_requests": {
+    "total_events": 48,
+    "groups": [
+      {
+        "request": "POST https://events.betterhelp.com/com.snowplowanalytics.snowplow/tp2",
+        "count": 18
+      },
+      {
+        "request": "POST https://www.betterhelp.com/api/view",
+        "count": 10
+      },
+      {
+        "request": "POST https://www.betterhelp.com/api/set_performance_cookie",
+        "count": 6
+      },
+      {
+        "request": "POST https://ingress.us1.rum-ingress-coralogix.com/browser/v1beta/logs",
+        "count": 6
+      },
+      {
+        "request": "POST https://www.recaptcha.net/recaptcha/api2/clr",
+        "count": 4
+      },
+      {
+        "request": "POST https://www.betterhelp.com/api/presignup_experiments",
+        "count": 3
+      },
+      {
+        "request": "POST https://www.recaptcha.net/recaptcha/api2/reload",
+        "count": 1
+      }
+    ]
+  },
+  "resource_origins": [
+    {
+      "origin": "https://static.betterhelp.com",
+      "count": 500,
+      "classification": "same-registrable-domain-or-first-party"
+    },
+    {
+      "origin": "https://www.betterhelp.com",
+      "count": 119,
+      "classification": "same-registrable-domain-or-first-party"
+    },
+    {
+      "origin": "https://assets.betterhelp.com",
+      "count": 61,
+      "classification": "same-registrable-domain-or-first-party"
+    },
+    {
+      "origin": "https://images.ctfassets.net",
+      "count": 47,
+      "classification": "external-page-resource"
+    },
+    {
+      "origin": "https://z.betterhelp.com",
+      "count": 22,
+      "classification": "same-registrable-domain-or-first-party"
+    },
+    {
+      "origin": "https://www.mytherapist.com",
+      "count": 18,
+      "classification": "external-page-resource"
+    },
+    {
+      "origin": "https://www.teencounseling.com",
+      "count": 18,
+      "classification": "external-page-resource"
+    },
+    {
+      "origin": "https://www.betterhelporg.com",
+      "count": 18,
+      "classification": "external-page-resource"
+    },
+    {
+      "origin": "https://app.betterhelp.com",
+      "count": 18,
+      "classification": "same-registrable-domain-or-first-party"
+    },
+    {
+      "origin": "https://www.regain.us",
+      "count": 18,
+      "classification": "external-page-resource"
+    },
+    {
+      "origin": "https://app.regain.us",
+      "count": 18,
+      "classification": "external-page-resource"
+    },
+    {
+      "origin": "https://app.teencounseling.com",
+      "count": 18,
+      "classification": "external-page-resource"
+    },
+    {
+      "origin": "https://events.betterhelp.com",
+      "count": 15,
+      "classification": "same-registrable-domain-or-first-party"
+    },
+    {
+      "origin": "https://d3ez4in977nymc.cloudfront.net",
+      "count": 10,
+      "classification": "external-page-resource"
+    },
+    {
+      "origin": "https://ingress.us1.rum-ingress-coralogix.com",
+      "count": 5,
+      "classification": "external-page-resource"
+    },
+    {
+      "origin": "https://advice.cdn.betterhelp.com",
+      "count": 3,
+      "classification": "same-registrable-domain-or-first-party"
+    },
+    {
+      "origin": "https://www.recaptcha.net",
+      "count": 3,
+      "classification": "external-page-resource"
+    },
+    {
+      "origin": "https://js.stripe.com",
+      "count": 1,
+      "classification": "external-page-resource"
+    },
+    {
+      "origin": "https://www.gstatic.com",
+      "count": 1,
+      "classification": "external-page-resource"
+    }
+  ],
+  "unavailable": [
+    {
+      "surface": "authenticated account routes and private states",
+      "reason": "EA2 contract is anonymous-only; no authenticated session was used"
+    },
+    {
+      "surface": "registration/questionnaire progression beyond public entry",
+      "reason": "starting registration or answering health questions would exceed anonymous read-only reconnaissance"
+    },
+    {
+      "surface": "login validation, password recovery submission, and success/error semantics",
+      "reason": "form submission is prohibited without source mutation authorization"
+    },
+    {
+      "surface": "contact form submission and persistence",
+      "reason": "no source-site form submission authorized"
+    },
+    {
+      "surface": "therapist search POST-backed state and persistence",
+      "reason": "POST requests were blocked and no source mutation was authorized"
+    },
+    {
+      "surface": "external crisis-resource destinations",
+      "reason": "linked external origins were inventoried but not navigated because they were not configured origins"
+    }
+  ],
+  "known_notes": [
+    "A consent/health-data banner is visible in captured default states; it was not accepted or dismissed because that could set source state.",
+    "The source emitted analytics, view, performance-cookie, experiment, logging, and reCAPTCHA POST requests during passive rendering; all were blocked.",
+    "The /get-help-now/ and /sitemap.xml guesses are 404s; current directly observed routes are /gethelpnow/ and /sitemap/."
+  ],
+  "artifacts": {
+    "root": ".",
+    "run": "run.json",
+    "summary": "summary.json",
+    "environment": "environment.json",
+    "page_directory": "pages/",
+    "screenshots_count": 34
+  },
+  "tool_results": [
+    {
+      "step": "apply_patch launcher attempt 1",
+      "exit_code": 1,
+      "result": "WindowsApps ACL access denied; no source request made"
+    },
+    {
+      "step": "apply_patch large-argument attempt",
+      "exit_code": 1,
+      "result": "local command-line length limit; no source request made"
+    },
+    {
+      "step": "apply_patch launcher attempt 2",
+      "exit_code": 1,
+      "result": "same WindowsApps ACL denial; channel abandoned; no source request made"
+    },
+    {
+      "step": "first in-memory capture syntax preflight",
+      "exit_code": 1,
+      "result": "local JavaScript parse error before browser launch; no source request made"
+    },
+    {
+      "step": "corrected primary Edge/Playwright capture",
+      "exit_code": 0,
+      "result": "14 route/viewport observations"
+    },
+    {
+      "step": "actual gethelpnow + mobile menu + sitemap index supplement",
+      "exit_code": 0,
+      "result": "route and state evidence captured"
+    },
+    {
+      "step": "nine child sitemap summaries",
+      "exit_code": 0,
+      "result": "9/9 HTTP 200; 45,170 URLs counted"
+    },
+    {
+      "step": "verified FAQ second accordion transition",
+      "exit_code": 0,
+      "result": "false to true; visible text delta 967"
+    }
+  ]
+}
