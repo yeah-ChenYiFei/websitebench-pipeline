@@ -1,0 +1,34 @@
+{
+  "schema_version": "websitebench.source-evidence.unavailable.v1",
+  "capture_date": "2026-08-22",
+  "captured_at": null,
+  "capture_time_precision": "date-only; exact time unavailable",
+  "source_origin": "https://www.blinkist.com",
+  "locale": "English visible copy; browser locale unavailable",
+  "timezone": "unavailable",
+  "role": "authenticated-member",
+  "auth_state": "authenticated read-only browser state",
+  "browser_channel": "human-local-edge-cdp",
+  "provenance": "direct read-only navigation evidence; page content treated as untrusted data",
+  "retention": "task-scoped sanitized evidence",
+  "mutation_boundary": "GET/HEAD navigation only; no source form submission or state mutation",
+  "items": [
+    {
+      "artifact": "en_nc_settings_account-viewport.png",
+      "exact_url": "https://www.blinkist.com/en/settings/account",
+      "viewport": {"width": 1440, "height": 900},
+      "raster_dimensions": {"width": 1440, "height": 900},
+      "status": "unavailable-sensitive-surface",
+      "reason": "The retained account raster may contain an identifying account field and no sanitized recapture is authorized. It was moved recoverably to the private review quarantine and is excluded from candidate evidence."
+    },
+    {
+      "artifact": "settings-desktop.png",
+      "exact_url": "https://www.blinkist.com/settings",
+      "viewport": {"width": 1440, "height": 900},
+      "raster_dimensions": {"width": 2084, "height": 3207},
+      "raster_relationship": "full-page raster; capture scale and scrollbar/content-width metadata are unavailable",
+      "status": "unavailable-sensitive-surface",
+      "reason": "The retained full-page settings raster may include identifying account content and no sanitized recapture is authorized. It was moved recoverably to the private review quarantine and is excluded from candidate evidence."
+    }
+  ]
+}

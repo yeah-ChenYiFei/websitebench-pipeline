@@ -1,0 +1,24 @@
+{
+  "schema_version": "websitebench.source-evidence.unavailable.v1",
+  "captured_at": "2026-08-22T04:18:49.540Z",
+  "source_origin": "https://www.blinkist.com",
+  "exact_url": "https://www.blinkist.com/en/app/for-you",
+  "viewport": {"width": 1440, "height": 900},
+  "raster_dimensions": [
+    {"artifact": "frame-1.png", "width": 1440, "height": 901},
+    {"artifact": "frame-2.png", "width": 1440, "height": 1981},
+    {"artifact": "frame-3.png", "width": 1425, "height": 1981}
+  ],
+  "raster_relationship": "Frames mix viewport and full-page rasters; the 1425-pixel content raster excludes a 15-pixel scrollbar gutter.",
+  "device_scale_factor": 1,
+  "locale": "browser challenge copy was localized; target page locale was not reached",
+  "timezone": "Etc/UTC",
+  "role": "unresolved because the target page was not reached",
+  "auth_state": "unavailable-challenge",
+  "browser_channel": "Playwright Chromium",
+  "provenance": "direct observation of an interstitial challenge only; not target-page evidence",
+  "retention": "challenge screenshots and sanitized summary retained for failure provenance; challenge DOM quarantined",
+  "mutation_boundary": "GET/HEAD only; no source form submission or state mutation",
+  "status": "unavailable-challenge",
+  "reason": "The capture is a Cloudflare security interstitial, not an authenticated For You render."
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "websitebench.source-evidence.raster-provenance.v1",
+  "captured_at": "2026-08-21T19:04:50.221Z",
+  "source_origin": "https://www.blinkist.com",
+  "locale": "en-US visible application copy",
+  "timezone": "Etc/UTC",
+  "role": "authenticated-member",
+  "auth_state": "authenticated read-only browser state",
+  "browser_channel": "human-local-edge-cdp",
+  "device_scale_factor": "unavailable",
+  "retention": "task-scoped sanitized evidence",
+  "mutation_boundary": "GET/HEAD navigation and public-title search only; no favorite, account, mail, subscription or payment mutation",
+  "rasters": [
+    {"artifact": "screenshots/01-for-you-desktop.png", "viewport": {"width": 1034, "height": 947}, "raster": {"width": 1490, "height": 2926}, "relationship": "full-page raster; capture scale unavailable"},
+    {"artifact": "screenshots/02-search-atomic-habits-desktop.png", "viewport": {"width": 1034, "height": 947}, "raster": {"width": 1490, "height": 2926}, "relationship": "full-page raster; capture scale unavailable"},
+    {"artifact": "screenshots/03-atomic-habits-detail-desktop.png", "viewport": {"width": 1034, "height": 947}, "raster": {"width": 1490, "height": 3463}, "relationship": "full-page raster; capture scale unavailable"},
+    {"artifact": "screenshots/04-atomic-habits-detail-mobile.png", "viewport": {"width": 390, "height": 844}, "raster": {"width": 375, "height": 3029}, "relationship": "full-page content raster; the 375-pixel content width excludes the 15-pixel scrollbar gutter from the 390-pixel viewport"},
+    {"artifact": "screenshots/05-my-library-desktop.png", "viewport": {"width": 1440, "height": 900}, "raster": {"width": 1440, "height": 901}, "relationship": "viewport raster with a one-pixel capture boundary"},
+    {"artifact": "screenshots/06-my-library-mobile.png", "viewport": {"width": 390, "height": 844}, "raster": {"width": 375, "height": 848}, "relationship": "content-width viewport raster; the 375-pixel width excludes the 15-pixel scrollbar gutter and the height includes a four-pixel capture boundary"}
+  ]
+}

@@ -1,0 +1,800 @@
+{
+  "schema_version": "offline-clone.backend-model.v1",
+  "site_id": "blinkist",
+  "status": "verified",
+  "profile": "offline-benchmark",
+  "database": {
+    "engine": "sqlite",
+    "location_policy": "runtime-data-outside-candidate",
+    "concurrency_model": "wal-transactional-single-writer",
+    "migration_strategy": "versioned-forward-migrations",
+    "deterministic_reset": true,
+    "restart_persistence": true,
+    "site_isolation": "one-database-per-site",
+    "proofs": [
+      {
+        "obligation": "data-location",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py"
+        ],
+        "journey_ids": [
+          "member-route-recover"
+        ],
+        "invariant_ids": [
+          "database.site-binding",
+          "database.restart-persistence"
+        ],
+        "entity_names": [
+          "local-account"
+        ],
+        "capability_ids": [
+          "account-registration",
+          "session-lifecycle"
+        ],
+        "expected_server_result": "The isolated blinkist database completes this lifecycle obligation and fails closed for a foreign site."
+      },
+      {
+        "obligation": "schema-migration",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py"
+        ],
+        "journey_ids": [
+          "member-route-recover"
+        ],
+        "invariant_ids": [
+          "database.site-binding",
+          "database.restart-persistence"
+        ],
+        "entity_names": [
+          "local-account"
+        ],
+        "capability_ids": [
+          "account-registration",
+          "session-lifecycle"
+        ],
+        "expected_server_result": "The isolated blinkist database completes this lifecycle obligation and fails closed for a foreign site."
+      },
+      {
+        "obligation": "deterministic-reset",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py"
+        ],
+        "journey_ids": [
+          "member-route-recover"
+        ],
+        "invariant_ids": [
+          "database.site-binding",
+          "database.restart-persistence"
+        ],
+        "entity_names": [
+          "local-account"
+        ],
+        "capability_ids": [
+          "account-registration",
+          "session-lifecycle"
+        ],
+        "expected_server_result": "The isolated blinkist database completes this lifecycle obligation and fails closed for a foreign site."
+      },
+      {
+        "obligation": "restart-persistence",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py"
+        ],
+        "journey_ids": [
+          "member-route-recover"
+        ],
+        "invariant_ids": [
+          "database.site-binding",
+          "database.restart-persistence"
+        ],
+        "entity_names": [
+          "local-account"
+        ],
+        "capability_ids": [
+          "account-registration",
+          "session-lifecycle"
+        ],
+        "expected_server_result": "The isolated blinkist database completes this lifecycle obligation and fails closed for a foreign site."
+      },
+      {
+        "obligation": "backup-restore",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py"
+        ],
+        "journey_ids": [
+          "member-route-recover"
+        ],
+        "invariant_ids": [
+          "database.site-binding",
+          "database.restart-persistence"
+        ],
+        "entity_names": [
+          "local-account"
+        ],
+        "capability_ids": [
+          "account-registration",
+          "session-lifecycle"
+        ],
+        "expected_server_result": "The isolated blinkist database completes this lifecycle obligation and fails closed for a foreign site."
+      },
+      {
+        "obligation": "concurrency",
+        "status": "verified",
+        "evidence": [
+          "clone/tests/test_backend_lifecycle.py"
+        ],
+        "journey_ids": [
+          "member-route-recover"
+        ],
+        "invariant_ids": [
+          "database.site-binding",
+          "database.restart-persistence"
+        ],
+        "entity_names": [
+          "local-account"
+        ],
+        "capability_ids": [
+          "account-registration",
+          "session-lifecycle"
+        ],
+        "expected_server_result": "The isolated blinkist database completes this lifecycle obligation and fails closed for a foreign site."
+      }
+    ],
+    "database_identity": "websitebench_site_binding singleton equals blinkist",
+    "data_path_contract": {
+      "root_policy": "runtime-data-outside-candidate",
+      "database_file": "blinkist.sqlite3",
+      "override_environment_variable": "WEBSITEBENCH_SITE_BACKEND_DATABASE"
+    },
+    "lifecycle_contracts": {
+      "data-location": "Live diagnostics and tests override the database into the isolated review or verifier data directory.",
+      "schema-migration": "Common backend, local auth and Blinkist business migrations are additive and replay-safe.",
+      "deterministic-reset": "The same synthetic seed produces the same normalized business and account projection.",
+      "restart-persistence": "Account, favorite, subscription and session revocation survive service reconstruction.",
+      "backup-restore": "A bound backup restores locally and a foreign-site backup is rejected before replacement.",
+      "concurrency": "SQLite BEGIN IMMEDIATE, uniqueness and owner triggers serialize duplicate and deletion races."
+    },
+    "lifecycle_scope": "whole-site-auth-and-business",
+    "lifecycle_invariant_id": "database.restart-persistence",
+    "lifecycle_subject_entities": [
+      "local-account",
+      "browser-session",
+      "payment-flow"
+    ],
+    "lifecycle_subject_capabilities": [
+      "account-registration",
+      "session-lifecycle",
+      "premium-local-payment"
+    ]
+  },
+  "auth_semantics": {
+    "account_database_scope": "site-isolated",
+    "credential_storage": "salted-scrypt-hash",
+    "session_storage": "opaque-cookie-digest-at-rest",
+    "registration_account_creation": "after-email-verification",
+    "verification_challenge_storage": "salted-hash",
+    "password_reset_enumeration": "indistinguishable-public-response",
+    "mail_default": "LOCAL_ONLY",
+    "mail_statuses": [
+      "LOCAL_ONLY",
+      "SMTP_PENDING",
+      "SMTP_SENT",
+      "SMTP_FAILED"
+    ],
+    "smtp_activation": "explicit-complete-config-only",
+    "smtp_delivery_ceiling": 3,
+    "rejected_secret_journaling": "forbidden",
+    "legacy_write_policy": "read-compatible-write-rejected"
+  },
+  "common_capabilities": {
+    "account_registration": "account-registration",
+    "account_sign_in": "account-sign-in",
+    "session_lifecycle": "session-lifecycle",
+    "password_recovery": "password-recovery",
+    "email_delivery": "email-delivery"
+  },
+  "capabilities": [
+    {
+      "id": "account-registration",
+      "label": "Verified local account registration",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "pending-registration",
+          "identity": "opaque pending id bound to one browser session",
+          "owner_scope": "session",
+          "persistence": "durable"
+        },
+        {
+          "name": "local-account",
+          "identity": "site-local account id and unique normalized email",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "challenge-lifecycle",
+        "states": [
+          "collecting",
+          "pending-verification",
+          "verified",
+          "account-created",
+          "expired",
+          "locked"
+        ],
+        "transitions": [
+          {
+            "from": "collecting",
+            "to": "pending-verification",
+            "trigger": "validated registration request"
+          },
+          {
+            "from": "pending-verification",
+            "to": "verified",
+            "trigger": "correct unexpired code within attempt budget"
+          },
+          {
+            "from": "verified",
+            "to": "account-created",
+            "trigger": "transactional account creation and session rotation"
+          },
+          {
+            "from": "pending-verification",
+            "to": "expired",
+            "trigger": "challenge expiry"
+          },
+          {
+            "from": "pending-verification",
+            "to": "locked",
+            "trigger": "verification attempt budget exhausted"
+          }
+        ]
+      },
+      "server_authorities": [
+        "The server normalizes identity and hashes password and code.",
+        "An account is created only after successful verification.",
+        "Duplicate normalized email creation is rejected transactionally."
+      ],
+      "external_effect": "none",
+      "journey_ids": [
+        "registration-local-email"
+      ],
+      "invariant_ids": [
+        "auth.otp-private",
+        "mutation.idempotency",
+        "database.site-binding"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_site.py",
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "invalid": [
+            "clone/tests/test_site.py",
+            "clone/tests/test_remediation.py"
+          ],
+          "duplicate": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "stale": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "foreign-owner": [
+            "clone/tests/test_backend_lifecycle.py",
+            "clone/tests/test_site.py"
+          ],
+          "unauthorized-role": [
+            "clone/tests/test_remediation.py"
+          ],
+          "restart": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "migration": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "concurrency": [
+            "clone/tests/test_backend_lifecycle.py"
+          ]
+        },
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "account-sign-in",
+      "label": "Password-based local account sign-in",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "local-account",
+          "identity": "site-local account id and normalized email",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "entity-lifecycle",
+        "states": [
+          "signed-out",
+          "identified",
+          "authenticated",
+          "rejected"
+        ],
+        "transitions": [
+          {
+            "from": "signed-out",
+            "to": "identified",
+            "trigger": "normalized email submitted"
+          },
+          {
+            "from": "identified",
+            "to": "authenticated",
+            "trigger": "constant-time password verification succeeds"
+          },
+          {
+            "from": "identified",
+            "to": "rejected",
+            "trigger": "credentials are invalid"
+          }
+        ]
+      },
+      "server_authorities": [
+        "The server verifies salted password hashes.",
+        "The server rotates the authenticated session.",
+        "Client-selected fixture identity is not authentication."
+      ],
+      "external_effect": "none",
+      "journey_ids": [
+        "member-auth-gate"
+      ],
+      "invariant_ids": [
+        "auth.member-route",
+        "auth.safe-next",
+        "owner.actor-isolation"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_site.py",
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "invalid": [
+            "clone/tests/test_site.py",
+            "clone/tests/test_remediation.py"
+          ],
+          "duplicate": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "stale": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "foreign-owner": [
+            "clone/tests/test_backend_lifecycle.py",
+            "clone/tests/test_site.py"
+          ],
+          "unauthorized-role": [
+            "clone/tests/test_remediation.py"
+          ],
+          "restart": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "migration": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "concurrency": [
+            "clone/tests/test_backend_lifecycle.py"
+          ]
+        },
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "session-lifecycle",
+      "label": "Anonymous and authenticated browser sessions",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "browser-session",
+          "identity": "opaque cookie token with digest persisted at rest",
+          "owner_scope": "session",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "session-lifecycle",
+        "states": [
+          "anonymous",
+          "authenticated",
+          "revoked",
+          "expired"
+        ],
+        "transitions": [
+          {
+            "from": "anonymous",
+            "to": "authenticated",
+            "trigger": "successful sign-in or registration rotates session"
+          },
+          {
+            "from": "authenticated",
+            "to": "revoked",
+            "trigger": "sign-out or security reset"
+          },
+          {
+            "from": "anonymous",
+            "to": "expired",
+            "trigger": "session expiry"
+          },
+          {
+            "from": "authenticated",
+            "to": "expired",
+            "trigger": "session expiry"
+          }
+        ]
+      },
+      "server_authorities": [
+        "Raw session tokens are never stored in the database.",
+        "Ownership is resolved from the server-side session record.",
+        "Sign-out revokes server-side authority before deleting the cookie."
+      ],
+      "external_effect": "none",
+      "journey_ids": [
+        "member-auth-gate",
+        "member-route-recover"
+      ],
+      "invariant_ids": [
+        "auth.member-route",
+        "owner.actor-isolation",
+        "database.restart-persistence"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_site.py",
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "invalid": [
+            "clone/tests/test_site.py",
+            "clone/tests/test_remediation.py"
+          ],
+          "duplicate": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "stale": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "foreign-owner": [
+            "clone/tests/test_backend_lifecycle.py",
+            "clone/tests/test_site.py"
+          ],
+          "unauthorized-role": [
+            "clone/tests/test_remediation.py"
+          ],
+          "restart": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "migration": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "concurrency": [
+            "clone/tests/test_backend_lifecycle.py"
+          ]
+        },
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "password-recovery",
+      "label": "Enumeration-resistant local password recovery",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "password-reset-challenge",
+          "identity": "opaque reset id bound to one browser session",
+          "owner_scope": "session",
+          "persistence": "durable"
+        },
+        {
+          "name": "local-account",
+          "identity": "nullable concealed account binding",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "challenge-lifecycle",
+        "states": [
+          "requested",
+          "verified",
+          "consumed",
+          "expired",
+          "locked"
+        ],
+        "transitions": [
+          {
+            "from": "requested",
+            "to": "verified",
+            "trigger": "correct unexpired code within attempt budget"
+          },
+          {
+            "from": "verified",
+            "to": "consumed",
+            "trigger": "password is replaced and sessions are revoked"
+          },
+          {
+            "from": "requested",
+            "to": "expired",
+            "trigger": "challenge expiry"
+          },
+          {
+            "from": "requested",
+            "to": "locked",
+            "trigger": "verification attempt budget exhausted"
+          }
+        ]
+      },
+      "server_authorities": [
+        "Known and unknown emails receive indistinguishable public responses.",
+        "Only the server binds a reset flow to an account.",
+        "Password replacement revokes prior authenticated sessions."
+      ],
+      "external_effect": "local-only",
+      "journey_ids": [
+        "password-recovery-local"
+      ],
+      "invariant_ids": [
+        "auth.otp-private",
+        "effects.local-only",
+        "database.restart-persistence"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_site.py",
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "invalid": [
+            "clone/tests/test_site.py",
+            "clone/tests/test_remediation.py"
+          ],
+          "duplicate": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "stale": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "foreign-owner": [
+            "clone/tests/test_backend_lifecycle.py",
+            "clone/tests/test_site.py"
+          ],
+          "unauthorized-role": [
+            "clone/tests/test_remediation.py"
+          ],
+          "restart": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "migration": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "concurrency": [
+            "clone/tests/test_backend_lifecycle.py"
+          ]
+        },
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "email-delivery",
+      "label": "Truthful local verification and recovery mail outbox",
+      "priority": "p0",
+      "category": "communication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "mail-outbox-entry",
+          "identity": "site-local outbox id and purpose-bound flow id",
+          "owner_scope": "system",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "delivery-lifecycle",
+        "states": [
+          "local-only",
+          "smtp-pending",
+          "smtp-sent",
+          "smtp-failed"
+        ],
+        "transitions": [
+          {
+            "from": "local-only",
+            "to": "smtp-pending",
+            "trigger": "operator enables complete explicit SMTP configuration"
+          },
+          {
+            "from": "smtp-pending",
+            "to": "smtp-sent",
+            "trigger": "SMTP transport confirms delivery handoff"
+          },
+          {
+            "from": "smtp-pending",
+            "to": "smtp-failed",
+            "trigger": "delivery attempt fails or ceiling is reached"
+          },
+          {
+            "from": "smtp-failed",
+            "to": "smtp-pending",
+            "trigger": "bounded idempotent retry below the delivery ceiling"
+          }
+        ]
+      },
+      "server_authorities": [
+        "Offline mode records LOCAL_ONLY and never claims external delivery.",
+        "SMTP is disabled unless every required setting is present.",
+        "Claim, retry, and startup replay share one delivery ceiling."
+      ],
+      "external_effect": "local-only",
+      "journey_ids": [
+        "registration-local-email",
+        "password-recovery-local"
+      ],
+      "invariant_ids": [
+        "auth.otp-private",
+        "effects.local-only",
+        "runtime.local-only"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_site.py",
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "invalid": [
+            "clone/tests/test_site.py",
+            "clone/tests/test_remediation.py"
+          ],
+          "duplicate": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "stale": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "foreign-owner": [
+            "clone/tests/test_backend_lifecycle.py",
+            "clone/tests/test_site.py"
+          ],
+          "unauthorized-role": [
+            "clone/tests/test_remediation.py"
+          ],
+          "restart": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "migration": [
+            "clone/tests/test_backend_lifecycle.py"
+          ],
+          "concurrency": [
+            "clone/tests/test_backend_lifecycle.py"
+          ]
+        },
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "premium-local-payment",
+      "label": "Premium annual deterministic local payment sandbox",
+      "priority": "p1",
+      "category": "commerce",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "payment-flow",
+          "identity": "site-local opaque flow id bound to owner, amount, currency and fingerprint",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "payment-attempt",
+          "identity": "opaque attempt id and idempotency key within one flow",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "immutable-receipt",
+        "states": [
+          "open",
+          "approved",
+          "declined",
+          "retryable",
+          "consumed",
+          "invalidated"
+        ],
+        "transitions": [
+          {
+            "from": "open",
+            "to": "approved",
+            "trigger": "allowlisted local sandbox approval with exact immutable facts"
+          },
+          {
+            "from": "open",
+            "to": "declined",
+            "trigger": "allowlisted local sandbox decline"
+          },
+          {
+            "from": "open",
+            "to": "retryable",
+            "trigger": "allowlisted local sandbox retry outcome"
+          },
+          {
+            "from": "approved",
+            "to": "consumed",
+            "trigger": "owner-bound approval is atomically consumed with subscription mutation"
+          },
+          {
+            "from": "approved",
+            "to": "invalidated",
+            "trigger": "final amount, currency or fingerprint is stale"
+          }
+        ]
+      },
+      "server_authorities": [
+        "The server derives the Premium annual amount, USD currency, account owner and fingerprint.",
+        "Only allowlisted deterministic local sandbox scenarios are accepted.",
+        "Approval consumption and subscription mutation share one site-bound SQLite transaction."
+      ],
+      "external_effect": "local-only",
+      "journey_ids": [
+        "premium-local-sandbox"
+      ],
+      "invariant_ids": [
+        "payment.server-authority",
+        "mutation.idempotency",
+        "effects.local-only"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_backend_lifecycle.py::test_payment_sandbox_outcomes_and_duplicate_attempts"
+          ],
+          "invalid": [
+            "clone/tests/test_backend_lifecycle.py::test_payment_rejects_forged_stale_foreign_invalid_and_conflicting_facts"
+          ],
+          "duplicate": [
+            "clone/tests/test_backend_lifecycle.py::test_duplicate_payment_attempt_is_safe_under_concurrency"
+          ],
+          "stale": [
+            "clone/tests/test_backend_lifecycle.py::test_payment_rejects_forged_stale_foreign_invalid_and_conflicting_facts"
+          ],
+          "foreign-owner": [
+            "clone/tests/test_backend_lifecycle.py::test_payment_rejects_forged_stale_foreign_invalid_and_conflicting_facts"
+          ],
+          "unauthorized-role": [
+            "clone/tests/test_remediation.py::test_anonymous_member_writes_redirect_without_mutation"
+          ],
+          "restart": [
+            "clone/tests/test_backend_lifecycle.py::test_restart_persists_account_business_state_and_revocation"
+          ],
+          "migration": [
+            "clone/tests/test_backend_lifecycle.py::test_initialization_and_migration_replay_are_idempotent_and_foreign_db_fails_closed"
+          ],
+          "concurrency": [
+            "clone/tests/test_backend_lifecycle.py::test_duplicate_payment_attempt_is_safe_under_concurrency"
+          ]
+        },
+        "not_applicable": []
+      }
+    }
+  ]
+}

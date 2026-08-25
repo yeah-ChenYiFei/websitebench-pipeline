@@ -1,0 +1,90 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "frozen",
+  "dimensions": [
+    {
+      "id": "p0.member-routes",
+      "label": "Authenticated discovery, search, detail and library",
+      "unit": "checkpoint",
+      "category": "functional",
+      "source_evidence_kind": "direct",
+      "local_contract_evidence_kind": "direct",
+      "rationale": "Desktop, tablet and mobile checkpoints cover both source and local aliases. Source favorite mutation remains unavailable.",
+      "required_evidence_kinds": ["browser", "visual", "full-suite"],
+      "required_items": ["for-you.desktop", "for-you.tablet", "for-you.mobile", "explore.desktop", "explore.tablet", "explore.mobile", "search.results.desktop", "search.results.tablet", "search.results.mobile", "search.empty.desktop", "search.empty.tablet", "search.empty.mobile", "detail.source.desktop", "detail.source.tablet", "detail.source.mobile", "detail.local.desktop", "detail.local.tablet", "detail.local.mobile", "library.source.desktop", "library.source.tablet", "library.source.mobile", "library.local.desktop", "library.local.tablet", "library.local.mobile"],
+      "satisfied_items": []
+    },
+    {
+      "id": "p0.authentication",
+      "label": "Member gate, safe return, sign-in and session revocation",
+      "unit": "journey",
+      "category": "authentication",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "direct",
+      "rationale": "Authentication mutations use only isolated synthetic local accounts.",
+      "required_evidence_kinds": ["full-suite", "browser"],
+      "required_items": ["member-auth-gate", "member-route-recover"],
+      "satisfied_items": []
+    },
+    {
+      "id": "p1.local-account",
+      "label": "Registration and recovery lifecycle",
+      "unit": "journey",
+      "category": "authentication",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "direct",
+      "rationale": "The verification code is hash-only at rest and accessible only through an explicit in-process test seam.",
+      "required_evidence_kinds": ["full-suite"],
+      "required_items": ["registration-local-email", "password-recovery-local"],
+      "satisfied_items": []
+    },
+    {
+      "id": "p1.local-payment",
+      "label": "Premium local sandbox outcomes",
+      "unit": "state",
+      "category": "backend",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "direct",
+      "rationale": "Approved, declined and retryable are labelled local simulations with server-derived owner, amount, currency and fingerprint.",
+      "required_evidence_kinds": ["full-suite", "browser"],
+      "required_items": ["payment.approved", "payment.declined", "payment.retryable", "payment.duplicate", "payment.foreign-owner"],
+      "satisfied_items": []
+    },
+    {
+      "id": "responsive.matrix",
+      "label": "Required viewport and route matrix",
+      "unit": "viewport-route",
+      "category": "visual",
+      "source_evidence_kind": "inferred",
+      "local_contract_evidence_kind": "direct",
+      "rationale": "The live/browser matrix checks 1440x900, 768x1024 and 390x844 without treating local responsiveness as direct source evidence.",
+      "required_evidence_kinds": ["browser", "visual"],
+      "required_items": ["desktop", "tablet", "mobile"],
+      "satisfied_items": []
+    },
+    {
+      "id": "runtime.lifecycle",
+      "label": "Database and backend lifecycle",
+      "unit": "obligation",
+      "category": "backend",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "direct",
+      "rationale": "All runtime databases and logs are isolated below the review artifact directory.",
+      "required_evidence_kinds": ["full-suite", "migration", "network"],
+      "required_items": ["reset", "restart", "migration", "backup-restore", "concurrency", "site-isolation", "actor-isolation"],
+      "satisfied_items": []
+    },
+    {
+      "id": "independent.audit",
+      "label": "Formal independent blind visual review",
+      "unit": "audit",
+      "category": "review",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "unavailable",
+      "rationale": "This implementation and diagnostic run is not an independent blind review.",
+      "required_evidence_kinds": ["independent-audit"],
+      "required_items": ["blind-review"],
+      "satisfied_items": []
+    }
+  ]
+}

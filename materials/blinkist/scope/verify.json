@@ -1,0 +1,60 @@
+{
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "blinkist",
+  "note": "Member routes use a verifier-minted, loopback-only synthetic session. Registration, recovery and payment are clone-local contracts; no source mutation, real email or real payment is performed.",
+  "routes": {
+    "search": "/search?q=Atomic+Habits",
+    "book-detail-source": "/app/books/atomic-habits-en",
+    "book-detail-local": "/app/books/atomic-habits",
+    "library-source": "/en/app/library",
+    "library-local": "/app/library"
+  },
+  "states": {
+    "home.default": [{"expect": ".public-hero"}, {"expect": "[data-drawer-open]"}],
+    "for-you.default": {"session": "member", "steps": [{"expect": "h1"}, {"expect": "a[href='/app/explore']"}]},
+    "explore.populated": {"session": "member", "steps": [{"expect": ".book-grid"}, {"expect": "text=Atomic Habits"}]},
+    "search.results": {"session": "member", "steps": [{"goto": "/search?q=Atomic+Habits"}, {"expect": "text=Atomic Habits"}]},
+    "search.no-results": {"session": "member", "steps": [{"goto": "/search?q=NoSuchSyntheticTitle"}, {"expect": "text=No results yet"}]},
+    "book-detail-source.default": {"session": "member", "steps": [{"expect": "h1"}, {"expect": "text=James Clear"}]},
+    "book-detail-local.default": {"session": "member", "steps": [{"expect": "h1"}, {"expect": "text=James Clear"}]},
+    "library-source.current-member-state": {"session": "member", "steps": [{"expect": "h1"}, {"expect": "text=Your library is waiting"}]},
+    "library-local.empty": {"session": "member", "steps": [{"expect": "h1"}, {"expect": "text=Your library is waiting"}]},
+    "register.ready": [{"expect": "form[action='/register']"}],
+    "verify.ready": [{"expect": "form[action='/verify']"}],
+    "login.ready": [{"expect": "form[action='/login']"}],
+    "forgot-password.ready": [{"expect": "form[action='/forgot-password']"}],
+    "reset-password.ready": [{"expect": "form[action='/reset-password']"}],
+    "subscribe.ready": {"session": "member", "steps": [{"expect": "text=Premium annual"}]},
+    "subscribe-review.ready": {"session": "member", "steps": [{"expect": "form[action='/subscribe']"}, {"expect": "text=No real payment details"}]},
+    "subscribe-cancel.ready": {"session": "member", "steps": [{"expect": "text=Cancel Subscription"}]},
+    "settings.account": {"session": "member", "steps": [{"expect": "h1"}, {"expect": "text=Your Subscription plans"}]},
+    "websitebench-health.healthy": [{"expect": "text=status"}]
+  },
+  "states_out_of_scope": {
+    "source-auth-success": "Source registration, sign-in, recovery and logout mutations were unauthorized and remain unavailable.",
+    "source-payment-success": "A real source checkout and entitlement mutation were unauthorized and remain unavailable; only the labelled local sandbox is exercised.",
+    "onboarding": "Onboarding is an explicit non-goal for this delivery because no frozen source journey or safe source evidence supports it."
+  },
+  "session": {
+    "token_env": "WEBSITEBENCH_DIAGNOSTIC_SESSION_TOKEN",
+    "post": "/__websitebench/session",
+    "headers": {"X-WebsiteBench-Session-Token": "{{token}}"},
+    "expect_status": [200],
+    "env": {"WEBSITEBENCH_DIAGNOSTIC_SESSION": "1", "WEBSITEBENCH_LOCAL_HTTP_COOKIE": "1"},
+    "accounts": {
+      "member": {
+        "routes": ["for-you", "explore", "search", "book-detail-source", "book-detail-local", "library-source", "library-local", "subscribe", "subscribe-review", "subscribe-cancel", "settings", "daily", "spaces", "highlights", "infographics", "masterclasses"]
+      }
+    }
+  },
+  "boot": {
+    "argv": ["{python}", "-m", "uvicorn", "app:APP", "--host", "127.0.0.1", "--port", "{port}", "--log-level", "warning"],
+    "cwd": "clone",
+    "env": {
+      "WEBSITEBENCH_SITE_BACKEND_RUNTIME": "../backend/runtime.json",
+      "WEBSITEBENCH_SITE_BACKEND_DATABASE": "{data_dir}/blinkist.sqlite3",
+      "TZ": "Etc/UTC",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  }
+}

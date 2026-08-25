@@ -1,0 +1,170 @@
+{
+  "schema_version": "prompt.websitebench.clone-task-brief.v1",
+  "observed_at": "2026-08-21T13:40:00Z",
+  "source": {
+    "input_url": "https://blinkist.com",
+    "canonical_url": "https://www.blinkist.com/",
+    "canonical_origin": "https://www.blinkist.com",
+    "approved_discovery_origins": ["https://www.blinkist.com"],
+    "proposed_additional_origins": ["https://support.blinkist.com"]
+  },
+  "site": {
+    "site_id": "blinkist",
+    "display_name": "Blinkist",
+    "existing_site": false,
+    "site_dir": "materials/blinkist",
+    "target_origin": "https://blinkist.website-bench.com",
+    "worker_name": "websitebench-blinkist-demo",
+    "purpose": "Help readers discover concise book and audio summaries, consume learning content, and organize selected titles in a personal library."
+  },
+  "baseline": {
+    "locale": "en-US",
+    "timezone": "Etc/UTC",
+    "timezone_policy": "temporary deterministic default; refreeze from authenticated Edge evidence",
+    "viewports": [
+      {"id": "desktop", "width": 1440, "height": 900},
+      {"id": "mobile", "width": 390, "height": 844},
+      {"id": "tablet", "width": 768, "height": 1024}
+    ]
+  },
+  "scope": {
+    "roles": [
+      {
+        "id": "anonymous",
+        "display_name": "Anonymous visitor",
+        "authentication_required": false,
+        "evidence_kind": "directly-observed",
+        "evidence_urls": ["https://www.blinkist.com/", "https://www.blinkist.com/business"],
+        "changes": "Marketing entry points are public; member library and search surfaces are server-gated in the candidate.",
+        "live_view_required": false,
+        "entitlement_required": false
+      },
+      {
+        "id": "member",
+        "display_name": "Authenticated reader",
+        "authentication_required": true,
+        "evidence_kind": "directly-observed-read-only",
+        "evidence_urls": ["https://www.blinkist.com/en/app/for-you"],
+        "changes": "Read-only evidence records For You, search, Atomic Habits detail, My Library and the member navigation without retaining the source identity.",
+        "live_view_required": true,
+        "entitlement_required": false
+      }
+    ],
+    "core_journeys": [
+      {
+        "id": "j-search-and-favorite-book",
+        "priority": "P0",
+        "role": "member",
+        "purpose": "Search for a book and add it to My Library/favorites.",
+        "preconditions": ["authenticated reader session", "synthetic local catalog seed"],
+        "starting_url": "/en/app/for-you",
+        "steps": ["open search", "enter a title", "open matching book detail", "activate favorite/library control", "open My Library and verify the title"],
+        "expected_result": "The selected title is present in My Library with consistent favorite state.",
+        "failure_variant": "No-result query shows the source-specific empty result state.",
+        "recovery_variant": "A corrected query returns results without losing the library state.",
+        "source_mutation_required": true,
+        "evidence_kind": "direct-read-only-plus-local-mutation-contract",
+        "evidence_urls": ["https://www.blinkist.com/en/app/for-you"],
+        "confidence": "medium"
+      },
+      {
+        "id": "j-premium-entitlement",
+        "priority": "P1",
+        "role": "member",
+        "purpose": "Represent premium entitlement-dependent UI without performing a real purchase.",
+        "preconditions": ["existing user-owned entitlement or local sandbox fixture"],
+        "starting_url": "/en/app/for-you",
+        "steps": ["observe premium entry points", "compare locked/unlocked state", "return to library"],
+        "expected_result": "The clone exposes deterministic local-sandbox entitlement state.",
+        "failure_variant": "No entitlement or payment evidence remains unavailable.",
+        "recovery_variant": "Use local sandbox fixture rather than source payment.",
+        "source_mutation_required": false,
+        "evidence_kind": "unavailable-no-live-payment",
+        "evidence_urls": [],
+        "confidence": "low"
+      }
+    ],
+    "non_goals": [
+      {"id": "source-onboarding", "reason": "No onboarding journey is frozen for this delivery; the earlier anonymous observation is retained as historical discovery only."},
+      {"id": "source-auth-and-payment-mutations", "reason": "Source writes, real mail and real payment are unauthorized."},
+      {"id": "public-deployment", "reason": "This delivery is an offline local candidate only."}
+    ],
+    "page_families": ["public/marketing", "discovery/list/search", "entity detail", "account/auth", "library/settings", "error/recovery", "business marketing"],
+    "deterministic_seed_plan": {
+      "roles": ["anonymous", "reader-basic", "reader-premium-fixture", "isolation-reader"],
+      "entities": ["book", "audio summary", "collection", "library favorite", "search result"],
+      "catalog_size": 200,
+      "states": ["empty", "populated", "no-results", "validation-error", "success", "locked-premium"],
+      "reset_and_probes": ["reset seed", "restart persistence", "duplicate favorite", "cross-actor isolation"]
+    },
+    "external_services": [
+      {"name": "Cloudflare challenge", "evidence_kind": "directly-observed", "local_adapter_needed": false, "side_effect": false, "authorization_required": false, "runtime_zero_remote": true},
+      {"name": "Blinkist authentication/email", "evidence_kind": "structural-only", "local_adapter_needed": true, "side_effect": true, "authorization_required": true, "runtime_zero_remote": true},
+      {"name": "Subscription/payment", "evidence_kind": "task-text-only", "local_adapter_needed": true, "side_effect": true, "authorization_required": true, "runtime_zero_remote": true},
+      {"name": "Support center", "evidence_kind": "directly-observed-link", "local_adapter_needed": false, "side_effect": false, "authorization_required": false, "runtime_zero_remote": true}
+    ]
+  },
+  "authority": {
+    "authentication_access": "request-human-live-view",
+    "credentials_persisted": false,
+    "authorized_source_mutations": [],
+    "requested_source_mutations": ["user-requested registration and login with a user-owned email; Agent will not submit credentials", "authenticated read-only exploration after user handoff"],
+    "real_email_authorized": false,
+    "stripe_test_authorized": false,
+    "live_payment_authorized": false,
+    "push_authorized": false,
+    "pr_authorized": false,
+    "public_deployment_authorized": false,
+    "rights_or_redistribution_status": "unknown"
+  },
+  "trace_acquisition": {
+    "mode": "adaptive",
+    "agent_must_initiate": true,
+    "text_ownership": "human-only",
+    "human_trace_texts": [
+      {
+        "human_trace_text_id": "ht-001",
+        "text": "[821] Register on Blinkist with email reader2026@example.invalid, subscribe to the Premium annual plan, then search for Atomic Habits and add it to My Library (favorites)",
+        "provided_at": "2026-08-21T00:00:00+08:00",
+        "source": "initial-user-input",
+        "source_ref": "ASSIGNMENT_ID=19",
+        "status": "confirmed"
+      }
+    ],
+    "trace_candidates": [
+      {
+        "candidate_id": "tc-001",
+        "agent_suggested_scope": "User-owned Edge session: complete login outside recording, then let the Agent capture the authenticated reader landing page, search interaction, book detail, favorite/library state, and recovery/no-result state.",
+        "role": "member",
+        "why_needed": "The P0 journey and populated library semantics are not available from anonymous evidence.",
+        "uncertainty_resolved": ["authenticated route and redirect", "search field behavior", "book detail controls", "favorite persistence", "empty/no-result copy"],
+        "expected_coverage": ["/en/app/for-you", "/app/explore", "/app/library", "/app/books/<slug>"],
+        "requires_authentication": true,
+        "requires_source_mutation": true,
+        "evidence_priority": "high",
+        "human_trace_text_id": "ht-001",
+        "text_status": "confirmed"
+      }
+    ],
+    "requested_traces": [],
+    "completed_traces": [],
+    "remaining_material_uncertainties": ["authenticated member identity and entitlement", "real search/detail/library state", "subscription UI without payment"]
+  },
+  "trajectory_recording": {
+    "channel": "human-local-chrome",
+    "recordings": [],
+    "clone_side_recordings": [],
+    "two_sided_findings": []
+  },
+  "field_evidence": [
+    {"field": "canonical_url", "value": "https://www.blinkist.com/", "evidence_urls": ["https://blinkist.com"], "evidence_kind": "directly-observed", "confidence": "high", "refreeze_required": true},
+    {"field": "public_onboarding", "value": "/onboarding/matrix/age with age choices and Lets start", "evidence_urls": ["https://www.blinkist.com/onboarding/matrix/age"], "evidence_kind": "directly-observed", "confidence": "medium", "refreeze_required": true},
+    {"field": "authenticated_navigation", "value": "For You, Today's Free Blink, Explore, My Library, Spaces, Highlights, Infographics, Masterclasses, Settings", "evidence_urls": ["https://www.blinkist.com/en/app/for-you"], "evidence_kind": "structural-only", "confidence": "medium", "refreeze_required": true},
+    {"field": "browser_provider", "value": "Browser Use succeeds; Playwright and direct Edge receive Cloudflare 403", "evidence_urls": ["https://www.blinkist.com/"], "evidence_kind": "directly-observed", "confidence": "high", "refreeze_required": true}
+  ],
+  "unresolved": [
+    {"item": "Authenticated source evidence", "status": "awaiting-human-handoff", "reason": "User must log in through an isolated Edge profile; unknown existing Browser Use session is not used."},
+    {"item": "Premium annual subscription", "status": "blocked-by-safety", "reason": "No live payment or real subscription is authorized; implement only local-sandbox entitlement semantics."},
+    {"item": "Robots/sitemap and anonymous Playwright capture", "status": "unavailable", "reason": "HTTP GET and Playwright MCP are blocked by Cloudflare 403 in the current environment."}
+  ]
+}

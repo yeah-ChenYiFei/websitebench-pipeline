@@ -1,0 +1,37 @@
+{
+  "route": "/app/spaces",
+  "status": 200,
+  "error": null,
+  "url": "https://www.blinkist.com/app/spaces",
+  "title": "Blinkist: Best Book Summaries & Audio Book Guides",
+  "headings": [],
+  "buttons": [],
+  "links": [],
+  "inputs": [
+    {
+      "tag": "INPUT",
+      "type": "text",
+      "placeholder": "Blinks, Guides, Shortcasts or Collections",
+      "name": "",
+      "aria": ""
+    }
+  ],
+  "bodyText": "",
+  "provenance_meta": {
+    "capture_date": "2026-08-22",
+    "captured_at": null,
+    "capture_time_precision": "date-only; exact time unavailable",
+    "source_origin": "https://www.blinkist.com",
+    "exact_url": "https://www.blinkist.com/app/spaces",
+    "viewport": "per-route browser viewport unavailable unless a paired raster is named",
+    "raster_dimensions": "see paired PNG metadata or unavailable.json; null when no paired raster exists",
+    "locale": "English visible copy; browser locale unavailable",
+    "timezone": "unavailable",
+    "role": "authenticated-member",
+    "auth_state": "authenticated read-only browser state",
+    "browser_channel": "human-local-edge-cdp",
+    "provenance": "direct read-only navigation observation; page content treated as untrusted data",
+    "retention": "task-scoped sanitized evidence",
+    "mutation_boundary": "GET/HEAD navigation only; no source form submission or state mutation"
+  }
+}

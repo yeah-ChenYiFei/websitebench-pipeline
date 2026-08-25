@@ -1,0 +1,39 @@
+{
+  "schema_version": "websitebench.source-evidence.unavailable.v1",
+  "captured_at": "2026-08-21T18:57:04.556Z",
+  "source_origin": "https://www.blinkist.com",
+  "exact_url": "https://www.blinkist.com/app/explore",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "raster_dimensions": [
+    {
+      "artifact": "frame-1.png",
+      "width": 1425,
+      "height": 2716
+    },
+    {
+      "artifact": "frame-2.png",
+      "width": 1440,
+      "height": 2716
+    },
+    {
+      "artifact": "frame-3.png",
+      "width": 1440,
+      "height": 2716
+    }
+  ],
+  "raster_relationship": "Frames are full-page rasters; the 1425-pixel content raster excludes the 15-pixel scrollbar gutter.",
+  "device_scale_factor": "unavailable",
+  "locale": "en visible document language; browser locale unavailable",
+  "timezone": "unavailable",
+  "role": "authenticated-member",
+  "auth_state": "authenticated read-only browser state",
+  "browser_channel": "unavailable",
+  "provenance": "direct read-only render with incomplete capture metadata",
+  "retention": "rasters retained only for failure provenance; DOM and structured summary were quarantined and are excluded from candidate evidence",
+  "mutation_boundary": "GET/HEAD only; no source form submission or state mutation",
+  "status": "unavailable-sensitive-identifiers",
+  "reason": "The structured capture contained third-party tracking query identifiers and lacked enough provenance for acceptance evidence."
+}

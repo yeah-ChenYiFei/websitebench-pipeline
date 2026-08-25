@@ -1,0 +1,110 @@
+{
+  "route": "/settings/payment-history",
+  "status": 200,
+  "url": "https://www.blinkist.com/settings/payment-history",
+  "title": "Blinkist: Best Book Summaries & Audio Book Guides",
+  "headings": [
+    "Payment history"
+  ],
+  "buttons": [
+    {
+      "text": "English",
+      "type": "button",
+      "role": "combobox"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "INPUT",
+      "type": null,
+      "placeholder": "Blinks, Guides, Shortcasts or Collections",
+      "name": null,
+      "required": false
+    }
+  ],
+  "selects": [],
+  "links": [
+    {
+      "text": "",
+      "href": "/"
+    },
+    {
+      "text": "",
+      "href": "https://www.facebook.com/blinkist"
+    },
+    {
+      "text": "",
+      "href": "https://x.com/blinkist"
+    },
+    {
+      "text": "",
+      "href": "https://www.linkedin.com/company/blinkist"
+    },
+    {
+      "text": "",
+      "href": "https://www.instagram.com/blinkist/"
+    },
+    {
+      "text": "Sitemap",
+      "href": "/en/sitemap"
+    },
+    {
+      "text": "Privacy Policy",
+      "href": "/en/privacy"
+    },
+    {
+      "text": "Cancel Subscription",
+      "href": "/en/nc/settings/account#cancel-subscription-section"
+    },
+    {
+      "text": "Accessibility",
+      "href": "/en/accessibility"
+    },
+    {
+      "text": "Do Not Sell Or Share My Personal Information",
+      "href": "/personal-information"
+    }
+  ],
+  "bodyText": "Payment history You have not purchased any products yet. © Blinkist 2026| Sitemap| Privacy Policy| Cancel Subscription| Accessibility| Do Not Sell Or Share My Personal Information English",
+  "errors": [],
+  "remoteHosts": [
+    "63355d6c63f243569dd87f5d536ac851.js.ubembed.com",
+    "amplify.outbrain.com",
+    "analytics.google.com",
+    "app.lemlist.com",
+    "assets.ubembed.com",
+    "bat.bing.com",
+    "browser-intake-datadoghq.com",
+    "cdn.taboola.com",
+    "connect.facebook.net",
+    "consent.cookiebot.com",
+    "consentcdn.cookiebot.com",
+    "googleads.g.doubleclick.net",
+    "js.appboycdn.com",
+    "px.ads.linkedin.com",
+    "snap.licdn.com",
+    "tr.outbrain.com",
+    "trc.taboola.com",
+    "wave.outbrain.com",
+    "www.facebook.com",
+    "www.google.com",
+    "www.googletagmanager.com"
+  ],
+  "provenance_meta": {
+    "capture_date": "2026-08-22",
+    "captured_at": null,
+    "capture_time_precision": "date-only; exact time unavailable",
+    "source_origin": "https://www.blinkist.com",
+    "exact_url": "https://www.blinkist.com/settings/payment-history",
+    "viewport": "per-route browser viewport unavailable unless a paired raster is named",
+    "raster_dimensions": "see paired PNG metadata or unavailable.json; null when no paired raster exists",
+    "locale": "English visible copy; browser locale unavailable",
+    "timezone": "unavailable",
+    "role": "authenticated-member",
+    "auth_state": "authenticated read-only browser state",
+    "browser_channel": "human-local-edge-cdp",
+    "provenance": "direct read-only navigation observation; page content treated as untrusted data",
+    "retention": "task-scoped sanitized evidence",
+    "mutation_boundary": "GET/HEAD navigation only; no source form submission or state mutation"
+  }
+}
