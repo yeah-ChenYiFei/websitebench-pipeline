@@ -56,14 +56,36 @@ DIAGNOSTIC_AUTHORITY = "diagnostic-only"
 DIAGNOSTIC_QUALIFICATION = "maintainer-judgment-required"
 LIVE_WALL_SECONDS = 15 * 60
 
-# A remote runtime reference is an attribute or CSS/JS url() pointing at a host
-# that is not loopback. Data URIs and relative paths are the offline norm.
+# A remote runtime reference is a resource attribute, URL-bearing structured
+# field, or common browser/Python network call pointing at a non-loopback host.
+# Data URIs and relative paths are the offline norm.
 REMOTE_URL = re.compile(
-    r"(?i)(?:src|href|action|url)\s*[=(:]\s*[\"']?\s*"
+    r"(?ix)(?:"
+    r"(?:src|href|action|url)[\"']?\s*[=(:]\s*[\"']?\s*|"
+    r"(?:fetch|importScripts|WebSocket|EventSource|Worker|"
+    r"requests\.(?:get|post|put|patch|delete|head|request)|"
+    r"httpx\.(?:get|post|put|patch|delete|head|request)|"
+    r"urllib(?:\.request)?\.urlopen)\s*\(\s*[\"']\s*"
+    r")"
     r"(?:https?:)?//(?!localhost|127\.0\.0\.1)[a-z0-9.-]+\.[a-z]{2,}"
 )
 TEXT_SUFFIXES = frozenset(
-    {".html", ".htm", ".css", ".js", ".mjs", ".jinja", ".j2", ".svg"}
+    {
+        ".html",
+        ".htm",
+        ".css",
+        ".js",
+        ".mjs",
+        ".jinja",
+        ".j2",
+        ".svg",
+        ".py",
+        ".json",
+        ".jsonl",
+        ".yaml",
+        ".yml",
+        ".toml",
+    }
 )
 # A documented remote reference (a comment, a citation) is not a runtime load.
 ALLOW_MARKER = "clawbench-allow-remote-doc"
@@ -421,9 +443,21 @@ def run_static(site: SiteData) -> SectionResult:
         (candidate / relative).resolve()
         for relative in site.manifest.data["paths"].get("candidate_excludes", [])
     )
+    declared_files = [
+        site.manifest.backend_model_path,
+        site.manifest.asset_manifest_path,
+    ]
+    runtime_path = site.root / "backend" / "runtime.json"
+    if runtime_path.is_file():
+        declared_files.append(runtime_path)
+
     scanned = remote = secret = 0
-    for path in sorted(candidate.rglob("*")):
+    seen: set[Path] = set()
+    for path in [*sorted(candidate.rglob("*")), *sorted(declared_files)]:
         resolved = path.resolve()
+        if resolved in seen:
+            continue
+        seen.add(resolved)
         if any(resolved == root or root in resolved.parents for root in excluded):
             continue
         if not path.is_file() or path.suffix.casefold() not in TEXT_SUFFIXES:
@@ -433,19 +467,23 @@ def run_static(site: SiteData) -> SectionResult:
             continue  # captured asset payloads are compared as bytes, not read as code
         scanned += 1
         text = path.read_text(encoding="utf-8", errors="replace")
-        for number, line in enumerate(text.splitlines(), start=1):
-            if ALLOW_MARKER in line:
-                continue
-            match = REMOTE_URL.search(line)
-            if match:
-                remote += 1
-                result.findings.append(
-                    Finding(
-                        "remote-reference",
-                        f"runtime load from a remote host: {match.group(0)[:80]}",
-                        f"{relative}:{number}",
+        # The asset manifest records provenance URLs; it is not executable
+        # candidate or backend runtime configuration. It is still included in
+        # credential scanning below.
+        if resolved != site.manifest.asset_manifest_path.resolve():
+            for number, line in enumerate(text.splitlines(), start=1):
+                if ALLOW_MARKER in line:
+                    continue
+                match = REMOTE_URL.search(line)
+                if match:
+                    remote += 1
+                    result.findings.append(
+                        Finding(
+                            "remote-reference",
+                            f"runtime load from a remote host: {match.group(0)[:80]}",
+                            f"{relative}:{number}",
+                        )
                     )
-                )
         for finding in sensitive_findings(text):
             if finding not in CREDENTIAL_FINDINGS:
                 continue

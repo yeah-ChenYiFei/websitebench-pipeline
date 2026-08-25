@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
 from jsonschema import Draft202012Validator
 
 from websitebench.offline_clone.cli import main as offline_clone_main
@@ -110,6 +111,65 @@ def test_static_section_reports_a_runtime_load_from_a_remote_host(tmp_path: Path
     assert result.execution_complete is True
     assert [finding.check for finding in result.findings] == ["remote-reference"]
     assert "cdn.example.com" in result.findings[0].message
+
+
+def test_static_section_scans_python_and_declared_backend_files(tmp_path: Path) -> None:
+    root = initialized_site(tmp_path)
+    configure_passing_diagnostics(root)
+    add_closed_png_asset(root)
+    baseline = run_static(load_site(root)).checks["files_scanned"]
+    app = root / "clone" / "app.py"
+    app.parent.mkdir(parents=True, exist_ok=True)
+    app.write_text(
+        'import requests\nrequests.get("https://cdn.example.test/app.js")\n',
+        encoding="utf-8",
+    )
+    (root / "backend" / "runtime.json").write_text(
+        json.dumps({"fixture": "sk-abcdefghijklmnop"}) + "\n",
+        encoding="utf-8",
+    )
+
+    result = run_static(load_site(root))
+
+    assert result.checks["files_scanned"] == baseline + 2
+    assert [finding.check for finding in result.findings] == [
+        "remote-reference",
+        "secret",
+    ]
+    assert result.findings[0].subject == "clone/app.py:2"
+    assert result.findings[1].subject == "backend/runtime.json"
+
+
+@pytest.mark.parametrize(
+    "payload",
+    (
+        'fetch("https://cdn.example.test/app.js")',
+        'urllib.request.urlopen("https://cdn.example.test/data")',
+        '{"url": "https://cdn.example.test/runtime"}',
+    ),
+)
+def test_static_section_detects_runtime_urls_in_code_and_json(
+    tmp_path: Path, payload: str
+) -> None:
+    root = initialized_site(tmp_path)
+    configure_passing_diagnostics(root)
+    add_closed_png_asset(root)
+    _page(root, "runtime.js", payload + "\n")
+
+    result = run_static(load_site(root))
+
+    assert [finding.check for finding in result.findings] == ["remote-reference"]
+
+
+def test_static_section_allows_loopback_network_calls(tmp_path: Path) -> None:
+    root = initialized_site(tmp_path)
+    configure_passing_diagnostics(root)
+    add_closed_png_asset(root)
+    _page(root, "runtime.js", 'fetch("http://127.0.0.1:8000/status")\n')
+
+    result = run_static(load_site(root))
+
+    assert result.findings == []
 
 
 def test_static_section_skips_manifest_declared_candidate_excludes(tmp_path: Path) -> None:
