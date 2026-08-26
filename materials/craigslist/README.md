@@ -123,10 +123,13 @@ as a benchmark number, the honest reading is: **structural fidelity is at
 0.79 and is capped by content substitution** — a content-masked evaluation
 protocol is the next calibration step if the 90% figure must be a hard
 gate.
-- **License**: all clone code is original; all copy is original benchmark
-  text; all images/fonts/styles are locally authored synthetic assets. The
-  craigslist identity is used solely as the benchmark target; no
-  redistribution of craigslist content or assets is claimed or authorized.
+- **Content and asset provenance**: clone code and most copy/assets are
+  original benchmark material. The 2026-08-27 review repair retains two
+  public posting bodies and twelve public photographs from one reviewed
+  bicycle listing; these are narrowly declared in
+  `review-feedback-20260827.md` and `source-assets/manifest.json`. Runtime
+  hotlinks remain forbidden. The craigslist identity is used solely as the
+  benchmark target; no affiliation or broad redistribution license is claimed.
 
 ## Harbor (scorable)
 
@@ -232,4 +235,3 @@ All 23 task-contract journeys verified end-to-end against the running clone:
 - Harbor: `status: complete | scorable: True`, 200/200 cases present, 0
   missing (`reference_observations` pending only because the OS candidate
   sandbox is unavailable in this environment)
-

@@ -190,6 +190,47 @@ button.linklike:hover { text-decoration: underline; }
 .postinginfos .postingid { color: var(--cl-text); }
 .safety-tip { border: 1px solid var(--cl-border); border-left: 4px solid var(--cl-blue); padding: 8px 10px; margin: 12px 0; font-size: 12px; }
 
+/* Review repair: detail pages keep the source's common chrome but use
+   section-specific content, metadata and card families. */
+.posting-date-banner { color: var(--cl-muted); font-size: 12px; margin: 4px 0; }
+.listing-actions { float: right; min-width: 180px; border: 0; }
+.listing-actions .actions-combo { display: flex; align-items: center; gap: 14px; }
+.detail-layout { width: 100%; }
+.listing-gallery { flex: 0 1 650px; min-width: 0; margin: 0; }
+.posting-content { flex: 1 1 360px; min-width: 280px; }
+.posting-content-wide { max-width: 760px; }
+.posting-body {
+  clear: both;
+  border-top: 1px solid var(--cl-border-light);
+  margin: 16px 0 12px;
+  padding-top: 14px;
+  color: var(--cl-text);
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.attr-label { color: var(--cl-muted); }
+.family-attributes { border: 1px solid var(--cl-border-light); background: #fafafa; padding: 9px 11px; }
+.detail-family-jobs .family-attributes { border-left: 4px solid #5d8f5d; }
+.detail-family-for-sale .family-attributes,
+.detail-family-autos .family-attributes { border-left: 4px solid #c69c3c; }
+.detail-family-services .family-attributes { border-left: 4px solid #6d80b3; }
+
+.cl-static-search-result .posted-date,
+.cl-static-search-result .housing-summary,
+.cl-static-search-result .job-summary,
+.cl-static-search-result .gig-summary,
+.cl-static-search-result .service-summary,
+.cl-static-search-result .community-summary {
+  color: var(--cl-muted);
+  font-size: 11px;
+}
+.result-family-jobs { border-left: 4px solid #5d8f5d; }
+.result-family-community { border-left: 4px solid #9a6caa; }
+.result-family-services { border-left: 4px solid #6d80b3; }
+.result-family-for-sale, .result-family-autos { border-left: 4px solid #c69c3c; }
+.result-family-housing { border-left: 4px solid var(--cl-blue); }
+
 /* --- account / wizard / misc (kept hooks for tests) ---------------------- */
 
 .cl-columns { display: flex; gap: 28px; align-items: flex-start; }

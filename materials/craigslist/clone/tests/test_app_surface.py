@@ -6,6 +6,9 @@ from __future__ import annotations
 
 import pytest
 
+import app as app_module
+from backend import craigslist_db
+
 
 ROUTES_OK = [
     "/",
@@ -143,3 +146,78 @@ def test_static_assets_served(client) -> None:
     assert js.status_code == 200
     photo = client.get("/static/assets/seed-photos/apt-annex-1.svg")
     assert photo.status_code == 200
+
+
+def _detail_path_for(category: str, title: str) -> str:
+    rows = craigslist_db.search_postings("toronto", category=category, query=title)
+    posting = next(row for row in rows if row["title"] == title)
+    return f"/view/d/{posting['slug']}/{app_module._posting_code(posting['id'])}"
+
+
+def test_reviewed_fishing_buddy_body_and_community_family(client) -> None:
+    path = _detail_path_for("act", "Fishing Buddy")
+    detail = client.get(path)
+    assert detail.status_code == 200
+    assert 'data-detail-family="community"' in detail.text
+    assert (
+        "Looking for a fishing buddy in and around the london area. "
+        "If interested to find out more get back to me."
+    ) in detail.text
+    assert 'aria-label="housing details"' not in detail.text
+    assert "posted:" in detail.text.lower()
+
+
+def test_reviewed_sale_post_has_rich_body_dates_and_local_gallery(client) -> None:
+    title = "Supercycle Dreamweaver Freestyle purple bicycle with colourful streamers"
+    path = _detail_path_for("bia", title)
+    detail = client.get(path)
+    assert detail.status_code == 200
+    assert 'data-detail-family="for-sale"' in detail.text
+    assert "Stylish purple Super cycle dreamweaver bicycle" in detail.text
+    assert "updated:" in detail.text.lower()
+    assert detail.text.count("dreamweaver-bike-") >= 13  # main image + 12 thumbs
+    for index in range(1, 13):
+        image = client.get(f"/static/assets/seed-photos/dreamweaver-bike-{index:02d}.jpg")
+        assert image.status_code == 200
+        assert image.headers["content-type"] == "image/jpeg"
+
+
+def test_every_seeded_posting_has_nontrivial_body_copy(client) -> None:
+    with craigslist_db.connect() as connection:
+        incomplete = connection.execute(
+            "SELECT id, title, description FROM cl_postings "
+            "WHERE status != 'removed' AND "
+            "(length(trim(description)) < 40 OR trim(description) = trim(title))"
+        ).fetchall()
+    assert incomplete == []
+
+
+@pytest.mark.parametrize(
+    ("category", "family", "absent_filter", "summary"),
+    [
+        ("act", "community", "bedrooms", "community-summary"),
+        ("bia", "for-sale", "bedrooms", "posted-date"),
+        ("sof", "jobs", "housing type", "job-summary"),
+        ("aos", "services", "housing type", "service-summary"),
+        ("apa", "housing", "never-present-filter", "housing-summary"),
+    ],
+)
+def test_category_pages_use_section_specific_search_cards(
+    client, category: str, family: str, absent_filter: str, summary: str
+) -> None:
+    page = client.get(f"/search/area/toronto?cat={category}")
+    assert page.status_code == 200
+    assert f'data-search-family="{family}"' in page.text
+    assert summary in page.text
+    assert absent_filter not in page.text.lower()
+    assert 'href="#"' not in page.text
+
+
+def test_homepage_expando_controls_have_local_behavior(client) -> None:
+    home = client.get("/area/toronto")
+    assert home.status_code == 200
+    assert "cl-link-expando-group" in home.text
+    assert "cl-local-storage" not in home.text
+    script = client.get("/static/js/site.js")
+    assert "aria-expanded" in script.text
+    assert 'querySelectorAll(".cl-link-expando-group")' in script.text

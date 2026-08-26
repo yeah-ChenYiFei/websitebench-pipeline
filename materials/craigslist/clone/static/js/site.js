@@ -21,10 +21,45 @@ document.addEventListener("DOMContentLoaded", function () {
     var next = gallery.querySelector("[data-gallery-next]");
     if (prev) prev.addEventListener("click", function () { show(index - 1); });
     if (next) next.addEventListener("click", function () { show(index + 1); });
+    [prev, next].forEach(function (control) {
+      if (!control) return;
+      control.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          control.click();
+        }
+      });
+    });
     thumbs.forEach(function (t, ti) {
       t.addEventListener("click", function () { show(ti); });
     });
   }
+
+  // The source homepage uses expandable link groups in the compressed right
+  // column (nearby CL, Canadian cities/provinces, US cities/states, worldwide).
+  // The captured markup is server-rendered, so restore the same local toggle
+  // behavior instead of leaving those visible buttons inert.
+  document.querySelectorAll(".cl-link-expando-group").forEach(function (group) {
+    var button = group.querySelector(":scope > button");
+    var list = group.querySelector(":scope > .list");
+    if (!button || !list) return;
+    var expanded = window.getComputedStyle(list).display !== "none";
+    button.setAttribute("aria-expanded", expanded ? "true" : "false");
+    button.addEventListener("click", function () {
+      var isOpen = button.getAttribute("aria-expanded") === "true";
+      list.style.display = isOpen ? "none" : "flex";
+      button.setAttribute("aria-expanded", isOpen ? "false" : "true");
+    });
+  });
+
+  // Search-card hide controls are local UI state: they remove the selected
+  // result from view without a remote request.
+  document.querySelectorAll("[data-hide-result]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var result = button.closest(".cl-search-result, .cl-static-search-result");
+      if (result) result.hidden = true;
+    });
+  });
 
   // wizard photo reorder (up/down) + hidden order field
   var photoList = document.querySelector("[data-photo-list]");
