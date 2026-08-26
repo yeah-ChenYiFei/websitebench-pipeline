@@ -57,6 +57,27 @@ def _load_real_postings() -> dict[str, list[dict[str, Any]]]:
 REAL_POSTINGS = _load_real_postings()
 
 
+def _load_real_posting_details() -> dict[str, dict[str, Any]]:
+    """Load sanitized, source-observed detail-page fields.
+
+    The search snapshot intentionally stays compact.  Detail observations live
+    in a separate file so a known posting can carry its body copy, timestamps,
+    and localized media without turning the search catalog into a second copy
+    of every detail page.
+    """
+
+    path = Path(__file__).resolve().parent / "real_posting_details.json"
+    try:
+        with open(path, encoding="utf-8") as handle:
+            value = json.load(handle)
+    except (OSError, ValueError):
+        return {}
+    return value if isinstance(value, dict) else {}
+
+
+REAL_POSTING_DETAILS = _load_real_posting_details()
+
+
 def now_utc() -> str:
     """Frozen business clock; tests override via environment."""
     override = os.environ.get("WEBSITEBENCH_CRAIGSLIST_CLOCK")
@@ -970,6 +991,65 @@ def _infer_listing_attributes(
     }
 
 
+def _rich_seed_description(title: str, location: str, section: str) -> str:
+    """Create useful body copy when the search capture had no detail body.
+
+    Search-result evidence gives us the real title, location, category and
+    price, but not every result's full body. A section-specific synthetic body
+    is more honest and useful than the former title-only value;
+    source-observed bodies in ``real_posting_details.json`` always win.
+    """
+
+    place = location or "the local area"
+    if section == "housing":
+        return (
+            f"{title}. This housing listing is located in {place}.\n\n"
+            "Contact the poster to confirm availability, viewing times, lease "
+            "terms, included utilities, and any application requirements."
+        )
+    if section in {"for-sale", "autos"}:
+        return (
+            f"{title} is available in {place}. The item is described as used "
+            "and in working condition unless the title says otherwise.\n\n"
+            "Review the photos for condition and contact the owner to arrange "
+            "a local inspection or pickup."
+        )
+    if section == "jobs":
+        return (
+            f"{title}. This opportunity is based in {place}.\n\n"
+            "Contact the poster for the complete responsibilities, schedule, "
+            "compensation range, required experience, and application steps."
+        )
+    if section == "gigs":
+        return (
+            f"{title}. This is a short-term opportunity in {place}.\n\n"
+            "Ask the poster to confirm the work date, expected deliverables, "
+            "duration, and compensation before accepting the gig."
+        )
+    if section == "services":
+        return (
+            f"{title}. Service is available in {place}.\n\n"
+            "Message the provider with the scope of work to confirm pricing, "
+            "availability, service area, and any materials required."
+        )
+    if section == "community":
+        return (
+            f"{title}. This community post is for people in and around {place}.\n\n"
+            "Reply to the poster for the latest meeting details, participation "
+            "information, and accessibility notes."
+        )
+    if section == "resumes":
+        return (
+            f"{title}. Candidate based in {place}.\n\n"
+            "Contact the candidate to request a current resume, work samples, "
+            "availability, and references."
+        )
+    return (
+        f"{title}. This listing is based in {place}.\n\n"
+        "Contact the poster for complete details and current availability."
+    )
+
+
 def _real_filler_postings() -> list[dict[str, Any]]:
     """Seed postings from the scraped snapshot of real craigslist toronto
     listings (title/price/location), captured from the JS-rendered search
@@ -996,12 +1076,17 @@ def _real_filler_postings() -> list[dict[str, Any]]:
             title = item["title"]
             if not title:
                 continue
+            source_url = item.get("url", "")
+            detail = REAL_POSTING_DETAILS.get(source_url, {})
             entries.append(
                 {
                     "title": title,
                     "price": item.get("price"),
                     "location": item.get("location", ""),
-                    "desc": "",
+                    "desc": detail.get("description", ""),
+                    "photos": detail.get("photos", []),
+                    "posted": detail.get("posted_at"),
+                    "updated": detail.get("updated_at"),
                 }
             )
         # synthetic fallback only when the real snapshot has nothing
@@ -1017,6 +1102,12 @@ def _real_filler_postings() -> list[dict[str, Any]]:
             # list rows and the detail page show what the live site shows.
             neighborhood = (entry["location"] or "").strip() or "toronto"
             inferred = _infer_listing_attributes(entry["title"], slug, section)
+            description = entry["desc"] or _rich_seed_description(
+                entry["title"], neighborhood, section
+            )
+            posted_at = entry.get("posted") or (
+                "2026-06-1%dT10:00:00+00:00" % (1 + row_id % 9)
+            )
             rows.append(
                 {
                     "id": row_id,
@@ -1029,13 +1120,14 @@ def _real_filler_postings() -> list[dict[str, Any]]:
                     "beds": inferred["beds"] if inferred["beds"] != "n/a" else beds,
                     "baths": inferred["baths"],
                     "sqft": inferred["sqft"],
-                    "desc": entry["desc"] or entry["title"],
+                    "desc": description,
                     "furnished": inferred["furnished"],
                     "posted_by": "dealer" if slug in dealer_slugs else "owner",
                     "available": inferred["available"],
-                    "photos": [],
+                    "photos": entry.get("photos") or [],
                     "housing_type": housing_type,
-                    "posted": "2026-06-1%dT10:00:00+00:00" % (1 + row_id % 9),
+                    "posted": posted_at,
+                    "updated": entry.get("updated") or posted_at,
                     "account": None,
                     "laundry": inferred["laundry"],
                     "parking": inferred["parking"],
@@ -1244,7 +1336,7 @@ def _rebuild_seed_postings(connection: sqlite3.Connection) -> None:
                 "published",
                 posting["account"],
                 posting["posted"],
-                posting["posted"],
+                posting.get("updated", posting["posted"]),
                 None,
                 None,
                 posting["slug"],
@@ -1488,7 +1580,7 @@ def seed() -> None:
                         "published",
                         posting["account"],
                         posting["posted"],
-                        posting["posted"],
+                        posting.get("updated", posting["posted"]),
                         None,
                         None,
                         posting["slug"],

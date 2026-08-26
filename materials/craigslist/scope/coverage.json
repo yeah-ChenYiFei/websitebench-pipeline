@@ -121,7 +121,7 @@
         "runtime.deterministic-reset"
       ],
       "satisfied_items": [],
-      "rationale": "The clone serves only same-origin resources; the live diagnostic asserts zero outbound requests and the asset closure is declared empty (no third-party runtime assets)."
+      "rationale": "The clone serves only same-origin resources; the live diagnostic asserts zero outbound requests and the localized review assets are declared in source-assets/manifest.json."
     },
     {
       "id": "backend-semantics",

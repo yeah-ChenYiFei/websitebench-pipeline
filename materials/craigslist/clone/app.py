@@ -76,7 +76,20 @@ CONTENT_SECURITY_POLICY = (
 EMAIL_RE = re.compile(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
 HOUSING_CATEGORIES = {"apa", "sub", "roo", "wnt", "off", "prk", "rea", "vac"}
 FOR_SALE_CATEGORIES = {"bia", "fua", "ela", "tia", "foa", "cta", "mca", "sna", "rva", "boo"}
-KNOWN_SECTIONS = {"housing", "for-sale", "jobs", "gigs"}
+KNOWN_SECTIONS = {
+    "housing", "for-sale", "autos", "jobs", "gigs", "community",
+    "services", "resumes",
+}
+SECTION_LABELS = {
+    "housing": "housing",
+    "for-sale": "for sale by owner",
+    "autos": "cars & vehicles",
+    "jobs": "jobs",
+    "gigs": "gigs",
+    "community": "community",
+    "services": "services",
+    "resumes": "resumes",
+}
 CATEGORY_SLUG_RE = re.compile(r"^[a-z]{3}$")
 
 @asynccontextmanager
@@ -869,10 +882,11 @@ def _calendar_rows(year: int = 2026, month: int = 6) -> list[list[dict]]:
 
 
 def _listing_extra(posting) -> dict:
-    """Derived listing context: category name, attribute chips, posted-ago label."""
+    """Derive the detail-page family, metadata and human-readable dates."""
     category = next(
         (c for c in db.categories() if c["slug"] == posting["category_slug"]), None
     )
+    section = category["section"] if category is not None else "community"
     chips: list[str] = []
     if posting["housing_type"]:
         chips.append(posting["housing_type"])
@@ -885,22 +899,78 @@ def _listing_extra(posting) -> dict:
     if posting["baths"]:
         chips.append(f"{posting['baths']} bath")
     posted_ago = "about 8 hours ago"
+    updated_ago = None
+    posted_date_label = posting["created_at"][:10]
     try:
         from datetime import datetime
 
         posted = datetime.fromisoformat(posting["created_at"])
         now = datetime.fromisoformat(db.now_utc())
+        posted_date_label = posted.strftime("%b %d, %Y").replace(" 0", " ")
         hours = max(0, int((now - posted).total_seconds() // 3600))
         if hours < 24:
             posted_ago = f"about {max(1, hours)} hour{'s' if hours != 1 else ''} ago"
         else:
             posted_ago = f"about {hours // 24} day{'s' if hours // 24 != 1 else ''} ago"
+        if posting["updated_at"] and posting["updated_at"] != posting["created_at"]:
+            updated = datetime.fromisoformat(posting["updated_at"])
+            updated_hours = max(0, int((now - updated).total_seconds() // 3600))
+            if updated_hours < 24:
+                updated_ago = (
+                    f"about {max(1, updated_hours)} hour"
+                    f"{'s' if updated_hours != 1 else ''} ago"
+                )
+            else:
+                days = updated_hours // 24
+                updated_ago = f"about {days} day{'s' if days != 1 else ''} ago"
     except ValueError:
         pass
+
+    price = posting["price"]
+    if section == "jobs":
+        compensation = f"${price:,} per year" if price and price >= 1000 else "contact poster"
+        family_attributes = [
+            ("compensation", compensation),
+            ("employment type", "full-time"),
+            ("job title", posting["title"]),
+        ]
+    elif section == "gigs":
+        compensation = f"${price:,}" if price else "contact poster"
+        family_attributes = [
+            ("compensation", compensation),
+            ("type", "contract / short term"),
+        ]
+    elif section in {"for-sale", "autos"}:
+        family_attributes = [
+            ("condition", "good"),
+            ("delivery", "local pickup"),
+            ("posted by", posting["posted_by"] or "owner"),
+        ]
+    elif section == "services":
+        family_attributes = [
+            ("service area", posting["neighborhood"] or "local area"),
+            ("availability", "contact provider"),
+        ]
+    elif section == "resumes":
+        family_attributes = [
+            ("availability", "open to opportunities"),
+            ("location", posting["neighborhood"] or "local area"),
+        ]
+    else:
+        family_attributes = []
+
     return {
         "category_name": category["name"] if category is not None else posting["category_slug"],
         "attribute_chips": chips,
         "posted_ago": posted_ago,
+        "updated_ago": updated_ago,
+        "posted_date_label": posted_date_label,
+        "detail_family": section,
+        "section_label": SECTION_LABELS.get(section, section.replace("-", " ")),
+        "section_path": section,
+        "family_attributes": family_attributes,
+        "show_gallery": section in {"housing", "for-sale", "autos"},
+        "show_map": section in {"housing", "community", "services", "jobs", "gigs"},
     }
 
 # ---------------------------------------------------------------------------
@@ -945,8 +1015,11 @@ async def area_search(request: Request, region: str) -> Response:
         return _not_found(request)
     params = _search_params(request)
     category = params["category"] or None
-    housing_only = category == "hhh"
-    section = db.SECTION_HUB_CODES.get(category or "")
+    category_row = next((c for c in db.categories() if c["slug"] == category), None)
+    section = db.SECTION_HUB_CODES.get(category or "") or (
+        category_row["section"] if category_row is not None else "housing"
+    )
+    housing_only = section == "housing" and category == "hhh"
     postings = db.search_postings(
         region,
         category=category,
@@ -970,9 +1043,9 @@ async def area_search(request: Request, region: str) -> Response:
         "search.html",
         {
             "region_row": db.region_by_slug(region),
-            "section": section or "housing",
+            "section": section,
             "category": category,
-            "category_row": next((c for c in db.categories() if c["slug"] == category), None),
+            "category_row": category_row,
             "params": params,
             "rows": rows,
             "counts": counts,
@@ -1114,6 +1187,9 @@ async def search_page(request: Request, region: str, section: str, cat: str | No
         return _not_found(request)
     params = _search_params(request)
     category = cat or params["category"] or None
+    category_row = next((c for c in db.categories() if c["slug"] == category), None)
+    if category_row is not None:
+        section = category_row["section"]
     housing_only = category == "hhh"
     if category == "hhh":
         category = None  # housing hub: all housing categories
@@ -1142,6 +1218,7 @@ async def search_page(request: Request, region: str, section: str, cat: str | No
             "region_row": db.region_by_slug(region),
             "section": section,
             "category": category,
+            "category_row": category_row,
             "params": params,
             "rows": rows,
             "counts": counts,
@@ -1198,16 +1275,20 @@ async def listing_detail(
     return _render(request, "listing.html", context)
 
 
-@app.get("/{region}/housing/reply/{posting_id}", include_in_schema=False)
-async def reply_page(request: Request, region: str, posting_id: int) -> Response:
+@app.get("/{region}/{section}/reply/{posting_id}", include_in_schema=False)
+async def reply_page(request: Request, region: str, section: str, posting_id: int) -> Response:
+    if section not in KNOWN_SECTIONS:
+        return _not_found(request)
     posting = db.get_posting(posting_id)
     if posting is None or posting["status"] == "removed":
         return _not_found(request)
     return _render(request, "reply.html", {"posting": posting, "region_row": db.region_by_slug(region)})
 
 
-@app.post("/{region}/housing/reply/{posting_id}", include_in_schema=False)
-async def reply_submit(request: Request, region: str, posting_id: int) -> Response:
+@app.post("/{region}/{section}/reply/{posting_id}", include_in_schema=False)
+async def reply_submit(request: Request, region: str, section: str, posting_id: int) -> Response:
+    if section not in KNOWN_SECTIONS:
+        return _not_found(request)
     posting = db.get_posting(posting_id)
     if posting is None or posting["status"] == "removed":
         return _not_found(request)
@@ -1250,11 +1331,13 @@ async def reply_submit(request: Request, region: str, posting_id: int) -> Respon
     return _render(request, "reply.html", {"posting": posting, "region_row": db.region_by_slug(region), "sent": True})
 
 
-@app.post("/{region}/housing/favorite/{posting_id}", include_in_schema=False)
-async def favorite_toggle(request: Request, region: str, posting_id: int) -> Response:
+@app.post("/{region}/{section}/favorite/{posting_id}", include_in_schema=False)
+async def favorite_toggle(request: Request, region: str, section: str, posting_id: int) -> Response:
+    if section not in KNOWN_SECTIONS:
+        return _not_found(request)
     account = _account(request)
     if account is None:
-        return _render(request, "signin-prompt.html", {"next": f"/{region}/housing/favorite/{posting_id}"}, status_code=401)
+        return _render(request, "signin-prompt.html", {"next": f"/{region}/{section}/favorite/{posting_id}"}, status_code=401)
     posting = db.get_posting(posting_id)
     if posting is None:
         return _not_found(request)
