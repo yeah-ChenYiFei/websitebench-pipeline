@@ -1,0 +1,342 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "timeout_ms": 20000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "clone": [
+      "http://127.0.0.1:8896"
+    ]
+  },
+  "scenario_id": "crunchyroll-p0-public-mobile",
+  "steps": [
+    {
+      "id": "home",
+      "action": "goto",
+      "path": "/",
+      "observations": [
+        {
+          "id": "home-main",
+          "kind": "visible",
+          "selector": {
+            "clone": "main"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "home-menu",
+          "kind": "visible",
+          "selector": {
+            "clone": "[data-menu-toggle]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "popular-route",
+      "action": "goto",
+      "path": "/videos/popular"
+    },
+    {
+      "id": "popular",
+      "action": "snapshot",
+      "observations": [
+        {
+          "id": "popular-title",
+          "kind": "visible",
+          "selector": {
+            "clone": "h1"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "popular-card",
+          "kind": "visible",
+          "selector": {
+            "clone": "[data-series=\"GRMG8ZQZR\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "search-results",
+      "action": "goto",
+      "path": "/search?q=One+Piece",
+      "observations": [
+        {
+          "id": "search-result",
+          "kind": "visible",
+          "selector": {
+            "clone": "[data-series=\"GRMG8ZQZR\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "search-empty",
+      "action": "goto",
+      "path": "/search?q=no-such-anime-672",
+      "observations": [
+        {
+          "id": "empty-state",
+          "kind": "visible",
+          "selector": {
+            "clone": ".empty"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "browse-recovery",
+          "kind": "visible",
+          "selector": {
+            "clone": ".empty a[href=\"/videos/popular\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "series",
+      "action": "goto",
+      "path": "/series/GRMG8ZQZR/one-piece",
+      "observations": [
+        {
+          "id": "series-title",
+          "kind": "visible",
+          "selector": {
+            "clone": "h1"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "episodes",
+          "kind": "visible",
+          "selector": {
+            "clone": "#episodes"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "details",
+          "kind": "visible",
+          "selector": {
+            "clone": "#details"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "related",
+          "kind": "visible",
+          "selector": {
+            "clone": "text=More Like This"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "premium",
+      "action": "goto",
+      "path": "/premium?term=monthly",
+      "observations": [
+        {
+          "id": "mega-fan",
+          "kind": "visible",
+          "selector": {
+            "clone": ".plan.featured"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "mega-button",
+          "kind": "visible",
+          "selector": {
+            "clone": "form[action=\"/select-plan\"] button.btn.primary"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "login",
+      "action": "goto",
+      "path": "/login",
+      "observations": [
+        {
+          "id": "login-email",
+          "kind": "visible",
+          "selector": {
+            "clone": "input[name=\"email\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "login-password",
+          "kind": "visible",
+          "selector": {
+            "clone": "input[name=\"password\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "register",
+      "action": "goto",
+      "path": "/register",
+      "observations": [
+        {
+          "id": "register-email",
+          "kind": "visible",
+          "selector": {
+            "clone": "input[name=\"email\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "register-terms",
+          "kind": "visible",
+          "selector": {
+            "clone": ".auth-card a[href=\"/terms\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "reset",
+      "action": "goto",
+      "path": "/reset-password",
+      "observations": [
+        {
+          "id": "reset-email",
+          "kind": "visible",
+          "selector": {
+            "clone": "input[name=\"email\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "reset-return",
+          "kind": "visible",
+          "selector": {
+            "clone": ".auth-links a[href=\"/login\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "help",
+      "action": "goto",
+      "path": "/help",
+      "observations": [
+        {
+          "id": "help-account",
+          "kind": "visible",
+          "selector": {
+            "clone": "h2:has-text(\"Account Access\")"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "help-failed",
+          "kind": "visible",
+          "selector": {
+            "clone": "h2:has-text(\"Fix a Problem\")"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "not-found",
+      "action": "goto",
+      "path": "/missing/anime/record/672",
+      "observations": [
+        {
+          "id": "not-found-brand",
+          "kind": "visible",
+          "selector": {
+            "clone": ".not-found"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "not-found-recovery",
+          "kind": "visible",
+          "selector": {
+            "clone": ".not-found a[href=\"/videos/popular\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    }
+  ]
+}

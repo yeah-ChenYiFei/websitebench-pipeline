@@ -1,0 +1,44 @@
+schema_version: offline-clone.manifest.v2
+site_id: crunchyroll
+display_name: Crunchyroll
+state_model: stateful
+source:
+  origins:
+  - https://www.crunchyroll.com/
+  - https://sso.crunchyroll.com/
+  - https://help.crunchyroll.com/
+  baseline:
+    locale: en-US
+    currency: USD
+    delivery_region: null
+    timezone: Etc/UTC
+    auth_state: anonymous
+    tenant: null
+    workspace: null
+    role: null
+    capabilities: []
+    feature_flags: []
+    user_agent: null
+    viewport:
+      width: 1440
+      height: 900
+    capture_id: crunchyroll.2026-08-27.public-r1
+  capture_policy:
+    safe_methods:
+    - GET
+    - HEAD
+    runtime_remote_requests: forbidden
+scope:
+  purpose: scope/purpose.json
+  invariants: scope/invariants.json
+  routes: scope/routes.json
+  journeys: scope/journeys.json
+  checkpoints: scope/checkpoints.json
+  claims: scope/claims.jsonl
+  coverage: scope/coverage.json
+paths:
+  candidate_root: clone
+  candidate_excludes: []
+  asset_manifest: source-assets/manifest.json
+  backend_model: backend/model.json
+  artifact_root: artifacts/offline-clone

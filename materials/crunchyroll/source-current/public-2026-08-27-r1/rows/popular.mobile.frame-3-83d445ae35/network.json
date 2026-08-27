@@ -1,0 +1,80 @@
+{
+  "blocked_mutations": [
+    {
+      "method": "POST",
+      "url": "https://www.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    },
+    {
+      "method": "POST",
+      "url": "https://www.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    },
+    {
+      "method": "POST",
+      "url": "https://www.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    }
+  ],
+  "failures": [
+    {
+      "reason": "origin-not-approved",
+      "resource_type": "script",
+      "url": "https://challenges.cloudflare.com/turnstile/v0/g/94f8cd788239/api.js"
+    },
+    {
+      "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+      "resource_type": "script",
+      "url": "https://challenges.cloudflare.com/turnstile/v0/g/94f8cd788239/api.js"
+    },
+    {
+      "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+      "resource_type": "xhr",
+      "url": "https://www.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    },
+    {
+      "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+      "resource_type": "xhr",
+      "url": "https://www.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    },
+    {
+      "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+      "resource_type": "xhr",
+      "url": "https://www.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "resource_type": "document",
+      "url": "https://www.crunchyroll.com/videos/popular"
+    },
+    {
+      "method": "GET",
+      "resource_type": "document",
+      "url": "https://www.crunchyroll.com/videos/popular"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://www.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://challenges.cloudflare.com/turnstile/v0/g/94f8cd788239/api.js"
+    },
+    {
+      "method": "POST",
+      "resource_type": "xhr",
+      "url": "https://www.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    },
+    {
+      "method": "POST",
+      "resource_type": "xhr",
+      "url": "https://www.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    },
+    {
+      "method": "POST",
+      "resource_type": "xhr",
+      "url": "https://www.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    }
+  ]
+}

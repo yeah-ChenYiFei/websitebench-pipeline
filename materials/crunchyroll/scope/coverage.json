@@ -1,0 +1,175 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "frozen",
+  "dimensions": [
+    {
+      "id": "catalog-discovery",
+      "label": "P0 anime discovery",
+      "unit": "capability",
+      "category": "functional",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "home",
+        "category-row",
+        "genre-filter",
+        "search-results",
+        "series-detail",
+        "seasons-episodes",
+        "cast-details-rating",
+        "related",
+        "no-results"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "registration-subscription",
+      "label": "P0 synthetic account and Mega Fan monthly flow",
+      "unit": "state",
+      "category": "functional",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "registration-validation",
+        "local-verification",
+        "account-created",
+        "mega-fan-monthly-selected",
+        "checkout-approved",
+        "history-visible"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "checkout-semantics",
+      "label": "Local-sandbox checkout semantics",
+      "unit": "scenario",
+      "category": "backend",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "approved",
+        "declined",
+        "retryable",
+        "duplicate",
+        "foreign-owner",
+        "stale-fingerprint"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "member-playback-library",
+      "label": "Member library and playback journey",
+      "unit": "capability",
+      "category": "functional",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "signin",
+        "profile-select",
+        "watchlist-add",
+        "watchlist-remove",
+        "player-controls",
+        "season-episode-navigation",
+        "resume-progress",
+        "continue-watching"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "profile-account-settings",
+      "label": "Profile, history, billing and preferences",
+      "unit": "capability",
+      "category": "functional",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "profile-create-edit-switch",
+        "maturity-language",
+        "history-detail",
+        "upgrade-downgrade-cancel-payment",
+        "devices-playback-language-notifications-privacy"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "validation-recovery",
+      "label": "Validation, permissions, support and recovery",
+      "unit": "state",
+      "category": "functional",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "empty-required",
+        "signed-out-permission",
+        "password-recovery",
+        "help-contact",
+        "no-results-recovery",
+        "not-found-recovery"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "runtime-network",
+      "label": "Offline runtime closure",
+      "unit": "audit",
+      "category": "network",
+      "required_evidence_kinds": [
+        "network",
+        "full-suite"
+      ],
+      "required_items": [
+        "zero-remote-runtime"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "backend-isolation",
+      "label": "Site and actor isolation",
+      "unit": "probe",
+      "category": "backend",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "foreign-actor",
+        "restart",
+        "reset",
+        "duplicate-submit",
+        "foreign-database"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "responsive-visual",
+      "label": "Checkpoint viewport visual evidence",
+      "unit": "checkpoint-viewport-role",
+      "category": "visual",
+      "required_evidence_kinds": [
+        "visual",
+        "independent-audit"
+      ],
+      "required_items": [
+        "home-desktop",
+        "home-mobile",
+        "series-desktop",
+        "series-mobile",
+        "premium-desktop",
+        "premium-mobile",
+        "login-desktop",
+        "login-mobile"
+      ],
+      "satisfied_items": []
+    }
+  ]
+}

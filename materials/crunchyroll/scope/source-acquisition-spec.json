@@ -1,0 +1,522 @@
+{
+  "schema_version": "offline-clone.source-acquisition-spec.v2",
+  "site_id": "crunchyroll",
+  "capture_id": "crunchyroll.2026-08-27.public-r1",
+  "allowed_origins": [
+    "https://www.crunchyroll.com",
+    "https://sso.crunchyroll.com",
+    "https://help.crunchyroll.com"
+  ],
+  "pages": [
+    {
+      "row_id": "home.desktop.frame-1",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "home.desktop.frame-2",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "home.desktop.frame-3",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "home.mobile.frame-1",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "home.mobile.frame-2",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "home.mobile.frame-3",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "popular.desktop.frame-1",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/videos/popular",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "popular.desktop.frame-2",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/videos/popular",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "popular.desktop.frame-3",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/videos/popular",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "popular.mobile.frame-1",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/videos/popular",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "popular.mobile.frame-2",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/videos/popular",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "popular.mobile.frame-3",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/videos/popular",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "series.desktop.frame-1",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/series/GRMG8ZQZR/one-piece",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "series.desktop.frame-2",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/series/GRMG8ZQZR/one-piece",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "series.desktop.frame-3",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/series/GRMG8ZQZR/one-piece",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "series.mobile.frame-1",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/series/GRMG8ZQZR/one-piece",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "series.mobile.frame-2",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/series/GRMG8ZQZR/one-piece",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "series.mobile.frame-3",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/series/GRMG8ZQZR/one-piece",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "premium.desktop.frame-1",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/premium",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "premium.desktop.frame-2",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/premium",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "premium.desktop.frame-3",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/premium",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "premium.mobile.frame-1",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/premium",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "premium.mobile.frame-2",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/premium",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "premium.mobile.frame-3",
+      "priority": "p0",
+      "url": "https://www.crunchyroll.com/premium",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "login.desktop.frame-1",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/login",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "login.desktop.frame-2",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/login",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "login.desktop.frame-3",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/login",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "login.mobile.frame-1",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/login",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "login.mobile.frame-2",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/login",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "login.mobile.frame-3",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/login",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "register.desktop.frame-1",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/register",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "register.desktop.frame-2",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/register",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "register.desktop.frame-3",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/register",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "register.mobile.frame-1",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/register",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "register.mobile.frame-2",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/register",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "register.mobile.frame-3",
+      "priority": "p0",
+      "url": "https://sso.crunchyroll.com/register",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "help.desktop.frame-1",
+      "priority": "p1",
+      "url": "https://help.crunchyroll.com/hc/en-us",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "help.desktop.frame-2",
+      "priority": "p1",
+      "url": "https://help.crunchyroll.com/hc/en-us",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "help.desktop.frame-3",
+      "priority": "p1",
+      "url": "https://help.crunchyroll.com/hc/en-us",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "help.mobile.frame-1",
+      "priority": "p1",
+      "url": "https://help.crunchyroll.com/hc/en-us",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "help.mobile.frame-2",
+      "priority": "p1",
+      "url": "https://help.crunchyroll.com/hc/en-us",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "help.mobile.frame-3",
+      "priority": "p1",
+      "url": "https://help.crunchyroll.com/hc/en-us",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "load",
+      "full_page": true
+    }
+  ],
+  "limits": {
+    "navigation_timeout_ms": 30000,
+    "settle_ms": 1800,
+    "max_resource_bytes": 20971520,
+    "max_total_resource_bytes": 536870912
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": "offline-clone.source-acquisition-spec.v2",
+  "site_id": "crunchyroll",
+  "capture_id": "crunchyroll.2026-08-27.reset-r1",
+  "allowed_origins": [
+    "https://sso.crunchyroll.com",
+    "https://www.crunchyroll.com"
+  ],
+  "pages": [
+    {
+      "row_id": "reset.desktop.frame-1",
+      "priority": "p1",
+      "url": "https://sso.crunchyroll.com/reset-password",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "reset.desktop.frame-2",
+      "priority": "p1",
+      "url": "https://sso.crunchyroll.com/reset-password",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    },
+    {
+      "row_id": "reset.desktop.frame-3",
+      "priority": "p1",
+      "url": "https://sso.crunchyroll.com/reset-password",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "load",
+      "full_page": true
+    }
+  ],
+  "limits": {
+    "navigation_timeout_ms": 30000,
+    "settle_ms": 1800,
+    "max_resource_bytes": 20971520,
+    "max_total_resource_bytes": 67108864
+  }
+}

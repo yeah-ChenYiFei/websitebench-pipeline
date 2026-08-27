@@ -1,0 +1,95 @@
+{
+  "schema_version": "crunchyroll.frontend-gate-samples.v1",
+  "app_file": "clone/app.py",
+  "app_attr": "app",
+  "module_name": "crunchyroll_clone_app",
+  "session_setup": {
+    "method": "post",
+    "url": "/fixture/session",
+    "data": {
+      "next": "/"
+    }
+  },
+  "checks": [
+    {
+      "id": "search.results",
+      "url": "/search?q=One+Piece",
+      "expect_status": 200,
+      "expect_contains": [
+        "1 matching title"
+      ],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "search.no-results",
+      "url": "/search?q=no-such-anime-672",
+      "expect_status": 200,
+      "expect_contains": [
+        "No results found"
+      ],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "search.series",
+      "url": "/series/GRMG8ZQZR/one-piece",
+      "expect_status": 200,
+      "expect_contains": [
+        "One Piece"
+      ],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "search.not-found",
+      "url": "/missing/anime/record/672",
+      "expect_status": 404,
+      "expect_contains": [
+        "Page Not Found"
+      ],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "premium.monthly",
+      "url": "/premium?term=monthly",
+      "expect_status": 200,
+      "expect_contains": [
+        "Mega Fan"
+      ],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "premium.register",
+      "url": "/register",
+      "expect_status": 200,
+      "expect_contains": [
+        "Create Account"
+      ],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "premium.checkout",
+      "url": "/checkout?plan=Mega+Fan&term=monthly",
+      "expect_status": 200,
+      "expect_contains": [
+        "Review Membership"
+      ],
+      "expect_not_contains": [],
+      "session": true
+    },
+    {
+      "id": "premium.history",
+      "url": "/account/history",
+      "expect_status": 200,
+      "expect_contains": [
+        "Mega Fan Monthly"
+      ],
+      "expect_not_contains": [],
+      "session": true
+    }
+  ]
+}

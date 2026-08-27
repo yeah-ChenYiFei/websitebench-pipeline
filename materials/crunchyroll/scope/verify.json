@@ -1,0 +1,205 @@
+{
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "crunchyroll",
+  "note": "Public and local-synthetic member routes are live-checked. Source-authenticated and real source payment states remain unavailable.",
+  "boot": {
+    "argv": [
+      "{python}",
+      "-m",
+      "uvicorn",
+      "app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "{port}",
+      "--log-level",
+      "warning"
+    ],
+    "cwd": "clone",
+    "env": {
+      "WEBSITEBENCH_SITE_BACKEND_RUNTIME": "../backend/runtime.json",
+      "WEBSITEBENCH_SITE_BACKEND_DATABASE": "{data_dir}/crunchyroll.sqlite3",
+      "WEBSITEBENCH_LOCAL_HTTP_COOKIE": "1",
+      "TZ": "Etc/UTC"
+    }
+  },
+  "prepare": [],
+  "routes": {
+    "home": "/",
+    "browse-popular": "/videos/popular",
+    "browse-new": "/videos/new",
+    "browse-genre": "/videos/action",
+    "browse-alphabetical": "/videos/alphabetical",
+    "search": "/search?q=One+Piece",
+    "series": "/series/GRMG8ZQZR/one-piece",
+    "premium": "/premium?term=monthly",
+    "login": "/login",
+    "register": "/register",
+    "password-reset": "/reset-password",
+    "profiles": "/profiles",
+    "watchlist": "/watchlist",
+    "watch": "/watch/GN7UD8ARD/one-piece-episode-1",
+    "history": "/account/history",
+    "settings": "/account/settings",
+    "checkout": "/checkout?plan=Mega+Fan&term=monthly",
+    "help": "/help",
+    "not-found": "/missing/anime/record/672"
+  },
+  "states": {
+    "home.public": [
+      {
+        "expect": "main"
+      }
+    ],
+    "browse-popular.populated": [
+      {
+        "expect": "h1"
+      }
+    ],
+    "browse-new.populated": [
+      {
+        "expect": "h1"
+      }
+    ],
+    "browse-genre.populated": [
+      {
+        "expect": "h1"
+      }
+    ],
+    "browse-alphabetical.populated": [
+      {
+        "expect": "h1"
+      }
+    ],
+    "search.results": [
+      {
+        "expect": "[data-series='GRMG8ZQZR']"
+      }
+    ],
+    "search.no-results": [
+      {
+        "goto": "/search?q=no-such-anime-672"
+      },
+      {
+        "expect": ".empty"
+      }
+    ],
+    "series.default": [
+      {
+        "expect": "h1"
+      },
+      {
+        "expect": "#episodes"
+      }
+    ],
+    "premium.monthly": [
+      {
+        "expect": ".plan.featured"
+      }
+    ],
+    "login.default": [
+      {
+        "expect": "form[action='/login']"
+      }
+    ],
+    "register.default": [
+      {
+        "expect": "form[action='/register']"
+      }
+    ],
+    "password-reset.default": [
+      {
+        "expect": "form[action='/reset-password']"
+      }
+    ],
+    "profiles.select": {
+      "session": "default",
+      "steps": [
+        {
+          "expect": ".profile.active"
+        }
+      ]
+    },
+    "watchlist.populated": {
+      "session": "default",
+      "steps": [
+        {
+          "expect": "[data-series='GRMG8ZQZR']"
+        }
+      ]
+    },
+    "watch.progress-saved": {
+      "session": "default",
+      "steps": [
+        {
+          "expect": "[data-player]"
+        }
+      ]
+    },
+    "history.populated": {
+      "session": "default",
+      "steps": [
+        {
+          "expect": ".history-item"
+        }
+      ]
+    },
+    "settings.preferences": {
+      "session": "default",
+      "steps": [
+        {
+          "expect": "form[action='/account/settings']"
+        }
+      ]
+    },
+    "checkout.review": {
+      "session": "default",
+      "steps": [
+        {
+          "expect": "form[action='/checkout']"
+        }
+      ]
+    },
+    "help.home": [
+      {
+        "expect": "h1"
+      }
+    ],
+    "not-found.not-found": [
+      {
+        "expect": ".not-found"
+      }
+    ]
+  },
+  "session": {
+    "post": "/fixture/session",
+    "routes": [
+      "profiles",
+      "watchlist",
+      "watch",
+      "history",
+      "settings",
+      "checkout"
+    ],
+    "expect_status": [
+      303
+    ]
+  },
+  "status": {
+    "not-found": 404
+  },
+  "deferred": {
+    "source-authenticated-member": "Authenticated source profile, library, playback, history, billing, device and settings routes were unavailable without a usable human-authenticated browser handoff.",
+    "source-registration-payment": "Source account creation, email verification and payment mutation were unauthorized; the clone uses only local synthetic data and local-sandbox."
+  },
+  "visual_excluded": {
+    "home-public": "Source frames were Cloudflare challenge pages, not the product home UI.",
+    "browse-popular": "Source frames were Cloudflare challenge pages.",
+    "series-detail": "Source frames were Cloudflare challenge pages.",
+    "premium-monthly": "The plan page rendered source-limited with empty visible-text and blocked background telemetry.",
+    "help": "Source frames were Cloudflare challenge pages.",
+    "login": "Stable source-limited frames are reference-only because resource closure is incomplete.",
+    "register": "Stable source-limited frames are reference-only because resource closure is incomplete.",
+    "password-reset": "Stable source-limited frames are reference-only because resource closure is incomplete."
+  }
+}

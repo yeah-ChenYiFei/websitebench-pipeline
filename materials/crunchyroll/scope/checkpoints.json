@@ -1,0 +1,387 @@
+{
+  "schema_version": "offline-clone.checkpoints.v1",
+  "status": "draft",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "home-public.desktop",
+      "route_id": "home",
+      "state": "public",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "home-public.mobile",
+      "route_id": "home",
+      "state": "public",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "browse-popular.desktop",
+      "route_id": "browse-popular",
+      "state": "populated",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "browse-popular.mobile",
+      "route_id": "browse-popular",
+      "state": "populated",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "search-results.desktop",
+      "route_id": "search",
+      "clone_path": "/search?q=One+Piece",
+      "state": "results",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "search-results.mobile",
+      "route_id": "search",
+      "clone_path": "/search?q=One+Piece",
+      "state": "results",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "search-empty.desktop",
+      "route_id": "search",
+      "clone_path": "/search?q=no-such-anime-672",
+      "state": "no-results",
+      "role": "visitor",
+      "priority": "P1",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "search-empty.mobile",
+      "route_id": "search",
+      "clone_path": "/search?q=no-such-anime-672",
+      "state": "no-results",
+      "role": "visitor",
+      "priority": "P1",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "series-detail.desktop",
+      "route_id": "series",
+      "clone_path": "/series/GRMG8ZQZR/one-piece",
+      "state": "default",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "series-detail.mobile",
+      "route_id": "series",
+      "clone_path": "/series/GRMG8ZQZR/one-piece",
+      "state": "default",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "premium-monthly.desktop",
+      "route_id": "premium",
+      "clone_path": "/premium?term=monthly",
+      "state": "monthly",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "premium-monthly.mobile",
+      "route_id": "premium",
+      "clone_path": "/premium?term=monthly",
+      "state": "monthly",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "login.desktop",
+      "route_id": "login",
+      "state": "default",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "desktop",
+      "capture_status": "source-limited"
+    },
+    {
+      "id": "login.mobile",
+      "route_id": "login",
+      "state": "default",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "mobile",
+      "capture_status": "source-limited"
+    },
+    {
+      "id": "register.desktop",
+      "route_id": "register",
+      "state": "default",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "desktop",
+      "capture_status": "source-limited"
+    },
+    {
+      "id": "register.mobile",
+      "route_id": "register",
+      "state": "default",
+      "role": "visitor",
+      "priority": "P0",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "mobile",
+      "capture_status": "source-limited"
+    },
+    {
+      "id": "watchlist.desktop",
+      "route_id": "watchlist",
+      "state": "populated",
+      "role": "member",
+      "priority": "P0",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "watchlist.mobile",
+      "route_id": "watchlist",
+      "state": "populated",
+      "role": "member",
+      "priority": "P0",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "player.desktop",
+      "route_id": "watch",
+      "clone_path": "/watch/GN7UD8ARD/one-piece-episode-1",
+      "state": "progress-saved",
+      "role": "member",
+      "priority": "P0",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "player.mobile",
+      "route_id": "watch",
+      "clone_path": "/watch/GN7UD8ARD/one-piece-episode-1",
+      "state": "progress-saved",
+      "role": "member",
+      "priority": "P0",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "checkout.desktop",
+      "route_id": "checkout",
+      "state": "review",
+      "role": "member",
+      "priority": "P0",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "checkout.mobile",
+      "route_id": "checkout",
+      "state": "review",
+      "role": "member",
+      "priority": "P0",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "account-history.desktop",
+      "route_id": "history",
+      "state": "populated",
+      "role": "member",
+      "priority": "P1",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "account-history.mobile",
+      "route_id": "history",
+      "state": "populated",
+      "role": "member",
+      "priority": "P1",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "help.desktop",
+      "route_id": "help",
+      "state": "home",
+      "role": "visitor",
+      "priority": "P1",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "desktop",
+      "capture_status": "blocked"
+    },
+    {
+      "id": "help.mobile",
+      "route_id": "help",
+      "state": "home",
+      "role": "visitor",
+      "priority": "P1",
+      "source_evidence": "unavailable",
+      "acceptance_eligible": false,
+      "viewport": "mobile",
+      "capture_status": "blocked"
+    },
+    {
+      "id": "not-found.desktop",
+      "route_id": "not-found",
+      "clone_path": "/missing/anime/record/672",
+      "state": "not-found",
+      "role": "visitor",
+      "priority": "P1",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "not-found.mobile",
+      "route_id": "not-found",
+      "clone_path": "/missing/anime/record/672",
+      "state": "not-found",
+      "role": "visitor",
+      "priority": "P1",
+      "source_evidence": "structural-only",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "password-reset.desktop",
+      "route_id": "password-reset",
+      "state": "default",
+      "role": "visitor",
+      "priority": "P1",
+      "source_evidence": "structural-only",
+      "capture_status": "source-limited",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "password-reset.mobile",
+      "route_id": "password-reset",
+      "state": "default",
+      "role": "visitor",
+      "priority": "P1",
+      "source_evidence": "unavailable",
+      "capture_status": "not-captured",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "profiles.desktop",
+      "route_id": "profiles",
+      "state": "select",
+      "role": "member",
+      "priority": "P1",
+      "source_evidence": "unavailable",
+      "capture_status": "not-captured",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "profiles.mobile",
+      "route_id": "profiles",
+      "state": "select",
+      "role": "member",
+      "priority": "P1",
+      "source_evidence": "unavailable",
+      "capture_status": "not-captured",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    },
+    {
+      "id": "account-settings.desktop",
+      "route_id": "settings",
+      "state": "preferences",
+      "role": "member",
+      "priority": "P1",
+      "source_evidence": "unavailable",
+      "capture_status": "not-captured",
+      "acceptance_eligible": false,
+      "viewport": "desktop"
+    },
+    {
+      "id": "account-settings.mobile",
+      "route_id": "settings",
+      "state": "preferences",
+      "role": "member",
+      "priority": "P1",
+      "source_evidence": "unavailable",
+      "capture_status": "not-captured",
+      "acceptance_eligible": false,
+      "viewport": "mobile"
+    }
+  ],
+  "matrix_status": "frozen",
+  "visual_contract_status": "draft",
+  "freeze_note": "Route/state/role/viewport checkpoint matrix is frozen. Acceptance visual contracts remain draft because every current source row is blocked or source-limited and no threshold calibration is valid."
+}

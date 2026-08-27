@@ -1,0 +1,336 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "timeout_ms": 20000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "clone": [
+      "http://127.0.0.1:8896"
+    ]
+  },
+  "scenario_id": "crunchyroll-p0-member",
+  "steps": [
+    {
+      "id": "login",
+      "action": "goto",
+      "path": "/login",
+      "observations": [
+        {
+          "id": "demo-entry",
+          "kind": "visible",
+          "selector": {
+            "clone": "form[action=\"/fixture/session\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "demo-session",
+      "action": "click",
+      "selector": {
+        "clone": "form[action=\"/fixture/session\"] button"
+      }
+    },
+    {
+      "id": "demo-session-settle",
+      "action": "wait",
+      "milliseconds": 300
+    },
+    {
+      "id": "member-home",
+      "action": "snapshot",
+      "observations": [
+        {
+          "id": "continue-watching",
+          "kind": "visible",
+          "selector": {
+            "clone": "text=Continue Watching"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "profile-link",
+          "kind": "visible",
+          "selector": {
+            "clone": "a[href=\"/profiles\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "series",
+      "action": "goto",
+      "path": "/series/GRMG8ZQZR/one-piece",
+      "observations": [
+        {
+          "id": "watchlist-form",
+          "kind": "visible",
+          "selector": {
+            "clone": "form[action=\"/watchlist/toggle\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "remove-watchlist",
+      "action": "click",
+      "selector": {
+        "clone": "form[action=\"/watchlist/toggle\"] button"
+      }
+    },
+    {
+      "id": "remove-watchlist-settle",
+      "action": "wait",
+      "milliseconds": 300
+    },
+    {
+      "id": "watchlist-empty",
+      "action": "goto",
+      "path": "/watchlist",
+      "observations": [
+        {
+          "id": "empty-list",
+          "kind": "visible",
+          "selector": {
+            "clone": ".empty"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "series-two",
+      "action": "goto",
+      "path": "/series/G6NQ5DWZ6/jujutsu-kaisen"
+    },
+    {
+      "id": "add-watchlist",
+      "action": "click",
+      "selector": {
+        "clone": "form[action=\"/watchlist/toggle\"] button"
+      }
+    },
+    {
+      "id": "add-watchlist-settle",
+      "action": "wait",
+      "milliseconds": 300
+    },
+    {
+      "id": "watchlist-added",
+      "action": "goto",
+      "path": "/watchlist",
+      "observations": [
+        {
+          "id": "added-title",
+          "kind": "visible",
+          "selector": {
+            "clone": "[data-series=\"G6NQ5DWZ6\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "player",
+      "action": "goto",
+      "path": "/watch/GN7UD8ARD/one-piece-episode-1",
+      "observations": [
+        {
+          "id": "player",
+          "kind": "visible",
+          "selector": {
+            "clone": "[data-player]"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "subtitles",
+          "kind": "visible",
+          "selector": {
+            "clone": "select[aria-label=\"Subtitles\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "audio",
+          "kind": "visible",
+          "selector": {
+            "clone": "select[aria-label=\"Audio\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "play",
+      "action": "click",
+      "selector": {
+        "clone": "[data-player-action=\"toggle\"]"
+      }
+    },
+    {
+      "id": "seek",
+      "action": "fill",
+      "selector": {
+        "clone": "[data-progress]"
+      },
+      "value": "640"
+    },
+    {
+      "id": "seek-change",
+      "action": "press",
+      "selector": {
+        "clone": "[data-progress]"
+      },
+      "key": "ArrowRight"
+    },
+    {
+      "id": "volume",
+      "action": "fill",
+      "selector": {
+        "clone": "label.control-label input[type=\"range\"]:not([data-progress])"
+      },
+      "value": "55"
+    },
+    {
+      "id": "subtitle-off",
+      "action": "select",
+      "selector": {
+        "clone": "select[aria-label=\"Subtitles\"]"
+      },
+      "option": "Off"
+    },
+    {
+      "id": "audio-english",
+      "action": "select",
+      "selector": {
+        "clone": "select[aria-label=\"Audio\"]"
+      },
+      "option": "English"
+    },
+    {
+      "id": "pause",
+      "action": "click",
+      "selector": {
+        "clone": "[data-player-action=\"toggle\"]"
+      }
+    },
+    {
+      "id": "player-updated",
+      "action": "snapshot",
+      "observations": [
+        {
+          "id": "play-label",
+          "kind": "visible",
+          "selector": {
+            "clone": "text=Play"
+          },
+          "expect": {
+            "equals": true
+          }
+        },
+        {
+          "id": "saved-output",
+          "kind": "visible",
+          "selector": {
+            "clone": "[data-progress-output]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "profiles",
+      "action": "goto",
+      "path": "/profiles",
+      "observations": [
+        {
+          "id": "profiles-main",
+          "kind": "visible",
+          "selector": {
+            "clone": ".profile.active"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch-kids",
+      "action": "click",
+      "selector": {
+        "clone": "form[action=\"/profiles/switch\"] input[value=\"kids\"] + button"
+      }
+    },
+    {
+      "id": "switch-kids-settle",
+      "action": "wait",
+      "milliseconds": 300
+    },
+    {
+      "id": "home-switched",
+      "action": "snapshot",
+      "observations": [
+        {
+          "id": "home-after-switch",
+          "kind": "visible",
+          "selector": {
+            "clone": "main"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "action": "goto",
+      "path": "/account/settings",
+      "observations": [
+        {
+          "id": "settings-form",
+          "kind": "visible",
+          "selector": {
+            "clone": "form[action=\"/account/settings\"]"
+          },
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    }
+  ]
+}

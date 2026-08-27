@@ -1,0 +1,120 @@
+{
+  "schema_version": "offline-clone.journeys.v1",
+  "journeys": [
+    {
+      "id": "discover-title",
+      "family": "search",
+      "kind": "recovery",
+      "priority": "p0",
+      "status": "frozen",
+      "actor": "visitor",
+      "start_route_id": "home",
+      "steps": [
+        "open-primary-navigation",
+        "browse-category",
+        "filter-genre",
+        "search-title",
+        "open-series",
+        "inspect-details",
+        "open-related",
+        "search-no-match",
+        "return-to-browse"
+      ],
+      "source_mutation": "none",
+      "evidence_kind": "directly-observed-and-structural-only",
+      "journey_shape": "success-empty-recovery"
+    },
+    {
+      "id": "register-mega-fan-local",
+      "family": "premium",
+      "kind": "recovery",
+      "priority": "p0",
+      "status": "frozen",
+      "actor": "visitor",
+      "start_route_id": "premium",
+      "steps": [
+        "select-monthly",
+        "select-mega-fan",
+        "validate-empty-registration",
+        "register-synthetic-account",
+        "local-verification",
+        "review-checkout",
+        "local-sandbox-approved",
+        "open-history"
+      ],
+      "source_mutation": "local clone only",
+      "evidence_kind": "public-source-plan plus truthful-local-simulation",
+      "note": "Source registration/payment completion is unavailable and unauthorized.",
+      "journey_shape": "success-failure-recovery"
+    },
+    {
+      "id": "signin-watch-resume",
+      "family": "playback-library",
+      "kind": "success-permission-recovery",
+      "priority": "p0",
+      "status": "frozen",
+      "actor": "member",
+      "start_route_id": "login",
+      "steps": [
+        "inspect-signin",
+        "sign-in-synthetic",
+        "select-profile",
+        "open-home",
+        "add-watchlist",
+        "open-player",
+        "pause-seek-volume-fullscreen-subtitle-audio",
+        "change-episode",
+        "save-progress",
+        "resume",
+        "remove-watchlist"
+      ],
+      "source_mutation": "local clone only",
+      "evidence_kind": "structural-only plus truthful-local-simulation"
+    },
+    {
+      "id": "manage-profile-account",
+      "family": "account",
+      "kind": "state-lifecycle",
+      "priority": "p1",
+      "status": "frozen",
+      "actor": "member",
+      "start_route_id": "profiles",
+      "steps": [
+        "create-profile",
+        "edit-profile",
+        "set-maturity-language",
+        "switch-profile",
+        "open-continue-watching",
+        "open-history",
+        "inspect-subscription",
+        "review-upgrade-downgrade-cancel-payment",
+        "manage-devices-playback-language-notifications-privacy"
+      ],
+      "source_mutation": "local clone only",
+      "evidence_kind": "structural-only plus truthful-local-simulation"
+    },
+    {
+      "id": "auth-recovery-support",
+      "family": "auth-help-error",
+      "kind": "inspection-failure-recovery",
+      "priority": "p1",
+      "status": "frozen",
+      "actor": "visitor",
+      "start_route_id": "login",
+      "steps": [
+        "inspect-email-password-identity-options",
+        "return-without-submit",
+        "inspect-registration-fields-terms-guidance",
+        "open-password-recovery",
+        "validate-empty-reset",
+        "return-to-signin",
+        "open-help-contact",
+        "open-missing-deep-link",
+        "return-to-browse"
+      ],
+      "source_mutation": "none",
+      "evidence_kind": "directly-observed-and-unavailable"
+    }
+  ],
+  "normalization_note": "search/premium family and recovery kind are the Harbor derivation keys; journey_shape preserves the richer frozen success/failure/recovery shape."
+}

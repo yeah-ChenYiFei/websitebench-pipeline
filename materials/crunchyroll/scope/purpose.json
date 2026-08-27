@@ -1,0 +1,31 @@
+{
+  "schema_version": "offline-clone.purpose.v1",
+  "status": "frozen",
+  "purpose_id": "anime-discovery-streaming-account",
+  "statement": "Help anime viewers discover, evaluate, save, subscribe to, and watch series while managing their viewing account.",
+  "primary_actor_ids": [
+    "visitor",
+    "member",
+    "mega-fan"
+  ],
+  "mainline_journey_ids": [
+    "discover-title",
+    "register-mega-fan-local",
+    "signin-watch-resume",
+    "manage-profile-account",
+    "auth-recovery-support"
+  ],
+  "out_of_scope": [
+    "source account creation",
+    "source account mutation",
+    "source checkout",
+    "real email",
+    "real payment",
+    "Stripe",
+    "live credentials",
+    "DRM or licensed media playback",
+    "source telemetry",
+    "public deployment",
+    "rights or redistribution claims"
+  ]
+}

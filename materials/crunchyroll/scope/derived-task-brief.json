@@ -1,0 +1,230 @@
+{
+  "schema_version": "prompt.websitebench-clone-task-brief.v1",
+  "observed_at": "2026-08-27T09:41:28Z",
+  "source": {
+    "input_url": "http://crunchyroll.com/",
+    "canonical_url": "https://www.crunchyroll.com/",
+    "canonical_origin": "https://www.crunchyroll.com",
+    "approved_discovery_origins": [
+      "https://www.crunchyroll.com",
+      "https://sso.crunchyroll.com",
+      "https://help.crunchyroll.com",
+      "https://store.crunchyroll.com"
+    ],
+    "proposed_additional_origins": [
+      "https://www.crunchyrollexpo.com",
+      "https://crunchyroll.zendesk.com",
+      "https://www.sonypictures.com",
+      "https://privacyportal-cdn.onetrust.com",
+      "https://challenges.cloudflare.com"
+    ]
+  },
+  "site": {
+    "site_id": "crunchyroll",
+    "display_name": "Crunchyroll",
+    "existing_site": false,
+    "site_dir": "materials/crunchyroll",
+    "target_origin": "https://crunchyroll.website-bench.com",
+    "worker_name": "websitebench-crunchyroll-demo",
+    "purpose": "Help anime viewers discover, evaluate, save, subscribe to, and watch series while managing their viewing account."
+  },
+  "baseline": {
+    "locale": "en-US",
+    "timezone": "Etc/UTC",
+    "timezone_policy": "temporary deterministic default; re-freeze from interactive browser evidence",
+    "viewports": [
+      {"id": "desktop", "width": 1440, "height": 900},
+      {"id": "tablet", "width": 768, "height": 1024},
+      {"id": "mobile", "width": 390, "height": 844}
+    ]
+  },
+  "scope": {
+    "roles": [
+      {
+        "id": "visitor",
+        "display_name": "Anonymous visitor",
+        "authentication_required": false,
+        "evidence_status": "directly-observed",
+        "evidence_urls": ["https://www.crunchyroll.com/", "https://www.crunchyroll.com/videos/popular", "https://www.crunchyroll.com/premium"],
+        "changes": ["public discovery", "title inspection", "plan review", "auth and support entry"],
+        "live_view_required": false,
+        "entitlement_required": false
+      },
+      {
+        "id": "member",
+        "display_name": "Registered member",
+        "authentication_required": true,
+        "evidence_status": "structural-only",
+        "evidence_urls": ["https://sso.crunchyroll.com/login", "https://help.crunchyroll.com/hc/en-us"],
+        "changes": ["watchlist", "history", "profiles", "preferences", "playback progress"],
+        "live_view_required": true,
+        "entitlement_required": false
+      },
+      {
+        "id": "mega-fan",
+        "display_name": "Mega Fan subscriber",
+        "authentication_required": true,
+        "evidence_status": "structural-only",
+        "evidence_urls": ["https://www.crunchyroll.com/premium", "https://help.crunchyroll.com/hc/en-us"],
+        "changes": ["subscription billing", "premium playback and offline-entitlement presentation"],
+        "live_view_required": true,
+        "entitlement_required": true
+      }
+    ],
+    "core_journeys": [
+      {
+        "id": "discover-title",
+        "priority": "p0",
+        "role": "visitor",
+        "purpose": "Reach anime discovery records from the public entry, browse or search, and inspect a series.",
+        "preconditions": ["anonymous", "deterministic catalog seed"],
+        "starting_url": "https://www.crunchyroll.com/",
+        "steps": ["use primary navigation", "browse category and genre rows", "search for a title", "open a series", "inspect synopsis, rating, seasons, episodes, audio, details, and related titles"],
+        "expected_result": "The selected series and its actionable catalog details are visible on a canonical path.",
+        "failure_variant": "An impossible search displays a no-results recovery state.",
+        "recovery_variant": "Return to public discovery through primary navigation.",
+        "source_mutation_required": false,
+        "evidence_kind": "directly-observed-and-structural-only",
+        "evidence_urls": ["https://www.crunchyroll.com/videos/popular", "https://www.crunchyroll.com/search", "https://www.crunchyroll.com/series/GRMG8ZQZR/one-piece"],
+        "confidence": "medium"
+      },
+      {
+        "id": "register-mega-fan",
+        "priority": "p0",
+        "role": "visitor",
+        "purpose": "Create an account and select the Mega Fan monthly subscription through a safe local payment flow.",
+        "preconditions": ["synthetic identity", "local-sandbox payment only"],
+        "starting_url": "https://www.crunchyroll.com/premium",
+        "steps": ["select Monthly", "select Mega Fan", "open registration", "enter synthetic identity", "review terms and verification guidance", "complete local-sandbox checkout", "open billing history"],
+        "expected_result": "A synthetic account and Mega Fan monthly subscription appear in billing/history with status and management actions.",
+        "failure_variant": "Required fields empty, signed-out protected action, or sandbox decline identifies corrections.",
+        "recovery_variant": "Return to plan selection or account collection without sending email or making a real payment.",
+        "source_mutation_required": true,
+        "evidence_kind": "public-plan-structural-only; source completion unavailable",
+        "evidence_urls": ["https://www.crunchyroll.com/premium", "https://sso.crunchyroll.com/register"],
+        "confidence": "medium"
+      },
+      {
+        "id": "signin-watch-and-resume",
+        "priority": "p0",
+        "role": "member",
+        "purpose": "Sign in locally, manage My List, play an episode, and resume progress.",
+        "preconditions": ["seeded synthetic member", "seeded series and partially watched episode"],
+        "starting_url": "https://sso.crunchyroll.com/login",
+        "steps": ["sign in", "select profile", "open home", "add then remove a title", "start playback", "use pause, seek, volume, fullscreen, subtitle, and audio controls", "navigate seasons and episodes", "resume partial progress"],
+        "expected_result": "Library state and playback progress persist for the selected profile.",
+        "failure_variant": "Signed-out action shows a permission prompt.",
+        "recovery_variant": "Sign in or return to the title page.",
+        "source_mutation_required": true,
+        "evidence_kind": "help-structural-only; authenticated source unavailable",
+        "evidence_urls": ["https://help.crunchyroll.com/hc/en-us"],
+        "confidence": "low"
+      },
+      {
+        "id": "manage-profile-and-account",
+        "priority": "p1",
+        "role": "member",
+        "purpose": "Switch and edit a profile and review account, device, playback, language, notification, privacy, billing, and cancellation settings.",
+        "preconditions": ["seeded synthetic member with two profiles and one subscription history item"],
+        "starting_url": "https://www.crunchyroll.com/account",
+        "steps": ["create, edit, and switch a profile", "adjust maturity and language", "review continue watching", "open account history", "review plan and payment options", "review device and preference settings"],
+        "expected_result": "Newest history and saved settings expose status, details, edit/cancel actions, and collection recovery routes.",
+        "failure_variant": "Unsupported or unauthorized change explains the limitation.",
+        "recovery_variant": "Return to account overview or home.",
+        "source_mutation_required": true,
+        "evidence_kind": "help-structural-only; authenticated source unavailable",
+        "evidence_urls": ["https://help.crunchyroll.com/hc/en-us"],
+        "confidence": "low"
+      },
+      {
+        "id": "auth-recovery-support",
+        "priority": "p1",
+        "role": "visitor",
+        "purpose": "Inspect sign-in, registration, password recovery, help, validation, and branded route recovery without external effects.",
+        "preconditions": ["anonymous"],
+        "starting_url": "https://sso.crunchyroll.com/login",
+        "steps": ["inspect login fields and identity choices", "return without credentials", "inspect registration identity, terms, and verification guidance", "open recovery and inspect reset address and return link", "open public help", "open an unknown deep link"],
+        "expected_result": "Each entry exposes safe guidance and a route back to discovery.",
+        "failure_variant": "Empty required fields identify corrections without submission.",
+        "recovery_variant": "Return to sign-in, help, or public records.",
+        "source_mutation_required": false,
+        "evidence_kind": "directly-observed-and-unavailable",
+        "evidence_urls": ["https://sso.crunchyroll.com/login", "https://sso.crunchyroll.com/register", "https://help.crunchyroll.com/hc/en-us"],
+        "confidence": "medium"
+      }
+    ],
+    "page_families": ["public/marketing", "discovery/list/search", "entity detail", "account/auth", "checkout/subscription", "player", "profiles/library/history", "settings", "help/support", "error/recovery"],
+    "deterministic_seed_plan": {
+      "actors": ["anonymous visitor", "synthetic member", "synthetic isolation member"],
+      "entities": ["12 synthetic anime series", "2 seasons", "6 episodes", "2 profiles", "1 watchlist item", "1 partial playback record", "1 Mega Fan monthly subscription", "2 billing history items"],
+      "states": ["empty", "populated", "validation error", "permission prompt", "sandbox approved", "sandbox declined", "sandbox retryable", "no search results", "not found"],
+      "probes": ["reset twice", "restart persistence", "duplicate checkout idempotency", "cross-actor isolation"]
+    },
+    "external_services": [
+      {"id": "crunchyroll-sso", "kind": "authentication", "evidence_kind": "directly-observed", "local_adapter_required": true, "external_side_effect": false, "user_authorization_required": true, "zero_remote_dependencies_required": true},
+      {"id": "transactional-email", "kind": "email", "evidence_kind": "structural-only", "local_adapter_required": true, "external_side_effect": true, "user_authorization_required": true, "zero_remote_dependencies_required": true},
+      {"id": "subscription-payment", "kind": "payment", "evidence_kind": "structural-only", "local_adapter_required": true, "external_side_effect": true, "user_authorization_required": true, "zero_remote_dependencies_required": true},
+      {"id": "help-center", "kind": "support", "evidence_kind": "directly-observed", "local_adapter_required": true, "external_side_effect": false, "user_authorization_required": false, "zero_remote_dependencies_required": true},
+      {"id": "analytics-and-privacy", "kind": "analytics/privacy", "evidence_kind": "structural-only", "local_adapter_required": false, "external_side_effect": false, "user_authorization_required": false, "zero_remote_dependencies_required": true}
+    ]
+  },
+  "authority": {
+    "authentication_access": "request-human-live-view",
+    "credentials_persisted": false,
+    "authorized_source_mutations": [],
+    "requested_source_mutations": ["account registration", "watchlist mutation", "playback progress", "profile mutation", "subscription checkout"],
+    "real_email_authorized": false,
+    "stripe_test_authorized": false,
+    "live_payment_authorized": false,
+    "push_authorized": false,
+    "pr_authorized": false,
+    "public_deployment_authorized": false,
+    "rights_or_redistribution_status": "unknown"
+  },
+  "trace_acquisition": {
+    "mode": "adaptive",
+    "agent_must_initiate": true,
+    "text_ownership": "human-only",
+    "human_trace_texts": [
+      {
+        "human_trace_text_id": "ht-001",
+        "text": "TThe Crunchyroll anime streaming platform must cover the following complete functionality: reach the anime-streaming records and actions area through the public entry and primary navigation, verifying that the destination heading and canonical path are visible; execute ClawBench Core task 672 — create an account on Crunchyroll and select the Mega Fan monthly subscription plan to complete the registration and payment flow, confirming the created or saved item appears in its destination view with the requested values; browse home/category/genre rows and open a title/series page; search for a title and filter/navigate matching results; inspect a title page including synopsis, episodes/seasons, cast/details, maturity rating, and related content; create an account and select or review an available subscription plan; sign in, select a profile if applicable, and open the home screen; add/remove a title from the watchlist/My List/library; start playback and use pause/seek/volume/fullscreen/subtitle/audio controls; navigate seasons/episodes and resume a partially watched episode/title; create/edit/switch a viewing profile and adjust maturity/language/profile settings where supported; browse recommendations/continue-watching and open a related title; open plan/billing settings and review upgrade/downgrade/cancel/payment options; manage devices, playback, language, notifications, privacy, or account preferences; perform an anonymous search/no-results scenario (search for no matches or apply an impossible filter), verifying a no-results message plus a route back to available anime-streaming records and actions; provide a sign-in entry, verifying the username or email field and available password or identity-provider choices, then return without submitting credentials; provide an account-registration entry, verifying the visible identity fields, terms links, and verification guidance without creating an account; open password recovery from the sign-in surface, verifying the reset-address field, validation guidance, and return-to-sign-in link without sending a reset message; with seeded offline data present, open account history, verifying the newest item exposes its sttus, detail, edit or cancellation options, and a route back to the relevant collection; open an action with required fields empty or while signed out, verifying inline validation or a permission prompt identifies what must be corrected before continuation; provide a public help/support/contact entry, verifying a user can reach guidance for anime-streaming records and actions, account access, and failed actions without exposing private account data; open a non-existent deep link, verifying a branded not-found or recovery view preserves primary navigation and provides a safe route back to anime-streaming records and actions; starting at the public entry, complete the end-to-end scenario “",
+        "provided_at": "2026-08-27T09:41:28Z",
+        "source": "initial-user-input",
+        "source_ref": null,
+        "status": "confirmed"
+      }
+    ],
+    "trace_candidates": [
+      {"id": "tc-public", "priority": "p0", "criticality": "high", "uncertainty": "medium", "information_gain": "high", "requires_authentication": false},
+      {"id": "tc-auth-fields", "priority": "p1", "criticality": "medium", "uncertainty": "high", "information_gain": "high", "requires_authentication": false},
+      {"id": "tc-member-playback", "priority": "p0", "criticality": "high", "uncertainty": "high", "information_gain": "high", "requires_authentication": true},
+      {"id": "tc-account-billing", "priority": "p0", "criticality": "high", "uncertainty": "high", "information_gain": "high", "requires_authentication": true}
+    ],
+    "requested_traces": ["tc-public", "tc-auth-fields", "tc-member-playback", "tc-account-billing"],
+    "completed_traces": [],
+    "remaining_material_uncertainties": ["home pixels and rows", "search result and no-result copy", "authentication field DOM", "player controls", "profile, history, billing, device, and preference routes", "checkout terminal states", "current branded 404"]
+  },
+  "trajectory_recording": {
+    "channel": "not-used",
+    "recordings": [],
+    "clone_side_recordings": [],
+    "two_sided_findings": []
+  },
+  "field_evidence": [
+    {"field": "source.canonical_url", "evidence_urls": ["http://crunchyroll.com/"], "observation": "Observed 301 redirect to HTTPS www origin.", "status": "directly-observed", "confidence": "high", "browserbase_refreeze": true},
+    {"field": "site.display_name", "evidence_urls": ["https://www.crunchyroll.com/", "https://help.crunchyroll.com/hc/en-us"], "observation": "Brand label consistently appears as Crunchyroll.", "status": "directly-observed", "confidence": "high", "browserbase_refreeze": false},
+    {"field": "baseline.locale", "evidence_urls": ["https://sso.crunchyroll.com/login"], "observation": "Public surfaces expose English (US).", "status": "directly-observed", "confidence": "medium", "browserbase_refreeze": true},
+    {"field": "scope.roles.member", "evidence_urls": ["https://help.crunchyroll.com/hc/en-us"], "observation": "Help documents member-only watchlist, profile, playback, and account capabilities.", "status": "structural-only", "confidence": "medium", "browserbase_refreeze": true},
+    {"field": "scope.core_journeys.register-mega-fan", "evidence_urls": ["https://www.crunchyroll.com/premium", "https://sso.crunchyroll.com/register"], "observation": "Plan and registration entries exist; completion was not performed.", "status": "structural-only", "confidence": "medium", "browserbase_refreeze": true},
+    {"field": "scope.authenticated-pages", "evidence_urls": [], "observation": "No authenticated source session was available.", "status": "unavailable", "confidence": "low", "browserbase_refreeze": true}
+  ],
+  "unresolved": [
+    "Root and deep links are challenged by Cloudflare in the local Playwright environment.",
+    "Browserbase is configured but disabled and no callable Browserbase MCP is exposed in this session.",
+    "Steel CLI is not installed.",
+    "Pricing and catalog are region- and time-sensitive; Mega Fan monthly price must remain environment-labelled.",
+    "No source account, live payment, real email, push, PR, or deployment is authorized.",
+    "Pixels and exact copy for unavailable states must not be inferred from help or search snippets."
+  ]
+}

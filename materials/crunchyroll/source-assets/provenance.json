@@ -1,0 +1,40 @@
+{
+  "schema_version": "crunchyroll.source-assets-provenance.v1",
+  "recorded_at": "2026-08-27T10:25:19Z",
+  "status": "pending",
+  "candidate_references_downloaded_source_assets": false,
+  "capture_reports": [
+    "materials/crunchyroll/artifacts/offline-clone/frontend/source-acquisition-report-v3.json",
+    "materials/crunchyroll/artifacts/offline-clone/frontend/reset-acquisition-report-v3.json"
+  ],
+  "observed_downloads": {
+    "origin": "https://sso.crunchyroll.com/",
+    "resource_type": "stylesheet",
+    "unique_verified_files": 4,
+    "byte_sizes": [
+      4889,
+      5951,
+      17508,
+      387459
+    ]
+  },
+  "unclosed": {
+    "public_missing_required_logical_resources": 8,
+    "reset_missing_required_logical_resources": 3,
+    "examples": [
+      "fonts",
+      "brand marks",
+      "icons",
+      "P0/P1 title artwork"
+    ],
+    "reason": "The anonymous source was Cloudflare-blocked and the SSO captures were source-limited. Downloaded CSS is evidence only and is not adopted by the candidate runtime."
+  },
+  "excluded_from_runtime": [
+    "analytics",
+    "Datadog",
+    "Cloudflare challenge code",
+    "remote scripts",
+    "licensed posters",
+    "licensed video"
+  ]
+}

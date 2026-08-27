@@ -1,0 +1,140 @@
+{
+  "generated_from": "materials/crunchyroll/clone.yaml",
+  "opencli_version": "1.8.6",
+  "profiles": {
+    "premium": {
+      "failure_paths": [],
+      "label": "crunchyroll premium (derived draft)",
+      "local_semantics": [
+        "The clone makes zero runtime requests to Crunchyroll or any external origin.",
+        "Subscription checkout accepts no payment credentials and uses only approved, declined, or retryable local-sandbox scenarios.",
+        "Account, profile, watchlist, progress, history, and subscription state are owner-bound in the site-specific database."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [
+        "register-mega-fan-local"
+      ],
+      "session": {
+        "fields": {
+          "next": "/"
+        },
+        "method": "POST",
+        "notes": "Derived from tools/frontend_samples.json session_setup. These are public local fixture values, not credentials.",
+        "route": "fixture/session"
+      },
+      "steps": [
+        {
+          "command": "state",
+          "id": "premium-monthly",
+          "intent": "Exercise clone check premium.monthly (GET /premium?term=monthly).",
+          "observation_id": "crunchyroll_premium_monthly",
+          "required_state": {
+            "visible": "Mega Fan"
+          },
+          "route": "premium?term=monthly"
+        },
+        {
+          "command": "state",
+          "id": "premium-register",
+          "intent": "Exercise clone check premium.register (GET /register).",
+          "observation_id": "crunchyroll_premium_register",
+          "required_state": {
+            "visible": "Create Account"
+          },
+          "route": "register"
+        },
+        {
+          "command": "state",
+          "id": "premium-checkout",
+          "intent": "Exercise clone check premium.checkout (GET /checkout?plan=Mega+Fan&term=monthly).",
+          "observation_id": "crunchyroll_premium_checkout",
+          "required_state": {
+            "visible": "Review Membership"
+          },
+          "route": "checkout?plan=Mega+Fan&term=monthly"
+        },
+        {
+          "command": "state",
+          "id": "premium-history",
+          "intent": "Exercise clone check premium.history (GET /account/history).",
+          "observation_id": "crunchyroll_premium_history",
+          "required_state": {
+            "visible": "Mega Fan Monthly"
+          },
+          "route": "account/history"
+        }
+      ],
+      "tier": "p1"
+    },
+    "search": {
+      "failure_paths": [],
+      "label": "crunchyroll search (derived draft)",
+      "local_semantics": [
+        "The clone makes zero runtime requests to Crunchyroll or any external origin.",
+        "Subscription checkout accepts no payment credentials and uses only approved, declined, or retryable local-sandbox scenarios.",
+        "Account, profile, watchlist, progress, history, and subscription state are owner-bound in the site-specific database."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [
+        "discover-title"
+      ],
+      "steps": [
+        {
+          "command": "state",
+          "id": "search-results",
+          "intent": "Exercise clone check search.results (GET /search?q=One+Piece).",
+          "observation_id": "crunchyroll_search_results",
+          "required_state": {
+            "list_contains": "1 matching title"
+          },
+          "route": "search?q=One+Piece"
+        },
+        {
+          "command": "state",
+          "id": "search-no-results",
+          "intent": "Exercise clone check search.no-results (GET /search?q=no-such-anime-672).",
+          "observation_id": "crunchyroll_search_no-results",
+          "required_state": {
+            "list_contains": "No results found"
+          },
+          "route": "search?q=no-such-anime-672"
+        },
+        {
+          "command": "state",
+          "id": "search-series",
+          "intent": "Exercise clone check search.series (GET /series/GRMG8ZQZR/one-piece).",
+          "observation_id": "crunchyroll_search_series",
+          "required_state": {
+            "list_contains": "One Piece"
+          },
+          "route": "series/GRMG8ZQZR/one-piece"
+        },
+        {
+          "command": "state",
+          "id": "search-not-found",
+          "intent": "Exercise clone check search.not-found (GET /missing/anime/record/672).",
+          "observation_id": "crunchyroll_search_not-found",
+          "required_state": {
+            "list_contains": "Page Not Found"
+          },
+          "route": "missing/anime/record/672"
+        }
+      ],
+      "tier": "p1"
+    }
+  },
+  "schema_version": "websitebench.harbor.opencli-interaction-contract.v1",
+  "site_id": "crunchyroll"
+}

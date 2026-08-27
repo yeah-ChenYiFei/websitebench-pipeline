@@ -1,0 +1,65 @@
+{
+  "canonical_observation": {
+    "final_status": 403,
+    "final_url": "https://www.crunchyroll.com/",
+    "headers_cookies_bodies_retained": false,
+    "method": "GET",
+    "redirect_count": 1
+  },
+  "capture_environment": {
+    "chrome": "Google Chrome for Testing 152.0.7977.54",
+    "color_scheme": "not-recorded",
+    "desktop_viewport": {
+      "height": 900,
+      "width": 1440
+    },
+    "device_pixel_ratio": "not-recorded",
+    "locale": "en-US",
+    "mobile_viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "os": "Linux 6.8.0-40-generic x86_64 glibc 2.35",
+    "playwright": "1.61.0",
+    "python": "3.12.13",
+    "reduced_motion": "not-recorded",
+    "timezone": "Etc/UTC",
+    "user_agent": "not-recorded"
+  },
+  "captures": [
+    {
+      "capture_id": "crunchyroll.2026-08-27.public-r1",
+      "closure_status": "blocked",
+      "finished_at": "2026-08-27T09:55:49.521859Z",
+      "provider": "playwright-chrome",
+      "report": "materials/crunchyroll/artifacts/offline-clone/frontend/source-acquisition-report-v3.json",
+      "rows": {
+        "blocked": 24,
+        "captured": 0,
+        "source_limited": 18
+      },
+      "started_at": "2026-08-27T09:53:55.570623Z"
+    },
+    {
+      "capture_id": "crunchyroll.2026-08-27.reset-r1",
+      "closure_status": "blocked",
+      "finished_at": "2026-08-27T09:57:46.157416Z",
+      "provider": "playwright-chrome",
+      "report": "materials/crunchyroll/artifacts/offline-clone/frontend/reset-acquisition-report-v3.json",
+      "rows": {
+        "blocked": 0,
+        "captured": 0,
+        "source_limited": 3
+      },
+      "started_at": "2026-08-27T09:57:35.806968Z"
+    }
+  ],
+  "recorded_at": "2026-08-27T10:25:19Z",
+  "sanitization": {
+    "policy": "Executable script bodies removed; every recorded URL stripped of query/fragment; Cloudflare challenge paths redacted; trailing horizontal whitespace trimmed.",
+    "raw_volatile_identifiers_retained": false,
+    "tool": "materials/crunchyroll/tools/sanitize_source_capture.py"
+  },
+  "schema_version": "crunchyroll.source-provenance.v1",
+  "source_input": "http://crunchyroll.com/"
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": "offline-clone.invariants.v1",
+  "status": "frozen",
+  "invariants": [
+    {
+      "id": "offline-network",
+      "priority": "p0",
+      "statement": "The clone makes zero runtime requests to Crunchyroll or any external origin.",
+      "journey_ids": [
+        "discover-title",
+        "register-mega-fan-local",
+        "signin-watch-resume"
+      ],
+      "coverage_dimension_ids": [
+        "runtime-network"
+      ],
+      "acceptance_obligations": [
+        "Run the referenced site, browser, network, and full-suite checks and retain exact command results."
+      ]
+    },
+    {
+      "id": "local-sandbox-only",
+      "priority": "p0",
+      "statement": "Subscription checkout accepts no payment credentials and uses only approved, declined, or retryable local-sandbox scenarios.",
+      "journey_ids": [
+        "register-mega-fan-local"
+      ],
+      "coverage_dimension_ids": [
+        "checkout-semantics"
+      ],
+      "acceptance_obligations": [
+        "Run the referenced site, browser, network, and full-suite checks and retain exact command results."
+      ]
+    },
+    {
+      "id": "account-isolation",
+      "priority": "p0",
+      "statement": "Account, profile, watchlist, progress, history, and subscription state are owner-bound in the site-specific database.",
+      "journey_ids": [
+        "signin-watch-resume",
+        "manage-profile-account"
+      ],
+      "coverage_dimension_ids": [
+        "backend-isolation"
+      ],
+      "acceptance_obligations": [
+        "Run the referenced site, browser, network, and full-suite checks and retain exact command results."
+      ]
+    },
+    {
+      "id": "catalog-consistency",
+      "priority": "p0",
+      "statement": "Search, rows, series, seasons, episodes, ratings, audio, subtitles, cast/details, and related content use one deterministic local catalog.",
+      "journey_ids": [
+        "discover-title",
+        "signin-watch-resume"
+      ],
+      "coverage_dimension_ids": [
+        "catalog-discovery"
+      ],
+      "acceptance_obligations": [
+        "Run the referenced site, browser, network, and full-suite checks and retain exact command results."
+      ]
+    },
+    {
+      "id": "validation-before-mutation",
+      "priority": "p1",
+      "statement": "Required-field and permission failures identify corrections before any protected state change.",
+      "journey_ids": [
+        "register-mega-fan-local",
+        "signin-watch-resume",
+        "auth-recovery-support"
+      ],
+      "coverage_dimension_ids": [
+        "validation-recovery"
+      ],
+      "acceptance_obligations": [
+        "Run the referenced site, browser, network, and full-suite checks and retain exact command results."
+      ]
+    },
+    {
+      "id": "safe-recovery",
+      "priority": "p1",
+      "statement": "No-results, auth recovery, help, and not-found states preserve a route to available anime discovery.",
+      "journey_ids": [
+        "discover-title",
+        "auth-recovery-support"
+      ],
+      "coverage_dimension_ids": [
+        "validation-recovery"
+      ],
+      "acceptance_obligations": [
+        "Run the referenced site, browser, network, and full-suite checks and retain exact command results."
+      ]
+    }
+  ]
+}

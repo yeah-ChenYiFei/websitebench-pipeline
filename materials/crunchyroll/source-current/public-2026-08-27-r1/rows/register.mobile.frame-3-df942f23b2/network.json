@@ -1,0 +1,297 @@
+{
+  "blocked_mutations": [
+    {
+      "method": "POST",
+      "url": "https://sso.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    }
+  ],
+  "failures": [
+    {
+      "reason": "origin-not-approved",
+      "resource_type": "script",
+      "url": "https://www.datadoghq-browser-agent.com/datadog-rum-v6.js"
+    },
+    {
+      "reason": "origin-not-approved",
+      "resource_type": "script",
+      "url": "https://static.crunchyroll.com/analytics/cr-eec-8.0.0.js"
+    },
+    {
+      "reason": "origin-not-approved",
+      "resource_type": "script",
+      "url": "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+    },
+    {
+      "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+      "resource_type": "script",
+      "url": "https://www.datadoghq-browser-agent.com/datadog-rum-v6.js"
+    },
+    {
+      "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+      "resource_type": "script",
+      "url": "https://static.crunchyroll.com/analytics/cr-eec-8.0.0.js"
+    },
+    {
+      "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+      "resource_type": "script",
+      "url": "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+    },
+    {
+      "reason": "net::ERR_FAILED",
+      "resource_type": "font",
+      "url": "https://www.crunchyroll.com/fonts/Lato-Semibold.woff2"
+    },
+    {
+      "reason": "net::ERR_FAILED",
+      "resource_type": "font",
+      "url": "https://www.crunchyroll.com/fonts/Lato-Heavy.woff2"
+    },
+    {
+      "reason": "net::ERR_FAILED",
+      "resource_type": "font",
+      "url": "https://www.crunchyroll.com/fonts/Lato-Medium.woff2"
+    },
+    {
+      "reason": "net::ERR_FAILED",
+      "resource_type": "font",
+      "url": "https://www.crunchyroll.com/fonts/Lato-Medium.woff2"
+    },
+    {
+      "reason": "net::ERR_FAILED",
+      "resource_type": "font",
+      "url": "https://www.crunchyroll.com/fonts/Lato-Heavy.woff2"
+    },
+    {
+      "reason": "origin-not-approved",
+      "resource_type": "script",
+      "url": "https://www.google.com/recaptcha/enterprise.js"
+    },
+    {
+      "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+      "resource_type": "xhr",
+      "url": "https://sso.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    },
+    {
+      "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector",
+      "resource_type": "script",
+      "url": "https://www.google.com/recaptcha/enterprise.js"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "resource_type": "document",
+      "url": "https://sso.crunchyroll.com/register"
+    },
+    {
+      "method": "GET",
+      "resource_type": "stylesheet",
+      "url": "https://sso.crunchyroll.com/_next/static/css/1546fcca2f3d6c42.css"
+    },
+    {
+      "method": "GET",
+      "resource_type": "stylesheet",
+      "url": "https://sso.crunchyroll.com/_next/static/css/a12c42e65c0a9e60.css"
+    },
+    {
+      "method": "GET",
+      "resource_type": "stylesheet",
+      "url": "https://sso.crunchyroll.com/_next/static/css/17e37543235a9361.css"
+    },
+    {
+      "method": "GET",
+      "resource_type": "stylesheet",
+      "url": "https://sso.crunchyroll.com/_next/static/css/5981a624228634bf.css"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://www.datadoghq-browser-agent.com/datadog-rum-v6.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://static.crunchyroll.com/analytics/cr-eec-8.0.0.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "font",
+      "url": "https://www.crunchyroll.com/fonts/Lato-Medium.woff2"
+    },
+    {
+      "method": "GET",
+      "resource_type": "font",
+      "url": "https://www.crunchyroll.com/fonts/Lato-Semibold.woff2"
+    },
+    {
+      "method": "GET",
+      "resource_type": "font",
+      "url": "https://www.crunchyroll.com/fonts/Lato-Heavy.woff2"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/webpack-52754241fad410fc.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/fd9d1056-8a6971c7fa2cf6f0.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/2117-dccb46089b8eafba.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/main-app-83aae236620128c6.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/4494-d2d555169382e48b.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/7027-7729900e723ef798.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/9169-3b7735eb5e1f97d9.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/4075-b0739711857c1285.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/6679-dd1c6a5b293737de.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/4635-a6399a587984ab6b.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/5205-938d6995a1c7b902.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/1879-2a92fbc64c21c446.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/6147-ab88b7409b23319f.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/3104-d0dcaf7b377e843e.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/260-efe139fd29fbc5e1.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/9900-02eb7049224027bc.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/app/%5Blocale%5D/layout-f0da0f1c65577eee.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/9970-2f5d0669b8718040.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/9506-577b51014b884351.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/3046-bb0bc7e38b292ccd.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/app/%5Blocale%5D/register/page-c5a2bdd4dc844823.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/5878-66f6df845897dea2.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/app/%5Blocale%5D/not-found-6015fa9d611ea213.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/_next/static/chunks/app/%5Blocale%5D/error-e9d949f157dec66d.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "font",
+      "url": "https://www.crunchyroll.com/fonts/Lato-Medium.woff2"
+    },
+    {
+      "method": "GET",
+      "resource_type": "font",
+      "url": "https://www.crunchyroll.com/fonts/Lato-Heavy.woff2"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://sso.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    },
+    {
+      "method": "GET",
+      "resource_type": "other",
+      "url": "https://sso.crunchyroll.com/assets/images/favicons/icon.svg"
+    },
+    {
+      "method": "POST",
+      "resource_type": "xhr",
+      "url": "https://sso.crunchyroll.com/cdn-cgi/challenge-platform/[redacted]"
+    },
+    {
+      "method": "GET",
+      "resource_type": "script",
+      "url": "https://www.google.com/recaptcha/enterprise.js"
+    },
+    {
+      "method": "GET",
+      "resource_type": "fetch",
+      "url": "https://sso.crunchyroll.com/login"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "schema_version": "offline-clone.routes.v1",
+  "routes": [
+    {
+      "id": "home",
+      "path": "/",
+      "priority": "P0",
+      "role": "visitor-or-member",
+      "states": [
+        "public",
+        "member",
+        "continue-watching"
+      ]
+    },
+    {
+      "id": "browse-popular",
+      "path": "/videos/popular",
+      "priority": "P0",
+      "role": "visitor-or-member",
+      "states": [
+        "populated",
+        "filtered"
+      ]
+    },
+    {
+      "id": "browse-new",
+      "path": "/videos/new",
+      "priority": "P1",
+      "role": "visitor-or-member",
+      "states": [
+        "populated"
+      ]
+    },
+    {
+      "id": "browse-genre",
+      "path": "/videos/action",
+      "priority": "P1",
+      "role": "visitor-or-member",
+      "states": [
+        "populated",
+        "filtered"
+      ]
+    },
+    {
+      "id": "browse-alphabetical",
+      "path": "/videos/alphabetical",
+      "priority": "P1",
+      "role": "visitor-or-member",
+      "states": [
+        "populated"
+      ]
+    },
+    {
+      "id": "search",
+      "path": "/search",
+      "priority": "P0",
+      "role": "visitor-or-member",
+      "states": [
+        "results",
+        "no-results"
+      ]
+    },
+    {
+      "id": "series",
+      "path": "/series/{series_id}/{slug}",
+      "priority": "P0",
+      "role": "visitor-or-member",
+      "states": [
+        "default",
+        "watchlist-added",
+        "permission-prompt"
+      ]
+    },
+    {
+      "id": "watch",
+      "path": "/watch/{episode_id}/{slug}",
+      "priority": "P0",
+      "role": "member",
+      "states": [
+        "ready",
+        "playing",
+        "paused",
+        "progress-saved"
+      ]
+    },
+    {
+      "id": "premium",
+      "path": "/premium",
+      "priority": "P0",
+      "role": "visitor-or-member",
+      "states": [
+        "monthly",
+        "yearly"
+      ]
+    },
+    {
+      "id": "register",
+      "path": "/register",
+      "priority": "P0",
+      "role": "visitor",
+      "states": [
+        "default",
+        "invalid",
+        "local-verification",
+        "account-created"
+      ]
+    },
+    {
+      "id": "login",
+      "path": "/login",
+      "priority": "P0",
+      "role": "visitor",
+      "states": [
+        "default",
+        "invalid",
+        "authenticated"
+      ]
+    },
+    {
+      "id": "password-reset",
+      "path": "/reset-password",
+      "priority": "P1",
+      "role": "visitor",
+      "states": [
+        "default",
+        "invalid",
+        "local-guidance"
+      ]
+    },
+    {
+      "id": "profiles",
+      "path": "/profiles",
+      "priority": "P1",
+      "role": "member",
+      "states": [
+        "select",
+        "edit",
+        "created",
+        "switched"
+      ]
+    },
+    {
+      "id": "watchlist",
+      "path": "/watchlist",
+      "priority": "P0",
+      "role": "member",
+      "states": [
+        "empty",
+        "populated"
+      ]
+    },
+    {
+      "id": "history",
+      "path": "/account/history",
+      "priority": "P1",
+      "role": "member",
+      "states": [
+        "populated",
+        "subscription-detail"
+      ]
+    },
+    {
+      "id": "settings",
+      "path": "/account/settings",
+      "priority": "P1",
+      "role": "member",
+      "states": [
+        "profile",
+        "preferences",
+        "devices",
+        "billing"
+      ]
+    },
+    {
+      "id": "checkout",
+      "path": "/checkout",
+      "priority": "P0",
+      "role": "member",
+      "states": [
+        "empty-validation",
+        "review",
+        "approved",
+        "declined",
+        "retryable"
+      ]
+    },
+    {
+      "id": "help",
+      "path": "/help",
+      "priority": "P1",
+      "role": "visitor-or-member",
+      "states": [
+        "home",
+        "contact",
+        "failed-actions"
+      ]
+    },
+    {
+      "id": "not-found",
+      "path": "/{unknown}",
+      "priority": "P1",
+      "role": "visitor-or-member",
+      "states": [
+        "not-found"
+      ]
+    }
+  ],
+  "status": "frozen",
+  "frozen_at": "2026-08-27T10:30:00Z"
+}
