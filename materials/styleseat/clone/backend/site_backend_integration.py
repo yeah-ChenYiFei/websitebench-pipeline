@@ -44,7 +44,11 @@ def _declared_hook(
     return hook
 
 
-def open_site_services() -> tuple[SiteBackend, LocalAuthStore]:
+def open_site_services(
+    *,
+    mail_mode: str = "LOCAL_ONLY",
+    mail_worker_token: str | None = None,
+) -> tuple[SiteBackend, LocalAuthStore]:
     """Open one bound database; never omit the site id for permanent auth."""
 
     runtime_path = Path(
@@ -85,6 +89,8 @@ def open_site_services() -> tuple[SiteBackend, LocalAuthStore]:
     auth = LocalAuthStore(
         backend.lifecycle.database_path,
         site_id=backend.config.site_id,
+        mail_mode=mail_mode,
+        mail_worker_token=mail_worker_token,
     )
     auth.ensure_schema()
     return backend, auth

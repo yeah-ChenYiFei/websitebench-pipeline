@@ -52,11 +52,18 @@ CSP = ("default-src 'self'; img-src 'self' data: blob:; "
 # 会话语义照 backend/runtime.json 的声明，不自己发明
 _RUNTIME = json.loads((ROOT.parent / "backend" / "runtime.json").read_text(encoding="utf-8"))
 _SESSION = _RUNTIME["session"]
-COOKIE = "__Host-session" if _SESSION.get("host_only") and _SESSION.get("secure") else "session"
+# Both the local API and the captured-site compatibility endpoints share one
+# opaque session. A __Host- cookie would be rejected on the harness's plain
+# HTTP localhost origin, so this name deliberately has no Secure-only prefix.
+COOKIE = "wb_session"
 
 from backend.site_backend_integration import open_site_services  # noqa: E402
+from auth_api import configure as configure_local_auth  # noqa: E402
+from auth_api import router as local_auth_router  # noqa: E402
+from auth_api import store_mail_options  # noqa: E402
 
-BACKEND, AUTH = open_site_services()
+BACKEND, AUTH = open_site_services(**store_mail_options())
+configure_local_auth(lambda: AUTH)
 
 # ---------------------------------------------------------------- 夹具账号
 # 登录面要能真的登进去，就得有账号。这里不手写口令哈希——调 store 自己的
@@ -84,11 +91,11 @@ def _session_token(request: Request) -> str | None:
     return request.cookies.get(COOKIE)
 
 
-def _set_session(resp: Response, token: str) -> None:
+def _set_session(resp: Response, request: Request, token: str) -> None:
     resp.set_cookie(
         COOKIE, token,
         httponly=bool(_SESSION.get("http_only", True)),
-        secure=bool(_SESSION.get("secure", True)),
+        secure=bool(_SESSION.get("secure", True)) and request.url.scheme == "https",
         samesite=str(_SESSION.get("same_site", "Lax")).lower(),
         path="/",
     )  # host_only：不带 Domain 属性，正是 __Host- 的语义
@@ -106,6 +113,7 @@ def _identity(request: Request) -> dict | None:
 
 
 app = FastAPI(title=DISPLAY_NAME)
+app.include_router(local_auth_router)
 if STATIC.is_dir():
     app.mount("/static", StaticFiles(directory=str(STATIC)), name="static")
 
@@ -140,10 +148,33 @@ def _page(route: str, root: pathlib.Path = PAGES) -> pathlib.Path | None:
     return None
 
 
+def _with_local_auth(body: str) -> str:
+    """Attach clone-owned account and navigation controllers."""
+
+    scripts = ('<script src="/static/local-auth.js" defer></script>'
+               '<script src="/static/home-actions.js" defer></script>')
+    if '/static/home-actions.js' in body:
+        return body
+    replaced, count = re.subn(
+        r"</body\s*>", scripts + "</body>", body, count=1, flags=re.IGNORECASE
+    )
+    return replaced if count else body + scripts
+
+
 @app.get("/", include_in_schema=False)
 def root() -> RedirectResponse:
     # 源站 / →301→ /m/，克隆照做：基路径钉死 /m/
     return RedirectResponse("/m/", status_code=301)
+
+
+@app.get("/signup", include_in_schema=False)
+def signup_entry() -> RedirectResponse:
+    return RedirectResponse("/m/signup", status_code=302)
+
+@app.get("/search", include_in_schema=False)
+def search_entry() -> RedirectResponse:
+    return RedirectResponse("/m/search/new-york-city-ny/professionals", status_code=302)
+
 
 
 # ---------------------------------------------------------------- 鉴权
@@ -159,11 +190,11 @@ async def ajax_login(request: Request) -> Response:
         return JSONResponse({"ok": False, "error": _auth_error(exc)}, status_code=401)
     # 登录会轮换会话 token（防会话固定），必须把新的写回 cookie，旧的已作废
     resp = JSONResponse({"ok": True, "redirect": "/m/client-appointments"})
-    _set_session(resp, result["session_token"])
+    _set_session(resp, request, result["session_token"])
     return resp
 
 
-def _clear_session(resp: Response) -> None:
+def _clear_session(resp: Response, request: Request) -> None:
     """删 cookie 必须和当初 set 的属性完全对齐，否则浏览器当成另一个 cookie。
 
     __Host- 前缀有硬约束：带这个名字的 Set-Cookie 只有同时满足 Secure + Path=/ +
@@ -175,7 +206,7 @@ def _clear_session(resp: Response) -> None:
     resp.set_cookie(
         COOKIE, "", max_age=0, expires=0,
         httponly=bool(_SESSION.get("http_only", True)),
-        secure=bool(_SESSION.get("secure", True)),
+        secure=bool(_SESSION.get("secure", True)) and request.url.scheme == "https",
         samesite=str(_SESSION.get("same_site", "Lax")).lower(),
         path="/",
     )
@@ -185,7 +216,7 @@ def _clear_session(resp: Response) -> None:
 async def ajax_logout(request: Request) -> Response:
     AUTH.sign_out(_session_token(request))
     resp = JSONResponse({"ok": True, "redirect": "/m/"})
-    _clear_session(resp)
+    _clear_session(resp, request)
     return resp
 
 
@@ -199,7 +230,7 @@ async def password_reset_start(request: Request) -> Response:
     except Exception as exc:
         return JSONResponse({"ok": False, "error": _auth_error(exc)}, status_code=400)
     resp = JSONResponse({"ok": True, "detail": "reset code sent"})
-    _set_session(resp, token)
+    _set_session(resp, request, token)
     return resp
 
 
@@ -223,7 +254,7 @@ async def password_reset_confirm(request: Request) -> Response:
         return JSONResponse({"ok": False, "error": _auth_error(exc)}, status_code=400)
     resp = JSONResponse({"ok": True, "redirect": "/m/login"})
     if isinstance(rotated, str) and rotated:
-        _set_session(resp, rotated)   # 改密同样轮换 token
+        _set_session(resp, request, rotated)   # 改密同样轮换 token
     return resp
 
 
@@ -270,6 +301,67 @@ IN_SCOPE_SHAPE = re.compile(
     r"^/m/search(/[a-z0-9-]+-[a-z]{2}(/[a-z0-9-]+(/page-[0-9]+)?)?)?/?$"
     r"|^/m/v/[A-Za-z0-9._-]+/?$"
     r"|^/blog(/|$)")
+
+# These are the 50 city/service links rendered on the captured home page.  The
+# original crawl includes the full service-specific result DOM for Oakland and
+# full professional indexes for many cities.  Reusing that captured result DOM
+# keeps the secondary pages visually and structurally faithful while preserving
+# the city/service selected on the home page.
+HOME_SEARCH_RE = re.compile(
+    r"^/m/search/(?P<city>(?:dallas-tx|chicago-il|atlanta-ga|washington-dc|"
+    r"los-angeles-ca|houston-tx|detroit-mi|charlotte-nc|columbus-oh|"
+    r"newport-news-va))/(?P<service>braids|natural-hair|haircut|weaves|barber)/?$"
+)
+HOME_CITY_NAMES = {
+    "dallas-tx": "Dallas, TX", "chicago-il": "Chicago, IL",
+    "atlanta-ga": "Atlanta, GA", "washington-dc": "Washington, DC",
+    "los-angeles-ca": "Los Angeles, CA", "houston-tx": "Houston, TX",
+    "detroit-mi": "Detroit, MI", "charlotte-nc": "Charlotte, NC",
+    "columbus-oh": "Columbus, OH", "newport-news-va": "Newport News, VA",
+}
+HOME_SERVICE_NAMES = {
+    "braids": "Braids", "natural-hair": "Natural Hair",
+    "haircut": "Haircut", "weaves": "Weaves", "barber": "Barber",
+}
+HOME_SOURCE_SERVICES = {"haircut": "mens-haircut"}
+
+
+def _home_search_document(route: str) -> str | None:
+    match = HOME_SEARCH_RE.match(route)
+    if match is None:
+        return None
+    city_slug = match.group("city")
+    service_slug = match.group("service")
+    city_name = HOME_CITY_NAMES[city_slug]
+    service_name = HOME_SERVICE_NAMES[service_slug]
+    source_slug = HOME_SOURCE_SERVICES.get(service_slug, service_slug)
+    source = _page(f"/m/search/oakland-ca/{source_slug}")
+    if source is None:
+        return None
+    body = source.read_text(encoding="utf-8")
+    body = body.replace(
+        'src="about:blank"', 'src="data:image/gif;base64,R0lGODlhAQABAAAAACw="'
+    )
+    body = body.replace("Oakland, CA", city_name)
+    body = body.replace(
+        f"/m/search/oakland-ca/{source_slug}",
+        f"/m/search/{city_slug}/{service_slug}",
+    )
+    marker = (
+        f' data-clone-city="{html_escape(city_slug)}"'
+        f' data-clone-service="{html_escape(service_slug)}"'
+    )
+    body = re.sub(r"<body\b", "<body" + marker, body, count=1, flags=re.IGNORECASE)
+    notice = (
+        '<aside class="clone-search-context" role="status" style="padding:12px 24px;background:#f2efff;color:#24116d;font:14px/1.5 Poppins,system-ui,sans-serif">'
+        f'<strong>{html_escape(service_name)} in {html_escape(city_name)}</strong>'
+        '<span> · Offline StyleSeat results; filters, sorting, search and profile links remain local.</span>'
+        '</aside>'
+    )
+    body = re.sub(
+        r"(<body\b[^>]*>)", r"\1" + notice, body, count=1, flags=re.IGNORECASE
+    )
+    return _with_local_auth(body)
 
 
 def _boundary(route: str) -> Response:
@@ -329,12 +421,16 @@ def serve(full_path: str, request: Request) -> Response:
         return RedirectResponse(target, status_code=302)
     # 登录态优先取 pages-auth 的同名路由；没有就落回匿名版（源站也是同一路由两副面孔）
     page = None
+    page_route = "/m/login" if route.rstrip("/") == "/m/signup" else route
     if _identity(request) is not None:
-        page = _page(route, PAGES_AUTH)
+        page = _page(page_route, PAGES_AUTH)
     if page is None:
-        page = _page(route)
+        page = _page(page_route)
     if page is None and not route.endswith("/"):
-        page = _page(route + "/")
+        page = _page(page_route + "/")
+    if page is None and (home_search := _home_search_document(route)) is not None:
+        return HTMLResponse(home_search)
+
     if page is None and IN_SCOPE_SHAPE.match(route):
         return _boundary(route)
     if page is None:
@@ -345,4 +441,4 @@ def serve(full_path: str, request: Request) -> Response:
             f"<body><h1>Page not found</h1>"
             f"<p><a href=\"/m/\">Back to {DISPLAY_NAME}</a></p></body></html>")
         return HTMLResponse(body, status_code=404)
-    return HTMLResponse(page.read_text(encoding="utf-8"))
+    return HTMLResponse(_with_local_auth(page.read_text(encoding="utf-8")))

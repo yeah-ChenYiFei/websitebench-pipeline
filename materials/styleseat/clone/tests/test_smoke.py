@@ -15,7 +15,9 @@ def test_healthz() -> None:
 def test_home() -> None:
     response = client.get("/")
     assert response.status_code == 200
-    assert "WebsiteBench offline contribution scaffold" in response.text
+    assert "Hair Appointments | Beauty Salons: Book Online | StyleSeat" in response.text
+    assert 'data-testid="home-hero-container"' in response.text
+    assert '<script src="/static/local-auth.js" defer></script>' in response.text
 
 
 def test_unknown_route() -> None:
