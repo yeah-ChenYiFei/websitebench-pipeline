@@ -1,0 +1,1982 @@
+{
+  "schema_version": 1,
+  "repository": "780078268/websitebench-pipeline",
+  "snapshot_date": "2026-08-28",
+  "notes": [
+    "branch_status is planned until the persistent branch is pushed and rechecked",
+    "snapshot records recoverable Git material, not merge, deployment, or acceptance",
+    "sites/<id> avoids 44 collisions with existing site/<id> working branches"
+  ],
+  "sites": [
+    {
+      "id": "12go-asia",
+      "material_path": "materials/12go-asia",
+      "component_paths": [
+        "materials/12go-asia"
+      ],
+      "branch": "sites/12go-asia",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 14,
+        "sha": "863e5082f4293052ce6594b237a285af24f7f7bd",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:18Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 120,
+        "clone_blob_bytes": 9443686,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "1password-web",
+      "material_path": "materials/1password-web",
+      "component_paths": [
+        "materials/1password-web"
+      ],
+      "branch": "sites/1password-web",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 15,
+        "sha": "504e6edebb923755bfc796f5a6618487bd1f6335",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:17Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 64,
+        "clone_blob_bytes": 1311301,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "ace-hardware",
+      "material_path": "materials/ace-hardware",
+      "component_paths": [
+        "materials/ace-hardware"
+      ],
+      "branch": "sites/ace-hardware",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 16,
+        "sha": "d3c5f19f87a0c24989d4729d04c12445c81ebe3a",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:17Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 445,
+        "clone_blob_bytes": 4904799,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "airbnb",
+      "material_path": "materials/airbnb",
+      "component_paths": [
+        "materials/airbnb"
+      ],
+      "branch": "sites/airbnb",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 17,
+        "sha": "7674c2c493ac8f42251256d200c2e73d4b796492",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:17Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 163,
+        "clone_blob_bytes": 14908599,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "airtable",
+      "material_path": "materials/airtable",
+      "component_paths": [
+        "materials/airtable"
+      ],
+      "branch": "sites/airtable",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 18,
+        "sha": "b1ea745ea3f16b270d7ba39ecb7419e0f4f7daba",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:17Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 56,
+        "clone_blob_bytes": 6529287,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "amazon-home-services",
+      "material_path": "materials/amazon-home-services",
+      "component_paths": [
+        "materials/amazon-home-services"
+      ],
+      "branch": "sites/amazon-home-services",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 19,
+        "sha": "4f1896647e1275310ea34f7760dc1d21bae873c3",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:17Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 113,
+        "clone_blob_bytes": 4440673,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "confluence",
+      "material_path": "materials/atlassian-confluence",
+      "component_paths": [
+        "materials/atlassian-confluence",
+        "harbor/sites/atlassian-confluence",
+        "harbor/instances/atlassian-confluence"
+      ],
+      "branch": "sites/confluence",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 62,
+        "sha": "4f50fe600303b8eb8b6033e993b7191087f392c6",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T19:35:16Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 49,
+        "clone_blob_bytes": 68458770,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "autoslash",
+      "material_path": "materials/autoslash",
+      "component_paths": [
+        "materials/autoslash",
+        "harbor/sites/autoslash",
+        "harbor/instances/autoslash"
+      ],
+      "branch": "sites/autoslash",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 61,
+        "sha": "562efaa91bd176f77a9e2336ae2cde600e8298cd",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T02:02:07Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 62,
+        "clone_blob_bytes": 13597786,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "autotrader",
+      "material_path": "materials/autotrader",
+      "component_paths": [
+        "materials/autotrader",
+        "harbor/sites/autotrader",
+        "harbor/instances/autotrader"
+      ],
+      "branch": "sites/autotrader",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 60,
+        "sha": "cec9af93332b280c3a79ab7fc88714456e3b24a7",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T00:36:34Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 27,
+        "clone_blob_bytes": 1943273,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "bark",
+      "material_path": "materials/bark",
+      "component_paths": [
+        "materials/bark",
+        "harbor/sites/bark",
+        "harbor/instances/bark"
+      ],
+      "branch": "sites/bark",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 59,
+        "sha": "6b557a8b48358bb7f241ab79e84e8b3b8276cecc",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T04:28:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 40,
+        "clone_blob_bytes": 35777507,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "bean-box",
+      "material_path": "materials/bean-box",
+      "component_paths": [
+        "materials/bean-box",
+        "harbor/sites/bean-box",
+        "harbor/instances/bean-box"
+      ],
+      "branch": "sites/bean-box",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "yiwenxx/websitebench-pipeline",
+        "pr": 50,
+        "sha": "ccdd492de0e5cb1910aa6995a16f5a83ebe4d380",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T06:50:22Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 406,
+        "clone_blob_bytes": 10339269,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "beeradvocate",
+      "material_path": "materials/beeradvocate",
+      "component_paths": [
+        "materials/beeradvocate"
+      ],
+      "branch": "sites/beeradvocate",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "yiwenxx/websitebench-pipeline",
+        "pr": 48,
+        "sha": "eb17922edc5ad094e813b4d58c57860846525036",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T05:34:46Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 69,
+        "clone_blob_bytes": 1305522,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "betterhelp",
+      "material_path": "materials/betterhelp",
+      "component_paths": [
+        "materials/betterhelp"
+      ],
+      "branch": "sites/betterhelp",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "yiwenxx/websitebench-pipeline",
+        "pr": 49,
+        "sha": "a8cfd948ebf033d29c2e41e7956ede06a37c31ca",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T08:37:10Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 51,
+        "clone_blob_bytes": 2157542,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "blinkist",
+      "material_path": "materials/blinkist",
+      "component_paths": [
+        "materials/blinkist",
+        "harbor/sites/blinkist",
+        "harbor/instances/blinkist"
+      ],
+      "branch": "sites/blinkist",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 17,
+        "sha": "e5f51348f3dc8ad99dfa4c769a719662747b9c64",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-22T13:02:39Z",
+        "updated_at": "2026-08-22T13:02:39Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 22,
+        "clone_blob_bytes": 388527,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "bluemercury",
+      "material_path": "materials/bluemercury",
+      "component_paths": [
+        "materials/bluemercury",
+        "harbor/sites/bluemercury",
+        "harbor/instances/bluemercury"
+      ],
+      "branch": "sites/bluemercury",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 43,
+        "sha": "dd0ceb30db5791ae0a3ea7303e4a297f4056fb91",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T16:46:08Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 445,
+        "clone_blob_bytes": 30744454,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "booking-com",
+      "material_path": "materials/booking-com",
+      "component_paths": [
+        "materials/booking-com"
+      ],
+      "branch": "sites/booking-com",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 53,
+        "sha": "8346bb482414765033d966ad8d71697d4de5c380",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-25T12:15:01Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 146,
+        "clone_blob_bytes": 15833461,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "booksy",
+      "material_path": "materials/booksy",
+      "component_paths": [
+        "materials/booksy"
+      ],
+      "branch": "sites/booksy",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 54,
+        "sha": "157de1440bac8fa970b1b21c7b060bc051db0cd6",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T11:22:26Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 101,
+        "clone_blob_bytes": 5984870,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "calendly",
+      "material_path": "materials/calendly",
+      "component_paths": [
+        "materials/calendly"
+      ],
+      "branch": "sites/calendly",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 58,
+        "sha": "67e1bfac6e2429f2a0637f89f1f0a5d86d7eae69",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-25T14:01:15Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 317,
+        "clone_blob_bytes": 12102532,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "capterra",
+      "material_path": "materials/capterra",
+      "component_paths": [
+        "materials/capterra",
+        "harbor/sites/capterra"
+      ],
+      "branch": "sites/capterra",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1097,
+        "clone_blob_bytes": 50272616,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "coursera",
+      "material_path": "materials/33",
+      "component_paths": [
+        "materials/33",
+        "harbor/sites/33",
+        "harbor/instances/33"
+      ],
+      "branch": "sites/coursera",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 97,
+        "sha": "93d428f701c99a20654b5971c9e9033f41b76a6b",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T17:09:43Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 451,
+        "clone_blob_bytes": 23092164,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "craigslist",
+      "material_path": "materials/craigslist",
+      "component_paths": [
+        "materials/craigslist",
+        "harbor/sites/craigslist",
+        "harbor/instances/craigslist"
+      ],
+      "branch": "sites/craigslist",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 93,
+        "sha": "27812f954027e100278b2983e80b2fba3ce8ea60",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-26T17:07:08Z",
+        "updated_at": "2026-08-26T17:07:08Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 132,
+        "clone_blob_bytes": 4028663,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "crumbl",
+      "material_path": "materials/crumbl-cookies",
+      "component_paths": [
+        "materials/crumbl-cookies"
+      ],
+      "branch": "sites/crumbl",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 96,
+        "sha": "5dc8650c0827ce1ef70f3e215ef09aa9931852d9",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T17:09:10Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 102,
+        "clone_blob_bytes": 59643631,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "edx",
+      "material_path": "materials/edx",
+      "component_paths": [
+        "materials/edx"
+      ],
+      "branch": "sites/edx",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 99,
+        "sha": "e27d607057555f1c37197a3af4339724733690aa",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T17:37:32Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 215,
+        "clone_blob_bytes": 16979444,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "eventbrite",
+      "material_path": "materials/eventbrite",
+      "component_paths": [
+        "materials/eventbrite"
+      ],
+      "branch": "sites/eventbrite",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 98,
+        "sha": "d6b6b266ddc7d8bdeddec65dad125b6e43138162",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T17:37:32Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 272,
+        "clone_blob_bytes": 13525458,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "hipcamp",
+      "material_path": "materials/hipcamp",
+      "component_paths": [
+        "materials/hipcamp"
+      ],
+      "branch": "sites/hipcamp",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 173,
+        "clone_blob_bytes": 16082707,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "insureon",
+      "material_path": "materials/insureon",
+      "component_paths": [
+        "materials/insureon",
+        "harbor/sites/insureon",
+        "harbor/instances/insureon"
+      ],
+      "branch": "sites/insureon",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 90,
+        "sha": "f5b872201d96fa0371fd17e4a42bd6d69168c645",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T16:35:35Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 604,
+        "clone_blob_bytes": 12440181,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "insurify",
+      "material_path": "materials/insurify",
+      "component_paths": [
+        "materials/insurify",
+        "harbor/sites/insurify",
+        "harbor/instances/insurify"
+      ],
+      "branch": "sites/insurify",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 91,
+        "sha": "a50ae183f796252424343af0e7d8fa5e030e9b9e",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T16:35:40Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 435,
+        "clone_blob_bytes": 16779790,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "ioby",
+      "material_path": "materials/ioby",
+      "component_paths": [
+        "materials/ioby",
+        "harbor/sites/ioby",
+        "harbor/instances/ioby"
+      ],
+      "branch": "sites/ioby",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 92,
+        "sha": "5c6be38cec88bbe050af2e5e80df8d1fbfaceb8b",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T16:35:45Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 50,
+        "clone_blob_bytes": 27704558,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "leetcode",
+      "material_path": "materials/leetcode",
+      "component_paths": [
+        "materials/leetcode"
+      ],
+      "branch": "sites/leetcode",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 2,
+        "sha": "8967930da62a62230a7aa1454697fa32148bfaaa",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T13:25:59Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 84,
+        "clone_blob_bytes": 3703443,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "legalnature",
+      "material_path": "materials/legalnature",
+      "component_paths": [
+        "materials/legalnature"
+      ],
+      "branch": "sites/legalnature",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 4,
+        "sha": "eec4408cbf4ed93cd3ba2c551cec12d0fbedd94c",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T13:26:00Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1064,
+        "clone_blob_bytes": 111232389,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "lowes",
+      "material_path": "materials/lowes",
+      "component_paths": [
+        "materials/lowes"
+      ],
+      "branch": "sites/lowes",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 11,
+        "sha": "3718f2bd272673e7ebd435ebac28c9892450e331",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T13:26:02Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 66,
+        "clone_blob_bytes": 3109839,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "mac-cosmetics",
+      "material_path": "materials/mac-cosmetics",
+      "component_paths": [
+        "materials/mac-cosmetics"
+      ],
+      "branch": "sites/mac-cosmetics",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 5,
+        "sha": "6b224d8d20e58545da42d1b51189b15d7c921a88",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T13:26:03Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 12985,
+        "clone_blob_bytes": 1014451790,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "purelymail",
+      "material_path": "materials/gmail",
+      "component_paths": [
+        "materials/gmail"
+      ],
+      "branch": "sites/purelymail",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 3,
+        "sha": "74f27400bd58ede29ef3f63708fd34a2fd70ec3f",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-24T14:12:15Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 41,
+        "clone_blob_bytes": 723291,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "mansur-gavriel",
+      "material_path": "materials/mansur-gavriel",
+      "component_paths": [
+        "materials/mansur-gavriel"
+      ],
+      "branch": "sites/mansur-gavriel",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 24,
+        "sha": "4c1c7da62a8ad0cbd486539558b1a7d994ad510f",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T16:27:24Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 161,
+        "clone_blob_bytes": 5343455,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "masterclass",
+      "material_path": "materials/masterclass",
+      "component_paths": [
+        "materials/masterclass"
+      ],
+      "branch": "sites/masterclass",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 112,
+        "sha": "1160c080fb26749a2cfe8ea425a8626e0cf0e105",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T10:05:01Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 135,
+        "clone_blob_bytes": 31669285,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "mistobox",
+      "material_path": "materials/mistobox",
+      "component_paths": [
+        "materials/mistobox"
+      ],
+      "branch": "sites/mistobox",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 114,
+        "sha": "ba90fed532af2796b28491c6dc767c554f035355",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T10:36:59Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 99,
+        "clone_blob_bytes": 15205232,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "myheritage",
+      "material_path": "materials/myheritage",
+      "component_paths": [
+        "materials/myheritage"
+      ],
+      "branch": "sites/myheritage",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 109,
+        "sha": "c6fbc78b8b500e7946c5ac2c102111ec4ead6607",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T16:24:53Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 2255,
+        "clone_blob_bytes": 156679530,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "ollie",
+      "material_path": "materials/ollie",
+      "component_paths": [
+        "materials/ollie"
+      ],
+      "branch": "sites/ollie",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 18,
+        "sha": "d6496278084ba88659dbd761109450bfc8633777",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T09:59:19Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 193,
+        "clone_blob_bytes": 17983781,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "olaplex",
+      "material_path": "materials/olaplex",
+      "component_paths": [
+        "materials/olaplex"
+      ],
+      "branch": "sites/olaplex",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 41,
+        "sha": "49c9606d0549b3e0388547226b4033f1da0e82e9",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T16:19:53Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1069,
+        "clone_blob_bytes": 412513303,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "opentable",
+      "material_path": "materials/opentable",
+      "component_paths": [
+        "materials/opentable"
+      ],
+      "branch": "sites/opentable",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 111,
+        "sha": "7fe0a92b908b7ae0cd54f483d7559076a0995ad5",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T09:54:58Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 299,
+        "clone_blob_bytes": 5810683,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "overleaf",
+      "material_path": "materials/overleaf",
+      "component_paths": [
+        "materials/overleaf"
+      ],
+      "branch": "sites/overleaf",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 23,
+        "sha": "5be998b6690050e62953690aeba76ac747e53fd7",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T09:39:13Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 26,
+        "clone_blob_bytes": 418648,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "petfinder",
+      "material_path": "materials/petfinder",
+      "component_paths": [
+        "materials/petfinder"
+      ],
+      "branch": "sites/petfinder",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 94,
+        "sha": "c2389ce9b2b2a5b2c92e24610e23394c1c5144fa",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T16:46:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1774,
+        "clone_blob_bytes": 148037546,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "petsmart",
+      "material_path": "materials/petsmart",
+      "component_paths": [
+        "materials/petsmart",
+        "harbor/sites/petsmart",
+        "harbor/instances/petsmart"
+      ],
+      "branch": "sites/petsmart",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 118,
+        "sha": "01f91860dcdfedb4286208ac363641b68c8d683c",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T17:53:57Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 362,
+        "clone_blob_bytes": 12488869,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "resy",
+      "material_path": "materials/resy",
+      "component_paths": [
+        "materials/resy"
+      ],
+      "branch": "sites/resy",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 68,
+        "sha": "b43b0d7c20e4002ba2603fea5be91c27c79124ea",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T15:23:05Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 397,
+        "clone_blob_bytes": 36075294,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "rockauto",
+      "material_path": "materials/rockauto",
+      "component_paths": [
+        "materials/rockauto"
+      ],
+      "branch": "sites/rockauto",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 67,
+        "sha": "c56284d736bd2f0cbf7ea17534fefcf59f5f9349",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T15:07:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 392,
+        "clone_blob_bytes": 6881602,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "roomsketcher",
+      "material_path": "materials/roomsketcher",
+      "component_paths": [
+        "materials/roomsketcher"
+      ],
+      "branch": "sites/roomsketcher",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 64,
+        "sha": "fb246b3f9beb58f0792d65ad7a63f51c8eb5d887",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T12:34:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 12159,
+        "clone_blob_bytes": 620903341,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "rover",
+      "material_path": "materials/rover",
+      "component_paths": [
+        "materials/rover"
+      ],
+      "branch": "sites/rover",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 69,
+        "sha": "d490d6bbfee114e3206d317d2320886f2b2bd824",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T15:45:34Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1429,
+        "clone_blob_bytes": 58758909,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "sixt",
+      "material_path": "materials/sixt",
+      "component_paths": [
+        "materials/sixt"
+      ],
+      "branch": "sites/sixt",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 71,
+        "sha": "28370fe25e7e2a221edd2a375ff7ed3cbc45155c",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T16:50:06Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 931,
+        "clone_blob_bytes": 112567272,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "soko-glam",
+      "material_path": "materials/sokoglam",
+      "component_paths": [
+        "materials/sokoglam"
+      ],
+      "branch": "sites/soko-glam",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 73,
+        "sha": "74ecfb1bdd72a05cb4855262b11cc8a28ae7f6af",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T19:30:51Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 3871,
+        "clone_blob_bytes": 1010340612,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "taskrabbit",
+      "material_path": "materials/taskrabbit",
+      "component_paths": [
+        "materials/taskrabbit"
+      ],
+      "branch": "sites/taskrabbit",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 95,
+        "sha": "1a199ad7f166ce57ea9a3971c5415ed5a7c3e3ed",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T16:46:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 843,
+        "clone_blob_bytes": 40226282,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "uber-eats",
+      "material_path": "materials/ubereats",
+      "component_paths": [
+        "materials/ubereats"
+      ],
+      "branch": "sites/uber-eats",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": false,
+        "clone_dir_exists": true,
+        "clone_file_count": 132,
+        "clone_blob_bytes": 4096712,
+        "tree_truncated": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "tripadvisor",
+      "material_path": "materials/tripadvisor",
+      "component_paths": [
+        "materials/tripadvisor"
+      ],
+      "branch": "sites/tripadvisor",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 65,
+        "sha": "f86a81cfb16da7e634a7f893bea09e842981a724",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T14:31:21Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 79,
+        "clone_blob_bytes": 4578804,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "trustpilot",
+      "material_path": "materials/trustpilot",
+      "component_paths": [
+        "materials/trustpilot"
+      ],
+      "branch": "sites/trustpilot",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 70,
+        "sha": "9cd10cfe589786b4c691ef4d3abffe37bbfffbb2",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T16:20:45Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 10299,
+        "clone_blob_bytes": 654201468,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "untappd",
+      "material_path": "materials/untappd",
+      "component_paths": [
+        "materials/untappd",
+        "harbor/sites/untappd",
+        "harbor/instances/untappd"
+      ],
+      "branch": "sites/untappd",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 119,
+        "sha": "4924542ddecb67ce7b727c00e7c3a1c4c0a93c28",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T18:06:41Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 5289,
+        "clone_blob_bytes": 121656914,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "wix",
+      "material_path": "materials/wix",
+      "component_paths": [
+        "materials/wix"
+      ],
+      "branch": "sites/wix",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 127,
+        "sha": "3abbc2beaceafe0f649bfa5dbfb93336f0c025e2",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T21:49:12Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 240,
+        "clone_blob_bytes": 39352311,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "workable",
+      "material_path": "materials/workable",
+      "component_paths": [
+        "materials/workable"
+      ],
+      "branch": "sites/workable",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": false,
+        "clone_dir_exists": true,
+        "clone_file_count": 294,
+        "clone_blob_bytes": 13691829,
+        "tree_truncated": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "notion",
+      "material_path": "materials/notion",
+      "component_paths": [
+        "materials/notion"
+      ],
+      "branch": "sites/notion",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 95,
+        "clone_blob_bytes": 989612,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "medium",
+      "material_path": "materials/medium",
+      "component_paths": [
+        "materials/medium"
+      ],
+      "branch": "sites/medium",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 116,
+        "sha": "29a4e14ee57da69a7bd8b089d62d677526cfc44b",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T16:57:08Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 74,
+        "clone_blob_bytes": 1208320,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "spotify",
+      "material_path": "materials/spotify",
+      "component_paths": [
+        "materials/spotify"
+      ],
+      "branch": "sites/spotify",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 66,
+        "sha": "9dc0919da7ff6c162033db5c03d4c1a9a26e673a",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T14:49:16Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1564,
+        "clone_blob_bytes": 96563841,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "kickstarter",
+      "material_path": "materials/kickstarter",
+      "component_paths": [
+        "materials/kickstarter"
+      ],
+      "branch": "sites/kickstarter",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 117,
+        "sha": "ec591e407a5862545778ca5247ef3ddd726d6482",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T16:57:46Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 151,
+        "clone_blob_bytes": 15459078,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "greenhouse",
+      "material_path": "materials/greenhouse",
+      "component_paths": [
+        "materials/greenhouse"
+      ],
+      "branch": "sites/greenhouse",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 9,
+        "sha": "ec5d673088241be75839f24b41c851b4efc0aca0",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-21T13:25:49Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": false,
+        "clone_dir_exists": true,
+        "clone_file_count": 2775,
+        "clone_blob_bytes": 723824863,
+        "tree_truncated": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "google-scholar",
+      "material_path": "materials/google-scholar",
+      "component_paths": [
+        "materials/google-scholar",
+        "harbor/sites/google-scholar",
+        "harbor/instances/google-scholar"
+      ],
+      "branch": "sites/google-scholar",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 100,
+        "sha": "51236eefb70c32d2e4f41a4467a2049fa18603ad",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T21:32:40Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 34,
+        "clone_blob_bytes": 485141,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "meetup",
+      "material_path": "materials/meetup",
+      "component_paths": [
+        "materials/meetup",
+        "harbor/sites/meetup",
+        "harbor/instances/meetup"
+      ],
+      "branch": "sites/meetup",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 105,
+        "sha": "c1449f6b92964bb5735719bd39d0ca50d68e0742",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T03:14:06Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 786,
+        "clone_blob_bytes": 36273714,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "change",
+      "material_path": "materials/change",
+      "component_paths": [
+        "materials/change",
+        "harbor/sites/change"
+      ],
+      "branch": "sites/change",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 198,
+        "clone_blob_bytes": 14287744,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "etsy",
+      "material_path": "materials/etsy",
+      "component_paths": [
+        "materials/etsy",
+        "harbor/sites/etsy"
+      ],
+      "branch": "sites/etsy",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 132,
+        "clone_blob_bytes": 5835091,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "imdb",
+      "material_path": "materials/imdb",
+      "component_paths": [
+        "materials/imdb",
+        "harbor/sites/imdb"
+      ],
+      "branch": "sites/imdb",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 526,
+        "clone_blob_bytes": 12940905,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "tripit",
+      "material_path": "materials/tripit",
+      "component_paths": [
+        "materials/tripit"
+      ],
+      "branch": "sites/tripit",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 475,
+        "clone_blob_bytes": 15605339,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "linkedin",
+      "material_path": "materials/linkedin",
+      "component_paths": [
+        "materials/linkedin"
+      ],
+      "branch": "sites/linkedin",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 193,
+        "clone_blob_bytes": 4879821,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    },
+    {
+      "id": "amazon",
+      "material_path": "materials/amazon",
+      "component_paths": [
+        "materials/amazon",
+        "harbor/sites/amazon",
+        "harbor/instances/amazon"
+      ],
+      "branch": "sites/amazon",
+      "branch_status": "planned",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1195,
+        "clone_blob_bytes": 72870512,
+        "tree_truncated": false,
+        "structural_ready": true
+      }
+    }
+  ]
+}

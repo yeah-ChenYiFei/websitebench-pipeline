@@ -16,6 +16,25 @@ instance，以及站点专属部署配置未包含在公开导出中：该样本
 
 ## 快速开始
 
+普通贡献者只需要克隆 `main`；每个网站保存在同一仓库自己的持久分支
+`sites/<site-id>`。必须使用 `--single-branch`，否则普通 `git clone` 仍会获取其他
+站点分支的对象。
+
+```bash
+git clone --single-branch --branch main --filter=blob:none --depth=1 \
+  https://github.com/780078268/websitebench-pipeline.git
+cd websitebench-pipeline
+python scripts/site_workspace.py list
+python scripts/site_workspace.py command <site-id>
+# 或从 main checkout 旁边只展开一个站点 worktree：
+python scripts/site_workspace.py checkout <site-id>
+```
+
+站点 worktree 中仍使用 `materials/<material-id>`，现有诊断和运行命令保持不变。
+站点 PR 必须以对应的 `sites/<site-id>` 为 base；Pipeline PR 才以 `main` 为 base。
+详细迁移、贡献与 review 流程见
+[`docs/per-site-repository-workflow.md`](docs/per-site-repository-workflow.md)。
+
 Agent 在创建站点材料前，先读 `AGENTS.md` 与
 `docs/source-evidence-access-policy.md`。
 新站的 Harbor v2 authoring 必须通过 `websitebench-harbor init-site` 与
