@@ -1,0 +1,40 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "autotrader-p1-account",
+  "viewport": {"width": 1440, "height": 900},
+  "timeout_ms": 10000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": ["https://www.autotrader.co.uk"],
+    "clone": ["http://127.0.0.1:18891"]
+  },
+  "steps": [
+    {"id":"open-register","action":"goto","path":"/secure/register","observations":[{"id":"register-visible","kind":"visible","selector":{"clone":"text=Create your account","source":"text=Create your account"},"expect":{"equals":true}}]},
+    {"id":"fill-name","action":"fill","selector":"#reg input[name=name]","value":"Audit Driver"},
+    {"id":"fill-email","action":"fill","selector":"#reg input[name=email]","value":"audit.driver@example.test"},
+    {"id":"fill-password","action":"fill","selector":"#reg input[name=password]","value_env":"AUTOTRADER_TEST_PASSWORD"},
+    {"id":"accept-terms","action":"check","selector":"#reg input[type=checkbox]"},
+    {"id":"start-registration","action":"click","selector":"#reg button"},
+    {"id":"verification-visible","action":"wait","selector":"#verify:not([hidden])"},
+    {"id":"open-local-inbox","action":"click","selector":"#open-inbox"},
+    {"id":"wait-local-code","action":"wait","milliseconds":200},
+    {"id":"complete-registration","action":"click","selector":"#verify button:last-of-type"},
+    {"id":"wait-account","action":"wait","selector":"text=Welcome back, Audit Driver"},
+    {"id":"account-created","action":"snapshot","observations":[{"id":"account-path","kind":"url_path","expect":{"equals":"/secure/my-auto-trader"}},{"id":"verified-account","kind":"visible","selector":"text=verified local account","expect":{"equals":true}}],"screenshot":true},
+    {"id":"open-address","action":"click","selector":"a[href='/account/address']"},
+    {"id":"fill-address","action":"fill","selector":"input[name=address]","value":"10 High Street"},
+    {"id":"fill-city","action":"fill","selector":"input[name=city]","value":"London"},
+    {"id":"fill-postcode","action":"fill","selector":"input[name=postcode]","value":"SW1A 1AA"},
+    {"id":"choose-delivery","action":"select","selector":"select[name=delivery_option]","option":"home-delivery"},
+    {"id":"save-address","action":"click","selector":"#address-form button"},
+    {"id":"address-saved","action":"wait","selector":"text=Address and delivery option saved locally."},
+    {"id":"return-account","action":"goto","path":"/secure/my-auto-trader"},
+    {"id":"sign-out","action":"click","selector":"#account-signout"},
+    {"id":"wait-signed-out","action":"wait","selector":"h1"},
+    {"id":"login-email","action":"fill","selector":"#signin input[name=email]","value":"audit.driver@example.test"},
+    {"id":"login-password","action":"fill","selector":"#signin input[name=password]","value_env":"AUTOTRADER_TEST_PASSWORD"},
+    {"id":"sign-in","action":"click","selector":"#signin button:first-of-type"},
+    {"id":"wait-signed-in","action":"wait","selector":"text=Welcome back, Audit Driver"},
+    {"id":"account-restored","action":"snapshot","observations":[{"id":"restored-path","kind":"url_path","expect":{"equals":"/secure/my-auto-trader"}},{"id":"history-link","kind":"visible","selector":"a[href='/account/history']","expect":{"equals":true}}],"screenshot":true}
+  ]
+}

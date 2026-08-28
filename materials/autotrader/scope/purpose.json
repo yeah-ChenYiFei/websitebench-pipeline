@@ -1,0 +1,19 @@
+{
+  "mainline_journey_ids": [
+    "browse-used-cars",
+    "sell-vehicle-preview"
+  ],
+  "out_of_scope": [
+    "Live dealer contact, test-drive booking, finance application, checkout, payment, and publication to AutoTrader.",
+    "Real email delivery, social sign-in, and production account creation.",
+    "Visual parity beyond the supplied anonymous home-page capture."
+  ],
+  "primary_actor_ids": [
+    "visitor",
+    "local-account-holder"
+  ],
+  "purpose_id": "browse-and-sell-vehicles",
+  "schema_version": "offline-clone.purpose.v1",
+  "statement": "Browse used cars and complete an offline vehicle-listing preview without external submission.",
+  "status": "draft"
+}

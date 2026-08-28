@@ -1,0 +1,133 @@
+{
+  "boot": {
+    "argv": [
+      "{python}",
+      "-m",
+      "uvicorn",
+      "app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "{port}",
+      "--log-level",
+      "warning"
+    ],
+    "cwd": "clone",
+    "env": {
+      "WEBSITEBENCH_SITE_BACKEND_RUNTIME": "backend/runtime.json",
+      "WEBSITEBENCH_SITE_BACKEND_DATABASE": "{data_dir}/autotrader.sqlite3",
+      "WEBSITEBENCH_LOCAL_HTTP_COOKIE": "1",
+      "TZ": "Europe/London"
+    }
+  },
+  "deferred": {},
+  "prepare": [],
+  "routes": {
+    "home": "/",
+    "used-cars": "/cars/used",
+    "saved-cars": "/cars/saved",
+    "vehicle-detail": "/cars/used/listing/ford-fiesta",
+    "compare": "/cars/compare",
+    "contact-seller": "/contact-seller?car=ford-fiesta",
+    "sell-find-car": "/selling/find-car",
+    "sell-review": "/selling/review?make=Ford&year=2022&mileage=24100&price=14995",
+    "sell-confirmation": "/selling/confirmation?make=Ford&year=2022&mileage=24100&price=14995",
+    "sign-in": "/secure/signin",
+    "account": "/secure/my-auto-trader",
+    "register": "/secure/register",
+    "password-recovery": "/password-recovery",
+    "account-history": "/account/history",
+    "account-address": "/account/address",
+    "help": "/help",
+    "not-found": "/missing/vehicle/record/754"
+  },
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "autotrader",
+  "states": {
+    "home.loaded": [],
+    "used-cars.loaded": [],
+    "used-cars.filtered": [
+      {
+        "goto": "/cars/used?make=Ford&price=15000"
+      },
+      {
+        "expect": "text=2022 Ford Fiesta"
+      }
+    ],
+    "used-cars.no-results": [
+      {
+        "goto": "/cars/used?keyword=no-such-vehicle-zzzz"
+      },
+      {
+        "expect": "text=No cars found"
+      }
+    ],
+    "saved-cars.empty": [],
+    "sell-find-car.empty": [],
+    "sell-find-car.validation-error": [
+      {
+        "click": "#sell button"
+      },
+      {
+        "expect": "text=This field is required"
+      }
+    ],
+    "sell-find-car.complete": [
+      {
+        "fill": "input[name=make]",
+        "value": "Ford"
+      },
+      {
+        "fill": "input[name=year]",
+        "value": "2022"
+      },
+      {
+        "fill": "input[name=mileage]",
+        "value": "24100"
+      },
+      {
+        "fill": "input[name=price]",
+        "value": "14995"
+      },
+      {
+        "click": "#sell button"
+      },
+      {
+        "expect": "text=Review your advert"
+      }
+    ],
+    "sell-review.preview": [],
+    "sell-confirmation.offline-confirmed": [],
+    "sign-in.anonymous": [],
+    "account.local-account": []
+  },
+  "status": {
+    "home": 200,
+    "used-cars": 200,
+    "saved-cars": 200,
+    "vehicle-detail": 200,
+    "compare": 200,
+    "contact-seller": 200,
+    "sell-find-car": 200,
+    "sell-review": 200,
+    "sell-confirmation": 200,
+    "sign-in": 200,
+    "account": 200,
+    "register": 200,
+    "password-recovery": 200,
+    "account-history": 200,
+    "account-address": 200,
+    "help": 200,
+    "not-found": 404
+  },
+  "visual_excluded": {
+    "home.loaded": "No source screenshot was supplied; the HTML capture is functional evidence only.",
+    "used-cars.filtered": "No matching source capture was supplied in the ZIP.",
+    "used-cars.no-results": "No matching source capture was supplied in the ZIP.",
+    "sell-find-car.empty": "No matching source capture was supplied in the ZIP.",
+    "sell-find-car.validation-error": "No matching source capture was supplied in the ZIP.",
+    "sell-review.preview": "No matching source capture was supplied in the ZIP.",
+    "sell-confirmation.offline-confirmed": "No matching source capture was supplied in the ZIP."
+  },
+  "note": "Normalized from PR #60 archive. Routes without source captures remain diagnostic-only and non-acceptance-eligible."
+}

@@ -1,0 +1,136 @@
+{
+  "schema_version": "autotrader.frontend-gate-samples.v1",
+  "app_file": "clone/app.py",
+  "app_attr": "app",
+  "module_name": "autotrader_clone_app",
+  "checks": [
+    {
+      "id": "search.results",
+      "url": "/cars/used?make=Ford&price=15000",
+      "expect_status": 200,
+      "expect_contains": ["2022 Ford Fiesta"],
+      "expect_not_contains": ["2021 BMW 3 Series 320d"],
+      "session": false
+    },
+    {
+      "id": "search.no-results",
+      "url": "/cars/used?keyword=no-such-vehicle-zzzz",
+      "expect_status": 200,
+      "expect_contains": ["No cars found"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "vehicle.detail",
+      "url": "/cars/used/listing/ford-fiesta",
+      "expect_status": 200,
+      "expect_contains": ["2022 Ford Fiesta 1.0 EcoBoost", "Full service history"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "selling.empty",
+      "url": "/selling/find-car",
+      "expect_status": 200,
+      "expect_contains": ["Sell your car"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "selling.review",
+      "url": "/selling/review?make=Ford&year=2022&mileage=24100&price=14995",
+      "expect_status": 200,
+      "expect_contains": ["Review your advert"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "selling.confirmation",
+      "url": "/selling/confirmation?make=Ford&year=2022&mileage=24100&price=14995",
+      "expect_status": 200,
+      "expect_contains": ["AT-754"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "auth.signin",
+      "url": "/secure/signin",
+      "expect_status": 200,
+      "expect_contains": ["Email address"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "auth.register",
+      "url": "/secure/register",
+      "expect_status": 200,
+      "expect_contains": ["Create your account"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "auth.recovery",
+      "url": "/password-recovery",
+      "expect_status": 200,
+      "expect_contains": ["Reset email address"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "selling.review-total",
+      "url": "/selling/review?make=Ford&year=2022&mileage=24100&price=14995",
+      "expect_status": 200,
+      "expect_contains": ["£14995"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "selling.confirmation-total",
+      "url": "/selling/confirmation?make=Ford&year=2022&mileage=24100&price=14995",
+      "expect_status": 200,
+      "expect_contains": ["£0 offline preview"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "auth.identity-provider",
+      "url": "/secure/signin",
+      "expect_status": 200,
+      "expect_contains": ["Continue with Google"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "auth.registration-terms",
+      "url": "/secure/register",
+      "expect_status": 200,
+      "expect_contains": ["Privacy Policy"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "auth.recovery-guidance",
+      "url": "/password-recovery",
+      "expect_status": 200,
+      "expect_contains": ["No reset message is sent offline"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "support.help",
+      "url": "/help",
+      "expect_status": 200,
+      "expect_contains": ["Used-car listings", "Account access"],
+      "expect_not_contains": [],
+      "session": false
+    },
+    {
+      "id": "support.not-found",
+      "url": "/missing/vehicle/record/754",
+      "expect_status": 404,
+      "expect_contains": ["Page not found", "Return to used cars"],
+      "expect_not_contains": [],
+      "session": false
+    }
+  ]
+}

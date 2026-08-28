@@ -1,0 +1,59 @@
+{
+  "schema_version": "offline-clone.invariants.v1",
+  "status": "draft",
+  "invariants": [
+    {
+      "id": "public-routes-offline",
+      "statement": "The public home and used-car routes render from bundled local content without runtime source requests.",
+      "priority": "p0",
+      "journey_ids": [
+        "browse-used-cars"
+      ],
+      "coverage_dimension_ids": [
+        "public-browse"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_smoke.py::test_home",
+        "clone/tests/test_smoke.py::test_used_car_search_filters_results"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_unknown_route"
+      ]
+    },
+    {
+      "id": "search-filters-authoritative",
+      "statement": "Used-car filtering is computed by the local server and exposes an explicit no-results recovery state.",
+      "priority": "p0",
+      "journey_ids": [
+        "browse-used-cars"
+      ],
+      "coverage_dimension_ids": [
+        "public-browse"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_smoke.py::test_used_car_search_filters_results"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_used_car_search_has_no_results_state"
+      ]
+    },
+    {
+      "id": "listing-preview-no-external-effect",
+      "statement": "Incomplete listing data is rejected and complete listing data produces only an offline preview; no listing is published externally.",
+      "priority": "p0",
+      "journey_ids": [
+        "sell-vehicle-preview",
+        "sell-required-field-error"
+      ],
+      "coverage_dimension_ids": [
+        "offline-selling"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_smoke.py::test_listing_preview_accepts_complete_vehicle"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_listing_preview_rejects_missing_required_fields"
+      ]
+    }
+  ]
+}

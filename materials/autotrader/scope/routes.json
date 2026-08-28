@@ -1,0 +1,189 @@
+{
+  "schema_version": "offline-clone.routes.v1",
+  "routes": [
+    {
+      "id": "home",
+      "route_pattern": "/",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "local_destination": true,
+      "states": [
+        "loaded"
+      ]
+    },
+    {
+      "id": "used-cars",
+      "route_pattern": "/cars/used",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "local_destination": true,
+      "states": [
+        "loaded",
+        "filtered",
+        "no-results"
+      ]
+    },
+    {
+      "id": "sell-find-car",
+      "route_pattern": "/selling/find-car",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "local_destination": true,
+      "states": [
+        "empty",
+        "validation-error",
+        "complete"
+      ]
+    },
+    {
+      "id": "saved-cars",
+      "route_pattern": "/cars/saved",
+      "priority": "p1",
+      "purpose_edge": "supporting",
+      "local_destination": true,
+      "states": [
+        "empty",
+        "saved"
+      ]
+    },
+    {
+      "id": "vehicle-detail",
+      "route_pattern": "/cars/used/listing/{listing_id}",
+      "priority": "p1",
+      "purpose_edge": "supporting",
+      "local_destination": true,
+      "states": [
+        "loaded"
+      ]
+    },
+    {
+      "id": "compare",
+      "route_pattern": "/cars/compare",
+      "priority": "p1",
+      "purpose_edge": "supporting",
+      "local_destination": true,
+      "states": [
+        "empty",
+        "compared"
+      ]
+    },
+    {
+      "id": "contact-seller",
+      "route_pattern": "/contact-seller",
+      "priority": "p1",
+      "purpose_edge": "supporting",
+      "local_destination": true,
+      "states": [
+        "permission-required",
+        "saved-locally"
+      ]
+    },
+    {
+      "id": "sell-review",
+      "route_pattern": "/selling/review",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "local_destination": true,
+      "states": [
+        "preview"
+      ]
+    },
+    {
+      "id": "sell-confirmation",
+      "route_pattern": "/selling/confirmation",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "local_destination": true,
+      "states": [
+        "offline-confirmed"
+      ]
+    },
+    {
+      "id": "sign-in",
+      "route_pattern": "/secure/signin",
+      "priority": "p1",
+      "purpose_edge": "supporting",
+      "local_destination": true,
+      "states": [
+        "anonymous",
+        "invalid",
+        "signed-in"
+      ]
+    },
+    {
+      "id": "account",
+      "route_pattern": "/secure/my-auto-trader",
+      "priority": "p1",
+      "purpose_edge": "supporting",
+      "local_destination": true,
+      "states": [
+        "permission-required",
+        "local-account"
+      ]
+    },
+    {
+      "id": "register",
+      "route_pattern": "/secure/register",
+      "priority": "p1",
+      "purpose_edge": "supporting",
+      "local_destination": true,
+      "states": [
+        "empty",
+        "verification-required"
+      ]
+    },
+    {
+      "id": "password-recovery",
+      "route_pattern": "/password-recovery",
+      "priority": "p1",
+      "purpose_edge": "supporting",
+      "local_destination": true,
+      "states": [
+        "empty",
+        "validation-guidance"
+      ]
+    },
+    {
+      "id": "account-history",
+      "route_pattern": "/account/history",
+      "priority": "p1",
+      "purpose_edge": "supporting",
+      "local_destination": true,
+      "states": [
+        "permission-required",
+        "seeded"
+      ]
+    },
+    {
+      "id": "account-address",
+      "route_pattern": "/account/address",
+      "priority": "p1",
+      "purpose_edge": "supporting",
+      "local_destination": true,
+      "states": [
+        "permission-required",
+        "saved"
+      ]
+    },
+    {
+      "id": "help",
+      "route_pattern": "/help",
+      "priority": "p1",
+      "purpose_edge": "supporting",
+      "local_destination": true,
+      "states": [
+        "loaded"
+      ]
+    },
+    {
+      "id": "not-found",
+      "route_pattern": "/missing/vehicle/record/754",
+      "priority": "p1",
+      "purpose_edge": "recovery",
+      "local_destination": true,
+      "states": [
+        "recovery"
+      ]
+    }
+  ]
+}

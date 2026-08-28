@@ -1,0 +1,22 @@
+name: diagnostics (autotrader)
+on:
+  pull_request:
+    paths:
+      - materials/autotrader/**
+      - .github/workflows/tests-autotrader.yml
+      - .github/workflows/clone-diagnostics.yml
+  push:
+    paths:
+      - materials/autotrader/**
+      - .github/workflows/tests-autotrader.yml
+      - .github/workflows/clone-diagnostics.yml
+permissions:
+  contents: read
+concurrency:
+  group: diagnostics-autotrader-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  diagnostics:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: autotrader

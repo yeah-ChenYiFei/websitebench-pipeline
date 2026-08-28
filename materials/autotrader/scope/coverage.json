@@ -1,0 +1,43 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "draft",
+  "dimensions": [
+    {
+      "id": "public-browse",
+      "label": "Anonymous home and used-car browsing states",
+      "unit": "route-state",
+      "category": "reachability",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "direct",
+      "required_evidence_kinds": [
+        "browser",
+        "network"
+      ],
+      "required_items": [
+        "home.loaded.desktop",
+        "used-cars.filtered.desktop",
+        "used-cars.no-results.desktop"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "offline-selling",
+      "label": "Local-only vehicle listing preview states",
+      "unit": "route-state",
+      "category": "business-flow",
+      "source_evidence_kind": "unavailable",
+      "local_contract_evidence_kind": "direct",
+      "required_evidence_kinds": [
+        "browser",
+        "network"
+      ],
+      "required_items": [
+        "sell-find-car.empty.desktop",
+        "sell-find-car.validation-error.desktop",
+        "sell-review.preview.desktop",
+        "sell-confirmation.offline-confirmed.desktop"
+      ],
+      "satisfied_items": []
+    }
+  ]
+}

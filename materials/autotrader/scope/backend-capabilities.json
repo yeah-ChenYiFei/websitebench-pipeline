@@ -1,0 +1,43 @@
+{
+  "schema_version": "offline-clone.contribution-backend-scope.v1",
+  "site_id": "autotrader",
+  "backend_profile": "full",
+  "runtime_required": true,
+  "capabilities": [
+    {
+      "id": "accounts",
+      "applicability": "in-scope",
+      "rationale": "Local registration and sign-in routes are implemented through the generated site-bound auth backend."
+    },
+    {
+      "id": "database",
+      "applicability": "in-scope",
+      "rationale": "The generated runtime uses an AutoTrader-specific SQLite identity and deterministic local storage boundary."
+    },
+    {
+      "id": "password-recovery",
+      "applicability": "out-of-scope",
+      "rationale": "The ZIP provides guidance UI only; it does not issue or consume recovery codes."
+    },
+    {
+      "id": "transactional-mail",
+      "applicability": "out-of-scope",
+      "rationale": "Runtime templates remain generated but no real or simulated delivery journey is claimed."
+    },
+    {
+      "id": "orders",
+      "applicability": "out-of-scope",
+      "rationale": "Vehicle listing confirmation is an offline preview, not an order."
+    },
+    {
+      "id": "checkout",
+      "applicability": "out-of-scope",
+      "rationale": "Checkout routes are explicitly frozen."
+    },
+    {
+      "id": "payments",
+      "applicability": "out-of-scope",
+      "rationale": "No payment journey is implemented; the runtime retains local-sandbox as a safety default only."
+    }
+  ]
+}

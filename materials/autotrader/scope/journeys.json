@@ -1,0 +1,58 @@
+{
+  "schema_version": "offline-clone.journeys.v1",
+  "journeys": [
+    {
+      "id": "browse-used-cars",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "draft",
+      "steps": [
+        "Open the anonymous home page.",
+        "Open used-car search.",
+        "Filter by make and maximum price.",
+        "Open a result and inspect local vehicle details."
+      ]
+    },
+    {
+      "id": "sell-vehicle-preview",
+      "family": "selling",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "draft",
+      "steps": [
+        "Open the offline sell-vehicle form.",
+        "Enter make, year, mileage, price, and optional description.",
+        "Review the server-independent preview.",
+        "Confirm the local-only listing and observe reference AT-754 with no external publication."
+      ]
+    },
+    {
+      "id": "sell-required-field-error",
+      "family": "selling",
+      "actor": "visitor",
+      "kind": "failure",
+      "priority": "p0",
+      "status": "draft",
+      "steps": [
+        "Open the offline sell-vehicle form.",
+        "Submit without required vehicle fields.",
+        "Observe field-level validation and remain on the form without creating a listing."
+      ]
+    },
+    {
+      "id": "auth-permission-prompt",
+      "family": "auth",
+      "actor": "visitor",
+      "kind": "failure",
+      "priority": "p1",
+      "status": "draft",
+      "steps": [
+        "Open a protected account route while signed out.",
+        "Observe a redirect to the sign-in surface that identifies the required permission.",
+        "Return to public used-car records without submitting credentials."
+      ]
+    }
+  ]
+}

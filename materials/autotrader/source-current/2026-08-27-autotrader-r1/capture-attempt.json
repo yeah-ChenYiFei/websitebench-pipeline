@@ -1,0 +1,37 @@
+{
+  "schema_version": "autotrader.source-capture-attempt.v1",
+  "site_id": "autotrader",
+  "observed_at": "2026-08-27",
+  "timezone": "Etc/UTC",
+  "source_origins_attempted": [
+    "https://www.autotrader.co.uk/",
+    "http://autotrader.co.uk/"
+  ],
+  "browser_provider": "local Playwright frontend-spec",
+  "safe_methods": [
+    "GET"
+  ],
+  "live_result": {
+    "status": "unavailable",
+    "http_status": 403,
+    "page_title": "Attention Required",
+    "reason": "Cloudflare blocked anonymous browser acquisition; no bypass or authenticated profile was used."
+  },
+  "submitted_auxiliary_capture": {
+    "kind": "SingleFile HTML",
+    "path": "clone/pages/Autotrader UK - New and Used Cars For Sale (2026_8_22 21：58：53).html",
+    "bytes": 1614136,
+    "declared_filename_local_time": "2026-08-22T21:58:53",
+    "runtime_network_failures_when_served_locally": 0,
+    "console_errors_when_served_locally": 0,
+    "acceptance_use": "auxiliary homepage structure and visual reference only"
+  },
+  "unavailable": [
+    "live source homepage screenshot",
+    "live source used-car search and filter states",
+    "live source vehicle detail and comparison states",
+    "live source selling, authentication, account, support, and failure states"
+  ],
+  "credentials_or_browser_state_collected": false,
+  "source_mutations_performed": false
+}

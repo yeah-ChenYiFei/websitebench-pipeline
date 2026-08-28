@@ -1,0 +1,82 @@
+{
+  "schema_version": "offline-clone.checkpoints.v1",
+  "status": "draft",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "home.loaded.desktop",
+      "route_id": "home",
+      "state": "loaded",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "source-html",
+      "acceptance_eligible": false,
+      "verification_kind": "captured-html-diagnostic"
+    },
+    {
+      "id": "used-cars.filtered.desktop",
+      "route_id": "used-cars",
+      "state": "filtered",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "unavailable",
+      "acceptance_eligible": false,
+      "verification_kind": "candidate-behavior-test"
+    },
+    {
+      "id": "used-cars.no-results.desktop",
+      "route_id": "used-cars",
+      "state": "no-results",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "unavailable",
+      "acceptance_eligible": false,
+      "verification_kind": "candidate-behavior-test"
+    },
+    {
+      "id": "sell-find-car.empty.desktop",
+      "route_id": "sell-find-car",
+      "state": "empty",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "unavailable",
+      "acceptance_eligible": false,
+      "verification_kind": "candidate-browser-diagnostic"
+    },
+    {
+      "id": "sell-find-car.validation-error.desktop",
+      "route_id": "sell-find-car",
+      "state": "validation-error",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "unavailable",
+      "acceptance_eligible": false,
+      "verification_kind": "candidate-browser-diagnostic"
+    },
+    {
+      "id": "sell-review.preview.desktop",
+      "route_id": "sell-review",
+      "state": "preview",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "unavailable",
+      "acceptance_eligible": false,
+      "verification_kind": "candidate-browser-diagnostic"
+    },
+    {
+      "id": "sell-confirmation.offline-confirmed.desktop",
+      "route_id": "sell-confirmation",
+      "state": "offline-confirmed",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "unavailable",
+      "acceptance_eligible": false,
+      "verification_kind": "candidate-browser-diagnostic"
+    }
+  ]
+}

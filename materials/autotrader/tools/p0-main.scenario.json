@@ -1,0 +1,43 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "autotrader-p0-main",
+  "viewport": {"width": 1440, "height": 900},
+  "timeout_ms": 20000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": ["https://www.autotrader.co.uk"],
+    "clone": ["http://127.0.0.1:18891"]
+  },
+  "steps": [
+    {"id": "open-search", "action": "goto", "path": "/cars/used",
+      "observations": [{"id": "search-heading", "kind": "visible", "selector": {"source": "h1", "clone": "h1"}, "expect": {"equals": true}}]},
+    {"id": "choose-make", "action": "select", "selector": {"source": "select[name=make]", "clone": "select[name=make]"}, "option": "Ford"},
+    {"id": "set-price", "action": "fill", "selector": {"source": "input[name=price]", "clone": "input[name=price]"}, "value": "15000"},
+    {"id": "submit-search", "action": "click", "selector": {"source": "form button", "clone": "form button"}},
+    {"id": "filtered-results", "action": "snapshot",
+      "observations": [{"id": "fiesta-visible", "kind": "visible", "selector": {"source": "text=2022 Ford Fiesta", "clone": "text=2022 Ford Fiesta"}, "expect": {"equals": true}}],
+      "screenshot": true},
+    {"id": "save-first", "action": "click", "selector": {"source": "article.card:first-of-type [data-save]", "clone": "article.card:first-of-type [data-save]"}},
+    {"id": "saved-first", "action": "wait", "selector": {"source": "article.card:first-of-type button:has-text('Saved')", "clone": "article.card:first-of-type button:has-text('Saved')"}},
+    {"id": "compare-first", "action": "click", "selector": {"source": "article.card:first-of-type [data-compare]", "clone": "article.card:first-of-type [data-compare]"}},
+    {"id": "compared-first", "action": "wait", "selector": {"source": "text=Added to compare", "clone": "text=Added to compare"}},
+    {"id": "compare-second", "action": "click", "selector": {"source": "article.card:nth-of-type(2) [data-compare]", "clone": "article.card:nth-of-type(2) [data-compare]"}},
+    {"id": "compared-second", "action": "wait", "selector": {"source": "article.card:nth-of-type(2) button:has-text('Added to compare')", "clone": "article.card:nth-of-type(2) button:has-text('Added to compare')"}},
+    {"id": "open-compare", "action": "goto", "path": "/cars/compare",
+      "observations": [{"id": "comparison-table", "kind": "visible", "selector": {"source": "table", "clone": "table"}, "expect": {"equals": true}}],
+      "screenshot": true},
+    {"id": "open-sell", "action": "goto", "path": "/selling/find-car"},
+    {"id": "sell-make", "action": "fill", "selector": {"source": "input[name=make]", "clone": "input[name=make]"}, "value": "Ford"},
+    {"id": "sell-year", "action": "fill", "selector": {"source": "input[name=year]", "clone": "input[name=year]"}, "value": "2022"},
+    {"id": "sell-mileage", "action": "fill", "selector": {"source": "input[name=mileage]", "clone": "input[name=mileage]"}, "value": "24100"},
+    {"id": "sell-price", "action": "fill", "selector": {"source": "input[name=price]", "clone": "input[name=price]"}, "value": "14995"},
+    {"id": "review-advert", "action": "click", "selector": {"source": "#sell button", "clone": "#sell button"}},
+    {"id": "review-state", "action": "snapshot",
+      "observations": [{"id": "review-heading", "kind": "visible", "selector": {"source": "text=Review your advert", "clone": "text=Review your advert"}, "expect": {"equals": true}}],
+      "screenshot": true},
+    {"id": "submit-advert", "action": "click", "selector": {"source": "a.button:not(.secondary)", "clone": "a.button:not(.secondary)"}},
+    {"id": "confirmation", "action": "snapshot",
+      "observations": [{"id": "reference", "kind": "visible", "selector": {"source": "text=AT-754", "clone": "text=AT-754"}, "expect": {"equals": true}}],
+      "screenshot": true}
+  ]
+}
