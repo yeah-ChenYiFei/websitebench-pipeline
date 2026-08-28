@@ -1,0 +1,5442 @@
+{
+  "schema_version": 1,
+  "repository": "780078268/websitebench-pipeline",
+  "snapshot_date": "2026-08-28",
+  "notes": [
+    "branch_status is final, review, review-required, or planned",
+    "a branch or recoverable snapshot does not claim acceptance or deployment",
+    "site branches use the canonical catalog id; material_path preserves historical aliases",
+    "contributors target sites/<id>; shared Pipeline changes target main"
+  ],
+  "sites": [
+    {
+      "id": "12go-asia",
+      "material_path": "materials/12go-asia",
+      "component_paths": [
+        "materials/12go-asia"
+      ],
+      "branch": "sites/12go-asia",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 14,
+        "sha": "863e5082f4293052ce6594b237a285af24f7f7bd",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:18Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 120,
+        "clone_blob_bytes": 9443686,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 1,
+        "domain": "12go.asia"
+      }
+    },
+    {
+      "id": "1password-web",
+      "material_path": "materials/1password-web",
+      "component_paths": [
+        "materials/1password-web"
+      ],
+      "branch": "sites/1password-web",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 15,
+        "sha": "504e6edebb923755bfc796f5a6618487bd1f6335",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:17Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 64,
+        "clone_blob_bytes": 1311301,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 2,
+        "domain": "1password.com"
+      }
+    },
+    {
+      "id": "ace-hardware",
+      "material_path": "materials/ace-hardware",
+      "component_paths": [
+        "materials/ace-hardware"
+      ],
+      "branch": "sites/ace-hardware",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 16,
+        "sha": "d3c5f19f87a0c24989d4729d04c12445c81ebe3a",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:17Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 445,
+        "clone_blob_bytes": 4904799,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 3,
+        "domain": "acehardware.com"
+      }
+    },
+    {
+      "id": "airbnb",
+      "material_path": "materials/airbnb",
+      "component_paths": [
+        "materials/airbnb"
+      ],
+      "branch": "sites/airbnb",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 17,
+        "sha": "7674c2c493ac8f42251256d200c2e73d4b796492",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:17Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 163,
+        "clone_blob_bytes": 14908599,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 4,
+        "domain": "airbnb.com"
+      }
+    },
+    {
+      "id": "airtable",
+      "material_path": "materials/airtable",
+      "component_paths": [
+        "materials/airtable"
+      ],
+      "branch": "sites/airtable",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 18,
+        "sha": "b1ea745ea3f16b270d7ba39ecb7419e0f4f7daba",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:17Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 56,
+        "clone_blob_bytes": 6529287,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 5,
+        "domain": "airtable.com"
+      }
+    },
+    {
+      "id": "amazon-home-services",
+      "material_path": "materials/amazon-home-services",
+      "component_paths": [
+        "materials/amazon-home-services"
+      ],
+      "branch": "sites/amazon-home-services",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 19,
+        "sha": "4f1896647e1275310ea34f7760dc1d21bae873c3",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-27T21:08:17Z",
+        "updated_at": "2026-08-27T21:08:17Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 113,
+        "clone_blob_bytes": 4440673,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 6,
+        "domain": "amazon.com/services"
+      }
+    },
+    {
+      "id": "amc-theatres",
+      "material_path": "materials/amc-theatres",
+      "component_paths": [
+        "materials/amc-theatres",
+        "harbor/instances/amc-theatres",
+        "harbor/sites/amc-theatres",
+        ".github/workflows/deploy-amc-theatres-public.yml",
+        ".github/workflows/tests-amc-theatres.yml"
+      ],
+      "branch": "sites/amc-theatres",
+      "branch_status": "review",
+      "catalog": {
+        "id": 7,
+        "domain": "amctheatres.com"
+      },
+      "pipeline_pr": 1,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 1,
+        "sha": "384997b740ef3be275d9cf7b11cea373988de996",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-25T15:27:52Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 197,
+        "component_path_count": 5,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "angi",
+      "material_path": "materials/angi",
+      "component_paths": [
+        "materials/angi",
+        ".github/workflows/tests-angi.yml"
+      ],
+      "branch": "sites/angi",
+      "branch_status": "review",
+      "catalog": {
+        "id": 8,
+        "domain": "angi.com"
+      },
+      "pipeline_pr": 57,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 57,
+        "sha": "9dc620cbe2656345eb10b217918cc84bfec4822a",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-25T01:41:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 370,
+        "component_path_count": 2,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "asana",
+      "material_path": "materials/asana",
+      "component_paths": [
+        "materials/asana",
+        "harbor/instances/asana",
+        "harbor/sites/asana",
+        ".github/workflows/deploy-asana-public.yml",
+        ".github/workflows/tests-asana.yml"
+      ],
+      "branch": "sites/asana",
+      "branch_status": "review",
+      "catalog": {
+        "id": 9,
+        "domain": "app.asana.com"
+      },
+      "pipeline_pr": 44,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 44,
+        "sha": "25e3eec584c4cec45b5fa35a798177bc593d7b28",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-25T18:12:18Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 142,
+        "component_path_count": 5,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "aspca",
+      "material_path": "materials/aspca",
+      "component_paths": [
+        "materials/aspca",
+        ".github/workflows/deploy-aspca-public.yml",
+        ".github/workflows/tests-aspca.yml"
+      ],
+      "branch": "sites/aspca",
+      "branch_status": "review-required",
+      "catalog": {
+        "id": 10,
+        "domain": "aspca.org/adopt-pet"
+      },
+      "pipeline_pr": 46,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 46,
+        "sha": "3ea7c1a3d759006d06db2f2574d45f6516f9ae8e",
+        "pr_state": "closed",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T09:40:00Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 251,
+        "component_path_count": 3,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "aspca-pet-health-insurance",
+      "material_path": "materials/aspca-pet-health-insurance",
+      "component_paths": [
+        "materials/aspca-pet-health-insurance"
+      ],
+      "branch": "sites/aspca-pet-health-insurance",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 11,
+        "domain": "aspcapetinsurance.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "confluence",
+      "material_path": "materials/atlassian-confluence",
+      "component_paths": [
+        "materials/atlassian-confluence",
+        "harbor/sites/atlassian-confluence",
+        "harbor/instances/atlassian-confluence"
+      ],
+      "branch": "sites/confluence",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 62,
+        "sha": "4f50fe600303b8eb8b6033e993b7191087f392c6",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T19:35:16Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 49,
+        "clone_blob_bytes": 68458770,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 12,
+        "domain": "atlassian.com/software/confluence"
+      },
+      "pipeline_pr": 62
+    },
+    {
+      "id": "autoslash",
+      "material_path": "materials/autoslash",
+      "component_paths": [
+        "materials/autoslash",
+        "harbor/sites/autoslash",
+        "harbor/instances/autoslash"
+      ],
+      "branch": "sites/autoslash",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 61,
+        "sha": "562efaa91bd176f77a9e2336ae2cde600e8298cd",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T02:02:07Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 62,
+        "clone_blob_bytes": 13597786,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 13,
+        "domain": "https://www.autoslash.com"
+      },
+      "pipeline_pr": 61
+    },
+    {
+      "id": "autotrader",
+      "material_path": "materials/autotrader",
+      "component_paths": [
+        "materials/autotrader",
+        "harbor/sites/autotrader",
+        "harbor/instances/autotrader"
+      ],
+      "branch": "sites/autotrader",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 60,
+        "sha": "cec9af93332b280c3a79ab7fc88714456e3b24a7",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T00:36:34Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 27,
+        "clone_blob_bytes": 1943273,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 14,
+        "domain": "autotrader.co.uk"
+      },
+      "pipeline_pr": 60
+    },
+    {
+      "id": "bark",
+      "material_path": "materials/bark",
+      "component_paths": [
+        "materials/bark",
+        "harbor/sites/bark",
+        "harbor/instances/bark"
+      ],
+      "branch": "sites/bark",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 59,
+        "sha": "6b557a8b48358bb7f241ab79e84e8b3b8276cecc",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T04:28:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 40,
+        "clone_blob_bytes": 35777507,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 15,
+        "domain": "bark.com"
+      },
+      "pipeline_pr": 59
+    },
+    {
+      "id": "bean-box",
+      "material_path": "materials/bean-box",
+      "component_paths": [
+        "materials/bean-box",
+        "harbor/sites/bean-box",
+        "harbor/instances/bean-box"
+      ],
+      "branch": "sites/bean-box",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "yiwenxx/websitebench-pipeline",
+        "pr": 50,
+        "sha": "ccdd492de0e5cb1910aa6995a16f5a83ebe4d380",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T06:50:22Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 406,
+        "clone_blob_bytes": 10339269,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 16,
+        "domain": "beanbox.com"
+      },
+      "pipeline_pr": 50
+    },
+    {
+      "id": "beeradvocate",
+      "material_path": "materials/beeradvocate",
+      "component_paths": [
+        "materials/beeradvocate"
+      ],
+      "branch": "sites/beeradvocate",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "yiwenxx/websitebench-pipeline",
+        "pr": 48,
+        "sha": "eb17922edc5ad094e813b4d58c57860846525036",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T05:34:46Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 69,
+        "clone_blob_bytes": 1305522,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 17,
+        "domain": "beeradvocate.com"
+      },
+      "pipeline_pr": 48
+    },
+    {
+      "id": "betterhelp",
+      "material_path": "materials/betterhelp",
+      "component_paths": [
+        "materials/betterhelp"
+      ],
+      "branch": "sites/betterhelp",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "yiwenxx/websitebench-pipeline",
+        "pr": 49,
+        "sha": "a8cfd948ebf033d29c2e41e7956ede06a37c31ca",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T08:37:10Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 51,
+        "clone_blob_bytes": 2157542,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 18,
+        "domain": "betterhelp.com"
+      },
+      "pipeline_pr": 49
+    },
+    {
+      "id": "blinkist",
+      "material_path": "materials/blinkist",
+      "component_paths": [
+        "materials/blinkist",
+        "harbor/sites/blinkist",
+        "harbor/instances/blinkist"
+      ],
+      "branch": "sites/blinkist",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 17,
+        "sha": "e5f51348f3dc8ad99dfa4c769a719662747b9c64",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-22T13:02:39Z",
+        "updated_at": "2026-08-22T13:02:39Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 22,
+        "clone_blob_bytes": 388527,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 19,
+        "domain": "blinkist.com"
+      },
+      "pipeline_pr": 17
+    },
+    {
+      "id": "bluemercury",
+      "material_path": "materials/bluemercury",
+      "component_paths": [
+        "materials/bluemercury",
+        "harbor/sites/bluemercury",
+        "harbor/instances/bluemercury"
+      ],
+      "branch": "sites/bluemercury",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 43,
+        "sha": "dd0ceb30db5791ae0a3ea7303e4a297f4056fb91",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T16:46:08Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 445,
+        "clone_blob_bytes": 30744454,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 20,
+        "domain": "bluemercury.com"
+      },
+      "pipeline_pr": 43
+    },
+    {
+      "id": "booking-com",
+      "material_path": "materials/booking-com",
+      "component_paths": [
+        "materials/booking-com"
+      ],
+      "branch": "sites/booking-com",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 53,
+        "sha": "8346bb482414765033d966ad8d71697d4de5c380",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-25T12:15:01Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 146,
+        "clone_blob_bytes": 15833461,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 21,
+        "domain": "booking.com"
+      },
+      "pipeline_pr": 53
+    },
+    {
+      "id": "booksy",
+      "material_path": "materials/booksy",
+      "component_paths": [
+        "materials/booksy"
+      ],
+      "branch": "sites/booksy",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 54,
+        "sha": "157de1440bac8fa970b1b21c7b060bc051db0cd6",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T11:22:26Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 101,
+        "clone_blob_bytes": 5984870,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 22,
+        "domain": "booksy.com"
+      },
+      "pipeline_pr": 54
+    },
+    {
+      "id": "bowlero",
+      "material_path": "materials/bowlero",
+      "component_paths": [
+        "materials/bowlero"
+      ],
+      "branch": "sites/bowlero",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 23,
+        "domain": "bowlero.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "breakout-games",
+      "material_path": "materials/breakoutgames-2",
+      "component_paths": [
+        "materials/breakoutgames-2"
+      ],
+      "branch": "sites/breakout-games",
+      "branch_status": "review",
+      "catalog": {
+        "id": 24,
+        "domain": "breakoutgames.com"
+      },
+      "pipeline_pr": 126,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 126,
+        "sha": "174297f4658ce3c0368b0390a14a40a56c9f97f5",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T21:34:36Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 95,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "bringfido",
+      "material_path": "materials/bringfido-r2",
+      "component_paths": [
+        "materials/bringfido-r2"
+      ],
+      "branch": "sites/bringfido",
+      "branch_status": "review",
+      "catalog": {
+        "id": 25,
+        "domain": "bringfido.com"
+      },
+      "pipeline_pr": 125,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 125,
+        "sha": "baf3081a40cef88ccd77a2a69a96c303281ebe8a",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T21:49:35Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 354,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "calendly",
+      "material_path": "materials/calendly",
+      "component_paths": [
+        "materials/calendly"
+      ],
+      "branch": "sites/calendly",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 58,
+        "sha": "67e1bfac6e2429f2a0637f89f1f0a5d86d7eae69",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-25T14:01:15Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 317,
+        "clone_blob_bytes": 12102532,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 26,
+        "domain": "calendly.com"
+      },
+      "pipeline_pr": 58
+    },
+    {
+      "id": "capterra",
+      "material_path": "materials/capterra",
+      "component_paths": [
+        "materials/capterra",
+        "harbor/sites/capterra"
+      ],
+      "branch": "sites/capterra",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1097,
+        "clone_blob_bytes": 50272616,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 27,
+        "domain": "capterra.com"
+      }
+    },
+    {
+      "id": "careerbuilder",
+      "material_path": "materials/careerbuilder",
+      "component_paths": [
+        "materials/careerbuilder"
+      ],
+      "branch": "sites/careerbuilder",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 28,
+        "domain": "careerbuilder.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "charity-village",
+      "material_path": "materials/charity-village",
+      "component_paths": [
+        "materials/charity-village"
+      ],
+      "branch": "sites/charity-village",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 29,
+        "domain": "charityvillage.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "cineplex",
+      "material_path": "materials/cineplex",
+      "component_paths": [
+        "materials/cineplex",
+        "harbor/instances/cineplex",
+        "harbor/sites/cineplex"
+      ],
+      "branch": "sites/cineplex",
+      "branch_status": "review",
+      "catalog": {
+        "id": 30,
+        "domain": "cineplex.com"
+      },
+      "pipeline_pr": 113,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 113,
+        "sha": "c3f3500bf598e72972739f67a0521935373c9b4e",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T10:08:57Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 727,
+        "component_path_count": 3,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "clickup",
+      "material_path": "materials/clickup",
+      "component_paths": [
+        "materials/clickup"
+      ],
+      "branch": "sites/clickup",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 31,
+        "domain": "clickup.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "coolors",
+      "material_path": "materials/coolors",
+      "component_paths": [
+        "materials/coolors"
+      ],
+      "branch": "sites/coolors",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 32,
+        "domain": "coolors.co"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "coursera",
+      "material_path": "materials/33",
+      "component_paths": [
+        "materials/33",
+        "harbor/sites/33",
+        "harbor/instances/33"
+      ],
+      "branch": "sites/coursera",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 97,
+        "sha": "93d428f701c99a20654b5971c9e9033f41b76a6b",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T17:09:43Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 451,
+        "clone_blob_bytes": 23092164,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 33,
+        "domain": "coursera.org"
+      },
+      "pipeline_pr": 97
+    },
+    {
+      "id": "craigslist",
+      "material_path": "materials/craigslist",
+      "component_paths": [
+        "materials/craigslist",
+        "harbor/sites/craigslist",
+        "harbor/instances/craigslist"
+      ],
+      "branch": "sites/craigslist",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 93,
+        "sha": "27812f954027e100278b2983e80b2fba3ce8ea60",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-26T17:07:08Z",
+        "updated_at": "2026-08-26T17:07:08Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 132,
+        "clone_blob_bytes": 4028663,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 34,
+        "domain": "craigslist.org"
+      },
+      "pipeline_pr": 93
+    },
+    {
+      "id": "creativebug",
+      "material_path": "materials/creativebug",
+      "component_paths": [
+        "materials/creativebug"
+      ],
+      "branch": "sites/creativebug",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 35,
+        "domain": "creativebug.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "crumbl",
+      "material_path": "materials/crumbl-cookies",
+      "component_paths": [
+        "materials/crumbl-cookies"
+      ],
+      "branch": "sites/crumbl",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 96,
+        "sha": "5dc8650c0827ce1ef70f3e215ef09aa9931852d9",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T17:09:10Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 102,
+        "clone_blob_bytes": 59643631,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 36,
+        "domain": "crumbl.com"
+      },
+      "pipeline_pr": 96
+    },
+    {
+      "id": "crunchyroll",
+      "material_path": "materials/crunchyroll",
+      "component_paths": [
+        "materials/crunchyroll",
+        "harbor/instances/crunchyroll",
+        "harbor/sites/crunchyroll",
+        ".github/workflows/tests-crunchyroll.yml"
+      ],
+      "branch": "sites/crunchyroll",
+      "branch_status": "review",
+      "catalog": {
+        "id": 37,
+        "domain": "crunchyroll.com"
+      },
+      "pipeline_pr": 115,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 115,
+        "sha": "8143c7ef8c66ae654ddfa5a8d4df5e50887f36e1",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T12:15:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 745,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "curology",
+      "material_path": "materials/curology",
+      "component_paths": [
+        "materials/curology",
+        ".github/workflows/tests-curology.yml"
+      ],
+      "branch": "sites/curology",
+      "branch_status": "review",
+      "catalog": {
+        "id": 38,
+        "domain": "curology.com"
+      },
+      "pipeline_pr": 135,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 135,
+        "sha": "291e60c06bddc744d364ae4a75737589af80b522",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T10:32:27Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 142,
+        "component_path_count": 2,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "doctors-without-borders-msf",
+      "material_path": "materials/doctors-without-borders-msf",
+      "component_paths": [
+        "materials/doctors-without-borders-msf",
+        "harbor/instances/doctors-without-borders-msf",
+        "harbor/sites/doctors-without-borders-msf",
+        ".github/workflows/tests-doctors-without-borders-msf.yml"
+      ],
+      "branch": "sites/doctors-without-borders-msf",
+      "branch_status": "review",
+      "catalog": {
+        "id": 39,
+        "domain": "doctorswithoutborders.org"
+      },
+      "pipeline_pr": 133,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 133,
+        "sha": "231e936f0dbfd6207df20ac0b68063ac609ab5bd",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T09:59:58Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 308,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "doodle",
+      "material_path": "materials/doodle",
+      "component_paths": [
+        "materials/doodle",
+        ".github/workflows/tests-doodle.yml"
+      ],
+      "branch": "sites/doodle",
+      "branch_status": "review",
+      "catalog": {
+        "id": 40,
+        "domain": "doodle.com"
+      },
+      "pipeline_pr": 134,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 134,
+        "sha": "8f2652d078d988134ac9c6ae28055ee7791ebcb1",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T10:01:50Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 585,
+        "component_path_count": 2,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "dooney-bourke",
+      "material_path": "materials/dooney-bourke",
+      "component_paths": [
+        "materials/dooney-bourke",
+        "harbor/instances/dooney-bourke",
+        "harbor/sites/dooney-bourke",
+        ".github/workflows/tests-dooney-bourke.yml"
+      ],
+      "branch": "sites/dooney-bourke",
+      "branch_status": "review",
+      "catalog": {
+        "id": 41,
+        "domain": "dooney.com"
+      },
+      "pipeline_pr": 121,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 121,
+        "sha": "9782da9a614644f8afe1bca6dfb61cfea2b0cb0b",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T21:07:52Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 1243,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "doordash",
+      "material_path": "materials/doordash",
+      "component_paths": [
+        "materials/doordash",
+        "harbor/instances/doordash",
+        "harbor/sites/doordash",
+        ".github/workflows/tests-doordash.yml"
+      ],
+      "branch": "sites/doordash",
+      "branch_status": "review",
+      "catalog": {
+        "id": 42,
+        "domain": "doordash.com"
+      },
+      "pipeline_pr": 122,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 122,
+        "sha": "d6f34722a88f06995ff068b8687801190e3595f4",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T21:07:53Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 96,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "edx",
+      "material_path": "materials/edx",
+      "component_paths": [
+        "materials/edx"
+      ],
+      "branch": "sites/edx",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 99,
+        "sha": "e27d607057555f1c37197a3af4339724733690aa",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T17:37:32Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 215,
+        "clone_blob_bytes": 16979444,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 43,
+        "domain": "edx.org"
+      },
+      "pipeline_pr": 99
+    },
+    {
+      "id": "embark",
+      "material_path": "materials/embark",
+      "component_paths": [
+        "materials/embark",
+        "harbor/instances/embark",
+        "harbor/sites/embark",
+        ".github/workflows/tests-embark.yml"
+      ],
+      "branch": "sites/embark",
+      "branch_status": "review",
+      "catalog": {
+        "id": 44,
+        "domain": "embarkvet.com"
+      },
+      "pipeline_pr": 123,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 123,
+        "sha": "b30d7bb1e739a1fec18894ff53da8b43a04ca175",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T21:07:53Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 153,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "eventbrite",
+      "material_path": "materials/eventbrite",
+      "component_paths": [
+        "materials/eventbrite"
+      ],
+      "branch": "sites/eventbrite",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 98,
+        "sha": "d6b6b266ddc7d8bdeddec65dad125b6e43138162",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T17:37:32Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 272,
+        "clone_blob_bytes": 13525458,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 45,
+        "domain": "eventbrite.com"
+      },
+      "pipeline_pr": 98
+    },
+    {
+      "id": "everydollar",
+      "material_path": "materials/everydollar",
+      "component_paths": [
+        "materials/everydollar"
+      ],
+      "branch": "sites/everydollar",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 46,
+        "domain": "everydollar.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "fandango",
+      "material_path": "materials/fandango",
+      "component_paths": [
+        "materials/fandango"
+      ],
+      "branch": "sites/fandango",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 47,
+        "domain": "fandango.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "fenty-beauty",
+      "material_path": "materials/fenty-beauty",
+      "component_paths": [
+        "materials/fenty-beauty"
+      ],
+      "branch": "sites/fenty-beauty",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 48,
+        "domain": "fentybeauty.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "flixbus",
+      "material_path": "materials/flixbus",
+      "component_paths": [
+        "materials/flixbus",
+        "harbor/instances/flixbus",
+        "harbor/sites/flixbus",
+        ".github/workflows/tests-flixbus.yml"
+      ],
+      "branch": "sites/flixbus",
+      "branch_status": "review",
+      "catalog": {
+        "id": 49,
+        "domain": "flixbus.com"
+      },
+      "pipeline_pr": 80,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 80,
+        "sha": "85258d58f854fc16440ea1ecb4f5bc1203db52ca",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T01:42:03Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 155,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "formswift",
+      "material_path": "materials/formswift",
+      "component_paths": [
+        "materials/formswift"
+      ],
+      "branch": "sites/formswift",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 50,
+        "domain": "formswift.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "freshdesk",
+      "material_path": "materials/freshdesk",
+      "component_paths": [
+        "materials/freshdesk"
+      ],
+      "branch": "sites/freshdesk",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 51,
+        "domain": "freshdesk.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "frontfundr",
+      "material_path": "materials/frontfundr",
+      "component_paths": [
+        "materials/frontfundr"
+      ],
+      "branch": "sites/frontfundr",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 52,
+        "domain": "frontfundr.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "g2",
+      "material_path": "materials/g2",
+      "component_paths": [
+        "materials/g2"
+      ],
+      "branch": "sites/g2",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 53,
+        "domain": "g2.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "ghost",
+      "material_path": "materials/ghost",
+      "component_paths": [
+        "materials/ghost"
+      ],
+      "branch": "sites/ghost",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 54,
+        "domain": "ghost.org"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "github",
+      "material_path": "materials/github",
+      "component_paths": [
+        "materials/github"
+      ],
+      "branch": "sites/github",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 55,
+        "domain": "github.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "glassdoor",
+      "material_path": "materials/glassdoor",
+      "component_paths": [
+        "materials/glassdoor"
+      ],
+      "branch": "sites/glassdoor",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 56,
+        "domain": "glassdoor.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "globalgiving",
+      "material_path": "materials/globalgiving",
+      "component_paths": [
+        "materials/globalgiving"
+      ],
+      "branch": "sites/globalgiving",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 57,
+        "domain": "globalgiving.org"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "goodreads",
+      "material_path": "materials/goodreads",
+      "component_paths": [
+        "materials/goodreads"
+      ],
+      "branch": "sites/goodreads",
+      "branch_status": "review",
+      "catalog": {
+        "id": 58,
+        "domain": "goodreads.com"
+      },
+      "pipeline_pr": 10,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 10,
+        "sha": "808b65e6d4f81b782af8c142ce4007ed88ddf6df",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-21T15:49:00Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 3000,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "greenhouse-meta",
+      "material_path": "materials/greenhouse-meta",
+      "component_paths": [
+        "materials/greenhouse-meta"
+      ],
+      "branch": "sites/greenhouse-meta",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 59,
+        "domain": "greenhouse.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "hipcamp",
+      "material_path": "materials/hipcamp",
+      "component_paths": [
+        "materials/hipcamp"
+      ],
+      "branch": "sites/hipcamp",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 173,
+        "clone_blob_bytes": 16082707,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 60,
+        "domain": "hipcamp.com"
+      }
+    },
+    {
+      "id": "hired",
+      "material_path": "materials/hired",
+      "component_paths": [
+        "materials/hired"
+      ],
+      "branch": "sites/hired",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 61,
+        "domain": "hired.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "home-depot",
+      "material_path": "materials/home-depot",
+      "component_paths": [
+        "materials/home-depot",
+        "harbor/instances/home-depot",
+        "harbor/sites/home-depot",
+        ".github/workflows/deploy-home-depot-public.yml",
+        ".github/workflows/tests-home-depot.yml"
+      ],
+      "branch": "sites/home-depot",
+      "branch_status": "review",
+      "catalog": {
+        "id": 62,
+        "domain": "homedepot.com"
+      },
+      "pipeline_pr": 8,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 8,
+        "sha": "1f0a63974e09e2e2a273b8385db52e091673ed1a",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-22T18:37:45Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 977,
+        "component_path_count": 5,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "humble-bundle",
+      "material_path": "materials/humble-bundle",
+      "component_paths": [
+        "materials/humble-bundle"
+      ],
+      "branch": "sites/humble-bundle",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 63,
+        "domain": "humblebundle.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "idealist",
+      "material_path": "materials/idealist",
+      "component_paths": [
+        "materials/idealist"
+      ],
+      "branch": "sites/idealist",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 64,
+        "domain": "idealist.org"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "indeed",
+      "material_path": "materials/indeed",
+      "component_paths": [
+        "materials/indeed"
+      ],
+      "branch": "sites/indeed",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 65,
+        "domain": "indeed.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "inmyarea",
+      "material_path": "materials/inmyarea",
+      "component_paths": [
+        "materials/inmyarea"
+      ],
+      "branch": "sites/inmyarea",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 66,
+        "domain": "inmyarea.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "instacart",
+      "material_path": "materials/instacart",
+      "component_paths": [
+        "materials/instacart"
+      ],
+      "branch": "sites/instacart",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 67,
+        "domain": "instacart.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "insureon",
+      "material_path": "materials/insureon",
+      "component_paths": [
+        "materials/insureon",
+        "harbor/sites/insureon",
+        "harbor/instances/insureon"
+      ],
+      "branch": "sites/insureon",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 90,
+        "sha": "f5b872201d96fa0371fd17e4a42bd6d69168c645",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T16:35:35Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 604,
+        "clone_blob_bytes": 12440181,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 68,
+        "domain": "insureon.com"
+      },
+      "pipeline_pr": 90
+    },
+    {
+      "id": "insurify",
+      "material_path": "materials/insurify",
+      "component_paths": [
+        "materials/insurify",
+        "harbor/sites/insurify",
+        "harbor/instances/insurify"
+      ],
+      "branch": "sites/insurify",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 91,
+        "sha": "a50ae183f796252424343af0e7d8fa5e030e9b9e",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T16:35:40Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 435,
+        "clone_blob_bytes": 16779790,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 69,
+        "domain": "insurify.com"
+      },
+      "pipeline_pr": 91
+    },
+    {
+      "id": "ioby",
+      "material_path": "materials/ioby",
+      "component_paths": [
+        "materials/ioby",
+        "harbor/sites/ioby",
+        "harbor/instances/ioby"
+      ],
+      "branch": "sites/ioby",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 92,
+        "sha": "5c6be38cec88bbe050af2e5e80df8d1fbfaceb8b",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T16:35:45Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 50,
+        "clone_blob_bytes": 27704558,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 70,
+        "domain": "ioby.org"
+      },
+      "pipeline_pr": 92
+    },
+    {
+      "id": "ipvanish",
+      "material_path": "materials/ipvanish",
+      "component_paths": [
+        "materials/ipvanish"
+      ],
+      "branch": "sites/ipvanish",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 71,
+        "domain": "ipvanish.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "jefit",
+      "material_path": "materials/jefit",
+      "component_paths": [
+        "materials/jefit"
+      ],
+      "branch": "sites/jefit",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 72,
+        "domain": "jefit.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "deleteme",
+      "material_path": "materials/deleteme",
+      "component_paths": [
+        "materials/deleteme"
+      ],
+      "branch": "sites/deleteme",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 73,
+        "domain": "joindeleteme.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "jopwell",
+      "material_path": "materials/jopwell",
+      "component_paths": [
+        "materials/jopwell"
+      ],
+      "branch": "sites/jopwell",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 74,
+        "domain": "jopwell.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "kanetix",
+      "material_path": "materials/kanetix-ca",
+      "component_paths": [
+        "materials/kanetix-ca"
+      ],
+      "branch": "sites/kanetix",
+      "branch_status": "review",
+      "catalog": {
+        "id": 75,
+        "domain": "kanetix.ca"
+      },
+      "pipeline_pr": 129,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 129,
+        "sha": "56288a94d7e020774a1645f30e04b643a1c867f4",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T08:26:07Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 110,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "king-arthur-baking",
+      "material_path": "materials/kingarthurbaking-com",
+      "component_paths": [
+        "materials/kingarthurbaking-com"
+      ],
+      "branch": "sites/king-arthur-baking",
+      "branch_status": "review",
+      "catalog": {
+        "id": 76,
+        "domain": "kingarthurbaking.com"
+      },
+      "pipeline_pr": 131,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 131,
+        "sha": "eebaef4780d72a6aa0f8bcb16abf924442395beb",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-28T09:29:21Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 353,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "leetcode",
+      "material_path": "materials/leetcode",
+      "component_paths": [
+        "materials/leetcode"
+      ],
+      "branch": "sites/leetcode",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 2,
+        "sha": "8967930da62a62230a7aa1454697fa32148bfaaa",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T13:25:59Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 84,
+        "clone_blob_bytes": 3703443,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 77,
+        "domain": "leetcode.com"
+      },
+      "pipeline_pr": 2
+    },
+    {
+      "id": "legalnature",
+      "material_path": "materials/legalnature",
+      "component_paths": [
+        "materials/legalnature"
+      ],
+      "branch": "sites/legalnature",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 4,
+        "sha": "eec4408cbf4ed93cd3ba2c551cec12d0fbedd94c",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T13:26:00Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1064,
+        "clone_blob_bytes": 111232389,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 78,
+        "domain": "legalnature.com"
+      },
+      "pipeline_pr": 4
+    },
+    {
+      "id": "lowes",
+      "material_path": "materials/lowes",
+      "component_paths": [
+        "materials/lowes"
+      ],
+      "branch": "sites/lowes",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 11,
+        "sha": "3718f2bd272673e7ebd435ebac28c9892450e331",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T13:26:02Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 66,
+        "clone_blob_bytes": 3109839,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 79,
+        "domain": "lowes.com"
+      },
+      "pipeline_pr": 11
+    },
+    {
+      "id": "mac-cosmetics",
+      "material_path": "materials/mac-cosmetics",
+      "component_paths": [
+        "materials/mac-cosmetics"
+      ],
+      "branch": "sites/mac-cosmetics",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 5,
+        "sha": "6b224d8d20e58545da42d1b51189b15d7c921a88",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-24T13:26:03Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 12985,
+        "clone_blob_bytes": 1014451790,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 80,
+        "domain": "maccosmetics.com"
+      },
+      "pipeline_pr": 5
+    },
+    {
+      "id": "purelymail",
+      "material_path": "materials/gmail",
+      "component_paths": [
+        "materials/gmail"
+      ],
+      "branch": "sites/purelymail",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 3,
+        "sha": "74f27400bd58ede29ef3f63708fd34a2fd70ec3f",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-24T14:12:15Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 41,
+        "clone_blob_bytes": 723291,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 81,
+        "domain": "mail.google.com"
+      },
+      "pipeline_pr": 3
+    },
+    {
+      "id": "mailchimp",
+      "material_path": "materials/mailchimp",
+      "component_paths": [
+        "materials/mailchimp"
+      ],
+      "branch": "sites/mailchimp",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 82,
+        "domain": "mailchimp.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "mansur-gavriel",
+      "material_path": "materials/mansur-gavriel",
+      "component_paths": [
+        "materials/mansur-gavriel"
+      ],
+      "branch": "sites/mansur-gavriel",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 24,
+        "sha": "4c1c7da62a8ad0cbd486539558b1a7d994ad510f",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T16:27:24Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 161,
+        "clone_blob_bytes": 5343455,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 83,
+        "domain": "mansurgavriel.com"
+      },
+      "pipeline_pr": 24
+    },
+    {
+      "id": "masterclass",
+      "material_path": "materials/masterclass",
+      "component_paths": [
+        "materials/masterclass"
+      ],
+      "branch": "sites/masterclass",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 112,
+        "sha": "1160c080fb26749a2cfe8ea425a8626e0cf0e105",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T10:05:01Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 135,
+        "clone_blob_bytes": 31669285,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 84,
+        "domain": "masterclass.com"
+      },
+      "pipeline_pr": 112
+    },
+    {
+      "id": "mistobox",
+      "material_path": "materials/mistobox",
+      "component_paths": [
+        "materials/mistobox"
+      ],
+      "branch": "sites/mistobox",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 114,
+        "sha": "ba90fed532af2796b28491c6dc767c554f035355",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T10:36:59Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 99,
+        "clone_blob_bytes": 15205232,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 85,
+        "domain": "mistobox.com"
+      },
+      "pipeline_pr": 114
+    },
+    {
+      "id": "momondo",
+      "material_path": "materials/momondo",
+      "component_paths": [
+        "materials/momondo"
+      ],
+      "branch": "sites/momondo",
+      "branch_status": "review",
+      "catalog": {
+        "id": 86,
+        "domain": "momondo.com"
+      },
+      "pipeline_pr": 40,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 40,
+        "sha": "6e40e09737ee424297d008d7830556f61ba020ba",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T14:39:07Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 100,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "myheritage",
+      "material_path": "materials/myheritage",
+      "component_paths": [
+        "materials/myheritage"
+      ],
+      "branch": "sites/myheritage",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 109,
+        "sha": "c6fbc78b8b500e7946c5ac2c102111ec4ead6607",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T16:24:53Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 2255,
+        "clone_blob_bytes": 156679530,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 87,
+        "domain": "myheritage.com"
+      },
+      "pipeline_pr": 109
+    },
+    {
+      "id": "ollie",
+      "material_path": "materials/ollie",
+      "component_paths": [
+        "materials/ollie"
+      ],
+      "branch": "sites/ollie",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 18,
+        "sha": "d6496278084ba88659dbd761109450bfc8633777",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T09:59:19Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 193,
+        "clone_blob_bytes": 17983781,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 88,
+        "domain": "myollie.com"
+      },
+      "pipeline_pr": 18
+    },
+    {
+      "id": "olaplex",
+      "material_path": "materials/olaplex",
+      "component_paths": [
+        "materials/olaplex"
+      ],
+      "branch": "sites/olaplex",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 41,
+        "sha": "49c9606d0549b3e0388547226b4033f1da0e82e9",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T16:19:53Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1069,
+        "clone_blob_bytes": 412513303,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 89,
+        "domain": "olaplex.com"
+      },
+      "pipeline_pr": 41
+    },
+    {
+      "id": "opentable",
+      "material_path": "materials/opentable",
+      "component_paths": [
+        "materials/opentable"
+      ],
+      "branch": "sites/opentable",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 111,
+        "sha": "7fe0a92b908b7ae0cd54f483d7559076a0995ad5",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T09:54:58Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 299,
+        "clone_blob_bytes": 5810683,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 90,
+        "domain": "opentable.com"
+      },
+      "pipeline_pr": 111
+    },
+    {
+      "id": "outschool",
+      "material_path": "materials/outschool",
+      "component_paths": [
+        "materials/outschool"
+      ],
+      "branch": "sites/outschool",
+      "branch_status": "review",
+      "catalog": {
+        "id": 91,
+        "domain": "outschool.com"
+      },
+      "pipeline_pr": 39,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 39,
+        "sha": "25f8567b5a1c6710648221068f9c9187759d245c",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T14:35:25Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 100,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "overleaf",
+      "material_path": "materials/overleaf",
+      "component_paths": [
+        "materials/overleaf"
+      ],
+      "branch": "sites/overleaf",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 23,
+        "sha": "5be998b6690050e62953690aeba76ac747e53fd7",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T09:39:13Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 26,
+        "clone_blob_bytes": 418648,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 92,
+        "domain": "overleaf.com"
+      },
+      "pipeline_pr": 23
+    },
+    {
+      "id": "paulas-choice",
+      "material_path": "materials/paulaschoice",
+      "component_paths": [
+        "materials/paulaschoice"
+      ],
+      "branch": "sites/paulas-choice",
+      "branch_status": "review",
+      "catalog": {
+        "id": 93,
+        "domain": "paulaschoice.com"
+      },
+      "pipeline_pr": 31,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 31,
+        "sha": "176f03efbf16f3a7baa6d47653220cf115f67bd1",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:30:46Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 1467,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "pawp",
+      "material_path": "materials/pawp",
+      "component_paths": [
+        "materials/pawp"
+      ],
+      "branch": "sites/pawp",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 94,
+        "domain": "pawp.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "petfinder",
+      "material_path": "materials/petfinder",
+      "component_paths": [
+        "materials/petfinder"
+      ],
+      "branch": "sites/petfinder",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 94,
+        "sha": "c2389ce9b2b2a5b2c92e24610e23394c1c5144fa",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T16:46:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1774,
+        "clone_blob_bytes": 148037546,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 95,
+        "domain": "petfinder.com"
+      },
+      "pipeline_pr": 94
+    },
+    {
+      "id": "petsmart",
+      "material_path": "materials/petsmart",
+      "component_paths": [
+        "materials/petsmart",
+        "harbor/sites/petsmart",
+        "harbor/instances/petsmart"
+      ],
+      "branch": "sites/petsmart",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 118,
+        "sha": "01f91860dcdfedb4286208ac363641b68c8d683c",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T17:53:57Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 362,
+        "clone_blob_bytes": 12488869,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 96,
+        "domain": "petsmart.com"
+      },
+      "pipeline_pr": 118
+    },
+    {
+      "id": "plooto",
+      "material_path": "materials/plooto",
+      "component_paths": [
+        "materials/plooto"
+      ],
+      "branch": "sites/plooto",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 97,
+        "domain": "plooto.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "race-roster",
+      "material_path": "materials/race-roster",
+      "component_paths": [
+        "materials/race-roster"
+      ],
+      "branch": "sites/race-roster",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 98,
+        "domain": "raceroster.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "ratemyprofessors",
+      "material_path": "materials/ratemyprofessors",
+      "component_paths": [
+        "materials/ratemyprofessors",
+        ".github/workflows/tests-ratemyprofessors.yml"
+      ],
+      "branch": "sites/ratemyprofessors",
+      "branch_status": "review",
+      "catalog": {
+        "id": 99,
+        "domain": "ratemyprofessors.com"
+      },
+      "pipeline_pr": 6,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 6,
+        "sha": "73a9293554b526c9ad9eb952025a72960af00b56",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-21T13:22:19Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 69,
+        "component_path_count": 2,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "ftc-reportfraud",
+      "material_path": "materials/ftc-reportfraud",
+      "component_paths": [
+        "materials/ftc-reportfraud"
+      ],
+      "branch": "sites/ftc-reportfraud",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 100,
+        "domain": "reportfraud.ftc.gov"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "parks-canada-reservations",
+      "material_path": "materials/parks-canada-reservations",
+      "component_paths": [
+        "materials/parks-canada-reservations"
+      ],
+      "branch": "sites/parks-canada-reservations",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 101,
+        "domain": "reservation.pc.gc.ca"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "ontario-parks",
+      "material_path": "materials/ontario-parks",
+      "component_paths": [
+        "materials/ontario-parks"
+      ],
+      "branch": "sites/ontario-parks",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 102,
+        "domain": "reservations.ontarioparks.ca"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "resy",
+      "material_path": "materials/resy",
+      "component_paths": [
+        "materials/resy"
+      ],
+      "branch": "sites/resy",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 68,
+        "sha": "b43b0d7c20e4002ba2603fea5be91c27c79124ea",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T15:23:05Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 397,
+        "clone_blob_bytes": 36075294,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 103,
+        "domain": "resy.com"
+      },
+      "pipeline_pr": 68
+    },
+    {
+      "id": "rockauto",
+      "material_path": "materials/rockauto",
+      "component_paths": [
+        "materials/rockauto"
+      ],
+      "branch": "sites/rockauto",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 67,
+        "sha": "c56284d736bd2f0cbf7ea17534fefcf59f5f9349",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T15:07:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 392,
+        "clone_blob_bytes": 6881602,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 104,
+        "domain": "rockauto.com"
+      },
+      "pipeline_pr": 67
+    },
+    {
+      "id": "roomsketcher",
+      "material_path": "materials/roomsketcher",
+      "component_paths": [
+        "materials/roomsketcher"
+      ],
+      "branch": "sites/roomsketcher",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 64,
+        "sha": "fb246b3f9beb58f0792d65ad7a63f51c8eb5d887",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T12:34:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 12159,
+        "clone_blob_bytes": 620903341,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 105,
+        "domain": "roomsketcher.com"
+      },
+      "pipeline_pr": 64
+    },
+    {
+      "id": "rover",
+      "material_path": "materials/rover",
+      "component_paths": [
+        "materials/rover"
+      ],
+      "branch": "sites/rover",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 69,
+        "sha": "d490d6bbfee114e3206d317d2320886f2b2bd824",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T15:45:34Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1429,
+        "clone_blob_bytes": 58758909,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 106,
+        "domain": "rover.com"
+      },
+      "pipeline_pr": 69
+    },
+    {
+      "id": "semantic-scholar",
+      "material_path": "materials/semanticscholar",
+      "component_paths": [
+        "materials/semanticscholar"
+      ],
+      "branch": "sites/semantic-scholar",
+      "branch_status": "review",
+      "catalog": {
+        "id": 107,
+        "domain": "semanticscholar.org"
+      },
+      "pipeline_pr": 34,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 34,
+        "sha": "d8ec0f02c50971ad4bae241c83d53087c04c5e9c",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:51:07Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 533,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "simplify-jobs",
+      "material_path": "materials/simplify-jobs",
+      "component_paths": [
+        "materials/simplify-jobs"
+      ],
+      "branch": "sites/simplify-jobs",
+      "branch_status": "review",
+      "catalog": {
+        "id": 108,
+        "domain": "simplify.jobs"
+      },
+      "pipeline_pr": 130,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 130,
+        "sha": "4b47c8f7654faef4fb0de569814f10595553b458",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T08:25:12Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 54,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "sixt",
+      "material_path": "materials/sixt",
+      "component_paths": [
+        "materials/sixt"
+      ],
+      "branch": "sites/sixt",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 71,
+        "sha": "28370fe25e7e2a221edd2a375ff7ed3cbc45155c",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T16:50:06Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 931,
+        "clone_blob_bytes": 112567272,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 109,
+        "domain": "sixt.com"
+      },
+      "pipeline_pr": 71
+    },
+    {
+      "id": "soko-glam",
+      "material_path": "materials/sokoglam",
+      "component_paths": [
+        "materials/sokoglam"
+      ],
+      "branch": "sites/soko-glam",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 73,
+        "sha": "74ecfb1bdd72a05cb4855262b11cc8a28ae7f6af",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T19:30:51Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 3871,
+        "clone_blob_bytes": 1010340612,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 110,
+        "domain": "sokoglam.com"
+      },
+      "pipeline_pr": 73
+    },
+    {
+      "id": "spirit-airlines",
+      "material_path": "materials/spirit-airlines",
+      "component_paths": [
+        "materials/spirit-airlines"
+      ],
+      "branch": "sites/spirit-airlines",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 111,
+        "domain": "spirit.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "spirit-rock",
+      "material_path": "materials/spiritrock",
+      "component_paths": [
+        "materials/spiritrock"
+      ],
+      "branch": "sites/spirit-rock",
+      "branch_status": "review",
+      "catalog": {
+        "id": 112,
+        "domain": "spiritrock.org"
+      },
+      "pipeline_pr": 37,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 37,
+        "sha": "ba1109a28a89db854d91d94b9131326ddd369f73",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:58:23Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 3000,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "squarespace",
+      "material_path": "materials/squarespace",
+      "component_paths": [
+        "materials/squarespace"
+      ],
+      "branch": "sites/squarespace",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 113,
+        "domain": "squarespace.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "stubhub",
+      "material_path": "materials/stubhub",
+      "component_paths": [
+        "materials/stubhub"
+      ],
+      "branch": "sites/stubhub",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 114,
+        "domain": "stubhub.ca"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "stumptown-coffee",
+      "material_path": "materials/stumptown-coffee",
+      "component_paths": [
+        "materials/stumptown-coffee"
+      ],
+      "branch": "sites/stumptown-coffee",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 115,
+        "domain": "stumptowncoffee.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "styleseat",
+      "material_path": "materials/styleseat",
+      "component_paths": [
+        "materials/styleseat"
+      ],
+      "branch": "sites/styleseat",
+      "branch_status": "review",
+      "catalog": {
+        "id": 116,
+        "domain": "styleseat.com"
+      },
+      "pipeline_pr": 36,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 36,
+        "sha": "d4fa794c3bdb49f00d549bd3a68110f9b4d71f91",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:55:24Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 3000,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "substack",
+      "material_path": "materials/substack",
+      "component_paths": [
+        "materials/substack"
+      ],
+      "branch": "sites/substack",
+      "branch_status": "review",
+      "catalog": {
+        "id": 117,
+        "domain": "substack.com"
+      },
+      "pipeline_pr": 29,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 29,
+        "sha": "3c32489efc9026fa2bcd3edfc860a067e12d4124",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:29:02Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 2299,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "sur-la-table",
+      "material_path": "materials/sur-la-table",
+      "component_paths": [
+        "materials/sur-la-table"
+      ],
+      "branch": "sites/sur-la-table",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 118,
+        "domain": "surlatable.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "taskrabbit",
+      "material_path": "materials/taskrabbit",
+      "component_paths": [
+        "materials/taskrabbit"
+      ],
+      "branch": "sites/taskrabbit",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 95,
+        "sha": "1a199ad7f166ce57ea9a3971c5415ed5a7c3e3ed",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-26T16:46:30Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 843,
+        "clone_blob_bytes": 40226282,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 119,
+        "domain": "taskrabbit.com"
+      },
+      "pipeline_pr": 95
+    },
+    {
+      "id": "the-ordinary",
+      "material_path": "materials/the-ordinary",
+      "component_paths": [
+        "materials/the-ordinary"
+      ],
+      "branch": "sites/the-ordinary",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 120,
+        "domain": "theordinary.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "ticketmaster",
+      "material_path": "materials/ticketmaster",
+      "component_paths": [
+        "materials/ticketmaster"
+      ],
+      "branch": "sites/ticketmaster",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 121,
+        "domain": "ticketmaster.ca"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "todoist",
+      "material_path": "materials/todoist",
+      "component_paths": [
+        "materials/todoist"
+      ],
+      "branch": "sites/todoist",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 122,
+        "domain": "todoist.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "topgolf",
+      "material_path": "materials/topgolf",
+      "component_paths": [
+        "materials/topgolf"
+      ],
+      "branch": "sites/topgolf",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 123,
+        "domain": "topgolf.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "trello",
+      "material_path": "materials/trello",
+      "component_paths": [
+        "materials/trello"
+      ],
+      "branch": "sites/trello",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 124,
+        "domain": "trello.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "trezor",
+      "material_path": "materials/trezor",
+      "component_paths": [
+        "materials/trezor"
+      ],
+      "branch": "sites/trezor",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 125,
+        "domain": "trezor.io"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "tripadvisor",
+      "material_path": "materials/tripadvisor",
+      "component_paths": [
+        "materials/tripadvisor"
+      ],
+      "branch": "sites/tripadvisor",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 65,
+        "sha": "f86a81cfb16da7e634a7f893bea09e842981a724",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T14:31:21Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 79,
+        "clone_blob_bytes": 4578804,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 126,
+        "domain": "tripadvisor.com"
+      },
+      "pipeline_pr": 65
+    },
+    {
+      "id": "trustpilot",
+      "material_path": "materials/trustpilot",
+      "component_paths": [
+        "materials/trustpilot"
+      ],
+      "branch": "sites/trustpilot",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 70,
+        "sha": "9cd10cfe589786b4c691ef4d3abffe37bbfffbb2",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T16:20:45Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 10299,
+        "clone_blob_bytes": 654201468,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 127,
+        "domain": "trustpilot.com"
+      },
+      "pipeline_pr": 70
+    },
+    {
+      "id": "typeform",
+      "material_path": "materials/typeform",
+      "component_paths": [
+        "materials/typeform"
+      ],
+      "branch": "sites/typeform",
+      "branch_status": "review",
+      "catalog": {
+        "id": 128,
+        "domain": "typeform.com"
+      },
+      "pipeline_pr": 38,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 38,
+        "sha": "9b386d6f618298ef02c68883ff19d8676ece6ecb",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T14:01:50Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 100,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "uber-eats",
+      "material_path": "materials/ubereats",
+      "component_paths": [
+        "materials/ubereats"
+      ],
+      "branch": "sites/uber-eats",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": false,
+        "clone_dir_exists": true,
+        "clone_file_count": 132,
+        "clone_blob_bytes": 4096712,
+        "tree_truncated": false,
+        "structural_ready": false
+      },
+      "catalog": {
+        "id": 129,
+        "domain": "ubereats.com"
+      }
+    },
+    {
+      "id": "udemy",
+      "material_path": "materials/udemy",
+      "component_paths": [
+        "materials/udemy"
+      ],
+      "branch": "sites/udemy",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 130,
+        "domain": "udemy.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "ulta-beauty",
+      "material_path": "materials/ulta",
+      "component_paths": [
+        "materials/ulta"
+      ],
+      "branch": "sites/ulta-beauty",
+      "branch_status": "review",
+      "catalog": {
+        "id": 131,
+        "domain": "ulta.com"
+      },
+      "pipeline_pr": 42,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 42,
+        "sha": "902e71ea14b787f86bb99be8a967d38bd8ebf698",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T14:55:27Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 100,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "uncommon-goods",
+      "material_path": "materials/uncommon-goods",
+      "component_paths": [
+        "materials/uncommon-goods"
+      ],
+      "branch": "sites/uncommon-goods",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 132,
+        "domain": "uncommongoods.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "untappd",
+      "material_path": "materials/untappd",
+      "component_paths": [
+        "materials/untappd",
+        "harbor/sites/untappd",
+        "harbor/instances/untappd"
+      ],
+      "branch": "sites/untappd",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 119,
+        "sha": "4924542ddecb67ce7b727c00e7c3a1c4c0a93c28",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T18:06:41Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 5289,
+        "clone_blob_bytes": 121656914,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 133,
+        "domain": "untappd.com"
+      },
+      "pipeline_pr": 119
+    },
+    {
+      "id": "vistaprint",
+      "material_path": "materials/vistaprint",
+      "component_paths": [
+        "materials/vistaprint"
+      ],
+      "branch": "sites/vistaprint",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 134,
+        "domain": "vistaprint.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "vivid-seats",
+      "material_path": "materials/vivid-seats",
+      "component_paths": [
+        "materials/vivid-seats"
+      ],
+      "branch": "sites/vivid-seats",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 135,
+        "domain": "vividseats.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "vivino",
+      "material_path": "materials/vivino",
+      "component_paths": [
+        "materials/vivino"
+      ],
+      "branch": "sites/vivino",
+      "branch_status": "review",
+      "catalog": {
+        "id": 136,
+        "domain": "vivino.com"
+      },
+      "pipeline_pr": 32,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 32,
+        "sha": "dbfff83ebf0de02c77a3e205385f88f2f2333615",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:32:10Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 2740,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "wag",
+      "material_path": "materials/wag",
+      "component_paths": [
+        "materials/wag"
+      ],
+      "branch": "sites/wag",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 137,
+        "domain": "wagwalking.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "webflow",
+      "material_path": "materials/webflow",
+      "component_paths": [
+        "materials/webflow"
+      ],
+      "branch": "sites/webflow",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 138,
+        "domain": "webflow.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "make-a-wish",
+      "material_path": "materials/wish",
+      "component_paths": [
+        "materials/wish"
+      ],
+      "branch": "sites/make-a-wish",
+      "branch_status": "review",
+      "catalog": {
+        "id": 139,
+        "domain": "wish.org"
+      },
+      "pipeline_pr": 27,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 27,
+        "sha": "a803bdda8d01056a7a7e81b810259bf1d32b535e",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:28:32Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 1804,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "wix",
+      "material_path": "materials/wix",
+      "component_paths": [
+        "materials/wix"
+      ],
+      "branch": "sites/wix",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 127,
+        "sha": "3abbc2beaceafe0f649bfa5dbfb93336f0c025e2",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T21:49:12Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 240,
+        "clone_blob_bytes": 39352311,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 140,
+        "domain": "wix.com"
+      },
+      "pipeline_pr": 127
+    },
+    {
+      "id": "workable",
+      "material_path": "materials/workable",
+      "component_paths": [
+        "materials/workable"
+      ],
+      "branch": "sites/workable",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": false,
+        "clone_dir_exists": true,
+        "clone_file_count": 294,
+        "clone_blob_bytes": 13691829,
+        "tree_truncated": false,
+        "structural_ready": false
+      },
+      "catalog": {
+        "id": 141,
+        "domain": "workable.com"
+      }
+    },
+    {
+      "id": "zillow",
+      "material_path": "materials/zillow",
+      "component_paths": [
+        "materials/zillow"
+      ],
+      "branch": "sites/zillow",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 142,
+        "domain": "zillow.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "ziprecruiter",
+      "material_path": "materials/ziprecruiter",
+      "component_paths": [
+        "materials/ziprecruiter"
+      ],
+      "branch": "sites/ziprecruiter",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 143,
+        "domain": "ziprecruiter.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "zotero",
+      "material_path": "materials/zotero",
+      "component_paths": [
+        "materials/zotero"
+      ],
+      "branch": "sites/zotero",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 144,
+        "domain": "zotero.org"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "target",
+      "material_path": "materials/target",
+      "component_paths": [
+        "materials/target",
+        "harbor/instances/target",
+        "harbor/sites/target",
+        ".github/workflows/tests-target.yml"
+      ],
+      "branch": "sites/target",
+      "branch_status": "review",
+      "catalog": {
+        "id": 145,
+        "domain": "target.com"
+      },
+      "pipeline_pr": 85,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 85,
+        "sha": "a8ddaf368d696e3ccab96e6a3d1ccb39dc5ae6de",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T07:58:07Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 2291,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "costco",
+      "material_path": "materials/costco",
+      "component_paths": [
+        "materials/costco"
+      ],
+      "branch": "sites/costco",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 146,
+        "domain": "costco.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "wayfair",
+      "material_path": "materials/wayfair",
+      "component_paths": [
+        "materials/wayfair"
+      ],
+      "branch": "sites/wayfair",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 147,
+        "domain": "wayfair.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "mercari",
+      "material_path": "materials/mercari",
+      "component_paths": [
+        "materials/mercari"
+      ],
+      "branch": "sites/mercari",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 148,
+        "domain": "mercari.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "kayak",
+      "material_path": "materials/kayak",
+      "component_paths": [
+        "materials/kayak"
+      ],
+      "branch": "sites/kayak",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 149,
+        "domain": "kayak.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "google-flights",
+      "material_path": "materials/google-flights",
+      "component_paths": [
+        "materials/google-flights",
+        "harbor/instances/google-flights",
+        "harbor/sites/google-flights",
+        ".github/workflows/tests-google-flights.yml"
+      ],
+      "branch": "sites/google-flights",
+      "branch_status": "review",
+      "catalog": {
+        "id": 150,
+        "domain": "google.com/travel/flights"
+      },
+      "pipeline_pr": 75,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 75,
+        "sha": "eb2ace432c80ddcfc789384be28f50316feaeb02",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T22:08:33Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 683,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "vrbo",
+      "material_path": "materials/vrbo",
+      "component_paths": [
+        "materials/vrbo",
+        "harbor/instances/vrbo",
+        "harbor/sites/vrbo",
+        ".github/workflows/tests-vrbo.yml"
+      ],
+      "branch": "sites/vrbo",
+      "branch_status": "review",
+      "catalog": {
+        "id": 151,
+        "domain": "vrbo.com"
+      },
+      "pipeline_pr": 77,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 77,
+        "sha": "1f83a8b18b3c632f4f227526c2fa4d87c46b19de",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T23:46:57Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 1043,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "khan-academy",
+      "material_path": "materials/khan-academy",
+      "component_paths": [
+        "materials/khan-academy"
+      ],
+      "branch": "sites/khan-academy",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 152,
+        "domain": "khanacademy.org"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "quizlet",
+      "material_path": "materials/quizlet",
+      "component_paths": [
+        "materials/quizlet"
+      ],
+      "branch": "sites/quizlet",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 153,
+        "domain": "quizlet.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "chewy",
+      "material_path": "materials/chewy",
+      "component_paths": [
+        "materials/chewy"
+      ],
+      "branch": "sites/chewy",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 154,
+        "domain": "chewy.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "yelp",
+      "material_path": "materials/yelp",
+      "component_paths": [
+        "materials/yelp",
+        "harbor/instances/yelp",
+        "harbor/sites/yelp",
+        ".github/workflows/tests-yelp.yml"
+      ],
+      "branch": "sites/yelp",
+      "branch_status": "review",
+      "catalog": {
+        "id": 155,
+        "domain": "yelp.com"
+      },
+      "pipeline_pr": 103,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 103,
+        "sha": "2c87531286014faefb53edd599ba529a02dd4dc8",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T01:55:58Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 369,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "letterboxd",
+      "material_path": "materials/letterboxd",
+      "component_paths": [
+        "materials/letterboxd"
+      ],
+      "branch": "sites/letterboxd",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 156,
+        "domain": "letterboxd.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "gitlab",
+      "material_path": "materials/gitlab",
+      "component_paths": [
+        "materials/gitlab"
+      ],
+      "branch": "sites/gitlab",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 157,
+        "domain": "gitlab.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "bitbucket",
+      "material_path": "materials/bitbucket",
+      "component_paths": [
+        "materials/bitbucket"
+      ],
+      "branch": "sites/bitbucket",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 158,
+        "domain": "bitbucket.org"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "stack-overflow",
+      "material_path": "materials/stack-overflow",
+      "component_paths": [
+        "materials/stack-overflow",
+        "harbor/instances/stack-overflow",
+        "harbor/sites/stack-overflow",
+        ".github/workflows/tests-stack-overflow.yml"
+      ],
+      "branch": "sites/stack-overflow",
+      "branch_status": "review",
+      "catalog": {
+        "id": 159,
+        "domain": "stackoverflow.com"
+      },
+      "pipeline_pr": 108,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 108,
+        "sha": "c9a38aa22c82b47eaae3f29bb10ebb66c4590002",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T04:25:17Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 198,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "npm",
+      "material_path": "materials/npm",
+      "component_paths": [
+        "materials/npm",
+        "harbor/instances/npm",
+        "harbor/sites/npm",
+        ".github/workflows/tests-npm.yml"
+      ],
+      "branch": "sites/npm",
+      "branch_status": "review",
+      "catalog": {
+        "id": 160,
+        "domain": "npmjs.com"
+      },
+      "pipeline_pr": 128,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 128,
+        "sha": "5446550183285d1d70def5b45022f8b4db888857",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T23:14:57Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 217,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "notion",
+      "material_path": "materials/notion",
+      "component_paths": [
+        "materials/notion"
+      ],
+      "branch": "sites/notion",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 95,
+        "clone_blob_bytes": 989612,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 161,
+        "domain": "notion.so"
+      }
+    },
+    {
+      "id": "fiverr",
+      "material_path": "materials/fiverr",
+      "component_paths": [
+        "materials/fiverr",
+        "harbor/instances/fiverr",
+        "harbor/sites/fiverr",
+        ".github/workflows/tests-fiverr.yml"
+      ],
+      "branch": "sites/fiverr",
+      "branch_status": "review",
+      "catalog": {
+        "id": 162,
+        "domain": "fiverr.com"
+      },
+      "pipeline_pr": 101,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 101,
+        "sha": "b7bf858c379cf9fd0f05292e02931d52313e081b",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T00:39:13Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 466,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "upwork",
+      "material_path": "materials/upwork",
+      "component_paths": [
+        "materials/upwork"
+      ],
+      "branch": "sites/upwork",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 163,
+        "domain": "upwork.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "redfin",
+      "material_path": "materials/redfin",
+      "component_paths": [
+        "materials/redfin"
+      ],
+      "branch": "sites/redfin",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 164,
+        "domain": "redfin.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "coinbase",
+      "material_path": "materials/coinbase",
+      "component_paths": [
+        "materials/coinbase"
+      ],
+      "branch": "sites/coinbase",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 165,
+        "domain": "coinbase.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "fidelity",
+      "material_path": "materials/fidelity",
+      "component_paths": [
+        "materials/fidelity"
+      ],
+      "branch": "sites/fidelity",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 166,
+        "domain": "fidelity.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "canva",
+      "material_path": "materials/canva",
+      "component_paths": [
+        "materials/canva",
+        "harbor/instances/canva",
+        "harbor/sites/canva",
+        ".github/workflows/deploy-canva-public.yml",
+        ".github/workflows/tests-canva.yml"
+      ],
+      "branch": "sites/canva",
+      "branch_status": "review",
+      "catalog": {
+        "id": 167,
+        "domain": "canva.com"
+      },
+      "pipeline_pr": 78,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 78,
+        "sha": "32cf0729fe35ee3a8e0d8a5a8b5a38a4a9966d12",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T01:39:13Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 326,
+        "component_path_count": 5,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "figma",
+      "material_path": "materials/figma",
+      "component_paths": [
+        "materials/figma",
+        "harbor/instances/figma",
+        "harbor/sites/figma",
+        ".github/workflows/deploy-figma-public.yml",
+        ".github/workflows/tests-figma.yml"
+      ],
+      "branch": "sites/figma",
+      "branch_status": "review",
+      "catalog": {
+        "id": 168,
+        "domain": "figma.com"
+      },
+      "pipeline_pr": 79,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 79,
+        "sha": "bc45064e8ae499e98ea41e46baf78874a5ee47bf",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T01:39:43Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 315,
+        "component_path_count": 5,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "medium",
+      "material_path": "materials/medium",
+      "component_paths": [
+        "materials/medium"
+      ],
+      "branch": "sites/medium",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 116,
+        "sha": "29a4e14ee57da69a7bd8b089d62d677526cfc44b",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T16:57:08Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 74,
+        "clone_blob_bytes": 1208320,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 169,
+        "domain": "medium.com"
+      },
+      "pipeline_pr": 116
+    },
+    {
+      "id": "wordpress",
+      "material_path": "materials/wordpress",
+      "component_paths": [
+        "materials/wordpress",
+        "harbor/instances/wordpress",
+        "harbor/sites/wordpress",
+        ".github/workflows/tests-wordpress.yml"
+      ],
+      "branch": "sites/wordpress",
+      "branch_status": "review",
+      "catalog": {
+        "id": 170,
+        "domain": "wordpress.com"
+      },
+      "pipeline_pr": 81,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 81,
+        "sha": "8eed9cac72efaf1956381c997a0cca401103330d",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T07:18:28Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 317,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "spotify",
+      "material_path": "materials/spotify",
+      "component_paths": [
+        "materials/spotify"
+      ],
+      "branch": "sites/spotify",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 66,
+        "sha": "9dc0919da7ff6c162033db5c03d4c1a9a26e673a",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-25T14:49:16Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1564,
+        "clone_blob_bytes": 96563841,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 171,
+        "domain": "spotify.com"
+      },
+      "pipeline_pr": 66
+    },
+    {
+      "id": "netflix",
+      "material_path": "materials/netflix",
+      "component_paths": [
+        "materials/netflix",
+        "harbor/instances/netflix",
+        "harbor/sites/netflix",
+        ".github/workflows/tests-netflix.yml"
+      ],
+      "branch": "sites/netflix",
+      "branch_status": "review",
+      "catalog": {
+        "id": 172,
+        "domain": "netflix.com"
+      },
+      "pipeline_pr": 82,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 82,
+        "sha": "22e8181aded48aceffbea0b3b3711179b387a6af",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T07:18:34Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 230,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "slack",
+      "material_path": "materials/slack",
+      "component_paths": [
+        "materials/slack",
+        "harbor/instances/slack",
+        "harbor/sites/slack",
+        ".github/workflows/deploy-slack-public.yml",
+        ".github/workflows/tests-slack.yml"
+      ],
+      "branch": "sites/slack",
+      "branch_status": "review",
+      "catalog": {
+        "id": 173,
+        "domain": "slack.com"
+      },
+      "pipeline_pr": 87,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 87,
+        "sha": "096b9da5e0b5aae35dc2848c7186aa767e592837",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T09:55:21Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 338,
+        "component_path_count": 5,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "discord",
+      "material_path": "materials/discord",
+      "component_paths": [
+        "materials/discord",
+        "harbor/instances/discord",
+        "harbor/sites/discord",
+        ".github/workflows/deploy-discord-public.yml",
+        ".github/workflows/tests-discord.yml"
+      ],
+      "branch": "sites/discord",
+      "branch_status": "review",
+      "catalog": {
+        "id": 174,
+        "domain": "discord.com"
+      },
+      "pipeline_pr": 86,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 86,
+        "sha": "34f48cc0c4205e1b6179af311131cd3ba33c90fb",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T09:17:10Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 306,
+        "component_path_count": 5,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "patreon",
+      "material_path": "materials/patreon",
+      "component_paths": [
+        "materials/patreon"
+      ],
+      "branch": "sites/patreon",
+      "branch_status": "review",
+      "catalog": {
+        "id": 175,
+        "domain": "patreon.com"
+      },
+      "pipeline_pr": 35,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 35,
+        "sha": "6daaddff0b1640183ebf1300c19bc4a46fe51c4a",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:52:29Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 3000,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "kickstarter",
+      "material_path": "materials/kickstarter",
+      "component_paths": [
+        "materials/kickstarter"
+      ],
+      "branch": "sites/kickstarter",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 117,
+        "sha": "ec591e407a5862545778ca5247ef3ddd726d6482",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T16:57:46Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 151,
+        "clone_blob_bytes": 15459078,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 176,
+        "domain": "kickstarter.com"
+      },
+      "pipeline_pr": 117
+    },
+    {
+      "id": "greenhouse",
+      "material_path": "materials/greenhouse",
+      "component_paths": [
+        "materials/greenhouse"
+      ],
+      "branch": "sites/greenhouse",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 9,
+        "sha": "ec5d673088241be75839f24b41c851b4efc0aca0",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-21T13:25:49Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": false,
+        "clone_dir_exists": true,
+        "clone_file_count": 2775,
+        "clone_blob_bytes": 723824863,
+        "tree_truncated": false,
+        "structural_ready": false
+      },
+      "catalog": {
+        "id": 177,
+        "domain": "greenhouse.io"
+      },
+      "pipeline_pr": 9
+    },
+    {
+      "id": "google-scholar",
+      "material_path": "materials/google-scholar",
+      "component_paths": [
+        "materials/google-scholar",
+        "harbor/sites/google-scholar",
+        "harbor/instances/google-scholar"
+      ],
+      "branch": "sites/google-scholar",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 100,
+        "sha": "51236eefb70c32d2e4f41a4467a2049fa18603ad",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-26T21:32:40Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 34,
+        "clone_blob_bytes": 485141,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 178,
+        "domain": "scholar.google.com"
+      },
+      "pipeline_pr": 100
+    },
+    {
+      "id": "hackerrank",
+      "material_path": "materials/hackerrank",
+      "component_paths": [
+        "materials/hackerrank"
+      ],
+      "branch": "sites/hackerrank",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 179,
+        "domain": "hackerrank.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "meetup",
+      "material_path": "materials/meetup",
+      "component_paths": [
+        "materials/meetup",
+        "harbor/sites/meetup",
+        "harbor/instances/meetup"
+      ],
+      "branch": "sites/meetup",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 105,
+        "sha": "c1449f6b92964bb5735719bd39d0ca50d68e0742",
+        "pr_state": "open",
+        "draft": true,
+        "merged_at": null,
+        "updated_at": "2026-08-27T03:14:06Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 786,
+        "clone_blob_bytes": 36273714,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 180,
+        "domain": "meetup.com"
+      },
+      "pipeline_pr": 105
+    },
+    {
+      "id": "boardgamegeek",
+      "material_path": "materials/boardgamegeek",
+      "component_paths": [
+        "materials/boardgamegeek",
+        ".github/workflows/tests-boardgamegeek.yml"
+      ],
+      "branch": "sites/boardgamegeek",
+      "branch_status": "review",
+      "catalog": {
+        "id": 181,
+        "domain": "boardgamegeek.com"
+      },
+      "pipeline_pr": 102,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 102,
+        "sha": "51ee71b7a221a246528e075659cc088afaf817c0",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-28T07:45:35Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 345,
+        "component_path_count": 2,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "change",
+      "material_path": "materials/change",
+      "component_paths": [
+        "materials/change",
+        "harbor/sites/change"
+      ],
+      "branch": "sites/change",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 198,
+        "clone_blob_bytes": 14287744,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 182,
+        "domain": "change.org"
+      }
+    },
+    {
+      "id": "eatthismuch",
+      "material_path": "materials/eatthismuch",
+      "component_paths": [
+        "materials/eatthismuch"
+      ],
+      "branch": "sites/eatthismuch",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 183,
+        "domain": "eatthismuch.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "etsy",
+      "material_path": "materials/etsy",
+      "component_paths": [
+        "materials/etsy",
+        "harbor/sites/etsy"
+      ],
+      "branch": "sites/etsy",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 132,
+        "clone_blob_bytes": 5835091,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 184,
+        "domain": "etsy.com"
+      }
+    },
+    {
+      "id": "habitica",
+      "material_path": "materials/habitica",
+      "component_paths": [
+        "materials/habitica"
+      ],
+      "branch": "sites/habitica",
+      "branch_status": "review",
+      "catalog": {
+        "id": 185,
+        "domain": "habitica.com"
+      },
+      "pipeline_pr": 28,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 28,
+        "sha": "52b8dfff4931b6908c83672aec4432730a1b7939",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:28:41Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 2262,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "handy",
+      "material_path": "materials/handy",
+      "component_paths": [
+        "materials/handy"
+      ],
+      "branch": "sites/handy",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 186,
+        "domain": "handy.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "imdb",
+      "material_path": "materials/imdb",
+      "component_paths": [
+        "materials/imdb",
+        "harbor/sites/imdb"
+      ],
+      "branch": "sites/imdb",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 526,
+        "clone_blob_bytes": 12940905,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 187,
+        "domain": "imdb.com"
+      }
+    },
+    {
+      "id": "myrecipes",
+      "material_path": "materials/myrecipes",
+      "component_paths": [
+        "materials/myrecipes"
+      ],
+      "branch": "sites/myrecipes",
+      "branch_status": "review",
+      "catalog": {
+        "id": 188,
+        "domain": "myrecipes.com"
+      },
+      "pipeline_pr": 26,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 26,
+        "sha": "0888fa6b61062ed5bdaf46227b694539a3d2c68e",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:28:11Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 100,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "ravelry",
+      "material_path": "materials/ravelry",
+      "component_paths": [
+        "materials/ravelry"
+      ],
+      "branch": "sites/ravelry",
+      "branch_status": "review",
+      "catalog": {
+        "id": 189,
+        "domain": "ravelry.com"
+      },
+      "pipeline_pr": 33,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 33,
+        "sha": "74b6b5fa61a26f27030c8121c999dae628a5e14d",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:34:40Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 3000,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "redcross",
+      "material_path": "materials/redcross",
+      "component_paths": [
+        "materials/redcross"
+      ],
+      "branch": "sites/redcross",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 190,
+        "domain": "redcross.org"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "strava",
+      "material_path": "materials/strava",
+      "component_paths": [
+        "materials/strava"
+      ],
+      "branch": "sites/strava",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 191,
+        "domain": "strava.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "trakt",
+      "material_path": "materials/trakt",
+      "component_paths": [
+        "materials/trakt"
+      ],
+      "branch": "sites/trakt",
+      "branch_status": "review",
+      "catalog": {
+        "id": 192,
+        "domain": "trakt.tv"
+      },
+      "pipeline_pr": 30,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 30,
+        "sha": "ce3f98728b7da5e72e2dcf2bbcceada075fe3074",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:29:55Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 3000,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "tripit",
+      "material_path": "materials/tripit",
+      "component_paths": [
+        "materials/tripit"
+      ],
+      "branch": "sites/tripit",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 475,
+        "clone_blob_bytes": 15605339,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 193,
+        "domain": "tripit.com"
+      }
+    },
+    {
+      "id": "weworkremotely",
+      "material_path": "materials/weworkremotely",
+      "component_paths": [
+        "materials/weworkremotely"
+      ],
+      "branch": "sites/weworkremotely",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 194,
+        "domain": "weworkremotely.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "when2meet",
+      "material_path": "materials/when2meet",
+      "component_paths": [
+        "materials/when2meet"
+      ],
+      "branch": "sites/when2meet",
+      "branch_status": "review",
+      "catalog": {
+        "id": 195,
+        "domain": "when2meet.com"
+      },
+      "pipeline_pr": 25,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 25,
+        "sha": "1f96bb51dfecc97674f2b8b371733b606b4dc61f",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-23T13:21:27Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 64,
+        "component_path_count": 1,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "linkedin",
+      "material_path": "materials/linkedin",
+      "component_paths": [
+        "materials/linkedin"
+      ],
+      "branch": "sites/linkedin",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 193,
+        "clone_blob_bytes": 4879821,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 196,
+        "domain": "linkedin.com"
+      }
+    },
+    {
+      "id": "amazon",
+      "material_path": "materials/amazon",
+      "component_paths": [
+        "materials/amazon",
+        "harbor/sites/amazon",
+        "harbor/instances/amazon"
+      ],
+      "branch": "sites/amazon",
+      "branch_status": "final",
+      "snapshot": {
+        "repo": "reacher-z/WcodeW",
+        "head_repo": "reacher-z/WcodeW",
+        "pr": 1,
+        "sha": "f60281516298d2f461aedef5665916f69079711b",
+        "pr_state": "closed",
+        "draft": false,
+        "merged_at": "2026-08-14T11:34:31Z",
+        "updated_at": "2026-08-14T11:41:14Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "clone_yaml_exists": true,
+        "clone_dir_exists": true,
+        "clone_file_count": 1195,
+        "clone_blob_bytes": 72870512,
+        "tree_truncated": false,
+        "structural_ready": true
+      },
+      "catalog": {
+        "id": 197,
+        "domain": "amazon.com"
+      }
+    },
+    {
+      "id": "walmart",
+      "material_path": "materials/walmart",
+      "component_paths": [
+        "materials/walmart",
+        "harbor/instances/walmart",
+        "harbor/sites/walmart",
+        ".github/workflows/tests-walmart.yml"
+      ],
+      "branch": "sites/walmart",
+      "branch_status": "review",
+      "catalog": {
+        "id": 201,
+        "domain": "walmart.com"
+      },
+      "pipeline_pr": 120,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 120,
+        "sha": "1fed2775469f3f10af44989ebde250088bcdab1c",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T21:06:43Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 110,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "bestbuy",
+      "material_path": "materials/bestbuy",
+      "component_paths": [
+        "materials/bestbuy",
+        "harbor/instances/bestbuy",
+        "harbor/sites/bestbuy",
+        ".github/workflows/tests-bestbuy.yml"
+      ],
+      "branch": "sites/bestbuy",
+      "branch_status": "review",
+      "catalog": {
+        "id": 202,
+        "domain": "bestbuy.com"
+      },
+      "pipeline_pr": 124,
+      "snapshot": {
+        "repo": "780078268/websitebench-pipeline",
+        "head_repo": "780078268/websitebench-pipeline",
+        "pr": 124,
+        "sha": "6ff8668dd7d5e8d433b31a2cde99ee02959949c1",
+        "pr_state": "open",
+        "draft": false,
+        "merged_at": null,
+        "updated_at": "2026-08-27T21:07:53Z"
+      },
+      "structure": {
+        "site_path_exists": true,
+        "source_changed_file_count": 144,
+        "component_path_count": 4,
+        "structural_ready": null
+      }
+    },
+    {
+      "id": "ikea",
+      "material_path": "materials/ikea",
+      "component_paths": [
+        "materials/ikea"
+      ],
+      "branch": "sites/ikea",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 203,
+        "domain": "ikea.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "macys",
+      "material_path": "materials/macys",
+      "component_paths": [
+        "materials/macys"
+      ],
+      "branch": "sites/macys",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 204,
+        "domain": "macys.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "nordstrom",
+      "material_path": "materials/nordstrom",
+      "component_paths": [
+        "materials/nordstrom"
+      ],
+      "branch": "sites/nordstrom",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 205,
+        "domain": "nordstrom.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    }
+  ],
+  "catalog_site_count": 202
+}
