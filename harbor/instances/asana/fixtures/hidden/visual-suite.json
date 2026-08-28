@@ -1,0 +1,30 @@
+{
+  "checkpoints": [
+    {
+      "actions": [],
+      "id": "home",
+      "reference_image": "visual/home.png",
+      "regions": [
+        {
+          "id": "page",
+          "masks": [],
+          "rect": {
+            "height": 720,
+            "width": 1280,
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "route": "/",
+      "timeout_sec": 60,
+      "viewport": {
+        "height": 720,
+        "width": 1280
+      }
+    }
+  ],
+  "schema_version": "websitebench.harbor.visual-suite.v1",
+  "site_id": "asana",
+  "suite_id": "asana-visual"
+}

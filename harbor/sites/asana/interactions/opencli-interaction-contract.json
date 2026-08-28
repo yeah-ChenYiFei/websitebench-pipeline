@@ -1,0 +1,103 @@
+{
+  "generated_from": "materials/asana/clone.yaml",
+  "opencli_version": "1.8.6",
+  "profiles": {
+    "forgot": {
+      "failure_paths": [],
+      "label": "asana forgot (derived draft)",
+      "local_semantics": [
+        "No runtime request leaves the local origin.",
+        "App routes and APIs require a valid local session; logout revokes it.",
+        "Business mutations persist in the site-bound SQLite across app restarts."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [
+        "auth-reset"
+      ],
+      "steps": [
+        {
+          "command": "state",
+          "id": "forgot-page",
+          "intent": "Exercise clone check forgot.page (GET /forgot_password).",
+          "observation_id": "asana_forgot_page",
+          "required_state": {
+            "visible": "Forgot password?"
+          },
+          "route": "forgot_password"
+        },
+        {
+          "command": "state",
+          "id": "forgot-page-2",
+          "intent": "Exercise clone check forgot.page-2 (GET /forgot_password).",
+          "observation_id": "asana_forgot_page-2",
+          "required_state": {
+            "visible": "Send instructions"
+          },
+          "route": "forgot_password"
+        }
+      ],
+      "tier": "p0"
+    },
+    "login": {
+      "failure_paths": [
+        "auth-login-bad"
+      ],
+      "label": "asana login (derived draft)",
+      "local_semantics": [
+        "No runtime request leaves the local origin.",
+        "App routes and APIs require a valid local session; logout revokes it.",
+        "Business mutations persist in the site-bound SQLite across app restarts."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [],
+      "steps": [
+        {
+          "command": "state",
+          "id": "login-page",
+          "intent": "Exercise clone check login.page (GET /login).",
+          "observation_id": "asana_login_page",
+          "required_state": {
+            "visible": "Welcome to Asana"
+          },
+          "route": "login"
+        },
+        {
+          "command": "state",
+          "id": "login-page-2",
+          "intent": "Exercise clone check login.page-2 (GET /login).",
+          "observation_id": "asana_login_page-2",
+          "required_state": {
+            "visible": "To get started, please sign in"
+          },
+          "route": "login"
+        },
+        {
+          "command": "state",
+          "id": "login-footer",
+          "intent": "Exercise clone check login.footer (GET /login).",
+          "observation_id": "asana_login_footer",
+          "required_state": {
+            "text_absent": "Log out",
+            "visible": "Forgot password?"
+          },
+          "route": "login"
+        }
+      ],
+      "tier": "p0"
+    }
+  },
+  "schema_version": "websitebench.harbor.opencli-interaction-contract.v1",
+  "site_id": "asana"
+}

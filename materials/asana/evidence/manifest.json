@@ -1,0 +1,120 @@
+{
+  "schema_version": "websitebench.asana.visual3-evidence.v1",
+  "source_page_url": "https://app.asana.com/app/home",
+  "evidence_basis": "sanitized-geometry-plus-mac-ego-public-inline-vectors-only",
+  "source_contacted": true,
+  "lab_server_source_contacted": false,
+  "assets": [
+    {
+      "id": "oat-background",
+      "classification": "public",
+      "upstream_source_url": null,
+      "upstream_source_url_note": "The sanitized facts supplied no upstream asset URL; none was inferred or contacted.",
+      "localized_source_url": "/static/source/oat-background.png",
+      "localized_runtime_url": "/static/source/oat-background.png",
+      "source_asset_path": "source-assets/public/oat-background.png",
+      "runtime_asset_path": "clone/static/source/oat-background.png",
+      "sha256": "59ddf8de8c3e7a8895372bd77a2e0ce32e796cfca563bbd0f84aae7026c15159",
+      "bytes": 120439,
+      "dimensions": {
+        "width": 2500,
+        "height": 1875
+      },
+      "closure": "closed-identical-copies"
+    },
+    {
+      "id": "learn-rocket",
+      "classification": "public",
+      "upstream_source_url": null,
+      "upstream_source_url_note": "Public inline SVG observed by Mac ego-browser; no external asset URL exists.",
+      "localized_source_url": "/static/source/learn-1.svg",
+      "localized_runtime_url": "/static/source/learn-1.svg",
+      "source_asset_path": "source-assets/public/learn-1.svg",
+      "runtime_asset_path": "clone/static/source/learn-1.svg",
+      "sha256": "f3b94e6f9e3ec716ac19764f81c8706354928234a98a2cf9cfe234c8bc170e48",
+      "bytes": 7217,
+      "dimensions": {"width": 200, "height": 200},
+      "closure": "closed-identical-copies"
+    },
+    {
+      "id": "learn-education",
+      "classification": "public",
+      "upstream_source_url": null,
+      "upstream_source_url_note": "Public inline SVG observed by Mac ego-browser; no external asset URL exists.",
+      "localized_source_url": "/static/source/learn-2.svg",
+      "localized_runtime_url": "/static/source/learn-2.svg",
+      "source_asset_path": "source-assets/public/learn-2.svg",
+      "runtime_asset_path": "clone/static/source/learn-2.svg",
+      "sha256": "6313c4e699358778641616bfd8757c94093063cd4f3efa9ed3b2ae131b021297",
+      "bytes": 11355,
+      "dimensions": {"width": 200, "height": 200},
+      "closure": "closed-identical-copies"
+    },
+    {
+      "id": "learn-projects",
+      "classification": "public",
+      "upstream_source_url": null,
+      "upstream_source_url_note": "Public inline SVG observed by Mac ego-browser; no external asset URL exists.",
+      "localized_source_url": "/static/source/learn-3.svg",
+      "localized_runtime_url": "/static/source/learn-3.svg",
+      "source_asset_path": "source-assets/public/learn-3.svg",
+      "runtime_asset_path": "clone/static/source/learn-3.svg",
+      "sha256": "9997a1d09b37e9255ec60b88e519e8dde8ff32f823225d3eba5f53926c3e623c",
+      "bytes": 9118,
+      "dimensions": {"width": 200, "height": 200},
+      "closure": "closed-identical-copies"
+    },
+    {
+      "id": "learn-workflow",
+      "classification": "public",
+      "upstream_source_url": null,
+      "upstream_source_url_note": "Public inline SVG observed by Mac ego-browser; no external asset URL exists.",
+      "localized_source_url": "/static/source/learn-4.svg",
+      "localized_runtime_url": "/static/source/learn-4.svg",
+      "source_asset_path": "source-assets/public/learn-4.svg",
+      "runtime_asset_path": "clone/static/source/learn-4.svg",
+      "sha256": "64027dc1a4f9376dd0443ed3e878e4d3f1d010b1b7f340389532afac7bf07043",
+      "bytes": 3477,
+      "dimensions": {"width": 200, "height": 200},
+      "closure": "closed-identical-copies"
+    },
+    {
+      "id": "twk-lausanne-300",
+      "classification": "public",
+      "upstream_source_url": "https://asana.com/fonts/lausanne/TWKLausanne-300.otf",
+      "localized_source_url": "/static/fonts/lausanne/TWKLausanne-300.otf",
+      "localized_runtime_url": "/static/fonts/lausanne/TWKLausanne-300.otf",
+      "source_asset_path": "source-assets/public/fonts/lausanne/TWKLausanne-300.otf",
+      "runtime_asset_path": "clone/static/fonts/lausanne/TWKLausanne-300.otf",
+      "sha256": "4eb5124ff7ef3f775ed7f85cc0072509217d46de85b21e4075140473d027508d",
+      "bytes": 75112,
+      "closure": "closed-identical-copies"
+    },
+    {
+      "id": "twk-lausanne-400",
+      "classification": "public",
+      "upstream_source_url": "https://asana.com/fonts/lausanne/TWKLausanne-400.otf",
+      "localized_source_url": "/static/fonts/lausanne/TWKLausanne-400.otf",
+      "localized_runtime_url": "/static/fonts/lausanne/TWKLausanne-400.otf",
+      "source_asset_path": "source-assets/public/fonts/lausanne/TWKLausanne-400.otf",
+      "runtime_asset_path": "clone/static/fonts/lausanne/TWKLausanne-400.otf",
+      "sha256": "1766646f80c8f1f3a80fb5f7ba0fa2e0d3133514c64d16e77eaeecfce84e36e6",
+      "bytes": 75748,
+      "closure": "closed-identical-copies"
+    },
+    {
+      "id": "twk-lausanne-500",
+      "classification": "public",
+      "upstream_source_url": "https://asana.com/fonts/lausanne/TWKLausanne-500.otf",
+      "localized_source_url": "/static/fonts/lausanne/TWKLausanne-500.otf",
+      "localized_runtime_url": "/static/fonts/lausanne/TWKLausanne-500.otf",
+      "source_asset_path": "source-assets/public/fonts/lausanne/TWKLausanne-500.otf",
+      "runtime_asset_path": "clone/static/fonts/lausanne/TWKLausanne-500.otf",
+      "sha256": "a65b0f6e979b48e717ba5263d5b9d43ba7b55b83894ee799e3559a37c1efb240",
+      "bytes": 76136,
+      "closure": "closed-identical-copies"
+    }
+  ],
+  "remote_runtime_references": 0,
+  "private_evidence": []
+}

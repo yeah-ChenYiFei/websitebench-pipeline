@@ -1,0 +1,204 @@
+{
+ "schema_version": "offline-clone.journeys.v1",
+ "journeys": [
+  {
+   "id": "visitor-marketing",
+   "actor": "visitor",
+   "priority": "p0",
+   "kind": "success",
+   "steps": [
+    "Open /",
+    "open /pricing",
+    "open /product",
+    "open /templates"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "auth-signup",
+   "actor": "visitor",
+   "priority": "p0",
+   "kind": "success",
+   "steps": [
+    "Open /create-account",
+    "submit name/email/password",
+    "read local verification code from local outbox viewer",
+    "enter code",
+    "land in new workspace with seeded demo data"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "auth-signup-invalid",
+   "actor": "visitor",
+   "priority": "p1",
+   "kind": "failure",
+   "steps": [
+    "Submit invalid email/short password",
+    "see inline validation error"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "auth-login",
+   "actor": "member",
+   "priority": "p0",
+   "kind": "success",
+   "steps": [
+    "Open /-/login",
+    "enter email+password",
+    "land on /app/home"
+   ],
+   "status": "frozen",
+   "family": "login"
+  },
+  {
+   "id": "auth-login-bad",
+   "actor": "visitor",
+   "priority": "p1",
+   "kind": "failure",
+   "steps": [
+    "Enter wrong credentials",
+    "see error, stay unauthenticated"
+   ],
+   "status": "frozen",
+   "family": "login"
+  },
+  {
+   "id": "auth-logout",
+   "actor": "member",
+   "priority": "p0",
+   "kind": "success",
+   "steps": [
+    "Sign out from avatar menu",
+    "protected /app routes redirect to login"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "auth-reset",
+   "actor": "visitor",
+   "priority": "p1",
+   "kind": "recovery",
+   "steps": [
+    "Open forgot page",
+    "request reset",
+    "read local code",
+    "set new password",
+    "log in with it"
+   ],
+   "status": "frozen",
+   "family": "forgot"
+  },
+  {
+   "id": "task-crud",
+   "actor": "member",
+   "priority": "p0",
+   "kind": "success",
+   "steps": [
+    "Create task",
+    "edit fields",
+    "complete",
+    "delete to trash",
+    "restore"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "project-views",
+   "actor": "member",
+   "priority": "p0",
+   "kind": "success",
+   "steps": [
+    "Open project list/board/calendar/timeline",
+    "switch views",
+    "state persists"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "filters-search",
+   "actor": "member",
+   "priority": "p1",
+   "kind": "success",
+   "steps": [
+    "Apply filters and sort",
+    "search across workspace",
+    "open result"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "comments",
+   "actor": "member",
+   "priority": "p1",
+   "kind": "success",
+   "steps": [
+    "Open task detail",
+    "add comment",
+    "see it in thread with synthetic collaborators"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "bulk-actions",
+   "actor": "member",
+   "priority": "p1",
+   "kind": "success",
+   "steps": [
+    "Select multiple tasks",
+    "bulk complete/assign",
+    "verify all changed"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "portfolio-e2e",
+   "actor": "admin",
+   "priority": "p0",
+   "kind": "success",
+   "steps": [
+    "Create portfolio 'Research Projects 2026'",
+    "create 3 projects in it",
+    "verify rollup"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "admin-settings",
+   "actor": "admin",
+   "priority": "p1",
+   "kind": "success",
+   "steps": [
+    "Rename workspace",
+    "invite member (local simulated)",
+    "change role"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "billing-sandbox",
+   "actor": "admin",
+   "priority": "p1",
+   "kind": "success",
+   "steps": [
+    "Open billing",
+    "upgrade with sandbox approval",
+    "see plan change; declined path shows error"
+   ],
+   "status": "frozen"
+  },
+  {
+   "id": "empty-states",
+   "actor": "member",
+   "priority": "p1",
+   "kind": "success",
+   "steps": [
+    "New project empty state",
+    "empty search results",
+    "empty inbox"
+   ],
+   "status": "frozen"
+  }
+ ]
+}

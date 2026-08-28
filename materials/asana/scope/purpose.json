@@ -1,0 +1,27 @@
+{
+ "schema_version": "offline-clone.purpose.v1",
+ "purpose_id": "asana-work-management",
+ "statement": "Provide an offline, locally persistent Asana-like work-management experience: public marketing surfaces, local account auth, and a demo workspace with projects, tasks, views, collaboration and admin flows.",
+ "primary_actor_ids": [
+  "visitor",
+  "member",
+  "admin"
+ ],
+ "mainline_journey_ids": [
+  "visitor-marketing",
+  "auth-signup",
+  "auth-login",
+  "task-crud",
+  "project-views",
+  "portfolio-e2e"
+ ],
+ "out_of_scope": [
+  "real Google/Microsoft SSO",
+  "real email delivery",
+  "real payments",
+  "mobile apps",
+  "AI Studio features",
+  "real third-party integrations"
+ ],
+ "status": "frozen"
+}

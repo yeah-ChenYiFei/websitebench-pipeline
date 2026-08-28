@@ -1,0 +1,63 @@
+{
+ "schema_version": "offline-clone.verify-driver.v1",
+ "site_id": "asana",
+ "boot": {
+  "argv": [
+   "{python}",
+   "-m",
+   "uvicorn",
+   "app:app",
+   "--host",
+   "127.0.0.1",
+   "--port",
+   "{port}",
+   "--log-level",
+   "warning"
+  ],
+  "cwd": "clone",
+    "env": {
+      "WEBSITEBENCH_SITE_BACKEND_DATABASE": "{data_dir}/asana.sqlite3"
+    }
+ },
+ "prepare": [],
+ "routes": {
+  "home": "/",
+  "pricing": "/pricing",
+  "product": "/product",
+  "solutions": "/solutions",
+  "resources": "/resources",
+  "templates": "/templates",
+  "login": "/-/login",
+  "signup": "/create-account",
+  "forgot": "/-/forgot_password"
+ },
+ "status": {
+  "solutions": 404
+ },
+ "states": {
+  "home.loaded": [],
+  "pricing.loaded": [],
+  "product.loaded": [],
+  "solutions.loaded": [],
+  "resources.loaded": [],
+  "templates.loaded": [],
+  "login.loaded": [],
+  "signup.loaded": [],
+  "forgot.loaded": []
+ },
+ "deferred": {
+  "app-home": "authenticated-only; anonymous diagnostic cannot reach",
+  "my-tasks": "authenticated-only",
+  "project": "authenticated-only",
+  "search": "authenticated-only",
+  "inbox": "authenticated-only",
+  "portfolios": "authenticated-only",
+  "goals": "authenticated-only",
+  "reporting": "authenticated-only",
+  "settings": "authenticated-only",
+  "admin": "authenticated-only",
+  "billing": "authenticated-only",
+  "trash": "authenticated-only",
+  "help": "authenticated-only"
+ }
+}

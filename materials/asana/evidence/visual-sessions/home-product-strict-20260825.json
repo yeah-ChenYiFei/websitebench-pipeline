@@ -1,0 +1,92 @@
+{
+  "schema_version": "websitebench.visual-session.v1",
+  "site_id": "asana",
+  "created_at": "2026-08-25T00:00:00Z",
+  "routes": ["/", "/product"],
+  "states": ["public-loaded"],
+  "source_session": {
+    "browser": "mac-headed-playwright",
+    "account_mode": "public-anonymous",
+    "challenge_seen": false,
+    "sensitive_input_used": false,
+    "private_content_recorded": false,
+    "session_identifiers_recorded": false
+  },
+  "transport": {
+    "source": "mac-headed-playwright-public-page",
+    "clone": "same-mac-playwright-over-loopback-ssh-tunnel",
+    "lab_server_source_contacted": false,
+    "clone_remote_runtime_requests": 0
+  },
+  "source_artifact_policy": {
+    "raw_source_screenshots_on_server": 0,
+    "raw_source_screenshots_in_git": 0,
+    "raw_clone_screenshots_in_git": 0,
+    "dom_or_visible_text_exported": false,
+    "personal_names_or_workspace_content_exported": false,
+    "committed_evidence": "public asset provenance, deidentified route-state-viewport facts, and similarity metrics only"
+  },
+  "threshold": 0.9,
+  "metric_policy": {
+    "mae_similarity": "1 - mean(abs(source-clone))/255",
+    "normalized_rmse_similarity": "1 - sqrt(mean((source-clone)^2))/255",
+    "ssim": "RGB structural_similarity with data_range 255",
+    "comparison_mode": "fresh no-cache full unmasked viewport"
+  },
+  "comparisons": [
+    {
+      "checkpoint_id": "home.loaded.desktop",
+      "route": "/",
+      "viewport": {"width": 1440, "height": 900},
+      "full_image": {"mae_similarity": 0.9815688729, "normalized_rmse_similarity": 0.9036145806, "ssim": 0.9009189606, "passed": true}
+    },
+    {
+      "checkpoint_id": "home.loaded.mobile",
+      "route": "/",
+      "viewport": {"width": 390, "height": 844},
+      "full_image": {"mae_similarity": 0.9885948896, "normalized_rmse_similarity": 0.9403179884, "ssim": 0.9320376515, "passed": true}
+    },
+    {
+      "checkpoint_id": "product.loaded.desktop",
+      "route": "/product",
+      "viewport": {"width": 1440, "height": 900},
+      "full_image": {"mae_similarity": 0.992715, "normalized_rmse_similarity": 0.946421, "ssim": 0.977663, "passed": true}
+    },
+    {
+      "checkpoint_id": "product.loaded.mobile",
+      "route": "/product",
+      "viewport": {"width": 390, "height": 844},
+      "full_image": {"mae_similarity": 0.981007, "normalized_rmse_similarity": 0.918074, "ssim": 0.936132, "passed": true}
+    }
+  ],
+  "minimums": {
+    "full_image": {"mae_similarity": 0.981007, "normalized_rmse_similarity": 0.9036145806, "ssim": 0.9009189606}
+  },
+  "public_asset_provenance": {
+    "manifest": "../../source-assets/manifest.json",
+    "home_assets": [
+      "home-orbit-initial-task",
+      "home-orbit-launch-planner",
+      "home-orbit-primary-teammate",
+      "home-orbit-project-list",
+      "home-orbit-google-drive",
+      "home-orbit-drive-mark",
+      "home-orbit-campaign-planner",
+      "home-orbit-enablement",
+      "home-orbit-secondary-teammates",
+      "home-orbit-pricing-strategist",
+      "home-orbit-product-launched",
+      "home-orbit-approve-edits"
+    ],
+    "product_assets": ["product-hero-ai-coordination"],
+    "localized_source_and_runtime_copies": true,
+    "source_iframes": 0,
+    "source_screenshot_facades": 0,
+    "hotlinks": 0
+  },
+  "verdict": {
+    "strict_unmasked_full_image_passed": true,
+    "all_comparisons_passed": true,
+    "reason": "all Home and Product desktop and mobile full-image comparisons pass all three 0.90 metrics"
+  }
+}

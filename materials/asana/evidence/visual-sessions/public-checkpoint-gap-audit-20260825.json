@@ -1,0 +1,25 @@
+{
+  "schema_version": "websitebench.public-checkpoint-audit.v1",
+  "site_id": "asana",
+  "created_at": "2026-08-25T06:35:00Z",
+  "updated_at": "2026-08-25T00:00:00Z",
+  "overall_status": "DESKTOP_SCOPE_SATISFIED",
+  "scope": "desktop-web-only",
+  "policy": {"direct_source_required_for_crawlable_public_routes": true, "threshold": 0.9, "metrics": ["mae_similarity", "normalized_rmse_similarity", "ssim"], "raw_source_artifacts": "mac-private-not-committed", "clone_self_comparison_allowed": false, "mobile_excluded": true},
+  "closed_checkpoints": [
+    {"id": "home.loaded.desktop", "evidence": "home-product-strict-20260825.json"},
+    {"id": "pricing.loaded.desktop", "evidence": "pricing-ego84-20260825.json"},
+    {"id": "product.loaded.desktop", "evidence": "home-product-strict-20260825.json"},
+    {"id": "solutions.loaded.desktop", "evidence": "public-routes-strict-20260825.json"},
+    {"id": "resources.loaded.desktop", "evidence": "public-routes-strict-20260825.json"},
+    {"id": "templates.loaded.desktop", "evidence": "public-routes-strict-20260825.json"}
+  ],
+  "public_anonymous_desktop_summary": {"closed": 6, "required": 6, "challenge_observed": false, "clone_remote_runtime_requests": 0, "minimum_metrics": {"mae_similarity": 0.979143977165, "normalized_rmse_similarity": 0.902729690075, "ssim": 0.9009189606}},
+  "source_unavailable_auth_routes": [
+    {"route": "/-/login", "state": "signed-out-loaded", "viewport": {"width": 1280, "height": 800}, "source_status": "unavailable-without-held-user-session", "reason": "User-owned auth handoff session was not provided to this server-side run; task84 auth state was explicitly excluded.", "clone_status": "implemented-and-locally-tested"},
+    {"route": "/create-account", "state": "signed-out-loaded", "viewport": {"width": 1280, "height": 800}, "source_status": "unavailable-without-held-user-session", "reason": "User-owned auth handoff session was not provided to this server-side run; task84 auth state was explicitly excluded.", "clone_status": "implemented-and-locally-tested"},
+    {"route": "/-/forgot_password", "state": "signed-out-loaded", "viewport": {"width": 1280, "height": 800}, "source_status": "unavailable-without-held-user-session", "reason": "User-owned auth handoff session was not provided to this server-side run; task84 auth state was explicitly excluded.", "clone_status": "implemented-and-locally-tested"}
+  ],
+  "privacy": {"raw_authenticated_artifacts_in_repository": 0, "storage_state_exports": 0, "cookies_or_authorization_headers_retained": 0},
+  "next_action": "None for the agreed Desktop-only server-side scope. Direct auth parity requires a future separately authorized user-session capture and is not claimed."
+}

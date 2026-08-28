@@ -1,0 +1,105 @@
+{
+  "schema_version": "websitebench.direct-visual-session.v1",
+  "site_id": "asana",
+  "created_at": "2026-08-25T06:35:00Z",
+  "status": "complete",
+  "scope": "anonymous-public-top-viewport",
+  "source_session": {
+    "transport": "headed-playwright-cdp",
+    "browser_context": "fresh-isolated-anonymous-context",
+    "challenge_observed": false,
+    "raw_source_rasters": "mac-private-not-committed",
+    "private_or_authenticated_content_observed": false
+  },
+  "clone_session": {
+    "transport": "same-mac-playwright-loopback-ssh-tunnel",
+    "cache_disabled": true,
+    "remote_runtime_requests": 0
+  },
+  "comparison": {
+    "threshold": 0.9,
+    "metrics": ["mae_similarity", "normalized_rmse_similarity", "ssim"],
+    "region": "full-viewport-after-origin-boundary-external-support-omission",
+    "pixel_masks": [],
+    "external_omission": {
+      "provider": "Qualified third-party support iframe",
+      "reason": "external child origin outside the Asana first-party clone boundary",
+      "clone_reproduction": "omitted",
+      "copied_text_or_branding": false
+    },
+    "dynamic_state": {
+      "solutions_video": "official public MP4 localized; both source and clone paused at 0.05 seconds",
+      "animations": "disabled"
+    }
+  },
+  "contracts": [
+    {
+      "checkpoint_id": "solutions.loaded.desktop",
+      "source_status": 404,
+      "clone_status": 404,
+      "viewport": {"width": 1280, "height": 800},
+      "metrics": {"mae_similarity": 0.986946702003, "normalized_rmse_similarity": 0.922140121460, "ssim": 0.958436248403},
+      "passed": true
+    },
+    {
+      "checkpoint_id": "solutions.loaded.mobile",
+      "source_status": 404,
+      "clone_status": 404,
+      "viewport": {"width": 390, "height": 844},
+      "metrics": {"mae_similarity": 0.985932528973, "normalized_rmse_similarity": 0.919649839401, "ssim": 0.952562677562},
+      "passed": true
+    },
+    {
+      "checkpoint_id": "resources.loaded.desktop",
+      "source_status": 200,
+      "clone_status": 200,
+      "viewport": {"width": 1280, "height": 800},
+      "metrics": {"mae_similarity": 0.979143977165, "normalized_rmse_similarity": 0.902729690075, "ssim": 0.918660717679},
+      "passed": true
+    },
+    {
+      "checkpoint_id": "resources.loaded.mobile",
+      "source_status": 200,
+      "clone_status": 200,
+      "viewport": {"width": 390, "height": 844},
+      "metrics": {"mae_similarity": 0.986790716648, "normalized_rmse_similarity": 0.924871265888, "ssim": 0.968282786871},
+      "passed": true
+    },
+    {
+      "checkpoint_id": "templates.loaded.desktop",
+      "source_status": 200,
+      "clone_status": 200,
+      "viewport": {"width": 1280, "height": 800},
+      "metrics": {"mae_similarity": 0.988230586052, "normalized_rmse_similarity": 0.920108973980, "ssim": 0.962246799055},
+      "passed": true
+    },
+    {
+      "checkpoint_id": "templates.loaded.mobile",
+      "source_status": 200,
+      "clone_status": 200,
+      "viewport": {"width": 390, "height": 844},
+      "metrics": {"mae_similarity": 0.984996020794, "normalized_rmse_similarity": 0.912901639938, "ssim": 0.946080694966},
+      "passed": true
+    }
+  ],
+  "journeys": {
+    "mobile_menu": {
+      "routes": ["/solutions", "/resources", "/templates"],
+      "source_open_close_observable": true,
+      "clone_open_close_observable": true,
+      "clone_aria_expanded_state": true
+    },
+    "status_and_primary_controls": {
+      "solutions_404_rescue_links_present": true,
+      "resources_demo_and_category_links_local": true,
+      "templates_sso_shells_non_remote": true,
+      "templates_signup_form_local": true,
+      "templates_category_links_local": true
+    }
+  },
+  "minimum_metrics": {
+    "mae_similarity": 0.979143977165,
+    "normalized_rmse_similarity": 0.902729690075,
+    "ssim": 0.918660717679
+  }
+}

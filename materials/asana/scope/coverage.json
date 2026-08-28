@@ -1,0 +1,28 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "draft",
+  "dimensions": [
+    {
+      "id": "public-desktop-direct-comparisons", "category": "visual-and-reachability", "label": "Crawlable public Desktop route-states directly compared", "unit": "route-state",
+      "required_evidence_kinds": ["visual", "browser"],
+      "required_items": ["home.loaded.desktop", "pricing.loaded.desktop", "product.loaded.desktop", "solutions.loaded.desktop", "resources.loaded.desktop", "templates.loaded.desktop"],
+      "satisfied_items": ["home.loaded.desktop", "pricing.loaded.desktop", "product.loaded.desktop", "solutions.loaded.desktop", "resources.loaded.desktop", "templates.loaded.desktop"]
+    },
+    {
+      "id": "source-unavailable-auth-desktop", "category": "availability", "label": "Auth routes unavailable at source without held user session; local Desktop implementations tested", "unit": "route-state",
+      "required_evidence_kinds": ["browser", "full-suite"],
+      "required_items": ["login.loaded.desktop", "signup.loaded.desktop", "forgot.loaded.desktop"],
+      "satisfied_items": ["login.loaded.desktop", "signup.loaded.desktop", "forgot.loaded.desktop"]
+    },
+    {
+      "id": "auth-flows", "category": "function", "label": "Local Desktop auth flows (signup, verification, login, logout, reset)", "unit": "journey", "required_evidence_kinds": ["full-suite"],
+      "required_items": ["auth-signup", "auth-verification", "auth-login", "auth-logout", "auth-reset"],
+      "satisfied_items": ["auth-signup", "auth-verification", "auth-login", "auth-logout", "auth-reset"]
+    },
+    {
+      "id": "task-flows", "category": "function", "label": "Desktop task/project/portfolio functional and persistence flows", "unit": "journey", "required_evidence_kinds": ["full-suite"],
+      "required_items": ["task-crud", "project-views", "filters-search", "comments", "bulk-actions", "portfolio-e2e", "restart-persistence", "backup-restore", "site-isolation"],
+      "satisfied_items": ["task-crud", "project-views", "filters-search", "comments", "bulk-actions", "portfolio-e2e", "restart-persistence", "backup-restore", "site-isolation"]
+    }
+  ]
+}

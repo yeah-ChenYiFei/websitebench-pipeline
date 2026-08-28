@@ -1,0 +1,22 @@
+name: diagnostics (asana)
+on:
+  pull_request:
+    paths:
+      - materials/asana/**
+      - .github/workflows/tests-asana.yml
+      - .github/workflows/clone-diagnostics.yml
+  push:
+    paths:
+      - materials/asana/**
+      - .github/workflows/tests-asana.yml
+      - .github/workflows/clone-diagnostics.yml
+permissions:
+  contents: read
+concurrency:
+  group: diagnostics-asana-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  diagnostics:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: asana

@@ -1,0 +1,43 @@
+{
+ "backend_profile": "full",
+ "capabilities": [
+  {
+   "applicability": "in-scope",
+   "id": "accounts",
+   "rationale": "Signup/login/logout/password-reset via generated LocalAuthStore."
+  },
+  {
+   "applicability": "in-scope",
+   "id": "password-recovery",
+   "rationale": "Local reset codes through LocalAuthStore local outbox."
+  },
+  {
+   "applicability": "in-scope",
+   "id": "transactional-mail",
+   "rationale": "Registration and reset codes via local outbox only; no real delivery."
+  },
+  {
+   "applicability": "not-applicable",
+   "id": "orders",
+   "rationale": "Asana has no order/fulfilment concept; the only commercial flow is the plan upgrade, covered by checkout via local-sandbox."
+  },
+  {
+   "applicability": "in-scope",
+   "id": "checkout",
+   "rationale": "Plan upgrade simulated through the generated local-sandbox payment adapter."
+  },
+  {
+   "applicability": "in-scope",
+   "id": "payments",
+   "rationale": "Included by the contribution scaffold's conservative full profile."
+  },
+  {
+   "applicability": "in-scope",
+   "id": "database",
+   "rationale": "Included by the contribution scaffold's conservative full profile."
+  }
+ ],
+ "runtime_required": true,
+ "schema_version": "offline-clone.contribution-backend-scope.v1",
+ "site_id": "asana"
+}

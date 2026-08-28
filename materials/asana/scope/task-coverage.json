@@ -1,0 +1,401 @@
+{
+ "schema_version": "websitebench.site-task-coverage.v1",
+ "site_id": "asana",
+ "source": {
+  "task_packet": "websitebench-first10-agent-pack/sites/09-asana/task-packet.json",
+  "selected_task_range": "WB009-T01..WB009-T48"
+ },
+ "statuses": [
+  "matched",
+  "known-difference",
+  "unavailable",
+  "inferred-architecture"
+ ],
+ "note": "Anonymous-only evidence run: no authenticated source surface was observable. 'inferred-architecture' means the flow is fully functional in the clone with real local state, but source-side appearance/flow equivalence is NOT claimed.",
+ "tasks": [
+  {
+   "expanded_task_id": "WB009-T01",
+   "task_no": 1,
+   "workflow_stage": "Home / Workspace Landing",
+   "human_trace_text": "Open Asana and reach the primary workflow from the home/landing experience.",
+   "status": "known-difference",
+   "note": "Marketing home copy/structure from EA2 HTML (structural-only); login page directly observed; clone landing functional locally."
+  },
+  {
+   "expanded_task_id": "WB009-T02",
+   "task_no": 2,
+   "workflow_stage": "Register",
+   "human_trace_text": "Create a new Asana account through the registration flow and reach the post-sign-up state.",
+   "status": "inferred-architecture",
+   "note": "Source signup flow not exercisable anonymously (create-account page crashes sandbox renderer; mutation forbidden). Clone implements full local registration with LocalAuthStore verification code via local outbox."
+  },
+  {
+   "expanded_task_id": "WB009-T03",
+   "task_no": 3,
+   "workflow_stage": "Login",
+   "human_trace_text": "Sign in to Asana with an existing account and verify the authenticated session and landing state.",
+   "status": "known-difference",
+   "note": "Login page visuals/copy directly observed (EA1 screenshots). Authenticated landing state unavailable anonymously; clone implements local session landing."
+  },
+  {
+   "expanded_task_id": "WB009-T04",
+   "task_no": 4,
+   "workflow_stage": "Logout",
+   "human_trace_text": "Sign out of Asana and verify protected state is no longer accessible without re-authentication.",
+   "status": "inferred-architecture",
+   "note": "Logout semantics implemented locally; source authenticated session unavailable."
+  },
+  {
+   "expanded_task_id": "WB009-T05",
+   "task_no": 5,
+   "workflow_stage": "Password Reset",
+   "human_trace_text": "Exercise Asana's Password Reset flow through request, validation, and completion/recovery state.",
+   "status": "known-difference",
+   "note": "Forgot-password request page directly observed. Completion flow implemented locally with LocalAuthStore reset codes."
+  },
+  {
+   "expanded_task_id": "WB009-T06",
+   "task_no": 6,
+   "workflow_stage": "Onboarding",
+   "human_trace_text": "Exercise the Onboarding workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T07",
+   "task_no": 7,
+   "workflow_stage": "Create Workspace / Organization",
+   "human_trace_text": "Create a representative workspace object on Asana through the Create Workspace / Organization workflow and verify it persists.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T08",
+   "task_no": 8,
+   "workflow_stage": "Workspace Switch",
+   "human_trace_text": "Use Asana's navigation to move between major sections and verify the active state is preserved.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T09",
+   "task_no": 9,
+   "workflow_stage": "Create Project / Space / Base",
+   "human_trace_text": "Create a representative workspace object on Asana through the Create Project / Space / Base workflow and verify it persists.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T10",
+   "task_no": 10,
+   "workflow_stage": "Templates",
+   "human_trace_text": "Exercise the Templates workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T11",
+   "task_no": 11,
+   "workflow_stage": "Structure / Schema",
+   "human_trace_text": "Exercise the Structure / Schema workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T12",
+   "task_no": 12,
+   "workflow_stage": "Create Item / Task / Record",
+   "human_trace_text": "Create a representative workspace object on Asana through the Create Item / Task / Record workflow and verify it persists.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T13",
+   "task_no": 13,
+   "workflow_stage": "Edit / Delete",
+   "human_trace_text": "Modify an existing workspace object on Asana using Edit / Delete and verify the updated state persists after navigation/reload.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T14",
+   "task_no": 14,
+   "workflow_stage": "Bulk Actions",
+   "human_trace_text": "Select multiple workspace objects on Asana, perform Bulk Actions, and verify every selected item receives the intended state change.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T15",
+   "task_no": 15,
+   "workflow_stage": "Assignment / Ownership",
+   "human_trace_text": "Exercise the Assignment / Ownership workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T16",
+   "task_no": 16,
+   "workflow_stage": "Status / Priority",
+   "human_trace_text": "Open Asana's Status / Priority view after creating activity and verify the expected record, status, or metrics are present.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T17",
+   "task_no": 17,
+   "workflow_stage": "Due Dates / Schedule",
+   "human_trace_text": "Use the Due Dates / Schedule workflow on Asana to select/change a valid time-related option and verify availability updates.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T18",
+   "task_no": 18,
+   "workflow_stage": "Subtasks / Relations",
+   "human_trace_text": "Exercise the Subtasks / Relations workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T19",
+   "task_no": 19,
+   "workflow_stage": "Views",
+   "human_trace_text": "Exercise the Views workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T20",
+   "task_no": 20,
+   "workflow_stage": "Filter / Sort / Group",
+   "human_trace_text": "Apply multiple filters on Asana and verify the visible results/state update correctly.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T21",
+   "task_no": 21,
+   "workflow_stage": "Search / Navigation",
+   "human_trace_text": "Search Asana for a representative workspace object, refine the query if needed, and open a relevant result.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T22",
+   "task_no": 22,
+   "workflow_stage": "Saved Views",
+   "human_trace_text": "Save/follow a representative workspace object through Asana's Saved Views flow and verify it appears in the corresponding saved state.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T23",
+   "task_no": 23,
+   "workflow_stage": "Comments / Threads",
+   "human_trace_text": "Use Asana's Comments / Threads interaction and verify the new communication appears in the correct conversation/context.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T24",
+   "task_no": 24,
+   "workflow_stage": "Mentions / Notifications",
+   "human_trace_text": "Configure or trigger Mentions / Notifications on Asana and verify the preference/status is reflected in the UI.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T25",
+   "task_no": 25,
+   "workflow_stage": "Files / Attachments",
+   "human_trace_text": "Exercise the Files / Attachments workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T26",
+   "task_no": 26,
+   "workflow_stage": "Invite Collaborators",
+   "human_trace_text": "Exercise Invite Collaborators on Asana, change access for another user/recipient, and verify the resulting permissions or shared state.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T27",
+   "task_no": 27,
+   "workflow_stage": "Roles / Permissions",
+   "human_trace_text": "Exercise Roles / Permissions on Asana, change access for another user/recipient, and verify the resulting permissions or shared state.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T28",
+   "task_no": 28,
+   "workflow_stage": "Sharing / Public Link",
+   "human_trace_text": "Exercise the Sharing / Public Link workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T29",
+   "task_no": 29,
+   "workflow_stage": "Activity / History",
+   "human_trace_text": "Open Asana's Activity / History view after creating activity and verify the expected record, status, or metrics are present.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T30",
+   "task_no": 30,
+   "workflow_stage": "Automation / Rules",
+   "human_trace_text": "Exercise the Automation / Rules workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T31",
+   "task_no": 31,
+   "workflow_stage": "Integrations",
+   "human_trace_text": "Exercise the Integrations workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T32",
+   "task_no": 32,
+   "workflow_stage": "Import",
+   "human_trace_text": "Use Asana's Import workflow with representative input and verify parsing, progress, success, and invalid-input behavior.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T33",
+   "task_no": 33,
+   "workflow_stage": "Export",
+   "human_trace_text": "Use Asana's Export workflow and verify the expected export/download is produced with the current state.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T34",
+   "task_no": 34,
+   "workflow_stage": "Archive / Restore",
+   "human_trace_text": "Exercise Archive / Restore on Asana and verify the object's lifecycle state and recovery/visibility behavior.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T35",
+   "task_no": 35,
+   "workflow_stage": "Trash / Permanent Delete",
+   "human_trace_text": "Exercise Trash / Permanent Delete on Asana and verify the object's lifecycle state and recovery/visibility behavior.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T36",
+   "task_no": 36,
+   "workflow_stage": "Profile / Preferences",
+   "human_trace_text": "Open a representative Profile / Preferences on Asana and inspect the key metadata, options, and available actions.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T37",
+   "task_no": 37,
+   "workflow_stage": "Workspace Settings",
+   "human_trace_text": "Exercise the Workspace Settings workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T38",
+   "task_no": 38,
+   "workflow_stage": "Billing / Plan",
+   "human_trace_text": "Open the Billing / Plan workflow on Asana, select or modify an option, and verify pricing/status changes before finalization.",
+   "status": "inferred-architecture",
+   "note": "Billing implemented against local-sandbox payment adapter only; source billing UI unavailable."
+  },
+  {
+   "expanded_task_id": "WB009-T39",
+   "task_no": 39,
+   "workflow_stage": "Security / Sessions",
+   "human_trace_text": "Exercise the Security / Sessions controls on Asana and verify device/session/security state changes persist.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T40",
+   "task_no": 40,
+   "workflow_stage": "Validation / Conflict Handling",
+   "human_trace_text": "Trigger or simulate the Validation / Conflict Handling condition on Asana and verify validation, retry/recovery behavior, and state preservation.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T41",
+   "task_no": 41,
+   "workflow_stage": "Empty State / First-run UX",
+   "human_trace_text": "Trigger the Empty State / First-run UX condition on Asana and verify the user sees the correct recovery options without corrupting prior state.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T42",
+   "task_no": 42,
+   "workflow_stage": "Help / Support",
+   "human_trace_text": "Open Asana's Help / Support path from a relevant workflow and verify contextual help/contact options are reachable.",
+   "status": "known-difference",
+   "note": "Marketing resources page directly observed; in-app help panel is a local design."
+  },
+  {
+   "expanded_task_id": "WB009-T43",
+   "task_no": 43,
+   "workflow_stage": "Portfolio",
+   "human_trace_text": "Exercise the Portfolio workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T44",
+   "task_no": 44,
+   "workflow_stage": "Project Section",
+   "human_trace_text": "Exercise the Project Section workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T45",
+   "task_no": 45,
+   "workflow_stage": "Task Dependency",
+   "human_trace_text": "Exercise the Task Dependency workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T46",
+   "task_no": 46,
+   "workflow_stage": "Timeline",
+   "human_trace_text": "Use the Timeline workflow on Asana to select/change a valid time-related option and verify availability updates.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T47",
+   "task_no": 47,
+   "workflow_stage": "Goals",
+   "human_trace_text": "Exercise the Goals workflow on Asana with representative data and verify the resulting UI state and persistence.",
+   "status": "inferred-architecture",
+   "note": "Authenticated source surface unavailable anonymously; implemented as functional local flow (no source-fidelity claim)."
+  },
+  {
+   "expanded_task_id": "WB009-T48",
+   "task_no": 48,
+   "workflow_stage": "End-to-End Scenario",
+   "human_trace_text": "[501] Create an Asana portfolio \"Research Projects 2026\" with 3 sub-projects",
+   "status": "inferred-architecture",
+   "note": "Implemented end-to-end locally: portfolio 'Research Projects 2026' seeded with 3 sub-projects; creation flow also supported."
+  }
+ ]
+}

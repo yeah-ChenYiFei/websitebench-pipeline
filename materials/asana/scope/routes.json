@@ -1,0 +1,260 @@
+{
+ "schema_version": "offline-clone.routes.v1",
+ "routes": [
+  {
+   "id": "home",
+   "route_pattern": "/",
+   "states": [
+    "loaded"
+   ],
+   "priority": "p0",
+   "local_destination": true,
+   "purpose_edge": "primary"
+  },
+  {
+   "id": "pricing",
+   "route_pattern": "/pricing",
+   "states": [
+    "loaded"
+   ],
+   "priority": "p0",
+   "local_destination": true,
+   "purpose_edge": "primary"
+  },
+  {
+   "id": "product",
+   "route_pattern": "/product",
+   "states": [
+    "loaded"
+   ],
+   "priority": "p1",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "solutions",
+   "route_pattern": "/solutions",
+   "states": [
+    "loaded"
+   ],
+   "priority": "p1",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "resources",
+   "route_pattern": "/resources",
+   "states": [
+    "loaded"
+   ],
+   "priority": "p1",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "templates",
+   "route_pattern": "/templates",
+   "states": [
+    "loaded"
+   ],
+   "priority": "p1",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "template-category",
+   "route_pattern": "/templates/{category}",
+   "states": ["loaded"],
+   "priority": "p2",
+   "local_destination": true,
+   "purpose_edge": "control-destination"
+  },
+  {
+   "id": "resource-category",
+   "route_pattern": "/resources/category/{category}",
+   "states": ["loaded"],
+   "priority": "p2",
+   "local_destination": true,
+   "purpose_edge": "control-destination"
+  },
+  {
+   "id": "public-demo",
+   "route_pattern": "/demo/main",
+   "states": ["loaded"],
+   "priority": "p2",
+   "local_destination": true,
+   "purpose_edge": "control-destination"
+  },
+  {
+   "id": "public-terms",
+   "route_pattern": "/terms/{document}",
+   "states": ["loaded"],
+   "priority": "p2",
+   "local_destination": true,
+   "purpose_edge": "control-destination"
+  },
+  {
+   "id": "login",
+   "route_pattern": "/-/login",
+   "states": [
+    "loaded",
+    "error"
+   ],
+   "priority": "p0",
+   "local_destination": true,
+   "purpose_edge": "primary"
+  },
+  {
+   "id": "signup",
+   "route_pattern": "/create-account",
+   "states": [
+    "loaded",
+    "error"
+   ],
+   "priority": "p0",
+   "local_destination": true,
+   "purpose_edge": "primary"
+  },
+  {
+   "id": "forgot",
+   "route_pattern": "/-/forgot_password",
+   "states": [
+    "loaded"
+   ],
+   "priority": "p0",
+   "local_destination": true,
+   "purpose_edge": "primary"
+  },
+  {
+   "id": "app-home",
+   "route_pattern": "/app/home",
+   "states": [
+    "loaded",
+    "authenticated"
+   ],
+   "priority": "p0",
+   "local_destination": true,
+   "purpose_edge": "primary"
+  },
+  {
+   "id": "my-tasks",
+   "route_pattern": "/app/tasks",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p0",
+   "local_destination": true,
+   "purpose_edge": "primary"
+  },
+  {
+   "id": "project",
+   "route_pattern": "/app/project/{project_id}",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p0",
+   "local_destination": true,
+   "purpose_edge": "primary"
+  },
+  {
+   "id": "search",
+   "route_pattern": "/app/search",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p1",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "inbox",
+   "route_pattern": "/app/inbox",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p1",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "portfolios",
+   "route_pattern": "/app/portfolios",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p1",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "goals",
+   "route_pattern": "/app/goals",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p1",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "reporting",
+   "route_pattern": "/app/activity",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p2",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "settings",
+   "route_pattern": "/app/settings",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p1",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "admin",
+   "route_pattern": "/app/admin",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p1",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "billing",
+   "route_pattern": "/app/billing",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p1",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "trash",
+   "route_pattern": "/app/trash",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p2",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  },
+  {
+   "id": "help",
+   "route_pattern": "/app/help",
+   "states": [
+    "authenticated"
+   ],
+   "priority": "p2",
+   "local_destination": true,
+   "purpose_edge": "secondary"
+  }
+ ]
+}

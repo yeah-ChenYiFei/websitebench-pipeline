@@ -1,0 +1,84 @@
+{
+  "schema_version": "websitebench.visual-session.v1",
+  "site_id": "asana",
+  "created_at": "2026-08-25T00:00:00Z",
+  "route": "/pricing",
+  "state": "loaded-authenticated-public-shell",
+  "source_session": {
+    "browser": "ego-lite-headed",
+    "task_space_id": 84,
+    "target_id_sha256": "0209f77397b7986018c4f5e4823ec6efaf819b91c14c1530f8646e324a1c5f6d",
+    "ownership": "agent",
+    "challenge_seen": false,
+    "sensitive_input_used": false,
+    "private_content_recorded": false
+  },
+  "transport": {
+    "source": "existing-mac-ego-lite-headed-session",
+    "clone": "same-mac-ego-lite-headed-session-over-loopback-ssh-tunnel",
+    "lab_server_source_contacted": false,
+    "clone_remote_runtime_requests": 0
+  },
+  "journey": [
+    "switch to the existing exact Asana target",
+    "set the declared viewport with CDP",
+    "navigate directly to the public pricing route",
+    "wait for the page and public font faces",
+    "scroll to the document origin",
+    "dismiss the session-dynamic third-party help surface with a normal empty-area click",
+    "capture one unmasked viewport frame with Page.captureScreenshot",
+    "repeat against the loopback clone with cache disabled"
+  ],
+  "source_artifact_policy": {
+    "storage": "mac-private-not-committed",
+    "raw_source_screenshots_on_server": 0,
+    "raw_source_screenshots_in_git": 0,
+    "dom_or_visible_text_exported": false,
+    "personal_names_or_workspace_content_exported": false,
+    "committed_evidence": "deidentified geometry, metrics, dynamic-region contract, and hashes only"
+  },
+  "threshold": 0.9,
+  "metric_policy": {
+    "mae_similarity": "1 - mean(abs(source-clone))/255",
+    "normalized_rmse_similarity": "1 - sqrt(mean((source-clone)^2))/255",
+    "ssim": "RGB structural_similarity with data_range 255",
+    "comparison_mode": "full unmasked viewport after the observable third-party surface is dismissed"
+  },
+  "dynamic_region": {
+    "classification": "third-party-session-dynamic-support-overlay",
+    "copied_or_hotlinked": false,
+    "normal_close_attempt": "Escape did not close the surface; a normal click on empty page space dismissed it in the same headed session",
+    "comparison_treatment": "dismissed before capture; no pixels masked",
+    "clone_behavior": "hidden in the stable state; the existing footer Support control opens a deterministic local generic help shell and its close button hides it",
+    "synthetic_content_only": true,
+    "third_party_iframe_or_api_used": false
+  },
+  "comparisons": [
+    {
+      "checkpoint_id": "pricing.loaded.desktop",
+      "viewport": {"width": 1280, "height": 800},
+      "source_geometry": {"scroll_width": 1280, "scroll_height": 5390},
+      "clone_geometry": {"scroll_width": 1280, "scroll_height": 5390},
+      "source_sha256": "42633dad20ac13d0b1755821d5af351355ca8b8bab1cf7120173a9ae4e18d9d9",
+      "clone_sha256": "d82eb0ab9a0643a199d0c856d088b165e7fa8f237b4d21d53159e7e047194b4a",
+      "full_image": {"mae_similarity": 0.983974422, "normalized_rmse_similarity": 0.90853812, "ssim": 0.940584257, "passed": true}
+    },
+    {
+      "checkpoint_id": "pricing.loaded.mobile",
+      "viewport": {"width": 390, "height": 844},
+      "source_geometry": {"scroll_width": 393, "scroll_height": 6867},
+      "clone_geometry": {"scroll_width": 390, "scroll_height": 6867},
+      "source_sha256": "ee8f4bc2cda3e823916147e1307eaf88e99cfa11411d71f13b97bfdd39bf5ff6",
+      "clone_sha256": "75459867950868c4cb2138517edf0f881a1a40285be4a45eea4eb1799d11fc16",
+      "full_image": {"mae_similarity": 0.982671308, "normalized_rmse_similarity": 0.907656581, "ssim": 0.910045544, "passed": true}
+    }
+  ],
+  "minimums": {
+    "full_image": {"mae_similarity": 0.982671308, "normalized_rmse_similarity": 0.907656581, "ssim": 0.910045544}
+  },
+  "verdict": {
+    "dynamic_region_policy_passed": true,
+    "strict_unmasked_full_image_passed": true,
+    "reason": "the third-party surface was observably dismissed in the same headed source session; both full unmasked desktop and mobile comparisons pass all three metrics"
+  }
+}

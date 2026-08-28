@@ -1,0 +1,44 @@
+{
+  "schema_version": "offline-clone.checkpoints.v1",
+  "status": "draft",
+  "scope": "desktop-web-only",
+  "viewports": {
+    "desktop_standard": {"width": 1280, "height": 800},
+    "desktop_wide": {"width": 1440, "height": 900}
+  },
+  "checkpoints": [
+    {
+      "id": "home.loaded.desktop", "route_id": "home", "state": "loaded", "viewport": "desktop_wide", "priority": "p0",
+      "evidence_kind": "direct-playwright-sanitized", "acceptance_eligible": true, "verification_kind": "source-clone-direct-metrics",
+      "sanitized_direct_contract": {"evidence_path": "evidence/visual-sessions/home-product-strict-20260825.json", "source_transport": "mac-headed-playwright-public-anonymous", "clone_transport": "same-mac-playwright-loopback-ssh-tunnel", "viewport": {"width": 1440, "height": 900}, "comparison_region": "full-unmasked-viewport", "threshold": 0.9, "metrics": {"mae_similarity": 0.9815688729, "normalized_rmse_similarity": 0.9036145806, "ssim": 0.9009189606}, "raw_source_artifact": "mac-private-not-committed", "clone_remote_runtime_requests": 0}
+    },
+    {
+      "id": "pricing.loaded.desktop", "route_id": "pricing", "state": "loaded", "viewport": "desktop_standard", "priority": "p0",
+      "evidence_kind": "direct-playwright-sanitized", "acceptance_eligible": true, "verification_kind": "source-clone-direct-metrics",
+      "sanitized_direct_contract": {"evidence_path": "evidence/visual-sessions/pricing-ego84-20260825.json", "source_transport": "mac-headed-playwright-public-anonymous", "clone_transport": "same-mac-playwright-loopback-ssh-tunnel", "viewport": {"width": 1280, "height": 800}, "comparison_region": "full-unmasked-viewport", "threshold": 0.9, "metrics": {"mae_similarity": 0.983974422, "normalized_rmse_similarity": 0.90853812, "ssim": 0.940584257}, "raw_source_artifact": "mac-private-not-committed", "clone_remote_runtime_requests": 0}
+    },
+    {
+      "id": "product.loaded.desktop", "route_id": "product", "state": "loaded", "viewport": "desktop_wide", "priority": "p1",
+      "evidence_kind": "direct-playwright-sanitized", "acceptance_eligible": true, "verification_kind": "source-clone-direct-metrics",
+      "sanitized_direct_contract": {"evidence_path": "evidence/visual-sessions/home-product-strict-20260825.json", "source_transport": "mac-headed-playwright-public-anonymous", "clone_transport": "same-mac-playwright-loopback-ssh-tunnel", "viewport": {"width": 1440, "height": 900}, "comparison_region": "full-unmasked-viewport", "threshold": 0.9, "metrics": {"mae_similarity": 0.992715, "normalized_rmse_similarity": 0.946421, "ssim": 0.977663}, "raw_source_artifact": "mac-private-not-committed", "clone_remote_runtime_requests": 0}
+    },
+    {
+      "id": "solutions.loaded.desktop", "route_id": "solutions", "state": "loaded", "viewport": "desktop_standard", "priority": "p1",
+      "evidence_kind": "direct-playwright-sanitized", "acceptance_eligible": true, "verification_kind": "source-clone-direct-metrics",
+      "sanitized_direct_contract": {"evidence_path": "evidence/visual-sessions/public-routes-strict-20260825.json", "source_transport": "mac-headed-playwright-public-anonymous-isolated-context", "clone_transport": "same-mac-playwright-loopback-ssh-tunnel", "viewport": {"width": 1280, "height": 800}, "comparison_region": "full-viewport-after-origin-boundary-external-support-omission", "threshold": 0.9, "metrics": {"mae_similarity": 0.986946702003, "normalized_rmse_similarity": 0.92214012146, "ssim": 0.958436248403}, "source_status": 404, "clone_status": 404, "raw_source_artifact": "mac-private-not-committed", "clone_remote_runtime_requests": 0}
+    },
+    {
+      "id": "resources.loaded.desktop", "route_id": "resources", "state": "loaded", "viewport": "desktop_standard", "priority": "p1",
+      "evidence_kind": "direct-playwright-sanitized", "acceptance_eligible": true, "verification_kind": "source-clone-direct-metrics",
+      "sanitized_direct_contract": {"evidence_path": "evidence/visual-sessions/public-routes-strict-20260825.json", "source_transport": "mac-headed-playwright-public-anonymous-isolated-context", "clone_transport": "same-mac-playwright-loopback-ssh-tunnel", "viewport": {"width": 1280, "height": 800}, "comparison_region": "full-viewport-after-origin-boundary-external-support-omission", "threshold": 0.9, "metrics": {"mae_similarity": 0.979143977165, "normalized_rmse_similarity": 0.902729690075, "ssim": 0.918660717679}, "source_status": 200, "clone_status": 200, "raw_source_artifact": "mac-private-not-committed", "clone_remote_runtime_requests": 0}
+    },
+    {
+      "id": "templates.loaded.desktop", "route_id": "templates", "state": "loaded", "viewport": "desktop_standard", "priority": "p1",
+      "evidence_kind": "direct-playwright-sanitized", "acceptance_eligible": true, "verification_kind": "source-clone-direct-metrics",
+      "sanitized_direct_contract": {"evidence_path": "evidence/visual-sessions/public-routes-strict-20260825.json", "source_transport": "mac-headed-playwright-public-anonymous-isolated-context", "clone_transport": "same-mac-playwright-loopback-ssh-tunnel", "viewport": {"width": 1280, "height": 800}, "comparison_region": "full-viewport-after-origin-boundary-external-support-omission", "threshold": 0.9, "metrics": {"mae_similarity": 0.988230586052, "normalized_rmse_similarity": 0.92010897398, "ssim": 0.962246799055}, "source_status": 200, "clone_status": 200, "raw_source_artifact": "mac-private-not-committed", "clone_remote_runtime_requests": 0}
+    },
+    {"id": "login.loaded.desktop", "route_id": "login", "state": "loaded", "viewport": "desktop_standard", "priority": "p0", "evidence_kind": "source-unavailable-local-browser-tested", "acceptance_eligible": false, "verification_kind": "local-functional", "source_status": "unavailable-without-held-user-session"},
+    {"id": "signup.loaded.desktop", "route_id": "signup", "state": "loaded", "viewport": "desktop_standard", "priority": "p0", "evidence_kind": "source-unavailable-local-browser-tested", "acceptance_eligible": false, "verification_kind": "local-functional", "source_status": "unavailable-without-held-user-session"},
+    {"id": "forgot.loaded.desktop", "route_id": "forgot", "state": "loaded", "viewport": "desktop_standard", "priority": "p0", "evidence_kind": "source-unavailable-local-browser-tested", "acceptance_eligible": false, "verification_kind": "local-functional", "source_status": "unavailable-without-held-user-session"}
+  ]
+}

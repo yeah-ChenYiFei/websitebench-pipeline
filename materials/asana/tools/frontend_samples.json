@@ -1,0 +1,81 @@
+{
+ "schema": "asana.frontend-samples.v1",
+ "notes": "Every expectation below was proven against the running local clone (127.0.0.1). Authenticated flows use a JSON API the contract session block cannot express, so only anonymous checks are listed; see the interaction ledger for authenticated selectors.",
+ "checks": [
+  {
+   "id": "login.page",
+   "url": "/login",
+   "method": "get",
+   "expect_contains": [
+    "Welcome to Asana"
+   ]
+  },
+  {
+   "id": "login.page-2",
+   "url": "/login",
+   "method": "get",
+   "expect_contains": [
+    "To get started, please sign in"
+   ]
+  },
+  {
+   "id": "login.footer",
+   "url": "/login",
+   "method": "get",
+   "expect_contains": [
+    "Forgot password?"
+   ],
+   "expect_not_contains": [
+    "Log out"
+   ]
+  },
+  {
+   "id": "signup.page",
+   "url": "/create-account",
+   "method": "get",
+   "expect_contains": [
+    "Sign up with your work email"
+   ]
+  },
+  {
+   "id": "forgot.page",
+   "url": "/forgot_password",
+   "method": "get",
+   "expect_contains": [
+    "Forgot password?"
+   ]
+  },
+  {
+   "id": "forgot.page-2",
+   "url": "/forgot_password",
+   "method": "get",
+   "expect_contains": [
+    "Send instructions"
+   ]
+  },
+  {
+   "id": "home.page",
+   "url": "/",
+   "method": "get",
+   "expect_contains": [
+    "human-agent teams"
+   ]
+  },
+  {
+   "id": "pricing.page",
+   "url": "/pricing",
+   "method": "get",
+   "expect_contains": [
+    "Pick the plan that fits your team"
+   ]
+  },
+  {
+   "id": "pricing.page-2",
+   "url": "/pricing",
+   "method": "get",
+   "expect_contains": [
+    "Enterprise"
+   ]
+  }
+ ]
+}

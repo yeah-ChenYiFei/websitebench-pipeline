@@ -1,0 +1,31 @@
+name: Deploy Asana public demo
+
+on:
+  push:
+    branches: [web2code2web]
+    paths: [".github/workflows/deploy-asana-public.yml"]
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Publish the protected public demo"
+        required: true
+        type: boolean
+        default: false
+
+concurrency:
+  group: public-demo-asana
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch'
+    uses: ./.github/workflows/public-demo-site.yml
+    with:
+      site: asana
+      package: deploy/generic-offline-clone
+      wrangler_config: deploy/generic-offline-clone/wrangler.generated.jsonc
+      prepare_command: node deploy/generic-offline-clone/scripts/prepare.mjs --config deploy/generic-offline-clone/deployment.asana.v2.json
+      deploy_command: npx --prefix deploy/generic-offline-clone wrangler deploy --config deploy/generic-offline-clone/wrangler.generated.jsonc --containers-rollout=immediate
+      url: https://asana.website-bench.com
+      deploy: ${{ inputs.deploy }}
+    secrets: inherit

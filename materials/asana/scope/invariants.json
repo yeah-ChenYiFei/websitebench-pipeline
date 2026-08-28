@@ -1,0 +1,76 @@
+{
+ "schema_version": "offline-clone.invariants.v1",
+ "status": "frozen",
+ "invariants": [
+  {
+   "id": "offline-closure",
+   "priority": "p0",
+   "statement": "No runtime request leaves the local origin.",
+   "journey_ids": [
+    "visitor-marketing"
+   ],
+   "coverage_dimension_ids": [
+    "public-routes"
+   ],
+   "positive_test_refs": [
+    "clone/tests/test_pages.py::test_no_remote_references"
+   ],
+   "negative_test_refs": [
+    "clone/tests/test_pages.py::test_js_has_no_absolute_remote_fetch"
+   ]
+  },
+  {
+   "id": "auth-protection",
+   "priority": "p0",
+   "statement": "App routes and APIs require a valid local session; logout revokes it.",
+   "journey_ids": [
+    "auth-login",
+    "auth-logout"
+   ],
+   "coverage_dimension_ids": [
+    "auth-flows"
+   ],
+   "positive_test_refs": [
+    "clone/tests/test_auth.py::test_login_logout_cycle"
+   ],
+   "negative_test_refs": [
+    "clone/tests/test_auth.py::test_protected_routes_require_auth"
+   ]
+  },
+  {
+   "id": "persistence",
+   "priority": "p0",
+   "statement": "Business mutations persist in the site-bound SQLite across app restarts.",
+   "journey_ids": [
+    "task-crud"
+   ],
+   "coverage_dimension_ids": [
+    "task-flows"
+   ],
+   "positive_test_refs": [
+    "clone/tests/test_tasks.py::test_task_crud_persists"
+   ],
+   "negative_test_refs": [
+    "clone/tests/test_tasks.py::test_trash_restore_and_purge"
+   ]
+  },
+  {
+   "id": "no-false-success",
+   "priority": "p0",
+   "statement": "Simulated capabilities (invites, billing) are labelled simulated and never claim real side effects.",
+   "journey_ids": [
+    "admin-settings",
+    "billing-sandbox"
+   ],
+   "coverage_dimension_ids": [
+    "task-flows"
+   ],
+   "positive_test_refs": [
+    "clone/tests/test_admin.py::test_invite_is_simulated"
+   ],
+   "negative_test_refs": [
+    "clone/tests/test_admin.py::test_billing_sandbox"
+   ]
+  }
+ ]
+}

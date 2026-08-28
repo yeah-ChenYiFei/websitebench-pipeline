@@ -1,0 +1,23 @@
+{
+  "dsl_version": "websitebench.harbor.playwright-dsl.v1",
+  "schema_version": "websitebench.harbor.task-suite.v1",
+  "site_id": "asana",
+  "suite_id": "asana-tasks",
+  "tasks": [
+    {
+      "actions": [],
+      "id": "healthz",
+      "observations": [
+        {
+          "comparator": {
+            "type": "exact"
+          },
+          "id": "status",
+          "kind": "api_status",
+          "path": "/healthz"
+        }
+      ],
+      "timeout_sec": 30
+    }
+  ]
+}
