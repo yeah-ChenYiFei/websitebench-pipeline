@@ -1,0 +1,203 @@
+ID	Site	Domain	Final_Status	Pipeline_PR	PR_State	Branch_Action
+1	12go-asia	12go.asia	final		no-pr	keep-existing-sites-branch
+2	1password-web	1password.com	final		no-pr	keep-existing-sites-branch
+3	ace-hardware	acehardware.com	final		no-pr	keep-existing-sites-branch
+4	airbnb	airbnb.com	final		no-pr	keep-existing-sites-branch
+5	airtable	airtable.com	final		no-pr	keep-existing-sites-branch
+6	amazon-home-services	amazon.com/services	final		no-pr	keep-existing-sites-branch
+7	amc-theatres	amctheatres.com	not-final	#1	open-draft	migrate-pr-head-to-sites-branch
+8	angi	angi.com	not-final	#57	open-draft	migrate-pr-head-to-sites-branch
+9	asana	app.asana.com	not-final	#44	open-draft	migrate-pr-head-to-sites-branch
+10	aspca	aspca.org/adopt-pet	not-final	#46	closed-unmerged	review-closed-pr-before-migration
+11	aspca-pet-health-insurance	aspcapetinsurance.com	not-final		no-pr	create-planned-empty-sites-branch
+12	confluence	atlassian.com/software/confluence	final	#62	open-ready	keep-existing-sites-branch
+13	autoslash	https://www.autoslash.com	final	#61	open-ready	keep-existing-sites-branch
+14	autotrader	autotrader.co.uk	final	#60	open-ready	keep-existing-sites-branch
+15	bark	bark.com	final	#59	open-ready	keep-existing-sites-branch
+16	bean-box	beanbox.com	final	#50	open-ready	keep-existing-sites-branch
+17	beeradvocate	beeradvocate.com	final	#48	open-ready	keep-existing-sites-branch
+18	betterhelp	betterhelp.com	final	#49	open-ready	keep-existing-sites-branch
+19	blinkist	blinkist.com	final	#17	merged	keep-existing-sites-branch
+20	bluemercury	bluemercury.com	final	#43	open-ready	keep-existing-sites-branch
+21	booking-com	booking.com	final	#53	open-draft	keep-existing-sites-branch
+22	booksy	booksy.com	final	#54	open-ready	keep-existing-sites-branch
+23	bowlero	bowlero.com	not-final		no-pr	create-planned-empty-sites-branch
+24	breakout-games	breakoutgames.com	not-final	#126	open-draft	migrate-pr-head-to-sites-branch
+25	bringfido	bringfido.com	not-final	#125	open-draft	migrate-pr-head-to-sites-branch
+26	calendly	calendly.com	final	#58	open-draft	keep-existing-sites-branch
+27	capterra	capterra.com	final		no-pr	keep-existing-sites-branch
+28	careerbuilder	careerbuilder.com	not-final		no-pr	create-planned-empty-sites-branch
+29	charity-village	charityvillage.com	not-final		no-pr	create-planned-empty-sites-branch
+30	cineplex	cineplex.com	not-final	#113	open-ready	migrate-pr-head-to-sites-branch
+31	clickup	clickup.com	not-final		no-pr	create-planned-empty-sites-branch
+32	coolors	coolors.co	not-final		no-pr	create-planned-empty-sites-branch
+33	coursera	coursera.org	final	#97	open-draft	keep-existing-sites-branch
+34	craigslist	craigslist.org	final	#93	merged	keep-existing-sites-branch
+35	creativebug	creativebug.com	not-final		no-pr	create-planned-empty-sites-branch
+36	crumbl	crumbl.com	final	#96	open-ready	keep-existing-sites-branch
+37	crunchyroll	crunchyroll.com	not-final	#115	open-draft	migrate-pr-head-to-sites-branch
+38	curology	curology.com	not-final	#135	open-ready	migrate-pr-head-to-sites-branch
+39	doctors-without-borders-msf	doctorswithoutborders.org	not-final	#133	open-ready	migrate-pr-head-to-sites-branch
+40	doodle	doodle.com	not-final	#134	open-ready	migrate-pr-head-to-sites-branch
+41	dooney-bourke	dooney.com	not-final	#121	open-ready	migrate-pr-head-to-sites-branch
+42	doordash	doordash.com	not-final	#122	open-ready	migrate-pr-head-to-sites-branch
+43	edx	edx.org	final	#99	open-ready	keep-existing-sites-branch
+44	embark	embarkvet.com	not-final	#123	open-ready	migrate-pr-head-to-sites-branch
+45	eventbrite	eventbrite.com	final	#98	open-ready	keep-existing-sites-branch
+46	everydollar	everydollar.com	not-final		no-pr	create-planned-empty-sites-branch
+47	fandango	fandango.com	not-final		no-pr	create-planned-empty-sites-branch
+48	fenty-beauty	fentybeauty.com	not-final		no-pr	create-planned-empty-sites-branch
+49	flixbus	flixbus.com	not-final	#80	open-ready	migrate-pr-head-to-sites-branch
+50	formswift	formswift.com	not-final		no-pr	create-planned-empty-sites-branch
+51	freshdesk	freshdesk.com	not-final		no-pr	create-planned-empty-sites-branch
+52	frontfundr	frontfundr.com	not-final		no-pr	create-planned-empty-sites-branch
+53	g2	g2.com	not-final		no-pr	create-planned-empty-sites-branch
+54	ghost	ghost.org	not-final		no-pr	create-planned-empty-sites-branch
+55	github	github.com	not-final		no-pr	create-planned-empty-sites-branch
+56	glassdoor	glassdoor.com	not-final		no-pr	create-planned-empty-sites-branch
+57	globalgiving	globalgiving.org	not-final		no-pr	create-planned-empty-sites-branch
+58	goodreads	goodreads.com	not-final	#10	open-draft	migrate-pr-head-to-sites-branch
+59	greenhouse-meta	greenhouse.com	not-final		no-pr	create-planned-empty-sites-branch
+60	hipcamp	hipcamp.com	final		no-pr	keep-existing-sites-branch
+61	hired	hired.com	not-final		no-pr	create-planned-empty-sites-branch
+62	home-depot	homedepot.com	not-final	#8	open-draft	migrate-pr-head-to-sites-branch
+63	humble-bundle	humblebundle.com	not-final		no-pr	create-planned-empty-sites-branch
+64	idealist	idealist.org	not-final		no-pr	create-planned-empty-sites-branch
+65	indeed	indeed.com	not-final		no-pr	create-planned-empty-sites-branch
+66	inmyarea	inmyarea.com	not-final		no-pr	create-planned-empty-sites-branch
+67	instacart	instacart.com	not-final		no-pr	create-planned-empty-sites-branch
+68	insureon	insureon.com	final	#90	open-draft	keep-existing-sites-branch
+69	insurify	insurify.com	final	#91	open-draft	keep-existing-sites-branch
+70	ioby	ioby.org	final	#92	open-draft	keep-existing-sites-branch
+71	ipvanish	ipvanish.com	not-final		no-pr	create-planned-empty-sites-branch
+72	jefit	jefit.com	not-final		no-pr	create-planned-empty-sites-branch
+73	deleteme	joindeleteme.com	not-final		no-pr	create-planned-empty-sites-branch
+74	jopwell	jopwell.com	not-final		no-pr	create-planned-empty-sites-branch
+75	kanetix	kanetix.ca	not-final	#129	open-ready	migrate-pr-head-to-sites-branch
+76	king-arthur-baking	kingarthurbaking.com	not-final	#131	open-draft	migrate-pr-head-to-sites-branch
+77	leetcode	leetcode.com	final	#2	open-ready	keep-existing-sites-branch
+78	legalnature	legalnature.com	final	#4	open-ready	keep-existing-sites-branch
+79	lowes	lowes.com	final	#11	open-ready	keep-existing-sites-branch
+80	mac-cosmetics	maccosmetics.com	final	#5	open-ready	keep-existing-sites-branch
+81	purelymail	mail.google.com	final	#3	open-draft	keep-existing-sites-branch
+82	mailchimp	mailchimp.com	not-final		no-pr	create-planned-empty-sites-branch
+83	mansur-gavriel	mansurgavriel.com	final	#24	open-ready	keep-existing-sites-branch
+84	masterclass	masterclass.com	final	#112	open-draft	keep-existing-sites-branch
+85	mistobox	mistobox.com	final	#114	open-draft	keep-existing-sites-branch
+86	momondo	momondo.com	not-final	#40	open-ready	migrate-pr-head-to-sites-branch
+87	myheritage	myheritage.com	final	#109	open-ready	keep-existing-sites-branch
+88	ollie	myollie.com	final	#18	open-draft	keep-existing-sites-branch
+89	olaplex	olaplex.com	final	#41	open-ready	keep-existing-sites-branch
+90	opentable	opentable.com	final	#111	open-draft	keep-existing-sites-branch
+91	outschool	outschool.com	not-final	#39	open-ready	migrate-pr-head-to-sites-branch
+92	overleaf	overleaf.com	final	#23	open-ready	keep-existing-sites-branch
+93	paulas-choice	paulaschoice.com	not-final	#31	open-ready	migrate-pr-head-to-sites-branch
+94	pawp	pawp.com	not-final		no-pr	create-planned-empty-sites-branch
+95	petfinder	petfinder.com	final	#94	open-draft	keep-existing-sites-branch
+96	petsmart	petsmart.com	final	#118	open-draft	keep-existing-sites-branch
+97	plooto	plooto.com	not-final		no-pr	create-planned-empty-sites-branch
+98	race-roster	raceroster.com	not-final		no-pr	create-planned-empty-sites-branch
+99	ratemyprofessors	ratemyprofessors.com	not-final	#6	open-draft	migrate-pr-head-to-sites-branch
+100	ftc-reportfraud	reportfraud.ftc.gov	not-final		no-pr	create-planned-empty-sites-branch
+101	parks-canada-reservations	reservation.pc.gc.ca	not-final		no-pr	create-planned-empty-sites-branch
+102	ontario-parks	reservations.ontarioparks.ca	not-final		no-pr	create-planned-empty-sites-branch
+103	resy	resy.com	final	#68	open-ready	keep-existing-sites-branch
+104	rockauto	rockauto.com	final	#67	open-ready	keep-existing-sites-branch
+105	roomsketcher	roomsketcher.com	final	#64	open-ready	keep-existing-sites-branch
+106	rover	rover.com	final	#69	open-ready	keep-existing-sites-branch
+107	semantic-scholar	semanticscholar.org	not-final	#34	open-ready	migrate-pr-head-to-sites-branch
+108	simplify-jobs	simplify.jobs	not-final	#130	open-ready	migrate-pr-head-to-sites-branch
+109	sixt	sixt.com	final	#71	open-ready	keep-existing-sites-branch
+110	soko-glam	sokoglam.com	final	#73	open-ready	keep-existing-sites-branch
+111	spirit-airlines	spirit.com	not-final		no-pr	create-planned-empty-sites-branch
+112	spirit-rock	spiritrock.org	not-final	#37	open-ready	migrate-pr-head-to-sites-branch
+113	squarespace	squarespace.com	not-final		no-pr	create-planned-empty-sites-branch
+114	stubhub	stubhub.ca	not-final		no-pr	create-planned-empty-sites-branch
+115	stumptown-coffee	stumptowncoffee.com	not-final		no-pr	create-planned-empty-sites-branch
+116	styleseat	styleseat.com	not-final	#36	open-ready	migrate-pr-head-to-sites-branch
+117	substack	substack.com	not-final	#29	open-ready	migrate-pr-head-to-sites-branch
+118	sur-la-table	surlatable.com	not-final		no-pr	create-planned-empty-sites-branch
+119	taskrabbit	taskrabbit.com	final	#95	open-draft	keep-existing-sites-branch
+120	the-ordinary	theordinary.com	not-final		no-pr	create-planned-empty-sites-branch
+121	ticketmaster	ticketmaster.ca	not-final		no-pr	create-planned-empty-sites-branch
+122	todoist	todoist.com	not-final		no-pr	create-planned-empty-sites-branch
+123	topgolf	topgolf.com	not-final		no-pr	create-planned-empty-sites-branch
+124	trello	trello.com	not-final		no-pr	create-planned-empty-sites-branch
+125	trezor	trezor.io	not-final		no-pr	create-planned-empty-sites-branch
+126	tripadvisor	tripadvisor.com	final	#65	open-ready	keep-existing-sites-branch
+127	trustpilot	trustpilot.com	final	#70	open-ready	keep-existing-sites-branch
+128	typeform	typeform.com	not-final	#38	open-ready	migrate-pr-head-to-sites-branch
+129	uber-eats	ubereats.com	final		no-pr	keep-existing-sites-branch
+130	udemy	udemy.com	not-final		no-pr	create-planned-empty-sites-branch
+131	ulta-beauty	ulta.com	not-final	#42	open-ready	migrate-pr-head-to-sites-branch
+132	uncommon-goods	uncommongoods.com	not-final		no-pr	create-planned-empty-sites-branch
+133	untappd	untappd.com	final	#119	open-draft	keep-existing-sites-branch
+134	vistaprint	vistaprint.com	not-final		no-pr	create-planned-empty-sites-branch
+135	vivid-seats	vividseats.com	not-final		no-pr	create-planned-empty-sites-branch
+136	vivino	vivino.com	not-final	#32	open-ready	migrate-pr-head-to-sites-branch
+137	wag	wagwalking.com	not-final		no-pr	create-planned-empty-sites-branch
+138	webflow	webflow.com	not-final		no-pr	create-planned-empty-sites-branch
+139	make-a-wish	wish.org	not-final	#27	open-ready	migrate-pr-head-to-sites-branch
+140	wix	wix.com	final	#127	open-ready	keep-existing-sites-branch
+141	workable	workable.com	final		no-pr	keep-existing-sites-branch
+142	zillow	zillow.com	not-final		no-pr	create-planned-empty-sites-branch
+143	ziprecruiter	ziprecruiter.com	not-final		no-pr	create-planned-empty-sites-branch
+144	zotero	zotero.org	not-final		no-pr	create-planned-empty-sites-branch
+145	target	target.com	not-final	#85	open-ready	migrate-pr-head-to-sites-branch
+146	costco	costco.com	not-final		no-pr	create-planned-empty-sites-branch
+147	wayfair	wayfair.com	not-final		no-pr	create-planned-empty-sites-branch
+148	mercari	mercari.com	not-final		no-pr	create-planned-empty-sites-branch
+149	kayak	kayak.com	not-final		no-pr	create-planned-empty-sites-branch
+150	google-flights	google.com/travel/flights	not-final	#75	open-ready	migrate-pr-head-to-sites-branch
+151	vrbo	vrbo.com	not-final	#77	open-ready	migrate-pr-head-to-sites-branch
+152	khan-academy	khanacademy.org	not-final		no-pr	create-planned-empty-sites-branch
+153	quizlet	quizlet.com	not-final		no-pr	create-planned-empty-sites-branch
+154	chewy	chewy.com	not-final		no-pr	create-planned-empty-sites-branch
+155	yelp	yelp.com	not-final	#103	open-ready	migrate-pr-head-to-sites-branch
+156	letterboxd	letterboxd.com	not-final		no-pr	create-planned-empty-sites-branch
+157	gitlab	gitlab.com	not-final		no-pr	create-planned-empty-sites-branch
+158	bitbucket	bitbucket.org	not-final		no-pr	create-planned-empty-sites-branch
+159	stack-overflow	stackoverflow.com	not-final	#108	open-ready	migrate-pr-head-to-sites-branch
+160	npm	npmjs.com	not-final	#128	open-ready	migrate-pr-head-to-sites-branch
+161	notion	notion.so	final		no-pr	keep-existing-sites-branch
+162	fiverr	fiverr.com	not-final	#101	open-ready	migrate-pr-head-to-sites-branch
+163	upwork	upwork.com	not-final		no-pr	create-planned-empty-sites-branch
+164	redfin	redfin.com	not-final		no-pr	create-planned-empty-sites-branch
+165	coinbase	coinbase.com	not-final		no-pr	create-planned-empty-sites-branch
+166	fidelity	fidelity.com	not-final		no-pr	create-planned-empty-sites-branch
+167	canva	canva.com	not-final	#78	open-ready	migrate-pr-head-to-sites-branch
+168	figma	figma.com	not-final	#79	open-ready	migrate-pr-head-to-sites-branch
+169	medium	medium.com	final	#116	open-ready	keep-existing-sites-branch
+170	wordpress	wordpress.com	not-final	#81	open-ready	migrate-pr-head-to-sites-branch
+171	spotify	spotify.com	final	#66	open-ready	keep-existing-sites-branch
+172	netflix	netflix.com	not-final	#82	open-ready	migrate-pr-head-to-sites-branch
+173	slack	slack.com	not-final	#87	open-ready	migrate-pr-head-to-sites-branch
+174	discord	discord.com	not-final	#86	open-ready	migrate-pr-head-to-sites-branch
+175	patreon	patreon.com	not-final	#35	open-ready	migrate-pr-head-to-sites-branch
+176	kickstarter	kickstarter.com	final	#117	open-ready	keep-existing-sites-branch
+177	greenhouse	greenhouse.io	final	#9	open-draft	keep-existing-sites-branch
+178	google-scholar	scholar.google.com	final	#100	open-ready	keep-existing-sites-branch
+179	hackerrank	hackerrank.com	not-final		no-pr	create-planned-empty-sites-branch
+180	meetup	meetup.com	final	#105	open-draft	keep-existing-sites-branch
+181	boardgamegeek	boardgamegeek.com	not-final	#102	open-ready	migrate-pr-head-to-sites-branch
+182	change	change.org	final		no-pr	keep-existing-sites-branch
+183	eatthismuch	eatthismuch.com	not-final		no-pr	create-planned-empty-sites-branch
+184	etsy	etsy.com	final		no-pr	keep-existing-sites-branch
+185	habitica	habitica.com	not-final	#28	open-ready	migrate-pr-head-to-sites-branch
+186	handy	handy.com	not-final		no-pr	create-planned-empty-sites-branch
+187	imdb	imdb.com	final		no-pr	keep-existing-sites-branch
+188	myrecipes	myrecipes.com	not-final	#26	open-ready	migrate-pr-head-to-sites-branch
+189	ravelry	ravelry.com	not-final	#33	open-ready	migrate-pr-head-to-sites-branch
+190	redcross	redcross.org	not-final		no-pr	create-planned-empty-sites-branch
+191	strava	strava.com	not-final		no-pr	create-planned-empty-sites-branch
+192	trakt	trakt.tv	not-final	#30	open-ready	migrate-pr-head-to-sites-branch
+193	tripit	tripit.com	final		no-pr	keep-existing-sites-branch
+194	weworkremotely	weworkremotely.com	not-final		no-pr	create-planned-empty-sites-branch
+195	when2meet	when2meet.com	not-final	#25	open-ready	migrate-pr-head-to-sites-branch
+196	linkedin	linkedin.com	final		no-pr	keep-existing-sites-branch
+197	amazon	amazon.com	final		no-pr	keep-existing-sites-branch
+201	walmart	walmart.com	not-final	#120	open-ready	migrate-pr-head-to-sites-branch
+202	bestbuy	bestbuy.com	not-final	#124	open-ready	migrate-pr-head-to-sites-branch
+203	ikea	ikea.com	not-final		no-pr	create-planned-empty-sites-branch
+204	macys	macys.com	not-final		no-pr	create-planned-empty-sites-branch
+205	nordstrom	nordstrom.com	not-final		no-pr	create-planned-empty-sites-branch

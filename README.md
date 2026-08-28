@@ -33,7 +33,9 @@ python scripts/site_workspace.py checkout <site-id>
 站点 worktree 中仍使用 `materials/<material-id>`，现有诊断和运行命令保持不变。
 站点 PR 必须以对应的 `sites/<site-id>` 为 base；Pipeline PR 才以 `main` 为 base。
 详细迁移、贡献与 review 流程见
-[`docs/per-site-repository-workflow.md`](docs/per-site-repository-workflow.md)。
+[`docs/per-site-repository-workflow.md`](docs/per-site-repository-workflow.md)；
+可直接转发给贡献者的中文简版见
+[`docs/website-contribution-quickstart-zh.md`](docs/website-contribution-quickstart-zh.md)。
 
 Agent 在创建站点材料前，先读 `AGENTS.md` 与
 `docs/source-evidence-access-policy.md`。

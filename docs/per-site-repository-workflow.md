@@ -4,6 +4,12 @@ WebsiteBench keeps shared Pipeline code on `main`. Every delivered website has
 one persistent branch named `sites/<site-id>` in the same GitHub repository.
 Each site branch contains the Pipeline plus only that site's material tree.
 
+`sites/status.tsv` is the assignment snapshot for the 202-site catalog. A
+`final` branch contains the maintainer-confirmed snapshot, `review` preserves an
+existing PR snapshot without claiming acceptance, `review-required` marks a
+closed-unmerged PR that needs explicit inspection, and `planned` is an empty
+Pipeline-only branch for a site with no submitted PR.
+
 This layout creates no extra repositories and needs no Git LFS, GitHub Actions,
 or paid storage service. It does rely on contributors using an explicit shallow
 single-branch clone. GitHub cannot force a plain `git clone URL` to ignore the
