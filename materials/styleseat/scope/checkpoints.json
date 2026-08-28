@@ -1,0 +1,106 @@
+{
+  "schema_version": "offline-clone.checkpoints.v1",
+  "status": "frozen",
+  "site_id": "styleseat",
+  "capture_id": "2026-08-21.styleseat-r1",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "home.desktop",
+      "route_id": "m",
+      "state": "loaded",
+      "viewport": "desktop",
+      "visual_contract": {
+        "source_artifact_path": "source-current/cap-20260821-visual/shot/92bd069c3256__www.styleseat.com_m_.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9
+      }
+    },
+    {
+      "id": "city-list.desktop",
+      "route_id": "m-search-atlanta-ga-professionals",
+      "state": "loaded",
+      "viewport": "desktop",
+      "visual_contract": {
+        "source_artifact_path": "source-current/cap-20260821-visual/shot/16cecb703879__www.styleseat.com_m_search_atlanta-ga_professionals.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9
+      }
+    },
+    {
+      "id": "provider-profile.desktop",
+      "route_id": "m-v-hairbywyss",
+      "state": "loaded",
+      "viewport": "desktop",
+      "visual_contract": {
+        "source_artifact_path": "source-current/cap-20260821-visual/shot/c916a074c3f4__www.styleseat.com_m_v_hairbywyss.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9
+      }
+    },
+    {
+      "id": "login.desktop",
+      "route_id": "m-login",
+      "state": "loaded",
+      "viewport": "desktop"
+    },
+    {
+      "id": "not-found.desktop",
+      "route_id": "m-404",
+      "state": "loaded",
+      "viewport": "desktop"
+    },
+    {
+      "id": "client-appointments.anonymous",
+      "route_id": "m-client-appointments",
+      "state": "anonymous",
+      "viewport": "desktop"
+    },
+    {
+      "id": "client-appointments.authenticated",
+      "route_id": "m-client-appointments",
+      "state": "authenticated",
+      "viewport": "desktop"
+    }
+  ],
+  "freeze_decision": {
+    "named_supervisor": "claude-opus-5-offline-clone-run-L05",
+    "decided_at": "2026-08-21T00:00:00Z",
+    "rationale": "Anonymous and authenticated capture passes ran the identical profile (same user agent, 1440x900 viewport, America/Los_Angeles, en-US), so the desktop frame is the only calibrated viewport. Mobile and tablet were never captured and are therefore not claimed. Visual contracts are frozen only for the three routes whose source screenshots were taken above the fold at exactly 1440x900; the auth-state and 404 checkpoints carry reachability and state claims, not pixel ones."
+  }
+}

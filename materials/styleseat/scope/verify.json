@@ -1,0 +1,71 @@
+{
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "styleseat",
+  "note": "Local fixture credentials only. The source account's credentials live in run/creds.env (chmod 600, excluded from delivery) and appear nowhere in this repository. The address below is the equal-length scrubbed placeholder that tools/scrub_pii.py wrote into the captured logged-in DOM, and the password is invented locally for this clone; clone/app.py seeds exactly this pair through the auth store's own seed_account so the hash comes from the store, not from us. No Content-Type is declared for the session post: the official runner sends form=..., so Playwright labels it form-urlencoded itself.",
+  "boot": {
+    "argv": [
+      "{python}",
+      "-m",
+      "uvicorn",
+      "app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "{port}",
+      "--log-level",
+      "warning"
+    ],
+    "cwd": "clone",
+    "env": {
+      "WEBSITEBENCH_SITE_BACKEND_DATABASE": "{data_dir}/styleseat.sqlite3"
+    }
+  },
+  "routes": {},
+  "status": {
+    "not-found.desktop": 200
+  },
+  "deferred": {},
+  "prepare": [],
+  "session": {
+    "post": "/accounts/ajax-login/",
+    "expect_status": [
+      200
+    ],
+    "accounts": {
+      "client": {
+        "form": {
+          "email": "4280322688@pu.jyr",
+          "password": "Fixture-Client-2026!"
+        },
+        "routes": []
+      }
+    }
+  },
+  "states": {
+    "m-client-appointments.authenticated": {
+      "session": "client",
+      "steps": [
+        {
+          "goto": "/m/client-appointments"
+        },
+        {
+          "expect": "text=My Settings",
+          "timeout_ms": 15000
+        }
+      ]
+    },
+    "m-client-appointments.anonymous": {
+      "steps": [
+        {
+          "goto": "/m/client-appointments"
+        },
+        {
+          "expect": "text=Log-in to view your appointments",
+          "timeout_ms": 15000
+        }
+      ]
+    }
+  },
+  "states_out_of_scope": {},
+  "visual_excluded": {}
+}

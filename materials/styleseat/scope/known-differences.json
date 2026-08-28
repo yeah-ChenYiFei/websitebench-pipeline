@@ -1,0 +1,260 @@
+{
+ "schema_version": "offline-clone.known-differences.v1",
+ "site_id": "styleseat",
+ "capture_id": "2026-08-21.styleseat-r1",
+ "note": "Intentional deviations from www.styleseat.com only. Defects that are simply unfixed belong in OPEN-DEFECTS.md, not here — recording a bug as an intended difference launders it.",
+ "differences": [
+  {
+   "id": "professional_role_surface_not_cloned",
+   "category": "scope",
+   "authority": "customer-ruling",
+   "statement": "The professional-role login surface and every route behind it is not cloned. Only what the customer-role account can see is.",
+   "rationale": "The customer directed this cut explicitly; it is the one legitimate source of scope reduction. One account set was available and its role is customer, so the professional surface was never reachable to capture honestly.",
+   "affected_routes": [
+    "/m/pro-signup",
+    "/m/pro-*"
+   ],
+   "user_visible": true
+  },
+  {
+   "id": "list_pagination_truncated_at_page_2",
+   "category": "scope",
+   "authority": "capture-budget",
+   "statement": "Every list route is captured to the end of its second page. The source paginates by a 'Load more' control that fetches salons.json?from=30 and appends into the same tree — page 2 has no URL — so it is clicked during capture and serialized with page 1. Page 3 and beyond are not captured: the control is rewritten into a link to <route>/page-3, a shape the server answers with the declared scope-boundary page. Where the source exhausts its results on that one click it removes the control itself, and so does the clone — there is nothing truncated to announce.",
+   "rationale": "FAST-CLONE.md 5.2 option (b): seal the truncation frontier with an explicit boundary page so a visitor can tell 'not captured' from 'broken'. The clone strips the source's app bundle (leaving it in makes the client re-take the router and 404 itself), so no control in the clone can fetch anything at runtime — a frontier that is not resolved at capture time can only be announced, never followed. Measured: 264 category lists in oakland-ca, 80 with a real second page, 36 filling both pages, 44 exhausted by the single click, 182 shorter than one page; all 27 city professionals lists hold 22 cards or fewer, so their second page does not exist at the source either.",
+   "affected_routes": [
+    "/m/search/{city}/{category}",
+    "/m/search/{city}/professionals",
+    "/m/search/{city}/{category}/page-3"
+   ],
+   "user_visible": true
+  },
+  {
+   "id": "category_dimension_limited_to_one_city",
+   "category": "scope",
+   "authority": "capture-budget",
+   "statement": "The 264 service-category lists were captured for one locked representative city, oakland-ca. Other cities have their professionals list but not the full per-category fan-out.",
+   "rationale": "The category dimension multiplies by every city; one locked city keeps the dimension real and observable without a combinatorial capture.",
+   "affected_routes": [
+    "/m/search/{city}/{category}"
+   ],
+   "user_visible": true
+  },
+  {
+   "id": "round_three_hub_expansion_cut",
+   "category": "scope",
+   "authority": "customer-ruling",
+   "statement": "A third capture round over the oakland-ca hub and its linked categories was planned and cut.",
+   "rationale": "The customer asked to prioritise finishing over breadth. Routes the round would have added answer the scope-boundary page.",
+   "affected_routes": [
+    "/m/search/oakland-ca/*"
+   ],
+   "user_visible": true
+  },
+  {
+   "id": "careers_listings_are_third_party",
+   "category": "source-behaviour",
+   "authority": "source-observed",
+   "statement": "/careers renders its job list from a third-party Rippling ATS iframe. The clone serves the page; the job list inside it is empty.",
+   "rationale": "The listings are not StyleSeat content and are not served from a StyleSeat origin, so cloning them would be cloning someone else's site. runtime_remote_requests is forbidden, so the iframe cannot load remotely.",
+   "affected_routes": [
+    "/careers"
+   ],
+   "user_visible": true
+  },
+  {
+   "id": "about_redirects_to_404_on_the_source",
+   "category": "source-behaviour",
+   "authority": "source-observed",
+   "statement": "/about answers 302 to /m/404 on www.styleseat.com itself. The clone reproduces that, because reproducing it is the clone being right.",
+   "rationale": "Faithfulness to observed source behaviour, not a clone defect.",
+   "affected_routes": [
+    "/about"
+   ],
+   "user_visible": true
+  },
+  {
+   "id": "logged_in_surface_shows_empty_states",
+   "category": "data",
+   "authority": "source-observed",
+   "statement": "The captured account has no bookings, no saved cards and no messages. /m/favorites renders 'No Favorites Yet' and /m/client-inbox renders 'Welcome to your new inbox'; /m/user-credit-cards renders the account-settings surface with no card on file. /m/client-appointments is the exception: while signed in the source itself returns the discovery/marketing surface there (HTTP 200, final_url unchanged), not an appointments empty state, and the clone reproduces exactly that.",
+   "rationale": "The account is a real, previously unused customer account and the source was explored read-only with GET only — creating bookings to make the surface look fuller would have been a write against a live business. The appointments behaviour was verified against the capture log rather than assumed: reproducing what the source returned is the job, and inventing an appointments empty state it never served would have been a nicer-looking lie.",
+   "affected_routes": [
+    "/m/client-appointments",
+    "/m/favorites",
+    "/m/user-credit-cards",
+    "/m/client-inbox"
+   ],
+   "user_visible": true
+  },
+  {
+   "id": "vendored_css_rewritten_for_offline_closure",
+   "category": "construction",
+   "authority": "offline-requirement",
+   "statement": "Vendored stylesheets were rewritten so every url() resolves locally, and ten of them gained a .css suffix their captured filenames had lost.",
+   "rationale": "The capture namer strips characters and truncates long segments, which destroyed some extensions; without the suffix the rewriter's *.css glob skipped the file and it kept live fonts.gstatic.com references.",
+   "artifacts": [
+    "tools/css-renames.json",
+    "run/css-original/"
+   ],
+   "user_visible": false
+  },
+  {
+   "id": "profile_photo_base_rewritten_to_local_prefix",
+   "category": "asset",
+   "authority": "clone-decision",
+   "statement": "Every `data-photo-url` attribute holds the clone's local asset prefix instead of the source CDN base (d220aniogakg8b.cloudfront.net).",
+   "rationale": "The attribute's contract is `base + size-suffix` — the front end appends `_200x200.jpg` and friends. All 948 bases have their sized variants present locally, so the rewritten value satisfies that contract exactly, while the un-rewritten one would have been 948 remote addresses inside a delivery that declares runtime_remote_requests=forbidden. The same element's `background-image: url(...)` was already local at build time; leaving the sibling attribute remote was an inconsistency, not a policy.",
+   "user_visible": false,
+   "affected_routes": [
+    "/m/v/*"
+   ]
+  },
+  {
+   "id": "source_url_kept_as_prose_in_legal_pages",
+   "category": "content",
+   "authority": "faithfulness",
+   "statement": "Six occurrences of the source URL survive as visible prose in /tos-for-clients and /tos-for-professionals.",
+   "rationale": "They are the text of the agreement, not runtime references. Rewriting them would alter a legal document's visible content; the official remote-URL rule only counts src/href/action/url contexts, which these are not.",
+   "affected_routes": [
+    "/tos-for-clients",
+    "/tos-for-professionals"
+   ],
+   "user_visible": true
+  },
+  {
+   "id": "google_static_maps_neutralized",
+   "category": "construction",
+   "authority": "offline-requirement",
+   "statement": "Map backgrounds that were Google Static Maps images are neutralized to a transparent pixel instead of being captured.",
+   "rationale": "The image URLs embed a Google API key and each render is a remote request. Shipping the key would leak someone else's credential, and the request is forbidden at runtime.",
+   "user_visible": true
+  },
+  {
+   "id": "outbound_links_route_through_local_interstitial",
+   "category": "navigation",
+   "authority": "clone-decision",
+   "statement": "Outbound anchors (Instagram, Facebook, Twitter, Pinterest, the App Store and Google Play listings, help.styleseat.com, vdp.styleseat.com, the Webflow badge) point at /m/leaving?u=<percent-encoded>, a local page that names the destination in text, instead of at the destination itself.",
+   "rationale": "The build had blanked all 11,049 of them to about:blank, which is a broken footer, not an offline one. Writing the absolute URL back would have put href=\"https://…\" into the delivery, which the official remote-reference scan counts as a runtime remote load (diagnostics.REMOTE_URL lists href) and which contradicts the clone's own runtime_remote_requests=forbidden. The interstitial keeps the fact of where each link goes — printed, not linked — at the cost of one extra click and zero remote requests. Restoration was aligned by document order against the source DOM and any page whose count disagreed was skipped rather than guessed.",
+   "affected_routes": [
+    "*"
+   ],
+   "user_visible": true
+  },
+  {
+   "id": "bare_search_route_served_by_boundary_page",
+   "category": "scope",
+   "authority": "clone-decision",
+   "statement": "/search 301s to /m/search exactly as the source does, and /m/search then lands on the declared boundary page rather than a search UI.",
+   "rationale": "The source redirect was confirmed by a single read-only GET. The destination was never captured — the capture was bounded at one locked city — so the honest terminus is the boundary page that says so, per FAST-CLONE §5.2 option (b).",
+   "affected_routes": [
+    "/search",
+    "/m/search"
+   ],
+   "user_visible": true
+  },
+  {
+   "id": "map_drag_cursor_uses_the_grab_keyword",
+   "category": "asset",
+   "authority": "maintainer-judgment",
+   "statement": "On the 291 city-list pages that embed a map container, the drag cursor is declared as `cursor: grab` instead of `cursor: url(\"https://maps.gstatic.com/mapfiles/openhand_8_8.cur\"), default`.",
+   "rationale": "The source declaration names a Google-hosted cursor image that was never captured and that this clone, declaring runtime_remote_requests=forbidden, must not fetch. Dropping the reference to about:blank like any other uncaptured asset would make the browser fail the load and fall back to an arrow, silently losing the affordance. `grab` is the CSS keyword for exactly the openhand cursor, so the pointer the visitor sees is the pointer the source shows, with no request. Verified by driving a browser over 15 routes: 0 external requests.",
+   "affected_routes": [
+    "/m/search/*/professionals"
+   ],
+   "user_visible": false,
+   "detected_by": "browser network trace during live verification"
+  },
+  {
+   "id": "assets_recaptured_after_an_entity_encoding_blind_spot",
+   "category": "asset",
+   "authority": "maintainer-judgment",
+   "statement": "631 assets were captured after the main capture round, because the harvester could not see the URLs that referenced them.",
+   "rationale": "Hydrated inline styles write `url(&quot;//host/path&quot;)` with entity-encoded quotes. The build rewriter, the asset harvester and the official remote-reference scan all read that address as starting with `&quot;` and skipped it, so those files were never enumerated. Recapturing them is read-only GET against the same first-party hosts as the original round; the alternative was to leave references pointing at files that are not there. The asset manifest went from 51,833 to 52,572 entries, every one with a byte-identical runtime copy.",
+   "affected_routes": [
+    "/m/*"
+   ],
+   "user_visible": false,
+   "detected_by": "tools/precheck.py LOCAL_ASSET_REF_MISSING"
+  },
+  {
+   "id": "five_page_references_are_gone_upstream",
+   "category": "asset",
+   "authority": "maintainer-judgment",
+   "statement": "Five asset references in the pages resolve to no local file: one Webflow placeholder.svg, one deleted client photo, and three references to two Mux video thumbnails (one asset is referenced at both 90px and 640px).",
+   "rationale": "None of the three upstream hosts will serve these bytes today, re-checked read-only on 2026-08-21: the Webflow CDN answers 403 for placeholder.svg, the CloudFront client photo answers 404, and both Mux thumbnails answer 500 {\"error\":{\"code\":13,\"message\":\"Internal Server Error\"}} — 2,574 of the 2,576 Mux thumbnails on this site captured without incident, so the two failures are upstream, not a capture gap. Fabricating substitute bytes would make the clone look better than the site it copies. All five are local 404s inside the clone; none is a remote request, and the source pages show the same broken images. Two of the Mux references still carry the entity-escaped query hash described in assets_recaptured_after_an_entity_encoding_blind_spot; repointing them was pointless because no file exists under either spelling. A further 957 references are `data-photo-url` bases, which the source's JS completes with a size suffix — the base itself is never a file and nothing requests it, since the app bundle is stripped.",
+   "affected_routes": [
+    "/m/v/masterdopestylistshi",
+    "/m/v/VintageGlam",
+    "/m/v/nakishaashley2",
+    "/join/nail-artists"
+   ],
+   "user_visible": true,
+   "detected_by": "tools/precheck.py LOCAL_ASSET_REF_MISSING"
+  },
+  {
+   "id": "careers_hero_images_are_served_from_the_asset_root",
+   "category": "asset",
+   "authority": "maintainer-judgment",
+   "statement": "On /careers/ the two hero images are referenced as `/static/assets/<capture>/www.styleseat.com/careers/hero_left.png` rather than the source's relative `./hero_left.png`.",
+   "rationale": "The source page is the only one in the capture that references an asset relatively. The builder rewrites absolute URLs and leaves relative ones alone, so the reference survived untouched and resolved against the clone's own route, where nothing answered. Pointing it at the asset root puts it where every other asset in this clone lives. The bytes are the source's own (2.1 MB and 2.7 MB, fetched by read-only GET from https://www.styleseat.com/careers/), so what renders is unchanged; only the address differs.",
+   "affected_routes": [
+    "/careers/"
+   ],
+   "user_visible": false,
+   "detected_by": "browser network trace, local 404"
+  },
+  {
+   "id": "runtime_injected_stylesheets_are_serialized_into_their_own_tags",
+   "category": "markup",
+   "authority": "maintainer-judgment",
+   "statement": "`<style id=\"react-native-stylesheet\">` and `<style id=\"ReanimatedPredefinedWebAnimationsStyle\">` carry their rules as DOM text in the clone, where the source leaves them empty and fills them through CSSOM at runtime.",
+   "rationale": "react-native-web and react-native-reanimated call insertRule instead of writing DOM text, so a serialized capture gets the tags but not the rules. The clone strips the app bundle, so nothing would refill them and the layout collapses (see OPEN-DEFECTS D7). The rules are the source's own, read back out of its CSSOM, and they are placed in the same tag at the same position, so the cascade matches what the browser had at runtime. What differs is only where the bytes live: DOM text instead of an insertRule call.",
+   "affected_routes": [
+    "/m/*",
+    "/join/*",
+    "/careers/"
+   ],
+   "user_visible": false,
+   "detected_by": "visual contract comparison against the source"
+  },
+  {
+   "id": "visual_reference_rasters_were_retaken_at_the_top_of_the_page",
+   "category": "evidence",
+   "authority": "maintainer-judgment",
+   "statement": "The three frozen visual references come from `source-current/cap-20260821-visual/`, re-taken after the original rasters were found to frame the page footer.",
+   "rationale": "The page capture scrolls to trigger lazy loading and then calls window.scrollTo(0,0), which moves nothing on this site because the scroll lives in a react-native-web ScrollView container. The original shots therefore framed wherever the lazy-load scroll ended, and comparing them against the clone's first viewport measured nothing (see OPEN-DEFECTS D8). The re-taken rasters live in a separate capture directory so the originals stay on disk as evidence rather than being overwritten.",
+   "affected_routes": [
+    "/m/",
+    "/m/search/atlanta-ga/professionals",
+    "/m/v/hairbywyss"
+   ],
+   "user_visible": false,
+   "detected_by": "visual contract comparison against the source"
+  },
+  {
+   "id": "subresource_integrity_dropped_on_rewritten_assets",
+   "category": "construction",
+   "authority": "offline-requirement",
+   "statement": "The `integrity=\"sha384-…\"` attribute is removed from `<link>`/`<script>` tags whose reference points at a local asset. On this site that is 57 tags, one per /join/ page, all pinning the same Webflow stylesheet.",
+   "rationale": "The build rewrites the url() references inside captured CSS to local paths, so the bytes no longer hash to the pinned value and the browser silently refuses the stylesheet — the whole /join/ surface rendered as unstyled text with no 404 and no remote reference (see OPEN-DEFECTS D9). Recomputing the hash was rejected: the attribute asserts that the bytes are the source's bytes, and after rewriting they are not. Removing it is the honest option, and SRI protects nothing for a same-origin file served from the clone's own static root.",
+   "affected_routes": [
+    "/join/*"
+   ],
+   "user_visible": false,
+   "detected_by": "visual spot check of routes outside the frozen visual contracts"
+  },
+  {
+   "id": "third_party_embeds_are_neutralized_to_about_blank",
+   "category": "construction",
+   "authority": "offline-requirement",
+   "statement": "All 2,619 `<iframe>` elements in the clone have `src=\"about:blank\"`. The visible effect is a blank rectangle at the embed's declared size — most noticeably the YouTube product video on /join/all-in-one-salon-booking-software.",
+   "rationale": "Every iframe on this site loads from a third-party origin (YouTube, Rippling, Embedly). This clone declares runtime_remote_requests=forbidden, and the content is not StyleSeat's to serve. The element, its dimensions and its title attribute are kept so the page geometry matches the source; only the load is cut.",
+   "affected_routes": [
+    "/join/*",
+    "/careers"
+   ],
+   "user_visible": true
+  }
+ ]
+}

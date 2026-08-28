@@ -1,0 +1,79 @@
+{
+ "schema_version": "offline-clone.coverage.v1",
+ "status": "frozen",
+ "dimensions": [
+  {
+   "id": "source-direct-states",
+   "label": "States captured directly from www.styleseat.com",
+   "unit": "state",
+   "category": "source",
+   "required_evidence_kinds": [
+    "visual"
+   ],
+   "required_items": [
+    "home.desktop",
+    "city-list.desktop",
+    "provider-profile.desktop"
+   ],
+   "satisfied_items": []
+  },
+  {
+   "id": "reachable-routes",
+   "label": "Routes the clone answers without a session",
+   "unit": "route",
+   "category": "behaviour",
+   "required_evidence_kinds": [
+    "browser"
+   ],
+   "required_items": [
+    "login.desktop",
+    "not-found.desktop",
+    "client-appointments.anonymous"
+   ],
+   "satisfied_items": []
+  },
+  {
+   "id": "auth-states",
+   "label": "The same route seen anonymously and signed in",
+   "unit": "state",
+   "category": "behaviour",
+   "required_evidence_kinds": [
+    "browser"
+   ],
+   "required_items": [
+    "client-appointments.anonymous",
+    "client-appointments.authenticated"
+   ],
+   "satisfied_items": []
+  },
+  {
+   "id": "p0-network-invariants",
+   "label": "Zero remote runtime requests",
+   "unit": "invariant",
+   "category": "invariant",
+   "required_evidence_kinds": [
+    "browser"
+   ],
+   "required_items": [
+    "home.desktop",
+    "provider-profile.desktop",
+    "client-appointments.authenticated"
+   ],
+   "satisfied_items": []
+  },
+  {
+   "id": "route-closure",
+   "label": "Truncation is declared, not silent",
+   "unit": "route",
+   "category": "scope",
+   "required_evidence_kinds": [
+    "browser"
+   ],
+   "required_items": [
+    "not-found.desktop"
+   ],
+   "rationale": "The scope-boundary page answers route shapes that are deliberately uncaptured, so it has no frozen source frame to compare against; it is asserted as a claim in claims.jsonl and recorded in known-differences.json instead.",
+   "satisfied_items": []
+  }
+ ]
+}

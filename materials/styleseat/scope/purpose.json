@@ -1,0 +1,31 @@
+{
+ "schema_version": "offline-clone.purpose.v1",
+ "status": "frozen",
+ "purpose_id": "styleseat.client-surface.v1",
+ "statement": "Let a visitor browse the captured StyleSeat client surface offline — the /m/ home, city and category professional lists, and individual professional profiles with services, gallery and reviews — and let the seeded client account sign in, see its own logged-in surface, and sign out. Every response is served from the local capture and the local backend; no remote request, no real booking, no payment. The professional-role surface is deliberately not cloned (customer ruling, recorded in known-differences.json).",
+ "primary_actor_ids": [
+  "visitor",
+  "client-account"
+ ],
+ "secondary_actor_ids": [
+  "scope-boundary"
+ ],
+ "mainline_journey_ids": [
+  "public.browse.home",
+  "public.browse.city-list",
+  "public.browse.provider-profile",
+  "auth.login.success"
+ ],
+ "secondary_journey_ids": [
+  "auth.login.invalid-credentials",
+  "auth.logout.success",
+  "auth.password-reset.request",
+  "public.notfound.source-faithful"
+ ],
+ "out_of_scope": [
+  "Professional-role login surface and every /m/pro-* route behind it (customer ruling).",
+  "Real booking, messaging and payment effects — the source was explored read-only, GET only.",
+  "The /blog surface, which is a separate third-party Webflow property.",
+  "Cities other than the locked oakland-ca for the category dimension."
+ ]
+}

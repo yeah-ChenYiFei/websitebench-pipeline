@@ -1,0 +1,104 @@
+{
+ "schema_version": "offline-clone.journeys.v1",
+ "journeys": [
+  {
+   "id": "public.browse.home",
+   "actor": "visitor",
+   "kind": "success",
+   "priority": "p0",
+   "status": "frozen",
+   "evidence_kind": "direct",
+   "steps": [
+    "Request / and follow the source-faithful redirect to /m/.",
+    "Observe the hydrated home surface: search entry, category tiles, city links."
+   ]
+  },
+  {
+   "id": "public.browse.city-list",
+   "actor": "visitor",
+   "kind": "success",
+   "priority": "p0",
+   "status": "frozen",
+   "evidence_kind": "direct",
+   "steps": [
+    "Open /m/search/atlanta-ga/professionals and observe the professional cards.",
+    "Advance to page 2 of the same list.",
+    "Follow a professional card into its profile."
+   ]
+  },
+  {
+   "id": "public.browse.provider-profile",
+   "actor": "visitor",
+   "kind": "success",
+   "priority": "p0",
+   "status": "frozen",
+   "evidence_kind": "direct",
+   "steps": [
+    "Open a captured profile such as /m/v/hairbywyss.",
+    "Observe profile photo, service list with prices, gallery and reviews."
+   ]
+  },
+  {
+   "id": "auth.login.success",
+   "actor": "client-account",
+   "kind": "success",
+   "priority": "p0",
+   "status": "frozen",
+   "evidence_kind": "direct",
+   "steps": [
+    "Open /m/login and submit the seeded client credentials to /accounts/ajax-login/.",
+    "Observe the session cookie rotate and the response carry ok=true.",
+    "Open /m/client-appointments and observe the logged-in variant, not the anonymous one."
+   ]
+  },
+  {
+   "id": "auth.login.invalid-credentials",
+   "actor": "client-account",
+   "kind": "failure",
+   "priority": "p1",
+   "status": "frozen",
+   "evidence_kind": "derived",
+   "steps": [
+    "Submit a wrong password to /accounts/ajax-login/.",
+    "Observe HTTP 401 and error code invalid-credentials.",
+    "Submit an address with no account and observe the same code — account existence is not disclosed."
+   ]
+  },
+  {
+   "id": "auth.logout.success",
+   "actor": "client-account",
+   "kind": "success",
+   "priority": "p1",
+   "status": "frozen",
+   "evidence_kind": "derived",
+   "steps": [
+    "POST /accounts/ajax-logout/ while signed in.",
+    "Re-request /m/client-appointments and observe the anonymous variant returns."
+   ]
+  },
+  {
+   "id": "auth.password-reset.request",
+   "actor": "client-account",
+   "kind": "success",
+   "priority": "p2",
+   "status": "frozen",
+   "evidence_kind": "derived",
+   "steps": [
+    "POST /api/v2/auth/password/reset/ with the seeded address.",
+    "Observe an accepted response that does not disclose whether the account exists."
+   ]
+  },
+  {
+   "id": "public.notfound.source-faithful",
+   "actor": "visitor",
+   "kind": "failure",
+   "priority": "p1",
+   "status": "frozen",
+   "evidence_kind": "direct",
+   "steps": [
+    "Request a route the source itself does not serve and observe HTTP 404.",
+    "Request an in-scope-shaped but uncaptured route and observe the declared scope-boundary page."
+   ]
+  }
+ ]
+}

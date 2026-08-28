@@ -1,0 +1,96 @@
+{
+ "schema_version": "offline-clone.invariants.v1",
+ "status": "frozen",
+ "invariants": [
+  {
+   "id": "runtime.local-only",
+   "priority": "p0",
+   "statement": "The clone serves only same-origin HTML, CSS, JavaScript, fonts, images and API responses. Every remote runtime request is forbidden.",
+   "journey_ids": [
+    "public.browse.home",
+    "public.browse.city-list",
+    "public.browse.provider-profile",
+    "auth.login.success",
+    "auth.login.invalid-credentials",
+    "auth.logout.success",
+    "auth.password-reset.request",
+    "public.notfound.source-faithful"
+   ],
+   "coverage_dimension_ids": [
+    "p0-network-invariants",
+    "source-direct-states"
+   ],
+   "acceptance_obligations": [
+    "Browser evidence records zero non-same-origin requests on every checkpoint route.",
+    "Served text files carry no remote runtime reference; vendored CSS is locally closed."
+   ],
+   "zero_effect_contract": {
+    "expected_remote_request_count": 0,
+    "expected_remote_effect_count": 0,
+    "applies_to_every_bound_journey": true,
+    "expected_failed_booking_delta": 0
+   }
+  },
+  {
+   "id": "auth.session-rotates-on-sign-in",
+   "priority": "p0",
+   "statement": "Signing in rotates the session token; the pre-login token stops resolving. The clone writes the rotated token back to the cookie.",
+   "journey_ids": [
+    "auth.login.success",
+    "auth.logout.success"
+   ],
+   "coverage_dimension_ids": [
+    "auth-states"
+   ],
+   "acceptance_obligations": [
+    "The post-login cookie value differs from the pre-login one.",
+    "The pre-login token resolves to an anonymous session afterwards."
+   ]
+  },
+  {
+   "id": "auth.no-account-enumeration",
+   "priority": "p1",
+   "statement": "A wrong password and an address with no account return the same error code, so the clone does not disclose which addresses have accounts.",
+   "journey_ids": [
+    "auth.login.invalid-credentials",
+    "auth.password-reset.request"
+   ],
+   "coverage_dimension_ids": [
+    "auth-states"
+   ],
+   "acceptance_obligations": [
+    "Both cases return HTTP 401 with code invalid-credentials."
+   ]
+  },
+  {
+   "id": "capture.no-source-credentials-shipped",
+   "priority": "p0",
+   "statement": "No source credential, session cookie or personal datum from the capture account leaves in the delivered bytes. Captured logged-in DOM is PII-scrubbed at rest with equal-length, equal-class substitution.",
+   "journey_ids": [
+    "auth.login.success"
+   ],
+   "coverage_dimension_ids": [
+    "auth-states"
+   ],
+   "acceptance_obligations": [
+    "run/ is excluded from delivery and the outgoing byte stream is scanned.",
+    "Assertions use positive allow-set membership, never the forbidden literal."
+   ]
+  },
+  {
+   "id": "scope.truncation-is-declared",
+   "priority": "p1",
+   "statement": "Where capture was bounded, links do not point at nothing: an in-scope-shaped but uncaptured route serves a declared scope-boundary page, distinct from a source 404.",
+   "journey_ids": [
+    "public.notfound.source-faithful"
+   ],
+   "coverage_dimension_ids": [
+    "route-closure"
+   ],
+   "acceptance_obligations": [
+    "An uncaptured /m/search/<city>/<category> returns the boundary page with HTTP 200.",
+    "A route the source does not serve returns HTTP 404."
+   ]
+  }
+ ]
+}
