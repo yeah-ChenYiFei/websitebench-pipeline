@@ -1,0 +1,865 @@
+{
+  "schema_version": "websitebench.amc-theatres.pre-implementation-task-coverage.v1",
+  "schema_note": "Site-local task closure ledger. The 48 human-selected packet rows remain verbatim and in packet order. Each implemented row is bound to a reproducible focused test. WB007-T36 uses an explicitly inferred, local-only synthetic review flow because no first-party AMC review/rating workflow was established in the authorized source evidence.",
+  "site_id": "amc-theatres",
+  "generated_at": "2026-08-13",
+  "task_packet": {
+    "path": "websitebench-batches/20260813-first10/websitebench-first10-agent-pack/sites/07-amc-theatres/task-packet.json",
+    "source_workbook_sha256": "01f0f039dffab0bdb594a454a8f161b9267efb7d85ac6f83f3ed3d8efc2cbbcb",
+    "selected_task_range": "WB007-T01..WB007-T48",
+    "selected_task_count": 48,
+    "human_selection": "User explicitly selected the complete scope of the first ten sites in the supplied workbook."
+  },
+  "anonymous_evidence_record": "claude-runs/amc-theatres/anonymous/ego/route-observations-20260813T1523Z.json",
+  "priority_grouping_note": "priority_group is an agent proposal by ID only; it does not rewrite or reorder task text.",
+  "implementation_gate": "Implemented rows require a passing focused test binding; source-inapplicable rows require an explicit source-scope rationale.",
+  "tasks": [
+    {
+      "expanded_task_id": "WB007-T01",
+      "task_no": 1,
+      "workflow_stage": "Home / Landing",
+      "expanded_task": "Open AMC Theatres and reach the primary workflow from the home/landing experience.",
+      "priority_group": "P0",
+      "source_evidence": "supplementary-ego",
+      "evidence_ref": "route-observations-20260813T1523Z.json#/routes/0 (home page, navigation, showtimes, sign in, movie carousel, footer, cookie consent)",
+      "side_effect_boundary": "anonymous GET-only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_home",
+          "clone.tests.test_core_routes_render"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T02",
+      "task_no": 2,
+      "workflow_stage": "Location / Venue Search",
+      "expanded_task": "Search AMC Theatres for a representative venue, service, or booking, refine the query if needed, and open a relevant result.",
+      "priority_group": "P0",
+      "source_evidence": "supplementary-ego",
+      "evidence_ref": "route-observations-20260813T1523Z.json#/routes/2 (GET theatre search, markets, states, current-location control) and #/routes/6 (opened AMC Empire 25 result)",
+      "side_effect_boundary": "anonymous GET-only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_theatre_directory_public_structure_and_controls",
+          "clone.tests.test_filter_search_and_not_found_states"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T03",
+      "task_no": 3,
+      "workflow_stage": "Date / Time Search",
+      "expanded_task": "Search AMC Theatres for a representative venue, service, or booking, refine the query if needed, and open a relevant result.",
+      "priority_group": "P1",
+      "source_evidence": "inferred",
+      "evidence_ref": "date/time selection controls not exercised in the anonymous pass; showtimes entry surface observed at #/routes/3",
+      "side_effect_boundary": "anonymous GET-only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_discovery_sort_showtime_help_and_exact_local_scenario_contracts"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T04",
+      "task_no": 4,
+      "workflow_stage": "Party / Attendee Count",
+      "expanded_task": "Exercise the Party / Attendee Count workflow on AMC Theatres with representative data and verify the resulting UI state and persistence.",
+      "priority_group": "P1",
+      "source_evidence": "inferred",
+      "evidence_ref": "not observed; presumed part of the unobserved ticket-selection flow",
+      "side_effect_boundary": "no real purchase on source",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_membership_ticket_tier_format_attendee_and_review_persist"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T05",
+      "task_no": 5,
+      "workflow_stage": "Browse / Discovery",
+      "expanded_task": "Browse AMC Theatres for a representative venue, service, or booking without relying on a direct deep link.",
+      "priority_group": "P0",
+      "source_evidence": "supplementary-ego",
+      "evidence_ref": "route-observations-20260813T1523Z.json#/routes/1 (/movies, Now Playing and Coming Soon)",
+      "side_effect_boundary": "anonymous GET-only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_core_routes_render",
+          "clone.tests.test_movie_collection_closes_observed_two_batch_minimum"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T06",
+      "task_no": 6,
+      "workflow_stage": "Filter / Refine",
+      "expanded_task": "Apply multiple filters on AMC Theatres and verify the visible results/state update correctly.",
+      "priority_group": "P1",
+      "source_evidence": "inferred",
+      "evidence_ref": "filter controls not exercised in the anonymous pass",
+      "side_effect_boundary": "anonymous GET-only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_filter_search_and_not_found_states",
+          "clone.tests.test_discovery_sort_showtime_help_and_exact_local_scenario_contracts"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T07",
+      "task_no": 7,
+      "workflow_stage": "Sort / Rank",
+      "expanded_task": "Change sorting or comparison controls on AMC Theatres and verify ordering/comparison state is correct.",
+      "priority_group": "P1",
+      "source_evidence": "inferred",
+      "evidence_ref": "sort controls not exercised in the anonymous pass",
+      "side_effect_boundary": "anonymous GET-only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_discovery_sort_showtime_help_and_exact_local_scenario_contracts"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T08",
+      "task_no": 8,
+      "workflow_stage": "Venue / Service Detail",
+      "expanded_task": "Open a representative Venue / Service Detail on AMC Theatres and inspect the key metadata, options, and available actions.",
+      "priority_group": "P0",
+      "source_evidence": "supplementary-ego",
+      "evidence_ref": "route-observations-20260813T1523Z.json#/routes/6 (AMC Empire 25: address, movie list, Get Tickets, Order Food & Drinks; screenshot empire-25-20260813T1523Z.png)",
+      "side_effect_boundary": "anonymous GET-only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_theatre_directory_public_structure_and_controls",
+          "clone.tests.test_core_routes_render"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T09",
+      "task_no": 9,
+      "workflow_stage": "Availability / Showtimes",
+      "expanded_task": "Use the Availability / Showtimes workflow on AMC Theatres to select/change a valid time-related option and verify availability updates.",
+      "priority_group": "P0",
+      "source_evidence": "supplementary-ego",
+      "evidence_ref": "route-observations-20260813T1523Z.json#/routes/3 (/showtimes: Select a Theatre, Use Current Location, Continue); showtime selection itself not exercised",
+      "side_effect_boundary": "anonymous GET-only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_discovery_sort_showtime_help_and_exact_local_scenario_contracts"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T10",
+      "task_no": 10,
+      "workflow_stage": "Ticket / Service Tier",
+      "expanded_task": "Use AMC Theatres's Ticket / Service Tier controls to select a non-default option and verify dependent price/availability/state updates.",
+      "priority_group": "P0",
+      "source_evidence": "unavailable",
+      "evidence_ref": "ticket-tier pricing listed in unavailable_or_not_established",
+      "side_effect_boundary": "no real purchase on source",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_membership_ticket_tier_format_attendee_and_review_persist"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T11",
+      "task_no": 11,
+      "workflow_stage": "Seat / Resource Selection",
+      "expanded_task": "Use AMC Theatres's Seat / Resource Selection controls to select a non-default option and verify dependent price/availability/state updates.",
+      "priority_group": "P0",
+      "source_evidence": "unavailable",
+      "evidence_ref": "seat-map behavior listed in unavailable_or_not_established",
+      "side_effect_boundary": "no real purchase on source",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_membership_ticket_tier_format_attendee_and_review_persist",
+          "clone.tests.test_local_sandbox_order_outcomes"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T12",
+      "task_no": 12,
+      "workflow_stage": "Add-ons / Packages",
+      "expanded_task": "Exercise the Add-ons / Packages workflow on AMC Theatres with representative data and verify the resulting UI state and persistence.",
+      "priority_group": "P1",
+      "source_evidence": "inferred",
+      "evidence_ref": "not observed; presumed inside the unobserved order flow",
+      "side_effect_boundary": "no real purchase on source",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T13",
+      "task_no": 13,
+      "workflow_stage": "Save / Favorite",
+      "expanded_task": "Save/follow a representative venue, service, or booking through AMC Theatres's Save / Favorite flow and verify it appears in the corresponding saved state.",
+      "priority_group": "P1",
+      "source_evidence": "unavailable",
+      "evidence_ref": "requires authenticated account state, listed in unavailable_or_not_established",
+      "side_effect_boundary": "reversible synthetic mutation in dedicated test account only, after human login handoff",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_favorite_persists_in_session"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T14",
+      "task_no": 14,
+      "workflow_stage": "Register",
+      "expanded_task": "Create a new AMC Theatres account through the registration flow and reach the post-sign-up state.",
+      "priority_group": "P0",
+      "source_evidence": "supplementary-ego",
+      "evidence_ref": "route-observations-20260813T1523Z.json#/routes/4 (/sign-up, h1 Create an Account, AMC Stubs tier comparison); submission and post-sign-up state not observed",
+      "side_effect_boundary": "account creation only as user-authorized test account; verification mail only to user-controlled test inbox",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T15",
+      "task_no": 15,
+      "workflow_stage": "Email / Account Verification",
+      "expanded_task": "Complete the Email / Account Verification step on AMC Theatres, including required fields, consent, and validation feedback.",
+      "priority_group": "P1",
+      "source_evidence": "unavailable",
+      "evidence_ref": "authenticated account states listed in unavailable_or_not_established",
+      "side_effect_boundary": "mail only to user-controlled test inbox; no credentials read or stored",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T16",
+      "task_no": 16,
+      "workflow_stage": "Login",
+      "expanded_task": "Sign in to AMC Theatres with an existing account and verify the authenticated session and landing state.",
+      "priority_group": "P0",
+      "source_evidence": "unavailable",
+      "evidence_ref": "authenticated account states listed in unavailable_or_not_established",
+      "side_effect_boundary": "user logs in personally; agent never sees credentials; login excluded from traces",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_login_and_account",
+          "clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T17",
+      "task_no": 17,
+      "workflow_stage": "Logout",
+      "expanded_task": "Sign out of AMC Theatres and verify protected state is no longer accessible without re-authentication.",
+      "priority_group": "P0",
+      "source_evidence": "unavailable",
+      "evidence_ref": "authenticated account states listed in unavailable_or_not_established",
+      "side_effect_boundary": "session-only mutation in dedicated test account",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T18",
+      "task_no": 18,
+      "workflow_stage": "Password Reset",
+      "expanded_task": "Exercise AMC Theatres's Password Reset flow through request, validation, and completion/recovery state.",
+      "priority_group": "P1",
+      "source_evidence": "unavailable",
+      "evidence_ref": "authenticated account states listed in unavailable_or_not_established",
+      "side_effect_boundary": "recovery mail only to user-controlled test inbox; no OTP/password persisted",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_password_reset_uses_session_local_outbox",
+          "clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T19",
+      "task_no": 19,
+      "workflow_stage": "Profile / Preferences",
+      "expanded_task": "Open a representative Profile / Preferences on AMC Theatres and inspect the key metadata, options, and available actions.",
+      "priority_group": "P1",
+      "source_evidence": "unavailable",
+      "evidence_ref": "authenticated account states listed in unavailable_or_not_established",
+      "side_effect_boundary": "reversible synthetic mutation in dedicated test account only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T20",
+      "task_no": 20,
+      "workflow_stage": "Privacy / Consent",
+      "expanded_task": "Review and change the Privacy / Consent options on AMC Theatres, then verify the stored privacy/consent state.",
+      "priority_group": "P2",
+      "source_evidence": "unavailable",
+      "evidence_ref": "cookie consent banner observed anonymously on home (#/routes/0); account-level privacy state requires authentication (unavailable)",
+      "side_effect_boundary": "reversible synthetic mutation in dedicated test account only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T21",
+      "task_no": 21,
+      "workflow_stage": "Security / Session Management",
+      "expanded_task": "Exercise the Security / Session Management controls on AMC Theatres and verify device/session/security state changes persist.",
+      "priority_group": "P2",
+      "source_evidence": "unavailable",
+      "evidence_ref": "authenticated account states listed in unavailable_or_not_established",
+      "side_effect_boundary": "must not change the source account's security settings beyond reversible test scope",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation",
+          "clone.tests.test_order_management_rejects_unsigned_access"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T22",
+      "task_no": 22,
+      "workflow_stage": "Notifications",
+      "expanded_task": "Configure or trigger Notifications on AMC Theatres and verify the preference/status is reflected in the UI.",
+      "priority_group": "P2",
+      "source_evidence": "unavailable",
+      "evidence_ref": "authenticated account states listed in unavailable_or_not_established",
+      "side_effect_boundary": "no messages to real third parties",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T23",
+      "task_no": 23,
+      "workflow_stage": "Customer / Attendee Details",
+      "expanded_task": "Open a representative Customer / Attendee Details on AMC Theatres and inspect the key metadata, options, and available actions.",
+      "priority_group": "P2",
+      "source_evidence": "inferred",
+      "evidence_ref": "not observed; presumed inside the unobserved order flow",
+      "side_effect_boundary": "synthetic data only; no real PII persisted",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_membership_ticket_tier_format_attendee_and_review_persist"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T24",
+      "task_no": 24,
+      "workflow_stage": "Special Requests / Notes",
+      "expanded_task": "Exercise the Special Requests / Notes workflow on AMC Theatres with representative data and verify the resulting UI state and persistence.",
+      "priority_group": "P2",
+      "source_evidence": "inferred",
+      "evidence_ref": "not observed; may not exist on this site — classify honestly after capture",
+      "side_effect_boundary": "synthetic data only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T25",
+      "task_no": 25,
+      "workflow_stage": "Promo / Voucher",
+      "expanded_task": "Complete the preceding AMC Theatres workflow and verify the Promo / Voucher state contains the expected identifiers and summary.",
+      "priority_group": "P1",
+      "source_evidence": "inferred",
+      "evidence_ref": "not observed; promo entry presumed inside the unobserved checkout flow",
+      "side_effect_boundary": "no real purchase on source; synthetic promo values only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T26",
+      "task_no": 26,
+      "workflow_stage": "Payment Method",
+      "expanded_task": "Exercise the Payment Method step on AMC Theatres using test data and verify totals, validation, and transition to the next state.",
+      "priority_group": "P0",
+      "source_evidence": "unavailable",
+      "evidence_ref": "payment listed in unavailable_or_not_established",
+      "side_effect_boundary": "no real payment ever; source evidence stops before purchase; clone local-sandbox only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_local_sandbox_order_outcomes",
+          "clone.tests.test_order_validation_and_retry_state"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T27",
+      "task_no": 27,
+      "workflow_stage": "Booking Review",
+      "expanded_task": "Reach AMC Theatres's Booking Review step, verify the complete summary, edit one prior field, and return with the updated summary.",
+      "priority_group": "P0",
+      "source_evidence": "unavailable",
+      "evidence_ref": "order-review surface unobserved; downstream of unavailable seat/tier/payment surfaces",
+      "side_effect_boundary": "no real purchase on source",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_membership_ticket_tier_format_attendee_and_review_persist"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T28",
+      "task_no": 28,
+      "workflow_stage": "Booking Confirmation",
+      "expanded_task": "Complete the preceding AMC Theatres workflow and verify the Booking Confirmation state contains the expected identifiers and summary.",
+      "priority_group": "P0",
+      "source_evidence": "unavailable",
+      "evidence_ref": "confirmation listed in unavailable_or_not_established",
+      "side_effect_boundary": "confirmation reachable only in the clone (local-sandbox); never via a real source purchase",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_local_sandbox_order_outcomes"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T29",
+      "task_no": 29,
+      "workflow_stage": "Ticket / QR / Appointment Details",
+      "expanded_task": "Open a representative Ticket / QR / Appointment Details on AMC Theatres and inspect the key metadata, options, and available actions.",
+      "priority_group": "P0",
+      "source_evidence": "unavailable",
+      "evidence_ref": "post-booking management listed in unavailable_or_not_established; packet preseed allows sanitized historical tickets if the test account has any",
+      "side_effect_boundary": "read-only in test account; no real purchase to create tickets",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally",
+          "clone.tests.test_membership_ticket_tier_format_attendee_and_review_persist"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T30",
+      "task_no": 30,
+      "workflow_stage": "Reminders / Notifications",
+      "expanded_task": "Configure or trigger Reminders / Notifications on AMC Theatres and verify the preference/status is reflected in the UI.",
+      "priority_group": "P2",
+      "source_evidence": "unavailable",
+      "evidence_ref": "authenticated account states listed in unavailable_or_not_established",
+      "side_effect_boundary": "no messages to real third parties",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T31",
+      "task_no": 31,
+      "workflow_stage": "Manage Booking",
+      "expanded_task": "Complete the Manage Booking workflow on AMC Theatres and verify the submitted object's resulting state and confirmation.",
+      "priority_group": "P1",
+      "source_evidence": "unavailable",
+      "evidence_ref": "post-booking management listed in unavailable_or_not_established",
+      "side_effect_boundary": "no real booking exists to manage on source; clone-side only until authorized evidence exists",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T32",
+      "task_no": 32,
+      "workflow_stage": "Reschedule",
+      "expanded_task": "Use the Reschedule workflow on AMC Theatres to select/change a valid time-related option and verify availability updates.",
+      "priority_group": "P1",
+      "source_evidence": "unavailable",
+      "evidence_ref": "post-booking management listed in unavailable_or_not_established",
+      "side_effect_boundary": "no real booking mutation on source",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T33",
+      "task_no": 33,
+      "workflow_stage": "Cancel / Refund",
+      "expanded_task": "Exercise AMC Theatres's post-action Cancel / Refund workflow and verify the resulting status, eligibility, and confirmation.",
+      "priority_group": "P1",
+      "source_evidence": "unavailable",
+      "evidence_ref": "post-booking management listed in unavailable_or_not_established",
+      "side_effect_boundary": "no real refund/cancel on source",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T34",
+      "task_no": 34,
+      "workflow_stage": "Transfer / Share Booking",
+      "expanded_task": "Exercise Transfer / Share Booking on AMC Theatres, change access for another user/recipient, and verify the resulting permissions or shared state.",
+      "priority_group": "P2",
+      "source_evidence": "unavailable",
+      "evidence_ref": "post-booking management listed in unavailable_or_not_established",
+      "side_effect_boundary": "no invites or messages to real third parties; recipient must be a user-controlled test identity",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T35",
+      "task_no": 35,
+      "workflow_stage": "Contact Venue / Provider",
+      "expanded_task": "Open AMC Theatres's Contact Venue / Provider path from a relevant workflow and verify contextual help/contact options are reachable.",
+      "priority_group": "P2",
+      "source_evidence": "inferred",
+      "evidence_ref": "help surface observed at #/routes/5; a venue-contextual contact path was not specifically observed",
+      "side_effect_boundary": "reachability only; never submit a real contact/support request",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_discovery_sort_showtime_help_and_exact_local_scenario_contracts"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T36",
+      "task_no": 36,
+      "workflow_stage": "Review / Rating",
+      "expanded_task": "Create or update a representative rating/review through AMC Theatres's Review / Rating workflow and verify public/private display state.",
+      "priority_group": "P2",
+      "source_evidence": "inferred",
+      "evidence_ref": "not observed; may not exist on this site — classify honestly after capture",
+      "side_effect_boundary": "no public review/rating may be posted on the source site (packet forbids third-party-visible content)",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally",
+          "scope.all-controls-inventory.account.order-management.last_clone_browser_replay"
+        ],
+        "rationale": "The human-selected task is implemented only as an owner-bound synthetic local order review with 1-5 stars, text, and public/private local display state. It never posts to AMC or a third party. Because source behavior remains unavailable, this row is implemented and browser-tested but not directly source-compared."
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T37",
+      "task_no": 37,
+      "workflow_stage": "No Availability / Waitlist",
+      "expanded_task": "Use the No Availability / Waitlist workflow on AMC Theatres to select/change a valid time-related option and verify availability updates.",
+      "priority_group": "P1",
+      "source_evidence": "inferred",
+      "evidence_ref": "not observed; sold-out/no-availability state depends on live inventory",
+      "side_effect_boundary": "anonymous GET-only observation",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_discovery_sort_showtime_help_and_exact_local_scenario_contracts"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T38",
+      "task_no": 38,
+      "workflow_stage": "Payment Failure / Retry",
+      "expanded_task": "Trigger or simulate the Payment Failure / Retry condition on AMC Theatres and verify validation, retry/recovery behavior, and state preservation.",
+      "priority_group": "P1",
+      "source_evidence": "unavailable",
+      "evidence_ref": "payment listed in unavailable_or_not_established; failure semantics cannot be probed on source without a payment attempt, which is forbidden",
+      "side_effect_boundary": "no payment attempt on source; simulate only in clone local-sandbox",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_local_sandbox_order_outcomes",
+          "clone.tests.test_order_validation_and_retry_state"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T39",
+      "task_no": 39,
+      "workflow_stage": "No Results / Empty State",
+      "expanded_task": "Trigger the No Results / Empty State condition on AMC Theatres and verify the user sees the correct recovery options without corrupting prior state.",
+      "priority_group": "P1",
+      "source_evidence": "inferred",
+      "evidence_ref": "empty-search state not exercised in the anonymous pass; obtainable read-only in a later capture",
+      "side_effect_boundary": "anonymous GET-only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_filter_search_and_not_found_states"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T40",
+      "task_no": 40,
+      "workflow_stage": "Invalid Input / Validation",
+      "expanded_task": "Trigger or simulate the Invalid Input / Validation condition on AMC Theatres and verify validation, retry/recovery behavior, and state preservation.",
+      "priority_group": "P1",
+      "source_evidence": "inferred",
+      "evidence_ref": "client-side validation states not exercised in the anonymous pass",
+      "side_effect_boundary": "validation probing must not submit forms that create source-side effects",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_validation_and_retry_state",
+          "clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T41",
+      "task_no": 41,
+      "workflow_stage": "Loading / Retry",
+      "expanded_task": "Trigger or simulate the Loading / Retry condition on AMC Theatres and verify validation, retry/recovery behavior, and state preservation.",
+      "priority_group": "P1",
+      "source_evidence": "inferred",
+      "evidence_ref": "loading/retry states not captured in the anonymous pass",
+      "side_effect_boundary": "anonymous GET-only",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_validation_and_retry_state"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T42",
+      "task_no": 42,
+      "workflow_stage": "Help / Support",
+      "expanded_task": "Open AMC Theatres's Help / Support path from a relevant workflow and verify contextual help/contact options are reachable.",
+      "priority_group": "P2",
+      "source_evidence": "supplementary-ego",
+      "evidence_ref": "route-observations-20260813T1523Z.json#/routes/5 (/help: How can we help?, help search, topics, sign-in entry)",
+      "side_effect_boundary": "anonymous GET-only; never submit a real support request",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_discovery_sort_showtime_help_and_exact_local_scenario_contracts"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T43",
+      "task_no": 43,
+      "workflow_stage": "Movie / Theater Switch",
+      "expanded_task": "Exercise the Movie / Theater Switch workflow on AMC Theatres with representative data and verify the resulting UI state and persistence.",
+      "priority_group": "P0",
+      "source_evidence": "inferred",
+      "evidence_ref": "theatre selection surfaces observed (#/routes/2, #/routes/3); the switch-and-persist behavior itself not exercised",
+      "side_effect_boundary": "anonymous GET-only; preferred-theatre persistence may need the authenticated handoff",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_theatre_directory_public_structure_and_controls",
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T44",
+      "task_no": 44,
+      "workflow_stage": "Format Selection (IMAX / Dolby / 3D)",
+      "expanded_task": "Complete the Format Selection (IMAX / Dolby / 3D) step on AMC Theatres with representative data, including required-field and conditional validation.",
+      "priority_group": "P0",
+      "source_evidence": "unavailable",
+      "evidence_ref": "format/tier selection sits in the unobserved ticket flow (ticket-tier pricing listed unavailable)",
+      "side_effect_boundary": "no real purchase on source",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_membership_ticket_tier_format_attendee_and_review_persist"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T45",
+      "task_no": 45,
+      "workflow_stage": "Seat Map",
+      "expanded_task": "Use the map/location view on AMC Theatres, change the visible area or selection, and verify list/map synchronization.",
+      "priority_group": "P0",
+      "source_evidence": "unavailable",
+      "evidence_ref": "seat-map behavior listed in unavailable_or_not_established",
+      "side_effect_boundary": "no real seat hold/purchase on source",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_membership_ticket_tier_format_attendee_and_review_persist"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T46",
+      "task_no": 46,
+      "workflow_stage": "Concessions Preorder",
+      "expanded_task": "Modify an existing venue, service, or booking on AMC Theatres using Concessions Preorder and verify the updated state persists after navigation/reload.",
+      "priority_group": "P1",
+      "source_evidence": "supplementary-ego",
+      "evidence_ref": "route-observations-20260813T1523Z.json#/routes/6 (Order Food & Drinks entry control on AMC Empire 25); the preorder flow itself not exercised",
+      "side_effect_boundary": "no real food/drink order on source",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_order_management_ticket_and_preferences_close_locally"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T47",
+      "task_no": 47,
+      "workflow_stage": "Loyalty / Membership",
+      "expanded_task": "Open the Loyalty / Membership workflow on AMC Theatres, select or modify an option, and verify pricing/status changes before finalization.",
+      "priority_group": "P1",
+      "source_evidence": "supplementary-ego",
+      "evidence_ref": "route-observations-20260813T1523Z.json#/routes/4 (AMC Stubs tier comparison on /sign-up); membership modification not exercised",
+      "side_effect_boundary": "no paid membership signup on source; optional Stubs state only in the user-authorized test account",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_membership_ticket_tier_format_attendee_and_review_persist"
+        ]
+      }
+    },
+    {
+      "expanded_task_id": "WB007-T48",
+      "task_no": 48,
+      "workflow_stage": "End-to-End Scenario",
+      "expanded_task": "[862] On AMC Theatres, buy 2 IMAX tickets for the highest-rated movie currently showing at AMC Empire 25 in New York, select an upcoming Friday evening showtime, and choose two adjacent center seats in rows E–H",
+      "priority_group": "P0",
+      "source_evidence": "unavailable",
+      "evidence_ref": "AMC Empire 25 entry observed (#/routes/6); the purchase itself is forbidden on source (no real purchase), so end-to-end source evidence beyond the payment step is permanently unavailable — the clone completes the flow with local-sandbox payment",
+      "side_effect_boundary": "never buy real tickets; source capture stops before payment submission",
+      "candidate_status": "verified",
+      "final_disposition": {
+        "status": "implemented",
+        "evidence": [
+          "clone.tests.test_discovery_sort_showtime_help_and_exact_local_scenario_contracts"
+        ]
+      }
+    }
+  ],
+  "distribution": {
+    "direct": 9,
+    "inferred": 15,
+    "unavailable": 24,
+    "total": 48
+  },
+  "no_acceptance_claim": "All 48 packet rows now have local implementation and focused-test bindings. WB007-T36 is explicitly inferred and local-only, and public source-route visual closure remains incomplete, so this is not a site acceptance claim.",
+  "verification_summary": {
+    "implemented": 48,
+    "source_inapplicable": 0,
+    "unresolved": 0,
+    "focused_suite": "clone/tests/test_smoke.py",
+    "last_verified_result": "31 passed"
+  },
+  "source_evidence_note": "The referenced ego-browser record is supplementary only. Current formal Mac headed Playwright directly compared only the representative theatre-detail desktop/mobile loaded states; the other public source routes are unavailable in the current run."
+}

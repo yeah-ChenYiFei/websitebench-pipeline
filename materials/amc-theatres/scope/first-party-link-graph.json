@@ -1,0 +1,10 @@
+{
+  "schema_version": "websitebench.first-party-link-graph.v1",
+  "site_id": "amc-theatres",
+  "status": "clone-walked-source-partial",
+  "nodes": ["home","feature-pages","movies","movie-detail","theatre-directory","theatre-market","theatre-detail","showtimes","checkout","login","sign-up","verify-account","account","order-detail","search","help","password-reset","password-reset-verify"],
+  "edges": [
+    {"from":"home","to":"movies"},{"from":"home","to":"theatre-directory"},{"from":"home","to":"showtimes"},{"from":"home","to":"feature-pages"},{"from":"home","to":"login"},{"from":"home","to":"sign-up"},{"from":"home","to":"search"},{"from":"movies","to":"movie-detail"},{"from":"movies","to":"showtimes"},{"from":"movie-detail","to":"checkout"},{"from":"theatre-directory","to":"theatre-market"},{"from":"theatre-directory","to":"theatre-detail"},{"from":"theatre-detail","to":"showtimes"},{"from":"showtimes","to":"checkout"},{"from":"checkout","to":"account"},{"from":"login","to":"account"},{"from":"login","to":"password-reset"},{"from":"sign-up","to":"verify-account"},{"from":"verify-account","to":"account"},{"from":"account","to":"order-detail"},{"from":"password-reset","to":"password-reset-verify"},{"from":"password-reset-verify","to":"account"}
+  ],
+  "closure": {"clone_internal_destinations_walked":true,"source_full_crawl_complete":false,"source_blocker_ref":"blocked-or-unavailable-pages.json"}
+}

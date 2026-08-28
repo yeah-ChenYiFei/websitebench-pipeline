@@ -1,0 +1,20 @@
+{
+  "mainline_journey_ids": [
+    "home-mainline",
+    "anonymous-discover-showtimes"
+  ],
+  "out_of_scope": [
+    "real payment, real purchase, real booking on the source site",
+    "third-party messages, invites, reviews, or applications on the source site",
+    "push, PR, and public deployment (blocked pending human authorization)",
+    "any implementation beyond scaffold before 12Go Pilot acceptance"
+  ],
+  "primary_actor_ids": [
+    "visitor",
+    "moviegoer"
+  ],
+  "purpose_id": "movie-ticketing",
+  "schema_version": "offline-clone.purpose.v1",
+  "statement": "Help moviegoers find movies, theatres and showtimes and buy tickets with seat selection, offline. Draft: purchase/seat/account surfaces are not yet directly observed; refreeze after EA1/EA2 capture.",
+  "status": "draft"
+}

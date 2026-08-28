@@ -1,0 +1,72 @@
+{
+  "schema_version": "websitebench.clone-browser-replay.v1",
+  "site_id": "amc-theatres",
+  "observed_at": "2026-08-24T21:47:07Z",
+  "candidate_transport": "lab-server-headless-playwright",
+  "acceptance_label": "clone-only-browser-replay-not-source-comparison",
+  "scope": {
+    "logical_page_route_families": 23,
+    "control_groups": 29,
+    "movie_detail_routes": 40,
+    "theatre_detail_routes": 6,
+    "theatre_market_routes": 154,
+    "movie_collection_batches": 2,
+    "distinct_movie_records": 40
+  },
+  "journeys": {
+    "public_shell_and_discovery": "passed",
+    "movie_favorite_toggle_and_reload_persistence": "passed",
+    "theatre_search_tabs_location_and_market_redirect": "passed",
+    "theatre_favorite_auth_redirect_and_correct_theatre_persistence": "passed",
+    "showtimes_theatre_picker_filter_persistence_and_checkout_link": "passed",
+    "checkout_seat_option_decline_retry_and_approval": "passed",
+    "registration_local_outbox_verification": "passed",
+    "logout_and_fresh_login": "passed",
+    "password_reset_local_outbox_and_completion": "passed",
+    "account_preferences": "passed",
+    "order_reschedule_concessions_notes_promo_share_reminder_review_cancel_refund": "passed"
+  },
+  "viewport_revalidation": {
+    "viewports": [
+      {"width": 1440, "height": 900},
+      {"width": 390, "height": 844}
+    ],
+    "favorite_async_state": "passed-both-viewports",
+    "showtimes_modal_geometry": "passed-both-viewports",
+    "horizontal_overflow": 0
+  },
+  "results": {
+    "full_route_and_control_checks": 339,
+    "full_run_passed_without_harness_reclassification": 337,
+    "targeted_revalidation_checks": 14,
+    "targeted_revalidation_passed": 14,
+    "implementation_failures": 0,
+    "unexpected_remote_requests": 0,
+    "unexpected_console_errors": 0,
+    "expected_negative_responses": [402, 503]
+  },
+  "harness_note": "The full replay initially reported one asynchronous favorite assertion before its fetch completed and classified the expected 402/503 sandbox responses as console errors. A fresh two-viewport revalidation waited for the observable state and explicitly classified those expected negative responses; all 14 revalidation checks passed.",
+  "privacy": "Only synthetic local clone identities and local outbox challenges were used. No source cookies, tokens, storage state, credentials, private content, or source screenshots were read or stored.",
+  "fresh_clone_browser_closure": {
+    "transport": "server-headless Playwright Chromium against an isolated loopback uvicorn process",
+    "viewports": [
+      {"name": "desktop", "width": 1440, "height": 900},
+      {"name": "mobile", "width": 390, "height": 844}
+    ],
+    "tests": 4,
+    "journeys": [
+      "shell/search/carousel/tabs/features/movie collections and details/theatre directory and details/showtime filters/help",
+      "signup/verify/preferences/favorites/declined-retry-approved checkout/order management/review/reorder/track/logout/reset/login",
+      "cross-account order isolation",
+      "fresh-browser and process-restart persistence"
+    ],
+    "unexpected_remote_requests": 0,
+    "page_errors": 0,
+    "horizontal_overflow_failures": 0
+  },
+  "source_status": {
+    "status": "unavailable-challenge",
+    "claim": "No source route, source control, or source visual score is asserted by this server-only replay.",
+    "manual_handoff_required": true
+  }
+}

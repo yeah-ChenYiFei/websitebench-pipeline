@@ -1,0 +1,109 @@
+{
+  "authority": "diagnostic-only",
+  "backend": "adapter",
+  "contract": {
+    "path": "harbor/sites/amc-theatres/interactions/opencli-interaction-contract.json"
+  },
+  "degradation": [],
+  "duration_seconds": 12.505407,
+  "instance_id": null,
+  "opencli": {
+    "binary_present": true,
+    "connectivity_ok": false,
+    "contract_version": "1.8.6",
+    "doctor_green": false,
+    "extension_connected": false,
+    "notes": [
+      "opencli-unavailable: Browser Bridge extension not connected",
+      "opencli-unavailable: browser connectivity check failed"
+    ],
+    "version": "1.8.6",
+    "version_matches": true
+  },
+  "profile_id": "theatres",
+  "profile_label": "amc-theatres theatres (derived draft)",
+  "profile_tier": "p1",
+  "schema_version": "websitebench.harbor.opencli.replay-result.v1",
+  "site_id": "amc-theatres",
+  "status": "passed",
+  "steps": [
+    {
+      "command": "state",
+      "declared_route": "movie-theatres",
+      "duration_seconds": 1.263663,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "amc-theatres_theatres_directory",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "Movie Theatres Near You",
+          "key": "visible",
+          "observed": "Movie Theatres Near You",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "theatres-directory",
+      "tier": "p1"
+    },
+    {
+      "command": "state",
+      "declared_route": "movie-theatres/ny/amc-empire-25",
+      "duration_seconds": 0.913774,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "amc-theatres_theatres_empire",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "AMC Empire 25",
+          "key": "visible",
+          "observed": "AMC Empire 25",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "theatres-empire",
+      "tier": "p1"
+    },
+    {
+      "command": "state",
+      "declared_route": "movie-theatres?q=empire",
+      "duration_seconds": 0.821245,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "amc-theatres_theatres_search",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "1 theatres found",
+          "key": "list_contains",
+          "observed": "1 theatres found",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "theatres-search",
+      "tier": "p1"
+    }
+  ],
+  "summary": {
+    "assertion_failures": 0,
+    "steps_passed": 3,
+    "steps_total": 3,
+    "unasserted_observations": 0,
+    "unsupported_commands": 0
+  },
+  "target": "candidate",
+  "target_binding": {
+    "allowlist": [
+      "127.0.0.1",
+      "localhost"
+    ],
+    "base_origin": "http://127.0.0.1:24106",
+    "reset_status": null,
+    "session_fields": [],
+    "session_status": null
+  }
+}

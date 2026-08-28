@@ -1,0 +1,10 @@
+{
+  "schema_version": "websitebench.data-coverage.v1",
+  "site_id": "amc-theatres",
+  "collections": [
+    {"entity":"movies","source_page_size":20,"source_pages_observed":2,"capture_method":"mac-headed-ego-browser-isolated","required_clone_records":40,"actual_clone_records":40,"distinct_clone_records":40,"detail_route_coverage":true,"data_kind":"public-observed-shape-and-synthetic","status":"two-source-batch-minimum-satisfied"},
+    {"entity":"theatres","source_page_size":1,"source_pages_observed":2,"capture_method":"mac-headed-ego-browser-isolated","required_clone_records":2,"actual_clone_records":6,"distinct_clone_records":6,"detail_route_coverage":true,"data_kind":"public-observed-shape-and-synthetic","status":"source-directory-market-detail-observed"},
+    {"entity":"theatre-markets","source_page_size":154,"source_pages_observed":1,"capture_method":"mac-headed-ego-browser-isolated","required_clone_records":154,"actual_clone_records":154,"distinct_clone_records":154,"detail_route_coverage":true,"data_kind":"public-observed-shape-and-synthetic","status":"source-directory-count-satisfied"}
+  ],
+  "acceptance_note": "Fresh isolated Mac headed source evidence covers Movies Now Playing (20 detail routes), Coming Soon (50 detail routes), one movie detail, the 154-market theatre directory, one market, and one theatre detail. The clone exposes 23 default and 22 coming-soon records with a 40-record distinct union; all 40 local detail and checkout routes are reachable, satisfying the two-batch minimum. Ego structural evidence remains supplementary and is not mislabeled as Playwright provenance."
+}

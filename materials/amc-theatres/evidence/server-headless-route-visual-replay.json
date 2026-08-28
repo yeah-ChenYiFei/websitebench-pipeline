@@ -1,0 +1,295 @@
+{
+  "schema_version": "websitebench.clone-only-route-visual-replay.v1",
+  "site_id": "amc-theatres",
+  "observed_at": "2026-08-24T17:26:08+00:00",
+  "candidate_transport": "lab-server-headless-playwright",
+  "source_raster_note": "Existing public anonymous rasters only: twelve supplementary ego-browser frames and two direct Mac headed Playwright theatre-detail frames.",
+  "acceptance_label": "clone-only-replay-not-source-contract",
+  "limitations": [
+    "The source and candidate were not replayed in the same current Playwright session.",
+    "Server renderer differences must not be promoted into source acceptance facts.",
+    "Task 86 remained under user control and was not navigated."
+  ],
+  "comparisons": [
+    {
+      "id": "home.desktop",
+      "status": 200,
+      "observation": {
+        "path": "/",
+        "controls": 76,
+        "placeholderHrefs": 0,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 6279
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9737363983603085,
+        "nrmse": 0.8894349411129951,
+        "ssim": 0.9000961780548096
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "home.mobile",
+      "status": 200,
+      "observation": {
+        "path": "/",
+        "controls": 76,
+        "placeholderHrefs": 0,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 7217
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.954911366631003,
+        "nrmse": 0.8659074157476425,
+        "ssim": 0.844659149646759
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "movies.desktop",
+      "status": 200,
+      "observation": {
+        "path": "/movies",
+        "controls": 135,
+        "placeholderHrefs": 0,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 4186
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9737531194499894,
+        "nrmse": 0.9016655907034874,
+        "ssim": 0.9078232645988464
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "movies.mobile",
+      "status": 200,
+      "observation": {
+        "path": "/movies",
+        "controls": 135,
+        "placeholderHrefs": 0,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 6586
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9602095547844381,
+        "nrmse": 0.8713462650775909,
+        "ssim": 0.8510612845420837
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "directory.desktop",
+      "status": 200,
+      "observation": {
+        "path": "/movie-theatres",
+        "controls": 237,
+        "placeholderHrefs": 0,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 3155
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9847092787424724,
+        "nrmse": 0.9213792830705643,
+        "ssim": 0.9361806511878967
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "directory.mobile",
+      "status": 200,
+      "observation": {
+        "path": "/movie-theatres",
+        "controls": 237,
+        "placeholderHrefs": 0,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 4525
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9645849751491172,
+        "nrmse": 0.870572492480278,
+        "ssim": 0.840467631816864
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "showtimes.desktop",
+      "status": 200,
+      "observation": {
+        "path": "/showtimes",
+        "controls": 11,
+        "placeholderHrefs": 0,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 1200
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9862355662327187,
+        "nrmse": 0.9076409563422203,
+        "ssim": 0.9328168034553528
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "showtimes.mobile",
+      "status": 200,
+      "observation": {
+        "path": "/showtimes",
+        "controls": 11,
+        "placeholderHrefs": 0,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 1400
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9669526193656174,
+        "nrmse": 0.8571487218141556,
+        "ssim": 0.8413877487182617
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "signup.desktop",
+      "status": 200,
+      "observation": {
+        "path": "/sign-up",
+        "controls": 6,
+        "placeholderHrefs": 0,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 1100
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9706073947981292,
+        "nrmse": 0.8860926479101181,
+        "ssim": 0.8968062400817871
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "signup.mobile",
+      "status": 200,
+      "observation": {
+        "path": "/sign-up",
+        "controls": 6,
+        "placeholderHrefs": 0,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 1500
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9468415391211417,
+        "nrmse": 0.864445298910141,
+        "ssim": 0.835522472858429
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "help.desktop",
+      "status": 200,
+      "observation": {
+        "path": "/help",
+        "controls": 38,
+        "placeholderHrefs": 0,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 2079
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9807380021787158,
+        "nrmse": 0.9098226502537727,
+        "ssim": 0.9330980181694031
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "help.mobile",
+      "status": 200,
+      "observation": {
+        "path": "/help",
+        "controls": 38,
+        "placeholderHrefs": 0,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 2080
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.966069382312251,
+        "nrmse": 0.8770950436592102,
+        "ssim": 0.8773479461669922
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "theatre.desktop",
+      "status": 200,
+      "observation": {
+        "path": "/movie-theatres/ny/amc-empire-25",
+        "controls": 57,
+        "placeholderHrefs": 0,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 2180
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9689709551194134,
+        "nrmse": 0.8937879577279091,
+        "ssim": 0.8761408925056458
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    },
+    {
+      "id": "theatre.mobile",
+      "status": 200,
+      "observation": {
+        "path": "/movie-theatres/ny/amc-empire-25",
+        "controls": 57,
+        "placeholderHrefs": 0,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 2014
+      },
+      "remote_requests": [],
+      "console_errors": [],
+      "metrics": {
+        "mae": 0.9522745469037224,
+        "nrmse": 0.8467576801776886,
+        "ssim": 0.804522693157196
+      },
+      "evidence_kind": "server-clone-only-against-existing-source-raster"
+    }
+  ]
+}

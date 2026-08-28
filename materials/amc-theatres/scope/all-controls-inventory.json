@@ -1,0 +1,68 @@
+{
+  "schema_version": "websitebench.all-controls-inventory.v1",
+  "site_id": "amc-theatres",
+  "status": "clone-browser-tested-source-partial",
+  "policy": "Each group has a same-origin route or observable local state transition; source-only completeness remains unavailable until current public routes load normally.",
+  "controls": [
+    {"id":"shell.alert-dismiss","route":"/","kind":"button","outcome":"alert hidden","browser_tested":true},
+    {"id":"shell.primary-nav","route":"*","kind":"link-group","outcome":"local page route","browser_tested":true},
+    {"id":"shell.search","route":"*","kind":"form","outcome":"/search?q=...","browser_tested":true},
+    {"id":"shell.account","route":"*","kind":"link","outcome":"/login or /account","browser_tested":true},
+    {"id":"home.carousel","route":"/","kind":"button-group","outcome":"selected promotion state","browser_tested":true},
+    {"id":"home.movie-tabs","route":"/","kind":"tab-group","outcome":"visible movie subset","browser_tested":true},
+    {"id":"movie.favorite","route":"/ and /movies/{slug}","kind":"button","outcome":"persistent local favorite","browser_tested":true},
+    {"id":"movies.featured-menu","route":"/movies","kind":"menu-button","outcome":"local sort links displayed","browser_tested":true},
+    {"id":"movies.category-links","route":"/movies","kind":"link-group","outcome":"genre/sort state","browser_tested":true},
+    {"id":"movies.premium-filter","route":"/movies","kind":"select","outcome":"genre query and empty/loaded state","browser_tested":true},
+    {"id":"theatres.search","route":"/movie-theatres","kind":"form","outcome":"query results or empty state","browser_tested":true},
+    {"id":"theatres.current-location","route":"/movie-theatres","kind":"button","outcome":"deterministic New York query","browser_tested":true},
+    {"id":"theatres.directory-tabs","route":"/movie-theatres","kind":"tab-group","outcome":"market/state panels","browser_tested":true},
+    {"id":"theatres.market-links","route":"/movie-theatres","kind":"link-group","outcome":"local market search","instances":154,"browser_tested":true},
+    {"id":"theatre.favorite","route":"/movie-theatres/{region}/{slug}","kind":"button","outcome":"login redirect or persistent preference","browser_tested":true},
+    {"id":"theatre.date","route":"/movie-theatres/{region}/{slug}","kind":"select","outcome":"local selected date state","browser_tested":true},
+    {"id":"showtimes.filters","route":"/showtimes","kind":"link-group","outcome":"theatre/date/movie/format route state","browser_tested":true},
+    {"id":"showtimes.time","route":"/movies/{slug} and /movie-theatres/{region}/{slug}","kind":"link-group","outcome":"local checkout","browser_tested":true},
+    {"id":"checkout.seats","route":"/checkout/{slug}","kind":"button-grid","outcome":"1-8 selected seats and recalculated review","browser_tested":true},
+    {"id":"checkout.options","route":"/checkout/{slug}","kind":"form-controls","outcome":"ticket/format/attendee/payment simulation state","browser_tested":true},
+    {"id":"checkout.complete","route":"/checkout/{slug}","kind":"button","outcome":"declined/retryable/approved local ledger","browser_tested":true},
+    {"id":"auth.signup","route":"/sign-up","kind":"form","outcome":"local verification challenge","browser_tested":true},
+    {"id":"auth.verify","route":"/verify-account","kind":"form","outcome":"local account and rotated session","browser_tested":true},
+    {"id":"auth.login","route":"/login","kind":"form","outcome":"authenticated local session","browser_tested":true},
+    {"id":"auth.logout","route":"/account","kind":"button","outcome":"revoked session and home route","browser_tested":true},
+    {"id":"auth.reset-request","route":"/password-reset","kind":"form","outcome":"local outbox challenge","browser_tested":true},
+    {"id":"auth.reset-complete","route":"/password-reset/verify","kind":"form","outcome":"new password and authenticated session","browser_tested":true},
+    {"id":"account.preferences","route":"/account","kind":"form","outcome":"persistent theatre/notification/privacy values","browser_tested":true},
+    {"id":"account.order-management","route":"/account/orders/{order_id}","kind":"form-and-button-groups","outcome":"persistent reschedule/cancel/refund/reminder/concessions/special-request/promo/share/review-rating state with validation","browser_tested":true},
+    {"id":"account.order-reorder","route":"/account/orders/{order_id}","kind":"link","outcome":"same movie, theatre, and showtime restored in a fresh local checkout review","browser_tested":true},
+    {"id":"account.order-track","route":"/track-order","kind":"form-and-link","outcome":"owner-scoped local order status or safe signed-out/not-found state","browser_tested":true}
+  ],
+  "counts": {
+    "control_groups": 31,
+    "unclassified_clone_controls": 0,
+    "placeholder_href_controls": 0
+  },
+  "last_clone_browser_replay": {
+    "date": "2026-08-25",
+    "viewports": [
+      "1440x900",
+      "390x844"
+    ],
+    "tests": 4,
+    "remote_requests": 0,
+    "page_errors": 0,
+    "horizontal_overflow_failures": 0,
+    "evidence": "evidence/server-headless-browser-replay.json"
+  },
+  "last_server_headless_route_replay": {
+    "observed_at": "2026-08-24T17:26:08+00:00",
+    "execution": "lab-server-headless-playwright-clone-only",
+    "route_viewport_checkpoints": 14,
+    "successful_page_loads": 14,
+    "failed_page_loads": 0,
+    "horizontal_overflow_checkpoints": 0,
+    "placeholder_href_controls": 0,
+    "unexpected_remote_requests": 0,
+    "unexpected_console_errors": 0,
+    "acceptance_label": "browser-tested-clone-only-not-source-comparison"
+  }
+}

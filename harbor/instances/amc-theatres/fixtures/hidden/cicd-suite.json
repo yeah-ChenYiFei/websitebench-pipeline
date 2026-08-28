@@ -1,0 +1,82 @@
+{
+  "checks": [
+    {
+      "id": "platform::artifact/complete",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::artifact/deploy-path-safe",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::deploy/offline-clean",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::deploy/healthz",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::deploy/foreground-lifecycle",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::deploy/graceful-sigterm",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::deploy/restart-persistence",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::deploy/concurrent-isolation",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::artifact/code-tree-unchanged",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::network/external-closed",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::security/secret-reference-verifier-scan",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::browser/chromium-smoke",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::accessibility/basic",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::performance/startup-budget",
+      "kind": "platform",
+      "timeout_sec": 60
+    },
+    {
+      "id": "platform::performance/resource-budget",
+      "kind": "platform",
+      "timeout_sec": 60
+    }
+  ],
+  "schema_version": "websitebench.harbor.cicd-suite.v1",
+  "site_id": "amc-theatres",
+  "suite_id": "amc-theatres-cicd"
+}

@@ -1,0 +1,541 @@
+{
+  "schema_version": "offline-clone.backend-model.v1",
+  "site_id": "amc-theatres",
+  "status": "verified",
+  "profile": "offline-benchmark",
+  "database": {
+    "engine": "sqlite",
+    "location_policy": "runtime-data-outside-candidate",
+    "concurrency_model": "wal-transactional-single-writer",
+    "migration_strategy": "versioned-forward-migrations",
+    "deterministic_reset": true,
+    "restart_persistence": true,
+    "site_isolation": "one-database-per-site",
+    "proofs": [
+      {
+        "obligation": "data-location",
+        "status": "verified",
+        "evidence": ["clone.tests.test_database_location_schema_and_migrations_are_verifiable"]
+      },
+      {
+        "obligation": "schema-migration",
+        "status": "verified",
+        "evidence": ["clone.tests.test_database_location_schema_and_migrations_are_verifiable"]
+      },
+      {
+        "obligation": "deterministic-reset",
+        "status": "verified",
+        "evidence": ["clone.tests.test_reset_is_amc_only_and_restores_anonymous_seed_baseline"]
+      },
+      {
+        "obligation": "restart-persistence",
+        "status": "verified",
+        "evidence": ["clone.tests.test_order_persists_across_an_independent_process", "clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"]
+      },
+      {
+        "obligation": "backup-restore",
+        "status": "verified",
+        "evidence": ["clone.tests.test_database_backup_restore_round_trip"]
+      },
+      {
+        "obligation": "concurrency",
+        "status": "verified",
+        "evidence": ["clone.tests.test_wal_concurrency_preserves_distinct_orders", "clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"]
+      }
+    ]
+  },
+  "auth_semantics": {
+    "account_database_scope": "site-isolated",
+    "credential_storage": "salted-scrypt-hash",
+    "session_storage": "opaque-cookie-digest-at-rest",
+    "registration_account_creation": "after-email-verification",
+    "verification_challenge_storage": "salted-hash",
+    "password_reset_enumeration": "indistinguishable-public-response",
+    "mail_default": "LOCAL_ONLY",
+    "mail_statuses": [
+      "LOCAL_ONLY",
+      "SMTP_PENDING",
+      "SMTP_SENT",
+      "SMTP_FAILED"
+    ],
+    "smtp_activation": "explicit-complete-config-only",
+    "smtp_delivery_ceiling": 3,
+    "rejected_secret_journaling": "forbidden",
+    "legacy_write_policy": "read-compatible-write-rejected"
+  },
+  "common_capabilities": {
+    "account_registration": "account-registration",
+    "account_sign_in": "account-sign-in",
+    "session_lifecycle": "session-lifecycle",
+    "password_recovery": "password-recovery",
+    "email_delivery": "email-delivery"
+  },
+  "capabilities": [
+    {
+      "id": "account-registration",
+      "label": "Verified local account registration",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "pending-registration",
+          "identity": "opaque pending id bound to one browser session",
+          "owner_scope": "session",
+          "persistence": "durable"
+        },
+        {
+          "name": "local-account",
+          "identity": "site-local account id and unique normalized email",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "challenge-lifecycle",
+        "states": [
+          "collecting",
+          "pending-verification",
+          "verified",
+          "account-created",
+          "expired",
+          "locked"
+        ],
+        "transitions": [
+          {
+            "from": "collecting",
+            "to": "pending-verification",
+            "trigger": "validated registration request"
+          },
+          {
+            "from": "pending-verification",
+            "to": "verified",
+            "trigger": "correct unexpired code within attempt budget"
+          },
+          {
+            "from": "verified",
+            "to": "account-created",
+            "trigger": "transactional account creation and session rotation"
+          },
+          {
+            "from": "pending-verification",
+            "to": "expired",
+            "trigger": "challenge expiry"
+          },
+          {
+            "from": "pending-verification",
+            "to": "locked",
+            "trigger": "verification attempt budget exhausted"
+          }
+        ]
+      },
+      "server_authorities": [
+        "The server normalizes identity and hashes password and code.",
+        "An account is created only after successful verification.",
+        "Duplicate normalized email creation is rejected transactionally."
+      ],
+      "external_effect": "none",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {
+          "valid": ["clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"],
+          "invalid": ["clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"],
+          "duplicate": ["clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"],
+          "stale": ["clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"],
+          "foreign-owner": ["clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"],
+          "unauthorized-role": ["clone.tests.test_order_management_rejects_unsigned_access"],
+          "restart": ["clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"],
+          "migration": ["clone.tests.test_database_location_schema_and_migrations_are_verifiable"],
+          "concurrency": ["clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"]
+        },
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "account-sign-in",
+      "label": "Password-based local account sign-in",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "local-account",
+          "identity": "site-local account id and normalized email",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "entity-lifecycle",
+        "states": [
+          "signed-out",
+          "identified",
+          "authenticated",
+          "rejected"
+        ],
+        "transitions": [
+          {
+            "from": "signed-out",
+            "to": "identified",
+            "trigger": "normalized email submitted"
+          },
+          {
+            "from": "identified",
+            "to": "authenticated",
+            "trigger": "constant-time password verification succeeds"
+          },
+          {
+            "from": "identified",
+            "to": "rejected",
+            "trigger": "credentials are invalid"
+          }
+        ]
+      },
+      "server_authorities": [
+        "The server verifies salted password hashes.",
+        "The server rotates the authenticated session.",
+        "Client-selected fixture identity is not authentication."
+      ],
+      "external_effect": "none",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {
+          "valid": ["clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"],
+          "invalid": ["clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"],
+          "stale": ["clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"],
+          "unauthorized-role": ["clone.tests.test_order_management_rejects_unsigned_access"],
+          "restart": ["clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"],
+          "migration": ["clone.tests.test_database_location_schema_and_migrations_are_verifiable"],
+          "concurrency": ["clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"]
+        },
+        "not_applicable": [
+          {"obligation": "duplicate", "rationale": "Sign-in is a stateless authentication attempt; concurrent repeated valid attempts are covered by the concurrency proof and do not create a duplicate business entity."},
+          {"obligation": "foreign-owner", "rationale": "Sign-in establishes ownership from credentials and has no pre-existing owner-scoped object to mutate."}
+        ]
+      }
+    },
+    {
+      "id": "session-lifecycle",
+      "label": "Anonymous and authenticated browser sessions",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "browser-session",
+          "identity": "opaque cookie token with digest persisted at rest",
+          "owner_scope": "session",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "session-lifecycle",
+        "states": [
+          "anonymous",
+          "authenticated",
+          "revoked",
+          "expired"
+        ],
+        "transitions": [
+          {
+            "from": "anonymous",
+            "to": "authenticated",
+            "trigger": "successful sign-in or registration rotates session"
+          },
+          {
+            "from": "authenticated",
+            "to": "revoked",
+            "trigger": "sign-out or security reset"
+          },
+          {
+            "from": "anonymous",
+            "to": "expired",
+            "trigger": "session expiry"
+          },
+          {
+            "from": "authenticated",
+            "to": "expired",
+            "trigger": "session expiry"
+          }
+        ]
+      },
+      "server_authorities": [
+        "Raw session tokens are never stored in the database.",
+        "Ownership is resolved from the server-side session record.",
+        "Sign-out revokes server-side authority before deleting the cookie."
+      ],
+      "external_effect": "none",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {
+          "valid": ["clone.tests.test_login_and_account"],
+          "invalid": ["clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"],
+          "duplicate": ["clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"],
+          "stale": ["clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"],
+          "foreign-owner": ["clone.tests.test_password_reset_uses_session_local_outbox"],
+          "unauthorized-role": ["clone.tests.test_order_management_rejects_unsigned_access"],
+          "restart": ["clone.tests.test_order_persists_across_an_independent_process"],
+          "migration": ["clone.tests.test_database_location_schema_and_migrations_are_verifiable"],
+          "concurrency": ["clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"]
+        },
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "password-recovery",
+      "label": "Enumeration-resistant local password recovery",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "password-reset-challenge",
+          "identity": "opaque reset id bound to one browser session",
+          "owner_scope": "session",
+          "persistence": "durable"
+        },
+        {
+          "name": "local-account",
+          "identity": "nullable concealed account binding",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "challenge-lifecycle",
+        "states": [
+          "requested",
+          "verified",
+          "consumed",
+          "expired",
+          "locked"
+        ],
+        "transitions": [
+          {
+            "from": "requested",
+            "to": "verified",
+            "trigger": "correct unexpired code within attempt budget"
+          },
+          {
+            "from": "verified",
+            "to": "consumed",
+            "trigger": "password is replaced and sessions are revoked"
+          },
+          {
+            "from": "requested",
+            "to": "expired",
+            "trigger": "challenge expiry"
+          },
+          {
+            "from": "requested",
+            "to": "locked",
+            "trigger": "verification attempt budget exhausted"
+          }
+        ]
+      },
+      "server_authorities": [
+        "Known and unknown emails receive indistinguishable public responses.",
+        "Only the server binds a reset flow to an account.",
+        "Password replacement revokes prior authenticated sessions."
+      ],
+      "external_effect": "local-only",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {
+          "valid": ["clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"],
+          "invalid": ["clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"],
+          "stale": ["clone.tests.test_auth_duplicate_stale_foreign_owner_and_session_revocation"],
+          "foreign-owner": ["clone.tests.test_password_reset_uses_session_local_outbox"],
+          "unauthorized-role": ["clone.tests.test_order_management_rejects_unsigned_access"],
+          "restart": ["clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"],
+          "migration": ["clone.tests.test_database_location_schema_and_migrations_are_verifiable"]
+        },
+        "not_applicable": [
+          {"obligation": "duplicate", "rationale": "A later reset request replaces the same session-owned challenge rather than creating a duplicate durable business entity."},
+          {"obligation": "concurrency", "rationale": "Password recovery is intentionally serialized per session and account challenge; concurrency is not part of the public recovery contract."}
+        ]
+      }
+    },
+    {
+      "id": "email-delivery",
+      "label": "Truthful local verification and recovery mail outbox",
+      "priority": "p0",
+      "category": "communication",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "mail-outbox-entry",
+          "identity": "site-local outbox id and purpose-bound flow id",
+          "owner_scope": "system",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "delivery-lifecycle",
+        "states": [
+          "local-only",
+          "smtp-pending",
+          "smtp-sent",
+          "smtp-failed"
+        ],
+        "transitions": [
+          {
+            "from": "local-only",
+            "to": "smtp-pending",
+            "trigger": "operator enables complete explicit SMTP configuration"
+          },
+          {
+            "from": "smtp-pending",
+            "to": "smtp-sent",
+            "trigger": "SMTP transport confirms delivery handoff"
+          },
+          {
+            "from": "smtp-pending",
+            "to": "smtp-failed",
+            "trigger": "delivery attempt fails or ceiling is reached"
+          },
+          {
+            "from": "smtp-failed",
+            "to": "smtp-pending",
+            "trigger": "bounded idempotent retry below the delivery ceiling"
+          }
+        ]
+      },
+      "server_authorities": [
+        "Offline mode records LOCAL_ONLY and never claims external delivery.",
+        "SMTP is disabled unless every required setting is present.",
+        "Claim, retry, and startup replay share one delivery ceiling."
+      ],
+      "external_effect": "local-only",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {
+          "valid": ["clone.tests.test_password_reset_uses_session_local_outbox", "clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"],
+          "invalid": ["clone.tests.test_password_reset_uses_session_local_outbox"],
+          "foreign-owner": ["clone.tests.test_password_reset_uses_session_local_outbox"],
+          "restart": ["clone.tests.test_verified_account_restart_concurrent_sign_in_and_password_reset_completion"],
+          "migration": ["clone.tests.test_database_location_schema_and_migrations_are_verifiable"]
+        },
+        "not_applicable": [
+          {"obligation": "duplicate", "rationale": "LOCAL_ONLY outbox projections are session-local status records and have no externally delivered duplicate effect."},
+          {"obligation": "stale", "rationale": "Delivery is disabled in offline-benchmark mode; expiry belongs to the registration or recovery challenge, not the local outbox projection."},
+          {"obligation": "unauthorized-role", "rationale": "No operator or administrative delivery role exists in the offline-benchmark profile."},
+          {"obligation": "concurrency", "rationale": "External delivery is disabled and local status journaling is serialized with its owning challenge transaction."}
+        ]
+      }
+    },
+    {
+      "id": "ticket-checkout",
+      "label": "Deterministic local ticket selection and sandbox checkout",
+      "priority": "p0",
+      "category": "commerce",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "booking-review",
+          "identity": "session-local movie, theatre, showtime, ticket tier, format, attendee, and seat tuple",
+          "owner_scope": "session",
+          "persistence": "ephemeral"
+        },
+        {
+          "name": "sandbox-order",
+          "identity": "site-local AMC order id",
+          "owner_scope": "session",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "entity-lifecycle",
+        "states": ["selecting", "reviewed", "declined", "retryable", "confirmed"],
+        "transitions": [
+          {"from": "selecting", "to": "reviewed", "trigger": "valid seats, tier, format, and synthetic attendee are selected"},
+          {"from": "reviewed", "to": "declined", "trigger": "sandbox-declined scenario"},
+          {"from": "reviewed", "to": "retryable", "trigger": "sandbox-retry scenario"},
+          {"from": "reviewed", "to": "confirmed", "trigger": "sandbox-approved transaction persists a local order"}
+        ]
+      },
+      "server_authorities": [
+        "The server validates movie, theatre, seat, tier, format, attendee, and sandbox scenario.",
+        "The server computes the authoritative local total.",
+        "No card data, remote payment request, or production inventory mutation is permitted."
+      ],
+      "external_effect": "local-only",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {
+          "valid": ["clone.tests.test_membership_ticket_tier_format_attendee_and_review_persist", "clone.tests.test_discovery_sort_showtime_help_and_exact_local_scenario_contracts"],
+          "invalid": ["clone.tests.test_order_validation_and_retry_state", "clone.tests.test_local_sandbox_order_outcomes"],
+          "duplicate": ["clone.tests.test_wal_concurrency_preserves_distinct_orders"],
+          "restart": ["clone.tests.test_order_persists_across_an_independent_process"],
+          "migration": ["clone.tests.test_database_location_schema_and_migrations_are_verifiable"],
+          "concurrency": ["clone.tests.test_wal_concurrency_preserves_distinct_orders"]
+        },
+        "not_applicable": [
+          {"obligation": "stale", "rationale": "The offline checkout does not claim or hold production inventory; no externally stale seat hold exists."},
+          {"obligation": "foreign-owner", "rationale": "Checkout creates a new session-owned local order and does not mutate a pre-existing foreign order."},
+          {"obligation": "unauthorized-role", "rationale": "Anonymous local checkout is intentionally in scope; role authorization begins at order management."}
+        ]
+      }
+    },
+    {
+      "id": "order-management",
+      "label": "Owner-bound local sandbox ticket management",
+      "priority": "p0",
+      "category": "workflow",
+      "implementation_status": "verified",
+      "entities": [
+        {
+          "name": "sandbox-order",
+          "identity": "site-local AMC order id bound to an authenticated account owner digest",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "order-metadata",
+          "identity": "one metadata row per site-local AMC order id",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "kind": "entity-lifecycle",
+        "states": ["approved", "rescheduled", "cancelled", "refunded"],
+        "transitions": [
+          {"from": "approved", "to": "rescheduled", "trigger": "owner selects a valid local showtime"},
+          {"from": "approved", "to": "cancelled", "trigger": "owner cancels the local order"},
+          {"from": "rescheduled", "to": "cancelled", "trigger": "owner cancels the rescheduled local order"},
+          {"from": "cancelled", "to": "refunded", "trigger": "owner simulates a local refund"}
+        ]
+      },
+      "server_authorities": [
+        "The server resolves ownership from the authenticated session digest.",
+        "The server validates state transitions and synthetic share recipients.",
+        "Reschedule, cancel, refund, reminder, concessions, notes, promo, and share mutations remain local and durable."
+      ],
+      "external_effect": "local-only",
+      "journey_ids": [],
+      "invariant_ids": [],
+      "proofs": {
+        "evidence": {
+          "valid": ["clone.tests.test_order_management_ticket_and_preferences_close_locally"],
+          "invalid": ["clone.tests.test_order_management_ticket_and_preferences_close_locally"],
+          "duplicate": ["clone.tests.test_order_management_ticket_and_preferences_close_locally"],
+          "stale": ["clone.tests.test_order_management_ticket_and_preferences_close_locally"],
+          "foreign-owner": ["clone.tests.test_order_management_ticket_and_preferences_close_locally"],
+          "unauthorized-role": ["clone.tests.test_order_management_rejects_unsigned_access"],
+          "restart": ["clone.tests.test_order_management_ticket_and_preferences_close_locally"],
+          "migration": ["clone.tests.test_database_location_schema_and_migrations_are_verifiable"]
+        },
+        "not_applicable": [
+          {"obligation": "concurrency", "rationale": "Order management is a single-owner transactional workflow serialized by SQLite WAL; concurrent mutation is not an exposed contract."}
+        ]
+      }
+    }
+  ]
+}

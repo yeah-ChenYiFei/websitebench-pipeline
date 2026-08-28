@@ -1,0 +1,22 @@
+name: diagnostics (amc-theatres)
+on:
+  pull_request:
+    paths:
+      - materials/amc-theatres/**
+      - .github/workflows/tests-amc-theatres.yml
+      - .github/workflows/clone-diagnostics.yml
+  push:
+    paths:
+      - materials/amc-theatres/**
+      - .github/workflows/tests-amc-theatres.yml
+      - .github/workflows/clone-diagnostics.yml
+permissions:
+  contents: read
+concurrency:
+  group: diagnostics-amc-theatres-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  diagnostics:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: amc-theatres

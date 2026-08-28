@@ -1,0 +1,15 @@
+{
+  "schema_version": "websitebench.external-links.v1",
+  "site_id": "amc-theatres",
+  "included_source_origins": ["https://www.amctheatres.com"],
+  "policy": "runtime-same-origin-only",
+  "runtime_remote_requests": 0,
+  "omitted": [],
+  "replaced_dependencies": [
+    {"source_role":"AMC identity and membership","clone_replacement":"local synthetic account, local outbox, site-bound SQLite"},
+    {"source_role":"AMC ticketing, payment and order management","clone_replacement":"local sandbox ledger with no real purchase"},
+    {"source_role":"location lookup","clone_replacement":"deterministic local New York state"}
+  ],
+  "source_external_only_control_inventory_complete": false,
+  "source_external_inventory_blocker": "Current public source crawl returns error or access-control states on most routes."
+}

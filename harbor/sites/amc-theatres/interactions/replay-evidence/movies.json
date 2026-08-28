@@ -1,0 +1,109 @@
+{
+  "authority": "diagnostic-only",
+  "backend": "adapter",
+  "contract": {
+    "path": "harbor/sites/amc-theatres/interactions/opencli-interaction-contract.json"
+  },
+  "degradation": [],
+  "duration_seconds": 12.214683,
+  "instance_id": null,
+  "opencli": {
+    "binary_present": true,
+    "connectivity_ok": false,
+    "contract_version": "1.8.6",
+    "doctor_green": false,
+    "extension_connected": false,
+    "notes": [
+      "opencli-unavailable: Browser Bridge extension not connected",
+      "opencli-unavailable: browser connectivity check failed"
+    ],
+    "version": "1.8.6",
+    "version_matches": true
+  },
+  "profile_id": "movies",
+  "profile_label": "amc-theatres movies (derived draft)",
+  "profile_tier": "p0",
+  "schema_version": "websitebench.harbor.opencli.replay-result.v1",
+  "site_id": "amc-theatres",
+  "status": "passed",
+  "steps": [
+    {
+      "command": "state",
+      "declared_route": "movies",
+      "duration_seconds": 1.124556,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "amc-theatres_movies_list",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "Movies at AMC",
+          "key": "list_contains",
+          "observed": "Movies at AMC",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "movies-list",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "movies/superman",
+      "duration_seconds": 0.889276,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "amc-theatres_movies_detail",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "Choose a showtime",
+          "key": "visible",
+          "observed": "Choose a showtime",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "movies-detail",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "showtimes?movie=superman",
+      "duration_seconds": 0.882012,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "amc-theatres_movies_showtimes",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "Movie Showtimes",
+          "key": "visible",
+          "observed": "Movie Showtimes",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "movies-showtimes",
+      "tier": "p0"
+    }
+  ],
+  "summary": {
+    "assertion_failures": 0,
+    "steps_passed": 3,
+    "steps_total": 3,
+    "unasserted_observations": 0,
+    "unsupported_commands": 0
+  },
+  "target": "candidate",
+  "target_binding": {
+    "allowlist": [
+      "127.0.0.1",
+      "localhost"
+    ],
+    "base_origin": "http://127.0.0.1:24106",
+    "reset_status": null,
+    "session_fields": [],
+    "session_status": null
+  }
+}

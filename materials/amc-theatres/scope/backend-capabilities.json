@@ -1,0 +1,43 @@
+{
+  "backend_profile": "full",
+  "capabilities": [
+    {
+      "applicability": "in-scope",
+      "id": "accounts",
+      "rationale": "Human-selected packet tasks WB007-T14..T21 require registration, login, logout, profile and session state (packet backend tier: Tier 2 - High)."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "password-recovery",
+      "rationale": "Human-selected packet task WB007-T18 exercises password reset through request, validation and recovery."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "transactional-mail",
+      "rationale": "Packet task WB007-T15 (email/account verification) and WB007-T18 need verification/recovery mail; real mail only to the user-controlled test inbox per packet authority."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "orders",
+      "rationale": "Packet tasks WB007-T28..T34 cover booking confirmation, ticket details and post-booking management of persisted orders."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "checkout",
+      "rationale": "Packet tasks WB007-T26..T28 and WB007-T48 require a ticket checkout flow ending in a confirmation state."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "payments",
+      "rationale": "Packet tasks WB007-T26 and WB007-T38 require payment method and payment-failure/retry semantics; clone uses local-sandbox only, live payment forbidden by packet authority."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "database",
+      "rationale": "Persistent accounts, saved favourites (WB007-T13), orders and preference state require the per-site isolated SQLite database."
+    }
+  ],
+  "runtime_required": true,
+  "schema_version": "offline-clone.contribution-backend-scope.v1",
+  "site_id": "amc-theatres"
+}

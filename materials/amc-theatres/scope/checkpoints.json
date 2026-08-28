@@ -1,0 +1,534 @@
+{
+  "schema_version": "offline-clone.checkpoints.v1",
+  "status": "draft",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "home.loaded.desktop",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p0",
+      "route_id": "home",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "desktop",
+      "visual_contract": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9864857197,
+        "normalized_rmse_similarity": 0.9328675866,
+        "ssim": 0.9199658036
+      },
+      "region_results": [],
+      "source_sha256": "5b55e722ae246dcee9f42a801475571c5d1204ca783b6a23b3ab6ec7cc64dd1e",
+      "candidate_sha256": "6a35bb3272a4bd78f5a92e4adc43d02ab1e8a1c0541d6b04c9f64c03393a3a3a",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/home.loaded.desktop",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/4",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "home.loaded.mobile",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p0",
+      "route_id": "home",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "mobile",
+      "visual_contract": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9752398729,
+        "normalized_rmse_similarity": 0.9096468091,
+        "ssim": 0.9117462635
+      },
+      "region_results": [],
+      "source_sha256": "1904e91f691e2f91b100304a0976a9bddc6bd229a6ea9e3f8ef4d0df0cccdfbf",
+      "candidate_sha256": "c529a17ec2b1bec2ec15cb3a24119cb99d83262392a1b0e5d31af4374eeac7dc",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/home.loaded.mobile",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/5",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "movies.loaded.desktop",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p0",
+      "route_id": "movies",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "desktop",
+      "visual_contract": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.98694098,
+        "normalized_rmse_similarity": 0.9289685488,
+        "ssim": 0.9353019595
+      },
+      "region_results": [],
+      "source_sha256": "91287e323f9c8201d0112b7ad4082e6847de17ebf0c851af0f07206789f366c3",
+      "candidate_sha256": "04bb7c3733d3f77d23baba1d53caa6b188a6f1a9f30e0bfbcc9780750908bf08",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/movies.loaded.desktop",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/6",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "movies.loaded.mobile",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p0",
+      "route_id": "movies",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "mobile",
+      "visual_contract": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9873880148,
+        "normalized_rmse_similarity": 0.9333152771,
+        "ssim": 0.9500225186
+      },
+      "region_results": [],
+      "source_sha256": "3c7c3944838b93200ddffce298d822cc4182d356cacdcac513544c28c32721fc",
+      "candidate_sha256": "1eaeedcddb70fd31410de4da99ebaab126eeaea4dd4783e9ef1046a6930109bb",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/movies.loaded.mobile",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/7",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "theatre-directory.loaded.desktop",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p0",
+      "route_id": "theatre-directory",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "desktop",
+      "visual_contract": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9914420843,
+        "normalized_rmse_similarity": 0.936576128,
+        "ssim": 0.9419152141
+      },
+      "region_results": [],
+      "source_sha256": "e79c652f69a48968b45311c9a11008900458478417a26dbd200001047cf3e6ca",
+      "candidate_sha256": "32f7b3d707bdf65e7dcd61b2a0002bde854b98ad21c5af21d0a9b0d3114af0b4",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/theatre-directory.loaded.desktop",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/0",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "theatre-directory.loaded.mobile",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p0",
+      "route_id": "theatre-directory",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "mobile",
+      "visual_contract": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9938544035,
+        "normalized_rmse_similarity": 0.953004241,
+        "ssim": 0.9754768014
+      },
+      "region_results": [],
+      "source_sha256": "9740a2a5a36e0c3b4a18f0996823f9a6080abafde4b0188124f2751fc343c0d3",
+      "candidate_sha256": "e2d0f31ba6430ab561e4c72aca9f229e46d22dca5019ac55be4bf570fdecb58a",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/theatre-directory.loaded.mobile",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/1",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "showtimes.loaded.desktop",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p0",
+      "route_id": "showtimes",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "desktop",
+      "visual_contract": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9983353019,
+        "normalized_rmse_similarity": 0.9753342867,
+        "ssim": 0.9893195629
+      },
+      "region_results": [],
+      "source_sha256": "3c1c243d3af00bfc1ed114d53560ea16adc996b754b57bd0d9c2a031a665fe68",
+      "candidate_sha256": "a1aa55c562bc0c26525ef1e4ccaf3eeae834ef75bbfd1d40907213ace7b5e873",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/showtimes.loaded.desktop",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/8",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "showtimes.loaded.mobile",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p0",
+      "route_id": "showtimes",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "mobile",
+      "visual_contract": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9871869683,
+        "normalized_rmse_similarity": 0.9108607769,
+        "ssim": 0.9333518147
+      },
+      "region_results": [],
+      "source_sha256": "39c18c7062bf6868e2ca0d7f30e2cd3c6cfff672ca3cbe8040f657e40491a348",
+      "candidate_sha256": "a7aae4e6a583ce2c4afd66de8e6f329d5983bfdc32d42aab8ce0ddb5fabd7e74",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/showtimes.loaded.mobile",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/9",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "sign-up.loaded.desktop",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p1",
+      "route_id": "sign-up",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "desktop",
+      "visual_contract": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9864217639,
+        "normalized_rmse_similarity": 0.913582623,
+        "ssim": 0.947132051
+      },
+      "region_results": [],
+      "source_sha256": "016eb522df11b11d20a20d6cb58c47be8aad1923d0448c5cd9adc53ed7846376",
+      "candidate_sha256": "711dbcc16eb23b07f42236792c2ff158e2cde8c4ef907633ccea056ebc94b591",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/sign-up.loaded.desktop",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/10",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "sign-up.loaded.mobile",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p1",
+      "route_id": "sign-up",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "mobile",
+      "visual_contract": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9837419987,
+        "normalized_rmse_similarity": 0.9164036512,
+        "ssim": 0.9383165836
+      },
+      "region_results": [],
+      "source_sha256": "7cee1f49f45624f8f7177fd29810483b5078547c716d344b66a27e7506f9fe8e",
+      "candidate_sha256": "fd3d188ddfd85883a537962abdce1d564f4065b18b8ca4dcadbfba5a1b7916ff",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/sign-up.loaded.mobile",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/11",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "help.loaded.desktop",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p1",
+      "route_id": "help",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "desktop",
+      "visual_contract": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9859917164,
+        "normalized_rmse_similarity": 0.9146854281,
+        "ssim": 0.9276525974
+      },
+      "region_results": [],
+      "source_sha256": "134ff2c25c4329d5a8f85f413a91affcea07ff7af895a8cfd65ac56bdf57baa2",
+      "candidate_sha256": "63f0ab26fed7dff334d99019bd30db4ac82c7b7f4f13b4d89b26d6ec5ba5f41f",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/help.loaded.desktop",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/2",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "help.loaded.mobile",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p1",
+      "route_id": "help",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "mobile",
+      "visual_contract": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9871609211,
+        "normalized_rmse_similarity": 0.9106225371,
+        "ssim": 0.9521341324
+      },
+      "region_results": [],
+      "source_sha256": "8e6375ad290d7d3c3dc5081784a9fd8266117abb5b4c5ed85d639baf4192a629",
+      "candidate_sha256": "748b99dcc4a34d98468a1a8940f2eff5932902306ea62cc4528e94b916c48eb1",
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/help.loaded.mobile",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/3",
+      "source_artifact_storage": "mac-private-not-transferred",
+      "candidate_artifact_storage": "mac-private-not-transferred"
+    },
+    {
+      "id": "theatre-empire-25.loaded.desktop",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p0",
+      "route_id": "theatre-empire-25",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "desktop",
+      "visual_contract": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.9798985347151756,
+        "normalized_rmse_similarity": 0.9263105764985085,
+        "ssim": 0.908962050851568
+      },
+      "region_results": [],
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/theatre-empire-25.loaded.desktop",
+      "source_sha256": "f4dc67e584fadafa496f04110e7db277967e0c5b43c09a229e7d34a06e06a24c",
+      "candidate_sha256": "22c216dfafbfa4b4bd4fdd1cea47fa1aa557cdbc545386e5e3711347b4eb9720",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/12",
+      "source_artifact_storage": "untracked-scratch-removed-before-delivery",
+      "candidate_artifact_storage": "untracked-scratch-removed-before-delivery"
+    },
+    {
+      "id": "theatre-empire-25.loaded.mobile",
+      "acceptance_eligible": true,
+      "evidence_kind": "current-direct-mac-headed-playwright",
+      "priority": "p0",
+      "route_id": "theatre-empire-25",
+      "state": "loaded",
+      "verification_kind": "source-clone-visual-three-metric",
+      "viewport": "mobile",
+      "visual_contract": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.9,
+        "source_artifact_path": "evidence/source-vs-clone-playwright-2026-08-25.json"
+      },
+      "metric_results": {
+        "mae_similarity": 0.980285881087184,
+        "normalized_rmse_similarity": 0.9173094183206558,
+        "ssim": 0.922141704848099
+      },
+      "region_results": [],
+      "visual_session_ref": "scope/visual-sessions.json#/comparisons/theatre-empire-25.loaded.mobile",
+      "source_sha256": "8a5003f76a3d1a2a681f891019a2aa8953c8a321f2349e39ab6ffd7d47b00d56",
+      "candidate_sha256": "08fdc997bf63adcbf94c8db5bce0b864972f669d297a7b30ee4f1a6a1eeee352",
+      "derived_metrics_ref": "evidence/source-vs-clone-playwright-2026-08-25.json#/comparisons/13",
+      "source_artifact_storage": "untracked-scratch-removed-before-delivery",
+      "candidate_artifact_storage": "untracked-scratch-removed-before-delivery"
+    }
+  ]
+}

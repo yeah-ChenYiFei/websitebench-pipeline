@@ -1,0 +1,128 @@
+{
+  "schema_version": "websitebench.route-state-viewport.v1",
+  "site_id": "amc-theatres",
+  "status": "verified-current-public-and-local-synthetic",
+  "viewports": [
+    {
+      "label": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "label": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "entries": [
+    {
+      "family": "public-theatre-detail",
+      "routes": [
+        "/movie-theatres/ny/amc-empire-25"
+      ],
+      "role": "public-anonymous",
+      "states": [
+        "loaded"
+      ],
+      "evidence": "Direct Mac headed Playwright source-versus-clone comparison at both viewports; all three full-frame metrics pass 0.90."
+    },
+    {
+      "family": "public-representative-loaded",
+      "routes": [
+        "/",
+        "/movies",
+        "/movie-theatres",
+        "/showtimes",
+        "/sign-up",
+        "/help"
+      ],
+      "role": "public-anonymous",
+      "states": [
+        "loaded"
+      ],
+      "evidence": "Fresh direct Mac headed Playwright source-versus-clone comparison at desktop and mobile for every listed route; all three full-frame metrics pass 0.90. Raw rasters are not included in delivery; hashes and derived metrics are recorded in evidence/source-vs-clone-playwright-2026-08-25.json."
+    },
+    {
+      "family": "clone-public-discovery",
+      "routes": [
+        "/",
+        "/movies",
+        "/movies/{slug}",
+        "/movie-theatres",
+        "/movie-theatres/{market}",
+        "/movie-theatres/{region}/{slug}",
+        "/showtimes",
+        "/search",
+        "/help",
+        "/food-and-drink",
+        "/group-events",
+        "/merchandise",
+        "/gift-cards",
+        "/offers",
+        "/on-demand"
+      ],
+      "role": "public-anonymous-local",
+      "states": [
+        "loaded",
+        "filtered",
+        "sorted",
+        "empty",
+        "saved",
+        "auth-required"
+      ],
+      "evidence": "Fresh lab-server headless Playwright exercised every listed local route/state at desktop and mobile with zero overflow, unexpected remote request, or page error. Source visual claims remain limited to the separately frozen direct contracts."
+    },
+    {
+      "family": "clone-local-auth-account",
+      "routes": [
+        "/login",
+        "/sign-up",
+        "/verify-account",
+        "/account",
+        "/password-reset",
+        "/password-reset/verify"
+      ],
+      "role": "local-synthetic-account",
+      "states": [
+        "validation",
+        "local-outbox",
+        "authenticated",
+        "logged-out",
+        "password-replaced",
+        "preferences-persisted",
+        "fresh-browser-relogin",
+        "process-restart-persisted"
+      ],
+      "evidence": "Fresh desktop and mobile Playwright clicks plus focused backend tests; synthetic owner state survives logout/login and a real clone process restart. No source-private visual claim."
+    },
+    {
+      "family": "clone-local-checkout-order",
+      "routes": [
+        "/checkout/{slug}",
+        "/account/orders/{order_id}",
+        "/track-order"
+      ],
+      "role": "local-synthetic-member",
+      "states": [
+        "seat-selected",
+        "review-updated",
+        "declined",
+        "retryable",
+        "approved",
+        "rescheduled",
+        "reminder",
+        "concessions",
+        "notes",
+        "promo",
+        "shared",
+        "reviewed",
+        "reordered",
+        "tracked",
+        "cancelled",
+        "refunded",
+        "cross-account-not-found"
+      ],
+      "evidence": "Fresh desktop and mobile Playwright clicks plus focused backend tests, with remote requests zero and owner isolation asserted; real source purchase intentionally not performed."
+    }
+  ]
+}

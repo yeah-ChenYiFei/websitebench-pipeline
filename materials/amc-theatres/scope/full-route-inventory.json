@@ -1,0 +1,52 @@
+{
+  "schema_version": "websitebench.full-route-inventory.v1",
+  "site_id": "amc-theatres",
+  "status": "clone-closed-source-partial",
+  "included_source_origins": ["https://www.amctheatres.com"],
+  "generated_from": "FastAPI decorators, local Playwright route/control walks, and public anonymous isolated Mac headed Ego source observations",
+  "counts": {
+    "page_route_families": 19,
+    "api_routes": 15,
+    "movie_records": 40,
+    "theatre_records": 6,
+    "market_records": 154
+  },
+  "routes": [
+    {"route_id":"home","route_pattern":"/","kind":"page","states":["loaded","alert-dismissed","carousel-selected","movie-tab-selected"],"source_evidence":"fresh-mac-headed-ego-direct-2026-08-25"},
+    {"route_id":"feature-pages","route_pattern":"/{food-and-drink|group-events|merchandise|gift-cards|offers|on-demand}","kind":"page-family","instances":6,"states":["loaded"],"source_evidence":"fresh-mac-headed-ego-direct-5-of-6-merchandise-external-2026-08-25"},
+    {"route_id":"movies","route_pattern":"/movies","kind":"collection","records":40,"states":["loaded","coming-soon-batch","genre-filtered","sorted","empty"],"source_evidence":"fresh-mac-headed-ego-direct-now-playing-and-coming-soon-2026-08-25"},
+    {"route_id":"movie-detail","route_pattern":"/movies/{slug}","kind":"detail-family","records":40,"detail_route_coverage":true,"states":["loaded","saved","showtime-selected"],"source_evidence":"fresh-mac-headed-ego-direct-representative-2026-08-25"},
+    {"route_id":"theatre-directory","route_pattern":"/movie-theatres","kind":"collection","markets":154,"theatres":6,"states":["loaded","market-tab","state-tab","searched","empty"],"source_evidence":"fresh-mac-headed-ego-direct-154-markets-2026-08-25"},
+    {"route_id":"theatre-market","route_pattern":"/movie-theatres/{market}","kind":"parameter-family","records":154,"states":["redirected-to-search"],"source_evidence":"fresh-mac-headed-ego-direct-representative-2026-08-25"},
+    {"route_id":"theatre-detail","route_pattern":"/movie-theatres/{region}/{slug}","kind":"detail-family","records":6,"detail_route_coverage":true,"states":["loaded","favorite-auth-required","favorite-saved","date-selected"],"source_evidence":"fresh-mac-headed-ego-direct-representative-2026-08-25"},
+    {"route_id":"showtimes","route_pattern":"/showtimes","kind":"page","states":["loaded","movie-selected","date-selected","format-selected"],"source_evidence":"fresh-mac-headed-ego-direct-redirected-theatre-showtimes-2026-08-25"},
+    {"route_id":"checkout","route_pattern":"/checkout/{slug}","kind":"local-side-effect-sandbox","records":40,"states":["loaded","seat-selected","declined","retryable","approved"],"source_evidence":"source-payment-forbidden"},
+    {"route_id":"login","route_pattern":"/login","kind":"local-synthetic-auth","states":["loaded","validation","authenticated"],"source_evidence":"fresh-anonymous-source-error-500-auth-private-unobserved-2026-08-25"},
+    {"route_id":"sign-up","route_pattern":"/sign-up","kind":"local-synthetic-auth","states":["tier-selected","registration","validation"],"source_evidence":"fresh-mac-headed-ego-direct-2026-08-25"},
+    {"route_id":"verify-account","route_pattern":"/verify-account","kind":"local-synthetic-auth","states":["local-outbox","verified"],"source_evidence":"private-source-unobserved"},
+    {"route_id":"account","route_pattern":"/account","kind":"local-synthetic-account","states":["signed-out-redirect","authenticated","saved-items","orders","preferences"],"source_evidence":"private-source-unobserved"},
+    {"route_id":"order-detail","route_pattern":"/account/orders/{order_id}","kind":"local-side-effect-sandbox","states":["confirmed","rescheduled","cancelled","refunded","reminder","concessions","notes","promo","shared","reviewed","reorder"],"source_evidence":"source-payment-forbidden"},
+    {"route_id":"search","route_pattern":"/search","kind":"page","states":["loaded","query","empty"],"source_evidence":"fresh-mac-headed-ego-direct-empty-query-state-2026-08-25"},
+    {"route_id":"help","route_pattern":"/help","kind":"page","states":["loaded","query"],"source_evidence":"fresh-mac-headed-ego-direct-2026-08-25"},
+    {"route_id":"password-reset","route_pattern":"/password-reset","kind":"local-synthetic-auth","states":["loaded","local-outbox"],"source_evidence":"fresh-anonymous-source-404-reset-private-unobserved-2026-08-25"},
+    {"route_id":"password-reset-verify","route_pattern":"/password-reset/verify","kind":"local-synthetic-auth","states":["validation","completed"],"source_evidence":"private-source-unobserved"},
+    {"route_id":"track-order","route_pattern":"/track-order","kind":"local-owner-scoped-lookup","states":["empty","signed-out","not-found","owned-status"],"source_evidence":"source-private-order-state-unavailable-clone-browser-tested"}
+  ],
+  "api_routes": [
+    "POST /api/reset",
+    "POST /api/login",
+    "POST /api/signup",
+    "POST /api/signup/verify",
+    "POST /api/logout",
+    "POST /api/password-reset",
+    "POST /api/password-reset/complete",
+    "GET /api/local-outbox/registration",
+    "GET /api/local-outbox/password-reset",
+    "POST /api/favorites",
+    "POST /api/orders",
+    "POST /api/orders/{order_id}/manage",
+    "POST /api/orders/{order_id}/review",
+    "GET /api/preferences",
+    "POST /api/preferences"
+  ]
+}

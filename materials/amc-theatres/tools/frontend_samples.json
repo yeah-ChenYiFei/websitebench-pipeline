@@ -1,0 +1,108 @@
+{
+  "schema_version": "offline-clone.frontend-samples.v1",
+  "site_id": "amc-theatres",
+  "captured_at": "2026-08-24T14:24:00+08:00",
+  "authority": "candidate-browser-observation",
+  "checks": [
+    {
+      "id": "movies.list",
+      "url": "/movies",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": [
+        "Movies at AMC",
+        "23 movies"
+      ]
+    },
+    {
+      "id": "movies.detail",
+      "url": "/movies/superman",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": [
+        "Choose a showtime",
+        "AMC audience score"
+      ]
+    },
+    {
+      "id": "movies.showtimes",
+      "url": "/showtimes?movie=superman",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": [
+        "Showtimes",
+        "Movies start 25-30 minutes after showtime"
+      ]
+    },
+    {
+      "id": "theatres.directory",
+      "url": "/movie-theatres",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": [
+        "Find a Theatre",
+        "Use Current Location",
+        "All Theatres"
+      ]
+    },
+    {
+      "id": "theatres.empire",
+      "url": "/movie-theatres/ny/amc-empire-25",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": [
+        "AMC Empire 25",
+        "234 West 42nd Street"
+      ]
+    },
+    {
+      "id": "theatres.search",
+      "url": "/movie-theatres?q=empire",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": [
+        "1 theatres found",
+        "AMC Empire 25"
+      ]
+    },
+    {
+      "id": "movies.empty",
+      "url": "/movies?q=definitely-missing",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": [
+        "No movies found",
+        "Reset filters"
+      ]
+    },
+    {
+      "id": "account.protected",
+      "url": "/account",
+      "method": "get",
+      "expect_status": 303,
+      "expect_contains": []
+    },
+    {
+      "id": "password-reset.form",
+      "url": "/password-reset",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": [
+        "Reset your password",
+        "Request Local Reset"
+      ]
+    },
+    {
+      "id": "checkout.review",
+      "url": "/checkout/the-odyssey?theatre=amc-empire-25&time=Friday%207%3A00%20PM",
+      "method": "get",
+      "expect_status": 200,
+      "expect_contains": [
+        "Choose your seats",
+        "Booking review",
+        "Ticket type",
+        "Attendee name"
+      ]
+    }
+  ]
+}

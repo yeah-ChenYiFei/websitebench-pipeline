@@ -1,0 +1,58 @@
+{
+  "journeys": [
+    {
+      "actor": "visitor",
+      "id": "home-mainline",
+      "kind": "success",
+      "priority": "p0",
+      "status": "draft",
+      "steps": [
+        "Open the public home route and inspect its local response."
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "anonymous-discover-showtimes",
+      "kind": "success",
+      "priority": "p0",
+      "status": "draft",
+      "evidence_kind": "direct",
+      "evidence_ref": "claude-runs/amc-theatres/anonymous/ego/route-observations-20260813T1523Z.json",
+      "steps": [
+        "Open the home page (canonical https://www.amctheatres.com/).",
+        "Browse /movies for now-playing and coming-soon titles.",
+        "Find a theatre via /movie-theatres or /showtimes (Select a Theatre, Use Current Location, Continue).",
+        "Open the AMC Empire 25 theatre detail page and view its movie list, Get Tickets and Order Food & Drinks entry points."
+      ]
+    },
+    {
+      "actor": "moviegoer",
+      "id": "buy-imax-tickets-e2e",
+      "kind": "success",
+      "priority": "p0",
+      "status": "draft",
+      "evidence_kind": "unavailable",
+      "note": "Proposal derived from human-selected inventory task WB007-T48; showtime/format/seat/payment/confirmation surfaces are not yet observed (listed unavailable in the anonymous record). Source evidence must stop before any real purchase; clone completes the flow with local-sandbox payment only.",
+      "steps": [
+        "From AMC Empire 25, pick an upcoming Friday evening IMAX showtime for the highest-rated movie currently showing.",
+        "Select two adjacent center seats in rows E-H.",
+        "Proceed through ticket-tier and order review to the payment step (clone: local-sandbox; source: stop before purchase).",
+        "Reach the confirmation state with ticket details (clone only until authorized evidence exists)."
+      ]
+    },
+    {
+      "actor": "moviegoer",
+      "id": "account-lifecycle",
+      "kind": "success",
+      "priority": "p1",
+      "status": "draft",
+      "evidence_kind": "unavailable",
+      "note": "Proposal: /sign-up entry (Create an Account, AMC Stubs tier comparison) is directly observed; authenticated states are unavailable until the single Moviegoer login handoff.",
+      "steps": [
+        "Create an account via /sign-up.",
+        "Sign in, inspect profile/preferences/Stubs status, then sign out and verify protected state is gone."
+      ]
+    }
+  ],
+  "schema_version": "offline-clone.journeys.v1"
+}

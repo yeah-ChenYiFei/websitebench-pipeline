@@ -1,0 +1,223 @@
+{
+  "schema_version": "websitebench.source-vs-clone-metrics.v1",
+  "site_id": "amc-theatres",
+  "observed_at": "2026-08-25",
+  "threshold": 0.9,
+  "source_capture": "Mac headed Playwright direct: twelve fresh public route pairs on 2026-08-25 plus two public theatre-detail pairs on 2026-08-24",
+  "clone_capture": "mac-headed-playwright-over-ssh-tunnel-to-server-loopback",
+  "privacy": "The twelve fresh raw source and clone rasters remain Mac-private and were not transferred. Two legacy bounded public theatre rasters existed only as untracked server scratch and were deleted before delivery. Only hashes and derived metrics are committed. No cookies, credentials, tokens, storageState, or personal content were read or transferred.",
+  "summary": {
+    "comparisons": 14,
+    "passed": 14,
+    "failed": 0,
+    "status": "accepted",
+    "minimums": {
+      "mae_similarity": 0.9752398729,
+      "normalized_rmse_similarity": 0.9096468091,
+      "ssim": 0.908962050851568
+    },
+    "clone_remote_requests": 0
+  },
+  "comparisons": [
+    {
+      "id": "directory.loaded.desktop",
+      "route": "/movie-theatres",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source_sha256": "e79c652f69a48968b45311c9a11008900458478417a26dbd200001047cf3e6ca",
+      "clone_sha256": "32f7b3d707bdf65e7dcd61b2a0002bde854b98ad21c5af21d0a9b0d3114af0b4",
+      "mae_similarity": 0.9914420843,
+      "normalized_rmse_similarity": 0.936576128,
+      "ssim": 0.9419152141,
+      "accepted": true
+    },
+    {
+      "id": "directory.loaded.mobile",
+      "route": "/movie-theatres",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source_sha256": "9740a2a5a36e0c3b4a18f0996823f9a6080abafde4b0188124f2751fc343c0d3",
+      "clone_sha256": "e2d0f31ba6430ab561e4c72aca9f229e46d22dca5019ac55be4bf570fdecb58a",
+      "mae_similarity": 0.9938544035,
+      "normalized_rmse_similarity": 0.953004241,
+      "ssim": 0.9754768014,
+      "accepted": true
+    },
+    {
+      "id": "help.loaded.desktop",
+      "route": "/help",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source_sha256": "134ff2c25c4329d5a8f85f413a91affcea07ff7af895a8cfd65ac56bdf57baa2",
+      "clone_sha256": "63f0ab26fed7dff334d99019bd30db4ac82c7b7f4f13b4d89b26d6ec5ba5f41f",
+      "mae_similarity": 0.9859917164,
+      "normalized_rmse_similarity": 0.9146854281,
+      "ssim": 0.9276525974,
+      "accepted": true
+    },
+    {
+      "id": "help.loaded.mobile",
+      "route": "/help",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source_sha256": "8e6375ad290d7d3c3dc5081784a9fd8266117abb5b4c5ed85d639baf4192a629",
+      "clone_sha256": "748b99dcc4a34d98468a1a8940f2eff5932902306ea62cc4528e94b916c48eb1",
+      "mae_similarity": 0.9871609211,
+      "normalized_rmse_similarity": 0.9106225371,
+      "ssim": 0.9521341324,
+      "accepted": true
+    },
+    {
+      "id": "home.loaded.desktop",
+      "route": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source_sha256": "5b55e722ae246dcee9f42a801475571c5d1204ca783b6a23b3ab6ec7cc64dd1e",
+      "clone_sha256": "6a35bb3272a4bd78f5a92e4adc43d02ab1e8a1c0541d6b04c9f64c03393a3a3a",
+      "mae_similarity": 0.9864857197,
+      "normalized_rmse_similarity": 0.9328675866,
+      "ssim": 0.9199658036,
+      "accepted": true
+    },
+    {
+      "id": "home.loaded.mobile",
+      "route": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source_sha256": "1904e91f691e2f91b100304a0976a9bddc6bd229a6ea9e3f8ef4d0df0cccdfbf",
+      "clone_sha256": "c529a17ec2b1bec2ec15cb3a24119cb99d83262392a1b0e5d31af4374eeac7dc",
+      "mae_similarity": 0.9752398729,
+      "normalized_rmse_similarity": 0.9096468091,
+      "ssim": 0.9117462635,
+      "accepted": true
+    },
+    {
+      "id": "movies.loaded.desktop",
+      "route": "/movies",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source_sha256": "91287e323f9c8201d0112b7ad4082e6847de17ebf0c851af0f07206789f366c3",
+      "clone_sha256": "04bb7c3733d3f77d23baba1d53caa6b188a6f1a9f30e0bfbcc9780750908bf08",
+      "mae_similarity": 0.98694098,
+      "normalized_rmse_similarity": 0.9289685488,
+      "ssim": 0.9353019595,
+      "accepted": true
+    },
+    {
+      "id": "movies.loaded.mobile",
+      "route": "/movies",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source_sha256": "3c7c3944838b93200ddffce298d822cc4182d356cacdcac513544c28c32721fc",
+      "clone_sha256": "1eaeedcddb70fd31410de4da99ebaab126eeaea4dd4783e9ef1046a6930109bb",
+      "mae_similarity": 0.9873880148,
+      "normalized_rmse_similarity": 0.9333152771,
+      "ssim": 0.9500225186,
+      "accepted": true
+    },
+    {
+      "id": "showtimes.loaded.desktop",
+      "route": "/showtimes",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source_sha256": "3c1c243d3af00bfc1ed114d53560ea16adc996b754b57bd0d9c2a031a665fe68",
+      "clone_sha256": "a1aa55c562bc0c26525ef1e4ccaf3eeae834ef75bbfd1d40907213ace7b5e873",
+      "mae_similarity": 0.9983353019,
+      "normalized_rmse_similarity": 0.9753342867,
+      "ssim": 0.9893195629,
+      "accepted": true
+    },
+    {
+      "id": "showtimes.loaded.mobile",
+      "route": "/showtimes",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source_sha256": "39c18c7062bf6868e2ca0d7f30e2cd3c6cfff672ca3cbe8040f657e40491a348",
+      "clone_sha256": "a7aae4e6a583ce2c4afd66de8e6f329d5983bfdc32d42aab8ce0ddb5fabd7e74",
+      "mae_similarity": 0.9871869683,
+      "normalized_rmse_similarity": 0.9108607769,
+      "ssim": 0.9333518147,
+      "accepted": true
+    },
+    {
+      "id": "signup.loaded.desktop",
+      "route": "/sign-up",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source_sha256": "016eb522df11b11d20a20d6cb58c47be8aad1923d0448c5cd9adc53ed7846376",
+      "clone_sha256": "711dbcc16eb23b07f42236792c2ff158e2cde8c4ef907633ccea056ebc94b591",
+      "mae_similarity": 0.9864217639,
+      "normalized_rmse_similarity": 0.913582623,
+      "ssim": 0.947132051,
+      "accepted": true
+    },
+    {
+      "id": "signup.loaded.mobile",
+      "route": "/sign-up",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source_sha256": "7cee1f49f45624f8f7177fd29810483b5078547c716d344b66a27e7506f9fe8e",
+      "clone_sha256": "fd3d188ddfd85883a537962abdce1d564f4065b18b8ca4dcadbfba5a1b7916ff",
+      "mae_similarity": 0.9837419987,
+      "normalized_rmse_similarity": 0.9164036512,
+      "ssim": 0.9383165836,
+      "accepted": true
+    },
+    {
+      "id": "theatre-empire-25.loaded.desktop",
+      "route": "/movie-theatres/ny/amc-empire-25",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source_sha256": "f4dc67e584fadafa496f04110e7db277967e0c5b43c09a229e7d34a06e06a24c",
+      "clone_sha256": "22c216dfafbfa4b4bd4fdd1cea47fa1aa557cdbc545386e5e3711347b4eb9720",
+      "mae_similarity": 0.9798985347151756,
+      "normalized_rmse_similarity": 0.9263105764985085,
+      "ssim": 0.908962050851568,
+      "accepted": true,
+      "observed_at": "2026-08-24",
+      "provenance": "direct-mac-headed-playwright-public-anonymous"
+    },
+    {
+      "id": "theatre-empire-25.loaded.mobile",
+      "route": "/movie-theatres/ny/amc-empire-25",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source_sha256": "8a5003f76a3d1a2a681f891019a2aa8953c8a321f2349e39ab6ffd7d47b00d56",
+      "clone_sha256": "08fdc997bf63adcbf94c8db5bce0b864972f669d297a7b30ee4f1a6a1eeee352",
+      "mae_similarity": 0.980285881087184,
+      "normalized_rmse_similarity": 0.9173094183206558,
+      "ssim": 0.922141704848099,
+      "accepted": true,
+      "observed_at": "2026-08-24",
+      "provenance": "direct-mac-headed-playwright-public-anonymous"
+    }
+  ]
+}

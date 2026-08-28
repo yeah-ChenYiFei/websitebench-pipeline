@@ -1,0 +1,12 @@
+{
+  "schema_version": "websitebench.blocked-or-unavailable-pages.v1",
+  "site_id": "amc-theatres",
+  "source_account_mode": "public-anonymous-plus-local-synthetic-auth",
+  "pages": [
+    {"id":"recovered-public-home-movies-directory-showtimes-signup-help","source_state":"available-on-fresh-isolated-mac-headed-session","evidence":"Fresh 2026-08-25 Ego Lite headed navigations loaded public home, feature pages, Movies plus Coming Soon, movie detail, theatre directory/market/detail, showtimes redirect, sign-up, search, and help without a challenge. This is structural source evidence and is not mislabeled as Playwright provenance.","retry_required":false},
+    {"id":"source-account-auth","source_state":"private-unobserved-anonymous-login-currently-error-500","local_substitute":"/login, /sign-up, /verify-account, /account","guarantee":"Only synthetic local credentials are accepted; no source credentials or session data are retained."},
+    {"id":"source-password-reset","source_state":"anonymous-route-currently-404-private-flow-unobserved","local_substitute":"/password-reset, /password-reset/verify","guarantee":"Reset messages and tokens remain in the local synthetic outbox; no source credential or account state is used."},
+    {"id":"source-checkout-payment","source_state":"real-purchase-forbidden","local_substitute":"/checkout/{slug}, /account/orders/{order_id}","guarantee":"All orders and payment outcomes remain in the local sandbox ledger."},
+    {"id":"current-source-challenge-held-session","source_state":"challenge-unavailable","evidence":"The current isolated headed source session is paused at a challenge. This server-only closure did not navigate, refresh, close, or bypass that session.","retry_required":true,"manual_handoff_required":true,"claim":"No new source control or visual score is asserted."}
+  ]
+}
