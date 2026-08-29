@@ -1,0 +1,18 @@
+{
+  "schema_version": "fenty-beauty.frontend-gate-samples.v1",
+  "app_file": "clone/app.py",
+  "app_attr": "app",
+  "module_name": "fenty_beauty_clone_app",
+  "checks": [
+    {"id":"catalog.collection","url":"/en-ca/collections/makeup-shop-all","method":"get","expect_status":200,"expect_contains":["Fenty Beauty route /en-ca/collections/makeup-shop-all"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"catalog.search","url":"/en-ca/search?q=foundation","method":"get","expect_status":200,"expect_contains":["Fenty Beauty route /en-ca/search"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"catalog.foundation","url":"/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420","method":"get","expect_status":200,"expect_contains":["Fenty Beauty route /en-ca/products/pro-filtr-soft-matte-longwear-foundation-420"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"catalog.powder","url":"/en-ca/products/invisimatte-instant-setting-blotting-powder","method":"get","expect_status":200,"expect_contains":["Fenty Beauty route /en-ca/products/invisimatte-instant-setting-blotting-powder"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"catalog.cart","url":"/en-ca/cart","method":"get","expect_status":200,"expect_contains":["Fenty Beauty route /en-ca/cart"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"catalog.checkout","url":"/en-ca/checkout","method":"get","expect_status":200,"expect_contains":["Fenty Beauty route /en-ca/checkout"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"auth.login","url":"/en-ca/account/login","method":"get","expect_status":200,"expect_contains":["Fenty Beauty route /en-ca/account/login"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"auth.register","url":"/en-ca/account/register","method":"get","expect_status":200,"expect_contains":["Fenty Beauty route /en-ca/account/register"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"auth.recover","url":"/en-ca/account/recover","method":"get","expect_status":200,"expect_contains":["Fenty Beauty route /en-ca/account/recover"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"auth.help","url":"/en-ca/pages/help-center","method":"get","expect_status":200,"expect_contains":["Fenty Beauty route /en-ca/pages/help-center"],"expect_not_contains":["NotImplementedError"],"session":false}
+  ]
+}

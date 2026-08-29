@@ -1,0 +1,1128 @@
+{
+  "schema_version": "websitebench.fenty-home-scroll-matrix.v1",
+  "source_url": "https://fentybeauty.com/en-ca",
+  "policy": {
+    "allowed_hosts": [
+      "fentybeauty.com",
+      "www.fentybeauty.com"
+    ],
+    "allowed_method": "GET",
+    "mutating_actions": false
+  },
+  "viewports": [
+    {
+      "name": "ide-tablet",
+      "width": 768,
+      "height": 900,
+      "http_status": 200,
+      "page_height": 4089,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 702,
+          "file": "vertical-01-y702.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 1404,
+          "file": "vertical-02-y1404.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 2106,
+          "file": "vertical-03-y2106.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 2808,
+          "file": "vertical-04-y2808.png"
+        },
+        {
+          "index": 5,
+          "scroll_y": 3189,
+          "file": "vertical-05-y3189.png"
+        }
+      ],
+      "carousels": [
+        {
+          "index": 2,
+          "scrollWidth": 2048,
+          "clientWidth": 768,
+          "label": "product carousel3",
+          "slideCount": 12,
+          "maxScrollX": 1280,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-02-left-viewport.png",
+              "clip_file": "carousel-02-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 679,
+              "viewport_file": "carousel-02-middle-viewport.png",
+              "clip_file": "carousel-02-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 1280,
+              "viewport_file": "carousel-02-right-viewport.png",
+              "clip_file": "carousel-02-right-clip.png"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "scrollWidth": 1539,
+          "clientWidth": 768,
+          "label": "product carousel5",
+          "slideCount": 9,
+          "maxScrollX": 771,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-03-left-viewport.png",
+              "clip_file": "carousel-03-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 339,
+              "viewport_file": "carousel-03-middle-viewport.png",
+              "clip_file": "carousel-03-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 771,
+              "viewport_file": "carousel-03-right-viewport.png",
+              "clip_file": "carousel-03-right-clip.png"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "scrollWidth": 747,
+          "clientWidth": 747,
+          "label": "Brands carousel 8",
+          "slideCount": 4,
+          "maxScrollX": 0,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-04-left-viewport.png",
+              "clip_file": "carousel-04-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 0,
+              "viewport_file": "carousel-04-middle-viewport.png",
+              "clip_file": "carousel-04-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 0,
+              "viewport_file": "carousel-04-right-viewport.png",
+              "clip_file": "carousel-04-right-clip.png"
+            }
+          ]
+        }
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://rapid-cdn.yottaa.com/rapid/lib/nPlpm4Nf5zlWgQ.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://widget.gotolstoy.com/we/widget.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://play.gotolstoy.com/widget-v2/widget.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://play.gotolstoy.com/widget-v2/widget.brand-mcp.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/extensions/01a01b75-fec4-7374-8093-89a3c1a8beee/narvar-extensions-240/assets/shipping-protection-shopify.css",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.gstatic.com/gecx/chat-widget/theme.css",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/storefront/standard-actions.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://shop.app/checkouts/internal/preloads.js?locale=en-CA&default_configuration_id=4819779629&shop_id=34134589485",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.gstatic.com/gecx/chat-widget/shopify-chat-widget.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/ba_rivo_profile.css?v=1786981399",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-5059b83f.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://static.ordergroove.com/f7d7ee5010f211ec969fdab0a78507fc/main.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/extensions/01a01ae9-5c25-7d2a-b25c-1ee402a2947c/rivo-loyalty-rewards-referrals-813/assets/rivo-app-embed.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/static/images/flags/ca.svg?crop=center&height=13&width=18",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/static/images/flags/ca.svg?crop=center&height=13&width=26",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://config.gorgias.chat/bundle-loader/01JJAFRN2S6H20EVR1ZCKTAH0A",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/extensions/01a01b75-fec4-7374-8093-89a3c1a8beee/narvar-extensions-240/assets/shipping-protection-shopify.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://rapid-cdn.yottaa.com/rapid/lib/nPlpm4Nf5zlWgQ.js",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://staticw2.yotpo.com/assets/yotpo-widget-font.woff?version=2022-04-24_06-59-01",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.shop-login-button.en.esm.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://shop.app/pay/session?v=1",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://shop.app/pay/hop?analytics_trace_id=cbf553bf-930c-4854-816b-30f7a471d9d1&target_origin=https%3A%2F%2Ffentybeauty.com&client_handle=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://staticw2.yotpo.com/assets/yotpo-widget-font.ttf?version=2022-04-24_06-59-01",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/shopify_pay/accelerated_checkout",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/shop-assets/static_uploads/shoplift/GTStandard-MRegular.woff2",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://monorail-edge.shopifysvc.com/v1/produce",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://monorail-edge.shopifysvc.com/v1/produce",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.clarity.ms/tag/shopify/wjg2uy3e0w",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://webservices.global-e.com/merchant/analytics/sdk/init/1477/UA?merchantId=1477",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0341/3458/9485/t/2656/assets/loy_34134589485.js?v=1783017336&shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://s3.eu-west-1.amazonaws.com/production-klarna-il-shopify-osm/9b281ea3896e823dc21a80a7781a2a2c53b8ecc2/fentybeautyshop.myshopify.com-1787177654540.js?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-M8TQZPX",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/donotsell/assets/js/donotsell-block.min.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/cookieconsent/assets/js/cookieconsent.min.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/cookieconsent/assets/js/clarip-cookie-manager.min.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/donotsell/assets/css/donotsell-extended.min.css",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/cookieconsent/assets/css/cookieconsent.min.css",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://static.klaviyo.com/onsite/js/J2uUst/klaviyo.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/extensions/01a01ae9-5c25-7d2a-b25c-1ee402a2947c/rivo-loyalty-rewards-referrals-813/assets/rivo-app-embed.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/donotsell/assets/css/donotsell-extended.min.css",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/cookieconsent/assets/css/cookieconsent.min.css",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://extensions.shopifycdn.com/shopifycloud/checkout-web/assets/c1/polyfills-entry-modern.oWckgtZS.worker.js",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0341/3458/9485/files/Brown-Regular_fe5d22c7-c5fb-43db-b7db-0eba7158d18d.woff?v=1679586310",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0341/3458/9485/files/Brown-Bold_f618d14c-7f8a-45c7-9481-237c78f49585.woff?v=1679586310",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0341/3458/9485/files/fenty-logo_x320.png?v=1711319060",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0341/3458/9485/files/white-background_2000x.png?v=1711318979",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://widget.gotolstoy.com/we/widget.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://play.gotolstoy.com/widget-v2/widget.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://play.gotolstoy.com/widget-v2/widget.brand-mcp.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.attn.tv/fenty/dtag.js?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://shopify.rakutenadvertising.io/rakuten_advertising.js?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://d38xvr37kwwhcm.cloudfront.net/js/grin-sdk.js?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://str.rise-ai.com/?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://strn.rise-ai.com/?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://static.ordergroove.com/f7d7ee5010f211ec969fdab0a78507fc/main.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://crossborder-integration.global-e.com/resources/js/app?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/proxy/7f1b2ac1e4f1e0ed9e66ae4361685f93be8c0ffcb6e50e68cb1ec259cf131845/web.global-e.com/merchant/storefrontattributes?merchantid=1477&shop=fentybeautyshop.myshopify.com&sp-cache-control=cHVibGljLCBtYXgtYWdlPTkwMA",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        }
+      ]
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "http_status": 200,
+      "page_height": 4948,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 702,
+          "file": "vertical-01-y702.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 1404,
+          "file": "vertical-02-y1404.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 2106,
+          "file": "vertical-03-y2106.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 2808,
+          "file": "vertical-04-y2808.png"
+        },
+        {
+          "index": 5,
+          "scroll_y": 3510,
+          "file": "vertical-05-y3510.png"
+        },
+        {
+          "index": 6,
+          "scroll_y": 4048,
+          "file": "vertical-06-y4048.png"
+        }
+      ],
+      "carousels": [
+        {
+          "index": 2,
+          "scrollWidth": 3769,
+          "clientWidth": 1400,
+          "label": "product carousel3",
+          "slideCount": 12,
+          "maxScrollX": 2369,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-02-left-viewport.png",
+              "clip_file": "carousel-02-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 1260,
+              "viewport_file": "carousel-02-middle-viewport.png",
+              "clip_file": "carousel-02-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 2369,
+              "viewport_file": "carousel-02-right-viewport.png",
+              "clip_file": "carousel-02-right-clip.png"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "scrollWidth": 2824,
+          "clientWidth": 1400,
+          "label": "product carousel5",
+          "slideCount": 9,
+          "maxScrollX": 1424,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-03-left-viewport.png",
+              "clip_file": "carousel-03-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 630,
+              "viewport_file": "carousel-03-middle-viewport.png",
+              "clip_file": "carousel-03-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 1424,
+              "viewport_file": "carousel-03-right-viewport.png",
+              "clip_file": "carousel-03-right-clip.png"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "scrollWidth": 1360,
+          "clientWidth": 1360,
+          "label": "Brands carousel 8",
+          "slideCount": 4,
+          "maxScrollX": 0,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-04-left-viewport.png",
+              "clip_file": "carousel-04-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 0,
+              "viewport_file": "carousel-04-middle-viewport.png",
+              "clip_file": "carousel-04-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 0,
+              "viewport_file": "carousel-04-right-viewport.png",
+              "clip_file": "carousel-04-right-clip.png"
+            }
+          ]
+        }
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://rapid-cdn.yottaa.com/rapid/lib/nPlpm4Nf5zlWgQ.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://widget.gotolstoy.com/we/widget.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://play.gotolstoy.com/widget-v2/widget.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://play.gotolstoy.com/widget-v2/widget.brand-mcp.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/storefront/standard-actions.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/ba_rivo_profile.css?v=1786981399",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.gstatic.com/gecx/chat-widget/theme.css",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://shop.app/checkouts/internal/preloads.js?locale=en-CA&default_configuration_id=4819779629&shop_id=34134589485",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-5059b83f.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.gstatic.com/gecx/chat-widget/shopify-chat-widget.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/extensions/01a01b75-fec4-7374-8093-89a3c1a8beee/narvar-extensions-240/assets/shipping-protection-shopify.css",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://static.ordergroove.com/f7d7ee5010f211ec969fdab0a78507fc/main.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/extensions/01a01ae9-5c25-7d2a-b25c-1ee402a2947c/rivo-loyalty-rewards-referrals-813/assets/rivo-app-embed.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/static/images/flags/ca.svg?crop=center&height=13&width=18",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/static/images/flags/ca.svg?crop=center&height=13&width=26",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://config.gorgias.chat/bundle-loader/01JJAFRN2S6H20EVR1ZCKTAH0A",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/extensions/01a01b75-fec4-7374-8093-89a3c1a8beee/narvar-extensions-240/assets/shipping-protection-shopify.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://rapid-cdn.yottaa.com/rapid/lib/nPlpm4Nf5zlWgQ.js",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://staticw2.yotpo.com/assets/yotpo-widget-font.woff?version=2022-04-24_06-59-01",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.shop-login-button.en.esm.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://shop.app/pay/session?v=1",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://shop.app/pay/hop?analytics_trace_id=4b1ecae9-1b4b-4a09-b682-4b2f45d30a69&target_origin=https%3A%2F%2Ffentybeauty.com&client_handle=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://staticw2.yotpo.com/assets/yotpo-widget-font.ttf?version=2022-04-24_06-59-01",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/shopify_pay/accelerated_checkout",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/shop-assets/static_uploads/shoplift/GTStandard-MRegular.woff2",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://monorail-edge.shopifysvc.com/v1/produce",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://monorail-edge.shopifysvc.com/v1/produce",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.clarity.ms/tag/shopify/wjg2uy3e0w",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://webservices.global-e.com/merchant/analytics/sdk/init/1477/UA?merchantId=1477",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0341/3458/9485/t/2656/assets/loy_34134589485.js?v=1783017336&shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://s3.eu-west-1.amazonaws.com/production-klarna-il-shopify-osm/9b281ea3896e823dc21a80a7781a2a2c53b8ecc2/fentybeautyshop.myshopify.com-1787177654540.js?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-M8TQZPX",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/.well-known/shopify/monorail/unstable/produce_batch",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/donotsell/assets/js/donotsell-block.min.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/cookieconsent/assets/js/cookieconsent.min.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/cookieconsent/assets/js/clarip-cookie-manager.min.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/donotsell/assets/css/donotsell-extended.min.css",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/cookieconsent/assets/css/cookieconsent.min.css",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://static.klaviyo.com/onsite/js/J2uUst/klaviyo.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/extensions/01a01ae9-5c25-7d2a-b25c-1ee402a2947c/rivo-loyalty-rewards-referrals-813/assets/rivo-app-embed.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/donotsell/assets/css/donotsell-extended.min.css",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.clarip.com/kendo/cookieconsent/assets/css/cookieconsent.min.css",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://extensions.shopifycdn.com/shopifycloud/checkout-web/assets/c1/polyfills-entry-modern.oWckgtZS.worker.js",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0341/3458/9485/files/Brown-Regular_fe5d22c7-c5fb-43db-b7db-0eba7158d18d.woff?v=1679586310",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0341/3458/9485/files/Brown-Bold_f618d14c-7f8a-45c7-9481-237c78f49585.woff?v=1679586310",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0341/3458/9485/files/fenty-logo_x320.png?v=1711319060",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/s/files/1/0341/3458/9485/files/white-background_2000x.png?v=1711318979",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://widget.gotolstoy.com/we/widget.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://play.gotolstoy.com/widget-v2/widget.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://play.gotolstoy.com/widget-v2/widget.brand-mcp.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.attn.tv/fenty/dtag.js?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://shopify.rakutenadvertising.io/rakuten_advertising.js?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://d38xvr37kwwhcm.cloudfront.net/js/grin-sdk.js?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://str.rise-ai.com/?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://strn.rise-ai.com/?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://static.ordergroove.com/f7d7ee5010f211ec969fdab0a78507fc/main.js",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://crossborder-integration.global-e.com/resources/js/app?shop=fentybeautyshop.myshopify.com",
+          "reason": "origin"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/proxy/7f1b2ac1e4f1e0ed9e66ae4361685f93be8c0ffcb6e50e68cb1ec259cf131845/web.global-e.com/merchant/storefrontattributes?merchantid=1477&shop=fentybeautyshop.myshopify.com&sp-cache-control=cHVibGljLCBtYXgtYWdlPTkwMA",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "GET",
+          "url": "https://cdn.shopify.com/static/images/flags/ca.svg?crop=center&height=13&width=26",
+          "reason": "origin"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://otlp-http-production.shopifysvc.com/v1/metrics",
+          "reason": "non-get"
+        },
+        {
+          "method": "POST",
+          "url": "https://fentybeauty.com/api/collect",
+          "reason": "non-get"
+        }
+      ]
+    }
+  ]
+}

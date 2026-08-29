@@ -1,0 +1,16 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "fenty-candidate-visual-desktop",
+  "allowed_origins": ["http://127.0.0.1:8765"],
+  "viewport": {"width": 1440, "height": 900},
+  "timeout_ms": 15000,
+  "steps": [
+    {"id":"home-desktop","action":"goto","path":"/en-ca","wait_until":"networkidle","observations":[{"id":"home-brand","kind":"text","selector":"body","expect":{"contains":"FENTY BEAUTY"}}],"screenshot":true,"full_page":true},
+    {"id":"catalog-desktop","action":"goto","path":"/en-ca/collections/makeup-shop-all","wait_until":"networkidle","observations":[{"id":"catalog-heading","kind":"text","selector":"h1","expect":{"contains":"Makeup"}}],"screenshot":true,"full_page":true},
+    {"id":"foundation-desktop","action":"goto","path":"/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420","wait_until":"networkidle","observations":[{"id":"foundation-heading","kind":"text","selector":"h1","expect":{"contains":"Foundation"}}],"screenshot":true,"full_page":true},
+    {"id":"powder-desktop","action":"goto","path":"/en-ca/products/invisimatte-instant-setting-blotting-powder","wait_until":"networkidle","observations":[{"id":"powder-heading","kind":"text","selector":"h1","expect":{"contains":"Invisimatte"}}],"screenshot":true,"full_page":true},
+    {"id":"signin-desktop","action":"goto","path":"/en-ca/account/login","wait_until":"networkidle","observations":[{"id":"signin-heading","kind":"text","selector":"h1","expect":{"contains":"Sign in"}}],"screenshot":true,"full_page":true},
+    {"id":"help-desktop","action":"goto","path":"/en-ca/pages/help-center","wait_until":"networkidle","observations":[{"id":"help-heading","kind":"text","selector":"h1","expect":{"contains":"Help"}}],"screenshot":true,"full_page":true},
+    {"id":"not-found-desktop","action":"goto","path":"/en-ca/websitebench-not-found","wait_until":"networkidle","observations":[{"id":"not-found-heading","kind":"text","selector":"h1","expect":{"contains":"NOT A THING"}}],"screenshot":true,"full_page":true}
+  ]
+}

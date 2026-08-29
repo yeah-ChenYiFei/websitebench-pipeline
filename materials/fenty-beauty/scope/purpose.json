@@ -1,0 +1,11 @@
+{
+  "schema_version": "offline-clone.purpose.v1",
+  "status": "frozen",
+  "purpose_id": "fenty-beauty.shopping.v1",
+  "statement": "Help anonymous and synthetic local customers browse makeup, search and compare products, select variants, manage favorites and a cart, maintain local account data, and reach a clearly labeled local-sandbox order review without contacting the source or a payment provider.",
+  "primary_actor_ids": ["visitor", "customer"],
+  "mainline_journey_ids": ["catalog.discovery", "product.variant-cart", "checkout.review", "account.lifecycle"],
+  "secondary_journey_ids": ["search.no-results", "cart.management", "orders.management", "help.recovery", "not-found.recovery"],
+  "out_of_scope": ["Real source account mutation", "Real email delivery", "Live or Stripe payment", "Real order placement", "Source-pixel claims for authenticated account and checkout states"],
+  "release_authority": {"holder": "human-reviewer", "note": "PUSH_AUTHORIZED=false, PR_AUTHORIZED=false, PUBLIC_DEPLOYMENT_AUTHORIZED=false."}
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": "offline-clone.visual-stability-calibration-spec.v1",
+  "site_id": "fenty-beauty",
+  "rows": [
+    {
+      "id": "home.desktop.main",
+      "region": "main",
+      "source_samples": [
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/home-desktop-frame-1-4686493e3d/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/home-desktop-frame-2-40d40c2f7d/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/home-desktop-frame-3-43187d3875/screenshot.png"}
+      ],
+      "ignore_regions": []
+    },
+    {
+      "id": "home.mobile.main",
+      "region": "main",
+      "source_samples": [
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/home-mobile-frame-1-5e413fd5a7/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/home-mobile-frame-2-fcdd54edd2/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/home-mobile-frame-3-828be2530c/screenshot.png"}
+      ],
+      "ignore_regions": []
+    },
+    {
+      "id": "catalog.desktop.main",
+      "region": "main",
+      "source_samples": [
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/catalog-desktop-frame-1-eabb383fa7/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/catalog-desktop-frame-2-d821000302/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/catalog-desktop-frame-3-28f569f46a/screenshot.png"}
+      ],
+      "ignore_regions": []
+    },
+    {
+      "id": "foundation.desktop.main",
+      "region": "main",
+      "source_samples": [
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/foundation-desktop-frame-1-0be58fcc49/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/foundation-desktop-frame-2-4f7d99399f/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/foundation-desktop-frame-3-4a1829cf39/screenshot.png"}
+      ],
+      "ignore_regions": []
+    },
+    {
+      "id": "powder.desktop.main",
+      "region": "main",
+      "source_samples": [
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/powder-desktop-frame-1-08bcb314e9/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/powder-desktop-frame-2-54048b0708/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/powder-desktop-frame-3-41d95edecf/screenshot.png"}
+      ],
+      "ignore_regions": []
+    },
+    {
+      "id": "signin.desktop.main",
+      "region": "main",
+      "source_samples": [
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/signin-desktop-frame-1-50c6ffe55c/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/signin-desktop-frame-2-8a86a12362/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/signin-desktop-frame-3-b1b27480ff/screenshot.png"}
+      ],
+      "ignore_regions": []
+    },
+    {
+      "id": "help.desktop.main",
+      "region": "main",
+      "source_samples": [
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/help-desktop-frame-1-dfc5b50c00/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/help-desktop-frame-2-4a67445384/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/help-desktop-frame-3-7fc5df216f/screenshot.png"}
+      ],
+      "ignore_regions": []
+    },
+    {
+      "id": "not-found.desktop.main",
+      "region": "main",
+      "source_samples": [
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/not-found-desktop-frame-1-ad85547c45/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/not-found-desktop-frame-2-1470842964/screenshot.png"},
+        {"path":"materials/fenty-beauty/source-current/2026-08-19.fenty-stability-r1/rows/not-found-desktop-frame-3-7ed6cb1241/screenshot.png"}
+      ],
+      "ignore_regions": []
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>Fenty Beauty | Offline Store</title>
+  <link rel="stylesheet" href="/static/site.css?v=20260823.1">
+  <script src="/static/app.js?v=20260823.1" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="shipping-promo">Free Standard shipping to Canada over CA$100</div>
+  <div class="promo">Limited Edition Midnight Diamonds Collection | <a href="/en-ca/collections/makeup-shop-all">SHOP NOW</a></div>
+  <header class="site-header">
+    <div class="header-row">
+      <div class="mobile-tools"><a href="/en-ca/search" aria-label="Search">⌕</a></div>
+      <a class="region" href="/en-ca">🇨🇦 Canada | English</a>
+      <a class="logo" href="/en-ca" aria-label="Fenty Beauty home"><img src="/static/assets/fenty-logo.webp" alt="Fenty Beauty"></a>
+      <nav class="utilities" aria-label="Account and bag">
+        <a href="/en-ca/account/login" data-testid="signin-link" aria-label="Sign in">♙ <span>Sign In</span></a>
+        <a class="desktop-utility" href="/en-ca/search" aria-label="Search">⌕</a>
+        <a class="desktop-utility" href="/en-ca/account/favorites" aria-label="Favorites">♡</a>
+        <a href="/en-ca/cart" data-action="open-cart" aria-label="Open My Bag">▢ <span class="bag-label">My Bag</span><b id="cart-count">0</b></a>
+      </nav>
+    </div>
+    <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+      <a href="/en-ca/collections/makeup-shop-all">New! Fluid Flex</a>
+      <a href="/en-ca/collections/makeup-shop-all">Bestsellers</a>
+      <a href="/en-ca/collections/makeup-shop-all" data-testid="makeup-nav">Makeup</a>
+      <a href="/en-ca/collections/makeup-shop-all?category=Skincare">Skincare</a>
+      <a href="/en-ca/collections/makeup-shop-all?category=Body">Body</a>
+      <a href="/en-ca/collections/makeup-shop-all?category=Hair">Hair</a>
+      <a href="/en-ca/collections/makeup-shop-all?category=Fragrance">Fragrance</a>
+      <a href="/en-ca/collections/makeup-shop-all?sort=price-low">Sale</a>
+      <a href="/en-ca/pages/help-center">Discover</a>
+    </nav>
+    <nav class="category-rail" aria-label="Shop categories">
+      <button class="category-chip ask-ai-chip" type="button" data-action="ask-ai"><span aria-hidden="true">✦</span> Ask AI</button>
+      <a class="category-chip" href="/en-ca/collections/makeup-shop-all">Shop All</a>
+      <a class="category-chip" href="/en-ca/collections/makeup-shop-all?category=Face%20Makeup">Beauty</a>
+      <a class="category-chip" href="/en-ca/collections/makeup-shop-all?category=Skincare">Skin</a>
+      <a class="category-chip" href="/en-ca/collections/makeup-shop-all?category=Body">Body</a>
+      <a class="category-chip" href="/en-ca/collections/makeup-shop-all?category=Hair">Hair</a>
+      <a class="category-chip" href="/en-ca/collections/makeup-shop-all?category=Fragrance">Fragrance</a>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1"><div class="loading">Loading Fenty Beauty…</div></main>
+  <footer class="footer">
+    <section class="footer-signup"><h2>DOWN FOR MORE? WE GOT YOU!</h2><p>All the latest product drops, limited offers, in-store event info—straight to your inbox.</p><label>Email address<input type="email" placeholder="Email address"></label><label>Phone number<input type="tel" placeholder="Phone number"></label><small>Offline demo: subscription controls never send messages.</small><div class="footer-brand">FENTY BEAUTY</div></section>
+    <section><h2>CUSTOMER SERVICE</h2><p>Operating hours are 9am–9pm EST Monday–Friday and 9am–6pm EST Saturday.</p><a href="/en-ca/account/orders">Order Status</a><a href="/en-ca/pages/help-center">Shipping Information</a><a href="/en-ca/account/orders">Returns</a><a href="/en-ca/pages/contact-us">Contact Us</a><a href="/en-ca/pages/help-center">Help & FAQs</a></section>
+    <section><h2>ABOUT</h2><p>Rihanna was inspired to create the world of Fenty Beauty brands after years of partnering with the best of the best in the beauty industry—and still seeing a void for products that performed across all skin tones + types and hair textures.</p><a href="/en-ca">About the Brands</a><a href="/en-ca/pages/help-center">Careers</a><a href="/en-ca/account">My Account</a></section>
+    <figure class="footer-portrait"><img src="/static/assets/footer-rihanna.webp" alt="Fenty Beauty by Rihanna"></figure>
+    <div class="footer-legal">Privacy &nbsp;&nbsp; Terms of Use &nbsp;&nbsp; Refund Policy &nbsp;&nbsp; Accessibility</div>
+  </footer>
+  <aside class="ask-ai-panel" id="ask-ai-panel" aria-label="Ask AI beauty guide" hidden>
+    <div class="ask-ai-head"><strong><span aria-hidden="true">✦</span> ASK AI</strong><button type="button" data-action="close-ask-ai" aria-label="Close Ask AI">×</button></div>
+    <h2>What can we help you find?</h2>
+    <p>Choose a goal for a private, deterministic recommendation from this offline catalog.</p>
+    <a href="/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420">Find my foundation</a>
+    <a href="/en-ca/products/invisimatte-instant-setting-blotting-powder">Control shine</a>
+    <a href="/en-ca/collections/makeup-shop-all?category=Lip%20Makeup">Shop lip favourites</a>
+  </aside>
+  <button class="cart-scrim" id="cart-scrim" type="button" data-action="close-cart" aria-label="Close My Bag" tabindex="-1"></button>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="My Bag" aria-hidden="true"><div id="cart-drawer-content"></div></aside>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

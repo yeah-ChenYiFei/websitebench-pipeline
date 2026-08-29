@@ -1,0 +1,412 @@
+{
+  "schema_version": "websitebench.fenty-home-scroll-matrix.v1",
+  "source_url": "http://127.0.0.1:8765/en-ca",
+  "policy": {
+    "allowed_hosts": [
+      "127.0.0.1",
+      "www.fentybeauty.com"
+    ],
+    "allowed_method": "GET",
+    "mutating_actions": false
+  },
+  "viewports": [
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "http_status": 200,
+      "page_height": 4911,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 653,
+          "file": "vertical-02-y653.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 1311,
+          "file": "vertical-03-y1311.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 1969,
+          "file": "vertical-04-y1969.png"
+        },
+        {
+          "index": 5,
+          "scroll_y": 2627,
+          "file": "vertical-05-y2627.png"
+        },
+        {
+          "index": 6,
+          "scroll_y": 3285,
+          "file": "vertical-06-y3285.png"
+        },
+        {
+          "index": 7,
+          "scroll_y": 3943,
+          "file": "vertical-07-y3943.png"
+        }
+      ],
+      "carousels": [
+        {
+          "index": 0,
+          "scrollWidth": 1288,
+          "clientWidth": 372,
+          "label": "FOREVER FAVES",
+          "slideCount": 5,
+          "maxScrollX": 916,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-00-left-viewport.png",
+              "clip_file": "carousel-00-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 512,
+              "viewport_file": "carousel-00-middle-viewport.png",
+              "clip_file": "carousel-00-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 916,
+              "viewport_file": "carousel-00-right-viewport.png",
+              "clip_file": "carousel-00-right-clip.png"
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "scrollWidth": 1288,
+          "clientWidth": 372,
+          "label": "ICONIC PICKS FOR BOMB LIPS",
+          "slideCount": 5,
+          "maxScrollX": 916,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-01-left-viewport.png",
+              "clip_file": "carousel-01-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 512,
+              "viewport_file": "carousel-01-middle-viewport.png",
+              "clip_file": "carousel-01-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 916,
+              "viewport_file": "carousel-01-right-viewport.png",
+              "clip_file": "carousel-01-right-clip.png"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "scrollWidth": 1296,
+          "clientWidth": 372,
+          "label": "Fenty brands carousel",
+          "slideCount": 4,
+          "maxScrollX": 924,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-02-left-viewport.png",
+              "clip_file": "carousel-02-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 322,
+              "viewport_file": "carousel-02-middle-viewport.png",
+              "clip_file": "carousel-02-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 924,
+              "viewport_file": "carousel-02-right-viewport.png",
+              "clip_file": "carousel-02-right-clip.png"
+            }
+          ]
+        }
+      ],
+      "blocked_requests": []
+    },
+    {
+      "name": "ide-tablet",
+      "width": 768,
+      "height": 900,
+      "http_status": 200,
+      "page_height": 4567,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 700,
+          "file": "vertical-02-y700.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 1402,
+          "file": "vertical-03-y1402.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 2104,
+          "file": "vertical-04-y2104.png"
+        },
+        {
+          "index": 5,
+          "scroll_y": 2803,
+          "file": "vertical-05-y2803.png"
+        },
+        {
+          "index": 6,
+          "scroll_y": 3509,
+          "file": "vertical-06-y3509.png"
+        }
+      ],
+      "carousels": [
+        {
+          "index": 0,
+          "scrollWidth": 813,
+          "clientWidth": 732,
+          "label": "FOREVER FAVES",
+          "slideCount": 5,
+          "maxScrollX": 81,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-00-left-viewport.png",
+              "clip_file": "carousel-00-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 0,
+              "viewport_file": "carousel-00-middle-viewport.png",
+              "clip_file": "carousel-00-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 81,
+              "viewport_file": "carousel-00-right-viewport.png",
+              "clip_file": "carousel-00-right-clip.png"
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "scrollWidth": 813,
+          "clientWidth": 732,
+          "label": "ICONIC PICKS FOR BOMB LIPS",
+          "slideCount": 5,
+          "maxScrollX": 81,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-01-left-viewport.png",
+              "clip_file": "carousel-01-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 0,
+              "viewport_file": "carousel-01-middle-viewport.png",
+              "clip_file": "carousel-01-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 81,
+              "viewport_file": "carousel-01-right-viewport.png",
+              "clip_file": "carousel-01-right-clip.png"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "scrollWidth": 732,
+          "clientWidth": 732,
+          "label": "Fenty brands carousel",
+          "slideCount": 4,
+          "maxScrollX": 0,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-02-left-viewport.png",
+              "clip_file": "carousel-02-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 0,
+              "viewport_file": "carousel-02-middle-viewport.png",
+              "clip_file": "carousel-02-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 0,
+              "viewport_file": "carousel-02-right-viewport.png",
+              "clip_file": "carousel-02-right-clip.png"
+            }
+          ]
+        }
+      ],
+      "blocked_requests": []
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "http_status": 200,
+      "page_height": 4672,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 702,
+          "file": "vertical-02-y702.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 1404,
+          "file": "vertical-03-y1404.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 2106,
+          "file": "vertical-04-y2106.png"
+        },
+        {
+          "index": 5,
+          "scroll_y": 2808,
+          "file": "vertical-05-y2808.png"
+        },
+        {
+          "index": 6,
+          "scroll_y": 3510,
+          "file": "vertical-06-y3510.png"
+        }
+      ],
+      "carousels": [
+        {
+          "index": 0,
+          "scrollWidth": 1520,
+          "clientWidth": 1368,
+          "label": "FOREVER FAVES",
+          "slideCount": 5,
+          "maxScrollX": 152,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-00-left-viewport.png",
+              "clip_file": "carousel-00-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 0,
+              "viewport_file": "carousel-00-middle-viewport.png",
+              "clip_file": "carousel-00-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 152,
+              "viewport_file": "carousel-00-right-viewport.png",
+              "clip_file": "carousel-00-right-clip.png"
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "scrollWidth": 1520,
+          "clientWidth": 1368,
+          "label": "ICONIC PICKS FOR BOMB LIPS",
+          "slideCount": 5,
+          "maxScrollX": 152,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-01-left-viewport.png",
+              "clip_file": "carousel-01-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 0,
+              "viewport_file": "carousel-01-middle-viewport.png",
+              "clip_file": "carousel-01-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 152,
+              "viewport_file": "carousel-01-right-viewport.png",
+              "clip_file": "carousel-01-right-clip.png"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "scrollWidth": 1368,
+          "clientWidth": 1368,
+          "label": "Fenty brands carousel",
+          "slideCount": 4,
+          "maxScrollX": 0,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-02-left-viewport.png",
+              "clip_file": "carousel-02-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 0,
+              "viewport_file": "carousel-02-middle-viewport.png",
+              "clip_file": "carousel-02-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 0,
+              "viewport_file": "carousel-02-right-viewport.png",
+              "clip_file": "carousel-02-right-clip.png"
+            }
+          ]
+        }
+      ],
+      "blocked_requests": []
+    }
+  ]
+}

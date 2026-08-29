@@ -1,0 +1,269 @@
+{
+  "schema_version": "websitebench.fenty-home-scroll-matrix.v1",
+  "source_url": "http://127.0.0.1:8765/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420",
+  "policy": {
+    "allowed_hosts": [
+      "127.0.0.1",
+      "www.fentybeauty.com"
+    ],
+    "allowed_method": "GET",
+    "mutating_actions": false
+  },
+  "viewports": [
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "http_status": 200,
+      "page_height": 6253,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 658,
+          "file": "vertical-02-y658.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 1315,
+          "file": "vertical-03-y1315.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 1973,
+          "file": "vertical-04-y1973.png"
+        },
+        {
+          "index": 5,
+          "scroll_y": 2631,
+          "file": "vertical-05-y2631.png"
+        },
+        {
+          "index": 6,
+          "scroll_y": 3289,
+          "file": "vertical-06-y3289.png"
+        },
+        {
+          "index": 7,
+          "scroll_y": 3948,
+          "file": "vertical-07-y3948.png"
+        },
+        {
+          "index": 8,
+          "scroll_y": 4605,
+          "file": "vertical-08-y4605.png"
+        },
+        {
+          "index": 9,
+          "scroll_y": 5264,
+          "file": "vertical-09-y5264.png"
+        }
+      ],
+      "carousels": [
+        {
+          "index": 0,
+          "scrollWidth": 1800,
+          "clientWidth": 372,
+          "label": "HANDPICKED FOR YOU",
+          "slideCount": 7,
+          "maxScrollX": 1428,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-00-left-viewport.png",
+              "clip_file": "carousel-00-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 768,
+              "viewport_file": "carousel-00-middle-viewport.png",
+              "clip_file": "carousel-00-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 1428,
+              "viewport_file": "carousel-00-right-viewport.png",
+              "clip_file": "carousel-00-right-clip.png"
+            }
+          ]
+        }
+      ],
+      "blocked_requests": []
+    },
+    {
+      "name": "ide-tablet",
+      "width": 768,
+      "height": 900,
+      "http_status": 200,
+      "page_height": 6614,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 702,
+          "file": "vertical-02-y702.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 1399,
+          "file": "vertical-03-y1399.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 2105,
+          "file": "vertical-04-y2105.png"
+        },
+        {
+          "index": 5,
+          "scroll_y": 2806,
+          "file": "vertical-05-y2806.png"
+        },
+        {
+          "index": 6,
+          "scroll_y": 3509,
+          "file": "vertical-06-y3509.png"
+        },
+        {
+          "index": 7,
+          "scroll_y": 4212,
+          "file": "vertical-07-y4212.png"
+        },
+        {
+          "index": 8,
+          "scroll_y": 4912,
+          "file": "vertical-08-y4912.png"
+        },
+        {
+          "index": 9,
+          "scroll_y": 5616,
+          "file": "vertical-09-y5616.png"
+        }
+      ],
+      "carousels": [
+        {
+          "index": 0,
+          "scrollWidth": 1171,
+          "clientWidth": 750,
+          "label": "HANDPICKED FOR YOU",
+          "slideCount": 7,
+          "maxScrollX": 421,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-00-left-viewport.png",
+              "clip_file": "carousel-00-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 169,
+              "viewport_file": "carousel-00-middle-viewport.png",
+              "clip_file": "carousel-00-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 421,
+              "viewport_file": "carousel-00-right-viewport.png",
+              "clip_file": "carousel-00-right-clip.png"
+            }
+          ]
+        }
+      ],
+      "blocked_requests": []
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "http_status": 200,
+      "page_height": 4729,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 702,
+          "file": "vertical-02-y702.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 1404,
+          "file": "vertical-03-y1404.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 2106,
+          "file": "vertical-04-y2106.png"
+        },
+        {
+          "index": 5,
+          "scroll_y": 2808,
+          "file": "vertical-05-y2808.png"
+        },
+        {
+          "index": 6,
+          "scroll_y": 3509,
+          "file": "vertical-06-y3509.png"
+        }
+      ],
+      "carousels": [
+        {
+          "index": 0,
+          "scrollWidth": 2132,
+          "clientWidth": 1368,
+          "label": "HANDPICKED FOR YOU",
+          "slideCount": 7,
+          "maxScrollX": 764,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-00-left-viewport.png",
+              "clip_file": "carousel-00-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 306,
+              "viewport_file": "carousel-00-middle-viewport.png",
+              "clip_file": "carousel-00-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 764,
+              "viewport_file": "carousel-00-right-viewport.png",
+              "clip_file": "carousel-00-right-clip.png"
+            }
+          ]
+        }
+      ],
+      "blocked_requests": []
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+name: tests (fenty-beauty)
+on:
+  pull_request:
+    paths:
+      - materials/fenty-beauty/**
+      - src/**
+      - pyproject.toml
+      - .github/workflows/tests-fenty-beauty.yml
+      - .github/workflows/clone-diagnostics.yml
+  push:
+    paths:
+      - materials/fenty-beauty/**
+      - src/**
+      - pyproject.toml
+      - .github/workflows/tests-fenty-beauty.yml
+      - .github/workflows/clone-diagnostics.yml
+jobs:
+  baseline:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: fenty-beauty

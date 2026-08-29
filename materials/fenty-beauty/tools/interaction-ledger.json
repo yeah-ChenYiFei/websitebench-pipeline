@@ -1,0 +1,21 @@
+{
+  "schema_version": "fenty-beauty.interaction-ledger.v1",
+  "captured_from": "clone-local-playwright",
+  "base_url": "http://127.0.0.1:8765",
+  "entries": [
+    {"id":"open-makeup","clone_url":"/en-ca","selector":"[data-testid=\"makeup-nav\"]","visible_text":"Makeup","raw_markup":"data-testid=\"makeup-nav\"","form_action":null},
+    {"id":"filter-catalog","clone_url":"/en-ca/collections/makeup-shop-all","selector":"#catalog-filters button[type=\"submit\"]","visible_text":"APPLY","raw_markup":"id=\"catalog-filters\"","form_action":"client:GET /en-ca/collections/makeup-shop-all?q={q}&category={category}&sort={sort}"},
+    {"id":"select-foundation-shade","clone_url":"/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420","selector":"button[data-variant=\"185N\"]","visible_text":"185N","raw_markup":"data-variant=\"185N\"","form_action":null},
+    {"id":"add-foundation","clone_url":"/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420","selector":"[data-testid=\"add-to-bag\"]","visible_text":"ADD TO BAG","raw_markup":"data-add-cart=\"foundation\"","form_action":"POST /api/cart/add"},
+    {"id":"add-powder","clone_url":"/en-ca/products/invisimatte-instant-setting-blotting-powder","selector":"[data-testid=\"add-to-bag\"]","visible_text":"ADD TO BAG","raw_markup":"data-add-cart=\"powder\"","form_action":"POST /api/cart/add"},
+    {"id":"update-foundation-quantity","clone_url":"/en-ca/cart","selector":"select[data-cart-qty=\"foundation\"]","visible_text":"Quantity","raw_markup":"data-cart-qty=\"foundation\"","form_action":"POST /api/cart/update"},
+    {"id":"remove-powder","clone_url":"/en-ca/cart","selector":"button[data-cart-remove=\"powder\"]","visible_text":"REMOVE","raw_markup":"data-cart-remove=\"powder\"","form_action":"POST /api/cart/update"},
+    {"id":"restore-powder","clone_url":"/en-ca/cart","selector":"button[data-cart-restore=\"powder\"]","visible_text":"RESTORE","raw_markup":"data-cart-restore=\"powder\"","form_action":"POST /api/cart/update"},
+    {"id":"apply-promo","clone_url":"/en-ca/checkout","selector":"[data-apply-promo]","visible_text":"APPLY","raw_markup":"data-apply-promo","form_action":"POST /api/checkout/preview"},
+    {"id":"review-checkout","clone_url":"/en-ca/checkout","selector":"#checkout-form button[type=\"submit\"]","visible_text":"REVIEW ORDER","raw_markup":"id=\"checkout-form\"","form_action":"POST /api/checkout/preview"},
+    {"id":"open-register","clone_url":"/en-ca/account/login","selector":"a[href=\"/en-ca/account/register\"]","visible_text":"Create account","raw_markup":"href=\"/en-ca/account/register\"","form_action":null},
+    {"id":"open-recovery","clone_url":"/en-ca/account/login","selector":"a[href=\"/en-ca/account/recover\"]","visible_text":"Forgot password?","raw_markup":"href=\"/en-ca/account/recover\"","form_action":null},
+    {"id":"recovery-validation","clone_url":"/en-ca/account/recover","selector":"#auth-form button","visible_text":"PREVIEW RESET","raw_markup":"data-auth-kind=\"recover\"","form_action":"POST /api/auth/recovery-preview"},
+    {"id":"not-found-to-makeup","clone_url":"/en-ca/websitebench-not-found","selector":"[data-testid=\"not-found\"] a[href=\"/en-ca/collections/makeup-shop-all\"]","visible_text":"SHOP MAKEUP","raw_markup":"data-testid=\"not-found\"","form_action":null}
+  ]
+}

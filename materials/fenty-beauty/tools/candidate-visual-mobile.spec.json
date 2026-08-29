@@ -1,0 +1,10 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "fenty-candidate-visual-mobile",
+  "allowed_origins": ["http://127.0.0.1:8765"],
+  "viewport": {"width": 390, "height": 844},
+  "timeout_ms": 15000,
+  "steps": [
+    {"id":"home-mobile","action":"goto","path":"/en-ca","wait_until":"networkidle","observations":[{"id":"mobile-brand","kind":"text","selector":"body","expect":{"contains":"FENTY BEAUTY"}}],"screenshot":true,"full_page":true}
+  ]
+}

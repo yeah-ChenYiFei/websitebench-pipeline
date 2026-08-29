@@ -1,0 +1,10 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "frozen",
+  "dimensions": [
+    {"id":"source-evidence","label":"Public source route-states","unit":"route-state","category":"source","required_evidence_kinds":["browser"],"required_items":["home.desktop","home.mobile","catalog.desktop","foundation.desktop","powder.desktop","signin.desktop","help.desktop","not-found.desktop"],"satisfied_items":[],"rationale":"Artifacts exist but strict capture blocked source background POSTs, so all remain non-acceptance source-limited evidence."},
+    {"id":"functional-contracts","label":"Offline shopping tasks","unit":"journey","category":"candidate","required_evidence_kinds":["browser","full-suite"],"required_items":["catalog.discovery","product.variant-cart","checkout.review","search.no-results","help.recovery","not-found.recovery"],"satisfied_items":[]},
+    {"id":"database-contracts","label":"Site-isolated stateful tasks","unit":"journey","category":"candidate","required_evidence_kinds":["full-suite"],"required_items":["account.lifecycle","orders.management","cart.persistence","address.persistence"],"satisfied_items":[]},
+    {"id":"network-closure","label":"Zero remote runtime requests","unit":"journey","category":"candidate","required_evidence_kinds":["network"],"required_items":["catalog.discovery","product.variant-cart","checkout.review","account.lifecycle"],"satisfied_items":[]}
+  ]
+}

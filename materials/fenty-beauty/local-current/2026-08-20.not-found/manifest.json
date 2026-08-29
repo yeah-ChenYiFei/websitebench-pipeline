@@ -1,0 +1,199 @@
+{
+  "schema_version": "websitebench.fenty-home-scroll-matrix.v1",
+  "source_url": "http://127.0.0.1:8765/en-ca/not-a-real-page",
+  "policy": {
+    "allowed_hosts": [
+      "127.0.0.1",
+      "www.fentybeauty.com"
+    ],
+    "allowed_method": "GET",
+    "mutating_actions": false
+  },
+  "viewports": [
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "http_status": 404,
+      "page_height": 2858,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 657,
+          "file": "vertical-02-y657.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 1316,
+          "file": "vertical-03-y1316.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 1973,
+          "file": "vertical-04-y1973.png"
+        }
+      ],
+      "carousels": [
+        {
+          "index": 0,
+          "scrollWidth": 2056,
+          "clientWidth": 354,
+          "label": "BEST SELLERS",
+          "slideCount": 8,
+          "maxScrollX": 1702,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-00-left-viewport.png",
+              "clip_file": "carousel-00-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 768,
+              "viewport_file": "carousel-00-middle-viewport.png",
+              "clip_file": "carousel-00-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 1702,
+              "viewport_file": "carousel-00-right-viewport.png",
+              "clip_file": "carousel-00-right-clip.png"
+            }
+          ]
+        }
+      ],
+      "blocked_requests": []
+    },
+    {
+      "name": "ide-tablet",
+      "width": 768,
+      "height": 900,
+      "http_status": 404,
+      "page_height": 3010,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 701,
+          "file": "vertical-02-y701.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 1402,
+          "file": "vertical-03-y1402.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 2106,
+          "file": "vertical-04-y2106.png"
+        }
+      ],
+      "carousels": [
+        {
+          "index": 0,
+          "scrollWidth": 4054,
+          "clientWidth": 732,
+          "label": "BEST SELLERS",
+          "slideCount": 8,
+          "maxScrollX": 3322,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-00-left-viewport.png",
+              "clip_file": "carousel-00-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 1524,
+              "viewport_file": "carousel-00-middle-viewport.png",
+              "clip_file": "carousel-00-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 3322,
+              "viewport_file": "carousel-00-right-viewport.png",
+              "clip_file": "carousel-00-right-clip.png"
+            }
+          ]
+        }
+      ],
+      "blocked_requests": []
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "http_status": 404,
+      "page_height": 1990,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 702,
+          "file": "vertical-02-y702.png"
+        }
+      ],
+      "carousels": [
+        {
+          "index": 0,
+          "scrollWidth": 2438,
+          "clientWidth": 1368,
+          "label": "BEST SELLERS",
+          "slideCount": 8,
+          "maxScrollX": 1070,
+          "states": [
+            {
+              "state": "left",
+              "scroll_x": 0,
+              "viewport_file": "carousel-00-left-viewport.png",
+              "clip_file": "carousel-00-left-clip.png"
+            },
+            {
+              "state": "middle",
+              "scroll_x": 612,
+              "viewport_file": "carousel-00-middle-viewport.png",
+              "clip_file": "carousel-00-middle-clip.png"
+            },
+            {
+              "state": "right",
+              "scroll_x": 1070,
+              "viewport_file": "carousel-00-right-viewport.png",
+              "clip_file": "carousel-00-right-clip.png"
+            }
+          ]
+        }
+      ],
+      "blocked_requests": []
+    }
+  ]
+}

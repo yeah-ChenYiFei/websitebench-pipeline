@@ -1,0 +1,56 @@
+{
+  "schema_version": "websitebench.offline-clone-workflow-gap-audit.v1",
+  "observed_at": "2026-08-19T00:00:00Z",
+  "site_id": "fenty-beauty",
+  "status": "in-progress",
+  "completed": [
+    "repository preflight and source reconnaissance",
+    "human-selected task inventory persisted verbatim",
+    "site initialization and scope scaffold",
+    "first-party source assets localized and hashed",
+    "offline candidate implementation",
+    "site-isolated SQLite backend and deterministic seed",
+    "candidate browser journey tests",
+    "offline-clone static verification",
+    "Harbor site and instance initialization",
+    "OpenCLI contract derivation"
+  ],
+  "remaining": [
+    {
+      "id": "source-three-frame-calibration",
+      "status": "in-progress",
+      "detail": "Acquire at least three source frames for each frozen P0/P1 anonymous checkpoint and calibrate source variance."
+    },
+    {
+      "id": "authenticated-source-trajectory",
+      "status": "waiting-for-human-login",
+      "detail": "Capture exact account, favorites, address, order, and checkout structure only after the user establishes a blank authenticated session."
+    },
+    {
+      "id": "two-sided-visual-comparison",
+      "status": "pending",
+      "detail": "Capture matched candidate states and generate source-versus-candidate visual diagnostics."
+    },
+    {
+      "id": "full-backend-semantics",
+      "status": "pending",
+      "detail": "Run reset, restart, isolation, duplicate submission, mail, payment, and persistence checks."
+    },
+    {
+      "id": "harbor-and-deployment-dry-run",
+      "status": "pending",
+      "detail": "Revalidate Harbor and perform preparation/dry-run only; no public deployment."
+    },
+    {
+      "id": "human-acceptance",
+      "status": "pending",
+      "detail": "Keep the local site available for user acceptance before any commit, push, PR, or deployment."
+    }
+  ],
+  "authorization": {
+    "commit": false,
+    "push": false,
+    "pull_request": false,
+    "public_deployment": false
+  }
+}

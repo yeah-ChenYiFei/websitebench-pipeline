@@ -1,0 +1,10 @@
+{
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "fenty-beauty",
+  "routes": {"home":"/en-ca","catalog":"/en-ca/collections/makeup-shop-all","search":"/en-ca/search?q=foundation","foundation":"/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420","powder":"/en-ca/products/invisimatte-instant-setting-blotting-powder","cart":"/en-ca/cart","checkout":"/en-ca/checkout","auth":"/en-ca/account/login","help":"/en-ca/pages/help-center","not-found":"/en-ca/websitebench-not-found"},
+  "deferred": {"source-authenticated-account":"Pending human-approved live-view trace; clone-local synthetic account is implemented without source pixel claims."},
+  "prepare": [],
+  "states": {"home.loaded":[],"catalog.populated":[],"search.results":[],"product.detail":[],"cart.empty":[],"checkout.required-fields":[],"auth.login":[],"help.loaded":[],"not-found.loaded":[]},
+  "status": {"not-found":404},
+  "boot": {"argv":["{python}","-m","uvicorn","app:app","--host","127.0.0.1","--port","{port}","--log-level","warning"],"cwd":"clone","env":{}}
+}

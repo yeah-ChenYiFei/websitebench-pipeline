@@ -1,0 +1,162 @@
+{
+  "generated_from": "materials/fenty-beauty/clone.yaml",
+  "opencli_version": "1.8.6",
+  "profiles": {
+    "auth": {
+      "failure_paths": [],
+      "label": "fenty-beauty auth (derived draft)",
+      "local_semantics": [
+        "The candidate makes zero runtime requests outside its own origin.",
+        "The core bag preserves foundation shade 185 and standard Invisimatte powder through checkout review.",
+        "Checkout exposes opaque local simulations and no real payment credential fields or provider calls."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [
+        "auth.recovery"
+      ],
+      "steps": [
+        {
+          "command": "state",
+          "id": "auth-login",
+          "intent": "Exercise clone check auth.login (GET /en-ca/account/login).",
+          "observation_id": "fenty-beauty_auth_login",
+          "required_state": {
+            "text_absent": "NotImplementedError",
+            "visible": "Fenty Beauty route /en-ca/account/login"
+          },
+          "route": "en-ca/account/login"
+        },
+        {
+          "command": "state",
+          "id": "auth-register",
+          "intent": "Exercise clone check auth.register (GET /en-ca/account/register).",
+          "observation_id": "fenty-beauty_auth_register",
+          "required_state": {
+            "text_absent": "NotImplementedError",
+            "visible": "Fenty Beauty route /en-ca/account/register"
+          },
+          "route": "en-ca/account/register"
+        },
+        {
+          "command": "state",
+          "id": "auth-recover",
+          "intent": "Exercise clone check auth.recover (GET /en-ca/account/recover).",
+          "observation_id": "fenty-beauty_auth_recover",
+          "required_state": {
+            "text_absent": "NotImplementedError",
+            "visible": "Fenty Beauty route /en-ca/account/recover"
+          },
+          "route": "en-ca/account/recover"
+        },
+        {
+          "command": "state",
+          "id": "auth-help",
+          "intent": "Exercise clone check auth.help (GET /en-ca/pages/help-center).",
+          "observation_id": "fenty-beauty_auth_help",
+          "required_state": {
+            "text_absent": "NotImplementedError",
+            "visible": "Fenty Beauty route /en-ca/pages/help-center"
+          },
+          "route": "en-ca/pages/help-center"
+        }
+      ],
+      "tier": "p1"
+    },
+    "catalog": {
+      "failure_paths": [],
+      "label": "fenty-beauty catalog (derived draft)",
+      "local_semantics": [
+        "The candidate makes zero runtime requests outside its own origin.",
+        "The core bag preserves foundation shade 185 and standard Invisimatte powder through checkout review.",
+        "Checkout exposes opaque local simulations and no real payment credential fields or provider calls."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [
+        "search.no-results"
+      ],
+      "steps": [
+        {
+          "command": "state",
+          "id": "catalog-collection",
+          "intent": "Exercise clone check catalog.collection (GET /en-ca/collections/makeup-shop-all).",
+          "observation_id": "fenty-beauty_catalog_collection",
+          "required_state": {
+            "text_absent": "NotImplementedError",
+            "visible": "Fenty Beauty route /en-ca/collections/makeup-shop-all"
+          },
+          "route": "en-ca/collections/makeup-shop-all"
+        },
+        {
+          "command": "state",
+          "id": "catalog-search",
+          "intent": "Exercise clone check catalog.search (GET /en-ca/search?q=foundation).",
+          "observation_id": "fenty-beauty_catalog_search",
+          "required_state": {
+            "list_contains": "Fenty Beauty route /en-ca/search",
+            "text_absent": "NotImplementedError"
+          },
+          "route": "en-ca/search?q=foundation"
+        },
+        {
+          "command": "state",
+          "id": "catalog-foundation",
+          "intent": "Exercise clone check catalog.foundation (GET /en-ca/products/pro-filtr-soft-matte-longwear-foundation-420).",
+          "observation_id": "fenty-beauty_catalog_foundation",
+          "required_state": {
+            "text_absent": "NotImplementedError",
+            "visible": "Fenty Beauty route /en-ca/products/pro-filtr-soft-matte-longwear-foundation-420"
+          },
+          "route": "en-ca/products/pro-filtr-soft-matte-longwear-foundation-420"
+        },
+        {
+          "command": "state",
+          "id": "catalog-powder",
+          "intent": "Exercise clone check catalog.powder (GET /en-ca/products/invisimatte-instant-setting-blotting-powder).",
+          "observation_id": "fenty-beauty_catalog_powder",
+          "required_state": {
+            "text_absent": "NotImplementedError",
+            "visible": "Fenty Beauty route /en-ca/products/invisimatte-instant-setting-blotting-powder"
+          },
+          "route": "en-ca/products/invisimatte-instant-setting-blotting-powder"
+        },
+        {
+          "command": "state",
+          "id": "catalog-cart",
+          "intent": "Exercise clone check catalog.cart (GET /en-ca/cart).",
+          "observation_id": "fenty-beauty_catalog_cart",
+          "required_state": {
+            "text_absent": "NotImplementedError",
+            "visible": "Fenty Beauty route /en-ca/cart"
+          },
+          "route": "en-ca/cart"
+        },
+        {
+          "command": "state",
+          "id": "catalog-checkout",
+          "intent": "Exercise clone check catalog.checkout (GET /en-ca/checkout).",
+          "observation_id": "fenty-beauty_catalog_checkout",
+          "required_state": {
+            "text_absent": "NotImplementedError",
+            "visible": "Fenty Beauty route /en-ca/checkout"
+          },
+          "route": "en-ca/checkout"
+        }
+      ],
+      "tier": "p0"
+    }
+  },
+  "schema_version": "websitebench.harbor.opencli-interaction-contract.v1",
+  "site_id": "fenty-beauty"
+}

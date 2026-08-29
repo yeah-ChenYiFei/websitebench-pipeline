@@ -1,0 +1,144 @@
+{
+  "schema_version": "offline-clone.backend-model.v1",
+  "site_id": "fenty-beauty",
+  "status": "draft",
+  "profile": "offline-benchmark",
+  "database": {
+    "engine": "sqlite",
+    "location_policy": "runtime-data-outside-candidate",
+    "concurrency_model": "wal-transactional-single-writer",
+    "migration_strategy": "versioned-forward-migrations",
+    "deterministic_reset": true,
+    "restart_persistence": true,
+    "site_isolation": "one-database-per-site",
+    "proofs": [
+      {"obligation": "data-location", "status": "planned", "evidence": []},
+      {"obligation": "schema-migration", "status": "planned", "evidence": []},
+      {"obligation": "deterministic-reset", "status": "planned", "evidence": []},
+      {"obligation": "restart-persistence", "status": "planned", "evidence": []},
+      {"obligation": "backup-restore", "status": "planned", "evidence": []},
+      {"obligation": "concurrency", "status": "planned", "evidence": []}
+    ]
+  },
+  "auth_semantics": {
+    "account_database_scope": "site-isolated",
+    "credential_storage": "salted-scrypt-hash",
+    "session_storage": "opaque-cookie-digest-at-rest",
+    "registration_account_creation": "direct-password",
+    "verification_challenge_storage": "not-applicable",
+    "password_reset_enumeration": "not-applicable",
+    "mail_default": "LOCAL_ONLY",
+    "mail_statuses": ["LOCAL_ONLY", "SMTP_PENDING", "SMTP_SENT", "SMTP_FAILED"],
+    "smtp_activation": "explicit-complete-config-only",
+    "smtp_delivery_ceiling": 3,
+    "rejected_secret_journaling": "forbidden",
+    "legacy_write_policy": "read-compatible-write-rejected"
+  },
+  "common_capabilities": {
+    "account_registration": "account-registration",
+    "account_sign_in": "account-sign-in",
+    "session_lifecycle": "session-lifecycle",
+    "password_recovery": "password-recovery",
+    "email_delivery": "email-delivery"
+  },
+  "capabilities": [
+    {
+      "id": "account-registration",
+      "label": "Direct local account registration",
+      "priority": "p1",
+      "category": "authentication",
+      "implementation_status": "implemented",
+      "semantic_profile": "local-account-registration-v1",
+      "external_effect": "local-only",
+      "journey_ids": ["account.lifecycle"],
+      "invariant_ids": ["persistence.site-isolated"],
+      "proofs": {
+        "evidence": {},
+        "planned": ["valid", "invalid", "duplicate", "stale", "foreign-owner", "unauthorized-role", "restart", "migration", "concurrency"],
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "account-sign-in",
+      "label": "Password-based local account sign-in",
+      "priority": "p1",
+      "category": "authentication",
+      "implementation_status": "implemented",
+      "semantic_profile": "local-account-sign-in-v1",
+      "external_effect": "local-only",
+      "journey_ids": ["account.lifecycle"],
+      "invariant_ids": ["persistence.site-isolated"],
+      "proofs": {
+        "evidence": {},
+        "planned": ["valid", "invalid", "duplicate", "stale", "foreign-owner", "unauthorized-role", "restart", "migration", "concurrency"],
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "session-lifecycle",
+      "label": "Anonymous and authenticated local sessions",
+      "priority": "p1",
+      "category": "authentication",
+      "implementation_status": "implemented",
+      "semantic_profile": "local-session-lifecycle-v1",
+      "external_effect": "local-only",
+      "journey_ids": ["account.lifecycle"],
+      "invariant_ids": ["persistence.site-isolated"],
+      "proofs": {
+        "evidence": {},
+        "planned": ["valid", "invalid", "duplicate", "stale", "foreign-owner", "unauthorized-role", "restart", "migration", "concurrency"],
+        "not_applicable": []
+      }
+    },
+    {
+      "id": "password-recovery",
+      "label": "No-send recovery preview",
+      "priority": "p1",
+      "category": "authentication",
+      "implementation_status": "not-applicable",
+      "semantic_profile": "not-applicable-v1",
+      "external_effect": "none",
+      "journey_ids": ["account.lifecycle"],
+      "invariant_ids": ["evidence.no-auth-pixel-claim"],
+      "proofs": {
+        "evidence": {},
+        "not_applicable": [
+          {"obligation": "valid", "rationale": "The clone deliberately offers no password reset mutation."},
+          {"obligation": "invalid", "rationale": "The clone deliberately offers no password reset mutation."},
+          {"obligation": "duplicate", "rationale": "The clone deliberately offers no password reset mutation."},
+          {"obligation": "stale", "rationale": "The clone deliberately offers no password reset mutation."},
+          {"obligation": "foreign-owner", "rationale": "The clone deliberately offers no password reset mutation."},
+          {"obligation": "unauthorized-role", "rationale": "The clone deliberately offers no password reset mutation."},
+          {"obligation": "restart", "rationale": "The clone deliberately offers no password reset mutation."},
+          {"obligation": "migration", "rationale": "The clone deliberately offers no password reset mutation."},
+          {"obligation": "concurrency", "rationale": "The clone deliberately offers no password reset mutation."}
+        ]
+      }
+    },
+    {
+      "id": "email-delivery",
+      "label": "No external email delivery",
+      "priority": "p1",
+      "category": "communication",
+      "implementation_status": "not-applicable",
+      "semantic_profile": "not-applicable-v1",
+      "external_effect": "none",
+      "journey_ids": ["account.lifecycle"],
+      "invariant_ids": ["runtime.local-only"],
+      "proofs": {
+        "evidence": {},
+        "not_applicable": [
+          {"obligation": "valid", "rationale": "The clone never sends external email."},
+          {"obligation": "invalid", "rationale": "The clone never sends external email."},
+          {"obligation": "duplicate", "rationale": "The clone never sends external email."},
+          {"obligation": "stale", "rationale": "The clone never sends external email."},
+          {"obligation": "foreign-owner", "rationale": "The clone never sends external email."},
+          {"obligation": "unauthorized-role", "rationale": "The clone never sends external email."},
+          {"obligation": "restart", "rationale": "The clone never sends external email."},
+          {"obligation": "migration", "rationale": "The clone never sends external email."},
+          {"obligation": "concurrency", "rationale": "The clone never sends external email."}
+        ]
+      }
+    }
+  ]
+}

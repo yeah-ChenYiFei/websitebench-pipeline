@@ -1,0 +1,40 @@
+{
+  "schema_version": "websitebench.browser-provider-preflight.v1",
+  "observed_at": "2026-08-19T00:00:00Z",
+  "site_id": "fenty-beauty",
+  "providers": [
+    {
+      "id": "in-app-browser",
+      "session_creation": "unavailable",
+      "page_creation": "unavailable",
+      "navigation": "unavailable",
+      "rendered_text": "unavailable",
+      "interactive_live_view": "unavailable",
+      "detail": "No connected browser was returned. The user was asked to connect Chrome through Computer use and complete login personally."
+    },
+    {
+      "id": "browserbase",
+      "session_creation": "unavailable",
+      "page_creation": "unavailable",
+      "navigation": "unavailable",
+      "rendered_text": "unavailable",
+      "interactive_live_view": "unavailable",
+      "detail": "No BROWSERBASE environment configuration is present in this workspace session."
+    },
+    {
+      "id": "local-playwright",
+      "session_creation": "ready",
+      "page_creation": "ready",
+      "navigation": "ready",
+      "rendered_text": "ready",
+      "interactive_live_view": "not-supported",
+      "detail": "The repository source-acquisition workflow completed isolated anonymous GET captures and the candidate Playwright scenarios completed successfully."
+    }
+  ],
+  "selected_channels": {
+    "anonymous_source_capture": "local-playwright",
+    "candidate_verification": "local-playwright",
+    "authenticated_handoff": "awaiting-connected-human-chrome"
+  },
+  "secrets_persisted": false
+}

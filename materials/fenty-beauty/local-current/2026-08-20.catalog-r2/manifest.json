@@ -1,0 +1,142 @@
+{
+  "schema_version": "websitebench.fenty-home-scroll-matrix.v1",
+  "source_url": "http://127.0.0.1:8765/en-ca/collections/makeup-shop-all",
+  "policy": {
+    "allowed_hosts": [
+      "127.0.0.1",
+      "www.fentybeauty.com"
+    ],
+    "allowed_method": "GET",
+    "mutating_actions": false
+  },
+  "viewports": [
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "http_status": 200,
+      "page_height": 4145,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 657,
+          "file": "vertical-02-y657.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 1315,
+          "file": "vertical-03-y1315.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 1971,
+          "file": "vertical-04-y1971.png"
+        },
+        {
+          "index": 5,
+          "scroll_y": 2629,
+          "file": "vertical-05-y2629.png"
+        },
+        {
+          "index": 6,
+          "scroll_y": 3289,
+          "file": "vertical-06-y3289.png"
+        }
+      ],
+      "carousels": [],
+      "blocked_requests": []
+    },
+    {
+      "name": "ide-tablet",
+      "width": 768,
+      "height": 900,
+      "http_status": 200,
+      "page_height": 4576,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 702,
+          "file": "vertical-02-y702.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 1404,
+          "file": "vertical-03-y1404.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 2104,
+          "file": "vertical-04-y2104.png"
+        },
+        {
+          "index": 5,
+          "scroll_y": 2806,
+          "file": "vertical-05-y2806.png"
+        },
+        {
+          "index": 6,
+          "scroll_y": 3510,
+          "file": "vertical-06-y3510.png"
+        }
+      ],
+      "carousels": [],
+      "blocked_requests": []
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "http_status": 200,
+      "page_height": 3203,
+      "vertical_frames": [
+        {
+          "index": 0,
+          "scroll_y": 0,
+          "file": "vertical-00-y0.png"
+        },
+        {
+          "index": 1,
+          "scroll_y": 0,
+          "file": "vertical-01-y0.png"
+        },
+        {
+          "index": 2,
+          "scroll_y": 702,
+          "file": "vertical-02-y702.png"
+        },
+        {
+          "index": 3,
+          "scroll_y": 1402,
+          "file": "vertical-03-y1402.png"
+        },
+        {
+          "index": 4,
+          "scroll_y": 2104,
+          "file": "vertical-04-y2104.png"
+        }
+      ],
+      "carousels": [],
+      "blocked_requests": []
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "schema_version": "prompt.websitebench-clone-task-brief.v1",
+  "observed_at": "2026-08-18T02:36:11Z",
+  "source": {
+    "input_url": "https://fentybeauty.com/",
+    "canonical_url": "https://fentybeauty.com/en-ca",
+    "canonical_origin": "https://fentybeauty.com",
+    "approved_discovery_origins": ["https://fentybeauty.com"],
+    "proposed_additional_origins": [
+      "https://cdn.shopify.com",
+      "https://staticw2.yotpo.com",
+      "https://config.gorgias.chat",
+      "https://www.gstatic.com"
+    ]
+  },
+  "site": {
+    "site_id": "fenty-beauty",
+    "display_name": "Fenty Beauty",
+    "existing_site": false,
+    "site_dir": "materials/fenty-beauty",
+    "target_origin": "https://fenty-beauty.website-bench.com",
+    "worker_name": "websitebench-fenty-beauty-demo",
+    "purpose": "Help beauty shoppers discover makeup across skin tones, select suitable variants, manage a cart, and reach a safe order-review experience."
+  },
+  "baseline": {
+    "locale": "en-CA",
+    "timezone": "Etc/UTC",
+    "timezone_policy": "temporary deterministic default; re-freeze from formal source evidence if an account or checkout exposes a timezone",
+    "viewports": [
+      {"id": "desktop", "width": 1440, "height": 900},
+      {"id": "mobile", "width": 390, "height": 844}
+    ]
+  },
+  "scope": {
+    "roles": [
+      {
+        "id": "visitor",
+        "display_name": "Anonymous shopper",
+        "authentication_required": false,
+        "evidence_grade": "directly-observed",
+        "evidence_urls": ["https://fentybeauty.com/en-ca", "https://fentybeauty.com/en-ca/collections/makeup-shop-all"],
+        "changes": ["public catalog", "product detail", "local cart", "checkout entry"],
+        "live_view_required": false,
+        "existing_entitlement_required": false
+      },
+      {
+        "id": "customer",
+        "display_name": "Signed-in customer",
+        "authentication_required": true,
+        "evidence_grade": "structural-only",
+        "evidence_urls": ["https://fentybeauty.com/en-ca/account/login"],
+        "changes": ["favorites", "profile", "addresses", "orders", "returns"],
+        "live_view_required": true,
+        "existing_entitlement_required": true
+      }
+    ],
+    "core_journeys": [
+      {
+        "id": "browse-search-compare",
+        "priority": "P0",
+        "role": "visitor",
+        "purpose": "Find and compare relevant makeup products.",
+        "preconditions": ["anonymous session"],
+        "starting_url": "https://fentybeauty.com/en-ca",
+        "steps": ["open Makeup", "browse or search", "apply available refinement", "compare product facts"],
+        "expected_result": "A relevant product detail can be opened from a populated result set.",
+        "failure_variant": "A no-results state explains the outcome.",
+        "recovery_variant": "Clear the query or return to All Makeup.",
+        "source_mutation_required": false,
+        "evidence_kind": "browser-source-limited",
+        "evidence_urls": ["https://fentybeauty.com/en-ca/collections/makeup-shop-all", "https://fentybeauty.com/en-ca/search"],
+        "confidence": "medium"
+      },
+      {
+        "id": "foundation-and-powder-checkout",
+        "priority": "P0",
+        "role": "visitor",
+        "purpose": "Select shade 185 for Pro Filt'r Soft Matte Longwear Foundation, add it and Invisimatte powder to cart, and begin checkout.",
+        "preconditions": ["empty cart", "products available"],
+        "starting_url": "https://fentybeauty.com/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420",
+        "steps": ["select foundation shade 185", "add foundation", "open Invisimatte powder", "add standard powder", "review cart", "begin checkout"],
+        "expected_result": "The checkout review visibly retains both requested products and the selected foundation shade.",
+        "failure_variant": "Unavailable variant or required checkout fields block continuation with an explanation.",
+        "recovery_variant": "Choose an available option or return to the cart.",
+        "source_mutation_required": true,
+        "evidence_kind": "human-selected-inventory plus public product captures",
+        "evidence_urls": [
+          "https://fentybeauty.com/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420",
+          "https://fentybeauty.com/en-ca/products/invisimatte-instant-setting-blotting-powder"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "account-lifecycle",
+        "priority": "P1",
+        "role": "customer",
+        "purpose": "Register, sign in, recover access, manage favorites, addresses, and order history, then sign out.",
+        "preconditions": ["human-provided test account or approved creation flow"],
+        "starting_url": "https://fentybeauty.com/en-ca/account/login",
+        "steps": ["open account entry", "authenticate", "inspect account areas", "sign out"],
+        "expected_result": "Authenticated account areas and their recovery routes are reachable.",
+        "failure_variant": "Invalid or missing fields produce clear guidance.",
+        "recovery_variant": "Use password recovery without sending a real message unless approved.",
+        "source_mutation_required": true,
+        "evidence_kind": "structural-only",
+        "evidence_urls": ["https://fentybeauty.com/en-ca/account/login"],
+        "confidence": "low"
+      },
+      {
+        "id": "help-and-not-found-recovery",
+        "priority": "P1",
+        "role": "visitor",
+        "purpose": "Recover from failed actions or an invalid route without exposing private data.",
+        "preconditions": ["anonymous session"],
+        "starting_url": "https://fentybeauty.com/en-ca/pages/help-center",
+        "steps": ["open help or an invalid route", "inspect guidance", "return to makeup"],
+        "expected_result": "Primary navigation and a safe recovery link remain visible.",
+        "failure_variant": "Embedded help content is unavailable.",
+        "recovery_variant": "Use first-party contact, returns, shipping, or makeup links.",
+        "source_mutation_required": false,
+        "evidence_kind": "directly-observed",
+        "evidence_urls": ["https://fentybeauty.com/en-ca/pages/help-center", "https://fentybeauty.com/en-ca/websitebench-not-found"],
+        "confidence": "high"
+      }
+    ],
+    "page_families": [
+      "public/marketing",
+      "discovery/list/search",
+      "product detail and variant selection",
+      "wishlist/cart",
+      "account/auth/profile",
+      "address/checkout/order review",
+      "orders/returns",
+      "help/recovery",
+      "error/not-found"
+    ],
+    "deterministic_seed_plan": {
+      "roles": ["visitor", "customer"],
+      "entities": ["products", "variants", "wishlist items", "cart lines", "addresses", "orders", "returns"],
+      "synthetic_examples": ["Cong Wei Test Shopper", "185 foundation shade", "standard Invisimatte powder", "WB-1001 seeded order"],
+      "states": ["empty", "populated", "validation failure", "payment declined", "payment retry", "cancelled order"],
+      "isolation_actor": "second synthetic customer",
+      "probes": ["reset", "restart", "duplicate add-to-cart", "duplicate checkout submission"]
+    },
+    "external_services": [
+      {"id": "shopify-storefront", "evidence_kind": "network and DOM", "local_adapter_required": true, "external_side_effect": true, "user_authorization_required": true, "formal_runtime_zero_remote_dependencies": true},
+      {"id": "rivo-account-wishlist", "evidence_kind": "DOM and redirected account fragment", "local_adapter_required": true, "external_side_effect": true, "user_authorization_required": true, "formal_runtime_zero_remote_dependencies": true},
+      {"id": "shopify-payment", "evidence_kind": "network preload", "local_adapter_required": true, "external_side_effect": true, "user_authorization_required": true, "formal_runtime_zero_remote_dependencies": true},
+      {"id": "gorgias-support", "evidence_kind": "network observation", "local_adapter_required": true, "external_side_effect": false, "user_authorization_required": false, "formal_runtime_zero_remote_dependencies": true},
+      {"id": "shopify-cdn", "evidence_kind": "network observation", "local_adapter_required": false, "external_side_effect": false, "user_authorization_required": false, "formal_runtime_zero_remote_dependencies": true}
+    ]
+  },
+  "authority": {
+    "authentication_access": "request-human-live-view",
+    "credentials_persisted": false,
+    "authorized_source_mutations": [],
+    "requested_source_mutations": [
+      "add the two assigned products to a disposable source cart",
+      "begin checkout without placing an order",
+      "create or use a disposable customer test account",
+      "save a product to favorites",
+      "edit a test address",
+      "inspect an eligible test order or return flow"
+    ],
+    "real_email_authorized": false,
+    "stripe_test_authorized": false,
+    "live_payment_authorized": false,
+    "push_authorized": false,
+    "pr_authorized": false,
+    "public_deployment_authorized": false,
+    "rights_or_redistribution_status": "unknown"
+  },
+  "trace_acquisition": {
+    "mode": "adaptive",
+    "agent_must_initiate": true,
+    "text_ownership": "human-only",
+    "human_trace_texts": [
+      {"human_trace_text_id": "ht-WB048-T01", "text": "Open Fenty Beauty's public entry page and use its primary navigation to reach the section for makeup records and actions; verify the destination heading and canonical path are visible.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T01", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T02", "text": "On Fenty Beauty's website, add Pro Filt'r Soft Matte Foundation (shade 185N) and Invisible Setting Powder to cart and begin checkout Confirm the created or saved item appears in its destination view with the requested values.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T02", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T03", "text": "Browse fenty-beauty's main catalog or category navigation and open a relevant product category.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T03", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T04", "text": "Search fenty-beauty for a specific product by keyword and refine the results with available filters.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T04", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T05", "text": "Sort search results on fenty-beauty and compare at least two products by price, rating, specifications, or availability.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T05", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T06", "text": "Open a product detail page on fenty-beauty and inspect images, description/specifications, price, availability, and customer reviews.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T06", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T07", "text": "Select an available option such as size, color, model, quantity, or configuration for a product on fenty-beauty.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T07", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T08", "text": "Save a product to a wishlist, favorites list, or saved-items area on fenty-beauty.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T08", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T09", "text": "Create a new customer account on fenty-beauty and complete the basic profile/contact setup.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T09", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T10", "text": "Sign in to an existing fenty-beauty account, verify the account state, and sign out again.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T10", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T11", "text": "Add a product to the fenty-beauty cart, change quantity or options, and remove/restore an item.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T11", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T12", "text": "Add or edit a delivery/pickup address on fenty-beauty and choose an available shipping/delivery option.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T12", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T13", "text": "Apply any available promo/gift option, enter checkout/payment details, and reach the final order-review or confirmation step on fenty-beauty.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T13", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T14", "text": "Open fenty-beauty's order history and use a post-order flow such as tracking, cancellation, return/refund, or reorder where available.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T14", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T15", "text": "Search Fenty Beauty for `zzzz-no-match-websitebench`, or apply an impossible public filter when discovery is browse-only, and verify a no-results message plus a route back to available makeup records and actions.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T15", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T16", "text": "Open Fenty Beauty's sign-in entry, verify the username or email field and the available password or identity-provider choices, then return without submitting credentials.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T16", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T17", "text": "Open Fenty Beauty's account-registration entry and verify the visible identity fields, terms links, and verification guidance without creating an account.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T17", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T18", "text": "From Fenty Beauty's sign-in surface, open password recovery and verify the reset-address field, validation guidance, and return-to-sign-in link without sending a reset message.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T18", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T19", "text": "With seeded offline data present, open Fenty Beauty's account history for makeup records and actions; verify the newest item exposes its status, detail, edit or cancellation options, and a route back to the relevant collection.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T19", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T20", "text": "Open a Fenty Beauty action for makeup records and actions with required fields empty or while signed out and verify inline validation or a permission prompt identifies what must be corrected before continuation.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T20", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T21", "text": "Open Fenty Beauty's public help, support, or contact entry and verify a user can reach guidance for makeup records and actions, account access, and failed actions without exposing private account data.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T21", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T22", "text": "Open a non-existent Fenty Beauty deep link and verify a branded not-found or recovery view preserves primary navigation and provides a safe route back to makeup records and actions.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T22", "status": "confirmed"},
+      {"human_trace_text_id": "ht-WB048-T23", "text": "Starting at Fenty Beauty's public entry, complete task 789: On Fenty Beauty's website, add Pro Filt'r Soft Matte Foundation (shade 185N) and Invisible Setting Powder to cart and begin checkout Confirm the created or saved item appears in its destination view with the requested values.", "provided_at": "2026-08-17T00:00:00Z", "source": "human-selected-inventory", "source_ref": "WB048-T23", "status": "confirmed"}
+    ],
+    "trace_candidates": ["anonymous browse/search/detail", "foundation shade 185 and powder cart", "account/auth/recovery", "address/checkout review", "orders/returns"],
+    "requested_traces": [],
+    "completed_traces": [],
+    "remaining_material_uncertainties": [
+      "Exact Rivo account fields and identity-provider choices require an interactive capture.",
+      "Exact cart and checkout route/state transitions require approved disposable source mutations.",
+      "Inventory wording says shade 185N while the observed product exposes shade #185; confirm whether the N suffix is evaluator wording or a changed source label.",
+      "The inventory says Invisible Setting Powder while the current product name is Invisimatte Instant Setting + Blotting Powder."
+    ]
+  },
+  "trajectory_recording": {
+    "channel": "not-used",
+    "recordings": [],
+    "clone_side_recordings": [],
+    "two_sided_findings": []
+  },
+  "field_evidence": [
+    {"field": "source.canonical_url", "evidence_urls": ["https://fentybeauty.com/"], "observation": "Anonymous desktop and mobile visits redirected to /en-ca.", "grade": "directly-observed", "confidence": "high", "formal_refreeze_required": false},
+    {"field": "site.display_name", "evidence_urls": ["https://fentybeauty.com/en-ca"], "observation": "Header logo and page content identify Fenty Beauty.", "grade": "directly-observed", "confidence": "high", "formal_refreeze_required": false},
+    {"field": "baseline.locale", "evidence_urls": ["https://fentybeauty.com/en-ca"], "observation": "Region selector shows Canada | English and product prices use CAD.", "grade": "directly-observed", "confidence": "high", "formal_refreeze_required": false},
+    {"field": "scope.product_variants", "evidence_urls": ["https://fentybeauty.com/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420", "https://fentybeauty.com/en-ca/products/invisimatte-instant-setting-blotting-powder"], "observation": "Foundation shows 50 shades including #185 and two sizes; powder shows standard, refill, and mini sizes.", "grade": "directly-observed", "confidence": "high", "formal_refreeze_required": true},
+    {"field": "scope.customer_role", "evidence_urls": ["https://fentybeauty.com/en-ca/account/login"], "observation": "Account entry redirects to a Rivo-backed account fragment; DOM exposes orders, favorites, profile, address, email/password, Google, and Shop Pay strings.", "grade": "structural-only", "confidence": "medium", "formal_refreeze_required": true},
+    {"field": "scope.help_and_404", "evidence_urls": ["https://fentybeauty.com/en-ca/pages/help-center", "https://fentybeauty.com/en-ca/websitebench-not-found"], "observation": "Help heading and branded 404 recovery buttons were rendered.", "grade": "directly-observed", "confidence": "high", "formal_refreeze_required": false}
+  ],
+  "unresolved": [
+    {"id": "source-capture-background-posts", "detail": "The source automatically attempted Shopify/Rivo telemetry and accelerated-checkout POSTs. The capture policy blocked them; source reports remain source-limited and establish no mutations."},
+    {"id": "third-party-assets", "detail": "Some Shopify, Yotpo, Gorgias, and Google assets were outside the approved origin and were not added to source authority."},
+    {"id": "search-collection-api", "detail": "Search results and one collection product grid did not populate under the strict source-origin policy, so filters and sorting need interactive refreeze or conservative offline behavior."},
+    {"id": "auth-live-view", "detail": "The account widget requires scripts outside the approved origin and an interactive human handoff for exact visible auth surfaces."}
+  ]
+}

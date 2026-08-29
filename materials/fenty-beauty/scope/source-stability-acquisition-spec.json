@@ -1,0 +1,38 @@
+{
+  "schema_version": "offline-clone.source-acquisition-spec.v2",
+  "site_id": "fenty-beauty",
+  "capture_id": "fenty-source-stability-20260819-r1",
+  "allowed_origins": ["https://fentybeauty.com"],
+  "pages": [
+    {"row_id":"home-desktop-frame-1","priority":"p0","url":"https://fentybeauty.com/en-ca","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"home-desktop-frame-2","priority":"p0","url":"https://fentybeauty.com/en-ca","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"home-desktop-frame-3","priority":"p0","url":"https://fentybeauty.com/en-ca","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"home-mobile-frame-1","priority":"p1","url":"https://fentybeauty.com/en-ca","viewport":{"name":"mobile","width":390,"height":844},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"home-mobile-frame-2","priority":"p1","url":"https://fentybeauty.com/en-ca","viewport":{"name":"mobile","width":390,"height":844},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"home-mobile-frame-3","priority":"p1","url":"https://fentybeauty.com/en-ca","viewport":{"name":"mobile","width":390,"height":844},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"catalog-desktop-frame-1","priority":"p0","url":"https://fentybeauty.com/en-ca/collections/makeup-shop-all","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"catalog-desktop-frame-2","priority":"p0","url":"https://fentybeauty.com/en-ca/collections/makeup-shop-all","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"catalog-desktop-frame-3","priority":"p0","url":"https://fentybeauty.com/en-ca/collections/makeup-shop-all","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"foundation-desktop-frame-1","priority":"p0","url":"https://fentybeauty.com/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"foundation-desktop-frame-2","priority":"p0","url":"https://fentybeauty.com/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"foundation-desktop-frame-3","priority":"p0","url":"https://fentybeauty.com/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"powder-desktop-frame-1","priority":"p0","url":"https://fentybeauty.com/en-ca/products/invisimatte-instant-setting-blotting-powder","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"powder-desktop-frame-2","priority":"p0","url":"https://fentybeauty.com/en-ca/products/invisimatte-instant-setting-blotting-powder","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"powder-desktop-frame-3","priority":"p0","url":"https://fentybeauty.com/en-ca/products/invisimatte-instant-setting-blotting-powder","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"signin-desktop-frame-1","priority":"p1","url":"https://fentybeauty.com/en-ca/account/login","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"signin-desktop-frame-2","priority":"p1","url":"https://fentybeauty.com/en-ca/account/login","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"signin-desktop-frame-3","priority":"p1","url":"https://fentybeauty.com/en-ca/account/login","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"help-desktop-frame-1","priority":"p1","url":"https://fentybeauty.com/en-ca/pages/help-center","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"help-desktop-frame-2","priority":"p1","url":"https://fentybeauty.com/en-ca/pages/help-center","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"help-desktop-frame-3","priority":"p1","url":"https://fentybeauty.com/en-ca/pages/help-center","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"not-found-desktop-frame-1","priority":"p1","url":"https://fentybeauty.com/en-ca/websitebench-not-found","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"not-found-desktop-frame-2","priority":"p1","url":"https://fentybeauty.com/en-ca/websitebench-not-found","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true},
+    {"row_id":"not-found-desktop-frame-3","priority":"p1","url":"https://fentybeauty.com/en-ca/websitebench-not-found","viewport":{"name":"desktop","width":1440,"height":900},"wait_until":"domcontentloaded","full_page":true}
+  ],
+  "limits": {
+    "navigation_timeout_ms": 60000,
+    "settle_ms": 5000,
+    "max_resource_bytes": 52428800,
+    "max_total_resource_bytes": 268435456
+  }
+}

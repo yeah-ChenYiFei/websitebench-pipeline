@@ -1,0 +1,17 @@
+{
+  "schema_version": "offline-clone.checkpoints.v1",
+  "status": "frozen",
+  "site_id": "fenty-beauty",
+  "capture_id": "fenty-preflight-20260817",
+  "viewports": {"desktop":{"width":1440,"height":900},"mobile":{"width":390,"height":844}},
+  "checkpoints": [
+    {"id":"home.desktop","route_id":"home","state":"loaded","role":"visitor","viewport":"desktop","priority":"p0","evidence_kind":"unavailable","acceptance_eligible":false,"verification_kind":"source-limited-local-diagnostic","visual_contract":{"source_artifact_path":"source-assets/checkpoints/home.desktop.png","viewport":{"width":1440,"height":900},"comparison_region":{"x":0,"y":0,"width":1440,"height":900},"metric":"pixel-mae-similarity-v1","threshold":0.8}},
+    {"id":"home.mobile","route_id":"home","state":"loaded","role":"visitor","viewport":"mobile","priority":"p1","evidence_kind":"unavailable","acceptance_eligible":false,"verification_kind":"source-limited-local-diagnostic"},
+    {"id":"catalog.desktop","route_id":"catalog","state":"load-error-recovery","role":"visitor","viewport":"desktop","priority":"p0","evidence_kind":"unavailable","acceptance_eligible":false,"verification_kind":"source-limited-local-diagnostic"},
+    {"id":"foundation.desktop","route_id":"product","clone_path":"/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420","state":"detail","role":"visitor","viewport":"desktop","priority":"p0","evidence_kind":"unavailable","acceptance_eligible":false,"verification_kind":"source-limited-local-diagnostic"},
+    {"id":"powder.desktop","route_id":"product","clone_path":"/en-ca/products/invisimatte-instant-setting-blotting-powder","state":"detail","role":"visitor","viewport":"desktop","priority":"p0","evidence_kind":"unavailable","acceptance_eligible":false,"verification_kind":"source-limited-local-diagnostic"},
+    {"id":"signin.desktop","route_id":"auth","state":"login","role":"visitor","viewport":"desktop","priority":"p1","evidence_kind":"unavailable","acceptance_eligible":false,"verification_kind":"structural-only-local-diagnostic"},
+    {"id":"help.desktop","route_id":"help","state":"loaded","role":"visitor","viewport":"desktop","priority":"p1","evidence_kind":"unavailable","acceptance_eligible":false,"verification_kind":"source-limited-local-diagnostic"},
+    {"id":"not-found.desktop","route_id":"not-found","state":"loaded","role":"visitor","viewport":"desktop","priority":"p1","evidence_kind":"unavailable","acceptance_eligible":false,"verification_kind":"source-limited-local-diagnostic"}
+  ]
+}

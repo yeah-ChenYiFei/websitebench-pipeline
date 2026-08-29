@@ -1,0 +1,15 @@
+{
+  "schema_version": "offline-clone.routes.v1",
+  "routes": [
+    {"id":"home","route_pattern":"/en-ca","priority":"p0","purpose_edge":"primary","evidence_kind":"directly-observed","local_destination":true,"roles":["visitor","customer"],"states":["loaded"]},
+    {"id":"catalog","route_pattern":"/en-ca/collections/makeup-shop-all","priority":"p0","purpose_edge":"primary","evidence_kind":"directly-observed","local_destination":true,"roles":["visitor","customer"],"states":["populated","filtered","sorted","compare","load-error-recovery"]},
+    {"id":"search","route_pattern":"/en-ca/search","priority":"p0","purpose_edge":"primary","evidence_kind":"source-limited","local_destination":true,"roles":["visitor","customer"],"states":["empty","results","no-results"]},
+    {"id":"product","route_pattern":"/en-ca/products/{slug}","priority":"p0","purpose_edge":"primary","evidence_kind":"directly-observed","local_destination":true,"roles":["visitor","customer"],"states":["detail","variant-selected","saved","added"]},
+    {"id":"cart","route_pattern":"/en-ca/cart","priority":"p0","purpose_edge":"primary","evidence_kind":"structural-only","local_destination":true,"roles":["visitor","customer"],"states":["empty","populated","updated","removed","restored"]},
+    {"id":"checkout","route_pattern":"/en-ca/checkout","priority":"p0","purpose_edge":"primary","evidence_kind":"structural-only","local_destination":true,"roles":["visitor","customer"],"states":["required-fields","delivery","promo","local-payment","review"]},
+    {"id":"auth","route_pattern":"/en-ca/account/{login|register|recover}","priority":"p1","purpose_edge":"supporting","evidence_kind":"structural-only","local_destination":true,"roles":["visitor"],"states":["login","register","recover","validation"]},
+    {"id":"account","route_pattern":"/en-ca/account/{section}","priority":"p1","purpose_edge":"supporting","evidence_kind":"unavailable","local_destination":true,"roles":["customer"],"states":["overview","favorites","addresses","orders"]},
+    {"id":"help","route_pattern":"/en-ca/pages/help-center","priority":"p1","purpose_edge":"supporting","evidence_kind":"directly-observed","local_destination":true,"roles":["visitor","customer"],"states":["loaded"]},
+    {"id":"not-found","route_pattern":"/__any-unmatched-path","priority":"p1","purpose_edge":"boundary","evidence_kind":"directly-observed","local_destination":true,"roles":["visitor","customer"],"states":["loaded"]}
+  ]
+}

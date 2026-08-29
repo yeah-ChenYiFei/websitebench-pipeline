@@ -1,0 +1,148 @@
+{
+  "schema_version": "websitebench.offline-clone.backend-semantic-suite.v1",
+  "suite_id": "fenty-account-cart-checkout",
+  "allowed_origin": "http://127.0.0.1:8765",
+  "timeout_seconds": 10,
+  "follow_redirects": false,
+  "invariants": [
+    {"id":"commerce-cart-checkout","applicability":"applicable","required_polarities":["positive","negative"]},
+    {"id":"account-ownership","applicability":"applicable","required_polarities":["positive","negative"]},
+    {"id":"deterministic-reset","applicability":"applicable","required_polarities":["positive","negative"]}
+  ],
+  "cases": [
+    {
+      "id": "authorized-reset",
+      "invariant_id": "deterministic-reset",
+      "polarity": "positive",
+      "actor": "admin",
+      "steps": [
+        {
+          "id": "reset",
+          "request": {"method":"POST","path":"/__admin/reset","headers_env":{"X-WebsiteBench-Admin-Token":"WEBSITEBENCH_FENTY_ADMIN_TOKEN"}},
+          "expect": {"status":200,"json_equal":{"/reset":true,"/site_id":"fenty-beauty"}}
+        }
+      ]
+    },
+    {
+      "id": "unauthorized-reset-denied",
+      "invariant_id": "deterministic-reset",
+      "polarity": "negative",
+      "actor": "untrusted-admin",
+      "steps": [
+        {
+          "id": "reset-without-token",
+          "request": {"method":"POST","path":"/__admin/reset"},
+          "expect": {"status":403,"json_equal":{"/error":"forbidden"}}
+        }
+      ]
+    },
+    {
+      "id": "cart-and-checkout-preview",
+      "invariant_id": "commerce-cart-checkout",
+      "polarity": "positive",
+      "actor": "shopper",
+      "steps": [
+        {
+          "id": "add-foundation",
+          "request": {"method":"POST","path":"/api/cart/add","json":{"product_id":"foundation","variant":"185N","size":"Standard 32 mL","quantity":1}},
+          "expect": {"status":201,"json_equal":{"/count":1,"/subtotal":54.0,"/currency":"CAD"}}
+        },
+        {
+          "id": "add-powder",
+          "request": {"method":"POST","path":"/api/cart/add","json":{"product_id":"powder","variant":"Universal","size":"Standard 8.5 g","quantity":1}},
+          "expect": {"status":201,"json_equal":{"/count":2,"/subtotal":107.0,"/shipping":0.0}}
+        },
+        {
+          "id": "preview-with-promo",
+          "request": {"method":"POST","path":"/api/checkout/preview","json":{"promo":"FENTY10"}},
+          "expect": {"status":200,"json_equal":{"/count":2,"/promo":"FENTY10","/discount":10.7,"/payment_adapter":"local-sandbox","/is_simulation":true,"/currency":"CAD"},"json_present":["/tax","/total","/fulfillment_options/0"]}
+        }
+      ]
+    },
+    {
+      "id": "invalid-cart-and-empty-checkout",
+      "invariant_id": "commerce-cart-checkout",
+      "polarity": "negative",
+      "actor": "empty-shopper",
+      "steps": [
+        {
+          "id": "invalid-variant",
+          "request": {"method":"POST","path":"/api/cart/add","json":{"product_id":"foundation","variant":"999","size":"Standard 32 mL","quantity":1}},
+          "expect": {"status":422,"json_present":["/error"]}
+        },
+        {
+          "id": "empty-preview",
+          "request": {"method":"POST","path":"/api/checkout/preview","json":{}},
+          "expect": {"status":422,"json_equal":{"/error":"Your bag is empty."}}
+        }
+      ]
+    },
+    {
+      "id": "account-owner-lifecycle",
+      "invariant_id": "account-ownership",
+      "polarity": "positive",
+      "actor": "account-owner",
+      "steps": [
+        {
+          "id": "register",
+          "request": {"method":"POST","path":"/api/auth/register","json":{"email":"semantic-owner@example.test","display_name":"Semantic Owner","password":"${ENV:WEBSITEBENCH_FENTY_SEMANTIC_PASSWORD}"}},
+          "expect": {"status":201,"json_equal":{"/account/display_name":"Semantic Owner"},"json_present":["/account/subject_id","/verification"]}
+        },
+        {
+          "id": "read-account",
+          "request": {"method":"GET","path":"/api/account"},
+          "expect": {"status":200,"json_equal":{"/profile/display_name":"Semantic Owner"},"json_present":["/orders/0/order_id"]},
+          "capture": {"owner_order_id":"/orders/0/order_id"}
+        },
+        {
+          "id": "save-favorite",
+          "request": {"method":"POST","path":"/api/favorites/toggle","json":{"product_id":"foundation"}},
+          "expect": {"status":200,"json_equal":{"/saved":true,"/favorites/0/id":"foundation"}}
+        },
+        {
+          "id": "save-address",
+          "request": {"method":"POST","path":"/api/account/address","json":{"label":"Test Home","full_name":"Semantic Owner","line1":"100 Test Street","city":"Toronto","province":"Ontario","postal_code":"M5V 2T6","country":"Canada"}},
+          "expect": {"status":200,"json_equal":{"/addresses/0/city":"Toronto","/addresses/0/is_default":1}}
+        },
+        {
+          "id": "cancel-owned-order",
+          "request": {"method":"POST","path":"/api/orders/${VAR:owner_order_id}/cancel"},
+          "expect": {"status":200,"json_equal":{"/orders/0/status":"Cancelled"}}
+        },
+        {
+          "id": "logout",
+          "request": {"method":"POST","path":"/api/auth/logout"},
+          "expect": {"status":200,"json_equal":{"/signed_out":true}}
+        },
+        {
+          "id": "signed-out-account-denied",
+          "request": {"method":"GET","path":"/api/account"},
+          "expect": {"status":401,"json_equal":{"/error":"Sign in to continue."}}
+        }
+      ]
+    },
+    {
+      "id": "foreign-and-anonymous-denied",
+      "invariant_id": "account-ownership",
+      "polarity": "negative",
+      "actor": "foreign-user",
+      "steps": [
+        {
+          "id": "anonymous-account-denied",
+          "request": {"method":"GET","path":"/api/account"},
+          "expect": {"status":401,"json_absent":["/profile","/addresses","/orders"]}
+        },
+        {
+          "id": "anonymous-favorite-denied",
+          "request": {"method":"POST","path":"/api/favorites/toggle","json":{"product_id":"foundation"}},
+          "expect": {"status":401,"json_equal":{"/signin":"/en-ca/account/login"},"json_absent":["/favorites"]}
+        },
+        {
+          "id": "foreign-order-denied",
+          "request": {"method":"POST","path":"/api/orders/${VAR:owner_order_id}/return"},
+          "expect": {"status":401,"json_absent":["/orders","/cart"]}
+        }
+      ]
+    }
+  ]
+}
