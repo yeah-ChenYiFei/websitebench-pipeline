@@ -1,0 +1,15 @@
+{
+  "schema_version": "offline-clone.contribution-backend-scope.v1",
+  "site_id": "fandango",
+  "backend_profile": "full-local-sandbox",
+  "runtime_required": true,
+  "capabilities": [
+    {"id":"accounts","applicability":"in-scope","rationale":"Registration and sign-in traces require isolated local accounts."},
+    {"id":"password-recovery","applicability":"preview-only","rationale":"The UI validates an address and explicitly sends nothing."},
+    {"id":"transactional-mail","applicability":"not-applicable","rationale":"No external email is sent."},
+    {"id":"orders","applicability":"in-scope","rationale":"Confirmed local bookings and management actions persist."},
+    {"id":"checkout","applicability":"in-scope","rationale":"Ticket and seat choices reach final review and local confirmation."},
+    {"id":"payments","applicability":"local-sandbox-only","rationale":"No card data is accepted and no real charge occurs."},
+    {"id":"database","applicability":"in-scope","rationale":"Accounts and local booking state use a site-isolated SQLite identity."}
+  ]
+}

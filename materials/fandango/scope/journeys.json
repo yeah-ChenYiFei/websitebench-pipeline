@@ -1,0 +1,140 @@
+{
+ "schema_version": "offline-clone.journeys.v1",
+ "journeys": [
+  {
+   "id": "discovery.browse",
+   "actor": "moviegoer",
+   "kind": "success",
+   "priority": "p0",
+   "status": "frozen",
+   "evidence_kind": "clone-local-contract",
+   "steps": [
+    "Open the public home page.",
+    "Use the primary navigation to open the movie listing.",
+    "Filter by genre and amenity, then sort the results."
+   ]
+  },
+  {
+   "id": "tickets.core",
+   "actor": "moviegoer",
+   "kind": "success",
+   "priority": "p0",
+   "status": "frozen",
+   "evidence_kind": "clone-local-contract",
+   "steps": [
+    "Open a currently showing thriller.",
+    "Pick a Friday evening showtime at Regal Union Square.",
+    "Choose three adjacent centre seats.",
+    "Enter contact details and confirm the local booking."
+   ]
+  },
+  {
+   "id": "theaters.browse",
+   "actor": "moviegoer",
+   "kind": "success",
+   "priority": "p1",
+   "status": "frozen",
+   "evidence_kind": "clone-local-contract",
+   "steps": [
+    "Open the theater directory.",
+    "Change the date and the format chip.",
+    "Confirm the offered showtimes change."
+   ]
+  },
+  {
+   "id": "account.lifecycle",
+   "actor": "moviegoer",
+   "kind": "success",
+   "priority": "p1",
+   "status": "frozen",
+   "evidence_kind": "clone-local-contract",
+   "steps": [
+    "Register a local account.",
+    "Sign in and out.",
+    "Preview password recovery without sending mail."
+   ]
+  },
+  {
+   "id": "bookings.management",
+   "actor": "moviegoer",
+   "kind": "success",
+   "priority": "p1",
+   "status": "frozen",
+   "evidence_kind": "clone-local-contract",
+   "steps": [
+    "Open booking history.",
+    "Cancel, reschedule and contact support locally.",
+    "Re-book from a past booking."
+   ]
+  },
+  {
+   "id": "not-found.recovery",
+   "actor": "moviegoer",
+   "kind": "success",
+   "priority": "p2",
+   "status": "frozen",
+   "evidence_kind": "clone-local-contract",
+   "steps": [
+    "Request an unknown route.",
+    "Confirm the branded 404 renders.",
+    "Return to a working route."
+   ]
+  },
+  {
+   "id": "checkout.validation",
+   "actor": "moviegoer",
+   "kind": "failure",
+   "family": "checkout",
+   "priority": "p1",
+   "status": "frozen",
+   "evidence_kind": "clone-local-contract",
+   "steps": [
+    "Continue past the contact step with an invalid email or postal code.",
+    "Read the inline refusal.",
+    "Confirm no booking was created."
+   ]
+  },
+  {
+   "id": "checkout.recovery",
+   "actor": "moviegoer",
+   "kind": "recovery",
+   "family": "checkout",
+   "priority": "p2",
+   "status": "frozen",
+   "evidence_kind": "clone-local-contract",
+   "steps": [
+    "Correct the rejected contact details.",
+    "Re-submit and reach the final review.",
+    "Confirm the seats are still held."
+   ]
+  },
+  {
+   "id": "any-unmatched-path.validation",
+   "actor": "moviegoer",
+   "kind": "failure",
+   "family": "any-unmatched-path",
+   "priority": "p1",
+   "status": "frozen",
+   "evidence_kind": "clone-local-contract",
+   "steps": [
+    "Submit an unknown route with missing or rejected input.",
+    "Read the inline refusal.",
+    "Confirm no state changed."
+   ]
+  },
+  {
+   "id": "any-unmatched-path.recovery",
+   "actor": "moviegoer",
+   "kind": "recovery",
+   "family": "any-unmatched-path",
+   "priority": "p2",
+   "status": "frozen",
+   "evidence_kind": "clone-local-contract",
+   "steps": [
+    "Follow the recovery link offered by an unknown route.",
+    "Reach a working route.",
+    "Confirm the session still works."
+   ]
+  }
+ ]
+}

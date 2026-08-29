@@ -1,0 +1,53 @@
+{
+  "schema_version": "offline-clone.route-states.v1",
+  "capture_id": "2026-08-23.fandango-r2",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "en-US",
+  "auth_state": "anonymous",
+  "safe_methods_only": true,
+  "states": [
+    {
+      "id": "home.desktop",
+      "source_url": "https://www.fandango.com/",
+      "local_path": "/",
+      "source_screenshot": "source-current/2026-08-23.fandango-r2/home.desktop.png",
+      "source_title": "Movie Tickets & Movie Times | Fandango",
+      "source_status": "captured",
+      "candidate_screenshot": "local-current/2026-08-23.fandango-r2/home.desktop.png",
+      "candidate_title": "Movie Tickets & Movie Times | Fandango"
+    },
+    {
+      "id": "movies.desktop",
+      "source_url": "https://www.fandango.com/movies-in-theaters",
+      "local_path": "/movies",
+      "source_screenshot": "source-current/2026-08-23.fandango-r2/movies.desktop.png",
+      "source_title": "New Movies Out Now & In Theaters 2026 | Fandango",
+      "source_status": "captured",
+      "candidate_screenshot": "local-current/2026-08-23.fandango-r2/movies.desktop.png",
+      "candidate_title": "Movie Tickets & Movie Times | Fandango"
+    },
+    {
+      "id": "movie.desktop",
+      "source_url": "https://www.fandango.com/insidious-out-of-the-further-2026-246427/movie-overview",
+      "local_path": "/movies/mutiny-2026-245697",
+      "source_screenshot": "source-current/2026-08-23.fandango-r2/movie.desktop.png",
+      "source_title": "Insidious: Out of the Further (2026) Showtimes | Fandango",
+      "source_status": "captured",
+      "candidate_screenshot": "local-current/2026-08-23.fandango-r2/movie.desktop.png",
+      "candidate_title": "Movie Tickets & Movie Times | Fandango"
+    },
+    {
+      "id": "theater.desktop",
+      "source_url": "https://www.fandango.com/lumiere-cinema-at-the-music-hall-AACOY/theater-page?cmp=theater-module",
+      "local_path": "/theaters/regal-union-square",
+      "source_screenshot": "source-current/2026-08-23.fandango-r2/theater.desktop.png",
+      "source_title": "Lumiere Cinema at the Music Hall Movie Showtimes & Tickets | Beverly Hills | Fandango",
+      "source_status": "captured",
+      "candidate_screenshot": "local-current/2026-08-23.fandango-r2/theater.desktop.png",
+      "candidate_title": "Movie Tickets & Movie Times | Fandango"
+    }
+  ]
+}

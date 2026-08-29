@@ -1,0 +1,78 @@
+{
+  "generated_from": "materials/fandango/clone.yaml",
+  "opencli_version": "1.8.6",
+  "profiles": {
+    "any-unmatched-path": {
+      "failure_paths": [
+        "any-unmatched-path.validation"
+      ],
+      "label": "fandango any unmatched path (derived draft)",
+      "local_semantics": [
+        "The candidate makes zero runtime requests outside its own origin.",
+        "No ticket is issued, no payment is taken and no mail is sent.",
+        "A seat that is already sold cannot be selected, and a held block stays reserved through confirmation."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [
+        "any-unmatched-path.recovery"
+      ],
+      "steps": [
+        {
+          "command": "state",
+          "id": "any-unmatched-path",
+          "intent": "Exercise clone check any-unmatched-path (GET /__any-unmatched-path).",
+          "observation_id": "fandango_any-unmatched-path",
+          "required_state": {
+            "body_contains": "data-route=\"/__any-unmatched-path\"",
+            "text_absent": "NotImplementedError"
+          },
+          "route": "__any-unmatched-path"
+        }
+      ],
+      "tier": "p0"
+    },
+    "checkout": {
+      "failure_paths": [
+        "checkout.validation"
+      ],
+      "label": "fandango checkout (derived draft)",
+      "local_semantics": [
+        "The candidate makes zero runtime requests outside its own origin.",
+        "No ticket is issued, no payment is taken and no mail is sent.",
+        "A seat that is already sold cannot be selected, and a held block stays reserved through confirmation."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [
+        "checkout.recovery"
+      ],
+      "steps": [
+        {
+          "command": "state",
+          "id": "checkout",
+          "intent": "Exercise clone check checkout (GET /checkout).",
+          "observation_id": "fandango_checkout",
+          "required_state": {
+            "body_contains": "data-route=\"/checkout\"",
+            "text_absent": "NotImplementedError"
+          },
+          "route": "checkout"
+        }
+      ],
+      "tier": "p0"
+    }
+  },
+  "schema_version": "websitebench.harbor.opencli-interaction-contract.v1",
+  "site_id": "fandango"
+}

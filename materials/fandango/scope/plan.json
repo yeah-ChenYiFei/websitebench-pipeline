@@ -1,0 +1,27 @@
+{
+  "schema_version": "offline-clone.site-plan.v1",
+  "site_id": "fandango",
+  "core_task_id": 867,
+  "state_model": "stateful",
+  "capability_scope": {
+    "persistent_accounts": "in-scope",
+    "registration": "in-scope",
+    "login": "in-scope",
+    "password_recovery": "entry-and-validation-only; no message is sent",
+    "business_database": "in-scope for selections, saved movies and local booking history",
+    "transactional_email": "not-applicable",
+    "orders": "in-scope as local simulated ticket bookings",
+    "checkout": "in-scope through final review and local confirmation",
+    "payments": "local-sandbox only; no card fields or real charge",
+    "venue_contact": "local unsent status only"
+  },
+  "core_scenario": {
+    "movie_genre": "Thriller",
+    "theater": "Regal Union Square",
+    "location": "New York",
+    "day": "upcoming Friday",
+    "time_constraint": "after 6 PM",
+    "tickets": 3,
+    "seat_constraint": "three adjacent center seats in rows D-F"
+  }
+}

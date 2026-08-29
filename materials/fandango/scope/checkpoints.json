@@ -1,0 +1,55 @@
+{
+ "schema_version": "offline-clone.checkpoints.v1",
+ "status": "frozen",
+ "site_id": "fandango",
+ "capture_id": "2026-08-23.fandango-r2",
+ "viewports": {
+  "desktop": {
+   "width": 1440,
+   "height": 900
+  },
+  "mobile": {
+   "width": 390,
+   "height": 844
+  }
+ },
+ "checkpoints": [
+  {
+   "id": "home.desktop",
+   "route_id": "home",
+   "state": "loaded",
+   "role": "visitor",
+   "viewport": "desktop",
+   "priority": "p0",
+   "evidence_kind": "unavailable",
+   "acceptance_eligible": false,
+   "verification_kind": "source-limited-local-diagnostic",
+   "visual_contract": {
+    "source_artifact_path": "source-assets/checkpoints/home.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.8
+   }
+  },
+  {
+   "id": "home.mobile",
+   "route_id": "home",
+   "state": "loaded",
+   "role": "visitor",
+   "viewport": "mobile",
+   "priority": "p1",
+   "evidence_kind": "unavailable",
+   "acceptance_eligible": false,
+   "verification_kind": "source-limited-local-diagnostic"
+  }
+ ]
+}

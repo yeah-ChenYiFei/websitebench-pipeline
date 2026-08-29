@@ -1,0 +1,450 @@
+{
+ "schema_version": "offline-clone.assets.v1",
+ "snapshot_id": "fandango-2026-08-23",
+ "created_at": "2026-08-23T00:00:00Z",
+ "remote_runtime_policy": "forbidden",
+ "closure_status": "declared",
+ "no_assets_reason": null,
+ "assets": [
+  {
+   "id": "fandango.poster.mutiny-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/245697/MUTINY_2025x3000_Online_1SHT_CARGO_V1.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-mutiny-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-mutiny-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 59226,
+   "sha256": "911af388ab39bb5c1d8715dfeaeafe0bd2e75ceadcb0c0a2dcc0276cab9f1e3d",
+   "dimensions": {
+    "width": 400,
+    "height": 591
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.spider-man-brand-new-day-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/243819/SMBND_Onlinefinal.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-spider-man-brand-new-day-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-spider-man-brand-new-day-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 63352,
+   "sha256": "1c2240e90b68c268314561e44eabc771a3680a0dddd11a8621f98a4dfe0d7cc1",
+   "dimensions": {
+    "width": 400,
+    "height": 600
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.insidious-out-of-the-further-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/246427/Insidious%20Out%20of%20the%20Further.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-insidious-out-of-the-further-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-insidious-out-of-the-further-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 43152,
+   "sha256": "ed13bb0d5b208a1e1b20af450690ca4dfed754c6ffdfb2b98c6ca33bc9313d9e",
+   "dimensions": {
+    "width": 400,
+    "height": 600
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.the-odyssey-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/241283/ODY_AdvHorse1Sht1_RGB_2.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-the-odyssey-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-the-odyssey-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 30558,
+   "sha256": "f11a634006980661f92be09d4bb8c547a07489cff5e2fa8bfd91b9420eb12afa",
+   "dimensions": {
+    "width": 400,
+    "height": 632
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.it-ends-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/246704/itends_v2new.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-it-ends-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-it-ends-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 27296,
+   "sha256": "8fa0bf6b2fd93fe217b2ec820f1055ed6786ed24fa842e20ba2493a824313ffe",
+   "dimensions": {
+    "width": 400,
+    "height": 592
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.the-end-of-oak-street-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/245149/OAKST_DEBUT_VERT_DOM_MAIN_2764x4096.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-the-end-of-oak-street-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-the-end-of-oak-street-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 23552,
+   "sha256": "40131a47d6521e84813c5c4e33fcfef42c59775506d173bea7c102f8aa723f2b",
+   "dimensions": {
+    "width": 400,
+    "height": 592
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.spa-weekend-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/245958/SPA_KEY_Main_1Sht_27x40_256_F9.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-spa-weekend-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-spa-weekend-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 66814,
+   "sha256": "2642b812c7b4028314c8b7e47ef43186c4235ac30fcb6127dae50d3c5be828cb",
+   "dimensions": {
+    "width": 400,
+    "height": 592
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.paw-patrol-the-dino-movie-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/245603/PP3_DOM_Digital_Prehistoric_935x1381px_Indoor_Vertical_Digital_Payoff_One_Sheet.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-paw-patrol-the-dino-movie-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-paw-patrol-the-dino-movie-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 76672,
+   "sha256": "16b965045ba4d3457e452ddf4f2167a399321b71a93951f1da5e67799c05e833",
+   "dimensions": {
+    "width": 400,
+    "height": 590
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.toy-story-5-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/243393/TS5_Payoff_Unboxing_1s_v80_Mech6.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-toy-story-5-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-toy-story-5-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 59656,
+   "sha256": "a5c88934f774260e38c5c2af9c272172c0b16866d24683c79c125efe97a3d925",
+   "dimensions": {
+    "width": 400,
+    "height": 592
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.minions-and-monsters-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/244409/MM_Adv1Sheet5_Irene_RGB_Rtd_3SM.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-minions-and-monsters-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-minions-and-monsters-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 56870,
+   "sha256": "9cc80456ddb2cdfa48190b71b5287270b2a09da3b2f7f31d751b760a1879ea08",
+   "dimensions": {
+    "width": 400,
+    "height": 632
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.the-magic-faraway-tree-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/245875/TMFT_US-1SHEET_LR.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-the-magic-faraway-tree-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-the-magic-faraway-tree-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 69003,
+   "sha256": "f95a1c451788c7c8960be9a5189af5e7c0ac0f5fee31ab3aee13b62122ec5198",
+   "dimensions": {
+    "width": 400,
+    "height": 592
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.texas-chain-saw-day-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/246288/TCS2026_PartnerAssetsTicketingThumbnail_1000x1480.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-texas-chain-saw-day-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-texas-chain-saw-day-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 44749,
+   "sha256": "f13cdb485fad05391d69670a66903d8a3d5bb353400b9a0d29ad3a2f8cfb5d4e",
+   "dimensions": {
+    "width": 400,
+    "height": 592
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.one-night-only-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/245604/ONO_Tsr1Sheet2_RGB_1SM.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-one-night-only-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-one-night-only-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 66204,
+   "sha256": "139ce3f29702c3cfa1e983214d9b6038f2413a970f7cbf9ad604638d701a1fc3",
+   "dimensions": {
+    "width": 400,
+    "height": 632
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.the-rivals-of-amziah-king-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/245978/The%20Rivals%20of%20Amziah%20King.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-the-rivals-of-amziah-king-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-the-rivals-of-amziah-king-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 40217,
+   "sha256": "6f2712350e5a46759451a176996c97181e98182fbe423beabdc2259eccdd8c20",
+   "dimensions": {
+    "width": 400,
+    "height": 593
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.the-brink-of-war-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/246132/thebrinkofwar-posterart.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-the-brink-of-war-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-the-brink-of-war-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 46492,
+   "sha256": "558682a278b6b3d5d08a91b5d491f1c696815332a722126c55ab9a7aa278bd0f",
+   "dimensions": {
+    "width": 400,
+    "height": 624
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.nimrods-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/246455/nimrods.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-nimrods-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-nimrods-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 39343,
+   "sha256": "3babb2e287b0e9ccb7145336bb4e0c17a5866cd1734e8e8fc0133827841a8a12",
+   "dimensions": {
+    "width": 400,
+    "height": 500
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.dune-part-three-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/244800/dunepart3_presale.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-dune-part-three-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-dune-part-three-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 30868,
+   "sha256": "1f9c7afefc8d1fff6ef37593e8cf375b6446ea9a45e552676936ed5f7225b5e1",
+   "dimensions": {
+    "width": 400,
+    "height": 634
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.avengers-doomsday-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/237176/avengersdoomsday-posterart-presale.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-avengers-doomsday-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-avengers-doomsday-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 57310,
+   "sha256": "dd94ca80a9a910f16b23d8f6d96a8f613a8144c29ddf89f5b6d35aba1dbefa46",
+   "dimensions": {
+    "width": 400,
+    "height": 628
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.the-hunger-games-sunrise-on-the-reaping-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/240138/SOLSTICE_2025x3000_1SHT_ARENA_V2.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-the-hunger-games-sunrise-on-the-reaping-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-the-hunger-games-sunrise-on-the-reaping-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 45912,
+   "sha256": "74fa04972c069dd9e671ccb5969497915547e02b5d00356ffd2c4b6db0504db4",
+   "dimensions": {
+    "width": 400,
+    "height": 592
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.practical-magic-2-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/246473/practicalmagic2_presale.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-practical-magic-2-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-practical-magic-2-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 54719,
+   "sha256": "26333aadd0026aba3382f3b4fbc199be524c41bb466817227827d52193e802ca",
+   "dimensions": {
+    "width": 400,
+    "height": 634
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.clayface-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/244768/CLAY_INSTA_VERT_TSR_1638x2048_DOM.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-clayface-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-clayface-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 22063,
+   "sha256": "7245e4526bccc4ed97ba73657bd8ffab211c6d343c6726178940b780453064ba",
+   "dimensions": {
+    "width": 400,
+    "height": 600
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  },
+  {
+   "id": "fandango.poster.the-cat-in-the-hat-2026",
+   "capture_id": "fandango-2026-08-23",
+   "source_url": "https://images.fandango.com/ImageRenderer/400/0/redesign/static/img/default_poster--dark-mode.png/0/images/masterrepository/Fandango/241291/thecatinthehat-posterart.jpg",
+   "source_path": "source-assets/fandango-2026-08-23/poster-the-cat-in-the-hat-2026.jpg",
+   "runtime_path": "clone/static/assets/poster-the-cat-in-the-hat-2026.jpg",
+   "mime_type": "image/jpeg",
+   "bytes": 34833,
+   "sha256": "c6b1381f3756b3723f8d1f96f4738266798b0a64fad935b6c1661f3895e0cd7c",
+   "dimensions": {
+    "width": 400,
+    "height": 592
+   },
+   "priority": "p0",
+   "required": true,
+   "evidence_kind": "current-direct",
+   "referenced_by": [
+    "candidate:backend/store.py"
+   ]
+  }
+ ]
+}

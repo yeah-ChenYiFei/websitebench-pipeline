@@ -1,0 +1,21 @@
+name: tests (fandango)
+on:
+  pull_request:
+    paths:
+      - materials/fandango/**
+      - src/**
+      - pyproject.toml
+      - .github/workflows/tests-fandango.yml
+      - .github/workflows/clone-diagnostics.yml
+  push:
+    paths:
+      - materials/fandango/**
+      - src/**
+      - pyproject.toml
+      - .github/workflows/tests-fandango.yml
+      - .github/workflows/clone-diagnostics.yml
+jobs:
+  baseline:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: fandango

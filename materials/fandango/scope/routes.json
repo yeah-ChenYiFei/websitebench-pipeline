@@ -1,0 +1,155 @@
+{
+ "schema_version": "offline-clone.routes.v1",
+ "routes": [
+  {
+   "id": "home",
+   "route_pattern": "/",
+   "priority": "p0",
+   "purpose_edge": "primary",
+   "evidence_kind": "directly-observed",
+   "local_destination": true,
+   "roles": [
+    "visitor",
+    "moviegoer"
+   ],
+   "states": [
+    "loaded"
+   ]
+  },
+  {
+   "id": "movies",
+   "route_pattern": "/movies",
+   "priority": "p0",
+   "purpose_edge": "primary",
+   "evidence_kind": "directly-observed",
+   "local_destination": true,
+   "roles": [
+    "visitor",
+    "moviegoer"
+   ],
+   "states": [
+    "loaded"
+   ]
+  },
+  {
+   "id": "movies.id",
+   "route_pattern": "/movies/{id}",
+   "priority": "p0",
+   "purpose_edge": "primary",
+   "evidence_kind": "directly-observed",
+   "local_destination": true,
+   "roles": [
+    "visitor",
+    "moviegoer"
+   ],
+   "states": [
+    "loaded"
+   ]
+  },
+  {
+   "id": "theaters.id",
+   "route_pattern": "/theaters/{id}",
+   "priority": "p0",
+   "purpose_edge": "primary",
+   "evidence_kind": "directly-observed",
+   "local_destination": true,
+   "roles": [
+    "visitor",
+    "moviegoer"
+   ],
+   "states": [
+    "loaded"
+   ]
+  },
+  {
+   "id": "tickets",
+   "route_pattern": "/tickets",
+   "priority": "p0",
+   "purpose_edge": "primary",
+   "evidence_kind": "directly-observed",
+   "local_destination": true,
+   "roles": [
+    "visitor",
+    "moviegoer"
+   ],
+   "states": [
+    "loaded"
+   ]
+  },
+  {
+   "id": "checkout",
+   "route_pattern": "/checkout",
+   "priority": "p0",
+   "purpose_edge": "primary",
+   "evidence_kind": "directly-observed",
+   "local_destination": true,
+   "roles": [
+    "visitor",
+    "moviegoer"
+   ],
+   "states": [
+    "loaded"
+   ]
+  },
+  {
+   "id": "confirmation",
+   "route_pattern": "/confirmation",
+   "priority": "p0",
+   "purpose_edge": "primary",
+   "evidence_kind": "directly-observed",
+   "local_destination": true,
+   "roles": [
+    "visitor",
+    "moviegoer"
+   ],
+   "states": [
+    "loaded"
+   ]
+  },
+  {
+   "id": "account.section",
+   "route_pattern": "/account/{section}",
+   "priority": "p0",
+   "purpose_edge": "primary",
+   "evidence_kind": "directly-observed",
+   "local_destination": true,
+   "roles": [
+    "visitor",
+    "moviegoer"
+   ],
+   "states": [
+    "loaded"
+   ]
+  },
+  {
+   "id": "help",
+   "route_pattern": "/help",
+   "priority": "p0",
+   "purpose_edge": "primary",
+   "evidence_kind": "directly-observed",
+   "local_destination": true,
+   "roles": [
+    "visitor",
+    "moviegoer"
+   ],
+   "states": [
+    "loaded"
+   ]
+  },
+  {
+   "id": "any-unmatched-path",
+   "route_pattern": "/__any-unmatched-path",
+   "priority": "p0",
+   "purpose_edge": "primary",
+   "evidence_kind": "directly-observed",
+   "local_destination": true,
+   "roles": [
+    "visitor",
+    "moviegoer"
+   ],
+   "states": [
+    "loaded"
+   ]
+  }
+ ]
+}

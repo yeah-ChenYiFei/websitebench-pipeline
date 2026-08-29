@@ -1,0 +1,2 @@
+{"id": "claim.fandango.capture", "kind": "directly-observed", "statement": "Anonymous desktop visits to the Fandango source rendered the routes and design tokens recorded under source-current/2026-08-23.fandango-r2/.", "evidence_refs": ["2026-08-23.fandango-r2:home-desktop"]}
+{"id": "claim.fandango.local-only", "kind": "clone-local-contract", "statement": "The candidate performs no runtime request outside its own origin and takes no real payment, mail or deployment action.", "evidence_refs": ["clone/tests/test_traces.py", "tools/validate_local_ui.py"]}

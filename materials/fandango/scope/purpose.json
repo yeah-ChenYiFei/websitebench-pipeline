@@ -1,0 +1,30 @@
+{
+ "schema_version": "offline-clone.purpose.v1",
+ "status": "frozen",
+ "purpose_id": "fandango.core.v1",
+ "statement": "Help an anonymous moviegoer browse currently showing and upcoming films, compare theaters, formats and showtimes near New York, select seats, and reach a clearly labeled local-sandbox booking confirmation without contacting Fandango or a payment provider.",
+ "primary_actor_ids": [
+  "visitor",
+  "moviegoer"
+ ],
+ "mainline_journey_ids": [
+  "discovery.browse",
+  "tickets.core"
+ ],
+ "secondary_journey_ids": [
+  "theaters.browse",
+  "account.lifecycle",
+  "bookings.management",
+  "not-found.recovery"
+ ],
+ "out_of_scope": [
+  "Real ticket issuance",
+  "Live payment capture",
+  "Real theater inventory",
+  "Loyalty or FanClub account mutation"
+ ],
+ "release_authority": {
+  "holder": "human-reviewer",
+  "note": "PUSH_AUTHORIZED=false, PR_AUTHORIZED=false, PUBLIC_DEPLOYMENT_AUTHORIZED=false."
+ }
+}

@@ -1,0 +1,110 @@
+{
+ "schema_version": "fandango.frontend-gate-samples.v1",
+ "app_file": "clone/app.py",
+ "app_attr": "app",
+ "module_name": "fandango_clone_app",
+ "checks": [
+  {
+   "id": "home",
+   "url": "/",
+   "method": "get",
+   "expect_status": 200,
+   "expect_contains": [
+    "data-route=\"/\""
+   ],
+   "expect_not_contains": [
+    "NotImplementedError"
+   ],
+   "session": false
+  },
+  {
+   "id": "movies",
+   "url": "/movies",
+   "method": "get",
+   "expect_status": 200,
+   "expect_contains": [
+    "data-route=\"/movies\""
+   ],
+   "expect_not_contains": [
+    "NotImplementedError"
+   ],
+   "session": false
+  },
+  {
+   "id": "tickets",
+   "url": "/tickets",
+   "method": "get",
+   "expect_status": 200,
+   "expect_contains": [
+    "data-route=\"/tickets\""
+   ],
+   "expect_not_contains": [
+    "NotImplementedError"
+   ],
+   "session": false
+  },
+  {
+   "id": "checkout",
+   "url": "/checkout",
+   "method": "get",
+   "expect_status": 200,
+   "expect_contains": [
+    "data-route=\"/checkout\""
+   ],
+   "expect_not_contains": [
+    "NotImplementedError"
+   ],
+   "session": false
+  },
+  {
+   "id": "confirmation",
+   "url": "/confirmation",
+   "method": "get",
+   "expect_status": 200,
+   "expect_contains": [
+    "data-route=\"/confirmation\""
+   ],
+   "expect_not_contains": [
+    "NotImplementedError"
+   ],
+   "session": false
+  },
+  {
+   "id": "help",
+   "url": "/help",
+   "method": "get",
+   "expect_status": 200,
+   "expect_contains": [
+    "data-route=\"/help\""
+   ],
+   "expect_not_contains": [
+    "NotImplementedError"
+   ],
+   "session": false
+  },
+  {
+   "id": "any-unmatched-path",
+   "url": "/__any-unmatched-path",
+   "method": "get",
+   "expect_status": 200,
+   "expect_contains": [
+    "data-route=\"/__any-unmatched-path\""
+   ],
+   "expect_not_contains": [
+    "NotImplementedError"
+   ],
+   "session": false
+  },
+  {
+   "id": "not-found",
+   "url": "/this-route-does-not-exist",
+   "method": "get",
+   "expect_status": 404,
+   "expect_contains": [],
+   "expect_not_contains": [
+    "NotImplementedError"
+   ],
+   "session": false
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "schema_version": "offline-clone.coverage.v1",
+ "status": "frozen",
+ "dimensions": [
+  {
+   "id": "source-evidence",
+   "label": "Public source route-states",
+   "unit": "route-state",
+   "category": "source",
+   "required_evidence_kinds": [
+    "browser"
+   ],
+   "required_items": [
+    "home.desktop",
+    "movies.desktop",
+    "movie.desktop",
+    "theater.desktop"
+   ],
+   "satisfied_items": [],
+   "rationale": "Anonymous 1440x900 desktop captures of www.fandango.com under source-current/2026-08-23.fandango-r2/ with paired candidate views under local-current/."
+  },
+  {
+   "id": "catalog-fidelity",
+   "label": "Source catalog and assets",
+   "unit": "record",
+   "category": "source",
+   "required_evidence_kinds": [
+    "browser",
+    "network"
+   ],
+   "required_items": [
+    "movies",
+    "theaters",
+    "poster-art"
+   ],
+   "satisfied_items": [],
+   "rationale": "backend/catalog.py is generated from the public lineup: 16 now-playing and 6 coming-soon titles with real names, ratings, genres, runtimes, synopses and directors, plus 5 real Manhattan theaters with their published addresses and amenity lists. Poster art is vendored per source-assets/manifest.json."
+  },
+  {
+   "id": "functional-contracts",
+   "label": "Offline ticketing tasks",
+   "unit": "journey",
+   "category": "candidate",
+   "required_evidence_kinds": [
+    "browser",
+    "full-suite"
+   ],
+   "required_items": [
+    "tickets.core",
+    "discovery.browse",
+    "theaters.browse",
+    "not-found.recovery"
+   ],
+   "satisfied_items": [],
+   "rationale": "tools/validate_local_ui.py replays all 23 WB047 traces through visible controls; clone/tests covers the same journeys at the API layer."
+  },
+  {
+   "id": "database-contracts",
+   "label": "Site-isolated stateful tasks",
+   "unit": "journey",
+   "category": "candidate",
+   "required_evidence_kinds": [
+    "full-suite"
+   ],
+   "required_items": [
+    "account.lifecycle",
+    "bookings.management"
+   ],
+   "satisfied_items": [],
+   "rationale": "clone/tests exercises booking history mutation and asserts per-actor isolation of favourites and bookings."
+  },
+  {
+   "id": "network-closure",
+   "label": "Zero remote runtime requests",
+   "unit": "journey",
+   "category": "candidate",
+   "required_evidence_kinds": [
+    "network"
+   ],
+   "required_items": [
+    "tickets.core",
+    "discovery.browse",
+    "bookings.management"
+   ],
+   "satisfied_items": [],
+   "rationale": "A browser pass over the public routes records zero non-local requests and no broken images. Per-journey network traces for the ticketing and account journeys are not recorded yet."
+  }
+ ]
+}

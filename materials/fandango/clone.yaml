@@ -1,0 +1,31 @@
+schema_version: offline-clone.manifest.v2
+site_id: fandango
+display_name: Fandango
+state_model: stateful
+source:
+  origins: [https://www.fandango.com]
+  baseline:
+    locale: en-US
+    currency: USD
+    delivery_region: US
+    timezone: America/New_York
+    auth_state: anonymous
+    viewport: {width: 1440, height: 900}
+    capture_id: 2026-08-23.fandango-r2
+  capture_policy:
+    safe_methods: [GET, HEAD]
+    runtime_remote_requests: forbidden
+scope:
+  purpose: scope/purpose.json
+  invariants: scope/invariants.json
+  routes: scope/routes.json
+  journeys: scope/journeys.json
+  checkpoints: scope/checkpoints.json
+  claims: scope/claims.jsonl
+  coverage: scope/coverage.json
+paths:
+  candidate_root: clone
+  candidate_excludes: []
+  asset_manifest: source-assets/manifest.json
+  backend_model: backend/model.json
+  artifact_root: artifacts/offline-clone

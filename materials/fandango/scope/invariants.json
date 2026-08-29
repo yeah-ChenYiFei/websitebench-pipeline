@@ -1,0 +1,98 @@
+{
+ "schema_version": "offline-clone.invariants.v1",
+ "status": "frozen",
+ "invariants": [
+  {
+   "id": "runtime.local-only",
+   "statement": "The candidate makes zero runtime requests outside its own origin.",
+   "priority": "p0",
+   "journey_ids": [
+    "discovery.browse",
+    "tickets.core"
+   ],
+   "positive_test_refs": [
+    "clone/tests/test_traces.py"
+   ],
+   "negative_test_refs": [],
+   "acceptance_obligations": [
+    "Reject any candidate that violates: The candidate makes zero runtime requests outside its own origin."
+   ],
+   "coverage_dimension_ids": [
+    "network-closure"
+   ]
+  },
+  {
+   "id": "effects.no-send",
+   "statement": "No ticket is issued, no payment is taken and no mail is sent.",
+   "priority": "p0",
+   "journey_ids": [
+    "tickets.core",
+    "bookings.management"
+   ],
+   "positive_test_refs": [
+    "clone/tests/test_traces.py"
+   ],
+   "negative_test_refs": [],
+   "acceptance_obligations": [
+    "Reject any candidate that violates: No ticket is issued, no payment is taken and no mail is sent."
+   ],
+   "coverage_dimension_ids": [
+    "functional-contracts"
+   ]
+  },
+  {
+   "id": "seats.exclusive",
+   "statement": "A seat that is already sold cannot be selected, and a held block stays reserved through confirmation.",
+   "priority": "p0",
+   "journey_ids": [
+    "tickets.core"
+   ],
+   "positive_test_refs": [
+    "clone/tests/test_traces.py"
+   ],
+   "negative_test_refs": [],
+   "acceptance_obligations": [
+    "Reject any candidate that violates: A seat that is already sold cannot be selected, and a held block stays reserved through confirmation."
+   ],
+   "coverage_dimension_ids": [
+    "functional-contracts"
+   ]
+  },
+  {
+   "id": "actor.isolation",
+   "statement": "Favourites, selections and bookings are scoped per browser actor.",
+   "priority": "p0",
+   "journey_ids": [
+    "bookings.management"
+   ],
+   "positive_test_refs": [
+    "clone/tests/test_traces.py"
+   ],
+   "negative_test_refs": [],
+   "acceptance_obligations": [
+    "Reject any candidate that violates: Favourites, selections and bookings are scoped per browser actor."
+   ],
+   "coverage_dimension_ids": [
+    "database-contracts"
+   ]
+  },
+  {
+   "id": "catalog.captured",
+   "statement": "Film titles, ratings, runtimes, synopses and theater addresses are the values the source served; none are invented.",
+   "priority": "p0",
+   "journey_ids": [
+    "discovery.browse"
+   ],
+   "positive_test_refs": [
+    "clone/tests/test_traces.py"
+   ],
+   "negative_test_refs": [],
+   "acceptance_obligations": [
+    "Reject any candidate that violates: Film titles, ratings, runtimes, synopses and theater addresses are the values the source served; none are invented."
+   ],
+   "coverage_dimension_ids": [
+    "catalog-fidelity"
+   ]
+  }
+ ]
+}
