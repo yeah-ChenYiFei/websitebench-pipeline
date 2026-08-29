@@ -2,6 +2,8 @@
 
 from pathlib import Path
 import socket
+import subprocess
+import tempfile
 import threading
 import time
 from typing import Iterator
@@ -21,48 +23,70 @@ SCRIPT = Path(__file__).parents[1] / "static" / "home-actions.js"
 
 @pytest.fixture(scope="module")
 def live_browser() -> Iterator[tuple[BrowserContext, str]]:
-    """Serve the real clone and drive it at the required desktop viewport."""
+    """Serve the real clone over local TLS at the frozen desktop viewport."""
 
     listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     listener.bind(("127.0.0.1", 0))
     listener.listen()
     port = listener.getsockname()[1]
-    server = uvicorn.Server(
-        uvicorn.Config(app, host="127.0.0.1", log_level="warning", access_log=False)
-    )
-    thread = threading.Thread(
-        target=server.run,
-        kwargs={"sockets": [listener]},
-        daemon=True,
-    )
-    thread.start()
+    with tempfile.TemporaryDirectory(prefix="styleseat-test-tls-") as tls_dir:
+        cert = Path(tls_dir) / "cert.pem"
+        key = Path(tls_dir) / "key.pem"
+        subprocess.run(
+            [
+                "openssl", "req", "-x509", "-newkey", "rsa:2048", "-nodes",
+                "-keyout", str(key), "-out", str(cert), "-days", "1",
+                "-subj", "/CN=127.0.0.1",
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        server = uvicorn.Server(
+            uvicorn.Config(
+                app,
+                host="127.0.0.1",
+                log_level="warning",
+                access_log=False,
+                ssl_keyfile=str(key),
+                ssl_certfile=str(cert),
+            )
+        )
+        thread = threading.Thread(
+            target=server.run,
+            kwargs={"sockets": [listener]},
+            daemon=True,
+        )
+        thread.start()
 
-    deadline = time.monotonic() + 10
-    while not server.started and thread.is_alive() and time.monotonic() < deadline:
-        time.sleep(0.01)
-    if not server.started:
-        server.should_exit = True
-        thread.join(timeout=5)
-        listener.close()
-        raise RuntimeError("StyleSeat test server did not start")
-
-    try:
-        with sync_playwright() as playwright:
-            browser = playwright.chromium.launch(headless=True)
-            context = browser.new_context(viewport={"width": 1440, "height": 1000})
-            try:
-                yield context, f"http://127.0.0.1:{port}"
-            finally:
-                context.close()
-                browser.close()
-    finally:
-        server.should_exit = True
-        thread.join(timeout=10)
-        try:
+        deadline = time.monotonic() + 10
+        while not server.started and thread.is_alive() and time.monotonic() < deadline:
+            time.sleep(0.01)
+        if not server.started:
+            server.should_exit = True
+            thread.join(timeout=5)
             listener.close()
-        except OSError:
-            pass
+            raise RuntimeError("StyleSeat test server did not start")
+
+        try:
+            with sync_playwright() as playwright:
+                browser = playwright.chromium.launch(headless=True)
+                context = browser.new_context(
+                    viewport={"width": 1440, "height": 900}, ignore_https_errors=True
+                )
+                try:
+                    yield context, f"https://127.0.0.1:{port}"
+                finally:
+                    context.close()
+                    browser.close()
+        finally:
+            server.should_exit = True
+            thread.join(timeout=10)
+            try:
+                listener.close()
+            except OSError:
+                pass
 
 
 @pytest.fixture
@@ -189,6 +213,38 @@ def test_search_entry_preserves_criteria_without_inventing_results(
         "location": ["Dallas, TX"],
     }
     expect(page.get_by_role("heading", name="Beyond captured scope")).to_be_visible()
+
+
+def test_login_and_logout_keep_the_generated_secure_cookie(
+    home_page: tuple[Page, str],
+) -> None:
+    page, base_url = home_page
+    status = page.evaluate(
+        """async () => (await fetch('/accounts/ajax-login/', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: 'email=4280322688%40pu.jyr&password=Fixture-Client-2026%21',
+        })).status"""
+    )
+    assert status == 200
+    cookies = page.context.cookies()
+    session = next(
+        cookie
+        for cookie in cookies
+        if cookie["name"] == "__Host-websitebench-styleseat-session"
+    )
+    assert session["secure"] is True
+    assert session["httpOnly"] is True
+    assert session["sameSite"] == "Lax"
+    page.goto(f"{base_url}/m/client-appointments")
+    expect(page.locator('[data-testid="client-my-settings-menu"]')).to_be_visible()
+
+    status = page.evaluate(
+        """async () => (await fetch('/accounts/ajax-logout/', {method: 'POST'})).status"""
+    )
+    assert status == 200
+    page.goto(f"{base_url}/m/client-appointments")
+    expect(page.locator('[data-testid="header-link-login-button"]')).to_be_visible()
 
 
 def test_service_cards_are_single_keyboard_controls_with_honest_destinations(

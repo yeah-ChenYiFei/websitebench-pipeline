@@ -48,3 +48,40 @@
   authenticated state. HTTPS loopback support (or a separately authorized
   diagnostic-runner change) is needed before that live authenticated checkpoint
   can pass without weakening the backend contract.
+
+## Fix round 1/5
+
+- The real-browser fixture now starts the site over ephemeral loopback TLS and
+  uses the frozen `1440x900` desktop viewport.  The added Playwright coverage
+  signs in through the actual browser `fetch` path, verifies the generated
+  `__Host-websitebench-styleseat-session` cookie is Secure/HttpOnly/Lax, loads
+  the authenticated DOM, signs out, and verifies the anonymous DOM returns.
+  No cookie policy was weakened and no certificate/key is shipped.
+- The shared live verifier continues to use a fixed `http://127.0.0.1` base
+  URL.  Its injected diagnostic session can check the authenticated page, but
+  it cannot exercise a real browser Secure-cookie login on that HTTP origin;
+  the site-owned TLS Playwright test is the minimal faithful coverage available
+  without changing the shared runner.
+
+### Required backend handoff
+
+| Field | Value |
+| --- | --- |
+| Runtime path | `materials/styleseat/backend/runtime.json` |
+| Unique site ID | `styleseat` |
+| Database / volume identity | `data/styleseat.sqlite3`; one site-bound SQLite database; `docker-volume` profile requires its own named volume |
+| Enabled mail purposes | `registration`, `password-reset` (offline local outbox; no handwritten SMTP transport) |
+| Payment profile | `local-sandbox`, USD; approval/decline/retry scenarios declared |
+| Deployment profiles | `offline-harbor` persistent/local-outbox; `cloudflare-review` ephemeral-reset/redis-resend; `docker-volume` persistent-volume/effects-gateway |
+| Failed or incomplete checks | Static diagnostic remains incomplete because the large captured document scan did not finish; asset closure remains `pending`; real frontend authentication under the shared HTTP-only verifier is not possible with the required Secure cookie |
+
+### Round 1 validation
+
+| Command | Result |
+| --- | --- |
+| `python -m pytest materials/styleseat/clone/tests -q` | passed: 26 tests, including real HTTPS Playwright login/logout |
+| `ruff check materials/styleseat/clone` | passed |
+| `node --check materials/styleseat/clone/static/home-actions.js` and `local-auth.js` | passed |
+| `git diff --check` | passed |
+| `python -m websitebench.offline_clone.cli verify --site materials/styleseat --section live --out /tmp/styleseat-live-round1.json` | passed: `clean` |
+| shared backend/Harbor targeted pytest command from the initial report | passed: 21; skipped: 5 missing-site fixtures |
