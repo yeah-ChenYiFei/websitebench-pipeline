@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "repository": "780078268/websitebench-pipeline",
-  "snapshot_date": "2026-08-28",
+  "snapshot_date": "2026-08-29",
   "notes": [
     "branch_status is final, review, review-required, or planned",
     "a branch or recoverable snapshot does not claim acceptance or deployment",
@@ -5436,7 +5436,2329 @@
         "site_path_exists": false,
         "structural_ready": false
       }
+    },
+    {
+      "id": "kohls",
+      "material_path": "materials/kohls",
+      "component_paths": [
+        "materials/kohls"
+      ],
+      "branch": "sites/kohls",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 206,
+        "domain": "kohls.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "staples",
+      "material_path": "materials/staples",
+      "component_paths": [
+        "materials/staples"
+      ],
+      "branch": "sites/staples",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 207,
+        "domain": "staples.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "microcenter",
+      "material_path": "materials/microcenter",
+      "component_paths": [
+        "materials/microcenter"
+      ],
+      "branch": "sites/microcenter",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 208,
+        "domain": "microcenter.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "bhphotovideo",
+      "material_path": "materials/bhphotovideo",
+      "component_paths": [
+        "materials/bhphotovideo"
+      ],
+      "branch": "sites/bhphotovideo",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 209,
+        "domain": "bhphotovideo.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "zappos",
+      "material_path": "materials/zappos",
+      "component_paths": [
+        "materials/zappos"
+      ],
+      "branch": "sites/zappos",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 210,
+        "domain": "zappos.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "rei",
+      "material_path": "materials/rei",
+      "component_paths": [
+        "materials/rei"
+      ],
+      "branch": "sites/rei",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 211,
+        "domain": "rei.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "lululemon",
+      "material_path": "materials/lululemon",
+      "component_paths": [
+        "materials/lululemon"
+      ],
+      "branch": "sites/lululemon",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 212,
+        "domain": "lululemon.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "gap",
+      "material_path": "materials/gap",
+      "component_paths": [
+        "materials/gap"
+      ],
+      "branch": "sites/gap",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 213,
+        "domain": "gap.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "uniqlo",
+      "material_path": "materials/uniqlo",
+      "component_paths": [
+        "materials/uniqlo"
+      ],
+      "branch": "sites/uniqlo",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 214,
+        "domain": "uniqlo.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "nike",
+      "material_path": "materials/nike",
+      "component_paths": [
+        "materials/nike"
+      ],
+      "branch": "sites/nike",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 215,
+        "domain": "nike.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "adidas",
+      "material_path": "materials/adidas",
+      "component_paths": [
+        "materials/adidas"
+      ],
+      "branch": "sites/adidas",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 216,
+        "domain": "adidas.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "newbalance",
+      "material_path": "materials/newbalance",
+      "component_paths": [
+        "materials/newbalance"
+      ],
+      "branch": "sites/newbalance",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 217,
+        "domain": "newbalance.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "converse",
+      "material_path": "materials/converse",
+      "component_paths": [
+        "materials/converse"
+      ],
+      "branch": "sites/converse",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 218,
+        "domain": "converse.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "crocs",
+      "material_path": "materials/crocs",
+      "component_paths": [
+        "materials/crocs"
+      ],
+      "branch": "sites/crocs",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 219,
+        "domain": "crocs.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "asos",
+      "material_path": "materials/asos",
+      "component_paths": [
+        "materials/asos"
+      ],
+      "branch": "sites/asos",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 220,
+        "domain": "asos.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "everlane",
+      "material_path": "materials/everlane",
+      "component_paths": [
+        "materials/everlane"
+      ],
+      "branch": "sites/everlane",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 221,
+        "domain": "everlane.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "jcrew",
+      "material_path": "materials/jcrew",
+      "component_paths": [
+        "materials/jcrew"
+      ],
+      "branch": "sites/jcrew",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 222,
+        "domain": "jcrew.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "anthropologie",
+      "material_path": "materials/anthropologie",
+      "component_paths": [
+        "materials/anthropologie"
+      ],
+      "branch": "sites/anthropologie",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 223,
+        "domain": "anthropologie.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "worldmarket",
+      "material_path": "materials/worldmarket",
+      "component_paths": [
+        "materials/worldmarket"
+      ],
+      "branch": "sites/worldmarket",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 224,
+        "domain": "worldmarket.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "crateandbarrel",
+      "material_path": "materials/crateandbarrel",
+      "component_paths": [
+        "materials/crateandbarrel"
+      ],
+      "branch": "sites/crateandbarrel",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 225,
+        "domain": "crateandbarrel.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "westelm",
+      "material_path": "materials/westelm",
+      "component_paths": [
+        "materials/westelm"
+      ],
+      "branch": "sites/westelm",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 226,
+        "domain": "westelm.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "containerstore",
+      "material_path": "materials/containerstore",
+      "component_paths": [
+        "materials/containerstore"
+      ],
+      "branch": "sites/containerstore",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 227,
+        "domain": "containerstore.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "menards",
+      "material_path": "materials/menards",
+      "component_paths": [
+        "materials/menards"
+      ],
+      "branch": "sites/menards",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 228,
+        "domain": "menards.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "harborfreight",
+      "material_path": "materials/harborfreight",
+      "component_paths": [
+        "materials/harborfreight"
+      ],
+      "branch": "sites/harborfreight",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 229,
+        "domain": "harborfreight.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "michaels",
+      "material_path": "materials/michaels",
+      "component_paths": [
+        "materials/michaels"
+      ],
+      "branch": "sites/michaels",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 230,
+        "domain": "michaels.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "dickblick",
+      "material_path": "materials/dickblick",
+      "component_paths": [
+        "materials/dickblick"
+      ],
+      "branch": "sites/dickblick",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 231,
+        "domain": "dickblick.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "newegg",
+      "material_path": "materials/newegg",
+      "component_paths": [
+        "materials/newegg"
+      ],
+      "branch": "sites/newegg",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 232,
+        "domain": "newegg.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "monoprice",
+      "material_path": "materials/monoprice",
+      "component_paths": [
+        "materials/monoprice"
+      ],
+      "branch": "sites/monoprice",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 233,
+        "domain": "monoprice.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "samsung",
+      "material_path": "materials/samsung",
+      "component_paths": [
+        "materials/samsung"
+      ],
+      "branch": "sites/samsung",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 234,
+        "domain": "samsung.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "apple",
+      "material_path": "materials/apple",
+      "component_paths": [
+        "materials/apple"
+      ],
+      "branch": "sites/apple",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 235,
+        "domain": "apple.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "lenovo",
+      "material_path": "materials/lenovo",
+      "component_paths": [
+        "materials/lenovo"
+      ],
+      "branch": "sites/lenovo",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 236,
+        "domain": "lenovo.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "logitech",
+      "material_path": "materials/logitech",
+      "component_paths": [
+        "materials/logitech"
+      ],
+      "branch": "sites/logitech",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 237,
+        "domain": "logitech.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "sonos",
+      "material_path": "materials/sonos",
+      "component_paths": [
+        "materials/sonos"
+      ],
+      "branch": "sites/sonos",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 238,
+        "domain": "sonos.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "backcountry",
+      "material_path": "materials/backcountry",
+      "component_paths": [
+        "materials/backcountry"
+      ],
+      "branch": "sites/backcountry",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 239,
+        "domain": "backcountry.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "patagonia",
+      "material_path": "materials/patagonia",
+      "component_paths": [
+        "materials/patagonia"
+      ],
+      "branch": "sites/patagonia",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 240,
+        "domain": "patagonia.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "columbia",
+      "material_path": "materials/columbia",
+      "component_paths": [
+        "materials/columbia"
+      ],
+      "branch": "sites/columbia",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 241,
+        "domain": "columbia.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "llbean",
+      "material_path": "materials/llbean",
+      "component_paths": [
+        "materials/llbean"
+      ],
+      "branch": "sites/llbean",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 242,
+        "domain": "llbean.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "warbyparker",
+      "material_path": "materials/warbyparker",
+      "component_paths": [
+        "materials/warbyparker"
+      ],
+      "branch": "sites/warbyparker",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 243,
+        "domain": "warbyparker.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "zennioptical",
+      "material_path": "materials/zennioptical",
+      "component_paths": [
+        "materials/zennioptical"
+      ],
+      "branch": "sites/zennioptical",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 244,
+        "domain": "zennioptical.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "casper",
+      "material_path": "materials/casper",
+      "component_paths": [
+        "materials/casper"
+      ],
+      "branch": "sites/casper",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 245,
+        "domain": "casper.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "brooklinen",
+      "material_path": "materials/brooklinen",
+      "component_paths": [
+        "materials/brooklinen"
+      ],
+      "branch": "sites/brooklinen",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 246,
+        "domain": "brooklinen.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "article",
+      "material_path": "materials/article",
+      "component_paths": [
+        "materials/article"
+      ],
+      "branch": "sites/article",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 247,
+        "domain": "article.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "sephora",
+      "material_path": "materials/sephora",
+      "component_paths": [
+        "materials/sephora"
+      ],
+      "branch": "sites/sephora",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 248,
+        "domain": "sephora.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "glossier",
+      "material_path": "materials/glossier",
+      "component_paths": [
+        "materials/glossier"
+      ],
+      "branch": "sites/glossier",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 249,
+        "domain": "glossier.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "lush",
+      "material_path": "materials/lush",
+      "component_paths": [
+        "materials/lush"
+      ],
+      "branch": "sites/lush",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 250,
+        "domain": "lush.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "ebay",
+      "material_path": "materials/ebay",
+      "component_paths": [
+        "materials/ebay"
+      ],
+      "branch": "sites/ebay",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 251,
+        "domain": "ebay.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "poshmark",
+      "material_path": "materials/poshmark",
+      "component_paths": [
+        "materials/poshmark"
+      ],
+      "branch": "sites/poshmark",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 252,
+        "domain": "poshmark.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "depop",
+      "material_path": "materials/depop",
+      "component_paths": [
+        "materials/depop"
+      ],
+      "branch": "sites/depop",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 253,
+        "domain": "depop.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "thredup",
+      "material_path": "materials/thredup",
+      "component_paths": [
+        "materials/thredup"
+      ],
+      "branch": "sites/thredup",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 254,
+        "domain": "thredup.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "abebooks",
+      "material_path": "materials/abebooks",
+      "component_paths": [
+        "materials/abebooks"
+      ],
+      "branch": "sites/abebooks",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 255,
+        "domain": "abebooks.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "bookshop",
+      "material_path": "materials/bookshop",
+      "component_paths": [
+        "materials/bookshop"
+      ],
+      "branch": "sites/bookshop",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 256,
+        "domain": "bookshop.org"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "barnesandnoble",
+      "material_path": "materials/barnesandnoble",
+      "component_paths": [
+        "materials/barnesandnoble"
+      ],
+      "branch": "sites/barnesandnoble",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 257,
+        "domain": "barnesandnoble.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "lego",
+      "material_path": "materials/lego",
+      "component_paths": [
+        "materials/lego"
+      ],
+      "branch": "sites/lego",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 258,
+        "domain": "lego.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "petco",
+      "material_path": "materials/petco",
+      "component_paths": [
+        "materials/petco"
+      ],
+      "branch": "sites/petco",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 259,
+        "domain": "petco.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "buildabear",
+      "material_path": "materials/buildabear",
+      "component_paths": [
+        "materials/buildabear"
+      ],
+      "branch": "sites/buildabear",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 260,
+        "domain": "buildabear.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "wholefoodsmarket",
+      "material_path": "materials/wholefoodsmarket",
+      "component_paths": [
+        "materials/wholefoodsmarket"
+      ],
+      "branch": "sites/wholefoodsmarket",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 261,
+        "domain": "wholefoodsmarket.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "kroger",
+      "material_path": "materials/kroger",
+      "component_paths": [
+        "materials/kroger"
+      ],
+      "branch": "sites/kroger",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 262,
+        "domain": "kroger.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "safeway",
+      "material_path": "materials/safeway",
+      "component_paths": [
+        "materials/safeway"
+      ],
+      "branch": "sites/safeway",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 263,
+        "domain": "safeway.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "albertsons",
+      "material_path": "materials/albertsons",
+      "component_paths": [
+        "materials/albertsons"
+      ],
+      "branch": "sites/albertsons",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 264,
+        "domain": "albertsons.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "publix",
+      "material_path": "materials/publix",
+      "component_paths": [
+        "materials/publix"
+      ],
+      "branch": "sites/publix",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 265,
+        "domain": "publix.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "traderjoes",
+      "material_path": "materials/traderjoes",
+      "component_paths": [
+        "materials/traderjoes"
+      ],
+      "branch": "sites/traderjoes",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 266,
+        "domain": "traderjoes.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "sprouts",
+      "material_path": "materials/sprouts",
+      "component_paths": [
+        "materials/sprouts"
+      ],
+      "branch": "sites/sprouts",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 267,
+        "domain": "sprouts.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "wegmans",
+      "material_path": "materials/wegmans",
+      "component_paths": [
+        "materials/wegmans"
+      ],
+      "branch": "sites/wegmans",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 268,
+        "domain": "wegmans.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "hmart",
+      "material_path": "materials/hmart",
+      "component_paths": [
+        "materials/hmart"
+      ],
+      "branch": "sites/hmart",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 269,
+        "domain": "hmart.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "freshdirect",
+      "material_path": "materials/freshdirect",
+      "component_paths": [
+        "materials/freshdirect"
+      ],
+      "branch": "sites/freshdirect",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 270,
+        "domain": "freshdirect.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "gopuff",
+      "material_path": "materials/gopuff",
+      "component_paths": [
+        "materials/gopuff"
+      ],
+      "branch": "sites/gopuff",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 271,
+        "domain": "gopuff.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "grubhub",
+      "material_path": "materials/grubhub",
+      "component_paths": [
+        "materials/grubhub"
+      ],
+      "branch": "sites/grubhub",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 272,
+        "domain": "grubhub.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "deliveroo",
+      "material_path": "materials/deliveroo",
+      "component_paths": [
+        "materials/deliveroo"
+      ],
+      "branch": "sites/deliveroo",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 273,
+        "domain": "deliveroo.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "just-eat",
+      "material_path": "materials/just-eat",
+      "component_paths": [
+        "materials/just-eat"
+      ],
+      "branch": "sites/just-eat",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 274,
+        "domain": "just-eat.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "skipthedishes",
+      "material_path": "materials/skipthedishes",
+      "component_paths": [
+        "materials/skipthedishes"
+      ],
+      "branch": "sites/skipthedishes",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 275,
+        "domain": "skipthedishes.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "chownow",
+      "material_path": "materials/chownow",
+      "component_paths": [
+        "materials/chownow"
+      ],
+      "branch": "sites/chownow",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 276,
+        "domain": "chownow.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "menufy",
+      "material_path": "materials/menufy",
+      "component_paths": [
+        "materials/menufy"
+      ],
+      "branch": "sites/menufy",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 277,
+        "domain": "menufy.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "goldbelly",
+      "material_path": "materials/goldbelly",
+      "component_paths": [
+        "materials/goldbelly"
+      ],
+      "branch": "sites/goldbelly",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 278,
+        "domain": "goldbelly.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "blueapron",
+      "material_path": "materials/blueapron",
+      "component_paths": [
+        "materials/blueapron"
+      ],
+      "branch": "sites/blueapron",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 279,
+        "domain": "blueapron.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "hellofresh",
+      "material_path": "materials/hellofresh",
+      "component_paths": [
+        "materials/hellofresh"
+      ],
+      "branch": "sites/hellofresh",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 280,
+        "domain": "hellofresh.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "homechef",
+      "material_path": "materials/homechef",
+      "component_paths": [
+        "materials/homechef"
+      ],
+      "branch": "sites/homechef",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 281,
+        "domain": "homechef.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "factor75",
+      "material_path": "materials/factor75",
+      "component_paths": [
+        "materials/factor75"
+      ],
+      "branch": "sites/factor75",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 282,
+        "domain": "factor75.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "sunbasket",
+      "material_path": "materials/sunbasket",
+      "component_paths": [
+        "materials/sunbasket"
+      ],
+      "branch": "sites/sunbasket",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 283,
+        "domain": "sunbasket.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "hungryroot",
+      "material_path": "materials/hungryroot",
+      "component_paths": [
+        "materials/hungryroot"
+      ],
+      "branch": "sites/hungryroot",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 284,
+        "domain": "hungryroot.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "everyplate",
+      "material_path": "materials/everyplate",
+      "component_paths": [
+        "materials/everyplate"
+      ],
+      "branch": "sites/everyplate",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 285,
+        "domain": "everyplate.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "cookunity",
+      "material_path": "materials/cookunity",
+      "component_paths": [
+        "materials/cookunity"
+      ],
+      "branch": "sites/cookunity",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 286,
+        "domain": "cookunity.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "thrivemarket",
+      "material_path": "materials/thrivemarket",
+      "component_paths": [
+        "materials/thrivemarket"
+      ],
+      "branch": "sites/thrivemarket",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 287,
+        "domain": "thrivemarket.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "misfitsmarket",
+      "material_path": "materials/misfitsmarket",
+      "component_paths": [
+        "materials/misfitsmarket"
+      ],
+      "branch": "sites/misfitsmarket",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 288,
+        "domain": "misfitsmarket.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "butcherbox",
+      "material_path": "materials/butcherbox",
+      "component_paths": [
+        "materials/butcherbox"
+      ],
+      "branch": "sites/butcherbox",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 289,
+        "domain": "butcherbox.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "wildgrain",
+      "material_path": "materials/wildgrain",
+      "component_paths": [
+        "materials/wildgrain"
+      ],
+      "branch": "sites/wildgrain",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 290,
+        "domain": "wildgrain.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "daily-harvest",
+      "material_path": "materials/daily-harvest",
+      "component_paths": [
+        "materials/daily-harvest"
+      ],
+      "branch": "sites/daily-harvest",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 291,
+        "domain": "daily-harvest.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "purplecarrot",
+      "material_path": "materials/purplecarrot",
+      "component_paths": [
+        "materials/purplecarrot"
+      ],
+      "branch": "sites/purplecarrot",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 292,
+        "domain": "purplecarrot.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "greenchef",
+      "material_path": "materials/greenchef",
+      "component_paths": [
+        "materials/greenchef"
+      ],
+      "branch": "sites/greenchef",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 293,
+        "domain": "greenchef.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "allrecipes",
+      "material_path": "materials/allrecipes",
+      "component_paths": [
+        "materials/allrecipes"
+      ],
+      "branch": "sites/allrecipes",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 294,
+        "domain": "allrecipes.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "foodnetwork",
+      "material_path": "materials/foodnetwork",
+      "component_paths": [
+        "materials/foodnetwork"
+      ],
+      "branch": "sites/foodnetwork",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 295,
+        "domain": "foodnetwork.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "epicurious",
+      "material_path": "materials/epicurious",
+      "component_paths": [
+        "materials/epicurious"
+      ],
+      "branch": "sites/epicurious",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 296,
+        "domain": "epicurious.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "seriouseats",
+      "material_path": "materials/seriouseats",
+      "component_paths": [
+        "materials/seriouseats"
+      ],
+      "branch": "sites/seriouseats",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 297,
+        "domain": "seriouseats.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "simplyrecipes",
+      "material_path": "materials/simplyrecipes",
+      "component_paths": [
+        "materials/simplyrecipes"
+      ],
+      "branch": "sites/simplyrecipes",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 298,
+        "domain": "simplyrecipes.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "yummly",
+      "material_path": "materials/yummly",
+      "component_paths": [
+        "materials/yummly"
+      ],
+      "branch": "sites/yummly",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 299,
+        "domain": "yummly.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "samsungfood",
+      "material_path": "materials/samsungfood",
+      "component_paths": [
+        "materials/samsungfood"
+      ],
+      "branch": "sites/samsungfood",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 300,
+        "domain": "samsungfood.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "expedia",
+      "material_path": "materials/expedia",
+      "component_paths": [
+        "materials/expedia"
+      ],
+      "branch": "sites/expedia",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 301,
+        "domain": "expedia.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "hotels",
+      "material_path": "materials/hotels",
+      "component_paths": [
+        "materials/hotels"
+      ],
+      "branch": "sites/hotels",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 302,
+        "domain": "hotels.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "priceline",
+      "material_path": "materials/priceline",
+      "component_paths": [
+        "materials/priceline"
+      ],
+      "branch": "sites/priceline",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 303,
+        "domain": "priceline.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "travelocity",
+      "material_path": "materials/travelocity",
+      "component_paths": [
+        "materials/travelocity"
+      ],
+      "branch": "sites/travelocity",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 304,
+        "domain": "travelocity.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "agoda",
+      "material_path": "materials/agoda",
+      "component_paths": [
+        "materials/agoda"
+      ],
+      "branch": "sites/agoda",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 305,
+        "domain": "agoda.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "hostelworld",
+      "material_path": "materials/hostelworld",
+      "component_paths": [
+        "materials/hostelworld"
+      ],
+      "branch": "sites/hostelworld",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 306,
+        "domain": "hostelworld.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "trivago",
+      "material_path": "materials/trivago",
+      "component_paths": [
+        "materials/trivago"
+      ],
+      "branch": "sites/trivago",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 307,
+        "domain": "trivago.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "skyscanner",
+      "material_path": "materials/skyscanner",
+      "component_paths": [
+        "materials/skyscanner"
+      ],
+      "branch": "sites/skyscanner",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 308,
+        "domain": "skyscanner.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "rome2rio",
+      "material_path": "materials/rome2rio",
+      "component_paths": [
+        "materials/rome2rio"
+      ],
+      "branch": "sites/rome2rio",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 309,
+        "domain": "rome2rio.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "omio",
+      "material_path": "materials/omio",
+      "component_paths": [
+        "materials/omio"
+      ],
+      "branch": "sites/omio",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 310,
+        "domain": "omio.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "thetrainline",
+      "material_path": "materials/thetrainline",
+      "component_paths": [
+        "materials/thetrainline"
+      ],
+      "branch": "sites/thetrainline",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 311,
+        "domain": "thetrainline.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "amtrak",
+      "material_path": "materials/amtrak",
+      "component_paths": [
+        "materials/amtrak"
+      ],
+      "branch": "sites/amtrak",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 312,
+        "domain": "amtrak.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "greyhound",
+      "material_path": "materials/greyhound",
+      "component_paths": [
+        "materials/greyhound"
+      ],
+      "branch": "sites/greyhound",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 313,
+        "domain": "greyhound.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "megabus",
+      "material_path": "materials/megabus",
+      "component_paths": [
+        "materials/megabus"
+      ],
+      "branch": "sites/megabus",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 314,
+        "domain": "megabus.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "southwest",
+      "material_path": "materials/southwest",
+      "component_paths": [
+        "materials/southwest"
+      ],
+      "branch": "sites/southwest",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 315,
+        "domain": "southwest.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "delta",
+      "material_path": "materials/delta",
+      "component_paths": [
+        "materials/delta"
+      ],
+      "branch": "sites/delta",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 316,
+        "domain": "delta.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "united",
+      "material_path": "materials/united",
+      "component_paths": [
+        "materials/united"
+      ],
+      "branch": "sites/united",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 317,
+        "domain": "united.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "american-airlines",
+      "material_path": "materials/american-airlines",
+      "component_paths": [
+        "materials/american-airlines"
+      ],
+      "branch": "sites/american-airlines",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 318,
+        "domain": "aa.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "jetblue",
+      "material_path": "materials/jetblue",
+      "component_paths": [
+        "materials/jetblue"
+      ],
+      "branch": "sites/jetblue",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 319,
+        "domain": "jetblue.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "aircanada",
+      "material_path": "materials/aircanada",
+      "component_paths": [
+        "materials/aircanada"
+      ],
+      "branch": "sites/aircanada",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 320,
+        "domain": "aircanada.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "westjet",
+      "material_path": "materials/westjet",
+      "component_paths": [
+        "materials/westjet"
+      ],
+      "branch": "sites/westjet",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 321,
+        "domain": "westjet.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "alaskaair",
+      "material_path": "materials/alaskaair",
+      "component_paths": [
+        "materials/alaskaair"
+      ],
+      "branch": "sites/alaskaair",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 322,
+        "domain": "alaskaair.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "britishairways",
+      "material_path": "materials/britishairways",
+      "component_paths": [
+        "materials/britishairways"
+      ],
+      "branch": "sites/britishairways",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 323,
+        "domain": "britishairways.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "lufthansa",
+      "material_path": "materials/lufthansa",
+      "component_paths": [
+        "materials/lufthansa"
+      ],
+      "branch": "sites/lufthansa",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 324,
+        "domain": "lufthansa.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "klm",
+      "material_path": "materials/klm",
+      "component_paths": [
+        "materials/klm"
+      ],
+      "branch": "sites/klm",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 325,
+        "domain": "klm.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "emirates",
+      "material_path": "materials/emirates",
+      "component_paths": [
+        "materials/emirates"
+      ],
+      "branch": "sites/emirates",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 326,
+        "domain": "emirates.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "qatarairways",
+      "material_path": "materials/qatarairways",
+      "component_paths": [
+        "materials/qatarairways"
+      ],
+      "branch": "sites/qatarairways",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 327,
+        "domain": "qatarairways.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "singaporeair",
+      "material_path": "materials/singaporeair",
+      "component_paths": [
+        "materials/singaporeair"
+      ],
+      "branch": "sites/singaporeair",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 328,
+        "domain": "singaporeair.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "hopper",
+      "material_path": "materials/hopper",
+      "component_paths": [
+        "materials/hopper"
+      ],
+      "branch": "sites/hopper",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 329,
+        "domain": "hopper.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "turo",
+      "material_path": "materials/turo",
+      "component_paths": [
+        "materials/turo"
+      ],
+      "branch": "sites/turo",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 330,
+        "domain": "turo.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "enterprise",
+      "material_path": "materials/enterprise",
+      "component_paths": [
+        "materials/enterprise"
+      ],
+      "branch": "sites/enterprise",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 331,
+        "domain": "enterprise.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "hertz",
+      "material_path": "materials/hertz",
+      "component_paths": [
+        "materials/hertz"
+      ],
+      "branch": "sites/hertz",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 332,
+        "domain": "hertz.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "avis",
+      "material_path": "materials/avis",
+      "component_paths": [
+        "materials/avis"
+      ],
+      "branch": "sites/avis",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 333,
+        "domain": "avis.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
+    },
+    {
+      "id": "budget",
+      "material_path": "materials/budget",
+      "component_paths": [
+        "materials/budget"
+      ],
+      "branch": "sites/budget",
+      "branch_status": "planned",
+      "catalog": {
+        "id": 334,
+        "domain": "budget.com"
+      },
+      "snapshot": {},
+      "structure": {
+        "site_path_exists": false,
+        "structural_ready": false
+      }
     }
   ],
-  "catalog_site_count": 202
+  "catalog_site_count": 331
 }

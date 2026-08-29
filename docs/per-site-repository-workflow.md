@@ -4,7 +4,7 @@ WebsiteBench keeps shared Pipeline code on `main`. Every delivered website has
 one persistent branch named `sites/<site-id>` in the same GitHub repository.
 Each site branch contains the Pipeline plus only that site's material tree.
 
-`sites/status.tsv` is the assignment snapshot for the 202-site catalog. A
+`sites/status.tsv` is the assignment snapshot for the 331-site catalog. A
 `final` branch contains the maintainer-confirmed snapshot, `review` preserves an
 existing PR snapshot without claiming acceptance, `review-required` marks a
 closed-unmerged PR that needs explicit inspection, and `planned` is an empty
@@ -93,7 +93,7 @@ minimal local object store.
 ## Pipeline changes and propagation
 
 Shared Pipeline fixes are reviewed against `main`. Git does not automatically
-copy a later `main` commit into 69 persistent branches. Maintainers should
+copy a later `main` commit into the persistent site branches. Maintainers should
 periodically merge `main` into each active `sites/<site-id>` branch using an
 explicit, auditable maintenance change. Do not silently overwrite site work.
 
@@ -121,7 +121,8 @@ the single-branch contributor workflow. Keeping old refs means that an ordinary
 unqualified clone can still be large; the supported clone commands above avoid
 that transfer.
 
-The 2026-08-28 snapshot inventory and structural audit are recorded in
-`sites/registry.json`. A recorded PR or directory proves a recoverable Git
+The current catalog snapshot is recorded in `sites/registry.json`; the original
+202-site migration audit remains in `docs/site-branch-migration-audit-2026-08-28.md`.
+A recorded PR or directory proves a recoverable Git
 snapshot, not merge, deployment, fidelity acceptance, or legal redistribution
 approval.
