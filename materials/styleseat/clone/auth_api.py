@@ -2,11 +2,7 @@
 
 from __future__ import annotations
 
-import os
-import secrets
-import smtplib
 from collections.abc import Callable
-from email.message import EmailMessage
 from typing import Any
 
 from fastapi import APIRouter, Request
@@ -19,119 +15,24 @@ from websitebench.local_clone_auth import (
     AuthRateLimited,
     AuthRejected,
     AuthValidationError,
-    MAIL_LOCAL_ONLY,
-    MAIL_SMTP_PENDING,
     RESET_PUBLIC_MESSAGE,
 )
 
 
 PREFIX = "/_local/auth"
-COOKIE = "wb_session"
 router = APIRouter()
-_SMTP_KEYS = (
-    "WEBSITEBENCH_SMTP_HOST",
-    "WEBSITEBENCH_SMTP_PORT",
-    "WEBSITEBENCH_SMTP_FROM",
-)
-_MAIL_WORKER_TOKEN = secrets.token_urlsafe(32)
-
 _auth_provider: Callable[[], Any] | None = None
+_cookie_name = ""
+_cookie_options: dict[str, Any] = {}
 
 
-def smtp_enabled() -> bool:
-    return all((os.environ.get(key) or "").strip() for key in _SMTP_KEYS)
-
-
-def store_mail_options() -> dict[str, str | None]:
-    enabled = smtp_enabled()
-    return {
-        "mail_mode": MAIL_SMTP_PENDING if enabled else MAIL_LOCAL_ONLY,
-        "mail_worker_token": _MAIL_WORKER_TOKEN if enabled else None,
-    }
-
-
-def _deliver_smtp(
-    auth: Any,
-    session_token: str,
-    purpose: str,
-    *,
-    worker_token: str = _MAIL_WORKER_TOKEN,
-) -> dict[str, Any] | None:
-    if not smtp_enabled():
-        return None
-    claim = auth.claim_pending_mail_for_session(
-        session_token,
-        purpose=purpose,
-        worker_token=worker_token,
-    )
-    if claim is None:
-        return None
-
-    mail_id = int(claim["mail_id"])
-    claim_token = str(claim["claim_token"])
-    try:
-        port = int(os.environ["WEBSITEBENCH_SMTP_PORT"].strip())
-        message = EmailMessage()
-        message["From"] = os.environ["WEBSITEBENCH_SMTP_FROM"].strip()
-        message["To"] = str(claim["recipient"])
-        if purpose == "registration":
-            message["Subject"] = "Verify your StyleSeat account"
-            lead = "Finish creating your StyleSeat account."
-        else:
-            message["Subject"] = "Reset your StyleSeat password"
-            lead = "A password reset was requested for StyleSeat."
-        message.set_content(
-            f"{lead}\n\nYour 6-digit verification code is "
-            f"{claim['verification_code']}.\n\nThis code expires in 10 minutes."
-        )
-    except (KeyError, TypeError, ValueError):
-        auth.finish_mail_claim(
-            mail_id,
-            claim_token,
-            sent=False,
-            target_request_count=0,
-            error="configuration",
-            worker_token=worker_token,
-        )
-        return {"mail_id": mail_id, "purpose": purpose, "status": "SMTP_FAILED"}
-
-    auth.reserve_mail_target_request(
-        mail_id,
-        claim_token,
-        worker_token=worker_token,
-    )
-    try:
-        with smtplib.SMTP(
-            os.environ["WEBSITEBENCH_SMTP_HOST"].strip(),
-            port,
-            timeout=10,
-        ) as smtp:
-            smtp.send_message(message)
-    except Exception:
-        auth.finish_mail_claim(
-            mail_id,
-            claim_token,
-            sent=False,
-            target_request_count=1,
-            accepted_request_count=0,
-            error="network",
-            worker_token=worker_token,
-        )
-        return {"mail_id": mail_id, "purpose": purpose, "status": "SMTP_FAILED"}
-    auth.finish_mail_claim(
-        mail_id,
-        claim_token,
-        sent=True,
-        target_request_count=1,
-        accepted_request_count=1,
-        worker_token=worker_token,
-    )
-    return {"mail_id": mail_id, "purpose": purpose, "status": "SMTP_SENT"}
-
-
-def configure(auth_provider: Callable[[], Any]) -> None:
-    global _auth_provider
+def configure(
+    auth_provider: Callable[[], Any], *, cookie_name: str, cookie_options: dict[str, Any]
+) -> None:
+    global _auth_provider, _cookie_name, _cookie_options
     _auth_provider = auth_provider
+    _cookie_name = cookie_name
+    _cookie_options = dict(cookie_options)
 
 
 def _auth() -> Any:
@@ -141,18 +42,12 @@ def _auth() -> Any:
 
 
 def _session_token(request: Request) -> str | None:
-    return request.cookies.get(COOKIE)
+    return request.cookies.get(_cookie_name)
 
 
 def _set_session(response: JSONResponse, request: Request, token: str) -> None:
-    response.set_cookie(
-        COOKIE,
-        token,
-        httponly=True,
-        secure=request.url.scheme == "https",
-        samesite="lax",
-        path="/",
-    )
+    del request
+    response.set_cookie(_cookie_name, token, **_cookie_options)
 
 
 def _response(
@@ -247,7 +142,6 @@ async def register_start(request: Request) -> JSONResponse:
             password=str(body.get("password", "")),
             restart_invalid_flow=True,
         )
-        _deliver_smtp(auth, token, "registration")
         flow = auth.session_flow_status(token, purpose="registration")
     except Exception as error:
         return _error(error, request)
@@ -327,7 +221,6 @@ async def reset_start(request: Request) -> JSONResponse:
             email=str(body.get("email", "")),
             restart_invalid_flow=True,
         )
-        _deliver_smtp(auth, token, "password-reset")
     except Exception as error:
         return _error(error, request)
     return _response({"message": RESET_PUBLIC_MESSAGE}, request, token=token)

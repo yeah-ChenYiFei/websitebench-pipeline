@@ -1,0 +1,46 @@
+schema_version: offline-clone.manifest.v2
+site_id: styleseat
+display_name: StyleSeat
+state_model: stateful
+source:
+  origins:
+  - https://www.styleseat.com
+  baseline:
+    locale: en-US
+    currency: USD
+    delivery_region: United States
+    timezone: America/Los_Angeles
+    auth_state: mixed
+    tenant: null
+    workspace: null
+    role: client
+    capabilities:
+    - browse
+    - client-account
+    feature_flags: []
+    user_agent: null
+    viewport:
+      width: 1440
+      height: 900
+      device_scale_factor: 1.0
+    capture_id: 2026-08-21.styleseat-r1
+  capture_policy:
+    safe_methods:
+    - GET
+    - HEAD
+    runtime_remote_requests: forbidden
+scope:
+  purpose: scope/purpose.json
+  invariants: scope/invariants.json
+  routes: scope/routes.json
+  journeys: scope/journeys.json
+  checkpoints: scope/checkpoints.json
+  claims: scope/claims.jsonl
+  coverage: scope/coverage.json
+paths:
+  candidate_root: clone
+  candidate_excludes:
+  - data
+  asset_manifest: source-assets/manifest.json
+  backend_model: backend/model.json
+  artifact_root: artifacts/offline-clone

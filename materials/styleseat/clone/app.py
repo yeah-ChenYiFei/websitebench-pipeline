@@ -21,8 +21,7 @@ from html import escape as html_escape
 from urllib.parse import unquote
 
 from fastapi import FastAPI, Request
-from fastapi.responses import (FileResponse, HTMLResponse, JSONResponse,
-                               RedirectResponse, Response)
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse, Response
 from starlette.staticfiles import StaticFiles
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -50,20 +49,18 @@ CSP = ("default-src 'self'; img-src 'self' data: blob:; "
        "form-action 'self'; base-uri 'self'")
 
 # 会话语义照 backend/runtime.json 的声明，不自己发明
-_RUNTIME = json.loads((ROOT.parent / "backend" / "runtime.json").read_text(encoding="utf-8"))
-_SESSION = _RUNTIME["session"]
-# Both the local API and the captured-site compatibility endpoints share one
-# opaque session. A __Host- cookie would be rejected on the harness's plain
-# HTTP localhost origin, so this name deliberately has no Secure-only prefix.
-COOKIE = "wb_session"
-
 from backend.site_backend_integration import open_site_services  # noqa: E402
 from auth_api import configure as configure_local_auth  # noqa: E402
 from auth_api import router as local_auth_router  # noqa: E402
-from auth_api import store_mail_options  # noqa: E402
 
-BACKEND, AUTH = open_site_services(**store_mail_options())
-configure_local_auth(lambda: AUTH)
+BACKEND, AUTH = open_site_services()
+# The generated runtime, rather than this web adapter, owns the session name
+# and its Host-only/Secure/HttpOnly/SameSite facts.
+COOKIE = BACKEND.session_cookie["name"]
+_COOKIE_OPTIONS = {
+    key: value for key, value in BACKEND.session_cookie.items() if key != "name"
+}
+configure_local_auth(lambda: AUTH, cookie_name=COOKIE, cookie_options=_COOKIE_OPTIONS)
 
 # ---------------------------------------------------------------- 夹具账号
 # 登录面要能真的登进去，就得有账号。这里不手写口令哈希——调 store 自己的
@@ -92,13 +89,8 @@ def _session_token(request: Request) -> str | None:
 
 
 def _set_session(resp: Response, request: Request, token: str) -> None:
-    resp.set_cookie(
-        COOKIE, token,
-        httponly=bool(_SESSION.get("http_only", True)),
-        secure=bool(_SESSION.get("secure", True)) and request.url.scheme == "https",
-        samesite=str(_SESSION.get("same_site", "Lax")).lower(),
-        path="/",
-    )  # host_only：不带 Domain 属性，正是 __Host- 的语义
+    del request  # Cookie policy is frozen in backend/runtime.json.
+    resp.set_cookie(COOKIE, token, **_COOKIE_OPTIONS)
 
 
 def _identity(request: Request) -> dict | None:
@@ -195,21 +187,9 @@ async def ajax_login(request: Request) -> Response:
 
 
 def _clear_session(resp: Response, request: Request) -> None:
-    """删 cookie 必须和当初 set 的属性完全对齐，否则浏览器当成另一个 cookie。
-
-    __Host- 前缀有硬约束：带这个名字的 Set-Cookie 只有同时满足 Secure + Path=/ +
-    无 Domain 才会被接受。Starlette 的 delete_cookie() secure 默认 False，于是那条
-    过期指令被浏览器**静默丢弃**——不报错、响应头看着也正常，只是 cookie 还在罐子
-    里。服务端 sign_out 已经把会话置 revoked，所以行为上没错（受限页确实退回匿名
-    版），但浏览器留着一个死 token，登出没登干净。见 OPEN-DEFECTS D10。
-    """
-    resp.set_cookie(
-        COOKIE, "", max_age=0, expires=0,
-        httponly=bool(_SESSION.get("http_only", True)),
-        secure=bool(_SESSION.get("secure", True)) and request.url.scheme == "https",
-        samesite=str(_SESSION.get("same_site", "Lax")).lower(),
-        path="/",
-    )
+    """Expire the exact Host-only cookie declared by the backend contract."""
+    del request
+    resp.set_cookie(COOKIE, "", max_age=0, expires=0, **_COOKIE_OPTIONS)
 
 
 @app.post("/accounts/ajax-logout/")
@@ -302,68 +282,6 @@ IN_SCOPE_SHAPE = re.compile(
     r"|^/m/v/[A-Za-z0-9._-]+/?$"
     r"|^/blog(/|$)")
 
-# These are the 50 city/service links rendered on the captured home page.  The
-# original crawl includes the full service-specific result DOM for Oakland and
-# full professional indexes for many cities.  Reusing that captured result DOM
-# keeps the secondary pages visually and structurally faithful while preserving
-# the city/service selected on the home page.
-HOME_SEARCH_RE = re.compile(
-    r"^/m/search/(?P<city>(?:dallas-tx|chicago-il|atlanta-ga|washington-dc|"
-    r"los-angeles-ca|houston-tx|detroit-mi|charlotte-nc|columbus-oh|"
-    r"newport-news-va))/(?P<service>braids|natural-hair|haircut|weaves|barber)/?$"
-)
-HOME_CITY_NAMES = {
-    "dallas-tx": "Dallas, TX", "chicago-il": "Chicago, IL",
-    "atlanta-ga": "Atlanta, GA", "washington-dc": "Washington, DC",
-    "los-angeles-ca": "Los Angeles, CA", "houston-tx": "Houston, TX",
-    "detroit-mi": "Detroit, MI", "charlotte-nc": "Charlotte, NC",
-    "columbus-oh": "Columbus, OH", "newport-news-va": "Newport News, VA",
-}
-HOME_SERVICE_NAMES = {
-    "braids": "Braids", "natural-hair": "Natural Hair",
-    "haircut": "Haircut", "weaves": "Weaves", "barber": "Barber",
-}
-HOME_SOURCE_SERVICES = {"haircut": "mens-haircut"}
-
-
-def _home_search_document(route: str) -> str | None:
-    match = HOME_SEARCH_RE.match(route)
-    if match is None:
-        return None
-    city_slug = match.group("city")
-    service_slug = match.group("service")
-    city_name = HOME_CITY_NAMES[city_slug]
-    service_name = HOME_SERVICE_NAMES[service_slug]
-    source_slug = HOME_SOURCE_SERVICES.get(service_slug, service_slug)
-    source = _page(f"/m/search/oakland-ca/{source_slug}")
-    if source is None:
-        return None
-    body = source.read_text(encoding="utf-8")
-    body = body.replace(
-        'src="about:blank"', 'src="data:image/gif;base64,R0lGODlhAQABAAAAACw="'
-    )
-    body = body.replace("Oakland, CA", city_name)
-    body = body.replace(
-        f"/m/search/oakland-ca/{source_slug}",
-        f"/m/search/{city_slug}/{service_slug}",
-    )
-    marker = (
-        f' data-clone-city="{html_escape(city_slug)}"'
-        f' data-clone-service="{html_escape(service_slug)}"'
-    )
-    body = re.sub(r"<body\b", "<body" + marker, body, count=1, flags=re.IGNORECASE)
-    notice = (
-        '<aside class="clone-search-context" role="status" style="padding:12px 24px;background:#f2efff;color:#24116d;font:14px/1.5 Poppins,system-ui,sans-serif">'
-        f'<strong>{html_escape(service_name)} in {html_escape(city_name)}</strong>'
-        '<span> · Offline StyleSeat results; filters, sorting, search and profile links remain local.</span>'
-        '</aside>'
-    )
-    body = re.sub(
-        r"(<body\b[^>]*>)", r"\1" + notice, body, count=1, flags=re.IGNORECASE
-    )
-    return _with_local_auth(body)
-
-
 def _boundary(route: str) -> Response:
     body = f"""<!doctype html><html lang=en><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
@@ -428,9 +346,6 @@ def serve(full_path: str, request: Request) -> Response:
         page = _page(page_route)
     if page is None and not route.endswith("/"):
         page = _page(page_route + "/")
-    if page is None and (home_search := _home_search_document(route)) is not None:
-        return HTMLResponse(home_search)
-
     if page is None and IN_SCOPE_SHAPE.match(route):
         return _boundary(route)
     if page is None:

@@ -1,0 +1,25 @@
+{
+  "schema_version": "styleseat.source-capture-provenance.v1",
+  "capture_id": "2026-08-29.styleseat-homepage-review-r1",
+  "captured_at": "2026-08-29T05:39:00Z",
+  "source_origin": "https://www.styleseat.com",
+  "environment": "source",
+  "browser": "Playwright Chromium",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "authenticated": false,
+  "mutations_authorized": false,
+  "safe_methods": [
+    "GET"
+  ],
+  "routes": [
+    "/m/"
+  ],
+  "notes": [
+    "Captured with python tools/offline_clone/run.py tools explore.",
+    "Third-party analytics and production mutation requests remained blocked.",
+    "Evidence is limited to the desktop homepage and its opened navigation drawer."
+  ]
+}
