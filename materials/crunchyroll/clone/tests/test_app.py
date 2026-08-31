@@ -62,10 +62,56 @@ def test_public_entry_navigation_and_catalog(client: TestClient) -> None:
     assert "crunchyroll" in home.text
     assert "/videos/popular" in home.text
     assert "Most Popular" in home.text
+    assert "/watch/GE00374585ENUS/asa-and-yuru" in home.text
+    assert 'name="series_id" value="GT00371630"' in home.text
+    assert "/static/assets/poster-one-piece.webp" in home.text
     popular = client.get("/videos/popular")
     assert popular.status_code == 200
     assert "One Piece" in popular.text
     assert "JUJUTSU KAISEN" in popular.text
+    daemons = client.get("/series/GT00371630/daemons-of-the-shadow-realm")
+    assert daemons.status_code == 200
+    assert "Daemons of the Shadow Realm" in daemons.text
+
+
+def test_series_specific_episode_links_and_last_episode_recovery(client: TestClient) -> None:
+    sign_in_demo(client)
+    daemons = client.get("/watch/GE00374585ENUS/asa-and-yuru")
+    assert "Daemons of the Shadow Realm" in daemons.text
+    assert "Asa and Yuru" in daemons.text
+    assert "I&#x27;m Luffy" not in daemons.text
+    assert "Back to Series" in daemons.text
+    last_one_piece = client.get("/watch/G50UZEW02/one-piece-episode-4")
+    assert "Next Episode" not in last_one_piece.text
+    assert "Back to Series" in last_one_piece.text
+    jujutsu = client.get("/series/GRDV0019R/jujutsu-kaisen")
+    assert "/watch/GRDV0019R-E1/jujutsu-kaisen-episode-1" in jujutsu.text
+
+
+def test_supplied_editorial_navigation_and_pages(client: TestClient) -> None:
+    home = client.get("/")
+    for path in ("/manga", "/games", "/store", "/news", "/animeawards", "/events", "/simulcastcalendar"):
+        assert path in home.text
+        response = client.get(path)
+        assert response.status_code == 200
+        assert "Page Not Found" not in response.text
+    assert client.get("/manga/1").status_code == 200
+    assert client.get("/games/river-city-girls").status_code == 200
+    assert client.get("/news/1").status_code == 200
+    assert client.get("/events/crunchyroll-expo").status_code == 200
+
+
+def test_filters_calendar_and_help_search_are_functional(client: TestClient) -> None:
+    filtered = client.get("/videos/popular?genre=Fantasy&sort=alphabetical")
+    assert "Frieren" in filtered.text
+    assert "One Piece" not in filtered.text
+    calendar = client.get("/simulcastcalendar?day=Friday")
+    assert "Friday" in calendar.text
+    found = client.get("/help?q=account")
+    assert "Account Access" in found.text
+    assert "1 topic(s) found" in found.text
+    empty = client.get("/help?q=zzzz-no-topic")
+    assert "No help topics found" in empty.text
 
 
 def test_discovery_and_series_details(client: TestClient) -> None:
@@ -162,7 +208,7 @@ def test_watchlist_add_remove(client: TestClient) -> None:
     assert removed.status_code == 303
     assert "Your Watchlist is empty" in client.get("/watchlist").text
     client.post(
-        "/watchlist/toggle", data={"series_id": "G6NQ5DWZ6", "return_to": "/watchlist"}
+        "/watchlist/toggle", data={"series_id": "GRDV0019R", "return_to": "/watchlist"}
     )
     assert "JUJUTSU KAISEN" in client.get("/watchlist").text
 
@@ -194,6 +240,22 @@ def test_profiles_and_settings(client: TestClient) -> None:
     assert "Notifications" in settings.text
     devices = client.get("/account/settings?tab=devices")
     assert "Web Browser" in devices.text
+
+
+def test_device_deactivation_and_membership_cancellation(client: TestClient) -> None:
+    sign_in_demo(client)
+    removed = client.post(
+        "/account/devices/remove",
+        data={"device_id": "web-browser"},
+        follow_redirects=False,
+    )
+    assert removed.status_code == 303
+    assert "Web Browser" not in client.get("/account/settings?tab=devices").text
+    cancelled = client.post("/account/subscription/cancel", follow_redirects=False)
+    assert cancelled.status_code == 303
+    billing = client.get(cancelled.headers["location"])
+    assert "membership was cancelled" in billing.text
+    assert "Cancelled" in billing.text
 
 
 def test_subscription_checkout_states(client: TestClient) -> None:
@@ -355,7 +417,7 @@ def test_actor_business_state_is_isolated(client: TestClient) -> None:
         data={"name": "Actor A Only", "maturity": "Mature", "language": "English (US)"},
     )
     client.post(
-        "/watchlist/toggle", data={"series_id": "G6NQ5DWZ6", "return_to": "/watchlist"}
+        "/watchlist/toggle", data={"series_id": "GRDV0019R", "return_to": "/watchlist"}
     )
     with TestClient(app) as other:
         register_member(other, "actor-b@example.test")

@@ -62,7 +62,7 @@ CATALOG = [
         "related": ["jujutsu-kaisen", "spy-x-family", "attack-on-titan"],
     },
     {
-        "id": "G6NQ5DWZ6",
+        "id": "GRDV0019R",
         "slug": "jujutsu-kaisen",
         "title": "JUJUTSU KAISEN",
         "genre": "Action",
@@ -78,7 +78,7 @@ CATALOG = [
         "related": ["one-piece", "attack-on-titan", "chainsaw-man"],
     },
     {
-        "id": "GY8VM8MWY",
+        "id": "G4PH0WXVJ",
         "slug": "spy-x-family",
         "title": "SPY x FAMILY",
         "genre": "Comedy",
@@ -91,7 +91,7 @@ CATALOG = [
         "cast": "Takuya Eguchi, Atsumi Tanezaki",
         "audio": "Japanese, English",
         "subtitles": "English (US), Français",
-        "related": ["one-piece", "frieren", "my-hero-academia"],
+        "related": ["one-piece", "frieren-beyond-journeys-end", "my-hero-academia"],
     },
     {
         "id": "GR751KNZY",
@@ -110,8 +110,8 @@ CATALOG = [
         "related": ["jujutsu-kaisen", "chainsaw-man", "one-piece"],
     },
     {
-        "id": "GDKHZEJ0K",
-        "slug": "frieren",
+        "id": "GG5H5XQX4",
+        "slug": "frieren-beyond-journeys-end",
         "title": "Frieren: Beyond Journey's End",
         "genre": "Fantasy",
         "maturity": "14+",
@@ -126,7 +126,7 @@ CATALOG = [
         "related": ["spy-x-family", "one-piece", "solo-leveling"],
     },
     {
-        "id": "GDKHZEJ0M",
+        "id": "GDKHZEJ0K",
         "slug": "solo-leveling",
         "title": "Solo Leveling",
         "genre": "Action",
@@ -142,7 +142,7 @@ CATALOG = [
         "related": ["jujutsu-kaisen", "chainsaw-man", "attack-on-titan"],
     },
     {
-        "id": "G6J0G49DR",
+        "id": "G6NQ5DWZ6",
         "slug": "my-hero-academia",
         "title": "My Hero Academia",
         "genre": "Action",
@@ -174,23 +174,7 @@ CATALOG = [
         "related": ["jujutsu-kaisen", "attack-on-titan", "solo-leveling"],
     },
     {
-        "id": "G8DHV7W21",
-        "slug": "demon-slayer",
-        "title": "Demon Slayer",
-        "genre": "Adventure",
-        "maturity": "16+",
-        "rating": "4.8",
-        "meta": "Sub | Dub",
-        "c1": "#243a3e",
-        "c2": "#b64046",
-        "synopsis": "A kindhearted swordsman hunts demons while seeking a cure for his transformed sister.",
-        "cast": "Natsuki Hanae, Akari Kito",
-        "audio": "Japanese, English",
-        "subtitles": "English (US)",
-        "related": ["jujutsu-kaisen", "one-piece", "attack-on-titan"],
-    },
-    {
-        "id": "G9VHN9P43",
+        "id": "GY8VM8MWY",
         "slug": "haikyu",
         "title": "HAIKYU!!",
         "genre": "Sports",
@@ -206,8 +190,38 @@ CATALOG = [
         "related": ["spy-x-family", "my-hero-academia", "one-piece"],
     },
 ]
+CATALOG.append(
+    {
+        "id": "GT00371630",
+        "slug": "daemons-of-the-shadow-realm",
+        "title": "Daemons of the Shadow Realm",
+        "genre": "Fantasy",
+        "maturity": "16+",
+        "rating": "4.8",
+        "meta": "Sub | Dub",
+        "c1": "#172b40",
+        "c2": "#e65a2b",
+        "synopsis": "Yuru, a young hunter living quietly in a remote village, is pulled into a world of powerful supernatural beings.",
+        "cast": "Kensho Ono, Yume Miyamoto",
+        "audio": "Japanese, English",
+        "subtitles": "English (US), Español",
+        "related": ["jujutsu-kaisen", "attack-on-titan", "frieren-beyond-journeys-end"],
+    }
+)
 BY_SLUG = {item["slug"]: item for item in CATALOG}
 BY_ID = {item["id"]: item for item in CATALOG}
+POSTER_SLUGS = {
+    "one-piece",
+    "jujutsu-kaisen",
+    "spy-x-family",
+    "attack-on-titan",
+    "my-hero-academia",
+    "daemons-of-the-shadow-realm",
+    "frieren-beyond-journeys-end",
+    "solo-leveling",
+    "chainsaw-man",
+    "haikyu",
+}
 EPISODES = [
     {
         "id": "GN7UD8ARD",
@@ -234,6 +248,30 @@ EPISODES = [
         "duration": 1440,
     },
 ]
+DAEMONS_EPISODES = [
+    {
+        "id": "GE00374585ENUS",
+        "number": 1,
+        "title": "Asa and Yuru",
+        "duration": 1440,
+    }
+]
+
+
+def episodes_for(item: dict) -> list[dict]:
+    if item["slug"] == "one-piece":
+        return EPISODES
+    if item["slug"] == "daemons-of-the-shadow-realm":
+        return DAEMONS_EPISODES
+    return [
+        {
+            "id": f"{item['id']}-E{number}",
+            "number": number,
+            "title": f"{item['title']} Episode {number}",
+            "duration": 1440,
+        }
+        for number in range(1, 5)
+    ]
 
 
 def esc(value: object) -> str:
@@ -310,10 +348,15 @@ def ensure_member_rows(owner_id: str, *, seed_demo: bool = False) -> None:
             "INSERT OR IGNORE INTO crunchyroll_preferences(owner) VALUES (?)",
             (owner_id,),
         )
-        connection.execute(
-            "INSERT OR IGNORE INTO crunchyroll_devices(owner,device_id,label,last_used) VALUES (?,?,?,?)",
-            (owner_id, "web-browser", "Web Browser", "Today"),
-        )
+        device_removed = connection.execute(
+            "SELECT 1 FROM crunchyroll_history WHERE owner=? AND item_type='device-deactivated' LIMIT 1",
+            (owner_id,),
+        ).fetchone()
+        if not device_removed:
+            connection.execute(
+                "INSERT OR IGNORE INTO crunchyroll_devices(owner,device_id,label,last_used) VALUES (?,?,?,?)",
+                (owner_id, "web-browser", "Web Browser", "Today"),
+            )
         connection.execute(
             "INSERT OR IGNORE INTO crunchyroll_progress(owner,episode_id,position,duration) VALUES (?,?,?,?)",
             (owner_id, EPISODES[0]["id"], 522, EPISODES[0]["duration"]),
@@ -375,15 +418,20 @@ def nav(request: Request) -> str:
         if member
         else "<a class='icon-link' href='/login'>Log In</a>"
     )
-    return f"""<header class="site-header"><button class="menu-button" data-menu-toggle aria-expanded="false" aria-label="Open menu">☰</button><a class="brand" href="/">crunchyroll</a><nav class="nav" aria-label="Primary"><a href="/videos/new">New</a><a href="/videos/popular">Popular</a><a href="/videos/action">Categories</a><a href="/videos/alphabetical">Browse All (A-Z)</a><a href="/help">Help</a></nav><div class="header-tools"><a class="premium-link" href="/premium">Try Premium</a><a class="search-link" href="/search" aria-label="Search">⌕</a>{account_links}</div></header>"""
+    return f"""<header class="site-header"><button class="menu-button" data-menu-toggle aria-expanded="false" aria-controls="primary-navigation" aria-label="Open menu">☰ <span>Menu</span></button><a class="brand" href="/">crunchyroll</a><nav class="nav" id="primary-navigation" aria-label="Primary"><a href="/videos/popular">Popular</a><div class="nav-group"><button type="button" class="nav-trigger" data-dropdown-toggle="categories" aria-expanded="false">Categories <span>▾</span></button><div class="mega-menu" data-dropdown="categories"><div class="menu-stack"><a href="/videos/new">New</a><a href="/videos/alphabetical">Browse All (A-Z)</a><a href="/simulcastcalendar">Release Calendar</a></div><div class="genre-grid"><strong>Genres</strong><a href="/videos/action">Action</a><a href="/videos/adventure">Adventure</a><a href="/videos/comedy">Comedy</a><a href="/videos/drama">Drama</a><a href="/videos/fantasy">Fantasy</a><a href="/videos/sports">Sports</a></div></div></div><a href="/manga">Manga</a><a href="/games">Games</a><a href="/store">Store</a><div class="nav-group"><button type="button" class="nav-trigger" data-dropdown-toggle="news" aria-expanded="false">News <span>▾</span></button><div class="dropdown" data-dropdown="news"><a href="/news">All News</a><a href="/animeawards">Anime Awards</a><a href="/events">Events &amp; Experiences</a></div></div></nav><div class="header-tools"><a class="premium-link" href="/premium" aria-label="Try Premium">♛</a><a class="search-link" href="/search" aria-label="Search">⌕</a>{account_links}</div></header><div class="nav-scrim" data-menu-close></div>"""
 
 
 def shell(request: Request, title: str, body: str, *, status_code: int = 200) -> str:
-    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)}</title><link rel="stylesheet" href="/static/styles.css"></head><body>{nav(request)}<main class="page">{body}</main><footer><div class="footer-links"><a href="/help">Help/FAQ</a><a href="/terms">Terms of Use</a><a href="/privacy">Privacy Policy</a><a href="/accessibility">Accessibility</a></div><div>© Crunchyroll, LLC · Offline functional reconstruction with synthetic local data.</div></footer><script src="/static/app.js"></script></body></html>"""
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#23252b"><title>{esc(title)}</title><link rel="stylesheet" href="/static/styles.css"></head><body>{nav(request)}<main class="page">{body}</main><footer><div class="footer-links"><a href="/help">Help/FAQ</a><a href="/terms">Terms of Use</a><a href="/privacy">Privacy Policy</a><a href="/accessibility">Accessibility</a></div><div>© Crunchyroll, LLC · Offline functional reconstruction with synthetic local data.</div></footer><script src="/static/app.js"></script></body></html>"""
 
 
 def card(item: dict) -> str:
-    return f"""<a class="card" data-series="{esc(item["id"])}" href="/series/{esc(item["id"])}/{esc(item["slug"])}"><div class="poster" style="--c1:{item["c1"]};--c2:{item["c2"]}"><strong>{esc(item["title"])}</strong></div><h3>{esc(item["title"])}</h3><div class="meta">{esc(item["meta"])} · ★ {esc(item["rating"])}</div></a>"""
+    image = (
+        f"<img src='/static/assets/poster-{esc(item['slug'])}.webp' alt='{esc(item['title'])}' loading='lazy'>"
+        if item["slug"] in POSTER_SLUGS
+        else f"<strong>{esc(item['title'])}</strong>"
+    )
+    return f"""<a class="card" data-series="{esc(item["id"])}" href="/series/{esc(item["id"])}/{esc(item["slug"])}"><div class="poster" style="--c1:{item["c1"]};--c2:{item["c2"]}">{image}<span class="poster-action">▶ View Series</span></div><h3>{esc(item["title"])}</h3><div class="meta">{esc(item["meta"])} · ★ {esc(item["rating"])}</div></a>"""
 
 
 def row(title: str, items: list[dict]) -> str:
@@ -450,7 +498,7 @@ def home(request: Request):
     member = account(request)
     if member:
         ensure_member_rows(owner(request) or "")
-    hero = """<section class="hero"><div class="hero-copy"><div class="eyebrow">Featured anime</div><h1>One Piece</h1><p>Set sail for adventure. Discover episodes, seasons, and more from a deterministic offline catalog.</p><div class="actions"><a class="btn primary" href="/series/GRMG8ZQZR/one-piece">Start Watching</a><a class="btn" href="/videos/popular">Browse Popular</a></div></div></section>"""
+    hero = """<section class="hero"><div class="hero-copy"><img class="hero-title" src="/static/assets/hero-title.png" alt="Daemons of the Shadow Realm"><div class="hero-meta">16+ · Sub | Dub · Action, Adventure, Fantasy</div><p>Yuru, a young hunter who lives quietly in a remote village, is pulled into a world of powerful supernatural beings.</p><div class="actions"><a class="btn primary" href="/watch/GE00374585ENUS/asa-and-yuru">▷ Start Watching E1</a><form method="post" action="/watchlist/toggle"><input type="hidden" name="series_id" value="GT00371630"><input type="hidden" name="return_to" value="/"><button class="btn icon-only" aria-label="Add featured title to watchlist">♡</button></form></div></div><div class="hero-dots" aria-label="Featured slide 1 of 4"><span class="active"></span><span></span><span></span><span></span></div></section>"""
     continue_row = row("Continue Watching", CATALOG[:5]) if member else ""
     body = (
         hero
@@ -465,8 +513,9 @@ def home(request: Request):
 
 
 @app.get("/videos/{kind}", response_class=HTMLResponse)
-def browse(request: Request, kind: str, genre: str = ""):
-    if kind not in {"popular", "new", "alphabetical", "action", "adventure", "drama"}:
+def browse(request: Request, kind: str, genre: str = "", sort: str = "popular"):
+    allowed_genres = {"action", "adventure", "comedy", "drama", "fantasy", "sports"}
+    if kind not in {"popular", "new", "alphabetical", *allowed_genres}:
         return not_found(request)
     items = list(CATALOG)
     heading = {
@@ -476,13 +525,18 @@ def browse(request: Request, kind: str, genre: str = ""):
         "action": "Action",
         "adventure": "Adventure",
         "drama": "Drama",
+        "comedy": "Comedy",
+        "fantasy": "Fantasy",
+        "sports": "Sports",
     }[kind]
-    if kind in {"action", "adventure", "drama"}:
+    if kind in allowed_genres:
         items = [x for x in items if x["genre"].casefold() == kind]
-    if kind == "alphabetical":
+    elif genre.casefold() in allowed_genres:
+        items = [x for x in items if x["genre"].casefold() == genre.casefold()]
+    if kind == "alphabetical" or sort == "alphabetical":
         items = sorted(items, key=lambda x: x["title"])
     cards = "".join(card(x) for x in items)
-    body = f"""<section class="section"><div class="eyebrow">Browse anime</div><h1>{esc(heading)}</h1><p class="lede">Explore series available in the offline anime catalog.</p><form class="filter-bar" method="get"><select name="genre" aria-label="Filter by genre"><option>All Genres</option><option>Action</option><option>Adventure</option><option>Drama</option><option>Fantasy</option></select><select name="sort" aria-label="Sort"><option>Most Popular</option><option>Newest</option><option>Alphabetical</option></select><button class="btn primary">Filter</button></form><div class="cards">{cards}</div></section>"""
+    body = f"""<section class="section"><div class="eyebrow">Browse anime</div><h1>{esc(heading)}</h1><p class="lede">Explore series available in the offline anime catalog.</p><form class="filter-bar" method="get"><select name="genre" aria-label="Filter by genre"><option value="">All Genres</option>{''.join(f'<option value="{g}" {"selected" if genre.casefold() == g else ""}>{g.title()}</option>' for g in sorted(allowed_genres))}</select><select name="sort" aria-label="Sort"><option value="popular">Most Popular</option><option value="new">Newest</option><option value="alphabetical" {"selected" if sort == "alphabetical" else ""}>Alphabetical</option></select><button class="btn primary">Filter</button></form><div class="cards">{cards}</div></section>"""
     return page_response(request, shell(request, f"{heading} Anime", body))
 
 
@@ -530,12 +584,13 @@ def series(request: Request, series_id: str, slug: str):
                 is not None
             )
     watch_action = f"""<form method="post" action="/watchlist/toggle"><input type="hidden" name="series_id" value="{esc(item["id"])}"><input type="hidden" name="return_to" value="/series/{esc(item["id"])}/{esc(item["slug"])}"><button class="btn" type="submit">{"Remove from Watchlist" if saved else "Add to Watchlist"}</button></form>"""
+    episodes = episodes_for(item)
     episode_html = "".join(
         f"""<article class="episode"><div class="thumb">E{ep["number"]}</div><div><strong>Episode {ep["number"]} · {esc(ep["title"])}</strong><p>24m · Sub | Dub</p></div><a class="btn primary" href="/watch/{ep["id"]}/{item["slug"]}-episode-{ep["number"]}">Play</a></article>"""
-        for ep in EPISODES
+        for ep in episodes
     )
     related = [BY_SLUG[x] for x in item["related"] if x in BY_SLUG]
-    hero = f"""<section class="title-hero"><div class="content"><div class="eyebrow">{esc(item["genre"])} · Series</div><h1>{esc(item["title"])}</h1><div><span class="pill">★ {esc(item["rating"])}</span><span class="pill">{esc(item["maturity"])}</span><span class="pill">{esc(item["meta"])}</span></div><p class="lede">{esc(item["synopsis"])}</p><div class="actions"><a class="btn primary" href="/watch/{EPISODES[0]["id"]}/{item["slug"]}-episode-1">Start Watching E1</a>{watch_action}</div></div></section>"""
+    hero = f"""<section class="title-hero"><div class="content"><div class="eyebrow">{esc(item["genre"])} · Series</div><h1>{esc(item["title"])}</h1><div><span class="pill">★ {esc(item["rating"])}</span><span class="pill">{esc(item["maturity"])} </span><span class="pill">{esc(item["meta"])}</span></div><p class="lede">{esc(item["synopsis"])}</p><div class="actions"><a class="btn primary" href="/watch/{episodes[0]["id"]}/{item["slug"]}-episode-1">Start Watching E1</a>{watch_action}</div></div></section>"""
     details = f"""<section class="section details-grid"><div><div class="tabs"><a class="active" href="#episodes">Episodes</a><a href="#details">Details</a></div><h2 id="episodes">Season 1</h2><div class="episodes">{episode_html}</div></div><aside id="details"><h2>Details</h2><div class="panel"><div class="row"><span>Maturity Rating</span><strong>{esc(item["maturity"])}</strong></div><div class="row"><span>Audio</span><strong>{esc(item["audio"])}</strong></div><div class="row"><span>Subtitles</span><strong>{esc(item["subtitles"])}</strong></div><div class="row"><span>Cast</span><strong>{esc(item["cast"])}</strong></div><p class="help-text">Content Advisory: fantasy violence and thematic material.</p></div></aside></section>"""
     return page_response(
         request,
@@ -604,6 +659,106 @@ def watchlist(request: Request):
             f"<section class='section'><div class='eyebrow'>Your library</div><h1>My List</h1>{content}</section>",
         ),
     )
+
+
+@app.get("/manga", response_class=HTMLResponse)
+def manga(request: Request):
+    books = (
+        ("Smoking Behind the Supermarket with You", "manga-1.webp"),
+        ("The Summer Hikaru Died", "manga-2.webp"),
+        ("That Time I Got Reincarnated as a Slime", "manga-3.webp"),
+        ("My Dress-Up Darling", "manga-4.webp"),
+    )
+    cards = "".join(
+        f"<a class='media-card' href='/manga/{i}'><img src='/static/assets/{image}' alt='{esc(title)} cover'><h2>{esc(title)}</h2><span>Read preview →</span></a>"
+        for i, (title, image) in enumerate(books, 1)
+    )
+    body = f"""<section class="editorial-hero manga-hero"><div><div class="eyebrow">Crunchyroll Manga</div><h1>A new way to read manga</h1><p>Discover popular stories and continue reading with a local preview experience.</p><a class="btn primary" href="#manga-library">Explore Manga</a></div></section><section class="section" id="manga-library"><div class="section-head"><h2>Popular right now</h2><a href="/search">Search all</a></div><div class="media-grid">{cards}</div></section>"""
+    return page_response(request, shell(request, "Read Manga Online", body))
+
+
+@app.get("/manga/{book_id}", response_class=HTMLResponse)
+def manga_detail(request: Request, book_id: int):
+    if book_id not in {1, 2, 3, 4}:
+        return not_found(request)
+    title = ("Smoking Behind the Supermarket with You", "The Summer Hikaru Died", "That Time I Got Reincarnated as a Slime", "My Dress-Up Darling")[book_id - 1]
+    body = f"""<section class="reader"><div class="reader-page"><img src="/static/assets/manga-{book_id}.webp" alt="Cover of {esc(title)}"></div><div class="reader-copy"><div class="eyebrow">Free preview</div><h1>{esc(title)}</h1><p>This local preview contains no account charge and does not contact an external manga service.</p><div class="actions"><button class="btn primary" type="button" data-reader-next>Next Page</button><a class="btn" href="/manga">Back to Manga</a></div><p class="success" data-reader-status hidden>You're at the end of this local preview.</p></div></section>"""
+    return page_response(request, shell(request, title, body))
+
+
+@app.get("/games", response_class=HTMLResponse)
+def games(request: Request):
+    body = """<section class="editorial-hero games-hero"><div><div class="eyebrow">Crunchyroll Games</div><h1>Play anime-inspired games</h1><p>Discover Game Vault titles included with eligible Premium memberships.</p><div class="actions"><a class="btn primary" href="#game-vault">Browse Game Vault</a><a class="btn" href="/premium">See Premium Plans</a></div></div></section><section class="section" id="game-vault"><h2>Featured Games</h2><div class="feature-grid"><article class="feature-card violet"><strong>River City Girls</strong><p>Beat 'em up action</p><a href="/games/river-city-girls">View Game</a></article><article class="feature-card blue"><strong>Moonstone Island</strong><p>Creature-collecting life sim</p><a href="/games/moonstone-island">View Game</a></article><article class="feature-card red"><strong>Shantae and the Seven Sirens</strong><p>Platform adventure</p><a href="/games/shantae">View Game</a></article></div></section>"""
+    return page_response(request, shell(request, "Anime-Inspired Games", body))
+
+
+@app.get("/games/{game_id}", response_class=HTMLResponse)
+def game_detail(request: Request, game_id: str):
+    names = {"river-city-girls": "River City Girls", "moonstone-island": "Moonstone Island", "shantae": "Shantae and the Seven Sirens"}
+    if game_id not in names:
+        return not_found(request)
+    body = f"""<section class="title-hero"><div class="content"><div class="eyebrow">Game Vault</div><h1>{esc(names[game_id])}</h1><p class="lede">This page recreates game discovery locally. Game installation is unavailable in the offline fixture.</p><div class="actions"><a class="btn primary" href="/premium">Get Premium Access</a><a class="btn" href="/games">All Games</a></div></div></section>"""
+    return page_response(request, shell(request, names[game_id], body))
+
+
+@app.get("/store", response_class=HTMLResponse)
+def store(request: Request):
+    body = """<section class="store-hero"><div><div class="eyebrow">Crunchyroll Store</div><h1>Anime merch for every fan</h1><p>Figures, apparel, manga, and exclusive collectibles.</p><a class="btn primary" href="#store-products">Shop Featured</a></div></section><section class="section" id="store-products"><h2>Featured collections</h2><div class="feature-grid"><article class="product-card"><span class="product-art">ONE PIECE</span><h3>Monkey D. Luffy Figure</h3><p>$29.99</p><button class="btn" type="button" data-cart-add>Add to Local Cart</button></article><article class="product-card"><span class="product-art violet">JUJUTSU KAISEN</span><h3>Sorcerer Hoodie</h3><p>$54.95</p><button class="btn" type="button" data-cart-add>Add to Local Cart</button></article><article class="product-card"><span class="product-art blue">SPY x FAMILY</span><h3>Anya Plush</h3><p>$24.99</p><button class="btn" type="button" data-cart-add>Add to Local Cart</button></article></div><div class="cart-toast" data-cart-status hidden>Added to your local demo cart.</div></section>"""
+    return page_response(request, shell(request, "Crunchyroll Store", body))
+
+
+@app.get("/news", response_class=HTMLResponse)
+def news(request: Request):
+    stories = ("New Anime Arrivals to Watch This Week", "Behind the Scenes with Your Favorite Creators", "The Biggest Announcements from Anime Expo", "Summer Season Streaming Guide")
+    articles = "".join(f"<a class='news-card' href='/news/{i}'><img src='/static/assets/news-{i}.webp' alt='{esc(title)}'><div><span class='eyebrow'>Anime News</span><h2>{esc(title)}</h2><p>Read the latest story, interviews, and updates.</p></div></a>" for i, title in enumerate(stories, 1))
+    body = f"<section class='section editorial'><div class='section-head'><div><div class='eyebrow'>Crunchyroll News</div><h1>Latest Anime News</h1></div><a class='btn' href='/events'>Events</a></div><div class='news-grid'>{articles}</div></section>"
+    return page_response(request, shell(request, "Anime News & Top Stories", body))
+
+
+@app.get("/news/{story_id}", response_class=HTMLResponse)
+def news_detail(request: Request, story_id: int):
+    stories = ("New Anime Arrivals to Watch This Week", "Behind the Scenes with Your Favorite Creators", "The Biggest Announcements from Anime Expo", "Summer Season Streaming Guide")
+    if story_id not in range(1, 5):
+        return not_found(request)
+    title = stories[story_id - 1]
+    body = f"""<article class="article"><div class="eyebrow">Anime News</div><h1>{esc(title)}</h1><p class="lede">The latest news from the world of anime, recreated from the supplied page materials.</p><img src="/static/assets/news-{story_id}.webp" alt="{esc(title)}"><p>Explore new releases, creator stories, and community highlights. This offline article keeps navigation and reading interactions available without loading remote content.</p><div class="actions"><a class="btn primary" href="/news">All News</a><a class="btn" href="/videos/new">Watch New Anime</a></div></article>"""
+    return page_response(request, shell(request, title, body))
+
+
+@app.get("/events", response_class=HTMLResponse)
+def events(request: Request):
+    body = """<section class="editorial-hero events-hero"><div><div class="eyebrow">Events &amp; Experiences</div><h1>See Crunchyroll live</h1><p>Explore convention appearances, premieres, and fan experiences.</p><a class="btn primary" href="#upcoming-events">Upcoming Events</a></div></section><section class="section" id="upcoming-events"><h2>Upcoming Events</h2><div class="feature-grid"><article class="panel"><h2>Crunchyroll Expo</h2><p>Sep 18–20 · Local event preview</p><a href="/events/crunchyroll-expo">Event Details</a></article><article class="panel"><h2>Anime NYC</h2><p>Nov 20–22 · Local event preview</p><a href="/events/anime-nyc">Event Details</a></article></div></section>"""
+    return page_response(request, shell(request, "Events", body))
+
+
+@app.get("/events/{event_id}", response_class=HTMLResponse)
+def event_detail(request: Request, event_id: str):
+    names = {"crunchyroll-expo": "Crunchyroll Expo", "anime-nyc": "Anime NYC"}
+    if event_id not in names:
+        return not_found(request)
+    body = f"<section class='section'><div class='eyebrow'>Event Details</div><h1>{esc(names[event_id])}</h1><div class='panel'><p>Schedule and venue details are shown as a local preview. Registration is not performed by this offline clone.</p><a class='btn primary' href='/events'>Back to Events</a></div></section>"
+    return page_response(request, shell(request, names[event_id], body))
+
+
+@app.get("/animeawards", response_class=HTMLResponse)
+def anime_awards(request: Request):
+    body = """<section class="awards-hero"><div><div class="eyebrow">Crunchyroll Anime Awards</div><h1>Celebrating anime's brightest stars</h1><p>Relive winners, performances, and unforgettable moments.</p><div class="actions"><a class="btn primary" href="#award-highlights">View Highlights</a><a class="btn" href="/news">Awards News</a></div></div></section><section class="section" id="award-highlights"><h2>2026 Highlights</h2><div class="feature-grid"><article class="feature-card gold"><strong>Anime of the Year</strong><p>Discover this year's winner</p></article><article class="feature-card violet"><strong>Best Animation</strong><p>Celebrating outstanding artistry</p></article><article class="feature-card red"><strong>Best Original Anime</strong><p>Honoring bold new stories</p></article></div></section>"""
+    return page_response(request, shell(request, "The Anime Awards", body))
+
+
+@app.get("/simulcastcalendar", response_class=HTMLResponse)
+def simulcast_calendar(request: Request, day: str = "Monday"):
+    days = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+    day = day if day in days else "Monday"
+    tabs = "".join(
+        "<a class='{active}' href='/simulcastcalendar?day={day}'>{label}</a>".format(
+            active="active" if item == day else "", day=item, label=item[:3]
+        )
+        for item in days
+    )
+    episodes = "".join(f"<article class='calendar-item'><div class='thumb'>E{i}</div><div><h2>{esc(show['title'])}</h2><p>Episode {i} · Available at {9 + i}:00 PM</p></div><a class='btn primary' href='/series/{show['id']}/{show['slug']}'>View Series</a></article>" for i, show in enumerate(CATALOG[:4], 1))
+    body = f"<section class='section'><div class='eyebrow'>Release Calendar</div><h1>Simulcast Calendar</h1><div class='calendar-tabs'>{tabs}</div><h2>{esc(day)}</h2><div class='episodes'>{episodes}</div></section>"
+    return page_response(request, shell(request, "Simulcast Calendar", body))
 
 
 @app.get("/premium", response_class=HTMLResponse)
@@ -858,15 +1013,31 @@ def watch(request: Request, episode_id: str, slug: str):
     guard = protected(request, request.url.path)
     if guard:
         return guard
-    episode = next((x for x in EPISODES if x["id"] == episode_id), EPISODES[0])
-    series_item = next((x for x in CATALOG if x["slug"] in slug), CATALOG[0])
+    series_item = next((x for x in CATALOG if x["slug"] in slug), None)
+    if series_item is None:
+        series_item = next(
+            (
+                item
+                for item in CATALOG
+                if any(ep["id"] == episode_id for ep in episodes_for(item))
+            ),
+            CATALOG[0],
+        )
+    episodes = episodes_for(series_item)
+    episode = next((x for x in episodes if x["id"] == episode_id), episodes[0])
     with db() as connection:
         progress = connection.execute(
             "SELECT position,duration FROM crunchyroll_progress WHERE owner=? AND episode_id=?",
             (owner(request), episode["id"]),
         ).fetchone()
     position = int(progress["position"]) if progress else 0
-    body = f"""<section class="player-shell" data-player><div class="notice">Local controls and progress simulation. No licensed media or remote stream is loaded.</div><h1>{esc(series_item["title"])}</h1><p>Episode {episode["number"]} · {esc(episode["title"])}</p><div class="screen" aria-label="Local video surface"></div><div class="controls"><button data-player-action="toggle" data-state="paused">Play</button><label class="control-label">Seek<input data-progress data-episode="{episode["id"]}" type="range" min="0" max="{episode["duration"]}" value="{position}"></label><output data-progress-output>{position // 60}m</output><label class="control-label">Volume<input type="range" min="0" max="100" value="75"></label><select aria-label="Subtitles"><option>English (US)</option><option>Off</option></select><select aria-label="Audio"><option>Japanese</option><option>English</option></select><button data-player-action="fullscreen">Fullscreen</button></div><div class="actions"><a class="btn" href="/series/{series_item["id"]}/{series_item["slug"]}">Episodes &amp; Seasons</a><a class="btn primary" href="/watch/{EPISODES[min(episode["number"], len(EPISODES) - 1)]["id"]}/{series_item["slug"]}-episode-{min(episode["number"] + 1, len(EPISODES))}">Next Episode</a></div></section>"""
+    index = episodes.index(episode)
+    next_action = (
+        f"<a class='btn primary' href='/watch/{episodes[index + 1]['id']}/{series_item['slug']}-episode-{episodes[index + 1]['number']}'>Next Episode</a>"
+        if index + 1 < len(episodes)
+        else f"<a class='btn primary' href='/series/{series_item['id']}/{series_item['slug']}'>Back to Series</a>"
+    )
+    body = f"""<section class="player-shell" data-player><div class="notice">Local controls and progress simulation. No licensed media or remote stream is loaded.</div><h1>{esc(series_item["title"])}</h1><p>Episode {episode["number"]} · {esc(episode["title"])}</p><div class="screen" aria-label="Local video surface"></div><div class="controls"><button data-player-action="toggle" data-state="paused">Play</button><label class="control-label">Seek<input data-progress data-episode="{episode["id"]}" type="range" min="0" max="{episode["duration"]}" value="{position}"></label><output data-progress-output>{position // 60}m</output><label class="control-label">Volume<input type="range" min="0" max="100" value="75"></label><select aria-label="Subtitles"><option>English (US)</option><option>Off</option></select><select aria-label="Audio"><option>Japanese</option><option>English</option></select><button data-player-action="fullscreen">Fullscreen</button></div><div class="actions"><a class="btn" href="/series/{series_item["id"]}/{series_item["slug"]}">Episodes &amp; Seasons</a>{next_action}</div></section>"""
     return page_response(request, shell(request, f"Watch {series_item['title']}", body))
 
 
@@ -1076,7 +1247,7 @@ def history(request: Request, created: int = 0):
 
 
 @app.get("/account/settings", response_class=HTMLResponse)
-def settings(request: Request, tab: str = "preferences", saved: int = 0):
+def settings(request: Request, tab: str = "preferences", saved: int = 0, cancelled: int = 0):
     guard = protected(request, "/account/settings")
     if guard:
         return guard
@@ -1098,14 +1269,17 @@ def settings(request: Request, tab: str = "preferences", saved: int = 0):
             if subscription
             else "<h2>No active membership</h2>"
         )
-        content = f"""<div class="panel">{plan}<div class="actions"><a class="btn" href="/premium">Upgrade or Downgrade</a><button class="btn danger" type="button">Review Cancellation</button><a class="btn" href="/account/history">Payment History</a></div><p class="help-text">Actions affect only the local sandbox account.</p></div>"""
+        notice = "<div class='success'>Your local membership was cancelled.</div>" if cancelled else ""
+        cancel = "" if not subscription or subscription["status"] == "Cancelled" else """<button class="btn danger" type="button" data-dialog-open="cancel-membership">Review Cancellation</button>"""
+        content = f"""{notice}<div class="panel">{plan}<div class="actions"><a class="btn" href="/premium">Upgrade or Downgrade</a>{cancel}<a class="btn" href="/account/history">Payment History</a></div><p class="help-text">Actions affect only the local sandbox account.</p></div><dialog id="cancel-membership"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form><h2>Cancel membership?</h2><p>Your access remains a local simulation. This action can be reversed by choosing another plan.</p><div class="actions"><form method="post" action="/account/subscription/cancel"><button class="btn danger">Confirm Cancellation</button></form><button class="btn" type="button" data-dialog-close>Keep Membership</button></div></dialog>"""
     elif tab == "devices":
         content = (
             "<div class='panel'><h2>Manage Devices</h2>"
             + "".join(
-                f"<div class='row'><span>{esc(x['label'])}</span><span>{esc(x['last_used'])}</span></div>"
+                f"<div class='row'><span><strong>{esc(x['label'])}</strong><br><small>{esc(x['last_used'])}</small></span><form method='post' action='/account/devices/remove'><input type='hidden' name='device_id' value='{esc(x['device_id'])}'><button class='btn' type='submit'>Deactivate</button></form></div>"
                 for x in devices
             )
+            + ("<p class='help-text'>No active devices remain.</p>" if not devices else "")
             + "</div>"
         )
     else:
@@ -1142,9 +1316,65 @@ def save_settings(
     return redirect_with_session(request, "/account/settings?saved=1")
 
 
+@app.post("/account/subscription/cancel")
+def cancel_subscription(request: Request):
+    guard = protected(request, "/account/settings?tab=billing")
+    if guard:
+        return guard
+    with db() as connection:
+        subscription = connection.execute(
+            "SELECT plan,term FROM crunchyroll_subscriptions WHERE owner=?",
+            (owner(request),),
+        ).fetchone()
+        if subscription:
+            connection.execute(
+                "UPDATE crunchyroll_subscriptions SET status='Cancelled' WHERE owner=?",
+                (owner(request),),
+            )
+            connection.execute(
+                "INSERT INTO crunchyroll_history(owner,item_type,title,status,detail) VALUES (?,?,?,?,?)",
+                (owner(request), "subscription", f"{subscription['plan']} {subscription['term'].title()}", "Cancelled", "Local sandbox membership cancellation"),
+            )
+            connection.commit()
+    return redirect_with_session(request, "/account/settings?tab=billing&cancelled=1")
+
+
+@app.post("/account/devices/remove")
+def remove_device(request: Request, device_id: str = Form("")):
+    guard = protected(request, "/account/settings?tab=devices")
+    if guard:
+        return guard
+    with db() as connection:
+        removed = connection.execute(
+            "SELECT label FROM crunchyroll_devices WHERE owner=? AND device_id=?",
+            (owner(request), device_id),
+        ).fetchone()
+        connection.execute(
+            "DELETE FROM crunchyroll_devices WHERE owner=? AND device_id=?",
+            (owner(request), device_id),
+        )
+        if removed:
+            connection.execute(
+                "INSERT INTO crunchyroll_history(owner,item_type,title,status,detail) VALUES (?,?,?,?,?)",
+                (owner(request), "device-deactivated", removed["label"], "Deactivated", "Local device access removed"),
+            )
+        connection.commit()
+    return redirect_with_session(request, "/account/settings?tab=devices")
+
+
 @app.get("/help", response_class=HTMLResponse)
-def help_page(request: Request):
-    body = """<section class="section"><div class="eyebrow">Support &amp; Customer Service</div><h1>Crunchyroll Help</h1><form class="filter-bar"><input aria-label="Search help" placeholder="How can we help?"><button class="btn primary">Search</button></form><div class="plans"><article class="panel"><h2>Using Crunchyroll</h2><p>Browse anime records, search titles, manage My List, and use playback controls.</p><a href="/videos/popular">Browse anime</a></article><article class="panel"><h2>Account Access</h2><p>Find sign-in, registration, profile, password recovery, and membership guidance.</p><a href="/login">Account access</a></article><article class="panel"><h2>Fix a Problem</h2><p>Get guidance for failed actions, billing, subtitles, audio, and video playback.</p><a href="/help/contact">Contact Us</a></article></div></section>"""
+def help_page(request: Request, q: str = ""):
+    query = q.strip()
+    topics = (
+        ("Using Crunchyroll", "Browse anime records, search titles, manage My List, and use playback controls.", "/videos/popular", "Browse anime"),
+        ("Account Access", "Find sign-in, registration, profile, password recovery, and membership guidance.", "/login", "Account access"),
+        ("Fix a Problem", "Get guidance for failed actions, billing, subtitles, audio, and video playback.", "/help/contact", "Contact Us"),
+    )
+    matches = [topic for topic in topics if not query or query.casefold() in (topic[0] + " " + topic[1]).casefold()]
+    results = "".join(f"<article class='panel'><h2>{esc(title)}</h2><p>{esc(copy)}</p><a href='{path}'>{esc(label)}</a></article>" for title, copy, path, label in matches)
+    if not results:
+        results = "<div class='empty'><h2>No help topics found</h2><p>Try another phrase or contact support.</p><a class='btn primary' href='/help/contact'>Contact Us</a></div>"
+    body = f"""<section class="section"><div class="eyebrow">Support &amp; Customer Service</div><h1>Crunchyroll Help</h1><form class="filter-bar" method="get"><input name="q" value="{esc(query)}" aria-label="Search help" placeholder="How can we help?"><button class="btn primary">Search</button></form>{f'<p class="meta">{len(matches)} topic(s) found</p>' if query else ''}<div class="plans">{results}</div></section>"""
     return page_response(request, shell(request, "Crunchyroll Help", body))
 
 
