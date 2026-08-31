@@ -1,9 +1,10 @@
 import json
+import re
 from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from app import app
+from app import AUTO_SNAPSHOTS, _captured_url, app
 
 
 client = TestClient(app, base_url="https://testserver")
@@ -307,11 +308,152 @@ def test_saved_collection_is_visible_after_refresh_and_session_scoped() -> None:
     assert "2022 Ford Fiesta 1.0 EcoBoost" not in empty_collection.text
 
 
-def test_primary_navigation_opens_saved_collection() -> None:
+def test_captured_used_cars_landing_keeps_local_routing_controls() -> None:
     response = client.get("/cars/used")
 
     assert response.status_code == 200
-    assert 'class=nav-icon href=/cars/saved' in response.text
+    assert "Used cars" in response.text
+    assert "Autotrader" in response.text
+    assert "data-offline-routing" in response.text
+    assert "data-offline-interactions" in response.text
+    assert "data-offline-more-options" in response.text
+
+    results = client.get("/cars/used?make=Ford")
+    assert results.status_code == 200
+    assert "data-offline-saved-actions" in results.text
+    assert "data-save=" in results.text
+    assert "data-compare=" in results.text
+    assert 'data-offline-source-route="/cars/used"' in results.text
+    assert "data-offline-derived-state" in results.text
+    assert "<img class=vehicle-thumb src='data:image/" in results.text
+
+
+def test_captured_pages_receive_the_reviewed_common_interaction_controller() -> None:
+    response = client.get("/electric-bikes")
+
+    assert response.status_code == 200
+    assert "data-offline-interactions" in response.text
+    assert "data-offline-viewport-guard" in response.text
+    for behavior in (
+        "toggleAccordion",
+        "activateCarousel",
+        "revealCollection",
+        "scrollTo({top:0",
+        "openLocalPanel",
+        "submitLocalOnlyForm",
+        "nameIconButton",
+    ):
+        assert behavior in response.text
+
+
+def test_snapshot_account_control_can_show_and_route_the_authenticated_state() -> None:
+    response = client.get("/vans/electric")
+
+    assert response.status_code == 200
+    assert "setAccountLabel" in response.text
+    assert "offlineAccountDestination" in response.text
+    assert "state.account.name" in response.text
+    assert "Open your Autotrader Account" in response.text
+    assert "b.dataset.offlineAccountDestination||'/secure/signin'" in response.text
+
+
+def test_more_options_receives_an_accessible_local_filter_dialog() -> None:
+    response = client.get("/vans/electric")
+
+    assert response.status_code == 200
+    assert "openSearchOptions" in response.text
+    assert "data-offline-search-options" in response.text
+    assert "Price up to" in response.text
+    assert "Year from" in response.text
+    assert "Mileage up to" in response.text
+    assert "Body style" in response.text
+    assert "Apply filters" in response.text
+    assert "'Mercedes-Benz':['eSprinter','eVito']" in response.text
+
+
+def test_common_interaction_controller_preserves_local_only_side_effects() -> None:
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert "No preference was sent" in response.text
+    assert "No feedback was sent" in response.text
+    assert "No email was sent" in response.text
+    assert "Identity provider unavailable offline" in response.text
+    assert "data-offline-status" in response.text
+
+
+def test_every_runtime_frontend_has_an_exact_public_route() -> None:
+    manifest_path = Path(__file__).resolve().parents[2] / "source-assets" / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
+    assert manifest["closure_status"] == "no-assets"
+    assert manifest["assets"] == []
+    assert len(AUTO_SNAPSHOTS) == 56
+    for page in AUTO_SNAPSHOTS:
+        path = _captured_url(page)
+        assert path is not None, page.name
+        response = client.get(path)
+        assert response.status_code == 200, path
+        assert f'data-offline-source-route="{path}"' in response.text, path
+
+
+def test_vehicle_category_columns_link_to_the_supplied_frontends() -> None:
+    columns = {
+        "/cars": ["/cars/used", "/cars/new", "/cars/sell-my-car", "/cars/reviews", "/cars/leasing", "/cars/electric", "/cars/buying-online", "/cars/valuation"],
+        "/vans": ["/vans/used-vans", "/vans/new-vans", "/vans/sell", "/vans/content", "/vans/leasing", "/vans/electric", "/vans/finance", "/vans/insurance"],
+        "/bikes": ["/bikes/used-bikes", "/bikes/new-bikes", "/bikes/sell", "/bikes/content", "/bikes/electric", "/bikes/finance", "/bikes/insurance"],
+        "/motorhomes": ["/motorhomes/used-motorhomes", "/motorhomes/new-motorhomes", "/motorhomes/sell", "/motorhomes/content"],
+        "/caravans": ["/caravans/used-caravans", "/caravans/new-caravans", "/caravans/sell", "/caravans/content"],
+        "/trucks": ["/trucks/used-trucks", "/trucks/new-trucks", "/trucks/sell", "/trucks/content"],
+        "/farm": ["/farm/used-farm-machinery", "/farm/new-farm-machinery", "/farm/sell", "/farm/content"],
+        "/plant": ["/plant/used-plant-machinery", "/plant/new-plant-machinery", "/plant/sell", "/plant/content"],
+    }
+    for home, routes in columns.items():
+        response = client.get(home)
+        assert "href=about:blank#offline-www.autotrader.co.uk" not in response.text
+        for route in routes:
+            assert re.search(rf'''href\s*=\s*["']?{re.escape(route)}(?:[?"'\s>#]|$)''', response.text), (home, route)
+
+
+def test_public_captured_page_families_are_available() -> None:
+    expected = {
+        "/": "Discover more from Autotrader",
+        "/cars": "Discover more from Autotrader cars",
+        "/cars/used": "Used cars",
+        "/cars/sell-my-car": "Sell your car",
+        "/vans": "van marketplace",
+        "/bikes": "bike marketplace",
+        "/motorhomes": "motorhome and campervan marketplace",
+        "/caravans": "caravan marketplace",
+        "/trucks": "truck marketplace",
+        "/farm": "farm machinery marketplace",
+        "/plant": "plant machinery marketplace",
+        "/secure/signin": "Sign in or create an account",
+    }
+    for path, visible_copy in expected.items():
+        response = client.get(path)
+        assert response.status_code == 200, path
+        assert visible_copy.lower() in response.text.lower(), path
+
+    assert "data-offline-sell-signin" not in client.get("/cars/sell-my-car").text
+
+
+def test_public_signin_entry_can_open_the_local_identity_simulation() -> None:
+    public = client.get("/secure/signin")
+    local = client.get("/secure/signin?mode=local")
+
+    assert "Sign in another way" in public.text
+    assert "data-offline-routing" in public.text
+    assert 'id=signin' in local.text
+    assert "/api/auth/login" in local.text
+
+
+def test_external_links_are_contained_by_a_local_recovery_page() -> None:
+    response = client.get("/external-link?label=Finance%20provider")
+
+    assert response.status_code == 200
+    assert "Finance provider" in response.text
+    assert "No request was sent" in response.text
 
 
 def test_vehicle_detail_uses_server_owned_saved_state_controls() -> None:
@@ -321,6 +463,43 @@ def test_vehicle_detail_uses_server_owned_saved_state_controls() -> None:
     assert "data-save=ford-fiesta" in response.text
     assert "data-compare=ford-fiesta" in response.text
     assert "localStorage.setItem('saved-car-" not in response.text
+
+
+def test_captured_leasing_product_uses_the_supplied_card_facts_without_invented_detail() -> None:
+    response = client.get(
+        "/cars/leasing/product/202403267977298?leaseOption=12_24_5000"
+    )
+
+    assert response.status_code == 200
+    assert "Volkswagen Polo 1.0 TSI R-Line DSG Euro 6 (s/s) 5dr" in response.text
+    assert "£199 per month" in response.text
+    assert "£2,383" in response.text and "initial payment" in response.text
+    assert ">24</b> month contract" in response.text
+    assert ">5,000</b> miles p/a" in response.text
+    assert "September 2026 delivery" in response.text
+    assert 'data-offline-source-route="/cars/leasing"' in response.text
+    assert "12 photos" not in response.text
+    assert "verified dealer" not in response.text
+
+
+def test_captured_van_leasing_products_reuse_the_matching_card_and_frontend() -> None:
+    response = client.get(
+        "/vans/leasing/product/202603311189671?leaseOption=12_24_5000&fromhome"
+    )
+
+    assert response.status_code == 200
+    assert "Peugeot Expert 1.5 Asphalt XL Euro 6 (s/s) 6dr" in response.text
+    assert "£239 per month" in response.text
+    assert "exc. VAT" in response.text
+    assert "£2,868" in response.text and "initial payment" in response.text
+    assert ">24</b> month contract" in response.text
+    assert ">5,000</b> miles p/a" in response.text
+    assert "September 2026 delivery" in response.text
+    assert 'data-offline-source-route="/vans/leasing"' in response.text
+    assert "atds-image__container" in response.text
+    assert "Vehicle image unavailable" not in response.text
+    assert "12 photos" not in response.text
+    assert "verified dealer" not in response.text
 
 
 def test_contact_seller_requires_sign_in_and_persists_only_locally() -> None:

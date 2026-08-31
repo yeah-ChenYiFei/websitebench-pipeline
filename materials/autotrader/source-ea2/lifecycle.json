@@ -1,0 +1,20 @@
+{
+  "schema_version": "websitebench.source-ea2.lifecycle.v1",
+  "authority": "diagnostic-only",
+  "events": [
+    {"action": "read governance and phase references", "tool_category": "repository read", "result": "completed", "exit_code": 0},
+    {"action": "run shared tool catalog and CLI help preflight", "tool_category": "repository diagnostic", "result": "all requested commands completed", "exit_code": 0},
+    {"action": "launch isolated Playwright desktop context at source home", "tool_category": "browser exploration", "result": "HTTP 403 Cloudflare block page", "exit_code": 0},
+    {"action": "run frontend-spec mobile source capture", "tool_category": "WebsiteBench source exploration", "result": "report produced; HTTP 403 Cloudflare block page", "exit_code": 0},
+    {"action": "GET/HEAD robots.txt and sitemap.xml", "tool_category": "read-only network reconnaissance", "result": "both HTTP 403 HTML block pages", "exit_code": 0},
+    {"action": "inventory supplied SingleFile captures", "tool_category": "offline auxiliary evidence analysis", "result": "105 files, 101 included Autotrader files, 56 unique included paths, 4 exclusions", "exit_code": 0},
+    {"action": "render representative supplied SingleFiles", "tool_category": "Playwright offline render", "result": "8 screenshots and geometry report; JavaScript disabled; all HTTP(S) blocked", "exit_code": 0}
+  ],
+  "sanitization": [
+    "URL query values replaced with <redacted>; only query keys retained.",
+    "Potential authenticated account capture was not inspected.",
+    "No cookies, tokens, authorization headers, browser profiles, form values, request bodies, or private data were retained.",
+    "Two Atlassian files were excluded by embedded origin."
+  ],
+  "writes": "Repository writes limited to materials/autotrader/source-ea2/. Candidate was not inspected or modified."
+}

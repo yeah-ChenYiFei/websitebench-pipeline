@@ -16,7 +16,7 @@ cli({
   strategy: Strategy.LOCAL,
   browser: false,
   args: [
-    { name: 'route', type: 'string', default: '', help: 'Contract-relative route, e.g. secure/signin' },
+    { name: 'route', type: 'string', default: '', help: 'Contract-relative route, e.g. secure/signin?mode=local' },
     { name: 'base', type: 'string', default: 'http://127.0.0.1:8080', help: 'Clone base URL' },
     { name: 'selector', type: 'string', default: '', help: 'Selector expected to be present' },
     { name: 'expect', type: 'string', default: '', help: 'JSON object of contract required_state' },

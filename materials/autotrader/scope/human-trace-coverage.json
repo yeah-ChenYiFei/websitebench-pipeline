@@ -1,0 +1,39 @@
+{
+  "schema_version": "autotrader.human-trace-coverage.v1",
+  "authority": "diagnostic-only",
+  "human_trace_text_id": "ht-001",
+  "formal_text_location": "scope/human-traces.json",
+  "source_trajectory_status": "unavailable-cloudflare-403",
+  "candidate_trajectory_status": "partial-recorded",
+  "candidate_trajectory": "artifacts/trajectory/candidate-p0-main/ledger.json",
+  "agent_derived_requirements": [
+    {"id": "public-entry-navigation", "candidate_status": "implemented-and-tested", "evidence": ["clone/tests/test_smoke.py", "artifacts/candidate/home-desktop.png"]},
+    {"id": "scenario-754-sell-confirmation", "candidate_status": "implemented-and-tested", "evidence": ["/selling/find-car", "/selling/review", "/selling/confirmation", "clone/tests/test_smoke.py"]},
+    {"id": "vehicle-search-all-filters", "candidate_status": "implemented-and-tested", "evidence": ["/cars/used", "/api/search", "clone/tests/test_smoke.py"]},
+    {"id": "keyword-search-refinement", "candidate_status": "implemented-and-tested", "evidence": ["/cars/used?keyword=Fiesta", "clone/tests/test_smoke.py"]},
+    {"id": "sort-and-two-vehicle-compare", "candidate_status": "implemented-and-tested", "evidence": ["/cars/compare", "clone/tests/test_smoke.py"]},
+    {"id": "vehicle-detail-fields", "candidate_status": "implemented-and-browser-recorded", "evidence": ["/cars/used/listing/ford-fiesta", "artifacts/trajectory/candidate-p0-main/ledger.json"]},
+    {"id": "vehicle-configuration-option", "candidate_status": "implemented-and-tested", "evidence": ["/cars/used/listing/ford-fiesta", "clone/tests/test_smoke.py"]},
+    {"id": "saved-vehicle-search-alert", "candidate_status": "implemented-and-tested", "evidence": ["/cars/saved", "artifacts/trajectory/candidate-p0-main/ledger.json"]},
+    {"id": "account-registration-profile", "candidate_status": "implemented-and-tested", "evidence": ["/secure/register", "/secure/my-auto-trader", "clone/tests/test_smoke.py"]},
+    {"id": "sign-in-state-sign-out", "candidate_status": "implemented-and-tested", "evidence": ["/secure/signin?mode=local", "/secure/logout", "clone/tests/test_smoke.py"]},
+    {"id": "contact-seller-test-drive", "candidate_status": "implemented-and-tested", "evidence": ["/contact-seller", "/api/contact-requests", "clone/tests/test_smoke.py"]},
+    {"id": "address-delivery-option", "candidate_status": "implemented-and-tested", "evidence": ["/account/address", "/api/account/address", "clone/tests/test_smoke.py"]},
+    {"id": "vehicle-listing-description-photos-preview", "candidate_status": "implemented-and-tested", "evidence": ["/selling/find-car", "/api/listings/preview", "clone/tests/test_smoke.py"]},
+    {"id": "listing-edit-pause-renew-remove", "candidate_status": "implemented-and-tested", "evidence": ["/account/history", "/api/listings/{listing_id}/actions", "clone/tests/test_smoke.py"]},
+    {"id": "anonymous-no-results-recovery", "candidate_status": "implemented-and-tested", "evidence": ["/cars/used/no-results", "clone/tests/test_smoke.py"]},
+    {"id": "public-sign-in-entry-no-submit", "candidate_status": "implemented-and-visually-captured", "evidence": ["/secure/signin", "artifacts/candidate/signin-desktop.png"]},
+    {"id": "registration-entry-no-account", "candidate_status": "implemented-and-tested", "evidence": ["/secure/register", "clone/tests/test_smoke.py"]},
+    {"id": "password-recovery-no-message", "candidate_status": "implemented-and-tested", "evidence": ["/password-recovery", "artifacts/opencli/auth"]},
+    {"id": "seeded-account-history-actions", "candidate_status": "implemented-and-tested", "evidence": ["/account/history", "clone/tests/test_smoke.py"]},
+    {"id": "required-field-or-signed-out-error", "candidate_status": "implemented-and-tested", "evidence": ["/selling/find-car", "/contact-seller", "clone/tests/test_smoke.py"]},
+    {"id": "public-help-support", "candidate_status": "implemented-and-tested", "evidence": ["/help", "artifacts/opencli/auth"]},
+    {"id": "deep-link-not-found-recovery", "candidate_status": "implemented-and-tested", "evidence": ["/missing/vehicle/record/754", "clone/tests/test_smoke.py"]},
+    {"id": "end-to-end-scenario-754", "candidate_status": "implemented-multi-surface-tested", "evidence": ["tools/p0-main.scenario.json", "clone/tests/test_smoke.py"]}
+  ],
+  "acceptance_limits": [
+    "Formal source-side selectors, step order, redirects and results remain unrecorded.",
+    "The recorded candidate browser journey covers public search, sort, save, compare and detail; the remaining formal-trace clauses are covered by candidate tests and route evidence, not one continuous browser recording.",
+    "Historical SingleFile renders do not establish current-live source interaction semantics."
+  ]
+}

@@ -1,0 +1,1074 @@
+{
+  "schema_version": "websitebench.offline-clone.frozen-matrix.v1",
+  "site_id": "autotrader",
+  "frozen_at": "2026-08-28T01:02:46Z",
+  "status": "frozen-with-unavailable-source-evidence",
+  "authority": "scope-contract; not acceptance",
+  "roles": [
+    "anonymous-visitor"
+  ],
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "source_frame_policy": {
+    "required_per_p0_p1_checkpoint": 3,
+    "available_current_live_frames": 0,
+    "auxiliary_singlefile_captures": "one selected capture per unique route; duplicate_capture_count retained",
+    "strict_visual_acceptance_eligible": false,
+    "reason": "Automated live source channels returned Cloudflare 403 and no controllable human CDP channel was available."
+  },
+  "routes": [
+    {
+      "route": "/",
+      "family": "home",
+      "priority": "p0",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Autotrader UK - New and Used Cars For Sale (2026_8_22 21：58：53).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/bikes",
+      "family": "market-landing",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Autotrader Bikes - New and Used Bikes For Sale (2026_8_22 01：24：06).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/bikes/content",
+      "family": "editorial",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Bike reviews, news & advice ｜ Autotrader (2026_8_21 13：48：53).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/bikes/electric",
+      "family": "electric",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Electric Motorbikes & Mopeds for sale on Autotrader (2026_8_22 01：20：30).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/bikes/finance",
+      "family": "finance",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Bike Finance and Bike Loans – Autotrader UK (2026_8_21 13：48：46).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/bikes/insurance",
+      "family": "insurance",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Cheap Bike Insurance - Compare Bike Insurance Online - Autotrader UK (2026_8_22 01：20：29).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/bikes/new-bikes",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "New Motorbikes for Sale ｜ Autotrader UK (2026_8_21 13：48：44).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/bikes/sell",
+      "family": "sell",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Sell My Motorbike Online ｜ Autotrader UK (2026_8_21 13：48：44).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/bikes/used-bikes",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Find used motorbikes for sale on Autotrader UK (2026_8_22 01：20：28).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/caravans",
+      "family": "market-landing",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Autotrader Caravans - New and Used Caravans For Sale (2026_8_22 01：24：05).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/caravans/content",
+      "family": "editorial",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Caravan reviews, news & advice ｜ Autotrader (2026_8_21 14：35：23).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/caravans/new-caravans",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "New Caravans for Sale ｜ Autotrader UK (2026_8_21 14：35：22).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/caravans/sell",
+      "family": "sell",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Sell My Caravan ｜ Sell Your Caravan on Autotrader UK (2026_8_22 01：20：58).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/caravans/used-caravans",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Used Caravans for sale ｜ Autotrader Caravans (2026_8_21 14：35：22).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/cars",
+      "family": "market-landing",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Cars For Sale Online ｜ Found AT Autotrader UK (2026_8_22 01：24：05).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/cars/buying-online",
+      "family": "other",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Buy a Car Online ｜ Autotrader UK (2026_8_21 13：00：02).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/cars/electric",
+      "family": "electric",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Electric Cars ｜ New & Used for Sale ｜ Autotrader UK (2026_8_21 13：00：02).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/cars/leasing",
+      "family": "leasing",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Car Leasing Deals ｜ Personal & Business ｜ Autotrader UK (2026_8_21 13：00：13).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/cars/new",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "New Car Deals ｜ 26 Plates In Stock ｜ Autotrader (2026_8_22 00：19：24).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/cars/reviews",
+      "family": "editorial",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Car reviews, news & advice ｜ Autotrader (2026_8_22 00：19：23).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/cars/sell-my-car",
+      "family": "sell",
+      "priority": "p1",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Sell My Car ｜ Over 9,500 Cars Sold Everyday ｜ Autotrader (2026_8_22 00：19：24).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/cars/used",
+      "family": "inventory-subcategory",
+      "priority": "p0",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Used Cars For Sale ｜ Second Hand Cars ｜ Autotrader UK (2026_8_22 00：12：37).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/cars/valuation",
+      "family": "valuation",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Free Car Valuation ｜ How Much Is My Car Worth？ ｜ Autotrader UK (2026_8_22 00：19：23).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/electric-bikes",
+      "family": "electric",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Electric bikes for sale ｜ Autotrader Electric bikes (2026_8_22 01：24：08).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/electric-bikes/content",
+      "family": "editorial",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Electric bike reviews, news & advice (2026_8_21 14：37：58).html",
+      "duplicate_capture_count": 3
+    },
+    {
+      "route": "/electric-bikes/new",
+      "family": "electric",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Electric Bikes for sale ｜ Autotrader Bikes (2026_8_21 14：37：57).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/farm",
+      "family": "market-landing",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Used Farm Machinery & Tractors for Sale ｜ Autotrader Farm (2026_8_22 01：24：03).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/farm/content",
+      "family": "editorial",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Farm machinery reviews, news & advice ｜ Autotrader (2026_8_21 14：37：48).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/farm/new-farm-machinery",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "New Tractors & Farm Machinery for Sale ｜ Autotrader Farm (2026_8_21 14：37：46).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/farm/sell",
+      "family": "sell",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Sell My Tractors and Farm Machinery on Autotrader UK (2026_8_21 14：37：45).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/farm/used-farm-machinery",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Used Farm Machinery & Tractors for Sale ｜ Autotrader Farm (2026_8_21 14：37：49).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/motorhomes",
+      "family": "market-landing",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "New and Used Motorhomes and Campervans for Sale ｜ Autotrader (2026_8_22 01：24：02).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/motorhomes/content",
+      "family": "editorial",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Motorhome reviews, news & advice ｜ Autotrader (2026_8_22 01：20：54).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/motorhomes/new-motorhomes",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "New Motorhomes for Sale ｜ Autotrader Motorhomes (2026_8_22 01：20：28).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/motorhomes/sell",
+      "family": "sell",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Sell My Motorhome ｜ Sell Your Used Motorhome on Autotrader UK (2026_8_22 01：20：30).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/motorhomes/used-motorhomes",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Used Motorhomes for sale ｜ Autotrader Motorhomes (2026_8_21 14：35：22).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/plant",
+      "family": "market-landing",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Used Plant Machinery & Equipment For Sale ｜ Autotrader Plant (2026_8_22 01：24：04).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/plant/content",
+      "family": "editorial",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Plant machinery reviews, news & advice ｜ Autotrader (2026_8_21 14：37：57).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/plant/new-plant-machinery",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "New Plant Machinery for Sale ｜ Autotrader Plant (2026_8_21 14：37：48).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/plant/sell",
+      "family": "sell",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Sell My Plant Machinery on Autotrader UK (2026_8_22 01：22：35).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/plant/used-plant-machinery",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Used Plant Machinery for Sale ｜ Autotrader Plant (2026_8_21 14：37：46).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/secure/signin",
+      "family": "account",
+      "priority": "p1",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Sign In ｜ Autotrader UK (2026_8_22 21：58：52).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/trucks",
+      "family": "market-landing",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Used Trucks For Sale ｜ Autotrader Trucks (2026_8_22 01：24：04).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/trucks/content",
+      "family": "editorial",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Truck reviews, news & advice ｜ Autotrader (2026_8_21 14：37：47).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/trucks/new-trucks",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "New Trucks for Sale ｜ Autotrader UK (2026_8_22 01：21：16).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/trucks/sell",
+      "family": "sell",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Sell My Truck ｜ Sell Your Truck on Autotrader UK (2026_8_22 01：21：18).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/trucks/used-trucks",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Used Trucks & Lorries for Sale ｜ Autotrader Trucks (2026_8_21 14：37：45).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/vans",
+      "family": "market-landing",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Autotrader Vans - New and Used Vans For Sale (2026_8_22 01：24：01).html",
+      "duplicate_capture_count": 1
+    },
+    {
+      "route": "/vans/content",
+      "family": "editorial",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Van reviews, news & advice ｜ Autotrader (2026_8_21 13：00：56).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/vans/electric",
+      "family": "electric",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Electric Vans for sale on Autotrader (2026_8_22 01：13：38).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/vans/finance",
+      "family": "finance",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Van Finance and Van Loans – Autotrader UK (2026_8_21 13：00：57).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/vans/insurance",
+      "family": "insurance",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Cheap Van Insurance - Compare Van Insurance Online - Autotrader UK (2026_8_22 01：13：38).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/vans/leasing",
+      "family": "leasing",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Van Leasing ｜ Compare Best Deals & In Stock Vans ｜ Autotrader UK (2026_8_21 13：01：01).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/vans/new-vans",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "New Vans for Sale ｜ Autotrader Vans (2026_8_21 13：00：58).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/vans/sell",
+      "family": "sell",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Sell My Van Online ｜ Autotrader UK (2026_8_21 13：00：58).html",
+      "duplicate_capture_count": 2
+    },
+    {
+      "route": "/vans/used-vans",
+      "family": "inventory-subcategory",
+      "priority": "p2",
+      "role": "anonymous-visitor",
+      "states": [
+        "loaded"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "structural-only",
+      "acceptance_eligible": false,
+      "source_file": "Find used vans for sale on Autotrader UK (2026_8_22 01：13：37).html",
+      "duplicate_capture_count": 2
+    }
+  ],
+  "dynamic_states": [
+    {
+      "id": "cars-results.filtered",
+      "route": "/cars/used",
+      "priority": "p0",
+      "role": "anonymous-visitor",
+      "state": "filtered-results",
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "unavailable",
+      "implementation_resolution": "full-local-model",
+      "acceptance_eligible": false
+    },
+    {
+      "id": "cars-results.no-results",
+      "route": "/cars/used",
+      "priority": "p1",
+      "role": "anonymous-visitor",
+      "state": "no-results-recovery",
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "unavailable",
+      "implementation_resolution": "full-local-model",
+      "acceptance_eligible": false
+    },
+    {
+      "id": "vehicle-detail.loaded",
+      "route": "/cars/used/listing/{listing_id}",
+      "priority": "p0",
+      "role": "anonymous-visitor",
+      "state": "loaded",
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "unavailable",
+      "implementation_resolution": "full-local-model",
+      "acceptance_eligible": false
+    },
+    {
+      "id": "saved-and-compare.local",
+      "route": "/cars/saved|/cars/compare",
+      "priority": "p1",
+      "role": "anonymous-visitor",
+      "state": "empty-and-populated",
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "unavailable",
+      "implementation_resolution": "full-local-model",
+      "acceptance_eligible": false
+    },
+    {
+      "id": "sell-local-preview",
+      "route": "/selling/find-car|/selling/review|/selling/confirmation",
+      "priority": "p1",
+      "role": "anonymous-visitor",
+      "state": "validation-preview-confirmation",
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "evidence_grade": "unavailable",
+      "implementation_resolution": "full-local-model; no external publication",
+      "acceptance_eligible": false
+    }
+  ],
+  "catalog_contract": {
+    "required_minimum": 200,
+    "actual": 200,
+    "independent_from_harbor_case_count": true,
+    "requirements": [
+      "searchable",
+      "filterable",
+      "sortable",
+      "openable detail",
+      "stable local state"
+    ]
+  },
+  "authorization": {
+    "source_mutations": [],
+    "runtime_source_requests": "forbidden",
+    "real_email": false,
+    "payment": false,
+    "push": false,
+    "pr": false,
+    "public_deployment": false
+  }
+}

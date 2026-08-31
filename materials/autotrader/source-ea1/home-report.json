@@ -1,0 +1,123 @@
+{
+  "authority": "diagnostic-only",
+  "console_errors": [
+    "Failed to load resource: the server responded with a status of 403 ()"
+  ],
+  "environment": "source",
+  "network": {
+    "blocked": [],
+    "failed": [],
+    "requests": [
+      {
+        "method": "GET",
+        "resource_type": "document",
+        "url": "https://www.autotrader.co.uk/"
+      },
+      {
+        "method": "GET",
+        "resource_type": "stylesheet",
+        "url": "https://www.autotrader.co.uk/cdn-cgi/styles/cf.errors.css"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://www.autotrader.co.uk/cdn-cgi/images/browser-bar.png"
+      },
+      {
+        "method": "GET",
+        "resource_type": "image",
+        "url": "https://www.autotrader.co.uk/cdn-cgi/images/cf-no-screenshot-error.png"
+      }
+    ]
+  },
+  "scenario_id": "autotrader-ea1-home-preflight",
+  "schema_version": "websitebench.offline-clone.browser-exploration.v1",
+  "spec": {
+    "path": "materials/autotrader/source-ea1/specs/home.scenario.json"
+  },
+  "status": "passed",
+  "steps": [
+    {
+      "action": "goto",
+      "error": null,
+      "id": "open-home",
+      "observations": [
+        {
+          "actual": "/",
+          "id": "home-route",
+          "kind": "url_path",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "id": "home-visible",
+          "kind": "visible",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "route": "/",
+      "screenshot": {
+        "bytes": 59526,
+        "path": "materials/autotrader/source-ea1/artifacts/home/autotrader-ea1-home-preflight-open-home.png"
+      }
+    },
+    {
+      "action": "snapshot",
+      "error": null,
+      "id": "home-snapshot",
+      "observations": [
+        {
+          "actual": false,
+          "id": "main-visible",
+          "kind": "visible",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "id": "links-count",
+          "kind": "count",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "id": "buttons-count",
+          "kind": "count",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "id": "inputs-count",
+          "kind": "count",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "route": "/",
+      "screenshot": {
+        "bytes": 52444,
+        "path": "materials/autotrader/source-ea1/artifacts/home/autotrader-ea1-home-preflight-home-snapshot.png"
+      }
+    }
+  ],
+  "summary": {
+    "assertion_failures": 0,
+    "blocked_request_count": 0,
+    "console_error_count": 1,
+    "failed_request_count": 0,
+    "steps_passed": 2,
+    "steps_total": 2
+  },
+  "target": {
+    "allowed_origins": [
+      "https://www.autotrader.co.uk"
+    ],
+    "authenticated_storage_consumed": false,
+    "base_origin": "https://www.autotrader.co.uk",
+    "source_mutations_authorized": false,
+    "viewport": {
+      "height": 900,
+      "width": 1440
+    }
+  }
+}

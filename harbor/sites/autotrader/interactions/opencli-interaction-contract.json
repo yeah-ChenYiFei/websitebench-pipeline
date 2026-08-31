@@ -24,12 +24,12 @@
         {
           "command": "state",
           "id": "auth-signin",
-          "intent": "Exercise clone check auth.signin (GET /secure/signin).",
+          "intent": "Exercise clone check auth.signin (GET /secure/signin?mode=local).",
           "observation_id": "autotrader_auth_signin",
           "required_state": {
             "visible": "Email address"
           },
-          "route": "secure/signin"
+          "route": "secure/signin?mode=local"
         },
         {
           "command": "state",
@@ -54,12 +54,12 @@
         {
           "command": "state",
           "id": "auth-identity-provider",
-          "intent": "Exercise clone check auth.identity-provider (GET /secure/signin).",
+          "intent": "Exercise clone check auth.identity-provider (GET /secure/signin?mode=local).",
           "observation_id": "autotrader_auth_identity-provider",
           "required_state": {
             "visible": "Continue with Google"
           },
-          "route": "secure/signin"
+          "route": "secure/signin?mode=local"
         },
         {
           "command": "state",

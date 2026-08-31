@@ -54,7 +54,7 @@
     },
     {
       "id": "auth.signin",
-      "url": "/secure/signin",
+      "url": "/secure/signin?mode=local",
       "expect_status": 200,
       "expect_contains": ["Email address"],
       "expect_not_contains": [],
@@ -94,7 +94,7 @@
     },
     {
       "id": "auth.identity-provider",
-      "url": "/secure/signin",
+      "url": "/secure/signin?mode=local",
       "expect_status": 200,
       "expect_contains": ["Continue with Google"],
       "expect_not_contains": [],

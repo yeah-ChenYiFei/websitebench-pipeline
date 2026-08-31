@@ -1,0 +1,602 @@
+{
+  "counts": {
+    "input_files": 105,
+    "autotrader_files_included": 101,
+    "unique_autotrader_paths": 56,
+    "excluded_files": 4,
+    "families": {
+      "home": 1,
+      "market-landing": 8,
+      "editorial": 9,
+      "electric": 5,
+      "finance": 2,
+      "insurance": 2,
+      "inventory-subcategory": 16,
+      "sell": 8,
+      "other": 1,
+      "leasing": 2,
+      "valuation": 1,
+      "account": 1
+    }
+  },
+  "route_index": [
+    {
+      "path": "/",
+      "family": "home",
+      "title": "Autotrader UK - New and Used Cars For Sale",
+      "h1": [
+        "Discover more from Autotrader"
+      ],
+      "forms": 1,
+      "fields": 3
+    },
+    {
+      "path": "/bikes",
+      "family": "market-landing",
+      "title": "Autotrader Bikes - New and Used Bikes For Sale",
+      "h1": [
+        "Your trusted bike marketplace"
+      ],
+      "forms": 1,
+      "fields": 5
+    },
+    {
+      "path": "/bikes/content",
+      "family": "editorial",
+      "title": "Bike reviews, news & advice | Autotrader",
+      "h1": [
+        "Latest bike news from our experts"
+      ],
+      "forms": 2,
+      "fields": 3
+    },
+    {
+      "path": "/bikes/electric",
+      "family": "electric",
+      "title": "Electric Motorbikes & Mopeds for sale on Autotrader",
+      "h1": [
+        "Electric Motorbikes"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/bikes/finance",
+      "family": "finance",
+      "title": "Bike Finance and Bike Loans – Autotrader UK",
+      "h1": [
+        "bike finance"
+      ],
+      "forms": 2,
+      "fields": 3
+    },
+    {
+      "path": "/bikes/insurance",
+      "family": "insurance",
+      "title": "Cheap Bike Insurance - Compare Bike Insurance Online - Autotrader UK",
+      "h1": [
+        "Bike insurance"
+      ],
+      "forms": 1,
+      "fields": 1
+    },
+    {
+      "path": "/bikes/new-bikes",
+      "family": "inventory-subcategory",
+      "title": "New Motorbikes for Sale | Autotrader UK",
+      "h1": [
+        "New motorbikes"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/bikes/sell",
+      "family": "sell",
+      "title": "Sell My Motorbike Online | Autotrader UK",
+      "h1": [
+        "Sell my motorbike"
+      ],
+      "forms": 1,
+      "fields": 2
+    },
+    {
+      "path": "/bikes/used-bikes",
+      "family": "inventory-subcategory",
+      "title": "Find used motorbikes for sale on Autotrader UK",
+      "h1": [
+        "Used bikes"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/caravans",
+      "family": "market-landing",
+      "title": "Autotrader Caravans - New and Used Caravans For Sale",
+      "h1": [
+        "Your trusted caravan marketplace"
+      ],
+      "forms": 1,
+      "fields": 3
+    },
+    {
+      "path": "/caravans/content",
+      "family": "editorial",
+      "title": "Caravan reviews, news & advice | Autotrader",
+      "h1": [
+        "Latest caravan news from our experts"
+      ],
+      "forms": 2,
+      "fields": 3
+    },
+    {
+      "path": "/caravans/new-caravans",
+      "family": "inventory-subcategory",
+      "title": "New Caravans for Sale | Autotrader UK",
+      "h1": [
+        "New caravans"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/caravans/sell",
+      "family": "sell",
+      "title": "Sell My Caravan | Sell Your Caravan on Autotrader UK",
+      "h1": [
+        "Sell my caravan"
+      ],
+      "forms": 1,
+      "fields": 0
+    },
+    {
+      "path": "/caravans/used-caravans",
+      "family": "inventory-subcategory",
+      "title": "Used Caravans for sale | Autotrader Caravans",
+      "h1": [
+        "Used caravans"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/cars",
+      "family": "market-landing",
+      "title": "Cars For Sale Online | Found AT Autotrader UK",
+      "h1": [
+        "Discover more from Autotrader cars"
+      ],
+      "forms": 1,
+      "fields": 3
+    },
+    {
+      "path": "/cars/buying-online",
+      "family": "other",
+      "title": "Buy a Car Online | Autotrader UK",
+      "h1": [
+        "Buy a car online"
+      ],
+      "forms": 1,
+      "fields": 3
+    },
+    {
+      "path": "/cars/electric",
+      "family": "electric",
+      "title": "Electric Cars | New & Used for Sale | Autotrader UK",
+      "h1": [
+        "Electric cars"
+      ],
+      "forms": 1,
+      "fields": 3
+    },
+    {
+      "path": "/cars/leasing",
+      "family": "leasing",
+      "title": "Car Leasing Deals | Personal & Business | Autotrader UK",
+      "h1": [
+        "Car leasing"
+      ],
+      "forms": 1,
+      "fields": 4
+    },
+    {
+      "path": "/cars/new",
+      "family": "inventory-subcategory",
+      "title": "New Car Deals | 26 Plates In Stock | Autotrader",
+      "h1": [
+        "New cars"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/cars/reviews",
+      "family": "editorial",
+      "title": "Car reviews, news & advice | Autotrader",
+      "h1": [
+        "Latest car news from our experts"
+      ],
+      "forms": 2,
+      "fields": 3
+    },
+    {
+      "path": "/cars/sell-my-car",
+      "family": "sell",
+      "title": "Sell My Car | Over 9,500 Cars Sold Everyday | Autotrader",
+      "h1": [
+        "Sell your car"
+      ],
+      "forms": 2,
+      "fields": 3
+    },
+    {
+      "path": "/cars/used",
+      "family": "inventory-subcategory",
+      "title": "Used Cars For Sale | Second Hand Cars | Autotrader UK",
+      "h1": [
+        "Used cars"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/cars/valuation",
+      "family": "valuation",
+      "title": "Free Car Valuation | How Much Is My Car Worth? | Autotrader UK",
+      "h1": [
+        "Value my car"
+      ],
+      "forms": 2,
+      "fields": 2
+    },
+    {
+      "path": "/electric-bikes",
+      "family": "electric",
+      "title": "Electric bikes for sale | Autotrader Electric bikes",
+      "h1": [
+        "Discover more from Autotrader electric bikes"
+      ],
+      "forms": 1,
+      "fields": 3
+    },
+    {
+      "path": "/electric-bikes/content",
+      "family": "editorial",
+      "title": "Electric bike reviews, news & advice",
+      "h1": [
+        "Latest electric bikes news from our experts"
+      ],
+      "forms": 1,
+      "fields": 1
+    },
+    {
+      "path": "/electric-bikes/new",
+      "family": "electric",
+      "title": "Electric Bikes for sale | Autotrader Bikes",
+      "h1": [
+        "New electric bikes"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/farm",
+      "family": "market-landing",
+      "title": "Used Farm Machinery & Tractors for Sale | Autotrader Farm",
+      "h1": [
+        "Your trusted farm machinery marketplace"
+      ],
+      "forms": 1,
+      "fields": 4
+    },
+    {
+      "path": "/farm/content",
+      "family": "editorial",
+      "title": "Farm machinery reviews, news & advice | Autotrader",
+      "h1": [
+        "Latest farm machinery news from our experts"
+      ],
+      "forms": 1,
+      "fields": 1
+    },
+    {
+      "path": "/farm/new-farm-machinery",
+      "family": "inventory-subcategory",
+      "title": "New Tractors & Farm Machinery for Sale | Autotrader Farm",
+      "h1": [
+        "New farm machinery"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/farm/sell",
+      "family": "sell",
+      "title": "Sell My Tractors and Farm Machinery on Autotrader UK",
+      "h1": [
+        "Sell my farm machinery"
+      ],
+      "forms": 1,
+      "fields": 0
+    },
+    {
+      "path": "/farm/used-farm-machinery",
+      "family": "inventory-subcategory",
+      "title": "Used Farm Machinery & Tractors for Sale | Autotrader Farm",
+      "h1": [
+        "Used farm machinery"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/motorhomes",
+      "family": "market-landing",
+      "title": "New and Used Motorhomes and Campervans for Sale | Autotrader",
+      "h1": [
+        "Your trusted motorhome and campervan marketplace"
+      ],
+      "forms": 1,
+      "fields": 5
+    },
+    {
+      "path": "/motorhomes/content",
+      "family": "editorial",
+      "title": "Motorhome reviews, news & advice | Autotrader",
+      "h1": [
+        "Latest motorhome news from our experts"
+      ],
+      "forms": 2,
+      "fields": 3
+    },
+    {
+      "path": "/motorhomes/new-motorhomes",
+      "family": "inventory-subcategory",
+      "title": "New Motorhomes for Sale | Autotrader Motorhomes",
+      "h1": [
+        "New motorhomes"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/motorhomes/sell",
+      "family": "sell",
+      "title": "Sell My Motorhome | Sell Your Used Motorhome on Autotrader UK",
+      "h1": [
+        "Sell my motorhome"
+      ],
+      "forms": 1,
+      "fields": 2
+    },
+    {
+      "path": "/motorhomes/used-motorhomes",
+      "family": "inventory-subcategory",
+      "title": "Used Motorhomes for sale | Autotrader Motorhomes",
+      "h1": [
+        "Used motorhomes"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/plant",
+      "family": "market-landing",
+      "title": "Used Plant Machinery & Equipment For Sale | Autotrader Plant",
+      "h1": [
+        "Your trusted plant machinery marketplace"
+      ],
+      "forms": 1,
+      "fields": 4
+    },
+    {
+      "path": "/plant/content",
+      "family": "editorial",
+      "title": "Plant machinery reviews, news & advice | Autotrader",
+      "h1": [
+        "Latest plant machinery news from our experts"
+      ],
+      "forms": 1,
+      "fields": 1
+    },
+    {
+      "path": "/plant/new-plant-machinery",
+      "family": "inventory-subcategory",
+      "title": "New Plant Machinery for Sale | Autotrader Plant",
+      "h1": [
+        "New plant machinery"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/plant/sell",
+      "family": "sell",
+      "title": "Sell My Plant Machinery on Autotrader UK",
+      "h1": [
+        "Sell my plant machinery"
+      ],
+      "forms": 1,
+      "fields": 0
+    },
+    {
+      "path": "/plant/used-plant-machinery",
+      "family": "inventory-subcategory",
+      "title": "Used Plant Machinery for Sale | Autotrader Plant",
+      "h1": [
+        "Used plant machinery"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/secure/signin",
+      "family": "account",
+      "title": "Sign In | Autotrader UK",
+      "h1": [
+        "Sign in or create an account"
+      ],
+      "forms": 0,
+      "fields": 1
+    },
+    {
+      "path": "/trucks",
+      "family": "market-landing",
+      "title": "Used Trucks For Sale | Autotrader Trucks",
+      "h1": [
+        "Your trusted truck marketplace"
+      ],
+      "forms": 1,
+      "fields": 4
+    },
+    {
+      "path": "/trucks/content",
+      "family": "editorial",
+      "title": "Truck reviews, news & advice | Autotrader",
+      "h1": [
+        "Latest truck news from our experts"
+      ],
+      "forms": 1,
+      "fields": 1
+    },
+    {
+      "path": "/trucks/new-trucks",
+      "family": "inventory-subcategory",
+      "title": "New Trucks for Sale | Autotrader UK",
+      "h1": [
+        "New trucks"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/trucks/sell",
+      "family": "sell",
+      "title": "Sell My Truck | Sell Your Truck on Autotrader UK",
+      "h1": [
+        "Sell my truck"
+      ],
+      "forms": 1,
+      "fields": 0
+    },
+    {
+      "path": "/trucks/used-trucks",
+      "family": "inventory-subcategory",
+      "title": "Used Trucks & Lorries for Sale | Autotrader Trucks",
+      "h1": [
+        "Used trucks"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/vans",
+      "family": "market-landing",
+      "title": "Autotrader Vans - New and Used Vans For Sale",
+      "h1": [
+        "Your trusted van marketplace"
+      ],
+      "forms": 1,
+      "fields": 5
+    },
+    {
+      "path": "/vans/content",
+      "family": "editorial",
+      "title": "Van reviews, news & advice | Autotrader",
+      "h1": [
+        "Latest van news from our experts"
+      ],
+      "forms": 2,
+      "fields": 3
+    },
+    {
+      "path": "/vans/electric",
+      "family": "electric",
+      "title": "Electric Vans for sale on Autotrader",
+      "h1": [
+        "Electric vans"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/vans/finance",
+      "family": "finance",
+      "title": "Van Finance and Van Loans – Autotrader UK",
+      "h1": [
+        "van finance"
+      ],
+      "forms": 2,
+      "fields": 3
+    },
+    {
+      "path": "/vans/insurance",
+      "family": "insurance",
+      "title": "Cheap Van Insurance - Compare Van Insurance Online - Autotrader UK",
+      "h1": [
+        "Van insurance"
+      ],
+      "forms": 1,
+      "fields": 1
+    },
+    {
+      "path": "/vans/leasing",
+      "family": "leasing",
+      "title": "Van Leasing | Compare Best Deals & In Stock Vans | Autotrader UK",
+      "h1": [
+        "Van leasing"
+      ],
+      "forms": 1,
+      "fields": 4
+    },
+    {
+      "path": "/vans/new-vans",
+      "family": "inventory-subcategory",
+      "title": "New Vans for Sale | Autotrader Vans",
+      "h1": [
+        "New vans"
+      ],
+      "forms": 2,
+      "fields": 4
+    },
+    {
+      "path": "/vans/sell",
+      "family": "sell",
+      "title": "Sell My Van Online | Autotrader UK",
+      "h1": [
+        "Sell my van"
+      ],
+      "forms": 2,
+      "fields": 3
+    },
+    {
+      "path": "/vans/used-vans",
+      "family": "inventory-subcategory",
+      "title": "Find used vans for sale on Autotrader UK",
+      "h1": [
+        "Used vans"
+      ],
+      "forms": 2,
+      "fields": 4
+    }
+  ],
+  "excluded": [
+    {
+      "filename": "Collaboration software for software, IT and business teams ｜ Atlassian (2026_8_21 14：15：05).html",
+      "reason": "non-Autotrader origin"
+    },
+    {
+      "filename": "Contact Atlassian for Enterprise Solutions ｜ Atlassian (2026_8_21 14：10：39).html",
+      "reason": "non-Autotrader origin"
+    },
+    {
+      "filename": "No title (2026_8_22 21：59：14).html",
+      "reason": "potential authenticated/private account capture; content not inspected"
+    },
+    {
+      "filename": "Sign In ｜ Autotrader UK (2026_8_21 15：15：55).html",
+      "reason": "duplicate sign-in capture with identifier-bearing query; clean public capture preferred"
+    }
+  ]
+}

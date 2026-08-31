@@ -1,0 +1,196 @@
+{
+  "schema_version": "websitebench.source-ea2.recon-summary.v1",
+  "authority": "diagnostic-only",
+  "role": "EA2 breadth-first explorer",
+  "source_identity": {
+    "requested_url": "https://www.autotrader.co.uk/",
+    "canonical_origin": "https://www.autotrader.co.uk",
+    "actor": "anonymous",
+    "locale": "en-GB",
+    "timezone": "Europe/London"
+  },
+  "browser_provider_preflight": [
+    {
+      "provider": "local Playwright Chromium",
+      "session_created": true,
+      "real_page": false,
+      "rendered_text": true,
+      "interactive_live_view": false,
+      "result": "Source returned HTTP 403 Cloudflare block page in desktop and mobile fresh contexts. Headless execution had no user-facing Live View."
+    },
+    {
+      "provider": "Browser Use",
+      "session_created": false,
+      "real_page": false,
+      "rendered_text": false,
+      "interactive_live_view": false,
+      "result": "No Browser Use provider was exposed in this execution environment."
+    },
+    {
+      "provider": "Browserbase",
+      "session_created": false,
+      "real_page": false,
+      "rendered_text": false,
+      "interactive_live_view": false,
+      "result": "No Browserbase credentials or callable provider were available; no paid cloud session was created."
+    }
+  ],
+  "source_access_attempts": [
+    {
+      "id": "ea2-live-desktop-home",
+      "tool": "Playwright Chromium fresh context",
+      "method_policy": "GET/HEAD only; non-GET/HEAD aborted",
+      "result": "HTTP 403; Cloudflare block page",
+      "exit_code": 0,
+      "evidence": "preflight/playwright-home-recon.json"
+    },
+    {
+      "id": "ea2-live-mobile-home",
+      "tool": "websitebench-offline-clone tools frontend-spec",
+      "method_policy": "GET-only source acquisition",
+      "result": "HTTP 403; report generation succeeded but captured only the Cloudflare block page",
+      "exit_code": 0,
+      "evidence": "preflight/frontend-spec-mobile.json"
+    },
+    {
+      "id": "ea2-live-robots-sitemap",
+      "tool": "curl GET/HEAD",
+      "method_policy": "GET/HEAD only",
+      "result": "robots.txt and sitemap.xml both HTTP 403 HTML block pages",
+      "exit_code": 0,
+      "evidence": "lifecycle.json"
+    }
+  ],
+  "auxiliary_evidence": {
+    "source": "User-supplied SingleFile archive",
+    "capture_dates": "2026-08-21 to 2026-08-22 as embedded by SingleFile",
+    "input_files": 105,
+    "autotrader_files_included": 101,
+    "unique_autotrader_paths": 56,
+    "excluded_files": 4,
+    "excluded_content": [
+      "Two Atlassian-origin pages",
+      "One potentially authenticated /secure/my-auto-trader page (content not inspected)",
+      "One duplicate sign-in capture with identifier-bearing query values"
+    ],
+    "limitations": [
+      "Auxiliary captures are not current live-source evidence.",
+      "They prove frozen page structure and pixels only, not interaction outcomes, live data, loading/error states, or backend semantics.",
+      "Representative desktop/mobile renders ran with JavaScript disabled and all HTTP(S) requests aborted."
+    ]
+  },
+  "page_families": [
+    {
+      "family": "market landing",
+      "routes": ["/cars", "/vans", "/bikes", "/motorhomes", "/caravans", "/trucks", "/farm", "/plant", "/electric-bikes"],
+      "directness": "auxiliary-observed"
+    },
+    {
+      "family": "inventory subcategory",
+      "routes": ["used", "new", "electric variants across markets"],
+      "directness": "auxiliary-observed"
+    },
+    {
+      "family": "sell",
+      "routes": ["/cars/sell-my-car", "market-specific /sell routes"],
+      "directness": "auxiliary-observed"
+    },
+    {
+      "family": "editorial/reviews",
+      "routes": ["/cars/reviews", "market-specific /content routes"],
+      "directness": "auxiliary-observed"
+    },
+    {
+      "family": "services",
+      "routes": ["/cars/valuation", "/cars/leasing", "/vans/leasing", "bike/van finance and insurance", "/cars/buying-online"],
+      "directness": "auxiliary-observed"
+    },
+    {
+      "family": "account entry",
+      "routes": ["/secure/signin"],
+      "directness": "auxiliary-observed-public-entry-only"
+    }
+  ],
+  "global_navigation": {
+    "vehicle_markets": ["Cars", "Vans", "Bikes", "Motorhomes", "Caravans", "Trucks", "Farm", "Plant", "Electric bikes"],
+    "global_actions": ["Save/Saved", "Search", "Account/Sign in"],
+    "cars_secondary": ["Used cars", "New cars", "Sell your car", "Value your car", "Car reviews", "Car leasing", "Electric cars", "Buy a car online"],
+    "footer_groups": ["Products & services", "Buying advice", "Quick search", "Autotrader for dealers"]
+  },
+  "core_surface_observations": [
+    {
+      "surface": "home and cars landing search",
+      "state": "loaded anonymous",
+      "controls": ["Buy/Lease/Sell tabs", "Postcode", "Make", "Model", "More options", "Search count CTA"],
+      "form_shape": "GET form in frozen DOM; action unavailable after SingleFile rewrite",
+      "directness": "auxiliary-observed"
+    },
+    {
+      "surface": "used cars landing",
+      "state": "loaded anonymous",
+      "controls": ["Postcode", "Make", "Model", "More options", "Search count CTA", "brand/model/editorial links"],
+      "form_shape": "GET form in frozen DOM",
+      "directness": "auxiliary-observed"
+    },
+    {
+      "surface": "sell my car",
+      "state": "loaded anonymous",
+      "controls": ["VRN", "Mileage", "Start an advert", "Get my instant valuation", "Sell for free"],
+      "form_shape": "Frozen page exposes search-style GET forms; submission outcome unavailable",
+      "directness": "auxiliary-observed"
+    },
+    {
+      "surface": "valuation",
+      "state": "loaded anonymous",
+      "controls": ["VRN", "Get my instant valuation"],
+      "form_shape": "POST /cars/valuation observed structurally; not submitted",
+      "directness": "auxiliary-observed-structural-only"
+    },
+    {
+      "surface": "account entry",
+      "state": "public sign-in landing",
+      "controls": ["Continue with Google", "Sign in another way", "Remember me"],
+      "form_shape": "No credential fields or submission tested",
+      "directness": "auxiliary-observed-public-entry-only"
+    }
+  ],
+  "viewport_observations": [
+    {
+      "checkpoint": "home loaded",
+      "viewports": ["1440x900", "390x844"],
+      "result": "Responsive static layout rendered from supplied SingleFile with desktop navigation collapsing to logo plus Saved on mobile; search card and content cards stack on mobile.",
+      "evidence": ["renders/home-desktop.png", "renders/home-mobile.png"]
+    },
+    {
+      "checkpoint": "used cars loaded",
+      "viewports": ["1440x900", "390x844"],
+      "result": "Static responsive layout rendered; interactive outcomes unavailable.",
+      "evidence": ["renders/cars-used-desktop.png", "renders/cars-used-mobile.png"]
+    },
+    {
+      "checkpoint": "sell car loaded and sign-in loaded",
+      "viewports": ["1440x900", "390x844"],
+      "result": "Static responsive layouts rendered with zero external network.",
+      "evidence": ["renders/cars-sell-desktop.png", "renders/cars-sell-mobile.png", "renders/signin-desktop.png", "renders/signin-mobile.png"]
+    }
+  ],
+  "unavailable": [
+    "Current live Autotrader UI beyond Cloudflare block page",
+    "robots.txt and sitemap contents",
+    "Search results route and result-detail pages (not present in supplied SingleFiles)",
+    "Search/filter/sort/pagination outcomes and failure/recovery states",
+    "Save/compare state transitions",
+    "Sell/valuation submission outcomes",
+    "Authenticated account pages and role states",
+    "Loading, empty, validation-error, permission, rate-limit, and service-error states",
+    "A genuinely interactive Live View for this EA2 context"
+  ],
+  "agent_suggested_scope": [
+    "Anonymous car-search journey: home or /cars -> Buy -> postcode -> make -> model -> More options -> search -> open result -> vehicle detail.",
+    "Breadth checks for each real market landing and its used/new/sell/editorial routes.",
+    "Anonymous sell/valuation entry journey without submitting source forms.",
+    "Public sign-in entry layout only unless the user performs login in an isolated test profile."
+  ],
+  "formal_human_trace_text": [],
+  "stop_reason": "Three consecutive local source-channel attempts returned the same Cloudflare 403 behavior; switched to user-supplied auxiliary SingleFile evidence."
+}

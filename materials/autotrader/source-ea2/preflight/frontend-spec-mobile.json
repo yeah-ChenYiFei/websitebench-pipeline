@@ -1,0 +1,97 @@
+{
+  "schema_version": "websitebench.offline-clone.frontend-spec.v1",
+  "authority": "diagnostic-only",
+  "target_url": "https://www.autotrader.co.uk/",
+  "captured_at": "2026-08-28T00:52:24.074568+00:00",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "environment": "source",
+  "document": {
+    "title": "Attention Required! | Cloudflare",
+    "lang": "en-US",
+    "canonical": "/",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Sorry, you have been blocked"
+      },
+      {
+        "level": 2,
+        "text": "You are unable to access at1.p.autotrader.co.uk"
+      },
+      {
+        "level": 2,
+        "text": "Why have I been blocked?"
+      },
+      {
+        "level": 2,
+        "text": "What can I do to resolve this?"
+      }
+    ],
+    "regions": []
+  },
+  "controls": [
+    {
+      "id": "c-0",
+      "kind": "button",
+      "type": "button",
+      "text": "Click to reveal",
+      "aria_label": "",
+      "href": "",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    },
+    {
+      "id": "c-1",
+      "kind": "a",
+      "type": "",
+      "text": "Cloudflare",
+      "aria_label": "",
+      "href": "https://www.cloudflare.com/5xx-error-landing",
+      "action": "",
+      "method": "",
+      "name": "",
+      "placeholder": "",
+      "required": false,
+      "disabled": false,
+      "role": "",
+      "data_testid": "",
+      "options": []
+    }
+  ],
+  "data_points": [],
+  "styles": [
+    {
+      "href": "/cdn-cgi/styles/cf.errors.css",
+      "media": ""
+    }
+  ],
+  "scripts": [],
+  "summary": {
+    "http_status": 403,
+    "heading_count": 4,
+    "region_count": 0,
+    "control_count": 2,
+    "form_count": 0,
+    "data_point_count": 0,
+    "style_count": 1,
+    "script_count": 0,
+    "blocked_request_count": 0,
+    "failed_request_count": 0,
+    "console_error_count": 1
+  },
+  "blocked_requests": [],
+  "failed_requests": [],
+  "console_errors": [
+    "Failed to load resource: the server responded with a status of 403 ()"
+  ]
+}

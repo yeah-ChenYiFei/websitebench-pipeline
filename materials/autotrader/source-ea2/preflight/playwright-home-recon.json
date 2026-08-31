@@ -1,0 +1,50 @@
+{
+  "schema_version": "websitebench.source-ea2.home-recon.v1",
+  "authority": "diagnostic-only",
+  "source_url": "https://www.autotrader.co.uk/",
+  "final_url": "https://www.autotrader.co.uk/",
+  "http_status": 403,
+  "title": "Attention Required! | Cloudflare",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "en-GB",
+  "timezone": "Europe/London",
+  "headings": [
+    "Sorry, you have been blocked",
+    "You are unable to access at1.p.autotrader.co.uk",
+    "Why have I been blocked?",
+    "What can I do to resolve this?"
+  ],
+  "links": [
+    {
+      "text": "Cloudflare",
+      "url": "https://www.cloudflare.com/5xx-error-landing"
+    }
+  ],
+  "buttons": [
+    {
+      "text": "Click to reveal",
+      "ariaExpanded": null
+    }
+  ],
+  "landmarks": [],
+  "network": {
+    "methods": [
+      "GET"
+    ],
+    "origins": [
+      "www.autotrader.co.uk"
+    ],
+    "failed_request_shapes": []
+  },
+  "provenance": {
+    "actor": "anonymous",
+    "role": "EA2 breadth-first explorer",
+    "browser": "Playwright Chromium fresh isolated context",
+    "side_effect_policy": "GET/HEAD only; all other methods aborted",
+    "retention": "task-scoped sanitized evidence",
+    "truncated": false
+  }
+}

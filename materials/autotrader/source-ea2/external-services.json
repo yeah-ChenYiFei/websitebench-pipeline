@@ -1,0 +1,35 @@
+{
+  "schema_version": "websitebench.source-ea2.external-services.v1",
+  "authority": "auxiliary-source-evidence-only",
+  "observed_live_request_origins": [
+    {
+      "origin": "https://www.autotrader.co.uk",
+      "result": "HTTP 403 Cloudflare block page",
+      "status": "directly-observed"
+    }
+  ],
+  "proposed_additional_origins": [
+    {"origin": "https://plc.autotrader.co.uk", "purpose": "corporate and investor links", "evidence": "SingleFile anchors"},
+    {"origin": "https://careers.autotrader.co.uk", "purpose": "careers", "evidence": "SingleFile footer anchors"},
+    {"origin": "https://help.autotrader.co.uk", "purpose": "help and finance disclosure", "evidence": "SingleFile footer anchors"},
+    {"origin": "https://portal.autotrader.co.uk", "purpose": "dealer portal", "evidence": "SingleFile footer anchors"},
+    {"origin": "https://selling.autotrader.co.uk", "purpose": "bike advert creation", "evidence": "SingleFile sell-page anchor"},
+    {"origin": "https://www.zuto.com", "purpose": "bike finance provider", "evidence": "SingleFile finance-page anchors"},
+    {"origin": "https://www.vanarama.com", "purpose": "van leasing provider", "evidence": "SingleFile van-page anchors"},
+    {"origin": "https://www.moneysupermarket.com", "purpose": "bike and van insurance quote provider", "evidence": "SingleFile insurance-page anchors"},
+    {"origin": "https://uk.trustpilot.com", "purpose": "third-party ratings", "evidence": "SingleFile trust-rating anchors"},
+    {"origin": "https://www.facebook.com", "purpose": "social profile", "evidence": "SingleFile footer anchors"},
+    {"origin": "https://www.youtube.com", "purpose": "social profile", "evidence": "SingleFile footer anchors"},
+    {"origin": "https://www.instagram.com", "purpose": "social profile", "evidence": "SingleFile footer anchors"},
+    {"origin": "https://www.tiktok.com", "purpose": "social profile", "evidence": "SingleFile footer anchors"},
+    {"origin": "https://giphy.com", "purpose": "social profile", "evidence": "SingleFile footer anchors"},
+    {"origin": "https://www.pinterest.co.uk", "purpose": "social profile", "evidence": "SingleFile footer anchors"},
+    {"origin": "https://itunes.apple.com", "purpose": "iOS app listing", "evidence": "SingleFile footer anchors"},
+    {"origin": "https://play.google.com", "purpose": "Android app listing", "evidence": "SingleFile footer anchors"}
+  ],
+  "notes": [
+    "Proposed origins were not visited or interacted with.",
+    "Anchor presence does not prove runtime network use or service behavior.",
+    "All query values were redacted; only query-key shape was retained."
+  ]
+}

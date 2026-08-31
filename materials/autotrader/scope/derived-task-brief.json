@@ -1,0 +1,395 @@
+{
+  "schema_version": "prompt.websitebench-clone-task-brief.v1",
+  "observed_at": "2026-08-28T02:49:55Z",
+  "source": {
+    "input_url": "http://autotrader.co.uk",
+    "canonical_url": "https://www.autotrader.co.uk/",
+    "canonical_origin": "https://www.autotrader.co.uk",
+    "approved_discovery_origins": [
+      "http://autotrader.co.uk",
+      "https://www.autotrader.co.uk"
+    ],
+    "proposed_additional_origins": [
+      "https://help.autotrader.co.uk",
+      "https://portal.autotrader.co.uk",
+      "https://selling.autotrader.co.uk"
+    ]
+  },
+  "site": {
+    "site_id": "autotrader",
+    "display_name": "Autotrader UK",
+    "existing_site": true,
+    "site_dir": "materials/autotrader",
+    "target_origin": "https://autotrader.website-bench.com",
+    "worker_name": "websitebench-autotrader-demo",
+    "purpose": "Help UK vehicle buyers discover suitable vehicles and inspect listing information, while giving sellers a public entry point to advertise a vehicle."
+  },
+  "baseline": {
+    "locale": "en-GB",
+    "timezone": "Europe/London",
+    "timezone_policy": "UK market baseline observed in the supplied Autotrader captures; refreeze if a live capture environment becomes available.",
+    "viewports": [
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      }
+    ]
+  },
+  "scope": {
+    "roles": [
+      {
+        "id": "anonymous-visitor",
+        "display_name": "Anonymous visitor",
+        "authentication_required": false,
+        "evidence_grade": "structural-only",
+        "evidence_urls": [
+          "https://www.autotrader.co.uk/",
+          "https://www.autotrader.co.uk/cars",
+          "https://www.autotrader.co.uk/cars/used"
+        ],
+        "changes": [
+          "public navigation",
+          "vehicle discovery",
+          "public selling and sign-in entry"
+        ],
+        "live_view_required": true,
+        "entitlement_required": false
+      },
+      {
+        "id": "account-holder",
+        "display_name": "Autotrader account holder",
+        "authentication_required": true,
+        "evidence_grade": "unavailable",
+        "evidence_urls": [
+          "https://www.autotrader.co.uk/secure/signin"
+        ],
+        "changes": [
+          "saved state and account pages are expected to differ, but their source behavior was not captured"
+        ],
+        "live_view_required": true,
+        "entitlement_required": true
+      }
+    ],
+    "core_journeys": [
+      {
+        "id": "anonymous-vehicle-discovery",
+        "priority": "P0",
+        "role": "anonymous-visitor",
+        "purpose": "Find a suitable used vehicle and inspect its listing.",
+        "preconditions": [
+          "public source page",
+          "nonsensitive UK postcode supplied by the human if a live trace is recorded"
+        ],
+        "starting_url": "https://www.autotrader.co.uk/",
+        "steps": [
+          "select Buy",
+          "enter postcode",
+          "select make",
+          "select model",
+          "open More options",
+          "submit search",
+          "refine or sort results",
+          "open a vehicle listing"
+        ],
+        "expected_result": "A results collection and a vehicle detail view whose visible fields and state reflect the selected criteria.",
+        "failure_variant": "validation or no-results behavior is currently unavailable",
+        "recovery_variant": "return to or relax search criteria",
+        "source_mutation_required": false,
+        "evidence_kind": "auxiliary-observed entry; result and detail unavailable",
+        "evidence_urls": [
+          "https://www.autotrader.co.uk/",
+          "https://www.autotrader.co.uk/cars/used"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "public-sell-entry",
+        "priority": "P1",
+        "role": "anonymous-visitor",
+        "purpose": "Reach the public car-advert entry and understand the information requested before any submission.",
+        "preconditions": [
+          "public source page"
+        ],
+        "starting_url": "https://www.autotrader.co.uk/cars/sell-my-car",
+        "steps": [
+          "open Sell your car",
+          "inspect VRN and mileage controls",
+          "inspect Start an advert",
+          "inspect valuation and free-selling choices",
+          "stop before submission"
+        ],
+        "expected_result": "The public selling entry is reproduced without creating a source advert.",
+        "failure_variant": "submission validation is unavailable and is not claimed",
+        "recovery_variant": "return to Cars or the public home page",
+        "source_mutation_required": false,
+        "evidence_kind": "auxiliary-observed loaded state only",
+        "evidence_urls": [
+          "https://www.autotrader.co.uk/cars/sell-my-car"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "public-account-entry",
+        "priority": "P1",
+        "role": "anonymous-visitor",
+        "purpose": "Reach the public sign-in surface and inspect available identity choices without entering credentials.",
+        "preconditions": [
+          "signed out"
+        ],
+        "starting_url": "https://www.autotrader.co.uk/secure/signin",
+        "steps": [
+          "open Account",
+          "inspect public sign-in layout",
+          "inspect Google and alternative identity choices",
+          "inspect Remember me",
+          "return without submitting credentials"
+        ],
+        "expected_result": "The public sign-in entry matches the supplied desktop and mobile captures.",
+        "failure_variant": "credential validation is outside current evidence",
+        "recovery_variant": "return to the public vehicle market",
+        "source_mutation_required": false,
+        "evidence_kind": "auxiliary-observed public entry only",
+        "evidence_urls": [
+          "https://www.autotrader.co.uk/secure/signin"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "page_families": [
+      "market landing: Cars, Vans, Bikes, Motorhomes, Caravans, Trucks, Farm, Plant, Electric bikes",
+      "inventory categories: used, new and electric variants",
+      "discovery/search and results",
+      "vehicle detail",
+      "sell and valuation entry",
+      "reviews and editorial content",
+      "finance, insurance, leasing and buying-online services",
+      "public account/sign-in entry",
+      "loading, validation, empty, error and recovery states"
+    ],
+    "deterministic_seed_plan": {
+      "actors": [
+        "anonymous-visitor",
+        "synthetic-local-account-holder",
+        "isolation-account-holder"
+      ],
+      "entities": [
+        "at least 200 synthetic vehicle listings with stable IDs",
+        "saved searches",
+        "saved vehicles",
+        "local advert drafts"
+      ],
+      "states": [
+        "populated catalog",
+        "filtered catalog",
+        "no results",
+        "vehicle detail",
+        "empty and populated saved state",
+        "public sell entry",
+        "local-only advert preview"
+      ],
+      "probes": [
+        "reset",
+        "restart persistence",
+        "duplicate submission",
+        "cross-actor ownership isolation"
+      ]
+    },
+    "external_services": [
+      {
+        "id": "autotrader-help",
+        "evidence_kind": "auxiliary anchor",
+        "local_adapter": true,
+        "external_side_effect": false,
+        "authorization_required": false,
+        "runtime_zero_remote_dependencies": true
+      },
+      {
+        "id": "autotrader-dealer-portal",
+        "evidence_kind": "auxiliary anchor",
+        "local_adapter": false,
+        "external_side_effect": false,
+        "authorization_required": true,
+        "runtime_zero_remote_dependencies": true
+      },
+      {
+        "id": "third-party-finance-insurance-leasing",
+        "evidence_kind": "auxiliary anchors only",
+        "local_adapter": false,
+        "external_side_effect": true,
+        "authorization_required": true,
+        "runtime_zero_remote_dependencies": true
+      },
+      {
+        "id": "google-identity-entry",
+        "evidence_kind": "auxiliary public sign-in capture",
+        "local_adapter": "truthful local simulation only",
+        "external_side_effect": true,
+        "authorization_required": true,
+        "runtime_zero_remote_dependencies": true
+      }
+    ]
+  },
+  "authority": {
+    "authentication_access": "request-human-live-view",
+    "credentials_persisted": false,
+    "authorized_source_mutations": [],
+    "requested_source_mutations": [],
+    "real_email_authorized": false,
+    "stripe_test_authorized": false,
+    "live_payment_authorized": false,
+    "push_authorized": false,
+    "pr_authorized": false,
+    "public_deployment_authorized": false,
+    "rights_or_redistribution_status": "unknown"
+  },
+  "trace_acquisition": {
+    "mode": "adaptive",
+    "agent_must_initiate": true,
+    "text_ownership": "human-only",
+    "human_trace_texts": [
+      {
+        "human_trace_text_id": "ht-001",
+        "text": "The Autotrader used-car platform must cover the following complete functionality: reach the used-car-listing records and actions area through the public entry and primary navigation, verifying that the destination heading and canonical path are visible; execute ClawBench Core task 754 — list a used car for sale on AutoTrader, fill in vehicle details (make, year, mileage, price), and submit the listing, confirming the final review/confirmation view visibly reflects the requested choices and totals; search for vehicles by make/model, location, price, year, mileage, and body style; search for a specific vehicle listing by keyword and refine the results with available filters; sort search results and compare at least two vehicle listings by price, rating, specifications, or availability; open a vehicle listing to inspect photos, specs, mileage, seller/dealer info, price, and history details; select an available option such as size, color, model, quantity, or configuration for a vehicle listing; save a vehicle or search and create a price/new-listing alert; create a new customer account and complete the basic profile/contact setup; sign in to an existing account, verify the account state, and sign out again; contact a seller/dealer or request more information/test drive; add or edit a delivery/pickup address and choose an available shipping/delivery option; create a vehicle-for-sale listing with vehicle details, price, description, and photos, reaching preview/submission; edit, pause, renew, or remove an existing vehicle listing; perform an anonymous search/no-results scenario (search for no matches or apply an impossible filter), verifying a no-results message plus a route back to available used-car-listing records and actions; provide a sign-in entry, verifying the username/email field and available password or identity-provider choices, then return without submitting credentials; provide an account-registration entry, verifying the visible identity fields, terms links, and verification guidance without creating an account; open password recovery from the sign-in surface, verifying the reset-address field, validation guidance, and return-to-sign-in link without sending a reset message; with seeded offline data present, open account history, verifying the newest item exposes its status, detail, edit or cancellation options, and a route back to the relevant collection; open an action with required fields empty or while signed out, verifying inline validation or a permission prompt identifies what must be corrected before continuation; provide a public help/support/contact entry, verifying a user can reach guidance for used-car-listing records and actions, account access, and failed actions without exposing private account data; open a non-existent deep link, verifying a branded not-found or recovery view preserves primary navigation and provides a safe route back to used-car-listing records and actions; starting at the public entry, complete the end-to-end scenario 754.",
+        "provided_at": "2026-08-28T02:49:55Z",
+        "source": "live-user-message",
+        "source_ref": null,
+        "status": "confirmed"
+      }
+    ],
+    "trace_candidates": [
+      {
+        "candidate_id": "tc-001",
+        "agent_suggested_scope": "Public vehicle discovery from home through search results, refinement or sorting, and vehicle detail, including one safe failure/recovery state.",
+        "role": "anonymous-visitor",
+        "why_needed": "The supplied captures stop before results and detail; implementing those states from the current clone would be inference.",
+        "uncertainty_resolved": [
+          "real search URL and step order",
+          "filter and sort controls",
+          "result-card structure",
+          "detail fields",
+          "no-results or validation recovery"
+        ],
+        "expected_coverage": [
+          "P0 anonymous-vehicle-discovery"
+        ],
+        "requires_authentication": false,
+        "requires_source_mutation": false,
+        "evidence_priority": "high",
+        "human_trace_text_id": "ht-001",
+        "text_status": "confirmed"
+      },
+      {
+        "candidate_id": "tc-002",
+        "agent_suggested_scope": "Public selling entry and its safe pre-submission states; stop before creating or publishing an advert.",
+        "role": "anonymous-visitor",
+        "why_needed": "Only the loaded selling page is available; field order, validation and next-state semantics are not established.",
+        "uncertainty_resolved": [
+          "field sequence",
+          "client validation",
+          "safe pre-submission state",
+          "recovery route"
+        ],
+        "expected_coverage": [
+          "P1 public-sell-entry"
+        ],
+        "requires_authentication": false,
+        "requires_source_mutation": false,
+        "evidence_priority": "medium",
+        "human_trace_text_id": "ht-001",
+        "text_status": "confirmed"
+      },
+      {
+        "candidate_id": "tc-003",
+        "agent_suggested_scope": "If an existing account is available, human-only login followed by passive observation of the account landing and saved state; no source changes.",
+        "role": "account-holder",
+        "why_needed": "Authenticated role differences and saved/account states are otherwise unavailable.",
+        "uncertainty_resolved": [
+          "post-login landing",
+          "account navigation",
+          "saved-state presentation",
+          "sign-out path"
+        ],
+        "expected_coverage": [
+          "P1 authenticated role"
+        ],
+        "requires_authentication": true,
+        "requires_source_mutation": false,
+        "evidence_priority": "medium",
+        "human_trace_text_id": "ht-001",
+        "text_status": "confirmed"
+      }
+    ],
+    "requested_traces": [],
+    "completed_traces": [],
+    "remaining_material_uncertainties": [
+      "current live source pixels and copy",
+      "search submission and result semantics",
+      "filter, sort and pagination behavior",
+      "vehicle detail states",
+      "save and compare transitions",
+      "sell validation and continuation",
+      "authenticated account states",
+      "loading, empty, permission, rate-limit and service-error states"
+    ]
+  },
+  "trajectory_recording": {
+    "channel": "not-used",
+    "recordings": [],
+    "clone_side_recordings": [],
+    "two_sided_findings": []
+  },
+  "field_evidence": [
+    {
+      "field": "site identity and market",
+      "value": "Autotrader UK / autotrader",
+      "evidence": [
+        "source-ea1/ea1-summary.json",
+        "source-ea2/recon-summary.json"
+      ],
+      "grade": "structural-only",
+      "confidence": "high",
+      "browserbase_refreeze": false
+    },
+    {
+      "field": "anonymous entry layout",
+      "value": "home, cars, used cars, sell and sign-in loaded states",
+      "evidence": [
+        "source-ea1/artifacts/singlefile",
+        "source-ea2/renders"
+      ],
+      "grade": "structural-only",
+      "confidence": "medium",
+      "browserbase_refreeze": true
+    },
+    {
+      "field": "result and detail behavior",
+      "value": "unavailable",
+      "evidence": [],
+      "grade": "unavailable",
+      "confidence": "low",
+      "browserbase_refreeze": true
+    },
+    {
+      "field": "authenticated role",
+      "value": "account entry observed; account experience unavailable",
+      "evidence": [
+        "source-ea2/renders/signin-desktop.png"
+      ],
+      "grade": "unavailable",
+      "confidence": "low",
+      "browserbase_refreeze": true
+    }
+  ],
+  "unresolved": [
+    "The live source is blocked by Cloudflare in all automated anonymous channels.",
+    "The in-app browser tab is human-visible but no controllable CDP/trajectory bridge has been exposed to the Agent.",
+    "No source mutation, login, real email, payment, push, PR or public deployment is authorized.",
+    "Formal human trace text ht-001 is confirmed from the 2026-08-28 live user message; source-side trajectory recording remains unavailable because the live source is blocked."
+  ]
+}

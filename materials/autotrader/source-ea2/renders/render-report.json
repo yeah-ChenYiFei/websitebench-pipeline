@@ -1,0 +1,7812 @@
+{
+  "schema_version": "websitebench.source-ea2.singlefile-render.v1",
+  "authority": "auxiliary-source-evidence-only",
+  "runtime": "Playwright Chromium; fresh context per page and viewport",
+  "network_policy": "all HTTP(S) requests aborted; local file only",
+  "provenance": "User-supplied SingleFile captures; rendered as untrusted data",
+  "reports": [
+    {
+      "page_id": "cars-sell",
+      "viewport_id": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "document_title": "Sell My Car | Over 9,500 Cars Sold Everyday | Autotrader",
+      "body_dimensions": {
+        "width": 1440,
+        "height": 6328
+      },
+      "visible_controls": [
+        {
+          "tag": "a",
+          "text": "Skip to content",
+          "x": 15,
+          "y": 3,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Skip to footer",
+          "x": 15,
+          "y": 3,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 104,
+          "y": 37,
+          "width": 164,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Saved",
+          "x": 1228,
+          "y": 32,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sign in",
+          "x": 1292,
+          "y": 32,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Cars",
+          "x": 102,
+          "y": 3,
+          "width": 38,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Vans",
+          "x": 140,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Bikes",
+          "x": 181,
+          "y": 3,
+          "width": 42,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Motorhomes",
+          "x": 223,
+          "y": 3,
+          "width": 87,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Caravans",
+          "x": 310,
+          "y": 3,
+          "width": 70,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Trucks",
+          "x": 380,
+          "y": 3,
+          "width": 48,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Farm",
+          "x": 428,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Plant",
+          "x": 469,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric bikes",
+          "x": 510,
+          "y": 3,
+          "width": 85,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Used cars",
+          "x": 290,
+          "y": 38,
+          "width": 86,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "New cars",
+          "x": 378,
+          "y": 38,
+          "width": 82,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell your car",
+          "x": 462,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value your car",
+          "x": 566,
+          "y": 38,
+          "width": 117,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car reviews",
+          "x": 685,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car leasing",
+          "x": 789,
+          "y": 38,
+          "width": 95,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric cars",
+          "x": 886,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Buy a car online",
+          "x": 990,
+          "y": 38,
+          "width": 125,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Autotrader has a Trustpilot score of 4.6/5 4.6/5",
+          "x": 484,
+          "y": 88,
+          "width": 278,
+          "height": 33,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Score is based on 109,129 reviews",
+          "x": 762,
+          "y": 88,
+          "width": 194,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "e.g. AB12 CDE",
+          "x": 316,
+          "y": 427,
+          "width": 174,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "e.g. 10000",
+          "x": 522,
+          "y": 427,
+          "width": 174,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Start an advert",
+          "x": 793,
+          "y": 421,
+          "width": 109,
+          "height": 25,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Get my instant valuation",
+          "x": 918,
+          "y": 407,
+          "width": 230,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Start an advert",
+          "x": 370,
+          "y": 789,
+          "width": 157,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "See advertising prices",
+          "x": 369,
+          "y": 861,
+          "width": 159,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell for free",
+          "x": 925,
+          "y": 789,
+          "width": 134,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Learn more about selling to a dealer",
+          "x": 861,
+          "y": 857,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Autotrader has a Trustpilot score of 4.6/5 4.6/5 Score is based on 109,129 reviews",
+          "x": 581,
+          "y": 1067,
+          "width": 278,
+          "height": 57,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Read more Trustpilot reviews",
+          "x": 577,
+          "y": 1404,
+          "width": 287,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Advertise on Autotrader",
+          "x": 168,
+          "y": 1710,
+          "width": 293,
+          "height": 31,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sell fast for free",
+          "x": 168,
+          "y": 1919,
+          "width": 195,
+          "height": 31,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 168,
+          "y": 2090,
+          "width": 20,
+          "height": 20,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 191,
+          "y": 2090,
+          "width": 20,
+          "height": 20,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Learn more about documents needed to sell",
+          "x": 540,
+          "y": 2576,
+          "width": 329,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Preparing your car",
+          "x": 174,
+          "y": 2949,
+          "width": 157,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Creating your advert",
+          "x": 474,
+          "y": 2949,
+          "width": 180,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Taking payment",
+          "x": 808,
+          "y": 2949,
+          "width": 137,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Avoiding scams",
+          "x": 1121,
+          "y": 2949,
+          "width": 135,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Why sell my car with Auto Trader?",
+          "x": 360,
+          "y": 3241,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "What paperwork do I need to sell my car?",
+          "x": 360,
+          "y": 3300,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 376,
+          "y": 3530,
+          "width": 610,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 449,
+          "y": 3578,
+          "width": 205,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Where can I sell my car?",
+          "x": 360,
+          "y": 3359,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 816,
+          "y": 3565,
+          "width": 140,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 620,
+          "y": 3629,
+          "width": 173,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "What is my car worth?",
+          "x": 360,
+          "y": 3418,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 471,
+          "y": 3560,
+          "width": 163,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 376,
+          "y": 3776,
+          "width": 684,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "How much can I sell my car for?",
+          "x": 360,
+          "y": 3477,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 399,
+          "y": 3643,
+          "width": 177,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 376,
+          "y": 3907,
+          "width": 686,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "How can I sell my car?",
+          "x": 360,
+          "y": 3536,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 420,
+          "y": 3662,
+          "width": 313,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Can I part-exchange my car online?",
+          "x": 360,
+          "y": 3595,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 805,
+          "y": 3713,
+          "width": 139,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "What is the best way to sell your car privately?",
+          "x": 360,
+          "y": 3654,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 392,
+          "y": 3780,
+          "width": 451,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 392,
+          "y": 3804,
+          "width": 245,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 392,
+          "y": 3828,
+          "width": 295,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 392,
+          "y": 3852,
+          "width": 312,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 392,
+          "y": 3876,
+          "width": 247,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 392,
+          "y": 3900,
+          "width": 144,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 392,
+          "y": 3924,
+          "width": 65,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 3988,
+          "width": 120,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Where can I sell my car?",
+          "x": 360,
+          "y": 3713,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 404,
+          "y": 3815,
+          "width": 56,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 467,
+          "y": 3815,
+          "width": 72,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 546,
+          "y": 3815,
+          "width": 88,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 641,
+          "y": 3815,
+          "width": 86,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 731,
+          "y": 3815,
+          "width": 43,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 781,
+          "y": 3815,
+          "width": 65,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 853,
+          "y": 3815,
+          "width": 72,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 932,
+          "y": 3815,
+          "width": 33,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 972,
+          "y": 3815,
+          "width": 62,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 376,
+          "y": 3839,
+          "width": 48,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 457,
+          "y": 3839,
+          "width": 65,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Can I sell a car with outstanding finance?",
+          "x": 360,
+          "y": 3772,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 931,
+          "y": 4050,
+          "width": 120,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Autotrader has a Trustpilot score of 4.6/5 4.6/5 Score is based on 109,129 reviews",
+          "x": 581,
+          "y": 4170,
+          "width": 278,
+          "height": 57,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "About Autotrader",
+          "x": 624,
+          "y": 4243,
+          "width": 192,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "e.g name@example.com",
+          "x": 516,
+          "y": 4567,
+          "width": 293,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sign up",
+          "x": 825,
+          "y": 4567,
+          "width": 99,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "privacy notice",
+          "x": 658,
+          "y": 4665,
+          "width": 97,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Ayrshire",
+          "x": 108,
+          "y": 5115,
+          "width": 162,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Birmingham",
+          "x": 108,
+          "y": 5151,
+          "width": 186,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Bristol",
+          "x": 108,
+          "y": 5187,
+          "width": 148,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Coventry",
+          "x": 108,
+          "y": 5223,
+          "width": 171,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Edinburgh",
+          "x": 108,
+          "y": 5259,
+          "width": 172,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Essex",
+          "x": 418,
+          "y": 5115,
+          "width": 143,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Glasgow",
+          "x": 418,
+          "y": 5151,
+          "width": 166,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Hull",
+          "x": 418,
+          "y": 5187,
+          "width": 130,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Kent",
+          "x": 418,
+          "y": 5223,
+          "width": 133,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Leeds",
+          "x": 418,
+          "y": 5259,
+          "width": 144,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Leicester",
+          "x": 728,
+          "y": 5115,
+          "width": 168,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Liverpool",
+          "x": 728,
+          "y": 5151,
+          "width": 172,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in London",
+          "x": 728,
+          "y": 5187,
+          "width": 156,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Manchester",
+          "x": 728,
+          "y": 5223,
+          "width": 189,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Newcastle",
+          "x": 728,
+          "y": 5259,
+          "width": 181,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Northampton",
+          "x": 1038,
+          "y": 5115,
+          "width": 201,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Northern Ireland",
+          "x": 1038,
+          "y": 5151,
+          "width": 222,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Nottingham",
+          "x": 1038,
+          "y": 5187,
+          "width": 187,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Scotland",
+          "x": 1038,
+          "y": 5223,
+          "width": 166,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Sheffield",
+          "x": 1038,
+          "y": 5259,
+          "width": 165,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Audi",
+          "x": 108,
+          "y": 5359,
+          "width": 90,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my BMW",
+          "x": 108,
+          "y": 5395,
+          "width": 97,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Ford",
+          "x": 108,
+          "y": 5431,
+          "width": 91,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Honda",
+          "x": 108,
+          "y": 5467,
+          "width": 107,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Hyundai",
+          "x": 108,
+          "y": 5503,
+          "width": 118,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Jaguar",
+          "x": 418,
+          "y": 5359,
+          "width": 106,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Jeep",
+          "x": 418,
+          "y": 5395,
+          "width": 93,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Kia",
+          "x": 418,
+          "y": 5431,
+          "width": 80,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Land Rover",
+          "x": 418,
+          "y": 5467,
+          "width": 142,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Mercedes",
+          "x": 418,
+          "y": 5503,
+          "width": 132,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Mini",
+          "x": 728,
+          "y": 5359,
+          "width": 88,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Nissan",
+          "x": 728,
+          "y": 5395,
+          "width": 107,
+          "height": 24,
+          "visible": true
+        }
+      ],
+      "blocked_external_request_shapes": [],
+      "screenshot": "cars-sell-desktop.png",
+      "javascript_enabled": false
+    },
+    {
+      "page_id": "cars-sell",
+      "viewport_id": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document_title": "Sell My Car | Over 9,500 Cars Sold Everyday | Autotrader",
+      "body_dimensions": {
+        "width": 390,
+        "height": 7546
+      },
+      "visible_controls": [
+        {
+          "tag": "a",
+          "text": "Skip to content",
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Skip to footer",
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 8,
+          "y": 11,
+          "width": 144,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Saved",
+          "x": 342,
+          "y": 8,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Used cars",
+          "x": -374,
+          "y": 64,
+          "width": 70,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "New cars",
+          "x": -374,
+          "y": 108,
+          "width": 66,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell your car",
+          "x": -374,
+          "y": 152,
+          "width": 86,
+          "height": 30,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value your car",
+          "x": -374,
+          "y": 200,
+          "width": 101,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car reviews",
+          "x": -374,
+          "y": 244,
+          "width": 86,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car leasing",
+          "x": -374,
+          "y": 288,
+          "width": 79,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric cars",
+          "x": -374,
+          "y": 332,
+          "width": 86,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Buy a car online",
+          "x": -374,
+          "y": 376,
+          "width": 109,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Autotrader has a Trustpilot score of 4.6/5 4.6/5",
+          "x": 0,
+          "y": 63,
+          "width": 230,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Score is based on 109,129 reviews",
+          "x": 230,
+          "y": 55,
+          "width": 160,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "e.g. AB12 CDE",
+          "x": 28,
+          "y": 352,
+          "width": 334,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "e.g. 10000",
+          "x": 28,
+          "y": 420,
+          "width": 334,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Start an advert",
+          "x": 141,
+          "y": 536,
+          "width": 109,
+          "height": 25,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Get my instant valuation",
+          "x": 80,
+          "y": 468,
+          "width": 230,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Start an advert",
+          "x": 68,
+          "y": 959,
+          "width": 157,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "See advertising prices",
+          "x": 67,
+          "y": 1031,
+          "width": 159,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell for free",
+          "x": 351,
+          "y": 959,
+          "width": 134,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Learn more about selling to a dealer",
+          "x": 312,
+          "y": 1027,
+          "width": 212,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Autotrader has a Trustpilot score of 4.6/5 4.6/5 Score is based on 109,129 reviews",
+          "x": 56,
+          "y": 1216,
+          "width": 278,
+          "height": 57,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Read more Trustpilot reviews",
+          "x": 52,
+          "y": 1580,
+          "width": 287,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Advertise on Autotrader",
+          "x": 36,
+          "y": 2084,
+          "width": 235,
+          "height": 26,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sell fast for free",
+          "x": 36,
+          "y": 2262,
+          "width": 152,
+          "height": 26,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 36,
+          "y": 2054,
+          "width": 20,
+          "height": 20,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 59,
+          "y": 2054,
+          "width": 20,
+          "height": 20,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Learn more about documents needed to sell",
+          "x": 328,
+          "y": 2690,
+          "width": 259,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Preparing your car",
+          "x": 117,
+          "y": 3035,
+          "width": 141,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Creating your advert",
+          "x": 465,
+          "y": 3035,
+          "width": 161,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Taking payment",
+          "x": 842,
+          "y": 3035,
+          "width": 123,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Avoiding scams",
+          "x": 1200,
+          "y": 3035,
+          "width": 123,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Why sell my car with Auto Trader?",
+          "x": 16,
+          "y": 3257,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "What paperwork do I need to sell my car?",
+          "x": 16,
+          "y": 3314,
+          "width": 358,
+          "height": 79,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 3733,
+          "width": 283,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 3805,
+          "width": 240,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Where can I sell my car?",
+          "x": 16,
+          "y": 3394,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 166,
+          "y": 3694,
+          "width": 140,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 3758,
+          "width": 309,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "What is my car worth?",
+          "x": 16,
+          "y": 3451,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 127,
+          "y": 3614,
+          "width": 163,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 3950,
+          "width": 300,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "How much can I sell my car for?",
+          "x": 16,
+          "y": 3507,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 120,
+          "y": 3743,
+          "width": 177,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 59,
+          "y": 4247,
+          "width": 180,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "How can I sell my car?",
+          "x": 16,
+          "y": 3564,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 3736,
+          "width": 310,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Can I part-exchange my car online?",
+          "x": 16,
+          "y": 3621,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 140,
+          "y": 3784,
+          "width": 139,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "What is the best way to sell your car privately?",
+          "x": 16,
+          "y": 3677,
+          "width": 358,
+          "height": 79,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 48,
+          "y": 3872,
+          "width": 306,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 48,
+          "y": 3920,
+          "width": 245,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 48,
+          "y": 3944,
+          "width": 295,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 48,
+          "y": 3968,
+          "width": 286,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 48,
+          "y": 4016,
+          "width": 247,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 48,
+          "y": 4040,
+          "width": 144,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 48,
+          "y": 4064,
+          "width": 65,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 203,
+          "y": 4152,
+          "width": 120,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Where can I sell my car?",
+          "x": 16,
+          "y": 3757,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 126,
+          "y": 3881,
+          "width": 56,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 189,
+          "y": 3881,
+          "width": 72,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 3905,
+          "width": 88,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 127,
+          "y": 3905,
+          "width": 86,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 217,
+          "y": 3905,
+          "width": 43,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 267,
+          "y": 3905,
+          "width": 65,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 3929,
+          "width": 72,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 111,
+          "y": 3929,
+          "width": 33,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 151,
+          "y": 3929,
+          "width": 62,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 220,
+          "y": 3929,
+          "width": 48,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 3953,
+          "width": 65,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Can I sell a car with outstanding finance?",
+          "x": 16,
+          "y": 3814,
+          "width": 358,
+          "height": 79,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 100,
+          "y": 4353,
+          "width": 120,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Autotrader has a Trustpilot score of 4.6/5 4.6/5 Score is based on 109,129 reviews",
+          "x": 56,
+          "y": 4268,
+          "width": 278,
+          "height": 57,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "About Autotrader",
+          "x": 99,
+          "y": 4340,
+          "width": 192,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "e.g name@example.com",
+          "x": 32,
+          "y": 4590,
+          "width": 326,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sign up",
+          "x": 32,
+          "y": 4658,
+          "width": 326,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "privacy notice",
+          "x": 154,
+          "y": 4753,
+          "width": 85,
+          "height": 13,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Ayrshire",
+          "x": 16,
+          "y": 5196,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Birmingham",
+          "x": 16,
+          "y": 5256,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Bristol",
+          "x": 16,
+          "y": 5316,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Coventry",
+          "x": 16,
+          "y": 5376,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Edinburgh",
+          "x": 16,
+          "y": 5436,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Essex",
+          "x": 16,
+          "y": 5496,
+          "width": 143,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Glasgow",
+          "x": 16,
+          "y": 5532,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Hull",
+          "x": 16,
+          "y": 5592,
+          "width": 130,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Kent",
+          "x": 16,
+          "y": 5628,
+          "width": 133,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Leeds",
+          "x": 16,
+          "y": 5664,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Leicester",
+          "x": 16,
+          "y": 5724,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Liverpool",
+          "x": 203,
+          "y": 5196,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in London",
+          "x": 203,
+          "y": 5256,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Manchester",
+          "x": 203,
+          "y": 5316,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Newcastle",
+          "x": 203,
+          "y": 5376,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Northampton",
+          "x": 203,
+          "y": 5436,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Northern Ireland",
+          "x": 203,
+          "y": 5496,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Nottingham",
+          "x": 203,
+          "y": 5556,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Scotland",
+          "x": 203,
+          "y": 5616,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my car in Sheffield",
+          "x": 203,
+          "y": 5676,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Audi",
+          "x": 16,
+          "y": 5836,
+          "width": 90,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my BMW",
+          "x": 16,
+          "y": 5872,
+          "width": 97,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Ford",
+          "x": 16,
+          "y": 5908,
+          "width": 91,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Honda",
+          "x": 16,
+          "y": 5944,
+          "width": 107,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Hyundai",
+          "x": 16,
+          "y": 5980,
+          "width": 118,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Jaguar",
+          "x": 16,
+          "y": 6016,
+          "width": 106,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Jeep",
+          "x": 16,
+          "y": 6052,
+          "width": 93,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Kia",
+          "x": 16,
+          "y": 6088,
+          "width": 80,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Land Rover",
+          "x": 16,
+          "y": 6124,
+          "width": 142,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Mercedes",
+          "x": 16,
+          "y": 6160,
+          "width": 132,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Mini",
+          "x": 203,
+          "y": 5836,
+          "width": 88,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Nissan",
+          "x": 203,
+          "y": 5872,
+          "width": 107,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Porsche",
+          "x": 203,
+          "y": 5908,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Renault",
+          "x": 203,
+          "y": 5944,
+          "width": 114,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Skoda",
+          "x": 203,
+          "y": 5980,
+          "width": 103,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Tesla",
+          "x": 203,
+          "y": 6016,
+          "width": 97,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Toyota",
+          "x": 203,
+          "y": 6052,
+          "width": 111,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Vauxhall",
+          "x": 203,
+          "y": 6088,
+          "width": 124,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Volkswagen",
+          "x": 203,
+          "y": 6124,
+          "width": 143,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell my Volvo",
+          "x": 203,
+          "y": 6184,
+          "width": 104,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Back to top of the page",
+          "x": 151,
+          "y": 6256,
+          "width": 89,
+          "height": 60,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Security advice",
+          "x": 32,
+          "y": 6425,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        }
+      ],
+      "blocked_external_request_shapes": [],
+      "screenshot": "cars-sell-mobile.png",
+      "javascript_enabled": false
+    },
+    {
+      "page_id": "cars-used",
+      "viewport_id": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "document_title": "Used Cars For Sale | Second Hand Cars | Autotrader UK",
+      "body_dimensions": {
+        "width": 1440,
+        "height": 7319
+      },
+      "visible_controls": [
+        {
+          "tag": "a",
+          "text": "Skip to content",
+          "x": 15,
+          "y": 3,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Skip to footer",
+          "x": 15,
+          "y": 3,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 104,
+          "y": 37,
+          "width": 164,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Saved",
+          "x": 1228,
+          "y": 32,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sign in",
+          "x": 1292,
+          "y": 32,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Cars",
+          "x": 102,
+          "y": 3,
+          "width": 38,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Vans",
+          "x": 140,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Bikes",
+          "x": 181,
+          "y": 3,
+          "width": 42,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Motorhomes",
+          "x": 223,
+          "y": 3,
+          "width": 87,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Caravans",
+          "x": 310,
+          "y": 3,
+          "width": 70,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Trucks",
+          "x": 380,
+          "y": 3,
+          "width": 48,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Farm",
+          "x": 428,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Plant",
+          "x": 469,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric bikes",
+          "x": 510,
+          "y": 3,
+          "width": 85,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Used cars",
+          "x": 290,
+          "y": 38,
+          "width": 86,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "New cars",
+          "x": 378,
+          "y": 38,
+          "width": 82,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell your car",
+          "x": 462,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value your car",
+          "x": 566,
+          "y": 38,
+          "width": 117,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car reviews",
+          "x": 685,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car leasing",
+          "x": 789,
+          "y": 38,
+          "width": 95,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric cars",
+          "x": 886,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Buy a car online",
+          "x": 990,
+          "y": 38,
+          "width": 125,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "Postcode",
+          "x": 308,
+          "y": 377,
+          "width": 134,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "select",
+          "text": "Any Abarth (705) AC (12) AION (1) AK (3) Alfa Romeo (1,084) Allard (2) Alpine (117) Ariel (8) Asia (1) Aston Martin (866) Audi (33,316) Austin (29) BAC (3) Beau",
+          "x": 474,
+          "y": 377,
+          "width": 176,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "select",
+          "text": "Any",
+          "x": 682,
+          "y": 377,
+          "width": 176,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 874,
+          "y": 357,
+          "width": 52,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Search 424,703 cars",
+          "x": 934,
+          "y": 357,
+          "width": 214,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Pay the right price",
+          "x": 168,
+          "y": 669,
+          "width": 221,
+          "height": 31,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Car history checks",
+          "x": 168,
+          "y": 827,
+          "width": 223,
+          "height": 31,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sellers you can trust",
+          "x": 168,
+          "y": 890,
+          "width": 245,
+          "height": 31,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 168,
+          "y": 1049,
+          "width": 20,
+          "height": 20,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 191,
+          "y": 1049,
+          "width": 20,
+          "height": 20,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 214,
+          "y": 1049,
+          "width": 20,
+          "height": 20,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Go to slide 2",
+          "x": 1312,
+          "y": 1406,
+          "width": 40,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "FORD View 35,916 cars",
+          "x": 110,
+          "y": 1309,
+          "width": 286,
+          "height": 222,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "VOLKSWAGEN View 35,076 cars",
+          "x": 412,
+          "y": 1309,
+          "width": 286,
+          "height": 222,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "AUDI View 33,316 cars",
+          "x": 714,
+          "y": 1309,
+          "width": 286,
+          "height": 222,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "MERCEDES-BENZ View 29,584 cars",
+          "x": 1016,
+          "y": 1309,
+          "width": 286,
+          "height": 222,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BMW View 38,630 cars",
+          "x": 1318,
+          "y": 1309,
+          "width": 286,
+          "height": 222,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "TOYOTA View 16,029 cars",
+          "x": 1620,
+          "y": 1309,
+          "width": 286,
+          "height": 222,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "VAUXHALL View 24,694 cars",
+          "x": 1922,
+          "y": 1309,
+          "width": 286,
+          "height": 222,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "NISSAN View 19,179 cars",
+          "x": 2224,
+          "y": 1309,
+          "width": 286,
+          "height": 222,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "View all brands",
+          "x": 627,
+          "y": 1577,
+          "width": 186,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value my car",
+          "x": 278,
+          "y": 1937,
+          "width": 144,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Read reviews",
+          "x": 802,
+          "y": 2299,
+          "width": 147,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Go to slide 2",
+          "x": 1312,
+          "y": 2806,
+          "width": 40,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "USED FORD FIESTA",
+          "x": 114,
+          "y": 2649,
+          "width": 392,
+          "height": 350,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "USED BMW 3 SERIES",
+          "x": 530,
+          "y": 2649,
+          "width": 392,
+          "height": 350,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "USED MERCEDES-BENZ E CLASS",
+          "x": 946,
+          "y": 2649,
+          "width": 392,
+          "height": 350,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Best small cars",
+          "x": 188,
+          "y": 3348,
+          "width": 128,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Best electric cars",
+          "x": 490,
+          "y": 3348,
+          "width": 149,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Best family cars",
+          "x": 808,
+          "y": 3348,
+          "width": 137,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Best cars for students",
+          "x": 1095,
+          "y": 3348,
+          "width": 187,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Learn more",
+          "x": 132,
+          "y": 3856,
+          "width": 132,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Choosing a fuel type",
+          "x": 217,
+          "y": 4229,
+          "width": 175,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Checking its history",
+          "x": 636,
+          "y": 4229,
+          "width": 169,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Booking a test drive",
+          "x": 1051,
+          "y": 4229,
+          "width": 170,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Buying on finance",
+          "x": 229,
+          "y": 4501,
+          "width": 150,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Paying a private seller",
+          "x": 625,
+          "y": 4501,
+          "width": 191,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sorting the paperwork",
+          "x": 1040,
+          "y": 4501,
+          "width": 193,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Find yours",
+          "x": 659,
+          "y": 4945,
+          "width": 123,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "When is the best time to buy a used car?",
+          "x": 360,
+          "y": 5161,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 376,
+          "y": 5303,
+          "width": 70,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 861,
+          "y": 5303,
+          "width": 185,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Are used cars reliable?",
+          "x": 360,
+          "y": 5220,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 547,
+          "y": 5386,
+          "width": 129,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 737,
+          "y": 5410,
+          "width": 111,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Can I test drive a used car?",
+          "x": 360,
+          "y": 5279,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 376,
+          "y": 5445,
+          "width": 666,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Can a used car be returned?",
+          "x": 360,
+          "y": 5338,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 692,
+          "y": 5616,
+          "width": 121,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "What is good mileage for a used car?",
+          "x": 360,
+          "y": 5397,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "What is a used car worth?",
+          "x": 360,
+          "y": 5456,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 376,
+          "y": 5534,
+          "width": 618,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Are used cars cheaper to insure?",
+          "x": 360,
+          "y": 5515,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 690,
+          "y": 5681,
+          "width": 142,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Can I buy a used car online?",
+          "x": 360,
+          "y": 5574,
+          "width": 720,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 376,
+          "y": 5724,
+          "width": 649,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Autotrader has a Trustpilot score of 4.6/5 4.6/5 Score is based on 109,129 reviews",
+          "x": 581,
+          "y": 5997,
+          "width": 278,
+          "height": 57,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "About Autotrader",
+          "x": 624,
+          "y": 6070,
+          "width": 192,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "e.g name@example.com",
+          "x": 516,
+          "y": 6394,
+          "width": 293,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sign up",
+          "x": 825,
+          "y": 6394,
+          "width": 99,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "privacy notice",
+          "x": 658,
+          "y": 6492,
+          "width": 97,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Back to top of the page",
+          "x": 676,
+          "y": 6602,
+          "width": 89,
+          "height": 60,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Security advice",
+          "x": 108,
+          "y": 6771,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Contact us",
+          "x": 108,
+          "y": 6799,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "About Autotrader",
+          "x": 108,
+          "y": 6827,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Careers",
+          "x": 108,
+          "y": 6855,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Investor information",
+          "x": 108,
+          "y": 6883,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Privacy notice and cookies",
+          "x": 108,
+          "y": 6911,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Terms & conditions",
+          "x": 108,
+          "y": 6939,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Review policy",
+          "x": 108,
+          "y": 6967,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "External wellbeing support",
+          "x": 108,
+          "y": 6995,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Manage cookies",
+          "x": 108,
+          "y": 7039,
+          "width": 97,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Products & services",
+          "x": 438,
+          "y": 6772,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6830,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6858,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6886,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6914,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6942,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6970,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6998,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Buying advice",
+          "x": 438,
+          "y": 6831,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6889,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6917,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6945,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6973,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Quick search",
+          "x": 438,
+          "y": 6890,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6948,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 6976,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 7004,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 7032,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 7060,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 7088,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 7116,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Autotrader for dealers",
+          "x": 438,
+          "y": 6949,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 7007,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 7035,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 7063,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Send feedback",
+          "x": 939,
+          "y": 6795,
+          "width": 157,
+          "height": 52,
+          "visible": true
+        }
+      ],
+      "blocked_external_request_shapes": [],
+      "screenshot": "cars-used-desktop.png",
+      "javascript_enabled": false
+    },
+    {
+      "page_id": "cars-used",
+      "viewport_id": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document_title": "Used Cars For Sale | Second Hand Cars | Autotrader UK",
+      "body_dimensions": {
+        "width": 390,
+        "height": 7594
+      },
+      "visible_controls": [
+        {
+          "tag": "a",
+          "text": "Skip to content",
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Skip to footer",
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 8,
+          "y": 11,
+          "width": 144,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Saved",
+          "x": 342,
+          "y": 8,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Used cars",
+          "x": -374,
+          "y": 64,
+          "width": 70,
+          "height": 30,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "New cars",
+          "x": -374,
+          "y": 112,
+          "width": 66,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell your car",
+          "x": -374,
+          "y": 156,
+          "width": 86,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value your car",
+          "x": -374,
+          "y": 200,
+          "width": 101,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car reviews",
+          "x": -374,
+          "y": 244,
+          "width": 86,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car leasing",
+          "x": -374,
+          "y": 288,
+          "width": 79,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric cars",
+          "x": -374,
+          "y": 332,
+          "width": 86,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Buy a car online",
+          "x": -374,
+          "y": 376,
+          "width": 109,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "Postcode",
+          "x": 28,
+          "y": 302,
+          "width": 334,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "select",
+          "text": "Any Abarth (705) AC (12) AION (1) AK (3) Alfa Romeo (1,084) Allard (2) Alpine (117) Ariel (8) Asia (1) Aston Martin (866) Audi (33,316) Austin (29) BAC (3) Beau",
+          "x": 28,
+          "y": 370,
+          "width": 159,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "select",
+          "text": "Any",
+          "x": 203,
+          "y": 370,
+          "width": 159,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 28,
+          "y": 418,
+          "width": 52,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Search 424,703 cars",
+          "x": 88,
+          "y": 418,
+          "width": 274,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Pay the right price",
+          "x": 20,
+          "y": 933,
+          "width": 177,
+          "height": 26,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Car history checks",
+          "x": 20,
+          "y": 1039,
+          "width": 177,
+          "height": 26,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sellers you can trust",
+          "x": 20,
+          "y": 1039,
+          "width": 193,
+          "height": 26,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 20,
+          "y": 903,
+          "width": 20,
+          "height": 20,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 43,
+          "y": 903,
+          "width": 20,
+          "height": 20,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 66,
+          "y": 903,
+          "width": 20,
+          "height": 20,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Go to slide 2",
+          "x": 354,
+          "y": 1372,
+          "width": 40,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "FORD View 35,916 cars",
+          "x": 18,
+          "y": 1276,
+          "width": 286,
+          "height": 220,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "VOLKSWAGEN View 35,076 cars",
+          "x": 320,
+          "y": 1276,
+          "width": 286,
+          "height": 220,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "AUDI View 33,316 cars",
+          "x": 622,
+          "y": 1276,
+          "width": 286,
+          "height": 220,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "MERCEDES-BENZ View 29,584 cars",
+          "x": 924,
+          "y": 1276,
+          "width": 286,
+          "height": 220,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BMW View 38,630 cars",
+          "x": 1226,
+          "y": 1276,
+          "width": 286,
+          "height": 220,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "TOYOTA View 16,029 cars",
+          "x": 1528,
+          "y": 1276,
+          "width": 286,
+          "height": 220,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "VAUXHALL View 24,694 cars",
+          "x": 1830,
+          "y": 1276,
+          "width": 286,
+          "height": 220,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "NISSAN View 19,179 cars",
+          "x": 2132,
+          "y": 1276,
+          "width": 286,
+          "height": 220,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "View all brands",
+          "x": 102,
+          "y": 1542,
+          "width": 186,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value my car",
+          "x": 16,
+          "y": 2096,
+          "width": 144,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Read reviews",
+          "x": 16,
+          "y": 2617,
+          "width": 147,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Go to slide 2",
+          "x": 370,
+          "y": 2898,
+          "width": 40,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "USED FORD FIESTA",
+          "x": 6,
+          "y": 2773,
+          "width": 273,
+          "height": 287,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "USED BMW 3 SERIES",
+          "x": 303,
+          "y": 2773,
+          "width": 273,
+          "height": 287,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "USED MERCEDES-BENZ E CLASS",
+          "x": 600,
+          "y": 2773,
+          "width": 273,
+          "height": 287,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Best small cars",
+          "x": 128,
+          "y": 3376,
+          "width": 119,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Best electric cars",
+          "x": 477,
+          "y": 3376,
+          "width": 136,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Best family cars",
+          "x": 840,
+          "y": 3376,
+          "width": 126,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Best cars for students",
+          "x": 1175,
+          "y": 3376,
+          "width": 172,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Learn more",
+          "x": 40,
+          "y": 3761,
+          "width": 132,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Choosing a fuel type",
+          "x": 108,
+          "y": 4259,
+          "width": 159,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Checking its history",
+          "x": 469,
+          "y": 4259,
+          "width": 152,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Booking a test drive",
+          "x": 826,
+          "y": 4259,
+          "width": 154,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Buying on finance",
+          "x": 1194,
+          "y": 4259,
+          "width": 135,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Paying a private seller",
+          "x": 1532,
+          "y": 4259,
+          "width": 174,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sorting the paperwork",
+          "x": 1890,
+          "y": 4259,
+          "width": 174,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Find yours",
+          "x": 134,
+          "y": 4629,
+          "width": 123,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "When is the best time to buy a used car?",
+          "x": 16,
+          "y": 4867,
+          "width": 358,
+          "height": 79,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 5054,
+          "width": 70,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 5078,
+          "width": 309,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Are used cars reliable?",
+          "x": 16,
+          "y": 4947,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 203,
+          "y": 5159,
+          "width": 129,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 107,
+          "y": 5231,
+          "width": 111,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Can I test drive a used car?",
+          "x": 16,
+          "y": 5004,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 95,
+          "y": 5287,
+          "width": 218,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Can a used car be returned?",
+          "x": 16,
+          "y": 5060,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 5480,
+          "width": 121,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "What is good mileage for a used car?",
+          "x": 16,
+          "y": 5117,
+          "width": 358,
+          "height": 79,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "What is a used car worth?",
+          "x": 16,
+          "y": 5197,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 5297,
+          "width": 306,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Are used cars cheaper to insure?",
+          "x": 16,
+          "y": 5254,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 98,
+          "y": 5537,
+          "width": 142,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Can I buy a used car online?",
+          "x": 16,
+          "y": 5310,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 32,
+          "y": 5578,
+          "width": 269,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Autotrader has a Trustpilot score of 4.6/5 4.6/5 Score is based on 109,129 reviews",
+          "x": 56,
+          "y": 5740,
+          "width": 278,
+          "height": 57,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "About Autotrader",
+          "x": 99,
+          "y": 5813,
+          "width": 192,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "e.g name@example.com",
+          "x": 32,
+          "y": 6063,
+          "width": 326,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sign up",
+          "x": 32,
+          "y": 6131,
+          "width": 326,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "privacy notice",
+          "x": 154,
+          "y": 6225,
+          "width": 85,
+          "height": 13,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Back to top of the page",
+          "x": 151,
+          "y": 6304,
+          "width": 89,
+          "height": 60,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Security advice",
+          "x": 32,
+          "y": 6473,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Contact us",
+          "x": 32,
+          "y": 6497,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "About Autotrader",
+          "x": 32,
+          "y": 6522,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Careers",
+          "x": 32,
+          "y": 6546,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Investor information",
+          "x": 32,
+          "y": 6570,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Privacy notice and cookies",
+          "x": 32,
+          "y": 6595,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Terms & conditions",
+          "x": 32,
+          "y": 6619,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Review policy",
+          "x": 32,
+          "y": 6643,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "External wellbeing support",
+          "x": 32,
+          "y": 6668,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Manage cookies",
+          "x": 32,
+          "y": 6708,
+          "width": 97,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Products & services",
+          "x": 16,
+          "y": 6765,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6820,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6845,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6869,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6893,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6918,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6942,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6966,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Buying advice",
+          "x": 16,
+          "y": 6821,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6877,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6901,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6926,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6950,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Quick search",
+          "x": 16,
+          "y": 6878,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6934,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6958,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6982,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 7007,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 7031,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 7055,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 7080,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Autotrader for dealers",
+          "x": 16,
+          "y": 6935,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 6990,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 7015,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 7039,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Send feedback",
+          "x": 16,
+          "y": 7055,
+          "width": 157,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 16,
+          "y": 7131,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 135,
+          "y": 7131,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 255,
+          "y": 7131,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 16,
+          "y": 7179,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 135,
+          "y": 7179,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 255,
+          "y": 7179,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 16,
+          "y": 7219,
+          "width": 135,
+          "height": 53,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 167,
+          "y": 7219,
+          "width": 135,
+          "height": 53,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Read more about our role and about fees and commissions",
+          "x": 16,
+          "y": 7371,
+          "width": 344,
+          "height": 28,
+          "visible": true
+        }
+      ],
+      "blocked_external_request_shapes": [],
+      "screenshot": "cars-used-mobile.png",
+      "javascript_enabled": false
+    },
+    {
+      "page_id": "home",
+      "viewport_id": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "document_title": "Autotrader UK - New and Used Cars For Sale",
+      "body_dimensions": {
+        "width": 1440,
+        "height": 5399
+      },
+      "visible_controls": [
+        {
+          "tag": "a",
+          "text": "Skip to content",
+          "x": 15,
+          "y": 3,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Skip to footer",
+          "x": 15,
+          "y": 3,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 104,
+          "y": 37,
+          "width": 164,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Saved",
+          "x": 1228,
+          "y": 32,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Account",
+          "x": 1292,
+          "y": 32,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Cars",
+          "x": 102,
+          "y": 3,
+          "width": 38,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Vans",
+          "x": 140,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Bikes",
+          "x": 181,
+          "y": 3,
+          "width": 42,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Motorhomes",
+          "x": 223,
+          "y": 3,
+          "width": 87,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Caravans",
+          "x": 310,
+          "y": 3,
+          "width": 70,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Trucks",
+          "x": 380,
+          "y": 3,
+          "width": 48,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Farm",
+          "x": 428,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Plant",
+          "x": 469,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric bikes",
+          "x": 510,
+          "y": 3,
+          "width": 85,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Used cars",
+          "x": 290,
+          "y": 38,
+          "width": 86,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "New cars",
+          "x": 378,
+          "y": 38,
+          "width": 82,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell your car",
+          "x": 462,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value your car",
+          "x": 566,
+          "y": 38,
+          "width": 117,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car reviews",
+          "x": 685,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car leasing",
+          "x": 789,
+          "y": 38,
+          "width": 95,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric cars",
+          "x": 886,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Buy a car online",
+          "x": 990,
+          "y": 38,
+          "width": 125,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Buy",
+          "x": 336,
+          "y": 345,
+          "width": 250,
+          "height": 54,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Lease",
+          "x": 586,
+          "y": 345,
+          "width": 267,
+          "height": 54,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sell",
+          "x": 853,
+          "y": 345,
+          "width": 251,
+          "height": 54,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "Postcode",
+          "x": 352,
+          "y": 444,
+          "width": 112,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "select",
+          "text": "Any Abarth (721) AC (11) AION (47) AK (3) Alfa Romeo (1,239) Allard (2) Alpine (190) Ariel (8) Asia (1) Aston Martin (862) Audi (35,078) Austin (31) BAC (3) Bea",
+          "x": 496,
+          "y": 444,
+          "width": 144,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "select",
+          "text": "Any",
+          "x": 671,
+          "y": 444,
+          "width": 144,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 831,
+          "y": 424,
+          "width": 52,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Search 449,032 cars",
+          "x": 891,
+          "y": 424,
+          "width": 213,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Find your lease",
+          "x": 132,
+          "y": 1043,
+          "width": 158,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell your car",
+          "x": 744,
+          "y": 1091,
+          "width": 140,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Find your car",
+          "x": 1062,
+          "y": 1091,
+          "width": 142,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Go to slide 2",
+          "x": 1312,
+          "y": 1507,
+          "width": 40,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volkswagen Polo 1.0 TSI R-Line DSG Euro 6 (s/s) 5dr",
+          "x": 126,
+          "y": 1643,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Leapmotor C10 69.9kWh Auto 5dr",
+          "x": 428,
+          "y": 1643,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volkswagen T-Cross 1.0 TSI Match DSG Euro 6 (s/s) 5dr",
+          "x": 730,
+          "y": 1643,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BYD Seal 82.5kWh Excellence Auto AWD 4dr",
+          "x": 1032,
+          "y": 1643,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volkswagen T-Cross 1.0 TSI Match Euro 6 (s/s) 5dr",
+          "x": 1334,
+          "y": 1643,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Vauxhall Corsa 1.2 Turbo Ultimate Auto Euro 6 (s/s) 5dr",
+          "x": 1636,
+          "y": 1643,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Nissan X-Trail 1.5 h e-POWER Acenta Premium Auto e-4ORCE Euro 6 (s/s) 5dr",
+          "x": 1938,
+          "y": 1643,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "JAECOO 7 1.6T Deluxe DCT Euro 6 (s/s) 5dr",
+          "x": 2240,
+          "y": 1643,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Ford Capri Extended Range 77kWh Select Auto 5dr",
+          "x": 2542,
+          "y": 1643,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BYD Seal 82.5kWh Design Auto 4dr",
+          "x": 2844,
+          "y": 1643,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BYD Seal 6 1.5 19kWh Comfort CVT Auto Euro 6 (s/s) 5dr",
+          "x": 3146,
+          "y": 1643,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "SEAT Ibiza 1.0 TSI SE Technology Euro 6 (s/s) 5dr",
+          "x": 3448,
+          "y": 1643,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volkswagen Multivan 2.0 TDI Life DSG Euro 6 (s/s) 5dr",
+          "x": 3750,
+          "y": 1643,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "CUPRA Terramar 1.5 eTSI V2 DSG Euro 6 (s/s) 5dr",
+          "x": 4052,
+          "y": 1643,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BYD Sealion 7 82.5kWh Comfort Auto 5dr",
+          "x": 4354,
+          "y": 1643,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volkswagen ID.4 Pro 77kWh Match Auto 5dr",
+          "x": 4656,
+          "y": 1643,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "MG MG4 64kWh Premium Long Range Auto 5dr",
+          "x": 4958,
+          "y": 1643,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Polestar Polestar 2 Single Motor 82kWh Long Range Fastback Auto RWD 5dr",
+          "x": 5260,
+          "y": 1643,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volvo XC40 2.0 B3 MHEV Plus Dark DCT Auto Euro 6 (s/s) 5dr",
+          "x": 5562,
+          "y": 1643,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Suzuki Swift 1.2 MHEV Motion Euro 6 (s/s) 5dr",
+          "x": 5864,
+          "y": 1643,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "View more deals",
+          "x": 623,
+          "y": 1760,
+          "width": 195,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value your car",
+          "x": 802,
+          "y": 2104,
+          "width": 154,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Check a car's history",
+          "x": 164,
+          "y": 2557,
+          "width": 176,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Security advice",
+          "x": 497,
+          "y": 2557,
+          "width": 135,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car finance & loans",
+          "x": 794,
+          "y": 2557,
+          "width": 164,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "What's it worth",
+          "x": 1123,
+          "y": 2557,
+          "width": 131,
+          "height": 18,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Autotrader’s Electric Car Giveaway winners",
+          "x": 128,
+          "y": 3115,
+          "width": 357,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "10 cars for 2026 that live in my head rent-free",
+          "x": 541,
+          "y": 3115,
+          "width": 357,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Audi Q7 SUV (2026 - ) review",
+          "x": 955,
+          "y": 3115,
+          "width": 357,
+          "height": 26,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Finding the right car: Autotrader's advert features explained",
+          "x": 128,
+          "y": 3622,
+          "width": 357,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Living with a… Fiat Grande Panda",
+          "x": 541,
+          "y": 3622,
+          "width": 357,
+          "height": 26,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Is Polestar the greenest car company in the world?",
+          "x": 955,
+          "y": 3622,
+          "width": 357,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Go to slide 2",
+          "x": 1312,
+          "y": 4079,
+          "width": 40,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Currently viewing slide 1",
+          "x": 706,
+          "y": 4232,
+          "width": 8,
+          "height": 8,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Go to slide 2",
+          "x": 726,
+          "y": 4232,
+          "width": 8,
+          "height": 8,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "AUDI",
+          "x": 110,
+          "y": 3990,
+          "width": 286,
+          "height": 206,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BMW",
+          "x": 412,
+          "y": 3990,
+          "width": 286,
+          "height": 206,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "MERCEDES-BENZ",
+          "x": 714,
+          "y": 3990,
+          "width": 286,
+          "height": 206,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "VOLVO",
+          "x": 1016,
+          "y": 3990,
+          "width": 286,
+          "height": 206,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Show all brands",
+          "x": 642,
+          "y": 4298,
+          "width": 156,
+          "height": 34,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Facebook",
+          "x": 450,
+          "y": 4549,
+          "width": 90,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "YouTube",
+          "x": 540,
+          "y": 4549,
+          "width": 90,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Instagram",
+          "x": 630,
+          "y": 4549,
+          "width": 90,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "TikTok",
+          "x": 720,
+          "y": 4549,
+          "width": 90,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Giphy",
+          "x": 810,
+          "y": 4549,
+          "width": 90,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Pinterest",
+          "x": 900,
+          "y": 4549,
+          "width": 90,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Back to top of the page",
+          "x": 676,
+          "y": 4682,
+          "width": 89,
+          "height": 60,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Security advice",
+          "x": 108,
+          "y": 4851,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Contact us",
+          "x": 108,
+          "y": 4879,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "About Autotrader",
+          "x": 108,
+          "y": 4907,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Careers",
+          "x": 108,
+          "y": 4935,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Investor information",
+          "x": 108,
+          "y": 4963,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Privacy notice and cookies",
+          "x": 108,
+          "y": 4991,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Terms & conditions",
+          "x": 108,
+          "y": 5019,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Review policy",
+          "x": 108,
+          "y": 5047,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "External wellbeing support",
+          "x": 108,
+          "y": 5075,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Manage cookies",
+          "x": 108,
+          "y": 5119,
+          "width": 97,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Products & services",
+          "x": 438,
+          "y": 4852,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 4910,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 4938,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 4966,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 4994,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5022,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5050,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5078,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Buying advice",
+          "x": 438,
+          "y": 4911,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 4969,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 4997,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5025,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5053,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Quick search",
+          "x": 438,
+          "y": 4970,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5028,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5056,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5084,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5112,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5140,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5168,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5196,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Autotrader for dealers",
+          "x": 438,
+          "y": 5029,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5087,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5115,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 5143,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Send feedback",
+          "x": 939,
+          "y": 4875,
+          "width": 157,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 939,
+          "y": 4959,
+          "width": 65,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 1005,
+          "y": 4959,
+          "width": 65,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 1070,
+          "y": 4959,
+          "width": 65,
+          "height": 24,
+          "visible": true
+        }
+      ],
+      "blocked_external_request_shapes": [],
+      "screenshot": "home-desktop.png",
+      "javascript_enabled": false
+    },
+    {
+      "page_id": "home",
+      "viewport_id": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document_title": "Autotrader UK - New and Used Cars For Sale",
+      "body_dimensions": {
+        "width": 390,
+        "height": 5767
+      },
+      "visible_controls": [
+        {
+          "tag": "a",
+          "text": "Skip to content",
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Skip to footer",
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 8,
+          "y": 11,
+          "width": 144,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Saved",
+          "x": 342,
+          "y": 8,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Used cars",
+          "x": -374,
+          "y": 64,
+          "width": 70,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "New cars",
+          "x": -374,
+          "y": 108,
+          "width": 66,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell your car",
+          "x": -374,
+          "y": 152,
+          "width": 86,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value your car",
+          "x": -374,
+          "y": 196,
+          "width": 101,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car reviews",
+          "x": -374,
+          "y": 240,
+          "width": 86,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car leasing",
+          "x": -374,
+          "y": 284,
+          "width": 79,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric cars",
+          "x": -374,
+          "y": 328,
+          "width": 86,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Buy a car online",
+          "x": -374,
+          "y": 372,
+          "width": 109,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Buy",
+          "x": 32,
+          "y": 296,
+          "width": 103,
+          "height": 54,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Lease",
+          "x": 135,
+          "y": 296,
+          "width": 120,
+          "height": 54,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sell",
+          "x": 254,
+          "y": 296,
+          "width": 104,
+          "height": 54,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "Postcode",
+          "x": 32,
+          "y": 395,
+          "width": 326,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "select",
+          "text": "Any Abarth (721) AC (11) AION (47) AK (3) Alfa Romeo (1,239) Allard (2) Alpine (190) Ariel (8) Asia (1) Aston Martin (862) Audi (35,078) Austin (31) BAC (3) Bea",
+          "x": 32,
+          "y": 463,
+          "width": 155,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "select",
+          "text": "Any",
+          "x": 203,
+          "y": 463,
+          "width": 155,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "x": 32,
+          "y": 511,
+          "width": 52,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Search 449,032 cars",
+          "x": 92,
+          "y": 511,
+          "width": 266,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Find your lease",
+          "x": 32,
+          "y": 1016,
+          "width": 158,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell your car",
+          "x": 32,
+          "y": 1239,
+          "width": 140,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Find your car",
+          "x": 32,
+          "y": 1461,
+          "width": 142,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Go to slide 2",
+          "x": 354,
+          "y": 1840,
+          "width": 40,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volkswagen Polo 1.0 TSI R-Line DSG Euro 6 (s/s) 5dr",
+          "x": 34,
+          "y": 1976,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Leapmotor C10 69.9kWh Auto 5dr",
+          "x": 336,
+          "y": 1976,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volkswagen T-Cross 1.0 TSI Match DSG Euro 6 (s/s) 5dr",
+          "x": 638,
+          "y": 1976,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BYD Seal 82.5kWh Excellence Auto AWD 4dr",
+          "x": 940,
+          "y": 1976,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volkswagen T-Cross 1.0 TSI Match Euro 6 (s/s) 5dr",
+          "x": 1242,
+          "y": 1976,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Vauxhall Corsa 1.2 Turbo Ultimate Auto Euro 6 (s/s) 5dr",
+          "x": 1544,
+          "y": 1976,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Nissan X-Trail 1.5 h e-POWER Acenta Premium Auto e-4ORCE Euro 6 (s/s) 5dr",
+          "x": 1846,
+          "y": 1976,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "JAECOO 7 1.6T Deluxe DCT Euro 6 (s/s) 5dr",
+          "x": 2148,
+          "y": 1976,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Ford Capri Extended Range 77kWh Select Auto 5dr",
+          "x": 2450,
+          "y": 1976,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BYD Seal 82.5kWh Design Auto 4dr",
+          "x": 2752,
+          "y": 1976,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BYD Seal 6 1.5 19kWh Comfort CVT Auto Euro 6 (s/s) 5dr",
+          "x": 3054,
+          "y": 1976,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "SEAT Ibiza 1.0 TSI SE Technology Euro 6 (s/s) 5dr",
+          "x": 3356,
+          "y": 1976,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volkswagen Multivan 2.0 TDI Life DSG Euro 6 (s/s) 5dr",
+          "x": 3658,
+          "y": 1976,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "CUPRA Terramar 1.5 eTSI V2 DSG Euro 6 (s/s) 5dr",
+          "x": 3960,
+          "y": 1976,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BYD Sealion 7 82.5kWh Comfort Auto 5dr",
+          "x": 4262,
+          "y": 1976,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volkswagen ID.4 Pro 77kWh Match Auto 5dr",
+          "x": 4564,
+          "y": 1976,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "MG MG4 64kWh Premium Long Range Auto 5dr",
+          "x": 4866,
+          "y": 1976,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Polestar Polestar 2 Single Motor 82kWh Long Range Fastback Auto RWD 5dr",
+          "x": 5168,
+          "y": 1976,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Volvo XC40 2.0 B3 MHEV Plus Dark DCT Auto Euro 6 (s/s) 5dr",
+          "x": 5470,
+          "y": 1976,
+          "width": 254,
+          "height": 75,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Suzuki Swift 1.2 MHEV Motion Euro 6 (s/s) 5dr",
+          "x": 5772,
+          "y": 1976,
+          "width": 254,
+          "height": 51,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "View more deals",
+          "x": 98,
+          "y": 2093,
+          "width": 195,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value your car",
+          "x": 16,
+          "y": 2656,
+          "width": 154,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Check a car's history",
+          "x": 108,
+          "y": 2977,
+          "width": 159,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Security advice",
+          "x": 485,
+          "y": 2977,
+          "width": 121,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car finance & loans",
+          "x": 829,
+          "y": 2977,
+          "width": 148,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "What's it worth",
+          "x": 1202,
+          "y": 2977,
+          "width": 119,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Autotrader’s Electric Car Giveaway winners",
+          "x": 20,
+          "y": 3447,
+          "width": 326,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "10 cars for 2026 that live in my head rent-free",
+          "x": 394,
+          "y": 3447,
+          "width": 326,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Audi Q7 SUV (2026 - ) review",
+          "x": 768,
+          "y": 3447,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Finding the right car: Autotrader's advert features explained",
+          "x": 1142,
+          "y": 3447,
+          "width": 326,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Living with a… Fiat Grande Panda",
+          "x": 1516,
+          "y": 3447,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Is Polestar the greenest car company in the world?",
+          "x": 1890,
+          "y": 3447,
+          "width": 326,
+          "height": 48,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Go to slide 2",
+          "x": 354,
+          "y": 3878,
+          "width": 40,
+          "height": 40,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Currently viewing slide 1",
+          "x": 181,
+          "y": 4030,
+          "width": 8,
+          "height": 8,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Go to slide 2",
+          "x": 201,
+          "y": 4030,
+          "width": 8,
+          "height": 8,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "AUDI",
+          "x": 18,
+          "y": 3791,
+          "width": 286,
+          "height": 203,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "BMW",
+          "x": 320,
+          "y": 3791,
+          "width": 286,
+          "height": 203,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "MERCEDES-BENZ",
+          "x": 622,
+          "y": 3791,
+          "width": 286,
+          "height": 203,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "VOLVO",
+          "x": 924,
+          "y": 3791,
+          "width": 286,
+          "height": 203,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Show all brands",
+          "x": 117,
+          "y": 4096,
+          "width": 156,
+          "height": 34,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Facebook",
+          "x": 33,
+          "y": 4300,
+          "width": 108,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "YouTube",
+          "x": 141,
+          "y": 4300,
+          "width": 108,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Instagram",
+          "x": 249,
+          "y": 4300,
+          "width": 108,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "TikTok",
+          "x": 33,
+          "y": 4368,
+          "width": 108,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Giphy",
+          "x": 141,
+          "y": 4368,
+          "width": 108,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Pinterest",
+          "x": 249,
+          "y": 4368,
+          "width": 108,
+          "height": 44,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Back to top of the page",
+          "x": 151,
+          "y": 4477,
+          "width": 89,
+          "height": 60,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Security advice",
+          "x": 32,
+          "y": 4646,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Contact us",
+          "x": 32,
+          "y": 4670,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "About Autotrader",
+          "x": 32,
+          "y": 4695,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Careers",
+          "x": 32,
+          "y": 4719,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Investor information",
+          "x": 32,
+          "y": 4743,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Privacy notice and cookies",
+          "x": 32,
+          "y": 4768,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Terms & conditions",
+          "x": 32,
+          "y": 4792,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Review policy",
+          "x": 32,
+          "y": 4816,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "External wellbeing support",
+          "x": 32,
+          "y": 4841,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Manage cookies",
+          "x": 32,
+          "y": 4881,
+          "width": 97,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Products & services",
+          "x": 16,
+          "y": 4938,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 4993,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5018,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5042,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5066,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5091,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5115,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5139,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Buying advice",
+          "x": 16,
+          "y": 4994,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5050,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5074,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5099,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5123,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Quick search",
+          "x": 16,
+          "y": 5051,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5107,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5131,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5155,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5180,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5204,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5228,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5253,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Autotrader for dealers",
+          "x": 16,
+          "y": 5108,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5163,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5188,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 5212,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Send feedback",
+          "x": 16,
+          "y": 5228,
+          "width": 157,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 16,
+          "y": 5304,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 135,
+          "y": 5304,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 255,
+          "y": 5304,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 16,
+          "y": 5352,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 135,
+          "y": 5352,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 255,
+          "y": 5352,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 16,
+          "y": 5392,
+          "width": 135,
+          "height": 53,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 167,
+          "y": 5392,
+          "width": 135,
+          "height": 53,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Read more about our role and about fees and commissions",
+          "x": 16,
+          "y": 5544,
+          "width": 344,
+          "height": 28,
+          "visible": true
+        }
+      ],
+      "blocked_external_request_shapes": [],
+      "screenshot": "home-mobile.png",
+      "javascript_enabled": false
+    },
+    {
+      "page_id": "signin",
+      "viewport_id": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "document_title": "Sign In | Autotrader UK",
+      "body_dimensions": {
+        "width": 1440,
+        "height": 1280
+      },
+      "visible_controls": [
+        {
+          "tag": "a",
+          "text": "Skip to content",
+          "x": 15,
+          "y": 3,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Skip to footer",
+          "x": 15,
+          "y": 3,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 104,
+          "y": 37,
+          "width": 164,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Saved",
+          "x": 1228,
+          "y": 32,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sign in",
+          "x": 1292,
+          "y": 32,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Cars",
+          "x": 102,
+          "y": 3,
+          "width": 38,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Vans",
+          "x": 140,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Bikes",
+          "x": 181,
+          "y": 3,
+          "width": 42,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Motorhomes",
+          "x": 223,
+          "y": 3,
+          "width": 87,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Caravans",
+          "x": 310,
+          "y": 3,
+          "width": 70,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Trucks",
+          "x": 380,
+          "y": 3,
+          "width": 48,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Farm",
+          "x": 428,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Plant",
+          "x": 469,
+          "y": 3,
+          "width": 41,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric bikes",
+          "x": 510,
+          "y": 3,
+          "width": 85,
+          "height": 17,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Used cars",
+          "x": 290,
+          "y": 38,
+          "width": 86,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "New cars",
+          "x": 378,
+          "y": 38,
+          "width": 82,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell your car",
+          "x": 462,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value your car",
+          "x": 566,
+          "y": 38,
+          "width": 117,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car reviews",
+          "x": 685,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car leasing",
+          "x": 789,
+          "y": 38,
+          "width": 95,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric cars",
+          "x": 886,
+          "y": 38,
+          "width": 102,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Buy a car online",
+          "x": 990,
+          "y": 38,
+          "width": 125,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Continue with Google",
+          "x": 495,
+          "y": 283,
+          "width": 450,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "",
+          "x": 650,
+          "y": 355,
+          "width": 24,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sign in another way",
+          "x": 514,
+          "y": 406,
+          "width": 142,
+          "height": 19,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Terms and Conditions",
+          "x": 702,
+          "y": 453,
+          "width": 143,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Notice",
+          "x": 620,
+          "y": 473,
+          "width": 97,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Back to top of the page",
+          "x": 676,
+          "y": 563,
+          "width": 89,
+          "height": 60,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Security advice",
+          "x": 108,
+          "y": 732,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Contact us",
+          "x": 108,
+          "y": 760,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "About Autotrader",
+          "x": 108,
+          "y": 788,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Careers",
+          "x": 108,
+          "y": 816,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Investor information",
+          "x": 108,
+          "y": 844,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Privacy notice and cookies",
+          "x": 108,
+          "y": 872,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Terms & conditions",
+          "x": 108,
+          "y": 900,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Review policy",
+          "x": 108,
+          "y": 928,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "External wellbeing support",
+          "x": 108,
+          "y": 956,
+          "width": 314,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Manage cookies",
+          "x": 108,
+          "y": 1000,
+          "width": 97,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Products & services",
+          "x": 438,
+          "y": 733,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 791,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 819,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 847,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 875,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 903,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 931,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 959,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Buying advice",
+          "x": 438,
+          "y": 792,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 850,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 878,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 906,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 934,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Quick search",
+          "x": 438,
+          "y": 851,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 909,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 937,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 965,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 993,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 1021,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 1049,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 1077,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Autotrader for dealers",
+          "x": 438,
+          "y": 910,
+          "width": 405,
+          "height": 58,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 968,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 996,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 486,
+          "y": 1024,
+          "width": 309,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Send feedback",
+          "x": 939,
+          "y": 756,
+          "width": 157,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 939,
+          "y": 840,
+          "width": 65,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 1005,
+          "y": 840,
+          "width": 65,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 1070,
+          "y": 840,
+          "width": 65,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 1136,
+          "y": 840,
+          "width": 65,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 1201,
+          "y": 840,
+          "width": 65,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 1267,
+          "y": 840,
+          "width": 65,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 939,
+          "y": 880,
+          "width": 135,
+          "height": 55,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 1090,
+          "y": 880,
+          "width": 135,
+          "height": 55,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Read more about our role and about fees and commissions",
+          "x": 939,
+          "y": 1033,
+          "width": 389,
+          "height": 28,
+          "visible": true
+        }
+      ],
+      "blocked_external_request_shapes": [],
+      "screenshot": "signin-desktop.png",
+      "javascript_enabled": false
+    },
+    {
+      "page_id": "signin",
+      "viewport_id": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document_title": "Sign In | Autotrader UK",
+      "body_dimensions": {
+        "width": 394,
+        "height": 1769
+      },
+      "visible_controls": [
+        {
+          "tag": "a",
+          "text": "Skip to content",
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Skip to footer",
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 8,
+          "y": 11,
+          "width": 144,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Saved",
+          "x": 342,
+          "y": 8,
+          "width": 40,
+          "height": 38,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Used cars",
+          "x": -374,
+          "y": 64,
+          "width": 70,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "New cars",
+          "x": -374,
+          "y": 108,
+          "width": 66,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Sell your car",
+          "x": -374,
+          "y": 152,
+          "width": 86,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Value your car",
+          "x": -374,
+          "y": 196,
+          "width": 101,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car reviews",
+          "x": -374,
+          "y": 240,
+          "width": 86,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Car leasing",
+          "x": -374,
+          "y": 284,
+          "width": 79,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Electric cars",
+          "x": -374,
+          "y": 328,
+          "width": 86,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Buy a car online",
+          "x": -374,
+          "y": 372,
+          "width": 109,
+          "height": 28,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Continue with Google",
+          "x": 16,
+          "y": 199,
+          "width": 358,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "input",
+          "text": "",
+          "x": 125,
+          "y": 271,
+          "width": 24,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Sign in another way",
+          "x": 35,
+          "y": 322,
+          "width": 142,
+          "height": 19,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Terms and Conditions",
+          "x": 223,
+          "y": 369,
+          "width": 143,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Privacy Notice",
+          "x": 223,
+          "y": 389,
+          "width": 97,
+          "height": 16,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Back to top of the page",
+          "x": 151,
+          "y": 479,
+          "width": 89,
+          "height": 60,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Security advice",
+          "x": 32,
+          "y": 648,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Contact us",
+          "x": 32,
+          "y": 673,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "About Autotrader",
+          "x": 32,
+          "y": 697,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Careers",
+          "x": 32,
+          "y": 721,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Investor information",
+          "x": 32,
+          "y": 746,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Privacy notice and cookies",
+          "x": 32,
+          "y": 770,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Terms & conditions",
+          "x": 32,
+          "y": 794,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Review policy",
+          "x": 32,
+          "y": 819,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "External wellbeing support",
+          "x": 32,
+          "y": 843,
+          "width": 326,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Manage cookies",
+          "x": 32,
+          "y": 883,
+          "width": 97,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Products & services",
+          "x": 16,
+          "y": 940,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 996,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1020,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1044,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1069,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1093,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1117,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1142,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Buying advice",
+          "x": 16,
+          "y": 997,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1052,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1077,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1101,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1125,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Quick search",
+          "x": 16,
+          "y": 1053,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1109,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1133,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1158,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1182,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1206,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1230,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1255,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Autotrader for dealers",
+          "x": 16,
+          "y": 1110,
+          "width": 358,
+          "height": 56,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1166,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1190,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 64,
+          "y": 1214,
+          "width": 262,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "button",
+          "text": "Send feedback",
+          "x": 16,
+          "y": 1231,
+          "width": 157,
+          "height": 52,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 16,
+          "y": 1307,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 135,
+          "y": 1307,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 255,
+          "y": 1307,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 16,
+          "y": 1355,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 135,
+          "y": 1355,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 255,
+          "y": 1355,
+          "width": 119,
+          "height": 24,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 16,
+          "y": 1395,
+          "width": 135,
+          "height": 53,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "",
+          "x": 167,
+          "y": 1395,
+          "width": 135,
+          "height": 53,
+          "visible": true
+        },
+        {
+          "tag": "a",
+          "text": "Read more about our role and about fees and commissions",
+          "x": 16,
+          "y": 1546,
+          "width": 344,
+          "height": 28,
+          "visible": true
+        }
+      ],
+      "blocked_external_request_shapes": [],
+      "screenshot": "signin-mobile.png",
+      "javascript_enabled": false
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "autotrader-ea1-home-preflight",
+  "viewport": {"width": 1440, "height": 900},
+  "timeout_ms": 30000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.autotrader.co.uk"
+    ],
+    "clone": [
+      "http://127.0.0.1:1"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-home",
+      "action": "goto",
+      "path": "/",
+      "observations": [
+        {"id": "home-route", "kind": "url_path"},
+        {"id": "home-visible", "kind": "visible", "selector": {"source": "body", "clone": "body"}, "expect": {"equals": true}}
+      ],
+      "screenshot": true,
+      "full_page": true
+    },
+    {
+      "id": "home-snapshot",
+      "action": "snapshot",
+      "observations": [
+        {"id": "main-visible", "kind": "visible", "selector": {"source": "main", "clone": "main"}},
+        {"id": "links-count", "kind": "count", "selector": {"source": "a", "clone": "a"}},
+        {"id": "buttons-count", "kind": "count", "selector": {"source": "button", "clone": "button"}},
+        {"id": "inputs-count", "kind": "count", "selector": {"source": "input", "clone": "input"}}
+      ],
+      "screenshot": true
+    }
+  ]
+}

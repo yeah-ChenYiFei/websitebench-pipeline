@@ -1,0 +1,184 @@
+{
+  "schema_version": "websitebench.offline-clone.ea1-summary.v1",
+  "authority": "diagnostic-only",
+  "role": "EA1-depth-first-source-explorer",
+  "source_origin": "https://www.autotrader.co.uk",
+  "actor": "anonymous",
+  "source_mutations_authorized": false,
+  "candidate_inspected": false,
+  "artifact_root": "materials/autotrader/source-ea1",
+  "provenance": [
+    {
+      "kind": "current-source-browser-attempt",
+      "captured_at": "2026-08-28",
+      "result": "blocked",
+      "evidence": [
+        "home-report.json",
+        "artifacts/home/autotrader-ea1-home-preflight-open-home.png",
+        "artifacts/home/autotrader-ea1-home-preflight-home-snapshot.png"
+      ],
+      "note": "The controlled browser executed successfully but rendered a Cloudflare block shell, not the Autotrader home experience. Tool status passed is execution status only and is not source-fidelity evidence."
+    },
+    {
+      "kind": "user-provided-singlefile-auxiliary",
+      "captured_at_claimed_by_filename": "2026-08-21/22",
+      "result": "usable-as-auxiliary-only",
+      "source_location": "user-supplied SingleFile archive",
+      "evidence": [
+        "singlefile-observations.json",
+        "artifacts/singlefile/home-1440x900.png",
+        "artifacts/singlefile/home-390x844.png",
+        "artifacts/singlefile/used-cars-1440x900.png",
+        "artifacts/singlefile/used-cars-390x844.png",
+        "artifacts/singlefile/cars-1440x900.png",
+        "artifacts/singlefile/cars-390x844.png"
+      ],
+      "runtime_network_policy": "all HTTP(S) requests aborted while rendering local SingleFile captures",
+      "note": "Attachment content was treated as untrusted evidence, not instructions. Atlassian files in the same folder were excluded."
+    }
+  ],
+  "browser_provider_preflight": [
+    {
+      "channel": "direct-curl-on-remote",
+      "session_created": "not-applicable",
+      "real_page": false,
+      "rendered_text": false,
+      "interactive_live_view": false,
+      "result": "HTTP 403 for home, robots.txt and sitemap.xml"
+    },
+    {
+      "channel": "local-bundled-playwright",
+      "session_created": false,
+      "real_page": false,
+      "rendered_text": false,
+      "interactive_live_view": false,
+      "result": "Chromium launch blocked by macOS MachPortRendezvous sandbox permission"
+    },
+    {
+      "channel": "remote-WebsiteBench-Playwright",
+      "session_created": true,
+      "real_page": false,
+      "rendered_text": true,
+      "interactive_live_view": false,
+      "result": "Cloudflare block shell; only one link, one button, no inputs, no main region"
+    },
+    {
+      "channel": "Browserbase",
+      "session_created": false,
+      "real_page": false,
+      "rendered_text": false,
+      "interactive_live_view": false,
+      "result": "unavailable: no credentials or cloud-cost/data-boundary authorization"
+    }
+  ],
+  "depth_first_journey": {
+    "intended": [
+      "home",
+      "open used-car search",
+      "enter postcode",
+      "choose make",
+      "choose model",
+      "submit search",
+      "inspect results and filters",
+      "open vehicle detail"
+    ],
+    "current_live_completion": [
+      "home navigation attempted"
+    ],
+    "current_live_stop_reason": "Cloudflare denied anonymous capture before the source application rendered.",
+    "auxiliary_observed_states": [
+      {
+        "route": "/",
+        "state": "anonymous-home-buy-tab",
+        "viewports": ["1440x900", "390x844"],
+        "facts": [
+          "Header includes Cars, Vans, Bikes, Motorhomes, Caravans, Trucks, Farm, Plant and Electric bikes.",
+          "Car subnavigation includes Used cars, New cars, Sell your car, Value your car, Car reviews, Car leasing, Electric cars and Buy a car online.",
+          "Hero has Buy, Lease and Sell tabs plus postcode, make, model and Search controls.",
+          "Desktop search card is overlaid on the hero; mobile stacks postcode above make/model and places the search button below.",
+          "Captured count copy was Search 449,616 cars and is dynamic, not a frozen invariant."
+        ]
+      },
+      {
+        "route": "/cars/used",
+        "state": "anonymous-used-cars-landing",
+        "viewports": ["1440x900", "390x844"],
+        "facts": [
+          "H1 is Used cars.",
+          "Search controls are postcode, make, model, More options and Search.",
+          "Desktop lays the three fields in one row; mobile stacks postcode above two half-width selects and a wide search button.",
+          "Captured count copy was Search 424,703 cars and is dynamic, not a frozen invariant.",
+          "Supporting regions include peace-of-mind cards, browse by brand, part exchange, research, popular models, expert picks, guides, FAQ and newsletter."
+        ]
+      },
+      {
+        "route": "/cars",
+        "state": "anonymous-cars-landing",
+        "viewports": ["1440x900", "390x844"],
+        "facts": [
+          "Primary search contract matches the home page: GET form semantics with postcode, make and model controls.",
+          "Supporting regions include leasing, selling, signed-in experience, brand browsing, buying essentials, electric vehicles, reviews and FAQ."
+        ]
+      }
+    ],
+    "remaining_frontier": [
+      "current live home application rather than block shell",
+      "postcode validation and error copy",
+      "make-to-model dependency behavior",
+      "More options overlay and full filter taxonomy",
+      "search submission URL/query semantics",
+      "results list, zero-results, loading and error states",
+      "sorting, pagination and filter-change behavior",
+      "vehicle-card save/compare interactions",
+      "vehicle detail gallery, pricing, dealer contact and safety-only states"
+    ]
+  },
+  "visual_contract_observations": {
+    "brand": "white canvas, dark navy copy, cobalt outlined/filled CTAs, compact Autotrader header, rounded white search card over a wide photographic hero",
+    "desktop": "content is centered in a constrained column with card grids and generous vertical spacing",
+    "mobile": "top navigation collapses, hero is cropped, search card stacks, grids become horizontal carousels or single-column cards",
+    "dynamic_regions": ["inventory counts", "lease cards and prices", "editorial cards", "marketplace data"]
+  },
+  "network_and_asset_observations": {
+    "current_live": [
+      "Only Cloudflare error stylesheet and error images were requested after the document GET.",
+      "No usable first-party application asset inventory was obtained from the live source."
+    ],
+    "singlefile": [
+      "Selected pages rendered fully with embedded resources and zero attempted HTTP(S) runtime requests.",
+      "This proves the auxiliary captures are self-contained but does not prove current-source asset closure or interaction semantics."
+    ]
+  },
+  "unavailable": [
+    {
+      "surface": "current anonymous Autotrader application",
+      "reason": "Cloudflare block shell on direct HTTP and controlled remote Playwright"
+    },
+    {
+      "surface": "P0 search results and vehicle detail",
+      "reason": "No matching SingleFile result/detail capture was found and current live traversal was blocked"
+    },
+    {
+      "surface": "interactive Live View/manual handoff",
+      "reason": "No working attached Chrome bridge was exposed to this agent; Browserbase was not authorized/configured"
+    }
+  ],
+  "commands": [
+    {"command": "python tools/offline_clone/run.py tools list", "exit_code": 0},
+    {"command": "websitebench-offline-clone --help; websitebench-workflow --help; websitebench-harbor --help", "exit_code": 0},
+    {"command": "curl -sSIL --max-time 20 https://www.autotrader.co.uk/", "exit_code": 0, "result": "HTTP 403"},
+    {"command": "local bundled Playwright Chromium home preflight", "exit_code": 2, "result": "MachPortRendezvous permission denied"},
+    {"command": "python tools/offline_clone/run.py tools explore --spec materials/autotrader/source-ea1/specs/home.scenario.json --base-url https://www.autotrader.co.uk --environment source --out materials/autotrader/source-ea1/home-report.json --artifacts-dir materials/autotrader/source-ea1/artifacts/home", "exit_code": 0, "result": "execution passed; source application blocked"},
+    {"command": "curl GET robots.txt and sitemap.xml with browser user agent", "exit_code": 0, "result": "HTTP 403 for both"},
+    {"command": ".venv/bin/python /tmp/autotrader-ea1-singlefile/render_singlefile.py", "exit_code": 0}
+  ],
+  "sanitization": {
+    "credentials_persisted": false,
+    "cookies_persisted": false,
+    "tokens_persisted": false,
+    "authorization_headers_persisted": false,
+    "browser_profiles_persisted": false,
+    "raw_network_bodies_persisted": false,
+    "personal_or_payment_data_persisted": false
+  }
+}
