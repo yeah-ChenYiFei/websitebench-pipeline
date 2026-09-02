@@ -53,10 +53,69 @@ def test_core_routes_render() -> None:
         ("/gift-cards", "Give the gift of movies"),
         ("/offers", "More ways to enjoy AMC"),
         ("/on-demand", "Movies wherever your screen is"),
+        ("/more", "Explore More Ways to Enjoy the Movies"),
     ]:
         response = client.get(route)
         assert response.status_code == 200
         assert expected in response.text
+
+
+def test_review_feedback_routes_are_complete_and_movie_specific() -> None:
+    home = client.get("/").text
+    assert 'data-movie-category="Now Playing"' in home
+    assert 'data-movie-category="Events"' in home
+    assert 'data-movie-category="Coming Soon"' in home
+
+    offers = client.get("/offers").text
+    assert offers.count('class="offer-card"') >= 8
+    for action in ["Get Tickets", "Learn More", "Join for Free", "Order Now"]:
+        assert action in offers
+
+    food = client.get("/food-and-drink").text
+    assert food.count('class="offer-card"') >= 6
+    assert '/food-and-drink/perfectly-popcorn' in food
+    detail = client.get("/food-and-drink/perfectly-popcorn")
+    assert detail.status_code == 200
+    assert "Freshly popped at AMC" in detail.text
+
+    more = client.get("/more").text
+    assert "Offers &amp; Promotions" in more
+    assert "Group Events" in more
+    assert "Help Center" in more
+
+    login = client.get("/login").text
+    assert 'name="captcha"' in login
+    rejected = client.post(
+        "/api/login",
+        json={"email": "guest@example.com", "password": "demo12345", "captcha": False},
+    )
+    assert rejected.status_code == 400
+    assert "verification" in rejected.json()["message"].lower()
+
+    showtimes = client.get(
+        "/showtimes?movie=the-magic-faraway-tree&theatre=amc-century-city-15"
+    ).text
+    assert "The Magic Faraway Tree" in showtimes
+    assert "AMC Century City 15" in showtimes
+    assert '/checkout/the-magic-faraway-tree?' in showtimes
+    assert "No remaining showtimes" not in showtimes
+
+    listing = client.get("/movies").text
+    assert "background:#" not in listing
+    movie_page = client.get("/movies/the-magic-faraway-tree").text
+    assert "Movie details" in movie_page
+    assert "Scenes from the movie" in movie_page
+
+    browser = TestClient(app)
+    browser.post("/api/reset")
+    signed_in = browser.post(
+        "/api/login",
+        json={"email": "guest@example.com", "password": "demo12345"},
+    )
+    assert signed_in.status_code == 200
+    account = browser.get("/account").text
+    assert 'class="account-sidebar"' in account
+    assert "Rewards" in account
 
 
 def test_theatre_directory_public_structure_and_controls() -> None:
@@ -104,8 +163,8 @@ def test_discovery_sort_showtime_help_and_exact_local_scenario_contracts() -> No
     assert tomorrow.status_code == 200
     assert "Tomorrow" in tomorrow.text
     assert "Premium Offerings" in tomorrow.text
-    assert "No remaining showtimes today" in tomorrow.text
-    assert "Try Tomorrow" in tomorrow.text
+    assert "IMAX and Dolby Cinema" in tomorrow.text
+    assert "/checkout/insidious-out-of-the-further?" in tomorrow.text
     help_page = browser.get("/help?topic=refund")
     assert help_page.status_code == 200
     assert "Request a Refund" in help_page.text

@@ -82,6 +82,32 @@ THEATRES = [
 ]
 
 SHOWTIMES = ["10:30 AM", "12:15 PM", "1:40 PM", "3:25 PM", "5:10 PM", "7:00 PM", "8:45 PM", "10:15 PM"]
+POSTER_IMAGES = [
+    "poster-magic-faraway-tree.jpg", "poster-rivals-amziah-king.jpg",
+    "poster-pawpatrol.jpg", "poster-odyssey.jpg", "poster-never-stop-chasing.jpg",
+    "poster-insidious.jpg", "poster-spiderman.jpg", "poster-end-oak-street.jpg",
+    "poster-fast-furious-25.jpg",
+]
+OFFER_ITEMS = [
+    ("Special Offers & Events", "A Legacy of Handcrafted Animation", "A season of beloved animated classics returns to the big screen.", "promo-tony.jpg", "Get Tickets", "/showtimes"),
+    ("Special Offers & Events", "Watch a Surprise Movie First", "AMC Screen Unseen brings a never-before-seen title to a local showtime.", "promo-super-troopers.jpg", "Learn More", "/movies"),
+    ("Special Offers & Events", "Host a Private Theatre Rental", "Bring friends and family together for a private big-screen event.", "theatre-hero-desktop.avif", "Book Now", "/group-events"),
+    ("AMC Stubs Exclusives", "Get 50% off Tickets Two Days a Week", "Join AMC Stubs Insider for local member benefits on Tuesdays and Wednesdays.", "hero-stubs-desktop.jpg", "Join for Free", "/sign-up?plan=insider"),
+    ("AMC Stubs Exclusives", "Sign in for Points & Perks", "Keep rewards, favorites and sandbox ticket history together in My AMC.", "stubs-bg-insider.jpg", "Sign In", "/login"),
+    ("Food & Drink", "Snack and Sip All Summer Long", "Pair a small popcorn with a refreshing fountain drink before the feature.", "promo-snack-sip.jpg", "Get Offer", "/food-and-drink/snack-and-sip"),
+    ("Food & Drink", "Float Away with a New Classic", "Try the bright cherry-cola float flavor featured at the concession stand.", "promo-cherry-coke.jpg", "Order Now", "/food-and-drink/cherry-cola-float"),
+    ("Discounts", "Enjoy Discount Matinees Any Day", "Plan an earlier showtime and review the available local ticket options.", "showtime-video.jpg", "See Showtimes", "/showtimes"),
+    ("Discounts", "Students Always Save at AMC", "Review participating-theatre information before planning your visit.", "theatre-bg.avif", "Plan Your Visit", "/movie-theatres"),
+]
+FOOD_ITEMS = [
+    ("perfectly-popcorn", "AMC Perfectly Popcorn", "Freshly popped at AMC with classic buttery flavor and shareable sizes.", "promo-popcorn-pass.jpg"),
+    ("dine-in", "AMC DINE-IN", "A movie theatre and restaurant experience with food delivered to your seat.", "promo-snack-sip.jpg"),
+    ("classic-concessions", "AMC CLASSIC Concessions", "Movie-night favorites including popcorn, candy and fountain drinks.", "promo-cherry-coke.jpg"),
+    ("collectibles", "Concession Collectibles", "Limited movie-themed vessels and collectibles available while supplies last.", "promo-pawpatrol-collectibles.jpg"),
+    ("macguffins", "MacGuffins Bar", "Beer, wine and cocktails before the movie and during the show at select theatres.", "promo-super-troopers.jpg"),
+    ("snack-and-sip", "Snack and Sip", "A popcorn-and-drink combination made for a summer movie getaway.", "promo-snack-sip.jpg"),
+    ("cherry-cola-float", "Cherry Cola Float ICEE", "A cold cherry-cola float flavor for the concession stand.", "promo-cherry-coke.jpg"),
+]
 DIRECTORY_MARKETS = [
     ('Albany, GA', '/movie-theatres/albany-ga'),
     ('Albuquerque, NM', '/movie-theatres/albuquerque-nm'),
@@ -421,7 +447,7 @@ def layout(title: str, body: str, state: dict[str, Any], *, active: str = "") ->
 <body><a class="skip" href="#main">Skip to main content</a>
 <div class="alert-strip"><span class="alert-copy"><a href="/food-and-drink">Buy</a> the 2026 AMC Popcorn Pass™ for the new low price of $17.99 &amp; <strong>get 50% off a daily large popcorn</strong>.</span><button class="alert-close" type="button" aria-label="Dismiss alert"><img src="/local-icons/close.svg" alt=""></button></div>
 <header><div class="wrap nav"><div class="mobile-tools"><button class="mobile-menu icon-button" data-menu aria-label="Open navigation" aria-expanded="false"><span class="menu-lines"><i></i><i></i><i></i></span></button><button class="mobile-search icon-button" data-open-search aria-label="Search"><img src="/local-icons/search.svg" alt=""></button></div><a class="logo" href="/" aria-label="AMC Theatres home"><img src="/local-icons/logo.svg" alt="AMC Theatres"><span>amc<small>THEATRES</small></span></a>
-<nav aria-label="Primary"><a class="{'on' if active == 'movies' else ''}" href="/movies">See a Movie</a><a class="{'on' if active == 'theatres' else ''}" href="/movie-theatres">Find a Theatre</a><a href="/food-and-drink">Food &amp; Drinks</a><a href="/help">More</a></nav>
+<nav aria-label="Primary"><a class="{'on' if active == 'movies' else ''}" href="/movies">See a Movie</a><a class="{'on' if active == 'theatres' else ''}" href="/movie-theatres">Find a Theatre</a><a href="/food-and-drink">Food &amp; Drinks</a><a class="{'on' if active == 'more' else ''}" href="/more">More</a></nav>
 <form class="header-search" action="/search"><label class="sr-only" for="header-q">Search AMC</label><input id="header-q" name="q" placeholder="Search"><button aria-label="Submit search"><img src="/local-icons/search-muted.svg" alt=""></button></form><div class="nav-actions"><a class="showtimes-link" href="/showtimes"><img src="/local-icons/showtimes.svg" alt=""><span>Showtimes</span></a><a class="account" href="{account_href}" aria-label="My AMC account"><img src="/local-icons/account.svg" alt=""><span>{user_label(state)}</span><img class="account-chevron" src="/local-icons/chevron-white.svg" alt=""></a></div></div></header>
 <div class="subnav"><div class="wrap"><a class="theatre-location" href="/movie-theatres"><img src="/local-icons/location.svg" alt="">AMC Demo Theatre</a><a class="sub-get-tickets" href="/showtimes">Get Tickets<img src="/local-icons/chevron-blue.svg" alt=""></a><span></span><a href="/group-events">Group Events</a><a href="/merchandise">Merchandise</a><a href="/gift-cards">Gift Cards</a><a href="/offers">Offers</a><a href="/on-demand">On Demand</a></div></div><div id="search-panel" class="search-panel" hidden><form action="/search"><label for="global-q">Search movies and theatres</label><div><input id="global-q" name="q" placeholder="Movie or theatre" autofocus><button>Search</button></div></form></div>
 <main id="main">{body}</main>
@@ -429,11 +455,19 @@ def layout(title: str, body: str, state: dict[str, Any], *, active: str = "") ->
 <div id="toast" role="status" aria-live="polite"></div><script src="/assets/amc.js"></script></body></html>"""
 
 
-def poster_card(item: dict[str, Any], favorite: bool = False) -> str:
+def poster_image(item: dict[str, Any]) -> str:
+    if item.get("image"):
+        return item["image"]
+    return POSTER_IMAGES[sum(ord(char) for char in item["slug"]) % len(POSTER_IMAGES)]
+
+
+def poster_card(item: dict[str, Any], favorite: bool = False, *, home: bool = False) -> str:
     action = "Remove" if favorite else "Save"
     suffix = " from saved movies" if favorite else ""
-    style = (f"background-image:linear-gradient(0deg,#0009,#0000 58%),url('/local-assets/{esc(item['image'])}')" if item.get("image") else f"--poster:{esc(item['color'])}")
-    return f"""<article class="movie-card"><a class="poster" style="{style}" href="/movies/{esc(item['slug'])}"><span class="poster-kicker">AMC</span><strong>{esc(item['title'])}</strong><small>{esc(item['tag'])}</small></a><div class="card-copy"><p class="eyebrow">{esc(item['rating'])} · {esc(item['runtime'])}</p><h3><a href="/movies/{esc(item['slug'])}">{esc(item['title'])}</a></h3><div class="card-actions"><a class="button compact" href="/showtimes?movie={esc(item['slug'])}">Get Tickets</a><button class="heart {'saved' if favorite else ''}" data-favorite="{esc(item['slug'])}" data-title="{esc(item['title'])}" aria-pressed="{'true' if favorite else 'false'}" aria-label="{action} {esc(item['title'])}{suffix}">♥</button></div></div></article>"""
+    style = f"background-image:linear-gradient(0deg,#0009,#0000 58%),url('/local-assets/{esc(poster_image(item))}')"
+    home_attrs = f' data-movie-category="{esc(item["tag"])}"' if home else ""
+    hidden = " hidden" if home and item["tag"] != "Now Playing" else ""
+    return f"""<article class="movie-card"{home_attrs}{hidden}><a class="poster" style="{style}" href="/movies/{esc(item['slug'])}"><span class="poster-kicker">AMC</span><strong>{esc(item['title'])}</strong><small>{esc(item['tag'])}</small></a><div class="card-copy"><p class="eyebrow">{esc(item['rating'])} · {esc(item['runtime'])}</p><h3><a href="/movies/{esc(item['slug'])}">{esc(item['title'])}</a></h3><div class="card-actions"><a class="button compact" href="/showtimes?movie={esc(item['slug'])}">Get Tickets</a><button class="heart {'saved' if favorite else ''}" data-favorite="{esc(item['slug'])}" data-title="{esc(item['title'])}" aria-pressed="{'true' if favorite else 'false'}" aria-label="{action} {esc(item['title'])}{suffix}">♥</button></div></div></article>"""
 
 
 LISTING_META = {
@@ -449,7 +483,7 @@ def movie_listing_card(item: dict[str, Any], favorite: bool = False) -> str:
     runtime, rating, release = LISTING_META.get(
         item["slug"], (item["runtime"], item["rating"].replace("-", ""), "Now Playing")
     )
-    image = f"background-image:url('/local-assets/{esc(item['image'])}')" if item.get("image") else f"background:{esc(item['color'])}"
+    image = f"background-image:url('/local-assets/{esc(poster_image(item))}')"
     action = "Remove" if favorite else "Save"
     return f"""<article class="movie-listing-card"><a class="listing-poster" style="{image}" href="/movies/{esc(item['slug'])}" aria-label="Open {esc(item['title'])}"></a><h3><a href="/movies/{esc(item['slug'])}">{esc(item['title'])}</a></h3><ul class="listing-meta"><li><span class="listing-runtime-info"><span>{esc(runtime)}</span><span class="listing-info" aria-label="More Info"><svg viewBox="0 0 45 45" aria-hidden="true"><path d="M22.5 45C10.125 45 0 34.875 0 22.5S10.125 0 22.5 0 45 10.125 45 22.5 34.875 45 22.5 45m0-41.625c-10.35 0-18.9 8.55-18.9 18.9s8.55 18.9 18.9 18.9 18.9-8.55 18.9-18.9-8.55-18.9-18.9-18.9"></path></svg></span></span></li><li><span>{esc(rating)}</span></li></ul><p class="listing-release">{esc(release)}</p><div class="listing-actions"><a class="button" href="/showtimes?movie={esc(item['slug'])}">Get Tickets</a><button class="heart {'saved' if favorite else ''}" data-favorite="{esc(item['slug'])}" data-title="{esc(item['title'])}" aria-pressed="{'true' if favorite else 'false'}" aria-label="{action} {esc(item['title'])}">♥</button></div></article>"""
 
@@ -552,9 +586,14 @@ def favicon() -> Response:
 def home(request: Request) -> HTMLResponse:
     token, state = session(request)
     favorites = favorite_slugs(token)
-    home_slugs = ["the-magic-faraway-tree", "the-odyssey", "insidious-out-of-the-further", "spider-man-brand-new-day", "paw-patrol-dino-movie"]
+    home_slugs = [
+        "the-magic-faraway-tree", "the-rivals-of-amziah-king", "never-stop-chasing",
+        "the-brink-of-war", "the-end-of-oak-street", "fast-and-furious-25",
+        "the-odyssey", "insidious-out-of-the-further", "spider-man-brand-new-day",
+        "paw-patrol-dino-movie", "smurfs",
+    ]
     home_movies = [movie(slug) for slug in home_slugs]
-    cards = "".join(poster_card(item, item["slug"] in favorites) for item in home_movies if item is not None)
+    cards = "".join(poster_card(item, item["slug"] in favorites, home=True) for item in home_movies if item is not None)
     dots = "".join(f'<button class="dot {"on" if index == 0 else ""}" data-slide="{index}" aria-label="Promotion {index + 1}" aria-pressed="{"true" if index == 0 else "false"}"></button>' for index in range(9))
     body = f"""<section class="hero" data-carousel><div class="wrap hero-content"><div class="hero-grid"><header><p class="eyebrow light">AMC STUBS MEMBER EXCLUSIVE</p><h2 class="hero-title">Get 50% off* Tickets Two Days a Week</h2></header><div class="hero-description"><span>Join Insider for free and save on your Tuesday or Wednesday movie getaways.</span><p class="hero-footnote"><span>*50% off discount applied to the adult evening base ticket price.</span></p></div><div class="hero-actions"><a class="button hero-button" href="/sign-up?plan=insider">Join for Free</a><a class="hero-learn" href="/offers">Learn More</a></div></div></div><div class="carousel-controls"><button data-slide="prev" aria-label="Previous promotion">‹</button>{dots}<button data-slide="next" aria-label="Next promotion">›</button></div></section>
 <section class="movies-home"><div class="wrap"><div class="movies-title"><h2>Movies at AMC</h2><div role="tablist"><button class="on" role="tab" aria-selected="true" data-movie-tab="Now Playing">Now Playing</button><button role="tab" aria-selected="false" data-movie-tab="Events">Events</button><button role="tab" aria-selected="false" data-movie-tab="Coming Soon">Coming Soon</button></div></div><div class="movie-rail">{cards}</div><a class="button rail-more" href="/movies">See All Movies</a></div></section>
@@ -609,12 +648,37 @@ FEATURE_PAGES = {
 def feature_page(request: Request) -> HTMLResponse:
     token, state = session(request)
     title, heading, items = FEATURE_PAGES[request.url.path]
+    if request.url.path == "/offers":
+        cards = "".join(
+            f'''<article class="offer-card"><img src="/local-assets/{esc(image)}" alt=""><div><p class="eyebrow red">{esc(category)}</p><h2>{esc(name)}</h2><p>{esc(copy)}</p><a class="button compact" href="{esc(href)}">{esc(action)}</a></div></article>'''
+            for category, name, copy, image, action, href in OFFER_ITEMS
+        )
+        body = f'''<section class="page-head dark-head"><div class="wrap"><p class="eyebrow light">Offers &amp; Promotions</p><h1>{esc(heading)}</h1><p>Explore ticket, membership, food and discount offers available in this local experience.</p></div></section><nav class="offer-nav wrap" aria-label="Offer categories"><a href="#special-offers">Special Offers &amp; Events</a><a href="#stubs">AMC Stubs Exclusives</a><a href="#food-offers">Food &amp; Drink</a><a href="#discounts">Discounts</a></nav><section id="special-offers" class="section wrap"><div class="offer-page-grid">{cards}</div></section>'''
+        return with_session(HTMLResponse(layout(title, body, state)), token, request)
+    if request.url.path == "/food-and-drink":
+        cards = "".join(
+            f'''<article class="offer-card"><img src="/local-assets/{esc(image)}" alt=""><div><p class="eyebrow red">Food &amp; Drinks</p><h2>{esc(name)}</h2><p>{esc(copy)}</p><a class="button compact" href="/food-and-drink/{esc(slug)}">Explore</a></div></article>'''
+            for slug, name, copy, image in FOOD_ITEMS
+        )
+        body = f'''<section class="feature-hero food-hero"><div class="wrap"><p class="eyebrow light">Food &amp; Drinks at AMC</p><h1>{esc(heading)}</h1><p>Explore classic concessions, dine-in menus, collectibles and special offers.</p><a class="button" href="#food-menu">Explore Menus</a></div></section><section id="food-menu" class="section wrap"><div class="offer-page-grid">{cards}</div></section>'''
+        return with_session(HTMLResponse(layout(title, body, state)), token, request)
     cards = "".join(
         f'<article class="theatre-card"><div><p class="eyebrow red">AMC</p><h2>{esc(name)}</h2><p>{esc(copy)}</p></div><a class="button compact" href="{esc(href)}">Explore</a></article>'
         for name, copy, href in items
     )
     body = f'<section class="page-head dark-head"><div class="wrap"><p class="eyebrow light">{esc(title)}</p><h1>{esc(heading)}</h1><p>All actions remain inside the deterministic local AMC clone.</p></div></section><section class="section wrap"><div class="theatre-list">{cards}</div></section>'
     return with_session(HTMLResponse(layout(title, body, state)), token, request)
+
+
+@app.get("/food-and-drink/{slug}", response_class=HTMLResponse)
+def food_detail(slug: str, request: Request) -> HTMLResponse:
+    token, state = session(request)
+    item = next((entry for entry in FOOD_ITEMS if entry[0] == slug), None)
+    if item is None:
+        return with_session(HTMLResponse(layout("Food item not found", '<section class="empty"><h1>Food item not found</h1><a href="/food-and-drink">Explore food and drinks</a></section>', state), status_code=404), token, request)
+    _slug, name, copy, image = item
+    body = f'''<section class="feature-detail"><div class="wrap feature-detail-grid"><img src="/local-assets/{esc(image)}" alt=""><div><p class="eyebrow red">Food &amp; Drinks at AMC</p><h1>{esc(name)}</h1><p class="lede dark">{esc(copy)}</p><h2>Made for movie night</h2><p>Availability varies by theatre. Choose a local theatre to continue without leaving the offline clone.</p><a class="button" href="/movie-theatres">Find a Theatre</a><a class="text-link" href="/food-and-drink">Back to Food &amp; Drinks</a></div></div></section>'''
+    return with_session(HTMLResponse(layout(name, body, state, active="food")), token, request)
 
 
 @app.get("/movies", response_class=HTMLResponse)
@@ -655,9 +719,13 @@ def movie_detail(slug: str, request: Request) -> HTMLResponse:
     item = movie(slug)
     if item is None:
         return with_session(HTMLResponse(layout("Movie not found", '<section class="empty"><h1>Movie not found</h1><a href="/movies">Browse movies</a></section>', state), status_code=404), token, request)
-    times = "".join(f'<a class="showtime" href="/checkout/{esc(slug)}?theatre=amc-empire-25&time={quote(t)}">{esc(t)}</a>' for t in SHOWTIMES[:6])
     saved = slug in favorite_slugs(token)
-    body = f"""<section class="detail-hero" style="--poster:{esc(item['color'])}"><div class="wrap detail-grid"><div class="poster large"><span class="poster-kicker">AMC</span><strong>{esc(item['title'])}</strong><small>{esc(item['tag'])}</small></div><div><p class="eyebrow light">{esc(item['tag'])}</p><h1>{esc(item['title'])}</h1><p class="metadata">{esc(item['rating'])} · {esc(item['runtime'])} · {esc(item['genre'])}</p><p class="lede">{esc(item['desc'])}</p><div class="score"><strong>{item['score']}%</strong><span>AMC audience score</span></div><button class="button white heart-detail {'saved' if saved else ''}" data-favorite="{esc(slug)}" data-title="{esc(item['title'])}" aria-pressed="{'true' if saved else 'false'}" aria-label="{'Remove from saved movies' if saved else 'Save to My AMC'}">♥ {'Saved to My AMC' if saved else 'Save to My AMC'}</button></div></div></section><section class="section wrap narrow"><p class="eyebrow red">AMC Empire 25</p><h2>Choose a showtime</h2><p>Today · Reserved seating · Laser at AMC</p><div class="showtime-grid">{times}</div><h2>About the movie</h2><p class="lede dark">{esc(item['desc'])}</p></section>"""
+    poster = poster_image(item)
+    gallery = "".join(
+        f'<img src="/local-assets/{esc(image)}" alt="Scene from {esc(item["title"])}">'
+        for image in [poster, "showtime-video.jpg", "movies-exact.avif"]
+    )
+    body = f"""<section class="detail-hero movie-detail-hero" style="background-image:linear-gradient(90deg,#000 0%,#000d 42%,#0002 100%),url('/local-assets/{esc(poster)}')"><div class="wrap detail-grid"><img class="detail-poster" src="/local-assets/{esc(poster)}" alt="{esc(item['title'])} poster"><div><p class="eyebrow light">{esc(item['tag'])}</p><h1>{esc(item['title'])}</h1><p class="metadata">{esc(item['rating'])} · {esc(item['runtime'])} · {esc(item['genre'])}</p><p class="lede">{esc(item['desc'])}</p><div class="score"><strong>{item['score']}%</strong><span>AMC audience score</span></div><div class="detail-actions"><a class="button" href="/showtimes?movie={esc(slug)}">Choose a showtime</a><button class="button white heart-detail {'saved' if saved else ''}" data-favorite="{esc(slug)}" data-title="{esc(item['title'])}" aria-pressed="{'true' if saved else 'false'}" aria-label="{'Remove from saved movies' if saved else 'Save to My AMC'}">♥ {'Saved to My AMC' if saved else 'Save to My AMC'}</button></div></div></div></section><section class="section wrap movie-information"><div><p class="eyebrow red">Movie details</p><h2>About the movie</h2><p class="lede dark">{esc(item['desc'])} Experience the story on the big screen with available reserved seating and premium-format options.</p></div><dl><div><dt>Genre</dt><dd>{esc(item['genre'])}</dd></div><div><dt>Rating</dt><dd>{esc(item['rating'])}</dd></div><div><dt>Runtime</dt><dd>{esc(item['runtime'])}</dd></div><div><dt>Language</dt><dd>English</dd></div></dl><div class="movie-gallery"><h2>Scenes from the movie</h2><div>{gallery}</div></div></section>"""
     return with_session(HTMLResponse(layout(item["title"], body, state, active="movies")), token, request)
 
 
@@ -725,19 +793,26 @@ def theatre_detail(region: str, slug: str, request: Request) -> HTMLResponse:
 @app.get("/showtimes", response_class=HTMLResponse)
 def showtimes(request: Request, movie: str = "", location: str = "New York", date: str = "") -> HTMLResponse:
     token, state = session(request)
-    del state, location
-    selected_theatre = request.query_params.get("theatre", "")
-    selected_venue = globals()["theatre"](selected_theatre)
+    del state
+    requested_theatre = request.query_params.get("theatre", "") or location
+    selected_venue = globals()["theatre"](requested_theatre)
+    if selected_venue is None and request.query_params.get("theatre"):
+        needle = requested_theatre.lower()
+        selected_venue = next(
+            (item for item in THEATRES if needle in (item["name"] + " " + item["city"] + " " + item["state"] + " " + item["address"]).lower()),
+            None,
+        )
+    selected_theatre = selected_venue["slug"] if selected_venue else ""
     theatre_query = f"&amp;theatre={quote(selected_theatre)}" if selected_theatre else ""
     showtime_order = [
         "insidious-out-of-the-further", "spider-man-brand-new-day",
         "the-odyssey", "paw-patrol-dino-movie",
     ]
-    films = [globals()["movie"](slug) for slug in showtime_order]
+    selected_film = globals()["movie"](movie) if movie else None
+    films = [selected_film] if selected_film else [globals()["movie"](slug) for slug in showtime_order]
     films = [item for item in films if item is not None]
-    if movie:
-        selected = movie if any(item["slug"] == movie for item in films) else films[0]["slug"]
-        films.sort(key=lambda item: item["slug"] != selected)
+    premium = request.query_params.get("format") == "premium"
+    available_times = SHOWTIMES[1:7] if date == "tomorrow" else SHOWTIMES[:6]
     rows = []
     for film in films:
         runtime, rating, _release = LISTING_META.get(
@@ -748,9 +823,14 @@ def showtimes(request: Request, movie: str = "", location: str = "New York", dat
             "spider-man-brand-new-day": "showtime-spiderman.jpg",
             "the-odyssey": "showtime-odyssey.png",
             "paw-patrol-dino-movie": "showtime-pawpatrol.jpg",
-        }[film["slug"]]
+        }.get(film["slug"], poster_image(film))
+        format_label = "IMAX and Dolby Cinema" if premium else "Reserved Seating · Laser at AMC"
+        time_links = "".join(
+            f'<a class="showtime" href="/checkout/{esc(film["slug"])}?theatre={esc(selected_theatre)}&amp;time={quote(value)}">{esc(value)}</a>'
+            for value in available_times
+        )
         rows.append(
-            f"""<article class="showtimes-movie"><img src="/local-assets/{esc(image)}" alt=""><div class="showtimes-copy"><h2>{esc(film['title'])}</h2><p>{esc(runtime)} <span class="showtime-info">?</span> | {esc(rating)}</p></div><div class="showtimes-empty"><span>No remaining showtimes today</span><a href="/showtimes?movie={esc(film['slug'])}&amp;date=tomorrow{theatre_query}">Try Tomorrow <b>›</b></a></div></article>"""
+            f"""<article class="showtimes-movie has-times"><img src="/local-assets/{esc(image)}" alt=""><div class="showtimes-copy"><h2><a href="/movies/{esc(film['slug'])}">{esc(film['title'])}</a></h2><p>{esc(runtime)} <span class="showtime-info">?</span> | {esc(rating)}</p><p class="showtime-format">{esc(format_label)}</p></div><div class="showtimes-options">{time_links}</div></article>"""
         )
     today_label = "Tomorrow" if date == "tomorrow" else "Today"
     back_icon = '<svg fill="currentColor" viewBox="0 0 45 45" aria-hidden="true"><path d="M14.974 22.5 34.321 3.153A2.09 2.09 0 0 0 31.46.291l-20.892 20.75a2.09 2.09 0 0 0 0 2.861L31.373 44.71a2.09 2.09 0 0 0 2.862-2.862z"></path></svg>'
@@ -760,10 +840,24 @@ def showtimes(request: Request, movie: str = "", location: str = "New York", dat
     movie_icon = '<svg fill="none" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" fill-rule="evenodd" d="M1 5a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2zm6 10a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2zm-4 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1zm15 1a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM3 10a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1zm15 1a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM3 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1zm15 1a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM9 4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" clip-rule="evenodd"></path></svg>'
     premium_icon = '<svg fill="none" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" fill-rule="evenodd" d="M2.75 8q0 .134.027.26a3 3 0 0 0 0 5.48q-.027.125-.027.26v7a1.25 1.25 0 1 0 2.5 0v-7q0-.134-.027-.26a3 3 0 0 0 0-5.48q.027-.126.027-.26V3a1.25 1.25 0 1 0-2.5 0zM4 12.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M21.223 9.74a3 3 0 0 0 0-5.48q.027-.125.027-.26V3a1.25 1.25 0 1 0-2.5 0v1q0 .135.027.26a3 3 0 0 0 0 5.48q-.027.125-.027.26v11a1.25 1.25 0 1 0 2.5 0V10q0-.134-.027-.26M21.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M13.223 19.74a3 3 0 0 0 0-5.48q.027-.125.027-.26V3a1.25 1.25 0 1 0-2.5 0v11q0 .134.027.26a3 3 0 0 0 0 5.48q-.027.125-.027.26v1a1.25 1.25 0 1 0 2.5 0v-1q0-.134-.027-.26M12 18.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" clip-rule="evenodd"></path></svg>'
     down_icon = '<svg fill="currentColor" viewBox="0 0 45 45" aria-hidden="true"><path d="M22.464 29.594 3.067 10.48c-.856-.57-2.283-.285-2.853.856-.285.57-.285 1.141 0 1.997l20.824 20.824c.856.856 1.997.856 2.853 0L44.715 13.62c.57-.856.285-2.282-.856-2.852-.57-.286-1.426-.286-1.997 0z"></path></svg>'
+    movie_query = f"&amp;movie={quote(movie)}" if selected_film else ""
+    date_query = f"&amp;date={quote(date)}" if date else ""
+    format_query = "&amp;format=premium" if premium else ""
     if not selected_theatre:
-        picker = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Find a Theatre | AMC Theatres</title><link rel="stylesheet" href="/assets/amc.css"></head><body class="showtimes-shell theatre-picker-shell"><main class="showtimes-page"><header class="showtimes-top"><h1>Showtimes</h1><a href="/" aria-label="Close">{close_icon}</a></header><aside class="picker-backdrop-copy"><p>In order to display showtimes, please select a theatre.</p><a href="/showtimes?theatre=amc-empire-25">Select a Theatre</a></aside><section class="theatre-picker" role="dialog" aria-modal="true" aria-labelledby="theatre-picker-title"><header><h1 id="theatre-picker-title">Find a Theatre</h1><a href="/" aria-label="Close">{close_icon}</a></header><div class="theatre-picker-body"><p>Select a theatre to view showtimes.</p><form action="/showtimes"><label class="sr-only" for="showtimes-theatre">Search by City, Zip or Theatre</label><div class="picker-input-box"><input id="showtimes-theatre" name="theatre" placeholder="Search by City, Zip or Theatre" required><button type="submit" aria-label="Search theatres"><img src="/local-icons/search.svg" alt=""></button></div></form><a class="picker-location" href="/showtimes?theatre=amc-empire-25">Use Current Location</a></div></section></main></body></html>"""
+        quick_theatres = "".join(
+            f'<a class="picker-theatre" href="/showtimes?theatre={esc(item["slug"])}{movie_query}{date_query}{format_query}"><span><strong>{esc(item["name"])}</strong><small>{esc(item["city"])} · {item["miles"]} miles</small></span><b>›</b></a>'
+            for item in [THEATRES[0], THEATRES[4], THEATRES[5]]
+        )
+        hidden_movie = f'<input type="hidden" name="movie" value="{esc(movie)}">' if selected_film else ""
+        picker = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Find a Theatre | AMC Theatres</title><link rel="stylesheet" href="/assets/amc.css"></head><body class="showtimes-shell theatre-picker-shell"><main class="showtimes-page"><header class="showtimes-top"><h1>Showtimes</h1><a href="/" aria-label="Close">{close_icon}</a></header><aside class="picker-backdrop-copy"><p>In order to display showtimes, please select a theatre.</p><a href="/showtimes?theatre=amc-empire-25{movie_query}">Select a Theatre</a></aside><section class="theatre-picker" role="dialog" aria-modal="true" aria-labelledby="theatre-picker-title"><header><h1 id="theatre-picker-title">Find a Theatre</h1><a href="/" aria-label="Close">{close_icon}</a></header><div class="theatre-picker-body"><p>Select a theatre to view showtimes.</p><form action="/showtimes">{hidden_movie}<label class="sr-only" for="showtimes-theatre">Search by City, Zip or Theatre</label><div class="picker-input-box"><input id="showtimes-theatre" name="theatre" placeholder="Search by City, Zip or Theatre" required><button type="submit" aria-label="Search theatres"><img src="/local-icons/search.svg" alt=""></button></div></form><a class="picker-location" href="/showtimes?theatre=amc-empire-25{movie_query}">Use Current Location</a><div class="picker-divider">Popular theatres</div>{quick_theatres}</div></section></main></body></html>"""
         return with_session(HTMLResponse(picker), token, request)
-    page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Showtimes | AMC Theatres</title><link rel="stylesheet" href="/assets/amc.css"></head><body class="showtimes-shell"><main class="showtimes-page"><header class="showtimes-top"><a href="/" aria-label="Go back">{back_icon}</a><h1>Showtimes</h1><a href="/" aria-label="Close">{close_icon}</a></header><nav class="showtimes-filters" aria-label="Showtime filters"><a href="/movie-theatres"><span>{theatre_icon}</span><strong>{esc(selected_venue['name'] if selected_venue else selected_theatre)}</strong><b>{down_icon}</b></a><a href="/showtimes?date=tomorrow&amp;theatre={quote(selected_theatre)}"><span>{date_icon}</span><strong>{today_label}</strong><b>{down_icon}</b></a><a href="/movies"><span>{movie_icon}</span><strong>All Movies</strong><b>{down_icon}</b></a><a href="/showtimes?format=premium&amp;theatre={quote(selected_theatre)}"><span>{premium_icon}</span><strong>Premium Offerings</strong><b>{down_icon}</b></a></nav><div class="showtimes-content"><section class="showtimes-list"><p class="showtimes-note"><span>{movie_icon}</span> Movies start 25-30 minutes after showtime.</p>{''.join(rows)}</section><aside class="showtimes-feature"><div class="showtimes-video"><span>▷</span></div><h2>Insidious: Out of the Further</h2><p>1 HR 45 MIN <span class="showtime-info">?</span> | PG13</p><a href="/movies/insidious-out-of-the-further"><span>{movie_icon}</span> Movie Info <b>›</b></a></aside></div></main><script src="/assets/amc.js"></script></body></html>"""
+    featured = films[0]
+    next_date = "" if date == "tomorrow" else "tomorrow"
+    next_date_query = f"&amp;date={next_date}" if next_date else ""
+    movie_filter_label = featured["title"] if selected_film else "All Movies"
+    premium_target = "" if premium else "premium"
+    premium_target_query = f"&amp;format={premium_target}" if premium_target else ""
+    page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Showtimes | AMC Theatres</title><link rel="stylesheet" href="/assets/amc.css"></head><body class="showtimes-shell"><main class="showtimes-page"><header class="showtimes-top"><a href="/" aria-label="Go back">{back_icon}</a><h1>Showtimes</h1><a href="/" aria-label="Close">{close_icon}</a></header><nav class="showtimes-filters" aria-label="Showtime filters"><a href="/showtimes?movie={quote(movie) if selected_film else ''}{date_query}{format_query}"><span>{theatre_icon}</span><strong>{esc(selected_venue['name'])}</strong><b>{down_icon}</b></a><a href="/showtimes?theatre={quote(selected_theatre)}{movie_query}{next_date_query}{format_query}"><span>{date_icon}</span><strong>{today_label}</strong><b>{down_icon}</b></a><a href="/showtimes?theatre={quote(selected_theatre)}{date_query}{format_query}"><span>{movie_icon}</span><strong>{esc(movie_filter_label)}</strong><b>{down_icon}</b></a><a href="/showtimes?theatre={quote(selected_theatre)}{movie_query}{date_query}{premium_target_query}"><span>{premium_icon}</span><strong>Premium Offerings</strong><b>{down_icon}</b></a></nav><div class="showtimes-content"><section class="showtimes-list"><p class="showtimes-note"><span>{movie_icon}</span> Movies start 25-30 minutes after showtime.</p>{''.join(rows)}</section><aside class="showtimes-feature"><img src="/local-assets/{esc(poster_image(featured))}" alt=""><h2>{esc(featured['title'])}</h2><p>{esc(featured['runtime'])} <span class="showtime-info">?</span> | {esc(featured['rating'])}</p><a href="/movies/{esc(featured['slug'])}"><span>{movie_icon}</span> Movie Info <b>›</b></a></aside></div></main><script src="/assets/amc.js"></script></body></html>"""
     return with_session(HTMLResponse(page), token, request)
 
 
@@ -781,7 +875,7 @@ def checkout(slug: str, request: Request, theatre: str = "amc-empire-25", time: 
 @app.get("/login", response_class=HTMLResponse)
 def login_page(request: Request, next: str = "/account") -> HTMLResponse:
     token, state = session(request)
-    body = f"""<section class="auth-shell"><div class="auth-card"><p class="eyebrow red">Welcome back</p><h1>Sign in to My AMC</h1><p>Use a synthetic local account. Never enter credentials from the real AMC site.</p><form id="login-form"><input type="hidden" name="next" value="{esc(next)}"><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="button full">Sign In</button><p class="form-message" role="alert"></p></form><p><a href="/password-reset">Forgot password?</a></p><p class="auth-switch">New to AMC? <a href="/sign-up">Create an account</a></p></div></section>"""
+    body = f"""<section class="auth-shell"><div class="auth-card"><p class="eyebrow red">Welcome back</p><h1>Sign in to My AMC</h1><p>Use a synthetic local account. Never enter credentials from the real AMC site.</p><form id="login-form"><input type="hidden" name="next" value="{esc(next)}"><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><label class="captcha-control"><input name="captcha" type="checkbox" required><span><strong>I'm not a robot</strong><small>Local verification · no external CAPTCHA service</small></span><b aria-hidden="true">✓</b></label><button class="button full">Sign In</button><p class="form-message" role="alert"></p></form><p><a href="/password-reset">Forgot password?</a></p><p class="auth-switch">New to AMC? <a href="/sign-up">Create an account</a></p></div></section>"""
     return with_session(HTMLResponse(layout("Sign In", body, state)), token, request)
 
 
@@ -833,9 +927,8 @@ def account(request: Request) -> HTMLResponse:
         for o in orders
     )
     membership_label = (membership["plan"].replace("alist", "A-List").title() if membership else "Insider")
-    body = f"""<section class="page-head"><div class="wrap account-head"><div><p class="eyebrow red">My AMC</p><h1>Hello, {user_label(state)}</h1><p>AMC Stubs {esc(membership_label)} · {'Active' if membership else 'Local default'}</p></div><button id="logout" class="button outline">Sign Out</button></div></section><section class="section wrap"><h2>Saved Movies</h2><div class="movie-grid">{cards or '<div class="empty compact-empty"><p>You have no saved movies yet.</p><a href="/movies">Browse movies</a></div>'}</div><div class="section-heading account-orders"><h2>Sandbox Orders</h2></div><div>{order_html or '<div class="empty compact-empty"><p>Your completed sandbox orders will appear here.</p><a href="/showtimes">Find a showtime</a></div>'}</div></section>"""
     preferences = f"""<section class="account-preferences"><h2>Preferences</h2><form id="preferences-form"><label>Preferred theatre<select name="preferred_theatre">{''.join(f'<option value="{esc(t["slug"])}">{esc(t["name"])}</option>' for t in THEATRES)}</select></label><label><input name="notifications_enabled" type="checkbox"> Local reminders</label><label>Privacy<select name="privacy_mode"><option value="standard">Standard</option><option value="minimal">Minimal local storage</option></select></label><button class="button compact">Save preferences</button><p class="form-message" role="status"></p></form></section>"""
-    body = body.rsplit("</section>", 1)[0] + preferences + "</section>"
+    body = f"""<section class="page-head"><div class="wrap account-head"><div><p class="eyebrow red">My AMC</p><h1>Hello, {user_label(state)}</h1><p>AMC Stubs {esc(membership_label)} · {'Active' if membership else 'Local default'}</p></div><button id="logout" class="button outline">Sign Out</button></div></section><section class="account-layout wrap"><aside class="account-sidebar" aria-label="My AMC sections"><strong>My AMC</strong><a href="#overview">Overview</a><a href="#rewards">Rewards</a><a href="#tickets">Tickets &amp; Orders</a><a href="#saved">Saved Movies</a><a href="#profile">Profile &amp; Preferences</a><a href="/track-order">Track an Order</a></aside><div class="account-content"><section id="overview" class="account-summary"><div><span>AMC Stubs tier</span><strong>{esc(membership_label)}</strong></div><div id="rewards"><span>Rewards available</span><strong>$5.00</strong></div><div><span>Points to next reward</span><strong>1,250</strong></div></section><section id="tickets"><div class="section-heading account-orders"><h2>Tickets &amp; Orders</h2></div><div>{order_html or '<div class="empty compact-empty"><p>Your completed sandbox orders will appear here.</p><a href="/showtimes">Find a showtime</a></div>'}</div></section><section id="saved"><h2>Saved Movies</h2><div class="movie-grid">{cards or '<div class="empty compact-empty"><p>You have no saved movies yet.</p><a href="/movies">Browse movies</a></div>'}</div></section><div id="profile">{preferences}</div></div></section>"""
     return with_session(HTMLResponse(layout("My AMC", body, state)), token, request)
 
 
@@ -920,6 +1013,25 @@ def help_page(request: Request) -> HTMLResponse:
     token, state = session(request)
     body = """<section class="help-hero"><div class="wrap"><h1>How can we help?</h1></div></section><section class="help-actions wrap"><p>Get quick assistance with these self-service options.</p><nav aria-label="Self-service help"><a href="/help?topic=refund">Request a Refund</a><a href="/help?topic=resend">Resend Confirmation Email</a><a href="/account">Manage Communication</a><a href="/help?topic=gift-card">Gift Card Balance</a><a href="/sign-up">Activate Rewards</a></nav><form action="/help" class="help-search"><label for="help-q">Search Help Topics</label><input id="help-q" name="q" placeholder="Search Help Topics" aria-label="Search Help Topics"></form></section><section class="help-topics wrap"><aside><h2>Help Topics</h2></aside><div><h2>Frequently used help topics</h2><details open><summary>How do sandbox tickets work?</summary><p>Choose a movie, theatre, showtime and seats. Completing an approved simulation stores an order only in this clone's local database.</p></details><details><summary>Can I use a real payment card?</summary><p>No. This WebsiteBench clone never requests or sends real payment information.</p></details><details><summary>How do I save a movie?</summary><p>Use the heart button. Your selection is associated with this browser session and remains visible after refresh.</p></details></div></section>"""
     return with_session(HTMLResponse(layout("Help Center", body, state)), token, request)
+
+
+@app.get("/more", response_class=HTMLResponse)
+def more_page(request: Request) -> HTMLResponse:
+    token, state = session(request)
+    items = [
+        ("AMC Stubs", "Compare membership tiers, join, sign in and review your local rewards.", "stubs-bg-insider.jpg", "/sign-up"),
+        ("Offers & Promotions", "Browse ticket, member, food and discount offers with their individual actions.", "promo-snack-sip.jpg", "/offers"),
+        ("Group Events", "Explore private theatre rentals and group movie experiences.", "theatre-hero-desktop.avif", "/group-events"),
+        ("Gift Cards", "Review digital gift-card and local wallet options.", "hero-stubs-desktop.jpg", "/gift-cards"),
+        ("Movie Merchandise", "Browse featured collectibles represented in the offline experience.", "promo-pawpatrol-collectibles.jpg", "/merchandise"),
+        ("Help Center", "Find refund, confirmation, rewards and account help topics.", "help-hero.avif", "/help"),
+    ]
+    cards = "".join(
+        f'''<article class="offer-card"><img src="/local-assets/{esc(image)}" alt=""><div><p class="eyebrow red">Explore AMC</p><h2>{esc(name)}</h2><p>{esc(copy)}</p><a class="button compact" href="{esc(href)}">Explore</a></div></article>'''
+        for name, copy, image, href in items
+    )
+    body = f'''<section class="page-head dark-head"><div class="wrap"><p class="eyebrow light">More from AMC</p><h1>Explore More Ways to Enjoy the Movies</h1><p>Membership, offers, events, gifts, merchandise and help each have a dedicated destination.</p></div></section><section class="section wrap"><div class="offer-page-grid">{cards}</div></section>'''
+    return with_session(HTMLResponse(layout("More", body, state, active="more")), token, request)
 
 
 @app.get("/password-reset", response_class=HTMLResponse)
@@ -1026,6 +1138,7 @@ def reset_amc_state(request: Request) -> JSONResponse:
 class LoginBody(BaseModel):
     email: str
     password: str
+    captcha: bool = True
 
 
 class SignupBody(BaseModel):
@@ -1079,6 +1192,8 @@ class ReviewBody(BaseModel):
 @app.post("/api/login")
 def api_login(request: Request, body: LoginBody) -> JSONResponse:
     token, _ = session(request)
+    if not body.captcha:
+        return with_session(JSONResponse({"ok": False, "message": "Complete the local verification before signing in."}, status_code=400), token, request)
     try:
         state = auth.sign_in(
             token,
@@ -1494,6 +1609,13 @@ body>header{background:#000}body>header .nav{width:100%;margin:0;padding:0 40px 
 @media(max-width:560px){.page-head h1{overflow-wrap:anywhere}.theatre-search .button{flex:0 0 auto}}
 .track-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;margin:24px 0}.track-form label{grid-column:1/-1;font-weight:700}.track-form input{min-width:0;padding:12px;border:1px solid #999}.track-result{margin-top:24px;gap:16px}.track-result strong{overflow-wrap:anywhere}
 @media(max-width:560px){.track-form{grid-template-columns:1fr}.track-form label{grid-column:auto}.track-result{align-items:flex-start;flex-direction:column}}
+.movies-home .movie-card[hidden]{display:none!important}.movies-home .movie-card:nth-child(n+5):not([hidden]){display:block!important}
+.offer-nav{display:flex;flex-wrap:wrap;gap:24px;padding:24px 0;border-bottom:1px solid #ddd;font-weight:800}.offer-nav a{color:#b20d28}.offer-page-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}.offer-card{overflow:hidden;border:1px solid #ddd;background:#fff;box-shadow:0 5px 20px #0001}.offer-card>img{display:block;width:100%;height:220px;object-fit:cover}.offer-card>div{padding:22px}.offer-card h2{margin:5px 0 10px;font-size:24px}.offer-card p:not(.eyebrow){min-height:66px;line-height:1.5}.feature-hero{min-height:430px;padding:100px 0;color:#fff;background-position:center;background-size:cover}.food-hero{background-image:linear-gradient(90deg,#000e,#0003),url('/local-assets/promo-snack-sip.jpg')}.feature-hero h1{max-width:650px;margin:10px 0;font-size:56px}.feature-hero p{max-width:610px;font-size:20px;line-height:1.5}.feature-detail{padding:70px 0}.feature-detail-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:56px}.feature-detail-grid>img{width:100%;max-height:560px;object-fit:cover}.feature-detail-grid h1{font-size:48px}
+.movie-detail-hero{background-position:center;background-size:cover}.detail-poster{width:290px;max-height:435px;object-fit:cover;box-shadow:0 12px 35px #000a}.detail-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.movie-information{display:grid;grid-template-columns:1.4fr 1fr;gap:50px}.movie-information dl{margin:0}.movie-information dl>div{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid #ddd}.movie-information dt{font-weight:800}.movie-information dd{margin:0;text-align:right}.movie-gallery{grid-column:1/-1}.movie-gallery>div{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.movie-gallery img{width:100%;height:220px;object-fit:cover}
+.captcha-control{margin:8px 0;padding:14px;border:1px solid #aaa;background:#f4f4f4;display:grid!important;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;text-transform:none!important;letter-spacing:0!important}.captcha-control input{width:24px;height:24px}.captcha-control span{display:flex;flex-direction:column}.captcha-control small{margin-top:3px;color:#666;font-weight:400}.captcha-control b{display:grid;width:32px;height:32px;border-radius:50%;place-items:center;background:#2b72c8;color:#fff;font-size:20px}
+.account-layout{display:grid;grid-template-columns:230px 1fr;gap:44px;padding-top:48px;padding-bottom:80px}.account-sidebar{position:sticky;top:110px;height:max-content;padding:24px;background:#171717;color:#fff;display:flex;flex-direction:column;gap:4px}.account-sidebar strong{padding:8px 10px 16px;font-size:24px}.account-sidebar a{padding:12px 10px;border-left:3px solid transparent}.account-sidebar a:hover,.account-sidebar a:focus{border-color:#d71920;background:#292929}.account-content{min-width:0}.account-content>section{margin-bottom:55px}.account-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.account-summary>div{padding:22px;background:#f4f1ec;display:flex;flex-direction:column;gap:8px}.account-summary strong{font-size:25px}.account-preferences{margin-top:0}
+.showtimes-movie.has-times{height:260px}.showtimes-movie.has-times:after{bottom:0}.showtime-format{margin-top:4px!important;color:#a8b8bc}.showtimes-options{position:absolute;left:106px;right:0;bottom:26px;display:flex;flex-wrap:wrap;gap:8px}.showtimes-options .showtime{padding:9px 12px;border:1px solid #1ab7fd;border-radius:4px;color:#fff;background:#14262e}.showtimes-feature>img{display:block;width:476px;height:268px;object-fit:cover}.picker-divider+.picker-theatre{margin-top:0}
+@media(max-width:700px){.offer-page-grid{grid-template-columns:1fr}.offer-card p:not(.eyebrow){min-height:0}.feature-detail-grid,.movie-information,.account-layout{grid-template-columns:1fr}.feature-detail-grid h1,.feature-hero h1{font-size:36px}.movie-gallery>div{grid-template-columns:1fr}.account-sidebar{position:static}.account-summary{grid-template-columns:1fr}.showtimes-movie.has-times{height:300px}.showtimes-options{left:0;bottom:40px}.showtimes-feature>img{width:100%;height:auto}}
 """
 
 
@@ -1507,12 +1629,12 @@ $$('[data-directory-tab]').forEach(tab=>tab.addEventListener('click',()=>{$$('[d
 const currentLocation=$('[data-current-location]');if(currentLocation)currentLocation.addEventListener('click',()=>{const input=$('#theatre-q');if(input){input.value='New York';input.form.requestSubmit()}});
 const favoriteTheatre=$('[data-favorite-theatre]');if(favoriteTheatre)favoriteTheatre.addEventListener('click',async()=>{if(favoriteTheatre.dataset.authenticated!=='true'){location.href='/login?next='+encodeURIComponent(location.pathname+location.search);return}const saved=favoriteTheatre.getAttribute('aria-pressed')!=='true';const current=await fetch('/api/preferences').then(r=>r.json());if(!current.ok){location.href='/login?next='+encodeURIComponent(location.pathname+location.search);return}const response=await fetch('/api/preferences',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({preferred_theatre:saved?favoriteTheatre.dataset.theatre:'',notifications_enabled:Boolean(current.preferences&&current.preferences.notifications_enabled),privacy_mode:(current.preferences&&current.preferences.privacy_mode)||'standard'})});const data=await response.json();if(data.ok){favoriteTheatre.setAttribute('aria-pressed',String(saved));const label=$('span',favoriteTheatre);if(label)label.textContent=saved?'Favorited':'Add Favorite';const theatreName=favoriteTheatre.dataset.theatreName||'Theatre';toast(saved?theatreName+' added to favorites':theatreName+' removed from favorites')}else toast(data.message||'Unable to update favorite theatre')});
 let slide=0;$$('[data-slide]').forEach(b=>b.addEventListener('click',()=>{const dots=$$('.carousel-controls .dot');slide=b.dataset.slide==='next'?(slide+1)%dots.length:b.dataset.slide==='prev'?(slide+dots.length-1)%dots.length:Number(b.dataset.slide);dots.forEach((d,i)=>{d.classList.toggle('on',i===slide);d.setAttribute('aria-pressed',String(i===slide))})}));
-$$('[data-movie-tab]').forEach(tab=>tab.addEventListener('click',()=>{$$('[data-movie-tab]').forEach(t=>{t.classList.toggle('on',t===tab);t.setAttribute('aria-selected',String(t===tab))});$$('.movies-home .movie-card').forEach(card=>card.hidden=tab.dataset.movieTab!=='Now Playing'&&!card.textContent.includes(tab.dataset.movieTab))}));
+$$('[data-movie-tab]').forEach(tab=>tab.addEventListener('click',()=>{$$('[data-movie-tab]').forEach(t=>{t.classList.toggle('on',t===tab);t.setAttribute('aria-selected',String(t===tab))});$$('.movies-home .movie-card').forEach(card=>card.hidden=card.dataset.movieCategory!==tab.dataset.movieTab)}));
 const featuredSelect=$('.featured-select'),featuredMenu=$('#featured-menu');if(featuredSelect&&featuredMenu)featuredSelect.addEventListener('click',()=>{const open=featuredSelect.getAttribute('aria-expanded')!=='true';featuredSelect.setAttribute('aria-expanded',String(open));featuredMenu.hidden=!open});
 const movieGenre=$('.movies-page-filter select[name="genre"]');if(movieGenre)movieGenre.addEventListener('change',()=>movieGenre.form.requestSubmit());
 $$('[data-date-tab]').forEach(tab=>tab.addEventListener('click',()=>{$$('[data-date-tab]').forEach(t=>{t.classList.toggle('on',t===tab);t.setAttribute('aria-selected',String(t===tab))})}));
 $$('[data-favorite]').forEach(button=>button.addEventListener('click',async()=>{const response=await fetch('/api/favorites',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({movie_slug:button.dataset.favorite})});const data=await response.json();if(data.ok){button.classList.toggle('saved',data.saved);button.setAttribute('aria-pressed',String(data.saved));const title=button.dataset.title||'movie';button.setAttribute('aria-label',data.saved?`Remove ${title} from saved movies`:`Save ${title}`);if(button.classList.contains('heart-detail'))button.textContent=data.saved?'♥ Saved to My AMC':'♥ Save to My AMC';toast(data.saved?'Saved to My AMC':'Removed from saved movies')}else toast(data.message||'Unable to save')}));
-const login=$('#login-form');if(login)login.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(login),response=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:f.get('email'),password:f.get('password')})}),data=await response.json();if(data.ok)location.href=f.get('next')||'/account';else $('.form-message',login).textContent=data.message});
+const login=$('#login-form');if(login)login.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(login),response=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:f.get('email'),password:f.get('password'),captcha:f.get('captcha')==='on'})}),data=await response.json();if(data.ok)location.href=f.get('next')||'/account';else $('.form-message',login).textContent=data.message});
 const signup=$('#signup-form');if(signup)signup.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(signup),response=await fetch('/api/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:f.get('name'),email:f.get('email'),password:f.get('password'),plan:f.get('plan')||'insider'})}),data=await response.json();if(data.ok)location.href='/verify-account';else $('.form-message',signup).textContent=data.message});
 const verifySignup=$('#verify-signup-form');if(verifySignup)verifySignup.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(verifySignup),response=await fetch('/api/signup/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:f.get('code')})}),data=await response.json();if(data.ok)location.href='/account';else $('.form-message',verifySignup).textContent=data.message});
 const reset=$('#reset-form');if(reset)reset.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(reset),response=await fetch('/api/password-reset',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:f.get('email')})}),data=await response.json();if(data.ok)location.href='/password-reset/verify';else $('.form-message',reset).textContent=data.message});

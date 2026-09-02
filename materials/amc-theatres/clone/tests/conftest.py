@@ -47,6 +47,7 @@ class CloneProcess:
                 "127.0.0.1",
                 "--port",
                 str(self.port),
+                "--no-access-log",
             ],
             cwd=str(CLONE_ROOT),
             env=env,
