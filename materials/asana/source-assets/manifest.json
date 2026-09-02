@@ -439,6 +439,19 @@
       "evidence_kind": "current-direct", "resource_set_class": "logical-resource",
       "source_url": "https://assets.asana.biz/transform/38516424-8e8c-49e4-9453-6f7bea782b34/web-RC26-Strategic-Planning-Tile",
       "capture_id": "playwright-isolated-public-routes-20260825"
+    },
+    {
+      "id": "home-cos-customer-story",
+      "priority": "p0", "required": true,
+      "source_path": "source-assets/public/home-cos.webp",
+      "runtime_path": "clone/static/source/home-cos.webp",
+      "bytes": 37256,
+      "sha256": "09b81e815c063a92d0c14be9967db2d90a144009b334f7089492a25ba83333b0",
+      "mime_type": "image/webp", "dimensions": {"width": 1050, "height": 701},
+      "referenced_by": ["route:home/customer-story", "viewport:desktop-1280x800", "viewport:mobile-390x844"],
+      "evidence_kind": "current-direct", "resource_set_class": "logical-resource",
+      "source_url": "https://assets.asana.biz/transform/082d1c2a-0166-40c7-abcd-f115f4d07c59/Homepage_COS_quote?io=transform:fill,width:2560&format=webp",
+      "capture_id": "browser-current-homepage-20260902"
     }
   ]
 }

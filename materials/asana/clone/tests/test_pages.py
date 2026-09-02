@@ -72,6 +72,36 @@ def test_home_work_email_is_submitted_to_signup(client) -> None:
     assert 'name="email"' in text
 
 
+def test_home_rebuild_has_complete_current_module_order(client) -> None:
+    text = client.get("/").text
+    markers = [
+        "Fortune 100",
+        "AI that works the way your team works",
+        "Your team just got bigger",
+        "Deliver real productivity for every team",
+        "Chief Digital, Technology &amp; Business Development Officer, COS",
+        "Get started easily",
+        "Recognized as a leader",
+        "The only platform that can support your company at any scale",
+    ]
+    positions = [text.index(marker) for marker in markers]
+    assert positions == sorted(positions)
+    assert text.count('data-stage-title=') == 4
+    assert text.count('class="teammate-card"') == 5
+    assert text.count('data-title=') == 5
+    for color in ("#FFD4FF", "#9EF2A4", "#F6FF8E", "#9EDCF2", "#FFFFFF"):
+        assert f"--pill:{color}" in text
+    for removed in (
+        "Turn every workflow into clear, connected work",
+        "Built for every team",
+        "Enterprise controls with a simple team experience",
+        "Teams move work forward with Asana",
+        "Work on big ideas, without the busywork",
+    ):
+        assert removed not in text
+    assert '<script src="/static/home.js" defer></script>' in text
+
+
 def test_signup_prefills_and_escapes_home_work_email(client) -> None:
     text = client.get(
         "/create-account", params={"email": '\" autofocus onfocus=\"alert(1)'}
@@ -116,15 +146,15 @@ def test_no_remote_references(client) -> None:
     for path in [*PUBLIC_PAGES, "/solutions"]:
         assert not pattern.search(client.get(path).text), path
     for asset in ("/static/site.css", "/static/app.css", "/static/app.js",
-                  "/static/auth.js"):
+                  "/static/auth.js", "/static/home.js"):
         body = client.get(asset).text
         assert "https://" not in body.replace("https://asana.offline", ""), asset
 
 
 def test_static_assets_served(client) -> None:
     for asset in ("/static/site.css", "/static/app.css", "/static/app.js",
-                  "/static/auth.js", "/static/favicon.svg",
-                  "/static/source/oat-background.png"):
+                  "/static/auth.js", "/static/home.js", "/static/favicon.svg",
+                  "/static/source/oat-background.png", "/static/source/home-cos.webp"):
         assert client.get(asset).status_code == 200, asset
 
 
@@ -137,7 +167,7 @@ def test_app_requires_auth(client) -> None:
 def test_js_has_no_absolute_remote_fetch(client) -> None:
     """Negative check: client code never targets an absolute remote URL."""
 
-    for asset in ("/static/app.js", "/static/auth.js"):
+    for asset in ("/static/app.js", "/static/auth.js", "/static/home.js"):
         body = client.get(asset).text
         assert 'fetch("http' not in body and "fetch('http" not in body, asset
         assert "new WebSocket" not in body, asset

@@ -86,7 +86,52 @@ def _marketing_nav(active: str = "") -> str:
 </header>"""
 
 
-def _marketing_footer() -> str:
+def _marketing_footer(full_home: bool = False) -> str:
+    if full_home:
+        cols = [
+            ("New to Asana?", [("Product overview", "/product"), ("All features", "/product#features"),
+                               ("Latest feature release", "/product#latest"), ("Pricing", "/pricing"),
+                               ("Starter plan", "/pricing#starter"), ("Advanced plan", "/pricing#advanced"),
+                               ("Enterprise", "/solutions#enterprise"), ("App integrations", "/product#integrations"),
+                               ("AI work management", "/product#ai"), ("Project management", "/resources")]),
+            ("Use cases", [("Campaign management", "/templates/marketing"), ("Content calendar", "/templates/marketing"),
+                           ("Creative production", "/templates/design"), ("Goal management", "/templates/operations-pmo"),
+                           ("New hire onboarding", "/templates/hr"), ("Organizational planning", "/templates/operations-pmo"),
+                           ("Product launches", "/templates/product-engineering"), ("Resource planning", "/resources"),
+                           ("Strategic planning", "/resources/category/strategic-planning"),
+                           ("Task Management", "/product")]),
+            ("Solutions", [("Small business", "/solutions"), ("Marketing", "/solutions#marketing"),
+                           ("Operations", "/solutions#operations"), ("IT", "/templates/it"),
+                           ("Product", "/solutions#product"), ("Sales", "/templates/sales-cx"),
+                           ("Healthcare", "/solutions#enterprise"), ("Retail", "/solutions#enterprise"),
+                           ("Government", "/solutions#enterprise"), ("Education", "/solutions#enterprise")]),
+            ("Resources", [("Help Center", "/resources#support"), ("Get support", "/resources#support"),
+                           ("Asana Academy", "/resources#guide"), ("Certifications", "/resources#guide"),
+                           ("Forum", "/resources"), ("Resource center", "/resources"),
+                           ("Events and webinars", "/resources"), ("Project templates", "/templates"),
+                           ("Customer Success", "/resources"), ("Developers and API", "/resources")]),
+            ("Company", [("About us", "/resources"), ("Leadership", "/resources"),
+                         ("Customers", "/resources"), ("Careers", "/resources"),
+                         ("Inside Asana", "/resources"), ("Culture", "/resources"),
+                         ("Press", "/resources"), ("Investor relations", "/resources"),
+                         ("Trust and security", "/resources"), ("Privacy", "/terms/privacy-statement")]),
+        ]
+        body = "".join(
+            '<div class="fcol"><h4>%s</h4>%s</div>' % (
+                title, "".join(f'<a href="{href}">{label}</a>' for label, href in links))
+            for title, links in cols)
+        return f"""<footer class="mfooter mfooter-home">
+  <div class="mfooter-inner">
+    <div class="fbrand" aria-label="Asana home">{LOGO_SVG}</div>
+    <div class="fcols">{body}</div>
+    <div class="flegal-row">
+      <span>© 2026 Asana, Inc.</span><a href="/resources">◎ English</a>
+      <span class="fsocial" aria-label="Social links"><a href="/resources">X</a><a href="/resources">in</a><a href="/resources">◎</a><a href="/resources">f</a><a href="/resources">▶</a></span>
+      <a href="/terms/terms-of-service">Terms</a><span>&amp;</span><a href="/terms/privacy-statement">Privacy</a>
+    </div>
+    <div class="fapp-row"><a href="/resources"> App Store</a><a href="/resources">▶ Google Play</a></div>
+  </div>
+</footer>"""
     cols = [
         ("Asana", [("Home", "/"), ("Product", "/product"), ("Pricing", "/pricing"),
                    ("Templates", "/templates"), ("Log In", "/-/login")]),
@@ -146,11 +191,52 @@ def _page(title: str, active: str, main: str) -> str:
   });
 })();
 </script>"""
-    return (_head(title) + "<body class='marketing'>" + _marketing_nav(active)
-            + f"<main>{main}</main>" + _marketing_footer() + support + "</body></html>")
+    is_home = active == ""
+    body_class = "marketing home-marketing" if is_home else "marketing"
+    home_script = '<script src="/static/home.js" defer></script>' if is_home else ""
+    return (_head(title) + f"<body class='{body_class}'>" + _marketing_nav(active)
+            + f"<main>{main}</main>" + _marketing_footer(is_home) + home_script
+            + support + "</body></html>")
 
 
 def home_page() -> str:
+    ai_tabs = [
+        ("Asana Work Graph®", "A neural network of every person, task, project, goal, and dependency, so humans and agents always know who is doing what, by when, and toward which goal.", "/static/source/product-hero.png", "Connected work graph across goals, projects, and AI agents"),
+        ("Multiplayer", "Every workflow, app, and agent runs in a shared space where humans and agents act on the same plan and see the same context.", "/static/source/resource-ai-at-work.avif", "People and AI coordinating work in one shared space"),
+        ("Shared memory", "AI Teammates learn from completed work, feedback, and preferences, so every workflow starts smarter than the last.", "/static/source/home-project.webp", "A shared product launch plan with human and AI teammates"),
+        ("Enterprise governance", "Every agent has an identity, scoped permissions, an audit trail, and cost constraints governed from the same console as human users.", "/static/source/resource-workflow-automation.avif", "Governed workflow automation in Asana"),
+    ]
+    ai_controls = "".join(
+        f'''<button class="ai-story-tab{' is-active' if index == 0 else ''}" type="button" role="tab"
+          aria-selected="{'true' if index == 0 else 'false'}" data-image="{image}" data-alt="{alt}" data-stage-title="{title}">
+          <span>{title}</span><b aria-hidden="true">{'−' if index == 0 else '+'}</b><p>{copy}</p></button>'''
+        for index, (title, copy, image, alt) in enumerate(ai_tabs)
+    )
+    teammates = [
+        ("Launch Planner", "Turns project goals into step-by-step timelines so you can hit every deadline without constant coordination.", "ROADMAP SYNCING · GTM SEQUENCING", "#9EF2A4"),
+        ("Workflow Optimizer", "Finds bottlenecks in your workflows and suggests fixes so work keeps moving.", "ARTIFACT AUDITING · MESSAGING COMPLIANCE", "#FFD4FF"),
+        ("Compliance Specialist", "Reviews project docs against regulatory standards so teams stay compliant without slowing down.", "POLICY REVIEW · DEPENDENCY MAPPING", "#B8A1FF"),
+        ("Status Reporter", "Turns project updates into executive-ready reports to keep leaders aligned and in the loop.", "STATUS SYNTHESIS · GTM SEQUENCING", "#F6FF8E"),
+        ("Data Quality Manager", "Cleans up missing data and naming formats so your workspace stays organized and reliable.", "LINGUISTIC QA · REGIONAL NUANCING", "#FFC785"),
+    ]
+    teammate_cards = "".join(
+        f'''<article class="teammate-card"><i style="--agent-color:{color}" aria-hidden="true">✣</i>
+          <h3>{title}</h3><p>{copy}</p><small>SKILLS</small><strong>{skills}</strong></article>'''
+        for title, copy, skills, color in teammates
+    )
+    products = [
+        ("Agentic Work Management", "Agentic Work Management brings together AI Teammates, AI Studio, Asana Dash, and MCP and AI Connectors — so your team and your agents run critical workflows together.", "/static/source/home-project.webp", "Launch plan run by human and AI teammates", "#FFD4FF"),
+        ("Asana Service Management", "One AI-native enterprise service management platform for IT, HR, facilities, and legal.", "/static/source/resource-workflow-automation.avif", "Automated service management workflow", "#9EF2A4"),
+        ("Asana Client Management", "Build lasting client relationships on an AI-native platform built for agency work.", "/static/source/resource-work-management.avif", "Connected client work management", "#F6FF8E"),
+        ("Command by Asana", "Ship faster with humans and agents in sync.", "/static/source/resource-project-planning.avif", "Project planning with humans and agents in sync", "#9EDCF2"),
+        ("StackAI by Asana", "Drag and drop to create powerful Agentic Workflows connected to any app, with enterprise-level governance.", "/static/source/resource-strategic-planning.avif", "Enterprise agentic workflow builder", "#FFFFFF"),
+    ]
+    product_tabs = "".join(
+        f'''<button class="productivity-tab{' is-active' if index == 0 else ''}" type="button" role="tab"
+          style="--pill:{color}" aria-selected="{'true' if index == 0 else 'false'}"
+          data-title="{title}" data-copy="{copy}" data-image="{image}" data-alt="{alt}">{title}</button>'''
+        for index, (title, copy, image, alt, color) in enumerate(products)
+    )
     return _page("The OS for human-agent teams • Asana", "", """
 <section class="hero source-home">
   <div class="source-orbit" aria-hidden="true">
@@ -230,31 +316,60 @@ def home_page() -> str:
     <div class="home-synthetic-panel" hidden><button type="button" aria-label="Close local help" onclick="this.parentElement.hidden=true">×</button><p>Local synthetic help only. Nothing is sent.</p></div>
     <button class="home-synthetic-launcher" type="button" onclick="this.previousElementSibling.hidden=!this.previousElementSibling.hidden"><span class="synthetic-help-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Ask local help</span></button>
   </aside>
+</section>""" + f"""
+<section class="home-trust" aria-label="Customer trust">
+  <p><strong>85%</strong> of Fortune 100<br>companies choose Asana<sup>1</sup></p>
+  <div class="home-logos" aria-label="Customer logos"><span>amazon</span><span>accenture</span><span>Johnson&amp;Johnson</span><span class="dell-logo">DELL</span><span>◆ MERCK</span></div>
 </section>
-<section class="home-intro">
-  <h2>AI that works the way your team works</h2>
-</section>
-<section class="strip home-ai-grid">
-  <div class="cards3">
-    <div class="mcard"><h3>Your team just got bigger</h3><p>Hand routine work to
-    AI teammates that follow your processes and report back in your projects.</p></div>
-    <div class="mcard"><h3>Deliver real productivity for every team</h3><p>From
-    campaigns to launches, connect every task to the goals that matter.</p></div>
-    <div class="mcard"><h3>Get started easily</h3><p>Start from a template,
-    import a spreadsheet, or build your first project in minutes.</p></div>
+
+<section class="home-ai-story" aria-labelledby="ai-story-heading">
+  <div class="home-section-heading"><h2 id="ai-story-heading">AI that works the way your team works</h2></div>
+  <div class="ai-story-layout">
+    <div class="ai-story-stage" aria-live="polite">
+      <span class="ai-stage-kicker">WORK GRAPH</span><h3 id="ai-stage-title">Asana Work Graph®</h3>
+      <img id="ai-stage-image" src="{ai_tabs[0][2]}" alt="{ai_tabs[0][3]}">
+      <div class="ai-stage-route" aria-hidden="true"><i>Goal</i><b>→</b><i>Project</i><b>→</b><i>AI teammate</i></div>
+    </div>
+    <div class="ai-story-tabs" role="tablist" aria-label="How Asana AI works">{ai_controls}</div>
   </div>
 </section>
-<section class="strip alt home-scale">
-  <h2>The only platform that can support your company at any scale</h2>
-  <p class="center-sub">Projects, portfolios, goals and reporting in one
-  place — from a single team to the whole organization.</p>
-  <div class="hero-cta center"><a class="btn primary lg" href="/create-account">Get started</a></div>
+
+<section class="home-teammates" aria-labelledby="teammates-heading">
+  <p class="section-kicker">AI TEAMMATES</p><h2 id="teammates-heading">Your team just got bigger</h2>
+  <div class="teammates-intro"><p>Pre-built AI agents that work alongside your team inside real workflows, with shared memory, governance, and context from the Work Graph, so they are ready to go on day one.</p><a href="/product#ai">Learn more <span>→</span></a></div>
+  <div class="teammate-rail">{teammate_cards}</div>
 </section>
-<section class="home-depth home-workflows"><h2>Turn every workflow into clear, connected work</h2><div class="home-depth-grid"><article><h3>Plan</h3><p>Organize projects, owners, and milestones in one shared view.</p></article><article><h3>Coordinate</h3><p>Keep handoffs moving with rules and reusable templates.</p></article></div></section>
-<section class="home-depth home-teams"><h2>Built for every team</h2><div class="cards3"><article class="mcard"><h3>Marketing</h3><p>Connect campaigns to business goals.</p></article><article class="mcard"><h3>Operations</h3><p>Standardize requests and approvals.</p></article><article class="mcard"><h3>Product</h3><p>Coordinate roadmaps and launches.</p></article></div></section>
-<section class="home-depth home-security"><h2>Enterprise controls with a simple team experience</h2><p>Local demo content for permissions, reporting, and dependable work management.</p></section>
-<section class="home-depth home-stories"><h2>Teams move work forward with Asana</h2><div class="home-depth-grid"><article><h3>Clear priorities</h3><p>Everyone can see what matters next.</p></article><article><h3>Measurable progress</h3><p>Projects stay connected to outcomes.</p></article></div></section>
-<section class="home-final"><h2>Work on big ideas, without the busywork</h2><a class="btn primary lg" href="/create-account">Get started</a></section>""")
+
+<section class="home-productivity" aria-labelledby="productivity-heading">
+  <div class="productivity-inner"><h2 id="productivity-heading">Deliver real productivity for every team</h2>
+    <div class="productivity-tabs" role="tablist" aria-label="Asana products">{product_tabs}</div>
+    <div class="productivity-stage" aria-live="polite">
+      <article class="productivity-side productivity-side-left"><span>CONNECTED WORK</span><strong id="product-left-title">Goals and portfolios</strong><p id="product-left-copy">Strategy stays connected to every project.</p></article>
+      <article class="productivity-main"><div><i aria-hidden="true">✣</i><span><h3 id="product-title">{products[0][0]}</h3><p id="product-copy">{products[0][1]}</p></span></div><img id="product-image" src="{products[0][2]}" alt="{products[0][3]}"></article>
+      <article class="productivity-side productivity-side-right"><span>HUMAN + AI</span><strong id="product-right-title">One shared plan</strong><p id="product-right-copy">People and agents act with the same context.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="home-case" aria-label="Customer story">
+  <div class="case-connector" aria-hidden="true"><i></i><b>✣</b></div>
+  <div class="case-grid"><div class="case-image"><img src="/static/source/home-cos.webp" alt="COS fashion collection displayed in a bright showroom"></div>
+    <blockquote><div class="cos-logo">COS</div><span class="quote-mark">”</span><p>By building scalable workflows and leveraging AI with intention, we’ve been able to increase visibility and speed while focusing our energy on strategic execution.</p><footer><strong>Simone Williams</strong><small>Chief Digital, Technology &amp; Business Development Officer, COS</small></footer></blockquote>
+  </div>
+</section>
+
+<section class="home-get-started" aria-labelledby="get-started-heading">
+  <div><h2 id="get-started-heading">Get started easily</h2><p>Tour the platform, read a few deep dives, or kickstart your work management journey with the right template.</p></div>
+  <nav aria-label="Get started resources"><a href="/demo/main"><span><strong>Try the Asana demo</strong><small>See Asana in action</small></span><b>→</b></a><a href="/resources"><span><strong>Discover resources</strong><small>Help articles and tutorials</small></span><b>→</b></a><a href="/templates"><span><strong>Start with a template</strong><small>Get started faster with a template</small></span><b>→</b></a></nav>
+</section>
+
+<section class="home-recognition" aria-labelledby="recognition-heading">
+  <div class="recognition-connector" aria-hidden="true"><i></i><b>✣</b></div><h2 id="recognition-heading">Recognized as a leader</h2>
+  <div class="award-grid"><article><div class="award-art award-gartner"><span class="gartner-grid"><i></i><i></i><i></i><i></i><i></i><i></i></span></div><h3>A Leader in the Collaborative Work Management three years in a row</h3><a href="/resources">Learn more <span>→</span></a></article>
+  <article><div class="award-art award-g2"><span><b>RANKED #2</b><i>2025<br><strong>Top 50</strong><small>PROJECT MANAGEMENT PRODUCTS</small></i></span><span><b>RANKED #2</b><i>2025<br><strong>Top 50</strong><small>SMALL BUSINESS PRODUCTS</small></i></span><span><b>RANKED #3</b><i>2025<br><strong>Top 100</strong><small>BEST SOFTWARE PRODUCTS</small></i></span></div><h3>A leader in Work Management and OKR Software with more than 12,000 user reviews</h3><a href="/resources">Read user reviews <span>→</span></a></article></div>
+</section>
+
+<section class="home-bottom-cta"><h2>The only platform that can support your company at any scale</h2><a class="btn" href="/create-account">Get started</a><p><sup>1</sup> Accurate as of December 2023, includes free and paid users.</p></section>""")
 
 
 def product_page() -> str:
