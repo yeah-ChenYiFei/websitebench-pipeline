@@ -91,7 +91,14 @@
     closePane();
     var p = location.pathname.replace(/\/+$/, "") || "/app/home";
     var m;
+    var activeMode = document.querySelector(".mode-button.active");
+    if (activeMode && activeMode.dataset.mode !== currentMode()) shell("");
     if (p === "/app" || p === "/app/home") return viewHome();
+    if ((m = p.match(/^\/app\/agents(?:\/(\w+))?$/))) return viewAgents(m[1] || "overview");
+    if ((m = p.match(/^\/app\/strategy(?:\/(\w+))?$/))) return viewStrategy(m[1] || "overview");
+    if ((m = p.match(/^\/app\/knowledge(?:\/(\w+))?$/))) return viewKnowledge(m[1] || "overview");
+    if ((m = p.match(/^\/app\/people(?:\/(\w+))?$/))) return viewPeople(m[1] || "directory");
+    if (p === "/app/more") return viewMore();
     if (p === "/app/tasks") return viewMyTasks();
     if (p === "/app/tasks/upcoming") return viewMyTasks("upcoming");
     if (p === "/app/tasks/overdue") return viewMyTasks("overdue");
@@ -132,6 +139,38 @@
   function projectMark() {
     return '<span class="proj-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M24 3v6h-6V3h6ZM0 9h6V3H0v6Zm0 12h6V11H0v10Zm9-4h6V3H9v14Z"></path></svg></span>';
   }
+  function currentMode() {
+    var path = location.pathname;
+    if (path.indexOf("/app/agents") === 0) return "agents";
+    if (path.indexOf("/app/strategy") === 0 || path === "/app/goals" || path.indexOf("/app/portfolio") === 0) return "strategy";
+    if (path.indexOf("/app/knowledge") === 0) return "knowledge";
+    if (path.indexOf("/app/people") === 0 || path === "/app/invite") return "people";
+    if (path === "/app/more" || /^\/app\/(settings|admin|billing|trash)/.test(path)) return "more";
+    return "work";
+  }
+  function modeSidebar(mode, projItems) {
+    if (mode === "work") {
+      return '<div class="workspace-primary">' + sideItem("/app/home", appIcon("home"), "Home") +
+        sideItem("/app/inbox", appIcon("inbox"), "Inbox", UNREAD) +
+        '</div><div class="workspace-separator"></div><div class="workspace-links">' +
+        sideItem("/app/tasks", appIcon("tasks"), "My tasks") +
+        sideItem("/app/projects", appIcon("projects"), "Projects") +
+        sideItem("/app/portfolios", appIcon("portfolios"), "Portfolios") +
+        '</div><div class="side-section"><div class="side-head"><span><span class="side-disclosure"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12.617 6.576A1 1 0 0 0 12 7.5v17a1 1 0 0 0 1.707.707l8.5-8.5a.999.999 0 0 0 0-1.414l-8.5-8.5a.998.998 0 0 0-1.09-.217Z"></path></svg></span> Work</span>' +
+        '<button id="side-add-project" title="Create project" aria-label="Create project"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 10V4c0-1.1.9-2 2-2s2 .9 2 2v6h6c1.1 0 2 .9 2 2s-.9 2-2 2h-6v6c0 1.1-.9 2-2 2s-2-.9-2-2v-6H4c-1.1 0-2-.9-2-2s.9-2 2-2h6Z"></path></svg></button></div>' + projItems + '</div>';
+    }
+    var links = {
+      agents: [["/app/agents", "agents", "Overview"], ["/app/agents/library", "projects", "Agent library"], ["/app/agents/activity", "strategy", "Agent activity"]],
+      strategy: [["/app/strategy", "strategy", "Overview"], ["/app/goals", "strategy", "Goals"], ["/app/portfolios", "portfolios", "Portfolios"], ["/app/strategy/reporting", "strategy", "Reporting"]],
+      knowledge: [["/app/knowledge", "knowledge", "Overview"], ["/app/knowledge/collections", "projects", "Collections"], ["/app/knowledge/templates", "portfolios", "Templates"]],
+      people: [["/app/people", "people", "Directory"], ["/app/people/teams", "projects", "Teams"], ["/app/invite", "people", "Invite people"]],
+      more: [["/app/more", "more", "Overview"], ["/app/settings", "people", "My settings"], ["/app/admin", "projects", "Workspace settings"], ["/app/billing", "portfolios", "Billing"], ["/app/trash", "inbox", "Trash"]],
+    }[mode];
+    return '<div class="workspace-primary mode-links">' + links.map(function (item) {
+      return sideItem(item[0], appIcon(item[1]), item[2]);
+    }).join("") + '</div><div class="workspace-separator"></div><div class="mode-note">' +
+      ({ agents: "Build and monitor AI teammates.", strategy: "Connect goals to execution.", knowledge: "Find shared team knowledge.", people: "Manage people and teams.", more: "Workspace tools and settings." }[mode]) + '</div>';
+  }
   function shell(contentHtml) {
     var projItems = PROJECTS.slice(0, 1).map(function (p) {
       return '<a class="side-item" data-nav href="/app/project/' + esc(p.project_id) + '">' +
@@ -143,6 +182,15 @@
         (w.workspace_id === ME.workspace.workspace_id ? " selected" : "") + ">" +
         (index ? "Demo Workspace " + (index + 1) : "Demo Workspace") + "</option>";
     }).join("");
+    var mode = currentMode();
+    var modeTitle = { work: "Work", agents: "Agents", strategy: "Strategy", knowledge: "Knowledge", people: "People", more: "More" }[mode];
+    var modeButtons = [["work", "/app/home", "Work"], ["agents", "/app/agents", "Agents"],
+      ["strategy", "/app/strategy", "Strategy"], ["knowledge", "/app/knowledge", "Knowledge"],
+      ["people", "/app/people", "People"], ["more", "/app/more", "More"]].map(function (item) {
+        return '<a class="mode-button' + (mode === item[0] ? ' active' : '') + '" data-mode="' + item[0] +
+          '" data-nav href="' + item[1] + '" aria-label="' + item[2] + '"><span aria-hidden="true">' +
+          appIcon(item[0]) + '</span><small>' + item[2] + '</small></a>';
+      }).join("");
     root.innerHTML =
       '<header class="topbar">' +
       '<div class="hamb-slot"><button class="hamb" id="hamb" aria-label="Toggle menu rail" aria-expanded="false"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h29a1.5 1.5 0 1 1 0 3h-29A1.5 1.5 0 0 1 0 4.5ZM30.5 15h-29a1.5 1.5 0 1 0 0 3h29a1.5 1.5 0 1 0 0-3Zm0 12h-29a1.5 1.5 0 1 0 0 3h29a1.5 1.5 0 1 0 0-3Z"></path></svg></button></div>' +
@@ -155,29 +203,15 @@
       '<nav class="sidebar' + (SIDEBAR_COLLAPSED ? " collapsed" : "") +
       (SIDEBAR_OPEN ? " open" : "") + '" id="sidebar" aria-label="Main navigation">' +
       '<div class="mode-rail" aria-label="Workspace modes">' +
-      '<a class="mode-button active" data-nav href="/app/home" aria-label="Work"><span aria-hidden="true">' + appIcon("work") + '</span><small>Work</small></a>' +
-      '<a class="mode-button" data-nav href="/app/inbox" aria-label="Agents"><span aria-hidden="true">' + appIcon("agents") + '</span><small>Agents</small></a>' +
-      '<a class="mode-button" data-nav href="/app/goals" aria-label="Strategy"><span aria-hidden="true">' + appIcon("strategy") + '</span><small>Strategy</small></a>' +
-      '<a class="mode-button" data-nav href="/app/help" aria-label="Knowledge"><span aria-hidden="true">' + appIcon("knowledge") + '</span><small>Knowledge</small></a>' +
-      '<a class="mode-button" data-nav href="/app/invite" aria-label="People"><span aria-hidden="true">' + appIcon("people") + '</span><small>People</small></a>' +
-      '<a class="mode-button" data-nav href="/app/settings" aria-label="More"><span aria-hidden="true">' + appIcon("more") + '</span><small>More</small></a>' +
+      modeButtons +
       '<span class="mode-spacer"></span>' +
-      '<a class="mode-help" data-nav href="/app/help" aria-label="Help"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M15.999 0c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16Zm0 30c-7.72 0-14-6.28-14-14s6.28-14 14-14 14 6.28 14 14-6.28 14-14 14Zm2-6a2 2 0 1 1-4.001-.001A2 2 0 0 1 18 24Zm4-12.264c0 2.076-1.136 3.928-3.039 4.952-1.185.637-1.461.87-1.461 1.705V20h-3v-1.606c0-2.712 1.828-3.695 3.037-4.347.441-.237 1.463-.936 1.463-2.31 0-.643-.217-2.737-3-2.737-2.491 0-3 1.68-3 2.13v1.212h-3V11.13c0-2.131 1.861-5.131 6-5.131s6 2.975 6 5.737Z"></path></svg></a>' +
+      '<button class="mode-help" id="help-menu" type="button" aria-label="Help"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M15.999 0c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16Zm0 30c-7.72 0-14-6.28-14-14s6.28-14 14-14 14 6.28 14 14-6.28 14-14 14Zm2-6a2 2 0 1 1-4.001-.001A2 2 0 0 1 18 24Zm4-12.264c0 2.076-1.136 3.928-3.039 4.952-1.185.637-1.461.87-1.461 1.705V20h-3v-1.606c0-2.712 1.828-3.695 3.037-4.347.441-.237 1.463-.936 1.463-2.31 0-.643-.217-2.737-3-2.737-2.491 0-3 1.68-3 2.13v1.212h-3V11.13c0-2.131 1.861-5.131 6-5.131s6 2.975 6 5.737Z"></path></svg></button>' +
       '<button class="avatar mode-profile" id="me-menu" style="background:#a88ff0" aria-label="Open Synthetic User menu">QA</button>' +
       '</div>' +
       '<div class="workspace-rail">' +
       '<button class="workspace-title" id="workspace-title" aria-label="Switch Demo Workspace">' +
-      '<span>Work</span><span class="workspace-chevron">⌄</span></button>' +
-      '<div class="workspace-primary">' +
-      sideItem("/app/home", appIcon("home"), "Home") +
-      sideItem("/app/inbox", appIcon("inbox"), "Inbox", UNREAD) +
-      '</div><div class="workspace-separator"></div><div class="workspace-links">' +
-      sideItem("/app/tasks", appIcon("tasks"), "My tasks") +
-      sideItem("/app/projects", appIcon("projects"), "Projects") +
-      sideItem("/app/portfolios", appIcon("portfolios"), "Portfolios") +
-      '</div><div class="side-section"><div class="side-head"><span><span class="side-disclosure"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12.617 6.576A1 1 0 0 0 12 7.5v17a1 1 0 0 0 1.707.707l8.5-8.5a.999.999 0 0 0 0-1.414l-8.5-8.5a.998.998 0 0 0-1.09-.217Z"></path></svg></span> Work</span>' +
-      '<button id="side-add-project" title="Create project" aria-label="Create project"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 10V4c0-1.1.9-2 2-2s2 .9 2 2v6h6c1.1 0 2 .9 2 2s-.9 2-2 2h-6v6c0 1.1-.9 2-2 2s-2-.9-2-2v-6H4c-1.1 0-2-.9-2-2s.9-2 2-2h6Z"></path></svg></button></div>' +
-      projItems + "</div>" +
+      '<span>' + modeTitle + '</span><span class="workspace-chevron">⌄</span></button>' +
+      modeSidebar(mode, projItems) +
       '<div class="side-foot"><div class="trial-card"><span class="trial-ring" aria-hidden="true"></span>' +
       '<span><strong>Advanced free trial</strong><small>14 days left</small></span>' +
       '<button type="button" id="trial-info">Add billing info</button></div>' +
@@ -200,7 +234,8 @@
     };
     document.getElementById("create-btn").onclick = openCreateMenu;
     document.getElementById("assistant-btn").onclick = openAssistant;
-    document.getElementById("side-add-project").onclick = function () { openProjectModal(); };
+    var sideAdd = document.getElementById("side-add-project");
+    if (sideAdd) sideAdd.onclick = function () { openProjectModal(); };
     document.getElementById("workspace-title").onclick = openWorkspaceSwitcher;
     document.getElementById("ws-switch").onchange = async function () {
       await api("/workspace/switch", { method: "POST", body: { workspace_id: this.value } });
@@ -211,6 +246,7 @@
       if (ev.key === "Enter" && gs.value.trim()) nav("/app/search?q=" + encodeURIComponent(gs.value.trim()));
     });
     document.getElementById("me-menu").onclick = openMeMenu;
+    document.getElementById("help-menu").onclick = openHelpMenu;
     document.getElementById("trial-info").onclick = function () { nav("/app/billing"); };
     highlightSide();
   }
@@ -233,14 +269,13 @@
   function loadingPage() { setPage('<div class="loading"><span class="spinner"></span><p>Loading…</p></div>'); }
 
   function openMeMenu() {
-    openModal('<h2>Local User</h2>' +
-      '<p class="page-sub">Local account · ' + esc(ME.role) + "</p>" +
-      '<div class="modal-actions" style="justify-content:flex-start;flex-wrap:wrap">' +
+    openModal('<div class="profile-menu-head">' + avatar(ME.user.display_name, ME.user.avatar_color, ME.user.initials) +
+      '<div><h2>' + esc(ME.user.display_name) + '</h2><p class="page-sub">' + esc(ME.user.email) + '</p></div></div>' +
+      '<div class="profile-menu-actions">' +
       '<button class="tbtn" data-go="/app/settings">Profile &amp; settings</button>' +
-      '<button class="tbtn" data-go="/app/admin">Workspace settings</button>' +
-      '<button class="tbtn" data-go="/app/billing">Billing</button>' +
-      '<button class="tbtn" data-go="/app/trash">Trash</button>' +
-      '<button class="tbtn" data-go="/app/help">Help</button>' +
+      '<button class="tbtn" id="profile-workspace">Switch workspace</button>' +
+      '<button class="tbtn" data-go="/app/people">People directory</button>' +
+      '<button class="tbtn" id="profile-help">Help &amp; getting started</button>' +
       '<button class="tbtn danger" id="logout-btn">Log out</button></div>');
     document.querySelectorAll("[data-go]").forEach(function (b) {
       b.onclick = function () { closeModal(); nav(b.dataset.go); };
@@ -248,6 +283,26 @@
     document.getElementById("logout-btn").onclick = async function () {
       await api("/auth/logout", { method: "POST" });
       location.assign("/-/login");
+    };
+    document.getElementById("profile-workspace").onclick = function () { closeModal(); openWorkspaceSwitcher(); };
+    document.getElementById("profile-help").onclick = function () { closeModal(); openHelpMenu(); };
+  }
+
+  function openHelpMenu() {
+    openModal('<h2>How can we help?</h2><p class="page-sub">Get help without leaving your current work.</p>' +
+      '<div class="help-menu-grid"><button class="tbtn" data-help-go="/app/help">Help center</button>' +
+      '<button class="tbtn" data-help-go="/app/knowledge">Browse team knowledge</button>' +
+      '<button class="tbtn" id="help-shortcuts">Keyboard shortcuts</button>' +
+      '<button class="tbtn" id="help-support">Contact support</button></div>' +
+      '<p id="help-result" class="assistant-answer" aria-live="polite"></p>');
+    document.querySelectorAll("[data-help-go]").forEach(function (button) {
+      button.onclick = function () { closeModal(); nav(button.dataset.helpGo); };
+    });
+    document.getElementById("help-shortcuts").onclick = function () {
+      document.getElementById("help-result").textContent = "Press / to search, Tab to move, and Esc to close a dialog.";
+    };
+    document.getElementById("help-support").onclick = function () {
+      document.getElementById("help-result").textContent = "Support is available inside this local demo; no message was sent.";
     };
   }
 
@@ -877,18 +932,10 @@
           '<span class="tname">' + esc(task.name) + '</span><span class="home-project-chip"><i></i>Demo</span>' +
           '<span class="home-due">' + (task.due_date ? fmtDate(task.due_date) : 'This week') + '</span></div>';
       }).join("");
-      for (var demoIndex = kind === "upcoming" ? tasks.length : 2; demoIndex < 2; demoIndex += 1) {
-        homeRows += '<div class="task-row home-demo-row"><button class="checkbox" data-home-demo aria-label="Create sample task">✓</button>' +
-          '<span class="tname">' + (demoIndex ? 'Plan the next milestone' : 'Review weekly priorities') + '</span>' +
-          '<span class="home-project-chip"><i></i>Demo</span><span class="home-due">This week</span></div>';
-      }
       panel.innerHTML = '<button type="button" class="home-task-create" id="home-add-task">＋ Create task</button>' +
         '<div class="home-task-rows">' + (homeRows || '<div class="home-empty"><strong>You\'re all caught up</strong><span>No ' +
         kind + ' tasks in this local workspace.</span></div>') + '</div>';
       wireTaskRows(panel);
-      panel.querySelectorAll("[data-home-demo]").forEach(function (button) {
-        button.onclick = function () { openTaskModal(); };
-      });
       document.getElementById("home-add-task").onclick = function () { openTaskModal(); };
     }
     renderHomeTasks("upcoming");
@@ -903,8 +950,8 @@
       };
     });
     document.getElementById("home-new-project").onclick = function () { openProjectModal(); };
-    document.getElementById("home-project-view").onclick = function () { toast("Recent projects selected"); };
-    document.getElementById("home-project-options").onclick = function () { toast("Project options opened"); };
+    document.getElementById("home-project-view").onclick = function () { openHomeOptions("project-view"); };
+    document.getElementById("home-project-options").onclick = function () { openHomeOptions("projects"); };
     document.getElementById("home-customize").onclick = openCustomizeHome;
     document.getElementById("home-timeframe").onclick = function () { toast("My week selected"); };
     document.getElementById("home-tasks-stat").onclick = function () { nav("/app/tasks"); };
@@ -914,11 +961,44 @@
       card.onclick = function () { openLearnDetail(card.dataset.learn); };
     });
     document.querySelectorAll("[data-widget]").forEach(function (button) {
-      button.onclick = function () { toast("Local " + button.dataset.widget + " options opened"); };
+      button.onclick = function () { openHomeOptions(button.dataset.widget); };
     });
     document.querySelectorAll(".widget-rows button,.people-grid button,.focus-steps button").forEach(function (button) {
-      button.onclick = function () { toast("Local widget item selected"); };
+      button.onclick = function () { openWidgetDetail(button); };
     });
+  }
+
+  function openHomeOptions(kind) {
+    var config = {
+      "project-view": ["Project view", "Choose which projects appear on Home.", [["Recent projects", "/app/projects"], ["All projects", "/app/projects"]]],
+      projects: ["Project options", "Open or create projects from Home.", [["Open projects", "/app/projects"], ["Create project", "create-project"]]],
+      assigned: ["Assigned task options", "Review tasks you have delegated.", [["Open My tasks", "/app/tasks"], ["Customize Home", "customize"]]],
+      people: ["People options", "See teammates and team activity.", [["Open People", "/app/people"], ["Browse teams", "/app/people/teams"]]],
+      focus: ["Focus options", "Connect this week’s priorities to strategy.", [["Open Strategy", "/app/strategy"], ["Customize Home", "customize"]]],
+    }[kind];
+    var actions = config[2].map(function (item) {
+      return '<button class="tbtn" data-home-option="' + esc(item[1]) + '">' + esc(item[0]) + '</button>';
+    }).join("");
+    openModal('<h2>' + config[0] + '</h2><p class="page-sub">' + config[1] + '</p><div class="home-option-list">' + actions + '</div>');
+    document.querySelectorAll("[data-home-option]").forEach(function (button) {
+      button.onclick = function () {
+        var target = button.dataset.homeOption;
+        closeModal();
+        if (target === "create-project") openProjectModal();
+        else if (target === "customize") openCustomizeHome();
+        else nav(target);
+      };
+    });
+  }
+
+  function openWidgetDetail(button) {
+    var title = button.querySelector("strong");
+    var widget = button.closest(".home-assigned") ? "assigned" : button.closest(".home-people") ? "people" : "focus";
+    var target = widget === "assigned" ? "/app/tasks" : widget === "people" ? "/app/people" : "/app/strategy";
+    openModal('<h2>' + esc(title ? title.textContent : "Home item") + '</h2><p class="page-sub">Review this item in its related workspace area.</p>' +
+      '<div class="modal-actions"><button class="tbtn" id="widget-close">Close</button><button class="tbtn primary" id="widget-open">Open related work</button></div>');
+    document.getElementById("widget-close").onclick = closeModal;
+    document.getElementById("widget-open").onclick = function () { closeModal(); nav(target); };
   }
 
   function openCustomizeHome() {
@@ -1019,6 +1099,121 @@
     document.querySelectorAll("[data-navcard]").forEach(function (card) {
       card.onclick = function () { nav(card.dataset.navcard); };
     });
+  }
+
+  function viewAgents(section) {
+    var body;
+    if (section === "library") {
+      body = '<div class="page-head"><h1>Agent library</h1><span class="spacer"></span><button class="tbtn primary" data-agent-action="Create agent">Create agent</button></div>' +
+        '<p class="page-sub">Choose an agent pattern for repeatable work in this workspace.</p><div class="grid-cards mode-card-grid">' +
+        '<button class="gcard mode-card" data-agent-action="Project status agent"><span class="mode-card-icon">✦</span><h3>Project status agent</h3><p>Summarize progress, risks, and next steps.</p></button>' +
+        '<button class="gcard mode-card" data-agent-action="Work intake agent"><span class="mode-card-icon">↳</span><h3>Work intake agent</h3><p>Organize requests and route new work.</p></button>' +
+        '<button class="gcard mode-card" data-agent-action="Campaign agent"><span class="mode-card-icon">◎</span><h3>Campaign agent</h3><p>Coordinate briefs, reviews, and launches.</p></button></div>';
+    } else if (section === "activity") {
+      body = '<div class="page-head"><h1>Agent activity</h1></div><p class="page-sub">Review local actions proposed by your AI teammates.</p>' +
+        '<div class="settings-block"><h3>Today</h3><div class="inbox-item"><span>✦</span><div><strong>Project status agent</strong><p>Prepared a local weekly status summary.</p><span class="when">A few minutes ago</span></div></div>' +
+        '<div class="inbox-item"><span>◎</span><div><strong>Campaign agent</strong><p>Suggested owners for two upcoming milestones.</p><span class="when">Earlier today</span></div></div></div>';
+    } else {
+      body = '<div class="mode-hero"><span class="mode-card-icon large">✦</span><div><p class="mode-eyebrow">AGENTS</p><h1>AI teammates for your team’s work</h1><p>Create, manage, and monitor agents without mixing them into your Inbox.</p></div></div>' +
+        '<div class="grid-cards mode-card-grid"><button class="gcard mode-card" data-go="/app/agents/library"><h3>Explore the agent library</h3><p>Start from a role designed for common workflows.</p><span>Browse agents →</span></button>' +
+        '<button class="gcard mode-card" data-go="/app/agents/activity"><h3>Review agent activity</h3><p>See recent local suggestions and summaries.</p><span>View activity →</span></button>' +
+        '<button class="gcard mode-card" data-agent-action="Create agent"><h3>Create an agent</h3><p>Define a role and the work it should support.</p><span>Get started →</span></button></div>';
+    }
+    setPage(body, "mode-page");
+    document.querySelectorAll("[data-go]").forEach(function (button) { button.onclick = function () { nav(button.dataset.go); }; });
+    document.querySelectorAll("[data-agent-action]").forEach(function (button) {
+      button.onclick = function () {
+        openModal('<h2>' + esc(button.dataset.agentAction) + '</h2><p class="page-sub">Configure this agent for the current local workspace.</p>' +
+          '<div class="field"><label>Instructions</label><textarea rows="4" placeholder="Describe the work this agent should help with"></textarea></div>' +
+          '<div class="modal-actions"><button class="tbtn" data-close-modal>Cancel</button><button class="tbtn primary" id="agent-save">Save draft</button></div>');
+        document.querySelector("[data-close-modal]").onclick = closeModal;
+        document.getElementById("agent-save").onclick = function () { closeModal(); toast("Agent draft saved locally"); };
+      };
+    });
+  }
+
+  function viewStrategy(section) {
+    if (section === "reporting") { viewActivity(); return; }
+    setPage('<div class="mode-hero strategy-hero"><span class="mode-card-icon large">▲</span><div><p class="mode-eyebrow">STRATEGY</p>' +
+      '<h1>Connect goals to the work that drives them</h1><p>Move between an overview, goals, portfolios, and reporting from the Strategy sidebar.</p></div></div>' +
+      '<div class="grid-cards mode-card-grid"><button class="gcard mode-card" data-go="/app/goals"><h3>Goals</h3><p>Set measurable outcomes and update progress.</p><span>Open goals →</span></button>' +
+      '<button class="gcard mode-card" data-go="/app/portfolios"><h3>Portfolios</h3><p>Monitor related projects in one place.</p><span>Open portfolios →</span></button>' +
+      '<button class="gcard mode-card" data-go="/app/strategy/reporting"><h3>Reporting</h3><p>Review workspace activity and delivery signals.</p><span>Open reporting →</span></button></div>', "mode-page");
+    document.querySelectorAll("[data-go]").forEach(function (button) { button.onclick = function () { nav(button.dataset.go); }; });
+  }
+
+  function viewKnowledge(section) {
+    var cards;
+    if (section === "collections") {
+      cards = '<button class="gcard knowledge-card" data-knowledge="Project playbooks"><h3>Project playbooks</h3><p>Shared guidance for planning, reviews, and handoffs.</p></button>' +
+        '<button class="gcard knowledge-card" data-knowledge="Team policies"><h3>Team policies</h3><p>Workspace norms and decision records.</p></button>' +
+        '<button class="gcard knowledge-card" data-knowledge="Launch notes"><h3>Launch notes</h3><p>Reusable context for upcoming releases.</p></button>';
+    } else if (section === "templates") {
+      cards = '<button class="gcard knowledge-card" data-knowledge="Project brief"><h3>Project brief</h3><p>Capture goals, scope, owners, and milestones.</p></button>' +
+        '<button class="gcard knowledge-card" data-knowledge="Meeting notes"><h3>Meeting notes</h3><p>Record decisions and action items.</p></button>' +
+        '<button class="gcard knowledge-card" data-knowledge="Decision log"><h3>Decision log</h3><p>Keep important choices easy to find.</p></button>';
+    } else {
+      cards = '<button class="gcard knowledge-card" data-knowledge="Getting started"><h3>Getting started</h3><p>Learn how work, projects, and goals fit together.</p></button>' +
+        '<button class="gcard knowledge-card" data-go="/app/knowledge/collections"><h3>Collections</h3><p>Browse organized team knowledge.</p><span>View collections →</span></button>' +
+        '<button class="gcard knowledge-card" data-go="/app/knowledge/templates"><h3>Templates</h3><p>Create consistent docs and project context.</p><span>View templates →</span></button>';
+    }
+    setPage('<div class="page-head"><h1>Knowledge</h1></div><p class="page-sub">Search shared guidance without leaving your workspace.</p>' +
+      '<div class="knowledge-search"><input id="knowledge-search" type="search" placeholder="Search knowledge" aria-label="Search knowledge"></div>' +
+      '<div class="grid-cards mode-card-grid" id="knowledge-results">' + cards + '</div>', "mode-page");
+    document.querySelectorAll("[data-go]").forEach(function (button) { button.onclick = function () { nav(button.dataset.go); }; });
+    document.querySelectorAll("[data-knowledge]").forEach(function (button) {
+      button.onclick = function () { openModal('<h2>' + esc(button.dataset.knowledge) + '</h2><p>This local knowledge item is ready to use with your team’s work.</p>'); };
+    });
+    document.getElementById("knowledge-search").oninput = function () {
+      var query = this.value.trim().toLowerCase();
+      document.querySelectorAll("#knowledge-results .knowledge-card").forEach(function (card) {
+        card.hidden = Boolean(query && card.textContent.toLowerCase().indexOf(query) < 0);
+      });
+    };
+  }
+
+  async function viewPeople(section) {
+    loadingPage();
+    var data;
+    try { data = await api("/members"); } catch (e) { return; }
+    var memberCards = data.members.map(function (member) {
+      return '<button class="gcard people-card" data-member-name="' + esc(member.display_name) + '" data-member-email="' + esc(member.email) + '">' +
+        avatar(member.display_name, member.avatar_color, member.initials) + '<h3>' + esc(member.display_name) + '</h3><p>' + esc(member.email) + '</p><span>View profile →</span></button>';
+    }).join("");
+    var body = section === "teams" ?
+      '<div class="page-head"><h1>Teams</h1><span class="spacer"></span><button class="tbtn primary" id="people-invite">Invite people</button></div>' +
+      '<p class="page-sub">Organize workspace members around shared work.</p><div class="grid-cards mode-card-grid">' +
+      '<button class="gcard mode-card" data-team="Product"><h3>Product</h3><p>' + data.members.length + ' members · 2 projects</p></button>' +
+      '<button class="gcard mode-card" data-team="Operations"><h3>Operations</h3><p>1 member · 1 project</p></button>' +
+      '<button class="gcard mode-card" data-team="Marketing"><h3>Marketing</h3><p>1 member · 2 projects</p></button></div>' :
+      '<div class="page-head"><h1>People</h1><span class="spacer"></span><button class="tbtn primary" id="people-invite">Invite people</button></div>' +
+      '<p class="page-sub">Find teammates, see their workspace details, and move into team views.</p><div class="people-tools"><input type="search" id="people-search" placeholder="Search people" aria-label="Search people"><button class="tbtn" data-go="/app/people/teams">Browse teams</button></div>' +
+      '<div class="grid-cards people-directory" id="people-directory">' + memberCards + '</div>';
+    setPage(body, "mode-page");
+    document.getElementById("people-invite").onclick = function () { nav("/app/invite"); };
+    document.querySelectorAll("[data-go]").forEach(function (button) { button.onclick = function () { nav(button.dataset.go); }; });
+    document.querySelectorAll("[data-member-name]").forEach(function (button) {
+      button.onclick = function () { openModal('<h2>' + esc(button.dataset.memberName) + '</h2><p class="page-sub">' + esc(button.dataset.memberEmail) + '</p><p>Workspace member in Demo Workspace.</p>'); };
+    });
+    document.querySelectorAll("[data-team]").forEach(function (button) {
+      button.onclick = function () { openModal('<h2>' + esc(button.dataset.team) + '</h2><p>Review this team’s members and active work from the local workspace.</p>'); };
+    });
+    var peopleSearch = document.getElementById("people-search");
+    if (peopleSearch) peopleSearch.oninput = function () {
+      var query = this.value.trim().toLowerCase();
+      document.querySelectorAll("#people-directory .people-card").forEach(function (card) {
+        card.hidden = Boolean(query && card.textContent.toLowerCase().indexOf(query) < 0);
+      });
+    };
+  }
+
+  function viewMore() {
+    setPage('<div class="page-head"><h1>More</h1></div><p class="page-sub">Workspace administration and personal settings.</p>' +
+      '<div class="grid-cards mode-card-grid"><button class="gcard mode-card" data-go="/app/settings"><h3>My settings</h3><p>Profile, notifications, display, and security.</p></button>' +
+      '<button class="gcard mode-card" data-go="/app/admin"><h3>Workspace settings</h3><p>Members, roles, and workspace details.</p></button>' +
+      '<button class="gcard mode-card" data-go="/app/billing"><h3>Billing</h3><p>Review the local sandbox plan.</p></button>' +
+      '<button class="gcard mode-card" data-go="/app/trash"><h3>Trash</h3><p>Restore or permanently remove local work.</p></button></div>', "mode-page");
+    document.querySelectorAll("[data-go]").forEach(function (button) { button.onclick = function () { nav(button.dataset.go); }; });
   }
 
   async function viewInvite() {

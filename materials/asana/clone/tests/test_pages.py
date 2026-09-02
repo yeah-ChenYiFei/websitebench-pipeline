@@ -12,11 +12,20 @@ def test_public_pages_render(client) -> None:
         assert "<title>" in r.text, path
 
 
-def test_solutions_matches_observed_public_not_found_state(client) -> None:
+def test_solutions_is_a_complete_reachable_public_page(client) -> None:
     response = client.get("/solutions")
-    assert response.status_code == 404
-    assert "Content Not Found" in response.text
-    assert "This page doesn’t exist. But you exist." in response.text
+    assert response.status_code == 200
+    assert "Move every team’s work forward" in response.text
+    for section in ("marketing", "operations", "product", "enterprise"):
+        assert f'id="{section}"' in response.text
+
+
+def test_public_navigation_has_real_mega_menus(client) -> None:
+    text = client.get("/").text
+    assert text.count('class="mnav-menu"') == 3
+    assert text.count('class="mnav-mega"') == 3
+    for label in ("Products", "Solutions", "Learning & support"):
+        assert label in text
 
 
 def test_template_card_destinations_are_reachable(client) -> None:
@@ -148,9 +157,17 @@ def test_sanitized_authenticated_navigation_has_local_routes(client) -> None:
     for path in ("/app/home", "/app/tasks", "/app/tasks/upcoming",
                  "/app/tasks/overdue", "/app/inbox", "/app/projects",
                  "/app/portfolios", "/app/goals", "/app/search",
-                 "/app/invite"):
+                 "/app/invite", "/app/agents", "/app/strategy",
+                 "/app/knowledge", "/app/people", "/app/more"):
         assert path in script
     for label in ("Home", "My tasks", "Upcoming", "Overdue", "Inbox",
                   "Projects", "Portfolios", "Goals", "Search", "Create",
                   "Invite"):
         assert label in script
+
+
+def test_authenticated_navigation_avoids_placeholder_interactions(client) -> None:
+    script = client.get("/static/app.js").text
+    assert 'data-home-demo' not in script
+    assert "Project options opened" not in script
+    assert "Local widget item selected" not in script

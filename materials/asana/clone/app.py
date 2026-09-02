@@ -81,10 +81,8 @@ def public_terms(document: str) -> str:
 
 
 @app.get("/solutions", response_class=HTMLResponse)
-def unavailable_solutions() -> HTMLResponse:
-    """Mirror the directly observed public source status and rescue surface."""
-
-    return HTMLResponse(pages.solutions_page(), status_code=404)
+def solutions() -> str:
+    return pages.solutions_page()
 
 
 def _authenticated(request: Request) -> bool:

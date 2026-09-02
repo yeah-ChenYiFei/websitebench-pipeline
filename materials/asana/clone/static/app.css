@@ -52,10 +52,12 @@ input, select, textarea { font: inherit; }
 .mode-button:hover, .mode-button:focus-visible, .mode-button.active { color: #f2f3f4; outline: none; }
 .mode-button:hover > span, .mode-button:focus-visible > span, .mode-button.active > span { background: rgba(255,255,255,.11); }
 .mode-spacer { flex: 1; }
-.mode-help { width: 32px; height: 32px; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; color: #b8b9ba; }
+.mode-help { width: 32px; height: 32px; margin-bottom: 6px; padding: 0; border: 0; border-radius: 7px; display: flex; align-items: center; justify-content: center; background: transparent; color: #b8b9ba; }
+.mode-help:hover, .mode-help:focus-visible { background: rgba(255,255,255,.11); color: #fff; outline: none; }
 .mode-help svg { width: 16px; height: 16px; fill: currentColor; }
 .mode-profile { width: 28px !important; height: 28px !important; font-size: 10px !important; margin: 0 0 9px; }
 .workspace-rail { width: 181px; min-width: 181px; display: flex; flex-direction: column; min-height: 0; }
+.mode-links { padding-top: 8px; }.mode-note { margin: 12px 10px; color: #b8b9ba; font-size: 11px; line-height: 16px; }
 .workspace-title {
   width: 179px; height: 30px; margin: 4px 1px 0; padding: 0 5px; border: 0; border-radius: 6px;
   display: flex; align-items: center; gap: 7px; overflow: hidden; background: transparent;
@@ -261,6 +263,20 @@ select.tbtn { padding: .32rem .5rem; }
 .gcard:hover { border-color: #cfcbcb; box-shadow: 0 2px 8px rgba(30,31,33,.06); }
 .gcard h3 { margin: .5rem 0 .2rem; font-size: 1rem; }
 .gcard .gsub { color: var(--ink-soft); font-size: .83rem; }
+.mode-page { max-width: 72rem; padding: 32px 40px 60px; }
+.mode-hero { min-height: 240px; margin-bottom: 28px; padding: 34px; display: flex; align-items: center; gap: 30px; border-radius: 16px; background: #f5f3f3; }
+.mode-hero > div { max-width: 700px; }.mode-hero h1 { margin: 5px 0 12px; font-size: 34px; line-height: 40px; }
+.mode-hero p { margin: 0; color: var(--ink-soft); line-height: 24px; }.mode-eyebrow { color: var(--ink) !important; font-size: 11px; letter-spacing: .14em; }
+.strategy-hero { background: #edf6ff; }.mode-card-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.mode-card { width: 100%; min-height: 190px; text-align: left; color: var(--ink); }
+.mode-card p, .people-card p { color: var(--ink-soft); line-height: 21px; }.mode-card > span:last-child, .people-card > span:last-child { display: inline-block; margin-top: 15px; font-size: 13px; font-weight: 600; }
+.mode-card-icon { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: #ffd5d2; }
+.mode-card-icon.large { width: 74px; height: 74px; flex: none; border-radius: 20px; font-size: 28px; }
+.knowledge-search, .people-tools { max-width: 760px; margin: 18px 0 24px; display: flex; gap: 10px; }
+.knowledge-search input, .people-tools input { width: 100%; height: 42px; padding: 0 13px; border: 1px solid #cfcbcb; border-radius: 8px; }
+.people-directory { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }.people-card { min-height: 180px; width: 100%; text-align: left; color: var(--ink); }
+.profile-menu-head { display: flex; align-items: center; gap: 12px; }.profile-menu-head h2 { margin: 0 0 3px; }.profile-menu-head .page-sub { margin: 0; }
+.profile-menu-actions, .help-menu-grid, .home-option-list { margin-top: 18px; display: grid; gap: 8px; }.profile-menu-actions .tbtn, .help-menu-grid .tbtn, .home-option-list .tbtn { width: 100%; justify-content: flex-start; text-align: left; }
 .progressbar { height: .45rem; border-radius: 999px; background: var(--line); overflow: hidden; margin-top: .5rem; }
 .progressbar > div { height: 100%; background: var(--green); }
 
@@ -525,6 +541,7 @@ select.tbtn { padding: .32rem .5rem; }
   .sidebar.open { margin-left: 0; box-shadow: 20px 0 50px rgba(0,0,0,.3); }
   .sidebar.collapsed { margin-left: -245px; }
   .main { width: 100%; }
+  .mode-page { padding: 24px 18px 48px; }.mode-hero { padding: 24px; align-items: flex-start; }.mode-hero h1 { font-size: 27px; line-height: 32px; }
   .create-btn {
     left: 64px; top: 10px; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 50%;
     background: var(--coral); font-size: 18px;

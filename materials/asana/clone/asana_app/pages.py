@@ -32,11 +32,41 @@ def _head(title: str, extra: str = "") -> str:
 
 
 def _marketing_nav(active: str = "") -> str:
-    links = [("Products", "/product", True), ("Solutions", "/solutions", True),
-             ("Learning & support", "/resources", True), ("Pricing", "/pricing", False)]
-    items = "".join(
-        f'<a href="{href}" class="mnav-link{" has-menu" if menu else ""}{" active" if href.strip("/") == active else ""}">{label}</a>'
-        for label, href, menu in links)
+    menus = [
+        ("Products", "product", "Bring every team and workflow together.", [
+            ("Product overview", "/product", "See the complete work management platform"),
+            ("Project management", "/product#project-management", "Plan projects from start to finish"),
+            ("Goals and reporting", "/product#goals", "Connect daily work to company priorities"),
+            ("Workflow automation", "/product#automation", "Standardize repeatable processes"),
+        ]),
+        ("Solutions", "solutions", "Solve work challenges across your organization.", [
+            ("For marketing", "/solutions#marketing", "Coordinate campaigns and creative work"),
+            ("For operations", "/solutions#operations", "Create dependable cross-team processes"),
+            ("For product teams", "/solutions#product", "Connect roadmaps, launches, and feedback"),
+            ("For enterprise", "/solutions#enterprise", "Scale securely with visibility and control"),
+        ]),
+        ("Learning & support", "resources", "Learn, get support, and start faster.", [
+            ("Resource center", "/resources", "Explore guides, articles, and customer stories"),
+            ("Templates", "/templates", "Start with a proven workflow"),
+            ("Asana guide", "/resources#guide", "Learn the fundamentals step by step"),
+            ("Support", "/resources#support", "Find answers and local demo help"),
+        ]),
+    ]
+    menu_items = []
+    for label, key, description, links in menus:
+        link_items = "".join(
+            f'<a href="{href}"><strong>{title}</strong><span>{copy}</span></a>'
+            for title, href, copy in links
+        )
+        menu_items.append(f'''<details class="mnav-menu">
+          <summary class="mnav-link has-menu{' active' if active == key else ''}">{label}</summary>
+          <div class="mnav-mega"><div class="mnav-mega-intro"><small>EXPLORE {label.upper()}</small>
+            <h2>{description}</h2><a href="/{key}">View {label.lower()} <span>→</span></a></div>
+            <div class="mnav-mega-links">{link_items}</div></div>
+        </details>''')
+    items = "".join(menu_items) + (
+        f'<a href="/pricing" class="mnav-link{" active" if active == "pricing" else ""}">Pricing</a>'
+    )
     if active == "pricing":
         actions = f"""<a class="mnav-language" href="/resources" aria-label="Choose your preferred language">{LANGUAGE_SVG}</a>
       <a class="pricing-sales-link" href="/solutions">Contact sales</a>
@@ -59,12 +89,14 @@ def _marketing_nav(active: str = "") -> str:
 def _marketing_footer() -> str:
     cols = [
         ("Asana", [("Home", "/"), ("Product", "/product"), ("Pricing", "/pricing"),
-                   ("Templates", "/templates")]),
-        ("Solutions", [("Project management", "/solutions"), ("Workflow automation", "/solutions"),
-                       ("Resource planning", "/solutions")]),
-        ("Resources", [("Resources", "/resources"), ("Guide", "/resources"),
-                       ("Forum", "/resources"), ("Support", "/resources")]),
-        ("Company", [("Log In", "/-/login"), ("Sign Up", "/create-account")]),
+                   ("Templates", "/templates"), ("Log In", "/-/login")]),
+        ("Solutions", [("Marketing", "/solutions#marketing"), ("Operations", "/solutions#operations"),
+                       ("Product teams", "/solutions#product"), ("Enterprise", "/solutions#enterprise")]),
+        ("Resources", [("Resource center", "/resources"), ("Asana guide", "/resources#guide"),
+                       ("Templates", "/templates"), ("Support", "/resources#support")]),
+        ("Get started", [("Sign Up", "/create-account"), ("View demo", "/demo/main"),
+                         ("Terms", "/terms/terms-of-service"),
+                         ("Privacy", "/terms/privacy-statement")]),
     ]
     body = "".join(
         '<div class="fcol"><h4>%s</h4>%s</div>' % (
@@ -244,19 +276,35 @@ def product_page() -> str:
 
 
 def solutions_page() -> str:
-    return _page("Content Not Found • Asana", "", """
-<section class="not-found-page">
-  <video class="not-found-video" autoplay muted loop playsinline preload="auto" poster="/static/source/404-hero-frame.png" aria-hidden="true"><source src="/static/source/404-hero.mp4" type="video/mp4"></video>
-  <div class="not-found-copy"><h1>This page doesn’t exist. But you exist.</h1>
-    <p>This is your sign to take a break. And take a breath. In and out. When you’re ready, ease back to work below.</p>
-  </div>
+    solutions = [
+        ("marketing", "Marketing", "Plan campaigns, manage creative production, and connect every launch to measurable goals."),
+        ("operations", "Operations", "Standardize intake, approvals, and cross-functional processes without losing visibility."),
+        ("product", "Product", "Keep roadmaps, launches, customer feedback, and engineering handoffs in one shared plan."),
+        ("enterprise", "Enterprise", "Coordinate work securely across departments with goals, portfolios, and reporting."),
+    ]
+    cards = "".join(
+        f'<article id="{slug}"><span>0{index}</span><h2>{title}</h2><p>{copy}</p>'
+        f'<a href="/templates">Explore templates <b>→</b></a></article>'
+        for index, (slug, title, copy) in enumerate(solutions, 1)
+    )
+    return _page("Work management solutions • Asana", "solutions", f"""
+<section class="solutions-hero"><p class="solutions-kicker">ASANA SOLUTIONS</p>
+  <h1>Move every team’s work forward</h1>
+  <p>Connect strategy, planning, and execution in one flexible work management platform.</p>
+  <div><a class="btn primary lg" href="/create-account">Get started</a><a class="btn ghost lg" href="/demo/main">View demo</a></div>
 </section>
-<section class="not-found-rescue">
-  <article><h2>Your team's tasks and conversations</h2><a href="/">Go to Asana <span>→</span></a></article>
-  <article><h2>Support articles, videos, and suggested ways to use Asana</h2><a href="/resources">Visit support <span>→</span></a></article>
-  <article><h2>News and updates from the Asana team</h2><a href="/resources">Read our Blog <span>→</span></a></article>
-  <article><h2>Real-time status updates about the Asana app</h2><a href="/resources">Check status <span>→</span></a></article>
-</section>""")
+<section class="solutions-grid">{cards}</section>
+<section class="solutions-band"><p>ONE CONNECTED PLATFORM</p><h2>From company goals to the work that delivers them</h2>
+  <div><article><strong>Clarity</strong><span>See owners, deadlines, and progress at a glance.</span></article>
+  <article><strong>Consistency</strong><span>Turn proven processes into reusable workflows.</span></article>
+  <article><strong>Impact</strong><span>Connect projects to goals and report on outcomes.</span></article></div>
+</section>
+<section class="solutions-proof"><h2>Built for focused teams and growing organizations</h2>
+  <p>Use projects for day-to-day work, portfolios for oversight, and goals for shared direction.</p>
+  <a href="/product">Explore the product <span>→</span></a>
+</section>
+<section class="solutions-final"><h2>Work smarter. Move faster.</h2><a class="btn primary lg" href="/create-account">Get started for free</a></section>
+""")
 
 
 def resources_page() -> str:
