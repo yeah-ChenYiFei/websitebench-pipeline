@@ -1,0 +1,93 @@
+{
+  "schema_version": "offline-clone.checkpoints.v1",
+  "status": "frozen",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "home.loaded.desktop",
+      "route_id": "home",
+      "state": "loaded",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "screenshot",
+      "verification_kind": "direct-source-comparison",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/desktop/home.png",
+        "viewport": {"width": 1440, "height": 900},
+        "comparison_region": {"x": 0, "y": 0, "width": 1440, "height": 900},
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.8
+      }
+    },
+    {
+      "id": "restaurants.populated.desktop",
+      "route_id": "restaurants",
+      "state": "populated",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "screenshot",
+      "verification_kind": "direct-source-comparison",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/desktop/city.png",
+        "viewport": {"width": 1440, "height": 900},
+        "comparison_region": {"x": 0, "y": 0, "width": 1440, "height": 900},
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.8
+      }
+    },
+    {
+      "id": "restaurants.empty.desktop",
+      "route_id": "restaurants",
+      "state": "empty",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "browser",
+      "verification_kind": "candidate-behavior",
+      "acceptance_eligible": false
+    },
+    {
+      "id": "restaurant-menu.menu.desktop",
+      "route_id": "restaurant-menu",
+      "state": "menu",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "screenshot",
+      "verification_kind": "direct-source-comparison",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/desktop/restaurant.png",
+        "viewport": {"width": 1440, "height": 900},
+        "comparison_region": {"x": 0, "y": 0, "width": 1440, "height": 900},
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.8
+      }
+    },
+    {
+      "id": "restaurant-menu.cart-populated.desktop",
+      "route_id": "restaurant-menu",
+      "state": "cart-populated",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "browser",
+      "verification_kind": "candidate-behavior",
+      "acceptance_eligible": false
+    },
+    {
+      "id": "checkout.review.desktop",
+      "route_id": "checkout",
+      "state": "review",
+      "viewport": "desktop",
+      "priority": "p0",
+      "evidence_kind": "browser",
+      "verification_kind": "candidate-behavior",
+      "acceptance_eligible": false
+    }
+  ]
+}

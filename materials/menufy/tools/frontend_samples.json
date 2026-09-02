@@ -1,0 +1,15 @@
+{
+  "schema_version": "menufy.frontend-gate-samples.v1",
+  "app_file": "clone/app.py",
+  "app_attr": "app",
+  "module_name": "menufy_clone_app",
+  "checks": [
+    {"id":"home.address","url":"/","expect_status":200,"expect_contains":["Hungry? Order Food Online!","Enter your address"],"expect_not_contains":["WebsiteBench offline contribution scaffold"],"session":false},
+    {"id":"restaurants.catalog","url":"/restaurants","expect_status":200,"expect_contains":["Restaurants for Delivery & Takeout","Search restaurants or cuisines"],"expect_not_contains":[],"session":false},
+    {"id":"restaurants.empty","url":"/restaurants","expect_status":200,"expect_contains":["No restaurants match your search"],"expect_not_contains":[],"session":false},
+    {"id":"restaurant.menu","url":"/restaurant/jaspers","expect_status":200,"expect_contains":["Jasper's & Marco Polo's Catering","Meatballs","Your Cart"],"expect_not_contains":[],"session":false},
+    {"id":"checkout.review","url":"/checkout","expect_status":200,"expect_contains":["Review Your Order","No real order or payment will be submitted"],"expect_not_contains":[],"session":true},
+    {"id":"auth.signin","url":"/signin","expect_status":200,"expect_contains":["Email address","Password","Forgot password?"],"expect_not_contains":[],"session":false},
+    {"id":"support.not-found","url":"/missing/restaurant/deep-link","expect_status":200,"expect_contains":["We couldn't find that page.","Find Restaurants"],"expect_not_contains":[],"session":false}
+  ]
+}

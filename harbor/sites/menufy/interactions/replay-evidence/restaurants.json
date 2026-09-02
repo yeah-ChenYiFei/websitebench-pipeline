@@ -1,0 +1,109 @@
+{
+  "authority": "diagnostic-only",
+  "backend": "adapter",
+  "contract": {
+    "path": "harbor/sites/menufy/interactions/opencli-interaction-contract.json"
+  },
+  "degradation": [],
+  "duration_seconds": 10.932224,
+  "instance_id": null,
+  "opencli": {
+    "binary_present": true,
+    "connectivity_ok": false,
+    "contract_version": "1.8.6",
+    "doctor_green": false,
+    "extension_connected": false,
+    "notes": [
+      "opencli-unavailable: Browser Bridge extension not connected",
+      "opencli-unavailable: browser connectivity check failed"
+    ],
+    "version": "1.8.6",
+    "version_matches": true
+  },
+  "profile_id": "restaurants",
+  "profile_label": "menufy restaurants (derived draft)",
+  "profile_tier": "p0",
+  "schema_version": "websitebench.harbor.opencli.replay-result.v1",
+  "site_id": "menufy",
+  "status": "passed",
+  "steps": [
+    {
+      "command": "state",
+      "declared_route": "restaurants",
+      "duration_seconds": 0.622313,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "menufy_restaurants_catalog",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "Restaurants for Delivery & Takeout",
+          "key": "visible",
+          "observed": "Restaurants for Delivery & Takeout",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "restaurants-catalog",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "restaurants",
+      "duration_seconds": 0.635854,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "menufy_restaurants_search",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "Search restaurants or cuisines",
+          "key": "visible",
+          "observed": "Search restaurants or cuisines",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "restaurants-search-control",
+      "tier": "p0"
+    },
+    {
+      "command": "state",
+      "declared_route": "restaurants",
+      "duration_seconds": 0.885196,
+      "error": null,
+      "http_status": 200,
+      "observation_id": "menufy_restaurants_empty",
+      "observations": [
+        {
+          "asserted": true,
+          "expected": "No restaurants match your search",
+          "key": "visible",
+          "observed": "No restaurants match your search",
+          "passed": true
+        }
+      ],
+      "outcome": "passed",
+      "step_id": "restaurants-empty",
+      "tier": "p0"
+    }
+  ],
+  "summary": {
+    "assertion_failures": 0,
+    "steps_passed": 3,
+    "steps_total": 3,
+    "unasserted_observations": 0,
+    "unsupported_commands": 0
+  },
+  "target": "candidate",
+  "target_binding": {
+    "allowlist": [
+      "127.0.0.1",
+      "localhost"
+    ],
+    "base_origin": "http://127.0.0.1:8870",
+    "reset_status": null,
+    "session_fields": [],
+    "session_status": null
+  }
+}

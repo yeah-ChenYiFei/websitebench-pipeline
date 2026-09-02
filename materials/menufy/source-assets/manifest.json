@@ -1,0 +1,525 @@
+{
+  "schema_version": "offline-clone.assets.v1",
+  "snapshot_id": "menufy-marketplace-20260901",
+  "created_at": "2026-09-01T05:46:39Z",
+  "remote_runtime_policy": "forbidden",
+  "closure_status": "declared",
+  "no_assets_reason": null,
+  "assets": [
+    {
+      "id": "marketplace-home-hero",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/home-hero.jpg",
+      "runtime_path": "clone/static/home-hero.jpg",
+      "bytes": 262140,
+      "sha256": "d06d15641fb827ab95dd7b05ebe5b9eed3d3073e7a7c054f2863922c546d2e72",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 1920,
+        "height": 500
+      },
+      "referenced_by": [
+        "home.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://order.menufy.com/"
+    },
+    {
+      "id": "marketplace-city-hero",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/city-hero.jpg",
+      "runtime_path": "clone/static/city-hero.jpg",
+      "bytes": 398966,
+      "sha256": "4cdaebf99363e5f1280fadc1c656af883fa4c189422b60dea832cb208d318639",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 1920,
+        "height": 500
+      },
+      "referenced_by": [
+        "restaurants.populated.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://order.menufy.com/KS/Overland%20Park"
+    },
+    {
+      "id": "menufy-logo",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/menufy-logo.png",
+      "runtime_path": "clone/static/menufy-logo.png",
+      "bytes": 42718,
+      "sha256": "c24bd56ef92329871cd1888682cd4be75ff06a02e38136156d867e840d4b5ed1",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1211,
+        "height": 500
+      },
+      "referenced_by": [
+        "home.loaded.desktop",
+        "restaurants.populated.desktop",
+        "restaurant-menu.menu.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://production-cdn-hdb5b9fwgnb9bdf9.z01.azurefd.net/portalcontent/MenufyLogo-500.png"
+    },
+    {
+      "id": "app-store-badge",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/app-store.png",
+      "runtime_path": "clone/static/app-store.png",
+      "bytes": 9385,
+      "sha256": "ac72512674afd12bb61bc1b068ca48fc0cc3441d8b34bdbbea13ac432b758f89",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 563,
+        "height": 167
+      },
+      "referenced_by": [
+        "home.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://order.menufy.com/"
+    },
+    {
+      "id": "google-play-badge",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/google-play.png",
+      "runtime_path": "clone/static/google-play.png",
+      "bytes": 20598,
+      "sha256": "03c1ac7c085172e36466038568db5a5a9929516acfe977f4038731cd3e837b2d",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 817,
+        "height": 242
+      },
+      "referenced_by": [
+        "home.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://order.menufy.com/"
+    },
+    {
+      "id": "marketplace-payment-methods",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/payment-methods.png",
+      "runtime_path": "clone/static/payment-methods.png",
+      "bytes": 9980,
+      "sha256": "0e78c41be36685d7070a55a25678df0ad3d198419a6aeb3ff3e659a5acaa625c",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 456,
+        "height": 39
+      },
+      "referenced_by": [
+        "home.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://order.menufy.com/"
+    },
+    {
+      "id": "overland-park-map",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/city-map.png",
+      "runtime_path": "clone/static/city-map.png",
+      "bytes": 43860,
+      "sha256": "1b246229191b0f9059471d8c5323bc7f97745a79ed54e8f5839610fc904d3e9a",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 375,
+        "height": 300
+      },
+      "referenced_by": [
+        "restaurants.populated.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://order.menufy.com/KS/Overland%20Park"
+    },
+    {
+      "id": "karis-logo",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/kari-logo.png",
+      "runtime_path": "clone/static/kari-logo.png",
+      "bytes": 12730,
+      "sha256": "601d66a822fc8206a4078389f53f953ad4d57718661c7eef2a1dac0c6680d52e",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 200,
+        "height": 200
+      },
+      "referenced_by": [
+        "restaurants.populated.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://order.menufy.com/KS/Overland%20Park"
+    },
+    {
+      "id": "tz-tasty-plate-logo",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/tasty-logo.png",
+      "runtime_path": "clone/static/tasty-logo.png",
+      "bytes": 40079,
+      "sha256": "fedb4cdf41950fe6f4499778059388c1d24998f62d7b80fbb14ddee945f24d30",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 200,
+        "height": 200
+      },
+      "referenced_by": [
+        "restaurants.populated.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://order.menufy.com/KS/Overland%20Park"
+    },
+    {
+      "id": "phungs-cheesy-corn-dog",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/cheesy-corn-dog.png",
+      "runtime_path": "clone/static/cheesy-corn-dog.png",
+      "bytes": 136375,
+      "sha256": "6ca41f30a75d64bdcd5b370acb763feb7f2555226998a40c337e85e607ac13dd",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 300,
+        "height": 257
+      },
+      "referenced_by": [
+        "restaurant-menu.menu.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://phungsrestaurant.menufy.com/"
+    },
+    {
+      "id": "corporate-home-singlefile-render",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/corporate-home.png",
+      "runtime_path": "clone/static/corporate-home.png",
+      "bytes": 1084332,
+      "sha256": "4626be2b78b8ffd369279e08f723c3b5580b0c29f112e59ef7b4fa3c50636ed6",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 4496
+      },
+      "referenced_by": [
+        "corporate-home.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://restaurant.menufy.com/"
+    },
+    {
+      "id": "brand-singlefile-accessibility",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/accessibility.png",
+      "runtime_path": "clone/static/accessibility.png",
+      "bytes": 103922,
+      "sha256": "81ed746308d960c6e4ea46e21733d0fe952b9ce6ac77d61c75f1ab6fab95fd4a",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 1602
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://restaurant.menufy.com/accessibility-statement"
+    },
+    {
+      "id": "brand-singlefile-arabic",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/arabic.png",
+      "runtime_path": "clone/static/arabic.png",
+      "bytes": 383792,
+      "sha256": "3a6551c52d215d4a00816b40d16849f630af2deac92d67a4264615ecee22326c",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 2479
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://get.menufy.com/arabic"
+    },
+    {
+      "id": "brand-singlefile-careers",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/careers.png",
+      "runtime_path": "clone/static/careers.png",
+      "bytes": 319954,
+      "sha256": "dd8c7f848c6b8e5f9f8afe8057b895a7f948f4e79fa6d9005dc4cc11bdff1a09",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 4541
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://restaurant.menufy.com/careers"
+    },
+    {
+      "id": "brand-singlefile-chinese",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/chinese.png",
+      "runtime_path": "clone/static/chinese.png",
+      "bytes": 250267,
+      "sha256": "19ff5473cc352ff96cd8f40e61fa66fda298a70f54128fd61722455257e9cf57",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 2386
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://get.menufy.com/chinese"
+    },
+    {
+      "id": "brand-singlefile-demo",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/demo.png",
+      "runtime_path": "clone/static/demo.png",
+      "bytes": 348597,
+      "sha256": "fcb06e6c899176af88969064bd00a0be60dd918b4cd3bb9ed38c3f45627c9025",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 2249
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://get.menufy.com/demo"
+    },
+    {
+      "id": "brand-singlefile-help",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/help.png",
+      "runtime_path": "clone/static/help.png",
+      "bytes": 496755,
+      "sha256": "4be3fa80bd7f83fc82b4f11bfa815d6d3a3dc9a7dbb8c5a58788687285073b21",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://support.menufy.com/hc/en-us"
+    },
+    {
+      "id": "brand-singlefile-hindi",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/hindi.png",
+      "runtime_path": "clone/static/hindi.png",
+      "bytes": 290342,
+      "sha256": "e06d1707d45fc6f58cba77a03bc8693b54e055e060f96c5f31e20bb9a7e9dfa4",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 2562
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://get.menufy.com/hindi"
+    },
+    {
+      "id": "brand-singlefile-hr-demo",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/hr-demo.png",
+      "runtime_path": "clone/static/hr-demo.png",
+      "bytes": 414358,
+      "sha256": "0c311f0f35d2d8a07e8cbe3ef4f1ed4013eed18344dea7ff3bb9833f9ce359df",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 1893
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://www.hungerrush.com/request-a-demo/"
+    },
+    {
+      "id": "brand-singlefile-hungerrush-home",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/hungerrush-home.png",
+      "runtime_path": "clone/static/hungerrush-home.png",
+      "bytes": 448814,
+      "sha256": "3afc4262901b2e9dff501724b7921cc7f456143612d024f743fe9fcb233ca3c8",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://www.hungerrush.com/"
+    },
+    {
+      "id": "brand-singlefile-manager",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/manager.png",
+      "runtime_path": "clone/static/manager.png",
+      "bytes": 904875,
+      "sha256": "318816eeba59c7a8208c5b2277ed3616476d9095772fe6521145594f18c6f006",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://manage.menufy.com/Account/LogOn"
+    },
+    {
+      "id": "brand-singlefile-privacy",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/privacy.png",
+      "runtime_path": "clone/static/privacy.png",
+      "bytes": 1105014,
+      "sha256": "7f51f356ace3c8cb43a9bda04e427550bd43b384c06ee6f4e745d897a1c5c2e1",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 12089
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://restaurant.menufy.com/privacy"
+    },
+    {
+      "id": "brand-singlefile-referral",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/referral.png",
+      "runtime_path": "clone/static/referral.png",
+      "bytes": 594527,
+      "sha256": "7f6b5aa1a28c23eb074b0d3d6ce085e4da83bb700605b44f40d2ae10757e52cc",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 4179
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://restaurant.menufy.com/referral"
+    },
+    {
+      "id": "brand-singlefile-spanish",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/spanish.png",
+      "runtime_path": "clone/static/spanish.png",
+      "bytes": 363796,
+      "sha256": "9f9e3b9082f78d1a2688810460735b3e405419270a7a8980c166f8284c3283d3",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 2487
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://get.menufy.com/spanish"
+    },
+    {
+      "id": "brand-singlefile-terms",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/terms.png",
+      "runtime_path": "clone/static/terms.png",
+      "bytes": 1003377,
+      "sha256": "5f0509b22b953d6874d2629f36af5c6feb3d901a37b59f211d1f8292addd9e27",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 9699
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://restaurant.menufy.com/customer-terms-of-use"
+    },
+    {
+      "id": "brand-singlefile-thai",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/thai.png",
+      "runtime_path": "clone/static/thai.png",
+      "bytes": 283456,
+      "sha256": "65d65cb019a91cd8ba9b8ab5b4caa20978183ea947c28dfcc2ad9a9367810ab9",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 2485
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://get.menufy.com/thai"
+    },
+    {
+      "id": "brand-singlefile-vietnamese",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/vietnamese.png",
+      "runtime_path": "clone/static/vietnamese.png",
+      "bytes": 385428,
+      "sha256": "f2fc467b6543b98580cf5ad7153b4cd79563b17302de222b86224c5e61959baa",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1440,
+        "height": 2452
+      },
+      "referenced_by": [
+        "official-brand-pages.loaded.desktop"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://get.menufy.com/vietnamese"
+    }
+  ]
+}

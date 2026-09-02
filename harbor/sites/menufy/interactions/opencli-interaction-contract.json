@@ -1,0 +1,110 @@
+{
+  "generated_from": "materials/menufy/clone.yaml",
+  "opencli_version": "1.8.6",
+  "profiles": {
+    "auth": {
+      "failure_paths": [
+        "anonymous-signin-entry"
+      ],
+      "label": "menufy auth (derived draft)",
+      "local_semantics": [
+        "At least 200 public restaurant records remain searchable offline.",
+        "Cart prices and totals are computed by the server from the local catalog and isolated per session.",
+        "Runtime is offline and checkout stops before any real order, payment, email, or SMS effect."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [
+        "anonymous-signin-entry"
+      ],
+      "steps": [
+        {
+          "command": "state",
+          "id": "auth-signin",
+          "intent": "Exercise clone check auth.signin (GET /signin).",
+          "observation_id": "menufy_auth_signin",
+          "required_state": {
+            "visible": "Email address"
+          },
+          "route": "signin"
+        },
+        {
+          "command": "state",
+          "id": "auth-password-field",
+          "intent": "Verify the password field on the anonymous sign-in entry.",
+          "observation_id": "menufy_auth_password",
+          "required_state": {"visible": "Password"},
+          "route": "signin"
+        },
+        {
+          "command": "state",
+          "id": "auth-recovery-entry",
+          "intent": "Verify the password-recovery entry without sending email.",
+          "observation_id": "menufy_auth_recovery",
+          "required_state": {"visible": "Forgot password?"},
+          "route": "signin"
+        }
+      ],
+      "tier": "p1"
+    },
+    "restaurants": {
+      "failure_paths": [
+        "no-results-recovery"
+      ],
+      "label": "menufy restaurants (derived draft)",
+      "local_semantics": [
+        "At least 200 public restaurant records remain searchable offline.",
+        "Cart prices and totals are computed by the server from the local catalog and isolated per session.",
+        "Runtime is offline and checkout stops before any real order, payment, email, or SMS effect."
+      ],
+      "network": {
+        "allowlist": [
+          "127.0.0.1",
+          "localhost"
+        ],
+        "notes": "Only local verifier/candidate hostnames are expected."
+      },
+      "recovery_paths": [
+        "discover-to-order-review"
+      ],
+      "steps": [
+        {
+          "command": "state",
+          "id": "restaurants-catalog",
+          "intent": "Exercise clone check restaurants.catalog (GET /restaurants).",
+          "observation_id": "menufy_restaurants_catalog",
+          "required_state": {
+            "visible": "Restaurants for Delivery & Takeout"
+          },
+          "route": "restaurants"
+        },
+        {
+          "command": "state",
+          "id": "restaurants-search-control",
+          "intent": "Verify the restaurant search control is available.",
+          "observation_id": "menufy_restaurants_search",
+          "required_state": {"visible": "Search restaurants or cuisines"},
+          "route": "restaurants"
+        },
+        {
+          "command": "state",
+          "id": "restaurants-empty",
+          "intent": "Exercise clone check restaurants.empty (GET /restaurants).",
+          "observation_id": "menufy_restaurants_empty",
+          "required_state": {
+            "visible": "No restaurants match your search"
+          },
+          "route": "restaurants"
+        }
+      ],
+      "tier": "p0"
+    }
+  },
+  "schema_version": "websitebench.harbor.opencli-interaction-contract.v1",
+  "site_id": "menufy"
+}

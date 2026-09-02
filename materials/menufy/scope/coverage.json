@@ -1,0 +1,24 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "frozen",
+  "dimensions": [
+    {
+      "id": "marketplace-p0",
+      "category": "journey",
+      "label": "Desktop anonymous discovery-to-order-review journey",
+      "unit": "route-state",
+      "required_evidence_kinds": [
+        "browser"
+      ],
+      "required_items": [
+        "home.loaded.desktop",
+        "restaurants.populated.desktop",
+        "restaurants.empty.desktop",
+        "restaurant-menu.menu.desktop",
+        "restaurant-menu.cart-populated.desktop",
+        "checkout.review.desktop"
+      ],
+      "satisfied_items": []
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "offline-clone.routes.v1",
+  "routes": [
+    {"id": "home", "route_pattern": "/", "priority": "p0", "purpose_edge": "primary", "local_destination": true, "states": ["loaded", "address-validation"]},
+    {"id": "restaurants", "route_pattern": "/restaurants", "priority": "p0", "purpose_edge": "primary", "local_destination": true, "states": ["populated", "filtered", "empty"]},
+    {"id": "marketplace-state", "route_pattern": "/{state}", "priority": "p1", "purpose_edge": "supporting", "local_destination": true, "states": ["city-directory"]},
+    {"id": "marketplace-city", "route_pattern": "/{state}/{city}", "priority": "p1", "purpose_edge": "supporting", "local_destination": true, "states": ["restaurant-directory"]},
+    {"id": "marketplace-cuisine", "route_pattern": "/{state}/{city}/{cuisine}", "priority": "p1", "purpose_edge": "supporting", "local_destination": true, "states": ["filtered-directory"]},
+    {"id": "official-pages", "route_pattern": "/official-pages", "priority": "p1", "purpose_edge": "supporting", "local_destination": true, "states": ["235-page-index"]},
+    {"id": "official-page", "route_pattern": "/official/{id}", "priority": "p1", "purpose_edge": "supporting", "local_destination": true, "states": ["state", "city", "cuisine", "restaurant", "brand"]},
+    {"id": "restaurant-menu", "route_pattern": "/restaurant/jaspers", "priority": "p0", "purpose_edge": "primary", "local_destination": true, "states": ["menu", "item-options", "cart-populated"]},
+    {"id": "checkout", "route_pattern": "/checkout", "priority": "p0", "purpose_edge": "primary", "local_destination": true, "states": ["review"]},
+    {"id": "signin", "route_pattern": "/signin", "priority": "p1", "purpose_edge": "supporting", "local_destination": true, "states": ["anonymous", "authenticated", "invalid-credentials"]},
+    {"id": "register", "route_pattern": "/register", "priority": "p1", "purpose_edge": "supporting", "local_destination": true, "states": ["details", "local-verification", "authenticated"]},
+    {"id": "account", "route_pattern": "/account", "priority": "p1", "purpose_edge": "supporting", "local_destination": true, "states": ["anonymous", "authenticated"]}
+  ]
+}

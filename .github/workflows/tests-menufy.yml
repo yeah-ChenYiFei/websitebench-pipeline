@@ -1,0 +1,22 @@
+name: diagnostics (menufy)
+on:
+  pull_request:
+    paths:
+      - materials/menufy/**
+      - .github/workflows/tests-menufy.yml
+      - .github/workflows/clone-diagnostics.yml
+  push:
+    paths:
+      - materials/menufy/**
+      - .github/workflows/tests-menufy.yml
+      - .github/workflows/clone-diagnostics.yml
+permissions:
+  contents: read
+concurrency:
+  group: diagnostics-menufy-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  diagnostics:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: menufy

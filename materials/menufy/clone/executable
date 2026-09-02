@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+site_data_dir="${DATA_DIR:-$(pwd)/data}"
+mkdir -p "${site_data_dir}"
+export WEBSITEBENCH_SITE_BACKEND_DATABASE="${site_data_dir}/menufy.sqlite3"
+exec python -m uvicorn app:app --host "${HOST:-127.0.0.1}" --port "${PORT:-3000}" --log-level warning

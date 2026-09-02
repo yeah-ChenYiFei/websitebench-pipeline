@@ -1,0 +1,58 @@
+{
+  "schema_version": "offline-clone.invariants.v1",
+  "status": "frozen",
+  "invariants": [
+    {
+      "id": "catalog-density",
+      "priority": "p0",
+      "statement": "At least 200 public restaurant records remain searchable offline.",
+      "journey_ids": [
+        "discover-to-order-review"
+      ],
+      "coverage_dimension_ids": [
+        "marketplace-p0"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_smoke.py::test_restaurant_catalog_has_more_than_200_records"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_search_filter_and_empty_state"
+      ]
+    },
+    {
+      "id": "cart-authority",
+      "priority": "p0",
+      "statement": "Cart prices and totals are computed by the server from the local catalog and isolated per session.",
+      "journey_ids": [
+        "discover-to-order-review",
+        "cart-editing"
+      ],
+      "coverage_dimension_ids": [
+        "marketplace-p0"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_smoke.py::test_cart_is_server_authoritative_and_isolated"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_unknown_menu_item_rejected"
+      ]
+    },
+    {
+      "id": "no-live-effects",
+      "priority": "p0",
+      "statement": "Runtime is offline and checkout stops before any real order, payment, email, or SMS effect.",
+      "journey_ids": [
+        "discover-to-order-review"
+      ],
+      "coverage_dimension_ids": [
+        "marketplace-p0"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_smoke.py::test_home_and_deep_routes"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_unknown_menu_item_rejected"
+      ]
+    }
+  ]
+}

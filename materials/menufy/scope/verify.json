@@ -1,0 +1,46 @@
+{
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "menufy",
+  "boot": {
+    "argv": ["{python}", "-m", "uvicorn", "app:app", "--host", "127.0.0.1", "--port", "{port}", "--log-level", "warning"],
+    "cwd": "clone",
+    "env": {
+      "WEBSITEBENCH_SITE_BACKEND_DATABASE": "{data_dir}/menufy.sqlite3"
+    }
+  },
+  "prepare": [],
+  "deferred": {},
+  "routes": {
+    "home": "/",
+    "restaurants": "/restaurants",
+    "restaurant-menu": "/restaurant/jaspers",
+    "checkout": "/checkout",
+    "signin": "/signin"
+  },
+  "states": {
+    "home.loaded": [{"expect": "text=Hungry? Order Food Online!"}],
+    "restaurants.populated": [{"expect": ".card"}],
+    "restaurants.empty": [
+      {"eval": "document.querySelector('#q').value='zzzz-no-match-websitebench'; filter()", "wait_ms": 500},
+      {"expect": "text=No restaurants match your search"}
+    ],
+    "restaurant-menu.menu": [
+      {"expect": ".item"},
+      {"expect": "#cart"}
+    ],
+    "restaurant-menu.cart-populated": [
+      {"click": ".item"},
+      {"fill": "#qty", "value": "2"},
+      {"eval": "add('meatballs')"},
+      {"expect": ".cart .row"}
+    ],
+    "checkout.review": [
+      {"goto": "/restaurant/jaspers"},
+      {"click": ".item"},
+      {"eval": "add('meatballs')"},
+      {"click": ".cart .primary", "wait_ms": 500},
+      {"expect": ".checkout .summary"},
+      {"expect": "text=No real order or payment will be submitted"}
+    ]
+  }
+}

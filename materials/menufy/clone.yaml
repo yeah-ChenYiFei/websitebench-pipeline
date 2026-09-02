@@ -1,0 +1,48 @@
+schema_version: offline-clone.manifest.v2
+site_id: menufy
+display_name: Menufy
+state_model: stateful
+source:
+  origins:
+  - https://order.menufy.com/
+  - https://restaurant.menufy.com/
+  - https://get.menufy.com/
+  - https://manage.menufy.com/
+  - https://support.menufy.com/
+  - https://www.hungerrush.com/
+  baseline:
+    locale: en-US
+    currency: USD
+    delivery_region: US
+    timezone: America/Chicago
+    auth_state: anonymous
+    tenant: null
+    workspace: null
+    role: null
+    capabilities: []
+    feature_flags: []
+    user_agent: null
+    viewport:
+      width: 1440
+      height: 900
+      device_scale_factor: 1
+    capture_id: null
+  capture_policy:
+    safe_methods:
+    - GET
+    - HEAD
+    runtime_remote_requests: forbidden
+scope:
+  purpose: scope/purpose.json
+  invariants: scope/invariants.json
+  routes: scope/routes.json
+  journeys: scope/journeys.json
+  checkpoints: scope/checkpoints.json
+  claims: scope/claims.jsonl
+  coverage: scope/coverage.json
+paths:
+  candidate_root: clone
+  candidate_excludes: []
+  asset_manifest: source-assets/manifest.json
+  backend_model: backend/model.json
+  artifact_root: artifacts/offline-clone

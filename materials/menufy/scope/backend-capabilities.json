@@ -1,0 +1,15 @@
+{
+  "backend_profile": "full",
+  "capabilities": [
+    {"applicability": "in-scope", "id": "accounts", "rationale": "Local-sandbox registration, email verification, sign-in, session restoration and sign-out form a complete P1 account loop through the generated SiteBackend integration."},
+    {"applicability": "not-applicable", "id": "password-recovery", "rationale": "The clone exposes only the anonymous recovery entry label and never creates a recovery challenge."},
+    {"applicability": "in-scope", "id": "transactional-mail", "rationale": "Registration verification uses the runtime-declared local-outbox simulation only; no external email is sent."},
+    {"applicability": "not-applicable", "id": "orders", "rationale": "The P0 journey stops at review and intentionally creates no order record."},
+    {"applicability": "in-scope", "id": "checkout", "rationale": "An anonymous, non-submitting order review with server-authoritative totals is in scope."},
+    {"applicability": "not-applicable", "id": "payments", "rationale": "Payment submission is explicitly out of scope; the review CTA produces no payment effect."},
+    {"applicability": "in-scope", "id": "database", "rationale": "The isolated site database persists anonymous cart and favorite state for the local clone."}
+  ],
+  "runtime_required": true,
+  "schema_version": "offline-clone.contribution-backend-scope.v1",
+  "site_id": "menufy"
+}
