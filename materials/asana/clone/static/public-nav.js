@@ -84,4 +84,21 @@
   document.addEventListener("keydown", event => {
     if (event.key === "Escape" && currentKey) closeMenu();
   });
+
+  document.querySelectorAll(".official-snapshot .faq [role='button'][aria-controls]").forEach(control => {
+    const answer = document.getElementById(control.getAttribute("aria-controls"));
+    if (!answer) return;
+    const toggle = () => {
+      const expanded = control.getAttribute("aria-expanded") === "true";
+      control.setAttribute("aria-expanded", String(!expanded));
+      answer.setAttribute("aria-hidden", String(expanded));
+    };
+    control.addEventListener("click", toggle);
+    control.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggle();
+      }
+    });
+  });
 })();

@@ -1,0 +1,204 @@
+
+
+
+html.notification {
+    background: none !important;
+}
+
+
+
+
+    a {
+        color: #F06A6A;
+    }
+
+    a:hover, a:focus, .back-to-catalog-v3:hover,
+    .header-left .left-nav-toggle:hover {
+        color: #b44f4f;
+    }
+
+    #lp-left-nav .lesson {
+        color: #f38f8f;
+    }
+
+    #lp-left-nav .lesson:hover,
+    #lp-left-nav .lesson:active {
+        background: #652c2c;
+        color: white;
+    }
+
+    #lp-left-nav .lesson-active,
+    #lp-left-nav .current-item {
+        background: #F06A6A;
+        color: white;
+    }
+
+    #lp-left-nav .left-nav-return {
+        color: #F06A6A;
+    }
+
+    .link-color {
+        color: #F06A6A;
+    }
+
+    .theme-color {
+        color: #F06A6A;
+    }
+
+    .theme-color-bg {
+        background-color: #F06A6A;
+    }
+
+    .theme-color-border-hover:hover, .theme-color-border-hover:focus {
+        border-color: #F06A6A;
+    }
+
+    a.theme-no-hover{
+        color: #F06A6A;
+    }
+
+    a.theme-no-hover:hover, a.theme-no-hover:focus {
+        color: #F06A6A;
+    }
+
+    .tooltip {
+        background: #873b3b;
+        border: 1px solid #652c2c;
+    }
+
+    .tooltip.tip-top .nub {
+        border-color: transparent transparent #873b3b transparent;
+    }
+
+    @media only screen and (min-width: 768px) {
+        .tooltip.tip-top .nub {
+            border-color: #873b3b transparent transparent transparent;
+        }
+    }
+
+    #curriculum-list-2 ul.scorm-item-list {
+        border-color: #F06A6A;
+    }
+
+    /* The row's hover background is dark, so the unviewed bullet needs the tinted link
+       color to stay legible — it was hardcoded to $anchor-font-color in
+       pages/_curriculum.scss and ignored the theme. */
+    #cp-content #curriculum-list .lesson-row:hover .unviewed {
+        color: #f38f8f;
+    }
+
+    
+    
+        .filter-option.checked .filter-name,
+        .filter-option.checked .filter-counter,
+        .filter-option:hover:not(.checked) .fa-stack .fa-circle-o,
+        .filter-option:hover:not(.checked) .filter-name,
+        .filter-option:hover:not(.checked) .filter-counter {
+            color: #F06A6A
+        }
+    
+
+
+
+
+
+    #header,
+    #header-mobile-dropdown {
+        background-color: #ffffff !important;
+    }
+
+    .sj-nested-header-links #header .header-dropdown__menu {
+        background-color: #ffffff !important;
+    }
+
+
+
+
+    #header, .header-link,
+    .header-left .left-nav-toggle {
+        color: #F06A6A;
+    }
+
+    #header .header-dash-dropdown {
+        color: #F06A6A;
+    }
+
+    #header .header-dropdown-button:before {
+        border-color: #F06A6A transparent transparent transparent;
+    }
+
+
+
+
+    button, .button {
+        background-color: #F06A6A;
+        border-color: #b44f4f;
+    }
+
+    button:hover:disabled, .button:hover:disabled,
+    button:disabled:focus, .button:disabled:focus,
+    button:focus, .button:focus,
+    button:disabled, .button:disabled,
+    button:hover, .button:hover,
+    .button.disabled, .button.disabled:focus, .button.disabled:hover {
+        background-color: #b44f4f;
+        border-color: #873b3b;
+    }
+
+    .button-background {
+        background-color: #F06A6A;
+    }
+
+    .button-background-shade3 {
+        background-color: #652c2c;
+    }
+
+
+    .button-group li {
+        background-color: #F06A6A;
+        border-right-color: #f6abab;
+    }
+    .button-group li:hover {
+        background-color: #f38f8f;
+    }
+    .button-group li.active,
+    .button-group li:active {
+        background-color: #b44f4f;
+    }
+
+    .button-border-color {
+        border-color: #F06A6A;
+    }
+
+    a.coursebox-container .sj-ribbon-wrapper .sj-ribbon,
+    a.coursebox-container .sj-course-ribbon-wrapper .sj-course-ribbon {
+        color: #652c2c;
+        border-color: #F06A6A;
+        background: #f8c0c0;
+    }
+
+    a.coursebox-container .sj-ribbon-wrapper .sj-ribbon-complete,
+    a.coursebox-container .sj-course-ribbon-wrapper .sj-course-ribbon-complete {
+        border-color: #F06A6A;
+        background: #F06A6A;
+    }
+
+    .quiz .question .form-answers .linear-scale-question__choice__label.linear-scale-question__choice__selected {
+      background: #F06A6A;
+    }
+
+    .star .star__full:active{
+        color: #b44f4f;
+    }
+
+
+
+
+/* LEX styles */
+
+
+
+
+
+
+

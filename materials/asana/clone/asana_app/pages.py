@@ -9,6 +9,9 @@ an honest local design in Asana's visual language, not a pixel claim.
 from __future__ import annotations
 
 import html
+import json
+import re
+from pathlib import Path
 
 LOGO_SVG = (
     '<svg viewBox="0 0 112 22" width="112" height="22" aria-hidden="true">'
@@ -235,70 +238,114 @@ def _page(title: str, active: str, main: str) -> str:
 
 
 NAV_DETAIL_PAGES = {
-    "/product/ai": ("product", "Asana AI & Agentic Work Management", "AGENTIC WORK MANAGEMENT", "Your easy button for AI productivity across every team", "AI project management meets agentic work management. Let Asana AI coordinate your team and your agents.", ("Supercharge your team with ready-to-go agents", "Build automations for all your busywork", "AI you can actually trust")),
-    "/product/service-management": ("product", "Asana Service Management", "COMING SOON · ASANA SERVICE MANAGEMENT", "Resolve requests faster with less human effort", "AI-native service management for IT, HR, facilities, and legal.", ("Asana Service Management", "Take the next step toward better service management", "Built for every service team")),
-    "/product/client-management": ("product", "Asana Client Management", "COMING SOON · ASANA CLIENT MANAGEMENT", "Deliver exceptional client work without the overhead", "The agency project management platform with a built-in client portal and AI agents.", ("Asana Client Management", "Take the next step toward better agency work", "Keep every client in context")),
-    "/product/command": ("product", "Command by Asana", "COMING SOON · COMMAND BY ASANA", "Ship faster with humans and agents in sync", "AI-powered planning and development for product and engineering teams.", ("Command by Asana", "Take the next step toward better product development", "Move from plan to production")),
-    "/product/stackai": ("product", "StackAI by Asana", "STACKAI BY ASANA", "The enterprise AI agent factory", "Build secure, compliant AI applications in minutes with an intuitive no-code platform.", ("Build powerful agentic workflows", "Connect your enterprise knowledge", "Govern every AI agent")),
-    "/product/ai/ai-teammates": ("product", "Asana AI Teammates", "AI TEAMMATES", "Your team just got bigger", "AI agents built for work handle complex tasks so your team can focus on what matters.", ("Meet your AI Teammates", "Built for non-stop teamwork", "Governed from day one")),
-    "/product/ai/ai-studio": ("product", "Asana AI Studio", "AI STUDIO", "Powerful no-code automations that keep daily work moving", "Build smart workflows tailored to your team’s processes without writing code.", ("AI that works with you at every stage", "Build AI automations in minutes", "Scale your best processes")),
-    "/product/ai/dash": ("product", "Asana Dash", "INTRODUCING ASANA DASH", "Always know your next best action", "Your AI productivity assistant brings together tasks, updates, and insights.", ("Start every day one step ahead", "Turn meetings into action", "Stay focused on priorities")),
-    "/features/admin-security": ("product", "Admin and security", "ASANA FOUNDATIONS", "Confidently deploy Asana across any organization", "Manage users, data access, and security without unnecessary manual work.", ("Security you can count on", "Scale confidently with Asana", "Connect everything")),
-    "/apps": ("product", "Asana Apps and Integrations", "APP INTEGRATIONS", "Your favorite tools in one place", "Connect Asana with the tools your team already uses to keep work moving.", ("Connect your everyday tools", "Browse integrations", "Build connected workflows")),
-    "/developers": ("product", "Asana Developers", "FOR DEVELOPERS AND TEAMS", "Build for clarity, connectivity, and collaboration", "Use Asana APIs, documentation, and community support to build on the platform.", ("One platform to manage work", "Developer resources", "Create connected experiences")),
-    "/whats-new": ("product", "What’s new from Asana", "SPRING 2026", "What’s new from Asana: Spring 2026", "Explore the latest features for strategic alignment and smart processes that scale.", ("The latest product updates", "More resources", "Turn new features into impact")),
-    "/enterprise": ("solutions", "Asana for Enterprise Organizations", "ASANA ENTERPRISE", "Unify teams, tools, and work with Asana for enterprises", "Coordinate complex work across departments by connecting strategy, planning, and execution.", ("Triple your teams’ output", "Meet global privacy and security standards", "Make strategic decisions in one place")),
-    "/small-business": ("solutions", "Asana for Small Businesses", "ASANA FOR SMALL BUSINESSES", "Where your teams and AI work together", "Organize your work, achieve your goals, and get started fast with Asana.", ("Trusted by growing businesses", "Discover how Asana can help", "Grow without outgrowing your tools")),
-    "/industry/nonprofit": ("solutions", "Asana for Nonprofits", "ASANA FOR NONPROFITS", "Get 50% off Asana for your nonprofit", "Qualified nonprofit organizations can access Asana discounts and expert support.", ("How to apply", "Our values in action", "Transform the way you work")),
-    "/agencies": ("solutions", "Asana for Agencies", "ASANA FOR AGENCIES", "Deliver exceptional client work with ease", "Coordinate client work, manage resources, and prove results in one place.", ("How agencies use Asana", "Keep clients and teams aligned", "Recognized as a leader")),
-    "/teams/operations": ("solutions", "Asana for Operations", "ASANA FOR OPERATIONS", "Where operations connects work to outcomes", "Build, scale, and streamline processes even when priorities shift.", ("Transform your operations", "Automate repeatable workflows", "Connect work across teams")),
-    "/teams/marketing": ("solutions", "Asana for Marketing", "ASANA FOR MARKETING", "Where marketing connects work to revenue", "Keep cross-team initiatives focused and aligned on key milestones.", ("Make every campaign count with AI", "How marketing teams use Asana", "Connect your favorite tools")),
-    "/teams/it": ("solutions", "Asana for IT Teams", "IT TEAMS", "Where IT connects work to strategy", "Scale quickly and securely while connecting work across more than 200 integrations.", ("Automate IT workflows with ease", "Connect tools without compromising security", "Move from requests to results")),
-    "/teams/leaders": ("solutions", "Asana for Leaders", "LEADERS", "Focus on outcomes, not outputs", "Connect people to the big picture with actionable clarity and focus.", ("Enterprise-grade work management", "Improve clarity across teams", "Turn strategy into action")),
-    "/industry/government-solutions": ("solutions", "Asana for Government", "ASANA FOR GOVERNMENT", "Where mission-critical work moves forward", "Coordinate public programs effectively with secure work management.", ("How government teams use Asana", "More ways to use Asana", "Secure work at scale")),
-    "/industry/healthcare": ("solutions", "Asana for Healthcare & Life Sciences", "ASANA FOR HEALTHCARE & LIFE SCIENCES", "Where healthcare connects work to outcomes", "Keep data secure while accelerating decisions and sparking breakthroughs.", ("How healthcare teams use Asana", "Connect research and operations", "Recognized as a leader")),
-    "/industry/retail": ("solutions", "Asana for Retail", "ASANA FOR RETAIL", "Where retail connects work to goals", "Connect projects and your workforce while keeping business data secure.", ("How retail teams use Asana", "Coordinate every launch", "Recognized as a leader")),
-    "/industry/financial-services": ("solutions", "Asana for Financial Services", "ASANA FOR FINANCIAL SERVICES", "Where financial services connects work to goals", "Unite teams, streamline processes, and adapt to regulatory change in one platform.", ("Bring teams together", "Adapt with confidence", "Recognized as a leader")),
-    "/industry/education": ("solutions", "Asana for Education", "ASANA FOR EDUCATION", "Education customers get 50% off Asana", "Help K–12 and higher education institutions achieve their goals.", ("How to apply", "How education teams use Asana", "Plan programs in one place")),
-    "/industry/manufacturing": ("solutions", "Asana for Manufacturing", "ASANA FOR MANUFACTURING", "Where manufacturing connects work to production", "Streamline workflows from production planning through product launch.", ("How manufacturing teams use Asana", "More ways to use Asana", "Recognized as a leader")),
-    "/uses/goal-management": ("solutions", "Goal Management Software", "GOAL MANAGEMENT", "Align work to goals", "Keep goals front and center by connecting them to daily work.", ("Connect goals to data", "Goal management templates", "Fine tune your goals")),
-    "/uses/organizational-planning": ("solutions", "Strategic Planning Tool", "ORGANIZATIONAL PLANNING", "Speed up planning cycles", "Prioritize critical goals and connect annual plans to execution.", ("Centralize your planning", "Organizational planning templates", "Build an efficient business")),
-    "/uses/project-intake": ("solutions", "Project Intake Software", "PROJECT INTAKE", "Streamline your intake process", "Automatically capture, prioritize, and follow through on requests.", ("Track requests across tools", "Build best-in-class intake processes", "Move requests forward")),
-    "/uses/resource-planning": ("solutions", "Resource Planning Software", "RESOURCE PLANNING", "Make your resources count", "Ensure business-critical work is properly staffed at every level.", ("Centralize resourcing insights", "Start planning with templates", "Staff smarter")),
-    "/uses/product-launch": ("solutions", "Product Launch Tool", "PRODUCT LAUNCHES", "Launch better products faster", "Drive more impact from launches and fuel your organization’s growth.", ("Bring launch teams together", "Ship faster with templates", "Optimize your launch process")),
-    "/uses": ("solutions", "Asana Workflow Solutions", "USE CASES", "Explore ways to use Asana", "Asana is powerful enough for any workflow and easy enough for any team.", ("Work management essentials", "Popular workflows", "Turn plans into progress")),
-    "/events": ("resources", "Asana Events and Webinars", "LEARN", "Events and webinars", "Register for live events, trainings, meetups, and on-demand webinars.", ("Upcoming events", "Watch on demand", "Learn from work experts")),
-    "/customers": ("resources", "Asana Customer Stories", "CUSTOMER STORIES", "Teams do extraordinary things with Asana", "Discover how teams around the world use Asana to get results.", ("Hear from our customers", "All stories", "Work moves forward here")),
-    "/academy": ("resources", "Asana Academy", "ASANA ACADEMY", "Learn Asana. Build better workflows.", "Develop the skills to organize work and help your team achieve more.", ("Featured learning paths", "Build your Asana skills", "Learn at your own pace")),
-    "/certifications": ("resources", "Collaborative Work Management Certification", "CERTIFICATIONS", "Skill up. Move up.", "Gain the skills to operate a collaborative work management system.", ("How it works", "Choose a program", "Get certified by market leaders")),
-    "/academy/trainings": ("resources", "Live trainings", "TRAININGS", "Learn live with Asana experts", "Register for live training or access recorded sessions on demand.", ("Upcoming live trainings", "On-demand sessions", "Build practical skills")),
-    "/help": ("resources", "Asana Help Center", "SUPPORT", "How can we help?", "Find documentation, suggested ways to use Asana, and helpful videos.", ("Get started", "Explore Asana features", "Troubleshoot and get support")),
-    "/community": ("resources", "Asana Forum", "COMMUNITY", "Connect with the Asana community", "Ask questions, share workflows, and learn from other Asana users.", ("Popular conversations", "Tips from community members", "Join the discussion")),
-    "/customer-success": ("resources", "Customer Success Offerings", "SERVICES", "Customer success offerings", "Access offerings and resources that help you deploy Asana and maximize its impact.", ("Join our Community", "Services to accelerate adoption", "Strategic consultancy")),
-    "/partners/channel/directory": ("resources", "Asana Service Partner Directory", "SERVICES", "Find the right Asana partner", "Discover trusted partners that can help your organization get more from Asana.", ("Search service partners", "Find specialized expertise", "Work with an Asana partner")),
-    "/partners": ("resources", "Asana Partnerships", "PARTNER PROGRAM", "Become an Asana partner today", "Accelerate your business growth and help other organizations do the same.", ("Pick the right partnership", "Partner resources", "Grow with Asana")),
-    "/sales": ("resources", "Contact Asana Sales", "CONTACT SALES", "Let’s build a better way to work", "Talk with our team about your organization’s goals and workflows.", ("See Asana in action", "Plan your rollout", "Get answers from an expert")),
-    "/download": ("resources", "Download Asana", "ASANA APPS", "Stay connected to work from anywhere", "Use Asana on desktop and mobile to keep priorities within reach.", ("Asana for desktop", "Asana for iOS", "Asana for Android")),
+    "/product/ai": "product",
+    "/product/service-management": "product",
+    "/product/client-management": "product",
+    "/product/command": "product",
+    "/product/stackai": "product",
+    "/product/ai/ai-teammates": "product",
+    "/product/ai/ai-studio": "product",
+    "/product/ai/dash": "product",
+    "/features/admin-security": "product",
+    "/apps": "product",
+    "/developers": "product",
+    "/whats-new": "product",
+    "/enterprise": "solutions",
+    "/small-business": "solutions",
+    "/industry/nonprofit": "solutions",
+    "/agencies": "solutions",
+    "/teams/operations": "solutions",
+    "/teams/marketing": "solutions",
+    "/teams/it": "solutions",
+    "/teams/leaders": "solutions",
+    "/industry/government-solutions": "solutions",
+    "/industry/healthcare": "solutions",
+    "/industry/retail": "solutions",
+    "/industry/financial-services": "solutions",
+    "/industry/education": "solutions",
+    "/industry/manufacturing": "solutions",
+    "/uses/goal-management": "solutions",
+    "/uses/organizational-planning": "solutions",
+    "/uses/project-intake": "solutions",
+    "/uses/resource-planning": "solutions",
+    "/uses/product-launch": "solutions",
+    "/uses": "solutions",
+    "/events": "resources",
+    "/customers": "resources",
+    "/academy": "resources",
+    "/certifications": "resources",
+    "/academy/trainings": "resources",
+    "/help": "resources",
+    "/community": "resources",
+    "/customer-success": "resources",
+    "/partners/channel/directory": "resources",
+    "/partners": "resources",
+    "/sales": "resources",
+    "/download": "resources",
 }
 
 
 def nav_detail_page(path: str) -> str:
-    active, title, eyebrow, heading, description, sections = NAV_DETAIL_PAGES[path]
-    asset = {"product": "product-hero.png", "solutions": "resource-work-management.avif",
-             "resources": "resource-ai-at-work.avif"}[active]
-    cards = "".join(
-        f'<article><span>0{index}</span><h2>{section}</h2><p>{description}</p></article>'
-        for index, section in enumerate(sections, 1)
-    )
-    return _page(f"{title} • Asana", active, f"""
-<section class="nav-detail-hero"><p>{eyebrow}</p><h1>{heading}</h1><p>{description}</p>
-  <div><a class="btn primary lg" href="/create-account">Get started</a><a class="btn ghost lg" href="/demo/main">View demo</a></div>
-  <div class="nav-detail-visual"><img src="/static/source/{asset}" alt="Asana work management experience"><span>Work without limits</span></div>
-</section>
-<section class="nav-detail-proof"><p>TRUSTED BY TEAMS AROUND THE WORLD</p><div><span>amazon</span><span>accenture</span><span>Johnson&amp;Johnson</span><span>DELL</span><span>MERCK</span></div></section>
-<section class="nav-detail-grid">{cards}</section>
-<section class="nav-detail-cta"><h2>Move work forward with Asana</h2><p>Connect people, goals, and workflows in one place.</p><a class="btn primary lg" href="/create-account">Get started</a></section>""")
-
+    active = NAV_DETAIL_PAGES[path]
+    snapshot_file = (Path(__file__).resolve().parent.parent / "static" /
+                     "official-pages" / f"{path.strip('/').replace('/', '--')}.json")
+    snapshot = json.loads(snapshot_file.read_text(encoding="utf-8"))
+    stylesheets = "".join(snapshot["stylesheets"])
+    if snapshot.get("external"):
+        static_root = Path(__file__).resolve().parent.parent / "static"
+        inline_styles = []
+        for stylesheet in snapshot["stylesheets"]:
+            match = re.search(r'href="/static/([^"]+\.css)"', stylesheet)
+            if match:
+                css_file = static_root / match.group(1)
+                inline_styles.append(f"<style>{css_file.read_text(encoding='utf-8')}</style>")
+            elif stylesheet.startswith("<style>"):
+                inline_styles.append(stylesheet)
+        body_attributes = dict(snapshot.get("body_attributes", {}))
+        external_header = ""
+        external_script = ""
+        extra_head = ""
+        if path == "/help":
+            body_attributes["class"] = f'marketing {body_attributes.get("class", "")}'.strip()
+            external_header = _marketing_nav("resources")
+            external_script = '<script src="/static/public-nav.js" defer></script>'
+            extra_head = '<link rel="stylesheet" href="/static/site.css?v=official-pages-3">'
+        elif path.startswith("/academy"):
+            body_attributes["class"] = f'marketing {body_attributes.get("class", "")}'.strip()
+            external_header = _marketing_nav("resources")
+            external_script = '<script src="/static/public-nav.js" defer></script>'
+            extra_head = """<link rel="stylesheet" href="/static/site.css?v=official-pages-3">
+<style>
+body.marketing>.mnav{display:block!important;position:relative!important;top:auto!important;height:68px!important;visibility:visible!important;opacity:1!important;z-index:10000!important}
+#asana-homepage .styles-module_hero-container__lEZxv{position:relative;display:block;margin:24px}
+#asana-homepage .styles-module_hero__o-pUo{width:100%;aspect-ratio:213/125;background-position:center;background-size:cover;border-radius:28px}
+#asana-homepage .styles-module_content-container__hl45r{position:absolute;z-index:2;top:48px;left:40px;align-items:flex-start;padding:0}
+#asana-homepage .styles-module_content-container__hl45r h1{max-width:620px;color:#fff;text-align:left}
+#asana-homepage .styles-module_cta-container__fwAZH{display:flex;flex-direction:row;gap:8px;width:auto}
+#asana-homepage .styles-module_cta-container__fwAZH a{width:auto!important;background:rgba(255,255,255,.15)!important;border:1px solid #fff!important;color:#fff!important}
+@media(max-width:767px){#asana-homepage .styles-module_content-container__hl45r{position:relative;top:auto;left:auto;padding:32px 24px}#asana-homepage .styles-module_content-container__hl45r h1{color:inherit}#asana-homepage .styles-module_cta-container__fwAZH{flex-direction:column;width:100%}}
+</style>"""
+        elif path == "/community":
+            extra_head = """<style>
+.custom-search-banner__content h1,.community-stats-item .title,.community-stats-item .title a{opacity:1!important;visibility:visible!important;color:#fff!important}
+.custom-search-banner .search-term__input{opacity:1!important;visibility:visible!important;color:#2d2e2f!important;-webkit-text-fill-color:#2d2e2f!important}
+.custom-search-banner .search-term__input::placeholder{color:#777!important;opacity:1!important}
+</style>"""
+        body_attrs = " ".join(
+            f'{html.escape(key)}="{html.escape(value)}"'
+            for key, value in body_attributes.items()
+        )
+        return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{html.escape(snapshot["title"])}</title><link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+{"".join(inline_styles)}{extra_head}<style>html,body{{overflow-x:hidden}}</style></head>
+<body {body_attrs}>{external_header}{snapshot["html"]}{external_script}</body></html>"""
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{html.escape(snapshot["title"])}</title><link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+{stylesheets}<link rel="stylesheet" href="/static/site.css?v=official-pages-2"></head>
+<body class="marketing official-snapshot">{_marketing_nav(active)}{snapshot["html"]}
+<script src="/static/public-nav.js" defer></script></body></html>"""
 
 def home_page() -> str:
     ai_tabs = [

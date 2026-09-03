@@ -1,4 +1,3 @@
-import html
 import re
 
 from asana_app import pages
@@ -40,14 +39,69 @@ def test_public_navigation_has_real_mega_menus(client) -> None:
 
 
 def test_navigation_destinations_are_reachable_and_specific(client) -> None:
-    for path, (_, title, _, heading, _, _) in pages.NAV_DETAIL_PAGES.items():
+    for path in pages.NAV_DETAIL_PAGES:
         response = client.get(path)
         assert response.status_code == 200, path
-        assert html.escape(f"{title} • Asana") in response.text, path
-        assert heading in response.text, path
-        assert 'class="nav-detail-hero"' in response.text, path
+        assert len(response.text) > 10_000, path
+        assert 'class="nav-detail-hero"' not in response.text, path
+        assert 'class="nav-detail-grid"' not in response.text, path
     for path in ("/resources", "/templates", "/demo/main"):
         assert client.get(path).status_code == 200, path
+
+
+def test_agentic_work_management_preserves_official_module_order(client) -> None:
+    text = client.get("/product/ai").text
+    markers = [
+        "Your easy button for AI productivity across every team",
+        "Asana AI helps leading businesses get work done",
+        "Supercharge your team with ready-to-go agents",
+        "Build automations for all your busywork",
+        "Always know your next best action",
+        "Work the way you want to work",
+        "AI you can actually trust",
+        "See what AI can do for you",
+        "Frequently asked questions",
+        "Accelerate your teams and work with Asana",
+    ]
+    positions = [text.index(marker) for marker in markers]
+    assert positions == sorted(positions)
+    assert "Agentic Work Management brings together AI Teammates" in text
+    assert "30 prebuilt AI teammates for marketing, ops, and IT" in text
+    assert "By building scalable workflows and leveraging AI" in text
+
+
+def test_external_navigation_destinations_use_current_official_content(client) -> None:
+    expected = {
+        "/product/stackai": (
+            "AI Agent Factory",
+            "The Enterprise AI Transformation Platform",
+            "Enterprise-Grade Security",
+        ),
+        "/academy": (
+            "Grow your skills with Asana Academy",
+            "Featured courses",
+            "Learn Asana for your role",
+        ),
+        "/academy/trainings": (
+            "Browse live trainings",
+            "Getting started with Asana (live)",
+            "Managing projects in Asana (live)",
+        ),
+        "/help": (
+            "How can we help?",
+            "Get your questions answered",
+            "Learn Asana in minutes",
+        ),
+        "/community": (
+            "Collaborate with the",
+            "Asana Community",
+            "Questions resolved",
+        ),
+    }
+    for path, markers in expected.items():
+        text = client.get(path).text
+        for marker in markers:
+            assert marker in text, (path, marker)
 
 
 def test_navigation_switches_content_after_the_official_fade(client) -> None:
@@ -58,6 +112,8 @@ def test_navigation_switches_content_after_the_official_fade(client) -> None:
     assert "switchTimer = window.setTimeout" in script
     assert "showPanel(key)" in script
     assert 'setAttribute("aria-expanded"' in script
+    assert ".official-snapshot .faq" in script
+    assert 'answer.setAttribute("aria-hidden"' in script
     assert "opacity .2s cubic-bezier(.6,0,.13,1)" in stylesheet
 
 
@@ -176,7 +232,7 @@ def test_no_remote_references(client) -> None:
     """No runtime request may leave the local origin."""
 
     pattern = re.compile(r'(?:src|href)="(https?:)?//(?!127\.0\.0\.1|localhost)')
-    for path in [*PUBLIC_PAGES, "/solutions"]:
+    for path in [*PUBLIC_PAGES, "/solutions", *pages.NAV_DETAIL_PAGES]:
         assert not pattern.search(client.get(path).text), path
     for asset in ("/static/site.css", "/static/app.css", "/static/app.js",
                   "/static/auth.js", "/static/home.js", "/static/public-nav.js"):
