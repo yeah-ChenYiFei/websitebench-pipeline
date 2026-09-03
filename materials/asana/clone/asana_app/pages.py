@@ -343,7 +343,7 @@ body.marketing>.mnav{display:block!important;position:relative!important;top:aut
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(snapshot["title"])}</title><link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
-{stylesheets}<link rel="stylesheet" href="/static/site.css?v=official-pages-2"></head>
+{stylesheets}<link rel="stylesheet" href="/static/site.css?v=official-pages-4"></head>
 <body class="marketing official-snapshot">{_marketing_nav(active)}{snapshot["html"]}
 <script src="/static/public-nav.js" defer></script></body></html>"""
 

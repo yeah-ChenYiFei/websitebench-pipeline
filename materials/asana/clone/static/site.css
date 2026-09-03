@@ -220,6 +220,8 @@ body.marketing .mnav-actions > .btn.primary:not(.sales) { width:105px; padding:0
 
 body.official-snapshot { overflow-x:hidden; }
 html:has(body.official-snapshot) { overflow-x:hidden; }
+body.official-snapshot>.mnav .mnav-logo { display:flex!important; width:136px!important; flex:0 0 136px!important; visibility:visible!important; opacity:1!important; }
+body.official-snapshot>.mnav .mnav-logo svg { display:block!important; visibility:visible!important; opacity:1!important; }
 body.official-snapshot .faq [role="button"][aria-expanded="false"] ~ [aria-hidden="true"] { display:none!important; }
 body.official-snapshot .faq [role="button"][aria-expanded="true"] ~ [aria-hidden="false"] { display:flex!important; }
 body.official-snapshot .faq [role="button"][aria-expanded="true"] > span { transform:rotateZ(0deg)!important; }
