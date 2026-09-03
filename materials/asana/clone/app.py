@@ -56,6 +56,16 @@ for _path, _render in _MARKETING.items():
     _register_marketing(_path, _render)
 
 
+def _register_nav_detail(path: str) -> None:
+    @app.get(path, response_class=HTMLResponse)
+    def nav_detail_page() -> str:  # pragma: no cover - thin wrapper
+        return pages.nav_detail_page(path)
+
+
+for _path in pages.NAV_DETAIL_PAGES:
+    _register_nav_detail(_path)
+
+
 @app.get("/templates/{category}", response_class=HTMLResponse)
 def template_category(category: str) -> str:
     """Keep every observed public template-card destination locally reachable."""

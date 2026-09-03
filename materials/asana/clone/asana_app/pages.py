@@ -28,43 +28,69 @@ def _head(title: str, extra: str = "") -> str:
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/static/site.css?v=pricing-contract-2">{extra}</head>"""
+<link rel="stylesheet" href="/static/site.css?v=public-nav-1">{extra}</head>"""
 
 
 def _marketing_nav(active: str = "") -> str:
-    menus = [
-        ("Products", "product", "Bring every team and workflow together.", [
-            ("Product overview", "/product", "See the complete work management platform"),
-            ("Project management", "/product#project-management", "Plan projects from start to finish"),
-            ("Goals and reporting", "/product#goals", "Connect daily work to company priorities"),
-            ("Workflow automation", "/product#automation", "Standardize repeatable processes"),
+    def menu_link(title: str, href: str, copy: str = "", icon: str = "",
+                  badge: str = "") -> str:
+        icon_html = f'<i class="mnav-item-icon {icon}" aria-hidden="true">✣</i>' if icon else ""
+        copy_html = f'<small>{copy}</small>' if copy else ""
+        badge_html = f'<em>{badge}</em>' if badge else ""
+        return (f'<li><a href="{href}">{icon_html}<span><strong>{title}</strong>'
+                f'{copy_html}</span>{badge_html}<b aria-hidden="true">→</b></a></li>')
+
+    def group(title: str, links: list[tuple[str, str, str, str, str]]) -> str:
+        return (f'<section class="mnav-group"><p>{title}</p><ul>'
+                + "".join(menu_link(*link) for link in links) + '</ul></section>')
+
+    product_groups = [
+        ("PRODUCTS", [
+            ("Agentic Work Management", "/product/ai", "For cross-functional teams", "pink", ""),
+            ("Asana Service Management", "/product/service-management", "For service teams", "green", "Coming soon"),
+            ("Asana Client Management", "/product/client-management", "For teams delivering client work", "yellow", "Coming soon"),
+            ("Command by Asana", "/product/command", "For developer teams", "blue", "Coming soon"),
+            ("StackAI by Asana", "/product/stackai", "For every critical workflow", "gray", ""),
         ]),
-        ("Solutions", "solutions", "Solve work challenges across your organization.", [
-            ("For marketing", "/solutions#marketing", "Coordinate campaigns and creative work"),
-            ("For operations", "/solutions#operations", "Create dependable cross-team processes"),
-            ("For product teams", "/solutions#product", "Connect roadmaps, launches, and feedback"),
-            ("For enterprise", "/solutions#enterprise", "Scale securely with visibility and control"),
+        ("AI PLATFORM", [
+            ("AI Teammates", "/product/ai/ai-teammates", "Ready-to-go AI agents for every team", "plain", ""),
+            ("AI Studio", "/product/ai/ai-studio", "Powerful no-code automations", "plain", ""),
+            ("Asana Dash", "/product/ai/dash", "Your AI Chief of Staff", "plain", ""),
         ]),
-        ("Learning & support", "resources", "Learn, get support, and start faster.", [
-            ("Resource center", "/resources", "Explore guides, articles, and customer stories"),
-            ("Templates", "/templates", "Start with a proven workflow"),
-            ("Asana guide", "/resources#guide", "Learn the fundamentals step by step"),
-            ("Support", "/resources#support", "Find answers and local demo help"),
+        ("ASANA FOUNDATIONS", [
+            ("Admin and security", "/features/admin-security", "", "", ""),
+            ("App integrations", "/apps", "", "", ""),
+            ("Developer", "/developers", "", "", ""),
+            ("Latest feature release", "/whats-new", "", "", ""),
         ]),
     ]
-    menu_items = []
-    for label, key, description, links in menus:
-        link_items = "".join(
-            f'<a href="{href}"><strong>{title}</strong><span>{copy}</span></a>'
-            for title, href, copy in links
-        )
-        menu_items.append(f'''<details class="mnav-menu">
-          <summary class="mnav-link has-menu{' active' if active == key else ''}">{label}</summary>
-          <div class="mnav-mega"><div class="mnav-mega-intro"><small>EXPLORE {label.upper()}</small>
-            <h2>{description}</h2><a href="/{key}">View {label.lower()} <span>→</span></a></div>
-            <div class="mnav-mega-links">{link_items}</div></div>
-        </details>''')
-    items = "".join(menu_items) + (
+    solution_groups = [
+        ("COMPANY TYPE", [("Enterprise", "/enterprise", "", "", ""), ("Small business", "/small-business", "", "", ""), ("Nonprofit", "/industry/nonprofit", "", "", ""), ("Agencies", "/agencies", "", "", "")]),
+        ("TEAMS", [("Operations", "/teams/operations", "", "", ""), ("Marketing", "/teams/marketing", "", "", ""), ("IT", "/teams/it", "", "", ""), ("Leaders", "/teams/leaders", "", "", "")]),
+        ("INDUSTRIES", [("Government", "/industry/government-solutions", "", "", ""), ("Healthcare", "/industry/healthcare", "", "", ""), ("Retail", "/industry/retail", "", "", ""), ("Financial services", "/industry/financial-services", "", "", ""), ("Education", "/industry/education", "", "", ""), ("Manufacturing", "/industry/manufacturing", "", "", "")]),
+        ("USE CASES", [("Goal management", "/uses/goal-management", "", "", ""), ("Organizational planning", "/uses/organizational-planning", "", "", ""), ("Project intake", "/uses/project-intake", "", "", ""), ("Resource planning", "/uses/resource-planning", "", "", ""), ("Product launches", "/uses/product-launch", "", "", ""), ("View all use cases", "/uses", "", "", "")]),
+    ]
+    learning_groups = [
+        ("LEARN", [("Resource center", "/resources", "", "", ""), ("Events and webinars", "/events", "", "", ""), ("Customer stories", "/customers", "", "", ""), ("Asana Academy", "/academy", "", "", ""), ("Certifications", "/certifications", "", "", ""), ("Trainings", "/academy/trainings", "", "", "")]),
+        ("SUPPORT", [("Help Center", "/help", "", "", ""), ("Community", "/community", "", "", ""), ("Templates", "/templates", "", "", "")]),
+        ("SERVICES", [("Customer Success", "/customer-success", "", "", ""), ("Find a partner", "/partners/channel/directory", "", "", ""), ("Become a partner", "/partners", "", "", "")]),
+    ]
+    menu_specs = [
+        ("Products", "product", product_groups),
+        ("Solutions", "solutions", solution_groups),
+        ("Learning & support", "resources", learning_groups),
+    ]
+    menu_buttons = "".join(
+        f'<button class="mnav-link has-menu{" active" if active == key else ""}" type="button" '
+        f'data-nav-menu="{key}" aria-expanded="false" aria-controls="mnav-panel-{key}">{label}</button>'
+        for label, key, _ in menu_specs
+    )
+    panels = "".join(
+        f'<div class="mnav-panel mnav-panel-{key}" id="mnav-panel-{key}" role="tabpanel" '
+        f'aria-hidden="true">{"".join(group(title, links) for title, links in groups)}</div>'
+        for _, key, groups in menu_specs
+    )
+    items = menu_buttons + (
         f'<a href="/pricing" class="mnav-link{" active" if active == "pricing" else ""}">Pricing</a>'
     )
     if active == "pricing":
@@ -83,7 +109,15 @@ def _marketing_nav(active: str = "") -> str:
     <nav class="mnav-links">{items}</nav>
     <div class="mnav-actions">{actions}</div>
   </div>
-</header>"""
+</header>
+<div class="mnav-layer" hidden>
+  <button class="mnav-scrim" type="button" aria-label="Close navigation menu"></button>
+  <div class="mnav-mega-shell"><div class="mnav-panel-slot">{panels}</div>
+    <div class="mnav-mega-footer"><a href="/sales"><i aria-hidden="true">▣</i>Contact sales</a>
+      <a href="/demo/main"><i aria-hidden="true">◯</i>View demo</a>
+      <a href="/download"><i aria-hidden="true">⇩</i>Download app</a></div>
+  </div>
+</div>"""
 
 
 def _marketing_footer(full_home: bool = False) -> str:
@@ -195,8 +229,75 @@ def _page(title: str, active: str, main: str) -> str:
     body_class = "marketing home-marketing" if is_home else "marketing"
     home_script = '<script src="/static/home.js" defer></script>' if is_home else ""
     return (_head(title) + f"<body class='{body_class}'>" + _marketing_nav(active)
-            + f"<main>{main}</main>" + _marketing_footer(is_home) + home_script
+            + f"<main>{main}</main>" + _marketing_footer(is_home)
+            + '<script src="/static/public-nav.js" defer></script>' + home_script
             + support + "</body></html>")
+
+
+NAV_DETAIL_PAGES = {
+    "/product/ai": ("product", "Asana AI & Agentic Work Management", "AGENTIC WORK MANAGEMENT", "Your easy button for AI productivity across every team", "AI project management meets agentic work management. Let Asana AI coordinate your team and your agents.", ("Supercharge your team with ready-to-go agents", "Build automations for all your busywork", "AI you can actually trust")),
+    "/product/service-management": ("product", "Asana Service Management", "COMING SOON · ASANA SERVICE MANAGEMENT", "Resolve requests faster with less human effort", "AI-native service management for IT, HR, facilities, and legal.", ("Asana Service Management", "Take the next step toward better service management", "Built for every service team")),
+    "/product/client-management": ("product", "Asana Client Management", "COMING SOON · ASANA CLIENT MANAGEMENT", "Deliver exceptional client work without the overhead", "The agency project management platform with a built-in client portal and AI agents.", ("Asana Client Management", "Take the next step toward better agency work", "Keep every client in context")),
+    "/product/command": ("product", "Command by Asana", "COMING SOON · COMMAND BY ASANA", "Ship faster with humans and agents in sync", "AI-powered planning and development for product and engineering teams.", ("Command by Asana", "Take the next step toward better product development", "Move from plan to production")),
+    "/product/stackai": ("product", "StackAI by Asana", "STACKAI BY ASANA", "The enterprise AI agent factory", "Build secure, compliant AI applications in minutes with an intuitive no-code platform.", ("Build powerful agentic workflows", "Connect your enterprise knowledge", "Govern every AI agent")),
+    "/product/ai/ai-teammates": ("product", "Asana AI Teammates", "AI TEAMMATES", "Your team just got bigger", "AI agents built for work handle complex tasks so your team can focus on what matters.", ("Meet your AI Teammates", "Built for non-stop teamwork", "Governed from day one")),
+    "/product/ai/ai-studio": ("product", "Asana AI Studio", "AI STUDIO", "Powerful no-code automations that keep daily work moving", "Build smart workflows tailored to your team’s processes without writing code.", ("AI that works with you at every stage", "Build AI automations in minutes", "Scale your best processes")),
+    "/product/ai/dash": ("product", "Asana Dash", "INTRODUCING ASANA DASH", "Always know your next best action", "Your AI productivity assistant brings together tasks, updates, and insights.", ("Start every day one step ahead", "Turn meetings into action", "Stay focused on priorities")),
+    "/features/admin-security": ("product", "Admin and security", "ASANA FOUNDATIONS", "Confidently deploy Asana across any organization", "Manage users, data access, and security without unnecessary manual work.", ("Security you can count on", "Scale confidently with Asana", "Connect everything")),
+    "/apps": ("product", "Asana Apps and Integrations", "APP INTEGRATIONS", "Your favorite tools in one place", "Connect Asana with the tools your team already uses to keep work moving.", ("Connect your everyday tools", "Browse integrations", "Build connected workflows")),
+    "/developers": ("product", "Asana Developers", "FOR DEVELOPERS AND TEAMS", "Build for clarity, connectivity, and collaboration", "Use Asana APIs, documentation, and community support to build on the platform.", ("One platform to manage work", "Developer resources", "Create connected experiences")),
+    "/whats-new": ("product", "What’s new from Asana", "SPRING 2026", "What’s new from Asana: Spring 2026", "Explore the latest features for strategic alignment and smart processes that scale.", ("The latest product updates", "More resources", "Turn new features into impact")),
+    "/enterprise": ("solutions", "Asana for Enterprise Organizations", "ASANA ENTERPRISE", "Unify teams, tools, and work with Asana for enterprises", "Coordinate complex work across departments by connecting strategy, planning, and execution.", ("Triple your teams’ output", "Meet global privacy and security standards", "Make strategic decisions in one place")),
+    "/small-business": ("solutions", "Asana for Small Businesses", "ASANA FOR SMALL BUSINESSES", "Where your teams and AI work together", "Organize your work, achieve your goals, and get started fast with Asana.", ("Trusted by growing businesses", "Discover how Asana can help", "Grow without outgrowing your tools")),
+    "/industry/nonprofit": ("solutions", "Asana for Nonprofits", "ASANA FOR NONPROFITS", "Get 50% off Asana for your nonprofit", "Qualified nonprofit organizations can access Asana discounts and expert support.", ("How to apply", "Our values in action", "Transform the way you work")),
+    "/agencies": ("solutions", "Asana for Agencies", "ASANA FOR AGENCIES", "Deliver exceptional client work with ease", "Coordinate client work, manage resources, and prove results in one place.", ("How agencies use Asana", "Keep clients and teams aligned", "Recognized as a leader")),
+    "/teams/operations": ("solutions", "Asana for Operations", "ASANA FOR OPERATIONS", "Where operations connects work to outcomes", "Build, scale, and streamline processes even when priorities shift.", ("Transform your operations", "Automate repeatable workflows", "Connect work across teams")),
+    "/teams/marketing": ("solutions", "Asana for Marketing", "ASANA FOR MARKETING", "Where marketing connects work to revenue", "Keep cross-team initiatives focused and aligned on key milestones.", ("Make every campaign count with AI", "How marketing teams use Asana", "Connect your favorite tools")),
+    "/teams/it": ("solutions", "Asana for IT Teams", "IT TEAMS", "Where IT connects work to strategy", "Scale quickly and securely while connecting work across more than 200 integrations.", ("Automate IT workflows with ease", "Connect tools without compromising security", "Move from requests to results")),
+    "/teams/leaders": ("solutions", "Asana for Leaders", "LEADERS", "Focus on outcomes, not outputs", "Connect people to the big picture with actionable clarity and focus.", ("Enterprise-grade work management", "Improve clarity across teams", "Turn strategy into action")),
+    "/industry/government-solutions": ("solutions", "Asana for Government", "ASANA FOR GOVERNMENT", "Where mission-critical work moves forward", "Coordinate public programs effectively with secure work management.", ("How government teams use Asana", "More ways to use Asana", "Secure work at scale")),
+    "/industry/healthcare": ("solutions", "Asana for Healthcare & Life Sciences", "ASANA FOR HEALTHCARE & LIFE SCIENCES", "Where healthcare connects work to outcomes", "Keep data secure while accelerating decisions and sparking breakthroughs.", ("How healthcare teams use Asana", "Connect research and operations", "Recognized as a leader")),
+    "/industry/retail": ("solutions", "Asana for Retail", "ASANA FOR RETAIL", "Where retail connects work to goals", "Connect projects and your workforce while keeping business data secure.", ("How retail teams use Asana", "Coordinate every launch", "Recognized as a leader")),
+    "/industry/financial-services": ("solutions", "Asana for Financial Services", "ASANA FOR FINANCIAL SERVICES", "Where financial services connects work to goals", "Unite teams, streamline processes, and adapt to regulatory change in one platform.", ("Bring teams together", "Adapt with confidence", "Recognized as a leader")),
+    "/industry/education": ("solutions", "Asana for Education", "ASANA FOR EDUCATION", "Education customers get 50% off Asana", "Help K–12 and higher education institutions achieve their goals.", ("How to apply", "How education teams use Asana", "Plan programs in one place")),
+    "/industry/manufacturing": ("solutions", "Asana for Manufacturing", "ASANA FOR MANUFACTURING", "Where manufacturing connects work to production", "Streamline workflows from production planning through product launch.", ("How manufacturing teams use Asana", "More ways to use Asana", "Recognized as a leader")),
+    "/uses/goal-management": ("solutions", "Goal Management Software", "GOAL MANAGEMENT", "Align work to goals", "Keep goals front and center by connecting them to daily work.", ("Connect goals to data", "Goal management templates", "Fine tune your goals")),
+    "/uses/organizational-planning": ("solutions", "Strategic Planning Tool", "ORGANIZATIONAL PLANNING", "Speed up planning cycles", "Prioritize critical goals and connect annual plans to execution.", ("Centralize your planning", "Organizational planning templates", "Build an efficient business")),
+    "/uses/project-intake": ("solutions", "Project Intake Software", "PROJECT INTAKE", "Streamline your intake process", "Automatically capture, prioritize, and follow through on requests.", ("Track requests across tools", "Build best-in-class intake processes", "Move requests forward")),
+    "/uses/resource-planning": ("solutions", "Resource Planning Software", "RESOURCE PLANNING", "Make your resources count", "Ensure business-critical work is properly staffed at every level.", ("Centralize resourcing insights", "Start planning with templates", "Staff smarter")),
+    "/uses/product-launch": ("solutions", "Product Launch Tool", "PRODUCT LAUNCHES", "Launch better products faster", "Drive more impact from launches and fuel your organization’s growth.", ("Bring launch teams together", "Ship faster with templates", "Optimize your launch process")),
+    "/uses": ("solutions", "Asana Workflow Solutions", "USE CASES", "Explore ways to use Asana", "Asana is powerful enough for any workflow and easy enough for any team.", ("Work management essentials", "Popular workflows", "Turn plans into progress")),
+    "/events": ("resources", "Asana Events and Webinars", "LEARN", "Events and webinars", "Register for live events, trainings, meetups, and on-demand webinars.", ("Upcoming events", "Watch on demand", "Learn from work experts")),
+    "/customers": ("resources", "Asana Customer Stories", "CUSTOMER STORIES", "Teams do extraordinary things with Asana", "Discover how teams around the world use Asana to get results.", ("Hear from our customers", "All stories", "Work moves forward here")),
+    "/academy": ("resources", "Asana Academy", "ASANA ACADEMY", "Learn Asana. Build better workflows.", "Develop the skills to organize work and help your team achieve more.", ("Featured learning paths", "Build your Asana skills", "Learn at your own pace")),
+    "/certifications": ("resources", "Collaborative Work Management Certification", "CERTIFICATIONS", "Skill up. Move up.", "Gain the skills to operate a collaborative work management system.", ("How it works", "Choose a program", "Get certified by market leaders")),
+    "/academy/trainings": ("resources", "Live trainings", "TRAININGS", "Learn live with Asana experts", "Register for live training or access recorded sessions on demand.", ("Upcoming live trainings", "On-demand sessions", "Build practical skills")),
+    "/help": ("resources", "Asana Help Center", "SUPPORT", "How can we help?", "Find documentation, suggested ways to use Asana, and helpful videos.", ("Get started", "Explore Asana features", "Troubleshoot and get support")),
+    "/community": ("resources", "Asana Forum", "COMMUNITY", "Connect with the Asana community", "Ask questions, share workflows, and learn from other Asana users.", ("Popular conversations", "Tips from community members", "Join the discussion")),
+    "/customer-success": ("resources", "Customer Success Offerings", "SERVICES", "Customer success offerings", "Access offerings and resources that help you deploy Asana and maximize its impact.", ("Join our Community", "Services to accelerate adoption", "Strategic consultancy")),
+    "/partners/channel/directory": ("resources", "Asana Service Partner Directory", "SERVICES", "Find the right Asana partner", "Discover trusted partners that can help your organization get more from Asana.", ("Search service partners", "Find specialized expertise", "Work with an Asana partner")),
+    "/partners": ("resources", "Asana Partnerships", "PARTNER PROGRAM", "Become an Asana partner today", "Accelerate your business growth and help other organizations do the same.", ("Pick the right partnership", "Partner resources", "Grow with Asana")),
+    "/sales": ("resources", "Contact Asana Sales", "CONTACT SALES", "Let’s build a better way to work", "Talk with our team about your organization’s goals and workflows.", ("See Asana in action", "Plan your rollout", "Get answers from an expert")),
+    "/download": ("resources", "Download Asana", "ASANA APPS", "Stay connected to work from anywhere", "Use Asana on desktop and mobile to keep priorities within reach.", ("Asana for desktop", "Asana for iOS", "Asana for Android")),
+}
+
+
+def nav_detail_page(path: str) -> str:
+    active, title, eyebrow, heading, description, sections = NAV_DETAIL_PAGES[path]
+    asset = {"product": "product-hero.png", "solutions": "resource-work-management.avif",
+             "resources": "resource-ai-at-work.avif"}[active]
+    cards = "".join(
+        f'<article><span>0{index}</span><h2>{section}</h2><p>{description}</p></article>'
+        for index, section in enumerate(sections, 1)
+    )
+    return _page(f"{title} • Asana", active, f"""
+<section class="nav-detail-hero"><p>{eyebrow}</p><h1>{heading}</h1><p>{description}</p>
+  <div><a class="btn primary lg" href="/create-account">Get started</a><a class="btn ghost lg" href="/demo/main">View demo</a></div>
+  <div class="nav-detail-visual"><img src="/static/source/{asset}" alt="Asana work management experience"><span>Work without limits</span></div>
+</section>
+<section class="nav-detail-proof"><p>TRUSTED BY TEAMS AROUND THE WORLD</p><div><span>amazon</span><span>accenture</span><span>Johnson&amp;Johnson</span><span>DELL</span><span>MERCK</span></div></section>
+<section class="nav-detail-grid">{cards}</section>
+<section class="nav-detail-cta"><h2>Move work forward with Asana</h2><p>Connect people, goals, and workflows in one place.</p><a class="btn primary lg" href="/create-account">Get started</a></section>""")
 
 
 def home_page() -> str:

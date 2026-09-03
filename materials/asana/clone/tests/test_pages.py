@@ -1,4 +1,7 @@
+import html
 import re
+
+from asana_app import pages
 
 PUBLIC_PAGES = ["/", "/pricing", "/product", "/resources",
                 "/templates", "/-/login", "/create-account",
@@ -22,10 +25,40 @@ def test_solutions_is_a_complete_reachable_public_page(client) -> None:
 
 def test_public_navigation_has_real_mega_menus(client) -> None:
     text = client.get("/").text
-    assert text.count('class="mnav-menu"') == 3
-    assert text.count('class="mnav-mega"') == 3
-    for label in ("Products", "Solutions", "Learning & support"):
+    assert text.count('data-nav-menu=') == 3
+    assert text.count('class="mnav-panel ') == 3
+    assert text.count('class="mnav-mega-shell"') == 1
+    for label in (
+        "Products", "Solutions", "Learning & support",
+        "Agentic Work Management", "Asana Service Management", "Asana Dash",
+        "COMPANY TYPE", "TEAMS", "INDUSTRIES", "USE CASES",
+        "Resource center", "Help Center", "Customer Success",
+        "Contact sales", "View demo", "Download app",
+    ):
         assert label in text
+    assert '<script src="/static/public-nav.js" defer></script>' in text
+
+
+def test_navigation_destinations_are_reachable_and_specific(client) -> None:
+    for path, (_, title, _, heading, _, _) in pages.NAV_DETAIL_PAGES.items():
+        response = client.get(path)
+        assert response.status_code == 200, path
+        assert html.escape(f"{title} • Asana") in response.text, path
+        assert heading in response.text, path
+        assert 'class="nav-detail-hero"' in response.text, path
+    for path in ("/resources", "/templates", "/demo/main"):
+        assert client.get(path).status_code == 200, path
+
+
+def test_navigation_switches_content_after_the_official_fade(client) -> None:
+    script = client.get("/static/public-nav.js").text
+    stylesheet = client.get("/static/site.css").text
+    assert "const transitionMs = 200" in script
+    assert 'previous.classList.add("is-leaving")' in script
+    assert "switchTimer = window.setTimeout" in script
+    assert "showPanel(key)" in script
+    assert 'setAttribute("aria-expanded"' in script
+    assert "opacity .2s cubic-bezier(.6,0,.13,1)" in stylesheet
 
 
 def test_template_card_destinations_are_reachable(client) -> None:
@@ -146,14 +179,14 @@ def test_no_remote_references(client) -> None:
     for path in [*PUBLIC_PAGES, "/solutions"]:
         assert not pattern.search(client.get(path).text), path
     for asset in ("/static/site.css", "/static/app.css", "/static/app.js",
-                  "/static/auth.js", "/static/home.js"):
+                  "/static/auth.js", "/static/home.js", "/static/public-nav.js"):
         body = client.get(asset).text
         assert "https://" not in body.replace("https://asana.offline", ""), asset
 
 
 def test_static_assets_served(client) -> None:
     for asset in ("/static/site.css", "/static/app.css", "/static/app.js",
-                  "/static/auth.js", "/static/home.js", "/static/favicon.svg",
+                  "/static/auth.js", "/static/home.js", "/static/public-nav.js", "/static/favicon.svg",
                   "/static/source/oat-background.png", "/static/source/home-cos.webp"):
         assert client.get(asset).status_code == 200, asset
 
@@ -167,7 +200,8 @@ def test_app_requires_auth(client) -> None:
 def test_js_has_no_absolute_remote_fetch(client) -> None:
     """Negative check: client code never targets an absolute remote URL."""
 
-    for asset in ("/static/app.js", "/static/auth.js", "/static/home.js"):
+    for asset in ("/static/app.js", "/static/auth.js", "/static/home.js",
+                  "/static/public-nav.js"):
         body = client.get(asset).text
         assert 'fetch("http' not in body and "fetch('http" not in body, asset
         assert "new WebSocket" not in body, asset
