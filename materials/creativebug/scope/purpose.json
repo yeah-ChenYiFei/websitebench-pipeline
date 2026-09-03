@@ -1,0 +1,13 @@
+{
+  "schema_version": "offline-clone.purpose.v1",
+  "status": "draft",
+  "purpose_id": "creativebug-learning-platform",
+  "statement": "Reproduce Creativebug's craft-class platform offline: public catalog discovery, class detail, authentication, subscription lifecycle, enrollment, viewing progress and account surfaces.",
+  "primary_actor_ids": ["visitor", "trial_learner", "subscribed_learner"],
+  "mainline_journey_ids": ["task-607-trial-to-first-lesson"],
+  "out_of_scope": [
+    "video_content_not_reproduced",
+    "class_detail_truncated_at_12_per_subcategory",
+    "real_payment_processing"
+  ]
+}

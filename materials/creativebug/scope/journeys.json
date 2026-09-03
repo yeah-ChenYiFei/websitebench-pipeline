@@ -1,0 +1,241 @@
+{
+  "schema_version": "offline-clone.journeys.v1",
+  "status": "draft",
+  "journeys": [
+    {
+      "id": "task-607-trial-to-first-lesson",
+      "actor_id": "visitor",
+      "priority": "p0",
+      "statement": "From the public entry, sign up for the free trial, browse Drawing & Illustration classes, select a beginner course and begin the first lesson.",
+      "status": "draft",
+      "steps": [
+        {
+          "id": "task-607-trial-to-first-lesson-1",
+          "statement": "Open the public entry page."
+        },
+        {
+          "id": "task-607-trial-to-first-lesson-2",
+          "statement": "Sign up for the free trial."
+        },
+        {
+          "id": "task-607-trial-to-first-lesson-3",
+          "statement": "Browse Drawing & Illustration classes."
+        },
+        {
+          "id": "task-607-trial-to-first-lesson-4",
+          "statement": "Select a beginner class."
+        },
+        {
+          "id": "task-607-trial-to-first-lesson-5",
+          "statement": "Begin the first lesson and confirm the detail view matches every stated condition."
+        }
+      ]
+    },
+    {
+      "id": "browse-catalog",
+      "actor_id": "visitor",
+      "priority": "p0",
+      "statement": "Browse the catalog by subject and open a category and subcategory list page.",
+      "status": "draft",
+      "steps": [
+        {
+          "id": "browse-catalog-1",
+          "statement": "Use primary navigation from the public entry to reach the classes section."
+        },
+        {
+          "id": "browse-catalog-2",
+          "statement": "Open a category hub page."
+        },
+        {
+          "id": "browse-catalog-3",
+          "statement": "Open a subcategory list page and verify the destination heading and canonical path."
+        }
+      ]
+    },
+    {
+      "id": "class-detail",
+      "actor_id": "visitor",
+      "priority": "p0",
+      "statement": "Open a class page and inspect syllabus, instructor, materials, reviews and enrollment options.",
+      "status": "draft",
+      "steps": [
+        {
+          "id": "class-detail-1",
+          "statement": "Open a class page from a subcategory list."
+        },
+        {
+          "id": "class-detail-2",
+          "statement": "Inspect syllabus, instructor, prerequisites, reviews, pricing and enrollment options."
+        },
+        {
+          "id": "class-detail-3",
+          "statement": "Open a free preview or inspect class materials before enrolling."
+        }
+      ]
+    },
+    {
+      "id": "auth-surfaces",
+      "actor_id": "visitor",
+      "priority": "p0",
+      "statement": "Inspect sign-in, registration and password-recovery entries without submitting.",
+      "status": "draft",
+      "steps": [
+        {
+          "id": "auth-surfaces-1",
+          "statement": "Open the sign-in entry and verify the identifier field and identity-provider choices, then return without submitting."
+        },
+        {
+          "id": "auth-surfaces-2",
+          "statement": "Open the account-registration entry and verify identity fields, terms links and verification guidance without creating an account."
+        },
+        {
+          "id": "auth-surfaces-3",
+          "statement": "From sign-in, open password recovery and verify the reset-address field, validation guidance and return link without sending a reset."
+        }
+      ]
+    },
+    {
+      "id": "register-and-onboard",
+      "actor_id": "visitor",
+      "priority": "p0",
+      "statement": "Create a learner account via emailed six-digit code and complete profile onboarding.",
+      "status": "draft",
+      "steps": [
+        {
+          "id": "register-and-onboard-1",
+          "statement": "Submit the registration form with a new address."
+        },
+        {
+          "id": "register-and-onboard-2",
+          "statement": "Retrieve the six-digit code from the local mailbox and verify it."
+        },
+        {
+          "id": "register-and-onboard-3",
+          "statement": "Complete registration and basic profile onboarding."
+        }
+      ]
+    },
+    {
+      "id": "dashboard-and-enrollment",
+      "actor_id": "trial_learner",
+      "priority": "p0",
+      "statement": "Sign in, open /myclasses, enroll in a class and see it in library, recent and watchlist.",
+      "status": "draft",
+      "steps": [
+        {
+          "id": "dashboard-and-enrollment-1",
+          "statement": "Sign in and open the learning dashboard at /myclasses."
+        },
+        {
+          "id": "dashboard-and-enrollment-2",
+          "statement": "Enroll in a class, selecting a free or paid track where available."
+        },
+        {
+          "id": "dashboard-and-enrollment-3",
+          "statement": "Confirm the class appears under library, recent and watchlist."
+        }
+      ]
+    },
+    {
+      "id": "subscription-checkout",
+      "actor_id": "trial_learner",
+      "priority": "p1",
+      "statement": "Choose a paid plan, enter sandbox payment details and reach order review and confirmation.",
+      "status": "draft",
+      "steps": [
+        {
+          "id": "subscription-checkout-1",
+          "statement": "Choose a paid subscription option."
+        },
+        {
+          "id": "subscription-checkout-2",
+          "statement": "Enter sandbox payment details."
+        },
+        {
+          "id": "subscription-checkout-3",
+          "statement": "Reach order review and confirmation."
+        }
+      ]
+    },
+    {
+      "id": "lesson-progress",
+      "actor_id": "subscribed_learner",
+      "priority": "p0",
+      "statement": "Open an enrolled lesson, navigate units, record progress, resume from the dashboard and reach completion state.",
+      "status": "draft",
+      "steps": [
+        {
+          "id": "lesson-progress-1",
+          "statement": "Open an enrolled lesson and navigate between units."
+        },
+        {
+          "id": "lesson-progress-2",
+          "statement": "Complete an exercise or assignment and review the result."
+        },
+        {
+          "id": "lesson-progress-3",
+          "statement": "Resume from the dashboard, bookmark content and review progress and completion state."
+        },
+        {
+          "id": "lesson-progress-4",
+          "statement": "Open certificate or completion options, leave a rating and manage learning preferences."
+        }
+      ]
+    },
+    {
+      "id": "account-history",
+      "actor_id": "subscribed_learner",
+      "priority": "p1",
+      "statement": "Open account history; the newest item exposes status, detail, cancellation and a route back.",
+      "status": "draft",
+      "steps": [
+        {
+          "id": "account-history-1",
+          "statement": "Open account history for class records and actions."
+        },
+        {
+          "id": "account-history-2",
+          "statement": "Verify the newest item exposes status, detail, edit or cancellation options and a route back to the collection."
+        }
+      ]
+    },
+    {
+      "id": "failure-states",
+      "actor_id": "visitor",
+      "priority": "p0",
+      "statement": "Empty required fields or signed-out actions surface inline validation or a permission prompt.",
+      "status": "draft",
+      "steps": [
+        {
+          "id": "failure-states-1",
+          "statement": "Open an action with required fields empty or while signed out."
+        },
+        {
+          "id": "failure-states-2",
+          "statement": "Verify inline validation or a permission prompt identifies what must be corrected."
+        },
+        {
+          "id": "failure-states-3",
+          "statement": "Open the public help, support or contact entry and verify guidance is reachable without exposing private account data."
+        }
+      ]
+    },
+    {
+      "id": "no-results-and-notfound",
+      "actor_id": "visitor",
+      "priority": "p0",
+      "statement": "An impossible search and a non-existent deep link both return branded recovery views with primary navigation intact.",
+      "status": "draft",
+      "steps": [
+        {
+          "id": "no-results-and-notfound-1",
+          "statement": "Search for zzzz-no-match-websitebench and verify a no-results message plus a route back to available records."
+        },
+        {
+          "id": "no-results-and-notfound-2",
+          "statement": "Open a non-existent deep link and verify a branded not-found view preserves primary navigation and offers a safe route back."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,685 @@
+{
+ "schema_version": "offline-clone.checkpoints.v1",
+ "status": "draft",
+ "viewports": {
+  "desktop": {
+   "width": 1440,
+   "height": 900
+  },
+  "tablet": {
+   "width": 834,
+   "height": 1112
+  },
+  "mobile": {
+   "width": 414,
+   "height": 896
+  }
+ },
+ "checkpoints": [
+  {
+   "id": "home.loaded.desktop",
+   "route_id": "home",
+   "route_path": "/",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "task-607-trial-to-first-lesson",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/",
+   "final_url": "https://www.creativebug.com/",
+   "visual_contract": {
+    "source_artifact_path": "reference/home.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "catalog-hub.loaded.desktop",
+   "route_id": "classes",
+   "route_path": "/classes",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "browse-catalog",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/classes",
+   "final_url": "https://www.creativebug.com/classes",
+   "visual_contract": {
+    "source_artifact_path": "reference/catalog-hub.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "category-hub.loaded.desktop",
+   "route_id": "classes-sewing",
+   "route_path": "/classes/sewing",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "browse-catalog",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/classes/sewing",
+   "final_url": "https://www.creativebug.com/classes/sewing",
+   "visual_contract": {
+    "source_artifact_path": "reference/category-hub.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "subcategory-list.loaded.desktop",
+   "route_id": "classes-art-and-design-ceramics",
+   "route_path": "/classes/art-and-design/ceramics",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "browse-catalog",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/classes/art-and-design/ceramics",
+   "final_url": "https://www.creativebug.com/classes/art-and-design/ceramics",
+   "visual_contract": {
+    "source_artifact_path": "reference/subcategory-list.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "class-detail.loaded.desktop",
+   "route_id": "classseries-single-embroidery-sampler",
+   "route_path": "/classseries/single/embroidery-sampler",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "class-detail",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/classseries/single/embroidery-sampler",
+   "final_url": "https://www.creativebug.com/classseries/single/embroidery-sampler",
+   "visual_contract": {
+    "source_artifact_path": "reference/class-detail.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "instructor-detail.loaded.desktop",
+   "route_id": "instructors-courtney-cerruti",
+   "route_path": "/instructors/courtney-cerruti",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "class-detail",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/instructors/courtney-cerruti",
+   "final_url": "https://www.creativebug.com/instructors/courtney-cerruti",
+   "visual_contract": {
+    "source_artifact_path": "reference/instructor-detail.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "patterns-index.loaded.desktop",
+   "route_id": "patterns",
+   "route_path": "/patterns",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "browse-catalog",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/patterns",
+   "final_url": "https://www.creativebug.com/patterns",
+   "visual_contract": {
+    "source_artifact_path": "reference/patterns-index.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "static-about.loaded.desktop",
+   "route_id": "site-about",
+   "route_path": "/site/about",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "failure-states",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/site/about",
+   "final_url": "https://www.creativebug.com/site/about",
+   "visual_contract": {
+    "source_artifact_path": "reference/static-about.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "signup-entry.loaded.desktop",
+   "route_id": "trial-create-account",
+   "route_path": "/trial/create-account",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "auth-surfaces",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/trial/create-account",
+   "final_url": "https://www.creativebug.com/trial/create-account",
+   "visual_contract": {
+    "source_artifact_path": "reference/signup-entry.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "register-entry.loaded.desktop",
+   "route_id": "subscribe-create-account",
+   "route_path": "/subscribe/create-account",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "auth-surfaces",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/subscribe/create-account",
+   "final_url": "https://www.creativebug.com/subscribe/create-account",
+   "visual_contract": {
+    "source_artifact_path": "reference/register-entry.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "password-recovery.loaded.desktop",
+   "route_id": "forgot-password",
+   "route_path": "/forgot-password",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "auth-surfaces",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/forgot-password",
+   "final_url": "https://www.creativebug.com/forgot-password",
+   "visual_contract": {
+    "source_artifact_path": "reference/password-recovery.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "dashboard.loaded.desktop",
+   "route_id": "myclasses",
+   "route_path": "/myclasses",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "authenticated",
+   "journey_id": "dashboard-and-enrollment",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": false,
+   "clone_path": "/myclasses",
+   "final_url": "https://www.creativebug.com/myclasses",
+   "visual_contract": {
+    "source_artifact_path": "reference/dashboard.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   },
+   "exclusion": {
+    "code": "reference-subject-mismatch",
+    "ruling": "用户 2026-08-30 裁定 A",
+    "reason": "参考帧是采集者本人账号的真实个人数据，克隆侧是新建的 free trial 账号，两者内容必然不同。该读数衡量的是「谁的账号」，不是复刻质量。",
+    "denominator": "ULTIMATE §7：required = discovered - valid_exclusions，本条计入 valid_exclusions",
+    "note": "visual_contract 与读数保留，只是不计入达标判定；threshold 仍冻结在 0.94"
+   }
+  },
+  {
+   "id": "library.loaded.desktop",
+   "route_id": "myclasses-library",
+   "route_path": "/myclasses/library",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "authenticated",
+   "journey_id": "lesson-progress",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": false,
+   "clone_path": "/myclasses/library",
+   "final_url": "https://www.creativebug.com/myclasses/library",
+   "visual_contract": {
+    "source_artifact_path": "reference/library.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   },
+   "exclusion": {
+    "code": "reference-subject-mismatch",
+    "ruling": "用户 2026-08-30 裁定 A",
+    "reason": "参考帧是采集者本人账号的真实个人数据，克隆侧是新建的 free trial 账号，两者内容必然不同。该读数衡量的是「谁的账号」，不是复刻质量。",
+    "denominator": "ULTIMATE §7：required = discovered - valid_exclusions，本条计入 valid_exclusions",
+    "note": "visual_contract 与读数保留，只是不计入达标判定；threshold 仍冻结在 0.94"
+   }
+  },
+  {
+   "id": "watchlist.loaded.desktop",
+   "route_id": "myclasses-watchlist",
+   "route_path": "/myclasses/watchlist",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "authenticated",
+   "journey_id": "lesson-progress",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": false,
+   "clone_path": "/myclasses/watchlist",
+   "final_url": "https://www.creativebug.com/myclasses/watchlist",
+   "visual_contract": {
+    "source_artifact_path": "reference/watchlist.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   },
+   "exclusion": {
+    "code": "reference-subject-mismatch",
+    "ruling": "用户 2026-08-30 裁定 A",
+    "reason": "参考帧是采集者本人账号的真实个人数据，克隆侧是新建的 free trial 账号，两者内容必然不同。该读数衡量的是「谁的账号」，不是复刻质量。",
+    "denominator": "ULTIMATE §7：required = discovered - valid_exclusions，本条计入 valid_exclusions",
+    "note": "visual_contract 与读数保留，只是不计入达标判定；threshold 仍冻结在 0.94"
+   }
+  },
+  {
+   "id": "recent.loaded.desktop",
+   "route_id": "myclasses-recent",
+   "route_path": "/myclasses/recent",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "authenticated",
+   "journey_id": "lesson-progress",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": false,
+   "clone_path": "/myclasses/recent",
+   "final_url": "https://www.creativebug.com/myclasses/recent",
+   "visual_contract": {
+    "source_artifact_path": "reference/recent.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   },
+   "exclusion": {
+    "code": "reference-subject-mismatch",
+    "ruling": "用户 2026-08-30 裁定 A",
+    "reason": "参考帧是采集者本人账号的真实个人数据，克隆侧是新建的 free trial 账号，两者内容必然不同。该读数衡量的是「谁的账号」，不是复刻质量。",
+    "denominator": "ULTIMATE §7：required = discovered - valid_exclusions，本条计入 valid_exclusions",
+    "note": "visual_contract 与读数保留，只是不计入达标判定；threshold 仍冻结在 0.94"
+   }
+  },
+  {
+   "id": "account-profile.loaded.desktop",
+   "route_id": "account-profile",
+   "route_path": "/account/profile",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "authenticated",
+   "journey_id": "account-history",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/account/profile",
+   "final_url": "https://www.creativebug.com/account/profile",
+   "visual_contract": {
+    "source_artifact_path": "reference/account-profile.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "account-rewards.loaded.desktop",
+   "route_id": "account-rewards",
+   "route_path": "/account/rewards",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "authenticated",
+   "journey_id": "account-history",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/account/rewards",
+   "final_url": "https://www.creativebug.com/account/rewards",
+   "visual_contract": {
+    "source_artifact_path": "reference/account-rewards.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "gallery-mine.loaded.desktop",
+   "route_id": "gallery-mygallery",
+   "route_path": "/gallery/mygallery",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "authenticated",
+   "journey_id": "account-history",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": false,
+   "clone_path": "/gallery/mygallery",
+   "final_url": "https://www.creativebug.com/gallery/mygallery",
+   "visual_contract": {
+    "source_artifact_path": "reference/gallery-mine.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   },
+   "exclusion": {
+    "code": "reference-subject-mismatch",
+    "ruling": "用户 2026-08-30 裁定 A",
+    "reason": "参考帧是采集者本人账号的真实个人数据，克隆侧是新建的 free trial 账号，两者内容必然不同。该读数衡量的是「谁的账号」，不是复刻质量。",
+    "denominator": "ULTIMATE §7：required = discovered - valid_exclusions，本条计入 valid_exclusions",
+    "note": "visual_contract 与读数保留，只是不计入达标判定；threshold 仍冻结在 0.94"
+   }
+  },
+  {
+   "id": "gallery-community.loaded.desktop",
+   "route_id": "gallery-community",
+   "route_path": "/gallery/community",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "authenticated",
+   "journey_id": "account-history",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/gallery/community",
+   "final_url": "https://www.creativebug.com/gallery/community",
+   "visual_contract": {
+    "source_artifact_path": "reference/gallery-community.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "boundary.loaded.desktop",
+   "route_id": "clone-boundary",
+   "route_path": "/_clone/out-of-scope",
+   "state": "loaded",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "no-results-and-notfound",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/_clone/out-of-scope",
+   "final_url": "https://www.creativebug.com/_clone/out-of-scope",
+   "visual_contract": {
+    "source_artifact_path": "reference/boundary.loaded.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  },
+  {
+   "id": "not-found.not-found.desktop",
+   "route_id": "clone-not-found",
+   "route_path": "/_clone/not-found",
+   "state": "not-found",
+   "viewport": "desktop",
+   "auth_state": "anonymous",
+   "journey_id": "no-results-and-notfound",
+   "priority": "p0",
+   "evidence_kind": "browser",
+   "verification_kind": "structure-and-region-visual",
+   "acceptance_eligible": true,
+   "clone_path": "/_clone/not-found",
+   "final_url": "https://www.creativebug.com/_clone/not-found",
+   "visual_contract": {
+    "source_artifact_path": "reference/not-found.not-found.desktop.png",
+    "viewport": {
+     "width": 1440,
+     "height": 900
+    },
+    "comparison_region": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "metric": "pixel-mae-similarity-v1",
+    "threshold": 0.94
+   }
+  }
+ ]
+}

@@ -1,0 +1,834 @@
+{
+  "schema_version": "offline-clone.backend-model.v1",
+  "site_id": "creativebug",
+  "status": "draft",
+  "profile": "offline-benchmark",
+  "database": {
+    "engine": "sqlite",
+    "location_policy": "runtime-data-outside-candidate",
+    "concurrency_model": "wal-transactional-single-writer",
+    "migration_strategy": "versioned-forward-migrations",
+    "deterministic_reset": true,
+    "restart_persistence": true,
+    "site_isolation": "one-database-per-site",
+    "database_identity": "creativebug.sqlite3",
+    "data_path_contract": {
+      "root_policy": "runtime-data-outside-candidate",
+      "database_file": "creativebug.sqlite3",
+      "override_environment_variable": "WEBSITEBENCH_SITE_BACKEND_DATABASE"
+    },
+    "proofs": [
+      {
+        "obligation": "data-location",
+        "status": "planned",
+        "evidence": [
+          "clone/tests/test_backend_database.py::test_database_lives_outside_candidate_root"
+        ]
+      },
+      {
+        "obligation": "schema-migration",
+        "status": "planned",
+        "evidence": [
+          "clone/tests/test_backend_database.py::test_forward_migration_applies"
+        ]
+      },
+      {
+        "obligation": "deterministic-reset",
+        "status": "planned",
+        "evidence": [
+          "clone/tests/test_backend_database.py::test_reset_reseeds_deterministically"
+        ]
+      },
+      {
+        "obligation": "restart-persistence",
+        "status": "planned",
+        "evidence": [
+          "clone/tests/test_backend_database.py::test_state_survives_restart"
+        ]
+      },
+      {
+        "obligation": "backup-restore",
+        "status": "planned",
+        "evidence": [
+          "clone/tests/test_backend_isolation.py::test_foreign_site_database_fails_closed"
+        ]
+      },
+      {
+        "obligation": "concurrency",
+        "status": "planned",
+        "evidence": [
+          "clone/tests/test_backend_database.py::test_single_writer_wal"
+        ]
+      }
+    ]
+  },
+  "auth_semantics": {
+    "account_database_scope": "site-isolated",
+    "credential_storage": "salted-scrypt-hash",
+    "session_storage": "opaque-cookie-digest-at-rest",
+    "registration_account_creation": "after-email-verification",
+    "verification_challenge_storage": "salted-hash",
+    "password_reset_enumeration": "indistinguishable-public-response",
+    "mail_default": "LOCAL_ONLY",
+    "mail_statuses": [
+      "LOCAL_ONLY",
+      "SMTP_PENDING",
+      "SMTP_SENT",
+      "SMTP_FAILED"
+    ],
+    "smtp_activation": "explicit-complete-site-local-loopback-config-only",
+    "smtp_delivery_ceiling": 3,
+    "rejected_secret_journaling": "forbidden",
+    "legacy_write_policy": "read-compatible-write-rejected"
+  },
+  "common_capabilities": {
+    "account_registration": "account-registration",
+    "account_sign_in": "account-sign-in",
+    "session_lifecycle": "session-lifecycle",
+    "password_recovery": "password-recovery",
+    "email_delivery": "email-delivery"
+  },
+  "capabilities": [
+    {
+      "id": "account-registration",
+      "label": "Learner registration with emailed six-digit code",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "implemented",
+      "external_effect": "smtp-opt-in",
+      "journey_ids": [
+        "register-and-onboard"
+      ],
+      "invariant_ids": [
+        "registration-requires-verification"
+      ],
+      "semantic_profile": "local-account-registration-v1",
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_auth.py::test_correct_code_completes_registration"
+          ],
+          "invalid": [
+            "clone/tests/test_auth.py::test_wrong_code_rejected"
+          ],
+          "duplicate": [
+            "clone/tests/test_auth.py::test_duplicate_email_rejected"
+          ],
+          "stale": [
+            "clone/tests/test_auth.py::test_expired_code_rejected"
+          ]
+        },
+        "not_applicable": [
+          {
+            "obligation": "concurrency",
+            "rationale": "Registration is a single-writer transaction; no concurrent-writer semantics are claimed."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "Covered once at the database level, not per capability."
+          }
+        ],
+        "planned": [
+          "foreign-owner",
+          "unauthorized-role",
+          "restart"
+        ]
+      }
+    },
+    {
+      "id": "account-sign-in",
+      "label": "Sign in with verified credentials",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "implemented",
+      "external_effect": "local-only",
+      "journey_ids": [
+        "dashboard-and-enrollment"
+      ],
+      "invariant_ids": [
+        "auth-server-side"
+      ],
+      "semantic_profile": "local-account-sign-in-v1",
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_auth.py::test_correct_password_signs_in"
+          ],
+          "invalid": [
+            "clone/tests/test_auth.py::test_wrong_password_rejected"
+          ],
+          "unauthorized-role": [
+            "clone/tests/test_auth.py::test_anonymous_myclasses_rejected_server_side"
+          ]
+        },
+        "not_applicable": [
+          {
+            "obligation": "concurrency",
+            "rationale": "Read-mostly path with no concurrent-write semantics."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "Covered at the database level."
+          }
+        ],
+        "planned": [
+          "duplicate",
+          "stale",
+          "foreign-owner",
+          "restart"
+        ]
+      }
+    },
+    {
+      "id": "session-lifecycle",
+      "label": "Server-side session issue, rotation and revocation",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "implemented",
+      "external_effect": "local-only",
+      "journey_ids": [
+        "dashboard-and-enrollment",
+        "lesson-progress"
+      ],
+      "invariant_ids": [
+        "auth-server-side",
+        "site-isolation"
+      ],
+      "semantic_profile": "local-session-lifecycle-v1",
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_auth.py::test_session_rotates_on_sign_in"
+          ],
+          "invalid": [
+            "clone/tests/test_auth.py::test_forged_cookie_rejected"
+          ],
+          "stale": [
+            "clone/tests/test_auth.py::test_revoked_session_rejected"
+          ],
+          "restart": [
+            "clone/tests/test_auth.py::test_session_survives_restart"
+          ],
+          "foreign-owner": [
+            "clone/tests/test_backend_isolation.py::test_cookie_has_no_parent_domain"
+          ]
+        },
+        "not_applicable": [
+          {
+            "obligation": "migration",
+            "rationale": "Covered at the database level."
+          }
+        ],
+        "planned": [
+          "duplicate",
+          "unauthorized-role",
+          "concurrency"
+        ]
+      }
+    },
+    {
+      "id": "password-recovery",
+      "label": "Password reset via the same email challenge",
+      "priority": "p0",
+      "category": "authentication",
+      "implementation_status": "implemented",
+      "external_effect": "smtp-opt-in",
+      "journey_ids": [
+        "auth-surfaces"
+      ],
+      "invariant_ids": [
+        "reset-code-single-use"
+      ],
+      "semantic_profile": "local-password-recovery-v1",
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_auth.py::test_reset_sets_new_password"
+          ],
+          "invalid": [
+            "clone/tests/test_auth.py::test_old_password_fails_after_reset"
+          ],
+          "duplicate": [
+            "clone/tests/test_auth.py::test_reset_challenge_not_replayable"
+          ],
+          "stale": [
+            "clone/tests/test_auth.py::test_reset_code_expires"
+          ]
+        },
+        "not_applicable": [
+          {
+            "obligation": "concurrency",
+            "rationale": "Single-writer challenge transaction."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "Covered at the database level."
+          }
+        ],
+        "planned": [
+          "foreign-owner",
+          "unauthorized-role",
+          "restart"
+        ]
+      }
+    },
+    {
+      "id": "email-delivery",
+      "label": "Local Mailpit SMTP delivery for auth challenges",
+      "priority": "p0",
+      "category": "communication",
+      "implementation_status": "implemented",
+      "external_effect": "smtp-opt-in",
+      "journey_ids": [
+        "register-and-onboard",
+        "auth-surfaces"
+      ],
+      "invariant_ids": [
+        "registration-requires-verification"
+      ],
+      "semantic_profile": "local-mail-delivery-v1",
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_mail.py::test_smtp_recipient_sender_subject_body"
+          ],
+          "invalid": [
+            "clone/tests/test_mail.py::test_smtp_mode_outbox_hides_challenge"
+          ],
+          "stale": [
+            "clone/tests/test_mail.py::test_delivery_ceiling_enforced"
+          ]
+        },
+        "not_applicable": [
+          {
+            "obligation": "migration",
+            "rationale": "Covered at the database level."
+          }
+        ],
+        "planned": [
+          "duplicate",
+          "foreign-owner",
+          "unauthorized-role",
+          "restart",
+          "concurrency"
+        ]
+      }
+    },
+    {
+      "id": "catalog-browse",
+      "label": "Class catalog, category and subcategory browsing",
+      "priority": "p0",
+      "category": "content",
+      "implementation_status": "implemented",
+      "external_effect": "none",
+      "journey_ids": [
+        "browse-catalog",
+        "class-detail"
+      ],
+      "invariant_ids": [
+        "truncation-no-dead-links",
+        "offline-closure"
+      ],
+      "entities": [
+        {
+          "name": "class",
+          "identity": "class_id (slug from /classseries/single/<slug>)",
+          "owner_scope": "global",
+          "persistence": "durable"
+        },
+        {
+          "name": "category",
+          "identity": "category_slug",
+          "owner_scope": "global",
+          "persistence": "durable"
+        },
+        {
+          "name": "subcategory",
+          "identity": "(category_slug, subcategory_slug)",
+          "owner_scope": "global",
+          "persistence": "durable"
+        },
+        {
+          "name": "instructor",
+          "identity": "instructor_slug",
+          "owner_scope": "global",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "states": [
+          "listed",
+          "detail",
+          "boundary"
+        ],
+        "transitions": [
+          {
+            "from": "listed",
+            "to": "detail",
+            "trigger": "open-card-within-first-12"
+          },
+          {
+            "from": "listed",
+            "to": "boundary",
+            "trigger": "open-card-beyond-first-12"
+          }
+        ],
+        "kind": "idempotent-set"
+      },
+      "server_authorities": [
+        "catalog-read"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_catalog.py::test_first_twelve_cards_reach_real_detail_pages"
+          ],
+          "invalid": [
+            "clone/tests/test_catalog.py::test_no_card_resolves_to_404"
+          ],
+          "duplicate": [
+            "clone/tests/test_catalog.py::test_class_in_multiple_subcategories_resolves_once"
+          ]
+        },
+        "not_applicable": [
+          {
+            "obligation": "concurrency",
+            "rationale": "Catalog is read-only at runtime; seeded at build time."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "Covered at the database level."
+          },
+          {
+            "obligation": "restart",
+            "rationale": "Catalog is static seed data; restart persistence is a database-level obligation."
+          },
+          {
+            "obligation": "foreign-owner",
+            "rationale": "Catalog rows have no per-account owner."
+          },
+          {
+            "obligation": "unauthorized-role",
+            "rationale": "Catalog is public; no role gate applies."
+          },
+          {
+            "obligation": "stale",
+            "rationale": "Catalog rows do not expire."
+          }
+        ]
+      }
+    },
+    {
+      "id": "subscription-lifecycle",
+      "label": "Trial, paid plan and cancellation states",
+      "priority": "p0",
+      "category": "commerce",
+      "implementation_status": "implemented",
+      "external_effect": "local-only",
+      "journey_ids": [
+        "subscription-checkout",
+        "account-history"
+      ],
+      "invariant_ids": [
+        "payment-sandbox-only",
+        "auth-server-side"
+      ],
+      "entities": [
+        {
+          "name": "subscription",
+          "identity": "(account_id, subscription_id)",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "order",
+          "identity": "order_id",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "payment-attempt",
+          "identity": "(order_id, attempt_no)",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "states": [
+          "anonymous",
+          "trial",
+          "paid",
+          "cancelled"
+        ],
+        "transitions": [
+          {
+            "from": "anonymous",
+            "to": "trial",
+            "trigger": "start-free-trial"
+          },
+          {
+            "from": "trial",
+            "to": "paid",
+            "trigger": "sandbox-checkout-confirmed"
+          },
+          {
+            "from": "paid",
+            "to": "cancelled",
+            "trigger": "cancel-subscription"
+          }
+        ],
+        "kind": "entity-lifecycle"
+      },
+      "server_authorities": [
+        "subscription-write",
+        "order-write"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_subscription.py::test_sandbox_checkout_reaches_confirmation"
+          ],
+          "invalid": [
+            "clone/tests/test_subscription.py::test_live_key_rejected"
+          ],
+          "duplicate": [
+            "clone/tests/test_subscription.py::test_double_submit_creates_one_order"
+          ],
+          "unauthorized-role": [
+            "clone/tests/test_subscription.py::test_anonymous_cannot_checkout"
+          ],
+          "restart": [
+            "clone/tests/test_subscription.py::test_subscription_survives_restart"
+          ]
+        },
+        "not_applicable": [
+          {
+            "obligation": "concurrency",
+            "rationale": "Single-writer order transaction."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "Covered at the database level."
+          },
+          {
+            "obligation": "stale",
+            "rationale": "Subscription records do not expire; cancellation is an explicit transition."
+          }
+        ],
+        "planned": [
+          "foreign-owner"
+        ]
+      }
+    },
+    {
+      "id": "enrollment-progress",
+      "label": "Enrollment, viewing progress, watchlist and completion",
+      "priority": "p0",
+      "category": "workflow",
+      "implementation_status": "implemented",
+      "external_effect": "local-only",
+      "journey_ids": [
+        "dashboard-and-enrollment",
+        "lesson-progress"
+      ],
+      "invariant_ids": [
+        "progress-server-authoritative",
+        "auth-server-side"
+      ],
+      "entities": [
+        {
+          "name": "enrollment",
+          "identity": "(account_id, class_id)",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "lesson-progress",
+          "identity": "(account_id, class_id, unit_id)",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "watchlist-item",
+          "identity": "(account_id, class_id)",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "completion",
+          "identity": "(account_id, class_id)",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "certificate",
+          "identity": "certificate_id",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "states": [
+          "not-enrolled",
+          "enrolled",
+          "in-progress",
+          "completed"
+        ],
+        "transitions": [
+          {
+            "from": "not-enrolled",
+            "to": "enrolled",
+            "trigger": "enroll"
+          },
+          {
+            "from": "enrolled",
+            "to": "in-progress",
+            "trigger": "open-lesson"
+          },
+          {
+            "from": "in-progress",
+            "to": "completed",
+            "trigger": "finish-final-unit"
+          }
+        ],
+        "kind": "entity-lifecycle"
+      },
+      "server_authorities": [
+        "progress-write",
+        "enrollment-write"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_progress.py::test_progress_advances_and_persists"
+          ],
+          "invalid": [
+            "clone/tests/test_progress.py::test_anonymous_cannot_write_progress"
+          ],
+          "duplicate": [
+            "clone/tests/test_progress.py::test_double_enroll_is_idempotent"
+          ],
+          "restart": [
+            "clone/tests/test_progress.py::test_progress_survives_restart"
+          ],
+          "foreign-owner": [
+            "clone/tests/test_progress.py::test_cannot_read_other_account_progress"
+          ]
+        },
+        "not_applicable": [
+          {
+            "obligation": "concurrency",
+            "rationale": "Single-writer progress transaction."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "Covered at the database level."
+          },
+          {
+            "obligation": "stale",
+            "rationale": "Progress records do not expire."
+          },
+          {
+            "obligation": "unauthorized-role",
+            "rationale": "Covered by auth-server-side; no additional role tier exists."
+          }
+        ]
+      }
+    },
+    {
+      "id": "learner-content",
+      "label": "Ratings, reviews, gallery posts and learning preferences",
+      "priority": "p1",
+      "category": "personalization",
+      "implementation_status": "implemented",
+      "external_effect": "local-only",
+      "journey_ids": [
+        "lesson-progress",
+        "account-history"
+      ],
+      "invariant_ids": [
+        "auth-server-side"
+      ],
+      "entities": [
+        {
+          "name": "rating",
+          "identity": "(account_id, class_id)",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "review",
+          "identity": "review_id",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "gallery-post",
+          "identity": "post_id",
+          "owner_scope": "account",
+          "persistence": "durable"
+        },
+        {
+          "name": "preference",
+          "identity": "(account_id, preference_key)",
+          "owner_scope": "account",
+          "persistence": "durable"
+        }
+      ],
+      "state_machine": {
+        "states": [
+          "absent",
+          "draft",
+          "published"
+        ],
+        "transitions": [
+          {
+            "from": "absent",
+            "to": "published",
+            "trigger": "submit-rating"
+          },
+          {
+            "from": "published",
+            "to": "absent",
+            "trigger": "delete-own-content"
+          }
+        ],
+        "kind": "entity-lifecycle"
+      },
+      "server_authorities": [
+        "ugc-write"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_ugc.py::test_rating_persists"
+          ],
+          "invalid": [
+            "clone/tests/test_ugc.py::test_anonymous_cannot_post"
+          ],
+          "foreign-owner": [
+            "clone/tests/test_ugc.py::test_cannot_edit_other_account_content"
+          ]
+        },
+        "not_applicable": [
+          {
+            "obligation": "concurrency",
+            "rationale": "Single-writer content transaction."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "Covered at the database level."
+          },
+          {
+            "obligation": "stale",
+            "rationale": "User content does not expire."
+          },
+          {
+            "obligation": "duplicate",
+            "rationale": "Ratings are upserts keyed by (account, class); duplication is not representable."
+          },
+          {
+            "obligation": "restart",
+            "rationale": "Covered at the database level."
+          },
+          {
+            "obligation": "unauthorized-role",
+            "rationale": "Covered by auth-server-side."
+          }
+        ]
+      }
+    },
+    {
+      "id": "search-and-filter",
+      "label": "Class search with level, topic, duration and rating filters",
+      "priority": "p0",
+      "category": "search",
+      "implementation_status": "implemented",
+      "external_effect": "none",
+      "journey_ids": [
+        "browse-catalog",
+        "no-results-and-notfound"
+      ],
+      "invariant_ids": [
+        "offline-closure"
+      ],
+      "entities": [
+        {
+          "name": "class",
+          "identity": "class_id (slug from /classseries/single/<slug>)",
+          "owner_scope": "global",
+          "persistence": "durable"
+        },
+        {
+          "name": "search-index",
+          "identity": "derived from class rows",
+          "owner_scope": "global",
+          "persistence": "derived"
+        }
+      ],
+      "state_machine": {
+        "states": [
+          "idle",
+          "results",
+          "empty"
+        ],
+        "transitions": [
+          {
+            "from": "idle",
+            "to": "results",
+            "trigger": "query-matches"
+          },
+          {
+            "from": "idle",
+            "to": "empty",
+            "trigger": "query-matches-nothing"
+          }
+        ],
+        "kind": "idempotent-set"
+      },
+      "server_authorities": [
+        "catalog-read"
+      ],
+      "proofs": {
+        "evidence": {
+          "valid": [
+            "clone/tests/test_search.py::test_filters_narrow_results"
+          ],
+          "invalid": [
+            "clone/tests/test_search.py::test_impossible_query_returns_empty_state_with_route_back"
+          ]
+        },
+        "not_applicable": [
+          {
+            "obligation": "concurrency",
+            "rationale": "Search is read-only."
+          },
+          {
+            "obligation": "migration",
+            "rationale": "Covered at the database level."
+          },
+          {
+            "obligation": "stale",
+            "rationale": "Index is rebuilt from seed at reset."
+          },
+          {
+            "obligation": "duplicate",
+            "rationale": "Query results are deduplicated by class id."
+          },
+          {
+            "obligation": "restart",
+            "rationale": "Index is derived from the database."
+          },
+          {
+            "obligation": "foreign-owner",
+            "rationale": "Search covers public catalog only."
+          },
+          {
+            "obligation": "unauthorized-role",
+            "rationale": "Search is public."
+          }
+        ]
+      }
+    }
+  ]
+}

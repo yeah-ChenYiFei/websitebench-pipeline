@@ -1,0 +1,140 @@
+{
+  "schema_version": "offline-clone.invariants.v1",
+  "status": "draft",
+  "invariants": [
+    {
+      "id": "auth-server-side",
+      "priority": "p0",
+      "journey_ids": [
+        "dashboard-and-enrollment",
+        "lesson-progress",
+        "account-history",
+        "failure-states"
+      ],
+      "statement": "Protected routes under /myclasses, /account and /gallery/mygallery are rejected server-side when the session is anonymous; a client-side redirect is not sufficient.",
+      "positive_test_refs": [
+        "clone/tests/test_invariants.py::test_authenticated_session_reaches_myclasses"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_invariants.py::test_anonymous_myclasses_rejected_server_side",
+        "clone/tests/test_invariants.py::test_forged_cookie_rejected",
+        "clone/tests/test_invariants.py::test_revoked_session_rejected"
+      ]
+    },
+    {
+      "id": "registration-requires-verification",
+      "priority": "p0",
+      "journey_ids": [
+        "register-and-onboard"
+      ],
+      "statement": "No signed-in account exists until the emailed six-digit code is verified; the pending state persists server-side and wrong, expired or reused codes are rejected.",
+      "positive_test_refs": [
+        "clone/tests/test_invariants.py::test_correct_code_completes_registration"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_invariants.py::test_pending_registration_cannot_sign_in",
+        "clone/tests/test_invariants.py::test_wrong_code_rejected",
+        "clone/tests/test_invariants.py::test_expired_code_rejected",
+        "clone/tests/test_invariants.py::test_reused_code_rejected"
+      ]
+    },
+    {
+      "id": "reset-code-single-use",
+      "priority": "p0",
+      "journey_ids": [
+        "auth-surfaces",
+        "register-and-onboard"
+      ],
+      "statement": "A password reset challenge is valid once; after completion the old password stops working, prior sessions are revoked and the challenge cannot be replayed.",
+      "positive_test_refs": [
+        "clone/tests/test_invariants.py::test_reset_sets_new_password"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_invariants.py::test_old_password_fails_after_reset",
+        "clone/tests/test_invariants.py::test_reset_challenge_not_replayable",
+        "clone/tests/test_invariants.py::test_prior_sessions_revoked_after_reset"
+      ]
+    },
+    {
+      "id": "payment-sandbox-only",
+      "priority": "p0",
+      "journey_ids": [
+        "subscription-checkout"
+      ],
+      "statement": "Checkout uses the local-sandbox payment adapter only; live keys and live payment credentials are never accepted.",
+      "positive_test_refs": [
+        "clone/tests/test_invariants.py::test_sandbox_checkout_reaches_confirmation"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_invariants.py::test_live_key_rejected",
+        "clone/tests/test_invariants.py::test_payment_profile_is_local_sandbox"
+      ]
+    },
+    {
+      "id": "offline-closure",
+      "priority": "p0",
+      "journey_ids": [
+        "browse-catalog",
+        "class-detail",
+        "task-607-trial-to-first-lesson"
+      ],
+      "statement": "No route issues a remote runtime request; source third-party trackers and analytics are removed at build time.",
+      "positive_test_refs": [
+        "clone/tests/test_invariants.py::test_every_checkpoint_route_makes_zero_outbound_requests"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_invariants.py::test_no_third_party_host_in_built_pages",
+        "clone/tests/test_invariants.py::test_no_absolute_source_urls_in_clone"
+      ]
+    },
+    {
+      "id": "site-isolation",
+      "priority": "p0",
+      "journey_ids": [
+        "register-and-onboard",
+        "dashboard-and-enrollment"
+      ],
+      "statement": "Accounts and sessions bind to site_id creativebug; a session or database from another site never authorizes access here.",
+      "positive_test_refs": [
+        "clone/tests/test_invariants.py::test_site_binding_present_in_database"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_invariants.py::test_foreign_site_database_fails_closed",
+        "clone/tests/test_invariants.py::test_cookie_has_no_parent_domain"
+      ]
+    },
+    {
+      "id": "truncation-no-dead-links",
+      "priority": "p0",
+      "journey_ids": [
+        "browse-catalog",
+        "no-results-and-notfound"
+      ],
+      "statement": "Class cards beyond the first 12 per subcategory resolve to a declared out-of-scope boundary page, never to a dead link or to the not-found view.",
+      "positive_test_refs": [
+        "clone/tests/test_invariants.py::test_first_twelve_cards_reach_real_detail_pages",
+        "clone/tests/test_invariants.py::test_remaining_cards_reach_boundary_page"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_invariants.py::test_no_card_resolves_to_404",
+        "clone/tests/test_invariants.py::test_boundary_page_is_distinct_from_not_found"
+      ]
+    },
+    {
+      "id": "progress-server-authoritative",
+      "priority": "p0",
+      "journey_ids": [
+        "lesson-progress"
+      ],
+      "statement": "Enrollment, viewing progress, watchlist and completion state are stored server-side and survive sign-out and restart.",
+      "positive_test_refs": [
+        "clone/tests/test_invariants.py::test_progress_survives_restart",
+        "clone/tests/test_invariants.py::test_watchlist_survives_signout_signin"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_invariants.py::test_progress_not_settable_from_client_only",
+        "clone/tests/test_invariants.py::test_anonymous_cannot_write_progress"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6066 @@
+{
+ "schema_version": "offline-clone.routes.v1",
+ "status": "draft",
+ "routes": [
+  {
+   "id": "home",
+   "path": "/",
+   "kind": "home",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes",
+   "path": "/classes",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design",
+   "path": "/classes/art-and-design",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-ceramics",
+   "path": "/classes/art-and-design/ceramics",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing",
+   "path": "/classes/sewing",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-garment-sewing",
+   "path": "/classes/sewing/garment-sewing",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidery-sampler",
+   "path": "/classseries/single/embroidery-sampler",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-courtney-cerruti",
+   "path": "/instructors/courtney-cerruti",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-about",
+   "path": "/site/about",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "myclasses",
+   "path": "/myclasses",
+   "kind": "account",
+   "auth_state": "authenticated"
+  },
+  {
+   "id": "myclasses-watchlist",
+   "path": "/myclasses/watchlist",
+   "kind": "account",
+   "auth_state": "authenticated"
+  },
+  {
+   "id": "account-profile",
+   "path": "/account/profile",
+   "kind": "account",
+   "auth_state": "authenticated"
+  },
+  {
+   "id": "gallery-community",
+   "path": "/gallery/community",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "trial-create-account",
+   "path": "/trial/create-account",
+   "kind": "auth",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "forgot-password",
+   "path": "/forgot-password",
+   "kind": "auth",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "zzzz-no-match-websitebench",
+   "path": "/zzzz-no-match-websitebench",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-food-and-home",
+   "path": "/classes/food-and-home",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party",
+   "path": "/classes/holiday-and-party",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry",
+   "path": "/classes/jewelry",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens",
+   "path": "/classes/kids-and-teens",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework",
+   "path": "/classes/needlework",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper",
+   "path": "/classes/paper",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting",
+   "path": "/classes/quilting",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts",
+   "path": "/classes/yarn-crafts",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-cb_live",
+   "path": "/classes/art-and-design/cb_live",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-craft-technology",
+   "path": "/classes/art-and-design/craft-technology",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-daily_practice",
+   "path": "/classes/art-and-design/daily_practice",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-drawing-and-illustration",
+   "path": "/classes/art-and-design/drawing-and-illustration",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-for-beginners",
+   "path": "/classes/art-and-design/for-beginners",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-home-decor",
+   "path": "/classes/art-and-design/home-decor",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-lettering",
+   "path": "/classes/art-and-design/lettering",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-mixed-media",
+   "path": "/classes/art-and-design/mixed-media",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-painting",
+   "path": "/classes/art-and-design/painting",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-printmaking",
+   "path": "/classes/art-and-design/printmaking",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-sketchbook-exercises",
+   "path": "/classes/art-and-design/sketchbook-exercises",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-surface-design",
+   "path": "/classes/art-and-design/surface-design",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-techniques",
+   "path": "/classes/art-and-design/techniques",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-food-and-home-baking-and-cake-decorating",
+   "path": "/classes/food-and-home/baking-and-cake-decorating",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-food-and-home-bath-and-body",
+   "path": "/classes/food-and-home/bath-and-body",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-food-and-home-canning-and-preserving",
+   "path": "/classes/food-and-home/canning-and-preserving",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-food-and-home-cb_live",
+   "path": "/classes/food-and-home/cb_live",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-food-and-home-daily_practice",
+   "path": "/classes/food-and-home/daily_practice",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-food-and-home-flowers",
+   "path": "/classes/food-and-home/flowers",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-food-and-home-furniture-refinishing-and-upholstery",
+   "path": "/classes/food-and-home/furniture-refinishing-and-upholstery",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-food-and-home-home-decor",
+   "path": "/classes/food-and-home/home-decor",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-food-and-home-packaging-and-presentation",
+   "path": "/classes/food-and-home/packaging-and-presentation",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party-birthday-parties",
+   "path": "/classes/holiday-and-party/birthday-parties",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party-cb_live",
+   "path": "/classes/holiday-and-party/cb_live",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party-daily_practice",
+   "path": "/classes/holiday-and-party/daily_practice",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party-fallcelebrations",
+   "path": "/classes/holiday-and-party/fallcelebrations",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party-packaging-and-presentation",
+   "path": "/classes/holiday-and-party/packaging-and-presentation",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party-quick-classes",
+   "path": "/classes/holiday-and-party/quick-classes",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party-spring",
+   "path": "/classes/holiday-and-party/spring",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party-summer",
+   "path": "/classes/holiday-and-party/summer",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party-weddings",
+   "path": "/classes/holiday-and-party/weddings",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party-winter",
+   "path": "/classes/holiday-and-party/winter",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry-beading",
+   "path": "/classes/jewelry/beading",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry-bracelets",
+   "path": "/classes/jewelry/bracelets",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry-cb_live",
+   "path": "/classes/jewelry/cb_live",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry-earrings-and-rings",
+   "path": "/classes/jewelry/earrings-and-rings",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry-for-beginners",
+   "path": "/classes/jewelry/for-beginners",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry-kids",
+   "path": "/classes/jewelry/kids",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry-leather",
+   "path": "/classes/jewelry/leather",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry-metal-and-wire",
+   "path": "/classes/jewelry/metal-and-wire",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry-necklaces",
+   "path": "/classes/jewelry/necklaces",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry-techniques",
+   "path": "/classes/jewelry/techniques",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-13-years-and-up",
+   "path": "/classes/kids-and-teens/13-years-and-up",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-4-7-years",
+   "path": "/classes/kids-and-teens/4-7-years",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-8-12-years",
+   "path": "/classes/kids-and-teens/8-12-years",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-cb_live",
+   "path": "/classes/kids-and-teens/cb_live",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-daily_practice",
+   "path": "/classes/kids-and-teens/daily_practice",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-drawing-and-painting",
+   "path": "/classes/kids-and-teens/drawing-and-painting",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-general-crafts",
+   "path": "/classes/kids-and-teens/general-crafts",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-holiday-and-party",
+   "path": "/classes/kids-and-teens/holiday-and-party",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-jewelry",
+   "path": "/classes/kids-and-teens/jewelry",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-paper",
+   "path": "/classes/kids-and-teens/paper",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-sewing",
+   "path": "/classes/kids-and-teens/sewing",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-yarn",
+   "path": "/classes/kids-and-teens/yarn",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-cross-stitch",
+   "path": "/classes/needlework/cross-stitch",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-daily_practice",
+   "path": "/classes/needlework/daily_practice",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-embroidery",
+   "path": "/classes/needlework/embroidery",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-felting",
+   "path": "/classes/needlework/felting",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-for-beginners",
+   "path": "/classes/needlework/for-beginners",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-hand-stitching",
+   "path": "/classes/needlework/hand-stitching",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-holiday-and-party",
+   "path": "/classes/needlework/holiday-and-party",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-mending",
+   "path": "/classes/needlework/mending",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-needle-point",
+   "path": "/classes/needlework/needle-point",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-punch-needle",
+   "path": "/classes/needlework/punch-needle",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-techniques",
+   "path": "/classes/needlework/techniques",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-book-arts",
+   "path": "/classes/paper/book-arts",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-cards-and-gift-wrap",
+   "path": "/classes/paper/cards-and-gift-wrap",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-cb_live",
+   "path": "/classes/paper/cb_live",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-collage-and-decoupage",
+   "path": "/classes/paper/collage-and-decoupage",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-cutting-machine-crafts",
+   "path": "/classes/paper/cutting-machine-crafts",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-daily_practice",
+   "path": "/classes/paper/daily_practice",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-for-beginners",
+   "path": "/classes/paper/for-beginners",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-holiday-and-party",
+   "path": "/classes/paper/holiday-and-party",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-home-decor",
+   "path": "/classes/paper/home-decor",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-kids",
+   "path": "/classes/paper/kids",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-paper-flowers",
+   "path": "/classes/paper/paper-flowers",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-printing",
+   "path": "/classes/paper/printing",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-techniques",
+   "path": "/classes/paper/techniques",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-baby-and-kids",
+   "path": "/classes/quilting/baby-and-kids",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-blocks",
+   "path": "/classes/quilting/blocks",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-cb_live",
+   "path": "/classes/quilting/cb_live",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-daily_practice",
+   "path": "/classes/quilting/daily_practice",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-design",
+   "path": "/classes/quilting/design",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-for-beginners",
+   "path": "/classes/quilting/for-beginners",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-home-decor",
+   "path": "/classes/quilting/home-decor",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-modern-quilts",
+   "path": "/classes/quilting/modern-quilts",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-quilt-tops",
+   "path": "/classes/quilting/quilt-tops",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-quilting",
+   "path": "/classes/quilting/quilting",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-techniques",
+   "path": "/classes/quilting/techniques",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-accessories",
+   "path": "/classes/sewing/accessories",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-baby-and-kids",
+   "path": "/classes/sewing/baby-and-kids",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-cb_live",
+   "path": "/classes/sewing/cb_live",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-daily_practice",
+   "path": "/classes/sewing/daily_practice",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-fabric-design",
+   "path": "/classes/sewing/fabric-design",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-for-beginners",
+   "path": "/classes/sewing/for-beginners",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-garments",
+   "path": "/classes/sewing/garments",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-holiday-and-party",
+   "path": "/classes/sewing/holiday-and-party",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-home-decor",
+   "path": "/classes/sewing/home-decor",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-pattern-drafting",
+   "path": "/classes/sewing/pattern-drafting",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-techniques",
+   "path": "/classes/sewing/techniques",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-accessories",
+   "path": "/classes/yarn-crafts/accessories",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-amigurumi",
+   "path": "/classes/yarn-crafts/amigurumi",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-baby-and-kids",
+   "path": "/classes/yarn-crafts/baby-and-kids",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-cb_live",
+   "path": "/classes/yarn-crafts/cb_live",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-crochet",
+   "path": "/classes/yarn-crafts/crochet",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-daily_practice",
+   "path": "/classes/yarn-crafts/daily_practice",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-felting",
+   "path": "/classes/yarn-crafts/felting",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-for-beginners",
+   "path": "/classes/yarn-crafts/for-beginners",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-garments",
+   "path": "/classes/yarn-crafts/garments",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-general-crafts",
+   "path": "/classes/yarn-crafts/general-crafts",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-holiday-and-party",
+   "path": "/classes/yarn-crafts/holiday-and-party",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-home-decor",
+   "path": "/classes/yarn-crafts/home-decor",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-knitting",
+   "path": "/classes/yarn-crafts/knitting",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-techniques",
+   "path": "/classes/yarn-crafts/techniques",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "account-cancel_subscription",
+   "path": "/account/cancel_subscription",
+   "kind": "account",
+   "auth_state": "authenticated"
+  },
+  {
+   "id": "account-plan_change",
+   "path": "/account/plan_change",
+   "kind": "account",
+   "auth_state": "authenticated"
+  },
+  {
+   "id": "arts-and-crafts-instructors",
+   "path": "/arts-&-crafts-instructors",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "calendar",
+   "path": "/calendar",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "cbtv",
+   "path": "/cbtv",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-daily-art-challenges-cbdrawaday",
+   "path": "/classseries/daily-art-challenges-cbdrawaday",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-10-06-16-cocoon-cardigan",
+   "path": "/classseries/single/10-06-16-cocoon-cardigan",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-10-06-16-turn-a-t-shirt-into-a-trivet",
+   "path": "/classseries/single/10-06-16-turn-a-t-shirt-into-a-trivet",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-10-11-16-halloween-fun-with-twinkie-chan-1",
+   "path": "/classseries/single/10-11-16-halloween-fun-with-twinkie-chan-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-10-18-16-haunted-gingerbread-house",
+   "path": "/classseries/single/10-18-16-haunted-gingerbread-house",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-10-18-16-spooky-cupcake-toppers",
+   "path": "/classseries/single/10-18-16-spooky-cupcake-toppers",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-10-20-16-halloween-jewelry",
+   "path": "/classseries/single/10-20-16-halloween-jewelry",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-100-days-project-kick-off-4-4-16",
+   "path": "/classseries/single/100-days-project-kick-off-4-4-16",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-11-10-16-improv-log-cabin-block",
+   "path": "/classseries/single/11-10-16-improv-log-cabin-block",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-11-14-17-giving-plates",
+   "path": "/classseries/single/11-14-17-giving-plates",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-11-15-16-personalized-fabric-gift-bags",
+   "path": "/classseries/single/11-15-16-personalized-fabric-gift-bags",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-11-17-16-chromatic-tablescape",
+   "path": "/classseries/single/11-17-16-chromatic-tablescape",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-11-21-16-place-setting",
+   "path": "/classseries/single/11-21-16-place-setting",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-11-3-16-embossed-holiday-cards",
+   "path": "/classseries/single/11-3-16-embossed-holiday-cards",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-11-8-16-stress-balls-1",
+   "path": "/classseries/single/11-8-16-stress-balls-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-12-days-of-christmas-sew-an-heirloom-stocking",
+   "path": "/classseries/single/12-days-of-christmas-sew-an-heirloom-stocking",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-25-days-of-gift-wrap",
+   "path": "/classseries/single/25-days-of-gift-wrap",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-3-ways-to-paint-a-rose",
+   "path": "/classseries/single/3-ways-to-paint-a-rose",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-30-coloring-pages-with-lisa-congdon-pam-garrison-and-courtney-cerruti",
+   "path": "/classseries/single/30-coloring-pages-with-lisa-congdon-pam-garrison-and-courtney-cerruti",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-30-structures-in-30-days-a-daily-practice-in-bookmaking",
+   "path": "/classseries/single/30-structures-in-30-days-a-daily-practice-in-bookmaking",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-31-creative-prompts-from-modern-and-contemporary-artists",
+   "path": "/classseries/single/31-creative-prompts-from-modern-and-contemporary-artists",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-4-x-4-studies",
+   "path": "/classseries/single/4-x-4-studies",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-60-second-macrame-keychain",
+   "path": "/classseries/single/60-second-macrame-keychain",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-8-11-16-diy-pendant-necklaces-1",
+   "path": "/classseries/single/8-11-16-diy-pendant-necklaces-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-8-23-16-bubble-prints",
+   "path": "/classseries/single/8-23-16-bubble-prints",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-8-30-16-amy-butler-and-chronicle-books-giveaway",
+   "path": "/classseries/single/8-30-16-amy-butler-and-chronicle-books-giveaway",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-8-4-16-homemade-pbj-cups",
+   "path": "/classseries/single/8-4-16-homemade-pbj-cups",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-9-1-16-fabric-and-pompom-backdrop",
+   "path": "/classseries/single/9-1-16-fabric-and-pompom-backdrop",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-9-13-16-hair-clips",
+   "path": "/classseries/single/9-13-16-hair-clips",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-9-15-16-sakura-quickie-glue-cards",
+   "path": "/classseries/single/9-15-16-sakura-quickie-glue-cards",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-9-6-16-shrinky-dink-cake-toppers",
+   "path": "/classseries/single/9-6-16-shrinky-dink-cake-toppers",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-9-8-16-marbled-oreo-cookies",
+   "path": "/classseries/single/9-8-16-marbled-oreo-cookies",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-a-card-a-day-with-hero-arts",
+   "path": "/classseries/single/a-card-a-day-with-hero-arts",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-a-chat-with-lila-rogers-7-19-18",
+   "path": "/classseries/single/a-chat-with-lila-rogers-7-19-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-a-color-conversation-with-tara-faughnah-8-24-17",
+   "path": "/classseries/single/a-color-conversation-with-tara-faughnah-8-24-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-a-qa-with-cal-patch-5-10-18",
+   "path": "/classseries/single/a-qa-with-cal-patch-5-10-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-absolute-beginner-machine-embroidery-season-1",
+   "path": "/classseries/single/absolute-beginner-machine-embroidery-season-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-absolute-beginner-machine-embroidery-season-2",
+   "path": "/classseries/single/absolute-beginner-machine-embroidery-season-2",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-abstract-art-making-a-daily-practice",
+   "path": "/classseries/single/abstract-art-making-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-accordion-book-as-art-form",
+   "path": "/classseries/single/accordion-book-as-art-form",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-accordion-photo-album",
+   "path": "/classseries/single/accordion-photo-album",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-acrylic-paint-pouring-5-1-18",
+   "path": "/classseries/single/acrylic-paint-pouring-5-1-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-acrylic-painting-how-to-clean-paintbrushes",
+   "path": "/classseries/single/acrylic-painting-how-to-clean-paintbrushes",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-acrylic-pouring-101",
+   "path": "/classseries/single/acrylic-pouring-101",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-add-a-display-sleeve-to-a-quilt",
+   "path": "/classseries/single/add-a-display-sleeve-to-a-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-adding-duplicate-stitch-to-knits",
+   "path": "/classseries/single/adding-duplicate-stitch-to-knits",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-advanced-acrylic-painting",
+   "path": "/classseries/single/advanced-acrylic-painting",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-advanced-embroidery-sampler",
+   "path": "/classseries/single/advanced-embroidery-sampler",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-advanced-machine-quilting",
+   "path": "/classseries/single/advanced-machine-quilting",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-advanced-marbling-techniques",
+   "path": "/classseries/single/advanced-marbling-techniques",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-advanced-ruler-work-for-quilting",
+   "path": "/classseries/single/advanced-ruler-work-for-quilting",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-air-plant-hangers-8-29-18",
+   "path": "/classseries/single/air-plant-hangers-8-29-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-all-seasons-embroidered-wreath",
+   "path": "/classseries/single/all-seasons-embroidered-wreath",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-altered-book-daily-challenge",
+   "path": "/classseries/single/altered-book-daily-challenge",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-altered-book-pages-2-28-19",
+   "path": "/classseries/single/altered-book-pages-2-28-19",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-altered-books-the-sequel-a-daily-practice",
+   "path": "/classseries/single/altered-books-the-sequel-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-amigurumi-techniques-change-colors-in-the-round",
+   "path": "/classseries/single/amigurumi-techniques-change-colors-in-the-round",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-amigurumi-techniques-finish-off-a-3d-project",
+   "path": "/classseries/single/amigurumi-techniques-finish-off-a-3d-project",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-amigurumi-techniques-stuffing-101",
+   "path": "/classseries/single/amigurumi-techniques-stuffing-101",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-anatomy-of-a-book",
+   "path": "/classseries/single/anatomy-of-a-book",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-anatomy-of-a-quilt",
+   "path": "/classseries/single/anatomy-of-a-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-andy-warhol-inspired-monoprints",
+   "path": "/classseries/single/andy-warhol-inspired-monoprints",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-arm-knit-a-cowl-1",
+   "path": "/classseries/single/arm-knit-a-cowl-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-arm-knit-a-throw-blanket",
+   "path": "/classseries/single/arm-knit-a-throw-blanket",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-arm-knitting-make-a-throw-pillow",
+   "path": "/classseries/single/arm-knitting-make-a-throw-pillow",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-arrow-crown-block",
+   "path": "/classseries/single/arrow-crown-block",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-art-journal-pages-with-mou-saha-7-25-19",
+   "path": "/classseries/single/art-journal-pages-with-mou-saha-7-25-19",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-art-journaling-with-cut-paper-collage",
+   "path": "/classseries/single/art-journaling-with-cut-paper-collage",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-art-journaling-with-dawn-sokol",
+   "path": "/classseries/single/art-journaling-with-dawn-sokol",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-art-journaling-with-get-messy-girls-7-24-5",
+   "path": "/classseries/single/art-journaling-with-get-messy-girls-7-24-5",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-art-meets-life-31-ways-to-combine-watercolor-and-flora",
+   "path": "/classseries/single/art-meets-life-31-ways-to-combine-watercolor-and-flora",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-artist-trading-cards",
+   "path": "/classseries/single/artist-trading-cards",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-artober-31-days-of-inky-monoprints",
+   "path": "/classseries/single/artober-31-days-of-inky-monoprints",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-artober-31-days-of-spooky-monoprints",
+   "path": "/classseries/single/artober-31-days-of-spooky-monoprints",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-astro-origami",
+   "path": "/classseries/single/astro-origami",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-baby-blanket-crochet-along",
+   "path": "/classseries/single/baby-blanket-crochet-along",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-back-to-school-book-covers-7-31-18",
+   "path": "/classseries/single/back-to-school-book-covers-7-31-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-back-to-school-organizing-8-7-18",
+   "path": "/classseries/single/back-to-school-organizing-8-7-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-bag-charm-party-25-baubles-for-your-bags",
+   "path": "/classseries/single/bag-charm-party-25-baubles-for-your-bags",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-bag-design-workshop",
+   "path": "/classseries/single/bag-design-workshop",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-basic-line-drawing-with-lisa-congdon",
+   "path": "/classseries/single/basic-line-drawing-with-lisa-congdon",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-basic-sewing-seams",
+   "path": "/classseries/single/basic-sewing-seams",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-bath-bombs-12-14-17",
+   "path": "/classseries/single/bath-bombs-12-14-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-batiking-with-glue-6-21-18",
+   "path": "/classseries/single/batiking-with-glue-6-21-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-be-you-tiful-cut-paper-portrait",
+   "path": "/classseries/single/be-you-tiful-cut-paper-portrait",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-beach-towel-pockets-7-6-17",
+   "path": "/classseries/single/beach-towel-pockets-7-6-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-bead-crochet",
+   "path": "/classseries/single/bead-crochet",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-bead-weaving-roundabout-necklace",
+   "path": "/classseries/single/bead-weaving-roundabout-necklace",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-beaded-knitting",
+   "path": "/classseries/single/beaded-knitting",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-beat-it-beanie",
+   "path": "/classseries/single/beat-it-beanie",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-beg-sewing-market-tote-bag",
+   "path": "/classseries/single/beg-sewing-market-tote-bag",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-beginner-crochet-1",
+   "path": "/classseries/single/beginner-crochet-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-beginner-crochet-2",
+   "path": "/classseries/single/beginner-crochet-2",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-beginner-knits-how-to-knit-a-baby-blanket",
+   "path": "/classseries/single/beginner-knits-how-to-knit-a-baby-blanket",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-beginner-knits-how-to-knit-a-baby-hat",
+   "path": "/classseries/single/beginner-knits-how-to-knit-a-baby-hat",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-beginner-knits-how-to-knit-baby-booties",
+   "path": "/classseries/single/beginner-knits-how-to-knit-baby-booties",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-beginning-calligraphy",
+   "path": "/classseries/single/beginning-calligraphy",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-beginning-collage",
+   "path": "/classseries/single/beginning-collage",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-binding-off-your-knitting",
+   "path": "/classseries/single/binding-off-your-knitting",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-bliss-balls-three-recipes-for-snacking",
+   "path": "/classseries/single/bliss-balls-three-recipes-for-snacking",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-block-print-monogram-5-23-19",
+   "path": "/classseries/single/block-print-monogram-5-23-19",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-block-printing-on-fabric-6-12-18",
+   "path": "/classseries/single/block-printing-on-fabric-6-12-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-blocking-knits-101",
+   "path": "/classseries/single/blocking-knits-101",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-boho-leather-cuff",
+   "path": "/classseries/single/boho-leather-cuff",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-book-safe",
+   "path": "/classseries/single/book-safe",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-botanical-boughs-for-all-seasons",
+   "path": "/classseries/single/botanical-boughs-for-all-seasons",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-botanical-leaf-embroidery",
+   "path": "/classseries/single/botanical-leaf-embroidery",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-botanical-monoprinted-table-decor-11-21-17",
+   "path": "/classseries/single/botanical-monoprinted-table-decor-11-21-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-botanical-sketching-techniques",
+   "path": "/classseries/single/botanical-sketching-techniques",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-botanical-watercolor-illustration",
+   "path": "/classseries/single/botanical-watercolor-illustration",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-brush-lettering-2-2-17",
+   "path": "/classseries/single/brush-lettering-2-2-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-bubble-mania-fairy-wands",
+   "path": "/classseries/single/bubble-mania-fairy-wands",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-building-a-creative-brand",
+   "path": "/classseries/single/building-a-creative-brand",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-bust-adjustment",
+   "path": "/classseries/single/bust-adjustment",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cabled-afghan-knit-along-with-edie-eckman",
+   "path": "/classseries/single/cabled-afghan-knit-along-with-edie-eckman",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cabled-christmas-stockings",
+   "path": "/classseries/single/cabled-christmas-stockings",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cabled-crochet",
+   "path": "/classseries/single/cabled-crochet",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-caged-wire-wrap",
+   "path": "/classseries/single/caged-wire-wrap",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-calligraphy-on-unconventional-surfaces",
+   "path": "/classseries/single/calligraphy-on-unconventional-surfaces",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-camp-crafts-with-marly-bird-5-22-18",
+   "path": "/classseries/single/camp-crafts-with-marly-bird-5-22-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-camp-creativebug-popsicle-stick-frames",
+   "path": "/classseries/single/camp-creativebug-popsicle-stick-frames",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-camp-creativebug-t-shirt-hacks",
+   "path": "/classseries/single/camp-creativebug-t-shirt-hacks",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-candy-leis-5-30-17",
+   "path": "/classseries/single/candy-leis-5-30-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-canning-basics-how-to-can-tomatoes",
+   "path": "/classseries/single/canning-basics-how-to-can-tomatoes",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-canning-basics-make-cumin-scented-pickled-carrots",
+   "path": "/classseries/single/canning-basics-make-cumin-scented-pickled-carrots",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-canning-the-best-blueberry-jam",
+   "path": "/classseries/single/canning-the-best-blueberry-jam",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cardboard-mobiles-6-6-17",
+   "path": "/classseries/single/cardboard-mobiles-6-6-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-carve-a-rubber-stamp-1-17-17",
+   "path": "/classseries/single/carve-a-rubber-stamp-1-17-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-carve-a-rubber-stamp-kit-a-daily-practice",
+   "path": "/classseries/single/carve-a-rubber-stamp-kit-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-carve-and-print-a-multi-block-relief-portrait",
+   "path": "/classseries/single/carve-and-print-a-multi-block-relief-portrait",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-casting-on-dpns-3-20-18",
+   "path": "/classseries/single/casting-on-dpns-3-20-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-celebrate-the-season-a-daily-holiday-painting-practice",
+   "path": "/classseries/single/celebrate-the-season-a-daily-holiday-painting-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-celebration-crowns-9-30-18",
+   "path": "/classseries/single/celebration-crowns-9-30-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-ceramic-spoons",
+   "path": "/classseries/single/ceramic-spoons",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-change-headline-sonya-philip-class-launch",
+   "path": "/classseries/single/change-headline-sonya-philip-class-launch",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-charcoal-blending-tools",
+   "path": "/classseries/single/charcoal-blending-tools",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-charmed-bracelet",
+   "path": "/classseries/single/charmed-bracelet",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-chic-sheep-yarn-with-marly-bird-11-7-17",
+   "path": "/classseries/single/chic-sheep-yarn-with-marly-bird-11-7-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-chicken-scratch-sampler-book-1",
+   "path": "/classseries/single/chicken-scratch-sampler-book-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-chroma-leis-with-lisa-solomon-6-5-18",
+   "path": "/classseries/single/chroma-leis-with-lisa-solomon-6-5-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-churn-dash-block",
+   "path": "/classseries/single/churn-dash-block",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-circular-knitting-basics-making-hats-in-the-round",
+   "path": "/classseries/single/circular-knitting-basics-making-hats-in-the-round",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-clothespin-dolls",
+   "path": "/classseries/single/clothespin-dolls",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-collaboration-challenge-1-31-19",
+   "path": "/classseries/single/collaboration-challenge-1-31-19",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-collaborative-mixed-media-7-18-19",
+   "path": "/classseries/single/collaborative-mixed-media-7-18-19",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-collage-homage-15-women-artists-to-know",
+   "path": "/classseries/single/collage-homage-15-women-artists-to-know",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-collagraph-printing-without-a-press",
+   "path": "/classseries/single/collagraph-printing-without-a-press",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-color-dive-half-square-triangle-quilt",
+   "path": "/classseries/single/color-dive-half-square-triangle-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-color-image-transfers-on-wood",
+   "path": "/classseries/single/color-image-transfers-on-wood",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-color-in-and-out-of-the-garden",
+   "path": "/classseries/single/color-in-and-out-of-the-garden",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-color-meditation-daily-practice",
+   "path": "/classseries/single/color-meditation-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-color-play-a-daily-practice-in-oil-pastel-and-colored-pencil",
+   "path": "/classseries/single/color-play-a-daily-practice-in-oil-pastel-and-colored-pencil",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-color-play-a-daily-practice-in-watercolor-and-colored-pencil",
+   "path": "/classseries/single/color-play-a-daily-practice-in-watercolor-and-colored-pencil",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-color-theory-for-modern-quilters",
+   "path": "/classseries/single/color-theory-for-modern-quilters",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-colored-pencil-pet-portraits-5-8-18",
+   "path": "/classseries/single/colored-pencil-pet-portraits-5-8-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-colored-pencil-workshop-a-daily-practice",
+   "path": "/classseries/single/colored-pencil-workshop-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-colorscape-yarn-with-marly-11-28-18",
+   "path": "/classseries/single/colorscape-yarn-with-marly-11-28-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-concept-sketchbook-a-daily-practice",
+   "path": "/classseries/single/concept-sketchbook-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-conservation-enclosures-4-3-18",
+   "path": "/classseries/single/conservation-enclosures-4-3-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cookie-cutter-bird-feeders-10-5-17",
+   "path": "/classseries/single/cookie-cutter-bird-feeders-10-5-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-corner-to-corner-crochet-make-an-evergreen-tree-pillow",
+   "path": "/classseries/single/corner-to-corner-crochet-make-an-evergreen-tree-pillow",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crab-claw-enclosure-5-15-18",
+   "path": "/classseries/single/crab-claw-enclosure-5-15-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-craft-yourself-a-love-note",
+   "path": "/classseries/single/craft-yourself-a-love-note",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-conversation-a-live-event-with-amanda-todaro-of-ditto",
+   "path": "/classseries/single/crafting-conversation-a-live-event-with-amanda-todaro-of-ditto",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-conversation-a-live-event-with-constance-moore",
+   "path": "/classseries/single/crafting-conversation-a-live-event-with-constance-moore",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-conversation-a-live-with-anna-maria-parry-1",
+   "path": "/classseries/single/crafting-conversation-a-live-with-anna-maria-parry-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-a-live-event-with-nikki-of-simply-quilled-designs",
+   "path": "/classseries/single/crafting-together-a-live-event-with-nikki-of-simply-quilled-designs",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-a-live-event-with-sarah-bond-twinkie-chan-and-e-bond",
+   "path": "/classseries/single/crafting-together-a-live-event-with-sarah-bond-twinkie-chan-and-e-bond",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-chicken-scratch-embroidered-bandana-with-blair-stocker",
+   "path": "/classseries/single/crafting-together-chicken-scratch-embroidered-bandana-with-blair-stocker",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-chicken-scratch-ornaments-with-blair-stocker",
+   "path": "/classseries/single/crafting-together-chicken-scratch-ornaments-with-blair-stocker",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-crafting-for-mental-health-with-faith-and-heidi-1",
+   "path": "/classseries/single/crafting-together-crafting-for-mental-health-with-faith-and-heidi-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-crochet-the-quick-gift-cowl-with-vickie-howell",
+   "path": "/classseries/single/crafting-together-crochet-the-quick-gift-cowl-with-vickie-howell",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-diy-stickers",
+   "path": "/classseries/single/crafting-together-diy-stickers",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-english-paper-piecing",
+   "path": "/classseries/single/crafting-together-english-paper-piecing",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-exploring-watercolor-with-lisa-solomon",
+   "path": "/classseries/single/crafting-together-exploring-watercolor-with-lisa-solomon",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-februllage-kick-off-with-mia-semingson-5",
+   "path": "/classseries/single/crafting-together-februllage-kick-off-with-mia-semingson-5",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-finding-meaning-and-connection-through-handwork-with-melanie-falick",
+   "path": "/classseries/single/crafting-together-finding-meaning-and-connection-through-handwork-with-melanie-falick",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-halloween-ornaments-with-jennifer-perkins",
+   "path": "/classseries/single/crafting-together-halloween-ornaments-with-jennifer-perkins",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-hand-yoga-with-heidi-parkes-and-the-love-letter-quilt",
+   "path": "/classseries/single/crafting-together-hand-yoga-with-heidi-parkes-and-the-love-letter-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-haunting-embroidery-embellishments-with-robert-mahar",
+   "path": "/classseries/single/crafting-together-haunting-embroidery-embellishments-with-robert-mahar",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-holiday-embroidery-with-rebecca-ringquist",
+   "path": "/classseries/single/crafting-together-holiday-embroidery-with-rebecca-ringquist",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-make-cream-cheese-boards",
+   "path": "/classseries/single/crafting-together-make-cream-cheese-boards",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-make-create-sketchbooks-with-hatem-aly",
+   "path": "/classseries/single/crafting-together-make-create-sketchbooks-with-hatem-aly",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-mixed-media-mayhem-with-ophelia-staton",
+   "path": "/classseries/single/crafting-together-mixed-media-mayhem-with-ophelia-staton",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-painted-birds",
+   "path": "/classseries/single/crafting-together-painted-birds",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-paper-collage-quilts-with-constance-moore",
+   "path": "/classseries/single/crafting-together-paper-collage-quilts-with-constance-moore",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-pony-bead-bracelets-with-abby-and-violet",
+   "path": "/classseries/single/crafting-together-pony-bead-bracelets-with-abby-and-violet",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-quilted-runway-accessories-with-sadie-and-meg",
+   "path": "/classseries/single/crafting-together-quilted-runway-accessories-with-sadie-and-meg",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-spooky-specimens-with-courtney-cerruti-twinkie-chan",
+   "path": "/classseries/single/crafting-together-spooky-specimens-with-courtney-cerruti-twinkie-chan",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-sustainable-wrapping-paper-with-suzy-ultman",
+   "path": "/classseries/single/crafting-together-sustainable-wrapping-paper-with-suzy-ultman",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-the-quilted-runway-with-sadie-metter",
+   "path": "/classseries/single/crafting-together-the-quilted-runway-with-sadie-metter",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-turkish-map-fold-books-with-e-bond",
+   "path": "/classseries/single/crafting-together-turkish-map-fold-books-with-e-bond",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-vintage-inspired-halloween-buckets",
+   "path": "/classseries/single/crafting-together-vintage-inspired-halloween-buckets",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-with-sanae-ishida",
+   "path": "/classseries/single/crafting-together-with-sanae-ishida",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-with-vickie-howell",
+   "path": "/classseries/single/crafting-together-with-vickie-howell",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crafting-together-writing-doodling-and-finding-beauty-in-aging-with-sanae-ishida",
+   "path": "/classseries/single/crafting-together-writing-doodling-and-finding-beauty-in-aging-with-sanae-ishida",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crate-crafts-1-31-17",
+   "path": "/classseries/single/crate-crafts-1-31-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-create-a-colorful-abstract-painting",
+   "path": "/classseries/single/create-a-colorful-abstract-painting",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-create-needle-books",
+   "path": "/classseries/single/create-needle-books",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creating-color-palettes-with-anna-maria-horner",
+   "path": "/classseries/single/creating-color-palettes-with-anna-maria-horner",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creative-correspondence",
+   "path": "/classseries/single/creative-correspondence",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creative-doodling",
+   "path": "/classseries/single/creative-doodling",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creative-napkin-folding-12-22-16",
+   "path": "/classseries/single/creative-napkin-folding-12-22-16",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creative-sketchbooking",
+   "path": "/classseries/single/creative-sketchbooking",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creativebug-live-blotted-line-monoprint-portraits-of-inspiring-women",
+   "path": "/classseries/single/creativebug-live-blotted-line-monoprint-portraits-of-inspiring-women",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creativebug-live-kids-art-camp-with-sophie-courtney",
+   "path": "/classseries/single/creativebug-live-kids-art-camp-with-sophie-courtney",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creativebug-live-me-made-may-with-sadie-metter",
+   "path": "/classseries/single/creativebug-live-me-made-may-with-sadie-metter",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creativebug-live-mindful-movement-for-makers-with-liza-laird",
+   "path": "/classseries/single/creativebug-live-mindful-movement-for-makers-with-liza-laird",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creativebug-live-reusable-easter-eggs",
+   "path": "/classseries/single/creativebug-live-reusable-easter-eggs",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creativebug-live-the-tender-gardener",
+   "path": "/classseries/single/creativebug-live-the-tender-gardener",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creativebug-live-vision-boards-with-courtney-cerruti-and-liana-allday",
+   "path": "/classseries/single/creativebug-live-vision-boards-with-courtney-cerruti-and-liana-allday",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creativebug-vip-live-event-three-hours-of-gelli-plate-play",
+   "path": "/classseries/single/creativebug-vip-live-event-three-hours-of-gelli-plate-play",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creativebug-x-paper-source-live-pen-pal-packet-workshop",
+   "path": "/classseries/single/creativebug-x-paper-source-live-pen-pal-packet-workshop",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-creativity-through-marbling-a-daily-practice",
+   "path": "/classseries/single/creativity-through-marbling-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-color-splash-sticker-labels",
+   "path": "/classseries/single/cricut-crafts-color-splash-sticker-labels",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-dimensional-word-art",
+   "path": "/classseries/single/cricut-crafts-dimensional-word-art",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-diy-fall-leaves-wreath",
+   "path": "/classseries/single/cricut-crafts-diy-fall-leaves-wreath",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-diy-gift-bags",
+   "path": "/classseries/single/cricut-crafts-diy-gift-bags",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-diy-gift-card-holder-and-envelope",
+   "path": "/classseries/single/cricut-crafts-diy-gift-card-holder-and-envelope",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-diy-gift-tags-and-belly-bands",
+   "path": "/classseries/single/cricut-crafts-diy-gift-tags-and-belly-bands",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-diy-jar-labels",
+   "path": "/classseries/single/cricut-crafts-diy-jar-labels",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-easy-monogrammed-cosmetic-bag",
+   "path": "/classseries/single/cricut-crafts-easy-monogrammed-cosmetic-bag",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-fall-leaf-banner",
+   "path": "/classseries/single/cricut-crafts-fall-leaf-banner",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-felt-christmas-stocking",
+   "path": "/classseries/single/cricut-crafts-felt-christmas-stocking",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-floral-pop-up-card",
+   "path": "/classseries/single/cricut-crafts-floral-pop-up-card",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-gemstone-favor-boxes",
+   "path": "/classseries/single/cricut-crafts-gemstone-favor-boxes",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-make-celebration-confetti",
+   "path": "/classseries/single/cricut-crafts-make-celebration-confetti",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-make-decorative-painted-plates",
+   "path": "/classseries/single/cricut-crafts-make-decorative-painted-plates",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-make-halloween-cupcake-toppers",
+   "path": "/classseries/single/cricut-crafts-make-halloween-cupcake-toppers",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-make-lacey-greeting-cards",
+   "path": "/classseries/single/cricut-crafts-make-lacey-greeting-cards",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-make-stenciled-vases",
+   "path": "/classseries/single/cricut-crafts-make-stenciled-vases",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-make-wood-veneer-feather-earrings",
+   "path": "/classseries/single/cricut-crafts-make-wood-veneer-feather-earrings",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-nutcracker-cake-topper",
+   "path": "/classseries/single/cricut-crafts-nutcracker-cake-topper",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-phases-of-the-moon-wall-hanging",
+   "path": "/classseries/single/cricut-crafts-phases-of-the-moon-wall-hanging",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-winter-placemat",
+   "path": "/classseries/single/cricut-crafts-winter-placemat",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-crafts-winter-trees-decor",
+   "path": "/classseries/single/cricut-crafts-winter-trees-decor",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-paper-flowers-make-a-hydrangea",
+   "path": "/classseries/single/cricut-paper-flowers-make-a-hydrangea",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cricut-paper-flowers-make-potted-paperwhites",
+   "path": "/classseries/single/cricut-paper-flowers-make-potted-paperwhites",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-a-childs-crown-and-star-wand-",
+   "path": "/classseries/single/crochet-a-childs-crown-and-star-wand-",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-a-donut-rattle",
+   "path": "/classseries/single/crochet-a-donut-rattle",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-a-granny-square",
+   "path": "/classseries/single/crochet-a-granny-square",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-a-granny-square-cardigan",
+   "path": "/classseries/single/crochet-a-granny-square-cardigan",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-a-lacy-top",
+   "path": "/classseries/single/crochet-a-lacy-top",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-a-rag-rug",
+   "path": "/classseries/single/crochet-a-rag-rug",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-a-southwestern-throw",
+   "path": "/classseries/single/crochet-a-southwestern-throw",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-a-strawberry-granny-square",
+   "path": "/classseries/single/crochet-a-strawberry-granny-square",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-an-amigurumi-pencil",
+   "path": "/classseries/single/crochet-an-amigurumi-pencil",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-an-amigurumi-potted-cactus",
+   "path": "/classseries/single/crochet-an-amigurumi-potted-cactus",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-an-amigurumi-rocketship",
+   "path": "/classseries/single/crochet-an-amigurumi-rocketship",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-an-amigurumi-shooting-star",
+   "path": "/classseries/single/crochet-an-amigurumi-shooting-star",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-an-amigurumi-turtle",
+   "path": "/classseries/single/crochet-an-amigurumi-turtle",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-an-heirloom-granny-hexagon-stocking",
+   "path": "/classseries/single/crochet-an-heirloom-granny-hexagon-stocking",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-cakery-a-daily-practice",
+   "path": "/classseries/single/crochet-cakery-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-colorblocked-sweater",
+   "path": "/classseries/single/crochet-colorblocked-sweater",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-edge-baby-blanket-9-19-19",
+   "path": "/classseries/single/crochet-edge-baby-blanket-9-19-19",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-edges-for-garments",
+   "path": "/classseries/single/crochet-edges-for-garments",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-halloween-appliques",
+   "path": "/classseries/single/crochet-halloween-appliques",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-ribbed-socks",
+   "path": "/classseries/single/crochet-ribbed-socks",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-sampler-a-daily-practice",
+   "path": "/classseries/single/crochet-sampler-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-the-harrison-sweater",
+   "path": "/classseries/single/crochet-the-harrison-sweater",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crochet-the-strawberry-stitch-1-16-20",
+   "path": "/classseries/single/crochet-the-strawberry-stitch-1-16-20",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crocheted-broomstick-lace-bracelet",
+   "path": "/classseries/single/crocheted-broomstick-lace-bracelet",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crocheted-cacti-cozies-4-13-17",
+   "path": "/classseries/single/crocheted-cacti-cozies-4-13-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cross-stitch-pendant",
+   "path": "/classseries/single/cross-stitch-pendant",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cross-stitched-wall-art",
+   "path": "/classseries/single/cross-stitched-wall-art",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-crystal-cuff-bracelet",
+   "path": "/classseries/single/crystal-cuff-bracelet",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-customized-play-tent",
+   "path": "/classseries/single/customized-play-tent",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cut-basic-applique-shapes",
+   "path": "/classseries/single/cut-basic-applique-shapes",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cut-paper-silhouettes-for-home-decor",
+   "path": "/classseries/single/cut-paper-silhouettes-for-home-decor",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-cutting-squares-triangles-and-diamonds",
+   "path": "/classseries/single/cutting-squares-triangles-and-diamonds",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-daily-creativity-at-home-a-daily-practice",
+   "path": "/classseries/single/daily-creativity-at-home-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-daily-creativity-challenge",
+   "path": "/classseries/single/daily-creativity-challenge",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-daily-drawing-challenge",
+   "path": "/classseries/single/daily-drawing-challenge",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-daily-drawing-challenge-31-pattern-motifs-with-courtney-cerruti",
+   "path": "/classseries/single/daily-drawing-challenge-31-pattern-motifs-with-courtney-cerruti",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-daily-drawing-challenge-tracing-shadows",
+   "path": "/classseries/single/daily-drawing-challenge-tracing-shadows",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-daily-embroidery-challenge-stitch-a-day-sampler",
+   "path": "/classseries/single/daily-embroidery-challenge-stitch-a-day-sampler",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-daily-ornament-challenge",
+   "path": "/classseries/single/daily-ornament-challenge",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-daily-painting-challenge-things-to-paint",
+   "path": "/classseries/single/daily-painting-challenge-things-to-paint",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-dart-manipulation",
+   "path": "/classseries/single/dart-manipulation",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-dear-diary-daily-quilting-challenge",
+   "path": "/classseries/single/dear-diary-daily-quilting-challenge",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-deck-the-halls",
+   "path": "/classseries/single/deck-the-halls",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-decorating-chocolate-with-transfer-sheets",
+   "path": "/classseries/single/decorating-chocolate-with-transfer-sheets",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-design-and-crochet-a-top-down-bobble-sweater-1",
+   "path": "/classseries/single/design-and-crochet-a-top-down-bobble-sweater-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-design-your-own-needlepoint-canvas",
+   "path": "/classseries/single/design-your-own-needlepoint-canvas",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diamonds-in-the-sky",
+   "path": "/classseries/single/diamonds-in-the-sky",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-digitizing-drawings-with-photoshop-and-illustrator",
+   "path": "/classseries/single/digitizing-drawings-with-photoshop-and-illustrator",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-ditto-ditto-designer-and-made-to-measure",
+   "path": "/classseries/single/ditto-ditto-designer-and-made-to-measure",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-ditto-project-pattern-and-cut-fabric",
+   "path": "/classseries/single/ditto-project-pattern-and-cut-fabric",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-ditto-unboxing-and-beam-set-up",
+   "path": "/classseries/single/ditto-unboxing-and-beam-set-up",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-boutonnieres",
+   "path": "/classseries/single/diy-boutonnieres",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-christmas-tree-string-art",
+   "path": "/classseries/single/diy-christmas-tree-string-art",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-cleaning-and-craft-organization-1-24-17",
+   "path": "/classseries/single/diy-cleaning-and-craft-organization-1-24-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-costume-jewelry-8-3-17",
+   "path": "/classseries/single/diy-costume-jewelry-8-3-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-easter-bunny-ears",
+   "path": "/classseries/single/diy-easter-bunny-ears",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-fabric-shoelaces",
+   "path": "/classseries/single/diy-fabric-shoelaces",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-flower-bouquets",
+   "path": "/classseries/single/diy-flower-bouquets",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-kids-knitting-needles",
+   "path": "/classseries/single/diy-kids-knitting-needles",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-leather-journal-9-11-18",
+   "path": "/classseries/single/diy-leather-journal-9-11-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-nail-art",
+   "path": "/classseries/single/diy-nail-art",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-painted-hardward-accessory-rack",
+   "path": "/classseries/single/diy-painted-hardward-accessory-rack",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-room-decor-color-blocked-bulletin-board",
+   "path": "/classseries/single/diy-room-decor-color-blocked-bulletin-board",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-room-decor-decoupaged-jewelry-holder",
+   "path": "/classseries/single/diy-room-decor-decoupaged-jewelry-holder",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-diy-yarn-banners",
+   "path": "/classseries/single/diy-yarn-banners",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-doodling-on-an-ipad",
+   "path": "/classseries/single/doodling-on-an-ipad",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-double-star-quilt",
+   "path": "/classseries/single/double-star-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-double-wedding-ring-quilt-block",
+   "path": "/classseries/single/double-wedding-ring-quilt-block",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-draft-and-sew-a-banded-collar-dress-and-button-down-tunic",
+   "path": "/classseries/single/draft-and-sew-a-banded-collar-dress-and-button-down-tunic",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-draft-and-sew-a-batwing-top",
+   "path": "/classseries/single/draft-and-sew-a-batwing-top",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-draft-and-sew-a-button-down-jumpsuit",
+   "path": "/classseries/single/draft-and-sew-a-button-down-jumpsuit",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-draft-and-sew-a-knit-cardigan",
+   "path": "/classseries/single/draft-and-sew-a-knit-cardigan",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-drawing-with-thread",
+   "path": "/classseries/single/drawing-with-thread",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-dreamy-hexagons-medallion-quilt",
+   "path": "/classseries/single/dreamy-hexagons-medallion-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-dreamy-hexagons-medallion-quilt-2",
+   "path": "/classseries/single/dreamy-hexagons-medallion-quilt-2",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-driftwood-mobile",
+   "path": "/classseries/single/driftwood-mobile",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-dyed-wall-hangings-1-18-18",
+   "path": "/classseries/single/dyed-wall-hangings-1-18-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-ear-wire-basics",
+   "path": "/classseries/single/ear-wire-basics",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-easiest-garter-stitch-slippers",
+   "path": "/classseries/single/easiest-garter-stitch-slippers",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-easy-home-decor-sewing",
+   "path": "/classseries/single/easy-home-decor-sewing",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-eco-friendly-giftwrap-ideas",
+   "path": "/classseries/single/eco-friendly-giftwrap-ideas",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-eco-printing-on-fabric-12-11-18",
+   "path": "/classseries/single/eco-printing-on-fabric-12-11-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embossing-velvet-2-13-18",
+   "path": "/classseries/single/embossing-velvet-2-13-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidered-abc-wall-hanging-a-daily-practice",
+   "path": "/classseries/single/embroidered-abc-wall-hanging-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidered-botanical-pattern-weights",
+   "path": "/classseries/single/embroidered-botanical-pattern-weights",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidered-constellations",
+   "path": "/classseries/single/embroidered-constellations",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidered-handwritten-label",
+   "path": "/classseries/single/embroidered-handwritten-label",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidered-heart-ornaments",
+   "path": "/classseries/single/embroidered-heart-ornaments",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidered-heirloom-napkins",
+   "path": "/classseries/single/embroidered-heirloom-napkins",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidered-knit-pillow",
+   "path": "/classseries/single/embroidered-knit-pillow",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidered-leather-cuffs",
+   "path": "/classseries/single/embroidered-leather-cuffs",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidered-photo-ornament",
+   "path": "/classseries/single/embroidered-photo-ornament",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidered-sampler-passport-book",
+   "path": "/classseries/single/embroidered-sampler-passport-book",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-embroidered-snowflake-ornaments",
+   "path": "/classseries/single/embroidered-snowflake-ornaments",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-english-paper-piecing",
+   "path": "/classseries/single/english-paper-piecing",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-essential-color-mixing",
+   "path": "/classseries/single/essential-color-mixing",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-essential-embroidery-techniques",
+   "path": "/classseries/single/essential-embroidery-techniques",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-exploring-color-london-stairs-quilt",
+   "path": "/classseries/single/exploring-color-london-stairs-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-fabric-circles-necklace",
+   "path": "/classseries/single/fabric-circles-necklace",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-fabric-design-a-love-story-with-amy-and-david-butler",
+   "path": "/classseries/single/fabric-design-a-love-story-with-amy-and-david-butler",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-fabric-scrap-ornaments",
+   "path": "/classseries/single/fabric-scrap-ornaments",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-fat-quarter-bandana-5-25-1",
+   "path": "/classseries/single/fat-quarter-bandana-5-25-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-fathers-day-pop-up-cards-6-14-18",
+   "path": "/classseries/single/fathers-day-pop-up-cards-6-14-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-faux-ceramic-bells-3-1-18",
+   "path": "/classseries/single/faux-ceramic-bells-3-1-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-faux-terrazzo-earrings-11-14-18",
+   "path": "/classseries/single/faux-terrazzo-earrings-11-14-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-felt-advent-calendar",
+   "path": "/classseries/single/felt-advent-calendar",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-felt-flower-headband",
+   "path": "/classseries/single/felt-flower-headband",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-five-strand-braid-crafts",
+   "path": "/classseries/single/five-strand-braid-crafts",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-floral-tape-wrapping",
+   "path": "/classseries/single/floral-tape-wrapping",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-flower-loom-basics-15-days-of-exploration",
+   "path": "/classseries/single/flower-loom-basics-15-days-of-exploration",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-flying-gosling-baby-quilt",
+   "path": "/classseries/single/flying-gosling-baby-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-fold-a-paper-lotus-flower",
+   "path": "/classseries/single/fold-a-paper-lotus-flower",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-found-necklace",
+   "path": "/classseries/single/found-necklace",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-four-leaf-clover-boutonnieres-3-13-18",
+   "path": "/classseries/single/four-leaf-clover-boutonnieres-3-13-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-free-motion-quilted-coasters-10-17-19",
+   "path": "/classseries/single/free-motion-quilted-coasters-10-17-19",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-free-motion-quilting",
+   "path": "/classseries/single/free-motion-quilting",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-from-my-kitchen-to-yours-a-month-of-giftable-goods-and-recipes",
+   "path": "/classseries/single/from-my-kitchen-to-yours-a-month-of-giftable-goods-and-recipes",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-furniture-refinishing",
+   "path": "/classseries/single/furniture-refinishing",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-furniture-refinishing-flea-market-tips",
+   "path": "/classseries/single/furniture-refinishing-flea-market-tips",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-garment-sewing-design-details",
+   "path": "/classseries/single/garment-sewing-design-details",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-garment-sewing-with-knits-an-introduction",
+   "path": "/classseries/single/garment-sewing-with-knits-an-introduction",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-garment-sewing-with-woven-fabrics-beyond-a-straight-stitch",
+   "path": "/classseries/single/garment-sewing-with-woven-fabrics-beyond-a-straight-stitch",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-garment-sewing-with-woven-fabrics-finishings-and-hems",
+   "path": "/classseries/single/garment-sewing-with-woven-fabrics-finishings-and-hems",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-garment-sewing-with-woven-fabrics-zippers",
+   "path": "/classseries/single/garment-sewing-with-woven-fabrics-zippers",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-gather-and-make-four-garden-projects",
+   "path": "/classseries/single/gather-and-make-four-garden-projects",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-gees-bend-inspired-collage",
+   "path": "/classseries/single/gees-bend-inspired-collage",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-glitter-101",
+   "path": "/classseries/single/glitter-101",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-glue-101",
+   "path": "/classseries/single/glue-101",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-gods-eyes-6-1-17",
+   "path": "/classseries/single/gods-eyes-6-1-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-gumdrop-pillow",
+   "path": "/classseries/single/gumdrop-pillow",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-halloween-trick-or-treat-bags",
+   "path": "/classseries/single/halloween-trick-or-treat-bags",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-hand-built-ceramics",
+   "path": "/classseries/single/hand-built-ceramics",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-hand-built-vases-with-air-dry-clay",
+   "path": "/classseries/single/hand-built-vases-with-air-dry-clay",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-hand-quilting-with-long-stitches",
+   "path": "/classseries/single/hand-quilting-with-long-stitches",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-hand-rolled-truffles",
+   "path": "/classseries/single/hand-rolled-truffles",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-hand-sew-a-felt-sewing-kit",
+   "path": "/classseries/single/hand-sew-a-felt-sewing-kit",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-hand-sew-a-teddy-bear",
+   "path": "/classseries/single/hand-sew-a-teddy-bear",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-hand-sew-an-easter-chick-softie-and-basket",
+   "path": "/classseries/single/hand-sew-an-easter-chick-softie-and-basket",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-hand-sew-farm-animal-finger-puppets",
+   "path": "/classseries/single/hand-sew-farm-animal-finger-puppets",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-holiday-craft-along-30-days-of-cards-tags-and-packaging-ideas",
+   "path": "/classseries/single/holiday-craft-along-30-days-of-cards-tags-and-packaging-ideas",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-holiday-mitten-garland",
+   "path": "/classseries/single/holiday-mitten-garland",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-holiday-preserves",
+   "path": "/classseries/single/holiday-preserves",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-home-decor-three-macrame-rope-projects",
+   "path": "/classseries/single/home-decor-three-macrame-rope-projects",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-homemade-apothecary",
+   "path": "/classseries/single/homemade-apothecary",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-applique-circles-three-ways",
+   "path": "/classseries/single/how-to-applique-circles-three-ways",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-attached-binding-tape",
+   "path": "/classseries/single/how-to-attached-binding-tape",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-design-fabric",
+   "path": "/classseries/single/how-to-design-fabric",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-embroider-a-french-knot",
+   "path": "/classseries/single/how-to-embroider-a-french-knot",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-embroider-the-bullion-stitch",
+   "path": "/classseries/single/how-to-embroider-the-bullion-stitch",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-embroider-the-feather-stitch",
+   "path": "/classseries/single/how-to-embroider-the-feather-stitch",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-make-a-pom-pom",
+   "path": "/classseries/single/how-to-make-a-pom-pom",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-make-bias-tape",
+   "path": "/classseries/single/how-to-make-bias-tape",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-make-binding-tape",
+   "path": "/classseries/single/how-to-make-binding-tape",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-make-pie-crust",
+   "path": "/classseries/single/how-to-make-pie-crust",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-mend-clothing",
+   "path": "/classseries/single/how-to-mend-clothing",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-sew-mitered-corners",
+   "path": "/classseries/single/how-to-sew-mitered-corners",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-sew-potholders",
+   "path": "/classseries/single/how-to-sew-potholders",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-sharpen-charcoal",
+   "path": "/classseries/single/how-to-sharpen-charcoal",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-use-and-air-compressor",
+   "path": "/classseries/single/how-to-use-and-air-compressor",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-how-to-wax-fabric-8-15-1",
+   "path": "/classseries/single/how-to-wax-fabric-8-15-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-ice-dying-with-anna-joyce-5-9-19",
+   "path": "/classseries/single/ice-dying-with-anna-joyce-5-9-19",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-inspired-by-picture-books-a-daily-practice-of-creative-prompts",
+   "path": "/classseries/single/inspired-by-picture-books-a-daily-practice-of-creative-prompts",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-intro-to-needle-felting",
+   "path": "/classseries/single/intro-to-needle-felting",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-intro-to-paper-quilling",
+   "path": "/classseries/single/intro-to-paper-quilling",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-intro-to-quilting-patchwork-basics",
+   "path": "/classseries/single/intro-to-quilting-patchwork-basics",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-japanese-sashiko-a-daily-decorative-stitching-practice",
+   "path": "/classseries/single/japanese-sashiko-a-daily-decorative-stitching-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-jewelry-design-with-scotchbonnet-creative-product-photography",
+   "path": "/classseries/single/jewelry-design-with-scotchbonnet-creative-product-photography",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-jewelry-design-with-scotchbonnet-working-with-a-bead-loom",
+   "path": "/classseries/single/jewelry-design-with-scotchbonnet-working-with-a-bead-loom",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-jewelry-design-with-scotchbonnet-working-with-fabric",
+   "path": "/classseries/single/jewelry-design-with-scotchbonnet-working-with-fabric",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-jewelry-design-with-scotchbonnet-working-with-wooden-accents",
+   "path": "/classseries/single/jewelry-design-with-scotchbonnet-working-with-wooden-accents",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-jogakbo-the-art-of-korean-patchwork",
+   "path": "/classseries/single/jogakbo-the-art-of-korean-patchwork",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-jumbo-pom-poms-1-26-17",
+   "path": "/classseries/single/jumbo-pom-poms-1-26-17",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-kids-cricut-crafts-paper-flower-necklace",
+   "path": "/classseries/single/kids-cricut-crafts-paper-flower-necklace",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-kids-cricut-crafts-watercolor-butterfly-rings",
+   "path": "/classseries/single/kids-cricut-crafts-watercolor-butterfly-rings",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-kids-weaving",
+   "path": "/classseries/single/kids-weaving",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-kintsugi-1-23-18",
+   "path": "/classseries/single/kintsugi-1-23-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-knot-bead-pendant",
+   "path": "/classseries/single/knot-bead-pendant",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-leather-basics",
+   "path": "/classseries/single/leather-basics",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-leather-wrap-bracelet",
+   "path": "/classseries/single/leather-wrap-bracelet",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-log-cabin-quilting",
+   "path": "/classseries/single/log-cabin-quilting",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-lotion-bars-1-24-19",
+   "path": "/classseries/single/lotion-bars-1-24-19",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-love-letter-quilt-top-a-daily-practice",
+   "path": "/classseries/single/love-letter-quilt-top-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-lucky-star-quilt-along-with-keaton-quilts",
+   "path": "/classseries/single/lucky-star-quilt-along-with-keaton-quilts",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-magic-braid-timelapse",
+   "path": "/classseries/single/magic-braid-timelapse",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-a-bath-soak-and-body-scrub",
+   "path": "/classseries/single/make-a-bath-soak-and-body-scrub",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-a-custom-herbal-tea-blend",
+   "path": "/classseries/single/make-a-custom-herbal-tea-blend",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-a-doodle-quilt",
+   "path": "/classseries/single/make-a-doodle-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-a-macrame-keychain",
+   "path": "/classseries/single/make-a-macrame-keychain",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-a-modern-log-cabin-lap-quilt",
+   "path": "/classseries/single/make-a-modern-log-cabin-lap-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-a-peony-with-air-dry-clay",
+   "path": "/classseries/single/make-a-peony-with-air-dry-clay",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-an-eco-friendly-dog-toy",
+   "path": "/classseries/single/make-an-eco-friendly-dog-toy",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-confetti-dangle-earrings-with-polymer-clay",
+   "path": "/classseries/single/make-confetti-dangle-earrings-with-polymer-clay",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-faux-knit-dangle-earrings-with-polymer-clay",
+   "path": "/classseries/single/make-faux-knit-dangle-earrings-with-polymer-clay",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-friendship-bracelets",
+   "path": "/classseries/single/make-friendship-bracelets",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-the-rainbow-road-mini-quilt",
+   "path": "/classseries/single/make-the-rainbow-road-mini-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-to-give-sew-a-gingham-crib-quilt",
+   "path": "/classseries/single/make-to-give-sew-a-gingham-crib-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-to-give-sew-a-gingham-crib-quilt-1",
+   "path": "/classseries/single/make-to-give-sew-a-gingham-crib-quilt-1",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-make-watercolor-marbled-hair-clips-with-polymer-clay",
+   "path": "/classseries/single/make-watercolor-marbled-hair-clips-with-polymer-clay",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-metal-stamping",
+   "path": "/classseries/single/metal-stamping",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-mixtape-5-embroidery-stitches",
+   "path": "/classseries/single/mixtape-5-embroidery-stitches",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-mixtape-summertime",
+   "path": "/classseries/single/mixtape-summertime",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-needle-felted-goldfish",
+   "path": "/classseries/single/needle-felted-goldfish",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-needle-felted-peeps",
+   "path": "/classseries/single/needle-felted-peeps",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-needlepoint-sampler",
+   "path": "/classseries/single/needlepoint-sampler",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-perfectly-pixelated-jelly-roll-quilt",
+   "path": "/classseries/single/perfectly-pixelated-jelly-roll-quilt",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-playing-with-image-transfers-a-daily-practice",
+   "path": "/classseries/single/playing-with-image-transfers-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-punch-needle-coasters-6-13-19",
+   "path": "/classseries/single/punch-needle-coasters-6-13-19",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-punch-needle-demonstration-4-12-18",
+   "path": "/classseries/single/punch-needle-demonstration-4-12-18",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-punch-needle-workshop",
+   "path": "/classseries/single/punch-needle-workshop",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-quilted-jelly-roll-baby-bibs",
+   "path": "/classseries/single/quilted-jelly-roll-baby-bibs",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-sashiko-sewing",
+   "path": "/classseries/single/sashiko-sewing",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-sew-a-needlepoint-tote",
+   "path": "/classseries/single/sew-a-needlepoint-tote",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-sew-it-all-tv-season-6",
+   "path": "/classseries/single/sew-it-all-tv-season-6",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-shape-pattern-color-hand-stitched-sampler-books",
+   "path": "/classseries/single/shape-pattern-color-hand-stitched-sampler-books",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-stitched-rose-embellishment",
+   "path": "/classseries/single/stitched-rose-embellishment",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-story-quilt-top-a-daily-practice-in-hand-stitching",
+   "path": "/classseries/single/story-quilt-top-a-daily-practice-in-hand-stitching",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-sweater-mending-3917",
+   "path": "/classseries/single/sweater-mending-3917",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-tunisian-crochet-a-daily-practice",
+   "path": "/classseries/single/tunisian-crochet-a-daily-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-upcycled-books-make-a-hardcover-journal",
+   "path": "/classseries/single/upcycled-books-make-a-hardcover-journal",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-upcycled-denim-sew-a-bomber-jacket",
+   "path": "/classseries/single/upcycled-denim-sew-a-bomber-jacket",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "collections",
+   "path": "/collections",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "gallery-mygallery",
+   "path": "/gallery/mygallery",
+   "kind": "static",
+   "auth_state": "authenticated"
+  },
+  {
+   "id": "gallery-pinterest",
+   "path": "/gallery/pinterest",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "gift_subscriptions",
+   "path": "/gift_subscriptions",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "groups",
+   "path": "/groups",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "inspiration-blog",
+   "path": "/inspiration/blog",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors",
+   "path": "/instructors",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-100layercake",
+   "path": "/instructors/100layercake",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-a-verb-for-keeping-warm",
+   "path": "/instructors/a-verb-for-keeping-warm",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-abigail-houston",
+   "path": "/instructors/abigail-houston",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-alix-bluh",
+   "path": "/instructors/alix-bluh",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-amanda-brown",
+   "path": "/instructors/amanda-brown",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-amanda-todaro",
+   "path": "/instructors/amanda-todaro",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-amber-of-damask-love",
+   "path": "/instructors/amber-of-damask-love",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-amy-butler",
+   "path": "/instructors/amy-butler",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-amy-karol",
+   "path": "/instructors/amy-karol",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-anna-hultin",
+   "path": "/instructors/anna-hultin",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-anna-joyce",
+   "path": "/instructors/anna-joyce",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-anna-maria-horner",
+   "path": "/instructors/anna-maria-horner",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-annabel-wrigley",
+   "path": "/instructors/annabel-wrigley",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-anne-weil",
+   "path": "/instructors/anne-weil",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-ashley-nickels",
+   "path": "/instructors/ashley-nickels",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-barb-blair",
+   "path": "/instructors/barb-blair",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-bellacreme",
+   "path": "/instructors/bellacreme",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-belofscrappapercircus",
+   "path": "/instructors/belofscrappapercircus",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-benjamin-mach",
+   "path": "/instructors/benjamin-mach",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-blair-stocker-1",
+   "path": "/instructors/blair-stocker-1",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-bookhou",
+   "path": "/instructors/bookhou",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-brandon-mably",
+   "path": "/instructors/brandon-mably",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-brittany-jones-2",
+   "path": "/instructors/brittany-jones-2",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-cal-patch",
+   "path": "/instructors/cal-patch",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-camilla-derrico",
+   "path": "/instructors/camilla-derrico",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-carla-scott",
+   "path": "/instructors/carla-scott",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-carolyn-friedlander",
+   "path": "/instructors/carolyn-friedlander",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-carolyn-gavin",
+   "path": "/instructors/carolyn-gavin",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-cbtv",
+   "path": "/instructors/cbtv",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-cbtv-live",
+   "path": "/instructors/cbtv-live",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-cecelia-murphy",
+   "path": "/instructors/cecelia-murphy",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-charlotte-hamilton",
+   "path": "/instructors/charlotte-hamilton",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-chelsea-from-friday-pattern-company",
+   "path": "/instructors/chelsea-from-friday-pattern-company",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-christopher-clark",
+   "path": "/instructors/christopher-clark",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-cindy-willingham",
+   "path": "/instructors/cindy-willingham",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-cleo-papanikolas",
+   "path": "/instructors/cleo-papanikolas",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-cobrina",
+   "path": "/instructors/cobrina",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-constance-moore",
+   "path": "/instructors/constance-moore",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-corrie-hogg",
+   "path": "/instructors/corrie-hogg",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-creative-brand-series",
+   "path": "/instructors/creative-brand-series",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-danielle-krysa",
+   "path": "/instructors/danielle-krysa",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-david-tenorio",
+   "path": "/instructors/david-tenorio",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-dawline-oni-eseleh",
+   "path": "/instructors/dawline-oni-eseleh",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-dawn-devries-sokol",
+   "path": "/instructors/dawn-devries-sokol",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-dawn-m-cardona",
+   "path": "/instructors/dawn-m-cardona",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-debbie-stoller",
+   "path": "/instructors/debbie-stoller",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-deborah-kreiling",
+   "path": "/instructors/deborah-kreiling",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-devlin-mannle",
+   "path": "/instructors/devlin-mannle",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-diana-fayt",
+   "path": "/instructors/diana-fayt",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-e-bond",
+   "path": "/instructors/e-bond",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-edie-eckman",
+   "path": "/instructors/edie-eckman",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-elke-bergeron",
+   "path": "/instructors/elke-bergeron",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-emily-katz",
+   "path": "/instructors/emily-katz",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-erika-lee-sears",
+   "path": "/instructors/erika-lee-sears",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-erin-wheeler",
+   "path": "/instructors/erin-wheeler",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-fabric-designinstructors",
+   "path": "/instructors/fabric-designinstructors",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-faheema-chaudhury",
+   "path": "/instructors/faheema-chaudhury",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-faith-hale",
+   "path": "/instructors/faith-hale",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-fancy-tiger",
+   "path": "/instructors/fancy-tiger",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-flora-bowley",
+   "path": "/instructors/flora-bowley",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-george-mccalman",
+   "path": "/instructors/george-mccalman",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-get-messy",
+   "path": "/instructors/get-messy",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-gudrun-johnston",
+   "path": "/instructors/gudrun-johnston",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-heather-bailey",
+   "path": "/instructors/heather-bailey",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-heather-jones",
+   "path": "/instructors/heather-jones",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-heather-ross",
+   "path": "/instructors/heather-ross",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-heidi-parkes",
+   "path": "/instructors/heidi-parkes",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-hilary-williams",
+   "path": "/instructors/hilary-williams",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-improv-sewing",
+   "path": "/instructors/improv-sewing",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jamie-hudson",
+   "path": "/instructors/jamie-hudson",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jen-hewett",
+   "path": "/instructors/jen-hewett",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jenean-morrison",
+   "path": "/instructors/jenean-morrison",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jennifer-mercede",
+   "path": "/instructors/jennifer-mercede",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jennifer-orkin-lewis",
+   "path": "/instructors/jennifer-orkin-lewis",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jennifer-perkins",
+   "path": "/instructors/jennifer-perkins",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jennifer-sbranti",
+   "path": "/instructors/jennifer-sbranti",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jenny-doh",
+   "path": "/instructors/jenny-doh",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jess-park",
+   "path": "/instructors/jess-park",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jessie-jennings-of-plaid-crafts",
+   "path": "/instructors/jessie-jennings-of-plaid-crafts",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jody-alexander",
+   "path": "/instructors/jody-alexander",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-jon-stich",
+   "path": "/instructors/jon-stich",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-joy-macdonell",
+   "path": "/instructors/joy-macdonell",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-joy-ting",
+   "path": "/instructors/joy-ting",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-kaffe-fassett",
+   "path": "/instructors/kaffe-fassett",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-karen-solomon",
+   "path": "/instructors/karen-solomon",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-kata-golda",
+   "path": "/instructors/kata-golda",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-katharine-watson",
+   "path": "/instructors/katharine-watson",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-kathy-doughty",
+   "path": "/instructors/kathy-doughty",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-katia-ferris",
+   "path": "/instructors/katia-ferris",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-katrina-wheeler-3",
+   "path": "/instructors/katrina-wheeler-3",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-keaton-quilts",
+   "path": "/instructors/keaton-quilts",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-kelly-wilkinson",
+   "path": "/instructors/kelly-wilkinson",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-kesley-anderson",
+   "path": "/instructors/kesley-anderson",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-kristin-nicholas",
+   "path": "/instructors/kristin-nicholas",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-kristy-rice",
+   "path": "/instructors/kristy-rice",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-kyra-balentine",
+   "path": "/instructors/kyra-balentine",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lana-williams",
+   "path": "/instructors/lana-williams",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lauren-from-lark-rising-embroidery",
+   "path": "/instructors/lauren-from-lark-rising-embroidery",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lauren-hooper",
+   "path": "/instructors/lauren-hooper",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lauren-marcinek",
+   "path": "/instructors/lauren-marcinek",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lesley-ware",
+   "path": "/instructors/lesley-ware",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-leslie-schucker",
+   "path": "/instructors/leslie-schucker",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lia-griffith",
+   "path": "/instructors/lia-griffith",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-liana-allday",
+   "path": "/instructors/liana-allday",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-libby-from-hero-arts",
+   "path": "/instructors/libby-from-hero-arts",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-liesl-gibson",
+   "path": "/instructors/liesl-gibson",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lilla-rogers",
+   "path": "/instructors/lilla-rogers",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lily-sol",
+   "path": "/instructors/lily-sol",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-linda-fahey",
+   "path": "/instructors/linda-fahey",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lindsay-stripling",
+   "path": "/instructors/lindsay-stripling",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lisa-congdon",
+   "path": "/instructors/lisa-congdon",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lisa-coris",
+   "path": "/instructors/lisa-coris",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lisa-solomon",
+   "path": "/instructors/lisa-solomon",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-livia-cetti",
+   "path": "/instructors/livia-cetti",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-liz-smith",
+   "path": "/instructors/liz-smith",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-liza-laird",
+   "path": "/instructors/liza-laird",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-liza-lucy",
+   "path": "/instructors/liza-lucy",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lorene-edwards-forkner",
+   "path": "/instructors/lorene-edwards-forkner",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lynne-barr",
+   "path": "/instructors/lynne-barr",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-madalynne-intimates",
+   "path": "/instructors/madalynne-intimates",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-maggie-pace",
+   "path": "/instructors/maggie-pace",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-maria-carluccio",
+   "path": "/instructors/maria-carluccio",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-mariko-jesse",
+   "path": "/instructors/mariko-jesse",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-marisa-lynch",
+   "path": "/instructors/marisa-lynch",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-mark-tilling",
+   "path": "/instructors/mark-tilling",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-marly-bird",
+   "path": "/instructors/marly-bird",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-maya-donenfeld",
+   "path": "/instructors/maya-donenfeld",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-maybelle-imasa-stukuls",
+   "path": "/instructors/maybelle-imasa-stukuls",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-megan-kreiner",
+   "path": "/instructors/megan-kreiner",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-melanie-falick",
+   "path": "/instructors/melanie-falick",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-melanie-schow",
+   "path": "/instructors/melanie-schow",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-melissa-lang-lytle",
+   "path": "/instructors/melissa-lang-lytle",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-mercedez-rex",
+   "path": "/instructors/mercedez-rex",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-mia-semingson",
+   "path": "/instructors/mia-semingson",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-michaela-yee",
+   "path": "/instructors/michaela-yee",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-michele-muska",
+   "path": "/instructors/michele-muska",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-mimi-shim",
+   "path": "/instructors/mimi-shim",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-missy-dunaway",
+   "path": "/instructors/missy-dunaway",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-molly-hatch",
+   "path": "/instructors/molly-hatch",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-mou-saha",
+   "path": "/instructors/mou-saha",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-natalie-ebaugh",
+   "path": "/instructors/natalie-ebaugh",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-natalie-malan",
+   "path": "/instructors/natalie-malan",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-niasia-pinnock-1",
+   "path": "/instructors/niasia-pinnock-1",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-nicole-blum",
+   "path": "/instructors/nicole-blum",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-nicole-mallalieu",
+   "path": "/instructors/nicole-mallalieu",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-nikki-furlong",
+   "path": "/instructors/nikki-furlong",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-norah-gaughan",
+   "path": "/instructors/norah-gaughan",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-pam-and-jennifer",
+   "path": "/instructors/pam-and-jennifer",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-pam-garrison",
+   "path": "/instructors/pam-garrison",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-papa-llama",
+   "path": "/instructors/papa-llama",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-rad-megan",
+   "path": "/instructors/rad-megan",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-rae-hoekstra",
+   "path": "/instructors/rae-hoekstra",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-rebecca-ringquist",
+   "path": "/instructors/rebecca-ringquist",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-sanae-ishida",
+   "path": "/instructors/sanae-ishida",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-sarah-bond-2",
+   "path": "/instructors/sarah-bond-2",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-sarah-matthews",
+   "path": "/instructors/sarah-matthews",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-sasha-prood",
+   "path": "/instructors/sasha-prood",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-satgmailcom-10429",
+   "path": "/instructors/satgmailcom-10429",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-sew-it-all",
+   "path": "/instructors/sew-it-all",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-sewdaily",
+   "path": "/instructors/sewdaily",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-shana-astrachan",
+   "path": "/instructors/shana-astrachan",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-sharon-virtue",
+   "path": "/instructors/sharon-virtue",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-sherri-lynn-wood",
+   "path": "/instructors/sherri-lynn-wood",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-sonya-philip",
+   "path": "/instructors/sonya-philip",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-studio-choo",
+   "path": "/instructors/studio-choo",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-sue-nickels",
+   "path": "/instructors/sue-nickels",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-susan-beal",
+   "path": "/instructors/susan-beal",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-suzy-ultman",
+   "path": "/instructors/suzy-ultman",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-tabitha-sewer",
+   "path": "/instructors/tabitha-sewer",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-tara-faughnan",
+   "path": "/instructors/tara-faughnan",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-taylor-watson",
+   "path": "/instructors/taylor-watson",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-thayer-allyson-gowdy",
+   "path": "/instructors/thayer-allyson-gowdy",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-the-team-at-creativebug",
+   "path": "/instructors/the-team-at-creativebug",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-tian-connaughton",
+   "path": "/instructors/tian-connaughton",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-tracey-renee-hubbard",
+   "path": "/instructors/tracey-renee-hubbard",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-treasure-mallory",
+   "path": "/instructors/treasure-mallory",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-twinkie-chan",
+   "path": "/instructors/twinkie-chan",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-vatyarnyaycom",
+   "path": "/instructors/vatyarnyaycom",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-vincent-green-hite",
+   "path": "/instructors/vincent-green-hite",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-wendy-bernard",
+   "path": "/instructors/wendy-bernard",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-wilton-instructors",
+   "path": "/instructors/wilton-instructors",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-wool-and-the-gang",
+   "path": "/instructors/wool-and-the-gang",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-yao-cheng",
+   "path": "/instructors/yao-cheng",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys",
+   "path": "/learning-journeys",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-learn-to-embroider---journey-",
+   "path": "/learning-journeys/learn-to-embroider---journey-",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "libraries",
+   "path": "/libraries",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "lives",
+   "path": "/lives",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "myclasses-library",
+   "path": "/myclasses/library",
+   "kind": "account",
+   "auth_state": "authenticated"
+  },
+  {
+   "id": "myclasses-recent",
+   "path": "/myclasses/recent",
+   "kind": "account",
+   "auth_state": "authenticated"
+  },
+  {
+   "id": "patterns",
+   "path": "/patterns",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-paper",
+   "path": "/patterns/category/paper",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-quilting",
+   "path": "/patterns/category/quilting",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-recipes",
+   "path": "/patterns/category/recipes",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-sewing",
+   "path": "/patterns/category/sewing",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-diy-stickers",
+   "path": "/patterns/diy-stickers",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-pride-posters-painted-by-courtney-cerruti-and-michael-mcconnell-1",
+   "path": "/patterns/pride-posters-painted-by-courtney-cerruti-and-michael-mcconnell-1",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-printable-menu",
+   "path": "/patterns/printable-menu",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-sew-a-cat-storage-basket",
+   "path": "/patterns/sew-a-cat-storage-basket",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-sewn-easter-eggs",
+   "path": "/patterns/sewn-easter-eggs",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "profilefeed",
+   "path": "/profilefeed",
+   "kind": "account",
+   "auth_state": "authenticated"
+  },
+  {
+   "id": "rewards",
+   "path": "/rewards",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "schools",
+   "path": "/schools",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-accessibility-statement",
+   "path": "/site/accessibility-statement",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-ambassador",
+   "path": "/site/ambassador",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-artist-form",
+   "path": "/site/artist-form",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-california-privacy-policy",
+   "path": "/site/california-privacy-policy",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-community-guidelines",
+   "path": "/site/community-guidelines",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-contact",
+   "path": "/site/contact",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-contact-form",
+   "path": "/site/contact-form",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-jobs",
+   "path": "/site/jobs",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-meet-creativebug-team",
+   "path": "/site/meet-creativebug-team",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-privacy-policy",
+   "path": "/site/privacy-policy",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-rss",
+   "path": "/site/rss",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-terms",
+   "path": "/site/terms",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "subscribe-create-account",
+   "path": "/subscribe/create-account",
+   "kind": "auth",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "account-rewards",
+   "path": "/account/rewards",
+   "kind": "account",
+   "auth_state": "authenticated"
+  },
+  {
+   "id": "blog",
+   "path": "/blog",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-art-and-design-search",
+   "path": "/classes/art-and-design/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-crochet",
+   "path": "/classes/crochet",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-food-and-home-search",
+   "path": "/classes/food-and-home/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-holiday-and-party-search",
+   "path": "/classes/holiday-and-party/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-jewelry-search",
+   "path": "/classes/jewelry/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids",
+   "path": "/classes/kids",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-kids-and-teens-search",
+   "path": "/classes/kids-and-teens/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-knitting",
+   "path": "/classes/knitting",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-needlework-search",
+   "path": "/classes/needlework/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-paper-search",
+   "path": "/classes/paper/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-quilting-search",
+   "path": "/classes/quilting/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-search",
+   "path": "/classes/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-sewing-search",
+   "path": "/classes/sewing/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-yarn-crafts-search",
+   "path": "/classes/yarn-crafts/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-Autumn Holiday PG 2026",
+   "path": "/classseries/Autumn Holiday PG 2026",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-Black History",
+   "path": "/classseries/Black History",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-Unearth a Story",
+   "path": "/classseries/Unearth a Story",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-adventure-begins-at-your-library-",
+   "path": "/classseries/adventure-begins-at-your-library-",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-beginning-calligraphy",
+   "path": "/classseries/beginning-calligraphy",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-budget-friendly-projects",
+   "path": "/classseries/budget-friendly-projects",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-carousel",
+   "path": "/classseries/carousel",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-color-our-world",
+   "path": "/classseries/color-our-world",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-crafting-in-spring",
+   "path": "/classseries/crafting-in-spring",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-cricut-learning-journey",
+   "path": "/classseries/cricut-learning-journey",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-crochet-101-journey",
+   "path": "/classseries/crochet-101-journey",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-crochet-home-decor",
+   "path": "/classseries/crochet-home-decor",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-crocheted-accessories",
+   "path": "/classseries/crocheted-accessories",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-eat-your-fruits-veggies-crochet-along-eat-your-fruits--veggies-crochet-along-part-8-tomato",
+   "path": "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-8-tomato",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-for-teens",
+   "path": "/classseries/for-teens",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-garment-sewing-journey",
+   "path": "/classseries/garment-sewing-journey",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-garment-sewing-techniques",
+   "path": "/classseries/garment-sewing-techniques",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-hand-sewing-journey-",
+   "path": "/classseries/hand-sewing-journey-",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-home-sewing",
+   "path": "/classseries/home-sewing",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-how-to-appliqu-",
+   "path": "/classseries/how-to-appliqu-",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-in-the-garden",
+   "path": "/classseries/in-the-garden",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-iread summer 2026",
+   "path": "/classseries/iread summer 2026",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-iread%20summer%202026",
+   "path": "/classseries/iread%20summer%202026",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-kids-camp---a-summer-journey-of-crafting",
+   "path": "/classseries/kids-camp---a-summer-journey-of-crafting",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-learn-the-art-of-bookmaking",
+   "path": "/classseries/learn-the-art-of-bookmaking",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-learn-to-draw---journey-",
+   "path": "/classseries/learn-to-draw---journey-",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-learn-to-embroider---journey-",
+   "path": "/classseries/learn-to-embroider---journey-",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-learn-to-knit-journey-",
+   "path": "/classseries/learn-to-knit-journey-",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-level-up-at-your-library-",
+   "path": "/classseries/level-up-at-your-library-",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-embroidered-handwritten-label",
+   "path": "/classseries/new-releases--lookbook/embroidered-handwritten-label",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-paper-folding-",
+   "path": "/classseries/paper-folding-",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-patchwork-learning-journey",
+   "path": "/classseries/patchwork-learning-journey",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-projects-for-mental-health",
+   "path": "/classseries/projects-for-mental-health",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-quilting-101-journey",
+   "path": "/classseries/quilting-101-journey",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-read-renew-repeat",
+   "path": "/classseries/read-renew-repeat",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-drawing-portraits-in-ballpoint-pen",
+   "path": "/classseries/single/drawing-portraits-in-ballpoint-pen",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-magpie-sketchbook-a-month-of-play",
+   "path": "/classseries/single/magpie-sketchbook-a-month-of-play",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-mixtape-back-to-school",
+   "path": "/classseries/single/mixtape-back-to-school",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-perler-bead-basics-5-30-19",
+   "path": "/classseries/single/perler-bead-basics-5-30-19",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-schoolhouse-sampler-a-daily-embroidery-practice",
+   "path": "/classseries/single/schoolhouse-sampler-a-daily-embroidery-practice",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-sew-the-ella-blouse",
+   "path": "/classseries/single/sew-the-ella-blouse",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-single-upcycled-demin-side-seam-remix",
+   "path": "/classseries/single/upcycled-demin-side-seam-remix",
+   "kind": "class-detail",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-stash-busting-craft-projects",
+   "path": "/classseries/stash-busting-craft-projects",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-upcycled-projects",
+   "path": "/classseries/upcycled-projects",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-hello-lucky",
+   "path": "/instructors/hello-lucky",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-natalie-chanin",
+   "path": "/instructors/natalie-chanin",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-stephanie-fleming",
+   "path": "/instructors/stephanie-fleming",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-cricut-learning-journey",
+   "path": "/learning-journeys/cricut-learning-journey",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-crochet-101-journey",
+   "path": "/learning-journeys/crochet-101-journey",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-crochet-home-decor",
+   "path": "/learning-journeys/crochet-home-decor",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-crocheted-accessories",
+   "path": "/learning-journeys/crocheted-accessories",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-garment-sewing-journey",
+   "path": "/learning-journeys/garment-sewing-journey",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-garment-sewing-techniques",
+   "path": "/learning-journeys/garment-sewing-techniques",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-hand-sewing-journey-",
+   "path": "/learning-journeys/hand-sewing-journey-",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-home-sewing",
+   "path": "/learning-journeys/home-sewing",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-how-to-appliqu-",
+   "path": "/learning-journeys/how-to-appliqu-",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-kids-camp---a-summer-journey-of-crafting",
+   "path": "/learning-journeys/kids-camp---a-summer-journey-of-crafting",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-learn-the-art-of-bookmaking",
+   "path": "/learning-journeys/learn-the-art-of-bookmaking",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-learn-to-draw---journey-",
+   "path": "/learning-journeys/learn-to-draw---journey-",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-learn-to-knit-journey-",
+   "path": "/learning-journeys/learn-to-knit-journey-",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-paper-folding-",
+   "path": "/learning-journeys/paper-folding-",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-patchwork-learning-journey",
+   "path": "/learning-journeys/patchwork-learning-journey",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-quilting-101-journey",
+   "path": "/learning-journeys/quilting-101-journey",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-the-mending-collection",
+   "path": "/learning-journeys/the-mending-collection",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-100-day-project-tracker",
+   "path": "/patterns/100-day-project-tracker",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-2024-calendar",
+   "path": "/patterns/2024-calendar",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-3d-paper-bento-box",
+   "path": "/patterns/3d-paper-bento-box",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-abominable-snowman",
+   "path": "/patterns/abominable-snowman",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-all-day-beret",
+   "path": "/patterns/all-day-beret",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-all-together-now",
+   "path": "/patterns/all-together-now",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-amigurumi-pencil",
+   "path": "/patterns/amigurumi-pencil",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-amigurumi-potted-cactus",
+   "path": "/patterns/amigurumi-potted-cactus",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-amigurumi-rocketship",
+   "path": "/patterns/amigurumi-rocketship",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-amigurumi-shooting-star",
+   "path": "/patterns/amigurumi-shooting-star",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-amigurumi-turtle",
+   "path": "/patterns/amigurumi-turtle",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-ara-vest",
+   "path": "/patterns/ara-vest",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-all",
+   "path": "/patterns/category/all",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-coloring-pages",
+   "path": "/patterns/category/coloring-pages",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-crochet",
+   "path": "/patterns/category/crochet",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-knitting",
+   "path": "/patterns/category/knitting",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-magazine-archive",
+   "path": "/patterns/category/magazine-archive",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-makeable",
+   "path": "/patterns/category/makeable",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-needlework",
+   "path": "/patterns/category/needlework",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-category-svgs",
+   "path": "/patterns/category/svgs",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-disability-awareness",
+   "path": "/patterns/disability-awareness",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-lacy-crochet-bandana",
+   "path": "/patterns/lacy-crochet-bandana",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-library-appreciation-coloring-page",
+   "path": "/patterns/library-appreciation-coloring-page",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-make-a-fabric-book-cover",
+   "path": "/patterns/make-a-fabric-book-cover",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-rosie-lee-tompkins-quilt-coloring-page",
+   "path": "/patterns/rosie-lee-tompkins-quilt-coloring-page",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-sew-a-childs-bucket-hat",
+   "path": "/patterns/sew-a-childs-bucket-hat",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-sew-a-childs-spandex-skirt",
+   "path": "/patterns/sew-a-childs-spandex-skirt",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-sew-a-shirred-dress",
+   "path": "/patterns/sew-a-shirred-dress",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "patterns-yoyoi-kusama-coloring-page",
+   "path": "/patterns/yoyoi-kusama-coloring-page",
+   "kind": "pattern",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classes-knitting-search",
+   "path": "/classes/knitting/search",
+   "kind": "list",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-beginning-calligraphy-beginning-calligraphy-getting-started-part-01",
+   "path": "/classseries/beginning-calligraphy/beginning-calligraphy-getting-started-part-01",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-beginning-calligraphy-beginning-calligraphy-letters-words-and-phrases-part-02",
+   "path": "/classseries/beginning-calligraphy/beginning-calligraphy-letters-words-and-phrases-part-02",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-beginning-calligraphy-beginning-calligraphy-white-ink-on-black-paper-part-03",
+   "path": "/classseries/beginning-calligraphy/beginning-calligraphy-white-ink-on-black-paper-part-03",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-beginning-calligraphy-putting-it-all-together-part-04",
+   "path": "/classseries/beginning-calligraphy/putting-it-all-together-part-04",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-diy-wedding-handmade-soap",
+   "path": "/classseries/diy-wedding/handmade-soap",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-eat-your-fruits-veggies-crochet-along-eat-your-fruits--veggies-crochet-along-part-1-strawberries-and-blueberries",
+   "path": "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-1-strawberries-and-blueberries",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-eat-your-fruits-veggies-crochet-along-eat-your-fruits--veggies-crochet-along-part-2-potato",
+   "path": "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-2-potato",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-eat-your-fruits-veggies-crochet-along-eat-your-fruits--veggies-crochet-along-part-3-radish",
+   "path": "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-3-radish",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-eat-your-fruits-veggies-crochet-along-eat-your-fruits--veggies-crochet-along-part-4-apple",
+   "path": "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-4-apple",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-eat-your-fruits-veggies-crochet-along-eat-your-fruits--veggies-crochet-along-part-5-eggplant",
+   "path": "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-5-eggplant",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-eat-your-fruits-veggies-crochet-along-eat-your-fruits--veggies-crochet-along-part-6-watermelon",
+   "path": "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-6-watermelon",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-eat-your-fruits-veggies-crochet-along-eat-your-fruits--veggies-crochet-along-part-7-broccoli",
+   "path": "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-7-broccoli",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-eat-your-fruits-veggies-crochet-along-eat-your-fruits--veggies-crochet-along-part-9-pineapple",
+   "path": "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-9-pineapple",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-let-your-faux-garden-grow-traditional-applique",
+   "path": "/classseries/let-your-faux-garden-grow/traditional-applique",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-natural-fabric-dyeing-natural-fabric-dyeing-how-to-dye-cotton-and-other-cellulose-fibers",
+   "path": "/classseries/natural-fabric-dyeing/natural-fabric-dyeing-how-to-dye-cotton-and-other-cellulose-fibers",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-draft-and-sew-a-pair-of-leggings",
+   "path": "/classseries/new-releases--lookbook/draft-and-sew-a-pair-of-leggings",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-drawing-disrupted-15-experiments",
+   "path": "/classseries/new-releases--lookbook/drawing-disrupted-15-experiments",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-exquisite-corpse-embroidery",
+   "path": "/classseries/new-releases--lookbook/exquisite-corpse-embroidery",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-find-your-creative-rhythm-15-ways-to-spark-and-sustain-art-making",
+   "path": "/classseries/new-releases--lookbook/find-your-creative-rhythm-15-ways-to-spark-and-sustain-art-making",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-finger-knitting-1",
+   "path": "/classseries/new-releases--lookbook/finger-knitting-1",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-holiday-art-journaling",
+   "path": "/classseries/new-releases--lookbook/holiday-art-journaling",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-how-to-batch-cut-half-square-triangles",
+   "path": "/classseries/new-releases--lookbook/how-to-batch-cut-half-square-triangles",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-join-as-you-go-method-for-granny-squares",
+   "path": "/classseries/new-releases--lookbook/join-as-you-go-method-for-granny-squares",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-jump-for-joy-articulated-paper-toy",
+   "path": "/classseries/new-releases--lookbook/jump-for-joy-articulated-paper-toy",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-junk-journaling-daily-practice",
+   "path": "/classseries/new-releases--lookbook/junk-journaling-daily-practice",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-kids-knitting-i-cord-and-garter-stitch-bugs",
+   "path": "/classseries/new-releases--lookbook/kids-knitting-i-cord-and-garter-stitch-bugs",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-make-a-paper-fortune-teller",
+   "path": "/classseries/new-releases--lookbook/make-a-paper-fortune-teller",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-make-a-quilt-block-sweatshirt",
+   "path": "/classseries/new-releases--lookbook/make-a-quilt-block-sweatshirt",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-make-a-screw-post-notepad",
+   "path": "/classseries/new-releases--lookbook/make-a-screw-post-notepad",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-make-a-victorian-puzzle-purse",
+   "path": "/classseries/new-releases--lookbook/make-a-victorian-puzzle-purse",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-make-a-wish-paper-house",
+   "path": "/classseries/new-releases--lookbook/make-a-wish-paper-house",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-make-an-upcycled-flower-press",
+   "path": "/classseries/new-releases--lookbook/make-an-upcycled-flower-press",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-make-homemade-butter",
+   "path": "/classseries/new-releases--lookbook/make-homemade-butter",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-make-leather-napkin-rings",
+   "path": "/classseries/new-releases--lookbook/make-leather-napkin-rings",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-make-prize-filled-party-crackers",
+   "path": "/classseries/new-releases--lookbook/make-prize-filled-party-crackers",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-mixtape-7-ways-to-paint-and-draw-birds",
+   "path": "/classseries/new-releases--lookbook/mixtape-7-ways-to-paint-and-draw-birds",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-mixtape-a-wellness-mindset",
+   "path": "/classseries/new-releases--lookbook/mixtape-a-wellness-mindset",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-mixtape-april-showers",
+   "path": "/classseries/new-releases--lookbook/mixtape-april-showers",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-mixtape-breakfast",
+   "path": "/classseries/new-releases--lookbook/mixtape-breakfast",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-mixtape-cats-five-ways",
+   "path": "/classseries/new-releases--lookbook/mixtape-cats-five-ways",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-mixtape-feast",
+   "path": "/classseries/new-releases--lookbook/mixtape-feast",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-mixtape-swatch",
+   "path": "/classseries/new-releases--lookbook/mixtape-swatch",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-mixtape-the-night-before-christmas",
+   "path": "/classseries/new-releases--lookbook/mixtape-the-night-before-christmas",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-origami-safari-a-daily-practice",
+   "path": "/classseries/new-releases--lookbook/origami-safari-a-daily-practice",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-overmarbling-on-paper",
+   "path": "/classseries/new-releases--lookbook/overmarbling-on-paper",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-paper-house-lanterns",
+   "path": "/classseries/new-releases--lookbook/paper-house-lanterns",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-rag-doll-hairstyles-short-and-long",
+   "path": "/classseries/new-releases--lookbook/rag-doll-hairstyles-short-and-long",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-sew-a-14-inch-rag-doll",
+   "path": "/classseries/new-releases--lookbook/sew-a-14-inch-rag-doll",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-sew-a-paint-brush-and-pencil-roll",
+   "path": "/classseries/new-releases--lookbook/sew-a-paint-brush-and-pencil-roll",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-sew-a-pair-of-mice-dolls",
+   "path": "/classseries/new-releases--lookbook/sew-a-pair-of-mice-dolls",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-sew-a-wardrobe-for-a-14-inch-rag-doll",
+   "path": "/classseries/new-releases--lookbook/sew-a-wardrobe-for-a-14-inch-rag-doll",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-sew-as-you-go-coasters",
+   "path": "/classseries/new-releases--lookbook/sew-as-you-go-coasters",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-sew-reusable-bowl-covers",
+   "path": "/classseries/new-releases--lookbook/sew-reusable-bowl-covers",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-surface-design-on-ceramics",
+   "path": "/classseries/new-releases--lookbook/surface-design-on-ceramics",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-upcycled-denim-spinning-wheel-quilt",
+   "path": "/classseries/new-releases--lookbook/upcycled-denim-spinning-wheel-quilt",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-use-your-voice-carve-and-print-a-poster",
+   "path": "/classseries/new-releases--lookbook/use-your-voice-carve-and-print-a-poster",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-wearable-wins-a-daily-practice-of-accomplishments",
+   "path": "/classseries/new-releases--lookbook/wearable-wins-a-daily-practice-of-accomplishments",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-wool-felting-make-an-heirloom-celebration-crown",
+   "path": "/classseries/new-releases--lookbook/wool-felting-make-an-heirloom-celebration-crown",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-new-releases--lookbook-yoga-of-yarn-brioche-knit-meditation-mat",
+   "path": "/classseries/new-releases--lookbook/yoga-of-yarn-brioche-knit-meditation-mat",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-ocean-of-possibilities-fabric-fishing-game",
+   "path": "/classseries/ocean-of-possibilities/fabric-fishing-game",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-read-renew-repeat-macrame-plant-hanger",
+   "path": "/classseries/read-renew-repeat/macrame-plant-hanger",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-stash-busting-craft-projects-yarn-scrap-earrings-2",
+   "path": "/classseries/stash-busting-craft-projects/yarn-scrap-earrings-2",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-super-speedy-classes-the-physics-of-sewing",
+   "path": "/classseries/super-speedy-classes/the-physics-of-sewing",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "classseries-what-were-sewing-this-fall-reverse-applique-runner",
+   "path": "/classseries/what-were-sewing-this-fall/reverse-applique-runner",
+   "kind": "class-series",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "crafting-for-kids",
+   "path": "/crafting-for-kids",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-cathy-callahan",
+   "path": "/instructors/cathy-callahan",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-creativebug-slow-tv",
+   "path": "/instructors/creativebug-slow-tv",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-kay-wolfersperger",
+   "path": "/instructors/kay-wolfersperger",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "instructors-lindsey-stone",
+   "path": "/instructors/lindsey-stone",
+   "kind": "instructor",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "kids-art-camp",
+   "path": "/kids-art-camp",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "learning-journeys-patchwork-learning-journey-ratings",
+   "path": "/learning-journeys/patchwork-learning-journey/ratings",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-privacy-policy-enterprise",
+   "path": "/site/privacy-policy-enterprise",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-sms-terms",
+   "path": "/site/sms-terms",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "site-terms_users_enterprise",
+   "path": "/site/terms_users_enterprise",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "clone-boundary",
+   "path": "/_clone/out-of-scope",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "clone-not-found",
+   "path": "/_clone/not-found",
+   "kind": "static",
+   "auth_state": "anonymous"
+  },
+  {
+   "id": "clone-home-authenticated",
+   "path": "/_clone/home-authenticated",
+   "kind": "home",
+   "auth_state": "authenticated"
+  }
+ ]
+}

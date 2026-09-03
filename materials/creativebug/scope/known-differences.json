@@ -1,0 +1,145 @@
+{
+  "schema_version": "offline-clone.known-differences.v1",
+  "status": "draft",
+  "site_id": "creativebug",
+  "known_differences": [
+    {
+      "id": "third_party_member_pages_excluded",
+      "statement": "Source /members/<slug> and /profile/<slug> pages belong to real third-party users and their slugs derive from personal email addresses. They are not captured. The clone implements the community and gallery surfaces in full, seeded with generated fictional users.",
+      "reason": "Private personal data must never be persisted (AGENTS.md / source-evidence-access-policy.md). No supplied trace requires a stranger's profile page.",
+      "guarded_by": "clone/tests/test_known_differences.py::test_member_profile_links_reach_boundary"
+    },
+    {
+      "id": "rss_feeds_excluded",
+      "statement": "Source /rss/*.rss feeds are not captured as pages.",
+      "reason": "Feeds are syndication artifacts, not routes in the declared scope.",
+      "guarded_by": "clone/tests/test_known_differences.py::test_rss_links_reach_boundary"
+    },
+    {
+      "id": "third_party_oauth_excluded",
+      "statement": "/facebook/signin and equivalent identity-provider hand-offs leave the source origin and are not captured. The clone renders the provider buttons and routes them to a declared boundary.",
+      "reason": "Out of configured origin scope.",
+      "guarded_by": "clone/tests/test_known_differences.py::test_identity_provider_buttons_reach_boundary"
+    },
+    {
+      "id": "video_content_not_reproduced",
+      "statement": "Class video streams, manifests and subtitle tracks are not downloaded. The player is a layout-equivalent placeholder; poster frames and thumbnails are reproduced.",
+      "reason": "User ruling 2026-08-28 (口径 7).",
+      "guarded_by": "clone/tests/test_known_differences.py::test_player_is_placeholder"
+    },
+    {
+      "id": "class_detail_truncated_at_12_per_subcategory",
+      "statement": "Each subcategory list renders every source card. Only the first 12 classes per subcategory were captured, so cards beyond that link to a DIFFERENT reproduced class detail page instead of the source's own target: the substitute prefers a related pool when one is available (the page's own subcategory, then its category, then a slug match) and otherwise falls back to the site-wide pool; it is keyed by CRC32 of the original path so every build resolves identically. It does NOT guarantee the destination is topically related to the link text: measured across 60 subcategory pages, 24% land in the same subcategory, 32% in the same category, 43% in a different category. Consequence: the link text names class X while the destination is reproduced class Y. Measured: 0 boundary links and 0 dead links across subcategory lists (40-page sample, 1853 links). 457 unique class detail pages reproduced out of 1359 discovered.",
+      "reason": "User rulings 2026-08-28 (口径 9, N=12) and 2026-08-29 (「除非你能再补齐有卡片但是显示 404 的页面，不然就采用我这个」: keep the substitution rather than sending truncated cards to a dead-end boundary page). User ruling 2026-08-30: the goal is that every card leads somewhere real, not that it leads somewhere topically similar — the source's own recommendations are not same-category either.",
+      "guarded_by": "clone/tests/test_catalog.py::test_subcategory_cards_have_no_dead_links, clone/tests/test_catalog.py::test_subcategory_cards_reach_reproduced_detail_pages, clone/tests/test_catalog.py::test_substitution_is_deterministic"
+    },
+    {
+      "id": "source_soft_404_returns_200",
+      "statement": "The source returns HTTP 200 with a branded not-found body for unknown routes. The clone returns a real 404 with the same branded body so the not-found checkpoint stays distinguishable from the truncation boundary page.",
+      "reason": "Trace checkpoint requires a distinguishable not-found.",
+      "guarded_by": "clone/tests/test_catalog.py::test_boundary_page_is_distinct_from_not_found"
+    },
+    {
+      "id": "third_party_trackers_removed",
+      "statement": "Source analytics and tracking pixels are removed at build time to satisfy runtime_remote_requests: forbidden.",
+      "reason": "Offline closure invariant.",
+      "guarded_by": "clone/tests/test_offline.py::test_no_third_party_host_in_built_pages"
+    },
+    {
+      "id": "class_transcripts_not_reproduced",
+      "statement": "Source /transcript/pdf/<id> endpoints serve class transcript PDFs (153 discovered). They are not downloaded; links resolve to the out-of-scope boundary page.",
+      "reason": "Transcripts are the paid instructional content in text form; excluding them follows the same ruling as video (口径 7). They are also file downloads, not routes.",
+      "guarded_by": "clone/tests/test_known_differences.py::test_transcript_links_reach_boundary"
+    },
+    {
+      "id": "pattern_detail_truncated_at_12",
+      "statement": "321 pattern detail pages were discovered; 38 are reproduced. The patterns index renders every source card and all of its pattern links resolve to reproduced pages (measured: 11 unique links, 0 boundary, 0 dead).",
+      "reason": "User ruling 2026-08-28 (截断).",
+      "guarded_by": "clone/tests/test_catalog.py::test_pattern_cards_have_no_dead_links, clone/tests/test_catalog.py::test_reproduced_pattern_detail_pages_exist"
+    },
+    {
+      "id": "source_blog_returns_403",
+      "statement": "The source /blog path returns HTTP 403; the captured artifact is an error page, not content. It is not reproduced as a page and links route to the out-of-scope boundary.",
+      "reason": "Source-side restriction, not a clone gap.",
+      "guarded_by": "clone/tests/test_known_differences.py::test_blog_links_reach_boundary"
+    },
+    {
+      "id": "source_unencoded_hrefs",
+      "statement": "9 source hrefs contain unencoded spaces (collection names). The pages are captured and shipped, and the builder percent-encodes the hrefs. Until 2026-08-30 three of them still answered 404: ROUTES keys come from directory names and contain real spaces, while the server looked up the raw urlparse path, which keeps '%20'. The server now unquotes the path before lookup, and all of these routes answer 200.",
+      "reason": "Defect in the source markup. Correcting the encoding preserves real pages rather than discarding them.",
+      "guarded_by": "clone/tests/test_known_differences.py::test_unencoded_space_routes_actually_resolve"
+    },
+    {
+      "id": "five_served_files_not_declared_as_assets",
+      "statement": "Five files are served from clone/static/assets/ but are not declared in source-assets/manifest.json: cbugfavicon.ico plus four legacy SVG *font* files (glyphicons-halflings-regular.svg, icomoon-cb.svg, video2.svg, cooper-hewitt-light.svg). gen_manifest.py declares pixel dimensions for every asset and drops entries whose dimensions cannot be determined; an .ico and SVG font files have no meaningful raster dimensions. The clone must still serve them because the source CSS references them in @font-face src lists. Counts: manifest 11803 declared, 11808 files on disk, difference exactly these 5, and zero declared-but-missing files.",
+      "reason": "Dimension extraction is not applicable to .ico and SVG fonts. Declaring them without dimensions would break the asset-closure check that compares declared vs observed bytes and dimensions.",
+      "guarded_by": "clone/tests/test_known_differences.py::test_undeclared_served_files_are_exactly_five"
+    },
+    {
+      "id": "clone_authored_form_targets",
+      "statement": "Some source forms carry no action attribute and submit via source JavaScript, which is removed at build time. The clone assigns those forms an explicit endpoint per route (/trial/create-account and /subscribe/create-account both target /api/auth/register/start), and normalises Rails-style member[...] field names to the clone's API keys.",
+      "reason": "FAST-CLONE §4.5 behavioural equivalence: the source DOM is preserved and the action is supplied by the clone, rather than replacing the page with a generic authored login card (AUTH-FLOW step 5).",
+      "guarded_by": "clone/tests/test_known_differences.py::test_auth_forms_are_wired"
+    },
+    {
+      "id": "class_unit_count_is_one",
+      "statement": "Every class is seeded with unit_count = 1. The source loads its chapter list over AJAX and the static DOM carries no per-chapter data, so no real unit breakdown could be captured. The progress state machine supports N units; only the seed value is degenerate.",
+      "reason": "Source chapter data is not present in any captured artifact; inventing units would be fabrication.",
+      "guarded_by": "clone/tests/test_full_functionality.py::test_certificate_requires_completion"
+    },
+    {
+      "id": "search_language_and_schedule_filters_absent",
+      "statement": "Search supports level, topic/category, subcategory, instructor, duration range and minimum rating. The language and schedule filters named in the task traces have no corresponding facet in any captured source page.",
+      "reason": "No source evidence for those facets; declaring them would be an unsupported claim.",
+      "guarded_by": "clone/tests/test_full_functionality.py::test_search_filters_by_duration_and_rating"
+    },
+    {
+      "id": "quiz_grading_is_clone_authored",
+      "statement": "Quiz grading is clone-authored and deterministic (server-side, seeded from the class id). The source exposes no quiz payload in captured artifacts.",
+      "reason": "Trace 12 requires a quiz with feedback; no source answer key exists to reproduce.",
+      "guarded_by": "clone/tests/test_full_functionality.py::test_quiz_grades_server_side_and_records_attempt"
+    },
+    {
+      "id": "source_missing_images_return_soft_404",
+      "statement": "A small number of image URLs referenced by source pages do not exist on the source; it answers them with HTTP 200 and its branded not-found HTML rather than 404. Those responses are not shipped as assets and are not declared in the manifest, so the corresponding images are absent in the clone.",
+      "reason": "Same soft-404 behaviour recorded in source_soft_404_returns_200. Shipping an HTML body under a .jpg name would be a broken image plus a false asset declaration; inspect_asset (§7.1 step 1) rejects it by design.",
+      "guarded_by": "clone/tests/test_known_differences.py::test_no_html_shell_assets"
+    },
+    {
+      "id": "hero_video_absent_reveals_css_background",
+      "statement": "The source home page injects a hero video with JavaScript over a dark CSS background image. Clone JS is removed and video is not reproduced, so the clone renders the source's own dark background directly. Reference frames captured a light video frame, so home.loaded.desktop measures 0.6366 against them.",
+      "reason": "Direct consequence of 口径 7 (video not reproduced) plus FAST-CLONE §4.5 script removal. Deleting the background to raise the score would make the clone diverge from the source CSS in order to imitate content we deliberately do not reproduce.",
+      "guarded_by": "clone/tests/test_known_differences.py::test_hero_background_is_localized"
+    },
+    {
+      "id": "reference_frames_capture_dynamic_content",
+      "statement": "Reference frames are single point-in-time captures of a site whose home page, community feed and dashboards change between visits. Similarity against them measures both clone fidelity and source volatility; the two cannot be separated from the score alone.",
+      "reason": "Recorded so a low score is not read as clone defect without checking the band diagnosis.",
+      "guarded_by": "clone/tests/test_known_differences.py::test_visual_contracts_declare_threshold"
+    },
+    {
+      "id": "mobile_viewport_out_of_scope",
+      "statement": "Mobile viewports (414x896) are out of scope. Five mobile checkpoints were removed from the frozen contract on 2026-08-29: home.loaded.mobile, subcategory-list.loaded.mobile, class-detail.loaded.mobile, signup-entry.loaded.mobile, dashboard.loaded.mobile. The visual checkpoint set went from 26 to 21, all desktop (1440x900). The five captured mobile reference frames are retired, not deleted: scope/retired-mobile-evidence/. Three horizontal-overflow findings that only occurred at 414px width fall out of scope with them (home 422/414, signup-entry 416/414, subcategory-list 422/414). The clone still serves the same responsive markup as the source; only the verification surface narrowed.",
+      "reason": "User ruling 2026-08-29:「我们不做移动端」. This is a scope reduction, not a fix: removing the five checkpoints changed no pass/fail outcome — all five were already below the 0.94 threshold and none of the 10 passing checkpoints were mobile. Pass count stays 10; the denominator drops from 26 to 21.",
+      "guarded_by": "clone/tests/test_known_differences.py::test_no_mobile_checkpoints_remain"
+    },
+    {
+      "id": "bootstrap_widgets_are_clone_reimplemented",
+      "statement": "Source tab / collapse / dropdown controls are driven by bootstrap.js, which is removed with all source scripts (§4.5). The clone reimplements the three behaviours in clone-runtime.js against the shipped CSS contract (.collapse.in, .tab-content>.active, .open>.dropdown-menu). Popovers are not reimplemented; their data-content is copied into the native title attribute so the text is still reachable.",
+      "reason": "These controls carry no inline onclick, so removing bootstrap.js made them silently inert rather than erroring. Measured before the fix: 1,603 tab controls on 531 class pages left Chapters / Materials / Gallery / Annotations / Transcript unreachable, plus 19,186 collapse and 1,813 dropdown controls. Behaviour is reimplemented, not the library.",
+      "guarded_by": "clone/tests/test_inline_handlers_resolve.py::test_bootstrap_widgets_have_a_handler"
+    },
+    {
+      "id": "comment_and_note_actions_are_session_only",
+      "statement": "Class notes (newAnnotation), comment like / reply / edit, and the notification Clear All are reimplemented in clone-runtime.js as client-side behaviour. The clone exposes no server endpoint for them, so their effects do not survive a request. Clear All is kept across the source's own location.reload() via sessionStorage.",
+      "reason": "The source persists these server-side. Capturing another user's notes or comments is out of scope under the source-evidence access policy, and inventing a backend would fabricate state the source did not provide. Leaving the buttons inert was the worse option: they are visible, enabled controls.",
+      "guarded_by": "clone/tests/test_neutralization_and_session_only.py::test_session_only_features_are_implemented_not_inert"
+    },
+    {
+      "id": "neutralized_refs_use_blank_pixel",
+      "statement": "External resource references that cannot be shipped are neutralised to a 1x1 transparent GIF data: URI rather than about:blank.",
+      "reason": "about:blank is not an image URL: the browser still starts a load and fails with ERR_UNKNOWN_URL_SCHEME. Measured before the change: 3,662 such references over 1,007 pages, 2-3 console errors on every page, and 767 visible <img> rendering as broken icons (708 of them the Login with Amazon button). A data: URI is fetch-free and renders as nothing.",
+      "guarded_by": "clone/tests/test_neutralization_and_session_only.py::test_no_about_blank_in_shipped_pages"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "creativebug",
+  "note": "live 分区的站点知识。此前本文件缺失，引擎只能用默认方式启动克隆：沙箱把 clone/ 只读挂载，且只暴露 backend/ 与 scope/ 两棵契约树，data/ 既不可见也不可写，于是 app.py 以 'unable to open database file' 退出，live 分区始终 execution.complete=false。",
+  "boot": {
+    "cwd": "clone",
+    "env": {
+      "WEBSITEBENCH_SITE_BACKEND_DATABASE": "{data_dir}/creativebug.sqlite3"
+    }
+  },
+  "deferred": {
+    "myclasses": "受保护路由：服务端对匿名请求返回 401，这是不变量 protected_routes_require_session 的正确行为，不是缺陷。匿名诊断无法到达；这些路由的覆盖由会真实登录的 clone 自带测试（clone/tests/test_journeys.py、test_full_functionality.py）与浏览器审计（tools/ui_audit_auth.py）提供。诊断侧不预置账号 —— AUTH-FLOW §1 明确「预置账号…不能标记为 COMPLETE」。",
+    "myclasses-library": "受保护路由：服务端对匿名请求返回 401，这是不变量 protected_routes_require_session 的正确行为，不是缺陷。匿名诊断无法到达；这些路由的覆盖由会真实登录的 clone 自带测试（clone/tests/test_journeys.py、test_full_functionality.py）与浏览器审计（tools/ui_audit_auth.py）提供。诊断侧不预置账号 —— AUTH-FLOW §1 明确「预置账号…不能标记为 COMPLETE」。",
+    "myclasses-watchlist": "受保护路由：服务端对匿名请求返回 401，这是不变量 protected_routes_require_session 的正确行为，不是缺陷。匿名诊断无法到达；这些路由的覆盖由会真实登录的 clone 自带测试（clone/tests/test_journeys.py、test_full_functionality.py）与浏览器审计（tools/ui_audit_auth.py）提供。诊断侧不预置账号 —— AUTH-FLOW §1 明确「预置账号…不能标记为 COMPLETE」。",
+    "myclasses-recent": "受保护路由：服务端对匿名请求返回 401，这是不变量 protected_routes_require_session 的正确行为，不是缺陷。匿名诊断无法到达；这些路由的覆盖由会真实登录的 clone 自带测试（clone/tests/test_journeys.py、test_full_functionality.py）与浏览器审计（tools/ui_audit_auth.py）提供。诊断侧不预置账号 —— AUTH-FLOW §1 明确「预置账号…不能标记为 COMPLETE」。",
+    "account-profile": "受保护路由：服务端对匿名请求返回 401，这是不变量 protected_routes_require_session 的正确行为，不是缺陷。匿名诊断无法到达；这些路由的覆盖由会真实登录的 clone 自带测试（clone/tests/test_journeys.py、test_full_functionality.py）与浏览器审计（tools/ui_audit_auth.py）提供。诊断侧不预置账号 —— AUTH-FLOW §1 明确「预置账号…不能标记为 COMPLETE」。",
+    "account-rewards": "受保护路由：服务端对匿名请求返回 401，这是不变量 protected_routes_require_session 的正确行为，不是缺陷。匿名诊断无法到达；这些路由的覆盖由会真实登录的 clone 自带测试（clone/tests/test_journeys.py、test_full_functionality.py）与浏览器审计（tools/ui_audit_auth.py）提供。诊断侧不预置账号 —— AUTH-FLOW §1 明确「预置账号…不能标记为 COMPLETE」。",
+    "gallery-mygallery": "受保护路由：服务端对匿名请求返回 401，这是不变量 protected_routes_require_session 的正确行为，不是缺陷。匿名诊断无法到达；这些路由的覆盖由会真实登录的 clone 自带测试（clone/tests/test_journeys.py、test_full_functionality.py）与浏览器审计（tools/ui_audit_auth.py）提供。诊断侧不预置账号 —— AUTH-FLOW §1 明确「预置账号…不能标记为 COMPLETE」。"
+  }
+}

@@ -1,0 +1,85 @@
+{
+ "schema_version": "offline-clone.coverage.v1",
+ "status": "draft",
+ "dimensions": [
+  {
+   "id": "public-discovery",
+   "category": "reachability",
+   "label": "Catalog hubs, category and subcategory lists",
+   "unit": "route-state",
+   "required_evidence_kinds": [
+    "browser"
+   ],
+   "required_items": [
+    "catalog-hub.loaded.desktop",
+    "category-hub.loaded.desktop",
+    "subcategory-list.loaded.desktop",
+    "patterns-index.loaded.desktop"
+   ],
+   "satisfied_items": []
+  },
+  {
+   "id": "class-detail",
+   "category": "reachability",
+   "label": "Class and instructor detail surfaces",
+   "unit": "route-state",
+   "required_evidence_kinds": [
+    "browser"
+   ],
+   "required_items": [
+    "class-detail.loaded.desktop",
+    "instructor-detail.loaded.desktop"
+   ],
+   "satisfied_items": []
+  },
+  {
+   "id": "auth-surfaces",
+   "category": "reachability",
+   "label": "Sign-in, registration and password recovery entries",
+   "unit": "route-state",
+   "required_evidence_kinds": [
+    "browser"
+   ],
+   "required_items": [
+    "signup-entry.loaded.desktop",
+    "register-entry.loaded.desktop",
+    "password-recovery.loaded.desktop"
+   ],
+   "satisfied_items": []
+  },
+  {
+   "id": "authenticated-surfaces",
+   "category": "reachability",
+   "label": "Dashboard, library, watchlist, account and preferences",
+   "unit": "route-state",
+   "required_evidence_kinds": [
+    "browser"
+   ],
+   "required_items": [
+    "dashboard.loaded.desktop",
+    "library.loaded.desktop",
+    "watchlist.loaded.desktop",
+    "recent.loaded.desktop",
+    "account-profile.loaded.desktop",
+    "account-rewards.loaded.desktop",
+    "gallery-mine.loaded.desktop",
+    "gallery-community.loaded.desktop"
+   ],
+   "satisfied_items": []
+  },
+  {
+   "id": "recovery-surfaces",
+   "category": "reachability",
+   "label": "Out-of-scope boundary and branded not-found",
+   "unit": "route-state",
+   "required_evidence_kinds": [
+    "browser"
+   ],
+   "required_items": [
+    "boundary.loaded.desktop",
+    "not-found.not-found.desktop"
+   ],
+   "satisfied_items": []
+  }
+ ]
+}

@@ -1,0 +1,5060 @@
+{
+ "schema_version": "creativebug.interaction-ledger.v1",
+ "viewport": "desktop 1440x900",
+ "actor": "anonymous",
+ "note": "§7.0 唯一交互分母。actor=anonymous、viewport=desktop 单一组合；登录态与其他 viewport 尚未纳入，coverage 不得按本文件宣称全站 100%。  |  逐控件明细（controls / exclusions）在 interaction-ledger.json.gz：GitHub 单文件上限 100MiB，本仓库文档明确不使用 Git LFS，故压缩存放，解压后即原始 offline-clone.interaction-ledger v1 结构。本摘要保留分母与逐页计数。",
+ "selector": "a[href], button, input, select, textarea, [role=\"button\"], [role=\"link\"], [role=\"tab\"], [onclick], [tabindex], form",
+ "totals": {
+  "routes": 1009,
+  "discovered": 166817,
+  "excluded": 595178,
+  "required": 166817
+ },
+ "pages": {
+  "/": {
+   "discovered": 113,
+   "excluded": 483,
+   "required": 113
+  },
+  "/classes": {
+   "discovered": 91,
+   "excluded": 483,
+   "required": 91
+  },
+  "/classes/art-and-design": {
+   "discovered": 113,
+   "excluded": 500,
+   "required": 113
+  },
+  "/classes/art-and-design/ceramics": {
+   "discovered": 125,
+   "excluded": 737,
+   "required": 125
+  },
+  "/classes/sewing": {
+   "discovered": 110,
+   "excluded": 500,
+   "required": 110
+  },
+  "/classes/sewing/garment-sewing": {
+   "discovered": 247,
+   "excluded": 918,
+   "required": 247
+  },
+  "/classseries/single/embroidery-sampler": {
+   "discovered": 157,
+   "excluded": 659,
+   "required": 157
+  },
+  "/instructors/courtney-cerruti": {
+   "discovered": 122,
+   "excluded": 501,
+   "required": 122
+  },
+  "/site/about": {
+   "discovered": 73,
+   "excluded": 484,
+   "required": 73
+  },
+  "/myclasses": {
+   "discovered": 20,
+   "excluded": 12,
+   "required": 20
+  },
+  "/myclasses/watchlist": {
+   "discovered": 20,
+   "excluded": 12,
+   "required": 20
+  },
+  "/account/profile": {
+   "discovered": 20,
+   "excluded": 12,
+   "required": 20
+  },
+  "/gallery/community": {
+   "discovered": 95,
+   "excluded": 504,
+   "required": 95
+  },
+  "/trial/create-account": {
+   "discovered": 20,
+   "excluded": 12,
+   "required": 20
+  },
+  "/forgot-password": {
+   "discovered": 76,
+   "excluded": 483,
+   "required": 76
+  },
+  "/zzzz-no-match-websitebench": {
+   "discovered": 76,
+   "excluded": 483,
+   "required": 76
+  },
+  "/classes/food-and-home": {
+   "discovered": 107,
+   "excluded": 500,
+   "required": 107
+  },
+  "/classes/holiday-and-party": {
+   "discovered": 109,
+   "excluded": 500,
+   "required": 109
+  },
+  "/classes/jewelry": {
+   "discovered": 107,
+   "excluded": 500,
+   "required": 107
+  },
+  "/classes/kids-and-teens": {
+   "discovered": 111,
+   "excluded": 500,
+   "required": 111
+  },
+  "/classes/needlework": {
+   "discovered": 110,
+   "excluded": 500,
+   "required": 110
+  },
+  "/classes/paper": {
+   "discovered": 112,
+   "excluded": 500,
+   "required": 112
+  },
+  "/classes/quilting": {
+   "discovered": 110,
+   "excluded": 500,
+   "required": 110
+  },
+  "/classes/yarn-crafts": {
+   "discovered": 113,
+   "excluded": 500,
+   "required": 113
+  },
+  "/classes/art-and-design/cb_live": {
+   "discovered": 245,
+   "excluded": 800,
+   "required": 245
+  },
+  "/classes/art-and-design/craft-technology": {
+   "discovered": 278,
+   "excluded": 812,
+   "required": 278
+  },
+  "/classes/art-and-design/daily_practice": {
+   "discovered": 244,
+   "excluded": 878,
+   "required": 244
+  },
+  "/classes/art-and-design/drawing-and-illustration": {
+   "discovered": 245,
+   "excluded": 882,
+   "required": 245
+  },
+  "/classes/art-and-design/for-beginners": {
+   "discovered": 101,
+   "excluded": 735,
+   "required": 101
+  },
+  "/classes/art-and-design/home-decor": {
+   "discovered": 218,
+   "excluded": 796,
+   "required": 218
+  },
+  "/classes/art-and-design/lettering": {
+   "discovered": 161,
+   "excluded": 769,
+   "required": 161
+  },
+  "/classes/art-and-design/mixed-media": {
+   "discovered": 245,
+   "excluded": 856,
+   "required": 245
+  },
+  "/classes/art-and-design/painting": {
+   "discovered": 245,
+   "excluded": 864,
+   "required": 245
+  },
+  "/classes/art-and-design/printmaking": {
+   "discovered": 251,
+   "excluded": 809,
+   "required": 251
+  },
+  "/classes/art-and-design/sketchbook-exercises": {
+   "discovered": 246,
+   "excluded": 868,
+   "required": 246
+  },
+  "/classes/art-and-design/surface-design": {
+   "discovered": 188,
+   "excluded": 792,
+   "required": 188
+  },
+  "/classes/art-and-design/techniques": {
+   "discovered": 158,
+   "excluded": 760,
+   "required": 158
+  },
+  "/classes/food-and-home/baking-and-cake-decorating": {
+   "discovered": 180,
+   "excluded": 761,
+   "required": 180
+  },
+  "/classes/food-and-home/bath-and-body": {
+   "discovered": 131,
+   "excluded": 741,
+   "required": 131
+  },
+  "/classes/food-and-home/canning-and-preserving": {
+   "discovered": 119,
+   "excluded": 737,
+   "required": 119
+  },
+  "/classes/food-and-home/cb_live": {
+   "discovered": 227,
+   "excluded": 767,
+   "required": 227
+  },
+  "/classes/food-and-home/daily_practice": {
+   "discovered": 83,
+   "excluded": 715,
+   "required": 83
+  },
+  "/classes/food-and-home/flowers": {
+   "discovered": 164,
+   "excluded": 760,
+   "required": 164
+  },
+  "/classes/food-and-home/furniture-refinishing-and-upholstery": {
+   "discovered": 98,
+   "excluded": 726,
+   "required": 98
+  },
+  "/classes/food-and-home/home-decor": {
+   "discovered": 244,
+   "excluded": 860,
+   "required": 244
+  },
+  "/classes/food-and-home/packaging-and-presentation": {
+   "discovered": 170,
+   "excluded": 766,
+   "required": 170
+  },
+  "/classes/holiday-and-party/birthday-parties": {
+   "discovered": 241,
+   "excluded": 823,
+   "required": 241
+  },
+  "/classes/holiday-and-party/cb_live": {
+   "discovered": 269,
+   "excluded": 781,
+   "required": 269
+  },
+  "/classes/holiday-and-party/daily_practice": {
+   "discovered": 98,
+   "excluded": 730,
+   "required": 98
+  },
+  "/classes/holiday-and-party/fallcelebrations": {
+   "discovered": 146,
+   "excluded": 772,
+   "required": 146
+  },
+  "/classes/holiday-and-party/packaging-and-presentation": {
+   "discovered": 269,
+   "excluded": 813,
+   "required": 269
+  },
+  "/classes/holiday-and-party/quick-classes": {
+   "discovered": 304,
+   "excluded": 781,
+   "required": 304
+  },
+  "/classes/holiday-and-party/spring": {
+   "discovered": 164,
+   "excluded": 770,
+   "required": 164
+  },
+  "/classes/holiday-and-party/summer": {
+   "discovered": 185,
+   "excluded": 781,
+   "required": 185
+  },
+  "/classes/holiday-and-party/weddings": {
+   "discovered": 212,
+   "excluded": 788,
+   "required": 212
+  },
+  "/classes/holiday-and-party/winter": {
+   "discovered": 244,
+   "excluded": 854,
+   "required": 244
+  },
+  "/classes/jewelry/beading": {
+   "discovered": 113,
+   "excluded": 739,
+   "required": 113
+  },
+  "/classes/jewelry/bracelets": {
+   "discovered": 137,
+   "excluded": 757,
+   "required": 137
+  },
+  "/classes/jewelry/cb_live": {
+   "discovered": 104,
+   "excluded": 724,
+   "required": 104
+  },
+  "/classes/jewelry/earrings-and-rings": {
+   "discovered": 116,
+   "excluded": 744,
+   "required": 116
+  },
+  "/classes/jewelry/for-beginners": {
+   "discovered": 122,
+   "excluded": 750,
+   "required": 122
+  },
+  "/classes/jewelry/kids": {
+   "discovered": 104,
+   "excluded": 732,
+   "required": 104
+  },
+  "/classes/jewelry/leather": {
+   "discovered": 122,
+   "excluded": 740,
+   "required": 122
+  },
+  "/classes/jewelry/metal-and-wire": {
+   "discovered": 98,
+   "excluded": 726,
+   "required": 98
+  },
+  "/classes/jewelry/necklaces": {
+   "discovered": 125,
+   "excluded": 749,
+   "required": 125
+  },
+  "/classes/jewelry/techniques": {
+   "discovered": 98,
+   "excluded": 732,
+   "required": 98
+  },
+  "/classes/kids-and-teens/13-years-and-up": {
+   "discovered": 425,
+   "excluded": 916,
+   "required": 425
+  },
+  "/classes/kids-and-teens/4-7-years": {
+   "discovered": 164,
+   "excluded": 778,
+   "required": 164
+  },
+  "/classes/kids-and-teens/8-12-years": {
+   "discovered": 280,
+   "excluded": 854,
+   "required": 280
+  },
+  "/classes/kids-and-teens/cb_live": {
+   "discovered": 263,
+   "excluded": 789,
+   "required": 263
+  },
+  "/classes/kids-and-teens/daily_practice": {
+   "discovered": 110,
+   "excluded": 740,
+   "required": 110
+  },
+  "/classes/kids-and-teens/drawing-and-painting": {
+   "discovered": 167,
+   "excluded": 769,
+   "required": 167
+  },
+  "/classes/kids-and-teens/general-crafts": {
+   "discovered": 236,
+   "excluded": 808,
+   "required": 236
+  },
+  "/classes/kids-and-teens/holiday-and-party": {
+   "discovered": 194,
+   "excluded": 766,
+   "required": 194
+  },
+  "/classes/kids-and-teens/jewelry": {
+   "discovered": 122,
+   "excluded": 742,
+   "required": 122
+  },
+  "/classes/kids-and-teens/paper": {
+   "discovered": 171,
+   "excluded": 764,
+   "required": 171
+  },
+  "/classes/kids-and-teens/sewing": {
+   "discovered": 131,
+   "excluded": 747,
+   "required": 131
+  },
+  "/classes/kids-and-teens/yarn": {
+   "discovered": 131,
+   "excluded": 749,
+   "required": 131
+  },
+  "/classes/needlework/cross-stitch": {
+   "discovered": 86,
+   "excluded": 718,
+   "required": 86
+  },
+  "/classes/needlework/daily_practice": {
+   "discovered": 107,
+   "excluded": 731,
+   "required": 107
+  },
+  "/classes/needlework/embroidery": {
+   "discovered": 247,
+   "excluded": 799,
+   "required": 247
+  },
+  "/classes/needlework/felting": {
+   "discovered": 92,
+   "excluded": 722,
+   "required": 92
+  },
+  "/classes/needlework/for-beginners": {
+   "discovered": 104,
+   "excluded": 732,
+   "required": 104
+  },
+  "/classes/needlework/hand-stitching": {
+   "discovered": 291,
+   "excluded": 836,
+   "required": 291
+  },
+  "/classes/needlework/holiday-and-party": {
+   "discovered": 119,
+   "excluded": 731,
+   "required": 119
+  },
+  "/classes/needlework/mending": {
+   "discovered": 98,
+   "excluded": 730,
+   "required": 98
+  },
+  "/classes/needlework/needle-point": {
+   "discovered": 92,
+   "excluded": 722,
+   "required": 92
+  },
+  "/classes/needlework/punch-needle": {
+   "discovered": 86,
+   "excluded": 718,
+   "required": 86
+  },
+  "/classes/needlework/techniques": {
+   "discovered": 117,
+   "excluded": 740,
+   "required": 117
+  },
+  "/classes/paper/book-arts": {
+   "discovered": 249,
+   "excluded": 804,
+   "required": 249
+  },
+  "/classes/paper/cards-and-gift-wrap": {
+   "discovered": 250,
+   "excluded": 826,
+   "required": 250
+  },
+  "/classes/paper/cb_live": {
+   "discovered": 281,
+   "excluded": 791,
+   "required": 281
+  },
+  "/classes/paper/collage-and-decoupage": {
+   "discovered": 215,
+   "excluded": 803,
+   "required": 215
+  },
+  "/classes/paper/cutting-machine-crafts": {
+   "discovered": 230,
+   "excluded": 778,
+   "required": 230
+  },
+  "/classes/paper/daily_practice": {
+   "discovered": 152,
+   "excluded": 772,
+   "required": 152
+  },
+  "/classes/paper/for-beginners": {
+   "discovered": 248,
+   "excluded": 812,
+   "required": 248
+  },
+  "/classes/paper/holiday-and-party": {
+   "discovered": 245,
+   "excluded": 818,
+   "required": 245
+  },
+  "/classes/paper/home-decor": {
+   "discovered": 150,
+   "excluded": 765,
+   "required": 150
+  },
+  "/classes/paper/kids": {
+   "discovered": 183,
+   "excluded": 772,
+   "required": 183
+  },
+  "/classes/paper/paper-flowers": {
+   "discovered": 137,
+   "excluded": 751,
+   "required": 137
+  },
+  "/classes/paper/printing": {
+   "discovered": 179,
+   "excluded": 767,
+   "required": 179
+  },
+  "/classes/paper/techniques": {
+   "discovered": 179,
+   "excluded": 771,
+   "required": 179
+  },
+  "/classes/quilting/baby-and-kids": {
+   "discovered": 95,
+   "excluded": 725,
+   "required": 95
+  },
+  "/classes/quilting/blocks": {
+   "discovered": 212,
+   "excluded": 790,
+   "required": 212
+  },
+  "/classes/quilting/cb_live": {
+   "discovered": 110,
+   "excluded": 736,
+   "required": 110
+  },
+  "/classes/quilting/daily_practice": {
+   "discovered": 89,
+   "excluded": 719,
+   "required": 89
+  },
+  "/classes/quilting/design": {
+   "discovered": 206,
+   "excluded": 794,
+   "required": 206
+  },
+  "/classes/quilting/for-beginners": {
+   "discovered": 149,
+   "excluded": 765,
+   "required": 149
+  },
+  "/classes/quilting/home-decor": {
+   "discovered": 128,
+   "excluded": 748,
+   "required": 128
+  },
+  "/classes/quilting/modern-quilts": {
+   "discovered": 227,
+   "excluded": 801,
+   "required": 227
+  },
+  "/classes/quilting/quilt-tops": {
+   "discovered": 200,
+   "excluded": 792,
+   "required": 200
+  },
+  "/classes/quilting/quilting": {
+   "discovered": 161,
+   "excluded": 775,
+   "required": 161
+  },
+  "/classes/quilting/techniques": {
+   "discovered": 173,
+   "excluded": 771,
+   "required": 173
+  },
+  "/classes/sewing/accessories": {
+   "discovered": 246,
+   "excluded": 854,
+   "required": 246
+  },
+  "/classes/sewing/baby-and-kids": {
+   "discovered": 227,
+   "excluded": 795,
+   "required": 227
+  },
+  "/classes/sewing/cb_live": {
+   "discovered": 215,
+   "excluded": 763,
+   "required": 215
+  },
+  "/classes/sewing/daily_practice": {
+   "discovered": 95,
+   "excluded": 725,
+   "required": 95
+  },
+  "/classes/sewing/fabric-design": {
+   "discovered": 143,
+   "excluded": 757,
+   "required": 143
+  },
+  "/classes/sewing/for-beginners": {
+   "discovered": 262,
+   "excluded": 850,
+   "required": 262
+  },
+  "/classes/sewing/garments": {
+   "discovered": 247,
+   "excluded": 852,
+   "required": 247
+  },
+  "/classes/sewing/holiday-and-party": {
+   "discovered": 191,
+   "excluded": 785,
+   "required": 191
+  },
+  "/classes/sewing/home-decor": {
+   "discovered": 228,
+   "excluded": 809,
+   "required": 228
+  },
+  "/classes/sewing/pattern-drafting": {
+   "discovered": 200,
+   "excluded": 780,
+   "required": 200
+  },
+  "/classes/sewing/techniques": {
+   "discovered": 151,
+   "excluded": 781,
+   "required": 151
+  },
+  "/classes/yarn-crafts/accessories": {
+   "discovered": 244,
+   "excluded": 836,
+   "required": 244
+  },
+  "/classes/yarn-crafts/amigurumi": {
+   "discovered": 146,
+   "excluded": 742,
+   "required": 146
+  },
+  "/classes/yarn-crafts/baby-and-kids": {
+   "discovered": 191,
+   "excluded": 781,
+   "required": 191
+  },
+  "/classes/yarn-crafts/cb_live": {
+   "discovered": 170,
+   "excluded": 746,
+   "required": 170
+  },
+  "/classes/yarn-crafts/crochet": {
+   "discovered": 245,
+   "excluded": 826,
+   "required": 245
+  },
+  "/classes/yarn-crafts/daily_practice": {
+   "discovered": 99,
+   "excluded": 728,
+   "required": 99
+  },
+  "/classes/yarn-crafts/felting": {
+   "discovered": 80,
+   "excluded": 712,
+   "required": 80
+  },
+  "/classes/yarn-crafts/for-beginners": {
+   "discovered": 275,
+   "excluded": 815,
+   "required": 275
+  },
+  "/classes/yarn-crafts/garments": {
+   "discovered": 137,
+   "excluded": 755,
+   "required": 137
+  },
+  "/classes/yarn-crafts/general-crafts": {
+   "discovered": 120,
+   "excluded": 749,
+   "required": 120
+  },
+  "/classes/yarn-crafts/holiday-and-party": {
+   "discovered": 113,
+   "excluded": 737,
+   "required": 113
+  },
+  "/classes/yarn-crafts/home-decor": {
+   "discovered": 203,
+   "excluded": 791,
+   "required": 203
+  },
+  "/classes/yarn-crafts/knitting": {
+   "discovered": 245,
+   "excluded": 840,
+   "required": 245
+  },
+  "/classes/yarn-crafts/techniques": {
+   "discovered": 293,
+   "excluded": 819,
+   "required": 293
+  },
+  "/account/cancel_subscription": {
+   "discovered": 20,
+   "excluded": 12,
+   "required": 20
+  },
+  "/account/plan_change": {
+   "discovered": 20,
+   "excluded": 12,
+   "required": 20
+  },
+  "/arts-&-crafts-instructors": {
+   "discovered": 152,
+   "excluded": 505,
+   "required": 152
+  },
+  "/calendar": {
+   "discovered": 105,
+   "excluded": 455,
+   "required": 105
+  },
+  "/cbtv": {
+   "discovered": 84,
+   "excluded": 727,
+   "required": 84
+  },
+  "/classseries/daily-art-challenges-cbdrawaday": {
+   "discovered": 140,
+   "excluded": 516,
+   "required": 140
+  },
+  "/classseries/single/10-06-16-cocoon-cardigan": {
+   "discovered": 133,
+   "excluded": 595,
+   "required": 133
+  },
+  "/classseries/single/10-06-16-turn-a-t-shirt-into-a-trivet": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/10-11-16-halloween-fun-with-twinkie-chan-1": {
+   "discovered": 135,
+   "excluded": 594,
+   "required": 135
+  },
+  "/classseries/single/10-18-16-haunted-gingerbread-house": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/10-18-16-spooky-cupcake-toppers": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/10-20-16-halloween-jewelry": {
+   "discovered": 132,
+   "excluded": 591,
+   "required": 132
+  },
+  "/classseries/single/100-days-project-kick-off-4-4-16": {
+   "discovered": 135,
+   "excluded": 598,
+   "required": 135
+  },
+  "/classseries/single/11-10-16-improv-log-cabin-block": {
+   "discovered": 136,
+   "excluded": 592,
+   "required": 136
+  },
+  "/classseries/single/11-14-17-giving-plates": {
+   "discovered": 134,
+   "excluded": 598,
+   "required": 134
+  },
+  "/classseries/single/11-15-16-personalized-fabric-gift-bags": {
+   "discovered": 138,
+   "excluded": 551,
+   "required": 138
+  },
+  "/classseries/single/11-17-16-chromatic-tablescape": {
+   "discovered": 132,
+   "excluded": 592,
+   "required": 132
+  },
+  "/classseries/single/11-21-16-place-setting": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/11-3-16-embossed-holiday-cards": {
+   "discovered": 133,
+   "excluded": 591,
+   "required": 133
+  },
+  "/classseries/single/11-8-16-stress-balls-1": {
+   "discovered": 134,
+   "excluded": 593,
+   "required": 134
+  },
+  "/classseries/single/12-days-of-christmas-sew-an-heirloom-stocking": {
+   "discovered": 153,
+   "excluded": 559,
+   "required": 153
+  },
+  "/classseries/single/25-days-of-gift-wrap": {
+   "discovered": 144,
+   "excluded": 582,
+   "required": 144
+  },
+  "/classseries/single/3-ways-to-paint-a-rose": {
+   "discovered": 138,
+   "excluded": 591,
+   "required": 138
+  },
+  "/classseries/single/30-coloring-pages-with-lisa-congdon-pam-garrison-and-courtney-cerruti": {
+   "discovered": 156,
+   "excluded": 580,
+   "required": 156
+  },
+  "/classseries/single/30-structures-in-30-days-a-daily-practice-in-bookmaking": {
+   "discovered": 144,
+   "excluded": 564,
+   "required": 144
+  },
+  "/classseries/single/31-creative-prompts-from-modern-and-contemporary-artists": {
+   "discovered": 144,
+   "excluded": 565,
+   "required": 144
+  },
+  "/classseries/single/4-x-4-studies": {
+   "discovered": 140,
+   "excluded": 565,
+   "required": 140
+  },
+  "/classseries/single/60-second-macrame-keychain": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/8-11-16-diy-pendant-necklaces-1": {
+   "discovered": 133,
+   "excluded": 591,
+   "required": 133
+  },
+  "/classseries/single/8-23-16-bubble-prints": {
+   "discovered": 133,
+   "excluded": 598,
+   "required": 133
+  },
+  "/classseries/single/8-30-16-amy-butler-and-chronicle-books-giveaway": {
+   "discovered": 137,
+   "excluded": 592,
+   "required": 137
+  },
+  "/classseries/single/8-4-16-homemade-pbj-cups": {
+   "discovered": 137,
+   "excluded": 592,
+   "required": 137
+  },
+  "/classseries/single/9-1-16-fabric-and-pompom-backdrop": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/9-13-16-hair-clips": {
+   "discovered": 135,
+   "excluded": 591,
+   "required": 135
+  },
+  "/classseries/single/9-15-16-sakura-quickie-glue-cards": {
+   "discovered": 136,
+   "excluded": 592,
+   "required": 136
+  },
+  "/classseries/single/9-6-16-shrinky-dink-cake-toppers": {
+   "discovered": 135,
+   "excluded": 591,
+   "required": 135
+  },
+  "/classseries/single/9-8-16-marbled-oreo-cookies": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/a-card-a-day-with-hero-arts": {
+   "discovered": 143,
+   "excluded": 575,
+   "required": 143
+  },
+  "/classseries/single/a-chat-with-lila-rogers-7-19-18": {
+   "discovered": 136,
+   "excluded": 591,
+   "required": 136
+  },
+  "/classseries/single/a-color-conversation-with-tara-faughnah-8-24-17": {
+   "discovered": 133,
+   "excluded": 591,
+   "required": 133
+  },
+  "/classseries/single/a-qa-with-cal-patch-5-10-18": {
+   "discovered": 135,
+   "excluded": 591,
+   "required": 135
+  },
+  "/classseries/single/absolute-beginner-machine-embroidery-season-1": {
+   "discovered": 121,
+   "excluded": 558,
+   "required": 121
+  },
+  "/classseries/single/absolute-beginner-machine-embroidery-season-2": {
+   "discovered": 126,
+   "excluded": 562,
+   "required": 126
+  },
+  "/classseries/single/abstract-art-making-a-daily-practice": {
+   "discovered": 140,
+   "excluded": 566,
+   "required": 140
+  },
+  "/classseries/single/accordion-book-as-art-form": {
+   "discovered": 140,
+   "excluded": 565,
+   "required": 140
+  },
+  "/classseries/single/accordion-photo-album": {
+   "discovered": 140,
+   "excluded": 557,
+   "required": 140
+  },
+  "/classseries/single/acrylic-paint-pouring-5-1-18": {
+   "discovered": 141,
+   "excluded": 598,
+   "required": 141
+  },
+  "/classseries/single/acrylic-painting-how-to-clean-paintbrushes": {
+   "discovered": 135,
+   "excluded": 552,
+   "required": 135
+  },
+  "/classseries/single/acrylic-pouring-101": {
+   "discovered": 139,
+   "excluded": 562,
+   "required": 139
+  },
+  "/classseries/single/add-a-display-sleeve-to-a-quilt": {
+   "discovered": 142,
+   "excluded": 555,
+   "required": 142
+  },
+  "/classseries/single/adding-duplicate-stitch-to-knits": {
+   "discovered": 141,
+   "excluded": 554,
+   "required": 141
+  },
+  "/classseries/single/advanced-acrylic-painting": {
+   "discovered": 144,
+   "excluded": 563,
+   "required": 144
+  },
+  "/classseries/single/advanced-embroidery-sampler": {
+   "discovered": 147,
+   "excluded": 562,
+   "required": 147
+  },
+  "/classseries/single/advanced-machine-quilting": {
+   "discovered": 144,
+   "excluded": 556,
+   "required": 144
+  },
+  "/classseries/single/advanced-marbling-techniques": {
+   "discovered": 147,
+   "excluded": 561,
+   "required": 147
+  },
+  "/classseries/single/advanced-ruler-work-for-quilting": {
+   "discovered": 145,
+   "excluded": 555,
+   "required": 145
+  },
+  "/classseries/single/air-plant-hangers-8-29-18": {
+   "discovered": 133,
+   "excluded": 597,
+   "required": 133
+  },
+  "/classseries/single/all-seasons-embroidered-wreath": {
+   "discovered": 152,
+   "excluded": 555,
+   "required": 152
+  },
+  "/classseries/single/altered-book-daily-challenge": {
+   "discovered": 140,
+   "excluded": 588,
+   "required": 140
+  },
+  "/classseries/single/altered-book-pages-2-28-19": {
+   "discovered": 137,
+   "excluded": 591,
+   "required": 137
+  },
+  "/classseries/single/altered-books-the-sequel-a-daily-practice": {
+   "discovered": 141,
+   "excluded": 582,
+   "required": 141
+  },
+  "/classseries/single/amigurumi-techniques-change-colors-in-the-round": {
+   "discovered": 140,
+   "excluded": 556,
+   "required": 140
+  },
+  "/classseries/single/amigurumi-techniques-finish-off-a-3d-project": {
+   "discovered": 140,
+   "excluded": 554,
+   "required": 140
+  },
+  "/classseries/single/amigurumi-techniques-stuffing-101": {
+   "discovered": 140,
+   "excluded": 557,
+   "required": 140
+  },
+  "/classseries/single/anatomy-of-a-book": {
+   "discovered": 143,
+   "excluded": 594,
+   "required": 143
+  },
+  "/classseries/single/anatomy-of-a-quilt": {
+   "discovered": 139,
+   "excluded": 594,
+   "required": 139
+  },
+  "/classseries/single/andy-warhol-inspired-monoprints": {
+   "discovered": 143,
+   "excluded": 574,
+   "required": 143
+  },
+  "/classseries/single/arm-knit-a-cowl-1": {
+   "discovered": 138,
+   "excluded": 597,
+   "required": 138
+  },
+  "/classseries/single/arm-knit-a-throw-blanket": {
+   "discovered": 138,
+   "excluded": 563,
+   "required": 138
+  },
+  "/classseries/single/arm-knitting-make-a-throw-pillow": {
+   "discovered": 137,
+   "excluded": 554,
+   "required": 137
+  },
+  "/classseries/single/arrow-crown-block": {
+   "discovered": 145,
+   "excluded": 558,
+   "required": 145
+  },
+  "/classseries/single/art-journal-pages-with-mou-saha-7-25-19": {
+   "discovered": 135,
+   "excluded": 592,
+   "required": 135
+  },
+  "/classseries/single/art-journaling-with-cut-paper-collage": {
+   "discovered": 140,
+   "excluded": 565,
+   "required": 140
+  },
+  "/classseries/single/art-journaling-with-dawn-sokol": {
+   "discovered": 144,
+   "excluded": 569,
+   "required": 144
+  },
+  "/classseries/single/art-journaling-with-get-messy-girls-7-24-5": {
+   "discovered": 135,
+   "excluded": 594,
+   "required": 135
+  },
+  "/classseries/single/art-meets-life-31-ways-to-combine-watercolor-and-flora": {
+   "discovered": 144,
+   "excluded": 564,
+   "required": 144
+  },
+  "/classseries/single/artist-trading-cards": {
+   "discovered": 139,
+   "excluded": 563,
+   "required": 139
+  },
+  "/classseries/single/artober-31-days-of-inky-monoprints": {
+   "discovered": 147,
+   "excluded": 571,
+   "required": 147
+  },
+  "/classseries/single/artober-31-days-of-spooky-monoprints": {
+   "discovered": 148,
+   "excluded": 568,
+   "required": 148
+  },
+  "/classseries/single/astro-origami": {
+   "discovered": 142,
+   "excluded": 562,
+   "required": 142
+  },
+  "/classseries/single/baby-blanket-crochet-along": {
+   "discovered": 149,
+   "excluded": 571,
+   "required": 149
+  },
+  "/classseries/single/back-to-school-book-covers-7-31-18": {
+   "discovered": 133,
+   "excluded": 591,
+   "required": 133
+  },
+  "/classseries/single/back-to-school-organizing-8-7-18": {
+   "discovered": 133,
+   "excluded": 591,
+   "required": 133
+  },
+  "/classseries/single/bag-charm-party-25-baubles-for-your-bags": {
+   "discovered": 143,
+   "excluded": 607,
+   "required": 143
+  },
+  "/classseries/single/bag-design-workshop": {
+   "discovered": 140,
+   "excluded": 559,
+   "required": 140
+  },
+  "/classseries/single/basic-line-drawing-with-lisa-congdon": {
+   "discovered": 156,
+   "excluded": 571,
+   "required": 156
+  },
+  "/classseries/single/basic-sewing-seams": {
+   "discovered": 136,
+   "excluded": 552,
+   "required": 136
+  },
+  "/classseries/single/bath-bombs-12-14-17": {
+   "discovered": 137,
+   "excluded": 593,
+   "required": 137
+  },
+  "/classseries/single/batiking-with-glue-6-21-18": {
+   "discovered": 135,
+   "excluded": 591,
+   "required": 135
+  },
+  "/classseries/single/be-you-tiful-cut-paper-portrait": {
+   "discovered": 145,
+   "excluded": 562,
+   "required": 145
+  },
+  "/classseries/single/beach-towel-pockets-7-6-17": {
+   "discovered": 131,
+   "excluded": 591,
+   "required": 131
+  },
+  "/classseries/single/bead-crochet": {
+   "discovered": 141,
+   "excluded": 554,
+   "required": 141
+  },
+  "/classseries/single/bead-weaving-roundabout-necklace": {
+   "discovered": 140,
+   "excluded": 554,
+   "required": 140
+  },
+  "/classseries/single/beaded-knitting": {
+   "discovered": 133,
+   "excluded": 553,
+   "required": 133
+  },
+  "/classseries/single/beat-it-beanie": {
+   "discovered": 142,
+   "excluded": 560,
+   "required": 142
+  },
+  "/classseries/single/beg-sewing-market-tote-bag": {
+   "discovered": 141,
+   "excluded": 562,
+   "required": 141
+  },
+  "/classseries/single/beginner-crochet-1": {
+   "discovered": 139,
+   "excluded": 600,
+   "required": 139
+  },
+  "/classseries/single/beginner-crochet-2": {
+   "discovered": 138,
+   "excluded": 559,
+   "required": 138
+  },
+  "/classseries/single/beginner-knits-how-to-knit-a-baby-blanket": {
+   "discovered": 142,
+   "excluded": 557,
+   "required": 142
+  },
+  "/classseries/single/beginner-knits-how-to-knit-a-baby-hat": {
+   "discovered": 144,
+   "excluded": 562,
+   "required": 144
+  },
+  "/classseries/single/beginner-knits-how-to-knit-baby-booties": {
+   "discovered": 144,
+   "excluded": 558,
+   "required": 144
+  },
+  "/classseries/single/beginning-calligraphy": {
+   "discovered": 144,
+   "excluded": 575,
+   "required": 144
+  },
+  "/classseries/single/beginning-collage": {
+   "discovered": 140,
+   "excluded": 579,
+   "required": 140
+  },
+  "/classseries/single/binding-off-your-knitting": {
+   "discovered": 134,
+   "excluded": 552,
+   "required": 134
+  },
+  "/classseries/single/bliss-balls-three-recipes-for-snacking": {
+   "discovered": 145,
+   "excluded": 557,
+   "required": 145
+  },
+  "/classseries/single/block-print-monogram-5-23-19": {
+   "discovered": 136,
+   "excluded": 599,
+   "required": 136
+  },
+  "/classseries/single/block-printing-on-fabric-6-12-18": {
+   "discovered": 136,
+   "excluded": 597,
+   "required": 136
+  },
+  "/classseries/single/blocking-knits-101": {
+   "discovered": 140,
+   "excluded": 554,
+   "required": 140
+  },
+  "/classseries/single/boho-leather-cuff": {
+   "discovered": 140,
+   "excluded": 561,
+   "required": 140
+  },
+  "/classseries/single/book-safe": {
+   "discovered": 140,
+   "excluded": 555,
+   "required": 140
+  },
+  "/classseries/single/botanical-boughs-for-all-seasons": {
+   "discovered": 140,
+   "excluded": 564,
+   "required": 140
+  },
+  "/classseries/single/botanical-leaf-embroidery": {
+   "discovered": 144,
+   "excluded": 561,
+   "required": 144
+  },
+  "/classseries/single/botanical-monoprinted-table-decor-11-21-17": {
+   "discovered": 133,
+   "excluded": 598,
+   "required": 133
+  },
+  "/classseries/single/botanical-sketching-techniques": {
+   "discovered": 144,
+   "excluded": 564,
+   "required": 144
+  },
+  "/classseries/single/botanical-watercolor-illustration": {
+   "discovered": 144,
+   "excluded": 564,
+   "required": 144
+  },
+  "/classseries/single/brush-lettering-2-2-17": {
+   "discovered": 134,
+   "excluded": 598,
+   "required": 134
+  },
+  "/classseries/single/bubble-mania-fairy-wands": {
+   "discovered": 141,
+   "excluded": 560,
+   "required": 141
+  },
+  "/classseries/single/building-a-creative-brand": {
+   "discovered": 140,
+   "excluded": 558,
+   "required": 140
+  },
+  "/classseries/single/bust-adjustment": {
+   "discovered": 140,
+   "excluded": 557,
+   "required": 140
+  },
+  "/classseries/single/cabled-afghan-knit-along-with-edie-eckman": {
+   "discovered": 188,
+   "excluded": 576,
+   "required": 188
+  },
+  "/classseries/single/cabled-christmas-stockings": {
+   "discovered": 141,
+   "excluded": 555,
+   "required": 141
+  },
+  "/classseries/single/cabled-crochet": {
+   "discovered": 133,
+   "excluded": 553,
+   "required": 133
+  },
+  "/classseries/single/caged-wire-wrap": {
+   "discovered": 140,
+   "excluded": 556,
+   "required": 140
+  },
+  "/classseries/single/calligraphy-on-unconventional-surfaces": {
+   "discovered": 141,
+   "excluded": 557,
+   "required": 141
+  },
+  "/classseries/single/camp-crafts-with-marly-bird-5-22-18": {
+   "discovered": 134,
+   "excluded": 595,
+   "required": 134
+  },
+  "/classseries/single/camp-creativebug-popsicle-stick-frames": {
+   "discovered": 132,
+   "excluded": 594,
+   "required": 132
+  },
+  "/classseries/single/camp-creativebug-t-shirt-hacks": {
+   "discovered": 132,
+   "excluded": 591,
+   "required": 132
+  },
+  "/classseries/single/candy-leis-5-30-17": {
+   "discovered": 133,
+   "excluded": 593,
+   "required": 133
+  },
+  "/classseries/single/canning-basics-how-to-can-tomatoes": {
+   "discovered": 140,
+   "excluded": 556,
+   "required": 140
+  },
+  "/classseries/single/canning-basics-make-cumin-scented-pickled-carrots": {
+   "discovered": 144,
+   "excluded": 555,
+   "required": 144
+  },
+  "/classseries/single/canning-the-best-blueberry-jam": {
+   "discovered": 148,
+   "excluded": 554,
+   "required": 148
+  },
+  "/classseries/single/cardboard-mobiles-6-6-17": {
+   "discovered": 133,
+   "excluded": 593,
+   "required": 133
+  },
+  "/classseries/single/carve-a-rubber-stamp-1-17-17": {
+   "discovered": 133,
+   "excluded": 595,
+   "required": 133
+  },
+  "/classseries/single/carve-a-rubber-stamp-kit-a-daily-practice": {
+   "discovered": 140,
+   "excluded": 564,
+   "required": 140
+  },
+  "/classseries/single/carve-and-print-a-multi-block-relief-portrait": {
+   "discovered": 140,
+   "excluded": 557,
+   "required": 140
+  },
+  "/classseries/single/casting-on-dpns-3-20-18": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/celebrate-the-season-a-daily-holiday-painting-practice": {
+   "discovered": 140,
+   "excluded": 573,
+   "required": 140
+  },
+  "/classseries/single/celebration-crowns-9-30-18": {
+   "discovered": 133,
+   "excluded": 593,
+   "required": 133
+  },
+  "/classseries/single/ceramic-spoons": {
+   "discovered": 140,
+   "excluded": 557,
+   "required": 140
+  },
+  "/classseries/single/change-headline-sonya-philip-class-launch": {
+   "discovered": 136,
+   "excluded": 591,
+   "required": 136
+  },
+  "/classseries/single/charcoal-blending-tools": {
+   "discovered": 140,
+   "excluded": 561,
+   "required": 140
+  },
+  "/classseries/single/charmed-bracelet": {
+   "discovered": 140,
+   "excluded": 554,
+   "required": 140
+  },
+  "/classseries/single/chic-sheep-yarn-with-marly-bird-11-7-17": {
+   "discovered": 136,
+   "excluded": 591,
+   "required": 136
+  },
+  "/classseries/single/chicken-scratch-sampler-book-1": {
+   "discovered": 149,
+   "excluded": 574,
+   "required": 149
+  },
+  "/classseries/single/chroma-leis-with-lisa-solomon-6-5-18": {
+   "discovered": 135,
+   "excluded": 593,
+   "required": 135
+  },
+  "/classseries/single/churn-dash-block": {
+   "discovered": 144,
+   "excluded": 555,
+   "required": 144
+  },
+  "/classseries/single/circular-knitting-basics-making-hats-in-the-round": {
+   "discovered": 142,
+   "excluded": 557,
+   "required": 142
+  },
+  "/classseries/single/clothespin-dolls": {
+   "discovered": 141,
+   "excluded": 566,
+   "required": 141
+  },
+  "/classseries/single/collaboration-challenge-1-31-19": {
+   "discovered": 136,
+   "excluded": 591,
+   "required": 136
+  },
+  "/classseries/single/collaborative-mixed-media-7-18-19": {
+   "discovered": 134,
+   "excluded": 593,
+   "required": 134
+  },
+  "/classseries/single/collage-homage-15-women-artists-to-know": {
+   "discovered": 154,
+   "excluded": 563,
+   "required": 154
+  },
+  "/classseries/single/collagraph-printing-without-a-press": {
+   "discovered": 140,
+   "excluded": 561,
+   "required": 140
+  },
+  "/classseries/single/color-dive-half-square-triangle-quilt": {
+   "discovered": 144,
+   "excluded": 561,
+   "required": 144
+  },
+  "/classseries/single/color-image-transfers-on-wood": {
+   "discovered": 141,
+   "excluded": 563,
+   "required": 141
+  },
+  "/classseries/single/color-in-and-out-of-the-garden": {
+   "discovered": 144,
+   "excluded": 577,
+   "required": 144
+  },
+  "/classseries/single/color-meditation-daily-practice": {
+   "discovered": 140,
+   "excluded": 574,
+   "required": 140
+  },
+  "/classseries/single/color-play-a-daily-practice-in-oil-pastel-and-colored-pencil": {
+   "discovered": 146,
+   "excluded": 563,
+   "required": 146
+  },
+  "/classseries/single/color-play-a-daily-practice-in-watercolor-and-colored-pencil": {
+   "discovered": 144,
+   "excluded": 566,
+   "required": 144
+  },
+  "/classseries/single/color-theory-for-modern-quilters": {
+   "discovered": 137,
+   "excluded": 553,
+   "required": 137
+  },
+  "/classseries/single/colored-pencil-pet-portraits-5-8-18": {
+   "discovered": 134,
+   "excluded": 596,
+   "required": 134
+  },
+  "/classseries/single/colored-pencil-workshop-a-daily-practice": {
+   "discovered": 144,
+   "excluded": 563,
+   "required": 144
+  },
+  "/classseries/single/colorscape-yarn-with-marly-11-28-18": {
+   "discovered": 135,
+   "excluded": 591,
+   "required": 135
+  },
+  "/classseries/single/concept-sketchbook-a-daily-practice": {
+   "discovered": 140,
+   "excluded": 563,
+   "required": 140
+  },
+  "/classseries/single/conservation-enclosures-4-3-18": {
+   "discovered": 136,
+   "excluded": 591,
+   "required": 136
+  },
+  "/classseries/single/cookie-cutter-bird-feeders-10-5-17": {
+   "discovered": 137,
+   "excluded": 592,
+   "required": 137
+  },
+  "/classseries/single/corner-to-corner-crochet-make-an-evergreen-tree-pillow": {
+   "discovered": 142,
+   "excluded": 553,
+   "required": 142
+  },
+  "/classseries/single/crab-claw-enclosure-5-15-18": {
+   "discovered": 137,
+   "excluded": 591,
+   "required": 137
+  },
+  "/classseries/single/craft-yourself-a-love-note": {
+   "discovered": 140,
+   "excluded": 554,
+   "required": 140
+  },
+  "/classseries/single/crafting-conversation-a-live-event-with-amanda-todaro-of-ditto": {
+   "discovered": 132,
+   "excluded": 591,
+   "required": 132
+  },
+  "/classseries/single/crafting-conversation-a-live-event-with-constance-moore": {
+   "discovered": 132,
+   "excluded": 592,
+   "required": 132
+  },
+  "/classseries/single/crafting-conversation-a-live-with-anna-maria-parry-1": {
+   "discovered": 139,
+   "excluded": 550,
+   "required": 139
+  },
+  "/classseries/single/crafting-together-a-live-event-with-nikki-of-simply-quilled-designs": {
+   "discovered": 140,
+   "excluded": 553,
+   "required": 140
+  },
+  "/classseries/single/crafting-together-a-live-event-with-sarah-bond-twinkie-chan-and-e-bond": {
+   "discovered": 135,
+   "excluded": 592,
+   "required": 135
+  },
+  "/classseries/single/crafting-together-chicken-scratch-embroidered-bandana-with-blair-stocker": {
+   "discovered": 149,
+   "excluded": 554,
+   "required": 149
+  },
+  "/classseries/single/crafting-together-chicken-scratch-ornaments-with-blair-stocker": {
+   "discovered": 141,
+   "excluded": 593,
+   "required": 141
+  },
+  "/classseries/single/crafting-together-crafting-for-mental-health-with-faith-and-heidi-1": {
+   "discovered": 135,
+   "excluded": 591,
+   "required": 135
+  },
+  "/classseries/single/crafting-together-crochet-the-quick-gift-cowl-with-vickie-howell": {
+   "discovered": 140,
+   "excluded": 592,
+   "required": 140
+  },
+  "/classseries/single/crafting-together-diy-stickers": {
+   "discovered": 142,
+   "excluded": 593,
+   "required": 142
+  },
+  "/classseries/single/crafting-together-english-paper-piecing": {
+   "discovered": 132,
+   "excluded": 593,
+   "required": 132
+  },
+  "/classseries/single/crafting-together-exploring-watercolor-with-lisa-solomon": {
+   "discovered": 142,
+   "excluded": 552,
+   "required": 142
+  },
+  "/classseries/single/crafting-together-februllage-kick-off-with-mia-semingson-5": {
+   "discovered": 140,
+   "excluded": 610,
+   "required": 140
+  },
+  "/classseries/single/crafting-together-finding-meaning-and-connection-through-handwork-with-melanie-falick": {
+   "discovered": 134,
+   "excluded": 592,
+   "required": 134
+  },
+  "/classseries/single/crafting-together-halloween-ornaments-with-jennifer-perkins": {
+   "discovered": 136,
+   "excluded": 549,
+   "required": 136
+  },
+  "/classseries/single/crafting-together-hand-yoga-with-heidi-parkes-and-the-love-letter-quilt": {
+   "discovered": 133,
+   "excluded": 594,
+   "required": 133
+  },
+  "/classseries/single/crafting-together-haunting-embroidery-embellishments-with-robert-mahar": {
+   "discovered": 142,
+   "excluded": 591,
+   "required": 142
+  },
+  "/classseries/single/crafting-together-holiday-embroidery-with-rebecca-ringquist": {
+   "discovered": 137,
+   "excluded": 591,
+   "required": 137
+  },
+  "/classseries/single/crafting-together-make-cream-cheese-boards": {
+   "discovered": 139,
+   "excluded": 593,
+   "required": 139
+  },
+  "/classseries/single/crafting-together-make-create-sketchbooks-with-hatem-aly": {
+   "discovered": 148,
+   "excluded": 552,
+   "required": 148
+  },
+  "/classseries/single/crafting-together-mixed-media-mayhem-with-ophelia-staton": {
+   "discovered": 136,
+   "excluded": 593,
+   "required": 136
+  },
+  "/classseries/single/crafting-together-painted-birds": {
+   "discovered": 137,
+   "excluded": 593,
+   "required": 137
+  },
+  "/classseries/single/crafting-together-paper-collage-quilts-with-constance-moore": {
+   "discovered": 107,
+   "excluded": 547,
+   "required": 107
+  },
+  "/classseries/single/crafting-together-pony-bead-bracelets-with-abby-and-violet": {
+   "discovered": 118,
+   "excluded": 591,
+   "required": 118
+  },
+  "/classseries/single/crafting-together-quilted-runway-accessories-with-sadie-and-meg": {
+   "discovered": 141,
+   "excluded": 592,
+   "required": 141
+  },
+  "/classseries/single/crafting-together-spooky-specimens-with-courtney-cerruti-twinkie-chan": {
+   "discovered": 140,
+   "excluded": 593,
+   "required": 140
+  },
+  "/classseries/single/crafting-together-sustainable-wrapping-paper-with-suzy-ultman": {
+   "discovered": 133,
+   "excluded": 592,
+   "required": 133
+  },
+  "/classseries/single/crafting-together-the-quilted-runway-with-sadie-metter": {
+   "discovered": 133,
+   "excluded": 591,
+   "required": 133
+  },
+  "/classseries/single/crafting-together-turkish-map-fold-books-with-e-bond": {
+   "discovered": 140,
+   "excluded": 559,
+   "required": 140
+  },
+  "/classseries/single/crafting-together-vintage-inspired-halloween-buckets": {
+   "discovered": 138,
+   "excluded": 592,
+   "required": 138
+  },
+  "/classseries/single/crafting-together-with-sanae-ishida": {
+   "discovered": 138,
+   "excluded": 592,
+   "required": 138
+  },
+  "/classseries/single/crafting-together-with-vickie-howell": {
+   "discovered": 141,
+   "excluded": 594,
+   "required": 141
+  },
+  "/classseries/single/crafting-together-writing-doodling-and-finding-beauty-in-aging-with-sanae-ishida": {
+   "discovered": 140,
+   "excluded": 552,
+   "required": 140
+  },
+  "/classseries/single/crate-crafts-1-31-17": {
+   "discovered": 133,
+   "excluded": 591,
+   "required": 133
+  },
+  "/classseries/single/create-a-colorful-abstract-painting": {
+   "discovered": 140,
+   "excluded": 562,
+   "required": 140
+  },
+  "/classseries/single/create-needle-books": {
+   "discovered": 140,
+   "excluded": 599,
+   "required": 140
+  },
+  "/classseries/single/creating-color-palettes-with-anna-maria-horner": {
+   "discovered": 140,
+   "excluded": 561,
+   "required": 140
+  },
+  "/classseries/single/creative-correspondence": {
+   "discovered": 145,
+   "excluded": 560,
+   "required": 145
+  },
+  "/classseries/single/creative-doodling": {
+   "discovered": 140,
+   "excluded": 580,
+   "required": 140
+  },
+  "/classseries/single/creative-napkin-folding-12-22-16": {
+   "discovered": 133,
+   "excluded": 591,
+   "required": 133
+  },
+  "/classseries/single/creative-sketchbooking": {
+   "discovered": 140,
+   "excluded": 577,
+   "required": 140
+  },
+  "/classseries/single/creativebug-live-blotted-line-monoprint-portraits-of-inspiring-women": {
+   "discovered": 144,
+   "excluded": 593,
+   "required": 144
+  },
+  "/classseries/single/creativebug-live-kids-art-camp-with-sophie-courtney": {
+   "discovered": 136,
+   "excluded": 592,
+   "required": 136
+  },
+  "/classseries/single/creativebug-live-me-made-may-with-sadie-metter": {
+   "discovered": 132,
+   "excluded": 592,
+   "required": 132
+  },
+  "/classseries/single/creativebug-live-mindful-movement-for-makers-with-liza-laird": {
+   "discovered": 137,
+   "excluded": 552,
+   "required": 137
+  },
+  "/classseries/single/creativebug-live-reusable-easter-eggs": {
+   "discovered": 147,
+   "excluded": 598,
+   "required": 147
+  },
+  "/classseries/single/creativebug-live-the-tender-gardener": {
+   "discovered": 133,
+   "excluded": 592,
+   "required": 133
+  },
+  "/classseries/single/creativebug-live-vision-boards-with-courtney-cerruti-and-liana-allday": {
+   "discovered": 136,
+   "excluded": 605,
+   "required": 136
+  },
+  "/classseries/single/creativebug-vip-live-event-three-hours-of-gelli-plate-play": {
+   "discovered": 144,
+   "excluded": 559,
+   "required": 144
+  },
+  "/classseries/single/creativebug-x-paper-source-live-pen-pal-packet-workshop": {
+   "discovered": 151,
+   "excluded": 551,
+   "required": 151
+  },
+  "/classseries/single/creativity-through-marbling-a-daily-practice": {
+   "discovered": 142,
+   "excluded": 560,
+   "required": 142
+  },
+  "/classseries/single/cricut-crafts-color-splash-sticker-labels": {
+   "discovered": 141,
+   "excluded": 554,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-dimensional-word-art": {
+   "discovered": 141,
+   "excluded": 555,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-diy-fall-leaves-wreath": {
+   "discovered": 141,
+   "excluded": 553,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-diy-gift-bags": {
+   "discovered": 141,
+   "excluded": 559,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-diy-gift-card-holder-and-envelope": {
+   "discovered": 140,
+   "excluded": 557,
+   "required": 140
+  },
+  "/classseries/single/cricut-crafts-diy-gift-tags-and-belly-bands": {
+   "discovered": 141,
+   "excluded": 554,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-diy-jar-labels": {
+   "discovered": 141,
+   "excluded": 554,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-easy-monogrammed-cosmetic-bag": {
+   "discovered": 141,
+   "excluded": 552,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-fall-leaf-banner": {
+   "discovered": 139,
+   "excluded": 593,
+   "required": 139
+  },
+  "/classseries/single/cricut-crafts-felt-christmas-stocking": {
+   "discovered": 141,
+   "excluded": 552,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-floral-pop-up-card": {
+   "discovered": 142,
+   "excluded": 559,
+   "required": 142
+  },
+  "/classseries/single/cricut-crafts-gemstone-favor-boxes": {
+   "discovered": 141,
+   "excluded": 552,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-make-celebration-confetti": {
+   "discovered": 141,
+   "excluded": 554,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-make-decorative-painted-plates": {
+   "discovered": 141,
+   "excluded": 556,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-make-halloween-cupcake-toppers": {
+   "discovered": 140,
+   "excluded": 553,
+   "required": 140
+  },
+  "/classseries/single/cricut-crafts-make-lacey-greeting-cards": {
+   "discovered": 138,
+   "excluded": 556,
+   "required": 138
+  },
+  "/classseries/single/cricut-crafts-make-stenciled-vases": {
+   "discovered": 142,
+   "excluded": 555,
+   "required": 142
+  },
+  "/classseries/single/cricut-crafts-make-wood-veneer-feather-earrings": {
+   "discovered": 141,
+   "excluded": 553,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-nutcracker-cake-topper": {
+   "discovered": 141,
+   "excluded": 554,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-phases-of-the-moon-wall-hanging": {
+   "discovered": 141,
+   "excluded": 556,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-winter-placemat": {
+   "discovered": 141,
+   "excluded": 552,
+   "required": 141
+  },
+  "/classseries/single/cricut-crafts-winter-trees-decor": {
+   "discovered": 141,
+   "excluded": 554,
+   "required": 141
+  },
+  "/classseries/single/cricut-paper-flowers-make-a-hydrangea": {
+   "discovered": 145,
+   "excluded": 563,
+   "required": 145
+  },
+  "/classseries/single/cricut-paper-flowers-make-potted-paperwhites": {
+   "discovered": 145,
+   "excluded": 557,
+   "required": 145
+  },
+  "/classseries/single/crochet-a-childs-crown-and-star-wand-": {
+   "discovered": 142,
+   "excluded": 565,
+   "required": 142
+  },
+  "/classseries/single/crochet-a-donut-rattle": {
+   "discovered": 141,
+   "excluded": 560,
+   "required": 141
+  },
+  "/classseries/single/crochet-a-granny-square": {
+   "discovered": 148,
+   "excluded": 556,
+   "required": 148
+  },
+  "/classseries/single/crochet-a-granny-square-cardigan": {
+   "discovered": 144,
+   "excluded": 566,
+   "required": 144
+  },
+  "/classseries/single/crochet-a-lacy-top": {
+   "discovered": 141,
+   "excluded": 555,
+   "required": 141
+  },
+  "/classseries/single/crochet-a-rag-rug": {
+   "discovered": 140,
+   "excluded": 565,
+   "required": 140
+  },
+  "/classseries/single/crochet-a-southwestern-throw": {
+   "discovered": 142,
+   "excluded": 562,
+   "required": 142
+  },
+  "/classseries/single/crochet-a-strawberry-granny-square": {
+   "discovered": 143,
+   "excluded": 598,
+   "required": 143
+  },
+  "/classseries/single/crochet-an-amigurumi-pencil": {
+   "discovered": 142,
+   "excluded": 601,
+   "required": 142
+  },
+  "/classseries/single/crochet-an-amigurumi-potted-cactus": {
+   "discovered": 145,
+   "excluded": 561,
+   "required": 145
+  },
+  "/classseries/single/crochet-an-amigurumi-rocketship": {
+   "discovered": 144,
+   "excluded": 557,
+   "required": 144
+  },
+  "/classseries/single/crochet-an-amigurumi-shooting-star": {
+   "discovered": 142,
+   "excluded": 600,
+   "required": 142
+  },
+  "/classseries/single/crochet-an-amigurumi-turtle": {
+   "discovered": 144,
+   "excluded": 556,
+   "required": 144
+  },
+  "/classseries/single/crochet-an-heirloom-granny-hexagon-stocking": {
+   "discovered": 144,
+   "excluded": 560,
+   "required": 144
+  },
+  "/classseries/single/crochet-cakery-a-daily-practice": {
+   "discovered": 147,
+   "excluded": 564,
+   "required": 147
+  },
+  "/classseries/single/crochet-colorblocked-sweater": {
+   "discovered": 141,
+   "excluded": 553,
+   "required": 141
+  },
+  "/classseries/single/crochet-edge-baby-blanket-9-19-19": {
+   "discovered": 135,
+   "excluded": 591,
+   "required": 135
+  },
+  "/classseries/single/crochet-edges-for-garments": {
+   "discovered": 144,
+   "excluded": 555,
+   "required": 144
+  },
+  "/classseries/single/crochet-halloween-appliques": {
+   "discovered": 148,
+   "excluded": 562,
+   "required": 148
+  },
+  "/classseries/single/crochet-ribbed-socks": {
+   "discovered": 145,
+   "excluded": 554,
+   "required": 145
+  },
+  "/classseries/single/crochet-sampler-a-daily-practice": {
+   "discovered": 145,
+   "excluded": 568,
+   "required": 145
+  },
+  "/classseries/single/crochet-the-harrison-sweater": {
+   "discovered": 141,
+   "excluded": 557,
+   "required": 141
+  },
+  "/classseries/single/crochet-the-strawberry-stitch-1-16-20": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/crocheted-broomstick-lace-bracelet": {
+   "discovered": 144,
+   "excluded": 556,
+   "required": 144
+  },
+  "/classseries/single/crocheted-cacti-cozies-4-13-17": {
+   "discovered": 134,
+   "excluded": 594,
+   "required": 134
+  },
+  "/classseries/single/cross-stitch-pendant": {
+   "discovered": 144,
+   "excluded": 556,
+   "required": 144
+  },
+  "/classseries/single/cross-stitched-wall-art": {
+   "discovered": 144,
+   "excluded": 558,
+   "required": 144
+  },
+  "/classseries/single/crystal-cuff-bracelet": {
+   "discovered": 144,
+   "excluded": 561,
+   "required": 144
+  },
+  "/classseries/single/customized-play-tent": {
+   "discovered": 133,
+   "excluded": 597,
+   "required": 133
+  },
+  "/classseries/single/cut-basic-applique-shapes": {
+   "discovered": 136,
+   "excluded": 552,
+   "required": 136
+  },
+  "/classseries/single/cut-paper-silhouettes-for-home-decor": {
+   "discovered": 145,
+   "excluded": 573,
+   "required": 145
+  },
+  "/classseries/single/cutting-squares-triangles-and-diamonds": {
+   "discovered": 136,
+   "excluded": 554,
+   "required": 136
+  },
+  "/classseries/single/daily-creativity-at-home-a-daily-practice": {
+   "discovered": 144,
+   "excluded": 590,
+   "required": 144
+  },
+  "/classseries/single/daily-creativity-challenge": {
+   "discovered": 136,
+   "excluded": 574,
+   "required": 136
+  },
+  "/classseries/single/daily-drawing-challenge": {
+   "discovered": 142,
+   "excluded": 574,
+   "required": 142
+  },
+  "/classseries/single/daily-drawing-challenge-31-pattern-motifs-with-courtney-cerruti": {
+   "discovered": 140,
+   "excluded": 591,
+   "required": 140
+  },
+  "/classseries/single/daily-drawing-challenge-tracing-shadows": {
+   "discovered": 140,
+   "excluded": 582,
+   "required": 140
+  },
+  "/classseries/single/daily-embroidery-challenge-stitch-a-day-sampler": {
+   "discovered": 146,
+   "excluded": 587,
+   "required": 146
+  },
+  "/classseries/single/daily-ornament-challenge": {
+   "discovered": 144,
+   "excluded": 584,
+   "required": 144
+  },
+  "/classseries/single/daily-painting-challenge-things-to-paint": {
+   "discovered": 140,
+   "excluded": 591,
+   "required": 140
+  },
+  "/classseries/single/dart-manipulation": {
+   "discovered": 140,
+   "excluded": 552,
+   "required": 140
+  },
+  "/classseries/single/dear-diary-daily-quilting-challenge": {
+   "discovered": 147,
+   "excluded": 604,
+   "required": 147
+  },
+  "/classseries/single/deck-the-halls": {
+   "discovered": 145,
+   "excluded": 567,
+   "required": 145
+  },
+  "/classseries/single/decorating-chocolate-with-transfer-sheets": {
+   "discovered": 143,
+   "excluded": 553,
+   "required": 143
+  },
+  "/classseries/single/design-and-crochet-a-top-down-bobble-sweater-1": {
+   "discovered": 144,
+   "excluded": 565,
+   "required": 144
+  },
+  "/classseries/single/design-your-own-needlepoint-canvas": {
+   "discovered": 141,
+   "excluded": 556,
+   "required": 141
+  },
+  "/classseries/single/diamonds-in-the-sky": {
+   "discovered": 144,
+   "excluded": 557,
+   "required": 144
+  },
+  "/classseries/single/digitizing-drawings-with-photoshop-and-illustrator": {
+   "discovered": 140,
+   "excluded": 563,
+   "required": 140
+  },
+  "/classseries/single/ditto-ditto-designer-and-made-to-measure": {
+   "discovered": 135,
+   "excluded": 591,
+   "required": 135
+  },
+  "/classseries/single/ditto-project-pattern-and-cut-fabric": {
+   "discovered": 135,
+   "excluded": 592,
+   "required": 135
+  },
+  "/classseries/single/ditto-unboxing-and-beam-set-up": {
+   "discovered": 135,
+   "excluded": 592,
+   "required": 135
+  },
+  "/classseries/single/diy-boutonnieres": {
+   "discovered": 140,
+   "excluded": 555,
+   "required": 140
+  },
+  "/classseries/single/diy-christmas-tree-string-art": {
+   "discovered": 144,
+   "excluded": 553,
+   "required": 144
+  },
+  "/classseries/single/diy-cleaning-and-craft-organization-1-24-17": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/diy-costume-jewelry-8-3-17": {
+   "discovered": 136,
+   "excluded": 592,
+   "required": 136
+  },
+  "/classseries/single/diy-easter-bunny-ears": {
+   "discovered": 144,
+   "excluded": 557,
+   "required": 144
+  },
+  "/classseries/single/diy-fabric-shoelaces": {
+   "discovered": 140,
+   "excluded": 555,
+   "required": 140
+  },
+  "/classseries/single/diy-flower-bouquets": {
+   "discovered": 140,
+   "excluded": 558,
+   "required": 140
+  },
+  "/classseries/single/diy-kids-knitting-needles": {
+   "discovered": 141,
+   "excluded": 555,
+   "required": 141
+  },
+  "/classseries/single/diy-leather-journal-9-11-18": {
+   "discovered": 134,
+   "excluded": 593,
+   "required": 134
+  },
+  "/classseries/single/diy-nail-art": {
+   "discovered": 140,
+   "excluded": 556,
+   "required": 140
+  },
+  "/classseries/single/diy-painted-hardward-accessory-rack": {
+   "discovered": 140,
+   "excluded": 554,
+   "required": 140
+  },
+  "/classseries/single/diy-room-decor-color-blocked-bulletin-board": {
+   "discovered": 140,
+   "excluded": 554,
+   "required": 140
+  },
+  "/classseries/single/diy-room-decor-decoupaged-jewelry-holder": {
+   "discovered": 138,
+   "excluded": 597,
+   "required": 138
+  },
+  "/classseries/single/diy-yarn-banners": {
+   "discovered": 140,
+   "excluded": 561,
+   "required": 140
+  },
+  "/classseries/single/doodling-on-an-ipad": {
+   "discovered": 140,
+   "excluded": 562,
+   "required": 140
+  },
+  "/classseries/single/double-star-quilt": {
+   "discovered": 145,
+   "excluded": 565,
+   "required": 145
+  },
+  "/classseries/single/double-wedding-ring-quilt-block": {
+   "discovered": 144,
+   "excluded": 559,
+   "required": 144
+  },
+  "/classseries/single/draft-and-sew-a-banded-collar-dress-and-button-down-tunic": {
+   "discovered": 147,
+   "excluded": 557,
+   "required": 147
+  },
+  "/classseries/single/draft-and-sew-a-batwing-top": {
+   "discovered": 146,
+   "excluded": 555,
+   "required": 146
+  },
+  "/classseries/single/draft-and-sew-a-button-down-jumpsuit": {
+   "discovered": 147,
+   "excluded": 552,
+   "required": 147
+  },
+  "/classseries/single/draft-and-sew-a-knit-cardigan": {
+   "discovered": 143,
+   "excluded": 555,
+   "required": 143
+  },
+  "/classseries/single/drawing-with-thread": {
+   "discovered": 143,
+   "excluded": 553,
+   "required": 143
+  },
+  "/classseries/single/dreamy-hexagons-medallion-quilt": {
+   "discovered": 144,
+   "excluded": 558,
+   "required": 144
+  },
+  "/classseries/single/dreamy-hexagons-medallion-quilt-2": {
+   "discovered": 144,
+   "excluded": 559,
+   "required": 144
+  },
+  "/classseries/single/driftwood-mobile": {
+   "discovered": 144,
+   "excluded": 558,
+   "required": 144
+  },
+  "/classseries/single/dyed-wall-hangings-1-18-18": {
+   "discovered": 133,
+   "excluded": 592,
+   "required": 133
+  },
+  "/classseries/single/ear-wire-basics": {
+   "discovered": 140,
+   "excluded": 553,
+   "required": 140
+  },
+  "/classseries/single/easiest-garter-stitch-slippers": {
+   "discovered": 146,
+   "excluded": 556,
+   "required": 146
+  },
+  "/classseries/single/easy-home-decor-sewing": {
+   "discovered": 149,
+   "excluded": 571,
+   "required": 149
+  },
+  "/classseries/single/eco-friendly-giftwrap-ideas": {
+   "discovered": 142,
+   "excluded": 556,
+   "required": 142
+  },
+  "/classseries/single/eco-printing-on-fabric-12-11-18": {
+   "discovered": 135,
+   "excluded": 591,
+   "required": 135
+  },
+  "/classseries/single/embossing-velvet-2-13-18": {
+   "discovered": 133,
+   "excluded": 591,
+   "required": 133
+  },
+  "/classseries/single/embroidered-abc-wall-hanging-a-daily-practice": {
+   "discovered": 146,
+   "excluded": 562,
+   "required": 146
+  },
+  "/classseries/single/embroidered-botanical-pattern-weights": {
+   "discovered": 148,
+   "excluded": 556,
+   "required": 148
+  },
+  "/classseries/single/embroidered-constellations": {
+   "discovered": 145,
+   "excluded": 561,
+   "required": 145
+  },
+  "/classseries/single/embroidered-handwritten-label": {
+   "discovered": 142,
+   "excluded": 559,
+   "required": 142
+  },
+  "/classseries/single/embroidered-heart-ornaments": {
+   "discovered": 149,
+   "excluded": 561,
+   "required": 149
+  },
+  "/classseries/single/embroidered-heirloom-napkins": {
+   "discovered": 145,
+   "excluded": 555,
+   "required": 145
+  },
+  "/classseries/single/embroidered-knit-pillow": {
+   "discovered": 144,
+   "excluded": 557,
+   "required": 144
+  },
+  "/classseries/single/embroidered-leather-cuffs": {
+   "discovered": 141,
+   "excluded": 558,
+   "required": 141
+  },
+  "/classseries/single/embroidered-photo-ornament": {
+   "discovered": 144,
+   "excluded": 561,
+   "required": 144
+  },
+  "/classseries/single/embroidered-sampler-passport-book": {
+   "discovered": 153,
+   "excluded": 565,
+   "required": 153
+  },
+  "/classseries/single/embroidered-snowflake-ornaments": {
+   "discovered": 152,
+   "excluded": 559,
+   "required": 152
+  },
+  "/classseries/single/english-paper-piecing": {
+   "discovered": 140,
+   "excluded": 561,
+   "required": 140
+  },
+  "/classseries/single/essential-color-mixing": {
+   "discovered": 144,
+   "excluded": 556,
+   "required": 144
+  },
+  "/classseries/single/essential-embroidery-techniques": {
+   "discovered": 142,
+   "excluded": 558,
+   "required": 142
+  },
+  "/classseries/single/exploring-color-london-stairs-quilt": {
+   "discovered": 143,
+   "excluded": 596,
+   "required": 143
+  },
+  "/classseries/single/fabric-circles-necklace": {
+   "discovered": 140,
+   "excluded": 553,
+   "required": 140
+  },
+  "/classseries/single/fabric-design-a-love-story-with-amy-and-david-butler": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/fabric-scrap-ornaments": {
+   "discovered": 144,
+   "excluded": 563,
+   "required": 144
+  },
+  "/classseries/single/fat-quarter-bandana-5-25-1": {
+   "discovered": 134,
+   "excluded": 592,
+   "required": 134
+  },
+  "/classseries/single/fathers-day-pop-up-cards-6-14-18": {
+   "discovered": 143,
+   "excluded": 591,
+   "required": 143
+  },
+  "/classseries/single/faux-ceramic-bells-3-1-18": {
+   "discovered": 133,
+   "excluded": 592,
+   "required": 133
+  },
+  "/classseries/single/faux-terrazzo-earrings-11-14-18": {
+   "discovered": 134,
+   "excluded": 592,
+   "required": 134
+  },
+  "/classseries/single/felt-advent-calendar": {
+   "discovered": 145,
+   "excluded": 553,
+   "required": 145
+  },
+  "/classseries/single/felt-flower-headband": {
+   "discovered": 142,
+   "excluded": 599,
+   "required": 142
+  },
+  "/classseries/single/five-strand-braid-crafts": {
+   "discovered": 140,
+   "excluded": 557,
+   "required": 140
+  },
+  "/classseries/single/floral-tape-wrapping": {
+   "discovered": 136,
+   "excluded": 554,
+   "required": 136
+  },
+  "/classseries/single/flower-loom-basics-15-days-of-exploration": {
+   "discovered": 143,
+   "excluded": 561,
+   "required": 143
+  },
+  "/classseries/single/flying-gosling-baby-quilt": {
+   "discovered": 145,
+   "excluded": 559,
+   "required": 145
+  },
+  "/classseries/single/fold-a-paper-lotus-flower": {
+   "discovered": 141,
+   "excluded": 563,
+   "required": 141
+  },
+  "/classseries/single/found-necklace": {
+   "discovered": 140,
+   "excluded": 559,
+   "required": 140
+  },
+  "/classseries/single/four-leaf-clover-boutonnieres-3-13-18": {
+   "discovered": 137,
+   "excluded": 592,
+   "required": 137
+  },
+  "/classseries/single/free-motion-quilted-coasters-10-17-19": {
+   "discovered": 138,
+   "excluded": 591,
+   "required": 138
+  },
+  "/classseries/single/free-motion-quilting": {
+   "discovered": 144,
+   "excluded": 561,
+   "required": 144
+  },
+  "/classseries/single/from-my-kitchen-to-yours-a-month-of-giftable-goods-and-recipes": {
+   "discovered": 144,
+   "excluded": 564,
+   "required": 144
+  },
+  "/classseries/single/furniture-refinishing": {
+   "discovered": 140,
+   "excluded": 572,
+   "required": 140
+  },
+  "/classseries/single/furniture-refinishing-flea-market-tips": {
+   "discovered": 136,
+   "excluded": 553,
+   "required": 136
+  },
+  "/classseries/single/garment-sewing-design-details": {
+   "discovered": 139,
+   "excluded": 592,
+   "required": 139
+  },
+  "/classseries/single/garment-sewing-with-knits-an-introduction": {
+   "discovered": 143,
+   "excluded": 592,
+   "required": 143
+  },
+  "/classseries/single/garment-sewing-with-woven-fabrics-beyond-a-straight-stitch": {
+   "discovered": 139,
+   "excluded": 593,
+   "required": 139
+  },
+  "/classseries/single/garment-sewing-with-woven-fabrics-finishings-and-hems": {
+   "discovered": 139,
+   "excluded": 593,
+   "required": 139
+  },
+  "/classseries/single/garment-sewing-with-woven-fabrics-zippers": {
+   "discovered": 139,
+   "excluded": 592,
+   "required": 139
+  },
+  "/classseries/single/gather-and-make-four-garden-projects": {
+   "discovered": 138,
+   "excluded": 603,
+   "required": 138
+  },
+  "/classseries/single/gees-bend-inspired-collage": {
+   "discovered": 139,
+   "excluded": 599,
+   "required": 139
+  },
+  "/classseries/single/glitter-101": {
+   "discovered": 136,
+   "excluded": 552,
+   "required": 136
+  },
+  "/classseries/single/glue-101": {
+   "discovered": 136,
+   "excluded": 553,
+   "required": 136
+  },
+  "/classseries/single/gods-eyes-6-1-17": {
+   "discovered": 136,
+   "excluded": 597,
+   "required": 136
+  },
+  "/classseries/single/gumdrop-pillow": {
+   "discovered": 145,
+   "excluded": 564,
+   "required": 145
+  },
+  "/classseries/single/halloween-trick-or-treat-bags": {
+   "discovered": 144,
+   "excluded": 560,
+   "required": 144
+  },
+  "/classseries/single/hand-built-ceramics": {
+   "discovered": 140,
+   "excluded": 565,
+   "required": 140
+  },
+  "/classseries/single/hand-built-vases-with-air-dry-clay": {
+   "discovered": 140,
+   "excluded": 556,
+   "required": 140
+  },
+  "/classseries/single/hand-quilting-with-long-stitches": {
+   "discovered": 141,
+   "excluded": 563,
+   "required": 141
+  },
+  "/classseries/single/hand-rolled-truffles": {
+   "discovered": 150,
+   "excluded": 555,
+   "required": 150
+  },
+  "/classseries/single/hand-sew-a-felt-sewing-kit": {
+   "discovered": 144,
+   "excluded": 557,
+   "required": 144
+  },
+  "/classseries/single/hand-sew-a-teddy-bear": {
+   "discovered": 146,
+   "excluded": 563,
+   "required": 146
+  },
+  "/classseries/single/hand-sew-an-easter-chick-softie-and-basket": {
+   "discovered": 145,
+   "excluded": 561,
+   "required": 145
+  },
+  "/classseries/single/hand-sew-farm-animal-finger-puppets": {
+   "discovered": 145,
+   "excluded": 561,
+   "required": 145
+  },
+  "/classseries/single/holiday-craft-along-30-days-of-cards-tags-and-packaging-ideas": {
+   "discovered": 140,
+   "excluded": 589,
+   "required": 140
+  },
+  "/classseries/single/holiday-mitten-garland": {
+   "discovered": 144,
+   "excluded": 553,
+   "required": 144
+  },
+  "/classseries/single/holiday-preserves": {
+   "discovered": 148,
+   "excluded": 555,
+   "required": 148
+  },
+  "/classseries/single/home-decor-three-macrame-rope-projects": {
+   "discovered": 138,
+   "excluded": 555,
+   "required": 138
+  },
+  "/classseries/single/homemade-apothecary": {
+   "discovered": 144,
+   "excluded": 561,
+   "required": 144
+  },
+  "/classseries/single/how-to-applique-circles-three-ways": {
+   "discovered": 142,
+   "excluded": 562,
+   "required": 142
+  },
+  "/classseries/single/how-to-attached-binding-tape": {
+   "discovered": 138,
+   "excluded": 559,
+   "required": 138
+  },
+  "/classseries/single/how-to-design-fabric": {
+   "discovered": 140,
+   "excluded": 569,
+   "required": 140
+  },
+  "/classseries/single/how-to-embroider-a-french-knot": {
+   "discovered": 140,
+   "excluded": 593,
+   "required": 140
+  },
+  "/classseries/single/how-to-embroider-the-bullion-stitch": {
+   "discovered": 140,
+   "excluded": 593,
+   "required": 140
+  },
+  "/classseries/single/how-to-embroider-the-feather-stitch": {
+   "discovered": 140,
+   "excluded": 592,
+   "required": 140
+  },
+  "/classseries/single/how-to-make-a-pom-pom": {
+   "discovered": 140,
+   "excluded": 557,
+   "required": 140
+  },
+  "/classseries/single/how-to-make-bias-tape": {
+   "discovered": 140,
+   "excluded": 554,
+   "required": 140
+  },
+  "/classseries/single/how-to-make-binding-tape": {
+   "discovered": 142,
+   "excluded": 553,
+   "required": 142
+  },
+  "/classseries/single/how-to-make-pie-crust": {
+   "discovered": 148,
+   "excluded": 562,
+   "required": 148
+  },
+  "/classseries/single/how-to-mend-clothing": {
+   "discovered": 141,
+   "excluded": 563,
+   "required": 141
+  },
+  "/classseries/single/how-to-sew-mitered-corners": {
+   "discovered": 137,
+   "excluded": 556,
+   "required": 137
+  },
+  "/classseries/single/how-to-sew-potholders": {
+   "discovered": 141,
+   "excluded": 562,
+   "required": 141
+  },
+  "/classseries/single/how-to-sharpen-charcoal": {
+   "discovered": 140,
+   "excluded": 553,
+   "required": 140
+  },
+  "/classseries/single/how-to-use-and-air-compressor": {
+   "discovered": 140,
+   "excluded": 552,
+   "required": 140
+  },
+  "/classseries/single/how-to-wax-fabric-8-15-1": {
+   "discovered": 135,
+   "excluded": 591,
+   "required": 135
+  },
+  "/classseries/single/ice-dying-with-anna-joyce-5-9-19": {
+   "discovered": 136,
+   "excluded": 595,
+   "required": 136
+  },
+  "/classseries/single/inspired-by-picture-books-a-daily-practice-of-creative-prompts": {
+   "discovered": 142,
+   "excluded": 605,
+   "required": 142
+  },
+  "/classseries/single/intro-to-needle-felting": {
+   "discovered": 136,
+   "excluded": 556,
+   "required": 136
+  },
+  "/classseries/single/intro-to-paper-quilling": {
+   "discovered": 141,
+   "excluded": 561,
+   "required": 141
+  },
+  "/classseries/single/intro-to-quilting-patchwork-basics": {
+   "discovered": 148,
+   "excluded": 595,
+   "required": 148
+  },
+  "/classseries/single/japanese-sashiko-a-daily-decorative-stitching-practice": {
+   "discovered": 145,
+   "excluded": 566,
+   "required": 145
+  },
+  "/classseries/single/jewelry-design-with-scotchbonnet-creative-product-photography": {
+   "discovered": 140,
+   "excluded": 554,
+   "required": 140
+  },
+  "/classseries/single/jewelry-design-with-scotchbonnet-working-with-a-bead-loom": {
+   "discovered": 144,
+   "excluded": 555,
+   "required": 144
+  },
+  "/classseries/single/jewelry-design-with-scotchbonnet-working-with-fabric": {
+   "discovered": 141,
+   "excluded": 564,
+   "required": 141
+  },
+  "/classseries/single/jewelry-design-with-scotchbonnet-working-with-wooden-accents": {
+   "discovered": 141,
+   "excluded": 556,
+   "required": 141
+  },
+  "/classseries/single/jogakbo-the-art-of-korean-patchwork": {
+   "discovered": 111,
+   "excluded": 500,
+   "required": 111
+  },
+  "/classseries/single/jumbo-pom-poms-1-26-17": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/kids-cricut-crafts-paper-flower-necklace": {
+   "discovered": 141,
+   "excluded": 555,
+   "required": 141
+  },
+  "/classseries/single/kids-cricut-crafts-watercolor-butterfly-rings": {
+   "discovered": 141,
+   "excluded": 556,
+   "required": 141
+  },
+  "/classseries/single/kids-weaving": {
+   "discovered": 141,
+   "excluded": 555,
+   "required": 141
+  },
+  "/classseries/single/kintsugi-1-23-18": {
+   "discovered": 133,
+   "excluded": 592,
+   "required": 133
+  },
+  "/classseries/single/knot-bead-pendant": {
+   "discovered": 144,
+   "excluded": 555,
+   "required": 144
+  },
+  "/classseries/single/leather-basics": {
+   "discovered": 136,
+   "excluded": 555,
+   "required": 136
+  },
+  "/classseries/single/leather-wrap-bracelet": {
+   "discovered": 140,
+   "excluded": 562,
+   "required": 140
+  },
+  "/classseries/single/log-cabin-quilting": {
+   "discovered": 144,
+   "excluded": 588,
+   "required": 144
+  },
+  "/classseries/single/lotion-bars-1-24-19": {
+   "discovered": 134,
+   "excluded": 593,
+   "required": 134
+  },
+  "/classseries/single/love-letter-quilt-top-a-daily-practice": {
+   "discovered": 143,
+   "excluded": 572,
+   "required": 143
+  },
+  "/classseries/single/lucky-star-quilt-along-with-keaton-quilts": {
+   "discovered": 146,
+   "excluded": 563,
+   "required": 146
+  },
+  "/classseries/single/magic-braid-timelapse": {
+   "discovered": 133,
+   "excluded": 591,
+   "required": 133
+  },
+  "/classseries/single/make-a-bath-soak-and-body-scrub": {
+   "discovered": 144,
+   "excluded": 553,
+   "required": 144
+  },
+  "/classseries/single/make-a-custom-herbal-tea-blend": {
+   "discovered": 140,
+   "excluded": 553,
+   "required": 140
+  },
+  "/classseries/single/make-a-doodle-quilt": {
+   "discovered": 140,
+   "excluded": 558,
+   "required": 140
+  },
+  "/classseries/single/make-a-macrame-keychain": {
+   "discovered": 141,
+   "excluded": 558,
+   "required": 141
+  },
+  "/classseries/single/make-a-modern-log-cabin-lap-quilt": {
+   "discovered": 144,
+   "excluded": 564,
+   "required": 144
+  },
+  "/classseries/single/make-a-peony-with-air-dry-clay": {
+   "discovered": 140,
+   "excluded": 595,
+   "required": 140
+  },
+  "/classseries/single/make-an-eco-friendly-dog-toy": {
+   "discovered": 141,
+   "excluded": 556,
+   "required": 141
+  },
+  "/classseries/single/make-confetti-dangle-earrings-with-polymer-clay": {
+   "discovered": 140,
+   "excluded": 554,
+   "required": 140
+  },
+  "/classseries/single/make-faux-knit-dangle-earrings-with-polymer-clay": {
+   "discovered": 140,
+   "excluded": 556,
+   "required": 140
+  },
+  "/classseries/single/make-friendship-bracelets": {
+   "discovered": 142,
+   "excluded": 563,
+   "required": 142
+  },
+  "/classseries/single/make-the-rainbow-road-mini-quilt": {
+   "discovered": 144,
+   "excluded": 557,
+   "required": 144
+  },
+  "/classseries/single/make-to-give-sew-a-gingham-crib-quilt": {
+   "discovered": 97,
+   "excluded": 496,
+   "required": 97
+  },
+  "/classseries/single/make-to-give-sew-a-gingham-crib-quilt-1": {
+   "discovered": 138,
+   "excluded": 594,
+   "required": 138
+  },
+  "/classseries/single/make-watercolor-marbled-hair-clips-with-polymer-clay": {
+   "discovered": 144,
+   "excluded": 554,
+   "required": 144
+  },
+  "/classseries/single/metal-stamping": {
+   "discovered": 140,
+   "excluded": 553,
+   "required": 140
+  },
+  "/classseries/single/mixtape-5-embroidery-stitches": {
+   "discovered": 139,
+   "excluded": 591,
+   "required": 139
+  },
+  "/classseries/single/mixtape-summertime": {
+   "discovered": 137,
+   "excluded": 592,
+   "required": 137
+  },
+  "/classseries/single/needle-felted-goldfish": {
+   "discovered": 140,
+   "excluded": 555,
+   "required": 140
+  },
+  "/classseries/single/needle-felted-peeps": {
+   "discovered": 140,
+   "excluded": 554,
+   "required": 140
+  },
+  "/classseries/single/needlepoint-sampler": {
+   "discovered": 142,
+   "excluded": 603,
+   "required": 142
+  },
+  "/classseries/single/perfectly-pixelated-jelly-roll-quilt": {
+   "discovered": 140,
+   "excluded": 560,
+   "required": 140
+  },
+  "/classseries/single/playing-with-image-transfers-a-daily-practice": {
+   "discovered": 158,
+   "excluded": 560,
+   "required": 158
+  },
+  "/classseries/single/punch-needle-coasters-6-13-19": {
+   "discovered": 136,
+   "excluded": 593,
+   "required": 136
+  },
+  "/classseries/single/punch-needle-demonstration-4-12-18": {
+   "discovered": 135,
+   "excluded": 592,
+   "required": 135
+  },
+  "/classseries/single/punch-needle-workshop": {
+   "discovered": 151,
+   "excluded": 566,
+   "required": 151
+  },
+  "/classseries/single/quilted-jelly-roll-baby-bibs": {
+   "discovered": 144,
+   "excluded": 564,
+   "required": 144
+  },
+  "/classseries/single/sashiko-sewing": {
+   "discovered": 147,
+   "excluded": 565,
+   "required": 147
+  },
+  "/classseries/single/sew-a-needlepoint-tote": {
+   "discovered": 141,
+   "excluded": 562,
+   "required": 141
+  },
+  "/classseries/single/sew-it-all-tv-season-6": {
+   "discovered": 156,
+   "excluded": 561,
+   "required": 156
+  },
+  "/classseries/single/shape-pattern-color-hand-stitched-sampler-books": {
+   "discovered": 145,
+   "excluded": 564,
+   "required": 145
+  },
+  "/classseries/single/stitched-rose-embellishment": {
+   "discovered": 144,
+   "excluded": 559,
+   "required": 144
+  },
+  "/classseries/single/story-quilt-top-a-daily-practice-in-hand-stitching": {
+   "discovered": 141,
+   "excluded": 564,
+   "required": 141
+  },
+  "/classseries/single/sweater-mending-3917": {
+   "discovered": 134,
+   "excluded": 591,
+   "required": 134
+  },
+  "/classseries/single/tunisian-crochet-a-daily-practice": {
+   "discovered": 144,
+   "excluded": 556,
+   "required": 144
+  },
+  "/classseries/single/upcycled-books-make-a-hardcover-journal": {
+   "discovered": 139,
+   "excluded": 551,
+   "required": 139
+  },
+  "/classseries/single/upcycled-denim-sew-a-bomber-jacket": {
+   "discovered": 143,
+   "excluded": 552,
+   "required": 143
+  },
+  "/collections": {
+   "discovered": 94,
+   "excluded": 457,
+   "required": 94
+  },
+  "/gallery/mygallery": {
+   "discovered": 20,
+   "excluded": 12,
+   "required": 20
+  },
+  "/gallery/pinterest": {
+   "discovered": 114,
+   "excluded": 483,
+   "required": 114
+  },
+  "/gift_subscriptions": {
+   "discovered": 23,
+   "excluded": 27,
+   "required": 23
+  },
+  "/groups": {
+   "discovered": 84,
+   "excluded": 456,
+   "required": 84
+  },
+  "/inspiration/blog": {
+   "discovered": 143,
+   "excluded": 455,
+   "required": 143
+  },
+  "/instructors": {
+   "discovered": 152,
+   "excluded": 505,
+   "required": 152
+  },
+  "/instructors/100layercake": {
+   "discovered": 96,
+   "excluded": 469,
+   "required": 96
+  },
+  "/instructors/a-verb-for-keeping-warm": {
+   "discovered": 92,
+   "excluded": 469,
+   "required": 92
+  },
+  "/instructors/abigail-houston": {
+   "discovered": 89,
+   "excluded": 460,
+   "required": 89
+  },
+  "/instructors/alix-bluh": {
+   "discovered": 101,
+   "excluded": 469,
+   "required": 101
+  },
+  "/instructors/amanda-brown": {
+   "discovered": 96,
+   "excluded": 466,
+   "required": 96
+  },
+  "/instructors/amanda-todaro": {
+   "discovered": 94,
+   "excluded": 461,
+   "required": 94
+  },
+  "/instructors/amber-of-damask-love": {
+   "discovered": 106,
+   "excluded": 465,
+   "required": 106
+  },
+  "/instructors/amy-butler": {
+   "discovered": 102,
+   "excluded": 468,
+   "required": 102
+  },
+  "/instructors/amy-karol": {
+   "discovered": 104,
+   "excluded": 470,
+   "required": 104
+  },
+  "/instructors/anna-hultin": {
+   "discovered": 86,
+   "excluded": 459,
+   "required": 86
+  },
+  "/instructors/anna-joyce": {
+   "discovered": 101,
+   "excluded": 469,
+   "required": 101
+  },
+  "/instructors/anna-maria-horner": {
+   "discovered": 121,
+   "excluded": 473,
+   "required": 121
+  },
+  "/instructors/annabel-wrigley": {
+   "discovered": 111,
+   "excluded": 475,
+   "required": 111
+  },
+  "/instructors/anne-weil": {
+   "discovered": 112,
+   "excluded": 470,
+   "required": 112
+  },
+  "/instructors/ashley-nickels": {
+   "discovered": 114,
+   "excluded": 474,
+   "required": 114
+  },
+  "/instructors/barb-blair": {
+   "discovered": 98,
+   "excluded": 468,
+   "required": 98
+  },
+  "/instructors/bellacreme": {
+   "discovered": 111,
+   "excluded": 474,
+   "required": 111
+  },
+  "/instructors/belofscrappapercircus": {
+   "discovered": 97,
+   "excluded": 462,
+   "required": 97
+  },
+  "/instructors/benjamin-mach": {
+   "discovered": 86,
+   "excluded": 459,
+   "required": 86
+  },
+  "/instructors/blair-stocker-1": {
+   "discovered": 117,
+   "excluded": 468,
+   "required": 117
+  },
+  "/instructors/bookhou": {
+   "discovered": 91,
+   "excluded": 460,
+   "required": 91
+  },
+  "/instructors/brandon-mably": {
+   "discovered": 92,
+   "excluded": 467,
+   "required": 92
+  },
+  "/instructors/brittany-jones-2": {
+   "discovered": 88,
+   "excluded": 459,
+   "required": 88
+  },
+  "/instructors/cal-patch": {
+   "discovered": 126,
+   "excluded": 473,
+   "required": 126
+  },
+  "/instructors/camilla-derrico": {
+   "discovered": 101,
+   "excluded": 468,
+   "required": 101
+  },
+  "/instructors/carla-scott": {
+   "discovered": 89,
+   "excluded": 460,
+   "required": 89
+  },
+  "/instructors/carolyn-friedlander": {
+   "discovered": 110,
+   "excluded": 472,
+   "required": 110
+  },
+  "/instructors/carolyn-gavin": {
+   "discovered": 82,
+   "excluded": 457,
+   "required": 82
+  },
+  "/instructors/cbtv": {
+   "discovered": 107,
+   "excluded": 464,
+   "required": 107
+  },
+  "/instructors/cbtv-live": {
+   "discovered": 105,
+   "excluded": 465,
+   "required": 105
+  },
+  "/instructors/cecelia-murphy": {
+   "discovered": 89,
+   "excluded": 468,
+   "required": 89
+  },
+  "/instructors/charlotte-hamilton": {
+   "discovered": 92,
+   "excluded": 466,
+   "required": 92
+  },
+  "/instructors/chelsea-from-friday-pattern-company": {
+   "discovered": 85,
+   "excluded": 458,
+   "required": 85
+  },
+  "/instructors/christopher-clark": {
+   "discovered": 81,
+   "excluded": 458,
+   "required": 81
+  },
+  "/instructors/cindy-willingham": {
+   "discovered": 87,
+   "excluded": 460,
+   "required": 87
+  },
+  "/instructors/cleo-papanikolas": {
+   "discovered": 123,
+   "excluded": 458,
+   "required": 123
+  },
+  "/instructors/cobrina": {
+   "discovered": 78,
+   "excluded": 455,
+   "required": 78
+  },
+  "/instructors/constance-moore": {
+   "discovered": 90,
+   "excluded": 459,
+   "required": 90
+  },
+  "/instructors/corrie-hogg": {
+   "discovered": 97,
+   "excluded": 468,
+   "required": 97
+  },
+  "/instructors/creative-brand-series": {
+   "discovered": 78,
+   "excluded": 457,
+   "required": 78
+  },
+  "/instructors/danielle-krysa": {
+   "discovered": 86,
+   "excluded": 458,
+   "required": 86
+  },
+  "/instructors/david-tenorio": {
+   "discovered": 114,
+   "excluded": 474,
+   "required": 114
+  },
+  "/instructors/dawline-oni-eseleh": {
+   "discovered": 82,
+   "excluded": 457,
+   "required": 82
+  },
+  "/instructors/dawn-devries-sokol": {
+   "discovered": 102,
+   "excluded": 469,
+   "required": 102
+  },
+  "/instructors/dawn-m-cardona": {
+   "discovered": 135,
+   "excluded": 465,
+   "required": 135
+  },
+  "/instructors/debbie-stoller": {
+   "discovered": 111,
+   "excluded": 465,
+   "required": 111
+  },
+  "/instructors/deborah-kreiling": {
+   "discovered": 93,
+   "excluded": 461,
+   "required": 93
+  },
+  "/instructors/devlin-mannle": {
+   "discovered": 88,
+   "excluded": 466,
+   "required": 88
+  },
+  "/instructors/diana-fayt": {
+   "discovered": 102,
+   "excluded": 469,
+   "required": 102
+  },
+  "/instructors/e-bond": {
+   "discovered": 113,
+   "excluded": 470,
+   "required": 113
+  },
+  "/instructors/edie-eckman": {
+   "discovered": 132,
+   "excluded": 473,
+   "required": 132
+  },
+  "/instructors/elke-bergeron": {
+   "discovered": 113,
+   "excluded": 474,
+   "required": 113
+  },
+  "/instructors/emily-katz": {
+   "discovered": 96,
+   "excluded": 468,
+   "required": 96
+  },
+  "/instructors/erika-lee-sears": {
+   "discovered": 83,
+   "excluded": 458,
+   "required": 83
+  },
+  "/instructors/erin-wheeler": {
+   "discovered": 84,
+   "excluded": 458,
+   "required": 84
+  },
+  "/instructors/fabric-designinstructors": {
+   "discovered": 80,
+   "excluded": 457,
+   "required": 80
+  },
+  "/instructors/faheema-chaudhury": {
+   "discovered": 87,
+   "excluded": 460,
+   "required": 87
+  },
+  "/instructors/faith-hale": {
+   "discovered": 118,
+   "excluded": 473,
+   "required": 118
+  },
+  "/instructors/fancy-tiger": {
+   "discovered": 125,
+   "excluded": 473,
+   "required": 125
+  },
+  "/instructors/flora-bowley": {
+   "discovered": 98,
+   "excluded": 467,
+   "required": 98
+  },
+  "/instructors/george-mccalman": {
+   "discovered": 79,
+   "excluded": 457,
+   "required": 79
+  },
+  "/instructors/get-messy": {
+   "discovered": 87,
+   "excluded": 459,
+   "required": 87
+  },
+  "/instructors/gudrun-johnston": {
+   "discovered": 105,
+   "excluded": 467,
+   "required": 105
+  },
+  "/instructors/heather-bailey": {
+   "discovered": 94,
+   "excluded": 466,
+   "required": 94
+  },
+  "/instructors/heather-jones": {
+   "discovered": 134,
+   "excluded": 473,
+   "required": 134
+  },
+  "/instructors/heather-ross": {
+   "discovered": 110,
+   "excluded": 472,
+   "required": 110
+  },
+  "/instructors/heidi-parkes": {
+   "discovered": 116,
+   "excluded": 474,
+   "required": 116
+  },
+  "/instructors/hilary-williams": {
+   "discovered": 118,
+   "excluded": 474,
+   "required": 118
+  },
+  "/instructors/improv-sewing": {
+   "discovered": 99,
+   "excluded": 468,
+   "required": 99
+  },
+  "/instructors/jamie-hudson": {
+   "discovered": 106,
+   "excluded": 465,
+   "required": 106
+  },
+  "/instructors/jen-hewett": {
+   "discovered": 97,
+   "excluded": 468,
+   "required": 97
+  },
+  "/instructors/jenean-morrison": {
+   "discovered": 92,
+   "excluded": 466,
+   "required": 92
+  },
+  "/instructors/jennifer-mercede": {
+   "discovered": 81,
+   "excluded": 457,
+   "required": 81
+  },
+  "/instructors/jennifer-orkin-lewis": {
+   "discovered": 96,
+   "excluded": 468,
+   "required": 96
+  },
+  "/instructors/jennifer-perkins": {
+   "discovered": 90,
+   "excluded": 469,
+   "required": 90
+  },
+  "/instructors/jennifer-sbranti": {
+   "discovered": 88,
+   "excluded": 460,
+   "required": 88
+  },
+  "/instructors/jenny-doh": {
+   "discovered": 98,
+   "excluded": 468,
+   "required": 98
+  },
+  "/instructors/jess-park": {
+   "discovered": 84,
+   "excluded": 458,
+   "required": 84
+  },
+  "/instructors/jessie-jennings-of-plaid-crafts": {
+   "discovered": 81,
+   "excluded": 458,
+   "required": 81
+  },
+  "/instructors/jody-alexander": {
+   "discovered": 119,
+   "excluded": 474,
+   "required": 119
+  },
+  "/instructors/jon-stich": {
+   "discovered": 85,
+   "excluded": 458,
+   "required": 85
+  },
+  "/instructors/joy-macdonell": {
+   "discovered": 83,
+   "excluded": 458,
+   "required": 83
+  },
+  "/instructors/joy-ting": {
+   "discovered": 84,
+   "excluded": 458,
+   "required": 84
+  },
+  "/instructors/kaffe-fassett": {
+   "discovered": 95,
+   "excluded": 468,
+   "required": 95
+  },
+  "/instructors/karen-solomon": {
+   "discovered": 103,
+   "excluded": 469,
+   "required": 103
+  },
+  "/instructors/kata-golda": {
+   "discovered": 115,
+   "excluded": 475,
+   "required": 115
+  },
+  "/instructors/katharine-watson": {
+   "discovered": 83,
+   "excluded": 458,
+   "required": 83
+  },
+  "/instructors/kathy-doughty": {
+   "discovered": 94,
+   "excluded": 467,
+   "required": 94
+  },
+  "/instructors/katia-ferris": {
+   "discovered": 114,
+   "excluded": 471,
+   "required": 114
+  },
+  "/instructors/katrina-wheeler-3": {
+   "discovered": 110,
+   "excluded": 466,
+   "required": 110
+  },
+  "/instructors/keaton-quilts": {
+   "discovered": 81,
+   "excluded": 458,
+   "required": 81
+  },
+  "/instructors/kelly-wilkinson": {
+   "discovered": 105,
+   "excluded": 469,
+   "required": 105
+  },
+  "/instructors/kesley-anderson": {
+   "discovered": 78,
+   "excluded": 457,
+   "required": 78
+  },
+  "/instructors/kristin-nicholas": {
+   "discovered": 109,
+   "excluded": 468,
+   "required": 109
+  },
+  "/instructors/kristy-rice": {
+   "discovered": 94,
+   "excluded": 467,
+   "required": 94
+  },
+  "/instructors/kyra-balentine": {
+   "discovered": 84,
+   "excluded": 459,
+   "required": 84
+  },
+  "/instructors/lana-williams": {
+   "discovered": 90,
+   "excluded": 460,
+   "required": 90
+  },
+  "/instructors/lauren-from-lark-rising-embroidery": {
+   "discovered": 106,
+   "excluded": 471,
+   "required": 106
+  },
+  "/instructors/lauren-hooper": {
+   "discovered": 84,
+   "excluded": 457,
+   "required": 84
+  },
+  "/instructors/lauren-marcinek": {
+   "discovered": 90,
+   "excluded": 461,
+   "required": 90
+  },
+  "/instructors/lesley-ware": {
+   "discovered": 100,
+   "excluded": 463,
+   "required": 100
+  },
+  "/instructors/leslie-schucker": {
+   "discovered": 92,
+   "excluded": 461,
+   "required": 92
+  },
+  "/instructors/lia-griffith": {
+   "discovered": 118,
+   "excluded": 474,
+   "required": 118
+  },
+  "/instructors/liana-allday": {
+   "discovered": 78,
+   "excluded": 455,
+   "required": 78
+  },
+  "/instructors/libby-from-hero-arts": {
+   "discovered": 87,
+   "excluded": 466,
+   "required": 87
+  },
+  "/instructors/liesl-gibson": {
+   "discovered": 120,
+   "excluded": 473,
+   "required": 120
+  },
+  "/instructors/lilla-rogers": {
+   "discovered": 92,
+   "excluded": 467,
+   "required": 92
+  },
+  "/instructors/lily-sol": {
+   "discovered": 79,
+   "excluded": 457,
+   "required": 79
+  },
+  "/instructors/linda-fahey": {
+   "discovered": 90,
+   "excluded": 466,
+   "required": 90
+  },
+  "/instructors/lindsay-stripling": {
+   "discovered": 97,
+   "excluded": 469,
+   "required": 97
+  },
+  "/instructors/lisa-congdon": {
+   "discovered": 119,
+   "excluded": 474,
+   "required": 119
+  },
+  "/instructors/lisa-coris": {
+   "discovered": 90,
+   "excluded": 466,
+   "required": 90
+  },
+  "/instructors/lisa-solomon": {
+   "discovered": 126,
+   "excluded": 473,
+   "required": 126
+  },
+  "/instructors/livia-cetti": {
+   "discovered": 91,
+   "excluded": 461,
+   "required": 91
+  },
+  "/instructors/liz-smith": {
+   "discovered": 94,
+   "excluded": 470,
+   "required": 94
+  },
+  "/instructors/liza-laird": {
+   "discovered": 95,
+   "excluded": 460,
+   "required": 95
+  },
+  "/instructors/liza-lucy": {
+   "discovered": 115,
+   "excluded": 472,
+   "required": 115
+  },
+  "/instructors/lorene-edwards-forkner": {
+   "discovered": 88,
+   "excluded": 459,
+   "required": 88
+  },
+  "/instructors/lynne-barr": {
+   "discovered": 101,
+   "excluded": 467,
+   "required": 101
+  },
+  "/instructors/madalynne-intimates": {
+   "discovered": 91,
+   "excluded": 459,
+   "required": 91
+  },
+  "/instructors/maggie-pace": {
+   "discovered": 130,
+   "excluded": 472,
+   "required": 130
+  },
+  "/instructors/maria-carluccio": {
+   "discovered": 84,
+   "excluded": 458,
+   "required": 84
+  },
+  "/instructors/mariko-jesse": {
+   "discovered": 84,
+   "excluded": 458,
+   "required": 84
+  },
+  "/instructors/marisa-lynch": {
+   "discovered": 92,
+   "excluded": 460,
+   "required": 92
+  },
+  "/instructors/mark-tilling": {
+   "discovered": 91,
+   "excluded": 460,
+   "required": 91
+  },
+  "/instructors/marly-bird": {
+   "discovered": 131,
+   "excluded": 474,
+   "required": 131
+  },
+  "/instructors/maya-donenfeld": {
+   "discovered": 93,
+   "excluded": 466,
+   "required": 93
+  },
+  "/instructors/maybelle-imasa-stukuls": {
+   "discovered": 91,
+   "excluded": 467,
+   "required": 91
+  },
+  "/instructors/megan-kreiner": {
+   "discovered": 115,
+   "excluded": 469,
+   "required": 115
+  },
+  "/instructors/melanie-falick": {
+   "discovered": 102,
+   "excluded": 467,
+   "required": 102
+  },
+  "/instructors/melanie-schow": {
+   "discovered": 99,
+   "excluded": 469,
+   "required": 99
+  },
+  "/instructors/melissa-lang-lytle": {
+   "discovered": 93,
+   "excluded": 461,
+   "required": 93
+  },
+  "/instructors/mercedez-rex": {
+   "discovered": 102,
+   "excluded": 472,
+   "required": 102
+  },
+  "/instructors/mia-semingson": {
+   "discovered": 102,
+   "excluded": 472,
+   "required": 102
+  },
+  "/instructors/michaela-yee": {
+   "discovered": 80,
+   "excluded": 457,
+   "required": 80
+  },
+  "/instructors/michele-muska": {
+   "discovered": 113,
+   "excluded": 474,
+   "required": 113
+  },
+  "/instructors/mimi-shim": {
+   "discovered": 78,
+   "excluded": 455,
+   "required": 78
+  },
+  "/instructors/missy-dunaway": {
+   "discovered": 92,
+   "excluded": 461,
+   "required": 92
+  },
+  "/instructors/molly-hatch": {
+   "discovered": 89,
+   "excluded": 468,
+   "required": 89
+  },
+  "/instructors/mou-saha": {
+   "discovered": 103,
+   "excluded": 472,
+   "required": 103
+  },
+  "/instructors/natalie-ebaugh": {
+   "discovered": 89,
+   "excluded": 459,
+   "required": 89
+  },
+  "/instructors/natalie-malan": {
+   "discovered": 89,
+   "excluded": 460,
+   "required": 89
+  },
+  "/instructors/niasia-pinnock-1": {
+   "discovered": 84,
+   "excluded": 459,
+   "required": 84
+  },
+  "/instructors/nicole-blum": {
+   "discovered": 94,
+   "excluded": 469,
+   "required": 94
+  },
+  "/instructors/nicole-mallalieu": {
+   "discovered": 104,
+   "excluded": 470,
+   "required": 104
+  },
+  "/instructors/nikki-furlong": {
+   "discovered": 83,
+   "excluded": 458,
+   "required": 83
+  },
+  "/instructors/norah-gaughan": {
+   "discovered": 103,
+   "excluded": 467,
+   "required": 103
+  },
+  "/instructors/pam-and-jennifer": {
+   "discovered": 78,
+   "excluded": 457,
+   "required": 78
+  },
+  "/instructors/pam-garrison": {
+   "discovered": 115,
+   "excluded": 473,
+   "required": 115
+  },
+  "/instructors/papa-llama": {
+   "discovered": 89,
+   "excluded": 459,
+   "required": 89
+  },
+  "/instructors/rad-megan": {
+   "discovered": 104,
+   "excluded": 472,
+   "required": 104
+  },
+  "/instructors/rae-hoekstra": {
+   "discovered": 104,
+   "excluded": 469,
+   "required": 104
+  },
+  "/instructors/rebecca-ringquist": {
+   "discovered": 120,
+   "excluded": 474,
+   "required": 120
+  },
+  "/instructors/sanae-ishida": {
+   "discovered": 125,
+   "excluded": 465,
+   "required": 125
+  },
+  "/instructors/sarah-bond-2": {
+   "discovered": 97,
+   "excluded": 463,
+   "required": 97
+  },
+  "/instructors/sarah-matthews": {
+   "discovered": 110,
+   "excluded": 465,
+   "required": 110
+  },
+  "/instructors/sasha-prood": {
+   "discovered": 88,
+   "excluded": 459,
+   "required": 88
+  },
+  "/instructors/satgmailcom-10429": {
+   "discovered": 89,
+   "excluded": 459,
+   "required": 89
+  },
+  "/instructors/sew-it-all": {
+   "discovered": 139,
+   "excluded": 462,
+   "required": 139
+  },
+  "/instructors/sewdaily": {
+   "discovered": 78,
+   "excluded": 455,
+   "required": 78
+  },
+  "/instructors/shana-astrachan": {
+   "discovered": 96,
+   "excluded": 466,
+   "required": 96
+  },
+  "/instructors/sharon-virtue": {
+   "discovered": 84,
+   "excluded": 458,
+   "required": 84
+  },
+  "/instructors/sherri-lynn-wood": {
+   "discovered": 96,
+   "excluded": 469,
+   "required": 96
+  },
+  "/instructors/sonya-philip": {
+   "discovered": 101,
+   "excluded": 472,
+   "required": 101
+  },
+  "/instructors/studio-choo": {
+   "discovered": 100,
+   "excluded": 468,
+   "required": 100
+  },
+  "/instructors/sue-nickels": {
+   "discovered": 114,
+   "excluded": 475,
+   "required": 114
+  },
+  "/instructors/susan-beal": {
+   "discovered": 82,
+   "excluded": 466,
+   "required": 82
+  },
+  "/instructors/suzy-ultman": {
+   "discovered": 93,
+   "excluded": 461,
+   "required": 93
+  },
+  "/instructors/tabitha-sewer": {
+   "discovered": 95,
+   "excluded": 460,
+   "required": 95
+  },
+  "/instructors/tara-faughnan": {
+   "discovered": 84,
+   "excluded": 459,
+   "required": 84
+  },
+  "/instructors/taylor-watson": {
+   "discovered": 78,
+   "excluded": 457,
+   "required": 78
+  },
+  "/instructors/thayer-allyson-gowdy": {
+   "discovered": 78,
+   "excluded": 457,
+   "required": 78
+  },
+  "/instructors/the-team-at-creativebug": {
+   "discovered": 198,
+   "excluded": 473,
+   "required": 198
+  },
+  "/instructors/tian-connaughton": {
+   "discovered": 103,
+   "excluded": 463,
+   "required": 103
+  },
+  "/instructors/tracey-renee-hubbard": {
+   "discovered": 89,
+   "excluded": 460,
+   "required": 89
+  },
+  "/instructors/treasure-mallory": {
+   "discovered": 103,
+   "excluded": 470,
+   "required": 103
+  },
+  "/instructors/twinkie-chan": {
+   "discovered": 153,
+   "excluded": 473,
+   "required": 153
+  },
+  "/instructors/vatyarnyaycom": {
+   "discovered": 142,
+   "excluded": 458,
+   "required": 142
+  },
+  "/instructors/vincent-green-hite": {
+   "discovered": 113,
+   "excluded": 464,
+   "required": 113
+  },
+  "/instructors/wendy-bernard": {
+   "discovered": 111,
+   "excluded": 464,
+   "required": 111
+  },
+  "/instructors/wilton-instructors": {
+   "discovered": 114,
+   "excluded": 465,
+   "required": 114
+  },
+  "/instructors/wool-and-the-gang": {
+   "discovered": 101,
+   "excluded": 461,
+   "required": 101
+  },
+  "/instructors/yao-cheng": {
+   "discovered": 107,
+   "excluded": 471,
+   "required": 107
+  },
+  "/learning-journeys": {
+   "discovered": 112,
+   "excluded": 460,
+   "required": 112
+  },
+  "/learning-journeys/learn-to-embroider---journey-": {
+   "discovered": 99,
+   "excluded": 517,
+   "required": 99
+  },
+  "/libraries": {
+   "discovered": 96,
+   "excluded": 459,
+   "required": 96
+  },
+  "/lives": {
+   "discovered": 84,
+   "excluded": 477,
+   "required": 84
+  },
+  "/myclasses/library": {
+   "discovered": 20,
+   "excluded": 12,
+   "required": 20
+  },
+  "/myclasses/recent": {
+   "discovered": 20,
+   "excluded": 12,
+   "required": 20
+  },
+  "/patterns": {
+   "discovered": 155,
+   "excluded": 481,
+   "required": 155
+  },
+  "/patterns/category/paper": {
+   "discovered": 103,
+   "excluded": 472,
+   "required": 103
+  },
+  "/patterns/category/quilting": {
+   "discovered": 153,
+   "excluded": 472,
+   "required": 153
+  },
+  "/patterns/category/recipes": {
+   "discovered": 139,
+   "excluded": 472,
+   "required": 139
+  },
+  "/patterns/category/sewing": {
+   "discovered": 215,
+   "excluded": 472,
+   "required": 215
+  },
+  "/patterns/diy-stickers": {
+   "discovered": 96,
+   "excluded": 468,
+   "required": 96
+  },
+  "/patterns/pride-posters-painted-by-courtney-cerruti-and-michael-mcconnell-1": {
+   "discovered": 96,
+   "excluded": 469,
+   "required": 96
+  },
+  "/patterns/printable-menu": {
+   "discovered": 94,
+   "excluded": 469,
+   "required": 94
+  },
+  "/patterns/sew-a-cat-storage-basket": {
+   "discovered": 94,
+   "excluded": 469,
+   "required": 94
+  },
+  "/patterns/sewn-easter-eggs": {
+   "discovered": 94,
+   "excluded": 469,
+   "required": 94
+  },
+  "/profilefeed": {
+   "discovered": 20,
+   "excluded": 12,
+   "required": 20
+  },
+  "/rewards": {
+   "discovered": 113,
+   "excluded": 455,
+   "required": 113
+  },
+  "/schools": {
+   "discovered": 85,
+   "excluded": 457,
+   "required": 85
+  },
+  "/site/accessibility-statement": {
+   "discovered": 75,
+   "excluded": 455,
+   "required": 75
+  },
+  "/site/ambassador": {
+   "discovered": 79,
+   "excluded": 455,
+   "required": 79
+  },
+  "/site/artist-form": {
+   "discovered": 96,
+   "excluded": 457,
+   "required": 96
+  },
+  "/site/california-privacy-policy": {
+   "discovered": 105,
+   "excluded": 455,
+   "required": 105
+  },
+  "/site/community-guidelines": {
+   "discovered": 75,
+   "excluded": 455,
+   "required": 75
+  },
+  "/site/contact": {
+   "discovered": 87,
+   "excluded": 457,
+   "required": 87
+  },
+  "/site/contact-form": {
+   "discovered": 86,
+   "excluded": 457,
+   "required": 86
+  },
+  "/site/jobs": {
+   "discovered": 77,
+   "excluded": 455,
+   "required": 77
+  },
+  "/site/meet-creativebug-team": {
+   "discovered": 126,
+   "excluded": 455,
+   "required": 126
+  },
+  "/site/privacy-policy": {
+   "discovered": 97,
+   "excluded": 455,
+   "required": 97
+  },
+  "/site/rss": {
+   "discovered": 327,
+   "excluded": 455,
+   "required": 327
+  },
+  "/site/terms": {
+   "discovered": 76,
+   "excluded": 455,
+   "required": 76
+  },
+  "/subscribe/create-account": {
+   "discovered": 16,
+   "excluded": 8,
+   "required": 16
+  },
+  "/account/rewards": {
+   "discovered": 20,
+   "excluded": 12,
+   "required": 20
+  },
+  "/blog": {
+   "discovered": 0,
+   "excluded": 0,
+   "required": 0
+  },
+  "/classes/art-and-design/search": {
+   "discovered": 247,
+   "excluded": 982,
+   "required": 247
+  },
+  "/classes/crochet": {
+   "discovered": 76,
+   "excluded": 483,
+   "required": 76
+  },
+  "/classes/food-and-home/search": {
+   "discovered": 316,
+   "excluded": 912,
+   "required": 316
+  },
+  "/classes/holiday-and-party/search": {
+   "discovered": 458,
+   "excluded": 957,
+   "required": 458
+  },
+  "/classes/jewelry/search": {
+   "discovered": 272,
+   "excluded": 830,
+   "required": 272
+  },
+  "/classes/kids": {
+   "discovered": 76,
+   "excluded": 483,
+   "required": 76
+  },
+  "/classes/kids-and-teens/search": {
+   "discovered": 458,
+   "excluded": 951,
+   "required": 458
+  },
+  "/classes/knitting": {
+   "discovered": 81,
+   "excluded": 483,
+   "required": 81
+  },
+  "/classes/needlework/search": {
+   "discovered": 318,
+   "excluded": 874,
+   "required": 318
+  },
+  "/classes/paper/search": {
+   "discovered": 318,
+   "excluded": 922,
+   "required": 318
+  },
+  "/classes/quilting/search": {
+   "discovered": 316,
+   "excluded": 872,
+   "required": 316
+  },
+  "/classes/search": {
+   "discovered": 110,
+   "excluded": 936,
+   "required": 110
+  },
+  "/classes/sewing/search": {
+   "discovered": 319,
+   "excluded": 942,
+   "required": 319
+  },
+  "/classes/yarn-crafts/search": {
+   "discovered": 317,
+   "excluded": 890,
+   "required": 317
+  },
+  "/classseries/Autumn Holiday PG 2026": {
+   "discovered": 70,
+   "excluded": 164,
+   "required": 70
+  },
+  "/classseries/Black History": {
+   "discovered": 70,
+   "excluded": 164,
+   "required": 70
+  },
+  "/classseries/Unearth a Story": {
+   "discovered": 70,
+   "excluded": 164,
+   "required": 70
+  },
+  "/classseries/adventure-begins-at-your-library-": {
+   "discovered": 133,
+   "excluded": 544,
+   "required": 133
+  },
+  "/classseries/beginning-calligraphy": {
+   "discovered": 108,
+   "excluded": 521,
+   "required": 108
+  },
+  "/classseries/budget-friendly-projects": {
+   "discovered": 155,
+   "excluded": 550,
+   "required": 155
+  },
+  "/classseries/carousel": {
+   "discovered": 92,
+   "excluded": 483,
+   "required": 92
+  },
+  "/classseries/color-our-world": {
+   "discovered": 133,
+   "excluded": 544,
+   "required": 133
+  },
+  "/classseries/crafting-in-spring": {
+   "discovered": 178,
+   "excluded": 550,
+   "required": 178
+  },
+  "/classseries/cricut-learning-journey": {
+   "discovered": 127,
+   "excluded": 544,
+   "required": 127
+  },
+  "/classseries/crochet-101-journey": {
+   "discovered": 121,
+   "excluded": 542,
+   "required": 121
+  },
+  "/classseries/crochet-home-decor": {
+   "discovered": 127,
+   "excluded": 544,
+   "required": 127
+  },
+  "/classseries/crocheted-accessories": {
+   "discovered": 127,
+   "excluded": 544,
+   "required": 127
+  },
+  "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-8-tomato": {
+   "discovered": 300,
+   "excluded": 726,
+   "required": 300
+  },
+  "/classseries/for-teens": {
+   "discovered": 158,
+   "excluded": 551,
+   "required": 158
+  },
+  "/classseries/garment-sewing-journey": {
+   "discovered": 129,
+   "excluded": 544,
+   "required": 129
+  },
+  "/classseries/garment-sewing-techniques": {
+   "discovered": 121,
+   "excluded": 542,
+   "required": 121
+  },
+  "/classseries/hand-sewing-journey-": {
+   "discovered": 124,
+   "excluded": 543,
+   "required": 124
+  },
+  "/classseries/home-sewing": {
+   "discovered": 128,
+   "excluded": 544,
+   "required": 128
+  },
+  "/classseries/how-to-appliqu-": {
+   "discovered": 130,
+   "excluded": 544,
+   "required": 130
+  },
+  "/classseries/in-the-garden": {
+   "discovered": 149,
+   "excluded": 548,
+   "required": 149
+  },
+  "/classseries/iread summer 2026": {
+   "discovered": 158,
+   "excluded": 551,
+   "required": 158
+  },
+  "/classseries/iread%20summer%202026": {
+   "discovered": 158,
+   "excluded": 551,
+   "required": 158
+  },
+  "/classseries/kids-camp---a-summer-journey-of-crafting": {
+   "discovered": 129,
+   "excluded": 544,
+   "required": 129
+  },
+  "/classseries/learn-the-art-of-bookmaking": {
+   "discovered": 124,
+   "excluded": 543,
+   "required": 124
+  },
+  "/classseries/learn-to-draw---journey-": {
+   "discovered": 121,
+   "excluded": 542,
+   "required": 121
+  },
+  "/classseries/learn-to-embroider---journey-": {
+   "discovered": 127,
+   "excluded": 544,
+   "required": 127
+  },
+  "/classseries/learn-to-knit-journey-": {
+   "discovered": 136,
+   "excluded": 544,
+   "required": 136
+  },
+  "/classseries/level-up-at-your-library-": {
+   "discovered": 158,
+   "excluded": 551,
+   "required": 158
+  },
+  "/classseries/new-releases--lookbook/embroidered-handwritten-label": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/paper-folding-": {
+   "discovered": 133,
+   "excluded": 544,
+   "required": 133
+  },
+  "/classseries/patchwork-learning-journey": {
+   "discovered": 129,
+   "excluded": 544,
+   "required": 129
+  },
+  "/classseries/projects-for-mental-health": {
+   "discovered": 158,
+   "excluded": 551,
+   "required": 158
+  },
+  "/classseries/quilting-101-journey": {
+   "discovered": 129,
+   "excluded": 544,
+   "required": 129
+  },
+  "/classseries/read-renew-repeat": {
+   "discovered": 159,
+   "excluded": 551,
+   "required": 159
+  },
+  "/classseries/single/drawing-portraits-in-ballpoint-pen": {
+   "discovered": 153,
+   "excluded": 624,
+   "required": 153
+  },
+  "/classseries/single/magpie-sketchbook-a-month-of-play": {
+   "discovered": 142,
+   "excluded": 665,
+   "required": 142
+  },
+  "/classseries/single/mixtape-back-to-school": {
+   "discovered": 143,
+   "excluded": 645,
+   "required": 143
+  },
+  "/classseries/single/perler-bead-basics-5-30-19": {
+   "discovered": 144,
+   "excluded": 693,
+   "required": 144
+  },
+  "/classseries/single/schoolhouse-sampler-a-daily-embroidery-practice": {
+   "discovered": 162,
+   "excluded": 660,
+   "required": 162
+  },
+  "/classseries/single/sew-the-ella-blouse": {
+   "discovered": 155,
+   "excluded": 659,
+   "required": 155
+  },
+  "/classseries/single/upcycled-demin-side-seam-remix": {
+   "discovered": 151,
+   "excluded": 615,
+   "required": 151
+  },
+  "/classseries/stash-busting-craft-projects": {
+   "discovered": 140,
+   "excluded": 545,
+   "required": 140
+  },
+  "/classseries/upcycled-projects": {
+   "discovered": 158,
+   "excluded": 551,
+   "required": 158
+  },
+  "/instructors/hello-lucky": {
+   "discovered": 90,
+   "excluded": 492,
+   "required": 90
+  },
+  "/instructors/natalie-chanin": {
+   "discovered": 88,
+   "excluded": 492,
+   "required": 88
+  },
+  "/instructors/stephanie-fleming": {
+   "discovered": 76,
+   "excluded": 485,
+   "required": 76
+  },
+  "/learning-journeys/cricut-learning-journey": {
+   "discovered": 97,
+   "excluded": 544,
+   "required": 97
+  },
+  "/learning-journeys/crochet-101-journey": {
+   "discovered": 93,
+   "excluded": 534,
+   "required": 93
+  },
+  "/learning-journeys/crochet-home-decor": {
+   "discovered": 97,
+   "excluded": 544,
+   "required": 97
+  },
+  "/learning-journeys/crocheted-accessories": {
+   "discovered": 97,
+   "excluded": 544,
+   "required": 97
+  },
+  "/learning-journeys/garment-sewing-journey": {
+   "discovered": 101,
+   "excluded": 554,
+   "required": 101
+  },
+  "/learning-journeys/garment-sewing-techniques": {
+   "discovered": 93,
+   "excluded": 534,
+   "required": 93
+  },
+  "/learning-journeys/hand-sewing-journey-": {
+   "discovered": 95,
+   "excluded": 539,
+   "required": 95
+  },
+  "/learning-journeys/home-sewing": {
+   "discovered": 100,
+   "excluded": 549,
+   "required": 100
+  },
+  "/learning-journeys/how-to-appliqu-": {
+   "discovered": 103,
+   "excluded": 559,
+   "required": 103
+  },
+  "/learning-journeys/kids-camp---a-summer-journey-of-crafting": {
+   "discovered": 101,
+   "excluded": 554,
+   "required": 101
+  },
+  "/learning-journeys/learn-the-art-of-bookmaking": {
+   "discovered": 95,
+   "excluded": 539,
+   "required": 95
+  },
+  "/learning-journeys/learn-to-draw---journey-": {
+   "discovered": 93,
+   "excluded": 534,
+   "required": 93
+  },
+  "/learning-journeys/learn-to-knit-journey-": {
+   "discovered": 113,
+   "excluded": 579,
+   "required": 113
+  },
+  "/learning-journeys/paper-folding-": {
+   "discovered": 115,
+   "excluded": 574,
+   "required": 115
+  },
+  "/learning-journeys/patchwork-learning-journey": {
+   "discovered": 115,
+   "excluded": 554,
+   "required": 115
+  },
+  "/learning-journeys/quilting-101-journey": {
+   "discovered": 103,
+   "excluded": 554,
+   "required": 103
+  },
+  "/learning-journeys/the-mending-collection": {
+   "discovered": 98,
+   "excluded": 544,
+   "required": 98
+  },
+  "/patterns/100-day-project-tracker": {
+   "discovered": 92,
+   "excluded": 496,
+   "required": 92
+  },
+  "/patterns/2024-calendar": {
+   "discovered": 92,
+   "excluded": 496,
+   "required": 92
+  },
+  "/patterns/3d-paper-bento-box": {
+   "discovered": 92,
+   "excluded": 496,
+   "required": 92
+  },
+  "/patterns/abominable-snowman": {
+   "discovered": 93,
+   "excluded": 496,
+   "required": 93
+  },
+  "/patterns/all-day-beret": {
+   "discovered": 92,
+   "excluded": 496,
+   "required": 92
+  },
+  "/patterns/all-together-now": {
+   "discovered": 92,
+   "excluded": 496,
+   "required": 92
+  },
+  "/patterns/amigurumi-pencil": {
+   "discovered": 93,
+   "excluded": 496,
+   "required": 93
+  },
+  "/patterns/amigurumi-potted-cactus": {
+   "discovered": 93,
+   "excluded": 496,
+   "required": 93
+  },
+  "/patterns/amigurumi-rocketship": {
+   "discovered": 93,
+   "excluded": 496,
+   "required": 93
+  },
+  "/patterns/amigurumi-shooting-star": {
+   "discovered": 93,
+   "excluded": 496,
+   "required": 93
+  },
+  "/patterns/amigurumi-turtle": {
+   "discovered": 93,
+   "excluded": 496,
+   "required": 93
+  },
+  "/patterns/ara-vest": {
+   "discovered": 92,
+   "excluded": 496,
+   "required": 92
+  },
+  "/patterns/category/all": {
+   "discovered": 301,
+   "excluded": 500,
+   "required": 301
+  },
+  "/patterns/category/coloring-pages": {
+   "discovered": 253,
+   "excluded": 500,
+   "required": 253
+  },
+  "/patterns/category/crochet": {
+   "discovered": 445,
+   "excluded": 500,
+   "required": 445
+  },
+  "/patterns/category/knitting": {
+   "discovered": 379,
+   "excluded": 500,
+   "required": 379
+  },
+  "/patterns/category/magazine-archive": {
+   "discovered": 125,
+   "excluded": 500,
+   "required": 125
+  },
+  "/patterns/category/makeable": {
+   "discovered": 231,
+   "excluded": 500,
+   "required": 231
+  },
+  "/patterns/category/needlework": {
+   "discovered": 183,
+   "excluded": 500,
+   "required": 183
+  },
+  "/patterns/category/svgs": {
+   "discovered": 141,
+   "excluded": 500,
+   "required": 141
+  },
+  "/patterns/disability-awareness": {
+   "discovered": 92,
+   "excluded": 496,
+   "required": 92
+  },
+  "/patterns/lacy-crochet-bandana": {
+   "discovered": 92,
+   "excluded": 496,
+   "required": 92
+  },
+  "/patterns/library-appreciation-coloring-page": {
+   "discovered": 91,
+   "excluded": 496,
+   "required": 91
+  },
+  "/patterns/make-a-fabric-book-cover": {
+   "discovered": 93,
+   "excluded": 496,
+   "required": 93
+  },
+  "/patterns/rosie-lee-tompkins-quilt-coloring-page": {
+   "discovered": 92,
+   "excluded": 496,
+   "required": 92
+  },
+  "/patterns/sew-a-childs-bucket-hat": {
+   "discovered": 93,
+   "excluded": 496,
+   "required": 93
+  },
+  "/patterns/sew-a-childs-spandex-skirt": {
+   "discovered": 93,
+   "excluded": 496,
+   "required": 93
+  },
+  "/patterns/sew-a-shirred-dress": {
+   "discovered": 93,
+   "excluded": 496,
+   "required": 93
+  },
+  "/patterns/yoyoi-kusama-coloring-page": {
+   "discovered": 92,
+   "excluded": 496,
+   "required": 92
+  },
+  "/classes/knitting/search": {
+   "discovered": 316,
+   "excluded": 864,
+   "required": 316
+  },
+  "/classseries/beginning-calligraphy/beginning-calligraphy-getting-started-part-01": {
+   "discovered": 160,
+   "excluded": 608,
+   "required": 160
+  },
+  "/classseries/beginning-calligraphy/beginning-calligraphy-letters-words-and-phrases-part-02": {
+   "discovered": 176,
+   "excluded": 609,
+   "required": 176
+  },
+  "/classseries/beginning-calligraphy/beginning-calligraphy-white-ink-on-black-paper-part-03": {
+   "discovered": 160,
+   "excluded": 608,
+   "required": 160
+  },
+  "/classseries/beginning-calligraphy/putting-it-all-together-part-04": {
+   "discovered": 182,
+   "excluded": 609,
+   "required": 182
+  },
+  "/classseries/diy-wedding/handmade-soap": {
+   "discovered": 518,
+   "excluded": 985,
+   "required": 518
+  },
+  "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-1-strawberries-and-blueberries": {
+   "discovered": 300,
+   "excluded": 726,
+   "required": 300
+  },
+  "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-2-potato": {
+   "discovered": 300,
+   "excluded": 726,
+   "required": 300
+  },
+  "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-3-radish": {
+   "discovered": 300,
+   "excluded": 727,
+   "required": 300
+  },
+  "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-4-apple": {
+   "discovered": 300,
+   "excluded": 726,
+   "required": 300
+  },
+  "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-5-eggplant": {
+   "discovered": 300,
+   "excluded": 726,
+   "required": 300
+  },
+  "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-6-watermelon": {
+   "discovered": 300,
+   "excluded": 726,
+   "required": 300
+  },
+  "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-7-broccoli": {
+   "discovered": 300,
+   "excluded": 727,
+   "required": 300
+  },
+  "/classseries/eat-your-fruits-veggies-crochet-along/eat-your-fruits--veggies-crochet-along-part-9-pineapple": {
+   "discovered": 300,
+   "excluded": 726,
+   "required": 300
+  },
+  "/classseries/let-your-faux-garden-grow/traditional-applique": {
+   "discovered": 373,
+   "excluded": 819,
+   "required": 373
+  },
+  "/classseries/natural-fabric-dyeing/natural-fabric-dyeing-how-to-dye-cotton-and-other-cellulose-fibers": {
+   "discovered": 177,
+   "excluded": 614,
+   "required": 177
+  },
+  "/classseries/new-releases--lookbook/draft-and-sew-a-pair-of-leggings": {
+   "discovered": 764,
+   "excluded": 1144,
+   "required": 764
+  },
+  "/classseries/new-releases--lookbook/drawing-disrupted-15-experiments": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/exquisite-corpse-embroidery": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/find-your-creative-rhythm-15-ways-to-spark-and-sustain-art-making": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/finger-knitting-1": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/holiday-art-journaling": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/how-to-batch-cut-half-square-triangles": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/join-as-you-go-method-for-granny-squares": {
+   "discovered": 771,
+   "excluded": 1143,
+   "required": 771
+  },
+  "/classseries/new-releases--lookbook/jump-for-joy-articulated-paper-toy": {
+   "discovered": 764,
+   "excluded": 1144,
+   "required": 764
+  },
+  "/classseries/new-releases--lookbook/junk-journaling-daily-practice": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/kids-knitting-i-cord-and-garter-stitch-bugs": {
+   "discovered": 764,
+   "excluded": 1144,
+   "required": 764
+  },
+  "/classseries/new-releases--lookbook/make-a-paper-fortune-teller": {
+   "discovered": 770,
+   "excluded": 1151,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/make-a-quilt-block-sweatshirt": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/make-a-screw-post-notepad": {
+   "discovered": 770,
+   "excluded": 1139,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/make-a-victorian-puzzle-purse": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/make-a-wish-paper-house": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/make-an-upcycled-flower-press": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/make-homemade-butter": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/make-leather-napkin-rings": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/make-prize-filled-party-crackers": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/mixtape-7-ways-to-paint-and-draw-birds": {
+   "discovered": 771,
+   "excluded": 1151,
+   "required": 771
+  },
+  "/classseries/new-releases--lookbook/mixtape-a-wellness-mindset": {
+   "discovered": 770,
+   "excluded": 1151,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/mixtape-april-showers": {
+   "discovered": 762,
+   "excluded": 1151,
+   "required": 762
+  },
+  "/classseries/new-releases--lookbook/mixtape-breakfast": {
+   "discovered": 748,
+   "excluded": 1140,
+   "required": 748
+  },
+  "/classseries/new-releases--lookbook/mixtape-cats-five-ways": {
+   "discovered": 771,
+   "excluded": 1151,
+   "required": 771
+  },
+  "/classseries/new-releases--lookbook/mixtape-feast": {
+   "discovered": 762,
+   "excluded": 1146,
+   "required": 762
+  },
+  "/classseries/new-releases--lookbook/mixtape-swatch": {
+   "discovered": 765,
+   "excluded": 1151,
+   "required": 765
+  },
+  "/classseries/new-releases--lookbook/mixtape-the-night-before-christmas": {
+   "discovered": 768,
+   "excluded": 1151,
+   "required": 768
+  },
+  "/classseries/new-releases--lookbook/origami-safari-a-daily-practice": {
+   "discovered": 770,
+   "excluded": 1151,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/overmarbling-on-paper": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/paper-house-lanterns": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/rag-doll-hairstyles-short-and-long": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/sew-a-14-inch-rag-doll": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/sew-a-paint-brush-and-pencil-roll": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/sew-a-pair-of-mice-dolls": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/sew-a-wardrobe-for-a-14-inch-rag-doll": {
+   "discovered": 761,
+   "excluded": 1144,
+   "required": 761
+  },
+  "/classseries/new-releases--lookbook/sew-as-you-go-coasters": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/sew-reusable-bowl-covers": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/surface-design-on-ceramics": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/upcycled-denim-spinning-wheel-quilt": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/use-your-voice-carve-and-print-a-poster": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/wearable-wins-a-daily-practice-of-accomplishments": {
+   "discovered": 770,
+   "excluded": 1144,
+   "required": 770
+  },
+  "/classseries/new-releases--lookbook/wool-felting-make-an-heirloom-celebration-crown": {
+   "discovered": 764,
+   "excluded": 1139,
+   "required": 764
+  },
+  "/classseries/new-releases--lookbook/yoga-of-yarn-brioche-knit-meditation-mat": {
+   "discovered": 767,
+   "excluded": 1144,
+   "required": 767
+  },
+  "/classseries/ocean-of-possibilities/fabric-fishing-game": {
+   "discovered": 263,
+   "excluded": 703,
+   "required": 263
+  },
+  "/classseries/read-renew-repeat/macrame-plant-hanger": {
+   "discovered": 381,
+   "excluded": 814,
+   "required": 381
+  },
+  "/classseries/stash-busting-craft-projects/yarn-scrap-earrings-2": {
+   "discovered": 282,
+   "excluded": 714,
+   "required": 282
+  },
+  "/classseries/super-speedy-classes/the-physics-of-sewing": {
+   "discovered": 452,
+   "excluded": 906,
+   "required": 452
+  },
+  "/classseries/what-were-sewing-this-fall/reverse-applique-runner": {
+   "discovered": 333,
+   "excluded": 773,
+   "required": 333
+  },
+  "/crafting-for-kids": {
+   "discovered": 76,
+   "excluded": 483,
+   "required": 76
+  },
+  "/instructors/cathy-callahan": {
+   "discovered": 76,
+   "excluded": 483,
+   "required": 76
+  },
+  "/instructors/creativebug-slow-tv": {
+   "discovered": 82,
+   "excluded": 487,
+   "required": 82
+  },
+  "/instructors/kay-wolfersperger": {
+   "discovered": 161,
+   "excluded": 484,
+   "required": 161
+  },
+  "/instructors/lindsey-stone": {
+   "discovered": 81,
+   "excluded": 493,
+   "required": 81
+  },
+  "/kids-art-camp": {
+   "discovered": 76,
+   "excluded": 483,
+   "required": 76
+  },
+  "/learning-journeys/patchwork-learning-journey/ratings": {
+   "discovered": 79,
+   "excluded": 509,
+   "required": 79
+  },
+  "/site/privacy-policy-enterprise": {
+   "discovered": 87,
+   "excluded": 483,
+   "required": 87
+  },
+  "/site/sms-terms": {
+   "discovered": 75,
+   "excluded": 483,
+   "required": 75
+  },
+  "/site/terms_users_enterprise": {
+   "discovered": 73,
+   "excluded": 483,
+   "required": 73
+  },
+  "/_clone/out-of-scope": {
+   "discovered": 70,
+   "excluded": 164,
+   "required": 70
+  },
+  "/_clone/not-found": {
+   "discovered": 70,
+   "excluded": 164,
+   "required": 70
+  }
+ }
+}

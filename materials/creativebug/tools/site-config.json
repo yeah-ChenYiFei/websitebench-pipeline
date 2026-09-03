@@ -1,0 +1,142 @@
+{
+  "site_id": "creativebug",
+  "canonical_host": "www.creativebug.com",
+  "in_scope_hosts": [
+    "www.creativebug.com",
+    "creativebug.com"
+  ],
+  "out_of_origin_hosts": [
+    "blog.creativebug.com",
+    "support.creativebug.com",
+    "shop.creativebug.com",
+    "help.creativebug.com"
+  ],
+  "third_party_hosts": [
+    "a40.usablenet.com",
+    "apps.apple.com",
+    "bat.bing.com",
+    "cdn-loyalty.yotpo.com",
+    "cdn-swell-assets.yotpo.com",
+    "cdn.cookie-script.com",
+    "cdn.jsdelivr.net",
+    "cdn.listrakbi.com",
+    "cdn.pagesense.io",
+    "connect.facebook.net",
+    "ct.pinterest.com",
+    "googleads.g.doubleclick.net",
+    "images-na.ssl-images-amazon.com",
+    "lantern.roeye.com",
+    "lantern.roeyecdn.com",
+    "maps.googleapis.com",
+    "maps.gstatic.com",
+    "na.account.amazon.com",
+    "olytics.omeda.com",
+    "play.google.com",
+    "px.ads.linkedin.com",
+    "s.pinimg.com",
+    "s1.listrakbi.com",
+    "scripts.clarity.ms",
+    "services.listrak.com",
+    "snap.licdn.com",
+    "static.addtoany.com",
+    "www.clarity.ms",
+    "www.dwin1.com",
+    "www.facebook.com",
+    "www.google-analytics.com",
+    "www.googletagmanager.com"
+  ],
+  "localize_hosts": [
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+  ],
+  "asset_prefixes": [
+    "/ui/",
+    "/content/",
+    "/pimage/",
+    "/images/",
+    "/storage/"
+  ],
+  "video_patterns": [
+    "\\.m3u8",
+    "\\.mpd",
+    "\\.mp4",
+    "\\.ts$",
+    "\\.vtt",
+    "brightcove",
+    "jwplayer",
+    "vimeo",
+    "youtube"
+  ],
+  "boundary_route": "/_clone/out-of-scope",
+  "truncation_n": 12,
+  "external_link_hosts": [
+    "account.amazon.com",
+    "appleid.apple.com",
+    "apps.apple.com",
+    "facebook.com",
+    "instagram.com",
+    "myprivacy.joann.com",
+    "pinterest.com",
+    "play.google.com",
+    "tiktok.com",
+    "twitter.com",
+    "www.amazon.com",
+    "www.facebook.com",
+    "www.instagram.com",
+    "www.joann.com",
+    "www.pinterest.com",
+    "www.tiktok.com",
+    "www.twitter.com",
+    "www.youtube.com",
+    "x.com",
+    "youtube.com"
+  ],
+  "semantic_allowlist": [
+    {
+      "host": "schema.org",
+      "reason": "microdata itemtype vocabulary; never fetched at runtime"
+    },
+    {
+      "host": "craftpip.github.io",
+      "reason": "library attribution inside a CSS comment"
+    },
+    {
+      "host": "github.com",
+      "reason": "MIT licence link inside a CSS comment"
+    },
+    {
+      "host": "ogp.me",
+      "reason": "Open Graph namespace in the html prefix attribute; never fetched"
+    }
+  ],
+  "boundary_paths": [
+    "/blog"
+  ],
+  "form_actions": {
+    "/services/access/validate": "/api/auth/signin",
+    "/send_reset_password": "/api/auth/reset/start",
+    "/signup/save": "/api/auth/register/start",
+    "/signup/create": "/api/auth/register/start",
+    "/trial/create-accounttype=join-trial": "/api/auth/register/start",
+    "/trial/create-account": "/api/auth/register/start",
+    "/mailing_list": "/api/newsletter",
+    "/sms": "/api/sms"
+  },
+  "field_aliases": {
+    "member[email]": "email",
+    "member[hashed_password]": "password",
+    "member[first_name]": "display_name",
+    "member[hashed_password_confirmation]": "password_confirmation",
+    "member[last_name]": "last_name",
+    "member[newsletter_accepted]": "newsletter_accepted",
+    "member[terms_accepted]": "terms_accepted"
+  },
+  "form_route_defaults": {
+    "/subscribe/create-account": "/api/auth/register/start"
+  },
+  "form_retarget_by_route": {
+    "/trial/create-account": {
+      "cb_login_modal_form": "/api/auth/register/start"
+    }
+  }
+}

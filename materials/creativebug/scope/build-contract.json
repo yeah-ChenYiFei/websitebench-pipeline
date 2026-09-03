@@ -1,0 +1,62 @@
+{
+  "schema_version": "creativebug.build-contract.v1",
+  "note": "构建期从页面中剔除或中和的外部主机，以及允许保留的语义命名空间。随交付目录一起走，使 clone/tests 不依赖工作区之外的文件。",
+  "in_scope_hosts": [
+    "www.creativebug.com",
+    "creativebug.com"
+  ],
+  "third_party_hosts": [
+    "a40.usablenet.com",
+    "apps.apple.com",
+    "bat.bing.com",
+    "cdn-loyalty.yotpo.com",
+    "cdn-swell-assets.yotpo.com",
+    "cdn.cookie-script.com",
+    "cdn.jsdelivr.net",
+    "cdn.listrakbi.com",
+    "cdn.pagesense.io",
+    "connect.facebook.net",
+    "ct.pinterest.com",
+    "googleads.g.doubleclick.net",
+    "images-na.ssl-images-amazon.com",
+    "lantern.roeye.com",
+    "lantern.roeyecdn.com",
+    "maps.googleapis.com",
+    "maps.gstatic.com",
+    "na.account.amazon.com",
+    "olytics.omeda.com",
+    "play.google.com",
+    "px.ads.linkedin.com",
+    "s.pinimg.com",
+    "s1.listrakbi.com",
+    "scripts.clarity.ms",
+    "services.listrak.com",
+    "snap.licdn.com",
+    "static.addtoany.com",
+    "www.clarity.ms",
+    "www.dwin1.com",
+    "www.facebook.com",
+    "www.google-analytics.com",
+    "www.googletagmanager.com"
+  ],
+  "semantic_allowlist": [
+    {
+      "host": "schema.org",
+      "reason": "microdata itemtype vocabulary; never fetched at runtime"
+    },
+    {
+      "host": "craftpip.github.io",
+      "reason": "library attribution inside a CSS comment"
+    },
+    {
+      "host": "github.com",
+      "reason": "MIT licence link inside a CSS comment"
+    },
+    {
+      "host": "ogp.me",
+      "reason": "Open Graph namespace in the html prefix attribute; never fetched"
+    }
+  ],
+  "boundary_route": "/_clone/out-of-scope",
+  "truncation_n": 12
+}
