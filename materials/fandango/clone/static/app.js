@@ -1,6 +1,6 @@
 const root = document.querySelector('#app');
 const toast = document.querySelector('#toast');
-const state = {data:null, search:[], selectedSeats:[], checkoutReview:null, confirmation:null, theaters:null, offerIndex:0};
+const state = {data:null, search:[], selectedSeats:[], checkoutReview:null, confirmation:null, theaters:null};
 
 function esc(value='') { return String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
 function money(value) { return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(Number(value||0)); }
@@ -20,63 +20,8 @@ function go(path){ history.pushState({},'',path); state.checkoutReview=null; ren
 async function refresh(){ state.data=await api('/api/bootstrap'); return state.data; }
 
 /* ---------- chrome ---------- */
-function promoBand(){
-  const offers=state.data?.offers||[];
-  if(!offers.length) return '';
-  const index=((state.offerIndex%offers.length)+offers.length)%offers.length;
-  const offer=offers[index];
-  return `<div class="promo-band"><div class="shell">
-    <button class="promo-arrow" type="button" data-offer-step="-1" aria-label="Previous offer">‹</button>
-    <div class="promo-copy" role="group" aria-label="Offer ${index+1} of ${offers.length}">
-      <a href="/movies/${offer.movie_id}" data-link>${esc(offer.headline)}</a><span>${esc(offer.detail)}</span>
-      <div class="promo-dots">${offers.map((row,i)=>`<button type="button" class="${i===index?'active':''}" data-offer-go="${i}" aria-label="Show offer ${i+1}" aria-current="${i===index}"></button>`).join('')}</div>
-    </div>
-    <button class="promo-arrow" type="button" data-offer-step="1" aria-label="Next offer">›</button>
-  </div></div>`;
-}
-function bindPromo(){
-  const band=root.querySelector('.promo-band');
-  if(!band) return;
-  const rerender=()=>{ band.outerHTML=promoBand(); bindPromo(); };
-  band.querySelectorAll('[data-offer-step]').forEach(button=>button.addEventListener('click',()=>{
-    state.offerIndex+=Number(button.dataset.offerStep); rerender();
-  }));
-  band.querySelectorAll('[data-offer-go]').forEach(button=>button.addEventListener('click',()=>{
-    state.offerIndex=Number(button.dataset.offerGo); rerender();
-  }));
-  band.querySelectorAll('a[data-link]').forEach(link=>link.addEventListener('click',event=>{
-    if(event.button===0&&!event.ctrlKey&&!event.metaKey){event.preventDefault();go(link.getAttribute('href'));}
-  }));
-}
-function header(){
-  const profile=state.data?.profile;
-  const items=[
-    ['/movies','🎞','Movies'],
-    ['/theaters','🏛','Theaters'],
-    ['/favorites','★','My Movies'],
-    ['/account/bookings','🎟','My Tickets'],
-    ['/help','?','Help'],
-    ['/account', profile?'●':'◍', profile?esc(profile.display_name.split(' ')[0]):'Sign In/Join'],
-  ];
-  return `<header class="site-header">
-    <div class="utility"><div class="shell"><a href="/help#gift-cards" data-link>Gift Cards</a><a href="/offers" data-link>Offers</a><a href="/account" data-link>🎟 FanClub</a></div></div>
-    <div class="main-nav">
-      <a class="logo" href="/" data-link><span class="ticket">F</span>FANDANGO</a>
-      <form class="header-search" data-search-form role="search"><input name="q" aria-label="Search by city, state, zip or movie" placeholder="Search by city, state, zip or movie"><button type="submit" aria-label="Search">⌕</button></form>
-      <nav class="nav-icons" aria-label="Primary">${items.map(([href,glyph,label])=>`<a href="${href}" data-link><span class="glyph" aria-hidden="true">${glyph}</span>${label}</a>`).join('')}</nav>
-    </div>
-    ${promoBand()}
-  </header>`;
-}
-function footer(){
-  return `<footer><div class="shell footer-grid">
-    <div><strong>FANDANGO</strong><p>Movie tickets, showtimes and theater information for theaters near you. This is a local WebsiteBench recreation — no real tickets, charges, emails or venue messages.</p></div>
-    <nav><a href="/movies" data-link>Movies In Theaters</a><a href="/movies?status=coming-soon" data-link>Coming Soon</a><a href="/theaters" data-link>Theaters Near You</a><a href="/movies" data-link>Special Offers</a></nav>
-    <nav><a href="/help" data-link>Help &amp; Refunds</a><a href="/account/bookings" data-link>My Tickets</a><a href="/policies/terms-of-use" data-link>Terms of Use</a><a href="/policies/privacy-policy" data-link>Privacy Policy</a></nav>
-    <p class="footer-legal">©2026 WebsiteBench offline recreation. Fandango is a trademark of its owner; this clone is for benchmark use only.</p>
-  </div></footer>`;
-}
-function layout(content){ root.innerHTML=`${header()}<main>${content}</main>${footer()}`; bindGlobal(); bindPromo(); }
+function header(){ return homeHeader(); }
+function layout(content){ document.body.className='fandango-page'; root.innerHTML=`${header()}<main>${content}</main>${homeFooter()}`; bindGlobal(); bindHomePromo(); bindNavigationChrome(); }
 
 /* ---------- posters + cards ---------- */
 function posterMarkup(movie, extra=''){
@@ -97,18 +42,7 @@ function movieCard(movie){
 
 /* ---------- home ---------- */
 function home(){
-  const movies=state.data.movies;
-  const nowPlaying=movies.filter(m=>m.status!=='coming-soon');
-  const soon=movies.filter(m=>m.status==='coming-soon');
-  const theaters=state.data.theaters||[];
-  layout(`<div class="shell">
-    <section class="section"><h2 class="section-title">Movies In Theaters</h2><a class="section-link" href="/movies" data-link>See All Movies</a>
-      <div class="poster-grid">${nowPlaying.slice(0,12).map(movieCard).join('')}</div></section>
-    <section class="section"><h2 class="section-title">Coming Soon To Theaters</h2><a class="section-link" href="/movies?status=coming-soon" data-link>See All Coming Soon</a>
-      <div class="poster-grid">${soon.map(movieCard).join('')}</div></section>
-    <section class="section"><h2 class="section-title">Theaters Near You</h2><a class="section-link" href="/theaters" data-link>See All Theaters</a>
-      ${theaters.map(t=>`<article class="showtime-theater"><header><div><h3><a href="/theaters/${t.id}" data-link>${esc(t.name)}</a></h3><p>${esc(t.location)} · ${t.distance} mi</p><p>${t.services.map(esc).join(' · ')}</p></div><a class="btn-ticket" href="/theaters/${t.id}" data-link>See Showtimes</a></header></article>`).join('')}</section>
-  </div>`);
+  renderHome();
 }
 
 /* ---------- listing ---------- */
@@ -369,6 +303,7 @@ function bindGlobal(){
 async function render(){
   if(!state.data) await refresh();
   const path=location.pathname;
+  if(await navigationRoute(path)) return;
   if(path==='/'){home();return;}
   if(path==='/movies'||path==='/search'){await moviesPage();return;}
   if(path.startsWith('/movies/')){await moviePage(path.split('/')[2]);return;}

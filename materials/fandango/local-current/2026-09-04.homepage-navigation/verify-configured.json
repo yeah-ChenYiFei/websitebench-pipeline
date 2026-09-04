@@ -1,0 +1,42 @@
+{
+  "authority": "diagnostic-only",
+  "diagnostic_status": "incomplete",
+  "generated_at": "2026-09-04T10:31:54.700213Z",
+  "qualification": "maintainer-judgment-required",
+  "requested_sections": [
+    "static",
+    "live"
+  ],
+  "schema_version": "offline-clone.diagnostic-report.v1",
+  "sections": {
+    "live": {
+      "coverage": {},
+      "execution": {
+        "complete": false,
+        "incomplete_reasons": [
+          "clone server would not start; /home/user/miniconda3/bin/python3 /home/user/AYIES/fandango-preview-20260904/materials/fandango/clone/app.py -> exited: nding()\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/home/user/AYIES/fandango-preview-20260904/materials/fandango/clone/websitebench/site_backend/database.py\", line 298, in _inspect_existing_binding\n    raise LifecycleError(f\"existing database is not valid SQLite: {exc}\") from exc\nwebsitebench.site_backend.errors.LifecycleError: existing database is not valid SQLite: unable to open database file | --log-level warning -> exited: nding()\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/home/user/AYIES/fandango-preview-20260904/materials/fandango/clone/websitebench/site_backend/database.py\", line 298, in _inspect_existing_binding\n    raise LifecycleError(f\"existing database is not valid SQLite: {exc}\") from exc\nwebsitebench.site_backend.errors.LifecycleError: existing database is not valid SQLite: unable to open database file"
+        ]
+      },
+      "findings": [],
+      "observations": []
+    },
+    "static": {
+      "coverage": {
+        "assets_declared": 22,
+        "assets_verified": 22,
+        "deferred_checkpoints": 0,
+        "deferred_routes": 0,
+        "files_scanned": 33,
+        "remote_references": 0,
+        "secrets": 0
+      },
+      "execution": {
+        "complete": true,
+        "incomplete_reasons": []
+      },
+      "findings": [],
+      "observations": []
+    }
+  },
+  "site_id": "fandango"
+}

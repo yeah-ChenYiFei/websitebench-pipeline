@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "base": "http://127.0.0.1:19489",
+  "checks": [
+    "discovery, filter/sort, movie/theater details and availability",
+    "theater directory with per-date and per-format showtime browsing",
+    "mandatory 3-ticket Friday evening thriller booking with adjacent centre seats",
+    "favorite, registration/sign-in state, booking history and management actions",
+    "no-send recovery, required-field validation, help, policies and branded 404"
+  ],
+  "trace_status": {
+    "WB047-T01": "passed",
+    "WB047-T02": "passed",
+    "WB047-T03": "passed",
+    "WB047-T04": "passed",
+    "WB047-T05": "passed",
+    "WB047-T06": "passed",
+    "WB047-T07": "passed",
+    "WB047-T08": "passed",
+    "WB047-T09": "passed",
+    "WB047-T10": "passed",
+    "WB047-T11": "passed",
+    "WB047-T12": "passed",
+    "WB047-T13": "passed",
+    "WB047-T14": "passed",
+    "WB047-T15": "passed",
+    "WB047-T16": "passed",
+    "WB047-T17": "passed",
+    "WB047-T18": "passed",
+    "WB047-T19": "passed",
+    "WB047-T20": "passed",
+    "WB047-T21": "passed",
+    "WB047-T22": "passed",
+    "WB047-T23": "passed"
+  }
+}

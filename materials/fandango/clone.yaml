@@ -3,7 +3,7 @@ site_id: fandango
 display_name: Fandango
 state_model: stateful
 source:
-  origins: [https://www.fandango.com]
+  origins: [https://www.fandango.com, https://store.fandango.com, https://athome.fandango.com]
   baseline:
     locale: en-US
     currency: USD

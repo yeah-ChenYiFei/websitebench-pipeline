@@ -1,0 +1,42 @@
+{
+  "authority": "diagnostic-only",
+  "diagnostic_status": "incomplete",
+  "generated_at": "2026-09-04T12:58:33.486827Z",
+  "qualification": "maintainer-judgment-required",
+  "requested_sections": [
+    "static",
+    "live"
+  ],
+  "schema_version": "offline-clone.diagnostic-report.v1",
+  "sections": {
+    "live": {
+      "coverage": {},
+      "execution": {
+        "complete": false,
+        "incomplete_reasons": [
+          "clone server would not start; /home/user/miniconda3/bin/python3 /home/user/AYIES/fandango-pr-20260904/materials/fandango/clone/app.py -> exited: ch/site_backend/database.py\", line 226, in __init__\n    unresolved.mkdir(parents=True, exist_ok=True)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/miniconda3/lib/python3.14/pathlib/__init__.py\", line 1011, in mkdir\n    os.mkdir(self, mode)\n    ~~~~~~~~^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/home/user/AYIES/fandango-pr-20260904/materials/fandango/data' | --log-level warning -> exited: ch/site_backend/database.py\", line 226, in __init__\n    unresolved.mkdir(parents=True, exist_ok=True)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/miniconda3/lib/python3.14/pathlib/__init__.py\", line 1011, in mkdir\n    os.mkdir(self, mode)\n    ~~~~~~~~^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/home/user/AYIES/fandango-pr-20260904/materials/fandango/data'"
+        ]
+      },
+      "findings": [],
+      "observations": []
+    },
+    "static": {
+      "coverage": {
+        "assets_declared": 22,
+        "assets_verified": 22,
+        "deferred_checkpoints": 0,
+        "deferred_routes": 0,
+        "files_scanned": 33,
+        "remote_references": 0,
+        "secrets": 0
+      },
+      "execution": {
+        "complete": true,
+        "incomplete_reasons": []
+      },
+      "findings": [],
+      "observations": []
+    }
+  },
+  "site_id": "fandango"
+}
