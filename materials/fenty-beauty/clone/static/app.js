@@ -97,20 +97,8 @@ function syncCarouselProgress(rail) {
   thumb.style.marginLeft = `${progress * (100 - ratio * 100)}%`;
 }
 
-function homePage() {
-  main.innerHTML = `<section class="quote-hero" aria-label="Fenty campaign"><blockquote>“ONCE YOU START USING THIS, IT’S OVER.”</blockquote><img class="rihanna-signature" src="/static/assets/rihanna-signature.webp?v=20260819.1" alt="Rihanna signature"></section>
-  <section class="campaign-banner fluid-flex-campaign"><div><p class="eyebrow">DROPPING 9/4</p><h1>GET READY TO FLEX<br>ON ’EM</h1><p>A new game-changer is coming your way. Be the first to find out.</p><a class="btn light" href="/en-ca/account/register">SIGN UP</a></div></section>
-  <section class="section home-carousel-section"><div class="section-head"><div><h2>FOREVER FAVES</h2><p>The award winners + bestsellers you can’t get enough of.</p></div><div class="section-actions">${carouselControls('forever-faves')}</div></div><div class="home-product-rail" id="forever-faves" data-home-carousel>${state.catalog.map(productCard).join('')}</div><div class="carousel-progress" aria-hidden="true"><span></span></div></section>
-  <section class="campaign-banner shade-finder-campaign"><div><h2>PRO FILT’R FLUID FLEX FOUNDATION</h2><p>DISCOVER YOUR PERFECT MATCH WITH OUR SHADE FINDER TOOL</p><a class="btn light" href="/en-ca/products/pro-filtr-soft-matte-longwear-foundation-420">FIND YOUR SHADE</a></div></section>
-  <section class="section home-carousel-section"><div class="section-head"><div><h2>ICONIC PICKS FOR BOMB LIPS</h2><p>There’s a Gloss Bomb for everyone—explore bestsellers, lip-loving formulas + poppin’ shades.</p></div><div class="section-actions">${carouselControls('bomb-lips')}</div></div><div class="home-product-rail" id="bomb-lips" data-home-carousel>${[...state.catalog.slice(1), state.catalog[0]].filter(Boolean).map(productCard).join('')}</div><div class="carousel-progress" aria-hidden="true"><span></span></div></section>
-  <section class="campaign-banner drop-campaign"><div><h2>THIS DROP IS ALL ABOUT YOU</h2><p>Inspired by you, now make it yours. Enter for a chance to win a personalized bottle.</p><a class="btn light" href="/en-ca/collections/makeup-shop-all">GET THE DEETZ</a></div></section>
-  <section class="section brand-section"><div class="section-head"><div><h2>THE FENTY BEAUTY BRANDS</h2><p>Rihanna’s vision of haircare, makeup, skincare + fragrance for all.</p></div>${carouselControls('fenty-brands')}</div><div class="brand-rail" id="fenty-brands" data-home-carousel aria-label="Fenty brands carousel">
-    <a data-brand-card href="/en-ca/collections/makeup-shop-all"><img src="/static/assets/brand-beauty.webp" alt="Fenty Beauty"><strong>FENTY BEAUTY</strong></a>
-    <a data-brand-card href="/en-ca/collections/makeup-shop-all?category=Skincare"><img src="/static/assets/brand-skin.webp" alt="Fenty Skin"><strong>FENTY SKIN</strong></a>
-    <a data-brand-card href="/en-ca/collections/makeup-shop-all?category=Hair"><img src="/static/assets/brand-hair.webp" alt="Fenty Hair"><strong>FENTY HAIR</strong></a>
-    <a data-brand-card href="/en-ca/collections/makeup-shop-all?category=Fragrance"><img src="/static/assets/brand-fragrance.webp" alt="Fenty Fragrance"><strong>FENTY FRAGRANCE</strong></a>
-  </div><div class="carousel-progress brand-progress" aria-hidden="true"><span></span></div></section>`;
-  window.requestAnimationFrame(() => document.querySelectorAll('[data-home-carousel]').forEach(syncCarouselProgress));
+async function homePage() {
+  await window.FentyHome.render();
 }
 
 async function collectionPage(params) {
@@ -438,9 +426,10 @@ function refreshCartSurfaces() {
 async function render() {
   const path = location.pathname.replace(/\/$/, '') || '/';
   const params = new URLSearchParams(location.search);
+  window.FentyHome.setActive(path === '/' || path === '/en-ca');
   document.title = 'Fenty Beauty by Rihanna | Beauty for All';
   try {
-    if (path === '/' || path === '/en-ca') homePage();
+    if (path === '/' || path === '/en-ca') await homePage();
     else if (path === '/en-ca/collections/makeup-shop-all') await collectionPage(params);
     else if (path === '/en-ca/search') await searchPage(params);
     else if (path.startsWith('/en-ca/products/')) sourceProductPage(path.split('/').pop());

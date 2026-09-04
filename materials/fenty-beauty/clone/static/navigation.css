@@ -1,0 +1,7 @@
+@import url('/static/navigation/fonts.css');
+.home-view .site-header{position:sticky;top:0;z-index:101}
+.home-view .region img{display:inline-block;vertical-align:middle;margin-right:4px}
+.home-view .primary-nav>a[aria-expanded="true"]{text-decoration:underline;text-underline-offset:2px}
+#source-navigation{position:fixed;left:0;right:0;z-index:100;overflow:auto;background:white;border-top:1px solid #ddd;overscroll-behavior:contain}
+.source-menu-open::after{content:"";position:fixed;inset:0;background:#0009;z-index:99;pointer-events:none}
+@media(max-width:1023px){#source-navigation{z-index:104;bottom:0}.source-menu-open .site-header{z-index:103}}

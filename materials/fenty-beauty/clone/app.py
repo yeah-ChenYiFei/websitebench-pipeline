@@ -259,6 +259,16 @@ async def checkout(request: Request) -> JSONResponse:
 @app.get("/{path:path}", include_in_schema=False)
 async def page(path: str, request: Request) -> HTMLResponse:
     pathname = "/" + path
+    navigation_manifest = STATIC / "navigation/routes.json"
+    if navigation_manifest.exists():
+        navigation_routes = json.loads(navigation_manifest.read_text(encoding="utf-8"))
+        variant_path = pathname + "?variant=" + request.query_params.get("variant", "")
+        destination = navigation_routes.get(variant_path) or navigation_routes.get(pathname)
+        if destination:
+            if "redirect" in destination:
+                return HTMLResponse("", status_code=302, headers={"Location": destination["redirect"]})
+            source_page = STATIC / "navigation/pages" / destination["file"]
+            return HTMLResponse(source_page.read_text(encoding="utf-8"))
     product_path = pathname.startswith("/en-ca/products/") and pathname.removeprefix("/en-ca/products/") in store.PRODUCT_BY_SLUG
     status = 200 if pathname in KNOWN_PATHS or product_path else 404
     body = INDEX.read_text(encoding="utf-8")
