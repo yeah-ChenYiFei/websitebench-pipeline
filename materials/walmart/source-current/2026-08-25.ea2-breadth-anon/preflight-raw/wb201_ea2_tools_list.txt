@@ -1,0 +1,94 @@
+{
+  "authority": "diagnostic-only",
+  "schema_version": "websitebench.offline-clone.tool-catalog.v1",
+  "tools": [
+    {
+      "command": "websitebench-offline-clone tools explore",
+      "id": "browser-explore",
+      "input_schema_versions": [
+        "websitebench.offline-clone.browser-scenario.v1"
+      ],
+      "output_schema_version": "websitebench.offline-clone.browser-exploration.v1",
+      "purpose": "Run a declarative Playwright interaction scenario against one approved source or offline-clone target and retain sanitized observations.",
+      "repository_command": "python tools/offline_clone/run.py tools explore",
+      "safety": [
+        "approved origins only",
+        "source mutations blocked by default",
+        "storage state is consumed but never copied",
+        "input values are omitted from reports"
+      ]
+    },
+    {
+      "command": "websitebench-offline-clone tools compare-functional",
+      "id": "functional-compare",
+      "input_schema_versions": [
+        "websitebench.offline-clone.browser-exploration.v1"
+      ],
+      "output_schema_version": "websitebench.offline-clone.functional-comparison.v1",
+      "purpose": "Compare two browser exploration reports by stable step and observation identity, including action, route, visible state, and error behavior.",
+      "repository_command": "python tools/offline_clone/run.py tools compare-functional",
+      "safety": [
+        "sanitized reports only",
+        "diagnostic authority only"
+      ]
+    },
+    {
+      "command": "websitebench-offline-clone tools compare-visual",
+      "id": "visual-compare",
+      "input_schema_versions": [
+        "websitebench.offline-clone.visual-comparison-spec.v1"
+      ],
+      "output_schema_version": "websitebench.offline-clone.visual-comparison.v1",
+      "purpose": "Compare source and candidate screenshot regions and create lossless diagnostic heatmaps.",
+      "repository_command": "python tools/offline_clone/run.py tools compare-visual",
+      "safety": [
+        "non-zero configured thresholds required",
+        "region-level verdicts",
+        "diagnostic authority only"
+      ]
+    },
+    {
+      "command": "websitebench-offline-clone tools test-backend",
+      "id": "backend-semantic-test",
+      "input_schema_versions": [
+        "websitebench.offline-clone.backend-semantic-suite.v1"
+      ],
+      "output_schema_version": "websitebench.offline-clone.backend-semantic-report.v1",
+      "purpose": "Run actor-isolated black-box HTTP semantic cases with JSON-pointer assertions, in-memory captures, and positive/negative invariant coverage.",
+      "repository_command": "python tools/offline_clone/run.py tools test-backend",
+      "safety": [
+        "loopback targets only by default",
+        "no arbitrary command execution",
+        "secrets may be injected from environment only",
+        "request and response bodies are never retained"
+      ]
+    },
+    {
+      "command": "websitebench-offline-clone tools frontend-spec",
+      "id": "frontend-spec-extract",
+      "input_schema_versions": [],
+      "output_schema_version": "websitebench.offline-clone.frontend-spec.v1",
+      "purpose": "Extract a sanitized frontend specification from one approved-origin page: document structure, headings, semantic regions, interactive controls, forms, data points, and style/script references that clone implementations and backend contracts can share.",
+      "repository_command": "python tools/offline_clone/run.py tools frontend-spec",
+      "safety": [
+        "approved origins only",
+        "source exploration is GET-only",
+        "storage state is never retained",
+        "input values and cookies are never collected",
+        "URLs are sanitized to path plus allowlisted query parameters"
+      ]
+    },
+    {
+      "command": "websitebench-offline-clone tools visual-diff",
+      "id": "visual-diff-diagnose",
+      "input_schema_versions": [],
+      "output_schema_version": "websitebench.offline-clone.visual-diff.v1",
+      "purpose": "Locate and classify difference regions between a source raster and a candidate raster (bbox, intensity, kind) with heatmap and overlay outputs, so visual similarity work targets exact areas.",
+      "repository_command": "python tools/offline_clone/run.py tools visual-diff",
+      "safety": [
+        "raster comparison only",
+        "diagnostic authority only"
+      ]
+    }
+  ]
+}

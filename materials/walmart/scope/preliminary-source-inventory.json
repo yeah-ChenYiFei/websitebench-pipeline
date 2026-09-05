@@ -1,0 +1,159 @@
+{
+  "observed_at": "2026-08-25T06:52:06Z",
+  "authority": "agent-suggested scope and diagnostic evidence only",
+  "page_control_inventory": [
+    {
+      "page_family": "public home",
+      "source_route": "/",
+      "states": [
+        "anonymous desktop",
+        "source challenge overlay in one separate visible session"
+      ],
+      "controls": [
+        "skip-to-main link",
+        "search form and search input",
+        "Departments button",
+        "Services button",
+        "fulfillment/location affordance",
+        "Reorder and account entry links",
+        "cart affordance",
+        "promotional shop links",
+        "product-card Options and Add affordances"
+      ],
+      "classification": "directly-observed, with dynamic menu semantics unavailable"
+    },
+    {
+      "page_family": "search and no-results",
+      "source_route": "/search",
+      "states": [
+        "GET search navigation",
+        "source-limited no-results",
+        "recovery"
+      ],
+      "controls": [
+        "search input q",
+        "Price",
+        "Sort by / Best Match",
+        "Availability",
+        "category suggestions",
+        "Return to home",
+        "See all departments"
+      ],
+      "classification": "directly-observed source-limited; not evidence that the query normally has no products"
+    },
+    {
+      "page_family": "department and category",
+      "source_route": "/all-departments and category routes",
+      "states": [
+        "household essentials",
+        "personal care"
+      ],
+      "controls": [
+        "category links",
+        "product cards",
+        "Options",
+        "price and rating",
+        "delivery, shipping and pickup labels"
+      ],
+      "classification": "first-party search-discovered structural evidence; no captured visual contract"
+    },
+    {
+      "page_family": "product detail and variants",
+      "source_route": "unavailable",
+      "states": [],
+      "controls": [],
+      "classification": "unavailable"
+    },
+    {
+      "page_family": "cart and checkout review",
+      "source_route": "unavailable by authority",
+      "states": [],
+      "controls": [],
+      "classification": "official-help structural evidence only; source mutation prohibited"
+    },
+    {
+      "page_family": "auth, help and recovery",
+      "source_route": "/account/login, /help, not-found",
+      "states": [
+        "account entry",
+        "help search/topics"
+      ],
+      "controls": [
+        "Account entry",
+        "help search",
+        "help topic links"
+      ],
+      "classification": "first-party structural evidence; login and not-found states unavailable"
+    }
+  ],
+  "evidence_classifications": [
+    {
+      "classification": "directly-observed",
+      "coverage": "Headed WebsiteBench/Playwright home shell, search form contract, GET search route, source-limited no-results, keyboard input and Departments click."
+    },
+    {
+      "classification": "structural-only",
+      "coverage": "Official same-origin category/help/auth pages and cart/checkout concepts; cannot prove current pixels, exact copy or submission semantics."
+    },
+    {
+      "classification": "inferred-architecture",
+      "coverage": "Local deterministic catalog/search backend, per-actor cart persistence and full local checkout-review model."
+    },
+    {
+      "classification": "unavailable",
+      "coverage": "Successful populated source search grid, product detail, exact variant behavior, mobile visual states, authenticated/account states and source cart/checkout."
+    }
+  ],
+  "agent_suggested_scope": {
+    "P0": [
+      "Public Entry / Primary Navigation",
+      "Product Search",
+      "Filter / Sort",
+      "Product Detail",
+      "Variant / Option Selection",
+      "Cart Add",
+      "Cart Update / Remove",
+      "Checkout Review",
+      "Anonymous Search / No Results",
+      "Validation / Required Fields and Permissions",
+      "End-to-End Scenario"
+    ],
+    "P1": [
+      "Browse / Department",
+      "Price / Promotion",
+      "Availability / Fulfillment",
+      "Reviews / Q&A",
+      "Recommendations / Compare",
+      "Delivery Method",
+      "Help / Recovery",
+      "Error / Not Found",
+      "responsive, keyboard, history and persistence behavior"
+    ],
+    "P2": [
+      "Wishlist / List",
+      "Promo / Gift Card",
+      "Address Book",
+      "Order History / Detail",
+      "Shipment Tracking",
+      "Cancel / Return / Refund",
+      "Authentication / Sign-In Entry",
+      "Authentication / Registration Entry",
+      "Authentication / Password Recovery",
+      "Post-Action / History and Management"
+    ],
+    "omit_for_this_candidate": [
+      "real source cart, checkout or payment",
+      "account creation, login, OTP, password recovery and account-only data",
+      "order submission, tracking, cancellation and returns",
+      "messaging, email, publication and deployment"
+    ]
+  },
+  "human_only_evidence_gaps": [
+    "Formal human_trace_text is empty. WB201-T01..T29 has no detailed inventory rows, so the human must provide any formal trace in their own words; the inventory sentence and coverage labels are not formal text.",
+    "Any Walmart challenge must be completed by the human in the visible browser; the agent will not solve or bypass it.",
+    "A direct source cart and checkout-review trace requires explicit new source-mutation authority; the current default is to keep those states unavailable and implement only a local full-model simulation.",
+    "Any login, registration, OTP, recovery or account/order state requires a human login handoff and expanded scope; credentials and codes must never be sent in chat or persisted.",
+    "Current source evidence does not establish populated results, product-detail/variant pixels, or mobile behavior. If no human trace or new clean capture becomes available, those source comparisons remain unavailable and the clone will be reported as structurally grounded but visually incomplete."
+  ],
+  "inventory_binding_note": "The All-sheet coverage labels are used as a coverage checklist only. No label is assigned to a WB201-Txx identifier because Expanded Task Inventory has zero WB201 detail rows."
+}

@@ -1,0 +1,16 @@
+usage: websitebench-workflow acquire-source [-h] [--repo-root REPO_ROOT]
+                                            --spec SPEC --out-dir OUT_DIR
+                                            --report REPORT
+                                            [--browser-channel BROWSER_CHANNEL]
+                                            [--executable-path EXECUTABLE_PATH]
+                                            [--headed]
+
+options:
+  -h, --help            show this help message and exit
+  --repo-root REPO_ROOT
+  --spec SPEC
+  --out-dir OUT_DIR
+  --report REPORT
+  --browser-channel BROWSER_CHANNEL
+  --executable-path EXECUTABLE_PATH
+  --headed

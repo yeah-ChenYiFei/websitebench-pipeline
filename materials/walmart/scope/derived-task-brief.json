@@ -1,0 +1,409 @@
+{
+  "schema_version": "prompt.websitebench-clone-task-brief.v1",
+  "observed_at": "2026-08-25T06:52:06Z",
+  "source": {
+    "input_url": "https://www.walmart.com/",
+    "canonical_url": "https://www.walmart.com/",
+    "canonical_origin": "https://www.walmart.com",
+    "approved_discovery_origins": [
+      "https://www.walmart.com"
+    ],
+    "proposed_additional_origins": [
+      "https://i5.walmartimages.com",
+      "https://collector-pxu6b0qd2s.px-cloud.net",
+      "https://ift.px-cloud.net"
+    ]
+  },
+  "site": {
+    "site_id": "walmart",
+    "display_name": "Walmart",
+    "existing_site": false,
+    "site_dir": "materials/walmart",
+    "target_origin": "https://walmart.website-bench.com",
+    "worker_name": "websitebench-walmart-demo",
+    "purpose": "Help anonymous shoppers discover retail products, compare relevant attributes and fulfillment information, and assemble a cart for safe review."
+  },
+  "baseline": {
+    "locale": "en-US",
+    "timezone": "Etc/UTC",
+    "timezone_policy": "temporary deterministic default; no account or business timezone was directly observed",
+    "viewports": [
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      }
+    ]
+  },
+  "scope": {
+    "roles": [
+      {
+        "id": "anonymous-shopper",
+        "display_name": "Anonymous shopper",
+        "authentication_required": false,
+        "evidence_classification": "directly-observed",
+        "evidence_urls": [
+          "https://www.walmart.com/",
+          "https://www.walmart.com/search"
+        ],
+        "changes": "Can browse, search, inspect product and fulfillment information, and use the clone-local cart without an account.",
+        "live_view_required": true,
+        "entitlement_required": false
+      }
+    ],
+    "core_journeys": [
+      {
+        "id": "public-search-filter-detail",
+        "priority": "P0",
+        "role": "anonymous-shopper",
+        "purpose": "Find a household or personal-care item and compare relevant result and option information.",
+        "preconditions": [
+          "Anonymous deterministic session",
+          "Seeded local product catalog"
+        ],
+        "starting_url": "/",
+        "steps": [
+          "Use the prominent search control",
+          "Review a populated result set and available filter/sort controls",
+          "Open one product detail",
+          "Inspect and select a read-only option or variant"
+        ],
+        "expected_result": "The selected product detail reflects the chosen option and remains eligible for local cart use.",
+        "failure_variant": "A query with no matching product shows a no-results state.",
+        "recovery_variant": "Change the query or return through a recovery control to populated results.",
+        "source_mutation_required": false,
+        "evidence_kind": "directly-observed plus first-party structural evidence",
+        "evidence_urls": [
+          "https://www.walmart.com/",
+          "https://www.walmart.com/search",
+          "https://www.walmart.com/cp/household-essentials/1115193",
+          "https://www.walmart.com/cp/Personal-Care/1005862"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "local-cart-checkout-review",
+        "priority": "P0",
+        "role": "anonymous-shopper",
+        "purpose": "Add one selected option to the offline cart and stop at a non-payment checkout review.",
+        "preconditions": [
+          "A selected seeded product option",
+          "Local-only backend runtime"
+        ],
+        "starting_url": "/product/dawn-ultra-dish-soap",
+        "steps": [
+          "Add the selected option to the local cart",
+          "Review and update quantity",
+          "Continue to the local checkout review boundary"
+        ],
+        "expected_result": "The review page shows the local item, fulfillment summary, subtotal, and no order/payment submission action.",
+        "failure_variant": "Attempting to continue with an empty cart or missing required review data shows validation.",
+        "recovery_variant": "Return to the product or cart, correct the state, and reopen review.",
+        "source_mutation_required": true,
+        "evidence_kind": "first-party structural evidence plus unavailable source mutation semantics",
+        "evidence_urls": [
+          "https://www.walmart.com/help/article/the-new-walmart-site-and-app-experience/27f2678cb25a40a7b57a359fec3ca67f?rm=true&step=cart"
+        ],
+        "confidence": "low"
+      },
+      {
+        "id": "department-browse",
+        "priority": "P1",
+        "role": "anonymous-shopper",
+        "purpose": "Browse household and personal-care categories as an alternative to search.",
+        "preconditions": [
+          "Anonymous deterministic session"
+        ],
+        "starting_url": "/",
+        "steps": [
+          "Open the departments control",
+          "Choose a relevant category",
+          "Inspect a populated category grid"
+        ],
+        "expected_result": "The category route exposes relevant products and returns safely to search or home.",
+        "failure_variant": "A dynamic menu or category is unavailable.",
+        "recovery_variant": "Use the all-departments or home recovery route.",
+        "source_mutation_required": false,
+        "evidence_kind": "structural-only",
+        "evidence_urls": [
+          "https://www.walmart.com/all-departments",
+          "https://www.walmart.com/cp/household-essentials/1115193",
+          "https://www.walmart.com/cp/Personal-Care/1005862"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "page_families": [
+      {
+        "id": "public-home",
+        "routes": [
+          "/"
+        ],
+        "evidence_classification": "directly-observed"
+      },
+      {
+        "id": "department-category",
+        "routes": [
+          "/all-departments",
+          "/category/household-essentials",
+          "/category/personal-care"
+        ],
+        "evidence_classification": "structural-only"
+      },
+      {
+        "id": "search-results",
+        "routes": [
+          "/search"
+        ],
+        "evidence_classification": "directly-observed-source-limited"
+      },
+      {
+        "id": "product-detail",
+        "routes": [
+          "/product/:slug"
+        ],
+        "evidence_classification": "unavailable"
+      },
+      {
+        "id": "cart-checkout-review",
+        "routes": [
+          "/cart",
+          "/checkout/review"
+        ],
+        "evidence_classification": "unavailable-by-source-authority"
+      },
+      {
+        "id": "account-auth",
+        "routes": [
+          "/account/login"
+        ],
+        "evidence_classification": "structural-only"
+      },
+      {
+        "id": "help-recovery",
+        "routes": [
+          "/help",
+          "/404"
+        ],
+        "evidence_classification": "first-party-search-discovered"
+      }
+    ],
+    "deterministic_seed_plan": {
+      "actors": [
+        "anonymous-shopper",
+        "isolation-shopper"
+      ],
+      "entities": [
+        "household and personal-care categories",
+        "at least twelve products with prices, ratings, fulfillment labels and local images",
+        "at least two products with two or more options",
+        "one empty cart and one seeded restart-persistence probe"
+      ],
+      "states": [
+        "populated results",
+        "filtered and sorted results",
+        "no results",
+        "product option selected",
+        "empty and populated cart",
+        "checkout review validation",
+        "safe checkout review"
+      ],
+      "reset_and_isolation": "A deterministic reset restores the catalog and clears each actor's cart independently; refresh and restart preserve non-reset cart state."
+    },
+    "external_services": [
+      {
+        "id": "walmart-image-cdn",
+        "origin": "https://i5.walmartimages.com",
+        "evidence_kind": "directly-observed network shape",
+        "clone_local_adapter": "download approved in-scope assets with provenance; serve locally",
+        "external_side_effect": false,
+        "user_authorization_required": false,
+        "zero_remote_runtime_dependencies": true
+      },
+      {
+        "id": "perimeterx-telemetry",
+        "origin": "https://collector-pxu6b0qd2s.px-cloud.net and https://ift.px-cloud.net",
+        "evidence_kind": "directly-observed network shape",
+        "clone_local_adapter": "omit",
+        "external_side_effect": true,
+        "user_authorization_required": false,
+        "zero_remote_runtime_dependencies": true
+      },
+      {
+        "id": "catalog-search",
+        "origin": "source implementation unavailable",
+        "evidence_kind": "inferred architecture",
+        "clone_local_adapter": "full local catalog and deterministic search/filter model",
+        "external_side_effect": false,
+        "user_authorization_required": false,
+        "zero_remote_runtime_dependencies": true
+      },
+      {
+        "id": "payment",
+        "origin": "source checkout not observed",
+        "evidence_kind": "unavailable",
+        "clone_local_adapter": "no payment submission in frozen P0/P1; backend profile remains local-sandbox",
+        "external_side_effect": true,
+        "user_authorization_required": true,
+        "zero_remote_runtime_dependencies": true
+      }
+    ]
+  },
+  "authority": {
+    "authentication_access": "request-human-live-view",
+    "credentials_persisted": false,
+    "authorized_source_mutations": [],
+    "requested_source_mutations": [
+      "add one nonsensitive household or personal-care item to the Walmart source cart",
+      "navigate the resulting Walmart source cart to checkout review without submitting checkout"
+    ],
+    "real_email_authorized": false,
+    "stripe_test_authorized": false,
+    "live_payment_authorized": false,
+    "push_authorized": false,
+    "pr_authorized": false,
+    "public_deployment_authorized": false,
+    "rights_or_redistribution_status": "unknown"
+  },
+  "trace_acquisition": {
+    "mode": "adaptive",
+    "agent_must_initiate": true,
+    "text_ownership": "human-only",
+    "human_trace_texts": [],
+    "trace_candidates": [
+      {
+        "candidate_id": "tc-001",
+        "agent_suggested_scope": "Anonymous public product discovery covering a successful search, directly available filters or sort controls, one product detail, read-only options, and no-results recovery without a source cart mutation.",
+        "role": "anonymous-shopper",
+        "why_needed": "Current GET-only capture did not establish a populated result grid, product detail, exact option semantics, or mobile behavior.",
+        "uncertainty_resolved": [
+          "successful result structure",
+          "filter and sort interaction",
+          "product-detail and option controls",
+          "keyboard and recovery behavior"
+        ],
+        "expected_coverage": [
+          "Product Search",
+          "Filter / Sort",
+          "Product Detail",
+          "Variant / Option Selection",
+          "Anonymous Search / No Results"
+        ],
+        "requires_authentication": false,
+        "requires_source_mutation": false,
+        "evidence_priority": "high",
+        "human_trace_text_id": null,
+        "text_status": "awaiting-human"
+      },
+      {
+        "candidate_id": "tc-002",
+        "agent_suggested_scope": "Source cart and checkout-review state sufficient to establish exact cart/review semantics, stopping before any checkout submission or payment.",
+        "role": "anonymous-shopper",
+        "why_needed": "Current authority prohibits the source mutation needed to reach cart and review states, so the local implementation would otherwise rely on structural evidence and a full local model.",
+        "uncertainty_resolved": [
+          "cart state and quantity semantics",
+          "checkout review fields and validation boundary"
+        ],
+        "expected_coverage": [
+          "Cart Add",
+          "Cart Update / Remove",
+          "Checkout Review",
+          "Validation / Required Fields and Permissions"
+        ],
+        "requires_authentication": false,
+        "requires_source_mutation": true,
+        "evidence_priority": "high",
+        "human_trace_text_id": null,
+        "text_status": "blocked-by-current-authority"
+      }
+    ],
+    "requested_traces": [],
+    "completed_traces": [],
+    "remaining_material_uncertainties": [
+      "Populated search result and product-detail pixels/copy",
+      "Exact filter, sort and option state transitions",
+      "Mobile responsive source behavior",
+      "Source cart and checkout-review semantics",
+      "Any account-only state"
+    ]
+  },
+  "trajectory_recording": {
+    "channel": "not-used",
+    "recordings": [],
+    "clone_side_recordings": [],
+    "two_sided_findings": []
+  },
+  "field_evidence": [
+    {
+      "field": "source.canonical_url",
+      "value": "https://www.walmart.com/",
+      "evidence_urls": [
+        "https://www.walmart.com/"
+      ],
+      "observation": "Headed Playwright returned HTTP 200, the canonical URL, and the Walmart page title.",
+      "classification": "directly-observed",
+      "confidence": "high",
+      "browserbase_refreeze_required": false
+    },
+    {
+      "field": "site.display_name",
+      "value": "Walmart",
+      "evidence_urls": [
+        "https://www.walmart.com/"
+      ],
+      "observation": "Document title and visible header copy identify Walmart.",
+      "classification": "directly-observed",
+      "confidence": "high",
+      "browserbase_refreeze_required": false
+    },
+    {
+      "field": "scope.roles",
+      "value": "anonymous-shopper",
+      "evidence_urls": [
+        "https://www.walmart.com/"
+      ],
+      "observation": "An isolated context with no storage state rendered the public shopping shell and search controls.",
+      "classification": "directly-observed",
+      "confidence": "high",
+      "browserbase_refreeze_required": false
+    },
+    {
+      "field": "baseline.locale",
+      "value": "en-US",
+      "evidence_urls": [
+        "https://www.walmart.com/"
+      ],
+      "observation": "The page rendered English text, U.S. service messaging and dollar prices; regional fulfillment was capture-dependent.",
+      "classification": "directly-observed",
+      "confidence": "medium",
+      "browserbase_refreeze_required": true
+    },
+    {
+      "field": "scope.core_journeys.local-cart-checkout-review",
+      "value": "local full-model simulation",
+      "evidence_urls": [
+        "https://www.walmart.com/help/article/the-new-walmart-site-and-app-experience/27f2678cb25a40a7b57a359fec3ca67f?rm=true&step=cart"
+      ],
+      "observation": "Official help establishes a cart-to-checkout concept, but source mutation and exact live semantics were not observed.",
+      "classification": "structural-only",
+      "confidence": "low",
+      "browserbase_refreeze_required": true,
+      "unresolved_reason": "Source cart mutation is unauthorized."
+    }
+  ],
+  "unresolved": [
+    "Workbook identity WB201 is assignment and inventory identity; current clone/runtime schemas require the lowercase site_id walmart.",
+    "The workbook coverage labels are not mapped to WB201-T01..T29 because detail rows are absent.",
+    "Formal human_trace_text remains empty.",
+    "A populated result grid, product detail, exact variants and mobile source visuals were not captured.",
+    "Source cart and checkout review remain unavailable by authority.",
+    "Captured asset closure was intentionally incomplete because external asset origins were not approved for runtime requests.",
+    "Browserbase is unavailable; local headed Playwright is the selected source channel.",
+    "Rights and redistribution status are unknown; no public deployment is authorized."
+  ]
+}

@@ -1,0 +1,52 @@
+schema_version: offline-clone.manifest.v2
+site_id: walmart
+display_name: Walmart
+state_model: stateful
+source:
+  origins:
+  - https://www.walmart.com/
+  baseline:
+    locale: en-US
+    currency: USD
+    delivery_region: Sacramento, CA 95829
+    timezone: Etc/UTC
+    auth_state: anonymous
+    tenant: null
+    workspace: null
+    role: anonymous-shopper
+    capabilities:
+    - public-read-only-source-evidence
+    - local-catalog-search
+    - local-anonymous-cart
+    - local-account-registration
+    - local-session-sign-in
+    - local-order-checkout
+    - local-order-history
+    feature_flags:
+    - anonymous-source-capture
+    - source-mutations-disabled
+    - runtime-network-closed
+    user_agent: null
+    viewport:
+      width: 1440
+      height: 900
+    capture_id: 2026-08-25.wb201-anonymous
+  capture_policy:
+    safe_methods:
+    - GET
+    - HEAD
+    runtime_remote_requests: forbidden
+scope:
+  purpose: scope/purpose.json
+  invariants: scope/invariants.json
+  routes: scope/routes.json
+  journeys: scope/journeys.json
+  checkpoints: scope/checkpoints.json
+  claims: scope/claims.jsonl
+  coverage: scope/coverage.json
+paths:
+  candidate_root: clone
+  candidate_excludes: []
+  asset_manifest: source-assets/manifest.json
+  backend_model: backend/model.json
+  artifact_root: artifacts/offline-clone

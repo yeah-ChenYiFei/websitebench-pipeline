@@ -1,0 +1,452 @@
+{
+  "schema_version": "websitebench.trace-guided.ea2-breadth-summary.v1",
+  "authority": "source-evidence-diagnostic-only",
+  "qualification": "maintainer-judgment-required",
+  "role": "EA2-breadth-first-explorer",
+  "site": {
+    "site_id": "WB201",
+    "site_key": "walmart",
+    "source_origin": "https://www.walmart.com",
+    "actor": "anonymous-shopper",
+    "human_trace_texts": [],
+    "planned_inventory_ids": "WB201-T01..T29",
+    "inventory_detail_rows_present": false
+  },
+  "scope_and_safety": {
+    "approved_origins": [
+      "https://www.walmart.com"
+    ],
+    "permitted_methods": [
+      "GET",
+      "HEAD"
+    ],
+    "source_mutations_authorized": [],
+    "mutations_performed": false,
+    "credentials_or_sensitive_values_collected": false,
+    "cookies_tokens_or_browser_profiles_persisted": false,
+    "raw_request_bodies_persisted": false,
+    "external_origins_allowed": false,
+    "browser_context": "new isolated anonymous Playwright context; no storage state consumed",
+    "stop_rule": "One headed preflight was completed. Parent then prohibited additional Walmart browser/source calls; no equivalent retry or second browser context occurred."
+  },
+  "workbook_evidence": {
+    "source": "WebsiteBench.xlsx",
+    "sheet": "All",
+    "logical_site_id": 201,
+    "physical_sheet_row_observed": 221,
+    "assignment_cell_observed": "待分配",
+    "assignment_authority": "The current user message explicitly assigns WB201 and supersedes the stale workbook cell.",
+    "inventory_task_text_classification": "evidence-inventory-only; not formal human_trace_text",
+    "expanded_task_inventory_matching_rows": 0,
+    "planned_stage_count": 29
+  },
+  "preliminary_task_brief": {
+    "purpose": {
+      "value": "Public retail-marketplace entry for discovering products and beginning shopping/fulfillment journeys.",
+      "classification": "direct-observation-plus-workbook-structural-evidence",
+      "evidence": [
+        "Home title: Walmart | Save Money. Live better.",
+        "Visible controls/copy included Search Walmart, Departments, Pickup or delivery?, Reorder My Items, Services, cart $0.00, and promotional shop calls to action.",
+        "All-sheet category is marketplace-retail and its task text describes search, comparison, cart, and checkout-review scope."
+      ]
+    },
+    "observed_role": {
+      "value": "anonymous shopper",
+      "classification": "direct-observation",
+      "evidence": "No authenticated storage was consumed and the public home rendered."
+    },
+    "candidate_core_objects": [
+      {
+        "object": "department/category",
+        "classification": "structural-evidence",
+        "evidence": "Departments button visible and activatable; post-click menu content was not established."
+      },
+      {
+        "object": "search query",
+        "classification": "direct-observation",
+        "evidence": "Search Walmart input was visible and accepted keyboard fill; no submission occurred."
+      },
+      {
+        "object": "cart",
+        "classification": "structural-evidence",
+        "evidence": "A $0.00 cart affordance was visible; no cart state was opened or mutated."
+      },
+      {
+        "object": "fulfillment/location choice",
+        "classification": "structural-evidence",
+        "evidence": "Pickup or delivery? was visible; no location or availability state was submitted."
+      },
+      {
+        "object": "product, variant, filter, review, order",
+        "classification": "workbook-structural-evidence-only",
+        "evidence": "Named by the All-sheet coverage list but not reached in current source evidence."
+      }
+    ],
+    "agent_suggested_scope": {
+      "P0": [
+        "Public home shell and primary navigation",
+        "Anonymous search submission and results",
+        "Directly evidenced result filters/sort only after further capture",
+        "Product detail and read-only variant selection only after further capture",
+        "Cart add and checkout review on the local clone only under current authority"
+      ],
+      "P1": [
+        "Department browse",
+        "Price, promotion, availability and fulfillment display",
+        "Reviews, recommendations and comparison affordances when directly evidenced",
+        "Anonymous no-results and recovery",
+        "Responsive and keyboard behavior"
+      ],
+      "P2": [
+        "Account/sign-in/registration/recovery entry structure",
+        "Wishlist/list, promo/gift card, order and returns entry structure",
+        "Help and not-found recovery"
+      ],
+      "non_goals_under_current_authority": [
+        "Any real Walmart cart mutation",
+        "Real checkout or payment",
+        "Location submission",
+        "Login, registration, OTP or account-only state",
+        "Any external publication or deployment"
+      ]
+    }
+  },
+  "provider_preflight": [
+    {
+      "channel": "Browserbase Chrome DevTools",
+      "session_created": false,
+      "real_page": false,
+      "rendered_text": false,
+      "clicks_and_keyboard": false,
+      "classification": "unavailable",
+      "reason": "No BROWSERBASE_API_KEY, BROWSERBASE_SESSION_ID, or configured Browserbase MCP server was present."
+    },
+    {
+      "channel": "repository local Playwright, headed",
+      "session_created": true,
+      "real_page": true,
+      "rendered_text": true,
+      "clicks_and_keyboard": true,
+      "classification": "selected",
+      "evidence": "Diagnostic status passed with four executed steps and the real Walmart title/body. Search fill, Escape key, and Departments click completed."
+    },
+    {
+      "channel": "Computer Use / generic in-app browser",
+      "session_created": false,
+      "real_page": false,
+      "rendered_text": false,
+      "clicks_and_keyboard": false,
+      "classification": "not-selected",
+      "reason": "Available UI channel did not provide the repository GET/HEAD enforcement and sanitized WebsiteBench report contract required for this source pass."
+    }
+  ],
+  "source_observations": [
+    {
+      "observation_id": "home-desktop-entry",
+      "role": "EA2-breadth-first-explorer",
+      "action": "GET /",
+      "tool_category": "WebsiteBench declarative Playwright exploration",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "observable_result": {
+        "title": "Walmart | Save Money. Live better.",
+        "body_visible": true,
+        "route": "/",
+        "rendered_text_proof": [
+          "Search Walmart",
+          "Departments",
+          "Pickup or delivery?",
+          "Reorder My Items",
+          "Services",
+          "Walmart | Save Money. Live better."
+        ]
+      },
+      "classification": "direct-observation",
+      "truncation_state": "viewport screenshot only; footer and below-fold page structure not established",
+      "rationale": "Public entry and sibling top-level controls were sampled before advancing.",
+      "artifact_refs": [
+        "reports/preflight-local-headed.json",
+        "artifacts/preflight-local-headed/ea2-preflight-local-headed-open-home.png"
+      ]
+    },
+    {
+      "observation_id": "search-input-keyboard",
+      "role": "EA2-breadth-first-explorer",
+      "action": "fill search input, press Escape",
+      "tool_category": "WebsiteBench declarative Playwright exploration",
+      "observable_result": {
+        "search_input_visible": true,
+        "fill_completed": true,
+        "escape_key_completed": true,
+        "submission_performed": false,
+        "search_results_observed": false
+      },
+      "classification": "direct-observation",
+      "truncation_state": "Input value is intentionally omitted from the sanitized diagnostic report.",
+      "rationale": "Established working keyboard input without submitting a source form.",
+      "artifact_refs": [
+        "reports/preflight-local-headed.json"
+      ]
+    },
+    {
+      "observation_id": "departments-control",
+      "role": "EA2-breadth-first-explorer",
+      "action": "click Departments",
+      "tool_category": "WebsiteBench declarative Playwright exploration",
+      "observable_result": {
+        "control_visible": true,
+        "click_completed": true,
+        "route_after_click": "/",
+        "menu_content_established": false,
+        "post_click_screenshot_changed": false
+      },
+      "classification": "structural-evidence",
+      "truncation_state": "External scripts/styles were blocked, so the expected dynamic menu state is not evidenced.",
+      "rationale": "The control exists and accepts a click, but exact interaction semantics cannot be inferred.",
+      "artifact_refs": [
+        "reports/preflight-local-headed.json",
+        "artifacts/preflight-local-headed/ea2-preflight-local-headed-open-departments.png"
+      ]
+    },
+    {
+      "observation_id": "network-shape",
+      "role": "EA2-breadth-first-explorer",
+      "action": "observe requests under allowlist and method gate",
+      "tool_category": "WebsiteBench Playwright request interception",
+      "observable_result": {
+        "requests_observed": 95,
+        "GET_attempts": 93,
+        "POST_attempts": 2,
+        "blocked_request_count": 92,
+        "blocked_external_origins": [
+          "https://collector-pxu6b0qd2s.px-cloud.net",
+          "https://i5.walmartimages.com",
+          "https://ift.px-cloud.net"
+        ],
+        "first_party_GET_examples": [
+          "https://www.walmart.com/",
+          "https://www.walmart.com/px/PXu6b0qd2S/init.js",
+          "https://www.walmart.com/akam/13/6b76254d"
+        ],
+        "source_mutations_transmitted": false,
+        "console_error_count": 94,
+        "failed_request_count": 93
+      },
+      "classification": "direct-observation",
+      "truncation_state": "Only sanitized URLs/methods/reasons are retained; no headers, bodies, cookies, or tokens.",
+      "rationale": "Shows actual page dependency shape while preserving the single approved-origin boundary.",
+      "artifact_refs": [
+        "reports/preflight-local-headed.json"
+      ]
+    }
+  ],
+  "page_and_control_inventory": [
+    {
+      "page_family": "public home",
+      "route": "/",
+      "viewport": "desktop",
+      "state": "anonymous, asset-limited",
+      "classification": "direct-observation",
+      "controls": [
+        {
+          "label": "Skip to Main Content",
+          "kind": "link",
+          "evidence": "visible-only"
+        },
+        {
+          "label": "Search Walmart",
+          "kind": "search input",
+          "evidence": "visible, fill and Escape key"
+        },
+        {
+          "label": "Pickup or delivery?",
+          "kind": "fulfillment/location affordance",
+          "evidence": "visible-only"
+        },
+        {
+          "label": "Reorder My Items",
+          "kind": "history/reorder link",
+          "evidence": "visible-only"
+        },
+        {
+          "label": "Departments",
+          "kind": "button",
+          "evidence": "visible and click accepted; opened state unavailable"
+        },
+        {
+          "label": "Account",
+          "kind": "account entry link",
+          "evidence": "visible-only"
+        },
+        {
+          "label": "Services",
+          "kind": "button",
+          "evidence": "visible-only"
+        },
+        {
+          "label": "$0.00",
+          "kind": "cart affordance",
+          "evidence": "visible-only; no cart access or mutation"
+        },
+        {
+          "label": "Try Walmart+ for $1 / Shop now",
+          "kind": "promotional calls to action",
+          "evidence": "visible-only"
+        }
+      ]
+    },
+    {
+      "page_family": "home footer",
+      "classification": "unavailable",
+      "reason": "Below-fold/footer state was not captured before the stop rule."
+    },
+    {
+      "page_family": "departments/category",
+      "classification": "structural-evidence-only",
+      "reason": "Departments control was visible and clicked, but menu/category contents were not established."
+    },
+    {
+      "page_family": "search/results",
+      "classification": "structural-evidence-only",
+      "reason": "Search control accepted keyboard input; results and no-results pages were not visited."
+    },
+    {
+      "page_family": "product detail",
+      "classification": "unavailable",
+      "reason": "No product detail sample was reached."
+    },
+    {
+      "page_family": "auth entry",
+      "classification": "structural-evidence-only",
+      "reason": "Account entry label was visible; sign-in, registration and recovery structures were not opened."
+    },
+    {
+      "page_family": "help/recovery/not-found",
+      "classification": "unavailable",
+      "reason": "No help, recovery, or not-found route was visited."
+    },
+    {
+      "page_family": "robots/sitemaps",
+      "classification": "unavailable",
+      "reason": "Prepared acquisition spec was not executed after the parent stop rule."
+    },
+    {
+      "page_family": "mobile responsive",
+      "classification": "unavailable",
+      "reason": "No mobile browser context was launched."
+    }
+  ],
+  "all_sheet_stage_to_task_id_mapping_established": false,
+  "all_sheet_coverage_mapping_note": "These are coverage-list stage labels from the All sheet only. They are not mapped to WB201-T01..T29 because Expanded Task Inventory has no matching detail rows; assigning stage text to a planned identifier would fabricate task detail.",
+  "all_sheet_coverage_mapping": [
+    {"coverage_list_ordinal_agent_side_only": 1, "stage": "Public Entry / Primary Navigation", "classification": "direct-partial", "evidence": "Home/title and several primary controls visible; footer/below-fold absent."},
+    {"coverage_list_ordinal_agent_side_only": 2, "stage": "Browse / Department", "classification": "structural-only", "evidence": "Departments button visible and click accepted; destination/menu unavailable."},
+    {"coverage_list_ordinal_agent_side_only": 3, "stage": "Product Search", "classification": "direct-partial", "evidence": "Search input visible and keyboard-operable; submission/results unavailable."},
+    {"coverage_list_ordinal_agent_side_only": 4, "stage": "Filter / Sort", "classification": "unavailable", "evidence": "Results page not reached."},
+    {"coverage_list_ordinal_agent_side_only": 5, "stage": "Product Detail", "classification": "unavailable", "evidence": "No product detail visited."},
+    {"coverage_list_ordinal_agent_side_only": 6, "stage": "Variant / Option Selection", "classification": "unavailable", "evidence": "No detail/options state visited."},
+    {"coverage_list_ordinal_agent_side_only": 7, "stage": "Price / Promotion", "classification": "direct-partial", "evidence": "Home promotional copy and $1 CTA visible; product pricing unavailable."},
+    {"coverage_list_ordinal_agent_side_only": 8, "stage": "Availability / Fulfillment", "classification": "structural-only", "evidence": "Pickup or delivery? visible; no state submission."},
+    {"coverage_list_ordinal_agent_side_only": 9, "stage": "Reviews / Q&A", "classification": "unavailable", "evidence": "No detail page visited."},
+    {"coverage_list_ordinal_agent_side_only": 10, "stage": "Recommendations / Compare", "classification": "unavailable", "evidence": "No results/detail page visited."},
+    {"coverage_list_ordinal_agent_side_only": 11, "stage": "Wishlist / List", "classification": "unavailable", "evidence": "No list surface established."},
+    {"coverage_list_ordinal_agent_side_only": 12, "stage": "Cart Add", "classification": "unavailable-by-authority", "evidence": "Cart affordance visible; real source mutation prohibited."},
+    {"coverage_list_ordinal_agent_side_only": 13, "stage": "Cart Update / Remove", "classification": "unavailable-by-authority", "evidence": "Real source cart mutation prohibited."},
+    {"coverage_list_ordinal_agent_side_only": 14, "stage": "Promo / Gift Card", "classification": "unavailable", "evidence": "Cart/checkout not visited."},
+    {"coverage_list_ordinal_agent_side_only": 15, "stage": "Address Book", "classification": "unavailable-by-authority", "evidence": "Account/location submission prohibited."},
+    {"coverage_list_ordinal_agent_side_only": 16, "stage": "Delivery Method", "classification": "structural-only", "evidence": "Pickup or delivery? visible; exact options unavailable."},
+    {"coverage_list_ordinal_agent_side_only": 17, "stage": "Checkout Review", "classification": "unavailable-by-authority", "evidence": "Real source cart/checkout prohibited; local-clone-only target."},
+    {"coverage_list_ordinal_agent_side_only": 18, "stage": "Order History / Detail", "classification": "unavailable-by-authority", "evidence": "Authenticated account-only surface."},
+    {"coverage_list_ordinal_agent_side_only": 19, "stage": "Shipment Tracking", "classification": "unavailable-by-authority", "evidence": "Authenticated/order-specific surface."},
+    {"coverage_list_ordinal_agent_side_only": 20, "stage": "Cancel / Return / Refund", "classification": "unavailable-by-authority", "evidence": "Authenticated/order mutation surface."},
+    {"coverage_list_ordinal_agent_side_only": 21, "stage": "Anonymous Search / No Results", "classification": "unavailable", "evidence": "No search submission/no-results state visited."},
+    {"coverage_list_ordinal_agent_side_only": 22, "stage": "Authentication / Sign-In Entry", "classification": "structural-only", "evidence": "Account label visible; entry structure not opened."},
+    {"coverage_list_ordinal_agent_side_only": 23, "stage": "Authentication / Registration Entry", "classification": "unavailable-by-authority", "evidence": "Registration not visited or submitted."},
+    {"coverage_list_ordinal_agent_side_only": 24, "stage": "Authentication / Password Recovery", "classification": "unavailable-by-authority", "evidence": "Recovery not visited or submitted."},
+    {"coverage_list_ordinal_agent_side_only": 25, "stage": "Post-Action / History and Management", "classification": "structural-only", "evidence": "Reorder My Items label visible; destination/auth state unavailable."},
+    {"coverage_list_ordinal_agent_side_only": 26, "stage": "Validation / Required Fields and Permissions", "classification": "unavailable", "evidence": "No form submission or validation state was exercised."},
+    {"coverage_list_ordinal_agent_side_only": 27, "stage": "Help / Recovery", "classification": "structural-only", "evidence": "Services control visible; help route not established."},
+    {"coverage_list_ordinal_agent_side_only": 28, "stage": "Error / Not Found", "classification": "unavailable", "evidence": "No error/not-found route visited."},
+    {"coverage_list_ordinal_agent_side_only": 29, "stage": "End-to-End Scenario", "classification": "unavailable", "evidence": "No formal human trace text exists; downstream source mutations are unauthorized."}
+  ],
+  "priority_recommendations": {
+    "P0": [
+      "Freeze the directly observed home shell/search/cart/fulfillment entry structure.",
+      "Acquire search results, filter/sort, one to three product-detail variants, and safe no-results evidence in a later authorized bounded pass.",
+      "Keep cart add and checkout review local-clone-only under current authority."
+    ],
+    "P1": [
+      "Acquire desktop/mobile category, promotion, fulfillment, review, recommendation, and comparison states.",
+      "Capture keyboard focus, Back/Forward, refresh, and recovery behavior without source mutations."
+    ],
+    "P2": [
+      "Capture public auth/help/not-found entry structure only; keep account/order/return states unavailable unless authority and human login are supplied."
+    ]
+  },
+  "human_only_evidence_gaps": [
+    "Formal human_trace_text is empty. The All-sheet task text is inventory evidence only, and WB201-T01..T29 have no detail rows; only the human may supply or explicitly select formal trace text.",
+    "Any Cloudflare/PerimeterX/CAPTCHA challenge must be completed by the human in a visible browser; EA2 did not operate or bypass a challenge.",
+    "Login, registration, password recovery, OTP and authenticated order surfaces require a human login handoff and expanded scope; no credentials may be sent in chat or persisted.",
+    "Real Walmart add-to-cart, checkout review, delivery/location submission, order/return mutation, or any other source write requires explicit new authorization; none exists."
+  ],
+  "unavailable_frontiers": [
+    "Dynamic Departments menu semantics because external scripts/styles were blocked.",
+    "Full home footer and below-fold structure.",
+    "Department/category routes and controls.",
+    "Search success and no-results result structures, filters, sort, pagination and recovery.",
+    "Product-detail samples, variants, fulfillment, reviews, Q&A, recommendations and compare.",
+    "Mobile responsive differences.",
+    "Auth/help/recovery/not-found routes.",
+    "robots.txt and sitemaps.",
+    "Challenge-protected and authenticated states.",
+    "Any source cart, checkout, payment, address, order, shipment, cancellation, return or refund state."
+  ],
+  "machine_result": {
+    "report_status": "passed",
+    "steps_total": 4,
+    "steps_passed": 4,
+    "assertion_failures": 0,
+    "interpretation": "The selected channel met the narrow preflight contract only. It does not establish complete source coverage, visual fidelity, clone readiness, or deployment authority."
+  },
+  "command_exit_codes": [
+    {"command": "git status --short", "exit_code": 128, "result": "provided directory is not a Git worktree"},
+    {"command": "python tools/offline_clone/run.py tools list (initial combined shell after failed git status)", "exit_code": 128, "result": "not executed because the preceding git command failed"},
+    {"command": ".venv/bin/python tools/offline_clone/run.py tools list", "exit_code": 0, "result": "tool catalog returned"},
+    {"command": "websitebench-offline-clone --help (system PATH)", "exit_code": 127, "result": "command not on system PATH"},
+    {"command": "websitebench-workflow --help (system PATH)", "exit_code": 127, "result": "command not on system PATH"},
+    {"command": "websitebench-harbor --help (system PATH)", "exit_code": 127, "result": "command not on system PATH"},
+    {"command": ".venv/bin/websitebench-offline-clone --help", "exit_code": 0, "result": "help returned"},
+    {"command": ".venv/bin/websitebench-workflow --help", "exit_code": 0, "result": "help returned"},
+    {"command": ".venv/bin/websitebench-harbor --help", "exit_code": 0, "result": "help returned"},
+    {"command": ".venv/bin/websitebench-offline-clone tools explore --help", "exit_code": 0, "result": "help returned"},
+    {"command": ".venv/bin/websitebench-offline-clone tools frontend-spec --help", "exit_code": 0, "result": "help returned; not used because its source gate does not block same-origin non-GET telemetry"},
+    {"command": ".venv/bin/websitebench-workflow acquire-source --help", "exit_code": 0, "result": "help returned"},
+    {"command": "codex mcp list", "exit_code": 0, "result": "no Browserbase MCP server listed"},
+    {"command": ".venv/bin/playwright install --dry-run", "exit_code": 0, "result": "Chromium installation path resolved"},
+    {"command": ".venv/bin/python -c 'import playwright'", "exit_code": 0, "result": "Playwright import succeeded"},
+    {"command": "read-only WebsiteBench.xlsx XML inspection", "exit_code": 0, "result": "All row for logical ID 201 found; Expanded Task Inventory contains no WB201 rows"},
+    {"command": ".venv/bin/python tools/offline_clone/run.py tools explore --spec .../preflight-local-headed.json --base-url https://www.walmart.com/ --environment source --out .../preflight-local-headed.json --artifacts-dir .../preflight-local-headed --headed", "exit_code": 0, "result": "diagnostic report status passed"},
+    {"command": ".venv/bin/websitebench-workflow acquire-source --spec .../acquire-discovery.json ...", "exit_code": null, "result": "prepared but not executed after parent stop rule"},
+    {"command": "scripts/same_origin_bfs.py", "exit_code": null, "result": "prepared but not executed after parent stop rule"}
+  ],
+  "artifact_inventory": [
+    {"path": "specs/preflight-local-headed.json", "kind": "executed WebsiteBench browser scenario"},
+    {"path": "reports/preflight-local-headed.json", "kind": "canonical sanitized WebsiteBench visit-order and network report"},
+    {"path": "artifacts/preflight-local-headed/ea2-preflight-local-headed-open-home.png", "kind": "desktop rendered-text proof; visually asset-limited"},
+    {"path": "artifacts/preflight-local-headed/ea2-preflight-local-headed-open-departments.png", "kind": "post-click screenshot; unchanged, so menu semantics not established"},
+    {"path": "reports/sanitized-summary.json", "kind": "EA2 structured synthesis"},
+    {"path": "specs/acquire-discovery.json", "kind": "prepared but unexecuted GET-only acquisition spec"},
+    {"path": "scripts/same_origin_bfs.py", "kind": "prepared but unexecuted GET-only sanitized discovery helper"},
+    {"path": "preflight-raw/", "kind": "local CLI help/preflight outputs; no source response bodies or secrets"}
+  ],
+  "retention": {
+    "root": "materials/walmart/source-current/2026-08-25.ea2-breadth-anon",
+    "candidate_inspected": false,
+    "ea1_artifacts_inspected": false,
+    "secrets_present": false,
+    "raw_browser_profile_present": false,
+    "note": "Capture permission and this diagnostic evidence do not confer copyright, redistribution, publication, or deployment authority."
+  }
+}

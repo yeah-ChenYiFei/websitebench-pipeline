@@ -1,0 +1,48 @@
+{
+  "observed_at": "2026-08-25T06:39:32Z",
+  "authority": "diagnostic-only",
+  "channels": [
+    {
+      "id": "browserbase",
+      "session_created": false,
+      "real_page": false,
+      "rendered_text_image": false,
+      "interactive_live_view": false,
+      "status": "unavailable",
+      "evidence": "No runtime BROWSERBASE_API_KEY, BROWSERBASE_PROJECT_ID, BROWSERBASE_CDP_URL, or BROWSERBASE_SESSION_ID was present; no session was attempted."
+    },
+    {
+      "id": "local-headed-playwright",
+      "session_created": true,
+      "real_page": true,
+      "rendered_text_image": true,
+      "interactive_live_view": true,
+      "status": "selected",
+      "evidence": "Chromium 149 via Playwright 1.61 returned HTTP 200 at https://www.walmart.com/, title 'Walmart | Save Money. Live better.', visible Walmart copy, and rendered screenshots. An isolated EA2 session successfully filled and cleared the unique search input with keyboard input and clicked Departments. The WebsiteBench safety gate blocked two POST attempts and 92 non-approved external-origin requests before transmission. A separate visible session encountered a 'Robot or human?' hold challenge; the agent did not operate or bypass it."
+    },
+    {
+      "id": "codex-in-app-browser",
+      "session_created": false,
+      "real_page": false,
+      "rendered_text_image": false,
+      "interactive_live_view": false,
+      "status": "setup-defect",
+      "evidence": "The installed browser client could not initialize because the current tool call lacked required sandbox-state metadata."
+    },
+    {
+      "id": "computer-use-on-local-chromium",
+      "session_created": false,
+      "real_page": false,
+      "rendered_text_image": false,
+      "interactive_live_view": false,
+      "status": "unavailable",
+      "evidence": "App discovery and direct app-state acquisition made no progress and were stopped; no target interaction was attempted."
+    }
+  ],
+  "selection": {
+    "primary": "local-headed-playwright",
+    "selected_for_source_interaction": true,
+    "blocker": null,
+    "retry_rule": "Stop and switch after three equivalent blocked attempts; no further Walmart challenge retry is permitted in this exploration round."
+  }
+}

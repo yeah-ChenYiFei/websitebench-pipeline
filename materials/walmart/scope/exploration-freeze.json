@@ -1,0 +1,89 @@
+{
+  "schema_version": "websitebench.trace-guided.exploration-freeze.v1",
+  "observed_at": "2026-08-25T06:39:32Z",
+  "assignment": {
+    "site_id": "WB201",
+    "site_key": "walmart",
+    "inventory_task_ids": "WB201-T01..T29",
+    "inventory_status": "planned-identifiers-without-detail-rows",
+    "human_trace_texts": []
+  },
+  "source": {
+    "input_url": "https://www.walmart.com/",
+    "approved_origins": [
+      "https://www.walmart.com"
+    ],
+    "actors": [
+      "anonymous-shopper"
+    ]
+  },
+  "authority": {
+    "source_methods": [
+      "GET",
+      "HEAD"
+    ],
+    "authorized_source_mutations": [],
+    "real_email_authorized": false,
+    "stripe_test_authorized": false,
+    "live_payment_authorized": false,
+    "push_authorized": false,
+    "pr_authorized": false,
+    "public_deployment_authorized": false
+  },
+  "initial_scope": {
+    "p0": [
+      "public entry and primary navigation",
+      "anonymous product search and results",
+      "filter and sort controls where directly observed",
+      "product detail and read-only variant or option selection",
+      "local-clone-only cart add and safe checkout review"
+    ],
+    "p1": [
+      "department browse",
+      "price, promotion, availability and fulfillment display",
+      "reviews, recommendations and compare affordances",
+      "anonymous no-results and recovery",
+      "local-clone-only cart update and remove",
+      "responsive and keyboard behavior",
+      "Back, Forward, refresh and restart persistence"
+    ],
+    "p2": [
+      "wishlist or list",
+      "promo or gift card entry",
+      "account, registration and password-recovery entry points",
+      "address book and delivery method",
+      "order history, shipment tracking, cancellation and returns",
+      "help and not-found recovery"
+    ],
+    "source_unavailable_by_authority": [
+      "add a real Walmart source cart item",
+      "submit or review a real Walmart source checkout",
+      "submit source delivery or availability state",
+      "login, registration, OTP or account-only state"
+    ],
+    "viewports": [
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      }
+    ]
+  },
+  "capture_limits": {
+    "max_page_families_per_explorer": 8,
+    "max_product_details_per_explorer": 3,
+    "max_equivalent_blocked_attempts": 3,
+    "raw_response_bodies": false,
+    "credentials_or_browser_profiles": false
+  },
+  "roots": {
+    "candidate": "materials/walmart/clone",
+    "ea1": "materials/walmart/source-current/2026-08-25.ea1-depth-anon",
+    "ea2": "materials/walmart/source-current/2026-08-25.ea2-breadth-anon"
+  }
+}

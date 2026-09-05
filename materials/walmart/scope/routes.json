@@ -1,0 +1,15 @@
+{
+  "schema_version": "offline-clone.routes.v1",
+  "routes": [
+    {"id":"home","route_pattern":"/","path":"/","priority":"p0","purpose_edge":"primary","evidence_kind":"current-direct","local_destination":true,"roles":["anonymous-shopper"],"states":["loaded","desktop","mobile","fulfillment-popover"]},
+    {"id":"departments","route_pattern":"/all-departments","path":"/all-departments","priority":"p1","purpose_edge":"supporting","evidence_kind":"current-direct","local_destination":true,"roles":["anonymous-shopper"],"states":["loaded"]},
+    {"id":"category","route_pattern":"/category/{slug}","path":"/category/{slug}","priority":"p1","purpose_edge":"supporting","evidence_kind":"structural-only","local_destination":true,"roles":["anonymous-shopper"],"states":["household","personal-care","mobile"]},
+    {"id":"search","route_pattern":"/search","path":"/search","priority":"p0","purpose_edge":"primary","evidence_kind":"current-direct-source-limited","local_destination":true,"roles":["anonymous-shopper"],"states":["populated","filtered","sorted","no-results","recovered","mobile-filter"]},
+    {"id":"product-detail","route_pattern":"/product/{slug}","path":"/product/{slug}","priority":"p0","purpose_edge":"primary","evidence_kind":"structural-only","local_destination":true,"roles":["anonymous-shopper"],"states":["loaded","variant-selected","added"]},
+    {"id":"cart","route_pattern":"/cart","path":"/cart","priority":"p0","purpose_edge":"primary","evidence_kind":"unavailable-by-authority","local_destination":true,"roles":["anonymous-shopper"],"states":["empty","populated","quantity-updated","item-removed","restart-persisted"]},
+    {"id":"checkout-review","route_pattern":"/checkout/review","path":"/checkout/review","priority":"p0","purpose_edge":"primary","evidence_kind":"unavailable-by-authority","local_destination":true,"roles":["anonymous-shopper"],"states":["empty-cart","zip-required","zip-invalid","reviewed","submission-disabled"]},
+    {"id":"help","route_pattern":"/help","path":"/help","priority":"p1","purpose_edge":"supporting","evidence_kind":"structural-only","local_destination":true,"roles":["anonymous-shopper"],"states":["loaded"]},
+    {"id":"account-boundary","route_pattern":"/account-entry","path":"/account-entry","priority":"p1","purpose_edge":"boundary","evidence_kind":"structural-only","local_destination":true,"roles":["anonymous-shopper"],"states":["out-of-scope-notice"]},
+    {"id":"not-found","route_pattern":"/{unknown}","path":"/{unknown}","priority":"p1","purpose_edge":"boundary","evidence_kind":"inferred","local_destination":true,"roles":["anonymous-shopper"],"states":["not-found","recovery"]}
+  ]
+}

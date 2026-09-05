@@ -1,0 +1,15 @@
+{
+  "schema_version":"offline-clone.frontend-samples.v1",
+  "site_id":"walmart",
+  "checks":[
+    {"id":"discovery.departments","method":"get","url":"/all-departments","expect_status":200,"expect_contains":["All Departments"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"discovery.search","method":"get","url":"/search?q=dish%20soap","expect_status":200,"expect_contains":["Results for \u201cdish soap\u201d"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"discovery.filtered","method":"get","url":"/search?q=dish%20soap&brand=Dawn&min_price=2&max_price=4&sort=price-low","expect_status":200,"expect_contains":["Dawn Ultra Liquid Dish Soap"],"expect_not_contains":["$1.06"],"session":false},
+    {"id":"discovery.zero","method":"get","url":"/search?q=zzzz-no-match-websitebench","expect_status":200,"expect_contains":["There were no search results"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"discovery.product","method":"get","url":"/product/dawn-ultra-original-18oz","expect_status":200,"expect_contains":["Choose an option"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"commerce.cart-empty","method":"get","url":"/cart","expect_status":200,"expect_contains":["Your cart is empty"],"expect_not_contains":["NotImplementedError"],"session":false},
+    {"id":"commerce.checkout-empty","method":"get","url":"/checkout/review","expect_status":200,"expect_contains":["Add an item before continuing"],"expect_not_contains":["Place order"],"session":false},
+    {"id":"commerce.account-boundary","method":"get","url":"/account-entry","expect_status":200,"expect_contains":["intentionally unavailable offline"],"expect_not_contains":["type=\"password\""],"session":false},
+    {"id":"commerce.help","method":"get","url":"/help","expect_status":200,"expect_contains":["Walmart Help Center"],"expect_not_contains":["NotImplementedError"],"session":false}
+  ]
+}

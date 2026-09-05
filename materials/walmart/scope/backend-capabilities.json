@@ -1,0 +1,40 @@
+{
+  "observed_at": "2026-08-25T06:52:06Z",
+  "site_id": "walmart",
+  "capabilities": {
+    "persistent_authentication": {
+      "applies": false,
+      "reason": "Frozen P0/P1 uses an anonymous shopper only."
+    },
+    "password_recovery": {
+      "applies": false,
+      "reason": "Authentication and recovery are P2/omitted."
+    },
+    "transactional_or_business_email": {
+      "applies": false,
+      "reason": "No messages, receipts or real email are in scope."
+    },
+    "uploads": {
+      "applies": false,
+      "reason": "No upload journey is in scope."
+    },
+    "checkout_or_payment": {
+      "applies": true,
+      "reason": "P0 stops at a local checkout-review boundary. There is no order or payment submission control; the runtime payment profile remains local-sandbox."
+    },
+    "business_database": {
+      "applies": true,
+      "reason": "Per-actor cart state must persist across refresh and process restart with deterministic reset and isolation."
+    }
+  },
+  "orders": {
+    "applies": false,
+    "reason": "No order is created or confirmed."
+  },
+  "authority": {
+    "real_email_authorized": false,
+    "stripe_test_authorized": false,
+    "live_payment_authorized": false,
+    "public_deployment_authorized": false
+  }
+}

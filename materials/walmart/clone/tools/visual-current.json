@@ -1,0 +1,24 @@
+{
+  "schema_version":"websitebench.offline-clone.visual-comparison-spec.v1",
+  "checkpoints":[
+    {
+      "id":"home-desktop-source-limited",
+      "source":{"path":"../../source-current/2026-08-25.ea1-depth-anon/artifacts/01-home-desktop/wb201-ea1-home-desktop-inventory-home.png"},
+      "candidate":{"path":"../../artifacts/parity/candidate-home/wb201-ea1-home-desktop-inventory-home.png"},
+      "viewport":{"width":1440,"height":900},"capture_mode":"viewport",
+      "regions":[
+        {"id":"header","x":0,"y":0,"width":1440,"height":140,"metric":"color_histogram","threshold":0.75},
+        {"id":"primary-content","x":0,"y":140,"width":1440,"height":760,"metric":"ssim","threshold":0.70}
+      ]
+    },
+    {
+      "id":"no-results-desktop-source-limited",
+      "source":{"path":"../../source-current/2026-08-25.ea1-depth-anon/artifacts/03-search-results-repair-desktop/wb201-ea1-search-results-repair-desktop-inventory-results-generic.png"},
+      "candidate":{"path":"../../artifacts/parity/candidate-no-results/wb201-ea1-search-results-repair-desktop-inventory-results-generic.png"},
+      "viewport":{"width":1440,"height":900},"capture_mode":"viewport",
+      "regions":[
+        {"id":"full-viewport","box":"full","metric":"normalized_mae","threshold":0.25}
+      ]
+    }
+  ]
+}

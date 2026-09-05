@@ -1,0 +1,13 @@
+{
+  "schema_version":"offline-clone.verify-driver.v1",
+  "site_id":"walmart",
+  "note":"Anonymous local shopping scope. Account, source cart, order and payment states are intentionally excluded.",
+  "boot":{"argv":["{python}","app.py","--host","127.0.0.1","--port","{port}"],"cwd":"clone","env":{"WEBSITEBENCH_USE_SANDBOX_RUNTIME_MIRROR":"1","WEBSITEBENCH_SITE_BACKEND_DATABASE":"{data_dir}/walmart.sqlite3"}},
+  "prepare":[],
+  "routes":{"home":"/","departments":"/all-departments","household":"/category/household-essentials","personal-care":"/category/personal-care","search":"/search?q=dish%20soap","no-results":"/search?q=zzzz-no-match-websitebench","product":"/product/dawn-ultra-original-18oz","cart":"/cart","checkout":"/checkout/review","help":"/help","account-boundary":"/account-entry","not-found":"/this-route-does-not-exist"},
+  "states":{"home.loaded":[],"departments.loaded":[],"household.loaded":[],"personal-care.loaded":[],"search.loaded":[],"search.filtered":[{"goto":"/search?q=dish%20soap&brand=Dawn&sort=price-low"},{"expect":"text=Results for"}],"search.no-results":[{"goto":"/search?q=zzzz-no-match-websitebench"},{"expect":"text=There were no search results"}],"product.loaded":[],"product.variant":[{"click":"input[value=fresh-rain-18]"},{"expect":"text=Fresh Rain, 18 fl oz"}],"cart.empty":[],"checkout.empty":[],"help.loaded":[],"account.boundary":[],"not-found.loaded":[]},
+  "status":{"not-found":404},
+  "deferred":{"source-cart-checkout":"Source-side cart addition and checkout were not authorized.","source-auth":"Login, OTP and account-only evidence were not authorized and credentials were unavailable.","payment-order":"Payment and order submission are not part of the candidate; checkout stops at review."},
+  "visual_excluded":{"home.mobile":"No directly captured styled mobile source artifact.","search":"Approved-origin capture blocked source CSS and product media, so structural and functional evidence is used.","product":"Source product detail could not be safely acquired during the bounded anonymous walk.","cart-checkout":"Source mutation was unauthorized."},
+  "states_out_of_scope":{"account-auth":"Credentials, login, registration and recovery are outside authority.","orders-returns":"Orders, tracking, cancellation, returns and refunds require authenticated/source mutation evidence.","promo-address-payment":"Gift cards, address book, promotion redemption and payment are excluded."}
+}

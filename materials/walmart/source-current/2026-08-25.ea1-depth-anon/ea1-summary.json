@@ -1,0 +1,332 @@
+{
+  "schema_version": "websitebench.trace-guided.ea1-summary.v1",
+  "role": "EA1-depth-first-explorer",
+  "site": {
+    "site_id": "WB201",
+    "site_key": "walmart",
+    "source_origin": "https://www.walmart.com",
+    "actor": "anonymous-shopper",
+    "inventory_task_ids": "WB201-T01..T29",
+    "formal_human_trace_texts": []
+  },
+  "artifact_root": "materials/walmart/source-current/2026-08-25.ea1-depth-anon",
+  "captured_at_utc": "2026-08-25T06:44:48Z",
+  "scope_and_safety": {
+    "allowed_methods": [
+      "GET",
+      "HEAD"
+    ],
+    "source_mutations_authorized": false,
+    "storage_state_supplied": false,
+    "fresh_browser_context_per_scenario": true,
+    "sensitive_values_persisted": false,
+    "raw_request_bodies_persisted": false,
+    "credentials_cookies_tokens_profiles_or_otps_persisted": false,
+    "source_cart_checkout_login_registration_location_or_captcha_actions": false,
+    "stopped_after_coordinator_reported_visible_challenge": true
+  },
+  "setup": {
+    "trace_guided_skill": {
+      "status": "discovered-and-applied",
+      "path": "skills/trace-guided-offline-clone/SKILL.md",
+      "setup_defect": false
+    },
+    "repository_tool_catalog": "available",
+    "repository_launcher_browser": "unavailable-playwright-import",
+    "selected_browser_cli": ".venv/bin/websitebench-offline-clone",
+    "playwright_version": "1.61.0",
+    "browser_mode": "headed",
+    "approved_origins": [
+      "https://www.walmart.com"
+    ]
+  },
+  "command_ledger": [
+    {
+      "command": "python tools/offline_clone/run.py tools list",
+      "exit_code": 0,
+      "result": "tool catalog discovered"
+    },
+    {
+      "command": "python tools/offline_clone/run.py tools --help",
+      "exit_code": 0,
+      "result": "shared tool help available"
+    },
+    {
+      "command": "python tools/offline_clone/run.py tools explore-source --help",
+      "exit_code": 2,
+      "result": "obsolete subcommand probe rejected; current subcommand is tools explore"
+    },
+    {
+      "command": "python tools/offline_clone/run.py tools explore --help",
+      "exit_code": 0,
+      "result": "current exploration interface confirmed"
+    },
+    {
+      "command": "python tools/offline_clone/run.py tools frontend-spec --help",
+      "exit_code": 0,
+      "result": "frontend-spec interface confirmed but not used because its same-origin request policy is broader than this GET/HEAD-only assignment"
+    },
+    {
+      "command": "python tools/offline_clone/run.py tools explore --spec materials/walmart/source-current/2026-08-25.ea1-depth-anon/specs/01-home-desktop.json --base-url https://www.walmart.com/ --environment source --out materials/walmart/source-current/2026-08-25.ea1-depth-anon/reports/01-home-desktop.json --artifacts-dir materials/walmart/source-current/2026-08-25.ea1-depth-anon/artifacts/01-home-desktop --headed",
+      "exit_code": 2,
+      "result": "repository Python environment lacked Playwright; no source request was made"
+    },
+    {
+      "command": ".venv/bin/websitebench-offline-clone tools explore --spec materials/walmart/source-current/2026-08-25.ea1-depth-anon/specs/01-home-desktop.json --base-url https://www.walmart.com/ --environment source --out materials/walmart/source-current/2026-08-25.ea1-depth-anon/reports/01-home-desktop.json --artifacts-dir materials/walmart/source-current/2026-08-25.ea1-depth-anon/artifacts/01-home-desktop --headed",
+      "exit_code": 0,
+      "result": "home desktop capture passed"
+    },
+    {
+      "command": ".venv/bin/websitebench-offline-clone tools explore --spec materials/walmart/source-current/2026-08-25.ea1-depth-anon/specs/02-search-results-desktop.json --base-url https://www.walmart.com/ --environment source --out materials/walmart/source-current/2026-08-25.ea1-depth-anon/reports/02-search-results-desktop.json --artifacts-dir materials/walmart/source-current/2026-08-25.ea1-depth-anon/artifacts/02-search-results-desktop --headed",
+      "exit_code": 1,
+      "exit_code_basis": "the yielded wrapper did not return the completed process status directly; the persisted report status is failed and the inspected CLI contract deterministically returns 1 for that status",
+      "result": "search semantics and GET navigation captured; final product-link probe timed out"
+    },
+    {
+      "command": ".venv/bin/websitebench-offline-clone tools explore --spec materials/walmart/source-current/2026-08-25.ea1-depth-anon/specs/03-search-results-repair-desktop.json --base-url https://www.walmart.com/ --environment source --out materials/walmart/source-current/2026-08-25.ea1-depth-anon/reports/03-search-results-repair-desktop.json --artifacts-dir materials/walmart/source-current/2026-08-25.ea1-depth-anon/artifacts/03-search-results-repair-desktop --headed",
+      "exit_code": 0,
+      "result": "bounded same-origin GET repair captured a source-limited no-results state"
+    }
+  ],
+  "visit_order": [
+    {
+      "ordinal": 1,
+      "route": "/",
+      "state": "anonymous-home-desktop",
+      "viewport": "1440x900",
+      "report": "reports/01-home-desktop.json",
+      "stop_reason": "home inventory complete"
+    },
+    {
+      "ordinal": 2,
+      "route": "/ -> /search",
+      "state": "search-form-semantics-then-query-navigation",
+      "viewport": "1440x900",
+      "report": "reports/02-search-results-desktop.json",
+      "stop_reason": "first product-link locator unavailable after search"
+    },
+    {
+      "ordinal": 3,
+      "route": "/search",
+      "state": "source-limited-no-results-recovery",
+      "viewport": "1440x900",
+      "report": "reports/03-search-results-repair-desktop.json",
+      "stop_reason": "coordinator reported a visible challenge on the equivalent headed channel; all further equivalent browser work stopped"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "home-shell",
+      "classification": "captured",
+      "route": "/",
+      "observations": {
+        "title": "Walmart | Save Money. Live better.",
+        "header_count": 1,
+        "main_count": 1,
+        "search_input_count": 1,
+        "search_form_count": 1,
+        "button_count": 12,
+        "link_count": 62
+      },
+      "visible_controls": [
+        "search",
+        "pickup-or-delivery entry",
+        "Departments",
+        "Services",
+        "Reorder/My Items",
+        "account entry",
+        "purchase history",
+        "Walmart+",
+        "subscriptions",
+        "language",
+        "cart total",
+        "hero and product merchandising links"
+      ],
+      "provenance": [
+        "reports/01-home-desktop.json",
+        "artifacts/01-home-desktop/wb201-ea1-home-desktop-inventory-home.png"
+      ]
+    },
+    {
+      "id": "search-form-contract",
+      "classification": "captured",
+      "route": "/",
+      "observations": {
+        "form_action": "/search",
+        "form_method_attribute": "",
+        "method_interpretation": "HTML default GET; observed Enter navigation issued a GET document request",
+        "input_name": "q",
+        "input_placeholder": "Search Walmart",
+        "input_aria_label": "Search",
+        "explicit_submit_button_count": 0,
+        "keyboard_submit": "Enter navigated to /search"
+      },
+      "provenance": [
+        "reports/02-search-results-desktop.json"
+      ]
+    },
+    {
+      "id": "search-results-source-limited",
+      "classification": "source-limited",
+      "route": "/search",
+      "observations": {
+        "title": "toothpaste - Walmart.com",
+        "main_count": 1,
+        "heading_count": 0,
+        "link_count": 54,
+        "product_link_count": 0,
+        "visible_sort_text_count": 1,
+        "visible_price_text_count": 1,
+        "visible_filter_text_count_for_exact_Filter": 0,
+        "visible_state": "no results for the query with spelling/different-keyword recovery copy",
+        "recovery_links_observed": [
+          "Return to home",
+          "See all departments"
+        ]
+      },
+      "visible_controls_and_labels": [
+        "Get it fast",
+        "Price",
+        "Sort by / Best Match",
+        "Availability",
+        "Whitening Toothpaste",
+        "Sensitive Toothpaste",
+        "Gum Toothpaste",
+        "Fresh Breath Toothpaste",
+        "Fluoride Free Toothpaste",
+        "Value and Stock Up",
+        "Shop by Brand",
+        "Oral Care Routine",
+        "Update location"
+      ],
+      "caveat": "The result state is not evidence that Walmart normally has zero toothpaste products. The approved-origin interceptor blocked image/CDN resources and all non-GET requests, and the equivalent visible channel subsequently encountered a coordinator-reported challenge.",
+      "provenance": [
+        "reports/03-search-results-repair-desktop.json",
+        "artifacts/03-search-results-repair-desktop/wb201-ea1-search-results-repair-desktop-inventory-results-generic.png"
+      ]
+    },
+    {
+      "id": "product-detail-and-deeper-states",
+      "classification": "unavailable",
+      "reason": "No product link was present in the captured constrained results state, the first product-link probe timed out, and the challenge stopping rule prohibited further equivalent retries.",
+      "affected_frontiers": [
+        "one product-detail route",
+        "variant and option controls",
+        "item availability and fulfillment detail",
+        "reviews",
+        "recommendations",
+        "compare affordances",
+        "filter expanded state",
+        "sort expanded state"
+      ]
+    }
+  ],
+  "external_service_observations": [
+    {
+      "report": "reports/01-home-desktop.json",
+      "blocked_request_count": 100,
+      "blocked_origins": {
+        "https://i5.walmartimages.com": 91,
+        "https://collector-pxu6b0qd2s.px-cdn.net": 2,
+        "https://collector-pxu6b0qd2s.px-cloud.net": 2,
+        "https://collector-pxu6b0qd2s.pxchk.net": 2,
+        "https://ift.px-cloud.net": 1,
+        "https://www.walmart.com": 2
+      }
+    },
+    {
+      "report": "reports/02-search-results-desktop.json",
+      "blocked_request_count": 268,
+      "blocked_origins": {
+        "https://i5.walmartimages.com": 250,
+        "https://collector-pxu6b0qd2s.px-cdn.net": 4,
+        "https://collector-pxu6b0qd2s.px-cloud.net": 4,
+        "https://collector-pxu6b0qd2s.pxchk.net": 4,
+        "https://ift.px-cloud.net": 2,
+        "https://www.walmart.com": 4
+      }
+    },
+    {
+      "report": "reports/03-search-results-repair-desktop.json",
+      "blocked_request_count": 168,
+      "blocked_origins": {
+        "https://i5.walmartimages.com": 159,
+        "https://collector-pxu6b0qd2s.px-cdn.net": 2,
+        "https://collector-pxu6b0qd2s.px-cloud.net": 2,
+        "https://collector-pxu6b0qd2s.pxchk.net": 2,
+        "https://ift.px-cloud.net": 1,
+        "https://www.walmart.com": 2
+      }
+    }
+  ],
+  "external_service_interpretation": "Off-origin Walmart image/CDN and PX endpoints were blocked because only the configured origin was approved. Site-generated POST telemetry to the approved origin was also blocked as unauthorized. No raw request body was retained. Most failed-resource and console counts are capture-policy effects and are not evidence of clone defects.",
+  "unavailable_frontiers": [
+    "normal household-item result cards and result count",
+    "product-detail route and controls",
+    "filter/sort expanded or applied state",
+    "variant selection",
+    "detail availability and fulfillment",
+    "reviews, recommendations and compare",
+    "activated no-results recovery",
+    "mobile 390x844 checkpoint",
+    "keyboard behavior beyond search Enter",
+    "source Back/Forward and refresh state",
+    "challenge-resolved continuation",
+    "location-submitted state",
+    "all account-only surfaces",
+    "source cart and checkout, which were unauthorized"
+  ],
+  "agent_suggested_scope": {
+    "p0_supported_by_current_evidence": [
+      "anonymous home shell",
+      "GET search form semantics",
+      "search route and query-reflecting title",
+      "safe no-results recovery state"
+    ],
+    "p1_supported_but_source_limited": [
+      "price, sort and availability control labels",
+      "category suggestion links",
+      "location availability notice",
+      "responsive intent only; no mobile checkpoint captured"
+    ],
+    "do_not_claim_as_matched": [
+      "normal product grid",
+      "product detail",
+      "variants",
+      "reviews or recommendations",
+      "source cart or checkout",
+      "mobile parity"
+    ]
+  },
+  "human_only_or_authority_gaps": [
+    "A human may resolve the visible anti-bot challenge in a separately authorized visible browser; EA1 did not operate or bypass it.",
+    "Any location submission requires separate explicit authority.",
+    "Login, registration, OTP and account surfaces require human/session authority and were not attempted.",
+    "Real source cart addition and checkout remain explicitly unauthorized."
+  ],
+  "artifacts": {
+    "specs": [
+      "specs/01-home-desktop.json",
+      "specs/02-search-results-desktop.json",
+      "specs/03-search-results-repair-desktop.json"
+    ],
+    "reports": [
+      "reports/01-home-desktop.json",
+      "reports/02-search-results-desktop.json",
+      "reports/03-search-results-repair-desktop.json"
+    ],
+    "screenshots": [
+      "artifacts/01-home-desktop/wb201-ea1-home-desktop-open-home.png",
+      "artifacts/01-home-desktop/wb201-ea1-home-desktop-inventory-home.png",
+      "artifacts/03-search-results-repair-desktop/wb201-ea1-search-results-repair-desktop-inventory-results-generic.png"
+    ]
+  },
+  "retention_and_provenance": {
+    "current_source_evidence": true,
+    "diagnostic_only": true,
+    "candidate_inspected": false,
+    "ea2_artifacts_inspected": false,
+    "writes_outside_ea1_root": false,
+    "legal_redistribution_deployment_or_acceptance_authority": false
+  }
+}

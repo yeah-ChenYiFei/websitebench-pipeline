@@ -1,0 +1,88 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "wb201-ea1-search-results-repair-desktop",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "timeout_ms": 60000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.walmart.com"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-results-get",
+      "action": "goto",
+      "path": "/search?q=toothpaste",
+      "wait_until": "domcontentloaded",
+      "observations": [
+        {
+          "id": "results-route",
+          "kind": "url_path",
+          "expect": {
+            "equals": "/search"
+          }
+        },
+        {
+          "id": "results-title",
+          "kind": "title"
+        }
+      ]
+    },
+    {
+      "id": "settle-results",
+      "action": "wait",
+      "milliseconds": 5000
+    },
+    {
+      "id": "inventory-results-generic",
+      "action": "snapshot",
+      "observations": [
+        {
+          "id": "results-body-text",
+          "kind": "text",
+          "selector": "body"
+        },
+        {
+          "id": "main-count",
+          "kind": "count",
+          "selector": "main"
+        },
+        {
+          "id": "heading-count",
+          "kind": "count",
+          "selector": "h1, h2"
+        },
+        {
+          "id": "link-count",
+          "kind": "count",
+          "selector": "a[href]"
+        },
+        {
+          "id": "product-link-count",
+          "kind": "count",
+          "selector": "a[href*='/ip/']"
+        },
+        {
+          "id": "filter-text-count",
+          "kind": "count",
+          "selector": "text=Filter"
+        },
+        {
+          "id": "sort-text-count",
+          "kind": "count",
+          "selector": "text=Sort by"
+        },
+        {
+          "id": "price-text-count",
+          "kind": "count",
+          "selector": "text=/\\$[0-9]+/"
+        }
+      ],
+      "screenshot": true
+    }
+  ]
+}

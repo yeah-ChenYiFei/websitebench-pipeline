@@ -1,0 +1,22 @@
+usage: websitebench-offline-clone tools explore [-h] --spec SPEC --base-url
+                                                BASE_URL --environment
+                                                {source,clone} --out OUT
+                                                --artifacts-dir ARTIFACTS_DIR
+                                                [--storage-state STORAGE_STATE]
+                                                [--headed]
+                                                [--allow-source-mutations]
+
+options:
+  -h, --help            show this help message and exit
+  --spec SPEC
+  --base-url BASE_URL
+  --environment {source,clone}
+  --out OUT
+  --artifacts-dir ARTIFACTS_DIR
+  --storage-state STORAGE_STATE
+                        Playwright storage state consumed in memory and never
+                        copied to output
+  --headed
+  --allow-source-mutations
+                        allow source non-GET requests only when the scenario
+                        also records source_mutations_authorized=true

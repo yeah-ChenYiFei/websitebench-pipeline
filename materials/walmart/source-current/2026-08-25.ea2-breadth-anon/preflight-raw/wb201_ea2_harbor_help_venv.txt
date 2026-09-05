@@ -1,0 +1,29 @@
+usage: websitebench-harbor [-h]
+                           {init-site,init-instance,validate,validate-corpus,materialize,capture-reference,score-v2,validate-bundle,calibrate-v2,run-opencli,opencli-adapters,derive-from-clone}
+                           ...
+
+positional arguments:
+  {init-site,init-instance,validate,validate-corpus,materialize,capture-reference,score-v2,validate-bundle,calibrate-v2,run-opencli,opencli-adapters,derive-from-clone}
+    init-site           create a site authoring skeleton
+    init-instance       create the unique same-id instance for one site
+    validate            validate one instance
+    validate-corpus     validate the one-site/one-instance corpus under one
+                        authoring root
+    materialize         generate a self-contained Harbor bundle
+    capture-reference   capture task and visual observations from the
+                        reference
+    score-v2            compute the deterministic v2 scorecard from exact
+                        result sets
+    validate-bundle     verify a materialized v2 bundle's structure and
+                        hidden-content closure
+    calibrate-v2        run NOP once and a fresh oracle twice against a
+                        materialized v2 bundle
+    run-opencli         replay an OpenCLI interaction profile against a
+                        running target (diagnostic only)
+    opencli-adapters    generate the browser:false OpenCLI adapters for one
+                        site
+    derive-from-clone   derive one site's OpenCLI interaction contract from
+                        captured clone artifacts
+
+options:
+  -h, --help            show this help message and exit

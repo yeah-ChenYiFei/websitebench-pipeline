@@ -1,0 +1,25 @@
+usage: websitebench-workflow [-h]
+                             {acquire-source,check-acquisition,check-semantics,scaffold-semantics,check-payment-scope,check-fullstack,calibrate-visual,check-rights-metadata}
+                             ...
+
+Run deterministic evidence checks for an offline clone.
+
+positional arguments:
+  {acquire-source,check-acquisition,check-semantics,scaffold-semantics,check-payment-scope,check-fullstack,calibrate-visual,check-rights-metadata}
+    acquire-source      capture one configuration-scoped anonymous GET-only
+                        source matrix
+    check-acquisition   validate one provider-neutral source/media closure
+                        report
+    check-semantics     validate an automatically resolved semantic selection
+    scaffold-semantics  create a fidelity-first automatic selection from the
+                        backend plan
+    check-payment-scope
+                        validate a hash-bound machine payment scope
+    check-fullstack     validate a full-stack candidate
+    calibrate-visual    derive region thresholds from three stable source
+                        captures
+    check-rights-metadata
+                        validate optional redistribution-rights metadata
+
+options:
+  -h, --help            show this help message and exit

@@ -1,0 +1,17 @@
+{
+  "schema_version":"offline-clone.checkpoints.v1",
+  "status":"frozen",
+  "viewports":{"desktop":{"width":1440,"height":900},"mobile":{"width":390,"height":844}},
+  "checkpoints":[
+    {"id":"home.desktop","route_id":"home","clone_path":"/","state":"loaded","role":"anonymous-shopper","viewports":["desktop"],"source_evidence":"current-direct-source-resources-blocked","visual_contract":{"source_artifact_path":"source-current/2026-08-25.ea2-breadth-anon/artifacts/preflight-local-headed/ea2-preflight-local-headed-open-home.png","viewport":{"width":1440,"height":900},"source_crop":{"x":0,"y":0,"width":1440,"height":900},"comparison_region":{"x":0,"y":0,"width":1440,"height":900},"metric":"pixel-mae-similarity-v1","threshold":0.35}},
+    {"id":"home.mobile","route_id":"home","clone_path":"/","state":"loaded","role":"anonymous-shopper","viewports":["mobile"],"source_evidence":"unavailable"},
+    {"id":"search.populated","route_id":"search","clone_path":"/search?q=dish+soap","state":"populated","role":"anonymous-shopper","viewports":["desktop","mobile"],"source_evidence":"current-direct-source-limited"},
+    {"id":"search.no-results","route_id":"search","clone_path":"/search?q=zzzz-no-match-websitebench","state":"no-results","role":"anonymous-shopper","viewports":["desktop","mobile"],"source_evidence":"current-direct-source-limited"},
+    {"id":"product.variant","route_id":"product-detail","clone_path":"/product/dawn-ultra-original-18oz","state":"variant-selected","role":"anonymous-shopper","viewports":["desktop","mobile"],"source_evidence":"structural-only"},
+    {"id":"cart.empty","route_id":"cart","clone_path":"/cart","state":"empty","role":"anonymous-shopper","viewports":["desktop","mobile"],"source_evidence":"unavailable-by-authority"},
+    {"id":"checkout.empty","route_id":"checkout-review","clone_path":"/checkout/review","state":"empty-cart","role":"anonymous-shopper","viewports":["desktop","mobile"],"source_evidence":"unavailable-by-authority"},
+    {"id":"departments.loaded","route_id":"departments","clone_path":"/all-departments","state":"loaded","role":"anonymous-shopper","viewports":["desktop","mobile"],"source_evidence":"current-direct"},
+    {"id":"help.loaded","route_id":"help","clone_path":"/help","state":"loaded","role":"anonymous-shopper","viewports":["desktop","mobile"],"source_evidence":"structural-only"},
+    {"id":"not-found.recovery","route_id":"not-found","clone_path":"/this-route-does-not-exist","state":"not-found","role":"anonymous-shopper","viewports":["desktop","mobile"],"source_evidence":"inferred"}
+  ]
+}

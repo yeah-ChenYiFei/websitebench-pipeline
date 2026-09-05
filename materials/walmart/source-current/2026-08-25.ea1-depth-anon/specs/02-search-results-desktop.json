@@ -1,0 +1,141 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "wb201-ea1-search-results-desktop",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "timeout_ms": 60000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.walmart.com"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-home",
+      "action": "goto",
+      "path": "/",
+      "wait_until": "domcontentloaded",
+      "observations": [
+        {
+          "id": "home-route",
+          "kind": "url_path",
+          "expect": {
+            "equals": "/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "search-semantics",
+      "action": "snapshot",
+      "observations": [
+        {
+          "id": "search-form-action",
+          "kind": "attribute",
+          "selector": "form[action*='/search']",
+          "attribute": "action"
+        },
+        {
+          "id": "search-form-method",
+          "kind": "attribute",
+          "selector": "form[action*='/search']",
+          "attribute": "method"
+        },
+        {
+          "id": "search-input-name",
+          "kind": "attribute",
+          "selector": "input[name='q']",
+          "attribute": "name"
+        },
+        {
+          "id": "search-input-placeholder",
+          "kind": "attribute",
+          "selector": "input[name='q']",
+          "attribute": "placeholder"
+        },
+        {
+          "id": "search-input-label",
+          "kind": "attribute",
+          "selector": "input[name='q']",
+          "attribute": "aria-label"
+        },
+        {
+          "id": "search-submit-count",
+          "kind": "count",
+          "selector": "form[action*='/search'] button[type='submit']"
+        }
+      ]
+    },
+    {
+      "id": "enter-household-query",
+      "action": "fill",
+      "selector": "input[name='q']",
+      "value": "toothpaste"
+    },
+    {
+      "id": "submit-household-query",
+      "action": "press",
+      "selector": "input[name='q']",
+      "key": "Enter"
+    },
+    {
+      "id": "settle-results",
+      "action": "wait",
+      "milliseconds": 5000
+    },
+    {
+      "id": "inventory-results",
+      "action": "snapshot",
+      "observations": [
+        {
+          "id": "results-route",
+          "kind": "url_path"
+        },
+        {
+          "id": "results-title",
+          "kind": "title"
+        },
+        {
+          "id": "results-body-text",
+          "kind": "text",
+          "selector": "body"
+        },
+        {
+          "id": "results-heading-count",
+          "kind": "count",
+          "selector": "h1"
+        },
+        {
+          "id": "product-link-count",
+          "kind": "count",
+          "selector": "a[href*='/ip/']"
+        },
+        {
+          "id": "filter-button-count",
+          "kind": "count",
+          "selector": "button:has-text('Filter')"
+        },
+        {
+          "id": "sort-button-count",
+          "kind": "count",
+          "selector": "button:has-text('Sort')"
+        },
+        {
+          "id": "first-product-href",
+          "kind": "attribute",
+          "selector": "xpath=(//a[contains(@href, '/ip/')])[1]",
+          "attribute": "href"
+        },
+        {
+          "id": "first-product-text",
+          "kind": "text",
+          "selector": "xpath=(//a[contains(@href, '/ip/')])[1]"
+        }
+      ],
+      "screenshot": true
+    }
+  ]
+}

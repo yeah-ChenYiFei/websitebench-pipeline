@@ -1,0 +1,64 @@
+{
+  "schema_version": "offline-clone.source-acquisition-spec.v2",
+  "site_id": "walmart",
+  "capture_id": "wb201-ea2-discovery-20260825",
+  "allowed_origins": [
+    "https://www.walmart.com"
+  ],
+  "pages": [
+    {
+      "row_id": "ea2-home-desktop",
+      "priority": "p0",
+      "url": "https://www.walmart.com/",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "domcontentloaded",
+      "full_page": false
+    },
+    {
+      "row_id": "ea2-home-mobile",
+      "priority": "p0",
+      "url": "https://www.walmart.com/",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "wait_until": "domcontentloaded",
+      "full_page": false
+    },
+    {
+      "row_id": "ea2-robots-desktop",
+      "priority": "p2",
+      "url": "https://www.walmart.com/robots.txt",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "domcontentloaded",
+      "full_page": false
+    },
+    {
+      "row_id": "ea2-sitemap-desktop",
+      "priority": "p2",
+      "url": "https://www.walmart.com/sitemap.xml",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "wait_until": "domcontentloaded",
+      "full_page": false
+    }
+  ],
+  "limits": {
+    "navigation_timeout_ms": 30000,
+    "settle_ms": 1500,
+    "max_resource_bytes": 5242880,
+    "max_total_resource_bytes": 52428800
+  }
+}

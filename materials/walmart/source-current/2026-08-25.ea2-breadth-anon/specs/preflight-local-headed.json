@@ -1,0 +1,76 @@
+{
+  "schema_version": "websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id": "ea2-preflight-local-headed",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "timeout_ms": 20000,
+  "source_mutations_authorized": false,
+  "allowed_origins": {
+    "source": [
+      "https://www.walmart.com"
+    ]
+  },
+  "steps": [
+    {
+      "id": "open-home",
+      "action": "goto",
+      "path": "/",
+      "wait_until": "domcontentloaded",
+      "observations": [
+        {
+          "id": "home-title",
+          "kind": "title"
+        },
+        {
+          "id": "body-visible",
+          "kind": "visible",
+          "selector": "body",
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    },
+    {
+      "id": "fill-search",
+      "action": "fill",
+      "selector": "input[aria-label*='Search' i], input[type='search']",
+      "value": "laundry detergent",
+      "observations": [
+        {
+          "id": "search-input-visible",
+          "kind": "visible",
+          "selector": "input[aria-label*='Search' i], input[type='search']",
+          "expect": {
+            "equals": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "keyboard-escape",
+      "action": "press",
+      "selector": "input[aria-label*='Search' i], input[type='search']",
+      "key": "Escape"
+    },
+    {
+      "id": "open-departments",
+      "action": "click",
+      "selector": "button:has-text('Departments')",
+      "observations": [
+        {
+          "id": "departments-button-visible",
+          "kind": "visible",
+          "selector": "button:has-text('Departments')",
+          "expect": {
+            "equals": true
+          }
+        }
+      ],
+      "screenshot": true
+    }
+  ]
+}

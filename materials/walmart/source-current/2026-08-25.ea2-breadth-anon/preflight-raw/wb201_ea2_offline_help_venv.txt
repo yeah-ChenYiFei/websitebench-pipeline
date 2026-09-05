@@ -1,0 +1,17 @@
+usage: websitebench-offline-clone [-h]
+                                  {init,status,report,verify,contribution,backend,harbor,tools}
+                                  ...
+
+positional arguments:
+  {init,status,report,verify,contribution,backend,harbor,tools}
+    init                create a new offline-clone site skeleton
+    verify              run diagnostic-only static and live sections against
+                        one clone
+    contribution        initialize and package an offline-clone contribution
+    backend             attach the shared backend runtime to one clone
+    harbor              derive the Harbor interaction contract from this
+                        clone's captured artifacts
+    tools               discover and run shared cross-site clone diagnostics
+
+options:
+  -h, --help            show this help message and exit

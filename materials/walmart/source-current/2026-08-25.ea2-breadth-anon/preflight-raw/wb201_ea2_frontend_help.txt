@@ -1,0 +1,16 @@
+usage: websitebench-offline-clone tools frontend-spec [-h] --url URL
+                                                      --allowed-origin
+                                                      ALLOWED_ORIGIN
+                                                      [--viewport VIEWPORT]
+                                                      [--environment {source,clone}]
+                                                      --out OUT
+                                                      [--timeout-ms TIMEOUT_MS]
+
+options:
+  -h, --help            show this help message and exit
+  --url URL
+  --allowed-origin ALLOWED_ORIGIN
+  --viewport VIEWPORT   comma-separated width,height (default 1692,979)
+  --environment {source,clone}
+  --out OUT
+  --timeout-ms TIMEOUT_MS

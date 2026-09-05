@@ -1,0 +1,13 @@
+{
+  "schema_version":"websitebench.offline-clone.browser-scenario.v1",
+  "scenario_id":"wb201-ea1-home-desktop",
+  "viewport":{"width":1440,"height":900},
+  "timeout_ms":60000,
+  "source_mutations_authorized":false,
+  "allowed_origins":{"clone":["http://127.0.0.1:4173"]},
+  "steps":[
+    {"id":"open-home","action":"goto","path":"/","wait_until":"domcontentloaded","observations":[{"id":"home-route","kind":"url_path"},{"id":"document-title","kind":"title"}],"screenshot":true},
+    {"id":"settle-home","action":"wait","milliseconds":3000},
+    {"id":"inventory-home","action":"snapshot","observations":[{"id":"body-text","kind":"text","selector":"body"},{"id":"header-count","kind":"count","selector":"header"},{"id":"main-count","kind":"count","selector":"main"},{"id":"search-input-count","kind":"count","selector":"input[name='q']"},{"id":"search-form-count","kind":"count","selector":"form[action*='/search']"},{"id":"button-count","kind":"count","selector":"button"},{"id":"link-count","kind":"count","selector":"a[href]"}],"screenshot":true}
+  ]
+}

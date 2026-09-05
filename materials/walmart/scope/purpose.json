@@ -1,0 +1,22 @@
+{
+  "schema_version": "offline-clone.purpose.v1",
+  "status": "frozen",
+  "purpose_id": "walmart-anonymous-shopping-review",
+  "statement": "Reconstruct the scoped anonymous Walmart shopping experience: enter through the public retail home, browse household or personal-care departments, search and refine a compact product catalog, inspect prices, ratings, fulfillment and product options, add and manage a site-isolated local cart, validate a delivery ZIP, and stop at a truthful non-payment checkout review. The candidate creates no source-site mutation, account, order, message, payment, or external runtime request.",
+  "primary_actor_ids": ["anonymous-shopper"],
+  "secondary_actor_ids": [],
+  "mainline_journey_ids": ["shop.search-filter-detail.success", "shop.variant-cart-review.success", "shop.cart-update-remove.success", "shop.no-results-recovery.success"],
+  "boundary_journey_ids": ["shop.checkout-validation.recovery", "shop.account-entry.boundary", "shop.not-found.recovery"],
+  "secondary_journey_ids": ["shop.department-browse.success", "shop.keyboard-history-persistence.success"],
+  "simulations": [
+    "Pickup and shipping dates are deterministic local display data, not source inventory promises.",
+    "Ratings and representative review copy are compact fixture data grounded structurally in current public product cards.",
+    "Checkout ends at review and disables place-order; no payment method, order receipt, email, or source effect exists."
+  ],
+  "out_of_scope": [
+    "Source-side cart mutation and checkout because the run has no source mutation authority.",
+    "Login, registration, password recovery, credentials, OTPs, accounts, lists, address book, order history, shipment tracking, cancellation, returns, refunds, gift cards, and promotional-code redemption.",
+    "Ordering, payment submission, Stripe test or live payment, email, messaging, publication, deployment, push, and pull request creation.",
+    "Full Walmart catalog, realtime inventory, dynamic merchandising, advertisements, telemetry, third-party recommendations, and geographic fulfillment accuracy."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version":"websitebench.offline-clone.backend-semantic-suite.v1",
+  "suite_id":"walmart-anonymous-cart-review",
+  "allowed_origin":"http://127.0.0.1:4173",
+  "timeout_seconds":10,
+  "follow_redirects":false,
+  "invariants":[
+    {"id":"cart-isolation","applicability":"applicable","required_polarities":["positive","negative"]},
+    {"id":"cart-validation","applicability":"applicable","required_polarities":["positive","negative"]},
+    {"id":"review-stop","applicability":"applicable","required_polarities":["positive","negative"]}
+  ],
+  "cases":[
+    {"id":"owner-add-read","invariant_id":"cart-isolation","polarity":"positive","actor":"owner","steps":[
+      {"id":"add","request":{"method":"POST","path":"/api/cart/items","json":{"product_id":"dawn-18","option_id":"fresh-rain-18","quantity":1}},"expect":{"status":201,"json_equal":{"/cart_count":1,"/subtotal_cents":338,"/state":"populated"}}},
+      {"id":"read","request":{"method":"GET","path":"/api/cart"},"expect":{"status":200,"json_equal":{"/cart_count":1,"/subtotal_cents":338},"json_present":["/lines/0"]}}
+    ]},
+    {"id":"foreign-empty-owner-rejected","invariant_id":"cart-isolation","polarity":"negative","actor":"foreign","steps":[
+      {"id":"read-empty","request":{"method":"GET","path":"/api/cart"},"expect":{"status":200,"json_equal":{"/cart_count":0,"/subtotal_cents":0}}},
+      {"id":"reject-owner","request":{"method":"POST","path":"/api/cart/items","json":{"owner":"owner","product_id":"dawn-18","option_id":"original-18","quantity":1}},"expect":{"status":403,"json_present":["/error"]}}
+    ]},
+    {"id":"valid-cart-input","invariant_id":"cart-validation","polarity":"positive","actor":"valid","steps":[
+      {"id":"add","request":{"method":"POST","path":"/api/cart/items","json":{"product_id":"gain-24","option_id":"honeyberry-24","quantity":2}},"expect":{"status":201,"json_equal":{"/cart_count":2,"/subtotal_cents":636}}}
+    ]},
+    {"id":"invalid-cart-input","invariant_id":"cart-validation","polarity":"negative","actor":"invalid","steps":[
+      {"id":"forged","request":{"method":"POST","path":"/api/cart/items","json":{"product_id":"dawn-18","option_id":"forged","quantity":99}},"expect":{"status":422,"json_present":["/error"]}},
+      {"id":"still-empty","request":{"method":"GET","path":"/api/cart"},"expect":{"status":200,"json_equal":{"/cart_count":0}}}
+    ]},
+    {"id":"review-populated","invariant_id":"review-stop","polarity":"positive","actor":"review","steps":[
+      {"id":"add","request":{"method":"POST","path":"/api/cart/items","json":{"product_id":"dawn-18","option_id":"original-18","quantity":1}},"expect":{"status":201}},
+      {"id":"review","request":{"method":"GET","path":"/api/checkout/review"},"expect":{"status":200,"json_equal":{"/state":"review-stop","/can_submit_order":false,"/cart_count":1},"json_present":["/payment_fields"]}}
+    ]},
+    {"id":"review-empty","invariant_id":"review-stop","polarity":"negative","actor":"empty-review","steps":[
+      {"id":"review","request":{"method":"GET","path":"/api/checkout/review"},"expect":{"status":422,"json_equal":{"/state":"empty","/can_submit_order":false,"/cart_count":0}}}
+    ]}
+  ]
+}
