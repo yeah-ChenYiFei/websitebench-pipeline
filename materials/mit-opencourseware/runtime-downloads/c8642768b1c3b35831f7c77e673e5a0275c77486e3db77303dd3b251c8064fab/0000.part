@@ -1,0 +1,84 @@
+% ____________________________________________________________________
+%  Nonlinear dynamics I: Chaos
+%  
+%  Supplementary code for Pset 1
+% ____________________________________________________________________
+% 
+% The first part of the code plots a function y = f(x). 
+% The second part of the code plots a trajectory of a particle, for which
+% the two coordinates (x,y) are given as a function of time. 
+%
+% ____________________________________________________________________
+%     Part I 
+% ____________________________________________________________________
+% objective: plot y = sin(x) and y = cos(x) for 0<=x <= pi, 
+%           label the graphs, put in title, make lines thicker
+%
+
+clear all;  % clears all the values of the variables that you used before
+close all;  % closes all the figure windows that you used before
+clc;        % clears the command window screen
+
+% make an array x (from 0 to pi with a step of 0.1)
+x = 0:0.1:pi ;            
+
+% open figure 42 (matlab enumerates figures, you can give them different
+% numbers if you want several plots on different figures 
+figure(42); 
+
+% plot y = sin(x) in dots in red color
+plot(x,sin(x),'.r'); 
+
+% tell the figure to "hold on", otherwise when you plot the next graph it
+% will erase the previous one
+hold on; 
+
+% plot y = cos(x) in dash-dot in blue
+plot(x,cos(x),'-.b','LineWidth',4); 
+
+% give anohter variable y the values of sin(x+0.2). It will be an array
+% since x is an array
+y = sin(x+0.2);
+
+% in 2D plot y = f(x)
+plot(x,y,'k');
+
+% give labels to the x and y axes, put in a title in bigger font
+xlabel x
+ylabel y 
+title('y = sin(x) and y = cos(x)','FontSize',20);
+
+% if you don't use axis tight, MATLAB leaves some space on the left and
+% right of the graph, so the x axis would be from -0.3 to 3.5
+% (approximately) instead of 0 to pi. 
+axis tight; 
+
+% you can label all the graphs that you plotted
+legend('y = sin(x)','y = cos(x)', 'y = sin(x + 0.2)');
+
+% ____________________________________________________________________
+%     Part II 
+% ____________________________________________________________________
+% objective: plot a trajectory of a particle, for which
+% the two coordinates (x,y) are given as a function of time. 
+
+t = 0:0.01:10;
+x = sin(t); 
+y = cos(t); 
+
+figure(2); 
+plot(x,y,'m','LineWidth',4); 
+xlabel('x','FontSize',20); 
+ylabel('y'); 
+title('Trajectory of a particle','FontSize',24);
+axis equal; grid on; 
+
+
+
+% ____________________________________________________________________
+%     Part III
+% ____________________________________________________________________
+% objective: how to look for help? Type help and then the name of the
+% function that you want the description of. 
+
+help plot3

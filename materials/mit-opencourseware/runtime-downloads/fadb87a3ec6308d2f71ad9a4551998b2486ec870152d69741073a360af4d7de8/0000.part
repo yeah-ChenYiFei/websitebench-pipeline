@@ -1,0 +1,163 @@
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%9.401 Tools for Robust Science on MIT OpenCourseware
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Courtesy of Ariel Soto-Caro. Source: overleaf.com. License: CC BY 4.0.
+%%https://www.overleaf.com/latex/templates/fred-slash-uf-working-paper-template/mjnnjxzqmydm
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Template for a conference paper, prepared for the
+%% Food and Resource Economics Department - IFAS
+%% UNIVERSITY OF FLORIDA
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Version 1.0 // November 2019
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ariel Soto-Caro
+%%  - asotocaro@ufl.edu
+%%  - arielsotocaro@gmail.com
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{UF_FRED_paper_style}
+
+\usepackage{lipsum}  %% Package to create dummy text (comment or erase before start)
+
+%% ===============================================
+%% Setting the line spacing (3 options: only pick one)
+% \doublespacing
+% \singlespacing
+\onehalfspacing
+%% ===============================================
+
+\setlength{\droptitle}{-5em} %% Don't touch
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SET THE TITLE
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% TITLE:
+\title{This is just so we can have a tex file for the citations in the class}
+
+
+
+    
+% DATE:
+\date{\today}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\setstretch{.8}
+\maketitle
+% %%%%%%%%%%%%%%%%%%
+\begin{abstract}
+% CONTENT OF ABS HERE--------------------------------------
+
+
+
+% END CONTENT ABS------------------------------------------
+\noindent
+
+
+\end{abstract}
+}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BODY OF THE DOCUMENT
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --------------------
+\section{Introduction}
+% --------------------
+
+
+\cite{aly_key_2018,banga2022reproducibility,barton2022make,bengio2020time,bishop2018fallibility,bourg_bourg-04-01-2021mp4_nodate,dominus2017revolution,bohannon_whos_nodate,breznau2022observing,chiarella2020using,crew_women_nodate,dominus2017revolution,Dattani2022-ul,eisen2022scientific,errington2019reproducibility,flatow_problem_nodate,fox_protecting_2008,frank2017collaborative,frank2022experimentology,gadlin_preempting_nodate,gewin_we_2021,gilmore2017video,gordon2017final,halchenko_four_2015,henry2021data,hohman2020communicating,hosseini2018doing,khoury2019science,malkinson_gender_2021,matias_universities_2021,moody2022reproducibility,nosek_preregistration_2019,nosek2020best,pineau2020machine,ODea2021-le,zpid_-_leibniz_institute_for_psychology_open_2019,oreskes2021trust,poldrack_intellectual_nodate,pownall_navigating_2021,quintana_129_nodate,scheel2021excess,Spitzer_undated-gt,teytelman2018no,timberg2021scientists,tiokhin_competition_2021,wapman2022quantifying,yarkoni_no_2018,flatow_problem_nodate}
+
+% --------------------
+
+% --------------------
+
+
+
+
+% --------------------
+
+% --------------------
+
+
+
+% --------------------
+\section{Discussion and Conclusions}
+% --------------------
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REFERENCES SECTION
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+
+\bibliography{references.bib} 
+
+\newpage
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLES
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[H]
+  \centering
+  \caption{Example table of descriptive statistics of the main variables.}
+  \label{tab:1}
+  \scalebox{.8}{
+    \begin{tabular}{rlrrrrrr}
+    \hline
+    \multicolumn{1}{c}{\textbf{Variables}} & \multicolumn{1}{c}{\textbf{Categories}} & \multicolumn{1}{c}{\textbf{Unit}} & \multicolumn{1}{c}{\textbf{Rep}} & \multicolumn{1}{c}{\textbf{Mean}} & \multicolumn{1}{c}{\textbf{St. Dev.}} & \multicolumn{1}{c}{\textbf{Min}} & \multicolumn{1}{c}{\textbf{Max}} \\ \hline \hline
+
+    \multicolumn{1}{l}{Variable 1} & Category A & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 0     & 0     & 0     & 0 \\
+          & Category B & \multicolumn{1}{c}{lb} & \multicolumn{1}{c}{8} & 22,411.20 & 6,325.90 & 13,819 & 31,201 \\
+          & Category C & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 5,869.60 & 4,609.90 & -464.1 & 12,744.10 \\
+    \multicolumn{1}{l}{Variable 2} & Category A & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 1,777.40 & 144.5 & 1,642.30 & 1,912.60 \\
+          & Category B & \multicolumn{1}{c}{lb} & \multicolumn{1}{c}{8} & 21,444.80 & 5,146.90 & 15,096 & 28,032 \\
+          & Category C & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 4,138.50 & 2,644.10 & 22.2  & 7,932.70 \\
+    \multicolumn{1}{l}{Variable 3} & Category A & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 2,346.80 & 190.8 & 2,168.30 & 2,525.20 \\
+          & Category B & \multicolumn{1}{c}{lb} & \multicolumn{1}{c}{8} & 18,343.30 & 2,460.70 & 15,269.00 & 21,524.10 \\
+          & Category C & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 3,699.20 & 2,549.80 & 1,299.10 & 8,709.80 \\
+    \multicolumn{1}{l}{Variable 4} & Category A & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 2,288.80 & 186.1 & 2,114.80 & 2,462.90 \\
+          & Category B & \multicolumn{1}{c}{lb} & \multicolumn{1}{c}{8} & 23,450.40 & 4,172.50 & 20,045.00 & 32,363.00 \\
+          & Category C & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 6,619.80 & 1,918.40 & 4,479.70 & 10,633.90 \\
+\hline
+          & CASE \#1 &       &       & 14    & 6.61  & 6.9   & 27.9 \\
+          & CASE \#2 &       &       & 22.8  & 7.73  & 10.2  & 31.4 \\
+    \hline
+    \end{tabular}}
+\end{table}%
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FIGURES
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[scale=.6]{figures/example_figure.png}
+    \caption{Example figure.}
+    \label{fig:1}
+\end{figure}
+
+% ==========================
+% ==========================
+% ==========================
+
+
+\end{document}
