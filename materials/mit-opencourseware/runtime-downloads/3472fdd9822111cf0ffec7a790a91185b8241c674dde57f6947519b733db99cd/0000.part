@@ -1,0 +1,60 @@
+% This is the first code that you will need to complete Problem 1 for PSet
+% 6. This code and the code vdpeq.m will be used to simulate the Van der
+% Pol oscillator that you need to analyze.
+%
+% This code is the "solver"  it takes in the initial condition and uses the
+% function ode45 to numerically solve the system of equations which are in
+% the "system" file which in this case is vdpeq.m.
+%
+% After you input your value for epsilon and your value for the initial
+% condition, run the code.  Within the work environment you will have a
+% couple new variables T and Y which are the time and system values as a
+% function of time.  You will be responsible for creating a couple of
+% plots.  You can either write the codes in the Command Window or you can
+% add your lines of code to the bottom of this code.
+
+
+% If you want to clear the screen, close all the old figure windows and clear 
+% the variables, uncomment the next line: 
+% clear all; close all; clc;
+
+
+global e % creates a global variable which can be used both in this code and vdpeq
+e = 1;  % This sets the value of epsilon which you will be expected to manipulate.
+         % it will be automatically used in the vdpeq.m program, because the
+         % variable is declared as "global", so the value of the variable e
+         % remains the same in all the programs and you don't need to change
+         % it anywhere. 
+
+b = [-4.5:.5:4.5];
+[X1 Y1] = meshgrid(0,b); % this sets the grid of initial values with x = 0, 
+                         % and y in the range given by b. 
+                         % If you don't want a full range of initial values, 
+                         % but need only one point, comment the line above, 
+                         % and uncomment the line below this one instead. 
+%b = [3]                      
+%[X1 Y1] = meshgrid(0,b);                        
+                         
+for j = 1:1,
+for i = 1:length(b)
+    a = [X1(i,j) Y1(i,j)]; 
+                 % Sets the inital conditions for this problem.  In this case the 
+                 % first value will be the inital value for x and the second is 
+                 % the initial dx/dt value.  You should select a couple values 
+                 % and plota couple trajectories using the hold on command.  
+    [T,Y] = ode45(@vdpeq,[0:.01:20],a); % This is the solving command line.  
+                % It has a couple inputs that you should understand.  These
+                % will be discussed in the MATLAB Primer.
+
+    %  If you want the code to create the plot after it solves the system you
+    %  should input your lines of code here.
+    
+    figure(1); subplot(1,2,1); 
+        plot(T,Y(:,1)); 
+        grid on; 
+
+    figure(1); subplot(1,2,2); 
+        plot(Y(:,1),Y(:,2),'g')
+         hold on; grid on; 
+end
+end

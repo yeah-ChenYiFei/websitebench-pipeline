@@ -1,0 +1,18 @@
+function dy = vdpeq(t,y)
+
+% This is the corresponding "system" file for vanderpol.m.  You should not
+% need to modify this code in order to do the problem.  However, this would
+% be a good template as you start to write your own solvers.
+%
+% This code is called by the "solver" and is provided with some
+% information.  It is given the current location of the system (x,dxdt)
+% which comes in as a column vector and the current time.  It will return
+% the derivative vector for this point, dy.
+
+global e          % You declare that the variable 'e' will be valid here 
+                  % which allows you to only have to set the value for epsilon once.
+dy = zeros(2,1);  % creates the derivative vector
+dy(1) = y(2);     % solves for the first of the system of equations.  
+                  % In the Van der Pol case this is just setting dxdt = y
+dy(2) = -y(1)-e*y(2).*(y(1).^2-1); % solves for the second of the equations.
+                  % In the Van der Pol case dydt = -x-epsilon*y*(x^2-1)
