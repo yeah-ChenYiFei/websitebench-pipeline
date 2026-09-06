@@ -1,0 +1,351 @@
+{
+  "schema_version": "websitebench.offline-clone.backend-semantic-suite.v1",
+  "suite_id": "songkick-local-backend",
+  "allowed_origin": "https://127.0.0.1:41774",
+  "timeout_seconds": 10,
+  "follow_redirects": false,
+  "invariants": [
+    {
+      "id": "account-lifecycle-local",
+      "applicability": "applicable",
+      "required_polarities": ["positive", "negative"]
+    },
+    {
+      "id": "actor-state-isolation",
+      "applicability": "applicable",
+      "required_polarities": ["positive", "negative"]
+    },
+    {
+      "id": "mutation-persistence",
+      "applicability": "applicable",
+      "required_polarities": ["positive", "negative"]
+    },
+    {
+      "id": "search-deterministic",
+      "applicability": "applicable",
+      "required_polarities": ["positive", "negative"]
+    }
+  ],
+  "cases": [
+    {
+      "id": "verified-account-and-recovery",
+      "invariant_id": "account-lifecycle-local",
+      "polarity": "positive",
+      "actor": "owner",
+      "steps": [
+        {
+          "id": "anonymous-session",
+          "request": {"method": "GET", "path": "/api/auth/session"},
+          "expect": {"status": 200, "json_equal": {"/authenticated": false}}
+        },
+        {
+          "id": "registration-start",
+          "request": {
+            "method": "POST",
+            "path": "/api/auth/register/start",
+            "json": {
+              "email": "semantic-owner@songkick.invalid",
+              "display_name": "Semantic Fan",
+              "password": "${ENV:SONGKICK_TEST_PASSWORD}"
+            }
+          },
+          "expect": {
+            "status": 200,
+            "json_equal": {"/accepted": true, "/mail_status": "LOCAL_ONLY"}
+          }
+        },
+        {
+          "id": "registration-mail",
+          "request": {"method": "GET", "path": "/api/auth/local-mail/registration"},
+          "expect": {
+            "status": 200,
+            "json_equal": {"/message/status": "LOCAL_ONLY"},
+            "json_present": ["/message/verification_code"]
+          },
+          "capture": {"registration_code": "/message/verification_code"}
+        },
+        {
+          "id": "registration-verify",
+          "request": {
+            "method": "POST",
+            "path": "/api/auth/register/verify",
+            "json": {"code": "${VAR:registration_code}"}
+          },
+          "expect": {
+            "status": 200,
+            "json_equal": {
+              "/authenticated": true,
+              "/account/display_name": "Semantic Fan"
+            }
+          }
+        },
+        {
+          "id": "sign-out-before-login",
+          "request": {"method": "POST", "path": "/api/auth/sign-out"},
+          "expect": {"status": 200, "json_equal": {"/signed_out": true}}
+        },
+        {
+          "id": "password-login",
+          "request": {
+            "method": "POST",
+            "path": "/api/auth/sign-in",
+            "json": {
+              "email": "semantic-owner@songkick.invalid",
+              "password": "${ENV:SONGKICK_TEST_PASSWORD}"
+            }
+          },
+          "expect": {"status": 200, "json_equal": {"/authenticated": true}}
+        },
+        {
+          "id": "sign-out-before-reset",
+          "request": {"method": "POST", "path": "/api/auth/sign-out"},
+          "expect": {"status": 200, "json_equal": {"/signed_out": true}}
+        },
+        {
+          "id": "reset-start",
+          "request": {
+            "method": "POST",
+            "path": "/api/auth/password-reset/start",
+            "json": {"email": "semantic-owner@songkick.invalid"}
+          },
+          "expect": {"status": 200, "json_present": ["/message"]},
+          "capture": {"reset_public_message": "/message"}
+        },
+        {
+          "id": "reset-mail",
+          "request": {"method": "GET", "path": "/api/auth/local-mail/password-reset"},
+          "expect": {
+            "status": 200,
+            "json_equal": {"/message/status": "LOCAL_ONLY"},
+            "json_present": ["/message/verification_code"]
+          },
+          "capture": {"reset_code": "/message/verification_code"}
+        },
+        {
+          "id": "reset-verify",
+          "request": {
+            "method": "POST",
+            "path": "/api/auth/password-reset/verify",
+            "json": {"code": "${VAR:reset_code}"}
+          },
+          "expect": {"status": 200, "json_equal": {"/verified": true}}
+        },
+        {
+          "id": "reset-complete",
+          "request": {
+            "method": "POST",
+            "path": "/api/auth/password-reset/complete",
+            "json": {"password": "${ENV:SONGKICK_TEST_PASSWORD_NEW}"}
+          },
+          "expect": {"status": 200, "json_equal": {"/completed": true}}
+        },
+        {
+          "id": "sign-out-after-reset",
+          "request": {"method": "POST", "path": "/api/auth/sign-out"},
+          "expect": {"status": 200, "json_equal": {"/signed_out": true}}
+        },
+        {
+          "id": "new-password-login",
+          "request": {
+            "method": "POST",
+            "path": "/api/auth/sign-in",
+            "json": {
+              "email": "semantic-owner@songkick.invalid",
+              "password": "${ENV:SONGKICK_TEST_PASSWORD_NEW}"
+            }
+          },
+          "expect": {"status": 200, "json_equal": {"/authenticated": true}}
+        }
+      ]
+    },
+    {
+      "id": "duplicate-and-invalid-credentials-rejected",
+      "invariant_id": "account-lifecycle-local",
+      "polarity": "negative",
+      "actor": "stranger",
+      "steps": [
+        {
+          "id": "stranger-session",
+          "request": {"method": "GET", "path": "/api/auth/session"},
+          "expect": {"status": 200, "json_equal": {"/authenticated": false}}
+        },
+        {
+          "id": "duplicate-registration",
+          "request": {
+            "method": "POST",
+            "path": "/api/auth/register/start",
+            "json": {
+              "email": "semantic-owner@songkick.invalid",
+              "display_name": "Duplicate Fan",
+              "password": "${ENV:SONGKICK_TEST_PASSWORD}"
+            }
+          },
+          "expect": {"status": 409, "json_present": ["/detail"]}
+        },
+        {
+          "id": "invalid-login",
+          "request": {
+            "method": "POST",
+            "path": "/api/auth/sign-in",
+            "json": {
+              "email": "missing@songkick.invalid",
+              "password": "${ENV:SONGKICK_TEST_PASSWORD}"
+            }
+          },
+          "expect": {"status": 401, "json_present": ["/detail"]}
+        },
+        {
+          "id": "unknown-reset-is-indistinguishable",
+          "request": {
+            "method": "POST",
+            "path": "/api/auth/password-reset/start",
+            "json": {"email": "missing@songkick.invalid"}
+          },
+          "expect": {
+            "status": 200,
+            "json_equal": {"/message": "${VAR:reset_public_message}"}
+          }
+        }
+      ]
+    },
+    {
+      "id": "owner-can-read-own-state",
+      "invariant_id": "actor-state-isolation",
+      "polarity": "positive",
+      "actor": "owner",
+      "steps": [
+        {
+          "id": "owner-session",
+          "request": {"method": "GET", "path": "/api/auth/session"},
+          "expect": {"status": 200, "json_equal": {"/authenticated": true}}
+        },
+        {
+          "id": "owner-library",
+          "request": {"method": "GET", "path": "/api/me/library"},
+          "expect": {"status": 200, "json_present": ["/tracked_artist_ids", "/events"]}
+        }
+      ]
+    },
+    {
+      "id": "foreign-actor-cannot-read-or-mutate",
+      "invariant_id": "actor-state-isolation",
+      "polarity": "negative",
+      "actor": "stranger",
+      "steps": [
+        {
+          "id": "foreign-read",
+          "request": {"method": "GET", "path": "/api/me/library"},
+          "expect": {"status": 401, "json_absent": ["/tracked_artist_ids", "/events"]}
+        },
+        {
+          "id": "foreign-write",
+          "request": {
+            "method": "PUT",
+            "path": "/api/me/artists/10355080",
+            "json": {"tracked": true}
+          },
+          "expect": {"status": 401, "json_absent": ["/tracked"]}
+        }
+      ]
+    },
+    {
+      "id": "fan-mutations-persist",
+      "invariant_id": "mutation-persistence",
+      "polarity": "positive",
+      "actor": "owner",
+      "steps": [
+        {
+          "id": "track-artist",
+          "request": {
+            "method": "PUT",
+            "path": "/api/me/artists/10355080",
+            "json": {"tracked": true}
+          },
+          "expect": {"status": 200, "json_equal": {"/artist_id": "10355080", "/tracked": true}}
+        },
+        {
+          "id": "attend-event",
+          "request": {
+            "method": "PUT",
+            "path": "/api/me/events/43365625",
+            "json": {"status": "attended"}
+          },
+          "expect": {"status": 200, "json_equal": {"/event_id": "43365625", "/status": "attended"}}
+        },
+        {
+          "id": "read-persisted-library",
+          "request": {"method": "GET", "path": "/api/me/library"},
+          "expect": {
+            "status": 200,
+            "json_equal": {
+              "/tracked_artist_ids/0": "10355080",
+              "/events/0/event_id": "43365625",
+              "/events/0/status": "attended"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "inverse-actions-clean-mutations",
+      "invariant_id": "mutation-persistence",
+      "polarity": "negative",
+      "actor": "owner",
+      "steps": [
+        {
+          "id": "untrack-artist",
+          "request": {
+            "method": "PUT",
+            "path": "/api/me/artists/10355080",
+            "json": {"tracked": false}
+          },
+          "expect": {"status": 200, "json_equal": {"/tracked": false}}
+        },
+        {
+          "id": "clear-event",
+          "request": {
+            "method": "PUT",
+            "path": "/api/me/events/43365625",
+            "json": {"status": "none"}
+          },
+          "expect": {"status": 200, "json_equal": {"/status": "none"}}
+        },
+        {
+          "id": "confirm-clean-library",
+          "request": {"method": "GET", "path": "/api/me/library"},
+          "expect": {"status": 200, "json_equal": {"/tracked_artist_ids": [], "/events": []}}
+        }
+      ]
+    },
+    {
+      "id": "frozen-search-hit",
+      "invariant_id": "search-deterministic",
+      "polarity": "positive",
+      "actor": "public",
+      "steps": [
+        {
+          "id": "coldplay",
+          "request": {"method": "GET", "path": "/api/search?q=Coldplay"},
+          "expect": {
+            "status": 200,
+            "json_equal": {"/state": "search-results-coldplay", "/result_link_count": 1},
+            "header_equal": {"x-songkick-data-source": "local-frozen"}
+          }
+        }
+      ]
+    },
+    {
+      "id": "frozen-search-miss",
+      "invariant_id": "search-deterministic",
+      "polarity": "negative",
+      "actor": "public",
+      "steps": [
+        {
+          "id": "no-result",
+          "request": {"method": "GET", "path": "/api/search?q=zzzzsongkicknoresult"},
+          "expect": {"status": 200, "json_equal": {"/state": "search-no-results", "/result_link_count": 0}}
+        }
+      ]
+    }
+  ]
+}

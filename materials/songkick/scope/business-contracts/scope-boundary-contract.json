@@ -1,0 +1,40 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "first_party_navigation_origins": [
+    "http://songkick.com",
+    "http://www.songkick.com",
+    "https://songkick.com",
+    "https://www.songkick.com",
+    "https://accounts.songkick.com"
+  ],
+  "resource_only_origins": [
+    "https://accounts.sk-static.com",
+    "https://assets.sk-static.com",
+    "https://cdn.cookielaw.org",
+    "https://fonts.googleapis.com",
+    "https://images.sk-static.com",
+    "https://live.primis.tech",
+    "https://pl.primis.tech",
+    "https://use.typekit.net",
+    "https://www.songkick.com"
+  ],
+  "schema_version": "songkick.g1-business-view.v1",
+  "scope": {
+    "collection_rule": "§3.3 first two pages/batches; <=20 gives all details, >20 gives first 10 complete details and local data-boundary pages for the remainder",
+    "external_policy": "preserve external identity and route activation to a branded local HTTP 200 soft-404 without runtime source access",
+    "profile": "ULTIMATE-OFFLINE-CLONE-AI-COLLAB-MERGED.zh-CN.md §12.11",
+    "runtime_policy": "no source API, iframe, reverse proxy, remote screenshot, remote media, or source credentials"
+  },
+  "site_id": "songkick",
+  "source_contracts": [
+    "all-controls-inventory.json",
+    "full-route-inventory.json",
+    "route-state-viewport.json",
+    "first-party-link-graph.json",
+    "external-links.json",
+    "blocked-or-unavailable-pages.json",
+    "component-state-matrix.json"
+  ],
+  "status": "frozen",
+  "view": "scope-and-boundaries"
+}

@@ -1,0 +1,21 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "challenge_presented": false,
+  "pages": [
+    {
+      "id": "source:not-found",
+      "recipe_refs": [
+        "scope/recipes/0593-blocked-page-source-not-found.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture unknown first-party route is a branded hard HTTP 404 with local recovery search; it is not a source soft-404 and not challenge-pending."
+    }
+  ],
+  "schema_version": "websitebench.blocked-pages.v3",
+  "site_id": "songkick",
+  "status": "frozen"
+}

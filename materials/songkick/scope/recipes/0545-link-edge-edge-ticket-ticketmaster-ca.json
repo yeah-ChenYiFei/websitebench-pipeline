@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:event-detail:initial",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "expected_href": "/tickets/34252807?",
+  "kind": "first-party-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "edge:ticket:ticketmaster-ca",
+  "record_kind": "link-edge",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-ticket-link=\"ticketmaster-ca\"]",
+  "subject_id": "edge:ticket:ticketmaster-ca",
+  "subject_kind": "link-edge"
+}

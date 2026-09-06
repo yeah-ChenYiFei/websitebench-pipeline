@@ -1,0 +1,1790 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "capture_method": "remote repository-locked Playwright Chromium, en-US, America/Toronto, desktop 1440x900 DPR 1",
+  "records": [
+    {
+      "id": "state:home:initial",
+      "recipe_refs": [
+        "scope/recipes/0306-route-state-viewport-state-home-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture home initial state is reproduced at the desktop viewport from immutable source frame home-initial.png."
+    },
+    {
+      "id": "state:home:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0307-route-state-viewport-state-home-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture home lazy-end state is reproduced at the desktop viewport from immutable source frame home-lazy-end.png."
+    },
+    {
+      "id": "state:concerts:initial",
+      "recipe_refs": [
+        "scope/recipes/0308-route-state-viewport-state-concerts-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture concerts initial state is reproduced at the desktop viewport from immutable source frame concerts-initial.png."
+    },
+    {
+      "id": "state:concerts:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0309-route-state-viewport-state-concerts-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture concerts lazy-end state is reproduced at the desktop viewport from immutable source frame concerts-lazy-end.png."
+    },
+    {
+      "id": "state:montreal-page-1:initial",
+      "recipe_refs": [
+        "scope/recipes/0310-route-state-viewport-state-montreal-page-1-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture montreal-page-1 initial state is reproduced at the desktop viewport from immutable source frame montreal-page-1-initial.png."
+    },
+    {
+      "id": "state:montreal-page-1:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0311-route-state-viewport-state-montreal-page-1-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture montreal-page-1 lazy-end state is reproduced at the desktop viewport from immutable source frame montreal-page-1-lazy-end.png."
+    },
+    {
+      "id": "state:montreal-page-2:initial",
+      "recipe_refs": [
+        "scope/recipes/0312-route-state-viewport-state-montreal-page-2-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture montreal-page-2 initial state is reproduced at the desktop viewport from immutable source frame montreal-page-2-initial.png."
+    },
+    {
+      "id": "state:montreal-page-2:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0313-route-state-viewport-state-montreal-page-2-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture montreal-page-2 lazy-end state is reproduced at the desktop viewport from immutable source frame montreal-page-2-lazy-end.png."
+    },
+    {
+      "id": "state:artists:initial",
+      "recipe_refs": [
+        "scope/recipes/0314-route-state-viewport-state-artists-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artists initial state is reproduced at the desktop viewport from immutable source frame artists-initial.png."
+    },
+    {
+      "id": "state:artists:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0315-route-state-viewport-state-artists-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artists lazy-end state is reproduced at the desktop viewport from immutable source frame artists-lazy-end.png."
+    },
+    {
+      "id": "state:artist-detail:initial",
+      "recipe_refs": [
+        "scope/recipes/0316-route-state-viewport-state-artist-detail-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-detail initial state is reproduced at the desktop viewport from immutable source frame artist-detail-initial.png."
+    },
+    {
+      "id": "state:artist-detail:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0317-route-state-viewport-state-artist-detail-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-detail lazy-end state is reproduced at the desktop viewport from immutable source frame artist-detail-lazy-end.png."
+    },
+    {
+      "id": "state:event-detail:initial",
+      "recipe_refs": [
+        "scope/recipes/0318-route-state-viewport-state-event-detail-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-detail initial state is reproduced at the desktop viewport from immutable source frame event-detail-initial.png."
+    },
+    {
+      "id": "state:event-detail:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0319-route-state-viewport-state-event-detail-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-detail lazy-end state is reproduced at the desktop viewport from immutable source frame event-detail-lazy-end.png."
+    },
+    {
+      "id": "state:venue-detail:initial",
+      "recipe_refs": [
+        "scope/recipes/0320-route-state-viewport-state-venue-detail-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-detail initial state is reproduced at the desktop viewport from immutable source frame venue-detail-initial.png."
+    },
+    {
+      "id": "state:venue-detail:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0321-route-state-viewport-state-venue-detail-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-detail lazy-end state is reproduced at the desktop viewport from immutable source frame venue-detail-lazy-end.png."
+    },
+    {
+      "id": "state:festivals:initial",
+      "recipe_refs": [
+        "scope/recipes/0322-route-state-viewport-state-festivals-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture festivals initial state is reproduced at the desktop viewport from immutable source frame festivals-initial.png."
+    },
+    {
+      "id": "state:festivals:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0323-route-state-viewport-state-festivals-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture festivals lazy-end state is reproduced at the desktop viewport from immutable source frame festivals-lazy-end.png."
+    },
+    {
+      "id": "state:festival-detail:initial",
+      "recipe_refs": [
+        "scope/recipes/0324-route-state-viewport-state-festival-detail-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture festival-detail initial state is reproduced at the desktop viewport from immutable source frame festival-detail-initial.png."
+    },
+    {
+      "id": "state:festival-detail:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0325-route-state-viewport-state-festival-detail-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture festival-detail lazy-end state is reproduced at the desktop viewport from immutable source frame festival-detail-lazy-end.png."
+    },
+    {
+      "id": "state:location-filter:initial",
+      "recipe_refs": [
+        "scope/recipes/0326-route-state-viewport-state-location-filter-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture location-filter initial state is reproduced at the desktop viewport from immutable source frame location-filter-initial.png."
+    },
+    {
+      "id": "state:sign-in:initial",
+      "recipe_refs": [
+        "scope/recipes/0327-route-state-viewport-state-sign-in-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture sign-in initial state is reproduced at the desktop viewport from immutable source frame sign-in-initial.png."
+    },
+    {
+      "id": "state:sign-up:initial",
+      "recipe_refs": [
+        "scope/recipes/0328-route-state-viewport-state-sign-up-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture sign-up initial state is reproduced at the desktop viewport from immutable source frame sign-up-initial.png."
+    },
+    {
+      "id": "state:home-next-events:initial",
+      "recipe_refs": [
+        "scope/recipes/0329-route-state-viewport-state-home-next-events-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture home-next-events initial state is reproduced at the desktop viewport from immutable source frame home-next-events-initial.png."
+    },
+    {
+      "id": "state:home-next-events:next-events",
+      "recipe_refs": [
+        "scope/recipes/0330-route-state-viewport-state-home-next-events-next-events.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture home-next-events next-events state is reproduced at the desktop viewport from immutable source frame home-next-events-next-events.png."
+    },
+    {
+      "id": "state:home-next-artists:initial",
+      "recipe_refs": [
+        "scope/recipes/0331-route-state-viewport-state-home-next-artists-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture home-next-artists initial state is reproduced at the desktop viewport from immutable source frame home-next-artists-initial.png."
+    },
+    {
+      "id": "state:home-next-artists:next-artists",
+      "recipe_refs": [
+        "scope/recipes/0332-route-state-viewport-state-home-next-artists-next-artists.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture home-next-artists next-artists state is reproduced at the desktop viewport from immutable source frame home-next-artists-next-artists.png."
+    },
+    {
+      "id": "state:home-theme:initial",
+      "recipe_refs": [
+        "scope/recipes/0333-route-state-viewport-state-home-theme-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture home-theme initial state is reproduced at the desktop viewport from immutable source frame home-theme-initial.png."
+    },
+    {
+      "id": "state:home-theme:dark-background",
+      "recipe_refs": [
+        "scope/recipes/0334-route-state-viewport-state-home-theme-dark-background.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture home-theme dark-background state is reproduced at the desktop viewport from immutable source frame home-theme-dark-background.png."
+    },
+    {
+      "id": "state:montreal-today:initial",
+      "recipe_refs": [
+        "scope/recipes/0335-route-state-viewport-state-montreal-today-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture montreal-today initial state is reproduced at the desktop viewport from immutable source frame montreal-today-initial.png."
+    },
+    {
+      "id": "state:montreal-next-7-days:initial",
+      "recipe_refs": [
+        "scope/recipes/0336-route-state-viewport-state-montreal-next-7-days-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture montreal-next-7-days initial state is reproduced at the desktop viewport from immutable source frame montreal-next-7-days-initial.png."
+    },
+    {
+      "id": "state:montreal-next-30-days:initial",
+      "recipe_refs": [
+        "scope/recipes/0337-route-state-viewport-state-montreal-next-30-days-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture montreal-next-30-days initial state is reproduced at the desktop viewport from immutable source frame montreal-next-30-days-initial.png."
+    },
+    {
+      "id": "state:location-search-toronto:initial",
+      "recipe_refs": [
+        "scope/recipes/0338-route-state-viewport-state-location-search-toronto-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture location-search-toronto initial state is reproduced at the desktop viewport from immutable source frame location-search-toronto-initial.png."
+    },
+    {
+      "id": "state:location-search-empty:initial",
+      "recipe_refs": [
+        "scope/recipes/0339-route-state-viewport-state-location-search-empty-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture location-search-empty initial state is reproduced at the desktop viewport from immutable source frame location-search-empty-initial.png."
+    },
+    {
+      "id": "state:home-search-modal:initial",
+      "recipe_refs": [
+        "scope/recipes/0340-route-state-viewport-state-home-search-modal-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture home-search-modal initial state is reproduced at the desktop viewport from immutable source frame home-search-modal-initial.png."
+    },
+    {
+      "id": "state:home-search-modal:search-open",
+      "recipe_refs": [
+        "scope/recipes/0341-route-state-viewport-state-home-search-modal-search-open.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture home-search-modal search-open state is reproduced at the desktop viewport from immutable source frame home-search-modal-search-open.png."
+    },
+    {
+      "id": "state:event-01-steve-lacy:initial",
+      "recipe_refs": [
+        "scope/recipes/0342-route-state-viewport-state-event-01-steve-lacy-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-01-steve-lacy initial state is reproduced at the desktop viewport from immutable source frame event-01-steve-lacy-initial.png."
+    },
+    {
+      "id": "state:event-01-steve-lacy:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0343-route-state-viewport-state-event-01-steve-lacy-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-01-steve-lacy lazy-end state is reproduced at the desktop viewport from immutable source frame event-01-steve-lacy-lazy-end.png."
+    },
+    {
+      "id": "state:event-02-gipsy-kings:initial",
+      "recipe_refs": [
+        "scope/recipes/0344-route-state-viewport-state-event-02-gipsy-kings-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-02-gipsy-kings initial state is reproduced at the desktop viewport from immutable source frame event-02-gipsy-kings-initial.png."
+    },
+    {
+      "id": "state:event-02-gipsy-kings:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0345-route-state-viewport-state-event-02-gipsy-kings-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-02-gipsy-kings lazy-end state is reproduced at the desktop viewport from immutable source frame event-02-gipsy-kings-lazy-end.png."
+    },
+    {
+      "id": "state:event-03-gorgon-city:initial",
+      "recipe_refs": [
+        "scope/recipes/0346-route-state-viewport-state-event-03-gorgon-city-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-03-gorgon-city initial state is reproduced at the desktop viewport from immutable source frame event-03-gorgon-city-initial.png."
+    },
+    {
+      "id": "state:event-03-gorgon-city:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0347-route-state-viewport-state-event-03-gorgon-city-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-03-gorgon-city lazy-end state is reproduced at the desktop viewport from immutable source frame event-03-gorgon-city-lazy-end.png."
+    },
+    {
+      "id": "state:event-04-yebba:initial",
+      "recipe_refs": [
+        "scope/recipes/0348-route-state-viewport-state-event-04-yebba-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-04-yebba initial state is reproduced at the desktop viewport from immutable source frame event-04-yebba-initial.png."
+    },
+    {
+      "id": "state:event-04-yebba:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0349-route-state-viewport-state-event-04-yebba-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-04-yebba lazy-end state is reproduced at the desktop viewport from immutable source frame event-04-yebba-lazy-end.png."
+    },
+    {
+      "id": "state:event-05-donavon-frankenreiter:initial",
+      "recipe_refs": [
+        "scope/recipes/0350-route-state-viewport-state-event-05-donavon-frankenreiter-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-05-donavon-frankenreiter initial state is reproduced at the desktop viewport from immutable source frame event-05-donavon-frankenreiter-initial.png."
+    },
+    {
+      "id": "state:event-05-donavon-frankenreiter:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0351-route-state-viewport-state-event-05-donavon-frankenreiter-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-05-donavon-frankenreiter lazy-end state is reproduced at the desktop viewport from immutable source frame event-05-donavon-frankenreiter-lazy-end.png."
+    },
+    {
+      "id": "state:event-06-salif-keita:initial",
+      "recipe_refs": [
+        "scope/recipes/0352-route-state-viewport-state-event-06-salif-keita-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-06-salif-keita initial state is reproduced at the desktop viewport from immutable source frame event-06-salif-keita-initial.png."
+    },
+    {
+      "id": "state:event-06-salif-keita:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0353-route-state-viewport-state-event-06-salif-keita-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-06-salif-keita lazy-end state is reproduced at the desktop viewport from immutable source frame event-06-salif-keita-lazy-end.png."
+    },
+    {
+      "id": "state:event-07-clara-la-san:initial",
+      "recipe_refs": [
+        "scope/recipes/0354-route-state-viewport-state-event-07-clara-la-san-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-07-clara-la-san initial state is reproduced at the desktop viewport from immutable source frame event-07-clara-la-san-initial.png."
+    },
+    {
+      "id": "state:event-07-clara-la-san:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0355-route-state-viewport-state-event-07-clara-la-san-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-07-clara-la-san lazy-end state is reproduced at the desktop viewport from immutable source frame event-07-clara-la-san-lazy-end.png."
+    },
+    {
+      "id": "state:event-08-too-many-zooz:initial",
+      "recipe_refs": [
+        "scope/recipes/0356-route-state-viewport-state-event-08-too-many-zooz-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-08-too-many-zooz initial state is reproduced at the desktop viewport from immutable source frame event-08-too-many-zooz-initial.png."
+    },
+    {
+      "id": "state:event-08-too-many-zooz:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0357-route-state-viewport-state-event-08-too-many-zooz-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-08-too-many-zooz lazy-end state is reproduced at the desktop viewport from immutable source frame event-08-too-many-zooz-lazy-end.png."
+    },
+    {
+      "id": "state:event-09-i-hate-models:initial",
+      "recipe_refs": [
+        "scope/recipes/0358-route-state-viewport-state-event-09-i-hate-models-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-09-i-hate-models initial state is reproduced at the desktop viewport from immutable source frame event-09-i-hate-models-initial.png."
+    },
+    {
+      "id": "state:event-09-i-hate-models:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0359-route-state-viewport-state-event-09-i-hate-models-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-09-i-hate-models lazy-end state is reproduced at the desktop viewport from immutable source frame event-09-i-hate-models-lazy-end.png."
+    },
+    {
+      "id": "state:event-10-sullivan-king:initial",
+      "recipe_refs": [
+        "scope/recipes/0360-route-state-viewport-state-event-10-sullivan-king-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-10-sullivan-king initial state is reproduced at the desktop viewport from immutable source frame event-10-sullivan-king-initial.png."
+    },
+    {
+      "id": "state:event-10-sullivan-king:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0361-route-state-viewport-state-event-10-sullivan-king-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture event-10-sullivan-king lazy-end state is reproduced at the desktop viewport from immutable source frame event-10-sullivan-king-lazy-end.png."
+    },
+    {
+      "id": "state:artist-01-coldplay:initial",
+      "recipe_refs": [
+        "scope/recipes/0362-route-state-viewport-state-artist-01-coldplay-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-01-coldplay initial state is reproduced at the desktop viewport from immutable source frame artist-01-coldplay-initial.png."
+    },
+    {
+      "id": "state:artist-01-coldplay:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0363-route-state-viewport-state-artist-01-coldplay-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-01-coldplay lazy-end state is reproduced at the desktop viewport from immutable source frame artist-01-coldplay-lazy-end.png."
+    },
+    {
+      "id": "state:artist-02-rihanna:initial",
+      "recipe_refs": [
+        "scope/recipes/0364-route-state-viewport-state-artist-02-rihanna-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-02-rihanna initial state is reproduced at the desktop viewport from immutable source frame artist-02-rihanna-initial.png."
+    },
+    {
+      "id": "state:artist-02-rihanna:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0365-route-state-viewport-state-artist-02-rihanna-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-02-rihanna lazy-end state is reproduced at the desktop viewport from immutable source frame artist-02-rihanna-lazy-end.png."
+    },
+    {
+      "id": "state:artist-03-the-weeknd:initial",
+      "recipe_refs": [
+        "scope/recipes/0366-route-state-viewport-state-artist-03-the-weeknd-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-03-the-weeknd initial state is reproduced at the desktop viewport from immutable source frame artist-03-the-weeknd-initial.png."
+    },
+    {
+      "id": "state:artist-03-the-weeknd:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0367-route-state-viewport-state-artist-03-the-weeknd-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-03-the-weeknd lazy-end state is reproduced at the desktop viewport from immutable source frame artist-03-the-weeknd-lazy-end.png."
+    },
+    {
+      "id": "state:artist-04-eminem:initial",
+      "recipe_refs": [
+        "scope/recipes/0368-route-state-viewport-state-artist-04-eminem-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-04-eminem initial state is reproduced at the desktop viewport from immutable source frame artist-04-eminem-initial.png."
+    },
+    {
+      "id": "state:artist-04-eminem:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0369-route-state-viewport-state-artist-04-eminem-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-04-eminem lazy-end state is reproduced at the desktop viewport from immutable source frame artist-04-eminem-lazy-end.png."
+    },
+    {
+      "id": "state:artist-05-drake:initial",
+      "recipe_refs": [
+        "scope/recipes/0370-route-state-viewport-state-artist-05-drake-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-05-drake initial state is reproduced at the desktop viewport from immutable source frame artist-05-drake-initial.png."
+    },
+    {
+      "id": "state:artist-05-drake:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0371-route-state-viewport-state-artist-05-drake-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-05-drake lazy-end state is reproduced at the desktop viewport from immutable source frame artist-05-drake-lazy-end.png."
+    },
+    {
+      "id": "state:artist-06-taylor-swift:initial",
+      "recipe_refs": [
+        "scope/recipes/0372-route-state-viewport-state-artist-06-taylor-swift-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-06-taylor-swift initial state is reproduced at the desktop viewport from immutable source frame artist-06-taylor-swift-initial.png."
+    },
+    {
+      "id": "state:artist-06-taylor-swift:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0373-route-state-viewport-state-artist-06-taylor-swift-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-06-taylor-swift lazy-end state is reproduced at the desktop viewport from immutable source frame artist-06-taylor-swift-lazy-end.png."
+    },
+    {
+      "id": "state:artist-07-bruno-mars:initial",
+      "recipe_refs": [
+        "scope/recipes/0374-route-state-viewport-state-artist-07-bruno-mars-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-07-bruno-mars initial state is reproduced at the desktop viewport from immutable source frame artist-07-bruno-mars-initial.png."
+    },
+    {
+      "id": "state:artist-07-bruno-mars:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0375-route-state-viewport-state-artist-07-bruno-mars-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-07-bruno-mars lazy-end state is reproduced at the desktop viewport from immutable source frame artist-07-bruno-mars-lazy-end.png."
+    },
+    {
+      "id": "state:artist-08-kanye-west:initial",
+      "recipe_refs": [
+        "scope/recipes/0376-route-state-viewport-state-artist-08-kanye-west-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-08-kanye-west initial state is reproduced at the desktop viewport from immutable source frame artist-08-kanye-west-initial.png."
+    },
+    {
+      "id": "state:artist-08-kanye-west:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0377-route-state-viewport-state-artist-08-kanye-west-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-08-kanye-west lazy-end state is reproduced at the desktop viewport from immutable source frame artist-08-kanye-west-lazy-end.png."
+    },
+    {
+      "id": "state:artist-09-maroon-5:initial",
+      "recipe_refs": [
+        "scope/recipes/0378-route-state-viewport-state-artist-09-maroon-5-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-09-maroon-5 initial state is reproduced at the desktop viewport from immutable source frame artist-09-maroon-5-initial.png."
+    },
+    {
+      "id": "state:artist-09-maroon-5:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0379-route-state-viewport-state-artist-09-maroon-5-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-09-maroon-5 lazy-end state is reproduced at the desktop viewport from immutable source frame artist-09-maroon-5-lazy-end.png."
+    },
+    {
+      "id": "state:artist-10-lady-gaga:initial",
+      "recipe_refs": [
+        "scope/recipes/0380-route-state-viewport-state-artist-10-lady-gaga-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-10-lady-gaga initial state is reproduced at the desktop viewport from immutable source frame artist-10-lady-gaga-initial.png."
+    },
+    {
+      "id": "state:artist-10-lady-gaga:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0381-route-state-viewport-state-artist-10-lady-gaga-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture artist-10-lady-gaga lazy-end state is reproduced at the desktop viewport from immutable source frame artist-10-lady-gaga-lazy-end.png."
+    },
+    {
+      "id": "state:region-01-sf-bay-area:initial",
+      "recipe_refs": [
+        "scope/recipes/0382-route-state-viewport-state-region-01-sf-bay-area-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-01-sf-bay-area initial state is reproduced at the desktop viewport from immutable source frame region-01-sf-bay-area-initial.png."
+    },
+    {
+      "id": "state:region-01-sf-bay-area:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0383-route-state-viewport-state-region-01-sf-bay-area-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-01-sf-bay-area lazy-end state is reproduced at the desktop viewport from immutable source frame region-01-sf-bay-area-lazy-end.png."
+    },
+    {
+      "id": "state:region-02-los-angeles:initial",
+      "recipe_refs": [
+        "scope/recipes/0384-route-state-viewport-state-region-02-los-angeles-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-02-los-angeles initial state is reproduced at the desktop viewport from immutable source frame region-02-los-angeles-initial.png."
+    },
+    {
+      "id": "state:region-02-los-angeles:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0385-route-state-viewport-state-region-02-los-angeles-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-02-los-angeles lazy-end state is reproduced at the desktop viewport from immutable source frame region-02-los-angeles-lazy-end.png."
+    },
+    {
+      "id": "state:region-03-new-york:initial",
+      "recipe_refs": [
+        "scope/recipes/0386-route-state-viewport-state-region-03-new-york-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-03-new-york initial state is reproduced at the desktop viewport from immutable source frame region-03-new-york-initial.png."
+    },
+    {
+      "id": "state:region-03-new-york:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0387-route-state-viewport-state-region-03-new-york-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-03-new-york lazy-end state is reproduced at the desktop viewport from immutable source frame region-03-new-york-lazy-end.png."
+    },
+    {
+      "id": "state:region-04-portland:initial",
+      "recipe_refs": [
+        "scope/recipes/0388-route-state-viewport-state-region-04-portland-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-04-portland initial state is reproduced at the desktop viewport from immutable source frame region-04-portland-initial.png."
+    },
+    {
+      "id": "state:region-04-portland:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0389-route-state-viewport-state-region-04-portland-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-04-portland lazy-end state is reproduced at the desktop viewport from immutable source frame region-04-portland-lazy-end.png."
+    },
+    {
+      "id": "state:region-05-washington:initial",
+      "recipe_refs": [
+        "scope/recipes/0390-route-state-viewport-state-region-05-washington-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-05-washington initial state is reproduced at the desktop viewport from immutable source frame region-05-washington-initial.png."
+    },
+    {
+      "id": "state:region-05-washington:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0391-route-state-viewport-state-region-05-washington-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-05-washington lazy-end state is reproduced at the desktop viewport from immutable source frame region-05-washington-lazy-end.png."
+    },
+    {
+      "id": "state:region-06-philadelphia:initial",
+      "recipe_refs": [
+        "scope/recipes/0392-route-state-viewport-state-region-06-philadelphia-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-06-philadelphia initial state is reproduced at the desktop viewport from immutable source frame region-06-philadelphia-initial.png."
+    },
+    {
+      "id": "state:region-06-philadelphia:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0393-route-state-viewport-state-region-06-philadelphia-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-06-philadelphia lazy-end state is reproduced at the desktop viewport from immutable source frame region-06-philadelphia-lazy-end.png."
+    },
+    {
+      "id": "state:region-07-seattle:initial",
+      "recipe_refs": [
+        "scope/recipes/0394-route-state-viewport-state-region-07-seattle-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-07-seattle initial state is reproduced at the desktop viewport from immutable source frame region-07-seattle-initial.png."
+    },
+    {
+      "id": "state:region-07-seattle:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0395-route-state-viewport-state-region-07-seattle-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-07-seattle lazy-end state is reproduced at the desktop viewport from immutable source frame region-07-seattle-lazy-end.png."
+    },
+    {
+      "id": "state:region-08-chicago:initial",
+      "recipe_refs": [
+        "scope/recipes/0396-route-state-viewport-state-region-08-chicago-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-08-chicago initial state is reproduced at the desktop viewport from immutable source frame region-08-chicago-initial.png."
+    },
+    {
+      "id": "state:region-08-chicago:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0397-route-state-viewport-state-region-08-chicago-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-08-chicago lazy-end state is reproduced at the desktop viewport from immutable source frame region-08-chicago-lazy-end.png."
+    },
+    {
+      "id": "state:region-09-orlando:initial",
+      "recipe_refs": [
+        "scope/recipes/0398-route-state-viewport-state-region-09-orlando-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-09-orlando initial state is reproduced at the desktop viewport from immutable source frame region-09-orlando-initial.png."
+    },
+    {
+      "id": "state:region-09-orlando:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0399-route-state-viewport-state-region-09-orlando-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-09-orlando lazy-end state is reproduced at the desktop viewport from immutable source frame region-09-orlando-lazy-end.png."
+    },
+    {
+      "id": "state:region-10-pittsburgh:initial",
+      "recipe_refs": [
+        "scope/recipes/0400-route-state-viewport-state-region-10-pittsburgh-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-10-pittsburgh initial state is reproduced at the desktop viewport from immutable source frame region-10-pittsburgh-initial.png."
+    },
+    {
+      "id": "state:region-10-pittsburgh:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0401-route-state-viewport-state-region-10-pittsburgh-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture region-10-pittsburgh lazy-end state is reproduced at the desktop viewport from immutable source frame region-10-pittsburgh-lazy-end.png."
+    },
+    {
+      "id": "state:venue-place-bell:initial",
+      "recipe_refs": [
+        "scope/recipes/0402-route-state-viewport-state-venue-place-bell-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-place-bell initial state is reproduced at the desktop viewport from immutable source frame venue-place-bell-initial.png."
+    },
+    {
+      "id": "state:venue-place-bell:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0403-route-state-viewport-state-venue-place-bell-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-place-bell lazy-end state is reproduced at the desktop viewport from immutable source frame venue-place-bell-lazy-end.png."
+    },
+    {
+      "id": "state:venue-mtelus:initial",
+      "recipe_refs": [
+        "scope/recipes/0404-route-state-viewport-state-venue-mtelus-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-mtelus initial state is reproduced at the desktop viewport from immutable source frame venue-mtelus-initial.png."
+    },
+    {
+      "id": "state:venue-mtelus:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0405-route-state-viewport-state-venue-mtelus-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-mtelus lazy-end state is reproduced at the desktop viewport from immutable source frame venue-mtelus-lazy-end.png."
+    },
+    {
+      "id": "state:venue-new-city-gas:initial",
+      "recipe_refs": [
+        "scope/recipes/0406-route-state-viewport-state-venue-new-city-gas-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-new-city-gas initial state is reproduced at the desktop viewport from immutable source frame venue-new-city-gas-initial.png."
+    },
+    {
+      "id": "state:venue-new-city-gas:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0407-route-state-viewport-state-venue-new-city-gas-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-new-city-gas lazy-end state is reproduced at the desktop viewport from immutable source frame venue-new-city-gas-lazy-end.png."
+    },
+    {
+      "id": "state:venue-lolympia:initial",
+      "recipe_refs": [
+        "scope/recipes/0408-route-state-viewport-state-venue-lolympia-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-lolympia initial state is reproduced at the desktop viewport from immutable source frame venue-lolympia-initial.png."
+    },
+    {
+      "id": "state:venue-lolympia:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0409-route-state-viewport-state-venue-lolympia-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-lolympia lazy-end state is reproduced at the desktop viewport from immutable source frame venue-lolympia-lazy-end.png."
+    },
+    {
+      "id": "state:venue-le-ministere:initial",
+      "recipe_refs": [
+        "scope/recipes/0410-route-state-viewport-state-venue-le-ministere-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-le-ministere initial state is reproduced at the desktop viewport from immutable source frame venue-le-ministere-initial.png."
+    },
+    {
+      "id": "state:venue-le-ministere:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0411-route-state-viewport-state-venue-le-ministere-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-le-ministere lazy-end state is reproduced at the desktop viewport from immutable source frame venue-le-ministere-lazy-end.png."
+    },
+    {
+      "id": "state:venue-place-des-arts:initial",
+      "recipe_refs": [
+        "scope/recipes/0412-route-state-viewport-state-venue-place-des-arts-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-place-des-arts initial state is reproduced at the desktop viewport from immutable source frame venue-place-des-arts-initial.png."
+    },
+    {
+      "id": "state:venue-place-des-arts:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0413-route-state-viewport-state-venue-place-des-arts-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-place-des-arts lazy-end state is reproduced at the desktop viewport from immutable source frame venue-place-des-arts-lazy-end.png."
+    },
+    {
+      "id": "state:venue-theatre-fairmount:initial",
+      "recipe_refs": [
+        "scope/recipes/0414-route-state-viewport-state-venue-theatre-fairmount-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-theatre-fairmount initial state is reproduced at the desktop viewport from immutable source frame venue-theatre-fairmount-initial.png."
+    },
+    {
+      "id": "state:venue-theatre-fairmount:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0415-route-state-viewport-state-venue-theatre-fairmount-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-theatre-fairmount lazy-end state is reproduced at the desktop viewport from immutable source frame venue-theatre-fairmount-lazy-end.png."
+    },
+    {
+      "id": "state:venue-hall-est-stade-olympique:initial",
+      "recipe_refs": [
+        "scope/recipes/0416-route-state-viewport-state-venue-hall-est-stade-olympique-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-hall-est-stade-olympique initial state is reproduced at the desktop viewport from immutable source frame venue-hall-est-stade-olympique-initial.png."
+    },
+    {
+      "id": "state:venue-hall-est-stade-olympique:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0417-route-state-viewport-state-venue-hall-est-stade-olympique-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture venue-hall-est-stade-olympique lazy-end state is reproduced at the desktop viewport from immutable source frame venue-hall-est-stade-olympique-lazy-end.png."
+    },
+    {
+      "id": "state:popular-artists-page-2:initial",
+      "recipe_refs": [
+        "scope/recipes/0418-route-state-viewport-state-popular-artists-page-2-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture popular-artists-page-2 initial state is reproduced at the desktop viewport from immutable source frame popular-artists-page-2-initial.png."
+    },
+    {
+      "id": "state:popular-artists-page-2:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0419-route-state-viewport-state-popular-artists-page-2-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture popular-artists-page-2 lazy-end state is reproduced at the desktop viewport from immutable source frame popular-artists-page-2-lazy-end.png."
+    },
+    {
+      "id": "state:ticketmaster-boundary:initial",
+      "recipe_refs": [
+        "scope/recipes/0420-route-state-viewport-state-ticketmaster-boundary-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture ticketmaster-boundary initial state is reproduced at the desktop viewport from immutable source frame ticketmaster-boundary-initial.png."
+    },
+    {
+      "id": "state:ticketmaster-boundary:ticketmaster-click",
+      "recipe_refs": [
+        "scope/recipes/0421-route-state-viewport-state-ticketmaster-boundary-ticketmaster-click.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture ticketmaster-boundary ticketmaster-click state is reproduced at the desktop viewport from immutable source frame ticketmaster-boundary-ticketmaster-click.png."
+    },
+    {
+      "id": "state:genre-rock:initial",
+      "recipe_refs": [
+        "scope/recipes/0422-route-state-viewport-state-genre-rock-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture genre-rock initial state is reproduced at the desktop viewport from immutable source frame genre-rock-initial.png."
+    },
+    {
+      "id": "state:genre-rock:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0423-route-state-viewport-state-genre-rock-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture genre-rock lazy-end state is reproduced at the desktop viewport from immutable source frame genre-rock-lazy-end.png."
+    },
+    {
+      "id": "state:trending-artists:initial",
+      "recipe_refs": [
+        "scope/recipes/0424-route-state-viewport-state-trending-artists-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture trending-artists initial state is reproduced at the desktop viewport from immutable source frame trending-artists-initial.png."
+    },
+    {
+      "id": "state:trending-artists:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0425-route-state-viewport-state-trending-artists-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture trending-artists lazy-end state is reproduced at the desktop viewport from immutable source frame trending-artists-lazy-end.png."
+    },
+    {
+      "id": "state:live-streams:initial",
+      "recipe_refs": [
+        "scope/recipes/0426-route-state-viewport-state-live-streams-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture live-streams initial state is reproduced at the desktop viewport from immutable source frame live-streams-initial.png."
+    },
+    {
+      "id": "state:news:initial",
+      "recipe_refs": [
+        "scope/recipes/0427-route-state-viewport-state-news-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture news initial state is reproduced at the desktop viewport from immutable source frame news-initial.png."
+    },
+    {
+      "id": "state:developer:initial",
+      "recipe_refs": [
+        "scope/recipes/0428-route-state-viewport-state-developer-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture developer initial state is reproduced at the desktop viewport from immutable source frame developer-initial.png."
+    },
+    {
+      "id": "state:design:initial",
+      "recipe_refs": [
+        "scope/recipes/0429-route-state-viewport-state-design-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture design initial state is reproduced at the desktop viewport from immutable source frame design-initial.png."
+    },
+    {
+      "id": "state:jobs:initial",
+      "recipe_refs": [
+        "scope/recipes/0430-route-state-viewport-state-jobs-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture jobs initial state is reproduced at the desktop viewport from immutable source frame jobs-initial.png."
+    },
+    {
+      "id": "state:info-cookies:initial",
+      "recipe_refs": [
+        "scope/recipes/0431-route-state-viewport-state-info-cookies-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture info-cookies initial state is reproduced at the desktop viewport from immutable source frame info-cookies-initial.png."
+    },
+    {
+      "id": "state:info-guidelines:initial",
+      "recipe_refs": [
+        "scope/recipes/0432-route-state-viewport-state-info-guidelines-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture info-guidelines initial state is reproduced at the desktop viewport from immutable source frame info-guidelines-initial.png."
+    },
+    {
+      "id": "state:info-privacy:initial",
+      "recipe_refs": [
+        "scope/recipes/0433-route-state-viewport-state-info-privacy-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture info-privacy initial state is reproduced at the desktop viewport from immutable source frame info-privacy-initial.png."
+    },
+    {
+      "id": "state:info-security:initial",
+      "recipe_refs": [
+        "scope/recipes/0434-route-state-viewport-state-info-security-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture info-security initial state is reproduced at the desktop viewport from immutable source frame info-security-initial.png."
+    },
+    {
+      "id": "state:info-terms:initial",
+      "recipe_refs": [
+        "scope/recipes/0435-route-state-viewport-state-info-terms-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture info-terms initial state is reproduced at the desktop viewport from immutable source frame info-terms-initial.png."
+    },
+    {
+      "id": "state:nearby-genre-rock:initial",
+      "recipe_refs": [
+        "scope/recipes/0436-route-state-viewport-state-nearby-genre-rock-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture nearby-genre-rock initial state is reproduced at the desktop viewport from immutable source frame nearby-genre-rock-initial.png."
+    },
+    {
+      "id": "state:nearby-genre-rock:lazy-end",
+      "recipe_refs": [
+        "scope/recipes/0437-route-state-viewport-state-nearby-genre-rock-lazy-end.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture nearby-genre-rock lazy-end state is reproduced at the desktop viewport from immutable source frame nearby-genre-rock-lazy-end.png."
+    },
+    {
+      "id": "state:locale-de:initial",
+      "recipe_refs": [
+        "scope/recipes/0438-route-state-viewport-state-locale-de-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture locale-de initial state is reproduced at the desktop viewport from immutable source frame locale-de-initial.png."
+    },
+    {
+      "id": "state:locale-es:initial",
+      "recipe_refs": [
+        "scope/recipes/0439-route-state-viewport-state-locale-es-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture locale-es initial state is reproduced at the desktop viewport from immutable source frame locale-es-initial.png."
+    },
+    {
+      "id": "state:locale-fr:initial",
+      "recipe_refs": [
+        "scope/recipes/0440-route-state-viewport-state-locale-fr-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture locale-fr initial state is reproduced at the desktop viewport from immutable source frame locale-fr-initial.png."
+    },
+    {
+      "id": "state:locale-pt:initial",
+      "recipe_refs": [
+        "scope/recipes/0441-route-state-viewport-state-locale-pt-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture locale-pt initial state is reproduced at the desktop viewport from immutable source frame locale-pt-initial.png."
+    },
+    {
+      "id": "state:password-reset:initial",
+      "recipe_refs": [
+        "scope/recipes/0442-route-state-viewport-state-password-reset-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture password-reset initial state is reproduced at the desktop viewport from immutable source frame password-reset-initial.png."
+    },
+    {
+      "id": "state:about:initial",
+      "recipe_refs": [
+        "scope/recipes/0443-route-state-viewport-state-about-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture about initial state is reproduced at the desktop viewport from immutable source frame about-initial.png."
+    },
+    {
+      "id": "state:app:initial",
+      "recipe_refs": [
+        "scope/recipes/0444-route-state-viewport-state-app-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture app initial state is reproduced at the desktop viewport from immutable source frame app-initial.png."
+    },
+    {
+      "id": "state:protected-home-logged-out:initial",
+      "recipe_refs": [
+        "scope/recipes/0445-route-state-viewport-state-protected-home-logged-out-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture protected-home-logged-out initial state is reproduced at the desktop viewport from immutable source frame protected-home-logged-out-initial.png."
+    },
+    {
+      "id": "state:not-found:initial",
+      "recipe_refs": [
+        "scope/recipes/0446-route-state-viewport-state-not-found-initial.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture not-found initial state is reproduced at the desktop viewport from immutable source frame not-found-initial.png."
+    },
+    {
+      "id": "state:authenticated-home:account-menu",
+      "recipe_refs": [
+        "scope/recipes/0447-route-state-viewport-state-authenticated-home-account-menu.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture masked authenticated/reset state account-menu is reproduced at the desktop viewport."
+    },
+    {
+      "id": "state:artist-detail-authenticated:tracked-after-refresh",
+      "recipe_refs": [
+        "scope/recipes/0448-route-state-viewport-state-artist-detail-authenticated-tracked-after-refresh.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture masked authenticated/reset state tracked-after-refresh is reproduced at the desktop viewport."
+    },
+    {
+      "id": "state:event-detail-authenticated:interested-after-refresh",
+      "recipe_refs": [
+        "scope/recipes/0449-route-state-viewport-state-event-detail-authenticated-interested-after-refresh.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture masked authenticated/reset state interested-after-refresh is reproduced at the desktop viewport."
+    },
+    {
+      "id": "state:password-reset:captcha-error",
+      "recipe_refs": [
+        "scope/recipes/0450-route-state-viewport-state-password-reset-captcha-error.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-reset-error.json"
+      ],
+      "source_expectation": "The same-capture masked authenticated/reset state captcha-error is reproduced at the desktop viewport."
+    },
+    {
+      "id": "state:sign-in:password-reset-success",
+      "recipe_refs": [
+        "scope/recipes/0451-route-state-viewport-state-sign-in-password-reset-success.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-reset-success.json"
+      ],
+      "source_expectation": "The same-capture masked authenticated/reset state password-reset-success is reproduced at the desktop viewport."
+    },
+    {
+      "id": "state:global-search:search-results-coldplay",
+      "recipe_refs": [
+        "scope/recipes/0452-route-state-viewport-state-global-search-search-results-coldplay.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture global search state search-results-coldplay preserves 1 direct result links at the desktop viewport."
+    },
+    {
+      "id": "state:global-search:search-no-results",
+      "recipe_refs": [
+        "scope/recipes/0453-route-state-viewport-state-global-search-search-no-results.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture global search state search-no-results preserves 0 direct result links at the desktop viewport."
+    }
+  ],
+  "schema_version": "websitebench.route-state-viewport.v3",
+  "site_id": "songkick",
+  "status": "frozen"
+}

@@ -1,0 +1,42 @@
+{
+  "actors": [
+    {
+      "description": "Anonymous concert browser.",
+      "id": "visitor"
+    },
+    {
+      "description": "Locally authenticated fan with account-scoped preferences and mutations.",
+      "id": "registered-fan"
+    }
+  ],
+  "boundary_journey_ids": [
+    "external-boundaries",
+    "hard-not-found-recovery"
+  ],
+  "mainline_journey_ids": [
+    "public-discovery",
+    "collection-browse",
+    "entity-details",
+    "global-search",
+    "account-lifecycle",
+    "tracking-and-attendance",
+    "offline-closure"
+  ],
+  "out_of_scope": [
+    "Production email delivery; password recovery terminates in the local outbox.",
+    "Third-party ticket, blog, social, support, app-store and promoter effects; they terminate at branded local HTTP 200 soft-404 pages.",
+    "Orders, checkout and payments, which were not present in the frozen Songkick scope.",
+    "Tablet and mobile layouts; the repository brief freezes desktop 1440x900 only."
+  ],
+  "primary_actor_ids": [
+    "visitor",
+    "registered-fan"
+  ],
+  "purpose_id": "songkick-offline-concert-discovery",
+  "schema_version": "offline-clone.purpose.v1",
+  "secondary_journey_ids": [
+    "location-theme-locale-cookie"
+  ],
+  "statement": "Reproduce the frozen Songkick concert-discovery, entity-browsing, search, account, tracking and attendance experience as a faithful, fully local 1440x900 application with explicit first-party hard-404 and external soft-404 boundaries.",
+  "status": "frozen"
+}

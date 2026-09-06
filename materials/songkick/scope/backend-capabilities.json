@@ -1,0 +1,43 @@
+{
+  "backend_profile": "full",
+  "capabilities": [
+    {
+      "applicability": "in-scope",
+      "id": "accounts",
+      "rationale": "Captured registration, sign-in, logout and session persistence."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "password-recovery",
+      "rationale": "Captured reset form, challenge error and generic success return."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "transactional-mail",
+      "rationale": "Password recovery terminates in the local mail outbox."
+    },
+    {
+      "applicability": "not-applicable",
+      "id": "orders",
+      "rationale": "No order lifecycle exists in the frozen source scope."
+    },
+    {
+      "applicability": "not-applicable",
+      "id": "checkout",
+      "rationale": "Ticket providers are external boundaries; no source checkout was captured."
+    },
+    {
+      "applicability": "not-applicable",
+      "id": "payments",
+      "rationale": "No payment workflow exists in the frozen source scope."
+    },
+    {
+      "applicability": "in-scope",
+      "id": "database",
+      "rationale": "Accounts, sessions, recovery and fan mutations require restart-stable local persistence."
+    }
+  ],
+  "runtime_required": true,
+  "schema_version": "offline-clone.contribution-backend-scope.v1",
+  "site_id": "songkick"
+}

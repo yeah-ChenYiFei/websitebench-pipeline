@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:home:initial",
+  "contract_file": "external-links.json",
+  "contract_schema_version": "websitebench.external-links.v3",
+  "expected_href": "https://play.google.com/store/apps/details?id=com.songkick&hl=en&referrer=utm_source%3Dweb%26utm_medium%3Dhomepage%26utm_campaign%3Dget_the_app",
+  "kind": "external-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "external:028:play-google-com",
+  "record_kind": "external-link",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-external-id=\"external-028\"]",
+  "subject_id": "external:028:play-google-com",
+  "subject_kind": "external-link"
+}

@@ -1,0 +1,11 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "channel": "auth_visual_reset_error",
+  "classification": "remote-native-valid masked reset-error visual",
+  "note": "Immutable remote artifact pointer; source result bytes are not copied into the site tree.",
+  "same_capture_only": true,
+  "schema_version": "songkick.source-evidence-pointer.v1",
+  "site_id": "songkick",
+  "source_artifact_path": "auth/visual-supplement/attempt-1/PHASE-RESET-ERROR.json",
+  "source_artifact_sha256": "3a545b1de743676132c72005781cd8c5f6c903cab9c3b374e52fe69e046aede7"
+}

@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:app:initial",
+  "contract_file": "external-links.json",
+  "contract_schema_version": "websitebench.external-links.v3",
+  "expected_href": "https://itunes.apple.com/gb/app/songkick-concerts/id438690886?mt=8&pt=307660&ct=skweb:mobile-download-splash",
+  "kind": "external-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "external:027:itunes-apple-com",
+  "record_kind": "external-link",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-external-id=\"external-027\"]",
+  "subject_id": "external:027:itunes-apple-com",
+  "subject_kind": "external-link"
+}

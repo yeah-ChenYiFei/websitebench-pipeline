@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:event-08-too-many-zooz:initial",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "expected_href": "/venues/1086866-theatre-fairmount-theatre",
+  "kind": "first-party-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "edge:route:venue-theatre-fairmount",
+  "record_kind": "link-edge",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "a[href=\"/venues/1086866-theatre-fairmount-theatre\"]",
+  "subject_id": "edge:route:venue-theatre-fairmount",
+  "subject_kind": "link-edge"
+}

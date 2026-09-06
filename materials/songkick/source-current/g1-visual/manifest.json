@@ -1,0 +1,2160 @@
+{
+  "acceptance_checkpoint_count": 239,
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "records": [
+    {
+      "checkpoint_id": "auth:artist-tracked",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-artist-detail-authenticated-tracked-after-refresh.png",
+      "derived_sha256": "b8121de730ab5d872f3b468d112677aabe5e856a992c7b0f2e24ad4fec9bf4b2",
+      "source_path": "auth/visual-supplement/attempt-2/artist-tracked-after-refresh.png",
+      "source_sha256": "b8121de730ab5d872f3b468d112677aabe5e856a992c7b0f2e24ad4fec9bf4b2",
+      "visual_state_checkpoint_id": "state:artist-detail-authenticated:tracked-after-refresh"
+    },
+    {
+      "checkpoint_id": "auth:authenticated-session",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-authenticated-home-account-menu.png",
+      "derived_sha256": "c762211bcf2c6af013ae2258604e43019aba6f3828b1a98ff1599f3730733595",
+      "source_path": "auth/visual-supplement/attempt-2/authenticated-account-menu.png",
+      "source_sha256": "c762211bcf2c6af013ae2258604e43019aba6f3828b1a98ff1599f3730733595",
+      "visual_state_checkpoint_id": "state:authenticated-home:account-menu"
+    },
+    {
+      "checkpoint_id": "auth:event-interested",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-event-detail-authenticated-interested-after-refresh.png",
+      "derived_sha256": "98624b967ec0ddc5091c50987033b65e451f17a67ace874cec77a0b243e014f6",
+      "source_path": "auth/visual-supplement/attempt-2/event-interested-after-refresh.png",
+      "source_sha256": "98624b967ec0ddc5091c50987033b65e451f17a67ace874cec77a0b243e014f6",
+      "visual_state_checkpoint_id": "state:event-detail-authenticated:interested-after-refresh"
+    },
+    {
+      "checkpoint_id": "auth:logout",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-initial.png",
+      "derived_sha256": "e6c60439ccaada4e43505cc7be9b325792ed873971262c44230986f5b5994ccc",
+      "source_path": "public/01-core/home-initial.png",
+      "source_sha256": "0d13d9e3e416b88a5c30aa882296615d89da2342ffb8f59338f660f2486b072a",
+      "visual_state_checkpoint_id": "state:home:initial"
+    },
+    {
+      "checkpoint_id": "auth:password-reset-success",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-sign-in-password-reset-success.png",
+      "derived_sha256": "074081203d45d0d37805fa7ca4e7c3e8689ed618ac39ea5118f00f1bba892b59",
+      "source_path": "auth/visual-supplement/attempt-2/password-reset-success-login-return-viewport.png",
+      "source_sha256": "074081203d45d0d37805fa7ca4e7c3e8689ed618ac39ea5118f00f1bba892b59",
+      "visual_state_checkpoint_id": "state:sign-in:password-reset-success"
+    },
+    {
+      "checkpoint_id": "auth:refresh-persistence",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-authenticated-home-account-menu.png",
+      "derived_sha256": "c762211bcf2c6af013ae2258604e43019aba6f3828b1a98ff1599f3730733595",
+      "source_path": "auth/visual-supplement/attempt-2/authenticated-account-menu.png",
+      "source_sha256": "c762211bcf2c6af013ae2258604e43019aba6f3828b1a98ff1599f3730733595",
+      "visual_state_checkpoint_id": "state:authenticated-home:account-menu"
+    },
+    {
+      "checkpoint_id": "auth:relogin-persistence",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-authenticated-home-account-menu.png",
+      "derived_sha256": "c762211bcf2c6af013ae2258604e43019aba6f3828b1a98ff1599f3730733595",
+      "source_path": "auth/visual-supplement/attempt-2/authenticated-account-menu.png",
+      "source_sha256": "c762211bcf2c6af013ae2258604e43019aba6f3828b1a98ff1599f3730733595",
+      "visual_state_checkpoint_id": "state:authenticated-home:account-menu"
+    },
+    {
+      "checkpoint_id": "route:about",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-about-initial.png",
+      "derived_sha256": "2738797b1b9aab2862bed3a97e8b75bd172c558910cf7f2e7d902e859b834c38",
+      "source_path": "public/06-extra-entrypoints/about-initial.png",
+      "source_sha256": "ef88e51235816a62ce57bbdbc465ddc6c4d8f645eab11860abcb5e7e4e202475",
+      "visual_state_checkpoint_id": "state:about:initial"
+    },
+    {
+      "checkpoint_id": "route:app",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-app-initial.png",
+      "derived_sha256": "591dee20f031f81961bffa5b7d7d7cb9d9f852551da5cd7b578127ce905873de",
+      "source_path": "public/06-extra-entrypoints/app-initial.png",
+      "source_sha256": "591dee20f031f81961bffa5b7d7d7cb9d9f852551da5cd7b578127ce905873de",
+      "visual_state_checkpoint_id": "state:app:initial"
+    },
+    {
+      "checkpoint_id": "route:artist-01-coldplay",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-01-coldplay-initial.png",
+      "derived_sha256": "f32dd0746c9017806d4d27205f55d4155c3ccd6f631abb9d53f934bf8d2bd145",
+      "source_path": "public/03-details-20x10/artist-01-coldplay-initial.png",
+      "source_sha256": "c11fbb04ce37162983a819c1162f3869bebd5534a1c51b63d14524d472cf3764",
+      "visual_state_checkpoint_id": "state:artist-01-coldplay:initial"
+    },
+    {
+      "checkpoint_id": "route:artist-02-rihanna",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-02-rihanna-initial.png",
+      "derived_sha256": "cb34941d823a237a7925710dc4e3588ce8acd395ddb0c526aa5dc998d27996f3",
+      "source_path": "public/03-details-20x10/artist-02-rihanna-initial.png",
+      "source_sha256": "9f0dc8c0115982fb2b8db7bc22c2f26629050b4d45fe849b94903e55a0713625",
+      "visual_state_checkpoint_id": "state:artist-02-rihanna:initial"
+    },
+    {
+      "checkpoint_id": "route:artist-03-the-weeknd",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-03-the-weeknd-initial.png",
+      "derived_sha256": "4f0cb54a2db2883d85b0d20b0b1defe5cff5faab0e0e069a2bbcdf44a900b28b",
+      "source_path": "public/03-details-20x10/artist-03-the-weeknd-initial.png",
+      "source_sha256": "d5b114453e228d23afdec8f0115e1db3720417b2cd733cad79facbacce62cad6",
+      "visual_state_checkpoint_id": "state:artist-03-the-weeknd:initial"
+    },
+    {
+      "checkpoint_id": "route:artist-04-eminem",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-04-eminem-initial.png",
+      "derived_sha256": "92fb31676ea8ebf76c8ced4b2d5d08241348bdc63dead0f5f1c1616757b6cf64",
+      "source_path": "public/03-details-20x10/artist-04-eminem-initial.png",
+      "source_sha256": "f8872e37728864efd294d995e0181787c46463ee68fbd9a0380d359dc7062c47",
+      "visual_state_checkpoint_id": "state:artist-04-eminem:initial"
+    },
+    {
+      "checkpoint_id": "route:artist-05-drake",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-05-drake-initial.png",
+      "derived_sha256": "e1bc52aed06f943ceb61e0b08331f4d24eaed62efc9b8c2328e8a2cd6248a0e5",
+      "source_path": "public/03-details-20x10/artist-05-drake-initial.png",
+      "source_sha256": "218f6ad3f099baa6cf2b59e964d9484a4ac1385c25a62b11f200fca7dc7262bc",
+      "visual_state_checkpoint_id": "state:artist-05-drake:initial"
+    },
+    {
+      "checkpoint_id": "route:artist-06-taylor-swift",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-06-taylor-swift-initial.png",
+      "derived_sha256": "dc86a6f38aaafe3a0f1188f4f6633bb24209c53804619f2f454a1f4cd191ae80",
+      "source_path": "public/03-details-20x10/artist-06-taylor-swift-initial.png",
+      "source_sha256": "4284e9e65e631445bc3d6148dcebcce569709eeb27bc88a5d46b00a96e53ca69",
+      "visual_state_checkpoint_id": "state:artist-06-taylor-swift:initial"
+    },
+    {
+      "checkpoint_id": "route:artist-07-bruno-mars",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-07-bruno-mars-initial.png",
+      "derived_sha256": "dd61e4a7773e83626265dbb96f5351c37f89b52df3068cb2e22b19ebe71d5aa6",
+      "source_path": "public/03-details-20x10/artist-07-bruno-mars-initial.png",
+      "source_sha256": "cb6ce88726363fba0833fe0bd66218b961cd6f9905bb90772eb96b2a33bfa542",
+      "visual_state_checkpoint_id": "state:artist-07-bruno-mars:initial"
+    },
+    {
+      "checkpoint_id": "route:artist-08-kanye-west",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-08-kanye-west-initial.png",
+      "derived_sha256": "704eab635fcc5a603662e0ad314ff4877aa0ca9f485cd20dae413694ec3562c9",
+      "source_path": "public/03-details-20x10/artist-08-kanye-west-initial.png",
+      "source_sha256": "40e77dd0cffe41c2700dd28139d9885f4066fb325527f57e8f47ba1503542b64",
+      "visual_state_checkpoint_id": "state:artist-08-kanye-west:initial"
+    },
+    {
+      "checkpoint_id": "route:artist-09-maroon-5",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-09-maroon-5-initial.png",
+      "derived_sha256": "e3f08103dce2c631902bb280643bea7293f6212e9a74e582906f87b0f969ca6e",
+      "source_path": "public/03-details-20x10/artist-09-maroon-5-initial.png",
+      "source_sha256": "12c5042d3b8d5a89121278ce03690f10c0cf0aabc3411dfc5b8b8c5a0b197b60",
+      "visual_state_checkpoint_id": "state:artist-09-maroon-5:initial"
+    },
+    {
+      "checkpoint_id": "route:artist-10-lady-gaga",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-10-lady-gaga-initial.png",
+      "derived_sha256": "126e966fff6b5dbabbbbf7600031d0d9781ac8c8d8a25523fe22c1e8e39cb718",
+      "source_path": "public/03-details-20x10/artist-10-lady-gaga-initial.png",
+      "source_sha256": "32f8f4b2f790c1a651a98a584e713dcf9f719fcd6c9e665391a8799033689b7b",
+      "visual_state_checkpoint_id": "state:artist-10-lady-gaga:initial"
+    },
+    {
+      "checkpoint_id": "route:artist-detail",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-detail-initial.png",
+      "derived_sha256": "4866446239a15392e3fabca4a1f9636f0bc8bc2bc5f8edbea669e76cce1f7fcf",
+      "source_path": "public/01-core/artist-detail-initial.png",
+      "source_sha256": "60df8a11a3517f068844a2b03b4ce1087c1d476cba3fa74d6b69e33e5fbd4875",
+      "visual_state_checkpoint_id": "state:artist-detail:initial"
+    },
+    {
+      "checkpoint_id": "route:artists",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artists-initial.png",
+      "derived_sha256": "95f69eb83027c1b4b18bea9d4317dd095a5c0bab88ac1b1596e8083962c8e013",
+      "source_path": "public/01-core/artists-initial.png",
+      "source_sha256": "b48cbba22108ebca346a90fd9c9351f1f864de56306b6fdb716242eae047e057",
+      "visual_state_checkpoint_id": "state:artists:initial"
+    },
+    {
+      "checkpoint_id": "route:concerts",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-concerts-initial.png",
+      "derived_sha256": "399446501640c4e485783b9a538a4688adb6d1587700c05c702e6880ed2af269",
+      "source_path": "public/01-core/concerts-initial.png",
+      "source_sha256": "d1203c41d69ba072351c11e96a55da3ef4d23daac2d2aa1ac7c1d6eddc68b0b4",
+      "visual_state_checkpoint_id": "state:concerts:initial"
+    },
+    {
+      "checkpoint_id": "route:design",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-design-initial.png",
+      "derived_sha256": "99db2a93b06fa1bf617f5c495e02dcf6c0b76961108491217e2cf4fed8699d35",
+      "source_path": "public/05-supporting-routes/design-initial.png",
+      "source_sha256": "99db2a93b06fa1bf617f5c495e02dcf6c0b76961108491217e2cf4fed8699d35",
+      "visual_state_checkpoint_id": "state:design:initial"
+    },
+    {
+      "checkpoint_id": "route:developer",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-developer-initial.png",
+      "derived_sha256": "a7d43f1a39924d2e2dde8571eeab284e617d8567676114626b0b13d7d0675d70",
+      "source_path": "public/05-supporting-routes/developer-initial.png",
+      "source_sha256": "19c96a6f3cf4538cb9e57e2f8ad620a460dfb6e40e7c7f508e4c9f1eb8e78548",
+      "visual_state_checkpoint_id": "state:developer:initial"
+    },
+    {
+      "checkpoint_id": "route:event-01-steve-lacy",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-01-steve-lacy-initial.png",
+      "derived_sha256": "0929d70eba3bd7d922ddd31b8c612d9a723a6039569f07ee563c98800329b8d8",
+      "source_path": "public/03-details-20x10/event-01-steve-lacy-initial.png",
+      "source_sha256": "7db8be24f647664257c748efb8d1df593eb7d814ab0bd25994a02d0d18da885c",
+      "visual_state_checkpoint_id": "state:event-01-steve-lacy:initial"
+    },
+    {
+      "checkpoint_id": "route:event-02-gipsy-kings",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-02-gipsy-kings-initial.png",
+      "derived_sha256": "b9964b59b3955d14d2ad42a2bbc6efb6bf05f48373790fd3bfe16bcd29db35e2",
+      "source_path": "public/03-details-20x10/event-02-gipsy-kings-initial.png",
+      "source_sha256": "c2109a1d468d710f3bfb6eebfa9230c7202099d2df3dde9f34cea353a5c47cc2",
+      "visual_state_checkpoint_id": "state:event-02-gipsy-kings:initial"
+    },
+    {
+      "checkpoint_id": "route:event-03-gorgon-city",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-03-gorgon-city-initial.png",
+      "derived_sha256": "e6686d17658efa948aeab16e7220e08f928db0a0970788740b7984d9e759fffd",
+      "source_path": "public/03-details-20x10/event-03-gorgon-city-initial.png",
+      "source_sha256": "4d99d709dbcf4e484a7e2dce716804e294156580a35478d8aad846e9050c9a3e",
+      "visual_state_checkpoint_id": "state:event-03-gorgon-city:initial"
+    },
+    {
+      "checkpoint_id": "route:event-04-yebba",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-04-yebba-initial.png",
+      "derived_sha256": "d87915e607b9e06811df4e9cd56be6daa64b30d100306a7463474db4e5a994d9",
+      "source_path": "public/03-details-20x10/event-04-yebba-initial.png",
+      "source_sha256": "7b8f4af3c137df7d5824f982dbf3b0d4bdba89e9eaf2fe4d2bb4981d6f86894a",
+      "visual_state_checkpoint_id": "state:event-04-yebba:initial"
+    },
+    {
+      "checkpoint_id": "route:event-05-donavon-frankenreiter",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-05-donavon-frankenreiter-initial.png",
+      "derived_sha256": "be02f7280e97751100b33609bf7024fe31cb62868045adcfecbe899e48ffe516",
+      "source_path": "public/03-details-20x10/event-05-donavon-frankenreiter-initial.png",
+      "source_sha256": "fee33a6f86dc4b5a42d6162c1c16a80ddcbcdf2319e1b83d192f6d431418622b",
+      "visual_state_checkpoint_id": "state:event-05-donavon-frankenreiter:initial"
+    },
+    {
+      "checkpoint_id": "route:event-06-salif-keita",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-06-salif-keita-initial.png",
+      "derived_sha256": "4b88c2e27d55632fb434a35b12898997c8d2330251be7cd13b6253c12879af9d",
+      "source_path": "public/03-details-20x10/event-06-salif-keita-initial.png",
+      "source_sha256": "eb1cf394d669cb4bcfef33726252c6151137eee183be245519084396a7345b55",
+      "visual_state_checkpoint_id": "state:event-06-salif-keita:initial"
+    },
+    {
+      "checkpoint_id": "route:event-07-clara-la-san",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-07-clara-la-san-initial.png",
+      "derived_sha256": "2ba98ff50d7849b6de314ff5482e3ed9347b5a4fddfd71e205b5bd3ca7b7737c",
+      "source_path": "public/03-details-20x10/event-07-clara-la-san-initial.png",
+      "source_sha256": "c3ddee19cc977f10a2d78fbd09bfc9f63ab346d89a49b4d4d63034e3b733035f",
+      "visual_state_checkpoint_id": "state:event-07-clara-la-san:initial"
+    },
+    {
+      "checkpoint_id": "route:event-08-too-many-zooz",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-08-too-many-zooz-initial.png",
+      "derived_sha256": "1d5ffcc40f1d6b255ca54379d6c2c37dfc6a238e0b91ee0dca04c2f631275e88",
+      "source_path": "public/03-details-20x10/event-08-too-many-zooz-initial.png",
+      "source_sha256": "dddc3718b993807827bd8d5fdc0ccbccc50a48cbbcaf2ed053810b4fbe300379",
+      "visual_state_checkpoint_id": "state:event-08-too-many-zooz:initial"
+    },
+    {
+      "checkpoint_id": "route:event-09-i-hate-models",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-09-i-hate-models-initial.png",
+      "derived_sha256": "2efa5beadc7269e3c45f99e89a6a6ab6cc9920e52b169b01396b476845ce7db9",
+      "source_path": "public/03-details-20x10/event-09-i-hate-models-initial.png",
+      "source_sha256": "10432cc79f4252b8b610ca449e585d373b4dac7168ee08dea66e231ed1ecc1e1",
+      "visual_state_checkpoint_id": "state:event-09-i-hate-models:initial"
+    },
+    {
+      "checkpoint_id": "route:event-10-sullivan-king",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-10-sullivan-king-initial.png",
+      "derived_sha256": "be78dfaa0c16569f185ff1958bdd725317255586cb70fbf68312768dc7a7d18c",
+      "source_path": "public/03-details-20x10/event-10-sullivan-king-initial.png",
+      "source_sha256": "80e7368ae818cf8e45b89d82374ffdfc8823655d21acfe568e04ba76598cc192",
+      "visual_state_checkpoint_id": "state:event-10-sullivan-king:initial"
+    },
+    {
+      "checkpoint_id": "route:event-detail",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-detail-initial.png",
+      "derived_sha256": "0929d70eba3bd7d922ddd31b8c612d9a723a6039569f07ee563c98800329b8d8",
+      "source_path": "public/01-core/event-detail-initial.png",
+      "source_sha256": "7db8be24f647664257c748efb8d1df593eb7d814ab0bd25994a02d0d18da885c",
+      "visual_state_checkpoint_id": "state:event-detail:initial"
+    },
+    {
+      "checkpoint_id": "route:festival-detail",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-festival-detail-initial.png",
+      "derived_sha256": "7a902f9412909ee7c92561e144f876a1044dcf4fa101928e492b0c42408423c4",
+      "source_path": "public/01-core/festival-detail-initial.png",
+      "source_sha256": "6d8648f7313be0ff75effe0ddcbb54bfe39bb51fd5d144069b10792be3b1fb33",
+      "visual_state_checkpoint_id": "state:festival-detail:initial"
+    },
+    {
+      "checkpoint_id": "route:festivals",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-festivals-initial.png",
+      "derived_sha256": "7a9d04647f28fa6a8b59ff9ee0f563eb980104b572df1c9aedd49d1c849a63e9",
+      "source_path": "public/01-core/festivals-initial.png",
+      "source_sha256": "12d604c0958941aaa86d4a7d92aeca62fbedb5a0d1b594d9249eef3fb975cde5",
+      "visual_state_checkpoint_id": "state:festivals:initial"
+    },
+    {
+      "checkpoint_id": "route:genre-rock",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-genre-rock-initial.png",
+      "derived_sha256": "5fd3a89f57139cc643316eda2551663e328fc4683d9b7a3e28e3052fcd5e9897",
+      "source_path": "public/05-supporting-routes/genre-rock-initial.png",
+      "source_sha256": "edd850f6f9ac11cbfb3f7ad23f240bc28e191c65e1fbb7c861650fd9bfeabe7e",
+      "visual_state_checkpoint_id": "state:genre-rock:initial"
+    },
+    {
+      "checkpoint_id": "route:home",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-initial.png",
+      "derived_sha256": "e6c60439ccaada4e43505cc7be9b325792ed873971262c44230986f5b5994ccc",
+      "source_path": "public/01-core/home-initial.png",
+      "source_sha256": "0d13d9e3e416b88a5c30aa882296615d89da2342ffb8f59338f660f2486b072a",
+      "visual_state_checkpoint_id": "state:home:initial"
+    },
+    {
+      "checkpoint_id": "route:home-next-artists",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-next-artists-initial.png",
+      "derived_sha256": "e6c60439ccaada4e43505cc7be9b325792ed873971262c44230986f5b5994ccc",
+      "source_path": "public/02-interactions/home-next-artists-initial.png",
+      "source_sha256": "0ae999db9e8044d01b071690c189f64fb5697b2c9fd4a6ff04ad99a280217007",
+      "visual_state_checkpoint_id": "state:home-next-artists:initial"
+    },
+    {
+      "checkpoint_id": "route:home-next-events",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-next-events-initial.png",
+      "derived_sha256": "e6c60439ccaada4e43505cc7be9b325792ed873971262c44230986f5b5994ccc",
+      "source_path": "public/02-interactions/home-next-events-initial.png",
+      "source_sha256": "0d13d9e3e416b88a5c30aa882296615d89da2342ffb8f59338f660f2486b072a",
+      "visual_state_checkpoint_id": "state:home-next-events:initial"
+    },
+    {
+      "checkpoint_id": "route:home-search-modal",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-search-modal-initial.png",
+      "derived_sha256": "cc1591a7c731ed398b78606669abbab641b02ed7a6242944438216e205f3c7fb",
+      "source_path": "public/02-interactions/home-search-modal-initial.png",
+      "source_sha256": "377afa1c2027eb731c7d2f97af03107ce20fd86a8a12dba0bf86755a9f823a9a",
+      "visual_state_checkpoint_id": "state:home-search-modal:initial"
+    },
+    {
+      "checkpoint_id": "route:home-theme",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-theme-initial.png",
+      "derived_sha256": "e6c60439ccaada4e43505cc7be9b325792ed873971262c44230986f5b5994ccc",
+      "source_path": "public/02-interactions/home-theme-initial.png",
+      "source_sha256": "0d13d9e3e416b88a5c30aa882296615d89da2342ffb8f59338f660f2486b072a",
+      "visual_state_checkpoint_id": "state:home-theme:initial"
+    },
+    {
+      "checkpoint_id": "route:info-cookies",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-info-cookies-initial.png",
+      "derived_sha256": "d7993d58c2c416503cf6a91faab5319a965db074e2a7a23eac4bf77b73e23fc6",
+      "source_path": "public/05-supporting-routes/info-cookies-initial.png",
+      "source_sha256": "f0db26304744b272bc0156cff3fb76fca5ac24029a67817daf6de84023aabfbb",
+      "visual_state_checkpoint_id": "state:info-cookies:initial"
+    },
+    {
+      "checkpoint_id": "route:info-guidelines",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-info-guidelines-initial.png",
+      "derived_sha256": "ef4ec0c56bf84aea0343370693f7f0fed677cf82be3df7a7cf7b2fb177f44ba1",
+      "source_path": "public/05-supporting-routes/info-guidelines-initial.png",
+      "source_sha256": "1a8a0bca303cd4028a793cbe52202314e90f73dfce321de5d88833ebd79004eb",
+      "visual_state_checkpoint_id": "state:info-guidelines:initial"
+    },
+    {
+      "checkpoint_id": "route:info-privacy",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-info-privacy-initial.png",
+      "derived_sha256": "c61d9197cb67a538cd7dee38237ab06c59f27503ca310e19e48fde7bb3e07183",
+      "source_path": "public/05-supporting-routes/info-privacy-initial.png",
+      "source_sha256": "10fa2c9867b282c50d9a03109de2d0aa0fe6bf781e888e92eefd5808e95e570e",
+      "visual_state_checkpoint_id": "state:info-privacy:initial"
+    },
+    {
+      "checkpoint_id": "route:info-security",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-info-security-initial.png",
+      "derived_sha256": "f08be94c5468c681b6ffe0d902b0cd48ec4d389351e2af238d3aa95a92d1e72d",
+      "source_path": "public/05-supporting-routes/info-security-initial.png",
+      "source_sha256": "b816d68bc9cafff3128fbe1a48a498db2139af14e8d5504c1316c93379f7aebf",
+      "visual_state_checkpoint_id": "state:info-security:initial"
+    },
+    {
+      "checkpoint_id": "route:info-terms",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-info-terms-initial.png",
+      "derived_sha256": "34d37a7489950177a95aeee5646a6246013395ac294c29dfedd2620f179382ec",
+      "source_path": "public/05-supporting-routes/info-terms-initial.png",
+      "source_sha256": "521c0bf2eed601d174c518c38079a1c325cfc818fb8f178173bc380b9529419e",
+      "visual_state_checkpoint_id": "state:info-terms:initial"
+    },
+    {
+      "checkpoint_id": "route:jobs",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-jobs-initial.png",
+      "derived_sha256": "c5c591e463f0a886b94670e3095d1d4c7fa2a5b425a34e65a2c1cfb1d2d42662",
+      "source_path": "public/05-supporting-routes/jobs-initial.png",
+      "source_sha256": "01c5e14928a4e63bde240c4c0f59cd6588bab9ea5b68d355feec8cb11f5a2a59",
+      "visual_state_checkpoint_id": "state:jobs:initial"
+    },
+    {
+      "checkpoint_id": "route:live-streams",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-live-streams-initial.png",
+      "derived_sha256": "42c875ddd38fc30f9d0de255e148ab1825fbb801b850ae8c460d19f48737b2dc",
+      "source_path": "public/05-supporting-routes/live-streams-initial.png",
+      "source_sha256": "4e6ff3ac62a3ab46fb129a2c72b4767297f1b8babc25d4f7ef2ebd6031abbcc4",
+      "visual_state_checkpoint_id": "state:live-streams:initial"
+    },
+    {
+      "checkpoint_id": "route:locale-de",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-locale-de-initial.png",
+      "derived_sha256": "79ef87cc442e9086df5d8f09349bc1c25f60c9555ac1c26be0141a2df6604432",
+      "source_path": "public/05-supporting-routes/locale-de-initial.png",
+      "source_sha256": "335f61b9ee1fc037cc9a79e40aff9a7d95f2996a359b2f9c43a40b6ae8b21dcb",
+      "visual_state_checkpoint_id": "state:locale-de:initial"
+    },
+    {
+      "checkpoint_id": "route:locale-es",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-locale-es-initial.png",
+      "derived_sha256": "3867d22073d7b546478f00faa8a49c32cee59a44597f21e66f855a0f5ea4b2de",
+      "source_path": "public/05-supporting-routes/locale-es-initial.png",
+      "source_sha256": "0849981d2ad3b77645705cfcb32523ce7f7cca0fb1a2b50868cddaa11c203cc1",
+      "visual_state_checkpoint_id": "state:locale-es:initial"
+    },
+    {
+      "checkpoint_id": "route:locale-fr",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-locale-fr-initial.png",
+      "derived_sha256": "ae587625c0fc67f3f730ffc679074ec03c0d591ce6aaf87f3cc206305cc6e5f6",
+      "source_path": "public/05-supporting-routes/locale-fr-initial.png",
+      "source_sha256": "294245999ba691c0f3ffa57a5bfdb83b3ad6e70bfcc30df5e0fd8b61b751969f",
+      "visual_state_checkpoint_id": "state:locale-fr:initial"
+    },
+    {
+      "checkpoint_id": "route:locale-pt",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-locale-pt-initial.png",
+      "derived_sha256": "09894464f0fa347e9b7d12c1b7992e227fb98d92e606720dbd5cf7a6ba54e307",
+      "source_path": "public/05-supporting-routes/locale-pt-initial.png",
+      "source_sha256": "f095329ef3d50b253de71f74b5dce735ec85875ff14181d094de090e6bd8633f",
+      "visual_state_checkpoint_id": "state:locale-pt:initial"
+    },
+    {
+      "checkpoint_id": "route:location-filter",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-location-filter-initial.png",
+      "derived_sha256": "1d2f8a3e0462d243ced987c8374c52baa24e1fa619cab1f7cf0c5f89bc52d31d",
+      "source_path": "public/01-core/location-filter-initial.png",
+      "source_sha256": "14e0d45c3d50dbfb154f6143c3e9257702861fed5ab2e215813f8ded6097cdc6",
+      "visual_state_checkpoint_id": "state:location-filter:initial"
+    },
+    {
+      "checkpoint_id": "route:location-search-empty",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-location-search-empty-initial.png",
+      "derived_sha256": "06f74a2d0a43ca06b5cf297d89dd5abc7585695d064a45fa4370ab34c358cf7f",
+      "source_path": "public/02-interactions/location-search-empty-initial.png",
+      "source_sha256": "8b098e018b2cde0c1733d495ad6dc70afc750e34c9273e5e6aa1f474727f7d41",
+      "visual_state_checkpoint_id": "state:location-search-empty:initial"
+    },
+    {
+      "checkpoint_id": "route:location-search-toronto",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-location-search-toronto-initial.png",
+      "derived_sha256": "7c37763e5999ceede1b5e3ec4dce37597524a23c6ad4fa1a4213a3bd14fb0ccd",
+      "source_path": "public/02-interactions/location-search-toronto-initial.png",
+      "source_sha256": "1659876be4854671eb8a394322adaf82412f291a1e251226f7f5f44a0318b47c",
+      "visual_state_checkpoint_id": "state:location-search-toronto:initial"
+    },
+    {
+      "checkpoint_id": "route:montreal-next-30-days",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-next-30-days-initial.png",
+      "derived_sha256": "11292f5238e9ae05378cfcdfa2f866f885f02c8cffec42629d6fcc03986b56c1",
+      "source_path": "public/02-interactions/montreal-next-30-days-initial.png",
+      "source_sha256": "cbe9bf55c222a51e73e178c079d8bb47da1e227eda79efe9d8f65b2920b1535d",
+      "visual_state_checkpoint_id": "state:montreal-next-30-days:initial"
+    },
+    {
+      "checkpoint_id": "route:montreal-next-7-days",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-next-7-days-initial.png",
+      "derived_sha256": "28dc580cd9cbe6a57c1b79f73a6f8126f3da22ccde9ec55612a59e854e8b726c",
+      "source_path": "public/02-interactions/montreal-next-7-days-initial.png",
+      "source_sha256": "6cfcaaf35ecd1eb611855917fe7a35e2109cd4c1bd1f79caedd8302a3e42d25e",
+      "visual_state_checkpoint_id": "state:montreal-next-7-days:initial"
+    },
+    {
+      "checkpoint_id": "route:montreal-page-1",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-page-1-initial.png",
+      "derived_sha256": "07297c30de10e7d34db4c801b58b17798e6678587ab504bdb0fd6ce3eaed9f37",
+      "source_path": "public/01-core/montreal-page-1-initial.png",
+      "source_sha256": "67ccca60032dce6b8a585a6182a1717f78e870f1e34449564429929c418b3536",
+      "visual_state_checkpoint_id": "state:montreal-page-1:initial"
+    },
+    {
+      "checkpoint_id": "route:montreal-page-2",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-page-2-initial.png",
+      "derived_sha256": "4dcad5c4cd25b4fef2f55bb6b0ff767543029e6508c9af4990bae6861a468714",
+      "source_path": "public/01-core/montreal-page-2-initial.png",
+      "source_sha256": "d46f3f19115f14f9ffb9f2ca1bf950d547a6ba6bf42abc227880c5446b392d7e",
+      "visual_state_checkpoint_id": "state:montreal-page-2:initial"
+    },
+    {
+      "checkpoint_id": "route:montreal-today",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-today-initial.png",
+      "derived_sha256": "30f454cf4b41d7e1984cf341c8881e31b1fcd252a5f75bd78a5f62791be3026f",
+      "source_path": "public/02-interactions/montreal-today-initial.png",
+      "source_sha256": "50bd33183a1df4454bafe228150644c974f239409034d4f8d5e5c0c4e9ad7165",
+      "visual_state_checkpoint_id": "state:montreal-today:initial"
+    },
+    {
+      "checkpoint_id": "route:nearby-genre-rock",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-nearby-genre-rock-initial.png",
+      "derived_sha256": "9029286922537c0e49ded4ebd31f82ff5f3f52583f0c799c55ea35e59a63d607",
+      "source_path": "public/05-supporting-routes/nearby-genre-rock-initial.png",
+      "source_sha256": "9b2f217efc8c83c8be1fb0fe69224edfa49316aab3ba6969daa83077d22c4bd4",
+      "visual_state_checkpoint_id": "state:nearby-genre-rock:initial"
+    },
+    {
+      "checkpoint_id": "route:news",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-news-initial.png",
+      "derived_sha256": "89b93f34301f6567970d475d132ad05f49c84debbed075a112d72a4e7ebdef62",
+      "source_path": "public/05-supporting-routes/news-initial.png",
+      "source_sha256": "02805d71ac1ac77015a3eb64b804434371c4584310ff58c3aaef8ae9ec0d6833",
+      "visual_state_checkpoint_id": "state:news:initial"
+    },
+    {
+      "checkpoint_id": "route:not-found",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-not-found-initial.png",
+      "derived_sha256": "81f732c397c2bdcf768d3f05156d065113b965cac589627cd445bffc55aae307",
+      "source_path": "public/07-not-found/not-found-initial.png",
+      "source_sha256": "81f732c397c2bdcf768d3f05156d065113b965cac589627cd445bffc55aae307",
+      "visual_state_checkpoint_id": "state:not-found:initial"
+    },
+    {
+      "checkpoint_id": "route:password-reset",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-password-reset-initial.png",
+      "derived_sha256": "b90ff114c76c09ae8b713b46f20306c712e958aae9fd57bfdc7b2e9bf4106918",
+      "source_path": "public/05-supporting-routes/password-reset-initial.png",
+      "source_sha256": "b90ff114c76c09ae8b713b46f20306c712e958aae9fd57bfdc7b2e9bf4106918",
+      "visual_state_checkpoint_id": "state:password-reset:initial"
+    },
+    {
+      "checkpoint_id": "route:popular-artists-page-2",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-popular-artists-page-2-initial.png",
+      "derived_sha256": "581fef1da7d37669f9c19547a8fb33015faec4455ae5642e1b2a26925f5adab3",
+      "source_path": "public/04-venues-boundaries/popular-artists-page-2-initial.png",
+      "source_sha256": "6a43456988e456771b6c87e11e392662a0658f3f863d6e989f2c10f6c6fcde4e",
+      "visual_state_checkpoint_id": "state:popular-artists-page-2:initial"
+    },
+    {
+      "checkpoint_id": "route:protected-home-logged-out",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-protected-home-logged-out-initial.png",
+      "derived_sha256": "2ec6c13e3c265a29a91cc7e1b2cfcbd773a7c00ab188626970cce392e8db8989",
+      "source_path": "public/06-extra-entrypoints/protected-home-logged-out-initial.png",
+      "source_sha256": "2ec6c13e3c265a29a91cc7e1b2cfcbd773a7c00ab188626970cce392e8db8989",
+      "visual_state_checkpoint_id": "state:protected-home-logged-out:initial"
+    },
+    {
+      "checkpoint_id": "route:region-01-sf-bay-area",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-01-sf-bay-area-initial.png",
+      "derived_sha256": "08252fda9984d334b3a65bb2b7f00e9ad2626c79e5665b3c4cd55ea000fc06d8",
+      "source_path": "public/03-details-20x10/region-01-sf-bay-area-initial.png",
+      "source_sha256": "754609658943cb246ec04a07b34b8c9c49ce21fb52c8196fa9ff46160a0aafd4",
+      "visual_state_checkpoint_id": "state:region-01-sf-bay-area:initial"
+    },
+    {
+      "checkpoint_id": "route:region-02-los-angeles",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-02-los-angeles-initial.png",
+      "derived_sha256": "d7c6b107050e6d8824f268f5425234e4196c9df7ce56191487d824f7b2f2129e",
+      "source_path": "public/03-details-20x10/region-02-los-angeles-initial.png",
+      "source_sha256": "ef0335a20732dfbeea2fda5c9a8627b6a3c9764fac443ad46453915c36de7246",
+      "visual_state_checkpoint_id": "state:region-02-los-angeles:initial"
+    },
+    {
+      "checkpoint_id": "route:region-03-new-york",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-03-new-york-initial.png",
+      "derived_sha256": "f02abcd7fbf13d09a1ea48358c8e036d15d27284b49e296a8fc8ec4efa738da1",
+      "source_path": "public/03-details-20x10/region-03-new-york-initial.png",
+      "source_sha256": "834d30c431a3cca464b6ec6f366dd82c0c29301fa2f97979b1351e5075bc239c",
+      "visual_state_checkpoint_id": "state:region-03-new-york:initial"
+    },
+    {
+      "checkpoint_id": "route:region-04-portland",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-04-portland-initial.png",
+      "derived_sha256": "5b55501905aa6d069466c9f574de6a14d9961abbe5a4b4c2fb3fa04cb066fef9",
+      "source_path": "public/03-details-20x10/region-04-portland-initial.png",
+      "source_sha256": "928939893165f1f9247526d5291931ae8870a6abe681cf9dccacd5a8719c6525",
+      "visual_state_checkpoint_id": "state:region-04-portland:initial"
+    },
+    {
+      "checkpoint_id": "route:region-05-washington",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-05-washington-initial.png",
+      "derived_sha256": "8ed29d40ea1f7c460a806aecf259fb1463dee672a84ba403a7092865953f67d8",
+      "source_path": "public/03-details-20x10/region-05-washington-initial.png",
+      "source_sha256": "cc1888da63677f050f9a0a9c40e0a0fc70323d1903a7bc96999aac7233a91b15",
+      "visual_state_checkpoint_id": "state:region-05-washington:initial"
+    },
+    {
+      "checkpoint_id": "route:region-06-philadelphia",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-06-philadelphia-initial.png",
+      "derived_sha256": "00deca03b5e0a5d551a0cc9f20967cdb4c695f9a7f56541d2af615e7c382d490",
+      "source_path": "public/03-details-20x10/region-06-philadelphia-initial.png",
+      "source_sha256": "f158eda323a18e81c7d6fe78023ee8219623a0841efda6a90b9089bdf476dec6",
+      "visual_state_checkpoint_id": "state:region-06-philadelphia:initial"
+    },
+    {
+      "checkpoint_id": "route:region-07-seattle",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-07-seattle-initial.png",
+      "derived_sha256": "67888afbe2d654032ae74ccbd028c49871b6a8e057d3baaf4ebf48ac84c013f4",
+      "source_path": "public/03-details-20x10/region-07-seattle-initial.png",
+      "source_sha256": "a35480ac969a39eeab693c1d84a1f372c20e431ab084185bfdb5e63e0dffbf2f",
+      "visual_state_checkpoint_id": "state:region-07-seattle:initial"
+    },
+    {
+      "checkpoint_id": "route:region-08-chicago",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-08-chicago-initial.png",
+      "derived_sha256": "d04856525e9cf4c6648188bfda9b785dd53a79b65315534b5c57730d13af8ece",
+      "source_path": "public/03-details-20x10/region-08-chicago-initial.png",
+      "source_sha256": "89d0dbcae9bca87b9a677107e9209e189f952dc0ff51e169ca75a9748e365ff9",
+      "visual_state_checkpoint_id": "state:region-08-chicago:initial"
+    },
+    {
+      "checkpoint_id": "route:region-09-orlando",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-09-orlando-initial.png",
+      "derived_sha256": "7a8d512065469e3a47d66a91d0493967b309036aa44e809e7ad24d71cf6b214a",
+      "source_path": "public/03-details-20x10/region-09-orlando-initial.png",
+      "source_sha256": "5e510789ba2ddb23b4ea5e1b02892e8c251092b559afd4edbd9cf935450681b9",
+      "visual_state_checkpoint_id": "state:region-09-orlando:initial"
+    },
+    {
+      "checkpoint_id": "route:region-10-pittsburgh",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-10-pittsburgh-initial.png",
+      "derived_sha256": "4eca33d12de4188adcb5c7f9f2ac52e11912aca0ef889db5d7b1163290f30523",
+      "source_path": "public/03-details-20x10/region-10-pittsburgh-initial.png",
+      "source_sha256": "89bd6afd541f82a58d612889a4e2e6b734f02cafe7874e1c8c850023ee15d7e3",
+      "visual_state_checkpoint_id": "state:region-10-pittsburgh:initial"
+    },
+    {
+      "checkpoint_id": "route:sign-in",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-sign-in-initial.png",
+      "derived_sha256": "b8c82d392ba0e419e3b6ef69dd33d6c30a36d9427ea668937edb53294aff24dc",
+      "source_path": "public/01-core/sign-in-initial.png",
+      "source_sha256": "aad4e428aa86719113bd7148ac6fe676b58122c874d7c6355fb7072a6d3368ad",
+      "visual_state_checkpoint_id": "state:sign-in:initial"
+    },
+    {
+      "checkpoint_id": "route:sign-up",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-sign-up-initial.png",
+      "derived_sha256": "2ec6c13e3c265a29a91cc7e1b2cfcbd773a7c00ab188626970cce392e8db8989",
+      "source_path": "public/01-core/sign-up-initial.png",
+      "source_sha256": "2ec6c13e3c265a29a91cc7e1b2cfcbd773a7c00ab188626970cce392e8db8989",
+      "visual_state_checkpoint_id": "state:sign-up:initial"
+    },
+    {
+      "checkpoint_id": "route:ticketmaster-boundary",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-ticketmaster-boundary-initial.png",
+      "derived_sha256": "9b55e6619898c660d4e80e3238e156da702d0eebb2727a8380432b015f6101ec",
+      "source_path": "public/04-venues-boundaries/ticketmaster-boundary-initial.png",
+      "source_sha256": "1beac92ad2485e3f479d09264a701e69032da4add6444dcde588d6a588cd3edc",
+      "visual_state_checkpoint_id": "state:ticketmaster-boundary:initial"
+    },
+    {
+      "checkpoint_id": "route:trending-artists",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-trending-artists-initial.png",
+      "derived_sha256": "df1dc52716cc5cf9cb20fb86d0bdf88995b08e88d5bab87264e1e9a716dd5192",
+      "source_path": "public/05-supporting-routes/trending-artists-initial.png",
+      "source_sha256": "8314f1f820201bc2239ef4f34cde6a77a9f99da00de06a6ff16c1846f784d7a3",
+      "visual_state_checkpoint_id": "state:trending-artists:initial"
+    },
+    {
+      "checkpoint_id": "route:venue-detail",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-detail-initial.png",
+      "derived_sha256": "d0aae04a8d246dfe40e7357924abdd0e2f586672973dfb201ca4c3e123a4da4c",
+      "source_path": "public/01-core/venue-detail-initial.png",
+      "source_sha256": "ffacd170db6a5cb3ea4bf3e02348ff70ebfde3dd5f481b021c71beb4ca3c8629",
+      "visual_state_checkpoint_id": "state:venue-detail:initial"
+    },
+    {
+      "checkpoint_id": "route:venue-hall-est-stade-olympique",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-hall-est-stade-olympique-initial.png",
+      "derived_sha256": "23774d561e8eaeaef6f1532caef2bad063e7db1ecdfcd9b03f1f536bcc073c3d",
+      "source_path": "public/04-venues-boundaries/venue-hall-est-stade-olympique-initial.png",
+      "source_sha256": "39557bad27ebba1fa6e5c3d15203895a0c00aab8e09ddc0f19a9fd1503824e84",
+      "visual_state_checkpoint_id": "state:venue-hall-est-stade-olympique:initial"
+    },
+    {
+      "checkpoint_id": "route:venue-le-ministere",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-le-ministere-initial.png",
+      "derived_sha256": "8b3051c1ad01d762bc73c7b70ea07d391b5b460ad1877036f7b5be21754a401a",
+      "source_path": "public/04-venues-boundaries/venue-le-ministere-initial.png",
+      "source_sha256": "b8e8df90015283adc469637db288fb6f8ccf9d4f47f4dbe2a49e21d94ee17190",
+      "visual_state_checkpoint_id": "state:venue-le-ministere:initial"
+    },
+    {
+      "checkpoint_id": "route:venue-lolympia",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-lolympia-initial.png",
+      "derived_sha256": "241fb78ab3ab2fcf355a95556e52f309edb99346fa8ceeb98d83c8b3bf6920c4",
+      "source_path": "public/04-venues-boundaries/venue-lolympia-initial.png",
+      "source_sha256": "6705b6ccca322e7c0a537492d36a3964b8f30079ef7c29ef2cd99c9d0c2a1d6b",
+      "visual_state_checkpoint_id": "state:venue-lolympia:initial"
+    },
+    {
+      "checkpoint_id": "route:venue-mtelus",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-mtelus-initial.png",
+      "derived_sha256": "2b1d6bc723a8363d07b9bc902e90b87f45ae7afab89e811fb06cf236868f7b81",
+      "source_path": "public/04-venues-boundaries/venue-mtelus-initial.png",
+      "source_sha256": "96e3984b8cf5d3f6fba48f6ad5ac2008727be5703c8678b2c9e7f3e565025703",
+      "visual_state_checkpoint_id": "state:venue-mtelus:initial"
+    },
+    {
+      "checkpoint_id": "route:venue-new-city-gas",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-new-city-gas-initial.png",
+      "derived_sha256": "c12ebdea1c5412125044ae34bb93e24abb29460580f0685ba90a3a5542b005ba",
+      "source_path": "public/04-venues-boundaries/venue-new-city-gas-initial.png",
+      "source_sha256": "8d11f8377666315c4c682bc70cdd6731ebad29e3ef7c2ec24fb4894ce6c619c8",
+      "visual_state_checkpoint_id": "state:venue-new-city-gas:initial"
+    },
+    {
+      "checkpoint_id": "route:venue-place-bell",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-place-bell-initial.png",
+      "derived_sha256": "d0aae04a8d246dfe40e7357924abdd0e2f586672973dfb201ca4c3e123a4da4c",
+      "source_path": "public/04-venues-boundaries/venue-place-bell-initial.png",
+      "source_sha256": "ffacd170db6a5cb3ea4bf3e02348ff70ebfde3dd5f481b021c71beb4ca3c8629",
+      "visual_state_checkpoint_id": "state:venue-place-bell:initial"
+    },
+    {
+      "checkpoint_id": "route:venue-place-des-arts",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-place-des-arts-initial.png",
+      "derived_sha256": "90b8116be5b4c0d0a3c496cebb7a86fa3d9aab275145640f321c26f9d4706d47",
+      "source_path": "public/04-venues-boundaries/venue-place-des-arts-initial.png",
+      "source_sha256": "9803bed006f1d1ae4280f56bcd46b734ba66ce9be5c86e2621fbf20064a698f1",
+      "visual_state_checkpoint_id": "state:venue-place-des-arts:initial"
+    },
+    {
+      "checkpoint_id": "route:venue-theatre-fairmount",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-theatre-fairmount-initial.png",
+      "derived_sha256": "fa656b1e96327b6a2af50f7162894a3a762f61f4488f63a57e766337e65ec8cc",
+      "source_path": "public/04-venues-boundaries/venue-theatre-fairmount-initial.png",
+      "source_sha256": "136447c1306b7738d530cc256d54cfc568f37160edbdf86b36b85cc7bbaca5e1",
+      "visual_state_checkpoint_id": "state:venue-theatre-fairmount:initial"
+    },
+    {
+      "checkpoint_id": "state:about:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-about-initial.png",
+      "derived_sha256": "2738797b1b9aab2862bed3a97e8b75bd172c558910cf7f2e7d902e859b834c38",
+      "source_path": "public/06-extra-entrypoints/about-initial.png",
+      "source_sha256": "ef88e51235816a62ce57bbdbc465ddc6c4d8f645eab11860abcb5e7e4e202475",
+      "visual_state_checkpoint_id": "state:about:initial"
+    },
+    {
+      "checkpoint_id": "state:app:initial",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-app-initial.png",
+      "derived_sha256": "591dee20f031f81961bffa5b7d7d7cb9d9f852551da5cd7b578127ce905873de",
+      "source_path": "public/06-extra-entrypoints/app-initial.png",
+      "source_sha256": "591dee20f031f81961bffa5b7d7d7cb9d9f852551da5cd7b578127ce905873de",
+      "visual_state_checkpoint_id": "state:app:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-01-coldplay:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-01-coldplay-initial.png",
+      "derived_sha256": "f32dd0746c9017806d4d27205f55d4155c3ccd6f631abb9d53f934bf8d2bd145",
+      "source_path": "public/03-details-20x10/artist-01-coldplay-initial.png",
+      "source_sha256": "c11fbb04ce37162983a819c1162f3869bebd5534a1c51b63d14524d472cf3764",
+      "visual_state_checkpoint_id": "state:artist-01-coldplay:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-01-coldplay:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-01-coldplay-lazy-end.png",
+      "derived_sha256": "f32dd0746c9017806d4d27205f55d4155c3ccd6f631abb9d53f934bf8d2bd145",
+      "source_path": "public/03-details-20x10/artist-01-coldplay-lazy-end.png",
+      "source_sha256": "1cfb11c6cd597145327e1cda9a6c28530702e0d61fc91ac93edf618b88135ff9",
+      "visual_state_checkpoint_id": "state:artist-01-coldplay:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:artist-02-rihanna:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-02-rihanna-initial.png",
+      "derived_sha256": "cb34941d823a237a7925710dc4e3588ce8acd395ddb0c526aa5dc998d27996f3",
+      "source_path": "public/03-details-20x10/artist-02-rihanna-initial.png",
+      "source_sha256": "9f0dc8c0115982fb2b8db7bc22c2f26629050b4d45fe849b94903e55a0713625",
+      "visual_state_checkpoint_id": "state:artist-02-rihanna:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-02-rihanna:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-02-rihanna-lazy-end.png",
+      "derived_sha256": "cb34941d823a237a7925710dc4e3588ce8acd395ddb0c526aa5dc998d27996f3",
+      "source_path": "public/03-details-20x10/artist-02-rihanna-lazy-end.png",
+      "source_sha256": "2dd1e290be5f80a1b5dbb778a64736ded44ac3cd4d780cb21b8066e38a5303de",
+      "visual_state_checkpoint_id": "state:artist-02-rihanna:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:artist-03-the-weeknd:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-03-the-weeknd-initial.png",
+      "derived_sha256": "4f0cb54a2db2883d85b0d20b0b1defe5cff5faab0e0e069a2bbcdf44a900b28b",
+      "source_path": "public/03-details-20x10/artist-03-the-weeknd-initial.png",
+      "source_sha256": "d5b114453e228d23afdec8f0115e1db3720417b2cd733cad79facbacce62cad6",
+      "visual_state_checkpoint_id": "state:artist-03-the-weeknd:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-03-the-weeknd:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-03-the-weeknd-lazy-end.png",
+      "derived_sha256": "4f0cb54a2db2883d85b0d20b0b1defe5cff5faab0e0e069a2bbcdf44a900b28b",
+      "source_path": "public/03-details-20x10/artist-03-the-weeknd-lazy-end.png",
+      "source_sha256": "66753c415561239dc743afa0f66e08a67bcace6864e5b7e0f03c6d732b56ecf7",
+      "visual_state_checkpoint_id": "state:artist-03-the-weeknd:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:artist-04-eminem:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-04-eminem-initial.png",
+      "derived_sha256": "92fb31676ea8ebf76c8ced4b2d5d08241348bdc63dead0f5f1c1616757b6cf64",
+      "source_path": "public/03-details-20x10/artist-04-eminem-initial.png",
+      "source_sha256": "f8872e37728864efd294d995e0181787c46463ee68fbd9a0380d359dc7062c47",
+      "visual_state_checkpoint_id": "state:artist-04-eminem:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-04-eminem:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-04-eminem-lazy-end.png",
+      "derived_sha256": "92fb31676ea8ebf76c8ced4b2d5d08241348bdc63dead0f5f1c1616757b6cf64",
+      "source_path": "public/03-details-20x10/artist-04-eminem-lazy-end.png",
+      "source_sha256": "f8872e37728864efd294d995e0181787c46463ee68fbd9a0380d359dc7062c47",
+      "visual_state_checkpoint_id": "state:artist-04-eminem:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:artist-05-drake:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-05-drake-initial.png",
+      "derived_sha256": "e1bc52aed06f943ceb61e0b08331f4d24eaed62efc9b8c2328e8a2cd6248a0e5",
+      "source_path": "public/03-details-20x10/artist-05-drake-initial.png",
+      "source_sha256": "218f6ad3f099baa6cf2b59e964d9484a4ac1385c25a62b11f200fca7dc7262bc",
+      "visual_state_checkpoint_id": "state:artist-05-drake:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-05-drake:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-05-drake-lazy-end.png",
+      "derived_sha256": "e1bc52aed06f943ceb61e0b08331f4d24eaed62efc9b8c2328e8a2cd6248a0e5",
+      "source_path": "public/03-details-20x10/artist-05-drake-lazy-end.png",
+      "source_sha256": "218f6ad3f099baa6cf2b59e964d9484a4ac1385c25a62b11f200fca7dc7262bc",
+      "visual_state_checkpoint_id": "state:artist-05-drake:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:artist-06-taylor-swift:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-06-taylor-swift-initial.png",
+      "derived_sha256": "dc86a6f38aaafe3a0f1188f4f6633bb24209c53804619f2f454a1f4cd191ae80",
+      "source_path": "public/03-details-20x10/artist-06-taylor-swift-initial.png",
+      "source_sha256": "4284e9e65e631445bc3d6148dcebcce569709eeb27bc88a5d46b00a96e53ca69",
+      "visual_state_checkpoint_id": "state:artist-06-taylor-swift:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-06-taylor-swift:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-06-taylor-swift-lazy-end.png",
+      "derived_sha256": "dc86a6f38aaafe3a0f1188f4f6633bb24209c53804619f2f454a1f4cd191ae80",
+      "source_path": "public/03-details-20x10/artist-06-taylor-swift-lazy-end.png",
+      "source_sha256": "4284e9e65e631445bc3d6148dcebcce569709eeb27bc88a5d46b00a96e53ca69",
+      "visual_state_checkpoint_id": "state:artist-06-taylor-swift:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:artist-07-bruno-mars:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-07-bruno-mars-initial.png",
+      "derived_sha256": "dd61e4a7773e83626265dbb96f5351c37f89b52df3068cb2e22b19ebe71d5aa6",
+      "source_path": "public/03-details-20x10/artist-07-bruno-mars-initial.png",
+      "source_sha256": "cb6ce88726363fba0833fe0bd66218b961cd6f9905bb90772eb96b2a33bfa542",
+      "visual_state_checkpoint_id": "state:artist-07-bruno-mars:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-07-bruno-mars:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-07-bruno-mars-lazy-end.png",
+      "derived_sha256": "8451929fe4e45323ed5d80895a9f040b3071455717fdd6e300e41d799b23cb32",
+      "source_path": "public/03-details-20x10/artist-07-bruno-mars-lazy-end.png",
+      "source_sha256": "4d9ec3d707c39ea47cb065e6d0cfb27e9faf4657637ce013298b52aa2d885836",
+      "visual_state_checkpoint_id": "state:artist-07-bruno-mars:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:artist-08-kanye-west:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-08-kanye-west-initial.png",
+      "derived_sha256": "704eab635fcc5a603662e0ad314ff4877aa0ca9f485cd20dae413694ec3562c9",
+      "source_path": "public/03-details-20x10/artist-08-kanye-west-initial.png",
+      "source_sha256": "40e77dd0cffe41c2700dd28139d9885f4066fb325527f57e8f47ba1503542b64",
+      "visual_state_checkpoint_id": "state:artist-08-kanye-west:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-08-kanye-west:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-08-kanye-west-lazy-end.png",
+      "derived_sha256": "704eab635fcc5a603662e0ad314ff4877aa0ca9f485cd20dae413694ec3562c9",
+      "source_path": "public/03-details-20x10/artist-08-kanye-west-lazy-end.png",
+      "source_sha256": "40e77dd0cffe41c2700dd28139d9885f4066fb325527f57e8f47ba1503542b64",
+      "visual_state_checkpoint_id": "state:artist-08-kanye-west:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:artist-09-maroon-5:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-09-maroon-5-initial.png",
+      "derived_sha256": "e3f08103dce2c631902bb280643bea7293f6212e9a74e582906f87b0f969ca6e",
+      "source_path": "public/03-details-20x10/artist-09-maroon-5-initial.png",
+      "source_sha256": "12c5042d3b8d5a89121278ce03690f10c0cf0aabc3411dfc5b8b8c5a0b197b60",
+      "visual_state_checkpoint_id": "state:artist-09-maroon-5:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-09-maroon-5:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-09-maroon-5-lazy-end.png",
+      "derived_sha256": "e3f08103dce2c631902bb280643bea7293f6212e9a74e582906f87b0f969ca6e",
+      "source_path": "public/03-details-20x10/artist-09-maroon-5-lazy-end.png",
+      "source_sha256": "7da19ce057c39ea9740968f2ee4579d0e368d380e521fbdddbf9704215908e8a",
+      "visual_state_checkpoint_id": "state:artist-09-maroon-5:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:artist-10-lady-gaga:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-10-lady-gaga-initial.png",
+      "derived_sha256": "126e966fff6b5dbabbbbf7600031d0d9781ac8c8d8a25523fe22c1e8e39cb718",
+      "source_path": "public/03-details-20x10/artist-10-lady-gaga-initial.png",
+      "source_sha256": "32f8f4b2f790c1a651a98a584e713dcf9f719fcd6c9e665391a8799033689b7b",
+      "visual_state_checkpoint_id": "state:artist-10-lady-gaga:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-10-lady-gaga:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-10-lady-gaga-lazy-end.png",
+      "derived_sha256": "126e966fff6b5dbabbbbf7600031d0d9781ac8c8d8a25523fe22c1e8e39cb718",
+      "source_path": "public/03-details-20x10/artist-10-lady-gaga-lazy-end.png",
+      "source_sha256": "18ccb72effdbb4f61ee199b40864e7a76cd5fbad296de16f3376b08b6b9f68bd",
+      "visual_state_checkpoint_id": "state:artist-10-lady-gaga:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:artist-detail-authenticated:tracked-after-refresh",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-artist-detail-authenticated-tracked-after-refresh.png",
+      "derived_sha256": "b8121de730ab5d872f3b468d112677aabe5e856a992c7b0f2e24ad4fec9bf4b2",
+      "source_path": "auth/visual-supplement/attempt-2/artist-tracked-after-refresh.png",
+      "source_sha256": "b8121de730ab5d872f3b468d112677aabe5e856a992c7b0f2e24ad4fec9bf4b2",
+      "visual_state_checkpoint_id": "state:artist-detail-authenticated:tracked-after-refresh"
+    },
+    {
+      "checkpoint_id": "state:artist-detail:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-detail-initial.png",
+      "derived_sha256": "4866446239a15392e3fabca4a1f9636f0bc8bc2bc5f8edbea669e76cce1f7fcf",
+      "source_path": "public/01-core/artist-detail-initial.png",
+      "source_sha256": "60df8a11a3517f068844a2b03b4ce1087c1d476cba3fa74d6b69e33e5fbd4875",
+      "visual_state_checkpoint_id": "state:artist-detail:initial"
+    },
+    {
+      "checkpoint_id": "state:artist-detail:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artist-detail-lazy-end.png",
+      "derived_sha256": "4866446239a15392e3fabca4a1f9636f0bc8bc2bc5f8edbea669e76cce1f7fcf",
+      "source_path": "public/01-core/artist-detail-lazy-end.png",
+      "source_sha256": "cb1e69b99ca992351732a6b4a88ae30c0e1278d258185770d4ee56116090a737",
+      "visual_state_checkpoint_id": "state:artist-detail:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:artists:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artists-initial.png",
+      "derived_sha256": "95f69eb83027c1b4b18bea9d4317dd095a5c0bab88ac1b1596e8083962c8e013",
+      "source_path": "public/01-core/artists-initial.png",
+      "source_sha256": "b48cbba22108ebca346a90fd9c9351f1f864de56306b6fdb716242eae047e057",
+      "visual_state_checkpoint_id": "state:artists:initial"
+    },
+    {
+      "checkpoint_id": "state:artists:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-artists-lazy-end.png",
+      "derived_sha256": "95f69eb83027c1b4b18bea9d4317dd095a5c0bab88ac1b1596e8083962c8e013",
+      "source_path": "public/01-core/artists-lazy-end.png",
+      "source_sha256": "34dea66bafffd60fd077b67433b952b82333ee3e20571c977f0c22270280ded5",
+      "visual_state_checkpoint_id": "state:artists:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:authenticated-home:account-menu",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-authenticated-home-account-menu.png",
+      "derived_sha256": "c762211bcf2c6af013ae2258604e43019aba6f3828b1a98ff1599f3730733595",
+      "source_path": "auth/visual-supplement/attempt-2/authenticated-account-menu.png",
+      "source_sha256": "c762211bcf2c6af013ae2258604e43019aba6f3828b1a98ff1599f3730733595",
+      "visual_state_checkpoint_id": "state:authenticated-home:account-menu"
+    },
+    {
+      "checkpoint_id": "state:concerts:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-concerts-initial.png",
+      "derived_sha256": "399446501640c4e485783b9a538a4688adb6d1587700c05c702e6880ed2af269",
+      "source_path": "public/01-core/concerts-initial.png",
+      "source_sha256": "d1203c41d69ba072351c11e96a55da3ef4d23daac2d2aa1ac7c1d6eddc68b0b4",
+      "visual_state_checkpoint_id": "state:concerts:initial"
+    },
+    {
+      "checkpoint_id": "state:concerts:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-concerts-lazy-end.png",
+      "derived_sha256": "399446501640c4e485783b9a538a4688adb6d1587700c05c702e6880ed2af269",
+      "source_path": "public/01-core/concerts-lazy-end.png",
+      "source_sha256": "b42b5854a1e780cddcec39f2a26b58e6520845d86e1e2a8c87df984af7af13ef",
+      "visual_state_checkpoint_id": "state:concerts:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:design:initial",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-design-initial.png",
+      "derived_sha256": "99db2a93b06fa1bf617f5c495e02dcf6c0b76961108491217e2cf4fed8699d35",
+      "source_path": "public/05-supporting-routes/design-initial.png",
+      "source_sha256": "99db2a93b06fa1bf617f5c495e02dcf6c0b76961108491217e2cf4fed8699d35",
+      "visual_state_checkpoint_id": "state:design:initial"
+    },
+    {
+      "checkpoint_id": "state:developer:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-developer-initial.png",
+      "derived_sha256": "a7d43f1a39924d2e2dde8571eeab284e617d8567676114626b0b13d7d0675d70",
+      "source_path": "public/05-supporting-routes/developer-initial.png",
+      "source_sha256": "19c96a6f3cf4538cb9e57e2f8ad620a460dfb6e40e7c7f508e4c9f1eb8e78548",
+      "visual_state_checkpoint_id": "state:developer:initial"
+    },
+    {
+      "checkpoint_id": "state:event-01-steve-lacy:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-01-steve-lacy-initial.png",
+      "derived_sha256": "0929d70eba3bd7d922ddd31b8c612d9a723a6039569f07ee563c98800329b8d8",
+      "source_path": "public/03-details-20x10/event-01-steve-lacy-initial.png",
+      "source_sha256": "7db8be24f647664257c748efb8d1df593eb7d814ab0bd25994a02d0d18da885c",
+      "visual_state_checkpoint_id": "state:event-01-steve-lacy:initial"
+    },
+    {
+      "checkpoint_id": "state:event-01-steve-lacy:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-01-steve-lacy-lazy-end.png",
+      "derived_sha256": "0ada26cc629a6bae6c3c05d77b09fd4665532e611419296bdef28a9d51eebc6f",
+      "source_path": "public/03-details-20x10/event-01-steve-lacy-lazy-end.png",
+      "source_sha256": "8f33ae9eb1e331a4ceab3d35921a1f1baf9ce12af55c9c585935440066e15232",
+      "visual_state_checkpoint_id": "state:event-01-steve-lacy:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:event-02-gipsy-kings:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-02-gipsy-kings-initial.png",
+      "derived_sha256": "b9964b59b3955d14d2ad42a2bbc6efb6bf05f48373790fd3bfe16bcd29db35e2",
+      "source_path": "public/03-details-20x10/event-02-gipsy-kings-initial.png",
+      "source_sha256": "c2109a1d468d710f3bfb6eebfa9230c7202099d2df3dde9f34cea353a5c47cc2",
+      "visual_state_checkpoint_id": "state:event-02-gipsy-kings:initial"
+    },
+    {
+      "checkpoint_id": "state:event-02-gipsy-kings:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-02-gipsy-kings-lazy-end.png",
+      "derived_sha256": "76533e03f8b809206d156bb378d2c2c998ff813e3fff0bf19db34b3e6b2c375a",
+      "source_path": "public/03-details-20x10/event-02-gipsy-kings-lazy-end.png",
+      "source_sha256": "7def184e632e0da278aae31a17564cb2435e1f555de9186688825f3f325875ef",
+      "visual_state_checkpoint_id": "state:event-02-gipsy-kings:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:event-03-gorgon-city:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-03-gorgon-city-initial.png",
+      "derived_sha256": "e6686d17658efa948aeab16e7220e08f928db0a0970788740b7984d9e759fffd",
+      "source_path": "public/03-details-20x10/event-03-gorgon-city-initial.png",
+      "source_sha256": "4d99d709dbcf4e484a7e2dce716804e294156580a35478d8aad846e9050c9a3e",
+      "visual_state_checkpoint_id": "state:event-03-gorgon-city:initial"
+    },
+    {
+      "checkpoint_id": "state:event-03-gorgon-city:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-03-gorgon-city-lazy-end.png",
+      "derived_sha256": "f3ba871fcc2e2f8ba3a9ad85a914b8c827fc98973ef3901486006849ea208611",
+      "source_path": "public/03-details-20x10/event-03-gorgon-city-lazy-end.png",
+      "source_sha256": "b03907fccaf7807b9f7bef278f8619f7d257750034d2e132d323b7e91cd6cdf2",
+      "visual_state_checkpoint_id": "state:event-03-gorgon-city:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:event-04-yebba:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-04-yebba-initial.png",
+      "derived_sha256": "d87915e607b9e06811df4e9cd56be6daa64b30d100306a7463474db4e5a994d9",
+      "source_path": "public/03-details-20x10/event-04-yebba-initial.png",
+      "source_sha256": "7b8f4af3c137df7d5824f982dbf3b0d4bdba89e9eaf2fe4d2bb4981d6f86894a",
+      "visual_state_checkpoint_id": "state:event-04-yebba:initial"
+    },
+    {
+      "checkpoint_id": "state:event-04-yebba:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-04-yebba-lazy-end.png",
+      "derived_sha256": "7d2662e1600a9fae4d12dbe3a48ba12361eb8354b4e6bcb93ab700b0f09320a9",
+      "source_path": "public/03-details-20x10/event-04-yebba-lazy-end.png",
+      "source_sha256": "c7389f6a744f3df68c2b422f840c550f6d9b6e80af5864dcd719f29c674d8f00",
+      "visual_state_checkpoint_id": "state:event-04-yebba:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:event-05-donavon-frankenreiter:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-05-donavon-frankenreiter-initial.png",
+      "derived_sha256": "be02f7280e97751100b33609bf7024fe31cb62868045adcfecbe899e48ffe516",
+      "source_path": "public/03-details-20x10/event-05-donavon-frankenreiter-initial.png",
+      "source_sha256": "fee33a6f86dc4b5a42d6162c1c16a80ddcbcdf2319e1b83d192f6d431418622b",
+      "visual_state_checkpoint_id": "state:event-05-donavon-frankenreiter:initial"
+    },
+    {
+      "checkpoint_id": "state:event-05-donavon-frankenreiter:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-05-donavon-frankenreiter-lazy-end.png",
+      "derived_sha256": "a51eaf5385c7f44686aeece6c189d00b54766c8389121a24f2ce69acb1ba8e3c",
+      "source_path": "public/03-details-20x10/event-05-donavon-frankenreiter-lazy-end.png",
+      "source_sha256": "1732ae23c83e2b8e3743f488f488f0b6639fb0d7dcd1eb2b289552b1c28ae546",
+      "visual_state_checkpoint_id": "state:event-05-donavon-frankenreiter:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:event-06-salif-keita:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-06-salif-keita-initial.png",
+      "derived_sha256": "4b88c2e27d55632fb434a35b12898997c8d2330251be7cd13b6253c12879af9d",
+      "source_path": "public/03-details-20x10/event-06-salif-keita-initial.png",
+      "source_sha256": "eb1cf394d669cb4bcfef33726252c6151137eee183be245519084396a7345b55",
+      "visual_state_checkpoint_id": "state:event-06-salif-keita:initial"
+    },
+    {
+      "checkpoint_id": "state:event-06-salif-keita:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-06-salif-keita-lazy-end.png",
+      "derived_sha256": "d3c8434c9441f8753c694bdc970d4d6c5f587b8ac964431957f79d81d682ce8f",
+      "source_path": "public/03-details-20x10/event-06-salif-keita-lazy-end.png",
+      "source_sha256": "eb5d301c9e66e3e879c0ad6ccf6c38e2428fb4f8cf104aef75653e453d4e147b",
+      "visual_state_checkpoint_id": "state:event-06-salif-keita:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:event-07-clara-la-san:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-07-clara-la-san-initial.png",
+      "derived_sha256": "2ba98ff50d7849b6de314ff5482e3ed9347b5a4fddfd71e205b5bd3ca7b7737c",
+      "source_path": "public/03-details-20x10/event-07-clara-la-san-initial.png",
+      "source_sha256": "c3ddee19cc977f10a2d78fbd09bfc9f63ab346d89a49b4d4d63034e3b733035f",
+      "visual_state_checkpoint_id": "state:event-07-clara-la-san:initial"
+    },
+    {
+      "checkpoint_id": "state:event-07-clara-la-san:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-07-clara-la-san-lazy-end.png",
+      "derived_sha256": "672e03e089f4f0466462fec5d46c12abf72c4a14362f6a078d34e1c47d192bae",
+      "source_path": "public/03-details-20x10/event-07-clara-la-san-lazy-end.png",
+      "source_sha256": "9a8fa0ce8b21537b5ad90c49fe11fabea98f37e4c674917a6191fdad1f5d2ff7",
+      "visual_state_checkpoint_id": "state:event-07-clara-la-san:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:event-08-too-many-zooz:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-08-too-many-zooz-initial.png",
+      "derived_sha256": "1d5ffcc40f1d6b255ca54379d6c2c37dfc6a238e0b91ee0dca04c2f631275e88",
+      "source_path": "public/03-details-20x10/event-08-too-many-zooz-initial.png",
+      "source_sha256": "dddc3718b993807827bd8d5fdc0ccbccc50a48cbbcaf2ed053810b4fbe300379",
+      "visual_state_checkpoint_id": "state:event-08-too-many-zooz:initial"
+    },
+    {
+      "checkpoint_id": "state:event-08-too-many-zooz:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-08-too-many-zooz-lazy-end.png",
+      "derived_sha256": "b8267acffa05bf6b7e67f67c7979aced4e9459fcdcb01eb7f1b3c3b55fbf24ac",
+      "source_path": "public/03-details-20x10/event-08-too-many-zooz-lazy-end.png",
+      "source_sha256": "c77da88bc95cffb8c62568773ec137feeff46b69ae6be3641ae9c6c9201f8750",
+      "visual_state_checkpoint_id": "state:event-08-too-many-zooz:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:event-09-i-hate-models:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-09-i-hate-models-initial.png",
+      "derived_sha256": "2efa5beadc7269e3c45f99e89a6a6ab6cc9920e52b169b01396b476845ce7db9",
+      "source_path": "public/03-details-20x10/event-09-i-hate-models-initial.png",
+      "source_sha256": "10432cc79f4252b8b610ca449e585d373b4dac7168ee08dea66e231ed1ecc1e1",
+      "visual_state_checkpoint_id": "state:event-09-i-hate-models:initial"
+    },
+    {
+      "checkpoint_id": "state:event-09-i-hate-models:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-09-i-hate-models-lazy-end.png",
+      "derived_sha256": "6501f6d004a420e0ed63c235f9e746f4c9885ba18b528ef688d4386d0906aa2f",
+      "source_path": "public/03-details-20x10/event-09-i-hate-models-lazy-end.png",
+      "source_sha256": "78a2302d9a930577728390b8f5ce4fe9e6dc854a40625c89bffea1e1693b6006",
+      "visual_state_checkpoint_id": "state:event-09-i-hate-models:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:event-10-sullivan-king:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-10-sullivan-king-initial.png",
+      "derived_sha256": "be78dfaa0c16569f185ff1958bdd725317255586cb70fbf68312768dc7a7d18c",
+      "source_path": "public/03-details-20x10/event-10-sullivan-king-initial.png",
+      "source_sha256": "80e7368ae818cf8e45b89d82374ffdfc8823655d21acfe568e04ba76598cc192",
+      "visual_state_checkpoint_id": "state:event-10-sullivan-king:initial"
+    },
+    {
+      "checkpoint_id": "state:event-10-sullivan-king:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-10-sullivan-king-lazy-end.png",
+      "derived_sha256": "ad5fabf18390a3283c531430f95a85f67d88e7cfcb9785e0b333629f6fe45adf",
+      "source_path": "public/03-details-20x10/event-10-sullivan-king-lazy-end.png",
+      "source_sha256": "9de417b27bc766b9af5ba5296458f5d2ecb6c9e162150267f48b181063c10235",
+      "visual_state_checkpoint_id": "state:event-10-sullivan-king:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:event-detail-authenticated:interested-after-refresh",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-event-detail-authenticated-interested-after-refresh.png",
+      "derived_sha256": "98624b967ec0ddc5091c50987033b65e451f17a67ace874cec77a0b243e014f6",
+      "source_path": "auth/visual-supplement/attempt-2/event-interested-after-refresh.png",
+      "source_sha256": "98624b967ec0ddc5091c50987033b65e451f17a67ace874cec77a0b243e014f6",
+      "visual_state_checkpoint_id": "state:event-detail-authenticated:interested-after-refresh"
+    },
+    {
+      "checkpoint_id": "state:event-detail:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-detail-initial.png",
+      "derived_sha256": "0929d70eba3bd7d922ddd31b8c612d9a723a6039569f07ee563c98800329b8d8",
+      "source_path": "public/01-core/event-detail-initial.png",
+      "source_sha256": "7db8be24f647664257c748efb8d1df593eb7d814ab0bd25994a02d0d18da885c",
+      "visual_state_checkpoint_id": "state:event-detail:initial"
+    },
+    {
+      "checkpoint_id": "state:event-detail:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-event-detail-lazy-end.png",
+      "derived_sha256": "c1b5722c8b63950458173c8427df49b476d8dff572d243a35ba2102d6b3302a8",
+      "source_path": "public/01-core/event-detail-lazy-end.png",
+      "source_sha256": "0eb6f95dd59cde33fb57f8d122c80af6e85c926daa9156a881931f3ff8b1e91e",
+      "visual_state_checkpoint_id": "state:event-detail:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:festival-detail:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-festival-detail-initial.png",
+      "derived_sha256": "7a902f9412909ee7c92561e144f876a1044dcf4fa101928e492b0c42408423c4",
+      "source_path": "public/01-core/festival-detail-initial.png",
+      "source_sha256": "6d8648f7313be0ff75effe0ddcbb54bfe39bb51fd5d144069b10792be3b1fb33",
+      "visual_state_checkpoint_id": "state:festival-detail:initial"
+    },
+    {
+      "checkpoint_id": "state:festival-detail:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-festival-detail-lazy-end.png",
+      "derived_sha256": "b747c38c867dd36af09f284addc8272dd65d2a3c863ef358ed9e9661b97347f7",
+      "source_path": "public/01-core/festival-detail-lazy-end.png",
+      "source_sha256": "fe221bf20ec46013bccfacea94e322c170c324c1ae40bcdb38efd87b9764a648",
+      "visual_state_checkpoint_id": "state:festival-detail:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:festivals:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-festivals-initial.png",
+      "derived_sha256": "7a9d04647f28fa6a8b59ff9ee0f563eb980104b572df1c9aedd49d1c849a63e9",
+      "source_path": "public/01-core/festivals-initial.png",
+      "source_sha256": "12d604c0958941aaa86d4a7d92aeca62fbedb5a0d1b594d9249eef3fb975cde5",
+      "visual_state_checkpoint_id": "state:festivals:initial"
+    },
+    {
+      "checkpoint_id": "state:festivals:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-festivals-lazy-end.png",
+      "derived_sha256": "7a9d04647f28fa6a8b59ff9ee0f563eb980104b572df1c9aedd49d1c849a63e9",
+      "source_path": "public/01-core/festivals-lazy-end.png",
+      "source_sha256": "9a8d1b1180177cb19c2c16791d5c5260b1a8f721efc8edc4fc9ab7e31f5116ca",
+      "visual_state_checkpoint_id": "state:festivals:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:genre-rock:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-genre-rock-initial.png",
+      "derived_sha256": "5fd3a89f57139cc643316eda2551663e328fc4683d9b7a3e28e3052fcd5e9897",
+      "source_path": "public/05-supporting-routes/genre-rock-initial.png",
+      "source_sha256": "edd850f6f9ac11cbfb3f7ad23f240bc28e191c65e1fbb7c861650fd9bfeabe7e",
+      "visual_state_checkpoint_id": "state:genre-rock:initial"
+    },
+    {
+      "checkpoint_id": "state:genre-rock:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-genre-rock-lazy-end.png",
+      "derived_sha256": "5fd3a89f57139cc643316eda2551663e328fc4683d9b7a3e28e3052fcd5e9897",
+      "source_path": "public/05-supporting-routes/genre-rock-lazy-end.png",
+      "source_sha256": "512fd4dea96883fe0ca6216cd4aeab5ad6583cef59a2d8b0898774eba9179399",
+      "visual_state_checkpoint_id": "state:genre-rock:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:global-search:search-no-results",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-global-search-search-no-results.png",
+      "derived_sha256": "f8d52dc00363aafbc1c6d16aaf0f1a471d13f4d69efff9104b0a95c2f4d36fd8",
+      "source_path": "public/16-search-supplement-hit-test/search-no-results-viewport.png",
+      "source_sha256": "f8d52dc00363aafbc1c6d16aaf0f1a471d13f4d69efff9104b0a95c2f4d36fd8",
+      "visual_state_checkpoint_id": "state:global-search:search-no-results"
+    },
+    {
+      "checkpoint_id": "state:global-search:search-results-coldplay",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-global-search-search-results-coldplay.png",
+      "derived_sha256": "946924e80b04d95b9be511998db416bbc1b01d8b737a4cc52e92add523038d4d",
+      "source_path": "public/16-search-supplement-hit-test/search-results-coldplay-viewport.png",
+      "source_sha256": "946924e80b04d95b9be511998db416bbc1b01d8b737a4cc52e92add523038d4d",
+      "visual_state_checkpoint_id": "state:global-search:search-results-coldplay"
+    },
+    {
+      "checkpoint_id": "state:home-next-artists:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-next-artists-initial.png",
+      "derived_sha256": "e6c60439ccaada4e43505cc7be9b325792ed873971262c44230986f5b5994ccc",
+      "source_path": "public/02-interactions/home-next-artists-initial.png",
+      "source_sha256": "0ae999db9e8044d01b071690c189f64fb5697b2c9fd4a6ff04ad99a280217007",
+      "visual_state_checkpoint_id": "state:home-next-artists:initial"
+    },
+    {
+      "checkpoint_id": "state:home-next-artists:next-artists",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-next-artists-next-artists.png",
+      "derived_sha256": "e6c60439ccaada4e43505cc7be9b325792ed873971262c44230986f5b5994ccc",
+      "source_path": "public/02-interactions/home-next-artists-next-artists.png",
+      "source_sha256": "8f3c532fca601a6fa6bc21d656b61d76fda4ff035daa46548ec8036d43539b77",
+      "visual_state_checkpoint_id": "state:home-next-artists:next-artists"
+    },
+    {
+      "checkpoint_id": "state:home-next-events:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-next-events-initial.png",
+      "derived_sha256": "e6c60439ccaada4e43505cc7be9b325792ed873971262c44230986f5b5994ccc",
+      "source_path": "public/02-interactions/home-next-events-initial.png",
+      "source_sha256": "0d13d9e3e416b88a5c30aa882296615d89da2342ffb8f59338f660f2486b072a",
+      "visual_state_checkpoint_id": "state:home-next-events:initial"
+    },
+    {
+      "checkpoint_id": "state:home-next-events:next-events",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-next-events-next-events.png",
+      "derived_sha256": "53e22b191590e6b767b6144170c661642353319be5199f712a870197c715f1bf",
+      "source_path": "public/02-interactions/home-next-events-next-events.png",
+      "source_sha256": "34f401750147712138367b6a4128ae50a3e978acb8a840d496f6fa9b62c0a26c",
+      "visual_state_checkpoint_id": "state:home-next-events:next-events"
+    },
+    {
+      "checkpoint_id": "state:home-search-modal:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-search-modal-initial.png",
+      "derived_sha256": "cc1591a7c731ed398b78606669abbab641b02ed7a6242944438216e205f3c7fb",
+      "source_path": "public/02-interactions/home-search-modal-initial.png",
+      "source_sha256": "377afa1c2027eb731c7d2f97af03107ce20fd86a8a12dba0bf86755a9f823a9a",
+      "visual_state_checkpoint_id": "state:home-search-modal:initial"
+    },
+    {
+      "checkpoint_id": "state:home-search-modal:search-open",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-search-modal-search-open.png",
+      "derived_sha256": "18d298d8500b5a941d79c9006543fc10b4abdb3734da103bbc37f4ba56f32efa",
+      "source_path": "public/02-interactions/home-search-modal-search-open.png",
+      "source_sha256": "212ac438343ccd904784480da2d05a7ea38ded48751aba1f01440aa4180e04fb",
+      "visual_state_checkpoint_id": "state:home-search-modal:search-open"
+    },
+    {
+      "checkpoint_id": "state:home-theme:dark-background",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-theme-dark-background.png",
+      "derived_sha256": "1f39df2163b939056ab4eb110dfad929143cf65b360921f7573ade34536c070b",
+      "source_path": "public/02-interactions/home-theme-dark-background.png",
+      "source_sha256": "782209875c9130f3fd06ac3d80a15ccaf8ee238fd2f633badf98376fae3b8745",
+      "visual_state_checkpoint_id": "state:home-theme:dark-background"
+    },
+    {
+      "checkpoint_id": "state:home-theme:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-theme-initial.png",
+      "derived_sha256": "e6c60439ccaada4e43505cc7be9b325792ed873971262c44230986f5b5994ccc",
+      "source_path": "public/02-interactions/home-theme-initial.png",
+      "source_sha256": "0d13d9e3e416b88a5c30aa882296615d89da2342ffb8f59338f660f2486b072a",
+      "visual_state_checkpoint_id": "state:home-theme:initial"
+    },
+    {
+      "checkpoint_id": "state:home:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-initial.png",
+      "derived_sha256": "e6c60439ccaada4e43505cc7be9b325792ed873971262c44230986f5b5994ccc",
+      "source_path": "public/01-core/home-initial.png",
+      "source_sha256": "0d13d9e3e416b88a5c30aa882296615d89da2342ffb8f59338f660f2486b072a",
+      "visual_state_checkpoint_id": "state:home:initial"
+    },
+    {
+      "checkpoint_id": "state:home:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-home-lazy-end.png",
+      "derived_sha256": "e6c60439ccaada4e43505cc7be9b325792ed873971262c44230986f5b5994ccc",
+      "source_path": "public/01-core/home-lazy-end.png",
+      "source_sha256": "0ae999db9e8044d01b071690c189f64fb5697b2c9fd4a6ff04ad99a280217007",
+      "visual_state_checkpoint_id": "state:home:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:info-cookies:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-info-cookies-initial.png",
+      "derived_sha256": "d7993d58c2c416503cf6a91faab5319a965db074e2a7a23eac4bf77b73e23fc6",
+      "source_path": "public/05-supporting-routes/info-cookies-initial.png",
+      "source_sha256": "f0db26304744b272bc0156cff3fb76fca5ac24029a67817daf6de84023aabfbb",
+      "visual_state_checkpoint_id": "state:info-cookies:initial"
+    },
+    {
+      "checkpoint_id": "state:info-guidelines:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-info-guidelines-initial.png",
+      "derived_sha256": "ef4ec0c56bf84aea0343370693f7f0fed677cf82be3df7a7cf7b2fb177f44ba1",
+      "source_path": "public/05-supporting-routes/info-guidelines-initial.png",
+      "source_sha256": "1a8a0bca303cd4028a793cbe52202314e90f73dfce321de5d88833ebd79004eb",
+      "visual_state_checkpoint_id": "state:info-guidelines:initial"
+    },
+    {
+      "checkpoint_id": "state:info-privacy:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-info-privacy-initial.png",
+      "derived_sha256": "c61d9197cb67a538cd7dee38237ab06c59f27503ca310e19e48fde7bb3e07183",
+      "source_path": "public/05-supporting-routes/info-privacy-initial.png",
+      "source_sha256": "10fa2c9867b282c50d9a03109de2d0aa0fe6bf781e888e92eefd5808e95e570e",
+      "visual_state_checkpoint_id": "state:info-privacy:initial"
+    },
+    {
+      "checkpoint_id": "state:info-security:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-info-security-initial.png",
+      "derived_sha256": "f08be94c5468c681b6ffe0d902b0cd48ec4d389351e2af238d3aa95a92d1e72d",
+      "source_path": "public/05-supporting-routes/info-security-initial.png",
+      "source_sha256": "b816d68bc9cafff3128fbe1a48a498db2139af14e8d5504c1316c93379f7aebf",
+      "visual_state_checkpoint_id": "state:info-security:initial"
+    },
+    {
+      "checkpoint_id": "state:info-terms:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-info-terms-initial.png",
+      "derived_sha256": "34d37a7489950177a95aeee5646a6246013395ac294c29dfedd2620f179382ec",
+      "source_path": "public/05-supporting-routes/info-terms-initial.png",
+      "source_sha256": "521c0bf2eed601d174c518c38079a1c325cfc818fb8f178173bc380b9529419e",
+      "visual_state_checkpoint_id": "state:info-terms:initial"
+    },
+    {
+      "checkpoint_id": "state:jobs:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-jobs-initial.png",
+      "derived_sha256": "c5c591e463f0a886b94670e3095d1d4c7fa2a5b425a34e65a2c1cfb1d2d42662",
+      "source_path": "public/05-supporting-routes/jobs-initial.png",
+      "source_sha256": "01c5e14928a4e63bde240c4c0f59cd6588bab9ea5b68d355feec8cb11f5a2a59",
+      "visual_state_checkpoint_id": "state:jobs:initial"
+    },
+    {
+      "checkpoint_id": "state:live-streams:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-live-streams-initial.png",
+      "derived_sha256": "42c875ddd38fc30f9d0de255e148ab1825fbb801b850ae8c460d19f48737b2dc",
+      "source_path": "public/05-supporting-routes/live-streams-initial.png",
+      "source_sha256": "4e6ff3ac62a3ab46fb129a2c72b4767297f1b8babc25d4f7ef2ebd6031abbcc4",
+      "visual_state_checkpoint_id": "state:live-streams:initial"
+    },
+    {
+      "checkpoint_id": "state:locale-de:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-locale-de-initial.png",
+      "derived_sha256": "79ef87cc442e9086df5d8f09349bc1c25f60c9555ac1c26be0141a2df6604432",
+      "source_path": "public/05-supporting-routes/locale-de-initial.png",
+      "source_sha256": "335f61b9ee1fc037cc9a79e40aff9a7d95f2996a359b2f9c43a40b6ae8b21dcb",
+      "visual_state_checkpoint_id": "state:locale-de:initial"
+    },
+    {
+      "checkpoint_id": "state:locale-es:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-locale-es-initial.png",
+      "derived_sha256": "3867d22073d7b546478f00faa8a49c32cee59a44597f21e66f855a0f5ea4b2de",
+      "source_path": "public/05-supporting-routes/locale-es-initial.png",
+      "source_sha256": "0849981d2ad3b77645705cfcb32523ce7f7cca0fb1a2b50868cddaa11c203cc1",
+      "visual_state_checkpoint_id": "state:locale-es:initial"
+    },
+    {
+      "checkpoint_id": "state:locale-fr:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-locale-fr-initial.png",
+      "derived_sha256": "ae587625c0fc67f3f730ffc679074ec03c0d591ce6aaf87f3cc206305cc6e5f6",
+      "source_path": "public/05-supporting-routes/locale-fr-initial.png",
+      "source_sha256": "294245999ba691c0f3ffa57a5bfdb83b3ad6e70bfcc30df5e0fd8b61b751969f",
+      "visual_state_checkpoint_id": "state:locale-fr:initial"
+    },
+    {
+      "checkpoint_id": "state:locale-pt:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-locale-pt-initial.png",
+      "derived_sha256": "09894464f0fa347e9b7d12c1b7992e227fb98d92e606720dbd5cf7a6ba54e307",
+      "source_path": "public/05-supporting-routes/locale-pt-initial.png",
+      "source_sha256": "f095329ef3d50b253de71f74b5dce735ec85875ff14181d094de090e6bd8633f",
+      "visual_state_checkpoint_id": "state:locale-pt:initial"
+    },
+    {
+      "checkpoint_id": "state:location-filter:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-location-filter-initial.png",
+      "derived_sha256": "1d2f8a3e0462d243ced987c8374c52baa24e1fa619cab1f7cf0c5f89bc52d31d",
+      "source_path": "public/01-core/location-filter-initial.png",
+      "source_sha256": "14e0d45c3d50dbfb154f6143c3e9257702861fed5ab2e215813f8ded6097cdc6",
+      "visual_state_checkpoint_id": "state:location-filter:initial"
+    },
+    {
+      "checkpoint_id": "state:location-search-empty:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-location-search-empty-initial.png",
+      "derived_sha256": "06f74a2d0a43ca06b5cf297d89dd5abc7585695d064a45fa4370ab34c358cf7f",
+      "source_path": "public/02-interactions/location-search-empty-initial.png",
+      "source_sha256": "8b098e018b2cde0c1733d495ad6dc70afc750e34c9273e5e6aa1f474727f7d41",
+      "visual_state_checkpoint_id": "state:location-search-empty:initial"
+    },
+    {
+      "checkpoint_id": "state:location-search-toronto:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-location-search-toronto-initial.png",
+      "derived_sha256": "7c37763e5999ceede1b5e3ec4dce37597524a23c6ad4fa1a4213a3bd14fb0ccd",
+      "source_path": "public/02-interactions/location-search-toronto-initial.png",
+      "source_sha256": "1659876be4854671eb8a394322adaf82412f291a1e251226f7f5f44a0318b47c",
+      "visual_state_checkpoint_id": "state:location-search-toronto:initial"
+    },
+    {
+      "checkpoint_id": "state:montreal-next-30-days:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-next-30-days-initial.png",
+      "derived_sha256": "11292f5238e9ae05378cfcdfa2f866f885f02c8cffec42629d6fcc03986b56c1",
+      "source_path": "public/02-interactions/montreal-next-30-days-initial.png",
+      "source_sha256": "cbe9bf55c222a51e73e178c079d8bb47da1e227eda79efe9d8f65b2920b1535d",
+      "visual_state_checkpoint_id": "state:montreal-next-30-days:initial"
+    },
+    {
+      "checkpoint_id": "state:montreal-next-7-days:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-next-7-days-initial.png",
+      "derived_sha256": "28dc580cd9cbe6a57c1b79f73a6f8126f3da22ccde9ec55612a59e854e8b726c",
+      "source_path": "public/02-interactions/montreal-next-7-days-initial.png",
+      "source_sha256": "6cfcaaf35ecd1eb611855917fe7a35e2109cd4c1bd1f79caedd8302a3e42d25e",
+      "visual_state_checkpoint_id": "state:montreal-next-7-days:initial"
+    },
+    {
+      "checkpoint_id": "state:montreal-page-1:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-page-1-initial.png",
+      "derived_sha256": "07297c30de10e7d34db4c801b58b17798e6678587ab504bdb0fd6ce3eaed9f37",
+      "source_path": "public/01-core/montreal-page-1-initial.png",
+      "source_sha256": "67ccca60032dce6b8a585a6182a1717f78e870f1e34449564429929c418b3536",
+      "visual_state_checkpoint_id": "state:montreal-page-1:initial"
+    },
+    {
+      "checkpoint_id": "state:montreal-page-1:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-page-1-lazy-end.png",
+      "derived_sha256": "454ee266df2e088a158fef035739216bb94e7b16c70645969a8610e237f3beec",
+      "source_path": "public/01-core/montreal-page-1-lazy-end.png",
+      "source_sha256": "f24771d7082ef2f02143ce7640065222b85c2ff92dc32a9ab406e3c9c6b68562",
+      "visual_state_checkpoint_id": "state:montreal-page-1:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:montreal-page-2:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-page-2-initial.png",
+      "derived_sha256": "4dcad5c4cd25b4fef2f55bb6b0ff767543029e6508c9af4990bae6861a468714",
+      "source_path": "public/01-core/montreal-page-2-initial.png",
+      "source_sha256": "d46f3f19115f14f9ffb9f2ca1bf950d547a6ba6bf42abc227880c5446b392d7e",
+      "visual_state_checkpoint_id": "state:montreal-page-2:initial"
+    },
+    {
+      "checkpoint_id": "state:montreal-page-2:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-page-2-lazy-end.png",
+      "derived_sha256": "362bdba633d3f5abc87c39c730124803dd17802676326ddc41345f77f4abf412",
+      "source_path": "public/01-core/montreal-page-2-lazy-end.png",
+      "source_sha256": "29f1c41136d86627f25f3ad558a9b10b533e2df812574c63888b0f12395a4377",
+      "visual_state_checkpoint_id": "state:montreal-page-2:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:montreal-today:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-montreal-today-initial.png",
+      "derived_sha256": "30f454cf4b41d7e1984cf341c8881e31b1fcd252a5f75bd78a5f62791be3026f",
+      "source_path": "public/02-interactions/montreal-today-initial.png",
+      "source_sha256": "50bd33183a1df4454bafe228150644c974f239409034d4f8d5e5c0c4e9ad7165",
+      "visual_state_checkpoint_id": "state:montreal-today:initial"
+    },
+    {
+      "checkpoint_id": "state:nearby-genre-rock:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-nearby-genre-rock-initial.png",
+      "derived_sha256": "9029286922537c0e49ded4ebd31f82ff5f3f52583f0c799c55ea35e59a63d607",
+      "source_path": "public/05-supporting-routes/nearby-genre-rock-initial.png",
+      "source_sha256": "9b2f217efc8c83c8be1fb0fe69224edfa49316aab3ba6969daa83077d22c4bd4",
+      "visual_state_checkpoint_id": "state:nearby-genre-rock:initial"
+    },
+    {
+      "checkpoint_id": "state:nearby-genre-rock:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-nearby-genre-rock-lazy-end.png",
+      "derived_sha256": "5cc1a712bee35c537203cbcd9010a6afa810dfb1fa7597cd9a0a5bbb8a599f1c",
+      "source_path": "public/05-supporting-routes/nearby-genre-rock-lazy-end.png",
+      "source_sha256": "95f4072f2f11523c12490f89972153e2a4db8f65ba5d6b40657395d9fbddf860",
+      "visual_state_checkpoint_id": "state:nearby-genre-rock:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:news:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-news-initial.png",
+      "derived_sha256": "89b93f34301f6567970d475d132ad05f49c84debbed075a112d72a4e7ebdef62",
+      "source_path": "public/05-supporting-routes/news-initial.png",
+      "source_sha256": "02805d71ac1ac77015a3eb64b804434371c4584310ff58c3aaef8ae9ec0d6833",
+      "visual_state_checkpoint_id": "state:news:initial"
+    },
+    {
+      "checkpoint_id": "state:not-found:initial",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-not-found-initial.png",
+      "derived_sha256": "81f732c397c2bdcf768d3f05156d065113b965cac589627cd445bffc55aae307",
+      "source_path": "public/07-not-found/not-found-initial.png",
+      "source_sha256": "81f732c397c2bdcf768d3f05156d065113b965cac589627cd445bffc55aae307",
+      "visual_state_checkpoint_id": "state:not-found:initial"
+    },
+    {
+      "checkpoint_id": "state:password-reset:captcha-error",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-password-reset-captcha-error.png",
+      "derived_sha256": "ef169317ea3aa4f069aec54185e91151d26837a4000c3a28ea9b1f2ebbab5c62",
+      "source_path": "auth/visual-supplement/attempt-1/password-reset-captcha-error.png",
+      "source_sha256": "ef169317ea3aa4f069aec54185e91151d26837a4000c3a28ea9b1f2ebbab5c62",
+      "visual_state_checkpoint_id": "state:password-reset:captcha-error"
+    },
+    {
+      "checkpoint_id": "state:password-reset:initial",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-password-reset-initial.png",
+      "derived_sha256": "b90ff114c76c09ae8b713b46f20306c712e958aae9fd57bfdc7b2e9bf4106918",
+      "source_path": "public/05-supporting-routes/password-reset-initial.png",
+      "source_sha256": "b90ff114c76c09ae8b713b46f20306c712e958aae9fd57bfdc7b2e9bf4106918",
+      "visual_state_checkpoint_id": "state:password-reset:initial"
+    },
+    {
+      "checkpoint_id": "state:popular-artists-page-2:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-popular-artists-page-2-initial.png",
+      "derived_sha256": "581fef1da7d37669f9c19547a8fb33015faec4455ae5642e1b2a26925f5adab3",
+      "source_path": "public/04-venues-boundaries/popular-artists-page-2-initial.png",
+      "source_sha256": "6a43456988e456771b6c87e11e392662a0658f3f863d6e989f2c10f6c6fcde4e",
+      "visual_state_checkpoint_id": "state:popular-artists-page-2:initial"
+    },
+    {
+      "checkpoint_id": "state:popular-artists-page-2:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-popular-artists-page-2-lazy-end.png",
+      "derived_sha256": "581fef1da7d37669f9c19547a8fb33015faec4455ae5642e1b2a26925f5adab3",
+      "source_path": "public/04-venues-boundaries/popular-artists-page-2-lazy-end.png",
+      "source_sha256": "8689117e3dfe09a491140df056d4921c68706dbd0d07024fba7ff1321feeb28f",
+      "visual_state_checkpoint_id": "state:popular-artists-page-2:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:protected-home-logged-out:initial",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-protected-home-logged-out-initial.png",
+      "derived_sha256": "2ec6c13e3c265a29a91cc7e1b2cfcbd773a7c00ab188626970cce392e8db8989",
+      "source_path": "public/06-extra-entrypoints/protected-home-logged-out-initial.png",
+      "source_sha256": "2ec6c13e3c265a29a91cc7e1b2cfcbd773a7c00ab188626970cce392e8db8989",
+      "visual_state_checkpoint_id": "state:protected-home-logged-out:initial"
+    },
+    {
+      "checkpoint_id": "state:region-01-sf-bay-area:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-01-sf-bay-area-initial.png",
+      "derived_sha256": "08252fda9984d334b3a65bb2b7f00e9ad2626c79e5665b3c4cd55ea000fc06d8",
+      "source_path": "public/03-details-20x10/region-01-sf-bay-area-initial.png",
+      "source_sha256": "754609658943cb246ec04a07b34b8c9c49ce21fb52c8196fa9ff46160a0aafd4",
+      "visual_state_checkpoint_id": "state:region-01-sf-bay-area:initial"
+    },
+    {
+      "checkpoint_id": "state:region-01-sf-bay-area:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-01-sf-bay-area-lazy-end.png",
+      "derived_sha256": "c6f09b2ae11d2c78f4e01cf70aa6b74a587518ce4580024852fbbe694b5deeaa",
+      "source_path": "public/03-details-20x10/region-01-sf-bay-area-lazy-end.png",
+      "source_sha256": "d8d7ea464f88279886671ad846ae2c60331140e9abcd926c4591cc235d2f9c6a",
+      "visual_state_checkpoint_id": "state:region-01-sf-bay-area:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:region-02-los-angeles:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-02-los-angeles-initial.png",
+      "derived_sha256": "d7c6b107050e6d8824f268f5425234e4196c9df7ce56191487d824f7b2f2129e",
+      "source_path": "public/03-details-20x10/region-02-los-angeles-initial.png",
+      "source_sha256": "ef0335a20732dfbeea2fda5c9a8627b6a3c9764fac443ad46453915c36de7246",
+      "visual_state_checkpoint_id": "state:region-02-los-angeles:initial"
+    },
+    {
+      "checkpoint_id": "state:region-02-los-angeles:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-02-los-angeles-lazy-end.png",
+      "derived_sha256": "04435bc13d8a4e113872c9668b3913cfe0263f3c1c4bc9a39f1c36efca8fb2b8",
+      "source_path": "public/03-details-20x10/region-02-los-angeles-lazy-end.png",
+      "source_sha256": "3e1ce3f359d2fd773eb53ad1a3137f89aa663d959a85aef1445d0792332e85a4",
+      "visual_state_checkpoint_id": "state:region-02-los-angeles:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:region-03-new-york:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-03-new-york-initial.png",
+      "derived_sha256": "f02abcd7fbf13d09a1ea48358c8e036d15d27284b49e296a8fc8ec4efa738da1",
+      "source_path": "public/03-details-20x10/region-03-new-york-initial.png",
+      "source_sha256": "834d30c431a3cca464b6ec6f366dd82c0c29301fa2f97979b1351e5075bc239c",
+      "visual_state_checkpoint_id": "state:region-03-new-york:initial"
+    },
+    {
+      "checkpoint_id": "state:region-03-new-york:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-03-new-york-lazy-end.png",
+      "derived_sha256": "8640e394b37e601a9dbd5aba464d7585eec90ce4a006793c6d16c1234e95133a",
+      "source_path": "public/03-details-20x10/region-03-new-york-lazy-end.png",
+      "source_sha256": "50620d9a005d13ecbc8afb89da5275dd7931ee46f48d388c46995b964b30221c",
+      "visual_state_checkpoint_id": "state:region-03-new-york:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:region-04-portland:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-04-portland-initial.png",
+      "derived_sha256": "5b55501905aa6d069466c9f574de6a14d9961abbe5a4b4c2fb3fa04cb066fef9",
+      "source_path": "public/03-details-20x10/region-04-portland-initial.png",
+      "source_sha256": "928939893165f1f9247526d5291931ae8870a6abe681cf9dccacd5a8719c6525",
+      "visual_state_checkpoint_id": "state:region-04-portland:initial"
+    },
+    {
+      "checkpoint_id": "state:region-04-portland:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-04-portland-lazy-end.png",
+      "derived_sha256": "744c7d2a0ec0fc860fa1b500a72fd90601f07e6ae04ac82ae9a0f883e8a8c724",
+      "source_path": "public/03-details-20x10/region-04-portland-lazy-end.png",
+      "source_sha256": "bef3cf5c781924d2426feb3c5abb7da7b0c459ff51ad3a413c71f46846bc3a0a",
+      "visual_state_checkpoint_id": "state:region-04-portland:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:region-05-washington:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-05-washington-initial.png",
+      "derived_sha256": "8ed29d40ea1f7c460a806aecf259fb1463dee672a84ba403a7092865953f67d8",
+      "source_path": "public/03-details-20x10/region-05-washington-initial.png",
+      "source_sha256": "cc1888da63677f050f9a0a9c40e0a0fc70323d1903a7bc96999aac7233a91b15",
+      "visual_state_checkpoint_id": "state:region-05-washington:initial"
+    },
+    {
+      "checkpoint_id": "state:region-05-washington:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-05-washington-lazy-end.png",
+      "derived_sha256": "e2cb4842969a3a2031239c68fbd5239b9424f047bdaec4bfb51b3900b373161c",
+      "source_path": "public/03-details-20x10/region-05-washington-lazy-end.png",
+      "source_sha256": "47bb2b9f7d9ad4fdae2670b3a8e1c0a19cc823038afbf4a73f91990ac9dc2db7",
+      "visual_state_checkpoint_id": "state:region-05-washington:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:region-06-philadelphia:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-06-philadelphia-initial.png",
+      "derived_sha256": "00deca03b5e0a5d551a0cc9f20967cdb4c695f9a7f56541d2af615e7c382d490",
+      "source_path": "public/03-details-20x10/region-06-philadelphia-initial.png",
+      "source_sha256": "f158eda323a18e81c7d6fe78023ee8219623a0841efda6a90b9089bdf476dec6",
+      "visual_state_checkpoint_id": "state:region-06-philadelphia:initial"
+    },
+    {
+      "checkpoint_id": "state:region-06-philadelphia:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-06-philadelphia-lazy-end.png",
+      "derived_sha256": "5a5f534b7384dd699425224cc30d48269169bc6703630b359832807de392f04a",
+      "source_path": "public/03-details-20x10/region-06-philadelphia-lazy-end.png",
+      "source_sha256": "3a3e988c73bab4076e12bdcebfb4206b5df0b62b3078e08b0f76d9ee58edd1d1",
+      "visual_state_checkpoint_id": "state:region-06-philadelphia:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:region-07-seattle:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-07-seattle-initial.png",
+      "derived_sha256": "67888afbe2d654032ae74ccbd028c49871b6a8e057d3baaf4ebf48ac84c013f4",
+      "source_path": "public/03-details-20x10/region-07-seattle-initial.png",
+      "source_sha256": "a35480ac969a39eeab693c1d84a1f372c20e431ab084185bfdb5e63e0dffbf2f",
+      "visual_state_checkpoint_id": "state:region-07-seattle:initial"
+    },
+    {
+      "checkpoint_id": "state:region-07-seattle:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-07-seattle-lazy-end.png",
+      "derived_sha256": "8d44b9c6b10bfb342cf375aa957c1ced7f4c37464e18d602564b484f6ed0db0d",
+      "source_path": "public/03-details-20x10/region-07-seattle-lazy-end.png",
+      "source_sha256": "cc648f613f96f56986bda66d10175a9ce0cf777bec1adb24bfbd5f667b8501ae",
+      "visual_state_checkpoint_id": "state:region-07-seattle:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:region-08-chicago:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-08-chicago-initial.png",
+      "derived_sha256": "d04856525e9cf4c6648188bfda9b785dd53a79b65315534b5c57730d13af8ece",
+      "source_path": "public/03-details-20x10/region-08-chicago-initial.png",
+      "source_sha256": "89d0dbcae9bca87b9a677107e9209e189f952dc0ff51e169ca75a9748e365ff9",
+      "visual_state_checkpoint_id": "state:region-08-chicago:initial"
+    },
+    {
+      "checkpoint_id": "state:region-08-chicago:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-08-chicago-lazy-end.png",
+      "derived_sha256": "4012e4a5da19018d392838d790f59faab984e8da751fffc517f1082f15910607",
+      "source_path": "public/03-details-20x10/region-08-chicago-lazy-end.png",
+      "source_sha256": "a008b48570bf6b169ba5199249ed195675b7606b01298dc6d3314cfe8f57f3ca",
+      "visual_state_checkpoint_id": "state:region-08-chicago:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:region-09-orlando:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-09-orlando-initial.png",
+      "derived_sha256": "7a8d512065469e3a47d66a91d0493967b309036aa44e809e7ad24d71cf6b214a",
+      "source_path": "public/03-details-20x10/region-09-orlando-initial.png",
+      "source_sha256": "5e510789ba2ddb23b4ea5e1b02892e8c251092b559afd4edbd9cf935450681b9",
+      "visual_state_checkpoint_id": "state:region-09-orlando:initial"
+    },
+    {
+      "checkpoint_id": "state:region-09-orlando:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-09-orlando-lazy-end.png",
+      "derived_sha256": "6f6e935ce7aff7fe20ddd7708e581cac047531c2b8fd3313857e1d1b72ab2554",
+      "source_path": "public/03-details-20x10/region-09-orlando-lazy-end.png",
+      "source_sha256": "6d7aaf3df856162df939898dc51ab1014268c604e05502e28f41a66479948e74",
+      "visual_state_checkpoint_id": "state:region-09-orlando:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:region-10-pittsburgh:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-10-pittsburgh-initial.png",
+      "derived_sha256": "4eca33d12de4188adcb5c7f9f2ac52e11912aca0ef889db5d7b1163290f30523",
+      "source_path": "public/03-details-20x10/region-10-pittsburgh-initial.png",
+      "source_sha256": "89bd6afd541f82a58d612889a4e2e6b734f02cafe7874e1c8c850023ee15d7e3",
+      "visual_state_checkpoint_id": "state:region-10-pittsburgh:initial"
+    },
+    {
+      "checkpoint_id": "state:region-10-pittsburgh:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-region-10-pittsburgh-lazy-end.png",
+      "derived_sha256": "4224a59af228d5dcfdf859fd6b88d7a28ced380a9c703672c0ed40f7a5f57130",
+      "source_path": "public/03-details-20x10/region-10-pittsburgh-lazy-end.png",
+      "source_sha256": "af3a1d5256d2af54dc3650435bb0add6e63f3d4e243a01a2468e28b44a917198",
+      "visual_state_checkpoint_id": "state:region-10-pittsburgh:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:sign-in:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-sign-in-initial.png",
+      "derived_sha256": "b8c82d392ba0e419e3b6ef69dd33d6c30a36d9427ea668937edb53294aff24dc",
+      "source_path": "public/01-core/sign-in-initial.png",
+      "source_sha256": "aad4e428aa86719113bd7148ac6fe676b58122c874d7c6355fb7072a6d3368ad",
+      "visual_state_checkpoint_id": "state:sign-in:initial"
+    },
+    {
+      "checkpoint_id": "state:sign-in:password-reset-success",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-sign-in-password-reset-success.png",
+      "derived_sha256": "074081203d45d0d37805fa7ca4e7c3e8689ed618ac39ea5118f00f1bba892b59",
+      "source_path": "auth/visual-supplement/attempt-2/password-reset-success-login-return-viewport.png",
+      "source_sha256": "074081203d45d0d37805fa7ca4e7c3e8689ed618ac39ea5118f00f1bba892b59",
+      "visual_state_checkpoint_id": "state:sign-in:password-reset-success"
+    },
+    {
+      "checkpoint_id": "state:sign-up:initial",
+      "derivation": "byte-identical-copy",
+      "derived_path": "source-current/g1-visual/state-sign-up-initial.png",
+      "derived_sha256": "2ec6c13e3c265a29a91cc7e1b2cfcbd773a7c00ab188626970cce392e8db8989",
+      "source_path": "public/01-core/sign-up-initial.png",
+      "source_sha256": "2ec6c13e3c265a29a91cc7e1b2cfcbd773a7c00ab188626970cce392e8db8989",
+      "visual_state_checkpoint_id": "state:sign-up:initial"
+    },
+    {
+      "checkpoint_id": "state:ticketmaster-boundary:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-ticketmaster-boundary-initial.png",
+      "derived_sha256": "9b55e6619898c660d4e80e3238e156da702d0eebb2727a8380432b015f6101ec",
+      "source_path": "public/04-venues-boundaries/ticketmaster-boundary-initial.png",
+      "source_sha256": "1beac92ad2485e3f479d09264a701e69032da4add6444dcde588d6a588cd3edc",
+      "visual_state_checkpoint_id": "state:ticketmaster-boundary:initial"
+    },
+    {
+      "checkpoint_id": "state:ticketmaster-boundary:ticketmaster-click",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-ticketmaster-boundary-ticketmaster-click.png",
+      "derived_sha256": "a388b7c7fc76dbe5c0bc1df43e815dcab0055363a25bd7b1ab1fbee45a9f8086",
+      "source_path": "public/04-venues-boundaries/ticketmaster-boundary-ticketmaster-click.png",
+      "source_sha256": "5d1f123f826418c7fd6d5e0c3ad72a75c99f8d55faf08618b0ceb368638abe0a",
+      "visual_state_checkpoint_id": "state:ticketmaster-boundary:ticketmaster-click"
+    },
+    {
+      "checkpoint_id": "state:trending-artists:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-trending-artists-initial.png",
+      "derived_sha256": "df1dc52716cc5cf9cb20fb86d0bdf88995b08e88d5bab87264e1e9a716dd5192",
+      "source_path": "public/05-supporting-routes/trending-artists-initial.png",
+      "source_sha256": "8314f1f820201bc2239ef4f34cde6a77a9f99da00de06a6ff16c1846f784d7a3",
+      "visual_state_checkpoint_id": "state:trending-artists:initial"
+    },
+    {
+      "checkpoint_id": "state:trending-artists:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-trending-artists-lazy-end.png",
+      "derived_sha256": "df1dc52716cc5cf9cb20fb86d0bdf88995b08e88d5bab87264e1e9a716dd5192",
+      "source_path": "public/05-supporting-routes/trending-artists-lazy-end.png",
+      "source_sha256": "385642f948dc76c2fd013729f29797b28f7ab9e9caadaa98bc332ee4901057c2",
+      "visual_state_checkpoint_id": "state:trending-artists:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:venue-detail:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-detail-initial.png",
+      "derived_sha256": "d0aae04a8d246dfe40e7357924abdd0e2f586672973dfb201ca4c3e123a4da4c",
+      "source_path": "public/01-core/venue-detail-initial.png",
+      "source_sha256": "ffacd170db6a5cb3ea4bf3e02348ff70ebfde3dd5f481b021c71beb4ca3c8629",
+      "visual_state_checkpoint_id": "state:venue-detail:initial"
+    },
+    {
+      "checkpoint_id": "state:venue-detail:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-detail-lazy-end.png",
+      "derived_sha256": "d0aae04a8d246dfe40e7357924abdd0e2f586672973dfb201ca4c3e123a4da4c",
+      "source_path": "public/01-core/venue-detail-lazy-end.png",
+      "source_sha256": "fc6e9e1ea28cc17e31e88354b7643743ad4474473f20efd24fd3899554ba8764",
+      "visual_state_checkpoint_id": "state:venue-detail:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:venue-hall-est-stade-olympique:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-hall-est-stade-olympique-initial.png",
+      "derived_sha256": "23774d561e8eaeaef6f1532caef2bad063e7db1ecdfcd9b03f1f536bcc073c3d",
+      "source_path": "public/04-venues-boundaries/venue-hall-est-stade-olympique-initial.png",
+      "source_sha256": "39557bad27ebba1fa6e5c3d15203895a0c00aab8e09ddc0f19a9fd1503824e84",
+      "visual_state_checkpoint_id": "state:venue-hall-est-stade-olympique:initial"
+    },
+    {
+      "checkpoint_id": "state:venue-hall-est-stade-olympique:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-hall-est-stade-olympique-lazy-end.png",
+      "derived_sha256": "23774d561e8eaeaef6f1532caef2bad063e7db1ecdfcd9b03f1f536bcc073c3d",
+      "source_path": "public/04-venues-boundaries/venue-hall-est-stade-olympique-lazy-end.png",
+      "source_sha256": "39557bad27ebba1fa6e5c3d15203895a0c00aab8e09ddc0f19a9fd1503824e84",
+      "visual_state_checkpoint_id": "state:venue-hall-est-stade-olympique:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:venue-le-ministere:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-le-ministere-initial.png",
+      "derived_sha256": "8b3051c1ad01d762bc73c7b70ea07d391b5b460ad1877036f7b5be21754a401a",
+      "source_path": "public/04-venues-boundaries/venue-le-ministere-initial.png",
+      "source_sha256": "b8e8df90015283adc469637db288fb6f8ccf9d4f47f4dbe2a49e21d94ee17190",
+      "visual_state_checkpoint_id": "state:venue-le-ministere:initial"
+    },
+    {
+      "checkpoint_id": "state:venue-le-ministere:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-le-ministere-lazy-end.png",
+      "derived_sha256": "8b3051c1ad01d762bc73c7b70ea07d391b5b460ad1877036f7b5be21754a401a",
+      "source_path": "public/04-venues-boundaries/venue-le-ministere-lazy-end.png",
+      "source_sha256": "c49aa5c6763b96a8d4a6c6b95c3041d95cbe0de017c09b6fe923cdb3a25577b3",
+      "visual_state_checkpoint_id": "state:venue-le-ministere:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:venue-lolympia:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-lolympia-initial.png",
+      "derived_sha256": "241fb78ab3ab2fcf355a95556e52f309edb99346fa8ceeb98d83c8b3bf6920c4",
+      "source_path": "public/04-venues-boundaries/venue-lolympia-initial.png",
+      "source_sha256": "6705b6ccca322e7c0a537492d36a3964b8f30079ef7c29ef2cd99c9d0c2a1d6b",
+      "visual_state_checkpoint_id": "state:venue-lolympia:initial"
+    },
+    {
+      "checkpoint_id": "state:venue-lolympia:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-lolympia-lazy-end.png",
+      "derived_sha256": "241fb78ab3ab2fcf355a95556e52f309edb99346fa8ceeb98d83c8b3bf6920c4",
+      "source_path": "public/04-venues-boundaries/venue-lolympia-lazy-end.png",
+      "source_sha256": "bb08382b785b82926588499e44c831fefe8b4d89b7828120e87ec274fbfa94cc",
+      "visual_state_checkpoint_id": "state:venue-lolympia:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:venue-mtelus:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-mtelus-initial.png",
+      "derived_sha256": "2b1d6bc723a8363d07b9bc902e90b87f45ae7afab89e811fb06cf236868f7b81",
+      "source_path": "public/04-venues-boundaries/venue-mtelus-initial.png",
+      "source_sha256": "96e3984b8cf5d3f6fba48f6ad5ac2008727be5703c8678b2c9e7f3e565025703",
+      "visual_state_checkpoint_id": "state:venue-mtelus:initial"
+    },
+    {
+      "checkpoint_id": "state:venue-mtelus:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-mtelus-lazy-end.png",
+      "derived_sha256": "2b1d6bc723a8363d07b9bc902e90b87f45ae7afab89e811fb06cf236868f7b81",
+      "source_path": "public/04-venues-boundaries/venue-mtelus-lazy-end.png",
+      "source_sha256": "04b41d27f50101c1f03c298ed31c43d39cf9b8f7f12d0e95ac193d5dacfbfdaa",
+      "visual_state_checkpoint_id": "state:venue-mtelus:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:venue-new-city-gas:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-new-city-gas-initial.png",
+      "derived_sha256": "c12ebdea1c5412125044ae34bb93e24abb29460580f0685ba90a3a5542b005ba",
+      "source_path": "public/04-venues-boundaries/venue-new-city-gas-initial.png",
+      "source_sha256": "8d11f8377666315c4c682bc70cdd6731ebad29e3ef7c2ec24fb4894ce6c619c8",
+      "visual_state_checkpoint_id": "state:venue-new-city-gas:initial"
+    },
+    {
+      "checkpoint_id": "state:venue-new-city-gas:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-new-city-gas-lazy-end.png",
+      "derived_sha256": "c12ebdea1c5412125044ae34bb93e24abb29460580f0685ba90a3a5542b005ba",
+      "source_path": "public/04-venues-boundaries/venue-new-city-gas-lazy-end.png",
+      "source_sha256": "ed2958ae337ba8a5dda463d11ba233e63fc5768588f4f300f01831c3d015f6a0",
+      "visual_state_checkpoint_id": "state:venue-new-city-gas:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:venue-place-bell:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-place-bell-initial.png",
+      "derived_sha256": "d0aae04a8d246dfe40e7357924abdd0e2f586672973dfb201ca4c3e123a4da4c",
+      "source_path": "public/04-venues-boundaries/venue-place-bell-initial.png",
+      "source_sha256": "ffacd170db6a5cb3ea4bf3e02348ff70ebfde3dd5f481b021c71beb4ca3c8629",
+      "visual_state_checkpoint_id": "state:venue-place-bell:initial"
+    },
+    {
+      "checkpoint_id": "state:venue-place-bell:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-place-bell-lazy-end.png",
+      "derived_sha256": "d0aae04a8d246dfe40e7357924abdd0e2f586672973dfb201ca4c3e123a4da4c",
+      "source_path": "public/04-venues-boundaries/venue-place-bell-lazy-end.png",
+      "source_sha256": "fc6e9e1ea28cc17e31e88354b7643743ad4474473f20efd24fd3899554ba8764",
+      "visual_state_checkpoint_id": "state:venue-place-bell:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:venue-place-des-arts:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-place-des-arts-initial.png",
+      "derived_sha256": "90b8116be5b4c0d0a3c496cebb7a86fa3d9aab275145640f321c26f9d4706d47",
+      "source_path": "public/04-venues-boundaries/venue-place-des-arts-initial.png",
+      "source_sha256": "9803bed006f1d1ae4280f56bcd46b734ba66ce9be5c86e2621fbf20064a698f1",
+      "visual_state_checkpoint_id": "state:venue-place-des-arts:initial"
+    },
+    {
+      "checkpoint_id": "state:venue-place-des-arts:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-place-des-arts-lazy-end.png",
+      "derived_sha256": "90b8116be5b4c0d0a3c496cebb7a86fa3d9aab275145640f321c26f9d4706d47",
+      "source_path": "public/04-venues-boundaries/venue-place-des-arts-lazy-end.png",
+      "source_sha256": "9803bed006f1d1ae4280f56bcd46b734ba66ce9be5c86e2621fbf20064a698f1",
+      "visual_state_checkpoint_id": "state:venue-place-des-arts:lazy-end"
+    },
+    {
+      "checkpoint_id": "state:venue-theatre-fairmount:initial",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-theatre-fairmount-initial.png",
+      "derived_sha256": "fa656b1e96327b6a2af50f7162894a3a762f61f4488f63a57e766337e65ec8cc",
+      "source_path": "public/04-venues-boundaries/venue-theatre-fairmount-initial.png",
+      "source_sha256": "136447c1306b7738d530cc256d54cfc568f37160edbdf86b36b85cc7bbaca5e1",
+      "visual_state_checkpoint_id": "state:venue-theatre-fairmount:initial"
+    },
+    {
+      "checkpoint_id": "state:venue-theatre-fairmount:lazy-end",
+      "derivation": "lossless-top-crop-1440x900",
+      "derived_path": "source-current/g1-visual/state-venue-theatre-fairmount-lazy-end.png",
+      "derived_sha256": "fa656b1e96327b6a2af50f7162894a3a762f61f4488f63a57e766337e65ec8cc",
+      "source_path": "public/04-venues-boundaries/venue-theatre-fairmount-lazy-end.png",
+      "source_sha256": "b57b147de87ba4dffdf7345c9555cc37580dc886434c5a386370aa57158d5898",
+      "visual_state_checkpoint_id": "state:venue-theatre-fairmount:lazy-end"
+    }
+  ],
+  "schema_version": "songkick.frozen-visual-derivatives.v2",
+  "site_id": "songkick",
+  "source_state_count": 148
+}

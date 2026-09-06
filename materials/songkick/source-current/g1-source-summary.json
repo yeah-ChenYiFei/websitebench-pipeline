@@ -1,0 +1,130 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "channels": {
+    "auth": {
+      "classification": "remote-native-valid consolidated authenticated-state acquisition",
+      "pointer_ref": "evidence/source-auth-manifest.json",
+      "source_artifact_path": "AUTH-CAPTURE-MANIFEST-VIEWPORT.json",
+      "source_artifact_sha256": "80f685eb6abf8aaa5d91adaf17d94cc99722b36390f94fdf26423a554e4eba32"
+    },
+    "auth_visual_authenticated": {
+      "classification": "remote-native-valid masked authenticated visuals",
+      "pointer_ref": "evidence/source-auth-visual-authenticated.json",
+      "source_artifact_path": "auth/visual-supplement/attempt-2/PHASE-AUTH.json",
+      "source_artifact_sha256": "aac20c5f98e2b662a2055326533ebd24b909654b610f0cdc454b060986811cd9"
+    },
+    "auth_visual_reset_error": {
+      "classification": "remote-native-valid masked reset-error visual",
+      "pointer_ref": "evidence/source-auth-visual-reset-error.json",
+      "source_artifact_path": "auth/visual-supplement/attempt-1/PHASE-RESET-ERROR.json",
+      "source_artifact_sha256": "3a545b1de743676132c72005781cd8c5f6c903cab9c3b374e52fe69e046aede7"
+    },
+    "auth_visual_reset_success": {
+      "classification": "remote-native-valid masked reset-success visual",
+      "pointer_ref": "evidence/source-auth-visual-reset-success.json",
+      "source_artifact_path": "auth/visual-supplement/attempt-2/PHASE-RESET-SUCCESS-VIEWPORT.json",
+      "source_artifact_sha256": "0958e0a3b2eb7d67f764fc9efe64d6e6cbfae8e9fb62df4b88f7ec52293014fb"
+    },
+    "blog": {
+      "classification": "remote-native-valid first-response HTTP boundary observation",
+      "pointer_ref": "evidence/source-blog-boundary.json",
+      "source_artifact_path": "BLOG-BOUNDARY-REPORT.json",
+      "source_artifact_sha256": "c5438cec6f721e2cb975825a3d3f91793582a44c91400150d8950a1bdbb26e6a"
+    },
+    "content": {
+      "classification": "remote-native-valid public DOM identity supplement",
+      "pointer_ref": "evidence/source-public-content-identities.json",
+      "source_artifact_path": "PUBLIC-CONTENT-IDENTITY-SUPPLEMENT.safe.json",
+      "source_artifact_sha256": "56b1a3769b14fac80cdebd8d77817148edd46064a00750c4bf3f4ad565866089"
+    },
+    "links": {
+      "classification": "remote-native-valid public link identity supplement",
+      "pointer_ref": "evidence/source-public-link-identities.json",
+      "source_artifact_path": "PUBLIC-LINK-IDENTITY-SUPPLEMENT.json",
+      "source_artifact_sha256": "4a07932cddfa2f15483eaf5cad756177f5e84a3a250cbfe12a75f71817f1376b"
+    },
+    "public": {
+      "classification": "remote-native-valid formal public capture",
+      "pointer_ref": "evidence/source-public-capture.json",
+      "source_artifact_path": "public/formal-aggregate/capture-report.json",
+      "source_artifact_sha256": "13b45de765df1cc707ea87de54fb145273a6f2023c0ce7774943ea0681ec6310"
+    },
+    "public_audit": {
+      "classification": "remote-native-valid formal shard audit",
+      "pointer_ref": "evidence/source-public-capture-audit.json",
+      "source_artifact_path": "PUBLIC-CAPTURE-AUDIT.json",
+      "source_artifact_sha256": "dedfa87d749fab7f63c0bc57225860ba30c6372fdddf56ffed873412bcb0842d"
+    },
+    "resource": {
+      "classification": "remote-native-valid raw-resource localizability probe",
+      "pointer_ref": "evidence/source-resource-probe.json",
+      "source_artifact_path": "resource-probe/RESOURCE-PROBE-REPORT.json",
+      "source_artifact_sha256": "67a7f82faecb09bc0deb71144855275d61a2fe7823b9a5948c8be8e87a382286"
+    },
+    "search": {
+      "classification": "remote-native-valid dynamic search capture",
+      "pointer_ref": "evidence/source-public-search-states.json",
+      "source_artifact_path": "public/16-search-supplement-hit-test/PUBLIC-SEARCH-SUPPLEMENT.json",
+      "source_artifact_sha256": "85338670836df226b880963e44b11675d9a5581489b953174440b3fa0d5b7aa1"
+    },
+    "stability": {
+      "classification": "remote-native-valid repeat public capture",
+      "pointer_ref": "evidence/source-stability-pass-2.json",
+      "source_artifact_path": "public/08-stability-pass-2/capture-report.json",
+      "source_artifact_sha256": "4938bc661d88b143795eaa0ee1f331999dac5731a18cac2061277de901e9f857"
+    },
+    "ticket": {
+      "classification": "remote-native-valid targeted ticket DOM observation",
+      "pointer_ref": "evidence/source-ticket-boundary.json",
+      "source_artifact_path": "TICKET-BOUNDARY-DOM-REPORT.json",
+      "source_artifact_sha256": "64942fa372681dc948eeb514ac15826014cd0566a888c065b68038e7e7dfb906"
+    },
+    "titles": {
+      "classification": "remote-native-valid public title identity supplement",
+      "pointer_ref": "evidence/source-public-route-titles.json",
+      "source_artifact_path": "PUBLIC-ROUTE-TITLE-SUPPLEMENT.json",
+      "source_artifact_sha256": "40088337855db74c0068a22d0e2080e44eae57181fe78bc8c34d8890ae7171fe"
+    }
+  },
+  "denominators": {
+    "deduplicated_link_identities": 4122,
+    "dynamic_search_states": 2,
+    "external_link_identities": 46,
+    "masked_auth_visual_states": 5,
+    "public_visual_states": 141,
+    "raw_control_instances": 17045,
+    "routes": 84
+  },
+  "environment": {
+    "locale": "en-US",
+    "roles": [
+      "anonymous",
+      "authenticated-user",
+      "logged-out"
+    ],
+    "timezone_id": "America/Toronto",
+    "topology": "remote-native",
+    "viewport": {
+      "device_scale_factor": 1,
+      "height": 900,
+      "width": 1440
+    }
+  },
+  "identity": {
+    "authority_ref": "CAPTURE-MIGRATION-AUTHORITY.json",
+    "cross_capture_result_material": false,
+    "prior_material_used_as_declarations_only": true,
+    "same_capture_only": true,
+    "supersedes_capture_id": "songkick-20260904T024110Z-g1-formal"
+  },
+  "schema_version": "songkick.g1-source-summary.v2",
+  "scope_policy": {
+    "challenge_policy": "human verification remains in scope and challenge-pending until completed; it is never unavailable by default",
+    "collection_rule": "§3.3 first two pages/batches; <=20 all details, >20 first 10 complete details and local data boundaries for remaining items",
+    "external_policy": "retain destination identity and intercept activation to branded local HTTP 200 soft-404 with zero outbound runtime requests",
+    "runtime_policy": "no source API, reverse proxy, iframe, remote screenshot/media, credential, cookie, token, or source-side effect at runtime"
+  },
+  "site_id": "songkick",
+  "site_profile": "ULTIMATE-OFFLINE-CLONE-AI-COLLAB-MERGED.zh-CN.md §12.11",
+  "source_url": "https://www.songkick.com/"
+}

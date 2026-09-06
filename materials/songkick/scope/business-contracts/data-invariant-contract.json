@@ -1,0 +1,23 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "invariants": [
+    "Every full detail preserves source entity identity, date, venue, lineup, image, and text.",
+    "Every non-full item retained by the first two pages/batches keeps its real card identity and reaches a branded local data-boundary page.",
+    "Mutations are isolated by local account and survive refresh, relogin, and backend restart until reset.",
+    "Reset returns deterministic seeded state without source credentials or personal data.",
+    "No candidate runtime request reaches Songkick, its resource hosts, ticket vendors, analytics, ads, maps, identity providers, or support/blog destinations."
+  ],
+  "schema_version": "songkick.g1-business-view.v1",
+  "site_id": "songkick",
+  "source_contracts": [
+    "all-controls-inventory.json",
+    "full-route-inventory.json",
+    "route-state-viewport.json",
+    "first-party-link-graph.json",
+    "external-links.json",
+    "blocked-or-unavailable-pages.json",
+    "component-state-matrix.json"
+  ],
+  "status": "frozen",
+  "view": "data-and-invariants"
+}

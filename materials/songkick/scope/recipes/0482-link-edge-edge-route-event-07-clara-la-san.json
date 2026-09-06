@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:montreal-page-1:initial",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "expected_href": "/concerts/43371714-clara-la-san-at-lolympia",
+  "kind": "first-party-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "edge:route:event-07-clara-la-san",
+  "record_kind": "link-edge",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "a[href=\"/concerts/43371714-clara-la-san-at-lolympia\"]",
+  "subject_id": "edge:route:event-07-clara-la-san",
+  "subject_kind": "link-edge"
+}

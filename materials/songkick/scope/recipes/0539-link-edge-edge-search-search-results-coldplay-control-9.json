@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:global-search:search-results-coldplay",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "expected_href": "/en/events/42874650",
+  "kind": "first-party-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "edge:search:search-results-coldplay:control-9",
+  "record_kind": "link-edge",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-search-link-id=\"search-results-coldplay-9\"]",
+  "subject_id": "edge:search:search-results-coldplay:control-9",
+  "subject_kind": "link-edge"
+}

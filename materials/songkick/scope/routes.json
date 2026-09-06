@@ -1,0 +1,1156 @@
+{
+  "routes": [
+    {
+      "captured_final_path": "/",
+      "captured_http_status": 200,
+      "id": "home",
+      "local_destination": true,
+      "page_id": "home",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts",
+      "captured_http_status": 200,
+      "id": "concerts",
+      "local_destination": true,
+      "page_id": "concerts",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/concerts",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/27377-canada-montreal",
+      "captured_http_status": 200,
+      "id": "montreal-page-1",
+      "local_destination": true,
+      "page_id": "montreal-page-1",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/metro-areas/27377-canada-montreal",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/27377-canada-montreal",
+      "captured_http_status": 200,
+      "id": "montreal-page-2",
+      "local_destination": true,
+      "page_id": "montreal-page-2",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/en/metro-areas/27377-canada-montreal",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists",
+      "captured_http_status": 200,
+      "id": "artists",
+      "local_destination": true,
+      "page_id": "artists",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/artists",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists/10355080-westside-cowboy",
+      "captured_http_status": 200,
+      "id": "artist-detail",
+      "local_destination": true,
+      "page_id": "artist-detail",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/artists/10355080-westside-cowboy",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43365625-steve-lacy-at-place-bell",
+      "captured_http_status": 200,
+      "id": "event-detail",
+      "local_destination": true,
+      "page_id": "event-detail",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/concerts/43365625-steve-lacy-at-place-bell",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/venues/3536914-place-bell",
+      "captured_http_status": 200,
+      "id": "venue-detail",
+      "local_destination": true,
+      "page_id": "venue-detail",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/venues/3536914-place-bell",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/festivals",
+      "captured_http_status": 200,
+      "id": "festivals",
+      "local_destination": true,
+      "page_id": "festivals",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/festivals",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/festivals/3556859-music4cancer/id/43273560-music4cancer-2026",
+      "captured_http_status": 200,
+      "id": "festival-detail",
+      "local_destination": true,
+      "page_id": "festival-detail",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/festivals/3556859-music4cancer/id/43273560-music4cancer-2026",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/session/filter_metro_area",
+      "captured_http_status": 200,
+      "id": "location-filter",
+      "local_destination": true,
+      "page_id": "location-filter",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/session/filter_metro_area",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/session/new",
+      "captured_http_status": 200,
+      "id": "sign-in",
+      "local_destination": true,
+      "page_id": "sign-in",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/session/new",
+      "states": [
+        "initial",
+        "password-reset-success"
+      ]
+    },
+    {
+      "captured_final_path": "/signup/new",
+      "captured_http_status": 200,
+      "id": "sign-up",
+      "local_destination": true,
+      "page_id": "sign-up",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/signup/new",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/",
+      "captured_http_status": 200,
+      "id": "home-next-events",
+      "local_destination": true,
+      "page_id": "home-next-events",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/",
+      "states": [
+        "initial",
+        "next-events"
+      ]
+    },
+    {
+      "captured_final_path": "/",
+      "captured_http_status": 200,
+      "id": "home-next-artists",
+      "local_destination": true,
+      "page_id": "home-next-artists",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/",
+      "states": [
+        "initial",
+        "next-artists"
+      ]
+    },
+    {
+      "captured_final_path": "/",
+      "captured_http_status": 200,
+      "id": "home-theme",
+      "local_destination": true,
+      "page_id": "home-theme",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/",
+      "states": [
+        "initial",
+        "dark-background"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/27377-canada-montreal",
+      "captured_http_status": 200,
+      "id": "montreal-today",
+      "local_destination": true,
+      "page_id": "montreal-today",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/en/metro-areas/27377-canada-montreal",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/27377-canada-montreal",
+      "captured_http_status": 200,
+      "id": "montreal-next-7-days",
+      "local_destination": true,
+      "page_id": "montreal-next-7-days",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/en/metro-areas/27377-canada-montreal",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/27377-canada-montreal",
+      "captured_http_status": 200,
+      "id": "montreal-next-30-days",
+      "local_destination": true,
+      "page_id": "montreal-next-30-days",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/en/metro-areas/27377-canada-montreal",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/session/filter_metro_area",
+      "captured_http_status": 200,
+      "id": "location-search-toronto",
+      "local_destination": true,
+      "page_id": "location-search-toronto",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/session/filter_metro_area",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/session/filter_metro_area",
+      "captured_http_status": 200,
+      "id": "location-search-empty",
+      "local_destination": true,
+      "page_id": "location-search-empty",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/session/filter_metro_area",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/",
+      "captured_http_status": 200,
+      "id": "home-search-modal",
+      "local_destination": true,
+      "page_id": "home-search-modal",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/",
+      "states": [
+        "initial",
+        "search-open"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43365625-steve-lacy-at-place-bell",
+      "captured_http_status": 200,
+      "id": "event-01-steve-lacy",
+      "local_destination": true,
+      "page_id": "event-01-steve-lacy",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/concerts/43365625-steve-lacy-at-place-bell",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43371713-gipsy-kings-at-mtelus",
+      "captured_http_status": 200,
+      "id": "event-02-gipsy-kings",
+      "local_destination": true,
+      "page_id": "event-02-gipsy-kings",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/concerts/43371713-gipsy-kings-at-mtelus",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43381053-gorgon-city-at-new-city-gas",
+      "captured_http_status": 200,
+      "id": "event-03-gorgon-city",
+      "local_destination": true,
+      "page_id": "event-03-gorgon-city",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/concerts/43381053-gorgon-city-at-new-city-gas",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43383403-yebba-at-lolympia",
+      "captured_http_status": 200,
+      "id": "event-04-yebba",
+      "local_destination": true,
+      "page_id": "event-04-yebba",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/concerts/43383403-yebba-at-lolympia",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43382897-donavon-frankenreiter-at-le-ministere",
+      "captured_http_status": 200,
+      "id": "event-05-donavon-frankenreiter",
+      "local_destination": true,
+      "page_id": "event-05-donavon-frankenreiter",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/concerts/43382897-donavon-frankenreiter-at-le-ministere",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43390372-salif-keita-at-place-des-arts",
+      "captured_http_status": 200,
+      "id": "event-06-salif-keita",
+      "local_destination": true,
+      "page_id": "event-06-salif-keita",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/concerts/43390372-salif-keita-at-place-des-arts",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43371714-clara-la-san-at-lolympia",
+      "captured_http_status": 200,
+      "id": "event-07-clara-la-san",
+      "local_destination": true,
+      "page_id": "event-07-clara-la-san",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/concerts/43371714-clara-la-san-at-lolympia",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43390357-too-many-zooz-at-theatre-fairmount-theatre",
+      "captured_http_status": 200,
+      "id": "event-08-too-many-zooz",
+      "local_destination": true,
+      "page_id": "event-08-too-many-zooz",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/concerts/43390357-too-many-zooz-at-theatre-fairmount-theatre",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43371710-i-hate-models-at-hall-est-du-stade-olympique",
+      "captured_http_status": 200,
+      "id": "event-09-i-hate-models",
+      "local_destination": true,
+      "page_id": "event-09-i-hate-models",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/concerts/43371710-i-hate-models-at-hall-est-du-stade-olympique",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43382670-sullivan-king-at-mtelus",
+      "captured_http_status": 200,
+      "id": "event-10-sullivan-king",
+      "local_destination": true,
+      "page_id": "event-10-sullivan-king",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/concerts/43382670-sullivan-king-at-mtelus",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists/197928-coldplay",
+      "captured_http_status": 200,
+      "id": "artist-01-coldplay",
+      "local_destination": true,
+      "page_id": "artist-01-coldplay",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/artists/197928-coldplay",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists/139648-rihanna",
+      "captured_http_status": 200,
+      "id": "artist-02-rihanna",
+      "local_destination": true,
+      "page_id": "artist-02-rihanna",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/artists/139648-rihanna",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists/4363463-weeknd",
+      "captured_http_status": 200,
+      "id": "artist-03-the-weeknd",
+      "local_destination": true,
+      "page_id": "artist-03-the-weeknd",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/artists/4363463-weeknd",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists/182968-eminem",
+      "captured_http_status": 200,
+      "id": "artist-04-eminem",
+      "local_destination": true,
+      "page_id": "artist-04-eminem",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/artists/182968-eminem",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists/556955-drake",
+      "captured_http_status": 200,
+      "id": "artist-05-drake",
+      "local_destination": true,
+      "page_id": "artist-05-drake",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/artists/556955-drake",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists/217815-taylor-swift",
+      "captured_http_status": 200,
+      "id": "artist-06-taylor-swift",
+      "local_destination": true,
+      "page_id": "artist-06-taylor-swift",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/artists/217815-taylor-swift",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists/941964-bruno-mars",
+      "captured_http_status": 200,
+      "id": "artist-07-bruno-mars",
+      "local_destination": true,
+      "page_id": "artist-07-bruno-mars",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/artists/941964-bruno-mars",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists/552177-kanye-west",
+      "captured_http_status": 200,
+      "id": "artist-08-kanye-west",
+      "local_destination": true,
+      "page_id": "artist-08-kanye-west",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/artists/552177-kanye-west",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists/181875-maroon-5",
+      "captured_http_status": 200,
+      "id": "artist-09-maroon-5",
+      "local_destination": true,
+      "page_id": "artist-09-maroon-5",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/artists/181875-maroon-5",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/artists/974908-lady-gaga",
+      "captured_http_status": 200,
+      "id": "artist-10-lady-gaga",
+      "local_destination": true,
+      "page_id": "artist-10-lady-gaga",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/artists/974908-lady-gaga",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/26330-us-sf-bay-area",
+      "captured_http_status": 200,
+      "id": "region-01-sf-bay-area",
+      "local_destination": true,
+      "page_id": "region-01-sf-bay-area",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/metro-areas/26330-us-sf-bay-area",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/17835-us-los-angeles-la",
+      "captured_http_status": 200,
+      "id": "region-02-los-angeles",
+      "local_destination": true,
+      "page_id": "region-02-los-angeles",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/metro-areas/17835-us-los-angeles-la",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/7644-us-new-york-nyc",
+      "captured_http_status": 200,
+      "id": "region-03-new-york",
+      "local_destination": true,
+      "page_id": "region-03-new-york",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/metro-areas/7644-us-new-york-nyc",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/12283-us-portland",
+      "captured_http_status": 200,
+      "id": "region-04-portland",
+      "local_destination": true,
+      "page_id": "region-04-portland",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/metro-areas/12283-us-portland",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/1409-us-washington",
+      "captured_http_status": 200,
+      "id": "region-05-washington",
+      "local_destination": true,
+      "page_id": "region-05-washington",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/metro-areas/1409-us-washington",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/5202-us-philadelphia",
+      "captured_http_status": 200,
+      "id": "region-06-philadelphia",
+      "local_destination": true,
+      "page_id": "region-06-philadelphia",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/metro-areas/5202-us-philadelphia",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/2846-us-seattle",
+      "captured_http_status": 200,
+      "id": "region-07-seattle",
+      "local_destination": true,
+      "page_id": "region-07-seattle",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/metro-areas/2846-us-seattle",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/9426-us-chicago",
+      "captured_http_status": 200,
+      "id": "region-08-chicago",
+      "local_destination": true,
+      "page_id": "region-08-chicago",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/metro-areas/9426-us-chicago",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/3733-us-orlando",
+      "captured_http_status": 200,
+      "id": "region-09-orlando",
+      "local_destination": true,
+      "page_id": "region-09-orlando",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/metro-areas/3733-us-orlando",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/22443-us-pittsburgh",
+      "captured_http_status": 200,
+      "id": "region-10-pittsburgh",
+      "local_destination": true,
+      "page_id": "region-10-pittsburgh",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/metro-areas/22443-us-pittsburgh",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/venues/3536914-place-bell",
+      "captured_http_status": 200,
+      "id": "venue-place-bell",
+      "local_destination": true,
+      "page_id": "venue-place-bell",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/venues/3536914-place-bell",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/venues/20838-mtelus",
+      "captured_http_status": 200,
+      "id": "venue-mtelus",
+      "local_destination": true,
+      "page_id": "venue-mtelus",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/venues/20838-mtelus",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/venues/1449208-new-city-gas",
+      "captured_http_status": 200,
+      "id": "venue-new-city-gas",
+      "local_destination": true,
+      "page_id": "venue-new-city-gas",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/venues/1449208-new-city-gas",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/venues/61660-lolympia",
+      "captured_http_status": 200,
+      "id": "venue-lolympia",
+      "local_destination": true,
+      "page_id": "venue-lolympia",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/venues/61660-lolympia",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/venues/4016319-le-ministere",
+      "captured_http_status": 200,
+      "id": "venue-le-ministere",
+      "local_destination": true,
+      "page_id": "venue-le-ministere",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/venues/4016319-le-ministere",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/venues/35381-place-des-arts",
+      "captured_http_status": 200,
+      "id": "venue-place-des-arts",
+      "local_destination": true,
+      "page_id": "venue-place-des-arts",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/venues/35381-place-des-arts",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/venues/1086866-theatre-fairmount-theatre",
+      "captured_http_status": 200,
+      "id": "venue-theatre-fairmount",
+      "local_destination": true,
+      "page_id": "venue-theatre-fairmount",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/venues/1086866-theatre-fairmount-theatre",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/venues/4661630-hall-est-du-stade-olympique",
+      "captured_http_status": 200,
+      "id": "venue-hall-est-stade-olympique",
+      "local_destination": true,
+      "page_id": "venue-hall-est-stade-olympique",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/venues/4661630-hall-est-du-stade-olympique",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/leaderboards/popular_artists",
+      "captured_http_status": 200,
+      "id": "popular-artists-page-2",
+      "local_destination": true,
+      "page_id": "popular-artists-page-2",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/leaderboards/popular_artists",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/concerts/43365625-steve-lacy-at-place-bell",
+      "captured_http_status": 200,
+      "id": "ticketmaster-boundary",
+      "local_destination": true,
+      "page_id": "ticketmaster-boundary",
+      "priority": "p0",
+      "purpose_edge": "boundary",
+      "route_pattern": "/concerts/43365625-steve-lacy-at-place-bell",
+      "states": [
+        "initial",
+        "ticketmaster-click"
+      ]
+    },
+    {
+      "captured_final_path": "/genres/rock",
+      "captured_http_status": 200,
+      "id": "genre-rock",
+      "local_destination": true,
+      "page_id": "genre-rock",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/genres/rock",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/leaderboards/trending_artists",
+      "captured_http_status": 200,
+      "id": "trending-artists",
+      "local_destination": true,
+      "page_id": "trending-artists",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/leaderboards/trending_artists",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/live-stream-concerts",
+      "captured_http_status": 200,
+      "id": "live-streams",
+      "local_destination": true,
+      "page_id": "live-streams",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/live-stream-concerts",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/news",
+      "captured_http_status": 200,
+      "id": "news",
+      "local_destination": true,
+      "page_id": "news",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/news",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/developer",
+      "captured_http_status": 200,
+      "id": "developer",
+      "local_destination": true,
+      "page_id": "developer",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/developer",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/design",
+      "captured_http_status": 200,
+      "id": "design",
+      "local_destination": true,
+      "page_id": "design",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/design",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/jobs",
+      "captured_http_status": 200,
+      "id": "jobs",
+      "local_destination": true,
+      "page_id": "jobs",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/jobs",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/info/cookies",
+      "captured_http_status": 200,
+      "id": "info-cookies",
+      "local_destination": true,
+      "page_id": "info-cookies",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/info/cookies",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/info/guidelines",
+      "captured_http_status": 200,
+      "id": "info-guidelines",
+      "local_destination": true,
+      "page_id": "info-guidelines",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/info/guidelines",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/info/privacy",
+      "captured_http_status": 200,
+      "id": "info-privacy",
+      "local_destination": true,
+      "page_id": "info-privacy",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/info/privacy",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/info/security",
+      "captured_http_status": 200,
+      "id": "info-security",
+      "local_destination": true,
+      "page_id": "info-security",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/info/security",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/info/terms",
+      "captured_http_status": 200,
+      "id": "info-terms",
+      "local_destination": true,
+      "page_id": "info-terms",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/info/terms",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/metro-areas/27377-canada-montreal/genre/rock",
+      "captured_http_status": 200,
+      "id": "nearby-genre-rock",
+      "local_destination": true,
+      "page_id": "nearby-genre-rock",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/metro-areas/nearby/genre/rock",
+      "states": [
+        "initial",
+        "lazy-end"
+      ]
+    },
+    {
+      "captured_final_path": "/de",
+      "captured_http_status": 200,
+      "id": "locale-de",
+      "local_destination": true,
+      "page_id": "locale-de",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/de",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/es",
+      "captured_http_status": 200,
+      "id": "locale-es",
+      "local_destination": true,
+      "page_id": "locale-es",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/es",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/fr",
+      "captured_http_status": 200,
+      "id": "locale-fr",
+      "local_destination": true,
+      "page_id": "locale-fr",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/fr",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/pt",
+      "captured_http_status": 200,
+      "id": "locale-pt",
+      "local_destination": true,
+      "page_id": "locale-pt",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/pt",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/password_reset_requests/new",
+      "captured_http_status": 200,
+      "id": "password-reset",
+      "local_destination": true,
+      "page_id": "password-reset",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/password_reset_requests/new",
+      "states": [
+        "initial",
+        "captcha-error"
+      ]
+    },
+    {
+      "captured_final_path": "/info/about",
+      "captured_http_status": 200,
+      "id": "about",
+      "local_destination": true,
+      "page_id": "about",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/info/about",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/app",
+      "captured_http_status": 200,
+      "id": "app",
+      "local_destination": true,
+      "page_id": "app",
+      "priority": "p1",
+      "purpose_edge": "secondary",
+      "route_pattern": "/app",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/signup/new",
+      "captured_http_status": 200,
+      "id": "protected-home-logged-out",
+      "local_destination": true,
+      "page_id": "protected-home-logged-out",
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "route_pattern": "/home",
+      "states": [
+        "initial"
+      ]
+    },
+    {
+      "captured_final_path": "/__websitebench_missing_songkick__",
+      "captured_http_status": 404,
+      "id": "not-found",
+      "local_destination": true,
+      "page_id": "not-found",
+      "priority": "p0",
+      "purpose_edge": "boundary",
+      "route_pattern": "/__websitebench_missing_songkick__",
+      "states": [
+        "initial"
+      ]
+    }
+  ],
+  "schema_version": "offline-clone.routes.v1"
+}

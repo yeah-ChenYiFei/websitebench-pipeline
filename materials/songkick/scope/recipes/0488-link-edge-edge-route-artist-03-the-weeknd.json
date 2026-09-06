@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:artists:initial",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "expected_href": "/artists/4363463-weeknd",
+  "kind": "first-party-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "edge:route:artist-03-the-weeknd",
+  "record_kind": "link-edge",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "a[href=\"/artists/4363463-weeknd\"]",
+  "subject_id": "edge:route:artist-03-the-weeknd",
+  "subject_kind": "link-edge"
+}

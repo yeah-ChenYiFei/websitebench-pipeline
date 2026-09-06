@@ -1,0 +1,20 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "complete_detail_counts": {
+    "artists": 10,
+    "events": 10,
+    "regions": 10,
+    "venues": 8
+  },
+  "public_visual_states": 148,
+  "route_records": 84,
+  "schema_version": "songkick.g1-business-view.v1",
+  "site_id": "songkick",
+  "source_contracts": [
+    "full-route-inventory.json",
+    "route-state-viewport.json",
+    "blocked-or-unavailable-pages.json"
+  ],
+  "status": "frozen",
+  "view": "routes-and-states"
+}

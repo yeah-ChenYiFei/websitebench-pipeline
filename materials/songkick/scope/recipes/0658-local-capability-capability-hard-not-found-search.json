@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:not-found:initial",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "expected_state": "enabled",
+  "kind": "capability-state",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "capability:hard-not-found-search",
+  "record_kind": "local-capability",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "#not-found-search",
+  "subject_id": "capability:hard-not-found-search",
+  "subject_kind": "local-capability"
+}

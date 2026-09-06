@@ -1,0 +1,2863 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "capture_method": "reviewed semantic projection over the complete same-capture remote Playwright control audit",
+  "control_instances": 221,
+  "controls": [
+    {
+      "id": "home:control-0",
+      "recipe_refs": [
+        "scope/recipes/0001-control-home-control-0.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a'."
+    },
+    {
+      "id": "home:control-1",
+      "recipe_refs": [
+        "scope/recipes/0002-control-home-control-1.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Concerts near you'."
+    },
+    {
+      "id": "home:control-2",
+      "recipe_refs": [
+        "scope/recipes/0003-control-home-control-2.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Artists'."
+    },
+    {
+      "id": "home:control-3",
+      "recipe_refs": [
+        "scope/recipes/0004-control-home-control-3.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Most popular artists worldwide'."
+    },
+    {
+      "id": "home:control-4",
+      "recipe_refs": [
+        "scope/recipes/0005-control-home-control-4.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Trending artists worldwide'."
+    },
+    {
+      "id": "home:control-5",
+      "recipe_refs": [
+        "scope/recipes/0006-control-home-control-5.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Coldplay'."
+    },
+    {
+      "id": "home:control-6",
+      "recipe_refs": [
+        "scope/recipes/0007-control-home-control-6.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Rihanna'."
+    },
+    {
+      "id": "home:control-7",
+      "recipe_refs": [
+        "scope/recipes/0008-control-home-control-7.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='The Weeknd'."
+    },
+    {
+      "id": "home:control-8",
+      "recipe_refs": [
+        "scope/recipes/0009-control-home-control-8.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Eminem'."
+    },
+    {
+      "id": "home:control-9",
+      "recipe_refs": [
+        "scope/recipes/0010-control-home-control-9.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Drake'."
+    },
+    {
+      "id": "home:control-10",
+      "recipe_refs": [
+        "scope/recipes/0011-control-home-control-10.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Taylor Swift'."
+    },
+    {
+      "id": "home:control-11",
+      "recipe_refs": [
+        "scope/recipes/0012-control-home-control-11.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Bruno Mars'."
+    },
+    {
+      "id": "home:control-12",
+      "recipe_refs": [
+        "scope/recipes/0013-control-home-control-12.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Kanye West'."
+    },
+    {
+      "id": "home:control-13",
+      "recipe_refs": [
+        "scope/recipes/0014-control-home-control-13.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Maroon 5'."
+    },
+    {
+      "id": "home:control-14",
+      "recipe_refs": [
+        "scope/recipes/0015-control-home-control-14.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Lady Gaga'."
+    },
+    {
+      "id": "home:control-15",
+      "recipe_refs": [
+        "scope/recipes/0016-control-home-control-15.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Westside Cowboy'."
+    },
+    {
+      "id": "home:control-16",
+      "recipe_refs": [
+        "scope/recipes/0017-control-home-control-16.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='OMD'."
+    },
+    {
+      "id": "home:control-17",
+      "recipe_refs": [
+        "scope/recipes/0018-control-home-control-17.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Mary In The Junkyard'."
+    },
+    {
+      "id": "home:control-18",
+      "recipe_refs": [
+        "scope/recipes/0019-control-home-control-18.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Man/Woman/Chainsaw'."
+    },
+    {
+      "id": "home:control-19",
+      "recipe_refs": [
+        "scope/recipes/0020-control-home-control-19.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Stardust'."
+    },
+    {
+      "id": "home:control-20",
+      "recipe_refs": [
+        "scope/recipes/0021-control-home-control-20.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Sign up as an artist'."
+    },
+    {
+      "id": "home:control-21",
+      "recipe_refs": [
+        "scope/recipes/0022-control-home-control-21.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Festivals'."
+    },
+    {
+      "id": "home:control-22",
+      "recipe_refs": [
+        "scope/recipes/0023-control-home-control-22.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Tourbox for artists'."
+    },
+    {
+      "id": "home:control-23",
+      "recipe_refs": [
+        "scope/recipes/0024-control-home-control-23.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Sign up'."
+    },
+    {
+      "id": "home:control-24",
+      "recipe_refs": [
+        "scope/recipes/0025-control-home-control-24.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Log in'."
+    },
+    {
+      "id": "home:control-25",
+      "recipe_refs": [
+        "scope/recipes/0026-control-home-control-25.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a'."
+    },
+    {
+      "id": "home:control-26",
+      "recipe_refs": [
+        "scope/recipes/0027-control-home-control-26.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a'."
+    },
+    {
+      "id": "home:control-27",
+      "recipe_refs": [
+        "scope/recipes/0028-control-home-control-27.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Home'."
+    },
+    {
+      "id": "home:control-28",
+      "recipe_refs": [
+        "scope/recipes/0029-control-home-control-28.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Concerts near you'."
+    },
+    {
+      "id": "home:control-29",
+      "recipe_refs": [
+        "scope/recipes/0030-control-home-control-29.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Change location'."
+    },
+    {
+      "id": "home:control-30",
+      "recipe_refs": [
+        "scope/recipes/0031-control-home-control-30.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Popular Artists'."
+    },
+    {
+      "id": "home:control-31",
+      "recipe_refs": [
+        "scope/recipes/0032-control-home-control-31.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Festivals'."
+    },
+    {
+      "id": "home:control-32",
+      "recipe_refs": [
+        "scope/recipes/0033-control-home-control-32.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Tourbox for artists'."
+    },
+    {
+      "id": "home:control-33",
+      "recipe_refs": [
+        "scope/recipes/0034-control-home-control-33.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Live streams'."
+    },
+    {
+      "id": "home:control-34",
+      "recipe_refs": [
+        "scope/recipes/0035-control-home-control-34.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='English'."
+    },
+    {
+      "id": "home:control-35",
+      "recipe_refs": [
+        "scope/recipes/0036-control-home-control-35.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Français'."
+    },
+    {
+      "id": "home:control-36",
+      "recipe_refs": [
+        "scope/recipes/0037-control-home-control-36.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Español'."
+    },
+    {
+      "id": "home:control-37",
+      "recipe_refs": [
+        "scope/recipes/0038-control-home-control-37.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Deutsch'."
+    },
+    {
+      "id": "home:control-38",
+      "recipe_refs": [
+        "scope/recipes/0039-control-home-control-38.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Português'."
+    },
+    {
+      "id": "home:control-39",
+      "recipe_refs": [
+        "scope/recipes/0040-control-home-control-39.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Log in to your account'."
+    },
+    {
+      "id": "home:control-40",
+      "recipe_refs": [
+        "scope/recipes/0041-control-home-control-40.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Sign up'."
+    },
+    {
+      "id": "home:control-41",
+      "recipe_refs": [
+        "scope/recipes/0042-control-home-control-41.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', text='Find concerts'."
+    },
+    {
+      "id": "home:control-42",
+      "recipe_refs": [
+        "scope/recipes/0043-control-home-control-42.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Concerts near you'."
+    },
+    {
+      "id": "home:control-43",
+      "recipe_refs": [
+        "scope/recipes/0044-control-home-control-43.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Your artists'."
+    },
+    {
+      "id": "home:control-44",
+      "recipe_refs": [
+        "scope/recipes/0045-control-home-control-44.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Popular artists'."
+    },
+    {
+      "id": "home:control-45",
+      "recipe_refs": [
+        "scope/recipes/0046-control-home-control-45.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Tourbox for artists'."
+    },
+    {
+      "id": "home:control-46",
+      "recipe_refs": [
+        "scope/recipes/0047-control-home-control-46.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', label='Softer light background'."
+    },
+    {
+      "id": "home:control-47",
+      "recipe_refs": [
+        "scope/recipes/0048-control-home-control-47.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Sign up'."
+    },
+    {
+      "id": "home:control-48",
+      "recipe_refs": [
+        "scope/recipes/0049-control-home-control-48.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', label='Get the Songkick app'."
+    },
+    {
+      "id": "home:control-49",
+      "recipe_refs": [
+        "scope/recipes/0050-control-home-control-49.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='App Store'."
+    },
+    {
+      "id": "home:control-50",
+      "recipe_refs": [
+        "scope/recipes/0051-control-home-control-50.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Google Play'."
+    },
+    {
+      "id": "home:control-51",
+      "recipe_refs": [
+        "scope/recipes/0052-control-home-control-51.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Bruno Mars'."
+    },
+    {
+      "id": "home:control-52",
+      "recipe_refs": [
+        "scope/recipes/0053-control-home-control-52.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-53",
+      "recipe_refs": [
+        "scope/recipes/0054-control-home-control-53.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Harry Styles'."
+    },
+    {
+      "id": "home:control-54",
+      "recipe_refs": [
+        "scope/recipes/0055-control-home-control-54.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-55",
+      "recipe_refs": [
+        "scope/recipes/0056-control-home-control-55.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Chris Brown'."
+    },
+    {
+      "id": "home:control-56",
+      "recipe_refs": [
+        "scope/recipes/0057-control-home-control-56.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-57",
+      "recipe_refs": [
+        "scope/recipes/0058-control-home-control-57.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Gorillaz'."
+    },
+    {
+      "id": "home:control-58",
+      "recipe_refs": [
+        "scope/recipes/0059-control-home-control-58.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-59",
+      "recipe_refs": [
+        "scope/recipes/0060-control-home-control-59.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Tame Impala'."
+    },
+    {
+      "id": "home:control-60",
+      "recipe_refs": [
+        "scope/recipes/0061-control-home-control-60.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-61",
+      "recipe_refs": [
+        "scope/recipes/0062-control-home-control-61.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Doja Cat'."
+    },
+    {
+      "id": "home:control-62",
+      "recipe_refs": [
+        "scope/recipes/0063-control-home-control-62.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-63",
+      "recipe_refs": [
+        "scope/recipes/0064-control-home-control-63.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='J. Cole'."
+    },
+    {
+      "id": "home:control-64",
+      "recipe_refs": [
+        "scope/recipes/0065-control-home-control-64.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-65",
+      "recipe_refs": [
+        "scope/recipes/0066-control-home-control-65.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Usher'."
+    },
+    {
+      "id": "home:control-66",
+      "recipe_refs": [
+        "scope/recipes/0067-control-home-control-66.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-67",
+      "recipe_refs": [
+        "scope/recipes/0068-control-home-control-67.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Olivia Rodrigo'."
+    },
+    {
+      "id": "home:control-68",
+      "recipe_refs": [
+        "scope/recipes/0069-control-home-control-68.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-69",
+      "recipe_refs": [
+        "scope/recipes/0070-control-home-control-69.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Weezer'."
+    },
+    {
+      "id": "home:control-70",
+      "recipe_refs": [
+        "scope/recipes/0071-control-home-control-70.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-71",
+      "recipe_refs": [
+        "scope/recipes/0072-control-home-control-71.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Tiësto'."
+    },
+    {
+      "id": "home:control-72",
+      "recipe_refs": [
+        "scope/recipes/0073-control-home-control-72.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-73",
+      "recipe_refs": [
+        "scope/recipes/0074-control-home-control-73.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Journey'."
+    },
+    {
+      "id": "home:control-74",
+      "recipe_refs": [
+        "scope/recipes/0075-control-home-control-74.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-75",
+      "recipe_refs": [
+        "scope/recipes/0076-control-home-control-75.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Two Door Cinema Club'."
+    },
+    {
+      "id": "home:control-76",
+      "recipe_refs": [
+        "scope/recipes/0077-control-home-control-76.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-77",
+      "recipe_refs": [
+        "scope/recipes/0078-control-home-control-77.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', text='Noah Kahan'."
+    },
+    {
+      "id": "home:control-78",
+      "recipe_refs": [
+        "scope/recipes/0079-control-home-control-78.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-79",
+      "recipe_refs": [
+        "scope/recipes/0080-control-home-control-79.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains present but disabled: kind='button', type='button', label='Previous events', disabled=true."
+    },
+    {
+      "id": "home:control-80",
+      "recipe_refs": [
+        "scope/recipes/0081-control-home-control-80.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit'."
+    },
+    {
+      "id": "home:control-81",
+      "recipe_refs": [
+        "scope/recipes/0082-control-home-control-81.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', label='Previous artists'."
+    },
+    {
+      "id": "home:control-82",
+      "recipe_refs": [
+        "scope/recipes/0083-control-home-control-82.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', label='Next artists'."
+    },
+    {
+      "id": "home:control-83",
+      "recipe_refs": [
+        "scope/recipes/0084-control-home-control-83.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', label='More near you', text='More near you'."
+    },
+    {
+      "id": "home:control-84",
+      "recipe_refs": [
+        "scope/recipes/0085-control-home-control-84.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', label='Indie & Alt — Browse by genre', text='Indie & Alt'."
+    },
+    {
+      "id": "home:control-85",
+      "recipe_refs": [
+        "scope/recipes/0086-control-home-control-85.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', label='Electronic — Browse by genre', text='Electronic'."
+    },
+    {
+      "id": "home:control-86",
+      "recipe_refs": [
+        "scope/recipes/0087-control-home-control-86.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', label='Hip-Hop — Browse by genre', text='Hip-Hop'."
+    },
+    {
+      "id": "home:control-87",
+      "recipe_refs": [
+        "scope/recipes/0088-control-home-control-87.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', label='Jazz — Browse by genre', text='Jazz'."
+    },
+    {
+      "id": "home:control-88",
+      "recipe_refs": [
+        "scope/recipes/0089-control-home-control-88.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', label='Metal — Browse by genre', text='Metal'."
+    },
+    {
+      "id": "home:control-89",
+      "recipe_refs": [
+        "scope/recipes/0090-control-home-control-89.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', label='Pop — Browse by genre', text='Pop'."
+    },
+    {
+      "id": "home:control-90",
+      "recipe_refs": [
+        "scope/recipes/0091-control-home-control-90.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', label='R&B — Browse by genre', text='R&B'."
+    },
+    {
+      "id": "home:control-91",
+      "recipe_refs": [
+        "scope/recipes/0092-control-home-control-91.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', label='Rock — Browse by genre', text='Rock'."
+    },
+    {
+      "id": "home:control-92",
+      "recipe_refs": [
+        "scope/recipes/0093-control-home-control-92.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Home'."
+    },
+    {
+      "id": "home:control-93",
+      "recipe_refs": [
+        "scope/recipes/0094-control-home-control-93.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='About us'."
+    },
+    {
+      "id": "home:control-94",
+      "recipe_refs": [
+        "scope/recipes/0095-control-home-control-94.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='News'."
+    },
+    {
+      "id": "home:control-95",
+      "recipe_refs": [
+        "scope/recipes/0096-control-home-control-95.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Blog'."
+    },
+    {
+      "id": "home:control-96",
+      "recipe_refs": [
+        "scope/recipes/0097-control-home-control-96.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Jobs'."
+    },
+    {
+      "id": "home:control-97",
+      "recipe_refs": [
+        "scope/recipes/0098-control-home-control-97.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Festivals'."
+    },
+    {
+      "id": "home:control-98",
+      "recipe_refs": [
+        "scope/recipes/0099-control-home-control-98.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Most popular charts'."
+    },
+    {
+      "id": "home:control-99",
+      "recipe_refs": [
+        "scope/recipes/0100-control-home-control-99.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Get the app'."
+    },
+    {
+      "id": "home:control-100",
+      "recipe_refs": [
+        "scope/recipes/0101-control-home-control-100.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Live streams'."
+    },
+    {
+      "id": "home:control-101",
+      "recipe_refs": [
+        "scope/recipes/0102-control-home-control-101.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Tourbox for artists'."
+    },
+    {
+      "id": "home:control-102",
+      "recipe_refs": [
+        "scope/recipes/0103-control-home-control-102.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Campaigns for promoters'."
+    },
+    {
+      "id": "home:control-103",
+      "recipe_refs": [
+        "scope/recipes/0104-control-home-control-103.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='API information'."
+    },
+    {
+      "id": "home:control-104",
+      "recipe_refs": [
+        "scope/recipes/0105-control-home-control-104.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Help & FAQ'."
+    },
+    {
+      "id": "home:control-105",
+      "recipe_refs": [
+        "scope/recipes/0106-control-home-control-105.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Community guidelines'."
+    },
+    {
+      "id": "home:control-106",
+      "recipe_refs": [
+        "scope/recipes/0107-control-home-control-106.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Brand guidelines'."
+    },
+    {
+      "id": "home:control-107",
+      "recipe_refs": [
+        "scope/recipes/0108-control-home-control-107.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Terms of use'."
+    },
+    {
+      "id": "home:control-108",
+      "recipe_refs": [
+        "scope/recipes/0109-control-home-control-108.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Privacy policy'."
+    },
+    {
+      "id": "home:control-109",
+      "recipe_refs": [
+        "scope/recipes/0110-control-home-control-109.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Cookies policy'."
+    },
+    {
+      "id": "home:control-110",
+      "recipe_refs": [
+        "scope/recipes/0111-control-home-control-110.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Security'."
+    },
+    {
+      "id": "home:control-111",
+      "recipe_refs": [
+        "scope/recipes/0112-control-home-control-111.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='English'."
+    },
+    {
+      "id": "home:control-112",
+      "recipe_refs": [
+        "scope/recipes/0113-control-home-control-112.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains present but disabled: kind='button', type='button', label='Previous artists', disabled=true."
+    },
+    {
+      "id": "home:control-113",
+      "recipe_refs": [
+        "scope/recipes/0114-control-home-control-113.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Español'."
+    },
+    {
+      "id": "home:control-114",
+      "recipe_refs": [
+        "scope/recipes/0115-control-home-control-114.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Deutsch'."
+    },
+    {
+      "id": "home:control-115",
+      "recipe_refs": [
+        "scope/recipes/0116-control-home-control-115.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Português'."
+    },
+    {
+      "id": "home:control-116",
+      "recipe_refs": [
+        "scope/recipes/0117-control-home-control-116.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Rock'."
+    },
+    {
+      "id": "home:control-117",
+      "recipe_refs": [
+        "scope/recipes/0118-control-home-control-117.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Hip-Hop'."
+    },
+    {
+      "id": "home:control-118",
+      "recipe_refs": [
+        "scope/recipes/0119-control-home-control-118.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Pop'."
+    },
+    {
+      "id": "home:control-119",
+      "recipe_refs": [
+        "scope/recipes/0120-control-home-control-119.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Metal'."
+    },
+    {
+      "id": "montreal-page-1:control-58",
+      "recipe_refs": [
+        "scope/recipes/0121-control-montreal-page-1-control-58.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit', text='Your favorite artists'."
+    },
+    {
+      "id": "montreal-page-1:control-59",
+      "recipe_refs": [
+        "scope/recipes/0122-control-montreal-page-1-control-59.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='All'."
+    },
+    {
+      "id": "montreal-page-1:control-60",
+      "recipe_refs": [
+        "scope/recipes/0123-control-montreal-page-1-control-60.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Tonight'."
+    },
+    {
+      "id": "montreal-page-1:control-61",
+      "recipe_refs": [
+        "scope/recipes/0124-control-montreal-page-1-control-61.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='This weekend'."
+    },
+    {
+      "id": "montreal-page-1:control-62",
+      "recipe_refs": [
+        "scope/recipes/0125-control-montreal-page-1-control-62.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='This month'."
+    },
+    {
+      "id": "montreal-page-1:control-63",
+      "recipe_refs": [
+        "scope/recipes/0126-control-montreal-page-1-control-63.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Oct'."
+    },
+    {
+      "id": "montreal-page-1:control-64",
+      "recipe_refs": [
+        "scope/recipes/0127-control-montreal-page-1-control-64.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Nov'."
+    },
+    {
+      "id": "montreal-page-1:control-65",
+      "recipe_refs": [
+        "scope/recipes/0128-control-montreal-page-1-control-65.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Dec'."
+    },
+    {
+      "id": "montreal-page-1:control-66",
+      "recipe_refs": [
+        "scope/recipes/0129-control-montreal-page-1-control-66.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='2026'."
+    },
+    {
+      "id": "montreal-page-1:control-67",
+      "recipe_refs": [
+        "scope/recipes/0130-control-montreal-page-1-control-67.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='2027'."
+    },
+    {
+      "id": "montreal-page-1:control-68",
+      "recipe_refs": [
+        "scope/recipes/0131-control-montreal-page-1-control-68.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='text', name='filters[minDate]'."
+    },
+    {
+      "id": "montreal-page-1:control-69",
+      "recipe_refs": [
+        "scope/recipes/0132-control-montreal-page-1-control-69.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='text', name='filters[maxDate]'."
+    },
+    {
+      "id": "montreal-page-1:control-70",
+      "recipe_refs": [
+        "scope/recipes/0133-control-montreal-page-1-control-70.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='submit'."
+    },
+    {
+      "id": "montreal-page-1:control-71",
+      "recipe_refs": [
+        "scope/recipes/0134-control-montreal-page-1-control-71.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='All'."
+    },
+    {
+      "id": "montreal-page-1:control-72",
+      "recipe_refs": [
+        "scope/recipes/0135-control-montreal-page-1-control-72.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Rock'."
+    },
+    {
+      "id": "montreal-page-1:control-73",
+      "recipe_refs": [
+        "scope/recipes/0136-control-montreal-page-1-control-73.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Comedy'."
+    },
+    {
+      "id": "montreal-page-1:control-74",
+      "recipe_refs": [
+        "scope/recipes/0137-control-montreal-page-1-control-74.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Pop'."
+    },
+    {
+      "id": "montreal-page-1:control-75",
+      "recipe_refs": [
+        "scope/recipes/0138-control-montreal-page-1-control-75.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Hip-Hop'."
+    },
+    {
+      "id": "montreal-page-1:control-76",
+      "recipe_refs": [
+        "scope/recipes/0139-control-montreal-page-1-control-76.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='R&B'."
+    },
+    {
+      "id": "montreal-page-1:control-77",
+      "recipe_refs": [
+        "scope/recipes/0140-control-montreal-page-1-control-77.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Indie & Alt'."
+    },
+    {
+      "id": "montreal-page-1:control-78",
+      "recipe_refs": [
+        "scope/recipes/0141-control-montreal-page-1-control-78.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Electronic'."
+    },
+    {
+      "id": "montreal-page-1:control-79",
+      "recipe_refs": [
+        "scope/recipes/0142-control-montreal-page-1-control-79.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Country'."
+    },
+    {
+      "id": "montreal-page-1:control-80",
+      "recipe_refs": [
+        "scope/recipes/0143-control-montreal-page-1-control-80.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Classical'."
+    },
+    {
+      "id": "montreal-page-1:control-81",
+      "recipe_refs": [
+        "scope/recipes/0144-control-montreal-page-1-control-81.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Metal'."
+    },
+    {
+      "id": "montreal-page-1:control-82",
+      "recipe_refs": [
+        "scope/recipes/0145-control-montreal-page-1-control-82.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Latin'."
+    },
+    {
+      "id": "montreal-page-1:control-83",
+      "recipe_refs": [
+        "scope/recipes/0146-control-montreal-page-1-control-83.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Folk & Blues'."
+    },
+    {
+      "id": "montreal-page-1:control-84",
+      "recipe_refs": [
+        "scope/recipes/0147-control-montreal-page-1-control-84.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Jazz'."
+    },
+    {
+      "id": "montreal-page-1:control-85",
+      "recipe_refs": [
+        "scope/recipes/0148-control-montreal-page-1-control-85.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Funk & Soul'."
+    },
+    {
+      "id": "montreal-page-1:control-86",
+      "recipe_refs": [
+        "scope/recipes/0149-control-montreal-page-1-control-86.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Reggae'."
+    },
+    {
+      "id": "artist-detail:control-58",
+      "recipe_refs": [
+        "scope/recipes/0150-control-artist-detail-control-58.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit', text='Track artist'."
+    },
+    {
+      "id": "artist-detail:control-62",
+      "recipe_refs": [
+        "scope/recipes/0151-control-artist-detail-control-62.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit', text='Interested'."
+    },
+    {
+      "id": "artist-detail:control-87",
+      "recipe_refs": [
+        "scope/recipes/0152-control-artist-detail-control-87.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', label='Previous events'."
+    },
+    {
+      "id": "artist-detail:control-88",
+      "recipe_refs": [
+        "scope/recipes/0153-control-artist-detail-control-88.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', label='Next events'."
+    },
+    {
+      "id": "artist-detail:control-109",
+      "recipe_refs": [
+        "scope/recipes/0154-control-artist-detail-control-109.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', label='Previous artists'."
+    },
+    {
+      "id": "artist-detail:control-110",
+      "recipe_refs": [
+        "scope/recipes/0155-control-artist-detail-control-110.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', label='Next artists'."
+    },
+    {
+      "id": "event-detail:control-59",
+      "recipe_refs": [
+        "scope/recipes/0156-control-event-detail-control-59.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit', text='Interested'."
+    },
+    {
+      "id": "event-detail:control-77",
+      "recipe_refs": [
+        "scope/recipes/0157-control-event-detail-control-77.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button'."
+    },
+    {
+      "id": "event-detail:control-78",
+      "recipe_refs": [
+        "scope/recipes/0158-control-event-detail-control-78.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button'."
+    },
+    {
+      "id": "event-detail:control-79",
+      "recipe_refs": [
+        "scope/recipes/0159-control-event-detail-control-79.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', text='Buy tickets'."
+    },
+    {
+      "id": "event-detail:control-80",
+      "recipe_refs": [
+        "scope/recipes/0160-control-event-detail-control-80.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', text='×'."
+    },
+    {
+      "id": "event-detail:control-81",
+      "recipe_refs": [
+        "scope/recipes/0161-control-event-detail-control-81.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Ticketmaster CA On sale now'."
+    },
+    {
+      "id": "venue-detail:control-66",
+      "recipe_refs": [
+        "scope/recipes/0162-control-venue-detail-control-66.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit', text='INTERESTED'."
+    },
+    {
+      "id": "venue-detail:control-67",
+      "recipe_refs": [
+        "scope/recipes/0163-control-venue-detail-control-67.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit', text='GOING'."
+    },
+    {
+      "id": "venue-detail:control-108",
+      "recipe_refs": [
+        "scope/recipes/0164-control-venue-detail-control-108.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit', text='I WAS THERE'."
+    },
+    {
+      "id": "festivals:control-153",
+      "recipe_refs": [
+        "scope/recipes/0165-control-festivals-control-153.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', label='1 of 5', text='1'."
+    },
+    {
+      "id": "festivals:control-154",
+      "recipe_refs": [
+        "scope/recipes/0166-control-festivals-control-154.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', label='2 of 5', text='2'."
+    },
+    {
+      "id": "festivals:control-155",
+      "recipe_refs": [
+        "scope/recipes/0167-control-festivals-control-155.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', label='3 of 5', text='3'."
+    },
+    {
+      "id": "festivals:control-156",
+      "recipe_refs": [
+        "scope/recipes/0168-control-festivals-control-156.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', label='4 of 5', text='4'."
+    },
+    {
+      "id": "festivals:control-157",
+      "recipe_refs": [
+        "scope/recipes/0169-control-festivals-control-157.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='button', label='5 of 5', text='5'."
+    },
+    {
+      "id": "festivals:control-162",
+      "recipe_refs": [
+        "scope/recipes/0170-control-festivals-control-162.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit', text='INTERESTED'."
+    },
+    {
+      "id": "festivals:control-163",
+      "recipe_refs": [
+        "scope/recipes/0171-control-festivals-control-163.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit', text='GOING'."
+    },
+    {
+      "id": "festival-detail:control-59",
+      "recipe_refs": [
+        "scope/recipes/0172-control-festival-detail-control-59.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit', text='Interested'."
+    },
+    {
+      "id": "festival-detail:control-117",
+      "recipe_refs": [
+        "scope/recipes/0173-control-festival-detail-control-117.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', text='×'."
+    },
+    {
+      "id": "festival-detail:control-118",
+      "recipe_refs": [
+        "scope/recipes/0174-control-festival-detail-control-118.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Festival Website On sale now'."
+    },
+    {
+      "id": "location-filter:control-53",
+      "recipe_refs": [
+        "scope/recipes/0175-control-location-filter-control-53.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='in[REDACTED:personal]', type='text', name='query'."
+    },
+    {
+      "id": "location-filter:control-54",
+      "recipe_refs": [
+        "scope/recipes/0176-control-location-filter-control-54.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='in[REDACTED:personal]', type='submit'."
+    },
+    {
+      "id": "sign-in:control-3",
+      "recipe_refs": [
+        "scope/recipes/0177-control-sign-in-control-3.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains present but disabled: kind='button', type='button', name='button', text='Continue with Spotify', disabled=true."
+    },
+    {
+      "id": "sign-in:control-4",
+      "recipe_refs": [
+        "scope/recipes/0178-control-sign-in-control-4.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Continue with Google'."
+    },
+    {
+      "id": "sign-in:control-5",
+      "recipe_refs": [
+        "scope/recipes/0179-control-sign-in-control-5.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Continue with Apple'."
+    },
+    {
+      "id": "sign-in:control-6",
+      "recipe_refs": [
+        "scope/recipes/0180-control-sign-in-control-6.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Continue with Facebook'."
+    },
+    {
+      "id": "sign-in:control-7",
+      "recipe_refs": [
+        "scope/recipes/0181-control-sign-in-control-7.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='text', name='username_or_email', label='Email address or username'."
+    },
+    {
+      "id": "sign-in:control-8",
+      "recipe_refs": [
+        "scope/recipes/0182-control-sign-in-control-8.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='password', name='password', label='Password'."
+    },
+    {
+      "id": "sign-in:control-9",
+      "recipe_refs": [
+        "scope/recipes/0183-control-sign-in-control-9.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Forgot your password?'."
+    },
+    {
+      "id": "sign-in:control-10",
+      "recipe_refs": [
+        "scope/recipes/0184-control-sign-in-control-10.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='submit', name='commit'."
+    },
+    {
+      "id": "sign-in:control-11",
+      "recipe_refs": [
+        "scope/recipes/0185-control-sign-in-control-11.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Sign up'."
+    },
+    {
+      "id": "sign-up:control-3",
+      "recipe_refs": [
+        "scope/recipes/0186-control-sign-up-control-3.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Continue with Google'."
+    },
+    {
+      "id": "sign-up:control-4",
+      "recipe_refs": [
+        "scope/recipes/0187-control-sign-up-control-4.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Continue with Apple'."
+    },
+    {
+      "id": "sign-up:control-5",
+      "recipe_refs": [
+        "scope/recipes/0188-control-sign-up-control-5.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='email', name='email', label='Email address'."
+    },
+    {
+      "id": "sign-up:control-6",
+      "recipe_refs": [
+        "scope/recipes/0189-control-sign-up-control-6.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='password', name='password', label='Password'."
+    },
+    {
+      "id": "sign-up:control-7",
+      "recipe_refs": [
+        "scope/recipes/0190-control-sign-up-control-7.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='submit', name='commit'."
+    },
+    {
+      "id": "sign-up:control-8",
+      "recipe_refs": [
+        "scope/recipes/0191-control-sign-up-control-8.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Log in'."
+    },
+    {
+      "id": "sign-up:control-9",
+      "recipe_refs": [
+        "scope/recipes/0192-control-sign-up-control-9.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='terms'."
+    },
+    {
+      "id": "sign-up:control-10",
+      "recipe_refs": [
+        "scope/recipes/0193-control-sign-up-control-10.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='privacy policy'."
+    },
+    {
+      "id": "password-reset:control-3",
+      "recipe_refs": [
+        "scope/recipes/0194-control-password-reset-control-3.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='text', name='email', label='Email address'."
+    },
+    {
+      "id": "password-reset:control-4",
+      "recipe_refs": [
+        "scope/recipes/0195-control-password-reset-control-4.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='submit', name='send'."
+    },
+    {
+      "id": "password-reset:control-5",
+      "recipe_refs": [
+        "scope/recipes/0196-control-password-reset-control-5.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='a', text='Back to Login'."
+    },
+    {
+      "id": "not-found:control-2",
+      "recipe_refs": [
+        "scope/recipes/0197-control-not-found-control-2.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='input', type='search', name='query'."
+    },
+    {
+      "id": "not-found:control-3",
+      "recipe_refs": [
+        "scope/recipes/0198-control-not-found-control-3.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-content-identities.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: kind='button', type='submit', name='commit'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-0",
+      "recipe_refs": [
+        "scope/recipes/0199-control-search-search-results-coldplay-control-0.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='input'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-1",
+      "recipe_refs": [
+        "scope/recipes/0200-control-search-search-results-coldplay-control-1.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='input'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-2",
+      "recipe_refs": [
+        "scope/recipes/0201-control-search-search-results-coldplay-control-2.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='button', role='button', text='Clear'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-3",
+      "recipe_refs": [
+        "scope/recipes/0202-control-search-search-results-coldplay-control-3.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='button', text='Top Results'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-4",
+      "recipe_refs": [
+        "scope/recipes/0203-control-search-search-results-coldplay-control-4.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='button', text='Artists'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-5",
+      "recipe_refs": [
+        "scope/recipes/0204-control-search-search-results-coldplay-control-5.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='button', text='Events'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-6",
+      "recipe_refs": [
+        "scope/recipes/0205-control-search-search-results-coldplay-control-6.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='button', text='Venues'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-7",
+      "recipe_refs": [
+        "scope/recipes/0206-control-search-search-results-coldplay-control-7.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='button', text='Locations'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-8",
+      "recipe_refs": [
+        "scope/recipes/0207-control-search-search-results-coldplay-control-8.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='a', text='ARTIST Coldplay'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-9",
+      "recipe_refs": [
+        "scope/recipes/0208-control-search-search-results-coldplay-control-9.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='a', text='EVENT Ultimate Coldplay Fri, 25 September, 2026 Picturedrome'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-10",
+      "recipe_refs": [
+        "scope/recipes/0209-control-search-search-results-coldplay-control-10.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='a', text='EVENT Ultimate Coldplay Thu, 24 September, 2026 Roadmender'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-11",
+      "recipe_refs": [
+        "scope/recipes/0210-control-search-search-results-coldplay-control-11.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='a', text='EVENT Ultimate Coldplay Fri, 11 September, 2026 The Wharf'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-12",
+      "recipe_refs": [
+        "scope/recipes/0211-control-search-search-results-coldplay-control-12.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='a', text='EVENT Ultimate Coldplay Fri, 4 December, 2026 O2 Academy2 Birmingham'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-13",
+      "recipe_refs": [
+        "scope/recipes/0212-control-search-search-results-coldplay-control-13.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='a', text='EVENT Ultimate Coldplay Fri, 19 February, 2027 The Live Rooms'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-14",
+      "recipe_refs": [
+        "scope/recipes/0213-control-search-search-results-coldplay-control-14.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='a', text='EVENT Coldplayed Thu, 29 October, 2026 Palais des Congrès'."
+    },
+    {
+      "id": "search:search-results-coldplay:control-15",
+      "recipe_refs": [
+        "scope/recipes/0214-control-search-search-results-coldplay-control-15.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='button', text='View all results'."
+    },
+    {
+      "id": "search:search-no-results:control-0",
+      "recipe_refs": [
+        "scope/recipes/0215-control-search-search-no-results-control-0.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='input'."
+    },
+    {
+      "id": "search:search-no-results:control-1",
+      "recipe_refs": [
+        "scope/recipes/0216-control-search-search-no-results-control-1.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='input'."
+    },
+    {
+      "id": "search:search-no-results:control-2",
+      "recipe_refs": [
+        "scope/recipes/0217-control-search-search-no-results-control-2.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='button', role='button', text='Clear'."
+    },
+    {
+      "id": "search:search-no-results:control-3",
+      "recipe_refs": [
+        "scope/recipes/0218-control-search-search-no-results-control-3.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='button', text='View all events near you'."
+    },
+    {
+      "id": "ticket-boundary:43365625",
+      "recipe_refs": [
+        "scope/recipes/0219-control-ticket-boundary-43365625.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-ticket-boundary.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='button', text='Buy tickets'."
+    },
+    {
+      "id": "ticket-boundary:ticketmaster-ca",
+      "recipe_refs": [
+        "scope/recipes/0220-control-ticket-boundary-ticketmaster-ca.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-ticket-boundary.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='a', text='Ticketmaster CA On sale now'."
+    },
+    {
+      "id": "ticket-boundary:seatgeek",
+      "recipe_refs": [
+        "scope/recipes/0221-control-ticket-boundary-seatgeek.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-ticket-boundary.json"
+      ],
+      "source_expectation": "The same-capture public control remains enabled: tag='a', text='SeatGeek On sale now'."
+    }
+  ],
+  "schema_version": "websitebench.all-controls.v3",
+  "site_id": "songkick",
+  "status": "frozen"
+}

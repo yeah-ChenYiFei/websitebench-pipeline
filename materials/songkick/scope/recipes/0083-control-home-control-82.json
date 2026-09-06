@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:home:initial",
+  "contract_file": "all-controls-inventory.json",
+  "contract_schema_version": "websitebench.all-controls.v3",
+  "expected_state": "enabled",
+  "kind": "control-state",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "home:control-82",
+  "record_kind": "control",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-control-id~=\"home-control-82\"]",
+  "subject_id": "home:control-82",
+  "subject_kind": "control"
+}

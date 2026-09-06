@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:home:initial",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "expected_state": "visible",
+  "kind": "component-state",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "component:location-banner",
+  "record_kind": "component",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-component=\"location-banner\"]",
+  "subject_id": "component:location-banner",
+  "subject_kind": "component"
+}

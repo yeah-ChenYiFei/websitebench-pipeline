@@ -1,0 +1,33 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "external_activation": "HTTP 200 branded local soft-404; no outbound request",
+  "required_local_write_models": [
+    "users",
+    "email-verifications",
+    "password-resets",
+    "sessions",
+    "artist-tracking",
+    "event-attendance",
+    "location-preference",
+    "cookie-preferences"
+  ],
+  "required_state_transitions": [
+    "signup/verify/login/logout",
+    "reset request/consume",
+    "track/untrack",
+    "interested/uninterested",
+    "going/not-going",
+    "was-there toggle",
+    "refresh/relogin/restart persistence"
+  ],
+  "schema_version": "songkick.g1-business-view.v1",
+  "site_id": "songkick",
+  "source_contracts": [
+    "all-controls-inventory.json",
+    "first-party-link-graph.json",
+    "external-links.json",
+    "component-state-matrix.json"
+  ],
+  "status": "frozen",
+  "view": "interactions-and-api"
+}

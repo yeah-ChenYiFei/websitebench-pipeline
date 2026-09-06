@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:montreal-page-1:initial",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "expected_state": "enabled",
+  "kind": "capability-state",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "capability:collection-pagination",
+  "record_kind": "local-capability",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-capability=\"collection-pagination\"] a[href=\"?page=2\"]",
+  "subject_id": "capability:collection-pagination",
+  "subject_kind": "local-capability"
+}

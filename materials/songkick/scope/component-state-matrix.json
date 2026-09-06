@@ -1,0 +1,1096 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "capture_lock": {
+    "capture_id": "songkick-20260904T132056Z-g1-remediation",
+    "checkpoint_ids": [
+      "auth:artist-tracked",
+      "auth:authenticated-session",
+      "auth:event-interested",
+      "auth:logout",
+      "auth:password-reset-success",
+      "auth:refresh-persistence",
+      "auth:relogin-persistence",
+      "route:about",
+      "route:app",
+      "route:artist-01-coldplay",
+      "route:artist-02-rihanna",
+      "route:artist-03-the-weeknd",
+      "route:artist-04-eminem",
+      "route:artist-05-drake",
+      "route:artist-06-taylor-swift",
+      "route:artist-07-bruno-mars",
+      "route:artist-08-kanye-west",
+      "route:artist-09-maroon-5",
+      "route:artist-10-lady-gaga",
+      "route:artist-detail",
+      "route:artists",
+      "route:concerts",
+      "route:design",
+      "route:developer",
+      "route:event-01-steve-lacy",
+      "route:event-02-gipsy-kings",
+      "route:event-03-gorgon-city",
+      "route:event-04-yebba",
+      "route:event-05-donavon-frankenreiter",
+      "route:event-06-salif-keita",
+      "route:event-07-clara-la-san",
+      "route:event-08-too-many-zooz",
+      "route:event-09-i-hate-models",
+      "route:event-10-sullivan-king",
+      "route:event-detail",
+      "route:festival-detail",
+      "route:festivals",
+      "route:genre-rock",
+      "route:home",
+      "route:home-next-artists",
+      "route:home-next-events",
+      "route:home-search-modal",
+      "route:home-theme",
+      "route:info-cookies",
+      "route:info-guidelines",
+      "route:info-privacy",
+      "route:info-security",
+      "route:info-terms",
+      "route:jobs",
+      "route:live-streams",
+      "route:locale-de",
+      "route:locale-es",
+      "route:locale-fr",
+      "route:locale-pt",
+      "route:location-filter",
+      "route:location-search-empty",
+      "route:location-search-toronto",
+      "route:montreal-next-30-days",
+      "route:montreal-next-7-days",
+      "route:montreal-page-1",
+      "route:montreal-page-2",
+      "route:montreal-today",
+      "route:nearby-genre-rock",
+      "route:news",
+      "route:not-found",
+      "route:password-reset",
+      "route:popular-artists-page-2",
+      "route:protected-home-logged-out",
+      "route:region-01-sf-bay-area",
+      "route:region-02-los-angeles",
+      "route:region-03-new-york",
+      "route:region-04-portland",
+      "route:region-05-washington",
+      "route:region-06-philadelphia",
+      "route:region-07-seattle",
+      "route:region-08-chicago",
+      "route:region-09-orlando",
+      "route:region-10-pittsburgh",
+      "route:sign-in",
+      "route:sign-up",
+      "route:ticketmaster-boundary",
+      "route:trending-artists",
+      "route:venue-detail",
+      "route:venue-hall-est-stade-olympique",
+      "route:venue-le-ministere",
+      "route:venue-lolympia",
+      "route:venue-mtelus",
+      "route:venue-new-city-gas",
+      "route:venue-place-bell",
+      "route:venue-place-des-arts",
+      "route:venue-theatre-fairmount",
+      "state:about:initial",
+      "state:app:initial",
+      "state:artist-01-coldplay:initial",
+      "state:artist-01-coldplay:lazy-end",
+      "state:artist-02-rihanna:initial",
+      "state:artist-02-rihanna:lazy-end",
+      "state:artist-03-the-weeknd:initial",
+      "state:artist-03-the-weeknd:lazy-end",
+      "state:artist-04-eminem:initial",
+      "state:artist-04-eminem:lazy-end",
+      "state:artist-05-drake:initial",
+      "state:artist-05-drake:lazy-end",
+      "state:artist-06-taylor-swift:initial",
+      "state:artist-06-taylor-swift:lazy-end",
+      "state:artist-07-bruno-mars:initial",
+      "state:artist-07-bruno-mars:lazy-end",
+      "state:artist-08-kanye-west:initial",
+      "state:artist-08-kanye-west:lazy-end",
+      "state:artist-09-maroon-5:initial",
+      "state:artist-09-maroon-5:lazy-end",
+      "state:artist-10-lady-gaga:initial",
+      "state:artist-10-lady-gaga:lazy-end",
+      "state:artist-detail-authenticated:tracked-after-refresh",
+      "state:artist-detail:initial",
+      "state:artist-detail:lazy-end",
+      "state:artists:initial",
+      "state:artists:lazy-end",
+      "state:authenticated-home:account-menu",
+      "state:concerts:initial",
+      "state:concerts:lazy-end",
+      "state:design:initial",
+      "state:developer:initial",
+      "state:event-01-steve-lacy:initial",
+      "state:event-01-steve-lacy:lazy-end",
+      "state:event-02-gipsy-kings:initial",
+      "state:event-02-gipsy-kings:lazy-end",
+      "state:event-03-gorgon-city:initial",
+      "state:event-03-gorgon-city:lazy-end",
+      "state:event-04-yebba:initial",
+      "state:event-04-yebba:lazy-end",
+      "state:event-05-donavon-frankenreiter:initial",
+      "state:event-05-donavon-frankenreiter:lazy-end",
+      "state:event-06-salif-keita:initial",
+      "state:event-06-salif-keita:lazy-end",
+      "state:event-07-clara-la-san:initial",
+      "state:event-07-clara-la-san:lazy-end",
+      "state:event-08-too-many-zooz:initial",
+      "state:event-08-too-many-zooz:lazy-end",
+      "state:event-09-i-hate-models:initial",
+      "state:event-09-i-hate-models:lazy-end",
+      "state:event-10-sullivan-king:initial",
+      "state:event-10-sullivan-king:lazy-end",
+      "state:event-detail-authenticated:interested-after-refresh",
+      "state:event-detail:initial",
+      "state:event-detail:lazy-end",
+      "state:festival-detail:initial",
+      "state:festival-detail:lazy-end",
+      "state:festivals:initial",
+      "state:festivals:lazy-end",
+      "state:genre-rock:initial",
+      "state:genre-rock:lazy-end",
+      "state:global-search:search-no-results",
+      "state:global-search:search-results-coldplay",
+      "state:home-next-artists:initial",
+      "state:home-next-artists:next-artists",
+      "state:home-next-events:initial",
+      "state:home-next-events:next-events",
+      "state:home-search-modal:initial",
+      "state:home-search-modal:search-open",
+      "state:home-theme:dark-background",
+      "state:home-theme:initial",
+      "state:home:initial",
+      "state:home:lazy-end",
+      "state:info-cookies:initial",
+      "state:info-guidelines:initial",
+      "state:info-privacy:initial",
+      "state:info-security:initial",
+      "state:info-terms:initial",
+      "state:jobs:initial",
+      "state:live-streams:initial",
+      "state:locale-de:initial",
+      "state:locale-es:initial",
+      "state:locale-fr:initial",
+      "state:locale-pt:initial",
+      "state:location-filter:initial",
+      "state:location-search-empty:initial",
+      "state:location-search-toronto:initial",
+      "state:montreal-next-30-days:initial",
+      "state:montreal-next-7-days:initial",
+      "state:montreal-page-1:initial",
+      "state:montreal-page-1:lazy-end",
+      "state:montreal-page-2:initial",
+      "state:montreal-page-2:lazy-end",
+      "state:montreal-today:initial",
+      "state:nearby-genre-rock:initial",
+      "state:nearby-genre-rock:lazy-end",
+      "state:news:initial",
+      "state:not-found:initial",
+      "state:password-reset:captcha-error",
+      "state:password-reset:initial",
+      "state:popular-artists-page-2:initial",
+      "state:popular-artists-page-2:lazy-end",
+      "state:protected-home-logged-out:initial",
+      "state:region-01-sf-bay-area:initial",
+      "state:region-01-sf-bay-area:lazy-end",
+      "state:region-02-los-angeles:initial",
+      "state:region-02-los-angeles:lazy-end",
+      "state:region-03-new-york:initial",
+      "state:region-03-new-york:lazy-end",
+      "state:region-04-portland:initial",
+      "state:region-04-portland:lazy-end",
+      "state:region-05-washington:initial",
+      "state:region-05-washington:lazy-end",
+      "state:region-06-philadelphia:initial",
+      "state:region-06-philadelphia:lazy-end",
+      "state:region-07-seattle:initial",
+      "state:region-07-seattle:lazy-end",
+      "state:region-08-chicago:initial",
+      "state:region-08-chicago:lazy-end",
+      "state:region-09-orlando:initial",
+      "state:region-09-orlando:lazy-end",
+      "state:region-10-pittsburgh:initial",
+      "state:region-10-pittsburgh:lazy-end",
+      "state:sign-in:initial",
+      "state:sign-in:password-reset-success",
+      "state:sign-up:initial",
+      "state:ticketmaster-boundary:initial",
+      "state:ticketmaster-boundary:ticketmaster-click",
+      "state:trending-artists:initial",
+      "state:trending-artists:lazy-end",
+      "state:venue-detail:initial",
+      "state:venue-detail:lazy-end",
+      "state:venue-hall-est-stade-olympique:initial",
+      "state:venue-hall-est-stade-olympique:lazy-end",
+      "state:venue-le-ministere:initial",
+      "state:venue-le-ministere:lazy-end",
+      "state:venue-lolympia:initial",
+      "state:venue-lolympia:lazy-end",
+      "state:venue-mtelus:initial",
+      "state:venue-mtelus:lazy-end",
+      "state:venue-new-city-gas:initial",
+      "state:venue-new-city-gas:lazy-end",
+      "state:venue-place-bell:initial",
+      "state:venue-place-bell:lazy-end",
+      "state:venue-place-des-arts:initial",
+      "state:venue-place-des-arts:lazy-end",
+      "state:venue-theatre-fairmount:initial",
+      "state:venue-theatre-fairmount:lazy-end"
+    ],
+    "schema_version": "websitebench.component-capture-lock.v1"
+  },
+  "components": [
+    {
+      "id": "component:global-header",
+      "recipe_refs": [
+        "scope/recipes/0594-component-component-global-header.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:global-header remains observable at state:home:initial."
+    },
+    {
+      "id": "component:desktop-navigation",
+      "recipe_refs": [
+        "scope/recipes/0595-component-component-desktop-navigation.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:desktop-navigation remains observable at state:home:initial."
+    },
+    {
+      "id": "component:location-banner",
+      "recipe_refs": [
+        "scope/recipes/0596-component-component-location-banner.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:location-banner remains observable at state:home:initial."
+    },
+    {
+      "id": "component:home-hero",
+      "recipe_refs": [
+        "scope/recipes/0597-component-component-home-hero.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:home-hero remains observable at state:home:initial."
+    },
+    {
+      "id": "component:home-event-carousel",
+      "recipe_refs": [
+        "scope/recipes/0598-component-component-home-event-carousel.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:home-event-carousel remains observable at state:home:initial."
+    },
+    {
+      "id": "component:home-artist-carousel",
+      "recipe_refs": [
+        "scope/recipes/0599-component-component-home-artist-carousel.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:home-artist-carousel remains observable at state:home:initial."
+    },
+    {
+      "id": "component:home-genre-grid",
+      "recipe_refs": [
+        "scope/recipes/0600-component-component-home-genre-grid.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:home-genre-grid remains observable at state:home:lazy-end."
+    },
+    {
+      "id": "component:global-footer",
+      "recipe_refs": [
+        "scope/recipes/0601-component-component-global-footer.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:global-footer remains observable at state:home:lazy-end."
+    },
+    {
+      "id": "component:cookie-preference-center",
+      "recipe_refs": [
+        "scope/recipes/0602-component-component-cookie-preference-center.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:cookie-preference-center remains observable at state:home:initial."
+    },
+    {
+      "id": "component:search-modal",
+      "recipe_refs": [
+        "scope/recipes/0603-component-component-search-modal.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:search-modal remains observable at state:home-search-modal:search-open."
+    },
+    {
+      "id": "component:search-populated-results",
+      "recipe_refs": [
+        "scope/recipes/0604-component-component-search-populated-results.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:search-populated-results remains observable at state:global-search:search-results-coldplay."
+    },
+    {
+      "id": "component:search-no-results",
+      "recipe_refs": [
+        "scope/recipes/0605-component-component-search-no-results.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:search-no-results remains observable at state:global-search:search-no-results."
+    },
+    {
+      "id": "component:event-list",
+      "recipe_refs": [
+        "scope/recipes/0606-component-component-event-list.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:event-list remains observable at state:montreal-page-1:initial."
+    },
+    {
+      "id": "component:date-filter",
+      "recipe_refs": [
+        "scope/recipes/0607-component-component-date-filter.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:date-filter remains observable at state:montreal-page-1:initial."
+    },
+    {
+      "id": "component:genre-filter",
+      "recipe_refs": [
+        "scope/recipes/0608-component-component-genre-filter.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:genre-filter remains observable at state:montreal-page-1:initial."
+    },
+    {
+      "id": "component:artist-list",
+      "recipe_refs": [
+        "scope/recipes/0609-component-component-artist-list.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:artist-list remains observable at state:artists:initial."
+    },
+    {
+      "id": "component:artist-profile",
+      "recipe_refs": [
+        "scope/recipes/0610-component-component-artist-profile.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:artist-profile remains observable at state:artist-detail:initial."
+    },
+    {
+      "id": "component:event-profile",
+      "recipe_refs": [
+        "scope/recipes/0611-component-component-event-profile.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:event-profile remains observable at state:event-detail:initial."
+    },
+    {
+      "id": "component:ticket-provider-dialog",
+      "recipe_refs": [
+        "scope/recipes/0612-component-component-ticket-provider-dialog.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-ticket-boundary.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:ticket-provider-dialog remains observable at state:ticketmaster-boundary:ticketmaster-click."
+    },
+    {
+      "id": "component:venue-profile",
+      "recipe_refs": [
+        "scope/recipes/0613-component-component-venue-profile.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:venue-profile remains observable at state:venue-detail:initial."
+    },
+    {
+      "id": "component:festival-list",
+      "recipe_refs": [
+        "scope/recipes/0614-component-component-festival-list.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:festival-list remains observable at state:festivals:initial."
+    },
+    {
+      "id": "component:festival-profile",
+      "recipe_refs": [
+        "scope/recipes/0615-component-component-festival-profile.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:festival-profile remains observable at state:festival-detail:initial."
+    },
+    {
+      "id": "component:location-picker",
+      "recipe_refs": [
+        "scope/recipes/0616-component-component-location-picker.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:location-picker remains observable at state:location-filter:initial."
+    },
+    {
+      "id": "component:login-form",
+      "recipe_refs": [
+        "scope/recipes/0617-component-component-login-form.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:login-form remains observable at state:sign-in:initial."
+    },
+    {
+      "id": "component:signup-form",
+      "recipe_refs": [
+        "scope/recipes/0618-component-component-signup-form.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:signup-form remains observable at state:sign-up:initial."
+    },
+    {
+      "id": "component:password-reset-form",
+      "recipe_refs": [
+        "scope/recipes/0619-component-component-password-reset-form.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:password-reset-form remains observable at state:password-reset:initial."
+    },
+    {
+      "id": "component:authenticated-account-menu",
+      "recipe_refs": [
+        "scope/recipes/0620-component-component-authenticated-account-menu.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:authenticated-account-menu remains observable at state:authenticated-home:account-menu."
+    },
+    {
+      "id": "component:artist-tracked-state",
+      "recipe_refs": [
+        "scope/recipes/0621-component-component-artist-tracked-state.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:artist-tracked-state remains observable at state:artist-detail-authenticated:tracked-after-refresh."
+    },
+    {
+      "id": "component:event-interested-state",
+      "recipe_refs": [
+        "scope/recipes/0622-component-component-event-interested-state.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:event-interested-state remains observable at state:event-detail-authenticated:interested-after-refresh."
+    },
+    {
+      "id": "component:password-reset-captcha-error",
+      "recipe_refs": [
+        "scope/recipes/0623-component-component-password-reset-captcha-error.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-reset-error.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:password-reset-captcha-error remains observable at state:password-reset:captcha-error."
+    },
+    {
+      "id": "component:password-reset-success-notice",
+      "recipe_refs": [
+        "scope/recipes/0624-component-component-password-reset-success-notice.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-reset-success.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:password-reset-success-notice remains observable at state:sign-in:password-reset-success."
+    },
+    {
+      "id": "component:branded-not-found",
+      "recipe_refs": [
+        "scope/recipes/0625-component-component-branded-not-found.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture component declaration component:branded-not-found remains observable at state:not-found:initial."
+    }
+  ],
+  "local_capabilities": [
+    {
+      "id": "capability:global-search",
+      "recipe_refs": [
+        "scope/recipes/0637-local-capability-capability-global-search.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:global-search remains observable at state:global-search:search-results-coldplay."
+    },
+    {
+      "id": "capability:location-search",
+      "recipe_refs": [
+        "scope/recipes/0638-local-capability-capability-location-search.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:location-search remains observable at state:location-filter:initial."
+    },
+    {
+      "id": "capability:location-change-persistence",
+      "recipe_refs": [
+        "scope/recipes/0639-local-capability-capability-location-change-persistence.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:location-change-persistence remains observable at state:location-search-toronto:initial."
+    },
+    {
+      "id": "capability:date-filter",
+      "recipe_refs": [
+        "scope/recipes/0640-local-capability-capability-date-filter.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:date-filter remains observable at state:montreal-today:initial."
+    },
+    {
+      "id": "capability:genre-filter",
+      "recipe_refs": [
+        "scope/recipes/0641-local-capability-capability-genre-filter.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:genre-filter remains observable at state:nearby-genre-rock:initial."
+    },
+    {
+      "id": "capability:collection-pagination",
+      "recipe_refs": [
+        "scope/recipes/0642-local-capability-capability-collection-pagination.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:collection-pagination remains observable at state:popular-artists-page-2:lazy-end."
+    },
+    {
+      "id": "capability:theme-toggle",
+      "recipe_refs": [
+        "scope/recipes/0643-local-capability-capability-theme-toggle.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:theme-toggle remains observable at state:home-theme:dark-background."
+    },
+    {
+      "id": "capability:locale-switch",
+      "recipe_refs": [
+        "scope/recipes/0644-local-capability-capability-locale-switch.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:locale-switch remains observable at state:locale-fr:initial."
+    },
+    {
+      "id": "capability:cookie-preferences",
+      "recipe_refs": [
+        "scope/recipes/0645-local-capability-capability-cookie-preferences.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:cookie-preferences remains observable at state:home:initial."
+    },
+    {
+      "id": "capability:artist-tracking",
+      "recipe_refs": [
+        "scope/recipes/0646-local-capability-capability-artist-tracking.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:artist-tracking remains observable at auth:artist-tracked."
+    },
+    {
+      "id": "capability:event-interest",
+      "recipe_refs": [
+        "scope/recipes/0647-local-capability-capability-event-interest.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:event-interest remains observable at auth:event-interested."
+    },
+    {
+      "id": "capability:event-going",
+      "recipe_refs": [
+        "scope/recipes/0648-local-capability-capability-event-going.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:event-going remains observable at state:venue-detail:initial."
+    },
+    {
+      "id": "capability:event-was-there",
+      "recipe_refs": [
+        "scope/recipes/0649-local-capability-capability-event-was-there.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:event-was-there remains observable at state:venue-detail:initial."
+    },
+    {
+      "id": "capability:auth-signup",
+      "recipe_refs": [
+        "scope/recipes/0650-local-capability-capability-auth-signup.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:auth-signup remains observable at state:sign-up:initial."
+    },
+    {
+      "id": "capability:auth-email-verification",
+      "recipe_refs": [
+        "scope/recipes/0651-local-capability-capability-auth-email-verification.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:auth-email-verification remains observable at state:sign-up:initial."
+    },
+    {
+      "id": "capability:auth-login",
+      "recipe_refs": [
+        "scope/recipes/0652-local-capability-capability-auth-login.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:auth-login remains observable at state:sign-in:initial."
+    },
+    {
+      "id": "capability:auth-logout",
+      "recipe_refs": [
+        "scope/recipes/0653-local-capability-capability-auth-logout.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:auth-logout remains observable at auth:logout."
+    },
+    {
+      "id": "capability:auth-password-reset",
+      "recipe_refs": [
+        "scope/recipes/0654-local-capability-capability-auth-password-reset.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-reset-success.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:auth-password-reset remains observable at auth:password-reset-success."
+    },
+    {
+      "id": "capability:auth-session-expiry",
+      "recipe_refs": [
+        "scope/recipes/0655-local-capability-capability-auth-session-expiry.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:auth-session-expiry remains observable at route:protected-home-logged-out."
+    },
+    {
+      "id": "capability:branded-external-soft-404",
+      "recipe_refs": [
+        "scope/recipes/0656-local-capability-capability-branded-external-soft-404.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:branded-external-soft-404 remains observable at state:event-detail:initial."
+    },
+    {
+      "id": "capability:branded-data-boundary",
+      "recipe_refs": [
+        "scope/recipes/0657-local-capability-capability-branded-data-boundary.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:branded-data-boundary remains observable at state:montreal-page-2:initial."
+    },
+    {
+      "id": "capability:hard-not-found-search",
+      "recipe_refs": [
+        "scope/recipes/0658-local-capability-capability-hard-not-found-search.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:hard-not-found-search remains observable at state:not-found:initial."
+    },
+    {
+      "id": "capability:refresh-persistence",
+      "recipe_refs": [
+        "scope/recipes/0659-local-capability-capability-refresh-persistence.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:refresh-persistence remains observable at auth:refresh-persistence."
+    },
+    {
+      "id": "capability:relogin-persistence",
+      "recipe_refs": [
+        "scope/recipes/0660-local-capability-capability-relogin-persistence.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:relogin-persistence remains observable at auth:relogin-persistence."
+    },
+    {
+      "id": "capability:offline-runtime",
+      "recipe_refs": [
+        "scope/recipes/0661-local-capability-capability-offline-runtime.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture local-capability declaration capability:offline-runtime remains observable at state:home:initial."
+    }
+  ],
+  "media_checks": [
+    {
+      "id": "media:home-hero-background",
+      "recipe_refs": [
+        "scope/recipes/0629-media-check-media-home-hero-background.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-resource-probe.json"
+      ],
+      "source_expectation": "The same-capture media-check declaration media:home-hero-background remains observable at state:home:initial."
+    },
+    {
+      "id": "media:event-card-images",
+      "recipe_refs": [
+        "scope/recipes/0630-media-check-media-event-card-images.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-resource-probe.json"
+      ],
+      "source_expectation": "The same-capture media-check declaration media:event-card-images remains observable at state:home:lazy-end."
+    },
+    {
+      "id": "media:artist-card-images",
+      "recipe_refs": [
+        "scope/recipes/0631-media-check-media-artist-card-images.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-resource-probe.json"
+      ],
+      "source_expectation": "The same-capture media-check declaration media:artist-card-images remains observable at state:artists:lazy-end."
+    },
+    {
+      "id": "media:artist-header-image",
+      "recipe_refs": [
+        "scope/recipes/0632-media-check-media-artist-header-image.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-resource-probe.json"
+      ],
+      "source_expectation": "The same-capture media-check declaration media:artist-header-image remains observable at state:artist-detail:initial."
+    },
+    {
+      "id": "media:event-header-image",
+      "recipe_refs": [
+        "scope/recipes/0633-media-check-media-event-header-image.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-resource-probe.json"
+      ],
+      "source_expectation": "The same-capture media-check declaration media:event-header-image remains observable at state:event-detail:initial."
+    },
+    {
+      "id": "media:venue-map-static-treatment",
+      "recipe_refs": [
+        "scope/recipes/0634-media-check-media-venue-map-static-treatment.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-resource-probe.json"
+      ],
+      "source_expectation": "The same-capture media-check declaration media:venue-map-static-treatment remains observable at state:venue-detail:initial."
+    },
+    {
+      "id": "media:festival-artwork",
+      "recipe_refs": [
+        "scope/recipes/0635-media-check-media-festival-artwork.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-resource-probe.json"
+      ],
+      "source_expectation": "The same-capture media-check declaration media:festival-artwork remains observable at state:festival-detail:initial."
+    },
+    {
+      "id": "media:brand-fonts-and-icons",
+      "recipe_refs": [
+        "scope/recipes/0636-media-check-media-brand-fonts-and-icons.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-resource-probe.json"
+      ],
+      "source_expectation": "The same-capture media-check declaration media:brand-fonts-and-icons remains observable at state:home:initial."
+    }
+  ],
+  "role_sessions": [
+    {
+      "id": "role:anonymous",
+      "recipe_refs": [
+        "scope/recipes/0626-role-session-role-anonymous.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture role-session declaration role:anonymous remains observable at state:home:initial."
+    },
+    {
+      "id": "role:logged-out",
+      "recipe_refs": [
+        "scope/recipes/0627-role-session-role-logged-out.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json"
+      ],
+      "source_expectation": "The same-capture role-session declaration role:logged-out remains observable at route:protected-home-logged-out."
+    },
+    {
+      "id": "role:authenticated-user",
+      "recipe_refs": [
+        "scope/recipes/0628-role-session-role-authenticated-user.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-auth-manifest.json",
+        "evidence/source-auth-visual-authenticated.json"
+      ],
+      "source_expectation": "The same-capture role-session declaration role:authenticated-user remains observable at auth:authenticated-session."
+    }
+  ],
+  "schema_version": "websitebench.component-state-matrix.v2",
+  "site_id": "songkick",
+  "status": "frozen"
+}

@@ -1,0 +1,24 @@
+name: songkick
+
+on:
+  pull_request:
+    paths:
+      - "materials/songkick/**"
+      - ".github/workflows/tests-songkick.yml"
+      - ".github/workflows/clone-diagnostics.yml"
+  push:
+    branches:
+      - "sites/songkick"
+    paths:
+      - "materials/songkick/**"
+      - ".github/workflows/tests-songkick.yml"
+      - ".github/workflows/clone-diagnostics.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostics:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: songkick

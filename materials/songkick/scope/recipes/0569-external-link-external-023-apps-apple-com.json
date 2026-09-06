@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:home:initial",
+  "contract_file": "external-links.json",
+  "contract_schema_version": "websitebench.external-links.v3",
+  "expected_href": "https://apps.apple.com/app/songkick-concerts-tickets/id438690886?utm_source=web&utm_medium=homepage&utm_campaign=get_the_app",
+  "kind": "external-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "external:023:apps-apple-com",
+  "record_kind": "external-link",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-external-id=\"external-023\"]",
+  "subject_id": "external:023:apps-apple-com",
+  "subject_kind": "external-link"
+}

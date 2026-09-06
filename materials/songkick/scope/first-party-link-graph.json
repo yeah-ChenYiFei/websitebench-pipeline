@@ -1,0 +1,1211 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "edge_count": 93,
+  "edges": [
+    {
+      "id": "edge:route:home",
+      "recipe_refs": [
+        "scope/recipes/0454-link-edge-edge-route-home.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target / for home."
+    },
+    {
+      "id": "edge:route:concerts",
+      "recipe_refs": [
+        "scope/recipes/0455-link-edge-edge-route-concerts.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts for concerts."
+    },
+    {
+      "id": "edge:route:montreal-page-1",
+      "recipe_refs": [
+        "scope/recipes/0456-link-edge-edge-route-montreal-page-1.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/27377-canada-montreal for montreal-page-1."
+    },
+    {
+      "id": "edge:route:montreal-page-2",
+      "recipe_refs": [
+        "scope/recipes/0457-link-edge-edge-route-montreal-page-2.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /en/metro-areas/27377-canada-montreal for montreal-page-2."
+    },
+    {
+      "id": "edge:route:artists",
+      "recipe_refs": [
+        "scope/recipes/0458-link-edge-edge-route-artists.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists for artists."
+    },
+    {
+      "id": "edge:route:artist-detail",
+      "recipe_refs": [
+        "scope/recipes/0459-link-edge-edge-route-artist-detail.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists/10355080-westside-cowboy for artist-detail."
+    },
+    {
+      "id": "edge:route:event-detail",
+      "recipe_refs": [
+        "scope/recipes/0460-link-edge-edge-route-event-detail.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43365625-steve-lacy-at-place-bell for event-detail."
+    },
+    {
+      "id": "edge:route:venue-detail",
+      "recipe_refs": [
+        "scope/recipes/0461-link-edge-edge-route-venue-detail.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /venues/3536914-place-bell for venue-detail."
+    },
+    {
+      "id": "edge:route:festivals",
+      "recipe_refs": [
+        "scope/recipes/0462-link-edge-edge-route-festivals.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /festivals for festivals."
+    },
+    {
+      "id": "edge:route:festival-detail",
+      "recipe_refs": [
+        "scope/recipes/0463-link-edge-edge-route-festival-detail.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /festivals/3556859-music4cancer/id/43273560-music4cancer-2026 for festival-detail."
+    },
+    {
+      "id": "edge:route:location-filter",
+      "recipe_refs": [
+        "scope/recipes/0464-link-edge-edge-route-location-filter.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /session/filter_metro_area for location-filter."
+    },
+    {
+      "id": "edge:route:sign-in",
+      "recipe_refs": [
+        "scope/recipes/0465-link-edge-edge-route-sign-in.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /session/new for sign-in."
+    },
+    {
+      "id": "edge:route:sign-up",
+      "recipe_refs": [
+        "scope/recipes/0466-link-edge-edge-route-sign-up.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /signup/new for sign-up."
+    },
+    {
+      "id": "edge:route:home-next-events",
+      "recipe_refs": [
+        "scope/recipes/0467-link-edge-edge-route-home-next-events.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target / for home-next-events."
+    },
+    {
+      "id": "edge:route:home-next-artists",
+      "recipe_refs": [
+        "scope/recipes/0468-link-edge-edge-route-home-next-artists.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target / for home-next-artists."
+    },
+    {
+      "id": "edge:route:home-theme",
+      "recipe_refs": [
+        "scope/recipes/0469-link-edge-edge-route-home-theme.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target / for home-theme."
+    },
+    {
+      "id": "edge:route:montreal-today",
+      "recipe_refs": [
+        "scope/recipes/0470-link-edge-edge-route-montreal-today.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /en/metro-areas/27377-canada-montreal for montreal-today."
+    },
+    {
+      "id": "edge:route:montreal-next-7-days",
+      "recipe_refs": [
+        "scope/recipes/0471-link-edge-edge-route-montreal-next-7-days.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /en/metro-areas/27377-canada-montreal for montreal-next-7-days."
+    },
+    {
+      "id": "edge:route:montreal-next-30-days",
+      "recipe_refs": [
+        "scope/recipes/0472-link-edge-edge-route-montreal-next-30-days.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /en/metro-areas/27377-canada-montreal for montreal-next-30-days."
+    },
+    {
+      "id": "edge:route:location-search-toronto",
+      "recipe_refs": [
+        "scope/recipes/0473-link-edge-edge-route-location-search-toronto.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /session/filter_metro_area for location-search-toronto."
+    },
+    {
+      "id": "edge:route:location-search-empty",
+      "recipe_refs": [
+        "scope/recipes/0474-link-edge-edge-route-location-search-empty.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /session/filter_metro_area for location-search-empty."
+    },
+    {
+      "id": "edge:route:home-search-modal",
+      "recipe_refs": [
+        "scope/recipes/0475-link-edge-edge-route-home-search-modal.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target / for home-search-modal."
+    },
+    {
+      "id": "edge:route:event-01-steve-lacy",
+      "recipe_refs": [
+        "scope/recipes/0476-link-edge-edge-route-event-01-steve-lacy.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43365625-steve-lacy-at-place-bell for event-01-steve-lacy."
+    },
+    {
+      "id": "edge:route:event-02-gipsy-kings",
+      "recipe_refs": [
+        "scope/recipes/0477-link-edge-edge-route-event-02-gipsy-kings.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43371713-gipsy-kings-at-mtelus for event-02-gipsy-kings."
+    },
+    {
+      "id": "edge:route:event-03-gorgon-city",
+      "recipe_refs": [
+        "scope/recipes/0478-link-edge-edge-route-event-03-gorgon-city.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43381053-gorgon-city-at-new-city-gas for event-03-gorgon-city."
+    },
+    {
+      "id": "edge:route:event-04-yebba",
+      "recipe_refs": [
+        "scope/recipes/0479-link-edge-edge-route-event-04-yebba.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43383403-yebba-at-lolympia for event-04-yebba."
+    },
+    {
+      "id": "edge:route:event-05-donavon-frankenreiter",
+      "recipe_refs": [
+        "scope/recipes/0480-link-edge-edge-route-event-05-donavon-frankenreiter.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43382897-donavon-frankenreiter-at-le-ministere for event-05-donavon-frankenreiter."
+    },
+    {
+      "id": "edge:route:event-06-salif-keita",
+      "recipe_refs": [
+        "scope/recipes/0481-link-edge-edge-route-event-06-salif-keita.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43390372-salif-keita-at-place-des-arts for event-06-salif-keita."
+    },
+    {
+      "id": "edge:route:event-07-clara-la-san",
+      "recipe_refs": [
+        "scope/recipes/0482-link-edge-edge-route-event-07-clara-la-san.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43371714-clara-la-san-at-lolympia for event-07-clara-la-san."
+    },
+    {
+      "id": "edge:route:event-08-too-many-zooz",
+      "recipe_refs": [
+        "scope/recipes/0483-link-edge-edge-route-event-08-too-many-zooz.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43390357-too-many-zooz-at-theatre-fairmount-theatre for event-08-too-many-zooz."
+    },
+    {
+      "id": "edge:route:event-09-i-hate-models",
+      "recipe_refs": [
+        "scope/recipes/0484-link-edge-edge-route-event-09-i-hate-models.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43371710-i-hate-models-at-hall-est-du-stade-olympique for event-09-i-hate-models."
+    },
+    {
+      "id": "edge:route:event-10-sullivan-king",
+      "recipe_refs": [
+        "scope/recipes/0485-link-edge-edge-route-event-10-sullivan-king.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43382670-sullivan-king-at-mtelus for event-10-sullivan-king."
+    },
+    {
+      "id": "edge:route:artist-01-coldplay",
+      "recipe_refs": [
+        "scope/recipes/0486-link-edge-edge-route-artist-01-coldplay.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists/197928-coldplay for artist-01-coldplay."
+    },
+    {
+      "id": "edge:route:artist-02-rihanna",
+      "recipe_refs": [
+        "scope/recipes/0487-link-edge-edge-route-artist-02-rihanna.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists/139648-rihanna for artist-02-rihanna."
+    },
+    {
+      "id": "edge:route:artist-03-the-weeknd",
+      "recipe_refs": [
+        "scope/recipes/0488-link-edge-edge-route-artist-03-the-weeknd.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists/4363463-weeknd for artist-03-the-weeknd."
+    },
+    {
+      "id": "edge:route:artist-04-eminem",
+      "recipe_refs": [
+        "scope/recipes/0489-link-edge-edge-route-artist-04-eminem.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists/182968-eminem for artist-04-eminem."
+    },
+    {
+      "id": "edge:route:artist-05-drake",
+      "recipe_refs": [
+        "scope/recipes/0490-link-edge-edge-route-artist-05-drake.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists/556955-drake for artist-05-drake."
+    },
+    {
+      "id": "edge:route:artist-06-taylor-swift",
+      "recipe_refs": [
+        "scope/recipes/0491-link-edge-edge-route-artist-06-taylor-swift.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists/217815-taylor-swift for artist-06-taylor-swift."
+    },
+    {
+      "id": "edge:route:artist-07-bruno-mars",
+      "recipe_refs": [
+        "scope/recipes/0492-link-edge-edge-route-artist-07-bruno-mars.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists/941964-bruno-mars for artist-07-bruno-mars."
+    },
+    {
+      "id": "edge:route:artist-08-kanye-west",
+      "recipe_refs": [
+        "scope/recipes/0493-link-edge-edge-route-artist-08-kanye-west.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists/552177-kanye-west for artist-08-kanye-west."
+    },
+    {
+      "id": "edge:route:artist-09-maroon-5",
+      "recipe_refs": [
+        "scope/recipes/0494-link-edge-edge-route-artist-09-maroon-5.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists/181875-maroon-5 for artist-09-maroon-5."
+    },
+    {
+      "id": "edge:route:artist-10-lady-gaga",
+      "recipe_refs": [
+        "scope/recipes/0495-link-edge-edge-route-artist-10-lady-gaga.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /artists/974908-lady-gaga for artist-10-lady-gaga."
+    },
+    {
+      "id": "edge:route:region-01-sf-bay-area",
+      "recipe_refs": [
+        "scope/recipes/0496-link-edge-edge-route-region-01-sf-bay-area.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/26330-us-sf-bay-area for region-01-sf-bay-area."
+    },
+    {
+      "id": "edge:route:region-02-los-angeles",
+      "recipe_refs": [
+        "scope/recipes/0497-link-edge-edge-route-region-02-los-angeles.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/17835-us-los-angeles-la for region-02-los-angeles."
+    },
+    {
+      "id": "edge:route:region-03-new-york",
+      "recipe_refs": [
+        "scope/recipes/0498-link-edge-edge-route-region-03-new-york.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/7644-us-new-york-nyc for region-03-new-york."
+    },
+    {
+      "id": "edge:route:region-04-portland",
+      "recipe_refs": [
+        "scope/recipes/0499-link-edge-edge-route-region-04-portland.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/12283-us-portland for region-04-portland."
+    },
+    {
+      "id": "edge:route:region-05-washington",
+      "recipe_refs": [
+        "scope/recipes/0500-link-edge-edge-route-region-05-washington.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/1409-us-washington for region-05-washington."
+    },
+    {
+      "id": "edge:route:region-06-philadelphia",
+      "recipe_refs": [
+        "scope/recipes/0501-link-edge-edge-route-region-06-philadelphia.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/5202-us-philadelphia for region-06-philadelphia."
+    },
+    {
+      "id": "edge:route:region-07-seattle",
+      "recipe_refs": [
+        "scope/recipes/0502-link-edge-edge-route-region-07-seattle.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/2846-us-seattle for region-07-seattle."
+    },
+    {
+      "id": "edge:route:region-08-chicago",
+      "recipe_refs": [
+        "scope/recipes/0503-link-edge-edge-route-region-08-chicago.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/9426-us-chicago for region-08-chicago."
+    },
+    {
+      "id": "edge:route:region-09-orlando",
+      "recipe_refs": [
+        "scope/recipes/0504-link-edge-edge-route-region-09-orlando.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/3733-us-orlando for region-09-orlando."
+    },
+    {
+      "id": "edge:route:region-10-pittsburgh",
+      "recipe_refs": [
+        "scope/recipes/0505-link-edge-edge-route-region-10-pittsburgh.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/22443-us-pittsburgh for region-10-pittsburgh."
+    },
+    {
+      "id": "edge:route:venue-place-bell",
+      "recipe_refs": [
+        "scope/recipes/0506-link-edge-edge-route-venue-place-bell.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /venues/3536914-place-bell for venue-place-bell."
+    },
+    {
+      "id": "edge:route:venue-mtelus",
+      "recipe_refs": [
+        "scope/recipes/0507-link-edge-edge-route-venue-mtelus.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /venues/20838-mtelus for venue-mtelus."
+    },
+    {
+      "id": "edge:route:venue-new-city-gas",
+      "recipe_refs": [
+        "scope/recipes/0508-link-edge-edge-route-venue-new-city-gas.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /venues/1449208-new-city-gas for venue-new-city-gas."
+    },
+    {
+      "id": "edge:route:venue-lolympia",
+      "recipe_refs": [
+        "scope/recipes/0509-link-edge-edge-route-venue-lolympia.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /venues/61660-lolympia for venue-lolympia."
+    },
+    {
+      "id": "edge:route:venue-le-ministere",
+      "recipe_refs": [
+        "scope/recipes/0510-link-edge-edge-route-venue-le-ministere.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /venues/4016319-le-ministere for venue-le-ministere."
+    },
+    {
+      "id": "edge:route:venue-place-des-arts",
+      "recipe_refs": [
+        "scope/recipes/0511-link-edge-edge-route-venue-place-des-arts.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /venues/35381-place-des-arts for venue-place-des-arts."
+    },
+    {
+      "id": "edge:route:venue-theatre-fairmount",
+      "recipe_refs": [
+        "scope/recipes/0512-link-edge-edge-route-venue-theatre-fairmount.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /venues/1086866-theatre-fairmount-theatre for venue-theatre-fairmount."
+    },
+    {
+      "id": "edge:route:venue-hall-est-stade-olympique",
+      "recipe_refs": [
+        "scope/recipes/0513-link-edge-edge-route-venue-hall-est-stade-olympique.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /venues/4661630-hall-est-du-stade-olympique for venue-hall-est-stade-olympique."
+    },
+    {
+      "id": "edge:route:popular-artists-page-2",
+      "recipe_refs": [
+        "scope/recipes/0514-link-edge-edge-route-popular-artists-page-2.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /leaderboards/popular_artists for popular-artists-page-2."
+    },
+    {
+      "id": "edge:route:ticketmaster-boundary",
+      "recipe_refs": [
+        "scope/recipes/0515-link-edge-edge-route-ticketmaster-boundary.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /concerts/43365625-steve-lacy-at-place-bell for ticketmaster-boundary."
+    },
+    {
+      "id": "edge:route:genre-rock",
+      "recipe_refs": [
+        "scope/recipes/0516-link-edge-edge-route-genre-rock.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /genres/rock for genre-rock."
+    },
+    {
+      "id": "edge:route:trending-artists",
+      "recipe_refs": [
+        "scope/recipes/0517-link-edge-edge-route-trending-artists.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /leaderboards/trending_artists for trending-artists."
+    },
+    {
+      "id": "edge:route:live-streams",
+      "recipe_refs": [
+        "scope/recipes/0518-link-edge-edge-route-live-streams.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /live-stream-concerts for live-streams."
+    },
+    {
+      "id": "edge:route:news",
+      "recipe_refs": [
+        "scope/recipes/0519-link-edge-edge-route-news.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /news for news."
+    },
+    {
+      "id": "edge:route:developer",
+      "recipe_refs": [
+        "scope/recipes/0520-link-edge-edge-route-developer.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /developer for developer."
+    },
+    {
+      "id": "edge:route:design",
+      "recipe_refs": [
+        "scope/recipes/0521-link-edge-edge-route-design.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /design for design."
+    },
+    {
+      "id": "edge:route:jobs",
+      "recipe_refs": [
+        "scope/recipes/0522-link-edge-edge-route-jobs.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /jobs for jobs."
+    },
+    {
+      "id": "edge:route:info-cookies",
+      "recipe_refs": [
+        "scope/recipes/0523-link-edge-edge-route-info-cookies.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /info/cookies for info-cookies."
+    },
+    {
+      "id": "edge:route:info-guidelines",
+      "recipe_refs": [
+        "scope/recipes/0524-link-edge-edge-route-info-guidelines.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /info/guidelines for info-guidelines."
+    },
+    {
+      "id": "edge:route:info-privacy",
+      "recipe_refs": [
+        "scope/recipes/0525-link-edge-edge-route-info-privacy.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /info/privacy for info-privacy."
+    },
+    {
+      "id": "edge:route:info-security",
+      "recipe_refs": [
+        "scope/recipes/0526-link-edge-edge-route-info-security.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /info/security for info-security."
+    },
+    {
+      "id": "edge:route:info-terms",
+      "recipe_refs": [
+        "scope/recipes/0527-link-edge-edge-route-info-terms.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /info/terms for info-terms."
+    },
+    {
+      "id": "edge:route:nearby-genre-rock",
+      "recipe_refs": [
+        "scope/recipes/0528-link-edge-edge-route-nearby-genre-rock.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /metro-areas/nearby/genre/rock for nearby-genre-rock."
+    },
+    {
+      "id": "edge:route:locale-de",
+      "recipe_refs": [
+        "scope/recipes/0529-link-edge-edge-route-locale-de.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /de for locale-de."
+    },
+    {
+      "id": "edge:route:locale-es",
+      "recipe_refs": [
+        "scope/recipes/0530-link-edge-edge-route-locale-es.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /es for locale-es."
+    },
+    {
+      "id": "edge:route:locale-fr",
+      "recipe_refs": [
+        "scope/recipes/0531-link-edge-edge-route-locale-fr.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /fr for locale-fr."
+    },
+    {
+      "id": "edge:route:locale-pt",
+      "recipe_refs": [
+        "scope/recipes/0532-link-edge-edge-route-locale-pt.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /pt for locale-pt."
+    },
+    {
+      "id": "edge:route:password-reset",
+      "recipe_refs": [
+        "scope/recipes/0533-link-edge-edge-route-password-reset.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /password_reset_requests/new for password-reset."
+    },
+    {
+      "id": "edge:route:about",
+      "recipe_refs": [
+        "scope/recipes/0534-link-edge-edge-route-about.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /info/about for about."
+    },
+    {
+      "id": "edge:route:app",
+      "recipe_refs": [
+        "scope/recipes/0535-link-edge-edge-route-app.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /app for app."
+    },
+    {
+      "id": "edge:route:protected-home-logged-out",
+      "recipe_refs": [
+        "scope/recipes/0536-link-edge-edge-route-protected-home-logged-out.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture first-party graph retains local route target /home for protected-home-logged-out."
+    },
+    {
+      "id": "edge:route:not-found",
+      "recipe_refs": [
+        "scope/recipes/0537-link-edge-edge-route-not-found.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture branded 404 page keeps its Songkick logo pointing at the site root; the local clone resolves that link to / ."
+    },
+    {
+      "id": "edge:search:search-results-coldplay:control-8",
+      "recipe_refs": [
+        "scope/recipes/0538-link-edge-edge-search-search-results-coldplay-control-8.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture search result retains local target /en/artists/197928."
+    },
+    {
+      "id": "edge:search:search-results-coldplay:control-9",
+      "recipe_refs": [
+        "scope/recipes/0539-link-edge-edge-search-search-results-coldplay-control-9.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture search result retains local target /en/events/42874650."
+    },
+    {
+      "id": "edge:search:search-results-coldplay:control-10",
+      "recipe_refs": [
+        "scope/recipes/0540-link-edge-edge-search-search-results-coldplay-control-10.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture search result retains local target /en/events/42975205."
+    },
+    {
+      "id": "edge:search:search-results-coldplay:control-11",
+      "recipe_refs": [
+        "scope/recipes/0541-link-edge-edge-search-search-results-coldplay-control-11.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture search result retains local target /en/events/43008465."
+    },
+    {
+      "id": "edge:search:search-results-coldplay:control-12",
+      "recipe_refs": [
+        "scope/recipes/0542-link-edge-edge-search-search-results-coldplay-control-12.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture search result retains local target /en/events/43236464."
+    },
+    {
+      "id": "edge:search:search-results-coldplay:control-13",
+      "recipe_refs": [
+        "scope/recipes/0543-link-edge-edge-search-search-results-coldplay-control-13.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture search result retains local target /en/events/43200254."
+    },
+    {
+      "id": "edge:search:search-results-coldplay:control-14",
+      "recipe_refs": [
+        "scope/recipes/0544-link-edge-edge-search-search-results-coldplay-control-14.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-search-states.json"
+      ],
+      "source_expectation": "The same-capture search result retains local target /en/events/42972568."
+    },
+    {
+      "id": "edge:ticket:ticketmaster-ca",
+      "recipe_refs": [
+        "scope/recipes/0545-link-edge-edge-ticket-ticketmaster-ca.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-ticket-boundary.json"
+      ],
+      "source_expectation": "The same-capture ticket control resolves through first-party path /tickets/34252807? before a local external boundary."
+    },
+    {
+      "id": "edge:ticket:seatgeek",
+      "recipe_refs": [
+        "scope/recipes/0546-link-edge-edge-ticket-seatgeek.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-ticket-boundary.json"
+      ],
+      "source_expectation": "The same-capture ticket control resolves through first-party path /tickets/34247919? before a local external boundary."
+    }
+  ],
+  "schema_version": "websitebench.first-party-link-graph.v3",
+  "site_id": "songkick",
+  "status": "frozen"
+}

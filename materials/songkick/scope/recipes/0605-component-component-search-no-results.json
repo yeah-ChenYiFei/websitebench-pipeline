@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:global-search:search-no-results",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "expected_state": "visible",
+  "kind": "component-state",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "component:search-no-results",
+  "record_kind": "component",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-component=\"search-no-results\"]",
+  "subject_id": "component:search-no-results",
+  "subject_kind": "component"
+}

@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:venue-le-ministere:initial",
+  "contract_file": "external-links.json",
+  "contract_schema_version": "websitebench.external-links.v3",
+  "expected_href": "http://maps.google.com/maps?ll=45.5205,-73.58679&q=45.5205,-73.58679&z=14",
+  "kind": "external-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "external:008:maps-google-com",
+  "record_kind": "external-link",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-external-id=\"external-008\"]",
+  "subject_id": "external:008:maps-google-com",
+  "subject_kind": "external-link"
+}

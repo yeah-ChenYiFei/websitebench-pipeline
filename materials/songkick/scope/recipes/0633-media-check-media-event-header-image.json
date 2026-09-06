@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:event-detail:initial",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "expected_state": "ready",
+  "kind": "media-state",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "media:event-header-image",
+  "record_kind": "media-check",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-media=\"event-header-image\"]",
+  "subject_id": "media:event-header-image",
+  "subject_kind": "media-check"
+}

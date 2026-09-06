@@ -1,0 +1,115 @@
+{
+  "journeys": [
+    {
+      "actor": "visitor",
+      "id": "public-discovery",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Open the Songkick home route at the frozen desktop viewport.",
+        "Use primary navigation and browse nearby concerts without remote runtime requests."
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "collection-browse",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Browse the frozen concert, artist, festival, regional and leaderboard collections.",
+        "Use represented pagination, date and genre controls while remaining local."
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "entity-details",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Open every frozen event, artist, venue and festival detail identity.",
+        "Inspect its source-grounded identity, metadata, related items and local links."
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "global-search",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Open global search and enter Coldplay to receive the frozen deterministic results.",
+        "Enter the frozen no-result term and receive the captured no-results state."
+      ]
+    },
+    {
+      "actor": "registered-fan",
+      "id": "account-lifecycle",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Create a local account, sign in, refresh, sign out and sign back in.",
+        "Request password recovery through the local outbox without production delivery."
+      ]
+    },
+    {
+      "actor": "registered-fan",
+      "id": "tracking-and-attendance",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Track and untrack an artist and mark or unmark an event as interested or attended.",
+        "Verify account-scoped mutations across refresh, logout, relogin and restart."
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "offline-closure",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Load all in-scope pages and assets from loopback only.",
+        "Observe zero production source requests and zero production side effects."
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "external-boundaries",
+      "kind": "boundary",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Activate each frozen external destination identity.",
+        "Land on a branded local HTTP 200 soft-404 that names the destination without contacting it."
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "hard-not-found-recovery",
+      "kind": "boundary",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Open an unknown first-party route.",
+        "Receive the captured branded HTTP 404 and use its local recovery controls."
+      ]
+    },
+    {
+      "actor": "visitor",
+      "id": "location-theme-locale-cookie",
+      "kind": "success",
+      "priority": "p1",
+      "status": "frozen",
+      "steps": [
+        "Change the represented location, appearance, locale and cookie preferences.",
+        "Verify each preference remains local and persists according to its browser/account scope."
+      ]
+    }
+  ],
+  "schema_version": "offline-clone.journeys.v1"
+}

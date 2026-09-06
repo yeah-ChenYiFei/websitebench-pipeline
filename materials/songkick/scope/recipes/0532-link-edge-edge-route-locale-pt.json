@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:home:initial",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "expected_href": "/pt",
+  "kind": "first-party-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "edge:route:locale-pt",
+  "record_kind": "link-edge",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "a[href=\"/pt\"]",
+  "subject_id": "edge:route:locale-pt",
+  "subject_kind": "link-edge"
+}

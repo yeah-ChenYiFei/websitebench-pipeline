@@ -1,0 +1,563 @@
+{
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "count": 46,
+  "links": [
+    {
+      "id": "external:001:groups-google-com",
+      "recipe_refs": [
+        "scope/recipes/0547-external-link-external-001-groups-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://groups.google.com/group/songkick-api is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:002:leministere-ca",
+      "recipe_refs": [
+        "scope/recipes/0548-external-link-external-002-leministere-ca.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://leministere.ca/ is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:003:maps-google-com",
+      "recipe_refs": [
+        "scope/recipes/0549-external-link-external-003-maps-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://maps.google.com/maps?ll=45.49532,-73.55739&q=45.49532,-73.55739&z=14 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:004:maps-google-com",
+      "recipe_refs": [
+        "scope/recipes/0550-external-link-external-004-maps-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://maps.google.com/maps?ll=45.50794,-73.56561&q=45.50794,-73.56561&z=14 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:005:maps-google-com",
+      "recipe_refs": [
+        "scope/recipes/0551-external-link-external-005-maps-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://maps.google.com/maps?ll=45.50937,-73.56458&q=45.50937,-73.56458&z=14 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:006:maps-google-com",
+      "recipe_refs": [
+        "scope/recipes/0552-external-link-external-006-maps-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://maps.google.com/maps?ll=45.51433,-73.55996&q=45.51433,-73.55996&z=14 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:007:maps-google-com",
+      "recipe_refs": [
+        "scope/recipes/0553-external-link-external-007-maps-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://maps.google.com/maps?ll=45.52042,-73.59759&q=45.52042,-73.59759&z=14 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:008:maps-google-com",
+      "recipe_refs": [
+        "scope/recipes/0554-external-link-external-008-maps-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://maps.google.com/maps?ll=45.5205,-73.58679&q=45.5205,-73.58679&z=14 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:009:maps-google-com",
+      "recipe_refs": [
+        "scope/recipes/0555-external-link-external-009-maps-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://maps.google.com/maps?ll=45.55587,-73.72143&q=45.55587,-73.72143&z=14 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:010:maps-google-com",
+      "recipe_refs": [
+        "scope/recipes/0556-external-link-external-010-maps-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://maps.google.com/maps?ll=45.55793,-73.55155&q=45.55793,-73.55155&z=14 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:011:support-songkick-com",
+      "recipe_refs": [
+        "scope/recipes/0557-external-link-external-011-support-songkick-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://support.songkick.com/ is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:012:support-songkick-com",
+      "recipe_refs": [
+        "scope/recipes/0558-external-link-external-012-support-songkick-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://support.songkick.com/customer/en/portal/topics/1103633-artist-support-faq/articles is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:013:theatrefairmount-com",
+      "recipe_refs": [
+        "scope/recipes/0559-external-link-external-013-theatrefairmount-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://theatrefairmount.com/ is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:014:tools-google-com",
+      "recipe_refs": [
+        "scope/recipes/0560-external-link-external-014-tools-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://tools.google.com/dlpage/gaoptout is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:015:www-facebook-com",
+      "recipe_refs": [
+        "scope/recipes/0561-external-link-external-015-www-facebook-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://www.facebook.com/songkick is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:016:www-metropolismontreal-ca",
+      "recipe_refs": [
+        "scope/recipes/0562-external-link-external-016-www-metropolismontreal-ca.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://www.metropolismontreal.ca/ is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:017:www-olympiamontreal-com",
+      "recipe_refs": [
+        "scope/recipes/0563-external-link-external-017-www-olympiamontreal-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://www.olympiamontreal.com/ is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:018:www-pda-qc-ca",
+      "recipe_refs": [
+        "scope/recipes/0564-external-link-external-018-www-pda-qc-ca.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity http://www.pda.qc.ca/index.en.html is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:019:appfollow-io",
+      "recipe_refs": [
+        "scope/recipes/0565-external-link-external-019-appfollow-io.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://appfollow.io/app/1144/review/24347699?s=p1 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:020:appfollow-io",
+      "recipe_refs": [
+        "scope/recipes/0566-external-link-external-020-appfollow-io.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://appfollow.io/gp/480/review/14900893?s=p1 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:021:appfollow-io",
+      "recipe_refs": [
+        "scope/recipes/0567-external-link-external-021-appfollow-io.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://appfollow.io/gp/480/review/16089823?s=p1 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:022:appfollow-io",
+      "recipe_refs": [
+        "scope/recipes/0568-external-link-external-022-appfollow-io.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://appfollow.io/gp/480/review/16287341?s=p1 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:023:apps-apple-com",
+      "recipe_refs": [
+        "scope/recipes/0569-external-link-external-023-apps-apple-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://apps.apple.com/app/songkick-concerts-tickets/id438690886?utm_source=web&utm_medium=homepage&utm_campaign=get_the_app is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:024:blog-songkick-com",
+      "recipe_refs": [
+        "scope/recipes/0570-external-link-external-024-blog-songkick-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json",
+        "evidence/source-blog-boundary.json"
+      ],
+      "source_expectation": "The same-capture external identity https://blog.songkick.com/ is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:025:blog-songkick-com",
+      "recipe_refs": [
+        "scope/recipes/0571-external-link-external-025-blog-songkick-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://blog.songkick.com/how-we-fixed-culture-at-songkick-c853891ff7cf is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:026:campaigns-songkick-com",
+      "recipe_refs": [
+        "scope/recipes/0572-external-link-external-026-campaigns-songkick-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://campaigns.songkick.com/?utm_medium=referral&utm_source=songkick.com&utm_campaign=nav_campaign_footer is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:027:itunes-apple-com",
+      "recipe_refs": [
+        "scope/recipes/0573-external-link-external-027-itunes-apple-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://itunes.apple.com/gb/app/songkick-concerts/id438690886?mt=8&pt=307660&ct=skweb:mobile-download-splash is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:028:play-google-com",
+      "recipe_refs": [
+        "scope/recipes/0574-external-link-external-028-play-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://play.google.com/store/apps/details?id=com.songkick&hl=en&referrer=utm_source%3Dweb%26utm_medium%3Dhomepage%26utm_campaign%3Dget_the_app is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:029:play-google-com",
+      "recipe_refs": [
+        "scope/recipes/0575-external-link-external-029-play-google-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://play.google.com/store/apps/details?id=com.songkick&referrer=utm_source%3Dskdownload%26utm_medium%3Dcampaign%26utm_content%3Dandroid-app%26utm_campaign%3Dmobile-download-splash is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:030:suno-com",
+      "recipe_refs": [
+        "scope/recipes/0576-external-link-external-030-suno-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://suno.com/cookie-policy is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:031:support-songkick-com",
+      "recipe_refs": [
+        "scope/recipes/0577-external-link-external-031-support-songkick-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://support.songkick.com/hc/en-us/requests/new is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:032:support-songkick-com",
+      "recipe_refs": [
+        "scope/recipes/0578-external-link-external-032-support-songkick-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://support.songkick.com/hc/en-us/requests/new?ticket_form_id=360000526113 is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:033:tourbox-songkick-com",
+      "recipe_refs": [
+        "scope/recipes/0579-external-link-external-033-tourbox-songkick-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://tourbox.songkick.com/?utm_medium=referral&utm_source=songkick.com&utm_campaign=nav-tourbox-upsell-visitor is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:034:tourbox-songkick-com",
+      "recipe_refs": [
+        "scope/recipes/0580-external-link-external-034-tourbox-songkick-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://tourbox.songkick.com/?utm_medium=referral&utm_source=songkick.com&utm_campaign=tourboxforartists is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:035:tourbox-songkick-com",
+      "recipe_refs": [
+        "scope/recipes/0581-external-link-external-035-tourbox-songkick-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://tourbox.songkick.com/?utm_medium=referral&utm_source=songkick.com&utm_campaign=visitor is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:036:twitter-com",
+      "recipe_refs": [
+        "scope/recipes/0582-external-link-external-036-twitter-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://twitter.com/songkick is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:037:www-aboutcookies-org",
+      "recipe_refs": [
+        "scope/recipes/0583-external-link-external-037-www-aboutcookies-org.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://www.aboutcookies.org/ is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:038:www-allaboutcookies-org",
+      "recipe_refs": [
+        "scope/recipes/0584-external-link-external-038-www-allaboutcookies-org.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://www.allaboutcookies.org/ is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:039:www-instagram-com",
+      "recipe_refs": [
+        "scope/recipes/0585-external-link-external-039-www-instagram-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://www.instagram.com/songkick is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:040:www-onetrust-com",
+      "recipe_refs": [
+        "scope/recipes/0586-external-link-external-040-www-onetrust-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://www.onetrust.com/solutions/consent-and-preferences/ is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:041:www-tiktok-com",
+      "recipe_refs": [
+        "scope/recipes/0587-external-link-external-041-www-tiktok-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://www.tiktok.com/@songkick is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:042:www-youtube-com",
+      "recipe_refs": [
+        "scope/recipes/0588-external-link-external-042-www-youtube-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://www.youtube.com/songkick is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:043:www-youtube-com",
+      "recipe_refs": [
+        "scope/recipes/0589-external-link-external-043-www-youtube-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://www.youtube.com/songkick/ is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:044:www-youtube-com",
+      "recipe_refs": [
+        "scope/recipes/0590-external-link-external-044-www-youtube-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://www.youtube.com/watch?v=64atWskPb4A is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:045:www-youtube-com",
+      "recipe_refs": [
+        "scope/recipes/0591-external-link-external-045-www-youtube-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://www.youtube.com/watch?v=85lIpvwHcR8&t=1s is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    },
+    {
+      "id": "external:046:www-youtube-com",
+      "recipe_refs": [
+        "scope/recipes/0592-external-link-external-046-www-youtube-com.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-link-identities.json"
+      ],
+      "source_expectation": "The same-capture external identity https://www.youtube.com/watch?v=jNfBwhZ7FTE&t=1s is retained while activation terminates at a branded local HTTP 200 soft-404 without outbound runtime traffic."
+    }
+  ],
+  "policy": "Retain the exact same-capture destination href; intercept activation to a branded local HTTP 200 soft-404 with no outbound runtime request.",
+  "schema_version": "websitebench.external-links.v3",
+  "site_id": "songkick",
+  "status": "frozen"
+}

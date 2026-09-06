@@ -1,0 +1,1111 @@
+{
+  "account_mode": "anonymous and user-assisted authenticated source evidence; no secrets or personal account identifiers copied",
+  "allowed_first_party_origins": [
+    "http://songkick.com",
+    "http://www.songkick.com",
+    "https://songkick.com",
+    "https://www.songkick.com",
+    "https://accounts.songkick.com"
+  ],
+  "capture_id": "songkick-20260904T132056Z-g1-remediation",
+  "route_count": 84,
+  "routes": [
+    {
+      "id": "home",
+      "recipe_refs": [
+        "scope/recipes/0222-route-home.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route / preserves HTTP 200, title 'Find the Best Concerts Near You, Tour Dates & Tickets Worldwide | Songkick', and local identity."
+    },
+    {
+      "id": "concerts",
+      "recipe_refs": [
+        "scope/recipes/0223-route-concerts.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts preserves HTTP 200, title 'Concert Tickets for the best shows near you 2026-2027 | Songkick', and local identity."
+    },
+    {
+      "id": "montreal-page-1",
+      "recipe_refs": [
+        "scope/recipes/0224-route-montreal-page-1.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/27377-canada-montreal preserves HTTP 200, title 'Montreal Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "montreal-page-2",
+      "recipe_refs": [
+        "scope/recipes/0225-route-montreal-page-2.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /en/metro-areas/27377-canada-montreal preserves HTTP 200, title 'Montreal Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "artists",
+      "recipe_refs": [
+        "scope/recipes/0226-route-artists.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists preserves HTTP 200, title 'Top Artists on Tour, dates & tickets 2026-2027 | Songkick', and local identity."
+    },
+    {
+      "id": "artist-detail",
+      "recipe_refs": [
+        "scope/recipes/0227-route-artist-detail.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists/10355080-westside-cowboy preserves HTTP 200, title 'Westside Cowboy Tickets, Tour Dates & Concerts 2027 & 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "event-detail",
+      "recipe_refs": [
+        "scope/recipes/0228-route-event-detail.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43365625-steve-lacy-at-place-bell preserves HTTP 200, title 'Steve Lacy Laval Tickets, Place Bell, 06 Oct 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "venue-detail",
+      "recipe_refs": [
+        "scope/recipes/0229-route-venue-detail.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /venues/3536914-place-bell preserves HTTP 200, title 'Place Bell Laval, Tickets for Concerts & Music Events 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "festivals",
+      "recipe_refs": [
+        "scope/recipes/0230-route-festivals.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /festivals preserves HTTP 200, title 'Upcoming 2026 & 2027 Music Festivals near you – Songkick', and local identity."
+    },
+    {
+      "id": "festival-detail",
+      "recipe_refs": [
+        "scope/recipes/0231-route-festival-detail.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /festivals/3556859-music4cancer/id/43273560-music4cancer-2026 preserves HTTP 200, title 'Music4Cancer 2026 Sainte-Thérèse Line-up, Tickets & Dates Sep 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "location-filter",
+      "recipe_refs": [
+        "scope/recipes/0232-route-location-filter.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /session/filter_metro_area preserves HTTP 200, title 'Change Location – Songkick', and local identity."
+    },
+    {
+      "id": "sign-in",
+      "recipe_refs": [
+        "scope/recipes/0233-route-sign-in.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /session/new preserves HTTP 200, title 'Songkick', and local identity."
+    },
+    {
+      "id": "sign-up",
+      "recipe_refs": [
+        "scope/recipes/0234-route-sign-up.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /signup/new preserves HTTP 200, title 'Songkick', and local identity."
+    },
+    {
+      "id": "home-next-events",
+      "recipe_refs": [
+        "scope/recipes/0235-route-home-next-events.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route / preserves HTTP 200, title 'Find the Best Concerts Near You, Tour Dates & Tickets Worldwide | Songkick', and local identity."
+    },
+    {
+      "id": "home-next-artists",
+      "recipe_refs": [
+        "scope/recipes/0236-route-home-next-artists.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route / preserves HTTP 200, title 'Find the Best Concerts Near You, Tour Dates & Tickets Worldwide | Songkick', and local identity."
+    },
+    {
+      "id": "home-theme",
+      "recipe_refs": [
+        "scope/recipes/0237-route-home-theme.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route / preserves HTTP 200, title 'Find the Best Concerts Near You, Tour Dates & Tickets Worldwide | Songkick', and local identity."
+    },
+    {
+      "id": "montreal-today",
+      "recipe_refs": [
+        "scope/recipes/0238-route-montreal-today.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /en/metro-areas/27377-canada-montreal preserves HTTP 200, title 'Montreal Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "montreal-next-7-days",
+      "recipe_refs": [
+        "scope/recipes/0239-route-montreal-next-7-days.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /en/metro-areas/27377-canada-montreal preserves HTTP 200, title 'Montreal Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "montreal-next-30-days",
+      "recipe_refs": [
+        "scope/recipes/0240-route-montreal-next-30-days.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /en/metro-areas/27377-canada-montreal preserves HTTP 200, title 'Montreal Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "location-search-toronto",
+      "recipe_refs": [
+        "scope/recipes/0241-route-location-search-toronto.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /session/filter_metro_area preserves HTTP 200, title 'Change Location – Songkick', and local identity."
+    },
+    {
+      "id": "location-search-empty",
+      "recipe_refs": [
+        "scope/recipes/0242-route-location-search-empty.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /session/filter_metro_area preserves HTTP 200, title 'Change Location – Songkick', and local identity."
+    },
+    {
+      "id": "home-search-modal",
+      "recipe_refs": [
+        "scope/recipes/0243-route-home-search-modal.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route / preserves HTTP 200, title 'Find the Best Concerts Near You, Tour Dates & Tickets Worldwide | Songkick', and local identity."
+    },
+    {
+      "id": "event-01-steve-lacy",
+      "recipe_refs": [
+        "scope/recipes/0244-route-event-01-steve-lacy.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43365625-steve-lacy-at-place-bell preserves HTTP 200, title 'Steve Lacy Laval Tickets, Place Bell, 06 Oct 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "event-02-gipsy-kings",
+      "recipe_refs": [
+        "scope/recipes/0245-route-event-02-gipsy-kings.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43371713-gipsy-kings-at-mtelus preserves HTTP 200, title 'Gipsy Kings Montreal Tickets, MTELUS, 14 Nov 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "event-03-gorgon-city",
+      "recipe_refs": [
+        "scope/recipes/0246-route-event-03-gorgon-city.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43381053-gorgon-city-at-new-city-gas preserves HTTP 200, title 'Gorgon City Montreal Tickets, New City Gas, 11 Oct 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "event-04-yebba",
+      "recipe_refs": [
+        "scope/recipes/0247-route-event-04-yebba.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43383403-yebba-at-lolympia preserves HTTP 200, title \"YEBBA Montreal Tickets, L'Olympia, 26 Oct 2026 – Songkick\", and local identity."
+    },
+    {
+      "id": "event-05-donavon-frankenreiter",
+      "recipe_refs": [
+        "scope/recipes/0248-route-event-05-donavon-frankenreiter.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43382897-donavon-frankenreiter-at-le-ministere preserves HTTP 200, title 'Donavon Frankenreiter Montreal Tickets, Le Ministère, 18 Oct 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "event-06-salif-keita",
+      "recipe_refs": [
+        "scope/recipes/0249-route-event-06-salif-keita.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43390372-salif-keita-at-place-des-arts preserves HTTP 200, title 'Salif Keita Montreal Tickets, Place des Arts, 02 May 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "event-07-clara-la-san",
+      "recipe_refs": [
+        "scope/recipes/0250-route-event-07-clara-la-san.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43371714-clara-la-san-at-lolympia preserves HTTP 200, title \"Clara La San Montreal Tickets, L'Olympia, 06 Nov 2026 – Songkick\", and local identity."
+    },
+    {
+      "id": "event-08-too-many-zooz",
+      "recipe_refs": [
+        "scope/recipes/0251-route-event-08-too-many-zooz.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43390357-too-many-zooz-at-theatre-fairmount-theatre preserves HTTP 200, title 'Too Many Zooz Montreal Tickets, Théâtre Fairmount Theatre, 20 Nov 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "event-09-i-hate-models",
+      "recipe_refs": [
+        "scope/recipes/0252-route-event-09-i-hate-models.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43371710-i-hate-models-at-hall-est-du-stade-olympique preserves HTTP 200, title 'I Hate Models Montreal Tickets, Hall Est Du Stade Olympique, 14 Nov 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "event-10-sullivan-king",
+      "recipe_refs": [
+        "scope/recipes/0253-route-event-10-sullivan-king.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43382670-sullivan-king-at-mtelus preserves HTTP 200, title 'Sullivan King Montreal Tickets, MTELUS, 06 Nov 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "artist-01-coldplay",
+      "recipe_refs": [
+        "scope/recipes/0254-route-artist-01-coldplay.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists/197928-coldplay preserves HTTP 200, title 'Coldplay Tour Announcements 2026 & 2027, Notifications, Dates, Concerts & Tickets – Songkick', and local identity."
+    },
+    {
+      "id": "artist-02-rihanna",
+      "recipe_refs": [
+        "scope/recipes/0255-route-artist-02-rihanna.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists/139648-rihanna preserves HTTP 200, title 'Rihanna Tour Announcements 2026 & 2027, Notifications, Dates, Concerts & Tickets – Songkick', and local identity."
+    },
+    {
+      "id": "artist-03-the-weeknd",
+      "recipe_refs": [
+        "scope/recipes/0256-route-artist-03-the-weeknd.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists/4363463-weeknd preserves HTTP 200, title 'The Weeknd Tickets, Tour Dates & Concerts 2027 & 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "artist-04-eminem",
+      "recipe_refs": [
+        "scope/recipes/0257-route-artist-04-eminem.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists/182968-eminem preserves HTTP 200, title 'Eminem Tour Announcements 2026 & 2027, Notifications, Dates, Concerts & Tickets – Songkick', and local identity."
+    },
+    {
+      "id": "artist-05-drake",
+      "recipe_refs": [
+        "scope/recipes/0258-route-artist-05-drake.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists/556955-drake preserves HTTP 200, title 'Drake Tour Announcements 2026 & 2027, Notifications, Dates, Concerts & Tickets – Songkick', and local identity."
+    },
+    {
+      "id": "artist-06-taylor-swift",
+      "recipe_refs": [
+        "scope/recipes/0259-route-artist-06-taylor-swift.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists/217815-taylor-swift preserves HTTP 200, title 'Taylor Swift Tour Announcements 2026 & 2027, Notifications, Dates, Concerts & Tickets – Songkick', and local identity."
+    },
+    {
+      "id": "artist-07-bruno-mars",
+      "recipe_refs": [
+        "scope/recipes/0260-route-artist-07-bruno-mars.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists/941964-bruno-mars preserves HTTP 200, title 'Bruno Mars Tickets, Tour Dates & Concerts 2027 & 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "artist-08-kanye-west",
+      "recipe_refs": [
+        "scope/recipes/0261-route-artist-08-kanye-west.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists/552177-kanye-west preserves HTTP 200, title 'Kanye West Tour Announcements 2026 & 2027, Notifications, Dates, Concerts & Tickets – Songkick', and local identity."
+    },
+    {
+      "id": "artist-09-maroon-5",
+      "recipe_refs": [
+        "scope/recipes/0262-route-artist-09-maroon-5.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists/181875-maroon-5 preserves HTTP 200, title 'Maroon 5 Tickets, Tour Dates & Concerts 2027 & 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "artist-10-lady-gaga",
+      "recipe_refs": [
+        "scope/recipes/0263-route-artist-10-lady-gaga.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /artists/974908-lady-gaga preserves HTTP 200, title 'Lady Gaga Tour Announcements 2026 & 2027, Notifications, Dates, Concerts & Tickets – Songkick', and local identity."
+    },
+    {
+      "id": "region-01-sf-bay-area",
+      "recipe_refs": [
+        "scope/recipes/0264-route-region-01-sf-bay-area.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/26330-us-sf-bay-area preserves HTTP 200, title 'SF Bay Area Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "region-02-los-angeles",
+      "recipe_refs": [
+        "scope/recipes/0265-route-region-02-los-angeles.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/17835-us-los-angeles-la preserves HTTP 200, title 'Los Angeles (LA) Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "region-03-new-york",
+      "recipe_refs": [
+        "scope/recipes/0266-route-region-03-new-york.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/7644-us-new-york-nyc preserves HTTP 200, title 'New York (NYC) Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "region-04-portland",
+      "recipe_refs": [
+        "scope/recipes/0267-route-region-04-portland.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/12283-us-portland preserves HTTP 200, title 'Portland Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "region-05-washington",
+      "recipe_refs": [
+        "scope/recipes/0268-route-region-05-washington.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/1409-us-washington preserves HTTP 200, title 'Washington Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "region-06-philadelphia",
+      "recipe_refs": [
+        "scope/recipes/0269-route-region-06-philadelphia.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/5202-us-philadelphia preserves HTTP 200, title 'Philadelphia Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "region-07-seattle",
+      "recipe_refs": [
+        "scope/recipes/0270-route-region-07-seattle.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/2846-us-seattle preserves HTTP 200, title 'Seattle Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "region-08-chicago",
+      "recipe_refs": [
+        "scope/recipes/0271-route-region-08-chicago.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/9426-us-chicago preserves HTTP 200, title 'Chicago Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "region-09-orlando",
+      "recipe_refs": [
+        "scope/recipes/0272-route-region-09-orlando.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/3733-us-orlando preserves HTTP 200, title 'Orlando Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "region-10-pittsburgh",
+      "recipe_refs": [
+        "scope/recipes/0273-route-region-10-pittsburgh.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/22443-us-pittsburgh preserves HTTP 200, title 'Pittsburgh Concerts, Festivals, Tickets & Tour Dates 2026 & 2027 – Songkick', and local identity."
+    },
+    {
+      "id": "venue-place-bell",
+      "recipe_refs": [
+        "scope/recipes/0274-route-venue-place-bell.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /venues/3536914-place-bell preserves HTTP 200, title 'Place Bell Laval, Tickets for Concerts & Music Events 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "venue-mtelus",
+      "recipe_refs": [
+        "scope/recipes/0275-route-venue-mtelus.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /venues/20838-mtelus preserves HTTP 200, title 'MTELUS Montreal, Tickets for Concerts & Music Events 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "venue-new-city-gas",
+      "recipe_refs": [
+        "scope/recipes/0276-route-venue-new-city-gas.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /venues/1449208-new-city-gas preserves HTTP 200, title 'New City Gas Montreal, Tickets for Concerts & Music Events 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "venue-lolympia",
+      "recipe_refs": [
+        "scope/recipes/0277-route-venue-lolympia.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /venues/61660-lolympia preserves HTTP 200, title \"L'Olympia Montreal, Tickets for Concerts & Music Events 2026 – Songkick\", and local identity."
+    },
+    {
+      "id": "venue-le-ministere",
+      "recipe_refs": [
+        "scope/recipes/0278-route-venue-le-ministere.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /venues/4016319-le-ministere preserves HTTP 200, title 'Le Ministère Montreal, Tickets for Concerts & Music Events 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "venue-place-des-arts",
+      "recipe_refs": [
+        "scope/recipes/0279-route-venue-place-des-arts.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /venues/35381-place-des-arts preserves HTTP 200, title 'Place des Arts Montreal, Tickets for Concerts & Music Events 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "venue-theatre-fairmount",
+      "recipe_refs": [
+        "scope/recipes/0280-route-venue-theatre-fairmount.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /venues/1086866-theatre-fairmount-theatre preserves HTTP 200, title 'Théâtre Fairmount Theatre Montreal, Tickets for Concerts & Music Events 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "venue-hall-est-stade-olympique",
+      "recipe_refs": [
+        "scope/recipes/0281-route-venue-hall-est-stade-olympique.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /venues/4661630-hall-est-du-stade-olympique preserves HTTP 200, title 'Hall Est Du Stade Olympique Montreal, Tickets for Concerts & Music Events 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "popular-artists-page-2",
+      "recipe_refs": [
+        "scope/recipes/0282-route-popular-artists-page-2.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /leaderboards/popular_artists preserves HTTP 200, title 'Most Popular Artists Worldwide – Songkick', and local identity."
+    },
+    {
+      "id": "ticketmaster-boundary",
+      "recipe_refs": [
+        "scope/recipes/0283-route-ticketmaster-boundary.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /concerts/43365625-steve-lacy-at-place-bell preserves HTTP 200, title 'Steve Lacy Laval Tickets, Place Bell, 06 Oct 2026 – Songkick', and local identity."
+    },
+    {
+      "id": "genre-rock",
+      "recipe_refs": [
+        "scope/recipes/0284-route-genre-rock.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /genres/rock preserves HTTP 200, title 'Your ultimate guide to rock concerts | Buy tickets 2026 and 2027', and local identity."
+    },
+    {
+      "id": "trending-artists",
+      "recipe_refs": [
+        "scope/recipes/0285-route-trending-artists.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /leaderboards/trending_artists preserves HTTP 200, title 'Trending Artists this Week – Songkick', and local identity."
+    },
+    {
+      "id": "live-streams",
+      "recipe_refs": [
+        "scope/recipes/0286-route-live-streams.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /live-stream-concerts preserves HTTP 200, title 'Live Stream Concerts - All Upcoming Virtual Concerts | Songkick', and local identity."
+    },
+    {
+      "id": "news",
+      "recipe_refs": [
+        "scope/recipes/0287-route-news.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /news preserves HTTP 200, title 'Keep up to date on your favorite artists, music news, and more | Songkick', and local identity."
+    },
+    {
+      "id": "developer",
+      "recipe_refs": [
+        "scope/recipes/0288-route-developer.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /developer preserves HTTP 200, title 'Concerts and Festivals API | Songkick', and local identity."
+    },
+    {
+      "id": "design",
+      "recipe_refs": [
+        "scope/recipes/0289-route-design.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /design preserves HTTP 200, title 'Songkick Design', and local identity."
+    },
+    {
+      "id": "jobs",
+      "recipe_refs": [
+        "scope/recipes/0290-route-jobs.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /jobs preserves HTTP 200, title 'Find the Best Concerts Near You, Tour Dates & Tickets Worldwide | Songkick', and local identity."
+    },
+    {
+      "id": "info-cookies",
+      "recipe_refs": [
+        "scope/recipes/0291-route-info-cookies.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /info/cookies preserves HTTP 200, title 'Find the Best Concerts Near You, Tour Dates & Tickets Worldwide | Songkick', and local identity."
+    },
+    {
+      "id": "info-guidelines",
+      "recipe_refs": [
+        "scope/recipes/0292-route-info-guidelines.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /info/guidelines preserves HTTP 200, title 'Community Guidelines | Songkick', and local identity."
+    },
+    {
+      "id": "info-privacy",
+      "recipe_refs": [
+        "scope/recipes/0293-route-info-privacy.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /info/privacy preserves HTTP 200, title 'Privacy Policy | Songkick', and local identity."
+    },
+    {
+      "id": "info-security",
+      "recipe_refs": [
+        "scope/recipes/0294-route-info-security.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /info/security preserves HTTP 200, title 'Find the Best Concerts Near You, Tour Dates & Tickets Worldwide | Songkick', and local identity."
+    },
+    {
+      "id": "info-terms",
+      "recipe_refs": [
+        "scope/recipes/0295-route-info-terms.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /info/terms preserves HTTP 200, title 'Terms of use | Songkick', and local identity."
+    },
+    {
+      "id": "nearby-genre-rock",
+      "recipe_refs": [
+        "scope/recipes/0296-route-nearby-genre-rock.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /metro-areas/nearby/genre/rock preserves HTTP 200, title 'Rock Concerts in Montreal | Buy Tickets 2026 & 2027 - Songkick', and local identity."
+    },
+    {
+      "id": "locale-de",
+      "recipe_refs": [
+        "scope/recipes/0297-route-locale-de.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /de preserves HTTP 200, title 'Finde die besten Konzerte in deiner Nähe, Tour Daten & Tickets weltweit | Songkick', and local identity."
+    },
+    {
+      "id": "locale-es",
+      "recipe_refs": [
+        "scope/recipes/0298-route-locale-es.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /es preserves HTTP 200, title 'Songkick – Conciertos, fechas de gira y entradas', and local identity."
+    },
+    {
+      "id": "locale-fr",
+      "recipe_refs": [
+        "scope/recipes/0299-route-locale-fr.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /fr preserves HTTP 200, title 'Songkick – Concerts, dates de tournées & tickets', and local identity."
+    },
+    {
+      "id": "locale-pt",
+      "recipe_refs": [
+        "scope/recipes/0300-route-locale-pt.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /pt preserves HTTP 200, title 'Encontre os melhores shows perto de você, além de turnês e ingressos pelo mundo | Songkick', and local identity."
+    },
+    {
+      "id": "password-reset",
+      "recipe_refs": [
+        "scope/recipes/0301-route-password-reset.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /password_reset_requests/new preserves HTTP 200, title 'Songkick', and local identity."
+    },
+    {
+      "id": "about",
+      "recipe_refs": [
+        "scope/recipes/0302-route-about.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /info/about preserves HTTP 200, title 'About us | Songkick', and local identity."
+    },
+    {
+      "id": "app",
+      "recipe_refs": [
+        "scope/recipes/0303-route-app.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /app preserves HTTP 200, title 'Get the free app | Songkick', and local identity."
+    },
+    {
+      "id": "protected-home-logged-out",
+      "recipe_refs": [
+        "scope/recipes/0304-route-protected-home-logged-out.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /home preserves HTTP 200, title 'Songkick', and local identity."
+    },
+    {
+      "id": "not-found",
+      "recipe_refs": [
+        "scope/recipes/0305-route-not-found.json"
+      ],
+      "source_evidence_refs": [
+        "source-current/g1-source-summary.json",
+        "evidence/observations/feedback-g2-visible-contract-observations.json",
+        "evidence/source-public-capture.json",
+        "evidence/source-public-route-titles.json"
+      ],
+      "source_expectation": "The same-capture route /__websitebench_missing_songkick__ preserves HTTP 404, title 'Songkick', and local identity."
+    }
+  ],
+  "schema_version": "websitebench.full-route-inventory.v3",
+  "scope": "Songkick §12.11 complete captured desktop route denominator, collection/detail rules, auth lifecycle, search/filter/error states, local data boundaries and external soft-404 boundaries",
+  "site_id": "songkick",
+  "source_entry": "https://www.songkick.com/",
+  "status": "frozen"
+}

@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:venue-detail:initial",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "expected_state": "ready",
+  "kind": "media-state",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "media:venue-map-static-treatment",
+  "record_kind": "media-check",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-media=\"venue-map-static-treatment\"]",
+  "subject_id": "media:venue-map-static-treatment",
+  "subject_kind": "media-check"
+}

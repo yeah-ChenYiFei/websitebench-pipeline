@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:event-04-yebba:initial",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "expected_href": "/venues/61660-lolympia",
+  "kind": "first-party-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "edge:route:venue-lolympia",
+  "record_kind": "link-edge",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "a[href=\"/venues/61660-lolympia\"]",
+  "subject_id": "edge:route:venue-lolympia",
+  "subject_kind": "link-edge"
+}

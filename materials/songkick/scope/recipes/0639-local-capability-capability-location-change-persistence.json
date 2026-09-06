@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:location-search-toronto:initial",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "expected_state": "enabled",
+  "kind": "capability-state",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "capability:location-change-persistence",
+  "record_kind": "local-capability",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "#location-results button[data-location]",
+  "subject_id": "capability:location-change-persistence",
+  "subject_kind": "local-capability"
+}

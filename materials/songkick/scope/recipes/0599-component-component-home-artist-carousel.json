@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:home:initial",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "expected_state": "visible",
+  "kind": "component-state",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "component:home-artist-carousel",
+  "record_kind": "component",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "[data-wb-component=\"home-artist-carousel\"]",
+  "subject_id": "component:home-artist-carousel",
+  "subject_kind": "component"
+}

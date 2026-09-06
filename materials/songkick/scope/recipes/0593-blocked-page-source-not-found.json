@@ -1,0 +1,13 @@
+{
+  "checkpoint_id": "state:not-found:initial",
+  "contract_file": "blocked-or-unavailable-pages.json",
+  "contract_schema_version": "websitebench.blocked-pages.v3",
+  "expected_soft_404": false,
+  "kind": "soft-404-state",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "source:not-found",
+  "record_kind": "blocked-page",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "subject_id": "source:not-found",
+  "subject_kind": "blocked-page"
+}

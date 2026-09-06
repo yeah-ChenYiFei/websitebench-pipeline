@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "state:artists:initial",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "expected_href": "/artists/941964-bruno-mars",
+  "kind": "first-party-link",
+  "observation_evidence_ref": "evidence/observations/feedback-g2-visible-contract-observations.json",
+  "record_id": "edge:route:artist-07-bruno-mars",
+  "record_kind": "link-edge",
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "selector": "a[href=\"/artists/941964-bruno-mars\"]",
+  "subject_id": "edge:route:artist-07-bruno-mars",
+  "subject_kind": "link-edge"
+}

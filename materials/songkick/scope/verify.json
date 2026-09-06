@@ -1,0 +1,527 @@
+{
+  "boot": {
+    "argv": [
+      "{python}",
+      "-m",
+      "uvicorn",
+      "app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "{port}",
+      "--log-level",
+      "warning"
+    ],
+    "cwd": "clone",
+    "env": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "WEBSITEBENCH_SITE_BACKEND_DATABASE": "{data_dir}/songkick.sqlite3"
+    }
+  },
+  "deferred": {},
+  "note": "Deterministic same-capture remote-native verification for the complete remediated Songkick route/state ledger; no external destination is contacted.",
+  "prepare": [],
+  "routes": {
+    "about": "/info/about",
+    "app": "/app",
+    "artist-01-coldplay": "/artists/197928-coldplay",
+    "artist-02-rihanna": "/artists/139648-rihanna",
+    "artist-03-the-weeknd": "/artists/4363463-weeknd",
+    "artist-04-eminem": "/artists/182968-eminem",
+    "artist-05-drake": "/artists/556955-drake",
+    "artist-06-taylor-swift": "/artists/217815-taylor-swift",
+    "artist-07-bruno-mars": "/artists/941964-bruno-mars",
+    "artist-08-kanye-west": "/artists/552177-kanye-west",
+    "artist-09-maroon-5": "/artists/181875-maroon-5",
+    "artist-10-lady-gaga": "/artists/974908-lady-gaga",
+    "artist-detail": "/artists/10355080-westside-cowboy",
+    "artists": "/artists",
+    "concerts": "/concerts",
+    "design": "/design",
+    "developer": "/developer",
+    "event-01-steve-lacy": "/concerts/43365625-steve-lacy-at-place-bell",
+    "event-02-gipsy-kings": "/concerts/43371713-gipsy-kings-at-mtelus",
+    "event-03-gorgon-city": "/concerts/43381053-gorgon-city-at-new-city-gas",
+    "event-04-yebba": "/concerts/43383403-yebba-at-lolympia",
+    "event-05-donavon-frankenreiter": "/concerts/43382897-donavon-frankenreiter-at-le-ministere",
+    "event-06-salif-keita": "/concerts/43390372-salif-keita-at-place-des-arts",
+    "event-07-clara-la-san": "/concerts/43371714-clara-la-san-at-lolympia",
+    "event-08-too-many-zooz": "/concerts/43390357-too-many-zooz-at-theatre-fairmount-theatre",
+    "event-09-i-hate-models": "/concerts/43371710-i-hate-models-at-hall-est-du-stade-olympique",
+    "event-10-sullivan-king": "/concerts/43382670-sullivan-king-at-mtelus",
+    "event-detail": "/concerts/43365625-steve-lacy-at-place-bell",
+    "festival-detail": "/festivals/3556859-music4cancer/id/43273560-music4cancer-2026",
+    "festivals": "/festivals",
+    "genre-rock": "/genres/rock",
+    "home": "/",
+    "home-next-artists": "/",
+    "home-next-events": "/",
+    "home-search-modal": "/",
+    "home-theme": "/",
+    "info-cookies": "/info/cookies",
+    "info-guidelines": "/info/guidelines",
+    "info-privacy": "/info/privacy",
+    "info-security": "/info/security",
+    "info-terms": "/info/terms",
+    "jobs": "/jobs",
+    "live-streams": "/live-stream-concerts",
+    "locale-de": "/de",
+    "locale-es": "/es",
+    "locale-fr": "/fr",
+    "locale-pt": "/pt",
+    "location-filter": "/session/filter_metro_area",
+    "location-search-empty": "/session/filter_metro_area?wb_state=search-empty",
+    "location-search-toronto": "/session/filter_metro_area?wb_state=search-toronto",
+    "montreal-next-30-days": "/en/metro-areas/27377-canada-montreal?wb_state=next-30-days",
+    "montreal-next-7-days": "/en/metro-areas/27377-canada-montreal?wb_state=next-7-days",
+    "montreal-page-1": "/metro-areas/27377-canada-montreal",
+    "montreal-page-2": "/en/metro-areas/27377-canada-montreal",
+    "montreal-today": "/en/metro-areas/27377-canada-montreal?wb_state=today",
+    "nearby-genre-rock": "/metro-areas/nearby/genre/rock",
+    "news": "/news",
+    "not-found": "/__websitebench_missing_songkick__",
+    "password-reset": "/password_reset_requests/new",
+    "popular-artists-page-2": "/leaderboards/popular_artists?page=2",
+    "protected-home-logged-out": "/home",
+    "region-01-sf-bay-area": "/metro-areas/26330-us-sf-bay-area",
+    "region-02-los-angeles": "/metro-areas/17835-us-los-angeles-la",
+    "region-03-new-york": "/metro-areas/7644-us-new-york-nyc",
+    "region-04-portland": "/metro-areas/12283-us-portland",
+    "region-05-washington": "/metro-areas/1409-us-washington",
+    "region-06-philadelphia": "/metro-areas/5202-us-philadelphia",
+    "region-07-seattle": "/metro-areas/2846-us-seattle",
+    "region-08-chicago": "/metro-areas/9426-us-chicago",
+    "region-09-orlando": "/metro-areas/3733-us-orlando",
+    "region-10-pittsburgh": "/metro-areas/22443-us-pittsburgh",
+    "sign-in": "/session/new",
+    "sign-up": "/signup/new",
+    "ticketmaster-boundary": "/concerts/43365625-steve-lacy-at-place-bell",
+    "trending-artists": "/leaderboards/trending_artists",
+    "venue-detail": "/venues/3536914-place-bell",
+    "venue-hall-est-stade-olympique": "/venues/4661630-hall-est-du-stade-olympique",
+    "venue-le-ministere": "/venues/4016319-le-ministere",
+    "venue-lolympia": "/venues/61660-lolympia",
+    "venue-mtelus": "/venues/20838-mtelus",
+    "venue-new-city-gas": "/venues/1449208-new-city-gas",
+    "venue-place-bell": "/venues/3536914-place-bell",
+    "venue-place-des-arts": "/venues/35381-place-des-arts",
+    "venue-theatre-fairmount": "/venues/1086866-theatre-fairmount-theatre"
+  },
+  "schema_version": "offline-clone.verify-driver.v1",
+  "session": {
+    "accounts": {
+      "fan": {},
+      "logout-fan": {}
+    },
+    "expect_status": [
+      200
+    ],
+    "headers": {
+      "x-websitebench-fixture-token": "{{token}}"
+    },
+    "post": "/__websitebench/session",
+    "token_env": "WEBSITEBENCH_FIXTURE_TOKEN"
+  },
+  "site_id": "songkick",
+  "states": {
+    "artist-detail.artist-tracked": {
+      "session": "fan",
+      "steps": [
+        {
+          "eval": "async () => { const response = await fetch('/api/me/artists/10355080', {method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({tracked: true})}); if (!response.ok) throw new Error('artist tracking failed: ' + response.status); }"
+        },
+        {
+          "goto": "/artists/10355080-westside-cowboy"
+        },
+        {
+          "expect": "[data-wb-component='artist-tracked-state']"
+        }
+      ]
+    },
+    "artist-detail.tracked-after-refresh": {
+      "session": "fan",
+      "steps": [
+        {
+          "eval": "async () => { const response = await fetch('/api/me/artists/10355080', {method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({tracked: true})}); if (!response.ok) throw new Error('artist tracking failed: ' + response.status); }"
+        },
+        {
+          "goto": "/artists/10355080-westside-cowboy"
+        },
+        {
+          "goto": "/artists/10355080-westside-cowboy"
+        },
+        {
+          "expect": "[data-wb-component='artist-tracked-state']"
+        }
+      ]
+    },
+    "event-detail.event-interested": {
+      "session": "fan",
+      "steps": [
+        {
+          "eval": "async () => { const response = await fetch('/api/me/events/43365625', {method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({status: 'interested'})}); if (!response.ok) throw new Error('event interest failed: ' + response.status); }"
+        },
+        {
+          "goto": "/concerts/43365625-steve-lacy-at-place-bell"
+        },
+        {
+          "expect": "[data-wb-component='event-interested-state']"
+        }
+      ]
+    },
+    "event-detail.interested-after-refresh": {
+      "session": "fan",
+      "steps": [
+        {
+          "eval": "async () => { const response = await fetch('/api/me/events/43365625', {method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({status: 'interested'})}); if (!response.ok) throw new Error('event interest failed: ' + response.status); }"
+        },
+        {
+          "goto": "/concerts/43365625-steve-lacy-at-place-bell"
+        },
+        {
+          "goto": "/concerts/43365625-steve-lacy-at-place-bell"
+        },
+        {
+          "expect": "[data-wb-component='event-interested-state']"
+        }
+      ]
+    },
+    "home-next-artists.initial": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      }
+    ],
+    "home-next-artists.next-artists": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      },
+      {
+        "click": ".carousel-next[data-carousel='artist-carousel']"
+      },
+      {
+        "expect": "#artist-carousel"
+      }
+    ],
+    "home-next-artists.route-identity": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      }
+    ],
+    "home-next-events.initial": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      }
+    ],
+    "home-next-events.next-events": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      },
+      {
+        "click": ".carousel-next[data-carousel='event-carousel']"
+      },
+      {
+        "expect": "#event-carousel"
+      }
+    ],
+    "home-next-events.route-identity": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      }
+    ],
+    "home-search-modal.initial": [
+      {
+        "eval": "() => localStorage.setItem('songkick-theme', 'dark')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "eval": "() => document.body.classList.add('home-search-variant')"
+      },
+      {
+        "expect": "body.theme-dark.home-search-variant"
+      }
+    ],
+    "home-search-modal.route-identity": [
+      {
+        "eval": "() => localStorage.setItem('songkick-theme', 'dark')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "eval": "() => document.body.classList.add('home-search-variant')"
+      },
+      {
+        "expect": "body.theme-dark.home-search-variant"
+      }
+    ],
+    "home-search-modal.search-open": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "click": "#search-trigger"
+      },
+      {
+        "expect": "#search-modal:not([hidden])"
+      }
+    ],
+    "home-theme.dark-background": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      },
+      {
+        "click": "#theme-toggle"
+      },
+      {
+        "expect": "body.theme-dark"
+      }
+    ],
+    "home-theme.initial": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      }
+    ],
+    "home-theme.route-identity": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      }
+    ],
+    "home.account-menu": {
+      "session": "fan",
+      "steps": [
+        {
+          "click": "#account-button"
+        },
+        {
+          "expect": "#account-menu:not([hidden])"
+        }
+      ]
+    },
+    "home.authenticated-session": {
+      "session": "fan",
+      "steps": [
+        {
+          "expect": "#account-button:not([hidden])"
+        },
+        {
+          "click": "#account-button"
+        },
+        {
+          "expect": "#account-menu:not([hidden])"
+        }
+      ]
+    },
+    "home.initial": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      }
+    ],
+    "home.lazy-end": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      },
+      {
+        "eval": "() => window.scrollTo(0, document.body.scrollHeight)",
+        "wait_ms": 400
+      }
+    ],
+    "home.logout": [
+      {
+        "eval": "async () => { const current = await fetch('/api/auth/session').then(response => response.json()); if (current.authenticated) { const response = await fetch('/api/auth/sign-out', {method: 'POST'}); if (!response.ok) throw new Error('logout failed: ' + response.status); } }"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": ".pink-nav"
+      }
+    ],
+    "home.refresh-persistence": {
+      "session": "fan",
+      "steps": [
+        {
+          "goto": "/"
+        },
+        {
+          "expect": "#account-button:not([hidden])"
+        },
+        {
+          "click": "#account-button"
+        },
+        {
+          "expect": "#account-menu:not([hidden])"
+        }
+      ]
+    },
+    "home.relogin-persistence": {
+      "session": "fan",
+      "steps": [
+        {
+          "goto": "/"
+        },
+        {
+          "expect": "#account-button:not([hidden])"
+        },
+        {
+          "click": "#account-button"
+        },
+        {
+          "expect": "#account-menu:not([hidden])"
+        }
+      ]
+    },
+    "home.route-identity": [
+      {
+        "eval": "() => localStorage.removeItem('songkick-theme')"
+      },
+      {
+        "goto": "/"
+      },
+      {
+        "expect": "body:not(.theme-dark)"
+      }
+    ],
+    "home.search-no-results": [
+      {
+        "click": "#search-trigger"
+      },
+      {
+        "fill": "#global-search-input",
+        "value": "zzzzsongkicknoresult",
+        "wait_ms": 500
+      },
+      {
+        "expect": "[data-wb-component='search-no-results']"
+      }
+    ],
+    "home.search-results-coldplay": [
+      {
+        "click": "#search-trigger"
+      },
+      {
+        "fill": "#global-search-input",
+        "value": "Coldplay",
+        "wait_ms": 500
+      },
+      {
+        "expect": "[data-wb-component='search-populated-results']"
+      }
+    ],
+    "initial": [],
+    "lazy-end": [
+      {
+        "eval": "() => window.scrollTo(0, document.body.scrollHeight)",
+        "wait_ms": 400
+      }
+    ],
+    "password-reset.captcha-error": [
+      {
+        "goto": "/password_reset_requests/new?state=captcha-error"
+      },
+      {
+        "expect": "[data-wb-component='password-reset-captcha-error']"
+      }
+    ],
+    "password-reset.password-reset-success": [
+      {
+        "goto": "/session/new?reset=success"
+      },
+      {
+        "expect": "[data-wb-component='password-reset-success-notice']"
+      }
+    ],
+    "route-identity": [],
+    "sign-in.password-reset-success": [
+      {
+        "goto": "/session/new?reset=success"
+      },
+      {
+        "expect": "[data-wb-component='password-reset-success-notice']"
+      }
+    ],
+    "ticketmaster-boundary.ticketmaster-click": [
+      {
+        "click": "[data-wb-ticket-link='ticketmaster-ca']"
+      },
+      {
+        "expect": "[data-wb-component='event-profile']"
+      }
+    ]
+  },
+  "states_out_of_scope": {},
+  "status": {
+    "not-found": 404
+  },
+  "visual_excluded": {}
+}

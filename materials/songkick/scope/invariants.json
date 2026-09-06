@@ -1,0 +1,160 @@
+{
+  "invariants": [
+    {
+      "acceptance_obligations": [
+        "Prove runtime-network-closed through the public browser/HTTP seam and preserve zero production remote effects."
+      ],
+      "coverage_dimension_ids": [
+        "runtime-network-closure"
+      ],
+      "id": "runtime-network-closed",
+      "journey_ids": [
+        "offline-closure"
+      ],
+      "priority": "p0",
+      "statement": "Every runtime page, asset and effect remains on loopback with zero production requests."
+    },
+    {
+      "acceptance_obligations": [
+        "Prove route-identity-exact through the public browser/HTTP seam and preserve zero production remote effects."
+      ],
+      "coverage_dimension_ids": [
+        "captured-routes"
+      ],
+      "id": "route-identity-exact",
+      "journey_ids": [
+        "public-discovery"
+      ],
+      "priority": "p0",
+      "statement": "All 84 captured route identities preserve local path, title and HTTP semantics."
+    },
+    {
+      "acceptance_obligations": [
+        "Prove visual-state-fidelity through the public browser/HTTP seam and preserve zero production remote effects."
+      ],
+      "coverage_dimension_ids": [
+        "frozen-visual-states"
+      ],
+      "id": "visual-state-fidelity",
+      "journey_ids": [
+        "entity-details"
+      ],
+      "priority": "p0",
+      "statement": "All 148 frozen visual states remain above their immutable similarity thresholds."
+    },
+    {
+      "acceptance_obligations": [
+        "Prove search-deterministic through the public browser/HTTP seam and preserve zero production remote effects."
+      ],
+      "coverage_dimension_ids": [
+        "semantic-controls"
+      ],
+      "id": "search-deterministic",
+      "journey_ids": [
+        "global-search"
+      ],
+      "priority": "p0",
+      "statement": "Coldplay and no-result searches produce the frozen local result states without a source API."
+    },
+    {
+      "acceptance_obligations": [
+        "Prove account-lifecycle-local through the public browser/HTTP seam and preserve zero production remote effects."
+      ],
+      "coverage_dimension_ids": [
+        "backend-semantics"
+      ],
+      "id": "account-lifecycle-local",
+      "journey_ids": [
+        "account-lifecycle"
+      ],
+      "priority": "p0",
+      "statement": "Registration, sign-in, sign-out and recovery are local, validated and non-enumerating."
+    },
+    {
+      "acceptance_obligations": [
+        "Prove actor-state-isolation through the public browser/HTTP seam and preserve zero production remote effects."
+      ],
+      "coverage_dimension_ids": [
+        "backend-semantics"
+      ],
+      "id": "actor-state-isolation",
+      "journey_ids": [
+        "tracking-and-attendance"
+      ],
+      "priority": "p0",
+      "statement": "Account-scoped mutations never leak between anonymous or distinct local actors."
+    },
+    {
+      "acceptance_obligations": [
+        "Prove mutation-persistence through the public browser/HTTP seam and preserve zero production remote effects."
+      ],
+      "coverage_dimension_ids": [
+        "backend-semantics"
+      ],
+      "id": "mutation-persistence",
+      "journey_ids": [
+        "tracking-and-attendance"
+      ],
+      "priority": "p0",
+      "statement": "Tracking, interest, attendance and preferences persist across refresh, relogin and restart."
+    },
+    {
+      "acceptance_obligations": [
+        "Prove mutation-clean-reset through the public browser/HTTP seam and preserve zero production remote effects."
+      ],
+      "coverage_dimension_ids": [
+        "backend-semantics"
+      ],
+      "id": "mutation-clean-reset",
+      "journey_ids": [
+        "tracking-and-attendance"
+      ],
+      "priority": "p0",
+      "statement": "Inverse actions and clean reset remove exactly the intended local mutation."
+    },
+    {
+      "acceptance_obligations": [
+        "Prove external-soft404-vs-hard404 through the public browser/HTTP seam and preserve zero production remote effects."
+      ],
+      "coverage_dimension_ids": [
+        "link-boundaries"
+      ],
+      "id": "external-soft404-vs-hard404",
+      "journey_ids": [
+        "external-boundaries"
+      ],
+      "priority": "p0",
+      "statement": "Captured external destinations use branded local HTTP 200 soft-404, while unknown first-party paths retain branded HTTP 404 semantics."
+    },
+    {
+      "acceptance_obligations": [
+        "Prove challenge-not-unavailable through the public browser/HTTP seam and preserve zero production remote effects."
+      ],
+      "coverage_dimension_ids": [
+        "challenge-integrity"
+      ],
+      "id": "challenge-not-unavailable",
+      "journey_ids": [
+        "hard-not-found-recovery"
+      ],
+      "priority": "p0",
+      "statement": "A CAPTCHA or WAF challenge can only remain challenge-pending and never reduces the frozen denominator or masquerades as unavailable."
+    },
+    {
+      "acceptance_obligations": [
+        "Prove asset-localization through the public browser/HTTP seam and preserve zero production remote effects."
+      ],
+      "coverage_dimension_ids": [
+        "asset-closure"
+      ],
+      "id": "asset-localization",
+      "journey_ids": [
+        "offline-closure"
+      ],
+      "priority": "p0",
+      "statement": "All runtime-required fonts, images, icons and styles resolve locally with source provenance and no hotlinks."
+    }
+  ],
+  "schema_version": "offline-clone.invariants.v1",
+  "status": "frozen"
+}
