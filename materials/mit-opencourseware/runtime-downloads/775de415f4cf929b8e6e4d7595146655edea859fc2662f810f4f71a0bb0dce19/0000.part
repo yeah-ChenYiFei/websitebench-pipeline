@@ -1,0 +1,67 @@
+% This code is the supplimentary to the problem set 2. 
+% It demonstrates the use of the function streamsclice and quiver to plot 
+% phase portraits and vector fields in 2D. 
+%
+% Your task is to modify the code to use in various problems in pset 2. 
+
+
+% Establish the system to be plotted
+
+x = -4:.01:4;  % x is in the range from -4 to 4
+y = -4:.01:4;  % y is in the same range 
+[X Y] = meshgrid(x,y);  
+   % meshgrid transforms the domain specified by vectors
+   % x and y into arrays X and Y that can be used for the evaluation
+   % of functions of two variables and 3-D surface plots.
+   % The rows of the output array X are copies of the vector x and
+   % the columns of the output array Y are copies of the vector y.
+                        
+% Establish the vector-field, in this example it is x' = xy-1, y' = x-y^3.
+% The dots in vector multiplication X.*Y mean that the multiplication is
+% done component by component
+Xdot = X.*Y-1;
+Ydot = X - Y.^3;
+
+% Plot the phase portriat in figure(1) in the first subplot
+figure(1); 
+subplot(1,2,1); % to learn more about subplot type in MATLAB command window
+                % help subplot
+
+%^^^^^^^^^^^ the funciton streamslice plots the phase portrait                
+streamslice(X,Y,Xdot,Ydot);
+
+hold on
+axis equal
+grid on 
+
+% Plotting the fixed points.  Use the dot for stable fixed points and the
+% circle for unstable points.  Plot in red.
+plot(-1,-1,'.r','MarkerSize',18)
+plot( 1,1,'or','MarkerSize',6)
+
+% Label the two axes for the system.
+xlabel('X')
+ylabel('Y')
+title('Phase portrait')
+
+
+%-----------------------------------------------
+% in a second subplot plot the vector field only.
+% this is done with function quiver. Sometimes it is useful.
+subplot(1,2,2); 
+
+x = -2:.25:2;   
+y = -2:.25:2;  
+[X Y] = meshgrid(x,y);  
+   
+Xdot = X.*Y-1;
+Ydot = X - Y.^3;
+
+% ^^^^^^^^ the only new function here -- quiver -- plots the vector field
+%          given by Xdot and Ydot at the points (X,Y)
+quiver(X,Y,Xdot,Ydot);
+
+hold on;  axis equal; grid on; 
+plot(-1,-1,'.r','MarkerSize',18)
+plot( 1,1,'or','MarkerSize',6)
+xlabel('X'); ylabel('Y'); title('Vector Field')
