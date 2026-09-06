@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "all-controls-inventory.json",
+  "contract_schema_version": "websitebench.all-controls.v3",
+  "record_kind": "control",
+  "record_id": "video-play",
+  "subject_kind": "control",
+  "subject_id": "video-play",
+  "kind": "control-state",
+  "checkpoint_id": "video.static-disabled",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-control='video-play']",
+  "expected_state": "disabled"
+}

@@ -1,0 +1,567 @@
+{
+  "schema_version": "websitebench.ocw-business-route-state.v1",
+  "status": "frozen",
+  "site_id": "mit-opencourseware",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "route_family_counts": {
+    "catalog-search": 1,
+    "collection": 10,
+    "course-download": 26,
+    "course-overview": 34,
+    "course-section-or-deep-link": 219,
+    "home": 1,
+    "resource-detail-or-index": 418,
+    "site-information-or-boundary": 8,
+    "story-detail": 13,
+    "story-index": 1,
+    "video-gallery": 1
+  },
+  "representative_acceptance_routes": [
+    {
+      "route_id": "home",
+      "path": "/",
+      "title": "MIT OpenCourseWare | Free Online Course Materials",
+      "checkpoint_id": "home.default"
+    },
+    {
+      "route_id": "catalog",
+      "path": "/search/",
+      "title": "Search | MIT OpenCourseWare | Free Online Course Materials",
+      "checkpoint_id": "catalog.default"
+    },
+    {
+      "route_id": "collection",
+      "path": "/collections/introductory-programming/",
+      "title": "Introductory Programming | MIT OpenCourseWare | Free Online Course Materials",
+      "checkpoint_id": "collection.default"
+    },
+    {
+      "route_id": "stories",
+      "path": "/stories/",
+      "title": "MIT OpenCourseWare | Free Online Course Materials",
+      "checkpoint_id": "stories.default"
+    },
+    {
+      "route_id": "story-adrian",
+      "path": "/stories/adrian-pastor/",
+      "title": "Adrian Pastor | MIT OpenCourseWare | Free Online Course Materials",
+      "checkpoint_id": "story-adrian.default"
+    },
+    {
+      "route_id": "about",
+      "path": "/about/",
+      "title": "About Us | MIT OpenCourseWare | Free Online Course Materials",
+      "checkpoint_id": "about.default"
+    },
+    {
+      "route_id": "get-started",
+      "path": "/pages/get-started/",
+      "title": "Get Started | MIT OpenCourseWare | Free Online Course Materials",
+      "checkpoint_id": "get-started.default"
+    },
+    {
+      "route_id": "educator",
+      "path": "/educator/",
+      "title": "Educator | MIT OpenCourseWare | Free Online Course Materials",
+      "checkpoint_id": "educator.default"
+    },
+    {
+      "route_id": "newsletter",
+      "path": "/newsletter/",
+      "title": "Newsletter | MIT OpenCourseWare | Free Online Course Materials",
+      "checkpoint_id": "newsletter.default"
+    },
+    {
+      "route_id": "course-overview",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/",
+      "title": "Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "course-overview.default"
+    },
+    {
+      "route_id": "catalog-course-overview",
+      "path": "/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/",
+      "title": "Research Design for Policy Analysis and Planning | Urban Studies and Planning | MIT OpenCourseWare",
+      "checkpoint_id": "catalog-course-overview.default"
+    },
+    {
+      "route_id": "course-syllabus",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/",
+      "title": "Syllabus | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "course-syllabus.default"
+    },
+    {
+      "route_id": "course-calendar",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/calendar/",
+      "title": "Calendar | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "course-calendar.default"
+    },
+    {
+      "route_id": "course-readings",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/",
+      "title": "Readings | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "course-readings.default"
+    },
+    {
+      "route_id": "course-reading-deep",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/binary-search-trees/",
+      "title": "Binary Search Trees | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "course-reading-deep.default"
+    },
+    {
+      "route_id": "course-lecture-notes",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/",
+      "title": "Lecture Notes | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "course-lecture-notes.default"
+    },
+    {
+      "route_id": "course-assignments",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/",
+      "title": "Assignments | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "course-assignments.default"
+    },
+    {
+      "route_id": "course-exams",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/exams/",
+      "title": "Exams | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "course-exams.default"
+    },
+    {
+      "route_id": "resource-index",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/problem-sets/",
+      "title": "Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "resource-index.default"
+    },
+    {
+      "route_id": "resource-problem-set",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_ps1/",
+      "title": "Problem Set 1 | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "resource-problem-set.default"
+    },
+    {
+      "route_id": "resource-lecture-note",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_lec01/",
+      "title": "Lecture 01: Algorithmic thinking, peak finding | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "resource-lecture-note.default"
+    },
+    {
+      "route_id": "resource-final-exam",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_final/",
+      "title": "Final Exam | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "resource-final-exam.default"
+    },
+    {
+      "route_id": "course-download",
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/download/",
+      "title": "Resources | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+      "checkpoint_id": "course-download.default"
+    },
+    {
+      "route_id": "video-gallery",
+      "path": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/video_galleries/video-lectures/",
+      "title": "Lecture Videos | Blockchain and the Design of Financial Systems | Economics | MIT OpenCourseWare",
+      "checkpoint_id": "video-gallery.default"
+    },
+    {
+      "route_id": "video-resource",
+      "path": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/",
+      "title": "Lecture 1: Introduction to 14.129 Blockchain and Design of Financial Systems | Blockchain and the Design of Financial Systems | Economics | MIT OpenCourseWare",
+      "checkpoint_id": "video-resource.default"
+    },
+    {
+      "route_id": "source-legacy-boundary",
+      "path": "/external-resources/",
+      "title": "MIT OpenCourseWare | Free Online Course Materials",
+      "checkpoint_id": "source-legacy-boundary.default"
+    },
+    {
+      "route_id": "external-boundary",
+      "path": "/external-boundary/",
+      "title": "You are leaving MIT OpenCourseWare",
+      "checkpoint_id": "external-boundary.default"
+    },
+    {
+      "route_id": "data-boundary",
+      "path": "/data-boundary/",
+      "title": "This item is outside the retained MIT OpenCourseWare snapshot",
+      "checkpoint_id": "data-boundary.default"
+    },
+    {
+      "route_id": "not-found",
+      "path": "/not-found/",
+      "title": "Page Not Found | MIT OpenCourseWare",
+      "checkpoint_id": "not-found.default"
+    }
+  ],
+  "state_checkpoints": [
+    {
+      "checkpoint_id": "catalog.default",
+      "route_id": "catalog",
+      "state": "default",
+      "path": "/search/"
+    },
+    {
+      "checkpoint_id": "catalog.second-batch",
+      "route_id": "catalog",
+      "state": "second-batch",
+      "path": "/search/"
+    },
+    {
+      "checkpoint_id": "catalog.math",
+      "route_id": "catalog",
+      "state": "filtered-math-199",
+      "path": "/search/"
+    },
+    {
+      "checkpoint_id": "catalog.math-undergraduate",
+      "route_id": "catalog",
+      "state": "filtered-math-undergraduate-110",
+      "path": "/search/"
+    },
+    {
+      "checkpoint_id": "catalog.course-number",
+      "route_id": "catalog",
+      "state": "sorted-course-number",
+      "path": "/search/"
+    },
+    {
+      "checkpoint_id": "catalog.empty",
+      "route_id": "catalog",
+      "state": "empty-zero-results",
+      "path": "/search/"
+    },
+    {
+      "checkpoint_id": "catalog.error",
+      "route_id": "catalog",
+      "state": "api-error",
+      "path": "/search/"
+    },
+    {
+      "checkpoint_id": "catalog.retry-stale",
+      "route_id": "catalog",
+      "state": "successful-retry-retains-error-shell",
+      "path": "/search/"
+    },
+    {
+      "checkpoint_id": "catalog.reload-recovered",
+      "route_id": "catalog",
+      "state": "full-reload-recovers-default",
+      "path": "/search/"
+    },
+    {
+      "checkpoint_id": "catalog.resources",
+      "route_id": "catalog",
+      "state": "resources-first-batch-10000-results",
+      "path": "/search/"
+    },
+    {
+      "checkpoint_id": "home.carousel-second-batches",
+      "route_id": "home",
+      "state": "all-home-carousels-second-batch",
+      "path": "/"
+    },
+    {
+      "checkpoint_id": "video.static-disabled",
+      "route_id": "video-resource",
+      "state": "static-thumbnail-playback-disabled",
+      "path": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/"
+    },
+    {
+      "checkpoint_id": "external-boundary.default",
+      "route_id": "external-boundary",
+      "state": "branded-local-soft-404",
+      "path": "/external-boundary/"
+    },
+    {
+      "checkpoint_id": "data-boundary.default",
+      "route_id": "data-boundary",
+      "state": "branded-retained-snapshot-boundary",
+      "path": "/data-boundary/"
+    }
+  ],
+  "catalog_boundary": {
+    "reported_total": 2584,
+    "source_batch_size": 10,
+    "first_two_batches_count": 20,
+    "first_two_batches": [
+      {
+        "source_order": 1,
+        "url": "https://ocw.mit.edu/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/",
+        "title_link_text": "Research Design for Policy Analysis and Planning",
+        "course_code_token": "11.233",
+        "card_text": "11.233 | GRADUATE Research Design for Policy Analysis and Planning Prof. JoAnn Carmin Social Science Public Administration Urban Studies + 2 more",
+        "image_url": "https://ocw.mit.edu/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/ed4e1abe32c0944c96c7a08e79106963_11-233f07.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 2,
+        "url": "https://ocw.mit.edu/courses/21g-730-hispanic-america-one-hundred-years-of-literature-and-film-spring-2014/",
+        "title_link_text": "Hispanic America: One Hundred Years of Literature and Film",
+        "course_code_token": "21G.730",
+        "card_text": "21G.730 | UNDERGRADUATE Hispanic America: One Hundred Years of Literature and Film Prof. Elizabeth Garrels Humanities Literature History + 9 more",
+        "image_url": "https://ocw.mit.edu/courses/21g-730-hispanic-america-one-hundred-years-of-literature-and-film-spring-2014/fea772e030e5aa1f1ed5af2d1fb63773_21g-730s14.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 3,
+        "url": "https://ocw.mit.edu/courses/15-358-the-software-business-fall-2005/",
+        "title_link_text": "The Software Business",
+        "course_code_token": "15.358",
+        "card_text": "15.358 | GRADUATE The Software Business Prof. Michael Cusumano Engineering Computer Science Entrepreneurship + 4 more",
+        "image_url": "https://ocw.mit.edu/courses/15-358-the-software-business-fall-2005/6faca2660d899b0914b558fc95ad3f54_15-358f05.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 4,
+        "url": "https://ocw.mit.edu/courses/14-384-time-series-analysis-fall-2013/",
+        "title_link_text": "Time Series Analysis",
+        "course_code_token": "14.384",
+        "card_text": "14.384 | GRADUATE Time Series Analysis Prof. Anna Mikusheva Mathematics Probability and Statistics Economics + 3 more",
+        "image_url": "https://ocw.mit.edu/courses/14-384-time-series-analysis-fall-2013/e8555999b1db782b11e84f95cbcd3c3b_14-384f13.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 5,
+        "url": "https://ocw.mit.edu/courses/4-210-precedents-in-critical-practice-fall-2012/",
+        "title_link_text": "Precedents in Critical Practice",
+        "course_code_token": "4.210",
+        "card_text": "4.210 | GRADUATE Precedents in Critical Practice Prof. Ana Miljački Architecture Fine Arts Architectural Design + 1 more",
+        "image_url": "https://ocw.mit.edu/courses/4-210-precedents-in-critical-practice-fall-2012/c6252e5579554f515dd700da6b94241a_4-210f12.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 6,
+        "url": "https://ocw.mit.edu/courses/sts-004-science-technology-world-fall-2013/",
+        "title_link_text": "Science, Technology, & World",
+        "course_code_token": "STS.004",
+        "card_text": "STS.004 | UNDERGRADUATE Science, Technology, & World Prof. Rosalind Williams Communication Social Science Visual Arts + 4 more",
+        "image_url": "https://ocw.mit.edu/courses/sts-004-science-technology-world-fall-2013/8d90c06a6adeaa31ff4a68ce517b9558_sts-004f13.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 7,
+        "url": "https://ocw.mit.edu/courses/15-053-optimization-methods-in-management-science-spring-2013/",
+        "title_link_text": "Optimization Methods in Management Science",
+        "course_code_token": "15.053",
+        "card_text": "15.053 | UNDERGRADUATE Optimization Methods in Management Science Dr. Ebrahim Nasrabadi Prof. James Orlin Engineering Mathematics Systems Engineering + 8 more",
+        "image_url": "https://ocw.mit.edu/courses/15-053-optimization-methods-in-management-science-spring-2013/8136801230c6f92571b41f4dd9059c54_15-053s13.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 8,
+        "url": "https://ocw.mit.edu/courses/6-871-knowledge-based-applications-systems-spring-2005/",
+        "title_link_text": "Knowledge-Based Applications Systems",
+        "course_code_token": "6.871",
+        "card_text": "6.871 | GRADUATE Knowledge-Based Applications Systems Prof. Randall Davis Engineering Computer Science Artificial Intelligence + 4 more",
+        "image_url": "https://ocw.mit.edu/courses/6-871-knowledge-based-applications-systems-spring-2005/d56b8cb5b67c4cd669c5714057c2981a_6-871s05.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 9,
+        "url": "https://ocw.mit.edu/courses/17-261-congress-and-the-american-political-system-ii-fall-2005/",
+        "title_link_text": "Congress and the American Political System II",
+        "course_code_token": "17.261",
+        "card_text": "17.261 | UNDERGRADUATE, GRADUATE Congress and the American Political System II Prof. Charles Stewart Social Science Political Science Business + 2 more",
+        "image_url": "https://ocw.mit.edu/courses/17-261-congress-and-the-american-political-system-ii-fall-2005/de11c6848c821bff0b3e187de2d97bf9_17-261f05.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 10,
+        "url": "https://ocw.mit.edu/courses/sts-062j-drugs-politics-and-culture-spring-2006/",
+        "title_link_text": "Drugs, Politics, and Culture",
+        "course_code_token": "STS.062J",
+        "card_text": "STS.062J | UNDERGRADUATE Drugs, Politics, and Culture Prof. Hugh Gusterson Social Science Health and Medicine Public Health + 2 more",
+        "image_url": "https://ocw.mit.edu/courses/sts-062j-drugs-politics-and-culture-spring-2006/9061e9c98a9bbfc81fb89b9719bbc784_sts-062js06.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 11,
+        "url": "https://ocw.mit.edu/courses/12-091-trace-element-analysis-of-geological-biological-environmental-materials-by-neutron-activation-analysis-an-exposure-january-iap-2005/",
+        "title_link_text": "Trace Element Analysis of Geological, Biological & Environmental Materials by Neutron Activation Analysis: An Exposure",
+        "course_code_token": "12.091",
+        "card_text": "12.091 | UNDERGRADUATE Trace Element Analysis of Geological, Biological & Environmental Materials by Neutron Activation Analysis: An Exposure Dr. Ila Pillalamarri Science Physics Chemistry + 3 more",
+        "image_url": "https://ocw.mit.edu/courses/12-091-trace-element-analysis-of-geological-biological-environmental-materials-by-neutron-activation-analysis-an-exposure-january-iap-2005/3c8f77820a3a349840886890a3e09c2e_12-091iap05.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 12,
+        "url": "https://ocw.mit.edu/courses/2-086-numerical-computation-for-mechanical-engineers-fall-2012/",
+        "title_link_text": "Numerical Computation for Mechanical Engineers",
+        "course_code_token": "2.086",
+        "card_text": "2.086 | UNDERGRADUATE Numerical Computation for Mechanical Engineers Prof. Daniel Frey Prof. Nicholas Hadjiconstantinou Prof. Anthony T. Patera Engineering Mathematics Mechanical Engineering + 5 more",
+        "image_url": "https://ocw.mit.edu/courses/2-086-numerical-computation-for-mechanical-engineers-fall-2012/31261a8b32593aea7bbf1f1336c2611b_2-086F12.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 13,
+        "url": "https://ocw.mit.edu/courses/15-356-how-to-develop-breakthrough-products-and-services-spring-2004/",
+        "title_link_text": "How to Develop \"Breakthrough\" Products and Services",
+        "course_code_token": "15.356",
+        "card_text": "15.356 | GRADUATE How to Develop \"Breakthrough\" Products and Services Prof. Eric von Hippel Engineering Entrepreneurship Innovation + 4 more",
+        "image_url": "https://ocw.mit.edu/courses/15-356-how-to-develop-breakthrough-products-and-services-spring-2004/b752b33951623ddf62664ec89412aae9_15-356s04.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 14,
+        "url": "https://ocw.mit.edu/courses/12-091-medical-geology-geochemistry-an-exposure-january-iap-2006/",
+        "title_link_text": "Medical Geology/Geochemistry: An Exposure",
+        "course_code_token": "12.091",
+        "card_text": "12.091 | UNDERGRADUATE Medical Geology/Geochemistry: An Exposure Dr. Ila Pillalamarri Science Health and Medicine Earth Science + 5 more",
+        "image_url": "https://ocw.mit.edu/courses/12-091-medical-geology-geochemistry-an-exposure-january-iap-2006/c0a7a98ff5bbe1b59173eb0ae802fd46_12-091iap06.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 15,
+        "url": "https://ocw.mit.edu/courses/16-682-prototyping-avionics-spring-2006/",
+        "title_link_text": "Prototyping Avionics",
+        "course_code_token": "16.682",
+        "card_text": "16.682 | UNDERGRADUATE Prototyping Avionics Dr. Alvar Saenz-Otero Engineering Electrical Engineering Aerospace Engineering + 1 more",
+        "image_url": "https://ocw.mit.edu/courses/16-682-prototyping-avionics-spring-2006/f9a37fcc22f329957b931a1b9de8a9a3_16-682s06.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 16,
+        "url": "https://ocw.mit.edu/courses/11-201-gateway-planning-action-fall-2005/",
+        "title_link_text": "Gateway: Planning Action",
+        "course_code_token": "11.201",
+        "card_text": "11.201 | GRADUATE Gateway: Planning Action Cherie Miot Abbanat Prof. Xavier de Souza Briggs Prof. Annette M. Kim + 2 more Social Science Urban Studies Urban Planning",
+        "image_url": "https://ocw.mit.edu/courses/11-201-gateway-planning-action-fall-2005/2ce9f03c8c2fe6b89f3228a62dfecf86_11-201f05.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 17,
+        "url": "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2006/",
+        "title_link_text": "Topics in Algebraic Number Theory",
+        "course_code_token": "18.786",
+        "card_text": "18.786 | GRADUATE Topics in Algebraic Number Theory Prof. Kiran Kedlaya Mathematics Algebra and Number Theory",
+        "image_url": "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2006/06e3b8f52ff0b481586b699a9f7c85ef_18-786s06.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 18,
+        "url": "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2010/",
+        "title_link_text": "Topics in Algebraic Number Theory",
+        "course_code_token": "18.786",
+        "card_text": "18.786 | GRADUATE Topics in Algebraic Number Theory Prof. Abhinav Kumar Mathematics Algebra and Number Theory",
+        "image_url": "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2010/ad625fcdbac79d7e2633be2dd7b4aedd_18-786s10.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 19,
+        "url": "https://ocw.mit.edu/courses/wgs-s10-black-feminist-health-science-studies-spring-2021/",
+        "title_link_text": "Black Feminist Health Science Studies",
+        "course_code_token": "WGS.S10",
+        "card_text": "WGS.S10 | UNDERGRADUATE Black Feminist Health Science Studies Dr. Moya Bailey Social Science Health and Medicine Society + 5 more",
+        "image_url": "https://ocw.mit.edu/courses/wgs-s10-black-feminist-health-science-studies-spring-2021/ab9fee221168801d4d3129c9f06437d2_WGS-S10s21.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 20,
+        "url": "https://ocw.mit.edu/courses/11-382-water-diplomacy-spring-2021/",
+        "title_link_text": "Water Diplomacy",
+        "course_code_token": "11.382",
+        "card_text": "11.382 | GRADUATE Water Diplomacy Dr. Animesh Gain Prof. Lawrence Susskind Engineering Social Science Political Science + 5 more",
+        "image_url": "https://ocw.mit.edu/courses/11-382-water-diplomacy-spring-2021/f1ef819cc203e22b137e965313ad95ca_11-382s20.jpg",
+        "image_alt": ""
+      }
+    ],
+    "twenty_ten_rule": "reported total is greater than 20; freeze first two source batches and require distinct complete details for source-order entries 1 through 10. Result-set membership is NOT asserted as reproducible: the source listing order is non-deterministic, so the frozen twenty are one valid sample rather than a re-verifiable property. Measured 2026-09-05 by tools/probe_catalog_determinism.py: three independent runs of /search/ and of /search/?d=Mathematics each returned a disjoint first ten (intersection 0/10, union 30 and 20). Entity identity is therefore asserted on this frozen set, whose ten full-detail courses were re-confirmed live 10/10 on 2026-09-05, and the catalog visual checkpoints assert layout and card rendering rather than which courses appear. Evidence: artifacts/mit-opencourseware/mit-opencourseware-20260905T160000Z/g1/catalog-determinism-probe.json",
+    "full_detail_targets": [
+      {
+        "source_order": 1,
+        "url": "https://ocw.mit.edu/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/",
+        "title_link_text": "Research Design for Policy Analysis and Planning",
+        "course_code_token": "11.233",
+        "card_text": "11.233 | GRADUATE Research Design for Policy Analysis and Planning Prof. JoAnn Carmin Social Science Public Administration Urban Studies + 2 more",
+        "image_url": "https://ocw.mit.edu/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/ed4e1abe32c0944c96c7a08e79106963_11-233f07.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 2,
+        "url": "https://ocw.mit.edu/courses/21g-730-hispanic-america-one-hundred-years-of-literature-and-film-spring-2014/",
+        "title_link_text": "Hispanic America: One Hundred Years of Literature and Film",
+        "course_code_token": "21G.730",
+        "card_text": "21G.730 | UNDERGRADUATE Hispanic America: One Hundred Years of Literature and Film Prof. Elizabeth Garrels Humanities Literature History + 9 more",
+        "image_url": "https://ocw.mit.edu/courses/21g-730-hispanic-america-one-hundred-years-of-literature-and-film-spring-2014/fea772e030e5aa1f1ed5af2d1fb63773_21g-730s14.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 3,
+        "url": "https://ocw.mit.edu/courses/15-358-the-software-business-fall-2005/",
+        "title_link_text": "The Software Business",
+        "course_code_token": "15.358",
+        "card_text": "15.358 | GRADUATE The Software Business Prof. Michael Cusumano Engineering Computer Science Entrepreneurship + 4 more",
+        "image_url": "https://ocw.mit.edu/courses/15-358-the-software-business-fall-2005/6faca2660d899b0914b558fc95ad3f54_15-358f05.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 4,
+        "url": "https://ocw.mit.edu/courses/14-384-time-series-analysis-fall-2013/",
+        "title_link_text": "Time Series Analysis",
+        "course_code_token": "14.384",
+        "card_text": "14.384 | GRADUATE Time Series Analysis Prof. Anna Mikusheva Mathematics Probability and Statistics Economics + 3 more",
+        "image_url": "https://ocw.mit.edu/courses/14-384-time-series-analysis-fall-2013/e8555999b1db782b11e84f95cbcd3c3b_14-384f13.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 5,
+        "url": "https://ocw.mit.edu/courses/4-210-precedents-in-critical-practice-fall-2012/",
+        "title_link_text": "Precedents in Critical Practice",
+        "course_code_token": "4.210",
+        "card_text": "4.210 | GRADUATE Precedents in Critical Practice Prof. Ana Miljački Architecture Fine Arts Architectural Design + 1 more",
+        "image_url": "https://ocw.mit.edu/courses/4-210-precedents-in-critical-practice-fall-2012/c6252e5579554f515dd700da6b94241a_4-210f12.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 6,
+        "url": "https://ocw.mit.edu/courses/sts-004-science-technology-world-fall-2013/",
+        "title_link_text": "Science, Technology, & World",
+        "course_code_token": "STS.004",
+        "card_text": "STS.004 | UNDERGRADUATE Science, Technology, & World Prof. Rosalind Williams Communication Social Science Visual Arts + 4 more",
+        "image_url": "https://ocw.mit.edu/courses/sts-004-science-technology-world-fall-2013/8d90c06a6adeaa31ff4a68ce517b9558_sts-004f13.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 7,
+        "url": "https://ocw.mit.edu/courses/15-053-optimization-methods-in-management-science-spring-2013/",
+        "title_link_text": "Optimization Methods in Management Science",
+        "course_code_token": "15.053",
+        "card_text": "15.053 | UNDERGRADUATE Optimization Methods in Management Science Dr. Ebrahim Nasrabadi Prof. James Orlin Engineering Mathematics Systems Engineering + 8 more",
+        "image_url": "https://ocw.mit.edu/courses/15-053-optimization-methods-in-management-science-spring-2013/8136801230c6f92571b41f4dd9059c54_15-053s13.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 8,
+        "url": "https://ocw.mit.edu/courses/6-871-knowledge-based-applications-systems-spring-2005/",
+        "title_link_text": "Knowledge-Based Applications Systems",
+        "course_code_token": "6.871",
+        "card_text": "6.871 | GRADUATE Knowledge-Based Applications Systems Prof. Randall Davis Engineering Computer Science Artificial Intelligence + 4 more",
+        "image_url": "https://ocw.mit.edu/courses/6-871-knowledge-based-applications-systems-spring-2005/d56b8cb5b67c4cd669c5714057c2981a_6-871s05.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 9,
+        "url": "https://ocw.mit.edu/courses/17-261-congress-and-the-american-political-system-ii-fall-2005/",
+        "title_link_text": "Congress and the American Political System II",
+        "course_code_token": "17.261",
+        "card_text": "17.261 | UNDERGRADUATE, GRADUATE Congress and the American Political System II Prof. Charles Stewart Social Science Political Science Business + 2 more",
+        "image_url": "https://ocw.mit.edu/courses/17-261-congress-and-the-american-political-system-ii-fall-2005/de11c6848c821bff0b3e187de2d97bf9_17-261f05.jpg",
+        "image_alt": ""
+      },
+      {
+        "source_order": 10,
+        "url": "https://ocw.mit.edu/courses/sts-062j-drugs-politics-and-culture-spring-2006/",
+        "title_link_text": "Drugs, Politics, and Culture",
+        "course_code_token": "STS.062J",
+        "card_text": "STS.062J | UNDERGRADUATE Drugs, Politics, and Culture Prof. Hugh Gusterson Social Science Health and Medicine Public Health + 2 more",
+        "image_url": "https://ocw.mit.edu/courses/sts-062j-drugs-politics-and-culture-spring-2006/9061e9c98a9bbfc81fb89b9719bbc784_sts-062js06.jpg",
+        "image_alt": ""
+      }
+    ]
+  },
+  "error_recovery": {
+    "controlled_failure_message": "Oops! Something went wrong.",
+    "search_button_after_failure": "a successful response updated counts and facets but left the prior error and no cards",
+    "observed_recovery": "full page reload restored the default 10 cards"
+  },
+  "identity_rule": "Every frozen course, section, resource, story, and attachment keeps its own title, path, text/data identity, and navigation edges; generic body substitution is forbidden."
+}

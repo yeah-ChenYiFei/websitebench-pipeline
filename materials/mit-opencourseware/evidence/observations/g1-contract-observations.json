@@ -1,0 +1,2181 @@
+{
+  "schema_version": "websitebench.acceptance-observation-evidence.v1",
+  "site_id": "mit-opencourseware",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "observations": [
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "home",
+      "subject_kind": "route",
+      "subject_id": "home",
+      "kind": "route-identity",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "MIT OpenCourseWare | Free Online Course Materials"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "catalog",
+      "subject_kind": "route",
+      "subject_id": "catalog",
+      "kind": "route-identity",
+      "checkpoint_id": "catalog.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Search | MIT OpenCourseWare | Free Online Course Materials"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "collection",
+      "subject_kind": "route",
+      "subject_id": "collection",
+      "kind": "route-identity",
+      "checkpoint_id": "collection.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Introductory Programming | MIT OpenCourseWare | Free Online Course Materials"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "stories",
+      "subject_kind": "route",
+      "subject_id": "stories",
+      "kind": "route-identity",
+      "checkpoint_id": "stories.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "MIT OpenCourseWare | Free Online Course Materials"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "story-adrian",
+      "subject_kind": "route",
+      "subject_id": "story-adrian",
+      "kind": "route-identity",
+      "checkpoint_id": "story-adrian.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Adrian Pastor | MIT OpenCourseWare | Free Online Course Materials"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "about",
+      "subject_kind": "route",
+      "subject_id": "about",
+      "kind": "route-identity",
+      "checkpoint_id": "about.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "About Us | MIT OpenCourseWare | Free Online Course Materials"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "get-started",
+      "subject_kind": "route",
+      "subject_id": "get-started",
+      "kind": "route-identity",
+      "checkpoint_id": "get-started.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Get Started | MIT OpenCourseWare | Free Online Course Materials"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "educator",
+      "subject_kind": "route",
+      "subject_id": "educator",
+      "kind": "route-identity",
+      "checkpoint_id": "educator.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Educator | MIT OpenCourseWare | Free Online Course Materials"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "newsletter",
+      "subject_kind": "route",
+      "subject_id": "newsletter",
+      "kind": "route-identity",
+      "checkpoint_id": "newsletter.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Newsletter | MIT OpenCourseWare | Free Online Course Materials"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "course-overview",
+      "subject_kind": "route",
+      "subject_id": "course-overview",
+      "kind": "route-identity",
+      "checkpoint_id": "course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "catalog-course-overview",
+      "subject_kind": "route",
+      "subject_id": "catalog-course-overview",
+      "kind": "route-identity",
+      "checkpoint_id": "catalog-course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Research Design for Policy Analysis and Planning | Urban Studies and Planning | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "course-syllabus",
+      "subject_kind": "route",
+      "subject_id": "course-syllabus",
+      "kind": "route-identity",
+      "checkpoint_id": "course-syllabus.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Syllabus | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "course-calendar",
+      "subject_kind": "route",
+      "subject_id": "course-calendar",
+      "kind": "route-identity",
+      "checkpoint_id": "course-calendar.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Calendar | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "course-readings",
+      "subject_kind": "route",
+      "subject_id": "course-readings",
+      "kind": "route-identity",
+      "checkpoint_id": "course-readings.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Readings | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "course-reading-deep",
+      "subject_kind": "route",
+      "subject_id": "course-reading-deep",
+      "kind": "route-identity",
+      "checkpoint_id": "course-reading-deep.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Binary Search Trees | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "course-lecture-notes",
+      "subject_kind": "route",
+      "subject_id": "course-lecture-notes",
+      "kind": "route-identity",
+      "checkpoint_id": "course-lecture-notes.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Lecture Notes | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "course-assignments",
+      "subject_kind": "route",
+      "subject_id": "course-assignments",
+      "kind": "route-identity",
+      "checkpoint_id": "course-assignments.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Assignments | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "course-exams",
+      "subject_kind": "route",
+      "subject_id": "course-exams",
+      "kind": "route-identity",
+      "checkpoint_id": "course-exams.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Exams | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "resource-index",
+      "subject_kind": "route",
+      "subject_id": "resource-index",
+      "kind": "route-identity",
+      "checkpoint_id": "resource-index.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "resource-problem-set",
+      "subject_kind": "route",
+      "subject_id": "resource-problem-set",
+      "kind": "route-identity",
+      "checkpoint_id": "resource-problem-set.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Problem Set 1 | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "resource-lecture-note",
+      "subject_kind": "route",
+      "subject_id": "resource-lecture-note",
+      "kind": "route-identity",
+      "checkpoint_id": "resource-lecture-note.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Lecture 01: Algorithmic thinking, peak finding | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "resource-final-exam",
+      "subject_kind": "route",
+      "subject_id": "resource-final-exam",
+      "kind": "route-identity",
+      "checkpoint_id": "resource-final-exam.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Final Exam | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "course-download",
+      "subject_kind": "route",
+      "subject_id": "course-download",
+      "kind": "route-identity",
+      "checkpoint_id": "course-download.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Resources | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "video-gallery",
+      "subject_kind": "route",
+      "subject_id": "video-gallery",
+      "kind": "route-identity",
+      "checkpoint_id": "video-gallery.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Lecture Videos | Blockchain and the Design of Financial Systems | Economics | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "video-resource",
+      "subject_kind": "route",
+      "subject_id": "video-resource",
+      "kind": "route-identity",
+      "checkpoint_id": "video-resource.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Lecture 1: Introduction to 14.129 Blockchain and Design of Financial Systems | Blockchain and the Design of Financial Systems | Economics | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "source-legacy-boundary",
+      "subject_kind": "route",
+      "subject_id": "source-legacy-boundary",
+      "kind": "route-identity",
+      "checkpoint_id": "source-legacy-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "MIT OpenCourseWare | Free Online Course Materials"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "external-boundary",
+      "subject_kind": "route",
+      "subject_id": "external-boundary",
+      "kind": "route-identity",
+      "checkpoint_id": "external-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "You are leaving MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "data-boundary",
+      "subject_kind": "route",
+      "subject_id": "data-boundary",
+      "kind": "route-identity",
+      "checkpoint_id": "data-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "This item is outside the retained MIT OpenCourseWare snapshot"
+    },
+    {
+      "contract_file": "full-route-inventory.json",
+      "contract_schema_version": "websitebench.full-route-inventory.v3",
+      "record_kind": "route",
+      "record_id": "not-found",
+      "subject_kind": "route",
+      "subject_id": "not-found",
+      "kind": "route-identity",
+      "checkpoint_id": "not-found.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_status": 200,
+      "expected_title": "Page Not Found | MIT OpenCourseWare"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "catalog.default",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "catalog.default",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "catalog.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "default",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "catalog.second-batch",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "catalog.second-batch",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "catalog.second-batch",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "second-batch",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "catalog.math",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "catalog.math",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "catalog.math",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "filtered-math-199",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "catalog.math-undergraduate",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "catalog.math-undergraduate",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "catalog.math-undergraduate",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "filtered-math-undergraduate-110",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "catalog.course-number",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "catalog.course-number",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "catalog.course-number",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "sorted-course-number",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "catalog.empty",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "catalog.empty",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "catalog.empty",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "empty-zero-results",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "catalog.error",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "catalog.error",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "catalog.error",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "api-error",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "catalog.retry-stale",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "catalog.retry-stale",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "catalog.retry-stale",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "successful-retry-retains-error-shell",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "catalog.reload-recovered",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "catalog.reload-recovered",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "catalog.reload-recovered",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "full-reload-recovers-default",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "catalog.resources",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "catalog.resources",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "catalog.resources",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "resources-first-batch-10000-results",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "home.carousel-second-batches",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "home.carousel-second-batches",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "home.carousel-second-batches",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "all-home-carousels-second-batch",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "video.static-disabled",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "video.static-disabled",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "video.static-disabled",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "static-thumbnail-playback-disabled",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "external-boundary.default",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "external-boundary.default",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "external-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "branded-local-soft-404",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "route-state-viewport.json",
+      "contract_schema_version": "websitebench.route-state-viewport.v3",
+      "record_kind": "route-state-viewport",
+      "record_id": "data-boundary.default",
+      "subject_kind": "route-state-viewport",
+      "subject_id": "data-boundary.default",
+      "kind": "checkpoint-state",
+      "checkpoint_id": "data-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_state": "branded-retained-snapshot-boundary",
+      "expected_viewport": "desktop"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "nav-toggle",
+      "subject_kind": "control",
+      "subject_id": "nav-toggle",
+      "kind": "control-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='nav-toggle']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "global-search-input",
+      "subject_kind": "control",
+      "subject_id": "global-search-input",
+      "kind": "control-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='global-search-input']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "global-search-submit",
+      "subject_kind": "control",
+      "subject_id": "global-search-submit",
+      "kind": "control-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='global-search-submit']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "promo-previous",
+      "subject_kind": "control",
+      "subject_id": "promo-previous",
+      "kind": "control-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='promo-previous']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "promo-next",
+      "subject_kind": "control",
+      "subject_id": "promo-next",
+      "kind": "control-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='promo-next']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "featured-previous",
+      "subject_kind": "control",
+      "subject_id": "featured-previous",
+      "kind": "control-state",
+      "checkpoint_id": "home.carousel-second-batches",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='featured-previous']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "featured-next",
+      "subject_kind": "control",
+      "subject_id": "featured-next",
+      "kind": "control-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='featured-next']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "new-previous",
+      "subject_kind": "control",
+      "subject_id": "new-previous",
+      "kind": "control-state",
+      "checkpoint_id": "home.carousel-second-batches",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='new-previous']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "new-next",
+      "subject_kind": "control",
+      "subject_id": "new-next",
+      "kind": "control-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='new-next']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "stories-previous",
+      "subject_kind": "control",
+      "subject_id": "stories-previous",
+      "kind": "control-state",
+      "checkpoint_id": "home.carousel-second-batches",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='stories-previous']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "stories-next",
+      "subject_kind": "control",
+      "subject_id": "stories-next",
+      "kind": "control-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='stories-next']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "catalog-query",
+      "subject_kind": "control",
+      "subject_id": "catalog-query",
+      "kind": "control-state",
+      "checkpoint_id": "catalog.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='catalog-query']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "catalog-course-tab",
+      "subject_kind": "control",
+      "subject_id": "catalog-course-tab",
+      "kind": "control-state",
+      "checkpoint_id": "catalog.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='catalog-course-tab']",
+      "expected_state": "checked"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "catalog-resource-tab",
+      "subject_kind": "control",
+      "subject_id": "catalog-resource-tab",
+      "kind": "control-state",
+      "checkpoint_id": "catalog.resources",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='catalog-resource-tab']",
+      "expected_state": "checked"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "catalog-clear-all",
+      "subject_kind": "control",
+      "subject_id": "catalog-clear-all",
+      "kind": "control-state",
+      "checkpoint_id": "catalog.math-undergraduate",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='catalog-clear-all']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "catalog-departments",
+      "subject_kind": "control",
+      "subject_id": "catalog-departments",
+      "kind": "control-state",
+      "checkpoint_id": "catalog.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='catalog-departments']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "catalog-math-filter",
+      "subject_kind": "control",
+      "subject_id": "catalog-math-filter",
+      "kind": "control-state",
+      "checkpoint_id": "catalog.math",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='catalog-math-filter']",
+      "expected_state": "checked"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "catalog-undergraduate-filter",
+      "subject_kind": "control",
+      "subject_id": "catalog-undergraduate-filter",
+      "kind": "control-state",
+      "checkpoint_id": "catalog.math-undergraduate",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='catalog-undergraduate-filter']",
+      "expected_state": "checked"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "catalog-sort",
+      "subject_kind": "control",
+      "subject_id": "catalog-sort",
+      "kind": "control-state",
+      "checkpoint_id": "catalog.course-number",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='catalog-sort']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "catalog-load-more",
+      "subject_kind": "control",
+      "subject_id": "catalog-load-more",
+      "kind": "control-state",
+      "checkpoint_id": "catalog.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='catalog-load-more']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "catalog-retry",
+      "subject_kind": "control",
+      "subject_id": "catalog-retry",
+      "kind": "control-state",
+      "checkpoint_id": "catalog.error",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='catalog-retry']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "catalog-empty-clear",
+      "subject_kind": "control",
+      "subject_id": "catalog-empty-clear",
+      "kind": "control-state",
+      "checkpoint_id": "catalog.empty",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='catalog-empty-clear']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "course-menu",
+      "subject_kind": "control",
+      "subject_id": "course-menu",
+      "kind": "control-state",
+      "checkpoint_id": "course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='course-menu']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "course-download",
+      "subject_kind": "control",
+      "subject_id": "course-download",
+      "kind": "control-state",
+      "checkpoint_id": "course-download.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='course-download']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "resource-download",
+      "subject_kind": "control",
+      "subject_id": "resource-download",
+      "kind": "control-state",
+      "checkpoint_id": "resource-problem-set.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='resource-download']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "newsletter-email",
+      "subject_kind": "control",
+      "subject_id": "newsletter-email",
+      "kind": "control-state",
+      "checkpoint_id": "newsletter.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='newsletter-email']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "newsletter-submit",
+      "subject_kind": "control",
+      "subject_id": "newsletter-submit",
+      "kind": "control-state",
+      "checkpoint_id": "newsletter.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='newsletter-submit']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "video-play",
+      "subject_kind": "control",
+      "subject_id": "video-play",
+      "kind": "control-state",
+      "checkpoint_id": "video.static-disabled",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='video-play']",
+      "expected_state": "disabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "external-return",
+      "subject_kind": "control",
+      "subject_id": "external-return",
+      "kind": "control-state",
+      "checkpoint_id": "external-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='external-return']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "all-controls-inventory.json",
+      "contract_schema_version": "websitebench.all-controls.v3",
+      "record_kind": "control",
+      "record_id": "data-boundary-return",
+      "subject_kind": "control",
+      "subject_id": "data-boundary-return",
+      "kind": "control-state",
+      "checkpoint_id": "data-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-control='data-boundary-return']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "home-catalog",
+      "subject_kind": "link-edge",
+      "subject_id": "home-catalog",
+      "kind": "first-party-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='home-catalog']",
+      "expected_href": "/search/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "home-get-started",
+      "subject_kind": "link-edge",
+      "subject_id": "home-get-started",
+      "kind": "first-party-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='home-get-started']",
+      "expected_href": "/pages/get-started/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "home-educator",
+      "subject_kind": "link-edge",
+      "subject_id": "home-educator",
+      "kind": "first-party-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='home-educator']",
+      "expected_href": "/educator/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "home-about",
+      "subject_kind": "link-edge",
+      "subject_id": "home-about",
+      "kind": "first-party-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='home-about']",
+      "expected_href": "/about/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "home-collection",
+      "subject_kind": "link-edge",
+      "subject_id": "home-collection",
+      "kind": "first-party-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='home-collection']",
+      "expected_href": "/collections/introductory-programming/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "home-story",
+      "subject_kind": "link-edge",
+      "subject_id": "home-story",
+      "kind": "first-party-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='home-story']",
+      "expected_href": "/stories/adrian-pastor/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "catalog-first-course",
+      "subject_kind": "link-edge",
+      "subject_id": "catalog-first-course",
+      "kind": "first-party-link",
+      "checkpoint_id": "catalog.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='catalog-first-course']",
+      "expected_href": "/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "course-syllabus",
+      "subject_kind": "link-edge",
+      "subject_id": "course-syllabus",
+      "kind": "first-party-link",
+      "checkpoint_id": "course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='course-syllabus']",
+      "expected_href": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "course-calendar",
+      "subject_kind": "link-edge",
+      "subject_id": "course-calendar",
+      "kind": "first-party-link",
+      "checkpoint_id": "course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='course-calendar']",
+      "expected_href": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/calendar/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "course-readings",
+      "subject_kind": "link-edge",
+      "subject_id": "course-readings",
+      "kind": "first-party-link",
+      "checkpoint_id": "course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='course-readings']",
+      "expected_href": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "course-assignments",
+      "subject_kind": "link-edge",
+      "subject_id": "course-assignments",
+      "kind": "first-party-link",
+      "checkpoint_id": "course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='course-assignments']",
+      "expected_href": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "course-exams",
+      "subject_kind": "link-edge",
+      "subject_id": "course-exams",
+      "kind": "first-party-link",
+      "checkpoint_id": "course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='course-exams']",
+      "expected_href": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/exams/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "reading-deep",
+      "subject_kind": "link-edge",
+      "subject_id": "reading-deep",
+      "kind": "first-party-link",
+      "checkpoint_id": "course-readings.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='reading-deep']",
+      "expected_href": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/binary-search-trees/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "problem-set-detail",
+      "subject_kind": "link-edge",
+      "subject_id": "problem-set-detail",
+      "kind": "first-party-link",
+      "checkpoint_id": "resource-index.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='problem-set-detail']",
+      "expected_href": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_ps1/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "course-download-page",
+      "subject_kind": "link-edge",
+      "subject_id": "course-download-page",
+      "kind": "first-party-link",
+      "checkpoint_id": "course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='course-download-page']",
+      "expected_href": "/courses/6-006-introduction-to-algorithms-fall-2011/download/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "stories-index",
+      "subject_kind": "link-edge",
+      "subject_id": "stories-index",
+      "kind": "first-party-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='stories-index']",
+      "expected_href": "/stories/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "video-gallery",
+      "subject_kind": "link-edge",
+      "subject_id": "video-gallery",
+      "kind": "first-party-link",
+      "checkpoint_id": "course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='video-gallery']",
+      "expected_href": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/video_galleries/video-lectures/"
+    },
+    {
+      "contract_file": "first-party-link-graph.json",
+      "contract_schema_version": "websitebench.first-party-link-graph.v3",
+      "record_kind": "link-edge",
+      "record_id": "boundary-return-home",
+      "subject_kind": "link-edge",
+      "subject_id": "boundary-return-home",
+      "kind": "first-party-link",
+      "checkpoint_id": "external-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-link='boundary-return-home']",
+      "expected_href": "/"
+    },
+    {
+      "contract_file": "external-links.json",
+      "contract_schema_version": "websitebench.external-links.v3",
+      "record_kind": "external-link",
+      "record_id": "giving",
+      "subject_kind": "external-link",
+      "subject_id": "giving",
+      "kind": "external-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-external='giving']",
+      "expected_href": "https://giving.mit.edu/give/to/ocw/"
+    },
+    {
+      "contract_file": "external-links.json",
+      "contract_schema_version": "websitebench.external-links.v3",
+      "record_kind": "external-link",
+      "record_id": "help",
+      "subject_kind": "external-link",
+      "subject_id": "help",
+      "kind": "external-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-external='help']",
+      "expected_href": "https://mitocw.zendesk.com/hc/en-us"
+    },
+    {
+      "contract_file": "external-links.json",
+      "contract_schema_version": "websitebench.external-links.v3",
+      "record_kind": "external-link",
+      "record_id": "contact",
+      "subject_kind": "external-link",
+      "subject_id": "contact",
+      "kind": "external-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-external='contact']",
+      "expected_href": "https://mitocw.zendesk.com/hc/en-us/requests/new"
+    },
+    {
+      "contract_file": "external-links.json",
+      "contract_schema_version": "websitebench.external-links.v3",
+      "record_kind": "external-link",
+      "record_id": "mit-learn",
+      "subject_kind": "external-link",
+      "subject_id": "mit-learn",
+      "kind": "external-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-external='mit-learn']",
+      "expected_href": "https://learn.mit.edu/"
+    },
+    {
+      "contract_file": "external-links.json",
+      "contract_schema_version": "websitebench.external-links.v3",
+      "record_kind": "external-link",
+      "record_id": "ocw-to-go",
+      "subject_kind": "external-link",
+      "subject_id": "ocw-to-go",
+      "kind": "external-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-external='ocw-to-go']",
+      "expected_href": "https://ocwtogo.mit.edu/"
+    },
+    {
+      "contract_file": "external-links.json",
+      "contract_schema_version": "websitebench.external-links.v3",
+      "record_kind": "external-link",
+      "record_id": "chalk-radio",
+      "subject_kind": "external-link",
+      "subject_id": "chalk-radio",
+      "kind": "external-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-external='chalk-radio']",
+      "expected_href": "https://chalk-radio.simplecast.com/"
+    },
+    {
+      "contract_file": "external-links.json",
+      "contract_schema_version": "websitebench.external-links.v3",
+      "record_kind": "external-link",
+      "record_id": "youtube",
+      "subject_kind": "external-link",
+      "subject_id": "youtube",
+      "kind": "external-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-external='youtube']",
+      "expected_href": "https://www.youtube.com/"
+    },
+    {
+      "contract_file": "external-links.json",
+      "contract_schema_version": "websitebench.external-links.v3",
+      "record_kind": "external-link",
+      "record_id": "creative-commons",
+      "subject_kind": "external-link",
+      "subject_id": "creative-commons",
+      "kind": "external-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-external='creative-commons']",
+      "expected_href": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    {
+      "contract_file": "external-links.json",
+      "contract_schema_version": "websitebench.external-links.v3",
+      "record_kind": "external-link",
+      "record_id": "accessibility",
+      "subject_kind": "external-link",
+      "subject_id": "accessibility",
+      "kind": "external-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-external='accessibility']",
+      "expected_href": "https://accessibility.mit.edu/"
+    },
+    {
+      "contract_file": "external-links.json",
+      "contract_schema_version": "websitebench.external-links.v3",
+      "record_kind": "external-link",
+      "record_id": "open-learning",
+      "subject_kind": "external-link",
+      "subject_id": "open-learning",
+      "kind": "external-link",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-external='open-learning']",
+      "expected_href": "https://openlearning.mit.edu/"
+    },
+    {
+      "contract_file": "blocked-or-unavailable-pages.json",
+      "contract_schema_version": "websitebench.blocked-pages.v3",
+      "record_kind": "blocked-page",
+      "record_id": "source-legacy-boundary",
+      "subject_kind": "blocked-page",
+      "subject_id": "source-legacy-boundary",
+      "kind": "soft-404-state",
+      "checkpoint_id": "source-legacy-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "expected_soft_404": false
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "global-header",
+      "subject_kind": "component",
+      "subject_id": "global-header",
+      "kind": "component-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='global-header']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "home-hero",
+      "subject_kind": "component",
+      "subject_id": "home-hero",
+      "kind": "component-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='home-hero']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "home-featured-courses",
+      "subject_kind": "component",
+      "subject_id": "home-featured-courses",
+      "kind": "component-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='featured-courses']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "home-new-courses",
+      "subject_kind": "component",
+      "subject_id": "home-new-courses",
+      "kind": "component-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='new-courses']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "home-stories",
+      "subject_kind": "component",
+      "subject_id": "home-stories",
+      "kind": "component-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='stories']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "catalog-filters",
+      "subject_kind": "component",
+      "subject_id": "catalog-filters",
+      "kind": "component-state",
+      "checkpoint_id": "catalog.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='catalog-filters']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "catalog-results",
+      "subject_kind": "component",
+      "subject_id": "catalog-results",
+      "kind": "component-state",
+      "checkpoint_id": "catalog.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='catalog-results']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "catalog-error",
+      "subject_kind": "component",
+      "subject_id": "catalog-error",
+      "kind": "component-state",
+      "checkpoint_id": "catalog.error",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='catalog-error']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "catalog-empty",
+      "subject_kind": "component",
+      "subject_id": "catalog-empty",
+      "kind": "component-state",
+      "checkpoint_id": "catalog.empty",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='catalog-empty']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "course-side-navigation",
+      "subject_kind": "component",
+      "subject_id": "course-side-navigation",
+      "kind": "component-state",
+      "checkpoint_id": "course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='course-side-navigation']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "course-main-content",
+      "subject_kind": "component",
+      "subject_id": "course-main-content",
+      "kind": "component-state",
+      "checkpoint_id": "course-overview.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='course-main-content']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "resource-metadata",
+      "subject_kind": "component",
+      "subject_id": "resource-metadata",
+      "kind": "component-state",
+      "checkpoint_id": "resource-problem-set.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='resource-metadata']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "newsletter-form",
+      "subject_kind": "component",
+      "subject_id": "newsletter-form",
+      "kind": "component-state",
+      "checkpoint_id": "newsletter.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='newsletter-form']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "component",
+      "record_id": "external-boundary",
+      "subject_kind": "component",
+      "subject_id": "external-boundary",
+      "kind": "component-state",
+      "checkpoint_id": "external-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-component='external-boundary']",
+      "expected_state": "visible"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "role-session",
+      "record_id": "anonymous-public",
+      "subject_kind": "role-session",
+      "subject_id": "anonymous-public",
+      "kind": "session-established",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "role_context": "anonymous"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "media-check",
+      "record_id": "home-news-images",
+      "subject_kind": "media-check",
+      "subject_id": "home-news-images",
+      "kind": "media-state",
+      "checkpoint_id": "home.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-media='home-news-images']",
+      "expected_state": "ready"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "media-check",
+      "record_id": "course-card-images",
+      "subject_kind": "media-check",
+      "subject_id": "course-card-images",
+      "kind": "media-state",
+      "checkpoint_id": "catalog.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-media='course-card-images']",
+      "expected_state": "ready"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "media-check",
+      "record_id": "resource-file-icons",
+      "subject_kind": "media-check",
+      "subject_id": "resource-file-icons",
+      "kind": "media-state",
+      "checkpoint_id": "catalog.resources",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-media='resource-file-icons']",
+      "expected_state": "ready"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "media-check",
+      "record_id": "disabled-video-poster",
+      "subject_kind": "media-check",
+      "subject_id": "disabled-video-poster",
+      "kind": "media-state",
+      "checkpoint_id": "video.static-disabled",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-media='disabled-video-poster']",
+      "expected_state": "ready"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "local-capability",
+      "record_id": "local-search",
+      "subject_kind": "local-capability",
+      "subject_id": "local-search",
+      "kind": "capability-state",
+      "checkpoint_id": "catalog.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-capability='local-search']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "local-capability",
+      "record_id": "local-filter-sort",
+      "subject_kind": "local-capability",
+      "subject_id": "local-filter-sort",
+      "kind": "capability-state",
+      "checkpoint_id": "catalog.math-undergraduate",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-capability='local-filter-sort']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "local-capability",
+      "record_id": "local-attachment-download",
+      "subject_kind": "local-capability",
+      "subject_id": "local-attachment-download",
+      "kind": "capability-state",
+      "checkpoint_id": "resource-problem-set.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-capability='local-attachment-download']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "local-capability",
+      "record_id": "local-course-archive",
+      "subject_kind": "local-capability",
+      "subject_id": "local-course-archive",
+      "kind": "capability-state",
+      "checkpoint_id": "course-download.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-capability='local-course-archive']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "local-capability",
+      "record_id": "external-boundary",
+      "subject_kind": "local-capability",
+      "subject_id": "external-boundary",
+      "kind": "capability-state",
+      "checkpoint_id": "external-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-capability='external-boundary']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "local-capability",
+      "record_id": "data-boundary",
+      "subject_kind": "local-capability",
+      "subject_id": "data-boundary",
+      "kind": "capability-state",
+      "checkpoint_id": "data-boundary.default",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-capability='data-boundary']",
+      "expected_state": "enabled"
+    },
+    {
+      "contract_file": "component-state-matrix.json",
+      "contract_schema_version": "websitebench.component-state-matrix.v2",
+      "record_kind": "local-capability",
+      "record_id": "video-playback-disabled",
+      "subject_kind": "local-capability",
+      "subject_id": "video-playback-disabled",
+      "kind": "capability-state",
+      "checkpoint_id": "video.static-disabled",
+      "source_document_path": "source-current/g1-source-summary-v2.json",
+      "source_document_sha256": "27d611a537c139ab6e98f3957f17d14c980d85f2557c1ea7bf07856c463259d6",
+      "supporting_evidence_refs": [
+        "source-current/g1-source-summary-v2.json"
+      ],
+      "selector": "[data-wb-capability='video-playback-disabled']",
+      "expected_state": "visible"
+    }
+  ]
+}

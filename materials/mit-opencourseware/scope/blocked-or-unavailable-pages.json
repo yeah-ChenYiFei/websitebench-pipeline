@@ -1,0 +1,20 @@
+{
+  "schema_version": "websitebench.blocked-pages.v3",
+  "site_id": "mit-opencourseware",
+  "status": "frozen",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "pages": [
+    {
+      "id": "source-legacy-boundary",
+      "source_expectation": "The source presents an MIT OCW-branded leaving boundary at the sampled legacy route, rather than a blank, challenge, or generic server error.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/blocked-or-unavailable-pages-blocked-page-source-legacy-boundary.json"
+      ]
+    }
+  ],
+  "challenge_presented": false
+}

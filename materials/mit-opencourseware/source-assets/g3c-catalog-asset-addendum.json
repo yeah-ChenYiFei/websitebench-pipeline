@@ -1,0 +1,198 @@
+{
+  "schema_version": "mit-ocw.g3c-catalog-asset-addendum.v1",
+  "capture_id": "mit-opencourseware-20260903T032020Z",
+  "created_at": "2026-09-03T12:09:25.459326Z",
+  "authority": "six-exact-same-origin-static-get-current-direct-addendum",
+  "request_policy": {
+    "allowed_method": "GET",
+    "allowed_urls": [
+      "https://ocw.mit.edu/courses/18-100b-analysis-i-fall-2010/5c88f9408009514f73f41d6b5d91fd13_18-100bf10.jpg",
+      "https://ocw.mit.edu/courses/18-03-differential-equations-spring-2010/e51bbed857b0ae65e7536f120c1473d9_18-03s10.jpg",
+      "https://ocw.mit.edu/courses/18-440-probability-and-random-variables-spring-2014/73256e6260afadff2dc8f71302e4bff4_18-440s14.jpg",
+      "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2005/9c1339d31d8f122c6698a29e3a61a66e_18-01f05.jpg",
+      "https://ocw.mit.edu/courses/18-01-calculus-i-single-variable-calculus-fall-2020/18-01f20.jpg",
+      "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/24c4a7d9cd569a82ef34a8563e50add8_18-01f06.jpg"
+    ],
+    "other_requests": 0
+  },
+  "does_not_modify_prior_278_manifest_records": true,
+  "prior_manifest_assets_sha256": "b5c04eb72e5f305d711ae72d366d0156a63c0234861a09d033747a8efd101109",
+  "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+  "observation_sha256": "a918bc824c001a6d83308177a535fc1e258ea24ed590117c8fe0c0dd0acf8836",
+  "assets": [
+    {
+      "id": "g3c-catalog-math-undergraduate-1-d5d073560cde",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3c-catalog/d5d073560cded07e43f621a0eac4de2aaabad806504833d6fe9e5b980b9e67f3.jpg",
+      "runtime_path": "runtime-assets/g3c-catalog/d5d073560cded07e43f621a0eac4de2aaabad806504833d6fe9e5b980b9e67f3.jpg",
+      "bytes": 18045,
+      "sha256": "d5d073560cded07e43f621a0eac4de2aaabad806504833d6fe9e5b980b9e67f3",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 320,
+        "height": 320
+      },
+      "referenced_by": [
+        "catalog.math-undergraduate"
+      ],
+      "evidence_kind": "current-direct-g3c-catalog-addendum",
+      "source_url": "https://ocw.mit.edu/courses/18-100b-analysis-i-fall-2010/5c88f9408009514f73f41d6b5d91fd13_18-100bf10.jpg",
+      "capture_id": "mit-opencourseware-20260903T032020Z",
+      "state": "math-undergraduate",
+      "card_index": 0,
+      "course_title": "Analysis I",
+      "requested_url": "https://ocw.mit.edu/courses/18-100b-analysis-i-fall-2010/5c88f9408009514f73f41d6b5d91fd13_18-100bf10.jpg",
+      "final_url": "https://ocw.mit.edu/courses/18-100b-analysis-i-fall-2010/5c88f9408009514f73f41d6b5d91fd13_18-100bf10.jpg",
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "observation_sha256": "a918bc824c001a6d83308177a535fc1e258ea24ed590117c8fe0c0dd0acf8836"
+    },
+    {
+      "id": "g3c-catalog-math-undergraduate-2-d681c5494034",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3c-catalog/d681c54940346ba6b79a19f23e047cfa95db2c13a3bd3afc34656cd9fe1b4650.jpg",
+      "runtime_path": "runtime-assets/g3c-catalog/d681c54940346ba6b79a19f23e047cfa95db2c13a3bd3afc34656cd9fe1b4650.jpg",
+      "bytes": 12420,
+      "sha256": "d681c54940346ba6b79a19f23e047cfa95db2c13a3bd3afc34656cd9fe1b4650",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 320,
+        "height": 235
+      },
+      "referenced_by": [
+        "catalog.math-undergraduate"
+      ],
+      "evidence_kind": "current-direct-g3c-catalog-addendum",
+      "source_url": "https://ocw.mit.edu/courses/18-03-differential-equations-spring-2010/e51bbed857b0ae65e7536f120c1473d9_18-03s10.jpg",
+      "capture_id": "mit-opencourseware-20260903T032020Z",
+      "state": "math-undergraduate",
+      "card_index": 1,
+      "course_title": "Differential Equations",
+      "requested_url": "https://ocw.mit.edu/courses/18-03-differential-equations-spring-2010/e51bbed857b0ae65e7536f120c1473d9_18-03s10.jpg",
+      "final_url": "https://ocw.mit.edu/courses/18-03-differential-equations-spring-2010/e51bbed857b0ae65e7536f120c1473d9_18-03s10.jpg",
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "observation_sha256": "a918bc824c001a6d83308177a535fc1e258ea24ed590117c8fe0c0dd0acf8836"
+    },
+    {
+      "id": "g3c-catalog-math-undergraduate-3-872bca9d1777",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3c-catalog/872bca9d177789f3dfddfed13963421846ef84e209cb0c7e9dcc141aae579f9e.jpg",
+      "runtime_path": "runtime-assets/g3c-catalog/872bca9d177789f3dfddfed13963421846ef84e209cb0c7e9dcc141aae579f9e.jpg",
+      "bytes": 11246,
+      "sha256": "872bca9d177789f3dfddfed13963421846ef84e209cb0c7e9dcc141aae579f9e",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 320,
+        "height": 216
+      },
+      "referenced_by": [
+        "catalog.math-undergraduate"
+      ],
+      "evidence_kind": "current-direct-g3c-catalog-addendum",
+      "source_url": "https://ocw.mit.edu/courses/18-440-probability-and-random-variables-spring-2014/73256e6260afadff2dc8f71302e4bff4_18-440s14.jpg",
+      "capture_id": "mit-opencourseware-20260903T032020Z",
+      "state": "math-undergraduate",
+      "card_index": 2,
+      "course_title": "Probability and Random Variables",
+      "requested_url": "https://ocw.mit.edu/courses/18-440-probability-and-random-variables-spring-2014/73256e6260afadff2dc8f71302e4bff4_18-440s14.jpg",
+      "final_url": "https://ocw.mit.edu/courses/18-440-probability-and-random-variables-spring-2014/73256e6260afadff2dc8f71302e4bff4_18-440s14.jpg",
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "observation_sha256": "a918bc824c001a6d83308177a535fc1e258ea24ed590117c8fe0c0dd0acf8836"
+    },
+    {
+      "id": "g3c-catalog-course-number-1-6a608113842c",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3c-catalog/6a608113842cbad13f93038e02525d3c5282efd4039615c1e91cd4a2f317a3cb.jpg",
+      "runtime_path": "runtime-assets/g3c-catalog/6a608113842cbad13f93038e02525d3c5282efd4039615c1e91cd4a2f317a3cb.jpg",
+      "bytes": 17000,
+      "sha256": "6a608113842cbad13f93038e02525d3c5282efd4039615c1e91cd4a2f317a3cb",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 320,
+        "height": 240
+      },
+      "referenced_by": [
+        "catalog.course-number"
+      ],
+      "evidence_kind": "current-direct-g3c-catalog-addendum",
+      "source_url": "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2005/9c1339d31d8f122c6698a29e3a61a66e_18-01f05.jpg",
+      "capture_id": "mit-opencourseware-20260903T032020Z",
+      "state": "course-number",
+      "card_index": 0,
+      "course_title": "Single Variable Calculus",
+      "requested_url": "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2005/9c1339d31d8f122c6698a29e3a61a66e_18-01f05.jpg",
+      "final_url": "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2005/9c1339d31d8f122c6698a29e3a61a66e_18-01f05.jpg",
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "observation_sha256": "a918bc824c001a6d83308177a535fc1e258ea24ed590117c8fe0c0dd0acf8836"
+    },
+    {
+      "id": "g3c-catalog-course-number-2-15ac55d387c9",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3c-catalog/15ac55d387c9e79315f86ebf423cdceaab66bc9a51fd0b13a9ba4499fc0fd88f.jpg",
+      "runtime_path": "runtime-assets/g3c-catalog/15ac55d387c9e79315f86ebf423cdceaab66bc9a51fd0b13a9ba4499fc0fd88f.jpg",
+      "bytes": 8407,
+      "sha256": "15ac55d387c9e79315f86ebf423cdceaab66bc9a51fd0b13a9ba4499fc0fd88f",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 320,
+        "height": 240
+      },
+      "referenced_by": [
+        "catalog.course-number"
+      ],
+      "evidence_kind": "current-direct-g3c-catalog-addendum",
+      "source_url": "https://ocw.mit.edu/courses/18-01-calculus-i-single-variable-calculus-fall-2020/18-01f20.jpg",
+      "capture_id": "mit-opencourseware-20260903T032020Z",
+      "state": "course-number",
+      "card_index": 1,
+      "course_title": "Calculus I: Single Variable Calculus",
+      "requested_url": "https://ocw.mit.edu/courses/18-01-calculus-i-single-variable-calculus-fall-2020/18-01f20.jpg",
+      "final_url": "https://ocw.mit.edu/courses/18-01-calculus-i-single-variable-calculus-fall-2020/18-01f20.jpg",
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "observation_sha256": "a918bc824c001a6d83308177a535fc1e258ea24ed590117c8fe0c0dd0acf8836"
+    },
+    {
+      "id": "g3c-catalog-course-number-3-e8ce0ad05275",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3c-catalog/e8ce0ad05275ad1e06a3db9e03192455f6881b9a09a19302518b5961c87d655d.jpg",
+      "runtime_path": "runtime-assets/g3c-catalog/e8ce0ad05275ad1e06a3db9e03192455f6881b9a09a19302518b5961c87d655d.jpg",
+      "bytes": 10605,
+      "sha256": "e8ce0ad05275ad1e06a3db9e03192455f6881b9a09a19302518b5961c87d655d",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 320,
+        "height": 234
+      },
+      "referenced_by": [
+        "catalog.course-number"
+      ],
+      "evidence_kind": "current-direct-g3c-catalog-addendum",
+      "source_url": "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/24c4a7d9cd569a82ef34a8563e50add8_18-01f06.jpg",
+      "capture_id": "mit-opencourseware-20260903T032020Z",
+      "state": "course-number",
+      "card_index": 2,
+      "course_title": "Single Variable Calculus",
+      "requested_url": "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/24c4a7d9cd569a82ef34a8563e50add8_18-01f06.jpg",
+      "final_url": "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/24c4a7d9cd569a82ef34a8563e50add8_18-01f06.jpg",
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "observation_sha256": "a918bc824c001a6d83308177a535fc1e258ea24ed590117c8fe0c0dd0acf8836"
+    }
+  ]
+}

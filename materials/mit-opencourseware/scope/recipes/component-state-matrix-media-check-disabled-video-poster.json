@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "record_kind": "media-check",
+  "record_id": "disabled-video-poster",
+  "subject_kind": "media-check",
+  "subject_id": "disabled-video-poster",
+  "kind": "media-state",
+  "checkpoint_id": "video.static-disabled",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-media='disabled-video-poster']",
+  "expected_state": "ready"
+}

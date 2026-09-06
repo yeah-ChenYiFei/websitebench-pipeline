@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "full-route-inventory.json",
+  "contract_schema_version": "websitebench.full-route-inventory.v3",
+  "record_kind": "route",
+  "record_id": "course-reading-deep",
+  "subject_kind": "route",
+  "subject_id": "course-reading-deep",
+  "kind": "route-identity",
+  "checkpoint_id": "course-reading-deep.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "expected_status": 200,
+  "expected_title": "Binary Search Trees | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+}

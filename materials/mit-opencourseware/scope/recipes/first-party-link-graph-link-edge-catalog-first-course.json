@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "record_kind": "link-edge",
+  "record_id": "catalog-first-course",
+  "subject_kind": "link-edge",
+  "subject_id": "catalog-first-course",
+  "kind": "first-party-link",
+  "checkpoint_id": "catalog.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-link='catalog-first-course']",
+  "expected_href": "/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "external-links.json",
+  "contract_schema_version": "websitebench.external-links.v3",
+  "record_kind": "external-link",
+  "record_id": "contact",
+  "subject_kind": "external-link",
+  "subject_id": "contact",
+  "kind": "external-link",
+  "checkpoint_id": "home.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-external='contact']",
+  "expected_href": "https://mitocw.zendesk.com/hc/en-us/requests/new"
+}

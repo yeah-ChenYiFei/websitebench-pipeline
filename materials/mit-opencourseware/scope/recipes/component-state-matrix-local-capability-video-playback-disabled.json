@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "record_kind": "local-capability",
+  "record_id": "video-playback-disabled",
+  "subject_kind": "local-capability",
+  "subject_id": "video-playback-disabled",
+  "kind": "capability-state",
+  "checkpoint_id": "video.static-disabled",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-capability='video-playback-disabled']",
+  "expected_state": "visible"
+}

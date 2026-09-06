@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "record_kind": "link-edge",
+  "record_id": "boundary-return-home",
+  "subject_kind": "link-edge",
+  "subject_id": "boundary-return-home",
+  "kind": "first-party-link",
+  "checkpoint_id": "external-boundary.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-link='boundary-return-home']",
+  "expected_href": "/"
+}

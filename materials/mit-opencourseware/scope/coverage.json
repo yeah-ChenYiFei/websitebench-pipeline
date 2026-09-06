@@ -1,0 +1,316 @@
+{
+  "schema_version": "offline-clone.coverage.v1",
+  "status": "frozen",
+  "dimensions": [
+    {
+      "id": "representative-route-states",
+      "label": "Forty frozen representative route states",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "home.default",
+        "catalog.default",
+        "collection.default",
+        "stories.default",
+        "story-adrian.default",
+        "about.default",
+        "get-started.default",
+        "educator.default",
+        "newsletter.default",
+        "course-overview.default",
+        "catalog-course-overview.default",
+        "course-syllabus.default",
+        "course-calendar.default",
+        "course-readings.default",
+        "course-reading-deep.default",
+        "course-lecture-notes.default",
+        "course-assignments.default",
+        "course-exams.default",
+        "resource-index.default",
+        "resource-problem-set.default",
+        "resource-lecture-note.default",
+        "resource-final-exam.default",
+        "course-download.default",
+        "video-gallery.default",
+        "video-resource.default",
+        "source-legacy-boundary.default",
+        "external-boundary.default",
+        "data-boundary.default",
+        "not-found.default",
+        "catalog.second-batch",
+        "catalog.math",
+        "catalog.math-undergraduate",
+        "catalog.course-number",
+        "catalog.empty",
+        "catalog.error",
+        "catalog.retry-stale",
+        "catalog.reload-recovered",
+        "catalog.resources",
+        "home.carousel-second-batches",
+        "video.static-disabled"
+      ],
+      "satisfied_items": [],
+      "population_size": 40,
+      "sample_size": 40,
+      "sampling_method": "exhaustive deterministic local test"
+    },
+    {
+      "id": "captured-route-instances",
+      "label": "All captured page route identities",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "captured-routes-732"
+      ],
+      "satisfied_items": [],
+      "population_size": 732,
+      "sample_size": 732,
+      "sampling_method": "exhaustive deterministic local test"
+    },
+    {
+      "id": "route-families",
+      "label": "Distinct captured route family structures",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "family-catalog-search",
+        "family-collection",
+        "family-course-download",
+        "family-course-overview",
+        "family-course-section-or-deep-link",
+        "family-home",
+        "family-resource-detail-or-index",
+        "family-site-information-or-boundary",
+        "family-story-detail",
+        "family-story-index",
+        "family-video-gallery"
+      ],
+      "satisfied_items": [],
+      "population_size": 11,
+      "sample_size": 11,
+      "sampling_method": "exhaustive deterministic local test"
+    },
+    {
+      "id": "home-content",
+      "label": "Frozen home content denominators",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "home-course-cards-16",
+        "home-complete-course-details-15",
+        "home-sections-141",
+        "home-resources-184",
+        "story-details-13"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "catalog-content",
+      "label": "Frozen catalog content denominators",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "catalog-cards-20",
+        "catalog-complete-details-10",
+        "catalog-boundary-cards-10",
+        "catalog-sections-69",
+        "catalog-resources-235"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "catalog-local-states",
+      "label": "All implemented catalog states",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "catalog-state-default",
+        "catalog-state-second-batch",
+        "catalog-state-math",
+        "catalog-state-math-undergraduate",
+        "catalog-state-course-number",
+        "catalog-state-loading",
+        "catalog-state-empty",
+        "catalog-state-error",
+        "catalog-state-retry-stale",
+        "catalog-state-reload-recovered",
+        "catalog-state-resources"
+      ],
+      "satisfied_items": [],
+      "population_size": 11,
+      "sample_size": 11,
+      "sampling_method": "exhaustive deterministic local test"
+    },
+    {
+      "id": "download-closure",
+      "label": "Exact local download closure",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "logical-downloads-480",
+        "unique-payloads-478",
+        "logical-bytes-1551223348",
+        "repeatable-streaming"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "presentation-assets",
+      "label": "Presentation asset URL and source-404 closure",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "full-suite"
+      ],
+      "required_items": [
+        "retained-assets-284",
+        "retained-bytes-50333378",
+        "initial-source-404-assets-5",
+        "g3b-source-404-assets-4"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "boundaries",
+      "label": "Local capability and recovery boundaries",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "external-boundary",
+        "data-boundary",
+        "newsletter-boundary",
+        "video-disabled",
+        "hard-404-recovery"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "runtime-network-closure",
+      "label": "Runtime remote request closure",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "network",
+        "full-suite"
+      ],
+      "required_items": [
+        "runtime-remote-requests-zero"
+      ],
+      "satisfied_items": []
+    },
+    {
+      "id": "visual-fidelity",
+      "label": "Formal source-to-clone visual fidelity",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "visual"
+      ],
+      "required_items": [
+        "home.default",
+        "catalog.default",
+        "collection.default",
+        "stories.default",
+        "story-adrian.default",
+        "about.default",
+        "get-started.default",
+        "educator.default",
+        "newsletter.default",
+        "course-overview.default",
+        "catalog-course-overview.default",
+        "course-syllabus.default",
+        "course-calendar.default",
+        "course-readings.default",
+        "course-reading-deep.default",
+        "course-lecture-notes.default",
+        "course-assignments.default",
+        "course-exams.default",
+        "resource-index.default",
+        "resource-problem-set.default",
+        "resource-lecture-note.default",
+        "resource-final-exam.default",
+        "course-download.default",
+        "video-gallery.default",
+        "video-resource.default",
+        "catalog.second-batch",
+        "catalog.math",
+        "catalog.math-undergraduate",
+        "catalog.course-number",
+        "catalog.empty",
+        "catalog.error",
+        "catalog.retry-stale",
+        "catalog.reload-recovered",
+        "catalog.resources",
+        "video.static-disabled"
+      ],
+      "satisfied_items": [],
+      "population_size": 35,
+      "sample_size": 35,
+      "sampling_method": "exhaustive deterministic local test",
+      "rationale": "Exact same-capture full-frame source visual denominator; all 35 checkpoints are compared exhaustively at 1440x900 with the frozen pixel-MAE threshold."
+    },
+    {
+      "id": "semantic-only-visual-input-gaps",
+      "label": "Semantically required states without truthful full-frame source visual input",
+      "unit": "contract-item",
+      "category": "frozen-input-gap",
+      "required_evidence_kinds": [
+        "browser",
+        "full-suite"
+      ],
+      "required_items": [
+        "source-legacy-boundary.default",
+        "external-boundary.default",
+        "data-boundary.default",
+        "not-found.default",
+        "home.carousel-second-batches"
+      ],
+      "satisfied_items": [],
+      "population_size": 5,
+      "sample_size": 5,
+      "sampling_method": "exhaustive semantic browser audit; visual N/A remains an explicit central-model input gap",
+      "rationale": "One captured source frame is invalid, three routes are required clone-only boundary/recovery states, and one composed carousel state has four genuine component rasters but no genuine 1440x900 source frame. No candidate raster, stitched image, or blank source frame may substitute."
+    },
+    {
+      "id": "blind-evaluation",
+      "label": "Independent blind evaluator result",
+      "unit": "contract-item",
+      "category": "g2c2-diagnostic",
+      "required_evidence_kinds": [
+        "independent-audit"
+      ],
+      "required_items": [
+        "blind-review-p0-p1"
+      ],
+      "satisfied_items": [],
+      "rationale": "Independent blind review is a G5 execution result; this frozen source ledger records its denominator and leaves the numerator to fresh review evidence."
+    }
+  ]
+}

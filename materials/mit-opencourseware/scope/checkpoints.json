@@ -1,0 +1,2023 @@
+{
+  "schema_version": "offline-clone.checkpoints.v1",
+  "status": "frozen",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "home.default",
+      "route_id": "home",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/home-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "media_regions": [
+          {
+            "id": "promo-media",
+            "x": 0,
+            "y": 500,
+            "width": 1440,
+            "height": 230,
+            "threshold": 0.94
+          }
+        ]
+      },
+      "acceptance_eligible": true
+    },
+    {
+      "id": "catalog.default",
+      "route_id": "catalog",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/search/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/catalog-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "state-results",
+            "x": 360,
+            "y": 280,
+            "width": 1040,
+            "height": 620,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "collection.default",
+      "route_id": "collection",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/collections/introductory-programming/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/collection-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "content-media",
+            "x": 80,
+            "y": 240,
+            "width": 1280,
+            "height": 660,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "stories.default",
+      "route_id": "stories",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/stories/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/stories-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "content-media",
+            "x": 80,
+            "y": 240,
+            "width": 1280,
+            "height": 660,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "story-adrian.default",
+      "route_id": "story-adrian",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/stories/adrian-pastor/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/story-adrian-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "content-media",
+            "x": 80,
+            "y": 240,
+            "width": 1280,
+            "height": 660,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "about.default",
+      "route_id": "about",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/about/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/about-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "id": "get-started.default",
+      "route_id": "get-started",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/pages/get-started/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/get-started-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "id": "educator.default",
+      "route_id": "educator",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/educator/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/educator-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        }
+      }
+    },
+    {
+      "id": "newsletter.default",
+      "route_id": "newsletter",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/newsletter/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/newsletter-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "newsletter-form",
+            "x": 100,
+            "y": 220,
+            "width": 1240,
+            "height": 600,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "course-overview.default",
+      "route_id": "course-overview",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/course-overview-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "media_regions": [
+          {
+            "id": "course-content",
+            "x": 250,
+            "y": 200,
+            "width": 1160,
+            "height": 600,
+            "threshold": 0.94
+          }
+        ]
+      },
+      "acceptance_eligible": true
+    },
+    {
+      "id": "catalog-course-overview.default",
+      "route_id": "catalog-course-overview",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/catalog-course-overview-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "course-content",
+            "x": 250,
+            "y": 200,
+            "width": 1160,
+            "height": 600,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "course-syllabus.default",
+      "route_id": "course-syllabus",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/course-syllabus-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94
+      }
+    },
+    {
+      "id": "course-calendar.default",
+      "route_id": "course-calendar",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/calendar/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v3/course-calendar-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94
+      }
+    },
+    {
+      "id": "course-readings.default",
+      "route_id": "course-readings",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v3/course-readings-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94
+      }
+    },
+    {
+      "id": "course-reading-deep.default",
+      "route_id": "course-reading-deep",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/binary-search-trees/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/course-reading-deep-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94
+      }
+    },
+    {
+      "id": "course-lecture-notes.default",
+      "route_id": "course-lecture-notes",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v3/course-lecture-notes-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94
+      }
+    },
+    {
+      "id": "course-assignments.default",
+      "route_id": "course-assignments",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v3/course-assignments-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94
+      }
+    },
+    {
+      "id": "course-exams.default",
+      "route_id": "course-exams",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/exams/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v3/course-exams-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94
+      }
+    },
+    {
+      "id": "resource-index.default",
+      "route_id": "resource-index",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/problem-sets/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/resource-index-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "media_regions": [
+          {
+            "id": "course-content",
+            "x": 250,
+            "y": 200,
+            "width": 1160,
+            "height": 600,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "resource-problem-set.default",
+      "route_id": "resource-problem-set",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_ps1/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/resource-problem-set-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "media_regions": [
+          {
+            "id": "course-content",
+            "x": 250,
+            "y": 200,
+            "width": 1160,
+            "height": 600,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "resource-lecture-note.default",
+      "route_id": "resource-lecture-note",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_lec01/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/resource-lecture-note-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "media_regions": [
+          {
+            "id": "course-content",
+            "x": 250,
+            "y": 200,
+            "width": 1160,
+            "height": 600,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "resource-final-exam.default",
+      "route_id": "resource-final-exam",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_final/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/resource-final-exam-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "media_regions": [
+          {
+            "id": "course-content",
+            "x": 250,
+            "y": 200,
+            "width": 1160,
+            "height": 600,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "course-download.default",
+      "route_id": "course-download",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/download/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/course-download-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "media_regions": [
+          {
+            "id": "download-panel",
+            "x": 281,
+            "y": 243,
+            "width": 824,
+            "height": 220,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "video-gallery.default",
+      "route_id": "video-gallery",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/video_galleries/video-lectures/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/video-gallery-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "static-video-list",
+            "x": 281,
+            "y": 325,
+            "width": 824,
+            "height": 575,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "video-resource.default",
+      "route_id": "video-resource",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/video-resource-default-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "static-video-player",
+            "x": 281,
+            "y": 325,
+            "width": 804,
+            "height": 516,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "source-legacy-boundary.default",
+      "route_id": "source-legacy-boundary",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/external-resources/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-visual-excluded-bad-source",
+      "acceptance_eligible": false,
+      "visual_unavailable_reason": "The captured source frame is a bad blank/error raster; forcing the candidate to match it would violate the frozen non-blank boundary requirement."
+    },
+    {
+      "id": "external-boundary.default",
+      "route_id": "external-boundary",
+      "state": "branded-local-soft-404",
+      "viewport": "desktop",
+      "clone_path": "/external-boundary/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-source-evidence-gap",
+      "acceptance_eligible": false,
+      "visual_unavailable_reason": "This branded offline-only external boundary has no truthful source-page visual counterpart."
+    },
+    {
+      "id": "data-boundary.default",
+      "route_id": "data-boundary",
+      "state": "branded-retained-snapshot-boundary",
+      "viewport": "desktop",
+      "clone_path": "/data-boundary/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-source-evidence-gap",
+      "acceptance_eligible": false,
+      "visual_unavailable_reason": "This branded retained-snapshot boundary is a clone-only state with no truthful source-page visual counterpart."
+    },
+    {
+      "id": "not-found.default",
+      "route_id": "not-found",
+      "state": "default",
+      "viewport": "desktop",
+      "clone_path": "/not-found/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-source-evidence-gap",
+      "acceptance_eligible": false,
+      "visual_unavailable_reason": "No reliable same-capture source 404 frame was obtained; candidate output is verified semantically and must not be compared with a fabricated source image."
+    },
+    {
+      "id": "catalog.second-batch",
+      "route_id": "catalog",
+      "state": "second-batch",
+      "viewport": "desktop",
+      "clone_path": "/search/?state=second-batch",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/catalog-second-batch-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "state-results",
+            "x": 360,
+            "y": 280,
+            "width": 1040,
+            "height": 620,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "catalog.math",
+      "route_id": "catalog",
+      "state": "filtered-math-199",
+      "viewport": "desktop",
+      "clone_path": "/search/?state=math",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/catalog-math-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "state-results",
+            "x": 360,
+            "y": 280,
+            "width": 1040,
+            "height": 620,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "catalog.math-undergraduate",
+      "route_id": "catalog",
+      "state": "filtered-math-undergraduate-110",
+      "viewport": "desktop",
+      "clone_path": "/search/?state=math-undergraduate",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/catalog-math-undergraduate-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "state-results",
+            "x": 360,
+            "y": 280,
+            "width": 1040,
+            "height": 620,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "catalog.course-number",
+      "route_id": "catalog",
+      "state": "sorted-course-number",
+      "viewport": "desktop",
+      "clone_path": "/search/?state=course-number",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/catalog-course-number-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "state-results",
+            "x": 360,
+            "y": 280,
+            "width": 1040,
+            "height": 620,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "catalog.empty",
+      "route_id": "catalog",
+      "state": "empty-zero-results",
+      "viewport": "desktop",
+      "clone_path": "/search/?state=empty",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/catalog-empty-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "state-results",
+            "x": 360,
+            "y": 280,
+            "width": 1040,
+            "height": 620,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "catalog.error",
+      "route_id": "catalog",
+      "state": "api-error",
+      "viewport": "desktop",
+      "clone_path": "/search/?state=error",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/catalog-error-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "state-results",
+            "x": 360,
+            "y": 280,
+            "width": 1040,
+            "height": 620,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "catalog.retry-stale",
+      "route_id": "catalog",
+      "state": "successful-retry-retains-error-shell",
+      "viewport": "desktop",
+      "clone_path": "/search/?state=retry-stale",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/catalog-retry-stale-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "state-results",
+            "x": 360,
+            "y": 280,
+            "width": 1040,
+            "height": 620,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "catalog.reload-recovered",
+      "route_id": "catalog",
+      "state": "full-reload-recovers-default",
+      "viewport": "desktop",
+      "clone_path": "/search/?state=reload-recovered",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/catalog-reload-recovered-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "state-results",
+            "x": 360,
+            "y": 280,
+            "width": 1040,
+            "height": 620,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "catalog.resources",
+      "route_id": "catalog",
+      "state": "resources-first-batch-10000-results",
+      "viewport": "desktop",
+      "clone_path": "/search/?state=resources",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/catalog-resources-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 116,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 784,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "state-results",
+            "x": 360,
+            "y": 280,
+            "width": 1040,
+            "height": 620,
+            "threshold": 0.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "home.carousel-second-batches",
+      "route_id": "home",
+      "state": "all-home-carousels-second-batch",
+      "viewport": "desktop",
+      "clone_path": "/?state=carousel-second-batches",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-source-evidence-gap",
+      "acceptance_eligible": false,
+      "visual_unavailable_reason": "Four genuine source component rasters exist and pass component-level comparison, but no genuine 1440x900 source frame exists for the composed all-carousels second-batch state."
+    },
+    {
+      "id": "video.static-disabled",
+      "route_id": "video-resource",
+      "state": "static-thumbnail-playback-disabled",
+      "viewport": "desktop",
+      "clone_path": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/",
+      "priority": "p0",
+      "evidence_kind": "current-direct",
+      "verification_kind": "g3c-exact-fullpage-visual-diagnostic",
+      "acceptance_eligible": true,
+      "visual_contract": {
+        "source_artifact_path": "source-current/g3c/fullpage-v2/video-static-disabled-1440xfull.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "comparison_region": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "full_page_threshold": 0.94,
+        "semantic_regions": [
+          {
+            "id": "header",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 80,
+            "threshold": 0.94
+          },
+          {
+            "id": "main",
+            "x": 0,
+            "y": 80,
+            "width": 1440,
+            "height": 820,
+            "threshold": 0.94
+          }
+        ],
+        "metric": "pixel-mae-similarity-v1",
+        "threshold": 0.94,
+        "source_crop": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media_regions": [
+          {
+            "id": "static-video-player",
+            "x": 281,
+            "y": 325,
+            "width": 804,
+            "height": 516,
+            "threshold": 0.94
+          }
+        ]
+      }
+    }
+  ]
+}

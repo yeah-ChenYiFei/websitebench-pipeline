@@ -1,0 +1,43 @@
+{
+  "backend_profile": "none",
+  "capabilities": [
+    {
+      "applicability": "not-applicable",
+      "id": "accounts",
+      "rationale": "The contributor explicitly selected a frontend-only clone."
+    },
+    {
+      "applicability": "not-applicable",
+      "id": "password-recovery",
+      "rationale": "The contributor explicitly selected a frontend-only clone."
+    },
+    {
+      "applicability": "not-applicable",
+      "id": "transactional-mail",
+      "rationale": "The contributor explicitly selected a frontend-only clone."
+    },
+    {
+      "applicability": "not-applicable",
+      "id": "orders",
+      "rationale": "The contributor explicitly selected a frontend-only clone."
+    },
+    {
+      "applicability": "not-applicable",
+      "id": "checkout",
+      "rationale": "The contributor explicitly selected a frontend-only clone."
+    },
+    {
+      "applicability": "not-applicable",
+      "id": "payments",
+      "rationale": "The contributor explicitly selected a frontend-only clone."
+    },
+    {
+      "applicability": "not-applicable",
+      "id": "database",
+      "rationale": "The contributor explicitly selected a frontend-only clone."
+    }
+  ],
+  "runtime_required": false,
+  "schema_version": "offline-clone.contribution-backend-scope.v1",
+  "site_id": "mit-opencourseware"
+}

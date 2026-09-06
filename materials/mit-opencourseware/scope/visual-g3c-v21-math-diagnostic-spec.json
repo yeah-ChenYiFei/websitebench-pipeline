@@ -1,0 +1,54 @@
+{
+  "schema_version": "websitebench.offline-clone.visual-comparison-spec.v1",
+  "checkpoints": [
+    {
+      "id": "catalog-math",
+      "source": {
+        "path": "../source-current/g3c/fullpage-v2/catalog-math-1440xfull.png"
+      },
+      "candidate": {
+        "path": "../artifacts/offline-clone/g3c/v21-math-targeted/candidate/catalog-math-1440xfull.png"
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "capture_mode": "full_page",
+      "regions": [
+        {
+          "id": "full",
+          "box": "full",
+          "metric": "normalized_mae",
+          "threshold": 0.06
+        },
+        {
+          "id": "header",
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 116,
+          "metric": "normalized_mae",
+          "threshold": 0.06
+        },
+        {
+          "id": "main",
+          "x": 0,
+          "y": 116,
+          "width": 1440,
+          "height": 784,
+          "metric": "normalized_mae",
+          "threshold": 0.06
+        },
+        {
+          "id": "state-results",
+          "x": 360,
+          "y": 280,
+          "width": 1040,
+          "height": 620,
+          "metric": "normalized_mae",
+          "threshold": 0.06
+        }
+      ]
+    }
+  ]
+}

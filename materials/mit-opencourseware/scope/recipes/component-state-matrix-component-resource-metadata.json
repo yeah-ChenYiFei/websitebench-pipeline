@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "record_kind": "component",
+  "record_id": "resource-metadata",
+  "subject_kind": "component",
+  "subject_id": "resource-metadata",
+  "kind": "component-state",
+  "checkpoint_id": "resource-problem-set.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-component='resource-metadata']",
+  "expected_state": "visible"
+}

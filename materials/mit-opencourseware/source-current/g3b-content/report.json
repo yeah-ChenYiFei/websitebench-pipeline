@@ -1,0 +1,208 @@
+{
+  "schema_version": "mit-ocw.g3b-content-addendum.v1",
+  "capture_id": "mit-opencourseware-20260903T032020Z",
+  "created_at": "2026-09-03T09:47:52.884263Z",
+  "does_not_modify_g1_evidence": true,
+  "authority": "four-create-only-current-direct-anonymous-same-origin-get-batches",
+  "authoritative_interface_audit": {
+    "command": "./.venv/bin/python -m websitebench.workflow.cli acquire-source --help",
+    "implementation": "src/websitebench/workflow/acquisition.py",
+    "finding": "The authoritative interface retains dom.html and visible-text.txt, but also captures a full-page screenshot and page resources per row.",
+    "decision": "Use a narrower content-only GET addendum for 732 frozen URLs to avoid duplicating visual evidence and page-resource capture; preserve exact raw HTML, visible-text hashes, response provenance, and separately hashed sanitized fragments."
+  },
+  "request_policy": {
+    "method": "GET",
+    "allowed_origin": "https://ocw.mit.edu",
+    "external_requests": 0,
+    "post_requests": 0,
+    "asset_requests": "same-origin img/style dependencies only"
+  },
+  "closure": {
+    "status": "closed",
+    "routes_expected": 732,
+    "routes_captured": 732,
+    "route_failures": 0,
+    "http_200": 732,
+    "families": {
+      "catalog-search": 1,
+      "collection": 10,
+      "course-download": 26,
+      "course-overview": 34,
+      "course-section-or-deep-link": 219,
+      "home": 1,
+      "resource-detail-or-index": 418,
+      "site-information-or-boundary": 8,
+      "story-detail": 13,
+      "story-index": 1,
+      "video-gallery": 1
+    }
+  },
+  "content": {
+    "raw_bytes": 48022317,
+    "runtime_bytes": 6300347,
+    "source_visible_text_bytes": 1934818,
+    "runtime_visible_text_bytes": 1941121,
+    "unique_raw_sha256": 732,
+    "unique_runtime_visible_text_sha256": 719,
+    "selector_counts": {
+      "body:fallback": 4,
+      "div#main-course-section": 27,
+      "div#main-course-section (course-list/boundary variant)": 5,
+      "div#main-course-section (resource-index variant)": 17,
+      "div#search-page": 1,
+      "div.collection-outer-container": 10,
+      "div.course-home-grid.col-md-8": 29,
+      "div.page-container (information variant)": 1,
+      "div.page-single": 3,
+      "div.resource-page-container": 401,
+      "main#course-content-section": 219,
+      "range:div.home-banner..footer#footer-container": 1,
+      "range:div.testimonial-banner..footer#footer-container": 14
+    },
+    "selector_fallback_paths": [
+      "/external-resources/",
+      "/notifications/",
+      "/staff/",
+      "/websites/"
+    ],
+    "fallback_note": "The four frozen legacy boundary URLs return an intentionally empty SSR page plus the OCW external-link modal; candidate renders the branded local boundary and preserves that current source response."
+  },
+  "assets": {
+    "new_retained": 40,
+    "new_bytes": 14313005,
+    "unavailable": 4,
+    "unavailable_map": {
+      "https://ocw.mit.edu/images/educator/icon-question-hass-h.png": {
+        "url": "https://ocw.mit.edu/images/educator/icon-question-hass-h.png",
+        "status": "source-http-error",
+        "http_status": 404,
+        "attempts": [
+          {
+            "attempt": 1,
+            "started_at": "2026-09-03T09:38:01.443125Z",
+            "finished_at": "2026-09-03T09:38:01.493248Z",
+            "status": 404,
+            "final_url": "https://ocw.mit.edu/images/educator/icon-question-hass-h.png",
+            "bytes": 3431
+          }
+        ]
+      },
+      "https://ocw.mit.edu/images/educator/icon-question-hass.png": {
+        "url": "https://ocw.mit.edu/images/educator/icon-question-hass.png",
+        "status": "source-http-error",
+        "http_status": 404,
+        "attempts": [
+          {
+            "attempt": 1,
+            "started_at": "2026-09-03T09:37:26.417556Z",
+            "finished_at": "2026-09-03T09:37:26.472105Z",
+            "status": 404,
+            "final_url": "https://ocw.mit.edu/images/educator/icon-question-hass.png",
+            "bytes": 3431
+          }
+        ]
+      },
+      "https://ocw.mit.edu/images/educator/icon-question-hlevel.png": {
+        "url": "https://ocw.mit.edu/images/educator/icon-question-hlevel.png",
+        "status": "source-http-error",
+        "http_status": 404,
+        "attempts": [
+          {
+            "attempt": 1,
+            "started_at": "2026-09-03T09:37:26.479130Z",
+            "finished_at": "2026-09-03T09:37:26.565542Z",
+            "status": 404,
+            "final_url": "https://ocw.mit.edu/images/educator/icon-question-hlevel.png",
+            "bytes": 3431
+          }
+        ]
+      },
+      "https://ocw.mit.edu/images/educator/icon-question-cih.png": {
+        "url": "https://ocw.mit.edu/images/educator/icon-question-cih.png",
+        "status": "source-http-error",
+        "http_status": 404,
+        "attempts": [
+          {
+            "attempt": 1,
+            "started_at": "2026-09-03T09:38:01.393385Z",
+            "finished_at": "2026-09-03T09:38:01.443007Z",
+            "status": 404,
+            "final_url": "https://ocw.mit.edu/images/educator/icon-question-cih.png",
+            "bytes": 3431
+          }
+        ]
+      }
+    }
+  },
+  "sanitization": {
+    "rewrite_totals": {
+      "asset_rewrites": 2022,
+      "asset_unavailable": 5,
+      "blocked_post_forms": 1,
+      "download_href_rewrites": 1421,
+      "external_boundary_rewrites": 1911,
+      "non_http_href_boundary": 1,
+      "removed_attributes": 559,
+      "removed_iframe": 29,
+      "removed_noscript": 15,
+      "removed_script": 456,
+      "removed_video": 25,
+      "route_href_rewrites": 1461,
+      "same_origin_boundary_rewrites": 2817,
+      "unwrapped_tags": 65
+    },
+    "runtime_remote_requests": 0,
+    "external_asset_requests": 0,
+    "post_requests": 0,
+    "video_policy": "static-disabled"
+  },
+  "batches": [
+    {
+      "batch_id": "g3b-content-batch-01",
+      "report": "source-current/g3b-content/batch-01/report.json",
+      "routes": 183,
+      "raw_bytes": 14535367,
+      "runtime_bytes": 3707657,
+      "status": "closed"
+    },
+    {
+      "batch_id": "g3b-content-batch-02",
+      "report": "source-current/g3b-content/batch-02/report.json",
+      "routes": 183,
+      "raw_bytes": 12511137,
+      "runtime_bytes": 1173942,
+      "status": "closed"
+    },
+    {
+      "batch_id": "g3b-content-batch-03",
+      "report": "source-current/g3b-content/batch-03/report.json",
+      "routes": 183,
+      "raw_bytes": 11136951,
+      "runtime_bytes": 693576,
+      "status": "closed"
+    },
+    {
+      "batch_id": "g3b-content-batch-04",
+      "report": "source-current/g3b-content/batch-04/report.json",
+      "routes": 183,
+      "raw_bytes": 9838862,
+      "runtime_bytes": 1133182,
+      "status": "closed"
+    }
+  ],
+  "corrections": [
+    {
+      "correction_id": "g3b-runtime-correction-batch-01",
+      "report": "source-current/g3b-content-corrections/batch-01/report.json",
+      "routes": 183,
+      "status": "closed"
+    },
+    {
+      "correction_id": "g3b-runtime-correction-batch-02",
+      "report": "source-current/g3b-content-corrections/batch-02/report.json",
+      "routes": 183,
+      "status": "closed"
+    }
+  ],
+  "index_migration": "source-current/g3b-content-index-migration-v2/report.json"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "external-links.json",
+  "contract_schema_version": "websitebench.external-links.v3",
+  "record_kind": "external-link",
+  "record_id": "chalk-radio",
+  "subject_kind": "external-link",
+  "subject_id": "chalk-radio",
+  "kind": "external-link",
+  "checkpoint_id": "home.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-external='chalk-radio']",
+  "expected_href": "https://chalk-radio.simplecast.com/"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "full-route-inventory.json",
+  "contract_schema_version": "websitebench.full-route-inventory.v3",
+  "record_kind": "route",
+  "record_id": "data-boundary",
+  "subject_kind": "route",
+  "subject_id": "data-boundary",
+  "kind": "route-identity",
+  "checkpoint_id": "data-boundary.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "expected_status": 200,
+  "expected_title": "This item is outside the retained MIT OpenCourseWare snapshot"
+}

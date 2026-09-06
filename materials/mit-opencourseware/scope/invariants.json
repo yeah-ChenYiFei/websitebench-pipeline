@@ -1,0 +1,191 @@
+{
+  "schema_version": "offline-clone.invariants.v1",
+  "status": "frozen",
+  "invariants": [
+    {
+      "id": "runtime-network-closed",
+      "priority": "p0",
+      "statement": "Every rendered route, state, asset, download, video, and boundary attempts zero runtime remote requests.",
+      "journey_ids": [
+        "home-discovery",
+        "catalog-state-recovery",
+        "navigation-boundaries"
+      ],
+      "coverage_dimension_ids": [
+        "runtime-network-closure"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_c1_closure.py",
+        "clone/tests/test_downloads_streaming.py"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_boundaries_and_hard_404_recovery_are_local"
+      ]
+    },
+    {
+      "id": "route-identity-exact",
+      "priority": "p0",
+      "statement": "All 732 captured paths retain their frozen HTTP status, title, family, page id, and captured identity.",
+      "journey_ids": [
+        "route-identity-closure"
+      ],
+      "coverage_dimension_ids": [
+        "captured-route-instances"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_c1_closure.py",
+        "clone/tests/test_downloads_streaming.py"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_boundaries_and_hard_404_recovery_are_local"
+      ]
+    },
+    {
+      "id": "catalog-state-deterministic",
+      "priority": "p0",
+      "statement": "Catalog batches, filters, sort, tabs, loading, empty, error, retry, clear, and reload states are deterministic.",
+      "journey_ids": [
+        "catalog-state-recovery"
+      ],
+      "coverage_dimension_ids": [
+        "catalog-local-states"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_c1_closure.py",
+        "clone/tests/test_downloads_streaming.py"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_boundaries_and_hard_404_recovery_are_local"
+      ]
+    },
+    {
+      "id": "home-content-denominators",
+      "priority": "p0",
+      "statement": "Home preserves 16 cards, 15 complete course expectations, 141 sections, 184 resources, and 13 story details.",
+      "journey_ids": [
+        "home-discovery"
+      ],
+      "coverage_dimension_ids": [
+        "home-content"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_c1_closure.py",
+        "clone/tests/test_downloads_streaming.py"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_boundaries_and_hard_404_recovery_are_local"
+      ]
+    },
+    {
+      "id": "family-structures-distinct",
+      "priority": "p0",
+      "statement": "Each of the 11 captured route families renders its own page structure and identity.",
+      "journey_ids": [
+        "course-material-navigation",
+        "collection-story-information"
+      ],
+      "coverage_dimension_ids": [
+        "route-families"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_c1_closure.py",
+        "clone/tests/test_downloads_streaming.py"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_boundaries_and_hard_404_recovery_are_local"
+      ]
+    },
+    {
+      "id": "downloads-byte-exact",
+      "priority": "p0",
+      "statement": "All 480 logical downloads reconstruct 478 unique payload hashes and 1,551,223,348 logical bytes repeatably.",
+      "journey_ids": [
+        "download-closure"
+      ],
+      "coverage_dimension_ids": [
+        "download-closure"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_c1_closure.py",
+        "clone/tests/test_downloads_streaming.py"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_boundaries_and_hard_404_recovery_are_local"
+      ]
+    },
+    {
+      "id": "presentation-assets-exact",
+      "priority": "p0",
+      "statement": "All 284 retained presentation assets serve exact local bytes while nine distinct source-404 asset identities (five initial plus four G3B content assets) remain explicitly unavailable.",
+      "journey_ids": [
+        "presentation-asset-closure"
+      ],
+      "coverage_dimension_ids": [
+        "presentation-assets"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_c1_closure.py",
+        "clone/tests/test_downloads_streaming.py"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_boundaries_and_hard_404_recovery_are_local"
+      ]
+    },
+    {
+      "id": "video-static-disabled",
+      "priority": "p0",
+      "statement": "Lecture video presentation is static and disabled without iframe, media, or remote playback.",
+      "journey_ids": [
+        "video-disabled"
+      ],
+      "coverage_dimension_ids": [
+        "boundaries"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_c1_closure.py",
+        "clone/tests/test_downloads_streaming.py"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_boundaries_and_hard_404_recovery_are_local"
+      ]
+    },
+    {
+      "id": "local-boundaries-recoverable",
+      "priority": "p0",
+      "statement": "External, data, newsletter, explicit not-found, and hard-404 flows remain local and recoverable.",
+      "journey_ids": [
+        "newsletter-boundary",
+        "navigation-boundaries"
+      ],
+      "coverage_dimension_ids": [
+        "boundaries"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_c1_closure.py",
+        "clone/tests/test_downloads_streaming.py"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_boundaries_and_hard_404_recovery_are_local"
+      ]
+    },
+    {
+      "id": "immutable-restart",
+      "priority": "p0",
+      "statement": "The read-only route, asset, and download snapshot remains deterministic across restart and reset.",
+      "journey_ids": [
+        "route-identity-closure",
+        "download-closure"
+      ],
+      "coverage_dimension_ids": [
+        "captured-route-instances"
+      ],
+      "positive_test_refs": [
+        "clone/tests/test_c1_closure.py",
+        "clone/tests/test_downloads_streaming.py"
+      ],
+      "negative_test_refs": [
+        "clone/tests/test_smoke.py::test_boundaries_and_hard_404_recovery_are_local"
+      ]
+    }
+  ]
+}

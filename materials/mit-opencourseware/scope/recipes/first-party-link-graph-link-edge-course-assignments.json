@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "record_kind": "link-edge",
+  "record_id": "course-assignments",
+  "subject_kind": "link-edge",
+  "subject_id": "course-assignments",
+  "kind": "first-party-link",
+  "checkpoint_id": "course-overview.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-link='course-assignments']",
+  "expected_href": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/"
+}

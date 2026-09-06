@@ -1,0 +1,49 @@
+{
+  "schema_version": "mit-ocw.g3b-content-runtime-correction-aggregate.v2",
+  "capture_id": "mit-opencourseware-20260903T032020Z",
+  "created_at": "2026-09-03T09:55:17.817673Z",
+  "create_only": true,
+  "does_not_modify_source_batches": true,
+  "reason": "Drop style/script/media text, canonicalize slash aliases and the exact G2-A PDF edge, and publish balanced network-closed runtime fragments.",
+  "closure": {
+    "status": "closed",
+    "routes": 732,
+    "balanced": 732,
+    "batches": 4
+  },
+  "source_visible_text_bytes": 1934818,
+  "runtime_bytes": 6210668,
+  "selector_fallback_paths": [
+    "/external-resources/",
+    "/notifications/",
+    "/staff/",
+    "/websites/"
+  ],
+  "batch_reports": [
+    {
+      "correction_id": "g3b-runtime-correction-v2-batch-01",
+      "report": "source-current/g3b-content-corrections-v2/batch-01/report.json",
+      "routes": 183,
+      "status": "closed"
+    },
+    {
+      "correction_id": "g3b-runtime-correction-v2-batch-02",
+      "report": "source-current/g3b-content-corrections-v2/batch-02/report.json",
+      "routes": 183,
+      "status": "closed"
+    },
+    {
+      "correction_id": "g3b-runtime-correction-v2-batch-03",
+      "report": "source-current/g3b-content-corrections-v2/batch-03/report.json",
+      "routes": 183,
+      "status": "closed"
+    },
+    {
+      "correction_id": "g3b-runtime-correction-v2-batch-04",
+      "report": "source-current/g3b-content-corrections-v2/batch-04/report.json",
+      "routes": 183,
+      "status": "closed"
+    }
+  ],
+  "runtime_remote_requests": 0
+}

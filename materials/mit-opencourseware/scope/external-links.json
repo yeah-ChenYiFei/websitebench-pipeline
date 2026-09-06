@@ -1,0 +1,120 @@
+{
+  "schema_version": "websitebench.external-links.v3",
+  "site_id": "mit-opencourseware",
+  "status": "frozen",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "policy": "Preserve the observed destination identity, intercept activation before navigation, and render a branded local HTTP 200 external boundary; no destination content or runtime request is permitted.",
+  "count": 10,
+  "links": [
+    {
+      "id": "giving",
+      "source_expectation": "The source exposes https://giving.mit.edu/give/to/ocw/; activation must be intercepted into the branded local external boundary without contacting the destination.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/external-links-external-link-giving.json"
+      ]
+    },
+    {
+      "id": "help",
+      "source_expectation": "The source exposes https://mitocw.zendesk.com/hc/en-us; activation must be intercepted into the branded local external boundary without contacting the destination.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/external-links-external-link-help.json"
+      ]
+    },
+    {
+      "id": "contact",
+      "source_expectation": "The source exposes https://mitocw.zendesk.com/hc/en-us/requests/new; activation must be intercepted into the branded local external boundary without contacting the destination.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/external-links-external-link-contact.json"
+      ]
+    },
+    {
+      "id": "mit-learn",
+      "source_expectation": "The source exposes https://learn.mit.edu/; activation must be intercepted into the branded local external boundary without contacting the destination.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/external-links-external-link-mit-learn.json"
+      ]
+    },
+    {
+      "id": "ocw-to-go",
+      "source_expectation": "The source exposes https://ocwtogo.mit.edu/; activation must be intercepted into the branded local external boundary without contacting the destination.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/external-links-external-link-ocw-to-go.json"
+      ]
+    },
+    {
+      "id": "chalk-radio",
+      "source_expectation": "The source exposes https://chalk-radio.simplecast.com/; activation must be intercepted into the branded local external boundary without contacting the destination.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/external-links-external-link-chalk-radio.json"
+      ]
+    },
+    {
+      "id": "youtube",
+      "source_expectation": "The source exposes https://www.youtube.com/; activation must be intercepted into the branded local external boundary without contacting the destination.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/external-links-external-link-youtube.json"
+      ]
+    },
+    {
+      "id": "creative-commons",
+      "source_expectation": "The source exposes https://creativecommons.org/licenses/by-nc-sa/4.0/; activation must be intercepted into the branded local external boundary without contacting the destination.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/external-links-external-link-creative-commons.json"
+      ]
+    },
+    {
+      "id": "accessibility",
+      "source_expectation": "The source exposes https://accessibility.mit.edu/; activation must be intercepted into the branded local external boundary without contacting the destination.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/external-links-external-link-accessibility.json"
+      ]
+    },
+    {
+      "id": "open-learning",
+      "source_expectation": "The source exposes https://openlearning.mit.edu/; activation must be intercepted into the branded local external boundary without contacting the destination.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/external-links-external-link-open-learning.json"
+      ]
+    }
+  ]
+}

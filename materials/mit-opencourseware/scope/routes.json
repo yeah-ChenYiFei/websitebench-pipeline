@@ -1,0 +1,307 @@
+{
+  "schema_version": "offline-clone.routes.v1",
+  "routes": [
+    {
+      "id": "home",
+      "route_pattern": "/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default",
+        "carousel-second-batches"
+      ]
+    },
+    {
+      "id": "catalog",
+      "route_pattern": "/search/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default",
+        "second-batch",
+        "math",
+        "math-undergraduate",
+        "course-number",
+        "loading",
+        "empty",
+        "error",
+        "retry-stale",
+        "reload-recovered",
+        "resources"
+      ]
+    },
+    {
+      "id": "collection",
+      "route_pattern": "/collections/introductory-programming/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "stories",
+      "route_pattern": "/stories/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "secondary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "story-adrian",
+      "route_pattern": "/stories/adrian-pastor/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "secondary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "about",
+      "route_pattern": "/about/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "secondary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "get-started",
+      "route_pattern": "/pages/get-started/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "secondary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "educator",
+      "route_pattern": "/educator/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "secondary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "newsletter",
+      "route_pattern": "/newsletter/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "secondary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "course-overview",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "catalog-course-overview",
+      "route_pattern": "/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "course-syllabus",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "course-calendar",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/calendar/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "course-readings",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "course-reading-deep",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/binary-search-trees/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "course-lecture-notes",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "course-assignments",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "course-exams",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/exams/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "resource-index",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/problem-sets/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "resource-problem-set",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_ps1/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "resource-lecture-note",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_lec01/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "resource-final-exam",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_final/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "course-download",
+      "route_pattern": "/courses/6-006-introduction-to-algorithms-fall-2011/download/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "video-gallery",
+      "route_pattern": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/video_galleries/video-lectures/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "video-resource",
+      "route_pattern": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "primary",
+      "states": [
+        "default",
+        "static-disabled"
+      ]
+    },
+    {
+      "id": "source-legacy-boundary",
+      "route_pattern": "/external-resources/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "boundary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "external-boundary",
+      "route_pattern": "/external-boundary/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "boundary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "data-boundary",
+      "route_pattern": "/data-boundary/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "boundary",
+      "states": [
+        "default"
+      ]
+    },
+    {
+      "id": "not-found",
+      "route_pattern": "/not-found/",
+      "local_destination": true,
+      "priority": "p0",
+      "purpose_edge": "boundary",
+      "states": [
+        "default"
+      ]
+    }
+  ]
+}

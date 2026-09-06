@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "all-controls-inventory.json",
+  "contract_schema_version": "websitebench.all-controls.v3",
+  "record_kind": "control",
+  "record_id": "catalog-clear-all",
+  "subject_kind": "control",
+  "subject_id": "catalog-clear-all",
+  "kind": "control-state",
+  "checkpoint_id": "catalog.math-undergraduate",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-control='catalog-clear-all']",
+  "expected_state": "enabled"
+}

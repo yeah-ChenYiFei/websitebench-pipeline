@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "phase": "g3c-source-raster-classification-correction-v1",
+  "create_only_correction_to": "source-current/g3c/mapping-report.json",
+  "original_mapping_report_sha256": "0b3d275eafcc405bb358566e0532268f2d3e98ffe8416510763319121e83d966",
+  "v1_visual_result": "artifacts/offline-clone/g3c/v1/visual-comparison.json",
+  "v1_visual_result_sha256": "f6ab3e5c86fb2433f4ed88885ff77c79ab8e0f72f56f45f3678f11c3d0baa0f1",
+  "corrected_counts": {
+    "good_exact_source": 35,
+    "bad_source_excluded": 1,
+    "component_only": 1,
+    "missing_local_only": 3,
+    "total": 40
+  },
+  "correction": {
+    "checkpoint_id": "source-legacy-boundary.default",
+    "prior_class": "exact-full-or-viewport",
+    "corrected_class": "visual-excluded-by-bad-source",
+    "source_path": "source-current/g3c/exact/source-legacy-boundary--default.png",
+    "source_sha256": "99db2a93b06fa1bf617f5c495e02dcf6c0b76961108491217e2cf4fed8699d35",
+    "viewport_path": "source-current/g3c/viewports-v1/source-legacy-boundary-default-1440x900.png",
+    "viewport_sha256": "3fcaeb02c8b59e59c7524e4c6fd08611f2f5f1d0f9ba26ef259ff4d241af3b64",
+    "observed_unique_rgba_colors": 1,
+    "reason": "The locked source SSR main is empty and its source raster is solid white. The local clone must retain the semantic boundary identity, so pixel matching this bad raster would be invalid."
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "schema_version": "offline-clone.journeys.v1",
+  "journeys": [
+    {
+      "id": "home-discovery",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Open the frozen home page.",
+        "Traverse both featured, new-course, and story carousel batches.",
+        "Follow retained local course, collection, story, and information links."
+      ]
+    },
+    {
+      "id": "catalog-state-recovery",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Open the 2,584-result catalog snapshot.",
+        "Exercise both card batches, filters, sort, loading, resources, and empty states.",
+        "Recover deterministically through error, stale retry, clear, and reload flows."
+      ]
+    },
+    {
+      "id": "course-material-navigation",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Open retained course overview identities.",
+        "Navigate distinct section, deep-link, resource-index, and resource-detail families.",
+        "Preserve every captured heading, title, page identity, and local edge."
+      ]
+    },
+    {
+      "id": "download-closure",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Select a captured course archive or attachment.",
+        "Receive exact local headers and streamed bytes.",
+        "Repeat the request and obtain the same length, filename, MIME type, and SHA-256."
+      ]
+    },
+    {
+      "id": "collection-story-information",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p1",
+      "status": "frozen",
+      "steps": [
+        "Open collections, stories, about, educator, and get-started routes.",
+        "Observe their distinct captured headings and link identities."
+      ]
+    },
+    {
+      "id": "newsletter-boundary",
+      "actor": "visitor",
+      "kind": "boundary",
+      "priority": "p1",
+      "status": "frozen",
+      "steps": [
+        "Open the newsletter route.",
+        "Enter an email in the local form.",
+        "Terminate at the branded local external boundary without a remote POST."
+      ]
+    },
+    {
+      "id": "video-disabled",
+      "actor": "visitor",
+      "kind": "boundary",
+      "priority": "p1",
+      "status": "frozen",
+      "steps": [
+        "Open the lecture gallery and first lecture resource.",
+        "Observe retained static thumbnails.",
+        "Confirm playback is visibly disabled and no media request is made."
+      ]
+    },
+    {
+      "id": "navigation-boundaries",
+      "actor": "visitor",
+      "kind": "boundary",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Activate a retained external destination or catalog card beyond full-detail scope.",
+        "Arrive at the matching local external or data boundary.",
+        "Recover from the explicit HTTP-200 not-found route and an additional hard HTTP 404."
+      ]
+    },
+    {
+      "id": "route-identity-closure",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Request every one of the 732 captured route paths.",
+        "Match each frozen HTTP status, title, family, page id, and captured heading."
+      ]
+    },
+    {
+      "id": "presentation-asset-closure",
+      "actor": "visitor",
+      "kind": "success",
+      "priority": "p0",
+      "status": "frozen",
+      "steps": [
+        "Resolve every retained presentation URL to its local runtime copy.",
+        "Verify 284 retained presentation-asset hashes and keep nine distinct source-404 asset identities (five initial plus four G3B content assets) explicitly unavailable."
+      ]
+    }
+  ]
+}

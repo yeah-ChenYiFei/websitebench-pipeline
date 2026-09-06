@@ -1,0 +1,22 @@
+name: diagnostics (mit-opencourseware)
+on:
+  pull_request:
+    paths:
+      - materials/mit-opencourseware/**
+      - .github/workflows/tests-mit-opencourseware.yml
+      - .github/workflows/clone-diagnostics.yml
+  push:
+    paths:
+      - materials/mit-opencourseware/**
+      - .github/workflows/tests-mit-opencourseware.yml
+      - .github/workflows/clone-diagnostics.yml
+permissions:
+  contents: read
+concurrency:
+  group: diagnostics-mit-opencourseware-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  diagnostics:
+    uses: ./.github/workflows/clone-diagnostics.yml
+    with:
+      site: mit-opencourseware

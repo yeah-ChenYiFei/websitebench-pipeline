@@ -1,0 +1,13 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "blocked-or-unavailable-pages.json",
+  "contract_schema_version": "websitebench.blocked-pages.v3",
+  "record_kind": "blocked-page",
+  "record_id": "source-legacy-boundary",
+  "subject_kind": "blocked-page",
+  "subject_id": "source-legacy-boundary",
+  "kind": "soft-404-state",
+  "checkpoint_id": "source-legacy-boundary.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "expected_soft_404": false
+}

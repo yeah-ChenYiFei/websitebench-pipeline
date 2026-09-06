@@ -1,0 +1,101 @@
+{
+  "schema_version": "mit-ocw.source-viewport-derivation.v2",
+  "site_id": "mit-opencourseware",
+  "capture_id": "mit-opencourseware-20260905T160000Z",
+  "authority": "derived pixel-exactly from same-capture fullpage-v3 rasters",
+  "generated_at_utc": "2026-09-05T15:59:38.236089+00:00",
+  "environment": {
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "device_scale_factor": 1,
+    "locale": "en-US",
+    "timezone_id": "America/Toronto",
+    "color_scheme": "light",
+    "reduced_motion": "reduce"
+  },
+  "file_count": 5,
+  "files": [
+    {
+      "checkpoint_id": "course-readings-default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v3/course-readings-default-1440xfull.png",
+      "source_fullpage_sha256": "067a5b66cadf5911c063b2b57bb803ba9299c5aa6203f10f43dd4f73fba30be0",
+      "path": "source-current/g3c/viewport-v3/course-readings-default-1440x900.png",
+      "sha256": "0a145f85488dbc2b593a94252bdf734eb21d5d7e7c2c988f08338903e6e4df21",
+      "bytes": 120482,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-calendar-default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v3/course-calendar-default-1440xfull.png",
+      "source_fullpage_sha256": "cf70ecfa3905f481d25ecc962d3ec12c0ebce3c968d022fdf84ed93d94b7454f",
+      "path": "source-current/g3c/viewport-v3/course-calendar-default-1440x900.png",
+      "sha256": "880cbfed142d4590456b18a85b84b5118c60ebe7213c5d64ee7041433dc68f52",
+      "bytes": 104957,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-lecture-notes-default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v3/course-lecture-notes-default-1440xfull.png",
+      "source_fullpage_sha256": "f6af609dc29f3bc640c85091e420aef88e41bf76c8d065c91af0b65ec1af09bb",
+      "path": "source-current/g3c/viewport-v3/course-lecture-notes-default-1440x900.png",
+      "sha256": "2350c8059089cafe2022155e1bc4a633e523c308988eb5b0346f0b72c4aa8645",
+      "bytes": 124186,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-assignments-default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v3/course-assignments-default-1440xfull.png",
+      "source_fullpage_sha256": "2cf68559ed93a049ef5e7760d024f148824c61a9a4c3ccb313e9365430391d76",
+      "path": "source-current/g3c/viewport-v3/course-assignments-default-1440x900.png",
+      "sha256": "ebd8c35089c6e3519fc18de4773126a65284da338eab2d28cd18300d96da7036",
+      "bytes": 133343,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-exams-default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v3/course-exams-default-1440xfull.png",
+      "source_fullpage_sha256": "cd2e120690afffb208cd38af26fce48445b48e6a37c07868fa618151eb8f5e6f",
+      "path": "source-current/g3c/viewport-v3/course-exams-default-1440x900.png",
+      "sha256": "588a8eb502c10c344f87b2d51913fe6dc8f87ebcc2139542435f2e588bbfbcd0",
+      "bytes": 72527,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    }
+  ]
+}

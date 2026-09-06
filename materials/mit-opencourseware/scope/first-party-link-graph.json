@@ -1,0 +1,207 @@
+{
+  "schema_version": "websitebench.first-party-link-graph.v3",
+  "site_id": "mit-opencourseware",
+  "status": "frozen",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "edge_count": 18,
+  "edges": [
+    {
+      "id": "home-catalog",
+      "source_expectation": "The first-party edge home-catalog resolves locally to /search/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-home-catalog.json"
+      ]
+    },
+    {
+      "id": "home-get-started",
+      "source_expectation": "The first-party edge home-get-started resolves locally to /pages/get-started/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-home-get-started.json"
+      ]
+    },
+    {
+      "id": "home-educator",
+      "source_expectation": "The first-party edge home-educator resolves locally to /educator/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-home-educator.json"
+      ]
+    },
+    {
+      "id": "home-about",
+      "source_expectation": "The first-party edge home-about resolves locally to /about/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-home-about.json"
+      ]
+    },
+    {
+      "id": "home-collection",
+      "source_expectation": "The first-party edge home-collection resolves locally to /collections/introductory-programming/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-home-collection.json"
+      ]
+    },
+    {
+      "id": "home-story",
+      "source_expectation": "The first-party edge home-story resolves locally to /stories/adrian-pastor/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-home-story.json"
+      ]
+    },
+    {
+      "id": "catalog-first-course",
+      "source_expectation": "The first-party edge catalog-first-course resolves locally to /courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-catalog-first-course.json"
+      ]
+    },
+    {
+      "id": "course-syllabus",
+      "source_expectation": "The first-party edge course-syllabus resolves locally to /courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-course-syllabus.json"
+      ]
+    },
+    {
+      "id": "course-calendar",
+      "source_expectation": "The first-party edge course-calendar resolves locally to /courses/6-006-introduction-to-algorithms-fall-2011/pages/calendar/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-course-calendar.json"
+      ]
+    },
+    {
+      "id": "course-readings",
+      "source_expectation": "The first-party edge course-readings resolves locally to /courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-course-readings.json"
+      ]
+    },
+    {
+      "id": "course-assignments",
+      "source_expectation": "The first-party edge course-assignments resolves locally to /courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-course-assignments.json"
+      ]
+    },
+    {
+      "id": "course-exams",
+      "source_expectation": "The first-party edge course-exams resolves locally to /courses/6-006-introduction-to-algorithms-fall-2011/pages/exams/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-course-exams.json"
+      ]
+    },
+    {
+      "id": "reading-deep",
+      "source_expectation": "The first-party edge reading-deep resolves locally to /courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/binary-search-trees/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-reading-deep.json"
+      ]
+    },
+    {
+      "id": "problem-set-detail",
+      "source_expectation": "The first-party edge problem-set-detail resolves locally to /courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_ps1/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-problem-set-detail.json"
+      ]
+    },
+    {
+      "id": "course-download-page",
+      "source_expectation": "The first-party edge course-download-page resolves locally to /courses/6-006-introduction-to-algorithms-fall-2011/download/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-course-download-page.json"
+      ]
+    },
+    {
+      "id": "stories-index",
+      "source_expectation": "The first-party edge stories-index resolves locally to /stories/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-stories-index.json"
+      ]
+    },
+    {
+      "id": "video-gallery",
+      "source_expectation": "The first-party edge video-gallery resolves locally to /courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/video_galleries/video-lectures/.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-video-gallery.json"
+      ]
+    },
+    {
+      "id": "boundary-return-home",
+      "source_expectation": "The first-party edge boundary-return-home resolves locally to /.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/first-party-link-graph-link-edge-boundary-return-home.json"
+      ]
+    }
+  ]
+}

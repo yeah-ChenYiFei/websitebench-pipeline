@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "all-controls-inventory.json",
+  "contract_schema_version": "websitebench.all-controls.v3",
+  "record_kind": "control",
+  "record_id": "newsletter-email",
+  "subject_kind": "control",
+  "subject_id": "newsletter-email",
+  "kind": "control-state",
+  "checkpoint_id": "newsletter.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-control='newsletter-email']",
+  "expected_state": "visible"
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "offline-clone.purpose.v1",
+  "purpose_id": "mit-ocw-anonymous-public-mirror",
+  "statement": "Provide a deterministic anonymous public offline mirror of the frozen MIT OpenCourseWare capture, including home and catalog states, all 732 captured page identities across 11 families, 480 frozen logical attachment downloads plus the separately acquired 6.006 course archive, 284 retained presentation assets, and explicit local boundaries with zero runtime remote requests.",
+  "status": "frozen",
+  "primary_actor_ids": [
+    "visitor"
+  ],
+  "mainline_journey_ids": [
+    "home-discovery",
+    "catalog-state-recovery",
+    "course-material-navigation",
+    "download-closure",
+    "route-identity-closure",
+    "presentation-asset-closure"
+  ],
+  "boundary_journey_ids": [
+    "newsletter-boundary",
+    "video-disabled",
+    "navigation-boundaries"
+  ],
+  "secondary_journey_ids": [
+    "collection-story-information"
+  ],
+  "out_of_scope": [
+    "No account, authenticated workspace, or source mutation surface was observed.",
+    "External destinations are represented only by exact identity and a branded local boundary.",
+    "Remote video playback and newsletter submission are intentionally disabled at local boundaries."
+  ]
+}

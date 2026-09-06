@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "record_kind": "component",
+  "record_id": "catalog-empty",
+  "subject_kind": "component",
+  "subject_id": "catalog-empty",
+  "kind": "component-state",
+  "checkpoint_id": "catalog.empty",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-component='catalog-empty']",
+  "expected_state": "visible"
+}

@@ -1,0 +1,580 @@
+{
+  "schema_version": "mit-ocw.source-viewport-derivation.v1",
+  "site_id": "mit-opencourseware",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "authority": "derived pixel-exactly on the Remote-SSH browser host from same-capture authoritative full-page source rasters",
+  "generated_at_utc": "2026-09-05T09:25:47Z",
+  "environment": {
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "device_scale_factor": 1,
+    "color_scheme": "light",
+    "locale": "en-US",
+    "timezone_id": "America/Toronto"
+  },
+  "file_count": 35,
+  "files": [
+    {
+      "checkpoint_id": "home.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/home-default-1440xfull.png",
+      "source_fullpage_sha256": "c7231f539f3aa0cae7fd4e877865e20a97eab471d3581b60480c6f81f86b8a79",
+      "path": "source-current/g3c/viewport-v2/home-default-1440x900.png",
+      "sha256": "c928f68f2f2f5da7e1ffcde2303e0ad510795540f74fb4aaee42decccaa95698",
+      "bytes": 1137980,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "catalog.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/catalog-default-1440xfull.png",
+      "source_fullpage_sha256": "30624e2f545a54a2da0641451befced179705dbcbc27a94db80be1b482bc928f",
+      "path": "source-current/g3c/viewport-v2/catalog-default-1440x900.png",
+      "sha256": "106c585035a8218cc6366f26839aabbb2a97cf6f4f450af235483d21bb09eb00",
+      "bytes": 194011,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "collection.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/collection-default-1440xfull.png",
+      "source_fullpage_sha256": "7714ad9aa673c3ddb44f09c265b3597a0ecc2faeac52225c67d196914caaa945",
+      "path": "source-current/g3c/viewport-v2/collection-default-1440x900.png",
+      "sha256": "1f45beef31120c8ca57317b1d7b00c15f792881ce9d7cc29f169919f04fc0dd2",
+      "bytes": 143123,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "stories.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/stories-default-1440xfull.png",
+      "source_fullpage_sha256": "a176c109709ebc8e9f4df4fffaf37ae16e4b96d519603078a7f35be51618a7ea",
+      "path": "source-current/g3c/viewport-v2/stories-default-1440x900.png",
+      "sha256": "0b94ed0f16115040c37fffe17e9b4f6df04477065eb7e455b9278a5cd82bc47a",
+      "bytes": 489020,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "story-adrian.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/story-adrian-default-1440xfull.png",
+      "source_fullpage_sha256": "d56bfc36b8d7e0b4382c209ea67dd3df5a7f90c2df003629ecfb6333f09f7290",
+      "path": "source-current/g3c/viewport-v2/story-adrian-default-1440x900.png",
+      "sha256": "1634ba93ce7223a504f167b9e46be293543f4dda792c0b1d803d0ef70a370704",
+      "bytes": 284998,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "about.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/about-default-1440xfull.png",
+      "source_fullpage_sha256": "e4d3d2fcf362a1d40ea5ded8ebe92fb6616c7c364358b73eee40dd90c7e65109",
+      "path": "source-current/g3c/viewport-v2/about-default-1440x900.png",
+      "sha256": "d8b43d25ccd7298ded95d7a6ffd5766e7b4ac1e37d303037de18ee82d8282e4f",
+      "bytes": 274919,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "get-started.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/get-started-default-1440xfull.png",
+      "source_fullpage_sha256": "dd22d8731ea0e0aef95abd66eb1515b560f47961f8b3b489e3ee3d5918016a40",
+      "path": "source-current/g3c/viewport-v2/get-started-default-1440x900.png",
+      "sha256": "db8bf9ff36e80a557459afcfc3bf4c1fcc12cfd008c656f51975dd2170c01a66",
+      "bytes": 113552,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "educator.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/educator-default-1440xfull.png",
+      "source_fullpage_sha256": "6440e072145c7558adc7c30ba7aa839cc1356882ca267e89c3d9c7b42b2dd857",
+      "path": "source-current/g3c/viewport-v2/educator-default-1440x900.png",
+      "sha256": "3fae25058b2ded06b58e629798d3869a150c7e552815feb8a72088bd4bc4e646",
+      "bytes": 125044,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "newsletter.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/newsletter-default-1440xfull.png",
+      "source_fullpage_sha256": "39299c6193af04d08f0febf922c9cb6b87438c5a1317f4e0d7743aa664e947f6",
+      "path": "source-current/g3c/viewport-v2/newsletter-default-1440x900.png",
+      "sha256": "5e2a82877bed996393c93add3c17857c8a23ce4c40514b78b0d2ced5362f468c",
+      "bytes": 40721,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-overview.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/course-overview-default-1440xfull.png",
+      "source_fullpage_sha256": "036df29bccd50b1ca0485a07398bbcb007d694d858808d050078d8817b67ac20",
+      "path": "source-current/g3c/viewport-v2/course-overview-default-1440x900.png",
+      "sha256": "be63d0b1b2a9848eb7e1fea0c45e433521e50c5b0e8051f5dbbb1670cb845fff",
+      "bytes": 126563,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "catalog-course-overview.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/catalog-course-overview-default-1440xfull.png",
+      "source_fullpage_sha256": "8d9b8024b250b95766a1c1830a87de806c4c14f6de68ae113533f21abe2c5b8f",
+      "path": "source-current/g3c/viewport-v2/catalog-course-overview-default-1440x900.png",
+      "sha256": "70d97762f4c156e9d758588cc89e9bc063337cb8bc5ac2c455aab818625a7d84",
+      "bytes": 195830,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-syllabus.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/course-syllabus-default-1440xfull.png",
+      "source_fullpage_sha256": "dcc1ff161773248c6274c9e2590497a84d430dbffe28ac2727c2dab0e0f4b84a",
+      "path": "source-current/g3c/viewport-v2/course-syllabus-default-1440x900.png",
+      "sha256": "36a2e8492a9e0c00d41299cdefcaddbeff846f4a52aabbb5c772ef4a62617f85",
+      "bytes": 142661,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-calendar.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/course-calendar-default-1440xfull.png",
+      "source_fullpage_sha256": "ce3bbd7971734b45434c95d0c2c8b080f353927c94af240a43a73afa1ef35f62",
+      "path": "source-current/g3c/viewport-v2/course-calendar-default-1440x900.png",
+      "sha256": "133dd900daf3cb3b8e38f5d465c0d8e4ab007c399333b76a4e36a275a1da81f3",
+      "bytes": 95926,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-readings.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/course-readings-default-1440xfull.png",
+      "source_fullpage_sha256": "5f78e10909a31138defd14cdbce4334bc675b0915214eec41281dabde1316e7c",
+      "path": "source-current/g3c/viewport-v2/course-readings-default-1440x900.png",
+      "sha256": "42126965ba38ce1ade20a8ada5c32cd9af6f0e9999a131ed8d10e85c891ae9ee",
+      "bytes": 109988,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-reading-deep.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/course-reading-deep-default-1440xfull.png",
+      "source_fullpage_sha256": "4c6691d91b794b5ff674de5300b5f3f2066c4066cdbb4042ccc60479f7594633",
+      "path": "source-current/g3c/viewport-v2/course-reading-deep-default-1440x900.png",
+      "sha256": "4f42dcc32b663176f38aa5d124e454818ddc596d98cfd3147fbb296e9343968c",
+      "bytes": 118975,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-lecture-notes.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/course-lecture-notes-default-1440xfull.png",
+      "source_fullpage_sha256": "44085b51fca9740bb3bf7fe64c57a1fcc618fe22b128aef36ca6f6deb941af47",
+      "path": "source-current/g3c/viewport-v2/course-lecture-notes-default-1440x900.png",
+      "sha256": "f063457a391d52c099edfe73c891b8822daae1fef806e5f4f99b0d9529871e2e",
+      "bytes": 111673,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-assignments.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/course-assignments-default-1440xfull.png",
+      "source_fullpage_sha256": "718e9953dd7a400cd7d4e36c3d05f8e46ee610387ba639f445a7521669c1f05e",
+      "path": "source-current/g3c/viewport-v2/course-assignments-default-1440x900.png",
+      "sha256": "70ca4ba84ef07da276fe11f057d22c60f9f3c570f802ea0be21aa49807a89bca",
+      "bytes": 113907,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-exams.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/course-exams-default-1440xfull.png",
+      "source_fullpage_sha256": "e326e0a0fdc40898a63abfdd80d3c7144dddfb484af1be527d7d09e50a1a3520",
+      "path": "source-current/g3c/viewport-v2/course-exams-default-1440x900.png",
+      "sha256": "b29e27f4034eab094f86d23a0c879cf44511e55208fa92783351d9e76faca9a1",
+      "bytes": 79177,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "resource-index.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/resource-index-default-1440xfull.png",
+      "source_fullpage_sha256": "21aae2c31f190e981733c054f067235a74dd2b9807485bb644d5bb476228bc33",
+      "path": "source-current/g3c/viewport-v2/resource-index-default-1440x900.png",
+      "sha256": "76a38d9b7ce2ae30233797fbe2604f733696172a3397451388f8e79bc2446f63",
+      "bytes": 93184,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "resource-problem-set.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/resource-problem-set-default-1440xfull.png",
+      "source_fullpage_sha256": "3a8a0c6b64f8f0f9cbdf29845c95f7b705e6e49048ceabf5c63f2cb6eb591f4c",
+      "path": "source-current/g3c/viewport-v2/resource-problem-set-default-1440x900.png",
+      "sha256": "81e552982e4275d299dd8e2bf7c061a3c781e61349e1103b85b96210cb025ee6",
+      "bytes": 75911,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "resource-lecture-note.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/resource-lecture-note-default-1440xfull.png",
+      "source_fullpage_sha256": "eea8e9f4ef96b43438e88a30ccea8d2fcc64481e4e02f55a4c61700653ad682f",
+      "path": "source-current/g3c/viewport-v2/resource-lecture-note-default-1440x900.png",
+      "sha256": "22f90096d6eb4ad6e57ec4a70851b2d9ce99bae641ddd5ff48f333745e4eead7",
+      "bytes": 80070,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "resource-final-exam.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/resource-final-exam-default-1440xfull.png",
+      "source_fullpage_sha256": "365740f4d3ada86b2940148a829b7b3f9cb07d4f8778cd4c7898dc9038f0585d",
+      "path": "source-current/g3c/viewport-v2/resource-final-exam-default-1440x900.png",
+      "sha256": "8e750b8c0335c28d3688c519d43b07b299dc4728a5ff01796fb1bb625e26c0b2",
+      "bytes": 73836,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-download.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/course-download-default-1440xfull.png",
+      "source_fullpage_sha256": "4110852f81c3266fa52f12ed62f98612930c41cca8cf70666c0e9924e7008804",
+      "path": "source-current/g3c/viewport-v2/course-download-default-1440x900.png",
+      "sha256": "9f795ee1d2541e0b8a2b8c25855f109da9aa2d64f0559c81b9517c77bd83f46b",
+      "bytes": 111950,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "video-gallery.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/video-gallery-default-1440xfull.png",
+      "source_fullpage_sha256": "cec69d1dd4df7e1d75e2231e5fd532d7307b2d77a8822ae65e9a5b0bef432816",
+      "path": "source-current/g3c/viewport-v2/video-gallery-default-1440x900.png",
+      "sha256": "b761552d436ff3327bb738b1edf7b7c4f35c59842fee5046ebd423eb374da949",
+      "bytes": 132038,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "video-resource.default",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/video-resource-default-1440xfull.png",
+      "source_fullpage_sha256": "97d7b4974fce6ca067266b0803a73f1f4e9ba81c29104417b418c0052fe556ad",
+      "path": "source-current/g3c/viewport-v2/video-resource-default-1440x900.png",
+      "sha256": "2708df1f832b30659b99aea5f2b6620de03c7d34df397dd748f75d905747d36c",
+      "bytes": 68738,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "catalog.second-batch",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/catalog-second-batch-1440xfull.png",
+      "source_fullpage_sha256": "cd49af85f6ba54e8799db380c70410d5699c89e6918deecb9794b572d1b57cde",
+      "path": "source-current/g3c/viewport-v2/catalog-second-batch-1440x900.png",
+      "sha256": "106c585035a8218cc6366f26839aabbb2a97cf6f4f450af235483d21bb09eb00",
+      "bytes": 194011,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "catalog.math",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/catalog-math-1440xfull.png",
+      "source_fullpage_sha256": "9f0aacc5c4846d533a6778e006105b3e81a62d899fbd4824643393738c60708f",
+      "path": "source-current/g3c/viewport-v2/catalog-math-1440x900.png",
+      "sha256": "a5f5f099b54ca05d0428944469cc7e9550da1327ff95f727a797b5a6877ae4f9",
+      "bytes": 184500,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "catalog.math-undergraduate",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/catalog-math-undergraduate-1440xfull.png",
+      "source_fullpage_sha256": "d9b1b49074d90e9f86dd9b1ee25caa3be58594cb9eec3224b434970b38dad475",
+      "path": "source-current/g3c/viewport-v2/catalog-math-undergraduate-1440x900.png",
+      "sha256": "bc4442178ee190543ff086ee2b83a0b470624b26551a5b277c5202302cbd06af",
+      "bytes": 155571,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "catalog.course-number",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/catalog-course-number-1440xfull.png",
+      "source_fullpage_sha256": "4a946a31907b7b3d405bfe2e018ada1af9212feae6e19687148b322381503a7d",
+      "path": "source-current/g3c/viewport-v2/catalog-course-number-1440x900.png",
+      "sha256": "cf6bb181ce3293ab943a4b6e0d04e75c543fc141aee9229091c7c3c6cb7a7f8a",
+      "bytes": 136377,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "catalog.empty",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/catalog-empty-1440xfull.png",
+      "source_fullpage_sha256": "ba520ea41bb1bda244df06df5f900f2df7feec8048698a2d6d3952e82302524c",
+      "path": "source-current/g3c/viewport-v2/catalog-empty-1440x900.png",
+      "sha256": "fd4ec3a09c1901b58a1d741ce48ea513eb68653e6cdaf6ed8fcb7a9ce4376069",
+      "bytes": 50799,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "catalog.error",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/catalog-error-1440xfull.png",
+      "source_fullpage_sha256": "9965f526e1c8d716a597fe6df3233326a642924c4b568e2dd66ccdcf8d5412bc",
+      "path": "source-current/g3c/viewport-v2/catalog-error-1440x900.png",
+      "sha256": "7229153a7b551d1feb45c03e3693a2411cccb0d7684daed2d630eb12ec90bf33",
+      "bytes": 58443,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "catalog.retry-stale",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/catalog-retry-stale-1440xfull.png",
+      "source_fullpage_sha256": "5b4e7f875535aec48b8541d11c3ca4f2ab2263db30561fd48d72065d0a4108cb",
+      "path": "source-current/g3c/viewport-v2/catalog-retry-stale-1440x900.png",
+      "sha256": "e2aef4eb825f4a572f85ad4aaecab43d7d6bb7a253c1c9cb37ac10df417cd939",
+      "bytes": 90646,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "catalog.reload-recovered",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/catalog-reload-recovered-1440xfull.png",
+      "source_fullpage_sha256": "4df621661b256bd63be57a451d04b7a34ecae72a13efbbd24b6f84e0bd27751b",
+      "path": "source-current/g3c/viewport-v2/catalog-reload-recovered-1440x900.png",
+      "sha256": "106c585035a8218cc6366f26839aabbb2a97cf6f4f450af235483d21bb09eb00",
+      "bytes": 194011,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "catalog.resources",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/catalog-resources-1440xfull.png",
+      "source_fullpage_sha256": "24616a6662a6b73a229340f88b3917e4fce9678a149721e60dd3d7e037457835",
+      "path": "source-current/g3c/viewport-v2/catalog-resources-1440x900.png",
+      "sha256": "2fbb7d2009befa9265b7cb419f74ecb62eaebcfbc1baee8ce9fbe9e2a2626f51",
+      "bytes": 106545,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "video.static-disabled",
+      "source_fullpage_path": "source-current/g3c/fullpage-v2/video-static-disabled-1440xfull.png",
+      "source_fullpage_sha256": "97d7b4974fce6ca067266b0803a73f1f4e9ba81c29104417b418c0052fe556ad",
+      "path": "source-current/g3c/viewport-v2/video-static-disabled-1440x900.png",
+      "sha256": "2708df1f832b30659b99aea5f2b6620de03c7d34df397dd748f75d905747d36c",
+      "bytes": 68738,
+      "width": 1440,
+      "height": 900,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      }
+    }
+  ]
+}

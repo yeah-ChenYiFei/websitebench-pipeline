@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "record_kind": "component",
+  "record_id": "course-side-navigation",
+  "subject_kind": "component",
+  "subject_id": "course-side-navigation",
+  "kind": "component-state",
+  "checkpoint_id": "course-overview.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-component='course-side-navigation']",
+  "expected_state": "visible"
+}

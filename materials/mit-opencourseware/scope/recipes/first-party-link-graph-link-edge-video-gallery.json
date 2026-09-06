@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "record_kind": "link-edge",
+  "record_id": "video-gallery",
+  "subject_kind": "link-edge",
+  "subject_id": "video-gallery",
+  "kind": "first-party-link",
+  "checkpoint_id": "course-overview.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-link='video-gallery']",
+  "expected_href": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/video_galleries/video-lectures/"
+}

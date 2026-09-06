@@ -1,0 +1,739 @@
+{
+  "schema_version": 1,
+  "phase": "g3c-exact-contracts-v1",
+  "capture_id": "mit-opencourseware-20260903T032020Z",
+  "mapping_report": "source-current/g3c/mapping-report.json",
+  "mapping_report_sha256": "0b3d275eafcc405bb358566e0532268f2d3e98ffe8416510763319121e83d966",
+  "contract_count": 36,
+  "excluded_component_only": [
+    "home.carousel-second-batches"
+  ],
+  "excluded_missing": [
+    "data-boundary.default",
+    "external-boundary.default",
+    "not-found.default"
+  ],
+  "viewport_policy": "1440x900 DPR1, native crop only, no resize/composite/mask",
+  "derivations": [
+    {
+      "checkpoint_id": "home.default",
+      "source_path": "source-current/g3a/home-default-1440x900.png",
+      "source_sha256": "f30612a56c4954cf9c1ee616481975d2e561e547e0e67fb1055df2d18c970c01",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/home-default-1440x900.png",
+      "viewport": {
+        "sha256": "e5a8126c389689ae2e57e49ec4cf52a49ef01354a6b071262dede99d3b9cccae",
+        "bytes": 1137015,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "catalog.default",
+      "source_path": "source-current/g3c/exact/catalog--default.png",
+      "source_sha256": "879eff97cd87e977b09e4fd1cf5537d31a5a1ca88b24a7da0c4c8acabb82c68e",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/catalog-default-1440x900.png",
+      "viewport": {
+        "sha256": "5f20aaec1c0753fd30d89769dcdedf802144a89bc5a78ecbe98a65355961d6d2",
+        "bytes": 199663,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "collection.default",
+      "source_path": "source-current/g3c/exact/collection--default.png",
+      "source_sha256": "7714ad9aa673c3ddb44f09c265b3597a0ecc2faeac52225c67d196914caaa945",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/collection-default-1440x900.png",
+      "viewport": {
+        "sha256": "1f45beef31120c8ca57317b1d7b00c15f792881ce9d7cc29f169919f04fc0dd2",
+        "bytes": 143123,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "stories.default",
+      "source_path": "source-current/g3c/exact/stories--default.png",
+      "source_sha256": "0aac2144b20de011bda65189d4f46b704e5b5cd21c195b7d9c419a2375d83ae2",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/stories-default-1440x900.png",
+      "viewport": {
+        "sha256": "0b94ed0f16115040c37fffe17e9b4f6df04477065eb7e455b9278a5cd82bc47a",
+        "bytes": 489020,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "story-adrian.default",
+      "source_path": "source-current/g3c/exact/story-adrian--default.png",
+      "source_sha256": "d56bfc36b8d7e0b4382c209ea67dd3df5a7f90c2df003629ecfb6333f09f7290",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/story-adrian-default-1440x900.png",
+      "viewport": {
+        "sha256": "1634ba93ce7223a504f167b9e46be293543f4dda792c0b1d803d0ef70a370704",
+        "bytes": 284998,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "about.default",
+      "source_path": "source-current/g3c/exact/about--default.png",
+      "source_sha256": "1d4ec810ea42aa81cffd37906244f19eb2ecd3910a1c61299f708e73aac68983",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/about-default-1440x900.png",
+      "viewport": {
+        "sha256": "a9e20adfa6c842654fd66aaabe6d13588476206bf72ba1009da0c473b5ac82b2",
+        "bytes": 275299,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "get-started.default",
+      "source_path": "source-current/g3c/exact/get-started--default.png",
+      "source_sha256": "3f7806014009c678a17ec51c9c4d98a0bbef8eb009f419cab4bd2aeb3d9f450c",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/get-started-default-1440x900.png",
+      "viewport": {
+        "sha256": "db8bf9ff36e80a557459afcfc3bf4c1fcc12cfd008c656f51975dd2170c01a66",
+        "bytes": 113552,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "educator.default",
+      "source_path": "source-current/g3c/exact/educator--default.png",
+      "source_sha256": "013e081b289677f1d2e8255086f28b7ce091a08ca7d18ea1da3ff30a6c38df6f",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/educator-default-1440x900.png",
+      "viewport": {
+        "sha256": "13b24e7eb30119728001196db9c526d515958df3b9022ec7c8674cc855a5e122",
+        "bytes": 125349,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "newsletter.default",
+      "source_path": "source-current/g3c/exact/newsletter--default.png",
+      "source_sha256": "39299c6193af04d08f0febf922c9cb6b87438c5a1317f4e0d7743aa664e947f6",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/newsletter-default-1440x900.png",
+      "viewport": {
+        "sha256": "5e2a82877bed996393c93add3c17857c8a23ce4c40514b78b0d2ced5362f468c",
+        "bytes": 40721,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "course-overview.default",
+      "source_path": "source-current/g3a/course-overview-default-1440x900.png",
+      "source_sha256": "77dfcf45b25baec09b1fc43aad08c8ce7834dc32c2ccdfecc17c5ab09cba07a1",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/course-overview-default-1440x900.png",
+      "viewport": {
+        "sha256": "e14372417f8b1bc5d292379b76c85b783f9d78c8de8a0c51b82ae6751f9e4240",
+        "bytes": 120866,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "catalog-course-overview.default",
+      "source_path": "source-current/g3c/exact/catalog-course-overview--default.png",
+      "source_sha256": "8d9b8024b250b95766a1c1830a87de806c4c14f6de68ae113533f21abe2c5b8f",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/catalog-course-overview-default-1440x900.png",
+      "viewport": {
+        "sha256": "70d97762f4c156e9d758588cc89e9bc063337cb8bc5ac2c455aab818625a7d84",
+        "bytes": 195830,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "course-syllabus.default",
+      "source_path": "source-current/g3c/exact/course-syllabus--default.png",
+      "source_sha256": "a5f2485207c5ff7aff2ddb55fa8d5eab20b2466c743cb7f0e43fe9c01c787c8c",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/course-syllabus-default-1440x900.png",
+      "viewport": {
+        "sha256": "eaf03435ed3ec3fcc8b1c855eefc8f1a72baee3c7bcfe9f8063a9992dafe38bf",
+        "bytes": 131777,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "course-calendar.default",
+      "source_path": "source-current/g3c/exact/course-calendar--default.png",
+      "source_sha256": "dd4cf36bd7fd28351e688e449bdc93c7ac98f963bfda02e59a0983e77ac76a4c",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/course-calendar-default-1440x900.png",
+      "viewport": {
+        "sha256": "428369f8e562ff5eefc4826a906510c602289c9ca1d08b29eaaecfdd1674a8e0",
+        "bytes": 96426,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "course-readings.default",
+      "source_path": "source-current/g3c/exact/course-readings--default.png",
+      "source_sha256": "8792ad6322d62016b35eac26262e701aa5ed346ca99237b4eca9f44a54aa08aa",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/course-readings-default-1440x900.png",
+      "viewport": {
+        "sha256": "574de20e9f5ecd959b17636a51e3432f98bbff732bee6e9b6f6a9c5fdcf8dfc3",
+        "bytes": 109194,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "course-reading-deep.default",
+      "source_path": "source-current/g3c/exact/course-reading-deep--default.png",
+      "source_sha256": "b7ed1322af88e4f6f4eb20970fd3f6b5a1f9f4a01fe1be99fbf60da26aad185d",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/course-reading-deep-default-1440x900.png",
+      "viewport": {
+        "sha256": "04cb384686f33c5e837276aeddfff0e17fad0ba502d18ccbf3cc8e3ddeed4aa8",
+        "bytes": 111299,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "course-lecture-notes.default",
+      "source_path": "source-current/g3c/exact/course-lecture-notes--default.png",
+      "source_sha256": "1b5ad42f3b480d497289dc33e4d25f12f2919a32a6411431e91056a5857edd41",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/course-lecture-notes-default-1440x900.png",
+      "viewport": {
+        "sha256": "cccb122a2742148bb4243440e8664cdd00f9adf216e1c71b9b16845cb1f0495c",
+        "bytes": 113241,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "course-assignments.default",
+      "source_path": "source-current/g3c/exact/course-assignments--default.png",
+      "source_sha256": "bbd56bdaed21736ebbfcfcc1568c89c6b97d442644bdcce8fddc1fe88bc3e3ae",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/course-assignments-default-1440x900.png",
+      "viewport": {
+        "sha256": "da27ca9c341358ceb63fd0882c380319c2a0bf3fd6f620fd4a00a33a3c941ec4",
+        "bytes": 124684,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "course-exams.default",
+      "source_path": "source-current/g3c/exact/course-exams--default.png",
+      "source_sha256": "f819d5ec953311dd0843e1188c19dc140b972b6ed8d6802ea1b328b183a8b6d2",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/course-exams-default-1440x900.png",
+      "viewport": {
+        "sha256": "f9a9c41c53d3871935c4604a7cadef98823e8fae6b09fd74e5173a4cb803efe8",
+        "bytes": 65268,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "resource-index.default",
+      "source_path": "source-current/g3c/exact/resource-index--default.png",
+      "source_sha256": "e9f1916bbb75b3e49abcbcc2f64c6b296c52363e1bedf8ab5ce97f47833f72b7",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/resource-index-default-1440x900.png",
+      "viewport": {
+        "sha256": "e3a46bac3ddef106cee8690c8a16cff4f2b7d8ffc4560292ba6fee9951701b90",
+        "bytes": 86223,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "resource-problem-set.default",
+      "source_path": "source-current/g3c/exact/resource-problem-set--default.png",
+      "source_sha256": "593ca0cb679b740420a4cbcd2521cbd2da97d13c82eefa8c564c947c775ecad6",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/resource-problem-set-default-1440x900.png",
+      "viewport": {
+        "sha256": "b848c86dfd753a3b7c00ab8153ac0143295cbcbe4382146cf60b055dfcd1d945",
+        "bytes": 69742,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "resource-lecture-note.default",
+      "source_path": "source-current/g3c/exact/resource-lecture-note--default.png",
+      "source_sha256": "99da4aad13a30f327f0458354b5efd354ee0bc856f92b2092ad20a9c79d8ff8d",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/resource-lecture-note-default-1440x900.png",
+      "viewport": {
+        "sha256": "8ce29b591faa00fe397d6a48cde9d51b24ff9ef9e99a03f9b6fe69dfa7cdcad1",
+        "bytes": 74079,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "resource-final-exam.default",
+      "source_path": "source-current/g3c/exact/resource-final-exam--default.png",
+      "source_sha256": "d00ac343107850c0913535e034857e9ce940ce9527f974363d39c26e55f97798",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/resource-final-exam-default-1440x900.png",
+      "viewport": {
+        "sha256": "66c5d84c87aef6dc68570517feb2ec86da1e5ef6b7a537831a27784a84eb390a",
+        "bytes": 67813,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "course-download.default",
+      "source_path": "source-current/g3c/exact/course-download--default.png",
+      "source_sha256": "14cb331e7f87a9835c0d106448dfae380c63c507ec624300a892313b0c55d801",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/course-download-default-1440x900.png",
+      "viewport": {
+        "sha256": "8879bbaeab2d79da75413341e944179b5f2cf84ec028f4520237af3e3e8f08b7",
+        "bytes": 102959,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "video-gallery.default",
+      "source_path": "source-current/g3c/exact/video-gallery--default.png",
+      "source_sha256": "cec69d1dd4df7e1d75e2231e5fd532d7307b2d77a8822ae65e9a5b0bef432816",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/video-gallery-default-1440x900.png",
+      "viewport": {
+        "sha256": "b761552d436ff3327bb738b1edf7b7c4f35c59842fee5046ebd423eb374da949",
+        "bytes": 132038,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "video-resource.default",
+      "source_path": "source-current/g3c/exact/video-resource--default.png",
+      "source_sha256": "97d7b4974fce6ca067266b0803a73f1f4e9ba81c29104417b418c0052fe556ad",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/video-resource-default-1440x900.png",
+      "viewport": {
+        "sha256": "2708df1f832b30659b99aea5f2b6620de03c7d34df397dd748f75d905747d36c",
+        "bytes": 68738,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "source-legacy-boundary.default",
+      "source_path": "source-current/g3c/exact/source-legacy-boundary--default.png",
+      "source_sha256": "99db2a93b06fa1bf617f5c495e02dcf6c0b76961108491217e2cf4fed8699d35",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/source-legacy-boundary-default-1440x900.png",
+      "viewport": {
+        "sha256": "3fcaeb02c8b59e59c7524e4c6fd08611f2f5f1d0f9ba26ef259ff4d241af3b64",
+        "bytes": 5937,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "catalog.second-batch",
+      "source_path": "source-current/g3c/exact/catalog--second-batch.png",
+      "source_sha256": "e919336f4d19fac457986b9ed9655822c44ef624e03b71818e318ace8d1be999",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/catalog-second-batch-1440x900.png",
+      "viewport": {
+        "sha256": "5f20aaec1c0753fd30d89769dcdedf802144a89bc5a78ecbe98a65355961d6d2",
+        "bytes": 199663,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "catalog.math",
+      "source_path": "source-current/g3c/exact/catalog--math.png",
+      "source_sha256": "b62a72a4e63ed703140e3ae2381f0118e947893e3c0e0985dac05465215a38f1",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/catalog-math-1440x900.png",
+      "viewport": {
+        "sha256": "6064c7112f37ab4f9a7c00efdf7763606b52c9a27aca10328dcb8ec1ab38559e",
+        "bytes": 133142,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "catalog.math-undergraduate",
+      "source_path": "source-current/g3c/exact/catalog--math-undergraduate.png",
+      "source_sha256": "dad53d73a78858c2f11d04abb97da15ddc9a4d886ab1a22ad624fa02b79c0d5d",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/catalog-math-undergraduate-1440x900.png",
+      "viewport": {
+        "sha256": "08aaa6f02da1cd9fa41fb2e7de9d32b5e2884adfaf6d23a15c136c94f6f0de62",
+        "bytes": 139012,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "catalog.course-number",
+      "source_path": "source-current/g3c/exact/catalog--course-number.png",
+      "source_sha256": "07bc7323df6b48abd1ee459a24bbf0ad27e215693febd75091549aff9f657ecd",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/catalog-course-number-1440x900.png",
+      "viewport": {
+        "sha256": "39f051587ccac79ef48bcc8b60ffcc54ece04250ab1b6564af33fcd1a285ef86",
+        "bytes": 136133,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "catalog.empty",
+      "source_path": "source-current/g3c/exact/catalog--empty.png",
+      "source_sha256": "83d18acfaed0642de1a941c48f0ca988e14d42a3cc694fc6c47ed3d7ab7ff8b4",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/catalog-empty-1440x900.png",
+      "viewport": {
+        "sha256": "524089f9726e19f6c5d29ffc7a5bcf88648808f9c5508e0df6994fa8830be9c9",
+        "bytes": 53870,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "catalog.error",
+      "source_path": "source-current/g3c/exact/catalog--error.png",
+      "source_sha256": "486628cc062cd77adf7053a134defef1cede8b144a266acacf14b70a49a00279",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/catalog-error-1440x900.png",
+      "viewport": {
+        "sha256": "386479ffc30dbbc6397d231744c299ff3939298f861a19d30229c5b1818d289a",
+        "bytes": 61175,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "catalog.retry-stale",
+      "source_path": "source-current/g3c/exact/catalog--retry-stale.png",
+      "source_sha256": "2f32d97c709c362f4d95c004a311830ec090a3b5cc633c8aa09741c5080dd3e2",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/catalog-retry-stale-1440x900.png",
+      "viewport": {
+        "sha256": "b1a8c12db654fb1b4f1076b5dec34639ed9a6d4a81ecafe208a0b86db90791d1",
+        "bytes": 90987,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "catalog.reload-recovered",
+      "source_path": "source-current/g3c/exact/catalog--reload-recovered.png",
+      "source_sha256": "cf0a19a7fe747e7760527ae6e7706e29fdb2a289c87c33c52a47246f7dabb370",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/catalog-reload-recovered-1440x900.png",
+      "viewport": {
+        "sha256": "c30c77092adfb78e816389f69ce9cc98fcc2e8c40e3175ee00d4b2aeda56c10c",
+        "bytes": 185228,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "catalog.resources",
+      "source_path": "source-current/g3c/exact/catalog--resources.png",
+      "source_sha256": "101a9148d778831f2dc8b804b2d32ef2a40917dc7633e56a22d6e5cb3b5ec120",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/catalog-resources-1440x900.png",
+      "viewport": {
+        "sha256": "e9aa0fe7d549fc3d955e879b16d943bbd9d44621c083dade6d142825b639860b",
+        "bytes": 106430,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    },
+    {
+      "checkpoint_id": "video.static-disabled",
+      "source_path": "source-current/g3c/exact/video--static-disabled.png",
+      "source_sha256": "97d7b4974fce6ca067266b0803a73f1f4e9ba81c29104417b418c0052fe556ad",
+      "source_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "viewport_path": "source-current/g3c/viewports-v1/video-static-disabled-1440x900.png",
+      "viewport": {
+        "sha256": "2708df1f832b30659b99aea5f2b6620de03c7d34df397dd748f75d905747d36c",
+        "bytes": 68738,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "operation": "native top-left crop; no resize, composite, or mask"
+    }
+  ]
+}

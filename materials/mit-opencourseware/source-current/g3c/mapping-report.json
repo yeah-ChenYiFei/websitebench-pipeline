@@ -1,0 +1,1112 @@
+{
+  "schema_version": 1,
+  "phase": "g3c-source-raster-mapping",
+  "capture_id": "mit-opencourseware-20260903T032020Z",
+  "target_lock_status": "locked-g1-complete-g2-complete-g3b-complete-g3c-active",
+  "source_policy": {
+    "recapture_performed": false,
+    "candidate_used_as_source": false,
+    "fuzzy_mapping_used": false,
+    "component_stretch_or_composite_used": false,
+    "copy_mode": "ordinary-independent-files"
+  },
+  "counts": {
+    "total_checkpoints": 40,
+    "exact_full_or_viewport": 36,
+    "exact_native_viewport": 14,
+    "exact_full_page": 22,
+    "component_only": 1,
+    "missing": 3,
+    "new_exact_files_copied": 34,
+    "preexisting_g3a_exact_files": 2,
+    "component_files_copied": 4
+  },
+  "rows": [
+    {
+      "checkpoint_id": "home.default",
+      "clone_path": "/",
+      "route_id": "home",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/01-home-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "f30612a56c4954cf9c1ee616481975d2e561e547e0e67fb1055df2d18c970c01",
+        "bytes": 1159255,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3a/home-default-1440x900.png",
+      "copied": {
+        "sha256": "f30612a56c4954cf9c1ee616481975d2e561e547e0e67fb1055df2d18c970c01",
+        "bytes": 1159255,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "preexisting-create-only-g3a",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "catalog.default",
+      "clone_path": "/search/",
+      "route_id": "catalog",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/default-batch-1.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "original": {
+        "sha256": "879eff97cd87e977b09e4fd1cf5537d31a5a1ca88b24a7da0c4c8acabb82c68e",
+        "bytes": 526736,
+        "width": 1455,
+        "height": 2625,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/catalog--default.png",
+      "copied": {
+        "sha256": "879eff97cd87e977b09e4fd1cf5537d31a5a1ca88b24a7da0c4c8acabb82c68e",
+        "bytes": 526736,
+        "width": 1455,
+        "height": 2625,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "collection.default",
+      "clone_path": "/collections/introductory-programming/",
+      "route_id": "collection",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/safe-breadth/collection-introductory-programming-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/safe-breadth-report.json",
+      "original": {
+        "sha256": "7714ad9aa673c3ddb44f09c265b3597a0ecc2faeac52225c67d196914caaa945",
+        "bytes": 397373,
+        "width": 1440,
+        "height": 2486,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/collection--default.png",
+      "copied": {
+        "sha256": "7714ad9aa673c3ddb44f09c265b3597a0ecc2faeac52225c67d196914caaa945",
+        "bytes": 397373,
+        "width": 1440,
+        "height": 2486,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "stories.default",
+      "clone_path": "/stories/",
+      "route_id": "stories",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/capture-breadth-01/stories-index-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/capture-breadth-01-report.json",
+      "original": {
+        "sha256": "0aac2144b20de011bda65189d4f46b704e5b5cd21c195b7d9c419a2375d83ae2",
+        "bytes": 2663689,
+        "width": 1440,
+        "height": 5380,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/stories--default.png",
+      "copied": {
+        "sha256": "0aac2144b20de011bda65189d4f46b704e5b5cd21c195b7d9c419a2375d83ae2",
+        "bytes": 2663689,
+        "width": 1440,
+        "height": 5380,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "story-adrian.default",
+      "clone_path": "/stories/adrian-pastor/",
+      "route_id": "story-adrian",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/story-details/story-01-adrian-pastor-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/story-details-report.json",
+      "original": {
+        "sha256": "d56bfc36b8d7e0b4382c209ea67dd3df5a7f90c2df003629ecfb6333f09f7290",
+        "bytes": 847024,
+        "width": 1440,
+        "height": 2888,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/story-adrian--default.png",
+      "copied": {
+        "sha256": "d56bfc36b8d7e0b4382c209ea67dd3df5a7f90c2df003629ecfb6333f09f7290",
+        "bytes": 847024,
+        "width": 1440,
+        "height": 2888,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "about.default",
+      "clone_path": "/about/",
+      "route_id": "about",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/capture-breadth-01/about-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/capture-breadth-01-report.json",
+      "original": {
+        "sha256": "1d4ec810ea42aa81cffd37906244f19eb2ecd3910a1c61299f708e73aac68983",
+        "bytes": 1594747,
+        "width": 1440,
+        "height": 11078,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/about--default.png",
+      "copied": {
+        "sha256": "1d4ec810ea42aa81cffd37906244f19eb2ecd3910a1c61299f708e73aac68983",
+        "bytes": 1594747,
+        "width": 1440,
+        "height": 11078,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "get-started.default",
+      "clone_path": "/pages/get-started/",
+      "route_id": "get-started",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/capture-breadth-01/get-started-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/capture-breadth-01-report.json",
+      "original": {
+        "sha256": "3f7806014009c678a17ec51c9c4d98a0bbef8eb009f419cab4bd2aeb3d9f450c",
+        "bytes": 277561,
+        "width": 1455,
+        "height": 2263,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/get-started--default.png",
+      "copied": {
+        "sha256": "3f7806014009c678a17ec51c9c4d98a0bbef8eb009f419cab4bd2aeb3d9f450c",
+        "bytes": 277561,
+        "width": 1455,
+        "height": 2263,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "educator.default",
+      "clone_path": "/educator/",
+      "route_id": "educator",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/safe-breadth/educator-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/safe-breadth-report.json",
+      "original": {
+        "sha256": "013e081b289677f1d2e8255086f28b7ce091a08ca7d18ea1da3ff30a6c38df6f",
+        "bytes": 1745417,
+        "width": 1440,
+        "height": 6754,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/educator--default.png",
+      "copied": {
+        "sha256": "013e081b289677f1d2e8255086f28b7ce091a08ca7d18ea1da3ff30a6c38df6f",
+        "bytes": 1745417,
+        "width": 1440,
+        "height": 6754,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "newsletter.default",
+      "clone_path": "/newsletter/",
+      "route_id": "newsletter",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/capture-static-visuals/newsletter-authorized-stylesheet-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/capture-static-visuals-report.json",
+      "original": {
+        "sha256": "39299c6193af04d08f0febf922c9cb6b87438c5a1317f4e0d7743aa664e947f6",
+        "bytes": 78247,
+        "width": 1440,
+        "height": 1366,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/newsletter--default.png",
+      "copied": {
+        "sha256": "39299c6193af04d08f0febf922c9cb6b87438c5a1317f4e0d7743aa664e947f6",
+        "bytes": 78247,
+        "width": 1440,
+        "height": 1366,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "course-overview.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/",
+      "route_id": "course-overview",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/03-course-root-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "77dfcf45b25baec09b1fc43aad08c8ce7834dc32c2ccdfecc17c5ab09cba07a1",
+        "bytes": 117985,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3a/course-overview-default-1440x900.png",
+      "copied": {
+        "sha256": "77dfcf45b25baec09b1fc43aad08c8ce7834dc32c2ccdfecc17c5ab09cba07a1",
+        "bytes": 117985,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "preexisting-create-only-g3a",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "catalog-course-overview.default",
+      "clone_path": "/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/",
+      "route_id": "catalog-course-overview",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/catalog-course-overviews/catalog-course-01-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/catalog-course-overviews-report.json",
+      "original": {
+        "sha256": "8d9b8024b250b95766a1c1830a87de806c4c14f6de68ae113533f21abe2c5b8f",
+        "bytes": 191177,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/catalog-course-overview--default.png",
+      "copied": {
+        "sha256": "8d9b8024b250b95766a1c1830a87de806c4c14f6de68ae113533f21abe2c5b8f",
+        "bytes": 191177,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "course-syllabus.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/",
+      "route_id": "course-syllabus",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/04-syllabus-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "a5f2485207c5ff7aff2ddb55fa8d5eab20b2466c743cb7f0e43fe9c01c787c8c",
+        "bytes": 125565,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/course-syllabus--default.png",
+      "copied": {
+        "sha256": "a5f2485207c5ff7aff2ddb55fa8d5eab20b2466c743cb7f0e43fe9c01c787c8c",
+        "bytes": 125565,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "course-calendar.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/calendar/",
+      "route_id": "course-calendar",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/06-calendar-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "dd4cf36bd7fd28351e688e449bdc93c7ac98f963bfda02e59a0983e77ac76a4c",
+        "bytes": 91929,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/course-calendar--default.png",
+      "copied": {
+        "sha256": "dd4cf36bd7fd28351e688e449bdc93c7ac98f963bfda02e59a0983e77ac76a4c",
+        "bytes": 91929,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "course-readings.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/",
+      "route_id": "course-readings",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/07-readings-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "8792ad6322d62016b35eac26262e701aa5ed346ca99237b4eca9f44a54aa08aa",
+        "bytes": 103967,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/course-readings--default.png",
+      "copied": {
+        "sha256": "8792ad6322d62016b35eac26262e701aa5ed346ca99237b4eca9f44a54aa08aa",
+        "bytes": 103967,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "course-reading-deep.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/binary-search-trees/",
+      "route_id": "course-reading-deep",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/09-reading-binary-search-trees-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "b7ed1322af88e4f6f4eb20970fd3f6b5a1f9f4a01fe1be99fbf60da26aad185d",
+        "bytes": 106221,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/course-reading-deep--default.png",
+      "copied": {
+        "sha256": "b7ed1322af88e4f6f4eb20970fd3f6b5a1f9f4a01fe1be99fbf60da26aad185d",
+        "bytes": 106221,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "course-lecture-notes.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/",
+      "route_id": "course-lecture-notes",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/10-lecture-notes-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "1b5ad42f3b480d497289dc33e4d25f12f2919a32a6411431e91056a5857edd41",
+        "bytes": 108140,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/course-lecture-notes--default.png",
+      "copied": {
+        "sha256": "1b5ad42f3b480d497289dc33e4d25f12f2919a32a6411431e91056a5857edd41",
+        "bytes": 108140,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "course-assignments.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/",
+      "route_id": "course-assignments",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/12-assignments-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "bbd56bdaed21736ebbfcfcc1568c89c6b97d442644bdcce8fddc1fe88bc3e3ae",
+        "bytes": 119076,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/course-assignments--default.png",
+      "copied": {
+        "sha256": "bbd56bdaed21736ebbfcfcc1568c89c6b97d442644bdcce8fddc1fe88bc3e3ae",
+        "bytes": 119076,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "course-exams.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/exams/",
+      "route_id": "course-exams",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/15-exams-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "f819d5ec953311dd0843e1188c19dc140b972b6ed8d6802ea1b328b183a8b6d2",
+        "bytes": 62068,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/course-exams--default.png",
+      "copied": {
+        "sha256": "f819d5ec953311dd0843e1188c19dc140b972b6ed8d6802ea1b328b183a8b6d2",
+        "bytes": 62068,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "resource-index.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/problem-sets/",
+      "route_id": "resource-index",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/13-problem-sets-resource-index-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "e9f1916bbb75b3e49abcbcc2f64c6b296c52363e1bedf8ab5ce97f47833f72b7",
+        "bytes": 80828,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/resource-index--default.png",
+      "copied": {
+        "sha256": "e9f1916bbb75b3e49abcbcc2f64c6b296c52363e1bedf8ab5ce97f47833f72b7",
+        "bytes": 80828,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "resource-problem-set.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_ps1/",
+      "route_id": "resource-problem-set",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/14-problem-set-1-resource-detail-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "593ca0cb679b740420a4cbcd2521cbd2da97d13c82eefa8c564c947c775ecad6",
+        "bytes": 66128,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/resource-problem-set--default.png",
+      "copied": {
+        "sha256": "593ca0cb679b740420a4cbcd2521cbd2da97d13c82eefa8c564c947c775ecad6",
+        "bytes": 66128,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "resource-lecture-note.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_lec01/",
+      "route_id": "resource-lecture-note",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/11-lecture-note-1-resource-detail-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "99da4aad13a30f327f0458354b5efd354ee0bc856f92b2092ad20a9c79d8ff8d",
+        "bytes": 70375,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/resource-lecture-note--default.png",
+      "copied": {
+        "sha256": "99da4aad13a30f327f0458354b5efd354ee0bc856f92b2092ad20a9c79d8ff8d",
+        "bytes": 70375,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "resource-final-exam.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_final/",
+      "route_id": "resource-final-exam",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/16-final-exam-resource-detail-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "d00ac343107850c0913535e034857e9ce940ce9527f974363d39c26e55f97798",
+        "bytes": 64361,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/resource-final-exam--default.png",
+      "copied": {
+        "sha256": "d00ac343107850c0913535e034857e9ce940ce9527f974363d39c26e55f97798",
+        "bytes": 64361,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "course-download.default",
+      "clone_path": "/courses/6-006-introduction-to-algorithms-fall-2011/download/",
+      "route_id": "course-download",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "viewport-1440x900",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/17-download-course-viewport.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-observations.json",
+      "original": {
+        "sha256": "14cb331e7f87a9835c0d106448dfae380c63c507ec624300a892313b0c55d801",
+        "bytes": 97084,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/course-download--default.png",
+      "copied": {
+        "sha256": "14cb331e7f87a9835c0d106448dfae380c63c507ec624300a892313b0c55d801",
+        "bytes": 97084,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "native-1440x900"
+    },
+    {
+      "checkpoint_id": "video-gallery.default",
+      "clone_path": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/video_galleries/video-lectures/",
+      "route_id": "video-gallery",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/capture-video-gallery-static/video-gallery-static-thumbnails-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/capture-video-gallery-static-report.json",
+      "original": {
+        "sha256": "cec69d1dd4df7e1d75e2231e5fd532d7307b2d77a8822ae65e9a5b0bef432816",
+        "bytes": 237169,
+        "width": 1440,
+        "height": 1708,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/video-gallery--default.png",
+      "copied": {
+        "sha256": "cec69d1dd4df7e1d75e2231e5fd532d7307b2d77a8822ae65e9a5b0bef432816",
+        "bytes": 237169,
+        "width": 1440,
+        "height": 1708,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "video-resource.default",
+      "clone_path": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/",
+      "route_id": "video-resource",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/capture-static-visuals/video-resource-static-thumbnail-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/capture-static-visuals-report.json",
+      "original": {
+        "sha256": "97d7b4974fce6ca067266b0803a73f1f4e9ba81c29104417b418c0052fe556ad",
+        "bytes": 85036,
+        "width": 1440,
+        "height": 1077,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/video-resource--default.png",
+      "copied": {
+        "sha256": "97d7b4974fce6ca067266b0803a73f1f4e9ba81c29104417b418c0052fe556ad",
+        "bytes": 85036,
+        "width": 1440,
+        "height": 1077,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "source-legacy-boundary.default",
+      "clone_path": "/external-resources/",
+      "route_id": "source-legacy-boundary",
+      "state": "default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/safe-breadth/external-resources-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/safe-breadth-report.json",
+      "original": {
+        "sha256": "99db2a93b06fa1bf617f5c495e02dcf6c0b76961108491217e2cf4fed8699d35",
+        "bytes": 5851,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/source-legacy-boundary--default.png",
+      "copied": {
+        "sha256": "99db2a93b06fa1bf617f5c495e02dcf6c0b76961108491217e2cf4fed8699d35",
+        "bytes": 5851,
+        "width": 1440,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "external-boundary.default",
+      "clone_path": "/external-boundary/",
+      "route_id": "external-boundary",
+      "state": "branded-local-soft-404",
+      "evidence_class": "missing",
+      "reason": "No exact branded local soft-404 source raster exists. G1 external navigation rasters are blank/failed and external-boundary reports record modal_visible_after=false.",
+      "visual_contract_allowed_from_locked_capture": false
+    },
+    {
+      "checkpoint_id": "data-boundary.default",
+      "clone_path": "/data-boundary/",
+      "route_id": "data-boundary",
+      "state": "branded-retained-snapshot-boundary",
+      "evidence_class": "missing",
+      "reason": "No route/state-matched source raster exists anywhere in the locked capture.",
+      "visual_contract_allowed_from_locked_capture": false
+    },
+    {
+      "checkpoint_id": "not-found.default",
+      "clone_path": "/not-found/",
+      "route_id": "not-found",
+      "state": "default",
+      "evidence_class": "missing",
+      "reason": "No route/state-matched source raster exists anywhere in the locked capture.",
+      "visual_contract_allowed_from_locked_capture": false
+    },
+    {
+      "checkpoint_id": "catalog.second-batch",
+      "clone_path": "/search/?state=second-batch",
+      "route_id": "catalog",
+      "state": "second-batch",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/default-batch-2.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "original": {
+        "sha256": "e919336f4d19fac457986b9ed9655822c44ef624e03b71818e318ace8d1be999",
+        "bytes": 889433,
+        "width": 1455,
+        "height": 4650,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/catalog--second-batch.png",
+      "copied": {
+        "sha256": "e919336f4d19fac457986b9ed9655822c44ef624e03b71818e318ace8d1be999",
+        "bytes": 889433,
+        "width": 1455,
+        "height": 4650,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "catalog.math",
+      "clone_path": "/search/?state=math",
+      "route_id": "catalog",
+      "state": "filtered-math-199",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/filters-sort-department-mathematics.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "original": {
+        "sha256": "b62a72a4e63ed703140e3ae2381f0118e947893e3c0e0985dac05465215a38f1",
+        "bytes": 409727,
+        "width": 1455,
+        "height": 2611,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/catalog--math.png",
+      "copied": {
+        "sha256": "b62a72a4e63ed703140e3ae2381f0118e947893e3c0e0985dac05465215a38f1",
+        "bytes": 409727,
+        "width": 1455,
+        "height": 2611,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "catalog.math-undergraduate",
+      "clone_path": "/search/?state=math-undergraduate",
+      "route_id": "catalog",
+      "state": "filtered-math-undergraduate-110",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/filters-sort-combined-mathematics-undergraduate.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "original": {
+        "sha256": "dad53d73a78858c2f11d04abb97da15ddc9a4d886ab1a22ad624fa02b79c0d5d",
+        "bytes": 384351,
+        "width": 1455,
+        "height": 2611,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/catalog--math-undergraduate.png",
+      "copied": {
+        "sha256": "dad53d73a78858c2f11d04abb97da15ddc9a4d886ab1a22ad624fa02b79c0d5d",
+        "bytes": 384351,
+        "width": 1455,
+        "height": 2611,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "catalog.course-number",
+      "clone_path": "/search/?state=course-number",
+      "route_id": "catalog",
+      "state": "sorted-course-number",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/filters-sort-combined-filter-course-number-sort.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "original": {
+        "sha256": "07bc7323df6b48abd1ee459a24bbf0ad27e215693febd75091549aff9f657ecd",
+        "bytes": 380526,
+        "width": 1455,
+        "height": 2611,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/catalog--course-number.png",
+      "copied": {
+        "sha256": "07bc7323df6b48abd1ee459a24bbf0ad27e215693febd75091549aff9f657ecd",
+        "bytes": 380526,
+        "width": 1455,
+        "height": 2611,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "catalog.empty",
+      "clone_path": "/search/?state=empty",
+      "route_id": "catalog",
+      "state": "empty-zero-results",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/empty-recovery-true-empty.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "original": {
+        "sha256": "83d18acfaed0642de1a941c48f0ca988e14d42a3cc694fc6c47ed3d7ab7ff8b4",
+        "bytes": 50703,
+        "width": 1455,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/catalog--empty.png",
+      "copied": {
+        "sha256": "83d18acfaed0642de1a941c48f0ca988e14d42a3cc694fc6c47ed3d7ab7ff8b4",
+        "bytes": 50703,
+        "width": 1455,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "catalog.error",
+      "clone_path": "/search/?state=error",
+      "route_id": "catalog",
+      "state": "api-error",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/error-retry-controlled-api-error.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "original": {
+        "sha256": "486628cc062cd77adf7053a134defef1cede8b144a266acacf14b70a49a00279",
+        "bytes": 57907,
+        "width": 1455,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/catalog--error.png",
+      "copied": {
+        "sha256": "486628cc062cd77adf7053a134defef1cede8b144a266acacf14b70a49a00279",
+        "bytes": 57907,
+        "width": 1455,
+        "height": 900,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "catalog.retry-stale",
+      "clone_path": "/search/?state=retry-stale",
+      "route_id": "catalog",
+      "state": "successful-retry-retains-error-shell",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/error-retry-retry-response.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "original": {
+        "sha256": "2f32d97c709c362f4d95c004a311830ec090a3b5cc633c8aa09741c5080dd3e2",
+        "bytes": 102313,
+        "width": 1455,
+        "height": 1313,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/catalog--retry-stale.png",
+      "copied": {
+        "sha256": "2f32d97c709c362f4d95c004a311830ec090a3b5cc633c8aa09741c5080dd3e2",
+        "bytes": 102313,
+        "width": 1455,
+        "height": 1313,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "catalog.reload-recovered",
+      "clone_path": "/search/?state=reload-recovered",
+      "route_id": "catalog",
+      "state": "full-reload-recovers-default",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/error-retry-reload-recovered-default.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "original": {
+        "sha256": "cf0a19a7fe747e7760527ae6e7706e29fdb2a289c87c33c52a47246f7dabb370",
+        "bytes": 474627,
+        "width": 1455,
+        "height": 2643,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/catalog--reload-recovered.png",
+      "copied": {
+        "sha256": "cf0a19a7fe747e7760527ae6e7706e29fdb2a289c87c33c52a47246f7dabb370",
+        "bytes": 474627,
+        "width": 1455,
+        "height": 2643,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "catalog.resources",
+      "clone_path": "/search/?state=resources",
+      "route_id": "catalog",
+      "state": "resources-first-batch-10000-results",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/resources-batch-1.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/search-authorized-matrix/report.json",
+      "original": {
+        "sha256": "101a9148d778831f2dc8b804b2d32ef2a40917dc7633e56a22d6e5cb3b5ec120",
+        "bytes": 219510,
+        "width": 1455,
+        "height": 2349,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/catalog--resources.png",
+      "copied": {
+        "sha256": "101a9148d778831f2dc8b804b2d32ef2a40917dc7633e56a22d6e5cb3b5ec120",
+        "bytes": 219510,
+        "width": 1455,
+        "height": 2349,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    },
+    {
+      "checkpoint_id": "home.carousel-second-batches",
+      "clone_path": "/?state=carousel-second-batches",
+      "route_id": "home",
+      "state": "all-home-carousels-second-batch",
+      "evidence_class": "component-only",
+      "full_or_viewport_source_absent": true,
+      "components": [
+        {
+          "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/carousel-promo-batch2.png",
+          "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/carousel-batches.json",
+          "original": {
+            "sha256": "e2fa0b6e0781541d6411a1957a271af34e0f181add002838e32fdb32ef708f88",
+            "bytes": 37150,
+            "width": 1440,
+            "height": 200,
+            "image_format": "PNG"
+          },
+          "copied_path": "source-current/g3c/components/carousel-promo-batch2.png",
+          "copied": {
+            "sha256": "e2fa0b6e0781541d6411a1957a271af34e0f181add002838e32fdb32ef708f88",
+            "bytes": 37150,
+            "width": 1440,
+            "height": 200,
+            "image_format": "PNG"
+          }
+        },
+        {
+          "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/carousel-featured-courses-batch2.png",
+          "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/carousel-batches.json",
+          "original": {
+            "sha256": "7357f5bf61b96a5f6b85da2cb5b7499ae443b201505c2e49992261f2c99f8cec",
+            "bytes": 420028,
+            "width": 1250,
+            "height": 447,
+            "image_format": "PNG"
+          },
+          "copied_path": "source-current/g3c/components/carousel-featured-courses-batch2.png",
+          "copied": {
+            "sha256": "7357f5bf61b96a5f6b85da2cb5b7499ae443b201505c2e49992261f2c99f8cec",
+            "bytes": 420028,
+            "width": 1250,
+            "height": 447,
+            "image_format": "PNG"
+          }
+        },
+        {
+          "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/carousel-new-courses-batch2.png",
+          "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/carousel-batches.json",
+          "original": {
+            "sha256": "11ea8bf6bc62fe12aad991adbfb4933113790a4cb1cff00047c4054c1ea59067",
+            "bytes": 334833,
+            "width": 1250,
+            "height": 448,
+            "image_format": "PNG"
+          },
+          "copied_path": "source-current/g3c/components/carousel-new-courses-batch2.png",
+          "copied": {
+            "sha256": "11ea8bf6bc62fe12aad991adbfb4933113790a4cb1cff00047c4054c1ea59067",
+            "bytes": 334833,
+            "width": 1250,
+            "height": 448,
+            "image_format": "PNG"
+          }
+        },
+        {
+          "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/carousel-stories-batch2.png",
+          "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea2/carousel-batches.json",
+          "original": {
+            "sha256": "0f42fd894512aa136d5a389cf1651e0ffd95d3078ebb7f034ee3795c0c25d4ad",
+            "bytes": 435309,
+            "width": 1440,
+            "height": 653,
+            "image_format": "PNG"
+          },
+          "copied_path": "source-current/g3c/components/carousel-stories-batch2.png",
+          "copied": {
+            "sha256": "0f42fd894512aa136d5a389cf1651e0ffd95d3078ebb7f034ee3795c0c25d4ad",
+            "bytes": 435309,
+            "width": 1440,
+            "height": 653,
+            "image_format": "PNG"
+          }
+        }
+      ],
+      "constraint": "Components may be directly compared one-by-one; they must not be stretched or assembled into a synthetic full-page source."
+    },
+    {
+      "checkpoint_id": "video.static-disabled",
+      "clone_path": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/",
+      "route_id": "video-resource",
+      "state": "static-thumbnail-playback-disabled",
+      "evidence_class": "exact-full-or-viewport",
+      "raster_kind": "full-page",
+      "original_path": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/capture-static-visuals/video-resource-static-thumbnail-initial.png",
+      "evidence_report": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/g1/capture-static-visuals-report.json",
+      "original": {
+        "sha256": "97d7b4974fce6ca067266b0803a73f1f4e9ba81c29104417b418c0052fe556ad",
+        "bytes": 85036,
+        "width": 1440,
+        "height": 1077,
+        "image_format": "PNG"
+      },
+      "copied_path": "source-current/g3c/exact/video--static-disabled.png",
+      "copied": {
+        "sha256": "97d7b4974fce6ca067266b0803a73f1f4e9ba81c29104417b418c0052fe556ad",
+        "bytes": 85036,
+        "width": 1440,
+        "height": 1077,
+        "image_format": "PNG"
+      },
+      "copy_disposition": "new-independent-copy",
+      "future_viewport_policy": "top-left-native-crop-0-0-1440-900-no-resize"
+    }
+  ]
+}

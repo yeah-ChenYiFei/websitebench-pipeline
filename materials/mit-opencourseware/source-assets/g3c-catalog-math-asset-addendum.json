@@ -1,0 +1,142 @@
+{
+  "schema_version": "mit-ocw.g3c-catalog-math-asset-addendum.v1",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "created_at": "2026-09-05T09:39:52.171914Z",
+  "authority": "four-exact-same-origin-static-get-current-direct-addendum",
+  "request_policy": {
+    "allowed_method": "GET",
+    "allowed_urls": [
+      "https://ocw.mit.edu/courses/18-465-topics-in-statistics-nonparametrics-and-robustness-spring-2005/e4689bd84e821cbef0e93289d30e0fc2_18-465s05.JPG",
+      "https://ocw.mit.edu/courses/18-034-honors-differential-equations-spring-2004/ade3412a58f3fa8f7cf4888d277ad571_18-034s04.jpg",
+      "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2006/06e3b8f52ff0b481586b699a9f7c85ef_18-786s06.jpg",
+      "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2010/ad625fcdbac79d7e2633be2dd7b4aedd_18-786s10.jpg"
+    ],
+    "other_requests": 0
+  },
+  "does_not_modify_prior_284_manifest_records": true,
+  "prior_manifest_assets_sha256": "7407ce3783ebbf2c0008c7e3b1b25586a9a09f5178825a50fb31eaff8435d248",
+  "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-width-source-v2/report.json",
+  "observation_sha256": "3b96cfe218bcd6515a3196f410e46a88ae81589c1af91fdae6fa6568c7b3c59e",
+  "assets": [
+    {
+      "id": "g3c-catalog-math-1-d882fbd220c0",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3c-catalog/d882fbd220c045714814fea35aeafe7657c55d5d7b73899012d772904d6b9d92.jpg",
+      "runtime_path": "runtime-assets/g3c-catalog/d882fbd220c045714814fea35aeafe7657c55d5d7b73899012d772904d6b9d92.jpg",
+      "bytes": 12529,
+      "sha256": "d882fbd220c045714814fea35aeafe7657c55d5d7b73899012d772904d6b9d92",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 320,
+        "height": 151
+      },
+      "referenced_by": [
+        "catalog.math"
+      ],
+      "evidence_kind": "current-direct-g3c-catalog-math-addendum",
+      "source_url": "https://ocw.mit.edu/courses/18-465-topics-in-statistics-nonparametrics-and-robustness-spring-2005/e4689bd84e821cbef0e93289d30e0fc2_18-465s05.JPG",
+      "capture_id": "mit-opencourseware-20260905T070619Z",
+      "state": "math",
+      "card_index": 0,
+      "source_card_index": 7,
+      "course_title": "Topics in Statistics: Nonparametrics and Robustness",
+      "requested_url": "https://ocw.mit.edu/courses/18-465-topics-in-statistics-nonparametrics-and-robustness-spring-2005/e4689bd84e821cbef0e93289d30e0fc2_18-465s05.JPG",
+      "final_url": "https://ocw.mit.edu/courses/18-465-topics-in-statistics-nonparametrics-and-robustness-spring-2005/e4689bd84e821cbef0e93289d30e0fc2_18-465s05.JPG",
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-width-source-v2/report.json",
+      "observation_sha256": "3b96cfe218bcd6515a3196f410e46a88ae81589c1af91fdae6fa6568c7b3c59e"
+    },
+    {
+      "id": "g3c-catalog-math-2-83f8a2ecaf53",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3c-catalog/83f8a2ecaf53a792589aa56d92a41b75a6d241e6f3c8c38a5f5f6b3e1756863c.jpg",
+      "runtime_path": "runtime-assets/g3c-catalog/83f8a2ecaf53a792589aa56d92a41b75a6d241e6f3c8c38a5f5f6b3e1756863c.jpg",
+      "bytes": 9116,
+      "sha256": "83f8a2ecaf53a792589aa56d92a41b75a6d241e6f3c8c38a5f5f6b3e1756863c",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 320,
+        "height": 174
+      },
+      "referenced_by": [
+        "catalog.math"
+      ],
+      "evidence_kind": "current-direct-g3c-catalog-math-addendum",
+      "source_url": "https://ocw.mit.edu/courses/18-034-honors-differential-equations-spring-2004/ade3412a58f3fa8f7cf4888d277ad571_18-034s04.jpg",
+      "capture_id": "mit-opencourseware-20260905T070619Z",
+      "state": "math",
+      "card_index": 1,
+      "source_card_index": 6,
+      "course_title": "Honors Differential Equations",
+      "requested_url": "https://ocw.mit.edu/courses/18-034-honors-differential-equations-spring-2004/ade3412a58f3fa8f7cf4888d277ad571_18-034s04.jpg",
+      "final_url": "https://ocw.mit.edu/courses/18-034-honors-differential-equations-spring-2004/ade3412a58f3fa8f7cf4888d277ad571_18-034s04.jpg",
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-width-source-v2/report.json",
+      "observation_sha256": "3b96cfe218bcd6515a3196f410e46a88ae81589c1af91fdae6fa6568c7b3c59e"
+    },
+    {
+      "id": "g3c-catalog-math-3-c831a6fe2ae2",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3c-catalog/c831a6fe2ae2504dd753c59090595f8868ca7db04640dffb2a2b358152fd29f4.jpg",
+      "runtime_path": "runtime-assets/g3c-catalog/c831a6fe2ae2504dd753c59090595f8868ca7db04640dffb2a2b358152fd29f4.jpg",
+      "bytes": 22380,
+      "sha256": "c831a6fe2ae2504dd753c59090595f8868ca7db04640dffb2a2b358152fd29f4",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 320,
+        "height": 311
+      },
+      "referenced_by": [
+        "catalog.math"
+      ],
+      "evidence_kind": "current-direct-g3c-catalog-math-addendum",
+      "source_url": "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2006/06e3b8f52ff0b481586b699a9f7c85ef_18-786s06.jpg",
+      "capture_id": "mit-opencourseware-20260905T070619Z",
+      "state": "math",
+      "card_index": 2,
+      "source_card_index": 8,
+      "course_title": "Topics in Algebraic Number Theory",
+      "requested_url": "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2006/06e3b8f52ff0b481586b699a9f7c85ef_18-786s06.jpg",
+      "final_url": "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2006/06e3b8f52ff0b481586b699a9f7c85ef_18-786s06.jpg",
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-width-source-v2/report.json",
+      "observation_sha256": "3b96cfe218bcd6515a3196f410e46a88ae81589c1af91fdae6fa6568c7b3c59e"
+    },
+    {
+      "id": "g3c-catalog-math-4-dcef0a26d2a0",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3c-catalog/dcef0a26d2a0075c0b7415ad83e4a48fffa588ea467c337c17d9c4c0712d2d18.jpg",
+      "runtime_path": "runtime-assets/g3c-catalog/dcef0a26d2a0075c0b7415ad83e4a48fffa588ea467c337c17d9c4c0712d2d18.jpg",
+      "bytes": 40606,
+      "sha256": "dcef0a26d2a0075c0b7415ad83e4a48fffa588ea467c337c17d9c4c0712d2d18",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 320,
+        "height": 344
+      },
+      "referenced_by": [
+        "catalog.math"
+      ],
+      "evidence_kind": "current-direct-g3c-catalog-math-addendum",
+      "source_url": "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2010/ad625fcdbac79d7e2633be2dd7b4aedd_18-786s10.jpg",
+      "capture_id": "mit-opencourseware-20260905T070619Z",
+      "state": "math",
+      "card_index": 3,
+      "source_card_index": 9,
+      "course_title": "Topics in Algebraic Number Theory",
+      "requested_url": "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2010/ad625fcdbac79d7e2633be2dd7b4aedd_18-786s10.jpg",
+      "final_url": "https://ocw.mit.edu/courses/18-786-topics-in-algebraic-number-theory-spring-2010/ad625fcdbac79d7e2633be2dd7b4aedd_18-786s10.jpg",
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "observed_in": "artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-width-source-v2/report.json",
+      "observation_sha256": "3b96cfe218bcd6515a3196f410e46a88ae81589c1af91fdae6fa6568c7b3c59e"
+    }
+  ]
+}

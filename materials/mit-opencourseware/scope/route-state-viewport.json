@@ -1,0 +1,163 @@
+{
+  "schema_version": "websitebench.route-state-viewport.v3",
+  "site_id": "mit-opencourseware",
+  "status": "frozen",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "capture_method": "repository-pinned Playwright Chromium; en-US; America/Toronto; 1440x900 CSS pixels; DPR 1; light theme; isolated anonymous contexts",
+  "records": [
+    {
+      "id": "catalog.default",
+      "source_expectation": "Route 'catalog' at /search/ exposes the frozen 'default' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-catalog.default.json"
+      ]
+    },
+    {
+      "id": "catalog.second-batch",
+      "source_expectation": "Route 'catalog' at /search/ exposes the frozen 'second-batch' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-catalog.second-batch.json"
+      ]
+    },
+    {
+      "id": "catalog.math",
+      "source_expectation": "Route 'catalog' at /search/ exposes the frozen 'filtered-math-199' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-catalog.math.json"
+      ]
+    },
+    {
+      "id": "catalog.math-undergraduate",
+      "source_expectation": "Route 'catalog' at /search/ exposes the frozen 'filtered-math-undergraduate-110' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-catalog.math-undergraduate.json"
+      ]
+    },
+    {
+      "id": "catalog.course-number",
+      "source_expectation": "Route 'catalog' at /search/ exposes the frozen 'sorted-course-number' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-catalog.course-number.json"
+      ]
+    },
+    {
+      "id": "catalog.empty",
+      "source_expectation": "Route 'catalog' at /search/ exposes the frozen 'empty-zero-results' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-catalog.empty.json"
+      ]
+    },
+    {
+      "id": "catalog.error",
+      "source_expectation": "Route 'catalog' at /search/ exposes the frozen 'api-error' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-catalog.error.json"
+      ]
+    },
+    {
+      "id": "catalog.retry-stale",
+      "source_expectation": "Route 'catalog' at /search/ exposes the frozen 'successful-retry-retains-error-shell' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-catalog.retry-stale.json"
+      ]
+    },
+    {
+      "id": "catalog.reload-recovered",
+      "source_expectation": "Route 'catalog' at /search/ exposes the frozen 'full-reload-recovers-default' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-catalog.reload-recovered.json"
+      ]
+    },
+    {
+      "id": "catalog.resources",
+      "source_expectation": "Route 'catalog' at /search/ exposes the frozen 'resources-first-batch-10000-results' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-catalog.resources.json"
+      ]
+    },
+    {
+      "id": "home.carousel-second-batches",
+      "source_expectation": "Route 'home' at / exposes the frozen 'all-home-carousels-second-batch' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-home.carousel-second-batches.json"
+      ]
+    },
+    {
+      "id": "video.static-disabled",
+      "source_expectation": "Route 'video-resource' at /courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/ exposes the frozen 'static-thumbnail-playback-disabled' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-video.static-disabled.json"
+      ]
+    },
+    {
+      "id": "external-boundary.default",
+      "source_expectation": "Route 'external-boundary' at /external-boundary/ exposes the frozen 'branded-local-soft-404' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-external-boundary.default.json"
+      ]
+    },
+    {
+      "id": "data-boundary.default",
+      "source_expectation": "Route 'data-boundary' at /data-boundary/ exposes the frozen 'branded-retained-snapshot-boundary' state at the 1440x900 desktop viewport.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/route-state-viewport-route-state-viewport-data-boundary.default.json"
+      ]
+    }
+  ]
+}

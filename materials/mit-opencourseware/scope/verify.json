@@ -1,0 +1,193 @@
+{
+  "schema_version": "offline-clone.verify-driver.v1",
+  "site_id": "mit-opencourseware",
+  "note": "Frozen orchestration mapping for 29 representative routes and 40 route-state checkpoints. Thirty-five checkpoints have direct full-frame source visual contracts; five source-unavailable or clone-only boundary states remain explicitly semantic-only pending a central visual-N/A mechanism.",
+  "boot": {
+    "argv": [
+      "{python}",
+      "-m",
+      "uvicorn",
+      "app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "{port}",
+      "--log-level",
+      "warning"
+    ],
+    "cwd": "clone",
+    "env": {},
+    "read_paths": [
+      "runtime-assets",
+      "runtime-downloads",
+      "runtime-content"
+    ]
+  },
+  "prepare": [],
+  "routes": {
+    "home": "/",
+    "catalog": "/search/",
+    "collection": "/collections/introductory-programming/",
+    "stories": "/stories/",
+    "story-adrian": "/stories/adrian-pastor/",
+    "about": "/about/",
+    "get-started": "/pages/get-started/",
+    "educator": "/educator/",
+    "newsletter": "/newsletter/",
+    "course-overview": "/courses/6-006-introduction-to-algorithms-fall-2011/",
+    "catalog-course-overview": "/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/",
+    "course-syllabus": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/",
+    "course-calendar": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/calendar/",
+    "course-readings": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/",
+    "course-reading-deep": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/binary-search-trees/",
+    "course-lecture-notes": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/",
+    "course-assignments": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/",
+    "course-exams": "/courses/6-006-introduction-to-algorithms-fall-2011/pages/exams/",
+    "resource-index": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/problem-sets/",
+    "resource-problem-set": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_ps1/",
+    "resource-lecture-note": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_lec01/",
+    "resource-final-exam": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_final/",
+    "course-download": "/courses/6-006-introduction-to-algorithms-fall-2011/download/",
+    "video-gallery": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/video_galleries/video-lectures/",
+    "video-resource": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/",
+    "source-legacy-boundary": "/external-resources/",
+    "external-boundary": "/external-boundary/",
+    "data-boundary": "/data-boundary/",
+    "not-found": "/not-found/"
+  },
+  "states": {
+    "home.default": [],
+    "catalog.default": [],
+    "collection.default": [],
+    "stories.default": [],
+    "story-adrian.default": [],
+    "about.default": [],
+    "get-started.default": [],
+    "educator.default": [],
+    "newsletter.default": [],
+    "course-overview.default": [],
+    "catalog-course-overview.default": [],
+    "course-syllabus.default": [],
+    "course-calendar.default": [],
+    "course-readings.default": [],
+    "course-reading-deep.default": [],
+    "course-lecture-notes.default": [],
+    "course-assignments.default": [],
+    "course-exams.default": [],
+    "resource-index.default": [],
+    "resource-problem-set.default": [],
+    "resource-lecture-note.default": [],
+    "resource-final-exam.default": [],
+    "course-download.default": [],
+    "video-gallery.default": [],
+    "video-resource.default": [],
+    "source-legacy-boundary.default": [],
+    "external-boundary.branded-local-soft-404": [
+      {
+        "goto": "/external-boundary/"
+      },
+      {
+        "expect": "[data-wb-component='external-boundary']"
+      }
+    ],
+    "data-boundary.branded-retained-snapshot-boundary": [
+      {
+        "goto": "/data-boundary/"
+      },
+      {
+        "expect": "[data-wb-capability='data-boundary']"
+      }
+    ],
+    "not-found.default": [],
+    "catalog.second-batch": [
+      {
+        "goto": "/search/?state=second-batch"
+      },
+      {
+        "expect": "[data-wb-component='catalog-results']"
+      }
+    ],
+    "catalog.filtered-math-199": [
+      {
+        "goto": "/search/?state=math"
+      },
+      {
+        "expect": "[data-wb-control='catalog-math-filter']:checked"
+      }
+    ],
+    "catalog.filtered-math-undergraduate-110": [
+      {
+        "goto": "/search/?state=math-undergraduate"
+      },
+      {
+        "expect": "[data-wb-control='catalog-undergraduate-filter']:checked"
+      }
+    ],
+    "catalog.sorted-course-number": [
+      {
+        "goto": "/search/?state=course-number"
+      },
+      {
+        "expect": "[data-wb-control='catalog-sort']"
+      }
+    ],
+    "catalog.empty-zero-results": [
+      {
+        "goto": "/search/?state=empty"
+      },
+      {
+        "expect": "[data-wb-component='catalog-empty']"
+      }
+    ],
+    "catalog.api-error": [
+      {
+        "goto": "/search/?state=error"
+      },
+      {
+        "expect": "[data-wb-component='catalog-error']"
+      }
+    ],
+    "catalog.successful-retry-retains-error-shell": [
+      {
+        "goto": "/search/?state=retry-stale"
+      },
+      {
+        "expect": "[data-wb-component='catalog-error']"
+      }
+    ],
+    "catalog.full-reload-recovers-default": [
+      {
+        "goto": "/search/?state=reload-recovered"
+      },
+      {
+        "expect": "[data-wb-component='catalog-results']"
+      }
+    ],
+    "catalog.resources-first-batch-10000-results": [
+      {
+        "goto": "/search/?state=resources"
+      },
+      {
+        "expect": "[data-wb-control='catalog-resource-tab']:checked"
+      }
+    ],
+    "home.all-home-carousels-second-batch": [
+      {
+        "goto": "/?state=carousel-second-batches"
+      },
+      {
+        "expect": "[data-wb-control='featured-previous']"
+      }
+    ],
+    "video-resource.static-thumbnail-playback-disabled": [
+      {
+        "goto": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/"
+      },
+      {
+        "expect": "[data-wb-control='video-play']:disabled"
+      }
+    ]
+  },
+  "status": {},
+  "deferred": {}
+}

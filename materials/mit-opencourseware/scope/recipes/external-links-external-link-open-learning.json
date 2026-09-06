@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "external-links.json",
+  "contract_schema_version": "websitebench.external-links.v3",
+  "record_kind": "external-link",
+  "record_id": "open-learning",
+  "subject_kind": "external-link",
+  "subject_id": "open-learning",
+  "kind": "external-link",
+  "checkpoint_id": "home.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-external='open-learning']",
+  "expected_href": "https://openlearning.mit.edu/"
+}

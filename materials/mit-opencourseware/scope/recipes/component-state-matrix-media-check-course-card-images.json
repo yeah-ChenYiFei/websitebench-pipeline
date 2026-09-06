@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "component-state-matrix.json",
+  "contract_schema_version": "websitebench.component-state-matrix.v2",
+  "record_kind": "media-check",
+  "record_id": "course-card-images",
+  "subject_kind": "media-check",
+  "subject_id": "course-card-images",
+  "kind": "media-state",
+  "checkpoint_id": "catalog.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-media='course-card-images']",
+  "expected_state": "ready"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "first-party-link-graph.json",
+  "contract_schema_version": "websitebench.first-party-link-graph.v3",
+  "record_kind": "link-edge",
+  "record_id": "problem-set-detail",
+  "subject_kind": "link-edge",
+  "subject_id": "problem-set-detail",
+  "kind": "first-party-link",
+  "checkpoint_id": "resource-index.default",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "selector": "[data-wb-link='problem-set-detail']",
+  "expected_href": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_ps1/"
+}

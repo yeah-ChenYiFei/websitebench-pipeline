@@ -1,0 +1,146 @@
+{
+  "schema_version": "mit-ocw.g3b-content-index-migration.v2",
+  "capture_id": "mit-opencourseware-20260903T032020Z",
+  "created_at": "2026-09-03T09:47:52.823437Z",
+  "create_only": true,
+  "reason": "Bind canonical raw paths and current selectors to recomputed visible-text bytes/SHA without modifying immutable acquisition or correction reports.",
+  "closure": {
+    "status": "closed",
+    "routes_recomputed": 732,
+    "rows_changed": 11
+  },
+  "rows": [
+    {
+      "path": "/",
+      "raw_path": "source-current/g3b-content/batch-01/raw/8a5edab282632443219e.html",
+      "raw_sha256": "71c63ab858c0008c3c251427f0a80c6fb055213ca0753c124cfa66cfd3fac2cf",
+      "original_selector": "range:div.home-banner..footer#footer-container",
+      "original_source_visible_text_bytes": 456170,
+      "original_source_visible_text_sha256": "1ccdf8005eb5dc9e2791647b0232a8565377b11b3d9ea659920d6b35486c467a",
+      "current_selector": "range:div.home-banner..footer#footer-container",
+      "current_source_visible_text_bytes": 455403,
+      "current_source_visible_text_sha256": "1d6aab797ecee36955f0aa36b604fe01ce2fa4d5be454dab0cc8874d15a331c7",
+      "reason": "runtime selector correction and canonical current-selector hash binding"
+    },
+    {
+      "path": "/pages/get-started/",
+      "raw_path": "source-current/g3b-content/batch-01/raw/45ebc9f535ebb1f15fcd.html",
+      "raw_sha256": "5947e0e3516d6dd4ceca128aac161611637c8888ec4f46ac8f3b2229f26df371",
+      "original_selector": "div.page-container (information variant)",
+      "original_source_visible_text_bytes": 5041,
+      "original_source_visible_text_sha256": "6819ca7e28cc610ee5143ca1620947d36a287c6526aecca8e143299bf201c007",
+      "current_selector": "div.page-container (information variant)",
+      "current_source_visible_text_bytes": 4248,
+      "current_source_visible_text_sha256": "97ad47d073ade7f535c395feeec6e0bf05625385805083972ca4338fadb67d29",
+      "reason": "runtime selector correction and canonical current-selector hash binding"
+    },
+    {
+      "path": "/courses/6-006-introduction-to-algorithms-fall-2011/resources/problem-sets/",
+      "raw_path": "source-current/g3b-content/batch-01/raw/7b73d002357dcd3186f0.html",
+      "raw_sha256": "d0de2fac56d5d55bceb2a605f38f343ee8611960704e19e93f20e8ac945ef1f9",
+      "original_selector": "div#main-course-section (resource-index variant)",
+      "original_source_visible_text_bytes": 3150,
+      "original_source_visible_text_sha256": "6e8545fc45ea61ba8aa9a38a3daa45519b8e45f963e30b306f8ad385af438c03",
+      "current_selector": "div#main-course-section (resource-index variant)",
+      "current_source_visible_text_bytes": 1003,
+      "current_source_visible_text_sha256": "a0baabacd168aa376619d6406374409ad9e1256b4e15e67c3087df8aa6c94a70",
+      "reason": "runtime selector correction and canonical current-selector hash binding"
+    },
+    {
+      "path": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/lists/lecture-notes/",
+      "raw_path": "source-current/g3b-content/batch-01/raw/11a1c889fcf9cda793bc.html",
+      "raw_sha256": "116f9c42c567020564b683ec0f2c0942f000b829398c03dcd9b8f829cc48fd53",
+      "original_selector": "div#main-course-section (course-list/boundary variant)",
+      "original_source_visible_text_bytes": 2271,
+      "original_source_visible_text_sha256": "c9f1220ce90bb24f8398306187270a698eeb7faf34ed843c194c259fbfebd2e7",
+      "current_selector": "div#main-course-section (course-list/boundary variant)",
+      "current_source_visible_text_bytes": 850,
+      "current_source_visible_text_sha256": "52b500b4ca99d671f35547ab205b556cba411e2955435dc53f79cf8dddc92f2e",
+      "reason": "runtime selector correction and canonical current-selector hash binding"
+    },
+    {
+      "path": "/courses/14-454-economic-crises-spring-2026/lists/lecture-notes/",
+      "raw_path": "source-current/g3b-content/batch-01/raw/a0661643e5fe4a3d7623.html",
+      "raw_sha256": "2568f183f1d097358253c8bcc070966e45a4df603438aa0ca0f900d44de6267c",
+      "original_selector": "div#main-course-section (course-list/boundary variant)",
+      "original_source_visible_text_bytes": 2065,
+      "original_source_visible_text_sha256": "5001231577db2e479d824ee02abac0435bf5605f3aea963afb1faff9962f0658",
+      "current_selector": "div#main-course-section (course-list/boundary variant)",
+      "current_source_visible_text_bytes": 521,
+      "current_source_visible_text_sha256": "16f1486576533f2fbc3770ce52774a85a0a6e0baa8fbc7689c44693c1d2adc41",
+      "reason": "runtime selector correction and canonical current-selector hash binding"
+    },
+    {
+      "path": "/courses/22-081j-introduction-to-sustainable-energy-fall-2010/external-resources/",
+      "raw_path": "source-current/g3b-content/batch-01/raw/fa5b16238d62e7bbd200.html",
+      "raw_sha256": "4772c4c721d6a278d006f040242c4a44a5bba656c197baccfecc21a7f8940bfa",
+      "original_selector": "div#main-course-section (course-list/boundary variant)",
+      "original_source_visible_text_bytes": 2392,
+      "original_source_visible_text_sha256": "65c16df25dba2671bb59e1a3ee5a789f5c6f34ef30805a7ee13aa8930c5e1001",
+      "current_selector": "div#main-course-section (course-list/boundary variant)",
+      "current_source_visible_text_bytes": 0,
+      "current_source_visible_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "runtime selector correction and canonical current-selector hash binding"
+    },
+    {
+      "path": "/courses/24-901-introduction-to-phonology-spring-2026/lists/lecture-notes/",
+      "raw_path": "source-current/g3b-content/batch-01/raw/a9d74638a906942d666c.html",
+      "raw_sha256": "0429b55f16bc7634ac78e9f2556e05a62efc80c2cd9bfbb4d921b68579a50ecf",
+      "original_selector": "div#main-course-section (course-list/boundary variant)",
+      "original_source_visible_text_bytes": 2867,
+      "original_source_visible_text_sha256": "c0ea5da83fd59f888df456a2dff012450689708da5f80fd3bc37464a0aec2e7b",
+      "current_selector": "div#main-course-section (course-list/boundary variant)",
+      "current_source_visible_text_bytes": 1392,
+      "current_source_visible_text_sha256": "d9367ecfe7de06cbee925094694bff8edb2b834bdb21bc0bf8677ae2bb5575cd",
+      "reason": "runtime selector correction and canonical current-selector hash binding"
+    },
+    {
+      "path": "/courses/24-901-introduction-to-phonology-spring-2026/lists/problem-sets/",
+      "raw_path": "source-current/g3b-content/batch-01/raw/b836ea22efacbbd9b5b4.html",
+      "raw_sha256": "b08864febe378626231ee4b6bc52cb3ad5a7122f75347ebe0f6a0f2d79270896",
+      "original_selector": "div#main-course-section (course-list/boundary variant)",
+      "original_source_visible_text_bytes": 1847,
+      "original_source_visible_text_sha256": "38dc36d87f0bc4afab58947eda8aa36f5f42c427bfefa5901f6bbf238fe9b817",
+      "current_selector": "div#main-course-section (course-list/boundary variant)",
+      "current_source_visible_text_bytes": 372,
+      "current_source_visible_text_sha256": "29c43bb4d33f708c39bc14b4905f37afdd2df82a0daabd1a92d9ab41bda6f467",
+      "reason": "runtime selector correction and canonical current-selector hash binding"
+    },
+    {
+      "path": "/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/lecture-videos/",
+      "raw_path": "source-current/g3b-content/batch-02/raw/693306b6e7945c925ed0.html",
+      "raw_sha256": "f3f6af75bf47d3d37e57db935462ab85bbc59cb8b91229532375425ab840e2a3",
+      "original_selector": "div#main-course-section (resource-index variant)",
+      "original_source_visible_text_bytes": 2185,
+      "original_source_visible_text_sha256": "1b7823af84cf2ac736aa44d90c3d1c0b25552cca44fcdfb5429ff46e1b05db43",
+      "current_selector": "div#main-course-section (resource-index variant)",
+      "current_source_visible_text_bytes": 764,
+      "current_source_visible_text_sha256": "1d939d4c41bdf8b3346516fcdae2c836d2cc5803d35f365464dd4a45d477ccbd",
+      "reason": "runtime selector correction and canonical current-selector hash binding"
+    },
+    {
+      "path": "/courses/14-384-time-series-analysis-fall-2013/resources/lecture-notes/",
+      "raw_path": "source-current/g3b-content/batch-02/raw/2efc3d9e542127969770.html",
+      "raw_sha256": "f9f941a43e8762c667d897c3907c925588a259c455d409e1de9fa832d98341bc",
+      "original_selector": "div#main-course-section (resource-index variant)",
+      "original_source_visible_text_bytes": 2874,
+      "original_source_visible_text_sha256": "5209dfad5bf8e255889d2af49cde6a988f41d33b236342eff6ef4320163f4fd9",
+      "current_selector": "div#main-course-section (resource-index variant)",
+      "current_source_visible_text_bytes": 1241,
+      "current_source_visible_text_sha256": "998ec7097bda20521d8fb5830f1b1c8ceaa9e0c525eb47f76a24b4a9f616b001",
+      "reason": "runtime selector correction and canonical current-selector hash binding"
+    },
+    {
+      "path": "/courses/14-384-time-series-analysis-fall-2013/resources/problem-solving-notes/",
+      "raw_path": "source-current/g3b-content/batch-02/raw/883f5ab561769e43752e.html",
+      "raw_sha256": "9a8b15f1e30ce3a91b8eb5043671b8d93d2ea462d049c4a508a0153bea4aef2f",
+      "original_selector": "div#main-course-section (resource-index variant)",
+      "original_source_visible_text_bytes": 1992,
+      "original_source_visible_text_sha256": "6c60ee86628216f2fcc0fc598382ff62b05ff015964ac60de101eb224856c0b8",
+      "current_selector": "div#main-course-section (resource-index variant)",
+      "current_source_visible_text_bytes": 359,
+      "current_source_visible_text_sha256": "e12f41ce07387933a2a78cc34daaa467c6c9f84b43ef3224f20e76158549eae2",
+      "reason": "runtime selector correction and canonical current-selector hash binding"
+    }
+  ]
+}

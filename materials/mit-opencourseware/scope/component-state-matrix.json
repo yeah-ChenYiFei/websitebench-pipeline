@@ -1,0 +1,346 @@
+{
+  "schema_version": "websitebench.component-state-matrix.v2",
+  "site_id": "mit-opencourseware",
+  "status": "frozen",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "capture_lock": {
+    "schema_version": "websitebench.component-capture-lock.v1",
+    "capture_id": "mit-opencourseware-20260905T070619Z",
+    "checkpoint_ids": [
+      "about.default",
+      "catalog-course-overview.default",
+      "catalog.course-number",
+      "catalog.default",
+      "catalog.empty",
+      "catalog.error",
+      "catalog.math",
+      "catalog.math-undergraduate",
+      "catalog.reload-recovered",
+      "catalog.resources",
+      "catalog.retry-stale",
+      "catalog.second-batch",
+      "collection.default",
+      "course-assignments.default",
+      "course-calendar.default",
+      "course-download.default",
+      "course-exams.default",
+      "course-lecture-notes.default",
+      "course-overview.default",
+      "course-reading-deep.default",
+      "course-readings.default",
+      "course-syllabus.default",
+      "data-boundary.default",
+      "educator.default",
+      "external-boundary.default",
+      "get-started.default",
+      "home.carousel-second-batches",
+      "home.default",
+      "newsletter.default",
+      "not-found.default",
+      "resource-final-exam.default",
+      "resource-index.default",
+      "resource-lecture-note.default",
+      "resource-problem-set.default",
+      "source-legacy-boundary.default",
+      "stories.default",
+      "story-adrian.default",
+      "video-gallery.default",
+      "video-resource.default",
+      "video.static-disabled"
+    ]
+  },
+  "components": [
+    {
+      "id": "global-header",
+      "source_expectation": "Component global-header is visible in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-global-header.json"
+      ]
+    },
+    {
+      "id": "home-hero",
+      "source_expectation": "Component home-hero is visible in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-home-hero.json"
+      ]
+    },
+    {
+      "id": "home-featured-courses",
+      "source_expectation": "Component home-featured-courses is visible in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-home-featured-courses.json"
+      ]
+    },
+    {
+      "id": "home-new-courses",
+      "source_expectation": "Component home-new-courses is visible in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-home-new-courses.json"
+      ]
+    },
+    {
+      "id": "home-stories",
+      "source_expectation": "Component home-stories is visible in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-home-stories.json"
+      ]
+    },
+    {
+      "id": "catalog-filters",
+      "source_expectation": "Component catalog-filters is visible in catalog.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-catalog-filters.json"
+      ]
+    },
+    {
+      "id": "catalog-results",
+      "source_expectation": "Component catalog-results is visible in catalog.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-catalog-results.json"
+      ]
+    },
+    {
+      "id": "catalog-error",
+      "source_expectation": "Component catalog-error is visible in catalog.error.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-catalog-error.json"
+      ]
+    },
+    {
+      "id": "catalog-empty",
+      "source_expectation": "Component catalog-empty is visible in catalog.empty.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-catalog-empty.json"
+      ]
+    },
+    {
+      "id": "course-side-navigation",
+      "source_expectation": "Component course-side-navigation is visible in course-overview.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-course-side-navigation.json"
+      ]
+    },
+    {
+      "id": "course-main-content",
+      "source_expectation": "Component course-main-content is visible in course-overview.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-course-main-content.json"
+      ]
+    },
+    {
+      "id": "resource-metadata",
+      "source_expectation": "Component resource-metadata is visible in resource-problem-set.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-resource-metadata.json"
+      ]
+    },
+    {
+      "id": "newsletter-form",
+      "source_expectation": "Component newsletter-form is visible in newsletter.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-newsletter-form.json"
+      ]
+    },
+    {
+      "id": "external-boundary",
+      "source_expectation": "Component external-boundary is visible in external-boundary.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-component-external-boundary.json"
+      ]
+    }
+  ],
+  "role_sessions": [
+    {
+      "id": "anonymous-public",
+      "source_expectation": "A fresh anonymous public context can access every retained course and resource surface without login state.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-role-session-anonymous-public.json"
+      ]
+    }
+  ],
+  "media_checks": [
+    {
+      "id": "home-news-images",
+      "source_expectation": "Local media set home-news-images is ready without remote requests.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-media-check-home-news-images.json"
+      ]
+    },
+    {
+      "id": "course-card-images",
+      "source_expectation": "Local media set course-card-images is ready without remote requests.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-media-check-course-card-images.json"
+      ]
+    },
+    {
+      "id": "resource-file-icons",
+      "source_expectation": "The ten current source resource cards expose ready local page/file icon media without remote requests.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-media-check-resource-file-icons.json"
+      ]
+    },
+    {
+      "id": "disabled-video-poster",
+      "source_expectation": "Local media set disabled-video-poster is ready without remote requests.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-media-check-disabled-video-poster.json"
+      ]
+    }
+  ],
+  "local_capabilities": [
+    {
+      "id": "local-search",
+      "source_expectation": "Local capability local-search is enabled in catalog.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-local-capability-local-search.json"
+      ]
+    },
+    {
+      "id": "local-filter-sort",
+      "source_expectation": "Local capability local-filter-sort is enabled in catalog.math-undergraduate.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-local-capability-local-filter-sort.json"
+      ]
+    },
+    {
+      "id": "local-attachment-download",
+      "source_expectation": "Local capability local-attachment-download is enabled in resource-problem-set.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-local-capability-local-attachment-download.json"
+      ]
+    },
+    {
+      "id": "local-course-archive",
+      "source_expectation": "Local capability local-course-archive is enabled in course-download.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-local-capability-local-course-archive.json"
+      ]
+    },
+    {
+      "id": "external-boundary",
+      "source_expectation": "Local capability external-boundary is enabled in external-boundary.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-local-capability-external-boundary.json"
+      ]
+    },
+    {
+      "id": "data-boundary",
+      "source_expectation": "Local capability data-boundary is enabled in data-boundary.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-local-capability-data-boundary.json"
+      ]
+    },
+    {
+      "id": "video-playback-disabled",
+      "source_expectation": "Local capability video-playback-disabled is visible in video.static-disabled.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/component-state-matrix-local-capability-video-playback-disabled.json"
+      ]
+    }
+  ]
+}

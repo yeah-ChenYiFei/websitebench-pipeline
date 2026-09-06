@@ -1,0 +1,2663 @@
+{
+  "schema_version": "mit-ocw.exact-fullpage-source-capture.v1",
+  "authority": "source-evidence; read-only GET/HEAD within frozen origins",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "captured_at": "2026-09-05T07:36:47.015175+00:00",
+  "browser_profile": {
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "device_scale_factor": 1,
+    "locale": "en-US",
+    "timezone_id": "America/Toronto",
+    "color_scheme": "light",
+    "reduced_motion": "reduce"
+  },
+  "allowed_get_head_origins": [
+    "http://ocw.mit.edu",
+    "https://cdn-images.mailchimp.com",
+    "https://img.youtube.com",
+    "https://ocw.mit.edu",
+    "https://open.mit.edu",
+    "https://www.ocw-openmatters.org"
+  ],
+  "persistent_profile_created": false,
+  "cookies_or_storage_retained": false,
+  "page_count": 24,
+  "challenge_page_count": 0,
+  "exact_width_count": 24,
+  "rows": [
+    {
+      "page_id": "home",
+      "url": "https://ocw.mit.edu/",
+      "final_url": "https://ocw.mit.edu/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 4552
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/home-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        4552
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        3500,
+        4200,
+        4552,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        3500,
+        4200,
+        4552,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "collection",
+      "url": "https://ocw.mit.edu/collections/introductory-programming/",
+      "final_url": "https://ocw.mit.edu/collections/introductory-programming/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 2486
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/collection-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        2486
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        2100,
+        2486,
+        0,
+        700,
+        1400,
+        2100,
+        2486,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "stories",
+      "url": "https://ocw.mit.edu/stories/",
+      "final_url": "https://ocw.mit.edu/stories/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 5380
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/stories-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        5380
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        3500,
+        4200,
+        4900,
+        5380,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        3500,
+        4200,
+        4900,
+        5380,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "story-adrian",
+      "url": "https://ocw.mit.edu/stories/adrian-pastor/",
+      "final_url": "https://ocw.mit.edu/stories/adrian-pastor/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 2888
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/story-adrian-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        2888
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        2888,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        2888,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "about",
+      "url": "https://ocw.mit.edu/about/",
+      "final_url": "https://ocw.mit.edu/about/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 11793
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/about-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        11793
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        3500,
+        4200,
+        4900,
+        5600,
+        6300,
+        7000,
+        7700,
+        8400,
+        9100,
+        9800,
+        10500,
+        11078,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        3500,
+        4200,
+        4900,
+        5600,
+        6300,
+        7000,
+        7700,
+        8400,
+        9100,
+        9800,
+        10500,
+        11200,
+        11793,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/embed/RkhSkE89KJ0",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/embed/lHp6sYSHfKU",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/embed/RkhSkE89KJ0",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/embed/lHp6sYSHfKU",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "get-started",
+      "url": "https://ocw.mit.edu/pages/get-started/",
+      "final_url": "https://ocw.mit.edu/pages/get-started/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1455,
+        "scrollHeight": 2263
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/get-started-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        2263
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        2100,
+        2263,
+        0,
+        700,
+        1400,
+        2100,
+        2263,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "educator",
+      "url": "https://ocw.mit.edu/educator/",
+      "final_url": "https://ocw.mit.edu/educator/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 6931
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/educator-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        6931
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        3500,
+        4200,
+        4900,
+        5600,
+        6300,
+        6754,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        3500,
+        4200,
+        4900,
+        5600,
+        6300,
+        6931,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/embed/7UJ4CFRGd-U",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/embed/FwRj2DL5zIg",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/embed/7UJ4CFRGd-U",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/embed/FwRj2DL5zIg",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT"
+        },
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "newsletter",
+      "url": "https://ocw.mit.edu/newsletter/",
+      "final_url": "https://ocw.mit.edu/newsletter/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 1366
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/newsletter-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        1366
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1366,
+        0,
+        700,
+        1366,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": [
+        "jQuery is not defined"
+      ]
+    },
+    {
+      "page_id": "course-overview",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 960
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/course-overview-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        960
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        960,
+        0,
+        700,
+        960,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "catalog-course-overview",
+      "url": "https://ocw.mit.edu/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/",
+      "final_url": "https://ocw.mit.edu/courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/catalog-course-overview-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        900
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        900,
+        0,
+        700,
+        900,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "course-syllabus",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 3305
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/course-syllabus-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        3305
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        3305,
+        0,
+        700,
+        1400,
+        2100,
+        2800,
+        3305,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "course-calendar",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/calendar/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/calendar/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 1988
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/course-calendar-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        1988
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        1988,
+        0,
+        700,
+        1400,
+        1988,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "course-readings",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 1939
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/course-readings-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        1939
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        1939,
+        0,
+        700,
+        1400,
+        1939,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "course-reading-deep",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/binary-search-trees/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/binary-search-trees/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 1899
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/course-reading-deep-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        1899
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        1899,
+        0,
+        700,
+        1400,
+        1899,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "course-lecture-notes",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 2681
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/course-lecture-notes-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        2681
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        2100,
+        2681,
+        0,
+        700,
+        1400,
+        2100,
+        2681,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "course-assignments",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 1792
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/course-assignments-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        1792
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        1792,
+        0,
+        700,
+        1400,
+        1792,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "course-exams",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/exams/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/exams/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 1298
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/course-exams-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        1298
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1298,
+        0,
+        700,
+        1298,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "resource-index",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/resources/problem-sets/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/resources/problem-sets/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 2400
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/resource-index-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        2400
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        2100,
+        2400,
+        0,
+        700,
+        1400,
+        2100,
+        2400,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "resource-problem-set",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_ps1/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_ps1/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 1298
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/resource-problem-set-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        1298
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1298,
+        0,
+        700,
+        1298,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "resource-lecture-note",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_lec01/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_lec01/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 1298
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/resource-lecture-note-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        1298
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1298,
+        0,
+        700,
+        1298,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "resource-final-exam",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_final/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_final/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 1298
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/resource-final-exam-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        1298
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1298,
+        0,
+        700,
+        1298,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "course-download",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/download/",
+      "final_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/download/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 2476
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/course-download-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        2476
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        2100,
+        2476,
+        0,
+        700,
+        1400,
+        2100,
+        2476,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "video-gallery",
+      "url": "https://ocw.mit.edu/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/video_galleries/video-lectures/",
+      "final_url": "https://ocw.mit.edu/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/video_galleries/video-lectures/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 1708
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/video-gallery-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        1708
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1400,
+        1708,
+        0,
+        700,
+        1400,
+        1708,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    },
+    {
+      "page_id": "video-resource",
+      "url": "https://ocw.mit.edu/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/",
+      "final_url": "https://ocw.mit.edu/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/",
+      "http_status": 200,
+      "challenge_hints": [],
+      "document_dimensions": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "scrollHeight": 1077
+      },
+      "raster_path": "/home/user/alive/websitebench-pipeline-canonical/artifacts/mit-opencourseware/mit-opencourseware-20260905T070619Z/g1/exact-fullpage-defaults-v3/video-resource-default-exact-1440.png",
+      "raster_size": [
+        1440,
+        1077
+      ],
+      "screenshot_policy": "Playwright-managed CDP captureBeyondViewport exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+      "scroll_positions": [
+        0,
+        0,
+        700,
+        1077,
+        0,
+        700,
+        1077,
+        0
+      ],
+      "blocked_requests": [
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/embed/n4rlqluNA-Q",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "outside-frozen-authority"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/iframe_api",
+          "reason": "outside-frozen-authority"
+        }
+      ],
+      "failed_requests": [
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/embed/n4rlqluNA-Q",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT"
+        },
+        {
+          "method": "GET",
+          "url": "https://w.appzi.io/w.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.googletagmanager.com/gtm.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config.js",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://o48788.ingest.sentry.io/api/5304953/envelope/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "POST",
+          "url": "https://ph.ol.mit.edu/flags/",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://ph.ol.mit.edu/array/phc_juxh91cHLBpfaiw9zaOBSqniiY8fZXhBCSu7TAsCe5e/config",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        },
+        {
+          "method": "GET",
+          "url": "https://www.youtube.com/iframe_api",
+          "reason": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "page_errors": []
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "schema_version": "websitebench.all-controls.v3",
+  "site_id": "mit-opencourseware",
+  "status": "frozen",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "capture_method": "curated semantic controls from repository-pinned Chromium, official capture-batch reports, isolated control replay, and authorized search-state capture",
+  "control_instances": 30,
+  "controls": [
+    {
+      "id": "nav-toggle",
+      "source_expectation": "The nav-toggle control is enabled in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-nav-toggle.json"
+      ]
+    },
+    {
+      "id": "global-search-input",
+      "source_expectation": "The global-search-input control is visible in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-global-search-input.json"
+      ]
+    },
+    {
+      "id": "global-search-submit",
+      "source_expectation": "The global-search-submit control is enabled in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-global-search-submit.json"
+      ]
+    },
+    {
+      "id": "promo-previous",
+      "source_expectation": "The promo-previous control is enabled in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-promo-previous.json"
+      ]
+    },
+    {
+      "id": "promo-next",
+      "source_expectation": "The promo-next control is enabled in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-promo-next.json"
+      ]
+    },
+    {
+      "id": "featured-previous",
+      "source_expectation": "The featured-previous control is enabled in home.carousel-second-batches.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-featured-previous.json"
+      ]
+    },
+    {
+      "id": "featured-next",
+      "source_expectation": "The featured-next control is enabled in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-featured-next.json"
+      ]
+    },
+    {
+      "id": "new-previous",
+      "source_expectation": "The new-previous control is enabled in home.carousel-second-batches.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-new-previous.json"
+      ]
+    },
+    {
+      "id": "new-next",
+      "source_expectation": "The new-next control is enabled in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-new-next.json"
+      ]
+    },
+    {
+      "id": "stories-previous",
+      "source_expectation": "The stories-previous control is enabled in home.carousel-second-batches.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-stories-previous.json"
+      ]
+    },
+    {
+      "id": "stories-next",
+      "source_expectation": "The stories-next control is enabled in home.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-stories-next.json"
+      ]
+    },
+    {
+      "id": "catalog-query",
+      "source_expectation": "The catalog-query control is visible in catalog.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-catalog-query.json"
+      ]
+    },
+    {
+      "id": "catalog-course-tab",
+      "source_expectation": "The catalog-course-tab control is checked in catalog.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-catalog-course-tab.json"
+      ]
+    },
+    {
+      "id": "catalog-resource-tab",
+      "source_expectation": "The catalog-resource-tab control is checked in catalog.resources.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-catalog-resource-tab.json"
+      ]
+    },
+    {
+      "id": "catalog-clear-all",
+      "source_expectation": "The catalog-clear-all control is enabled in catalog.math-undergraduate.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-catalog-clear-all.json"
+      ]
+    },
+    {
+      "id": "catalog-departments",
+      "source_expectation": "The catalog-departments control is enabled in catalog.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-catalog-departments.json"
+      ]
+    },
+    {
+      "id": "catalog-math-filter",
+      "source_expectation": "The catalog-math-filter control is checked in catalog.math.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-catalog-math-filter.json"
+      ]
+    },
+    {
+      "id": "catalog-undergraduate-filter",
+      "source_expectation": "The catalog-undergraduate-filter control is checked in catalog.math-undergraduate.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-catalog-undergraduate-filter.json"
+      ]
+    },
+    {
+      "id": "catalog-sort",
+      "source_expectation": "The catalog-sort control is visible in catalog.course-number.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-catalog-sort.json"
+      ]
+    },
+    {
+      "id": "catalog-load-more",
+      "source_expectation": "The catalog-load-more control is enabled in catalog.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-catalog-load-more.json"
+      ]
+    },
+    {
+      "id": "catalog-retry",
+      "source_expectation": "The catalog-retry control is enabled in catalog.error.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-catalog-retry.json"
+      ]
+    },
+    {
+      "id": "catalog-empty-clear",
+      "source_expectation": "The catalog-empty-clear control is enabled in catalog.empty.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-catalog-empty-clear.json"
+      ]
+    },
+    {
+      "id": "course-menu",
+      "source_expectation": "The course-menu control is enabled in course-overview.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-course-menu.json"
+      ]
+    },
+    {
+      "id": "course-download",
+      "source_expectation": "The course-download control is enabled in course-download.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-course-download.json"
+      ]
+    },
+    {
+      "id": "resource-download",
+      "source_expectation": "The resource-download control is enabled in resource-problem-set.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-resource-download.json"
+      ]
+    },
+    {
+      "id": "newsletter-email",
+      "source_expectation": "The newsletter-email control is visible in newsletter.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-newsletter-email.json"
+      ]
+    },
+    {
+      "id": "newsletter-submit",
+      "source_expectation": "The newsletter-submit control is enabled in newsletter.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-newsletter-submit.json"
+      ]
+    },
+    {
+      "id": "video-play",
+      "source_expectation": "The video-play control is disabled in video.static-disabled.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-video-play.json"
+      ]
+    },
+    {
+      "id": "external-return",
+      "source_expectation": "The external-return control is enabled in external-boundary.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-external-return.json"
+      ]
+    },
+    {
+      "id": "data-boundary-return",
+      "source_expectation": "The data-boundary-return control is enabled in data-boundary.default.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/all-controls-inventory-control-data-boundary-return.json"
+      ]
+    }
+  ]
+}

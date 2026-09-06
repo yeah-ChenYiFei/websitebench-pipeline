@@ -1,0 +1,102 @@
+{
+  "schema_version": "mit-ocw.g3-visual-asset-addendum.v1",
+  "capture_id": "mit-opencourseware-20260903T032020Z",
+  "authority": "target-lock-current-direct-narrow-addendum",
+  "created_at": "2026-09-03T08:00:00Z",
+  "does_not_modify_g1_evidence": true,
+  "target_lock": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/target-lock.json",
+  "assets": [
+    {
+      "id": "g3a-homepage_hero-2709ed33a5dc",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3a-visual/2709ed33a5dc304c789d339774bc24745d423459e624b95d654276684953181f.jpg",
+      "runtime_path": "runtime-assets/g3a-visual/2709ed33a5dc304c789d339774bc24745d423459e624b95d654276684953181f.jpg",
+      "bytes": 129494,
+      "sha256": "2709ed33a5dc304c789d339774bc24745d423459e624b95d654276684953181f",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 1440,
+        "height": 500
+      },
+      "referenced_by": [
+        "home.default",
+        "home.carousel-second-batches"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://ocw.mit.edu/images/homepage_hero.jpg",
+      "capture_id": "mit-opencourseware-20260903T032020Z",
+      "input_path": "/tmp/mit-ocw-homepage-hero.jpg",
+      "source_html_sha256_prefix": "71c63a"
+    },
+    {
+      "id": "g3a-homepage_bg-c27dd71e2d43",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3a-visual/c27dd71e2d43b3aa5badb85339718fb5f5caa50e9c5c68628456bb93c483f6d2.png",
+      "runtime_path": "runtime-assets/g3a-visual/c27dd71e2d43b3aa5badb85339718fb5f5caa50e9c5c68628456bb93c483f6d2.png",
+      "bytes": 408270,
+      "sha256": "c27dd71e2d43b3aa5badb85339718fb5f5caa50e9c5c68628456bb93c483f6d2",
+      "mime_type": "image/png",
+      "dimensions": {
+        "width": 1442,
+        "height": 4044
+      },
+      "referenced_by": [
+        "home.default",
+        "home.carousel-second-batches"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://ocw.mit.edu/images/homepage_bg.png",
+      "capture_id": "mit-opencourseware-20260903T032020Z",
+      "input_path": "/tmp/mit-ocw-homepage-bg.png",
+      "source_html_sha256_prefix": "71c63a"
+    },
+    {
+      "id": "g3a-course_6_006_image-d8807e078b8b",
+      "priority": "p0",
+      "required": true,
+      "source_path": "source-assets/g3a-visual/d8807e078b8b1a4ad53d395409cf40462434c130809436941957d4cd74c3bc37.jpg",
+      "runtime_path": "runtime-assets/g3a-visual/d8807e078b8b1a4ad53d395409cf40462434c130809436941957d4cd74c3bc37.jpg",
+      "bytes": 10147,
+      "sha256": "d8807e078b8b1a4ad53d395409cf40462434c130809436941957d4cd74c3bc37",
+      "mime_type": "image/jpeg",
+      "dimensions": {
+        "width": 320,
+        "height": 240
+      },
+      "referenced_by": [
+        "course-overview.default"
+      ],
+      "evidence_kind": "current-direct",
+      "source_url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/1075c5ac06ae4c2cea8c89e9772da78a_6-006f11.jpg",
+      "capture_id": "mit-opencourseware-20260903T032020Z",
+      "input_path": "/tmp/mit-ocw-6-006-course-image.jpg",
+      "source_html_sha256": "35cb2acd33505d5bbdea39837ee0348971dc5f68af74d21daa895eea944f1c74"
+    }
+  ],
+  "source_current_rasters": [
+    {
+      "checkpoint_id": "home.default",
+      "source_capture": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/01-home-viewport.png",
+      "source_current": "source-current/g3a/home-default-1440x900.png",
+      "bytes": 1159255,
+      "sha256": "f30612a56c4954cf9c1ee616481975d2e561e547e0e67fb1055df2d18c970c01",
+      "dimensions": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "checkpoint_id": "course-overview.default",
+      "source_capture": "artifacts/mit-opencourseware/mit-opencourseware-20260903T032020Z/ea1/playwright-depth-screenshots/03-course-root-viewport.png",
+      "source_current": "source-current/g3a/course-overview-default-1440x900.png",
+      "bytes": 117985,
+      "sha256": "77dfcf45b25baec09b1fc43aad08c8ce7834dc32c2ccdfecc17c5ab09cba07a1",
+      "dimensions": {
+        "width": 1440,
+        "height": 900
+      }
+    }
+  ]
+}

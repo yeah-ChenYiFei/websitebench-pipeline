@@ -1,0 +1,14 @@
+{
+  "schema_version": "websitebench.acceptance-recipe.v1",
+  "contract_file": "route-state-viewport.json",
+  "contract_schema_version": "websitebench.route-state-viewport.v3",
+  "record_kind": "route-state-viewport",
+  "record_id": "catalog.math",
+  "subject_kind": "route-state-viewport",
+  "subject_id": "catalog.math",
+  "kind": "checkpoint-state",
+  "checkpoint_id": "catalog.math",
+  "observation_evidence_ref": "evidence/observations/g1-contract-observations.json",
+  "expected_state": "filtered-math-199",
+  "expected_viewport": "desktop"
+}

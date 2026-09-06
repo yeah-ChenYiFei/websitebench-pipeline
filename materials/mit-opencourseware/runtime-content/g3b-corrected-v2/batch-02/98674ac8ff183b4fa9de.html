@@ -1,0 +1,182 @@
+<div class="g3b-source-fragment" data-wb-g3b-content="/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/software/"><main id="course-content-section"><p>This course makes use of Athena, MIT&rsquo;s UNIX-based computing environment. OCW does not provide access to this environment.</p>
+<p>This section covers the 6.006 programming environment setup:</p>
+<p><a href="/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/software/" data-wb-source-href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/software/#cpython">CPython 2.7</a>    <br>
+<a href="/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/software/" data-wb-source-href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/software/#pypy">PyPy</a>    <br>
+<a href="/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/software/" data-wb-source-href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/software/#pip">PIP</a>    <br>
+<a href="/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/software/" data-wb-source-href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/software/#ide">IDEs / Code Editors</a>    <br>
+<a href="/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/software/" data-wb-source-href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/software/#pydev">PyDev in Aptana Studio</a></p>
+
+    <h3 id="overview">Overview</h3>
+
+<p>In theory, you can solve all the 6.006 assignments with nothing other than Notepad. However, in order to be efficient and make the most out of the class, you’ll need a plethora of software, such as a Python interpreter, the PIP package manager, and an IDE. You can find this software on Athena, which is the only platform that we officially support. The rest of this document will help you set up this software on your own machine. We have provided instructions below for the following operating systems / distributions:</p>
+<ol>
+<li><a class="external-link " href="/external-boundary/?url=http%3A%2F%2Fwww.ubuntu.com%2Fdownload%2Fubuntu%2Fdownload" aria-label="Ubuntu Linux 11.04 or 11.10 (opens in a new tab)" data-wb-source-href="http://www.ubuntu.com/download/ubuntu/download">Ubuntu Linux 11.04 or 11.10</a></li>
+<li>Mac OS X 10.7 (Lion)</li>
+<li>Windows 7</li>
+</ol>
+
+    <h4 id="note-on-windows-support">Note on Windows Support</h4>
+
+<p>Windows is tricky to support because it does not obey standards such as POSIX out of the box, and we don’t use it for development. The course staff will attempt to help you with problems on Windows for the purpose of completing all the assignments, but please note that none of us use it on our own computers.</p>
+
+    <h4 id="python">Python</h4>
+
+<p>We will test your code against the CPython 2.7 and PyPy interpreters. Reasonable code should behave identically in CPython and PyPy, but we sometimes use PyPy for performance reasons. You should develop under CPython, and only use PyPy if some weird issue arises. This document walks you through installing both flavors.</p>
+
+    <h3 id="hahahugoshortcode37s6hbhbcpython-27">
+
+<a name="cpython"></a>CPython 2.7</h3>
+
+
+    <h4 id="ubuntu-linux">Ubuntu Linux</h4>
+
+<p>Run the following command in a Terminal window:    <br>
+<code>sudo apt-get install -y python2.7 python-profiler</code></p>
+<p>Python 2.7 should now be installed. Run <code>python --version</code> to make sure that the version is 2.7.</p>
+
+    <h4 id="mac-os-x">Mac OS X</h4>
+
+<p>We support the Python interpreter that comes with OS X 10.7 (Lion).</p>
+<p>If you have OS X 10.6 (Snow Leopard), <a class="external-link " href="/external-boundary/?url=http%3A%2F%2Fwww.python.org%2Fftp%2Fpython%2F2.7.2%2Fpython-2.7.2-macosx10.6.dmg" aria-label="this Python 2.7.2 package (DMG) (opens in a new tab)" data-wb-source-href="http://www.python.org/ftp/python/2.7.2/python-2.7.2-macosx10.6.dmg">this Python 2.7.2 package (DMG)</a> will most likely get you through the class, although the course staff will be unable to help you if you get stuck.</p>
+
+    <h4 id="windows-7">Windows 7</h4>
+
+<ol>
+<li>Download <a class="external-link " href="/external-boundary/?url=http%3A%2F%2Fwww.python.org%2Fftp%2Fpython%2F2.7.2%2Fpython-2.7.2.msi" aria-label="Python 2.7.2 (MSI) (opens in a new tab)" data-wb-source-href="http://www.python.org/ftp/python/2.7.2/python-2.7.2.msi">Python 2.7.2 (MSI)</a> and follow the wizard to install into the default location (C:\Python27\)</li>
+<li>Add Python to the PATH
+<ol>
+<li>Go to Start → Control Panel → System and Security → System</li>
+<li>On the left, click on Advanced system settings</li>
+<li>Make sure you’re on the Advanced tab, and click on the Environment Variables button</li>
+<li>In the top list, find the PATH entry and click on it. Then, click the Edit… button.</li>
+<li>Append the following to the end of the entry (semicolon, spacing, and quotes matter; use the folder where you installed Python instead if you didn’t use the default):    <br>
+<code>;&quot;C:\Python27&quot;</code></li>
+<li>If you had any open command prompt windows, close and reopen them so that they reflect the PATH change.</li>
+</ol>
+</li>
+</ol>
+
+    <h3 id="hahahugoshortcode37s9hbhbpypy">
+
+<a name="pypy"></a>PyPy</h3>
+
+
+    <h4 id="ubuntu-linux-1">Ubuntu Linux</h4>
+
+<ol>
+<li>Download a Linux binary from the <a class="external-link " href="/external-boundary/?url=http%3A%2F%2Fpypy.org%2Fdownload.html" aria-label="PyPy download page (opens in a new tab)" data-wb-source-href="http://pypy.org/download.html">PyPy download page</a>.</li>
+<li>Unpack it in the Downloads folder by double-clicking on the package.</li>
+<li>Open a Terminal window, and type the following commands:</li>
+<li>Install a required library:    <br>
+<code>sudo apt-get install libssl0.9.8</code></li>
+<li>Move pypy to a different location:    <br>
+<code>sudo mv ~/Downloads/pypy-1.6 /usr/local/pypy</code></li>
+<li>Make a symlink to pypy    <br>
+<code>sudo ln -s /usr/local/pypy/bin/pypy /usr/local/bin/pypy</code></li>
+</ol>
+<p>You should now be able to run PyPy by typing <code>pypy</code>, unless you removed <code>/usr/local/bin</code> from your PATH.</p>
+
+    <h4 id="mac-os-x-1">Mac OS X</h4>
+
+<ol>
+<li>Download <a class="external-link " href="/external-boundary/?url=https%3A%2F%2Fdownloads.python.org%2Fpypy%2Fpypy-1.6-osx64.tar.bz2" aria-label="PyPy 1.6 for OS X (TAR) (opens in a new tab)" data-wb-source-href="https://downloads.python.org/pypy/pypy-1.6-osx64.tar.bz2">PyPy 1.6 for OS X (TAR)</a>.</li>
+<li>Unpack it in the Downloads folder by double-clicking on the package.</li>
+<li>Open a Terminal window, and type the following commands:</li>
+<li>Move PyPy to a different location:    <br>
+<code>sudo mv ~/Downloads/pypy-1.6 /usr/local/pypy</code></li>
+<li>Make a symlink to pypy    <br>
+<code>sudo ln -s /usr/local/pypy/bin/pypy /usr/local/bin/pypy</code></li>
+</ol>
+<p>You should now be able to run PyPy just type typing <code>pypy</code>, as <code>/usr/local/bin</code> should be in your PATH.</p>
+
+    <h4 id="windows-7-1">Windows 7</h4>
+
+<ol>
+<li>Download <a class="external-link " href="/external-boundary/?url=https%3A%2F%2Fdownloads.python.org%2Fpypy%2Fpypy-1.6-win32-c.zip" aria-label="PyPy 1.6 for Windows (EXE) (opens in a new tab)" data-wb-source-href="https://downloads.python.org/pypy/pypy-1.6-win32-c.zip">PyPy 1.6 for Windows (EXE)</a>.</li>
+<li>Extract the zip file to C:\pypy-1.6-win32-c</li>
+<li>The main executable is C:\pypy-1.6-win32-c\pypy-c.exe</li>
+</ol>
+
+    <h3 id="hahahugoshortcode37s13hbhbpip">
+
+<a name="pip"></a>PIP</h3>
+
+<p>Make sure you have Python and PyPy installed before installing pip.</p>
+
+    <h4 id="ubuntu-linux-2">Ubuntu Linux</h4>
+
+<p>You can test whether you were able to install pip for PyPy correctly by running <code>pypy-pip install pygments</code> and then running <code>pypy</code> and trying to import <code>pygments</code>. If it succeeds, and <code>pygments.__version__</code> looks like a version number, then you’ve installed PIP successfully. Do the same with pip for CPython by running <code>sudo pip install pygments</code> and then running python and trying to <code>import pygments</code>. Then check the pygments version again.</p>
+
+    <h4 id="mac-os-x-2">Mac OS X</h4>
+
+<p>You can test whether you were able to install pip for PyPy correctly by running <code>pypy-pip install pygments</code> and then running <code>pypy</code> and trying to <code>import pygments</code>. If it succeeds, and <code>pygments.__version__</code> looks like a version number, then you’ve installed PIP successfully. Do the same with pip for CPython by running <code>pip install pygments</code> and then running <code>python</code> and trying to <code>import pygments</code>. Then check the pygments version again.</p>
+
+    <h4 id="windows-7-2">Windows 7</h4>
+
+<ol>
+<li>Download and install <a class="external-link " href="/external-boundary/?url=https%3A%2F%2Fpypi.org%2Fproject%2Fsetuptools%2F" aria-label="setuptools for Python 2.7 (opens in a new tab)" data-wb-source-href="https://pypi.org/project/setuptools/">setuptools for Python 2.7</a>.</li>
+<li>Add the Scripts folder to the PATH
+<ol>
+<li>Go to Start → Control Panel → System and Security → System</li>
+<li>On the left, click on Advanced system settings</li>
+<li>Make sure you’re on the Advanced tab, and click on the Environment Variables button</li>
+<li>In the top list, find the PATH entry and click on it. Then, click the Edit… button.</li>
+<li>Append the following to the end of the entry (semicolon, spacing, and quotes matter; use the folder where you installed Python instead if you didn’t use the default):    <br>
+<code>;&quot;C:\Python27\Scripts&quot;</code></li>
+<li>If you had any open command prompt windows, close and reopen them so that they reflect the PATH change.</li>
+</ol>
+</li>
+</ol>
+<p>Open a new command prompt window and type <code>easy_install pip</code>    <br>
+If this step fails, make sure you edited the PATH correctly in the previous step. For some students, leaving out the quotes (i.e. adding <code>;C:\Python27\Scripts</code> to the PATH) worked better.</p>
+<p>pip should now be installed for CPython. You can test it by opening a command prompt window and running <code>pip install pygments</code>, then running <code>python</code> and checking that <code>import pygments</code> doesn’t fail and that <code>pygments.__version__</code> looks like a version number.</p>
+<p>Now, install pip for PyPy:</p>
+<ol>
+<li>Download these two files to C:\pypy-1.6-win32-c\pypy-1.6 (or wherever else you installed PyPy). If they open in your browser, you can typically go to the File menu and choose Save File As… to save them to your desired location (in this case, the PyPy folder).    <br>
+<a class="external-link " href="/external-boundary/?url=https%3A%2F%2Fpypi.org%2Fproject%2Fdistribute%2F0.6.8%2F" aria-label="Get distribute_setup.py (opens in a new tab)" data-wb-source-href="https://pypi.org/project/distribute/0.6.8/#distribute-setup-py">Get distribute_setup.py</a>    <br>
+<a class="external-link " href="/external-boundary/?url=https%3A%2F%2Fpip.pypa.io%2Fen%2Fstable%2Finstalling%2F" aria-label="Get get-pip.py (opens in a new tab)" data-wb-source-href="https://pip.pypa.io/en/stable/installing/">Get get-pip.py</a></li>
+<li>Open a new command prompt window, and change directories to your PyPy folder:    <br>
+<code>cd C:\pypy-1.6-win32-c\pypy-1.6</code></li>
+<li>Run the following commands to install pip for PyPy:    <br>
+<code>pypy-c distribute_setup.py</code>   <br>
+<code>pypy-c get-pip.py</code></li>
+</ol>
+<p>pip should now be installed for PyPy in C:\pypy-1.6-win32-c\pypy-1.6\bin. You can test it by opening a command prompt window and running <code>C:\pypy-1.6-win32-c\pypy-1.6\bin\pip install pygments</code>, then running <code>C:\pypy-1.6-win32-c\pypy-1.6\pypy-c</code> and checking that <code>import pygments</code> doesn’t fail and that <code>pygments.__version__</code> looks like a version number.</p>
+
+    <h3 id="hahahugoshortcode37s17hbhbides--code-editors">
+
+<a name="ide"></a>IDEs / Code Editors</h3>
+
+<p>An IDE (Integrated Development Environment) can help you develop Python programs more efficiently.</p>
+<p>IDLE comes with Python, and is a good default choice. IDLE is installed by default on Windows and Mac OS X. On Ubuntu, you can install it with the following command: sudo apt-get install idle</p>
+
+    <h3 id="hahahugoshortcode37s18hbhbpydev-in-aptana-studio">
+
+<a name="pydev"></a>PyDev in Aptana Studio</h3>
+
+
+    <h4 id="ubuntu-linux-3">Ubuntu Linux</h4>
+
+<ol>
+<li>Launch Software Sources from the Ubuntu Menu. Select the Other Software tab, then select the Canonical Partners repositories. Close the dialog when done.</li>
+<li>Open a Terminal window.</li>
+<li>Update your software cache.    <br>
+<code>sudo apt-get update</code></li>
+<li>Install the prerequisite software.    <br>
+<code>sudo apt-get install -y sun-java6-jdk sun-java6-fonts ant ant-optional</code>   <br>
+<code>libglade2-0 libgnome2-0 libgnomecanvas2-0 libgnomecanvas2-common</code>   <br>
+<code>libgnomeui-0 libgnomeui-common sat4j git</code></li>
+<li><a class="external-link " href="/external-boundary/?url=http%3A%2F%2Fwww.aptana.com%2F" aria-label="Download Aptana Studio (opens in a new tab)" data-wb-source-href="http://www.aptana.com/">Download Aptana Studio</a> and extract it in your home directory.</li>
+</ol>
+
+    <h4 id="mac-os-x-3">Mac OS X</h4>
+
+<p><a class="external-link " href="/external-boundary/?url=http%3A%2F%2Fwww.aptana.com%2F" aria-label="Download and install Aptana Studio (opens in a new tab)" data-wb-source-href="http://www.aptana.com/">Download and install Aptana Studio</a>.</p>
+
+    <h4 id="windows">Windows</h4>
+
+<ol>
+<li>Download the latest version of the <a class="external-link " href="/external-boundary/?url=https%3A%2F%2Fwww.oracle.com%2Fjava%2Ftechnologies%2Fdownloads%2Farchive%2F" aria-label="Java SE 6 JDK (opens in a new tab)" data-wb-source-href="https://www.oracle.com/java/technologies/downloads/archive/">Java SE 6 JDK</a>.</li>
+<li><a class="external-link " href="/external-boundary/?url=http%3A%2F%2Fwww.aptana.com%2F" aria-label="Download and install Aptana Studio (opens in a new tab)" data-wb-source-href="http://www.aptana.com/">Download and install Aptana Studio</a>.</li>
+</ol>
+</main></div>

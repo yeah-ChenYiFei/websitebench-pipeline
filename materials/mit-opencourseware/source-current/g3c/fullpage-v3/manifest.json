@@ -1,0 +1,117 @@
+{
+  "schema_version": "mit-ocw.source-current-fullpage.v2",
+  "site_id": "mit-opencourseware",
+  "capture_id": "mit-opencourseware-20260905T160000Z",
+  "supersedes": {
+    "capture_id": "mit-opencourseware-20260905T070619Z",
+    "directory": "source-current/g3c/fullpage-v2"
+  },
+  "authority": "source-capture",
+  "provenance": "These five 6.006 section pages are the only acceptance-controlled checkpoints whose fullpage-v2 raster did not depict the live source: it showed the stacked responsive table layout that ocw.mit.edu does not produce at CSS 1440x900. They were retaken GET-only from the source in one batch. In the same session every other directly reachable checkpoint was re-verified against live: 25 of 26 matched the frozen height exactly; the one exception, catalog.default, is an infinite-scroll surface whose frozen state is the unscrolled first batch. The remaining 30 rasters are therefore retained from mit-opencourseware-20260905T070619Z as verified-accurate rather than recaptured.",
+  "method": "GET-only; Playwright CDP captureBeyondViewport, exact clip x=0,y=0,width=1440,height=document scrollHeight; no resize, no post-crop, no mask",
+  "environment": {
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "device_scale_factor": 1,
+    "locale": "en-US",
+    "timezone_id": "America/Toronto",
+    "color_scheme": "light",
+    "reduced_motion": "reduce"
+  },
+  "captured_at": "2026-09-05T15:59:38.236089+00:00",
+  "same_session_verification_report": "artifacts/mit-opencourseware/mit-opencourseware-20260905T160000Z/g1/source-sections-v1/report.json",
+  "same_session_summary": {
+    "checked": 26,
+    "height_equal_to_frozen": 25
+  },
+  "visual_checkpoint_count": 5,
+  "files": [
+    {
+      "path": "source-current/g3c/fullpage-v3/course-readings-default-1440xfull.png",
+      "sha256": "067a5b66cadf5911c063b2b57bb803ba9299c5aa6203f10f43dd4f73fba30be0",
+      "bytes": 210430,
+      "width": 1440,
+      "height": 1939,
+      "checkpoint_id": "course-readings-default",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/",
+      "document_scroll_height": 1939,
+      "table_shape": {
+        "present": true,
+        "rows": 34,
+        "td_display": "table-cell",
+        "thead_display": "table-header-group",
+        "width": 825
+      }
+    },
+    {
+      "path": "source-current/g3c/fullpage-v3/course-calendar-default-1440xfull.png",
+      "sha256": "cf70ecfa3905f481d25ecc962d3ec12c0ebce3c968d022fdf84ed93d94b7454f",
+      "bytes": 195719,
+      "width": 1440,
+      "height": 1988,
+      "checkpoint_id": "course-calendar-default",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/calendar/",
+      "document_scroll_height": 1988,
+      "table_shape": {
+        "present": true,
+        "rows": 34,
+        "td_display": "table-cell",
+        "thead_display": "table-header-group",
+        "width": 825
+      }
+    },
+    {
+      "path": "source-current/g3c/fullpage-v3/course-lecture-notes-default-1440xfull.png",
+      "sha256": "f6af609dc29f3bc640c85091e420aef88e41bf76c8d065c91af0b65ec1af09bb",
+      "bytes": 280345,
+      "width": 1440,
+      "height": 2681,
+      "checkpoint_id": "course-lecture-notes-default",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/",
+      "document_scroll_height": 2681,
+      "table_shape": {
+        "present": true,
+        "rows": 32,
+        "td_display": "table-cell",
+        "thead_display": "table-header-group",
+        "width": 825
+      }
+    },
+    {
+      "path": "source-current/g3c/fullpage-v3/course-assignments-default-1440xfull.png",
+      "sha256": "2cf68559ed93a049ef5e7760d024f148824c61a9a4c3ccb313e9365430391d76",
+      "bytes": 255131,
+      "width": 1440,
+      "height": 1792,
+      "checkpoint_id": "course-assignments-default",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/",
+      "document_scroll_height": 1792,
+      "table_shape": {
+        "present": true,
+        "rows": 7,
+        "td_display": "table-cell",
+        "thead_display": "table-header-group",
+        "width": 825
+      }
+    },
+    {
+      "path": "source-current/g3c/fullpage-v3/course-exams-default-1440xfull.png",
+      "sha256": "cd2e120690afffb208cd38af26fce48445b48e6a37c07868fa618151eb8f5e6f",
+      "bytes": 101006,
+      "width": 1440,
+      "height": 1298,
+      "checkpoint_id": "course-exams-default",
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/exams/",
+      "document_scroll_height": 1298,
+      "table_shape": {
+        "present": true,
+        "rows": 3,
+        "td_display": "table-cell",
+        "thead_display": "table-header-group",
+        "width": 825
+      }
+    }
+  ]
+}

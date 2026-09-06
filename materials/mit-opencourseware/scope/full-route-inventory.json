@@ -1,0 +1,335 @@
+{
+  "schema_version": "websitebench.full-route-inventory.v3",
+  "site_id": "mit-opencourseware",
+  "status": "frozen",
+  "capture_id": "mit-opencourseware-20260905T070619Z",
+  "source_entry": "https://ocw.mit.edu/",
+  "allowed_first_party_origins": [
+    "http://ocw.mit.edu",
+    "https://ocw.mit.edu"
+  ],
+  "account_mode": "anonymous-public-no-account-surface-observed",
+  "scope": "Representative acceptance routes cover every frozen page family; the full captured route-instance denominator and every download identity are frozen in the four business contracts and exercised by exhaustive candidate tests.",
+  "route_count": 29,
+  "routes": [
+    {
+      "id": "home",
+      "source_expectation": "GET / resolves locally with HTTP 200 and title 'MIT OpenCourseWare | Free Online Course Materials'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-home.json"
+      ]
+    },
+    {
+      "id": "catalog",
+      "source_expectation": "GET /search/ resolves locally with HTTP 200 and title 'Search | MIT OpenCourseWare | Free Online Course Materials'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-catalog.json"
+      ]
+    },
+    {
+      "id": "collection",
+      "source_expectation": "GET /collections/introductory-programming/ resolves locally with HTTP 200 and title 'Introductory Programming | MIT OpenCourseWare | Free Online Course Materials'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-collection.json"
+      ]
+    },
+    {
+      "id": "stories",
+      "source_expectation": "GET /stories/ resolves locally with HTTP 200 and title 'MIT OpenCourseWare | Free Online Course Materials'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-stories.json"
+      ]
+    },
+    {
+      "id": "story-adrian",
+      "source_expectation": "GET /stories/adrian-pastor/ resolves locally with HTTP 200 and title 'Adrian Pastor | MIT OpenCourseWare | Free Online Course Materials'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-story-adrian.json"
+      ]
+    },
+    {
+      "id": "about",
+      "source_expectation": "GET /about/ resolves locally with HTTP 200 and title 'About Us | MIT OpenCourseWare | Free Online Course Materials'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-about.json"
+      ]
+    },
+    {
+      "id": "get-started",
+      "source_expectation": "GET /pages/get-started/ resolves locally with HTTP 200 and title 'Get Started | MIT OpenCourseWare | Free Online Course Materials'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-get-started.json"
+      ]
+    },
+    {
+      "id": "educator",
+      "source_expectation": "GET /educator/ resolves locally with HTTP 200 and title 'Educator | MIT OpenCourseWare | Free Online Course Materials'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-educator.json"
+      ]
+    },
+    {
+      "id": "newsletter",
+      "source_expectation": "GET /newsletter/ resolves locally with HTTP 200 and title 'Newsletter | MIT OpenCourseWare | Free Online Course Materials'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-newsletter.json"
+      ]
+    },
+    {
+      "id": "course-overview",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/ resolves locally with HTTP 200 and title 'Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-course-overview.json"
+      ]
+    },
+    {
+      "id": "catalog-course-overview",
+      "source_expectation": "GET /courses/11-233-research-design-for-policy-analysis-and-planning-fall-2007/ resolves locally with HTTP 200 and title 'Research Design for Policy Analysis and Planning | Urban Studies and Planning | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-catalog-course-overview.json"
+      ]
+    },
+    {
+      "id": "course-syllabus",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/pages/syllabus/ resolves locally with HTTP 200 and title 'Syllabus | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-course-syllabus.json"
+      ]
+    },
+    {
+      "id": "course-calendar",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/pages/calendar/ resolves locally with HTTP 200 and title 'Calendar | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-course-calendar.json"
+      ]
+    },
+    {
+      "id": "course-readings",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/ resolves locally with HTTP 200 and title 'Readings | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-course-readings.json"
+      ]
+    },
+    {
+      "id": "course-reading-deep",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/pages/readings/binary-search-trees/ resolves locally with HTTP 200 and title 'Binary Search Trees | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-course-reading-deep.json"
+      ]
+    },
+    {
+      "id": "course-lecture-notes",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/ resolves locally with HTTP 200 and title 'Lecture Notes | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-course-lecture-notes.json"
+      ]
+    },
+    {
+      "id": "course-assignments",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/ resolves locally with HTTP 200 and title 'Assignments | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-course-assignments.json"
+      ]
+    },
+    {
+      "id": "course-exams",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/pages/exams/ resolves locally with HTTP 200 and title 'Exams | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-course-exams.json"
+      ]
+    },
+    {
+      "id": "resource-index",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/resources/problem-sets/ resolves locally with HTTP 200 and title 'Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-resource-index.json"
+      ]
+    },
+    {
+      "id": "resource-problem-set",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_ps1/ resolves locally with HTTP 200 and title 'Problem Set 1 | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-resource-problem-set.json"
+      ]
+    },
+    {
+      "id": "resource-lecture-note",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_lec01/ resolves locally with HTTP 200 and title 'Lecture 01: Algorithmic thinking, peak finding | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-resource-lecture-note.json"
+      ]
+    },
+    {
+      "id": "resource-final-exam",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/resources/mit6_006f11_final/ resolves locally with HTTP 200 and title 'Final Exam | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-resource-final-exam.json"
+      ]
+    },
+    {
+      "id": "course-download",
+      "source_expectation": "GET /courses/6-006-introduction-to-algorithms-fall-2011/download/ resolves locally with HTTP 200 and title 'Resources | Introduction to Algorithms | Electrical Engineering and Computer Science | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-course-download.json"
+      ]
+    },
+    {
+      "id": "video-gallery",
+      "source_expectation": "GET /courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/video_galleries/video-lectures/ resolves locally with HTTP 200 and title 'Lecture Videos | Blockchain and the Design of Financial Systems | Economics | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-video-gallery.json"
+      ]
+    },
+    {
+      "id": "video-resource",
+      "source_expectation": "GET /courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/resources/mit14_129s25_lec01_1080p_mp4/ resolves locally with HTTP 200 and title 'Lecture 1: Introduction to 14.129 Blockchain and Design of Financial Systems | Blockchain and the Design of Financial Systems | Economics | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-video-resource.json"
+      ]
+    },
+    {
+      "id": "source-legacy-boundary",
+      "source_expectation": "GET /external-resources/ resolves locally with HTTP 200 and title 'MIT OpenCourseWare | Free Online Course Materials'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-source-legacy-boundary.json"
+      ]
+    },
+    {
+      "id": "external-boundary",
+      "source_expectation": "GET /external-boundary/ resolves locally with HTTP 200 and title 'You are leaving MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-external-boundary.json"
+      ]
+    },
+    {
+      "id": "data-boundary",
+      "source_expectation": "GET /data-boundary/ resolves locally with HTTP 200 and title 'This item is outside the retained MIT OpenCourseWare snapshot'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-data-boundary.json"
+      ]
+    },
+    {
+      "id": "not-found",
+      "source_expectation": "GET /not-found/ resolves locally with HTTP 200 and title 'Page Not Found | MIT OpenCourseWare'; the body preserves this route family's identity.",
+      "source_evidence_refs": [
+        "source-current/g1-source-summary-v2.json",
+        "evidence/observations/g1-contract-observations.json"
+      ],
+      "recipe_refs": [
+        "scope/recipes/full-route-inventory-route-not-found.json"
+      ]
+    }
+  ]
+}

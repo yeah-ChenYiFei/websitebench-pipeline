@@ -1,0 +1,31 @@
+{
+  "schema_version": "websitebench.offline-clone.visual-comparison-spec.v1",
+  "checkpoints": [
+    {
+      "id": "home-default",
+      "source": {"path": "../source-current/g3a/home-default-1440x900.png"},
+      "candidate": {"path": "../artifacts/offline-clone/g3a/g3b-regression/candidate/home-default-1440x900.png"},
+      "viewport": {"width": 1440, "height": 900},
+      "capture_mode": "viewport",
+      "regions": [
+        {"id": "full", "box": "full", "metric": "normalized_mae", "threshold": 0.06},
+        {"id": "header", "x": 0, "y": 0, "width": 1440, "height": 116, "metric": "normalized_mae", "threshold": 0.06},
+        {"id": "main", "x": 0, "y": 116, "width": 1440, "height": 614, "metric": "normalized_mae", "threshold": 0.06},
+        {"id": "media", "x": 0, "y": 500, "width": 1440, "height": 230, "metric": "normalized_mae", "threshold": 0.06}
+      ]
+    },
+    {
+      "id": "course-overview-default",
+      "source": {"path": "../source-current/g3a/course-overview-default-1440x900.png"},
+      "candidate": {"path": "../artifacts/offline-clone/g3a/g3b-regression/candidate/course-overview-default-1440x900.png"},
+      "viewport": {"width": 1440, "height": 900},
+      "capture_mode": "viewport",
+      "regions": [
+        {"id": "full", "box": "full", "metric": "normalized_mae", "threshold": 0.06},
+        {"id": "header", "x": 0, "y": 0, "width": 1440, "height": 80, "metric": "normalized_mae", "threshold": 0.06},
+        {"id": "main", "x": 0, "y": 80, "width": 1440, "height": 739, "metric": "normalized_mae", "threshold": 0.06},
+        {"id": "media", "x": 1079, "y": 220, "width": 332, "height": 544, "metric": "normalized_mae", "threshold": 0.06}
+      ]
+    }
+  ]
+}
